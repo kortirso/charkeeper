@@ -7,8 +7,8 @@
 # end
 
 [
-  'feats01.json', 'feats02.json', 'feats03.json', 'feats04.json', 'feats05.json', 'feats_classes.json', 'feats_pets.json',
-  'feats_subclasses.json', 'feats_subraces.json', 'feats_races.json',
+  'feats01.json', 'feats02.json', 'feats03.json', 'feats04.json', 'feats05.json', 'feats06.json', 'feats07.json',
+  'feats_classes.json', 'feats_pets.json', 'feats_subclasses.json', 'feats_subraces.json', 'feats_races.json',
   'spells0.json', 'spells1.json', 'spells2.json', 'spells3.json'
 ].each do |filename|
   JSON.parse(File.read("db/data_prod/pathfinder2/#{filename}")).each do |item|

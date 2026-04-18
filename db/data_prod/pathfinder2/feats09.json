@@ -82,11 +82,7 @@
     "origin_values": [
       "elf"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "expert_longevity",
@@ -103,11 +99,7 @@
     "origin_values": [
       "elf"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "otherworldly_acumen",
@@ -124,11 +116,7 @@
     "origin_values": [
       "elf"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "tree_climber",
@@ -145,11 +133,7 @@
     "origin_values": [
       "elf"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "cautious_curiosity",
@@ -164,11 +148,7 @@
     },
     "origin": "ancestry",
     "origin_values": ["gnome"],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "first_world_adept",
@@ -183,11 +163,7 @@
     },
     "origin": "ancestry",
     "origin_values": ["gnome"],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "life_leap",
@@ -206,11 +182,7 @@
       "move",
       "teleportation"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "vivacious_conduit",
@@ -225,11 +197,7 @@
     },
     "origin": "ancestry",
     "origin_values": ["gnome"],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "cave_climber",
@@ -246,11 +214,7 @@
     "origin_values": [
       "goblin"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "cling",
@@ -267,11 +231,7 @@
     "origin_values": [
       "goblin"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "skittering_scuttle",
@@ -288,11 +248,7 @@
     "origin_values": [
       "goblin"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "dance_underfoot",
@@ -368,11 +324,7 @@
     ],
     "conditions": {
       "level": 9
-    },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    }
   },
   {
     "slug": "cooperative_soul",
@@ -389,11 +341,7 @@
     "origin_values": [
       "human"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "group_aid",
@@ -410,11 +358,7 @@
     "origin_values": [
       "human"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "hardy_traveler",
@@ -431,11 +375,7 @@
     "origin_values": [
       "human"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "incredible_improvisation",
@@ -445,18 +385,14 @@
       "ru": "Невероятная импровизация"
     },
     "description": {
-      "en": "**Frequency** once per day<br>**Trigger** You attempt a check using a skill you're untrained in.\n\nA stroke of brilliance gives you a major advantage with a skill despite your inexperience. Gain a +4 circumstance bonus to the triggering skill check.",
+      "en": "**Frequency** once per day\n\n**Trigger** You attempt a check using a skill you're untrained in.\n\nA stroke of brilliance gives you a major advantage with a skill despite your inexperience. Gain a +4 circumstance bonus to the triggering skill check.",
       "ru": "**Частота** 1 в день<br>\n**Критерии** Умный импровизатор<br>\n**Условие** вы совершаете проверку неизученного навыка.\n\nНесмотря на неопытность, вы получаете преимущество благодаря внезапному озарению. Вы получаете ситуативный бонус +4 к спровоцировавшей проверке навыка."
     },
     "origin": "ancestry",
     "origin_values": [
       "human"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "multitalented",
@@ -473,11 +409,7 @@
     "origin_values": [
       "human"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "bark_and_tendril",
@@ -593,11 +525,7 @@
     "origin_values": [
       "changeling"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "occult_resistance",
@@ -614,11 +542,7 @@
     "origin_values": [
       "changeling"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "celestial_magic",
@@ -635,11 +559,7 @@
     "origin_values": [
       "nephilim"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "divine_countermeasures",
@@ -656,11 +576,7 @@
     "origin_values": [
       "nephilim"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "divine_wings",
@@ -679,11 +595,7 @@
       "morph",
       "nephilim"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   },
   {
     "slug": "fiendish_magic",
@@ -700,10 +612,6 @@
     "origin_values": [
       "nephilim"
     ],
-    "conditions": { "level": 9 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 9 }
   }
 ]

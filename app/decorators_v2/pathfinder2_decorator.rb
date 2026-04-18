@@ -202,16 +202,21 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     current
   end
 
-  def find_weapon_skill_training(item) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
-    if available_features_values['weapon_legend']&.first == item.dig(:items_info, 'group')
-      weapon_skills.merge({ 'unarmed' => 4, 'simple' => 4, 'martial' => 4, 'advanced' => 3 }, &merge_max)
-    elsif available_features_values['fighter_weapon_mastery']&.first == item.dig(:items_info, 'group')
-      weapon_skills.merge({ 'unarmed' => 3, 'simple' => 3, 'martial' => 3, 'advanced' => 2 }, &merge_max)
-    elsif level >= 11 && available_features_slugs.include?('elf_martial_experience')
-      weapon_skills.merge({ 'unarmed' => 1, 'simple' => 1, 'martial' => 1, 'advanced' => 1 }, &merge_max)
-    else
-      weapon_skills.clone
+  def find_weapon_skill_training(item) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+    result =
+      if available_features_values['weapon_legend']&.first == item.dig(:items_info, 'group')
+        weapon_skills.merge({ 'unarmed' => 4, 'simple' => 4, 'martial' => 4, 'advanced' => 3 }, &merge_max)
+      elsif available_features_values['fighter_weapon_mastery']&.first == item.dig(:items_info, 'group')
+        weapon_skills.merge({ 'unarmed' => 3, 'simple' => 3, 'martial' => 3, 'advanced' => 2 }, &merge_max)
+      elsif level >= 11 && available_features_slugs.include?('elf_martial_experience')
+        weapon_skills.merge({ 'unarmed' => 1, 'simple' => 1, 'martial' => 1, 'advanced' => 1 }, &merge_max)
+      else
+        weapon_skills.clone
+      end
+    if available_features_values['advanced_weapon_training']&.first == item.dig(:items_info, 'group')
+      result.merge!({ 'advanced' => result['martail'] }, &merge_max)
     end
+    result
   end
 
   def merge_max = proc { |_, oldval, newval| [oldval, newval].max }

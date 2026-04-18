@@ -16,11 +16,7 @@
       "concentrate",
       "manipulate"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "call_and_response",
@@ -40,11 +36,7 @@
       "concentrate",
       "spellshape"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "eclectic_skill",
@@ -61,11 +53,7 @@
     "origin_values": [
       "bard"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "fortissimo_composition",
@@ -82,11 +70,7 @@
     "origin_values": [
       "bard"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "know_it_all",
@@ -96,7 +80,7 @@
       "ru": "Всезнайка"
     },
     "description": {
-      "en": "**Archetype** Oatia Skysage*<br>**Prerequisites** [Bard] enigma muse<br>* This archetype offers Know-It-All at a different level than displayed here.\n\nWhen you succeed at a check to Recall Knowledge, you gain additional information or context. When you critically succeed at a check to Recall Knowledge, you get additional information or context or can ask an additional follow-up question (the GM chooses which).<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Oatia Skysage*\n\n**Prerequisites** [Bard] enigma muse<br>* This archetype offers Know-It-All at a different level than displayed here.\n\nWhen you succeed at a check to Recall Knowledge, you gain additional information or context. When you critically succeed at a check to Recall Knowledge, you get additional information or context or can ask an additional follow-up question (the GM chooses which).",
       "ru": "**Архетип** Oatia Skysage<br>\n**Критерии** [Бард] энигма.\n\nКогда вы успешно проходите проверку, чтобы Вспомнить информацию, вы получаете дополнительную информацию или сведения. Когда вы критически успешно проходите такую проверку, то по решению ведущего сможете получить ещё больше дополнительной информации или полезных сведений, чем обычно, либо сможете задать дополнительный вопрос."
     },
     "origin": "ancestry",
@@ -104,11 +88,7 @@
       "bard",
       "thaumaturge"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "reflexive_courage",
@@ -118,7 +98,7 @@
       "ru": "Внеочередная отвага"
     },
     "description": {
-      "en": "**Prerequisites** warrior muse<br>**Trigger** A creature within your reach uses an auditory effect, manipulate action, or move action; makes a ranged attack; or leaves a square during its move action<br>**Requirements** You are affected by courageous anthem.\n\nYou bellow a ferocious call to arms, inspiring yourself to lash out at a foe. Make a melee Strike against the triggering creature. If the attack is a critical hit and the trigger was a manipulate action, the action is disrupted.",
+      "en": "**Prerequisites** warrior muse\n\n**Trigger** A creature within your reach uses an auditory effect, manipulate action, or move action; makes a ranged attack; or leaves a square during its move action\n\n**Requirements** You are affected by courageous anthem.\n\nYou bellow a ferocious call to arms, inspiring yourself to lash out at a foe. Make a melee Strike against the triggering creature. If the attack is a critical hit and the trigger was a manipulate action, the action is disrupted.",
       "ru": "**Критерии** воитель<br>\n**Условие** существо в вашей зоне досягаемости использует действие с дескриптором «движение» или «манипуляция» либо эффект с дескриптором «слух», совершает дистанционную атаку или покидает клетку в ходе совершаемого им действия с дескриптором «движение».\n\n**Требования** вы под действием песни отваги.\n\nВы издаёте грохочущий клич, вдохновляя себя на атаку по врагу. Совершите Удар в ближнем бою по спровоцировавшему существу. Если это критический удар, а спровоцировало его действие с дескриптором «манипуляция», вы срываете это действие."
     },
     "origin": "ancestry",
@@ -127,11 +107,7 @@
       "bard",
       "concentrate"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "soulsight",
@@ -149,11 +125,7 @@
       "bard",
       "sorcerer"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "advanced_domain",
@@ -163,18 +135,14 @@
       "ru": "Продвинутое заклинание домена"
     },
     "description": {
-      "en": "**Archetypes** Campfire Chronicler, Soul Warden*, Vindicator<br>**Prerequisites** Domain Initiate<br>* This archetype offers Advanced Domain at a different level than displayed here.\n\nYour prayers have unlocked deeper secrets of your deity's domain. You gain an advanced domain spell from one of your domains for which you have an initial domain spell.\n\n**Special** You can select this feat multiple times. Each time, you must select a different advanced domain spell.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetypes** Campfire Chronicler, Soul Warden*, Vindicator\n\n**Prerequisites** Domain Initiate<br>* This archetype offers Advanced Domain at a different level than displayed here.\n\nYour prayers have unlocked deeper secrets of your deity's domain. You gain an advanced domain spell from one of your domains for which you have an initial domain spell.\n\n**Special** You can select this feat multiple times. Each time, you must select a different advanced domain spell.",
       "ru": "**Архетип** Soul Warden<br>\n**Критерии** Начальное заклинание домена.\n\nВаши молитвы открыли вам новые тайны домена вашего божества. Вы получаете продвинутое заклинание домена одного из своих доменов, для которого у вас есть начальное заклинание домена.\n\n**Примечание** вы можете взять эту черту несколько раз. Каждый раз вы выбираете новое продвинутое заклинание домена."
     },
     "origin": "ancestry",
     "origin_values": [
       "cleric"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "cremate_undead",
@@ -191,11 +159,7 @@
     "origin_values": [
       "cleric"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "emblazon_energy",
@@ -212,11 +176,7 @@
     "origin_values": [
       "cleric"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "martyr",
@@ -226,7 +186,7 @@
       "ru": "Мученик"
     },
     "description": {
-      "en": "**Archetype** Seneschal*<br>* This archetype offers Martyr at a different level than displayed here.\n\nYou go to extreme lengths to support your allies, even when it means bringing harm to yourself. If your next action is to cast harm or heal to restore Hit Points to a single ally, you can channel your own vitality along with the spell. You lose 1d8 Hit Points per rank of the spell, which can't be reduced or mitigated in any way, and your ally regains an equal number of Hit Points<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Seneschal*<br>* This archetype offers Martyr at a different level than displayed here.\n\nYou go to extreme lengths to support your allies, even when it means bringing harm to yourself. If your next action is to cast harm or heal to restore Hit Points to a single ally, you can channel your own vitality along with the spell. You lose 1d8 Hit Points per rank of the spell, which can't be reduced or mitigated in any way, and your ally regains an equal number of Hit Points",
       "ru": "Чтобы помочь союзникам, вы готовы пойти на большие жертвы. Если вашим следующим действием будет сотворение излечения или повреждения для восстановления ПЗ одному союзнику, вы также можете передать ему собственную жизненную энергию. Вы теряете 1d8 ПЗ за каждый круг заклинания, эту потерю нельзя снизить или ослабить никаким образом. Ваш союзник восстанавливает такое же количество ПЗ."
     },
     "origin": "ancestry",
@@ -234,11 +194,7 @@
       "cleric",
       "spellshape"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "restorative_channel",
@@ -255,11 +211,7 @@
     "origin_values": [
       "cleric"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "sanctify_armament",
@@ -277,11 +229,7 @@
       "cleric",
       "divine"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "surging_focus",
@@ -291,18 +239,14 @@
       "ru": "Бушующая сила"
     },
     "description": {
-      "en": "**Frequency** once per day<br>**Trigger** An ally you can see falls to 0 Hit Points.\n\nWhen an ally you can see falls in battle, your surge of righteous indignation allows you to draw upon untapped reserves of divine power. You instantly regain 1 Focus Point.",
+      "en": "**Frequency** once per day\n\n**Trigger** An ally you can see falls to 0 Hit Points.\n\nWhen an ally you can see falls in battle, your surge of righteous indignation allows you to draw upon untapped reserves of divine power. You instantly regain 1 Focus Point.",
       "ru": "**Частота** 1 в день<br>\n**Условие** ПЗ союзника, которого вы видите, снижаются до 0.\n\nВидя, как в битве пал ваш союзник, вы тут же ощущаете внутренний всплеск божественной мощи. Вы немедленно восстанавливаете 1 ФП."
     },
     "origin": "ancestry",
     "origin_values": [
       "cleric"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "void_siphon",
@@ -319,11 +263,7 @@
     "origin_values": [
       "cleric"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "zealous_rush",
@@ -340,11 +280,7 @@
     "origin_values": [
       "cleric"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "deimatic_display",
@@ -361,11 +297,7 @@
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "ferocious_shape",
@@ -382,11 +314,7 @@
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "fey_caller",
@@ -403,11 +331,7 @@
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "floral_restoration",
@@ -417,7 +341,7 @@
       "ru": "Растительное восстановление"
     },
     "description": {
-      "en": "**Frequency** once per day<br>**Prerequisites** leaf order.\n\nYou request that nearby plants share their vitality with you to replenish your body and magic. You regain 1 Focus Point and 4d8 Hit Points.\n\nYou must be in a location of at least 15 feet by 15 feet of healthy plant life, though this can be grass, lichen, seaweed, or any other form of naturally occurring flora. Using Floral Restoration on a given section of nature does not harm it, but it prevents that section of nature from giving its vitality to another use of Floral Restoration for 24 hours.\n\nAt 9th level, and every 2 levels thereafter, increase the healing by 1d8.",
+      "en": "**Frequency** once per day\n\n**Prerequisites** leaf order.\n\nYou request that nearby plants share their vitality with you to replenish your body and magic. You regain 1 Focus Point and 4d8 Hit Points.\n\nYou must be in a location of at least 15 feet by 15 feet of healthy plant life, though this can be grass, lichen, seaweed, or any other form of naturally occurring flora. Using Floral Restoration on a given section of nature does not harm it, but it prevents that section of nature from giving its vitality to another use of Floral Restoration for 24 hours.\n\nAt 9th level, and every 2 levels thereafter, increase the healing by 1d8.",
       "ru": "**Частота** 1 в день<br>\n**Критерии** орден листа.\n\nВы просите растения поблизости поделиться с вами жизненной силой, чтобы восстановить ваши магические силы и тело. Вы восстанавливаете 1 ФП и 4d8 ПЗ.\n\nВы должны находиться в области размером минимум с 15-футовый квадрат со здоровой растительностью — травой, мхом, водорослями или иной естественной флорой. Применение этой черты не причиняет вреда природе, но не позволяет повторно использовать место для этой черты в течение 24 часов.\n\nНа 9 уровне и каждые 2 уровня после этого увеличьте исцеление на 1d8."
     },
     "origin": "ancestry",
@@ -426,11 +350,7 @@
       "healing",
       "vitality"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "incredible_companion_(druid)",
@@ -440,18 +360,14 @@
       "ru": "Невероятный зверь (друид)"
     },
     "description": {
-      "en": "**Archetype** Rivethun Involutionist<br>**Prerequisites** Mature Animal Companion (Druid).\n\nYour animal companion continues to grow and develop. It becomes either a nimble or savage animal companion (page 211), gaining additional capabilities determined by the type.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Rivethun Involutionist\n\n**Prerequisites** Mature Animal Companion (Druid).\n\nYour animal companion continues to grow and develop. It becomes either a nimble or savage animal companion (page 211), gaining additional capabilities determined by the type.",
       "ru": "**Критерии** Взрослый верный зверь.\n\nВаш верный зверь продолжает расти и развиваться и становится ловким или лютым верным зверем, получая дополнительные возможности в зависимости от своего типа."
     },
     "origin": "ancestry",
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "raise_menhir",
@@ -468,11 +384,7 @@
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "soaring_shape",
@@ -489,11 +401,7 @@
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "wind_caller",
@@ -510,11 +418,7 @@
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "blind_fight",
@@ -524,7 +428,7 @@
       "ru": "Бой вслепую"
     },
     "description": {
-      "en": "**Source** Player Core , Player Core 2 <br>**Archetypes** Eagle Knight*, Exorcist*, Horizon Walker*<br>**Prerequisites** master in Perception<br>* This archetype offers Blind-Fight at a different level than displayed here.\n\nYour battle instincts make you more aware of concealed and invisible opponents. You don't need to succeed at a flat check to target concealed creatures. You're not off-guard to creatures that are hidden from you (unless you're off-guard to them for reasons other than the hidden condition), and you need only a successful DC 5 flat check to target a hidden creature.\n\nWhile you're adjacent to an undetected creature of your level or lower, it is instead only hidden from you<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
+      "en": "**Source** Player Core , Player Core 2 \n\n**Archetypes** Eagle Knight*, Exorcist*, Horizon Walker*\n\n**Prerequisites** master in Perception<br>* This archetype offers Blind-Fight at a different level than displayed here.\n\nYour battle instincts make you more aware of concealed and invisible opponents. You don't need to succeed at a flat check to target concealed creatures. You're not off-guard to creatures that are hidden from you (unless you're off-guard to them for reasons other than the hidden condition), and you need only a successful DC 5 flat check to target a hidden creature.\n\nWhile you're adjacent to an undetected creature of your level or lower, it is instead only hidden from you<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
       "ru": "**Архетипы** Exorcist, Идущий за горизонт<br>\n**Критерии** мастерское Внимание.\n\nВаши инстинкты позволяют лучше чувствовать плохо видимых и невидимых противников. Вам не нужно совершать чистой проверки, чтобы выбрать целью плохо видимое существо. Вы не считаетесь застигнутым врасплох спрятанными от вас существами (если не застигнуты ими врасплох по иной причине, помимо спрятанности), и чтобы выбрать спрятанное существо целью, вам достаточно успешной чистой проверки со СЛ 5.\n\nКогда вы рядом с необнаруженным существом, уровень которого равен или меньше вашего, оно вместо необнаруженного считается для вас спрятанным."
     },
     "origin": "ancestry",
@@ -534,11 +438,7 @@
       "ranger",
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "disorienting_opening",
@@ -555,11 +455,7 @@
     "origin_values": [
       "fighter"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "dueling_riposte",
@@ -569,18 +465,14 @@
       "ru": "Дуэльная контратака"
     },
     "description": {
-      "en": "**Archetypes** Duelist*<br>**Prerequisites** Dueling Parry (Fighter)<br>**Trigger** A creature within your reach critically fails a Strike against you<br>**Requirements** You are benefiting from Dueling Parry<br>* This archetype offers Dueling Riposte at a different level than displayed here.\n\nYou elegantly counterattack against your flailing enemy. Make a melee Strike against or attempt to Disarm the triggering creature.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetypes** Duelist*\n\n**Prerequisites** Dueling Parry (Fighter)\n\n**Trigger** A creature within your reach critically fails a Strike against you\n\n**Requirements** You are benefiting from Dueling Parry<br>* This archetype offers Dueling Riposte at a different level than displayed here.\n\nYou elegantly counterattack against your flailing enemy. Make a melee Strike against or attempt to Disarm the triggering creature.",
       "ru": "**Архетип** Дуэлянт<br>\n**Критерии** Дуэльное парирование (воин)<br>\n**Условие** существо в вашей зоне досягаемости совершает по вам Удар и критически проваливает проверку атаки<br>\n**Требования** у вас есть преимущество Дуэльного парирования.\n\nВы элегантно контратакуете промахнувшегося врага. Совершите действие Разоружение или Удар в ближнем бою против спровоцировавшего это ответное действие существа."
     },
     "origin": "ancestry",
     "origin_values": [
       "fighter"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "felling_strike",
@@ -597,11 +489,7 @@
     "origin_values": [
       "fighter"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "incredible_aim",
@@ -619,11 +507,7 @@
       "concentrate",
       "fighter"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "mobile_shot_stance",
@@ -633,7 +517,7 @@
       "ru": "Стойка подвижного стрелка"
     },
     "description": {
-      "en": "**Archetypes** Archer*<br>* This archetype offers Mobile Shot Stance at a different level than displayed here.\n\nYour shots become nimble and deadly. While you're in this stance, your ranged Strikes don't trigger Reactive Strike or other reactions that are triggered by a ranged attack.\n\n**Special** If you have Reactive Strike, you can use it with a loaded ranged weapon you're wielding. The triggering creature must be within 5 feet of you for you to do so.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetypes** Archer*<br>* This archetype offers Mobile Shot Stance at a different level than displayed here.\n\nYour shots become nimble and deadly. While you're in this stance, your ranged Strikes don't trigger Reactive Strike or other reactions that are triggered by a ranged attack.\n\n**Special** If you have Reactive Strike, you can use it with a loaded ranged weapon you're wielding. The triggering creature must be within 5 feet of you for you to do so.",
       "ru": "**Архетип** Лучник.\n\nВаши выстрелы становятся быстрее и смертоноснее. Пока вы в этой стойке, ваши дистанционные Удары не провоцируют Внеочередных атак и прочих ответных действий, провоцируемых дистанционными атаками.\n\n**Примечание** если у вас есть Внеочередная атака, вы можете применить для неё заряженное дистанционное оружие, которое используете, но спровоцировавшее атаку существо должно быть в пределах 5 футов от вас."
     },
     "origin": "ancestry",
@@ -641,11 +525,7 @@
       "fighter",
       "stance"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "positioning_assault",
@@ -663,11 +543,7 @@
       "fighter",
       "flourish"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "quick_shield_block",
@@ -677,7 +553,7 @@
       "ru": "Быстрый блок щитом"
     },
     "description": {
-      "en": "**Source** Player Core , Player Core 2 <br>**Archetypes** Bastion*, Viking*<br>**Prerequisites** Shield Block<br>* This archetype offers Quick Shield Block at a different level than displayed here.\n\nYou can bring your shield into place with hardly a thought. At the start of each of your turns, you gain an additional reaction that you can use only to Shield Block.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
+      "en": "**Source** Player Core , Player Core 2 \n\n**Archetypes** Bastion*, Viking*\n\n**Prerequisites** Shield Block<br>* This archetype offers Quick Shield Block at a different level than displayed here.\n\nYou can bring your shield into place with hardly a thought. At the start of each of your turns, you gain an additional reaction that you can use only to Shield Block.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
       "ru": "**Архетипы** Бастион, Викинг<br>\n**Критерии** Блок щитом.\n\nВы почти мгновенно отражаете щитом удары. В начале каждого своего хода вы получаете дополнительное ответное действие, которое можете использовать только для Блока щитом."
     },
     "origin": "ancestry",
@@ -685,11 +561,7 @@
       "champion",
       "fighter"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "resounding_bravery",
@@ -706,11 +578,7 @@
     "origin_values": [
       "fighter"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "sudden_leap",
@@ -728,11 +596,7 @@
       "barbarian",
       "fighter"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "deadly_aim",
@@ -750,11 +614,7 @@
       "flourish",
       "ranger"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "hazard_finder",
@@ -764,18 +624,14 @@
       "ru": "Поиск опасностей"
     },
     "description": {
-      "en": "**Archetype** Eagle Knight*<br>* This archetype offers Hazard Finder at a different level than displayed here.\n\nYou have an intuitive ability to sense hazards. You gain a +1 circumstance bonus to Perception checks to find traps and hazards, to AC against their attacks, and to saves against their effects. You can find hazards that would normally require you to Search even if you aren't Searching.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Eagle Knight*<br>* This archetype offers Hazard Finder at a different level than displayed here.\n\nYou have an intuitive ability to sense hazards. You gain a +1 circumstance bonus to Perception checks to find traps and hazards, to AC against their attacks, and to saves against their effects. You can find hazards that would normally require you to Search even if you aren't Searching.",
       "ru": "Вы интуитивно чувствуете присутствие опасностей. Вы получаете ситуативный бонус +1 к проверкам Внимания для обнаружения опасностей и ловушек, а также ситуативный бонус +1 к КБ против их атак и к испытаниям против их эффектов. Даже не совершая Обыск, вы получаете возможность провести проверку для обнаружения опасностей, обычно требующую Обыск."
     },
     "origin": "ancestry",
     "origin_values": [
       "ranger"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "terrain_master",
@@ -785,18 +641,14 @@
       "ru": "Адаптация к местности"
     },
     "description": {
-      "en": "**Archetype** Horizon Walker*<br>**Prerequisites** master in Survival; Favored Terrain<br>* This archetype offers Terrain Master at a different level than displayed here.\n\nYou are able to adapt to your surroundings in any natural terrain. You can spend 1 hour practicing in your current terrain in order to make it your favored terrain, replacing your current favored terrain temporarily. If you spend a full day out of the new favored terrain, your favored terrain reverts back to your original choice when you took the Favored Terrain feat.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Horizon Walker*\n\n**Prerequisites** master in Survival; Favored Terrain<br>* This archetype offers Terrain Master at a different level than displayed here.\n\nYou are able to adapt to your surroundings in any natural terrain. You can spend 1 hour practicing in your current terrain in order to make it your favored terrain, replacing your current favored terrain temporarily. If you spend a full day out of the new favored terrain, your favored terrain reverts back to your original choice when you took the Favored Terrain feat.",
       "ru": "**Архетип** Идущий за горизонт<br>\n**Критерии** мастерское Выживание; Излюбленная местность.\n\nВы способны адаптироваться к любой природной местности. Вы можете провести один час в текущей местности, чтобы изучить её и временно сделать излюбленной, заменяя основную излюбленную местность. Если вы проведёте сутки вне этой местности, вашей излюбленной местностью станет та, которую вы выбирали изначально, взяв черту."
     },
     "origin": "ancestry",
     "origin_values": [
       "ranger"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "warden's_boon",
@@ -813,11 +665,7 @@
     "origin_values": [
       "ranger"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "bullseye",
@@ -834,11 +682,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "delay_trap",
@@ -848,18 +692,14 @@
       "ru": "Замедление ловушки"
     },
     "description": {
-      "en": "**Archetypes** Archaeologist*<br>**Trigger** A trap within your reach is triggered<br>* This archetype offers Delay Trap at a different level than displayed here.\n\nYou try to jam the workings of a trap to delay its effects. Attempt a Thievery check to Disable a Device on the trap with the following results instead of the normal ones for the action.\n\n**Critical Success** You either prevent the trap from being triggered or delay the activation until the start or end of your next turn.\n\n**Success** As above, but the GM chooses whichever is worse for you.\n\n**Failure** No effect.\n\n**Critical Failure** You're off-guard until the start of your next turn.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetypes** Archaeologist*\n\n**Trigger** A trap within your reach is triggered<br>* This archetype offers Delay Trap at a different level than displayed here.\n\nYou try to jam the workings of a trap to delay its effects. Attempt a Thievery check to Disable a Device on the trap with the following results instead of the normal ones for the action.\n\n**Critical Success** You either prevent the trap from being triggered or delay the activation until the start or end of your next turn.\n\n**Success** As above, but the GM chooses whichever is worse for you.\n\n**Failure** No effect.\n\n**Critical Failure** You're off-guard until the start of your next turn.",
       "ru": "**Архетип** Археолог<br>\n**Условие** в вашей зоне досягаемости срабатывает ловушка.\n\nВы заклиниваете ловушку, чтобы задержать её срабатывание. Совершите проверку Воровства для Отключения устройства со следующими эффектами вместо обычных.\n\n**Критический успех** вы либо предотвращаете срабатывание ловушки, либо откладываете её активацию до начала или конца вашего следующего хода (на ваш выбор).\n\n**Успех** аналогичен критическому успеху, но выбор делает ведущий в зависимости оттого, что для вас хуже.\n\n**Провал** без эффекта.\n\n**Критический провал** вы застигнуты врасплох до начала своего следующего хода."
     },
     "origin": "ancestry",
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "improved_poison_weapon",
@@ -869,18 +709,14 @@
       "ru": "Улучшенное отравленное оружие"
     },
     "description": {
-      "en": "**Archetypes** Assassin*, Poisoner*<br>**Prerequisites** Poison Weapon<br>* This archetype offers Improved Poison Weapon at a different level than displayed here.\n\nYou deliver poisons in ways that maximize their harmful effects. When you apply a simple poison with Poison Weapon, the poison deals 2d4 poison damage instead of 1d4 poison damage. You don't waste a poison you apply with Poison Weapon on a critically failed attack roll.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetypes** Assassin*, Poisoner*\n\n**Prerequisites** Poison Weapon<br>* This archetype offers Improved Poison Weapon at a different level than displayed here.\n\nYou deliver poisons in ways that maximize their harmful effects. When you apply a simple poison with Poison Weapon, the poison deals 2d4 poison damage instead of 1d4 poison damage. You don't waste a poison you apply with Poison Weapon on a critically failed attack roll.",
       "ru": "**Архетипы** Ассасин, Отравитель<br>\n**Критерии** Отравленное оружие.\n\nВы используете яды максимально эффективно. Когда вы с помощью Отравленного оружия применяете простой яд, он наносит не 1d4, a 2d4 урона ядом. Кроме того, при критическом провале проверки атаки яд, нанесённый при помощи Отравленного оружия, не тратится впустую."
     },
     "origin": "ancestry",
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "inspired_stratagem",
@@ -897,11 +733,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "nimble_roll",
@@ -918,11 +750,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "opportune_backstab",
@@ -932,18 +760,14 @@
       "ru": "Удар в спину"
     },
     "description": {
-      "en": "**Archetype** Red Mantis Assassin*<br>**Trigger** A creature within your melee reach is hit by a melee attack from one of your allies<br>* This archetype offers Opportune Backstab at a different level than displayed here.\n\nWhen your enemy is hit by your ally, you capitalize upon the distraction. Make a Strike against the triggering creature.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Red Mantis Assassin*\n\n**Trigger** A creature within your melee reach is hit by a melee attack from one of your allies<br>* This archetype offers Opportune Backstab at a different level than displayed here.\n\nWhen your enemy is hit by your ally, you capitalize upon the distraction. Make a Strike against the triggering creature.",
       "ru": "**Условие** по существу в вашей зоне досягаемости попадает атака вашего союзника в ближнем бою.\n\nВы незамедлительно пользуетесь тем, что враг отвлечён атакой союзника. Совершите Удар по спровоцировавшему это ответное действие существу."
     },
     "origin": "ancestry",
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "predictive_purchase_(rogue)",
@@ -960,11 +784,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "ricochet_stance_(rogue)",
@@ -982,11 +802,7 @@
       "rogue",
       "stance"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "sidestep",
@@ -1003,11 +819,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "sly_striker",
@@ -1024,11 +836,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "swipe_souvenir",
@@ -1045,11 +853,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "tactical_entry",
@@ -1059,18 +863,14 @@
       "ru": "Тактическое появление"
     },
     "description": {
-      "en": "**Prerequisites** master in Stealth<br>**Requirements** You rolled Stealth for initiative in this encounter, and neither you nor any enemies have acted yet.\n\nYou Stride. This movement doesn't trigger any reactions.",
+      "en": "**Prerequisites** master in Stealth\n\n**Requirements** You rolled Stealth for initiative in this encounter, and neither you nor any enemies have acted yet.\n\nYou Stride. This movement doesn't trigger any reactions.",
       "ru": "**Критерии** мастерская Скрытность<br>\n**Требования** вы совершили проверку Скрытности для инициативы в этой сцене, но ни вы, ни враги ещё не действовали в этой сцене.\n\nВы совершаете Перемещение. Это движение не провоцирует ответных действий."
     },
     "origin": "ancestry",
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "incredible_familiar",
@@ -1080,7 +880,7 @@
       "ru": "Невероятный фамильяр"
     },
     "description": {
-      "en": "**Archetypes** Familiar Master*, Rivethun Emissary<br>**Prerequisites** Enhanced Familiar<br>* This archetype offers Incredible Familiar at a different level than displayed here.\n\nYour familiar is imbued with even more magic than other familiars. You can select a base of six familiar or master abilities each day, instead of four.\n\n**Special** Add the bonus familiar abilities you gain for being a witch to this amount.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetypes** Familiar Master*, Rivethun Emissary\n\n**Prerequisites** Enhanced Familiar<br>* This archetype offers Incredible Familiar at a different level than displayed here.\n\nYour familiar is imbued with even more magic than other familiars. You can select a base of six familiar or master abilities each day, instead of four.\n\n**Special** Add the bonus familiar abilities you gain for being a witch to this amount.",
       "ru": "**Критерии** Улучшенный фамильяр.\n\nВаш фамильяр пропитан магией куда больше, чем другие фамильяры. Вы можете выбрать шесть способностей фамильяра или хозяина каждый день (а не четыре).\n\n**Примечание** прибавьте дополнительные способности фамильяра, которые вы получаете благодаря классу ведьмы."
     },
     "origin": "ancestry",
@@ -1088,11 +888,7 @@
       "animist",
       "witch"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "murksight",
@@ -1109,11 +905,7 @@
     "origin_values": [
       "witch"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "spirit_familiar_(witch)",
@@ -1130,11 +922,7 @@
     "origin_values": [
       "witch"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "stitched_familiar",
@@ -1151,11 +939,7 @@
     "origin_values": [
       "witch"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "witch’s_bottle",
@@ -1172,11 +956,7 @@
     "origin_values": [
       "witch"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "advanced_school_spell",
@@ -1186,18 +966,14 @@
       "ru": "Продвинутое заклинание школы"
     },
     "description": {
-      "en": "**Archetype** Red Mantis Assassin*<br>* This archetype offers Advanced School Spell at a different level than displayed here.\n\nYou gain access to the advanced teachings of your arcane institution, learning a powerful new school spell. You gain the advanced school spell for your arcane school.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Red Mantis Assassin*<br>* This archetype offers Advanced School Spell at a different level than displayed here.\n\nYou gain access to the advanced teachings of your arcane institution, learning a powerful new school spell. You gain the advanced school spell for your arcane school.",
       "ru": "Вы изучаете новое могущественное заклинание школы, получив доступ к её тайным знаниям. Вы получаете продвинутое заклинание школы для своей школы магии."
     },
     "origin": "ancestry",
     "origin_values": [
       "wizard"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "bond_conservation",
@@ -1207,7 +983,7 @@
       "ru": "Сохранение силы"
     },
     "description": {
-      "en": "**Prerequisites** arcane bond<br>**Requirements** The last action you used was to Cast a Spell enabled by Drain Bonded Item.\n\nBy efficiently and carefully manipulating the arcane energies unleashed by your bonded item, you can conserve just enough power to cast another spell, though this second spell is slightly weaker. You gain an extra use of Drain Bonded Item. You can use it to cast a spell 2 or more ranks lower than the previous spell, and must use it before the end of your next turn or you lose it.",
+      "en": "**Prerequisites** arcane bond\n\n**Requirements** The last action you used was to Cast a Spell enabled by Drain Bonded Item.\n\nBy efficiently and carefully manipulating the arcane energies unleashed by your bonded item, you can conserve just enough power to cast another spell, though this second spell is slightly weaker. You gain an extra use of Drain Bonded Item. You can use it to cast a spell 2 or more ranks lower than the previous spell, and must use it before the end of your next turn or you lose it.",
       "ru": "**Критерии** мистическая связь<br>\n**Требования** вашим последним действием было Сотворение\nзаклинания с помощью Опустошения предмета силы.\n\nВы тщательно отмеряете забираемую из предмета силы мистическую энергию: её остатков хватит на второе заклинание послабее. Вы можете использовать Опустошение предмета силы ещё один раз. Его нужно применить до конца вашего следующего хода, в противном случае оно пропадёт. При использовании этого свободного действия вы можете сотворить заклинание на 2 или более круга ниже, чем первое заклинание, сотворённое при помощи Опустошения предмета силы."
     },
     "origin": "ancestry",
@@ -1216,11 +992,7 @@
       "spellshape",
       "wizard"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "form_retention",
@@ -1237,11 +1009,7 @@
     "origin_values": [
       "wizard"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "knowledge_is_power",
@@ -1259,11 +1027,7 @@
       "magus",
       "wizard"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "anthemic_performance",
@@ -1273,18 +1037,14 @@
       "ru": "Вдохновляющее исполнение"
     },
     "description": {
-      "en": "**Archetype** Bard<br>**Class** Bard<br>**Prerequisites** Bard Dedication.\n\nYour music, speech, or other performance inspires your allies to dive into battle. You gain the courageous anthem composition cantrip.\n",
+      "en": "**Archetype** Bard\n\n**Class** Bard\n\n**Prerequisites** Bard Dedication.\n\nYour music, speech, or other performance inspires your allies to dive into battle. You gain the courageous anthem composition cantrip.\n",
       "ru": "**Архетип** Бард<br>\n**Критерии** Посвящение в барды.\n\nВаша музыка, речи или иное выступление вдохновляют союзников в бою. Вы получаете фокус-композицию песнь отваги."
     },
     "origin": "ancestry",
     "origin_values": [
       "archetype"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "occult_breadth",
@@ -1294,18 +1054,14 @@
       "ru": "Оккультные познания"
     },
     "description": {
-      "en": "**Archetype** Bard<br>**Class** Bard<br>**Prerequisites** Basic Bard Spellcasting.\n\nYour repertoire expands, and you can cast more occult spells each day. Increase the number of spells in your repertoire and the number of spell slots you gain from bard archetype feats by 1 for each spell rank other than your two highest bard spell slots.",
+      "en": "**Archetype** Bard\n\n**Class** Bard\n\n**Prerequisites** Basic Bard Spellcasting.\n\nYour repertoire expands, and you can cast more occult spells each day. Increase the number of spells in your repertoire and the number of spell slots you gain from bard archetype feats by 1 for each spell rank other than your two highest bard spell slots.",
       "ru": "**Архетип** Бард<br>\n**Критерии** Простые заклинания барда.\n\nВаш репертуар расширяется, и вы каждый день можете использовать больше оккультных заклинаний. Количество заклинаний в вашем репертуаре и количество ячеек, получаемых вами благодаря чертам архетипа барда, увеличивается на 1 для каждого круга, кроме двух наивысших доступных вам кругов ячеек заклинаний барда."
     },
     "origin": "ancestry",
     "origin_values": [
       "archetype"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "divine_breadth",
@@ -1315,18 +1071,14 @@
       "ru": "Сакральные познания"
     },
     "description": {
-      "en": "**Archetype** Cleric<br>**Class** Cleric<br>**Prerequisites** Basic Cleric Spellcasting.\n\nAs your understanding increases, your god grants you more divine spells each day. Increase the spell slots you gain from cleric archetype feats by 1 for each spell rank other than your two highest cleric spell slots.",
+      "en": "**Archetype** Cleric\n\n**Class** Cleric\n\n**Prerequisites** Basic Cleric Spellcasting.\n\nAs your understanding increases, your god grants you more divine spells each day. Increase the spell slots you gain from cleric archetype feats by 1 for each spell rank other than your two highest cleric spell slots.",
       "ru": "**Архетип** Жрец<br>\n**Критерии** Простые заклинания жреца.\n\nБожество дарует вам больше сакральных заклинаний каждый день. Количество ячеек заклинаний, получаемых вами благодаря чертам архетипа жреца, увеличивается на 1 для каждого круга, кроме двух наивысших доступных вам кругов ячеек заклинаний жреца."
     },
     "origin": "ancestry",
     "origin_values": [
       "archetype"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "primal_breadth",
@@ -1336,18 +1088,14 @@
       "ru": "Первобытные познания"
     },
     "description": {
-      "en": "**Archetype** Druid<br>**Class** Druid<br>**Prerequisites** Basic Druid Spellcasting.\n\nIncrease the spell slots you gain from druid archetype feats by 1 for each spell rank other than your two highest druid spell slots.",
+      "en": "**Archetype** Druid\n\n**Class** Druid\n\n**Prerequisites** Basic Druid Spellcasting.\n\nIncrease the spell slots you gain from druid archetype feats by 1 for each spell rank other than your two highest druid spell slots.",
       "ru": "**Архетип** Друид<br>\n**Критерии** Простые заклинания друида.\n\nКоличество ячеек заклинаний, получаемых вами благодаря чертам архетипа друида, увеличивается на 1 для каждого круга, кроме двух наивысших доступных вам кругов ячеек заклинаний друида."
     },
     "origin": "ancestry",
     "origin_values": [
       "archetype"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "skill_mastery_(rogue)",
@@ -1357,18 +1105,14 @@
       "ru": "Мастерство навыка (плут)"
     },
     "description": {
-      "en": "**Archetype** Rogue<br>**Class** Rogue<br>**Prerequisites** Rogue Dedication; trained in at least one skill and expert in at least one skill.\n\nIncrease your proficiency rank in one of your skills from expert to master and in another of your skills from trained to expert. You gain a skill feat associated with one of the skills you chose; you must meet all its prerequisites.\n\n**Special** You can select this feat up to five times.",
+      "en": "**Archetype** Rogue\n\n**Class** Rogue\n\n**Prerequisites** Rogue Dedication; trained in at least one skill and expert in at least one skill.\n\nIncrease your proficiency rank in one of your skills from expert to master and in another of your skills from trained to expert. You gain a skill feat associated with one of the skills you chose; you must meet all its prerequisites.\n\n**Special** You can select this feat up to five times.",
       "ru": "**Архетип** Плут<br>\n**Критерии** Посвящение в плуты; хотя бы один изученный навык и один экспертный навык.\n\nВаш уровень умения в одном из навыков повышается с экспертного до мастерского, а один из изученных навыков становится экспертным. Вы получаете черту навыка для одного из этих навыков (но должны соответствовать её критериям).\n\n**Примечание** вы можете взять эту черту до пяти раз."
     },
     "origin": "ancestry",
     "origin_values": [
       "archetype"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "patron's_breadth",
@@ -1378,18 +1122,14 @@
       "ru": "Познания покрови"
     },
     "description": {
-      "en": "**Archetype** Witch<br>**Class** Witch<br>**Prerequisites** Basic Witch Spellcasting.\n\nYou can cast more spells each day. Increase the spell slots you gain from witch archetype feats by 1 for each spell rank other than your two highest spell ranks",
+      "en": "**Archetype** Witch\n\n**Class** Witch\n\n**Prerequisites** Basic Witch Spellcasting.\n\nYou can cast more spells each day. Increase the spell slots you gain from witch archetype feats by 1 for each spell rank other than your two highest spell ranks",
       "ru": "**Архетип** Ведьма<br>\n**Критерии** Простые заклинания ведьмы.\n\nВы можете творить больше заклинаний каждый день. Количество ячеек заклинаний, получаемых вами благодаря чертам архетипа ведьмы, увеличивается на 1 для каждого круга, кроме двух наивысших доступных вам кругов ячеек заклинаний ведьмы."
     },
     "origin": "ancestry",
     "origin_values": [
       "archetype"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   },
   {
     "slug": "arcane_breadth",
@@ -1399,17 +1139,13 @@
       "ru": "Мистические познания"
     },
     "description": {
-      "en": "**Archetypes** Wizard, Spellshot<br>**Class** Wizard<br>**Prerequisites** Basic Wizard Spellcasting.\n\nYour thorough studies allow you to cast more arcane spells each day. Increase the spell slots you gain from wizard archetype feats by 1 for each spell rank other than your two highest wizard spell slots.",
+      "en": "**Archetypes** Wizard, Spellshot\n\n**Class** Wizard\n\n**Prerequisites** Basic Wizard Spellcasting.\n\nYour thorough studies allow you to cast more arcane spells each day. Increase the spell slots you gain from wizard archetype feats by 1 for each spell rank other than your two highest wizard spell slots.",
       "ru": "**Архетипы** Стрелок-заклинатель, Волшебник<br>\n**Критерии** Простые заклинания волшебника.\n\nКоличество ячеек заклинаний, получаемых вами благодаря чертам  архетипа волшебника, увеличивается на 1 для каждого круга,  кроме двух наивысших доступных вам кругов ячеек заклинаний  волшебника."
     },
     "origin": "ancestry",
     "origin_values": [
       "archetype"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 8 }
   }
 ]

@@ -10,18 +10,14 @@
       "en": "**Prerequisites** master in Medicine.\n\nYou use your medical training to ameliorate sickness or assuage fears. When you use Medicine to Administer First Aid, instead of Stabilizing a character or Stopping Bleeding, you can reduce an ally's frightened or sickened condition by 2, or remove either of those conditions entirely on a critical success. You can remove only one condition at a time. The DC for the Medicine check is usually the DC of the effect that caused the condition.",
       "ru": "**Критерии** мастерская Медицина.\n\nПознания в медицине позволяют вам развеивать страхи и облегчать тошноту. Когда вы используете Медицину для Первой помощи, вместо Стабилизации или Остановки кровотечения вы можете снизить значение состояния испуга или тошноты союзника на 2 (или снять одно из этих состояний полностью при критическом успехе). Вы можете снять не более одного состояния одновременно. СЛ проверки Медицины обычно равна СЛ эффекта, вызвавшего состояние."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "healing",
       "manipulate",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "battle_cry",
@@ -34,16 +30,12 @@
       "en": "**Prerequisites** master in Intimidation.\n\nWhen you roll initiative, you can yell a mighty battle cry and Demoralize an observed foe as a free action. If you're legendary in Intimidation, you can use a reaction to Demoralize your foe when you critically succeed at an attack roll.",
       "ru": "**Критерии** мастерское Запугивание.\n\nПри проверке инициативы вы можете издать могучий боевой клич и в качестве свободного действия совершить Деморализацию видимого врага. Если вы умелы в Запугивании на легендарном уровне, то можете в качестве ответного действия совершить Деморализацию противника при критическом успехе вашей проверки атаки."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "bizarre_magic",
@@ -56,16 +48,12 @@
       "en": "**Prerequisites** master in Occultism.\n\nYou can draw upon strange variations in your spellcasting, whether or not you can cast occult spells. The DCs to Recognize Spells you cast and Identify Magic you use increase by 5.",
       "ru": "**Критерии** мастерский Оккультизм.\n\nПри сотворении заклинаний вы отклоняетесь от общепринятых норм вне зависимости от того, умеете ли творить оккультные заклинания или нет. СЛ Опознания заклинания, сотворённого вами, и Опознания магии, используемой вами, увеличивается на 5."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "break_curse",
@@ -76,9 +64,9 @@
     },
     "description": {
       "en": "**Prerequisites** master in Occultism or Religion.\n\nYou spend 8 hours praying or performing occult rites over the target, weakening a curse's power over them. Attempt to counteract the curse, using Occultism or Religion for your counteract check and half your level rounded up for the counteract rank. Break Curse only takes 10 minutes of prayer and rites if you are legendary in Occultism or Religion.",
-      "ru": "**Критерии** мастерский Оккультизм или Религия<hr>\nВы тратите 8 часов на молитвы или оккультные обряды, чтобы ослабить влияние проклятия на цель. Совершите попытку нейтрализации проклятия, используя Оккультизм или Религию для проверки, а кругом нейтрализации будет считаться половина вашего уровня с округлением в большую сторону. Эта попытка занимает лишь 10 минут молитв или обрядов, если вы умелы в Оккультизме или Религии на легендарном уровне."
+      "ru": "**Критерии** мастерский Оккультизм или Религия.\n\nВы тратите 8 часов на молитвы или оккультные обряды, чтобы ослабить влияние проклятия на цель. Совершите попытку нейтрализации проклятия, используя Оккультизм или Религию для проверки, а кругом нейтрализации будет считаться половина вашего уровня с округлением в большую сторону. Эта попытка занимает лишь 10 минут молитв или обрядов, если вы умелы в Оккультизме или Религии на легендарном уровне."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "concentrate",
       "exploration",
@@ -86,11 +74,7 @@
       "healing",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "expeditious_search",
@@ -103,15 +87,11 @@
       "en": "**Prerequisites** master in Perception.\n\nYou have a system that lets you search at great speed, finding details and secrets twice as quickly as others can. When Searching, you take half as long as usual to Search a given area. This means that while exploring, you double the Speed you can move while ensuring you've Searched an area before walking into it (up to half your Speed). If you're legendary in Perception, you instead Search areas four times as quickly.",
       "ru": "**Критерии** Мастерское Внимание.\n\nВы разработали собственную систему, позволяющую вам находить любопытные детали и тайники вдвое быстрее. Вы тратите на Обыск какого-то места в два раза меньше времени, чем обычно. Это означает, что во время исследования вы сможете тщательно всё обыскать, ничего не пропустив, и своевременно заметить опасность до того, как приблизитесь к ней, перемещаясь со в два раза большей скоростью, чем обычно (вплоть до половины своей скорости). Если вы умелы во Внимании на легендарном уровне, то можете совершать Обыск в четыре раза быстрее."
     },
-    "origin": "ancestry",
+    "origin": "general",
     "origin_values": [
       "general"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "foil_senses",
@@ -124,16 +104,12 @@
       "en": "**Prerequisites** master in Stealth.\n\nYou are adept at foiling creatures' special senses and cautious enough to safeguard against them at all times. Whenever you use the Avoid Notice, Hide, or Sneak actions, you are always considered to be taking precautions against special senses (see the Detecting with Other Senses sidebar on page 433).",
       "ru": "**Критерии** мастерская Скрытность.\n\nВы научились вводить в заблуждение особые способы восприятия существ и действуете осторожно, чтобы ничем себя не выдать. Когда вы совершаете действие, чтобы Красться или Спрятаться, либо применяете Незаметное перемещение, считается, что вы приняли меры предосторожности против особых способов восприятия наблюдающих."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "impeccable_crafting",
@@ -146,16 +122,12 @@
       "en": "**Prerequisites** master in Crafting; Specialty Crafting.\n\nYou craft flawless creations with great efficiency. Whenever you roll a success at a Crafting check to make an item of the type you chose with Specialty Crafting, you get a critical success instead.",
       "ru": "**Критерии** мастерское Ремесло; Ремесленник-специалист.\n\nВы без труда создаёте настоящие ремесленные шедевры. Всякий раз, когда вы получаете успех в проверке Ремесла для создания предмета выбранного вами для черты Ремесленник-специалист типа, он считается для вас критическим успехом."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "kip_up",
@@ -168,16 +140,12 @@
       "en": "**Prerequisites** master in Acrobatics.\n\nYou stand up. This movement doesn't trigger reactions.",
       "ru": "**Критерии** мастерская Акробатика.\n\nВы встаёте, переставая быть распластанным. Это движение не провоцирует ответных действий."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "monster_crafting",
@@ -187,19 +155,15 @@
       "ru": "Чудовищное ремесло"
     },
     "description": {
-      "en": "**Prerequisites** master in Survival.\n\nYou can use the parts of monsters to aid in crafting. You can use the body of a monster to help Craft items, using Survival instead of Crafting for the Craft activity when you do so. If parts of the monster's body are valuable, you can expend them toward the item's raw material cost as well. (The GM makes the determination if the monster's entry doesn't list any valuable materials from its body.)<br>If you spend additional days working on the item, reduce the Price using the monster's level instead of your own. Certain items may require specific creatures in their Craft requirement.",
+      "en": "**Prerequisites** master in Survival.\n\nYou can use the parts of monsters to aid in crafting. You can use the body of a monster to help Craft items, using Survival instead of Crafting for the Craft activity when you do so. If parts of the monster's body are valuable, you can expend them toward the item's raw material cost as well (The GM makes the determination if the monster's entry doesn't list any valuable materials from its body).\n\nIf you spend additional days working on the item, reduce the Price using the monster's level instead of your own. Certain items may require specific creatures in their Craft requirement.",
       "ru": "**Критерии** мастерское Выживание.\n\nВы находите применение частям тел чудовищ. Вы можете использовать тело чудовища для Создания предмета, применяя Выживание вместо Ремесла для этого занятия. Если части этого тела ценные, вы также можете потратить их как часть требуемых для создания материалов, вычтя их стоимость из цены (если в описании чудовища стоимость частей тела не указана, решение принимает ведущий).\n\nЕсли вы тратите дополнительные дни на создание предмета, используйте уровень чудовища вместо своего для определения снижения стоимости. Для создания некоторых предметов могут требоваться определённые существа."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "planar_survival",
@@ -212,16 +176,12 @@
       "en": "**Prerequisites** master in Survival.\n\nYou can Subsist using Survival on different planes, even those without resources or natural phenomena you normally need. For instance, you can forage for food without penalty even if the plane lacks food that could normally sustain you. A success on your check to Subsist also prevents damage done by the plane to you and anyone else you support with Subsist. This applies only to damage dealt by the general conditions of the plane, not smaller hazards.",
       "ru": "**Критерии** мастерское Выживание.\n\nВы можете применять Выживание для Самообеспечения на других планах, даже если там отсутствуют необходимые вам ресурсы или природные явления. Так, вы можете искать пищу без штрафа даже в случае, если на плане нет съедобной для вас еды. Успешная проверка для Самообеспечения также предотвращает урон, который вы и цели Самообеспечения получаете от этого плана (это относится только к урону от общих условий плана, а не от конкретных опасностей)."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "prescient_consumable",
@@ -234,15 +194,11 @@
       "en": "**Prerequisites** Prescient Planner.\n\nYou can predict which consumables you might need in advance. When using Prescient Planner, you can procure a consumable item from your backpack, instead of a piece of adventuring gear. The consumable item must still be common with a level no higher than half your level, and its Bulk must be low enough that carrying it wouldn't have made you encumbered.",
       "ru": "**Критерии** Прозорливое планирование.\n\nВы настолько дальновидны, что знаете, какие одноразовые предметы могут понадобиться вам в будущем. При использовании черты Прозорливое планирование вы можете отыскать в рюкзаке одноразовый предмет вместо предмета снаряжения искателя приключений. Это всё ещё должен быть предмет обычной редкости с уровнем не выше половины вашего, при переноске которого вы не стали бы нагруженным."
     },
-    "origin": "ancestry",
+    "origin": "general",
     "origin_values": [
       "general"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "quick_climb",
@@ -255,16 +211,12 @@
       "en": "**Prerequisites** master in Athletics.\n\nWhen Climbing, you move 5 more feet on a success and 10 more feet on a critical success, up to your Speed. If you're legendary in Athletics, you gain a climb Speed equal to your Speed.",
       "ru": "**Критерии** мастерская Атлетика.\n\nВ случае успеха при Лазании вы преодолеваете на 5 футов больше, а в случае критического успеха — на 10 футов больше, вплоть до значения вашей скорости. Если вы умелы в Атлетике на легендарном уровне, то получаете скорость лазания, равную вашей скорости."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "quick_recognition",
@@ -277,16 +229,12 @@
       "en": "**Prerequisites** master in Arcana, Nature, Occultism, or Religion; Recognize Spell.\n\nYou Recognize Spells swiftly. Once per round, you can Recognize a Spell using a skill in which you're a master as a free action.",
       "ru": "**Критерии** мастерский Мистицизм, Природа, Оккультизм, или Религия; Опознание заклинания.\n\nВы быстро опознаёте заклинания. Один раз за раунд вы можете совершить Опознание заклинания в качестве свободного действия, используя для него мастерский навык."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "quick_swim",
@@ -299,16 +247,12 @@
       "en": "**Prerequisites** master in Athletics.\n\nYou Swim 5 feet farther on a success and 10 feet farther on a critical success, to a maximum of your Speed. If you're legendary in Athletics, you gain a swim Speed equal to your Speed.",
       "ru": "**Критерии** мастерская Атлетика.\n\nВ случае успеха при Плавании вы проплываете на 5 футов больше, а в случае критического успеха — на 10 футов больше, вплоть до значения вашей скорости. Если вы умелы в Атлетике на легендарном уровне, то получаете скорость плавания, равную вашей скорости."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "quick_unlock",
@@ -321,16 +265,12 @@
       "en": "**Prerequisites** master in Thievery.\n\nYou can Pick a Lock using 1 action instead of 2.",
       "ru": "**Критерии** мастерское Воровство.\n\nВы тратите на Взлом замка 1 действие вместо 2."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "shameless_request",
@@ -355,16 +295,12 @@
       "en": "**Prerequisites** master in Deception.\n\nYou elude and evade attempts to uncover your true nature or intentions. When a spell or magical effect tries to read your mind, detect whether you are lying, or reveal your identity, you can attempt a Deception check against the spell or effect's DC. If you succeed, the effect reveals nothing.",
       "ru": "**Критерии** мастерский Обман.\n\nВы изворачиваетесь и увиливаете от попыток узнать ваши намерения и истинную природу. Когда заклинание или магический эффект пытается прочесть ваши мысли, определить, лжёте ли вы, или опознать вас, вы можете совершить проверку Обмана против СЛ заклинания или эффекта. При успехе эффект ничего не раскрывает."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "swift_sneak",
@@ -377,16 +313,12 @@
       "en": "**Prerequisites** master in Stealth.\n\nYou can move your full Speed when you Sneak. You can use Swift Sneak while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type.",
       "ru": "**Критерии** мастерская Скрытность.\n\nВы можете Красться, перемещаясь с полной скоростью. Быстрый лазутчик может использоваться при Лазании, Плавании, Полёте и Рытье вместо Перемещения, если у вас есть соответствующий тип перемещения."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "terrified_retreat",
@@ -399,16 +331,12 @@
       "en": "**Prerequisites** master in Intimidation.\n\nWhen you critically succeed at the Demoralize action, if the target's level is lower than yours, the target is fleeing for 1 round.",
       "ru": "**Критерии** мастерское Запугивание.\n\nЕсли уровень цели ниже вашего, то в случае вашего критического успеха при Деморализации она в панике на 1 раунд."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   },
   {
     "slug": "wall_jump",
@@ -421,15 +349,11 @@
       "en": "**Prerequisites** master in Athletics.\n\nYou can use your momentum from a jump to propel yourself off a wall. If you're adjacent to a wall at the end of a jump (whether performing a High Jump, Long Jump, or Leap), you don't fall as long as your next action is another jump. Your previous jump gives you momentum, letting you use High Jump or Long Jump as a single action, but you don't get to Stride as part of the activity.\n\nYou can use Wall Jump only once in a turn, unless you're legendary in Athletics, in which case you can use it as many times as you can use consecutive jump actions in that turn.",
       "ru": "**Критерии** мастерская Атлетика.\n\nВы можете использовать инерцию прыжка, чтобы оттолкнуться от стены. Если в конце Прыжка, Прыжка в высоту или Прыжка в длину вы оказываетесь рядом со стеной, то не падаете, если ваше следующее действие тоже прыжок. Более того, из-за инерции предыдущего прыжка вы можете совершить Прыжок в высоту или Прыжок в длину в качестве одиночного действия (но без предварительного Перемещения).\n\nВы можете использовать Прыжок от стены только один раз за ход. Если вы умелы в Атлетике на легендарном уровне, то можете применять черту столько раз, сколько способны прыгнуть подряд в течение хода."
     },
-    "origin": "ancestry",
+    "origin": "skill",
     "origin_values": [
       "general",
       "skill"
     ],
-    "conditions": { "level": 7 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 7 }
   }
 ]
