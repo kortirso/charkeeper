@@ -1,15 +1,6 @@
 {
   "loading": "Загрузочный экран",
   "pages": {
-    "loginPage": {
-      "signin": "Вход",
-      "signup": "Регистрация",
-      "username": "Имя пользователя",
-      "password": "Пароль (минимум 10 символов)",
-      "passwordConfirmation": "Подтверждение пароля",
-      "haveAccount": "Уже есть аккаунт?",
-      "noAccount": "Еще нет аккаунта?"
-    },
     "settingsPage": {
       "logout": "Выход",
       "version": "Версия",
@@ -65,7 +56,8 @@
       "general": "Общие",
       "skill": "Навыки",
       "archetype": "Архетип",
-      "animalCompanion": "Верный зверь"
+      "animalCompanion": "Верный зверь",
+      "rolls": "История бросков"
     },
     "campaignsPage": {
       "title": "Кампании",
