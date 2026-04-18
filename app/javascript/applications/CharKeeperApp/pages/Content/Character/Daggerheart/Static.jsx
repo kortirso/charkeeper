@@ -77,7 +77,7 @@ export const DaggerheartStatic = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartStatic' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable py-4 relative">
+        <div class="blockable py-4 px-2 md:px-4 relative">
           <Show when={showSettings()}>
             <Select
               multi

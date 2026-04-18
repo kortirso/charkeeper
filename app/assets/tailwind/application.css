@@ -419,12 +419,13 @@ nav.pagy.nav a.gap {
 }
 
 .archetype-key {
-  @apply px-1 border rounded bg-neutral-800 border-neutral-800 cursor-pointer text-sm md:text-base text-snow;
-  @apply dark:bg-white dark:border-gray-500 dark:text-black;
+  @apply px-1 border rounded border-neutral-800 cursor-pointer text-sm md:text-base text-black;
+  @apply bg-white dark:border-gray-500;
 }
 
 .archetype-key.active {
-  @apply dark:bg-fuzzy-red dark:text-snow;
+  @apply bg-neutral-800 text-snow;
+  @apply dark:bg-fuzzy-red;
 }
 
 .dots {
