@@ -228,6 +228,9 @@ module Charkeeper
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }
     register('commands.campaigns_context.remove_campaign') { CampaignsContext::RemoveCampaignCommand.new }
 
+    register('commands.campaigns_context.items.add') { CampaignsContext::Items::AddCommand.new }
+    register('commands.campaigns_context.items.change') { CampaignsContext::Items::ChangeCommand.new }
+
     register('commands.channels_context.add_channel') { ChannelsContext::AddChannelCommand.new }
 
     register('commands.homebrew_context.daggerheart.transformations.add') {

@@ -8,7 +8,9 @@ import { useAppLocale } from '../../context';
 import { Hands, Equipment, Backpack, Storage, Dots } from '../../assets';
 import { clickOutside, localize } from '../../helpers';
 
-const STATE_ICONS = { 'hands': Hands, 'equipment': Equipment, 'backpack': Backpack, 'storage': Storage }
+const STATE_ICONS = {
+  'hands': Hands, 'equipment': Equipment, 'backpack': Backpack, 'storage': Storage, 'hidden': Storage, 'shared': Storage
+}
 
 const TRANSLATION = {
   en: {
@@ -106,6 +108,7 @@ export const ItemsTable = (props) => {
                           <Show when={size.width < 1024}>
                             <div class="dots-item flex gap-x-1">
                               <ItemsTableItem
+                                forCampaign={props.forCampaign}
                                 size="medium"
                                 state={props.state}
                                 item={item}

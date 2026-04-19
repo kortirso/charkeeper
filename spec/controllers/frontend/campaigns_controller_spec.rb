@@ -23,7 +23,7 @@ describe Frontend::CampaignsController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['campaigns'].size).to eq 2
-        expect(response_values.keys).to contain_exactly('id', 'name', 'provider')
+        expect(response_values.keys).to contain_exactly('id', 'name', 'provider', 'own')
         expect(response.parsed_body['campaigns'].pluck('id')).to contain_exactly(campaign1.id, campaign2.id)
       end
     end

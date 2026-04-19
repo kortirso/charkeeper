@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CampaignSerializer < ApplicationSerializer
-  ATTRIBUTES = %i[id name provider characters].freeze
+  ATTRIBUTES = %i[id name provider characters own].freeze
 
   attributes(*ATTRIBUTES)
 
@@ -13,5 +13,12 @@ class CampaignSerializer < ApplicationSerializer
         name: member.character.name
       }
     end
+  end
+
+  def own # rubocop: disable Naming/PredicateMethod
+    return false unless context
+    return false unless context[:user]
+
+    object.user_id == context[:user].id
   end
 end

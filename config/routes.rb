@@ -217,6 +217,10 @@ Rails.application.routes.draw do
     resources :campaigns, only: %i[index show create destroy] do
       resources :notes, only: %i[index create update destroy], module: 'campaigns'
       resource :join, only: %i[show create destroy], module: :campaigns
+
+      scope ':provider' do
+        resources :items, only: %i[index create update destroy], module: 'campaigns'
+      end
     end
   end
 

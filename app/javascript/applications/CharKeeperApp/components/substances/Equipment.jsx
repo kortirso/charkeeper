@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, Show, createMemo, batch, children } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch, children } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
@@ -43,6 +43,14 @@ const TRANSLATION = {
       storage: {
         title: 'In storage',
         description: 'Outer storage of your items'
+      },
+      hidden: {
+        title: 'DM storage',
+        description: 'DM storage with hidden items'
+      },
+      shared: {
+        title: 'Shared storage',
+        description: 'Shared storage of characters'
       }
     },
     amount: 'Moving amount',
@@ -73,6 +81,14 @@ const TRANSLATION = {
       storage: {
         title: 'В хранилище',
         description: 'Предметы в отдалённом хранилище'
+      },
+      hidden: {
+        title: 'В хранилище ДМа',
+        description: 'Предметы в хранилище ДМа'
+      },
+      shared: {
+        title: 'В общем хранилище',
+        description: 'Предметы в общем хранилище'
       }
     },
     amount: 'Кол-во перемещаемого',
@@ -103,6 +119,14 @@ const TRANSLATION = {
       storage: {
         title: 'En el almacén',
         description: 'Almacén externo de tus objetos'
+      },
+      hidden: {
+        title: 'DM storage',
+        description: 'DM storage with hidden items'
+      },
+      shared: {
+        title: 'Shared storage',
+        description: 'Shared storage of characters'
       }
     },
     amount: 'Cantidad a mover',
@@ -139,7 +163,9 @@ export const Equipment = (props) => {
 
   const t = i18n.translator(dict);
 
-  const fetchCharacterItems = async () => await fetchCharacterItemsRequest(appState.accessToken, character().provider, character().id);
+  const fetchCharacterItems = async () => await fetchCharacterItemsRequest(
+    appState.accessToken, character().provider, character().id, props.forCampaign ? 'campaigns' : 'characters'
+  );
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
@@ -169,6 +195,13 @@ export const Equipment = (props) => {
     const result = await fetchCharacterItems();
     setCharacterItems(result.items);
   }
+
+  const storages = createMemo(() => {
+    if (!props.forCampaign) return ['hands', 'equipment', 'backpack', 'storage'];
+    if (character().own) return ['hidden', 'shared'];
+
+    return ['shared'];
+  })
 
   // actions
   const changeItem = (item) => {
@@ -274,7 +307,8 @@ export const Equipment = (props) => {
       appState.accessToken,
       character().provider,
       character().id,
-      { item_id: item.id }
+      { item_id: item.id },
+      props.forCampaign ? 'campaigns' : 'characters'
     );
 
     if (result.errors_list === undefined) {
@@ -288,7 +322,7 @@ export const Equipment = (props) => {
 
   const updateCharacterItem = async (item, payload) => {
     const result = await updateCharacterItemRequest(
-      appState.accessToken, character().provider, character().id, item.id, payload
+      appState.accessToken, character().provider, character().id, item.id, payload, props.forCampaign ? 'campaigns' : 'characters'
     );
 
     if (result.errors_list === undefined) {
@@ -310,7 +344,9 @@ export const Equipment = (props) => {
       return updateCharacterItem(item, { character_item: { states: newStates } });
     }
 
-    const result = await removeCharacterItemRequest(appState.accessToken, character().provider, character().id, item.id);
+    const result = await removeCharacterItemRequest(
+      appState.accessToken, character().provider, character().id, item.id, props.forCampaign ? 'campaigns' : 'characters'
+    );
     if (result.errors_list === undefined) {
       batch(() => {
         if (item.kind.includes('weapon') || item.state === 'hands') {
@@ -385,7 +421,7 @@ export const Equipment = (props) => {
                   containerClassList="mr-2 flex-1"
                   placeholder={localize(TRANSLATION, locale()).searchByName}
                   value={filterByName()}
-                  onInput={(value) => setFilterByName(value)}
+                  onInput={setFilterByName}
                 />
                 <Button default size="small" classList="px-2" onClick={() => setFilterByName('')}>
                   {localize(TRANSLATION, locale()).clear}
@@ -452,9 +488,10 @@ export const Equipment = (props) => {
           </Show>
           <Show when={characterItems() !== undefined}>
             <Button default textable classList="my-2" onClick={() => setItemsSelectingMode(true)}>{t('equipment.addItems')}</Button>
-            <For each={['hands', 'equipment', 'backpack', 'storage']}>
+            <For each={storages()}>
               {(state) =>
                 <ItemsTable
+                  forCampaign={props.forCampaign}
                   upgrades={props.upgrades}
                   provider={character().provider}
                   characterId={character().id}
@@ -473,7 +510,7 @@ export const Equipment = (props) => {
                 />
               }
             </For>
-            <Show when={CREATE_HOMEBREW_ITEMS.includes(character().provider)}>
+            <Show when={!props.forCampaign && CREATE_HOMEBREW_ITEMS.includes(character().provider)}>
               <Toggle title={localize(TRANSLATION, locale()).createHomebrew}>
                 <Input
                   containerClassList="mb-2"
@@ -495,7 +532,7 @@ export const Equipment = (props) => {
                 <Button default onClick={addHomebrewItem}>{localize(TRANSLATION, locale()).add}</Button>
               </Toggle>
             </Show>
-            <Show when={props.withWeight}>
+            <Show when={!props.forCampaign && props.withWeight}>
               <div class="flex justify-end">
                 <div class="p-4 flex blockable">
                   <p>{calculateCurrentLoad()} / {character().load}</p>
@@ -509,7 +546,7 @@ export const Equipment = (props) => {
         <Show when={changingItem()}>
           <p class="text-lg mb-2">{changingItem().name}</p>
           <div class="grid grid-cols-2 gap-2 mb-2">
-            <For each={['hands', 'equipment', 'backpack', 'storage']}>
+            <For each={storages()}>
               {(state) =>
                 <Input
                   numeric
