@@ -5,13 +5,13 @@ module Frontend
     class ItemsController < Frontend::BaseController
       include Deps[
         add_item: 'commands.campaigns_context.items.add',
-        change_item: 'commands.campaigns_context.items.change'
+        change_item: 'commands.campaigns_context.items.change',
+        send_item_command: 'commands.campaigns_context.items.send'
       ]
       include SerializeRelation
 
       before_action :find_campaign
-      before_action :find_campaign_item, only: %i[update]
-      before_action :find_campaign_item_for_destroy, only: %i[destroy]
+      before_action :find_campaign_item, only: %i[update destroy send_item]
 
       def index
         serialize_relation_v2(items, ::Campaigns::ItemSerializer, :items)
@@ -36,6 +36,13 @@ module Frontend
         only_head_response
       end
 
+      def send_item
+        case send_item_command.call(update_params.merge({ campaign_item: @campaign_item }))
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
+        else only_head_response
+        end
+      end
+
       private
 
       def find_campaign
@@ -43,10 +50,6 @@ module Frontend
       end
 
       def find_campaign_item
-        @campaign_item = @campaign.items.where(name: nil).find(params[:id])
-      end
-
-      def find_campaign_item_for_destroy
         @campaign_item = @campaign.items.find(params[:id])
       end
 

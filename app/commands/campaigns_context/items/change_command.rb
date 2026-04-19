@@ -6,8 +6,6 @@ module CampaignsContext
       use_contract do
         config.messages.namespace = :campaign_item
 
-        States = Dry::Types['strict.string'].enum('hidden', 'shared')
-
         params do
           required(:campaign_item).filled(type?: ::Campaign::Item)
           optional(:notes).maybe(:string, max_size?: 500)

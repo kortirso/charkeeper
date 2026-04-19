@@ -4,10 +4,12 @@ module CampaignsContext
   module Items
     class AddCommand < BaseCommand
       use_contract do
+        States = Dry::Types['strict.string'].enum('hidden', 'shared')
+
         params do
           required(:campaign).filled(type?: ::Campaign)
           required(:item).filled(type?: ::Item)
-          optional(:state).filled(:string)
+          optional(:state).filled(States)
           optional(:name).filled(:string)
           optional(:modifiers).hash
         end

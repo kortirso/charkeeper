@@ -16,12 +16,17 @@ export const ItemsTableItem = (props) => {
         ]}>
         {({ state, Icon }) =>
           <Show when={props.state !== state}>
-            <Button default size={props.size} onClick={() => props.onMoveCharacterItem(props.item, props.state, state)}>
+            <Button default size={props.size} onClick={() => props.onMoveCharacterItem(props.item, props.state)}>
               <Icon width={iconSize()} height={iconSize()} />
             </Button>
           </Show>
         }
       </For>
+      <Show when={props.forCampaign}>
+        <Button default size={props.size} onClick={() => props.onSendCampaignItem(props.item, props.state)}>
+          <Hands width={iconSize()} height={iconSize()} />
+        </Button>
+      </Show>
       <Show when={!props.forCampaign}>
         <Show when={props.item.kind === 'consumables' && props.item.bonuses.length > 0}>
           <Button default size={props.size} onClick={() => props.onConsumeItem(props.item, props.state)}>

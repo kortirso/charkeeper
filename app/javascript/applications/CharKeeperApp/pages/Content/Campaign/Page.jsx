@@ -31,7 +31,7 @@ export const CampaignPage = (props) => {
               <CampaignCharacters campaign={campaign()} characters={props.characters} onDeleteCharacter={props.onDeleteCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
-              <CampaignItems campaign={campaign()} />
+              <CampaignItems campaign={campaign()} characters={props.characters} />
             </Match>
             <Match when={activeMobileTab() === 'rolls'}>
               <CampaignRolls campaign={campaign()} />
@@ -64,7 +64,7 @@ export const CampaignPage = (props) => {
         <div class="p-2 flex-1">
           <Switch>
             <Match when={activeTab() === 'equipment'}>
-              <CampaignItems campaign={campaign()} />
+              <CampaignItems campaign={campaign()} characters={props.characters} />
             </Match>
             <Match when={activeTab() === 'rolls'}>
               <CampaignRolls campaign={campaign()} />

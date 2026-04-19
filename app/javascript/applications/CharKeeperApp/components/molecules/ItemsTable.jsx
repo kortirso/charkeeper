@@ -96,6 +96,7 @@ export const ItemsTable = (props) => {
                           onConsumeItem={props.onConsumeItem}
                           onConsumeCharacterItem={props.onConsumeCharacterItem}
                           upgradeItem={upgradeItem}
+                          onSendCampaignItem={props.onSendCampaignItem}
                         />
                       </div>
                     </Show>
@@ -117,6 +118,7 @@ export const ItemsTable = (props) => {
                                 onConsumeItem={props.onConsumeItem}
                                 onConsumeCharacterItem={props.onConsumeCharacterItem}
                                 upgradeItem={upgradeItem}
+                                onSendCampaignItem={props.onSendCampaignItem}
                               />
                             </div>
                           </Show>

@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper, ItemContent
+  ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper, ItemContent, Select
 } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { PlusSmall, Info } from '../../assets';
@@ -16,7 +16,8 @@ import { fetchItemInfoRequest } from '../../requests/fetchItemInfoRequest';
 import { createCharacterHomebrewItemRequest } from '../../requests/createCharacterHomebrewItemRequest';
 import { consumeCharacterBonusRequest } from '../../requests/consumeCharacterBonusRequest';
 import { consumeCharacterItemRequest } from '../../requests/consumeCharacterItemRequest';
-import { localize } from '../../helpers';
+import { sendCampaignItemRequest } from '../../requests/sendCampaignItemRequest';
+import { localize, performResponse } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -55,7 +56,10 @@ const TRANSLATION = {
     },
     amount: 'Moving amount',
     was: 'Was',
-    will: 'will be'
+    will: 'will be',
+    character: 'Select character',
+    sendAmount: 'Items amount',
+    sendItem: 'Send item'
   },
   ru: {
     searchByName: 'Поиск по названию (от 3 символов)',
@@ -93,7 +97,10 @@ const TRANSLATION = {
     },
     amount: 'Кол-во перемещаемого',
     was: 'Было',
-    will: 'будет'
+    will: 'будет',
+    character: 'Выберите персонажа',
+    sendAmount: 'Кол-во предметов',
+    sendItem: 'Отправить'
   },
   es: {
     searchByName: 'Buscar por nombre (desde 3 caracteres)',
@@ -131,7 +138,10 @@ const TRANSLATION = {
     },
     amount: 'Cantidad a mover',
     was: 'Era',
-    will: 'será'
+    will: 'será',
+    character: 'Select character',
+    sendAmount: 'Items amount',
+    sendItem: 'Send item'
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
@@ -145,6 +155,10 @@ export const Equipment = (props) => {
   const character = () => props.character;
 
   const [homebrewItem, setHomebrewItem] = createStore({ name: '', description: '' });
+
+  const [sendItem, setSendItem] = createSignal({});
+  const [itemReceiver, setItemReceiver] = createSignal(null);
+  const [amount, setAmount] = createSignal(1);
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [characterItems, setCharacterItems] = createSignal(undefined);
@@ -201,7 +215,7 @@ export const Equipment = (props) => {
     if (character().own) return ['hidden', 'shared'];
 
     return ['shared'];
-  })
+  });
 
   // actions
   const changeItem = (item) => {
@@ -209,6 +223,7 @@ export const Equipment = (props) => {
       setChangingItem(item);
       setItemInfo(null);
       setMovingItem(null);
+      setSendItem({});
       openModal();
     });
   }
@@ -250,10 +265,35 @@ export const Equipment = (props) => {
     } else {
       batch(() => {
         setChangingItem(null);
+        setSendItem({});
         setMovingItem({ item: item, fromState: fromState, toState: toState, amount: 1 });
         openModal();
       });
     }
+  }
+
+  const onSendCampaignItem = (item, fromState) => {
+    setSendItem({ item: item, fromState: fromState });
+    openModal();
+  }
+
+  const finishSendingItem = async () => {
+    const result = await sendCampaignItemRequest(
+      appState.accessToken, character().provider, character().id, sendItem().item.id, {
+        character_item: { state: sendItem().fromState, amount: amount(), character_id: itemReceiver() }
+      }
+    );
+    performResponse(
+      result,
+      function() {
+        batch(() => {
+          reloadCharacterItems();
+          setSendItem({});
+          closeModal();
+        });
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   const finishMovingItem = async () => {
@@ -285,6 +325,7 @@ export const Equipment = (props) => {
       batch(() => {
         openModal();
         setChangingItem(null);
+        setSendItem({});
         setItemInfo([item, null]);
       });
     }
@@ -507,6 +548,7 @@ export const Equipment = (props) => {
                   onChangeItem={changeItem}
                   onInfoItem={showInfo}
                   onRemoveCharacterItem={removeCharacterItem}
+                  onSendCampaignItem={onSendCampaignItem}
                 />
               }
             </For>
@@ -582,6 +624,29 @@ export const Equipment = (props) => {
             onInput={(value) => setMovingItem({ ...movingItem, amount: parseInt(value) })}
           />
           <Button default textable classList="mt-4" onClick={finishMovingItem}>{t('save')}</Button>
+        </Show>
+        <Show when={sendItem().item}>
+          <Select
+            containerClassList="mb-2"
+            labelText={localize(TRANSLATION, locale()).character}
+            items={Object.fromEntries(props.characters.map((item) => [item.character_id, item.name]))}
+            selectedValue={itemReceiver()}
+            onSelect={setItemReceiver}
+          />
+          <Input
+            containerClassList="mb-4"
+            labelText={localize(TRANSLATION, locale()).sendAmount}
+            value={amount()}
+            onInput={setAmount}
+          />
+          <Button
+            default
+            textable
+            disabled={!itemReceiver() || !amount() || !(parseInt(amount()) > 0)}
+            onClick={finishSendingItem}
+          >
+            {localize(TRANSLATION, locale()).sendItem}
+          </Button>
         </Show>
       </Modal>
     </ErrorWrapper>

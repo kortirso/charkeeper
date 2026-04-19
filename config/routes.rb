@@ -219,7 +219,9 @@ Rails.application.routes.draw do
       resource :join, only: %i[show create destroy], module: :campaigns
 
       scope ':provider' do
-        resources :items, only: %i[index create update destroy], module: 'campaigns'
+        resources :items, only: %i[index create update destroy], module: 'campaigns' do
+          post 'send_item', on: :member
+        end
       end
     end
   end

@@ -105,6 +105,7 @@ export const CampaignItems = (props) => {
             withWeight
             withPrice
             character={campaign()}
+            characters={props.characters}
             itemFilters={[
               { title: t('equipment.itemsList'), callback: itemFilter },
               { title: t('equipment.weaponsList'), callback: weaponFilter },
@@ -122,6 +123,7 @@ export const CampaignItems = (props) => {
           <Equipment
             forCampaign
             character={campaign()}
+            characters={props.characters}
             itemFilters={[
               { title: `${t('equipment.primaryWeapon')} T1`, callback: primaryWeaponFilterT1 },
               { title: `${t('equipment.primaryWeaponMagic')} T1`, callback: primaryWeaponFilterT1Magic },
@@ -151,6 +153,7 @@ export const CampaignItems = (props) => {
           <Equipment
             forCampaign
             character={campaign()}
+            characters={props.characters}
             itemFilters={[
               { title: t('equipment.weaponsList'), callback: weaponFilterDc20 },
               { title: t('equipment.armorList'), callback: armorFilterDc20 },
@@ -166,6 +169,7 @@ export const CampaignItems = (props) => {
             withWeight
             withPrice
             character={campaign()}
+            characters={props.characters}
             itemFilters={[
               { title: localize(TRANSLATION, locale()).simpleM, callback: simpleMFilter },
               { title: localize(TRANSLATION, locale()).martialM, callback: martialMFilter },

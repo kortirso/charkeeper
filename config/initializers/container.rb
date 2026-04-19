@@ -230,6 +230,7 @@ module Charkeeper
 
     register('commands.campaigns_context.items.add') { CampaignsContext::Items::AddCommand.new }
     register('commands.campaigns_context.items.change') { CampaignsContext::Items::ChangeCommand.new }
+    register('commands.campaigns_context.items.send') { CampaignsContext::Items::SendCommand.new }
 
     register('commands.channels_context.add_channel') { ChannelsContext::AddChannelCommand.new }
 

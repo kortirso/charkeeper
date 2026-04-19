@@ -196,14 +196,14 @@ export const Pathfinder2Skills = (props) => {
                             default
                             size="small"
                             disabled={skill().level === 0}
-                            onClick={() => skill().level === 0 ? null : updateSkill(skill().slug, -1)}
+                            onClick={() => updateSkill(skill().slug, -1)}
                           ><Minus /></Button>
                           <p>{skill().level}</p>
                           <Button
                             default
                             size="small"
                             disabled={skill().level >= 4}
-                            onClick={() => skill().level >= 4 ? null : updateSkill(skill().slug, 1)}
+                            onClick={() => updateSkill(skill().slug, 1)}
                           ><Plus /></Button>
                         </div>
                       </div>
