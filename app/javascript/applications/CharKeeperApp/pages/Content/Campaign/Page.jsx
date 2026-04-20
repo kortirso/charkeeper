@@ -1,7 +1,7 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { CampaignCharacters, CampaignRolls } from '../../../pages';
+import { CampaignCharacters, CampaignRolls, CampaignItems } from '../../../pages';
 import { CharacterNavigation, Notes, ContentWrapper } from '../../../components';
 
 export const CampaignPage = (props) => {
@@ -9,10 +9,10 @@ export const CampaignPage = (props) => {
   const campaign = () => props.campaign;
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('campaignCharacters');
-  const [activeTab, setActiveTab] = createSignal('notes');
+  const [activeTab, setActiveTab] = createSignal('equipment');
 
   const campaignTabs = createMemo(() => {
-    return ['rolls', 'notes'];
+    return ['equipment', 'rolls', 'notes'];
   });
 
   const mobileView = createMemo(() => {
@@ -29,6 +29,9 @@ export const CampaignPage = (props) => {
           <Switch>
             <Match when={activeMobileTab() === 'campaignCharacters'}>
               <CampaignCharacters campaign={campaign()} characters={props.characters} onDeleteCharacter={props.onDeleteCharacter} />
+            </Match>
+            <Match when={activeMobileTab() === 'equipment'}>
+              <CampaignItems campaign={campaign()} characters={props.characters} />
             </Match>
             <Match when={activeMobileTab() === 'rolls'}>
               <CampaignRolls campaign={campaign()} />
@@ -60,6 +63,9 @@ export const CampaignPage = (props) => {
         <CharacterNavigation tabsList={campaignTabs()} activeTab={activeTab()} setActiveTab={setActiveTab} />
         <div class="p-2 flex-1">
           <Switch>
+            <Match when={activeTab() === 'equipment'}>
+              <CampaignItems campaign={campaign()} characters={props.characters} />
+            </Match>
             <Match when={activeTab() === 'rolls'}>
               <CampaignRolls campaign={campaign()} />
             </Match>

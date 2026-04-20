@@ -49,7 +49,11 @@ module CharactersContext
       end
 
       def do_persist(input)
-        input[:character_item].update!(input.except(:character_item))
+        if input.key?(:states) && input[:states].values.sum.zero?
+          input[:character_item].destroy
+        else
+          input[:character_item].update!(input.except(:character_item))
+        end
 
         { result: input[:character_item] }
       end

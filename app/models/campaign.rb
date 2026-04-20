@@ -9,6 +9,8 @@ class Campaign < ApplicationRecord
   has_many :channels, class_name: '::Channel', dependent: :destroy
   has_many :notes, class_name: '::Campaign::Note', dependent: :destroy
 
+  has_many :items, class_name: '::Campaign::Item', dependent: :destroy
+
   scope :dnd5, -> { where(provider: 'dnd5') }
   scope :dnd2024, -> { where(provider: 'dnd2024') }
   scope :pathfinder2, -> { where(provider: 'pathfinder2') }

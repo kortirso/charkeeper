@@ -100,7 +100,10 @@ en:
   commands:
     campaigns_context:
       join_campaign:
-        provider_mismatch: Несовпадение систем
+        provider_mismatch: Provider mismatch
+      items:
+        not_enough_items: Not enough items
+        character_not_found: Character is not found
     characters_context:
       dnd2024:
         craft:
@@ -111,7 +114,7 @@ en:
       fallout:
         talents:
           add:
-            full_rank: Достигнут максимальный ранг
+            full_rank: Maximum rank is achieved
     homebrew_context:
       daggerheart:
         items:

@@ -43,7 +43,7 @@ export const Pathfinder2SharedHealth = (props) => {
           title: localize(TRANSLATION, locale()).temp,
           value:
             <div class="flex items-center gap-4">
-              <Button default size="small" disabled={props.tempHealth === 0} onClick={() => props.tempHealth === 0 ? null : props.onChangeTempHealth(-1)}><Minus /></Button>
+              <Button default size="small" disabled={props.tempHealth === 0} onClick={() => props.onChangeTempHealth(-1)}><Minus /></Button>
               {props.tempHealth}
               <Button default size="small" onClick={() => props.onChangeTempHealth(1)} ><Plus /></Button>
             </div>

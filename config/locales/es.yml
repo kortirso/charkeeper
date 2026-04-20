@@ -101,6 +101,9 @@ es:
     campaigns_context:
       join_campaign:
         provider_mismatch: Los sistemas no coinciden
+      items:
+        not_enough_items: Not enough items
+        character_not_found: Character is not found
     characters_context:
       dnd2024:
         craft:

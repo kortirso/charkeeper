@@ -8,7 +8,9 @@ import { useAppLocale } from '../../context';
 import { Hands, Equipment, Backpack, Storage, Dots } from '../../assets';
 import { clickOutside, localize } from '../../helpers';
 
-const STATE_ICONS = { 'hands': Hands, 'equipment': Equipment, 'backpack': Backpack, 'storage': Storage }
+const STATE_ICONS = {
+  'hands': Hands, 'equipment': Equipment, 'backpack': Backpack, 'storage': Storage, 'hidden': Storage, 'shared': Storage
+}
 
 const TRANSLATION = {
   en: {
@@ -86,6 +88,8 @@ export const ItemsTable = (props) => {
                     <Show when={size.width >= 1024}>
                       <div class="flex items-start gap-x-1 mr-2">
                         <ItemsTableItem
+                          forCampaign={props.forCampaign}
+                          characterCampaigns={props.characterCampaigns}
                           size="small"
                           state={props.state}
                           item={item}
@@ -94,6 +98,8 @@ export const ItemsTable = (props) => {
                           onConsumeItem={props.onConsumeItem}
                           onConsumeCharacterItem={props.onConsumeCharacterItem}
                           upgradeItem={upgradeItem}
+                          onSendCampaignItem={props.onSendCampaignItem}
+                          onSendToCampaign={props.onSendToCampaign}
                         />
                       </div>
                     </Show>
@@ -106,6 +112,8 @@ export const ItemsTable = (props) => {
                           <Show when={size.width < 1024}>
                             <div class="dots-item flex gap-x-1">
                               <ItemsTableItem
+                                forCampaign={props.forCampaign}
+                                characterCampaigns={props.characterCampaigns}
                                 size="medium"
                                 state={props.state}
                                 item={item}
@@ -114,6 +122,8 @@ export const ItemsTable = (props) => {
                                 onConsumeItem={props.onConsumeItem}
                                 onConsumeCharacterItem={props.onConsumeCharacterItem}
                                 upgradeItem={upgradeItem}
+                                onSendCampaignItem={props.onSendCampaignItem}
+                                onSendToCampaign={props.onSendToCampaign}
                               />
                             </div>
                           </Show>

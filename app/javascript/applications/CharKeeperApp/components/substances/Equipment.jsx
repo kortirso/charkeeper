@@ -1,9 +1,9 @@
-import { createSignal, createEffect, For, Show, createMemo, batch, children } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch, children } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper, ItemContent
+  ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper, ItemContent, Select
 } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { PlusSmall, Info } from '../../assets';
@@ -16,7 +16,8 @@ import { fetchItemInfoRequest } from '../../requests/fetchItemInfoRequest';
 import { createCharacterHomebrewItemRequest } from '../../requests/createCharacterHomebrewItemRequest';
 import { consumeCharacterBonusRequest } from '../../requests/consumeCharacterBonusRequest';
 import { consumeCharacterItemRequest } from '../../requests/consumeCharacterItemRequest';
-import { localize } from '../../helpers';
+import { sendCampaignItemRequest } from '../../requests/sendCampaignItemRequest';
+import { localize, performResponse } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -43,11 +44,23 @@ const TRANSLATION = {
       storage: {
         title: 'In storage',
         description: 'Outer storage of your items'
+      },
+      hidden: {
+        title: 'DM storage',
+        description: 'DM storage with hidden items'
+      },
+      shared: {
+        title: 'Shared storage',
+        description: 'Shared storage of characters'
       }
     },
     amount: 'Moving amount',
     was: 'Was',
-    will: 'will be'
+    will: 'will be',
+    character: 'Select character',
+    sendAmount: 'Items amount',
+    sendItem: 'Send item',
+    campaign: 'Select campaign'
   },
   ru: {
     searchByName: 'Поиск по названию (от 3 символов)',
@@ -73,11 +86,23 @@ const TRANSLATION = {
       storage: {
         title: 'В хранилище',
         description: 'Предметы в отдалённом хранилище'
+      },
+      hidden: {
+        title: 'В хранилище ДМа',
+        description: 'Предметы в хранилище ДМа'
+      },
+      shared: {
+        title: 'В общем хранилище',
+        description: 'Предметы в общем хранилище'
       }
     },
     amount: 'Кол-во перемещаемого',
     was: 'Было',
-    will: 'будет'
+    will: 'будет',
+    character: 'Выберите персонажа',
+    sendAmount: 'Кол-во предметов',
+    sendItem: 'Отправить',
+    campaign: 'Выберите кампанию'
   },
   es: {
     searchByName: 'Buscar por nombre (desde 3 caracteres)',
@@ -103,11 +128,23 @@ const TRANSLATION = {
       storage: {
         title: 'En el almacén',
         description: 'Almacén externo de tus objetos'
+      },
+      hidden: {
+        title: 'DM storage',
+        description: 'DM storage with hidden items'
+      },
+      shared: {
+        title: 'Shared storage',
+        description: 'Shared storage of characters'
       }
     },
     amount: 'Cantidad a mover',
     was: 'Era',
-    will: 'será'
+    will: 'será',
+    character: 'Select character',
+    sendAmount: 'Items amount',
+    sendItem: 'Send item',
+    campaign: 'Select campaign'
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
@@ -122,8 +159,13 @@ export const Equipment = (props) => {
 
   const [homebrewItem, setHomebrewItem] = createStore({ name: '', description: '' });
 
+  const [sendItem, setSendItem] = createSignal({});
+  const [itemReceiver, setItemReceiver] = createSignal(null);
+  const [amount, setAmount] = createSignal(1);
+
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [characterItems, setCharacterItems] = createSignal(undefined);
+  const [characterCampaigns, setCharacterCampaigns] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
   const [itemsSelectingMode, setItemsSelectingMode] = createSignal(false);
 
@@ -139,7 +181,9 @@ export const Equipment = (props) => {
 
   const t = i18n.translator(dict);
 
-  const fetchCharacterItems = async () => await fetchCharacterItemsRequest(appState.accessToken, character().provider, character().id);
+  const fetchCharacterItems = async () => await fetchCharacterItemsRequest(
+    appState.accessToken, character().provider, character().id, props.forCampaign ? 'campaigns' : 'characters'
+  );
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
@@ -153,6 +197,7 @@ export const Equipment = (props) => {
       ([characterItemsData, itemsData, homebrewItemsData]) => {
         batch(() => {
           setCharacterItems(characterItemsData.items);
+          setCharacterCampaigns(characterItemsData.character_campaigns);
           if (homebrewItemsData) {
             setItems(itemsData.items.concat(homebrewItemsData.items).sort((a, b) => a.name > b.name));
           } else {
@@ -170,12 +215,20 @@ export const Equipment = (props) => {
     setCharacterItems(result.items);
   }
 
+  const storages = createMemo(() => {
+    if (!props.forCampaign) return ['hands', 'equipment', 'backpack', 'storage'];
+    if (character().own) return ['hidden', 'shared'];
+
+    return ['shared'];
+  });
+
   // actions
   const changeItem = (item) => {
     batch(() => {
       setChangingItem(item);
       setItemInfo(null);
       setMovingItem(null);
+      setSendItem({});
       openModal();
     });
   }
@@ -217,10 +270,46 @@ export const Equipment = (props) => {
     } else {
       batch(() => {
         setChangingItem(null);
+        setItemInfo(null);
         setMovingItem({ item: item, fromState: fromState, toState: toState, amount: 1 });
+        setSendItem({});
         openModal();
       });
     }
+  }
+
+  const onSendCampaignItem = (item, fromState) => {
+    batch(() => {
+      setChangingItem(null);
+      setItemInfo(null);
+      setMovingItem(null);
+      setSendItem({ item: item, fromState: fromState });
+    });
+    openModal();
+  }
+
+  const finishSendingItem = async () => {
+    const campaignId = props.forCampaign ? character().id : itemReceiver();
+    const characterId = props.forCampaign ? itemReceiver() : character().id;
+
+    const result = await sendCampaignItemRequest(
+      appState.accessToken, character().provider, campaignId, sendItem().item.id, {
+        character_item: {
+          state: sendItem().fromState, amount: amount(), character_id: characterId, for_campaign: !!props.forCampaign
+        }
+      }
+    );
+    performResponse(
+      result,
+      function() {
+        batch(() => {
+          reloadCharacterItems();
+          setSendItem({});
+          closeModal();
+        });
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   const finishMovingItem = async () => {
@@ -245,6 +334,8 @@ export const Equipment = (props) => {
         batch(() => {
           openModal();
           setChangingItem(null);
+          setSendItem({});
+          setMovingItem(null);
           setItemInfo([item, result.value]);
         });
       }
@@ -252,6 +343,8 @@ export const Equipment = (props) => {
       batch(() => {
         openModal();
         setChangingItem(null);
+        setSendItem({});
+        setMovingItem(null);
         setItemInfo([item, null]);
       });
     }
@@ -274,7 +367,8 @@ export const Equipment = (props) => {
       appState.accessToken,
       character().provider,
       character().id,
-      { item_id: item.id }
+      { item_id: item.id },
+      props.forCampaign ? 'campaigns' : 'characters'
     );
 
     if (result.errors_list === undefined) {
@@ -288,7 +382,7 @@ export const Equipment = (props) => {
 
   const updateCharacterItem = async (item, payload) => {
     const result = await updateCharacterItemRequest(
-      appState.accessToken, character().provider, character().id, item.id, payload
+      appState.accessToken, character().provider, character().id, item.id, payload, props.forCampaign ? 'campaigns' : 'characters'
     );
 
     if (result.errors_list === undefined) {
@@ -310,7 +404,9 @@ export const Equipment = (props) => {
       return updateCharacterItem(item, { character_item: { states: newStates } });
     }
 
-    const result = await removeCharacterItemRequest(appState.accessToken, character().provider, character().id, item.id);
+    const result = await removeCharacterItemRequest(
+      appState.accessToken, character().provider, character().id, item.id, props.forCampaign ? 'campaigns' : 'characters'
+    );
     if (result.errors_list === undefined) {
       batch(() => {
         if (item.kind.includes('weapon') || item.state === 'hands') {
@@ -385,7 +481,7 @@ export const Equipment = (props) => {
                   containerClassList="mr-2 flex-1"
                   placeholder={localize(TRANSLATION, locale()).searchByName}
                   value={filterByName()}
-                  onInput={(value) => setFilterByName(value)}
+                  onInput={setFilterByName}
                 />
                 <Button default size="small" classList="px-2" onClick={() => setFilterByName('')}>
                   {localize(TRANSLATION, locale()).clear}
@@ -452,9 +548,11 @@ export const Equipment = (props) => {
           </Show>
           <Show when={characterItems() !== undefined}>
             <Button default textable classList="my-2" onClick={() => setItemsSelectingMode(true)}>{t('equipment.addItems')}</Button>
-            <For each={['hands', 'equipment', 'backpack', 'storage']}>
+            <For each={storages()}>
               {(state) =>
                 <ItemsTable
+                  characterCampaigns={characterCampaigns()}
+                  forCampaign={props.forCampaign}
                   upgrades={props.upgrades}
                   provider={character().provider}
                   characterId={character().id}
@@ -470,10 +568,12 @@ export const Equipment = (props) => {
                   onChangeItem={changeItem}
                   onInfoItem={showInfo}
                   onRemoveCharacterItem={removeCharacterItem}
+                  onSendCampaignItem={onSendCampaignItem}
+                  onSendToCampaign={onSendCampaignItem}
                 />
               }
             </For>
-            <Show when={CREATE_HOMEBREW_ITEMS.includes(character().provider)}>
+            <Show when={!props.forCampaign && CREATE_HOMEBREW_ITEMS.includes(character().provider)}>
               <Toggle title={localize(TRANSLATION, locale()).createHomebrew}>
                 <Input
                   containerClassList="mb-2"
@@ -495,7 +595,7 @@ export const Equipment = (props) => {
                 <Button default onClick={addHomebrewItem}>{localize(TRANSLATION, locale()).add}</Button>
               </Toggle>
             </Show>
-            <Show when={props.withWeight}>
+            <Show when={!props.forCampaign && props.withWeight}>
               <div class="flex justify-end">
                 <div class="p-4 flex blockable">
                   <p>{calculateCurrentLoad()} / {character().load}</p>
@@ -509,7 +609,7 @@ export const Equipment = (props) => {
         <Show when={changingItem()}>
           <p class="text-lg mb-2">{changingItem().name}</p>
           <div class="grid grid-cols-2 gap-2 mb-2">
-            <For each={['hands', 'equipment', 'backpack', 'storage']}>
+            <For each={storages()}>
               {(state) =>
                 <Input
                   numeric
@@ -545,6 +645,29 @@ export const Equipment = (props) => {
             onInput={(value) => setMovingItem({ ...movingItem, amount: parseInt(value) })}
           />
           <Button default textable classList="mt-4" onClick={finishMovingItem}>{t('save')}</Button>
+        </Show>
+        <Show when={sendItem().item}>
+          <Select
+            containerClassList="mb-2"
+            labelText={localize(TRANSLATION, locale())[props.forCampaign ? 'character' : 'campaign']}
+            items={props.forCampaign ? Object.fromEntries(props.characters.map((item) => [item.character_id, item.name])) : Object.fromEntries(characterCampaigns().map((item) => [item.id, item.name]))}
+            selectedValue={itemReceiver()}
+            onSelect={setItemReceiver}
+          />
+          <Input
+            containerClassList="mb-4"
+            labelText={localize(TRANSLATION, locale()).sendAmount}
+            value={amount()}
+            onInput={setAmount}
+          />
+          <Button
+            default
+            textable
+            disabled={!itemReceiver() || !amount() || !(parseInt(amount()) > 0)}
+            onClick={finishSendingItem}
+          >
+            {localize(TRANSLATION, locale()).sendItem}
+          </Button>
         </Show>
       </Modal>
     </ErrorWrapper>
