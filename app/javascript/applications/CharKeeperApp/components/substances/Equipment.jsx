@@ -270,20 +270,21 @@ export const Equipment = (props) => {
     } else {
       batch(() => {
         setChangingItem(null);
-        setSendItem({});
+        setItemInfo(null);
         setMovingItem({ item: item, fromState: fromState, toState: toState, amount: 1 });
+        setSendItem({});
         openModal();
       });
     }
   }
 
   const onSendCampaignItem = (item, fromState) => {
-    setSendItem({ item: item, fromState: fromState });
-    openModal();
-  }
-
-  const onSendToCampaign = (item, fromState) => {
-    setSendItem({ item: item, fromState: fromState });
+    batch(() => {
+      setChangingItem(null);
+      setItemInfo(null);
+      setMovingItem(null);
+      setSendItem({ item: item, fromState: fromState });
+    });
     openModal();
   }
 
@@ -333,6 +334,8 @@ export const Equipment = (props) => {
         batch(() => {
           openModal();
           setChangingItem(null);
+          setSendItem({});
+          setMovingItem(null);
           setItemInfo([item, result.value]);
         });
       }
@@ -341,6 +344,7 @@ export const Equipment = (props) => {
         openModal();
         setChangingItem(null);
         setSendItem({});
+        setMovingItem(null);
         setItemInfo([item, null]);
       });
     }
@@ -565,7 +569,7 @@ export const Equipment = (props) => {
                   onInfoItem={showInfo}
                   onRemoveCharacterItem={removeCharacterItem}
                   onSendCampaignItem={onSendCampaignItem}
-                  onSendToCampaign={onSendToCampaign}
+                  onSendToCampaign={onSendCampaignItem}
                 />
               }
             </For>
