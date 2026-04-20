@@ -1,10 +1,10 @@
 import { Portal } from 'solid-js/web';
-import { createSignal, Show, batch, Switch, Match, For } from 'solid-js';
+import { createEffect, createSignal, Show, batch, Switch, Match, For } from 'solid-js';
 
 import { Dice, DualityDice, Button } from '../../components';
 import { useAppState, useAppLocale } from '../../context';
-import { clickOutside, modifier, localize } from '../../helpers';
-import { Close } from '../../assets';
+import { clickOutside, modifier, localize, readFromCache, writeToCache } from '../../helpers';
+import { Close, Edit } from '../../assets';
 import { createCharacterBotRequest } from '../../requests/createCharacterBotRequest';
 
 const TRANSLATION = {
@@ -42,6 +42,7 @@ const TRANSLATION = {
     damage: 'Daño'
   }
 }
+const DH_DICES_CACHE_NAME = 'DhDicesSettings';
 
 export const createDiceRoll = () => {
   const [isOpen, setIsOpen] = createSignal(undefined);
@@ -61,8 +62,25 @@ export const createDiceRoll = () => {
   const [damageResult, setDamageResult] = createSignal(undefined);
   const [dualityMode, setDualityMode] = createSignal(false);
 
+  const [hopeDice, setHopeDice] = createSignal('D12');
+  const [fearDice, setFearDice] = createSignal('D12');
+  const [showDhSettings, setShowDhSettings] = createSignal(false);
+
   const [appState] = useAppState();
   const [locale] = useAppLocale();
+
+  const readDhDicesSettings = async () => {
+    const cacheValue = await readFromCache(DH_DICES_CACHE_NAME);
+    const settings = cacheValue === null || cacheValue === undefined ? { hopeDice: 'D12', fearDice: 'D12' } : JSON.parse(cacheValue);
+    batch(() => {
+      setHopeDice(settings.hopeDice);
+      setFearDice(settings.fearDice)
+    });
+  }
+
+  createEffect(() => {
+    readDhDicesSettings();
+  });
 
   return {
     openDiceRoll(botCommand, bonus, title) {
@@ -162,6 +180,8 @@ export const createDiceRoll = () => {
         const options = [];
         if (advantage() > 0) options.push(`--adv ${advantage()}`);
         if (advantage() > 0 && props.advantageDice) options.push(`--advDice ${props.advantageDice}`);
+        if (hopeDice() !== 'D12') options.push(`--hopeDice ${hopeDice().toLowerCase()}`);
+        if (fearDice() !== 'D12') options.push(`--fearDice ${fearDice().toLowerCase()}`);
         if (advantage() < 0) options.push(`--dis ${Math.abs(advantage())}`);
         if (bonus() + additionalBonus() > 0) options.push(`--bonus ${bonus() + additionalBonus()}`);
         if (bonus() + additionalBonus() < 0) options.push(`--penalty ${Math.abs(bonus() + additionalBonus())}`);
@@ -265,6 +285,20 @@ export const createDiceRoll = () => {
         return 'default';
       }
 
+      const changeDhDice = (value, callback) => {
+        const dice = newDhDice(value);
+        callback(dice);
+        writeToCache(DH_DICES_CACHE_NAME, JSON.stringify({ hopeDice: hopeDice(), fearDice: fearDice() }));
+      }
+
+      const newDhDice = (value) => {
+        if (value === 'D12') return 'D20';
+        if (value === 'D20') return 'D8';
+        if (value === 'D8') return 'D10';
+
+        return 'D12';
+      }
+
       const performRoll = () => {
         if (isOpen() === 'botCommand') makeRoll();
         if (isOpen() === 'rollCommand') makeSimpleRoll();
@@ -281,7 +315,12 @@ export const createDiceRoll = () => {
             <div class="flex-1 flex justify-end items-end">
               <div>
                 <Show when={isOpen() === 'botCommand' || isOpen() === 'attackCommand'}>
-                  <div class="p-4 blockable w-full sm:w-xs">
+                  <div class="p-4 blockable w-full sm:w-xs relative">
+
+                    <Show when={props.provider === 'daggerheart'}>
+                      <Button default classList="weapon-settings min-w-6 min-h-6" onClick={() => setShowDhSettings(!showDhSettings())}><Edit /></Button>
+                    </Show>
+
                     <Show when={title() || isOpen() === 'attackCommand'}>
                       <p class="mb-2">{isOpen() === 'attackCommand' ? `${localize(TRANSLATION, locale()).attack}, ${title()}` : title()}</p>
                     </Show>
@@ -325,13 +364,19 @@ export const createDiceRoll = () => {
                             when={rollResult() === undefined}
                             fallback={
                               <>
-                                <Dice mode="hope" type="D12" onClick={() => rerollDhDice('d12', 0)} text={rollResult().rolls[0][1]} />
-                                <Dice mode="fear" type="D12" onClick={() => rerollDhDice('d12', 1)} text={rollResult().rolls[1][1]} />
+                                <Dice mode="hope" type={hopeDice()} onClick={() => rerollDhDice(hopeDice().toLowerCase(), 0)} text={rollResult().rolls[0][1]} />
+                                <Dice mode="fear" type={fearDice()} onClick={() => rerollDhDice(fearDice().toLowerCase(), 1)} text={rollResult().rolls[1][1]} />
                               </>
                             }
                           >
-                            <Dice mode="hope" type="D12" text="D12" />
-                            <Dice mode="fear" type="D12" text="D12" />
+                            <Show when={showDhSettings()}>
+                              <p class="dice-button" onClick={() => changeDhDice(hopeDice(), setHopeDice)}>+</p>
+                            </Show>
+                            <Dice mode="hope" type={hopeDice()} text={hopeDice()} />
+                            <Show when={showDhSettings()}>
+                              <p class="dice-button" onClick={() => changeDhDice(fearDice(), setFearDice)}>+</p>
+                            </Show>
+                            <Dice mode="fear" type={fearDice()} text={fearDice()} />
                           </Show>
                           <Show when={advantage() !== 0}>
                             <div class="ml-2">

@@ -36,8 +36,8 @@ module BotContextV2
         def rolls(arguments) # rubocop: disable Metrics/AbcSize
           values = BotContextV2::Commands::Parsers::MakeCheck.new.call(arguments: arguments) # { adv: 1, bonus: 1 }
 
-          hope_check = roll_command.call(arguments: ['d12'])[:result]
-          fear_check = roll_command.call(arguments: ['d12'])[:result]
+          hope_check = roll_command.call(arguments: [values[:hope_dice] || 'd12'])[:result]
+          fear_check = roll_command.call(arguments: [values[:fear_dice] || 'd12'])[:result]
           adv_check = roll_command.call(arguments: [values[:adv_dice] || 'd6'])[:result] if values[:adv].to_i.positive?
           adv_check = roll_command.call(arguments: ['d6'])[:result] if values[:adv].to_i.negative?
 

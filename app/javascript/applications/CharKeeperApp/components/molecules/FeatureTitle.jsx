@@ -1,6 +1,6 @@
 import { createMemo, Show, For } from 'solid-js';
 
-import { Button } from '../../components';
+import { Button, Dice } from '../../components';
 import { useAppLocale, useAppAlert, useAppState } from '../../context';
 import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
 import { PlusSmall, Minus, Campfire, LongCampfire, Moon, Picnic, Combat, Ability, Spell, Grimoire } from '../../assets';
@@ -113,11 +113,35 @@ export const FeatureTitle = (props) => {
           </Show>
           {feature().title}
         </p>
-        <Show when={Object.keys(feature().price).length > 0}>
-          <Show
-            when={SPENDING_RESOURCES_PROVIDERS.includes(character().provider)}
-            fallback={
-              <div class="flex gap-x-2">
+        <div class="flex items-center gap-x-4">
+          <Show when={character().provider === 'daggerheart' && (feature().info.hope_dice || feature().info.fear_dice)}>
+            <Show when={feature().info.hope_dice}>
+              <Dice width="24" height="24" textClassList="text-sm!" mode="hope" text={feature().info.hope_dice} />
+            </Show>
+            <Show when={feature().info.fear_dice}>
+              <Dice width="24" height="24" textClassList="text-sm!" mode="fear" text={feature().info.fear_dice} />
+            </Show>
+          </Show>
+          <Show when={Object.keys(feature().price).length > 0}>
+            <Show
+              when={SPENDING_RESOURCES_PROVIDERS.includes(character().provider)}
+              fallback={
+                <div class="flex gap-x-2">
+                  <For each={Object.entries(feature().price)}>
+                    {([slug, value]) =>
+                      <Show when={localize(TRANSLATION, locale())[slug]}>
+                        <p class="text-xs">{localize(TRANSLATION, locale())[slug]} {value}</p>
+                      </Show>
+                    }
+                  </For>
+                </div>
+              }
+            >
+              <div
+                class="resource"
+                classList={{ 'enough': enoughResources() }}
+                onClick={(e) => enoughResources() ? spendResources(e) : null}
+              >
                 <For each={Object.entries(feature().price)}>
                   {([slug, value]) =>
                     <Show when={localize(TRANSLATION, locale())[slug]}>
@@ -126,23 +150,9 @@ export const FeatureTitle = (props) => {
                   }
                 </For>
               </div>
-            }
-          >
-            <div
-              class="resource"
-              classList={{ 'enough': enoughResources() }}
-              onClick={(e) => enoughResources() ? spendResources(e) : null}
-            >
-              <For each={Object.entries(feature().price)}>
-                {([slug, value]) =>
-                  <Show when={localize(TRANSLATION, locale())[slug]}>
-                    <p class="text-xs">{localize(TRANSLATION, locale())[slug]} {value}</p>
-                  </Show>
-                }
-              </For>
-            </div>
+            </Show>
           </Show>
-        </Show>
+        </div>
       </div>
       <div class="flex items-center gap-x-4">
         <Show when={feature().limit !== undefined}>

@@ -9,6 +9,8 @@ module BotContextV2
           parser = OptionParser.new do |act|
             act.on('--adv [TEXT]', Integer) { |text=0| result[:adv] = text.to_i }
             act.on('--advDice [TEXT]') { |text| result[:adv_dice] = text }
+            act.on('--hopeDice [TEXT]') { |text| result[:hope_dice] = text }
+            act.on('--fearDice [TEXT]') { |text| result[:fear_dice] = text }
             act.on('--dis [TEXT]', Integer) { |text=0| result[:adv] = text.to_i * -1 }
             act.on('--bonus [TEXT]', Integer) { |text=0| result[:bonus] = text.to_i }
             act.on('--penalty [TEXT]', Integer) { |text=0| result[:bonus] = text.to_i * -1 }
