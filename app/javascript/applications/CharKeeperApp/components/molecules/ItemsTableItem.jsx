@@ -1,7 +1,7 @@
 import { createMemo, For, Show } from 'solid-js';
 
 import { Button } from '../../components';
-import { Hands, Equipment, Backpack, Storage, Drink, Upgrade } from '../../assets';
+import { Hands, Equipment, Backpack, Storage, Drink, Upgrade, Campaigns } from '../../assets';
 
 export const ItemsTableItem = (props) => {
   const iconSize = createMemo(() => props.size === 'medium' ? 24 : 16);
@@ -41,6 +41,11 @@ export const ItemsTableItem = (props) => {
         <Show when={props.upgrades && props.upgrades.includes(props.item.kind)}>
           <Button default size={props.size} onClick={() => props.upgradeItem(props.item, props.state)}>
             <Upgrade width={iconSize()} height={iconSize()} />
+          </Button>
+        </Show>
+        <Show when={props.characterCampaigns && props.characterCampaigns.length > 0}>
+          <Button default size={props.size} onClick={() => props.onSendToCampaign(props.item, props.state)}>
+            <Campaigns width={iconSize()} height={iconSize()} />
           </Button>
         </Show>
       </Show>

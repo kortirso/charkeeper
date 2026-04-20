@@ -3,8 +3,7 @@
 module Campaigns
   class ItemSerializer < ApplicationSerializer
     ATTRIBUTES = %i[
-      id quantity ready_to_use notes name kind data state item_id has_description states info bonuses modifiers item_modifiers
-      custom
+      id notes name kind data item_id has_description states info bonuses modifiers item_modifiers custom
     ].freeze
 
     attributes(*ATTRIBUTES)
@@ -30,11 +29,6 @@ module Campaigns
 
     def has_description # rubocop: disable Naming/PredicateMethod, Naming/PredicatePrefix
       translate(item.description).present?
-    end
-
-    # DEPRECATED
-    def ready_to_use # rubocop: disable Naming/PredicateMethod
-      false
     end
 
     def data

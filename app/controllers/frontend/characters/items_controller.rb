@@ -14,7 +14,10 @@ module Frontend
       before_action :find_character_item_for_destroy, only: %i[destroy]
 
       def index
-        serialize_relation_v2(items, ::Characters::ItemSerializer, :items, cache_options: cache_options)
+        render json: {
+          items: relation_to_json(items, ::Characters::ItemSerializer, cache_options: cache_options),
+          character_campaigns: character_campaigns
+        }, status: :ok
       end
 
       def create
@@ -37,6 +40,10 @@ module Frontend
       end
 
       private
+
+      def character_campaigns
+        @character.campaigns.hashable_pluck(:id, :name)
+      end
 
       def cache_options
         return {} unless @character.equipment_updated_at

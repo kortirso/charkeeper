@@ -89,6 +89,7 @@ export const ItemsTable = (props) => {
                       <div class="flex items-start gap-x-1 mr-2">
                         <ItemsTableItem
                           forCampaign={props.forCampaign}
+                          characterCampaigns={props.characterCampaigns}
                           size="small"
                           state={props.state}
                           item={item}
@@ -98,6 +99,7 @@ export const ItemsTable = (props) => {
                           onConsumeCharacterItem={props.onConsumeCharacterItem}
                           upgradeItem={upgradeItem}
                           onSendCampaignItem={props.onSendCampaignItem}
+                          onSendToCampaign={props.onSendToCampaign}
                         />
                       </div>
                     </Show>
@@ -111,6 +113,7 @@ export const ItemsTable = (props) => {
                             <div class="dots-item flex gap-x-1">
                               <ItemsTableItem
                                 forCampaign={props.forCampaign}
+                                characterCampaigns={props.characterCampaigns}
                                 size="medium"
                                 state={props.state}
                                 item={item}
@@ -120,6 +123,7 @@ export const ItemsTable = (props) => {
                                 onConsumeCharacterItem={props.onConsumeCharacterItem}
                                 upgradeItem={upgradeItem}
                                 onSendCampaignItem={props.onSendCampaignItem}
+                                onSendToCampaign={props.onSendToCampaign}
                               />
                             </div>
                           </Show>

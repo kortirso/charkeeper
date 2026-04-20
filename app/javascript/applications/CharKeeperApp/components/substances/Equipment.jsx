@@ -59,7 +59,8 @@ const TRANSLATION = {
     will: 'will be',
     character: 'Select character',
     sendAmount: 'Items amount',
-    sendItem: 'Send item'
+    sendItem: 'Send item',
+    campaign: 'Select campaign'
   },
   ru: {
     searchByName: 'Поиск по названию (от 3 символов)',
@@ -100,7 +101,8 @@ const TRANSLATION = {
     will: 'будет',
     character: 'Выберите персонажа',
     sendAmount: 'Кол-во предметов',
-    sendItem: 'Отправить'
+    sendItem: 'Отправить',
+    campaign: 'Выберите кампанию'
   },
   es: {
     searchByName: 'Buscar por nombre (desde 3 caracteres)',
@@ -141,7 +143,8 @@ const TRANSLATION = {
     will: 'será',
     character: 'Select character',
     sendAmount: 'Items amount',
-    sendItem: 'Send item'
+    sendItem: 'Send item',
+    campaign: 'Select campaign'
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
@@ -162,6 +165,7 @@ export const Equipment = (props) => {
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [characterItems, setCharacterItems] = createSignal(undefined);
+  const [characterCampaigns, setCharacterCampaigns] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
   const [itemsSelectingMode, setItemsSelectingMode] = createSignal(false);
 
@@ -193,6 +197,7 @@ export const Equipment = (props) => {
       ([characterItemsData, itemsData, homebrewItemsData]) => {
         batch(() => {
           setCharacterItems(characterItemsData.items);
+          setCharacterCampaigns(characterItemsData.character_campaigns);
           if (homebrewItemsData) {
             setItems(itemsData.items.concat(homebrewItemsData.items).sort((a, b) => a.name > b.name));
           } else {
@@ -277,10 +282,20 @@ export const Equipment = (props) => {
     openModal();
   }
 
+  const onSendToCampaign = (item, fromState) => {
+    setSendItem({ item: item, fromState: fromState });
+    openModal();
+  }
+
   const finishSendingItem = async () => {
+    const campaignId = props.forCampaign ? character().id : itemReceiver();
+    const characterId = props.forCampaign ? itemReceiver() : character().id;
+
     const result = await sendCampaignItemRequest(
-      appState.accessToken, character().provider, character().id, sendItem().item.id, {
-        character_item: { state: sendItem().fromState, amount: amount(), character_id: itemReceiver() }
+      appState.accessToken, character().provider, campaignId, sendItem().item.id, {
+        character_item: {
+          state: sendItem().fromState, amount: amount(), character_id: characterId, for_campaign: !!props.forCampaign
+        }
       }
     );
     performResponse(
@@ -532,6 +547,7 @@ export const Equipment = (props) => {
             <For each={storages()}>
               {(state) =>
                 <ItemsTable
+                  characterCampaigns={characterCampaigns()}
                   forCampaign={props.forCampaign}
                   upgrades={props.upgrades}
                   provider={character().provider}
@@ -549,6 +565,7 @@ export const Equipment = (props) => {
                   onInfoItem={showInfo}
                   onRemoveCharacterItem={removeCharacterItem}
                   onSendCampaignItem={onSendCampaignItem}
+                  onSendToCampaign={onSendToCampaign}
                 />
               }
             </For>
@@ -628,8 +645,8 @@ export const Equipment = (props) => {
         <Show when={sendItem().item}>
           <Select
             containerClassList="mb-2"
-            labelText={localize(TRANSLATION, locale()).character}
-            items={Object.fromEntries(props.characters.map((item) => [item.character_id, item.name]))}
+            labelText={localize(TRANSLATION, locale())[props.forCampaign ? 'character' : 'campaign']}
+            items={props.forCampaign ? Object.fromEntries(props.characters.map((item) => [item.character_id, item.name])) : Object.fromEntries(characterCampaigns().map((item) => [item.id, item.name]))}
             selectedValue={itemReceiver()}
             onSelect={setItemReceiver}
           />
