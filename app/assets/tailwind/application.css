@@ -410,12 +410,13 @@ nav.pagy.nav a.gap {
 }
 
 .resource {
-  @apply flex gap-x-2 inline-block rounded mt-1;
+  @apply flex gap-x-2 inline-block rounded mt-1 p-1 opacity-75;
+  @apply bg-blue-400 text-snow dark:bg-fuzzy-red;
+  @apply line-through;
 }
 
 .resource.enough {
-  @apply cursor-pointer p-1;
-  @apply bg-blue-400 text-snow dark:bg-fuzzy-red;
+  @apply cursor-pointer opacity-100 no-underline;
 }
 
 .archetype-key {
@@ -450,8 +451,8 @@ nav.pagy.nav a.gap {
   @apply dark:text-stone-200;
 }
 
-.feat-markdown p {
-  @apply mb-1;
+.feat-markdown p:nth-of-type(n+2) {
+  @apply mt-1;
 }
 
 .feat-markdown strong {

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - rendering character rolls in campaign page
+- changing dice value for DH characters
 
 ## [0.4.28] - 2026-04-18
 ### Added
