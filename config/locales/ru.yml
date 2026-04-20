@@ -100,7 +100,10 @@ ru:
   commands:
     campaigns_context:
       join_campaign:
-        provider_mismatch: Systems mismatch
+        provider_mismatch: Несовпадение систем
+      items:
+        not_enough_items: Не достаточно предметов
+        character_not_found: Персонаж не найден
     characters_context:
       dnd2024:
         craft:

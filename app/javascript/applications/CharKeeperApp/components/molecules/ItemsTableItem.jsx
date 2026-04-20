@@ -16,7 +16,7 @@ export const ItemsTableItem = (props) => {
         ]}>
         {({ state, Icon }) =>
           <Show when={props.state !== state}>
-            <Button default size={props.size} onClick={() => props.onMoveCharacterItem(props.item, props.state)}>
+            <Button default size={props.size} onClick={() => props.onMoveCharacterItem(props.item, props.state, state)}>
               <Icon width={iconSize()} height={iconSize()} />
             </Button>
           </Show>

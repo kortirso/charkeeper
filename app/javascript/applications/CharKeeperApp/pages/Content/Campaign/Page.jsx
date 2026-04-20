@@ -9,7 +9,7 @@ export const CampaignPage = (props) => {
   const campaign = () => props.campaign;
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('campaignCharacters');
-  const [activeTab, setActiveTab] = createSignal('notes');
+  const [activeTab, setActiveTab] = createSignal('equipment');
 
   const campaignTabs = createMemo(() => {
     return ['equipment', 'rolls', 'notes'];

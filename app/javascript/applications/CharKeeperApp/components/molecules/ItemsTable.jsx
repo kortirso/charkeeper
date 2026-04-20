@@ -88,6 +88,7 @@ export const ItemsTable = (props) => {
                     <Show when={size.width >= 1024}>
                       <div class="flex items-start gap-x-1 mr-2">
                         <ItemsTableItem
+                          forCampaign={props.forCampaign}
                           size="small"
                           state={props.state}
                           item={item}

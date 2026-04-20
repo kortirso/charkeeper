@@ -20,7 +20,11 @@ module CampaignsContext
       end
 
       def do_persist(input)
-        input[:campaign_item].update!(input.except(:campaign_item))
+        if input.key?(:states) && input[:states].values.sum.zero?
+          input[:campaign_item].destroy
+        else
+          input[:campaign_item].update!(input.except(:campaign_item))
+        end
 
         { result: input[:campaign_item] }
       end
