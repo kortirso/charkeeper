@@ -3,6 +3,9 @@ import { createConsumer } from '@rails/actioncable';
 
 import { ErrorWrapper } from '../../../components';
 import { useAppState } from '../../../context';
+import { readFromCache } from '../../../helpers';
+
+const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
 
 export const CampaignRolls = (props) => {
   const campaign = () => props.campaign;
@@ -11,9 +14,16 @@ export const CampaignRolls = (props) => {
 
   const [appState] = useAppState();
 
-  const connectToCable = () => {
+  const readHostData = async () => {
+    const cacheValue = await readFromCache(CHARKEEPER_HOST_CACHE_NAME);
+    return cacheValue === null || cacheValue === undefined ? 'charkeeper.org' : cacheValue;
+  }
+
+  const connectToCable = async () => {
+    const host = await readHostData();
+
     const protocol = appState.rootHost === 'localhost:5000' ? 'ws' : 'wss';
-    const consumer = createConsumer(`${protocol}://${appState.rootHost}/cable`);
+    const consumer = createConsumer(`${protocol}://${host}/cable`);
     consumer.subscriptions.create(
       { channel: 'CampaignChannel', campaign_id: campaign().id },
       {
