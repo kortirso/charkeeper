@@ -69,7 +69,7 @@ export const Conditions = (props) => {
             labelText={localize(TRANSLATION, locale()).selectedConditions}
             items={translate(providerConfig().conditions, locale())}
             selectedValues={selectedConditions()}
-            onSelect={(value) => updateMultiFeatureValue(value)}
+            onSelect={updateMultiFeatureValue}
           />
           <Show when={selectedConditions().length > 0}>
             <For each={selectedConditions()}>

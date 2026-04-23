@@ -26,5 +26,23 @@
     "perception": { "name": { "en": "Perception", "ru": "Внимательность" } },
     "persuation": { "name": { "en": "Persuation", "ru": "Убеждение" } },
     "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
+  },
+  "ancestries": {
+    "human": { "name": { "en": "Human", "ru": "Человек" } }
+  },
+  "cultures": {
+    "alethi": { "name": { "en": "Alethi", "ru": "Алети" } },
+    "azish": { "name": { "en": "Azish", "ru": "Азиш" } },
+    "herdazian": { "name": { "en": "Herdazian", "ru": "Гердазиец" } },
+    "iriali": { "name": { "en": "Iriali", "ru": "Ириали" } },
+    "kharbranthian": { "name": { "en": "Kharbranthian", "ru": "Харбрантиец" } },
+    "listener": { "name": { "en": "Listener", "ru": "Слушатель" } },
+    "natan": { "name": { "en": "Natan", "ru": "Натанец" } },
+    "reshi": { "name": { "en": "Reshi", "ru": "Реши" } },
+    "shin": { "name": { "en": "Shin", "ru": "Шинец" } },
+    "thaylen": { "name": { "en": "Thaylen", "ru": "Тайленец" } },
+    "unkalaki": { "name": { "en": "Unkalaki", "ru": "Ункалаки" } },
+    "veden": { "name": { "en": "Veden", "ru": "Веденец" } },
+    "wayfarer": { "name": { "en": "Wayfarer", "ru": "Скиталец" } }
   }
 }

@@ -9,13 +9,16 @@ module CharactersContext
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string, max_size?: 50)
+          required(:ancestry).filled(:string)
+          required(:cultures).filled(:array, max_size?: 2).each(:string)
+          optional(:skip_guide).filled(:bool)
         end
       end
 
       private
 
       def do_prepare(input)
-        input[:data] = build_fresh_character({})
+        input[:data] = build_fresh_character(input.slice(:ancestry, :cultures, :skip_guide).symbolize_keys)
       end
 
       def do_persist(input)
