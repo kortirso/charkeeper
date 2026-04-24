@@ -7,6 +7,7 @@ module CharactersContext
         cache: 'cache.avatars'
       ]
 
+      # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :cosmere_character
 
@@ -28,6 +29,8 @@ module CharactersContext
           optional(:guide_step).maybe(:integer)
           optional(:attribute_points).filled(:integer, gteq?: 0)
           optional(:skill_points).filled(:integer, gteq?: 0)
+          optional(:health).filled(:integer, gteq?: 0)
+          optional(:focus).filled(:integer, gteq?: 0)
         end
 
         rule(:abilities) do
@@ -37,6 +40,7 @@ module CharactersContext
           key.failure(:invalid_value)
         end
       end
+      # rubocop: enable Metrics/BlockLength
 
       private
 
