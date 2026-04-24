@@ -1,0 +1,104 @@
+[
+  {
+    "slug": "uniform",
+    "kind": "armor",
+    "name": {
+      "en": "Uniform",
+      "ru": "Униформа"
+    },
+    "data": {
+      "weight": 5,
+      "price": 40
+    },
+    "info": {
+      "deflect": 0,
+      "tooltips": ["presentable"],
+      "expert_tooltips": ["presentable"]
+    }
+  },
+  {
+    "slug": "leather",
+    "kind": "armor",
+    "name": {
+      "en": "Leather",
+      "ru": "Кожаный доспех"
+    },
+    "data": {
+      "weight": 10,
+      "price": 60
+    },
+    "info": {
+      "deflect": 1,
+      "tooltips": [],
+      "expert_tooltips": ["presentable"]
+    }
+  },
+  {
+    "slug": "chain",
+    "kind": "armor",
+    "name": {
+      "en": "Chain",
+      "ru": "Кольчуга"
+    },
+    "data": {
+      "weight": 25,
+      "price": 80
+    },
+    "info": {
+      "deflect": 2,
+      "tooltips": ["cumbersome-3"],
+      "expert_tooltips": []
+    }
+  },
+  {
+    "slug": "breastplate",
+    "kind": "armor",
+    "name": {
+      "en": "Breastplate",
+      "ru": "Кираса"
+    },
+    "data": {
+      "weight": 30,
+      "price": 120
+    },
+    "info": {
+      "deflect": 2,
+      "tooltips": ["cumbersome-3"],
+      "expert_tooltips": ["cumbersome-3", "presentable"]
+    }
+  },
+  {
+    "slug": "half_plate",
+    "kind": "armor",
+    "name": {
+      "en": "Half Plate",
+      "ru": "Полулаты"
+    },
+    "data": {
+      "weight": 40,
+      "price": 400
+    },
+    "info": {
+      "deflect": 3,
+      "tooltips": ["cumbersome-4"],
+      "expert_tooltips": ["cumbersome-3"]
+    }
+  },
+  {
+    "slug": "full_plate",
+    "kind": "armor",
+    "name": {
+      "en": "Full Plate",
+      "ru": "Латы"
+    },
+    "data": {
+      "weight": 55,
+      "price": 1600
+    },
+    "info": {
+      "deflect": 4,
+      "tooltips": ["cumbersome-5"],
+      "expert_tooltips": ["cumbersome-5"]
+    }
+  }
+]

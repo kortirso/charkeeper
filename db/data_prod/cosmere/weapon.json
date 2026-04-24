@@ -1,0 +1,223 @@
+[
+  {
+    "slug": "knife",
+    "kind": "weapon",
+    "name": {
+      "en": "Knife",
+      "ru": "Нож"
+    },
+    "data": {
+      "weight": 1,
+      "price": 8
+    },
+    "info": {
+      "weapon_skill": "light_weaponry",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "keen",
+      "tooltips": ["discreet"],
+      "expert_tooltips": ["discreet", "offhand", "thrown-20/60"]
+    }
+  },
+  {
+    "slug": "mace",
+    "kind": "weapon",
+    "name": {
+      "en": "Mace",
+      "ru": "Булава"
+    },
+    "data": {
+      "weight": 3,
+      "price": 20
+    },
+    "info": {
+      "weapon_skill": "light_weaponry",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "impact",
+      "tooltips": [],
+      "expert_tooltips": ["momentum"]
+    }
+  },
+  {
+    "slug": "shortspear",
+    "kind": "weapon",
+    "name": {
+      "en": "Shortspear",
+      "ru": "Короткое копьё"
+    },
+    "data": {
+      "weight": 3,
+      "price": 10
+    },
+    "info": {
+      "weapon_skill": "light_weaponry",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "keen",
+      "tooltips": ["two_handed"],
+      "expert_tooltips": []
+    }
+  },
+  {
+    "slug": "sidesword",
+    "kind": "weapon",
+    "name": {
+      "en": "Sidesword",
+      "ru": "Боковой меч"
+    },
+    "data": {
+      "weight": 2,
+      "price": 40
+    },
+    "info": {
+      "weapon_skill": "light_weaponry",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "keen",
+      "tooltips": ["quickdraw"],
+      "expert_tooltips": ["quickdraw", "offhand"]
+    }
+  },
+  {
+    "slug": "staff",
+    "kind": "weapon",
+    "name": {
+      "en": "Staff",
+      "ru": "Посох"
+    },
+    "data": {
+      "weight": 4,
+      "price": 1
+    },
+    "info": {
+      "weapon_skill": "light_weaponry",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "impact",
+      "tooltips": ["discreet", "two_handed"],
+      "expert_tooltips": ["discreet", "two_handed", "defensive"]
+    }
+  },
+  {
+    "slug": "shortbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Shortbow",
+      "ru": "Короткий лук"
+    },
+    "data": {
+      "weight": 2,
+      "price": 80
+    },
+    "info": {
+      "weapon_skill": "light_weaponry",
+      "type": "ranged",
+      "damage": "1d6",
+      "damage_type": "keen",
+      "tooltips": ["two_handed"],
+      "expert_tooltips": ["two_handed", "quickdraw"],
+      "dist": "80/320"
+    }
+  },
+  {
+    "slug": "axe",
+    "kind": "weapon",
+    "name": {
+      "en": "Axe",
+      "ru": "Топор"
+    },
+    "data": {
+      "weight": 2,
+      "price": 20
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "keen",
+      "tooltips": ["thrown-20/60"],
+      "expert_tooltips": ["thrown-20/60", "offhand"]
+    }
+  },
+  {
+    "slug": "hammer",
+    "kind": "weapon",
+    "name": {
+      "en": "Hammer",
+      "ru": "Молот"
+    },
+    "data": {
+      "weight": 8,
+      "price": 40
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "impact",
+      "tooltips": ["two_handed"],
+      "expert_tooltips": ["two_handed", "momentum"]
+    }
+  },
+  {
+    "slug": "longspear",
+    "kind": "weapon",
+    "name": {
+      "en": "Longspear",
+      "ru": "Длинное копьё"
+    },
+    "data": {
+      "weight": 9,
+      "price": 15
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "keen",
+      "tooltips": ["two_handed", "reach"],
+      "expert_tooltips": ["two_handed", "defensive", "reach"]
+    }
+  },
+  {
+    "slug": "longsword",
+    "kind": "weapon",
+    "name": {
+      "en": "Longsword",
+      "ru": "Длинный меч"
+    },
+    "data": {
+      "weight": 3,
+      "price": 60
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "keen",
+      "tooltips": ["two_handed", "quickdraw"],
+      "expert_tooltips": ["quickdraw"]
+    }
+  },
+  {
+    "slug": "shield",
+    "kind": "weapon",
+    "name": {
+      "en": "Shield",
+      "ru": "Щит"
+    },
+    "data": {
+      "weight": 2,
+      "price": 10
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "impact",
+      "tooltips": ["defensive"],
+      "expert_tooltips": ["defensive", "offhand"]
+    }
+  }
+]
