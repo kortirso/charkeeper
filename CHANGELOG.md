@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - selecting ancestry and cultures for Cosmere characters
 - rendering equipment for Cosmere characters
 - rest effects for Cosmere characters
+- rendering attacks for Cosmere characters
 
 ## [0.4.29] - 2026-04-21
 ### Added

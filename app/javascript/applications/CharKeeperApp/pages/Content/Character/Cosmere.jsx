@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { CosmereAbilities, CosmereSkills, CosmereDefenses, CosmereHealth, CosmereInfo, CosmereRest } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, createDiceRoll } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -31,6 +31,7 @@ export const Cosmere = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
+  const { DiceRoll, openDiceRoll, openAttackRoll } = createDiceRoll();
   const [locale] = useAppLocale();
 
   const weaponFilter = (item) => item.kind === 'weapon';
@@ -73,6 +74,14 @@ export const Cosmere = (props) => {
               <CosmereDefenses character={character()} />
               <div class="mt-4">
                 <CosmereHealth character={character()} />
+              </div>
+              <div class="mt-4">
+                <Combat
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  openAttackRoll={openAttackRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
@@ -141,6 +150,14 @@ export const Cosmere = (props) => {
               <div class="mt-4">
                 <CosmereHealth character={character()} />
               </div>
+              <div class="mt-4">
+                <Combat
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  openAttackRoll={openAttackRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
             </Match>
             <Match when={activeTab() === 'equipment'}>
               <Equipment
@@ -171,6 +188,7 @@ export const Cosmere = (props) => {
   return (
     <>
       <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+      <DiceRoll provider="cosmere" characterId={character().id} />
     </>
   );
 }

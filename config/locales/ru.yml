@@ -327,6 +327,41 @@ ru:
     commands: "Вы можете использовать различные команды бота как в этом чате, так и включать бота в свои группы и вызывать команды там.\n\nПолный список команд можно посмотреть на https://charkeeper.org/bot_commands"
     help: "Если хочешь как-то помочь в развитии приложения, то по любым вопросам можно обращаться по указанным контактам, или просто помочь донатом на оплату расходов через:\n\nБусти https://boosty.to/kortirso\nкриптой USDT (TRC20 | TRON) TT1T8m3ffwh9f8AVYqLkDB7miuJpAq1ji9"
   tags:
+    cosmere:
+      weapon:
+        cumbersome: Cumbersome
+        dangerous: Dangerous
+        deadly: Deadly
+        defensive: Defensive
+        discreet: Discreet
+        fragile: Fragile
+        indirect: Indirect
+        loaded: Loaded
+        momentum: Momentum
+        offhand: Offhand
+        pierce: Pierce
+        quickdraw: Quickdraw
+        thrown: Thrown
+        two_handed: Two-Handed
+        impact: Impact
+        keen: Keen
+        title:
+          cumbersome: Cumbersome
+          dangerous: Dangerous
+          deadly: Deadly
+          defensive: Defensive
+          discreet: Discreet
+          fragile: Fragile
+          indirect: Indirect
+          loaded: Loaded
+          momentum: Momentum
+          offhand: Offhand
+          pierce: Pierce
+          quickdraw: Quickdraw
+          thrown: Thrown
+          two_handed: Two-Handed
+          impact: Impact
+          keen: Keen
     pathfinder:
       general:
         acid: Кислота
