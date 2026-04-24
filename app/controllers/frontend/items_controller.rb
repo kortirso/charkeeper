@@ -37,6 +37,7 @@ module Frontend
       when 'daggerheart' then ::Item.daggerheart.order(kind: :asc)
       when 'dc20' then ::Item.dc20.order(kind: :asc)
       when 'fallout' then ::Item.fallout.order(kind: :asc)
+      when 'cosmere' then ::Item.cosmere
       else raise(ActiveRecord::RecordNotFound)
       end
     end

@@ -2,7 +2,27 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { CosmereAbilities, CosmereSkills, CosmereDefenses, CosmereHealth, CosmereInfo } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment } from '../../../components';
+import { useAppLocale } from '../../../context';
+import { localize } from '../../../helpers';
+
+const TRANSLATION = {
+  en: {
+    weapons: 'Weapons',
+    armor: 'Armor',
+    items: 'Items'
+  },
+  ru: {
+    weapons: 'Оружие',
+    armor: 'Доспехи',
+    items: 'Предметы'
+  },
+  es: {
+    weapons: 'Weapons',
+    armor: 'Armor',
+    items: 'Items'
+  }
+}
 
 export const Cosmere = (props) => {
   const size = createWindowSize();
@@ -11,8 +31,14 @@ export const Cosmere = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
+  const [locale] = useAppLocale();
+
+  const weaponFilter = (item) => item.kind === 'weapon';
+  const armorFilter = (item) => item.kind === 'armor';
+  const itemFilter = (item) => item.kind === 'item';
+
   const characterTabs = createMemo(() => {
-    return ['combat', 'notes', 'avatar'];
+    return ['combat', 'equipment', 'notes', 'avatar'];
   });
 
   const mobileView = createMemo(() => {
@@ -48,6 +74,17 @@ export const Cosmere = (props) => {
               <div class="mt-4">
                 <CosmereHealth character={character()} />
               </div>
+            </Match>
+            <Match when={activeMobileTab() === 'equipment'}>
+              <Equipment
+                character={character()}
+                itemFilters={[
+                  { title: localize(TRANSLATION, locale()).weapons, callback: weaponFilter },
+                  { title: localize(TRANSLATION, locale()).armor, callback: armorFilter },
+                  { title: localize(TRANSLATION, locale()).items, callback: itemFilter }
+                ]}
+                onReloadCharacter={props.onReloadCharacter}
+              />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -101,6 +138,17 @@ export const Cosmere = (props) => {
               <div class="mt-4">
                 <CosmereHealth character={character()} />
               </div>
+            </Match>
+            <Match when={activeTab() === 'equipment'}>
+              <Equipment
+                character={character()}
+                itemFilters={[
+                  { title: localize(TRANSLATION, locale()).weapons, callback: weaponFilter },
+                  { title: localize(TRANSLATION, locale()).armor, callback: armorFilter },
+                  { title: localize(TRANSLATION, locale()).items, callback: itemFilter }
+                ]}
+                onReloadCharacter={props.onReloadCharacter}
+              />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />

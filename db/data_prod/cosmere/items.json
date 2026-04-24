@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "rope",
+    "kind": "item",
+    "name": {
+      "en": "Rope (50 feet)",
+      "ru": "Верёвка (50 футов)"
+    },
+    "data": {
+      "weight": 5,
+      "price": 30
+    }
+  }
+]
