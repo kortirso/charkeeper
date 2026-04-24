@@ -327,6 +327,41 @@ en:
     commands: "You can use various bot commands both in this chat and include the bot in your groups and call commands there.\n\nA full list of commands can be found at https://charkeeper.org/bot_commands"
     help: "If you would like to help develop the app in any way, you can contact us with any questions using the contact information provided, or simply donate to cover expenses via:\n\nBoosty https://boosty.to/kortirso\ncrypto USDT (TRC20 | TRON) TT1T8m3ffwh9f8AVYqLkDB7miuJpAq1ji9"
   tags:
+    cosmere:
+      weapon:
+        cumbersome: Cumbersome
+        dangerous: Dangerous
+        deadly: Deadly
+        defensive: Defensive
+        discreet: Discreet
+        fragile: Fragile
+        indirect: Indirect
+        loaded: Loaded
+        momentum: Momentum
+        offhand: Offhand
+        pierce: Pierce
+        quickdraw: Quickdraw
+        thrown: Thrown
+        two_handed: Two-Handed
+        impact: Impact
+        keen: Keen
+        title:
+          cumbersome: Cumbersome
+          dangerous: Dangerous
+          deadly: Deadly
+          defensive: Defensive
+          discreet: Discreet
+          fragile: Fragile
+          indirect: Indirect
+          loaded: Loaded
+          momentum: Momentum
+          offhand: Offhand
+          pierce: Pierce
+          quickdraw: Quickdraw
+          thrown: Thrown
+          two_handed: Two-Handed
+          impact: Impact
+          keen: Keen
     pathfinder:
       general:
         acid: Acid

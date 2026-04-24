@@ -10,6 +10,7 @@ class CosmereDecorator < ApplicationDecoratorV2
     return self if simple
 
     calculate_secondary_abilities
+    find_attacks
 
     self
   end
@@ -36,6 +37,77 @@ class CosmereDecorator < ApplicationDecoratorV2
     @result['movement'] = find_movement
     @result['recovery_die'] = find_recovery_die
     @result['senses_range'] = find_senses_range
+  end
+
+  def find_attacks
+    @result['attacks'] =
+      ([unarmed_weapon] + weapons).flat_map do |item|
+        tooltips = parse_tooltips(item.dig(:items_info, 'tooltips'))
+        expert_tooltips = parse_tooltips(item.dig(:items_info, 'expert_tooltips'))
+
+        attack_values(item, tooltips, expert_tooltips)
+      end
+  end
+
+  def parse_tooltips(tooltips)
+    tooltips.to_h do |tooltip|
+      items = tooltip.split('-')
+      next items if items.size == 2
+
+      items.push(nil)
+      items
+    end
+  end
+
+  def unarmed_weapon
+    {
+      items_slug: 'unarmed',
+      items_name: { 'en' => 'Unarmed', 'ru' => 'Безоружная' },
+      items_info: {
+        'weapon_skill' => 'athletics',
+        'type' => 'melee',
+        'damage' => unarmed_damage,
+        'damage_type' => 'impact',
+        'tooltips' => %w[],
+        'expert_tooltips' => %w[momentum offhand]
+      }
+    }
+  end
+
+  def unarmed_damage
+    case abilities['str']
+    when 0, 1, 2 then '1'
+    when 3, 4 then '1d4'
+    when 5, 6 then '1d8'
+    when 7, 8 then '2d6'
+    else '2d10'
+    end
+  end
+
+  def attack_values(item, tooltips, expert_tooltips) # rubocop: disable Metrics/AbcSize
+    damage_type = item.dig(:items_info, 'damage_type')
+    skill = skills.find { |skill| skill[:slug] == item.dig(:items_info, 'weapon_skill') }
+    {
+      slug: item[:items_slug],
+      name: translate(item[:items_name]),
+      attack_bonus: skill[:modifier],
+      damage: item.dig(:items_info, 'damage'),
+      notes: item[:notes],
+      tags: { damage_type => I18n.t("tags.cosmere.weapon.title.#{damage_type}") }.merge(
+        tooltips.except('reach').to_h do |key, value|
+          [key, I18n.t("tags.cosmere.weapon.title.#{key}", value: value)]
+        end
+      ),
+      ready_to_use: item[:states] ? item.dig(:states, 'hands').positive? : true,
+      distance: distance(item, tooltips, expert_tooltips)
+    }.compact
+  end
+
+  def distance(item, tooltips, _expert_tooltips)
+    return item.dig(:items_info, 'dist') if item.dig(:items_info, 'type') == 'ranged'
+    return item.dig(:items_info, 'dist') if tooltips.key?('thrown')
+
+    tooltips.key?('reach') ? 10 : nil
   end
 
   def generate_skills_payload
@@ -110,5 +182,15 @@ class CosmereDecorator < ApplicationDecoratorV2
     when 5, 6 then 50
     when 7, 8 then 100
     end
+  end
+
+  def weapons
+    @character
+      .items
+      .joins(:item)
+      .where(items: { kind: 'weapon' })
+      .hashable_pluck(
+        'items.slug', 'items.name', 'items.kind', 'items.info', 'items.modifiers', :notes, :states, :modifiers, :name
+      )
   end
 end

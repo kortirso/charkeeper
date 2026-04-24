@@ -191,7 +191,7 @@ export const Combat = (props) => {
 
     if (provider === 'daggerheart') distance = [DH_SQUARE_DISTANCES[attack.range] * 5];
     if (provider === 'pathfinder2') distance = [distance];
-    if (provider === 'dnd5' || provider === 'dnd2024' || provider === 'dc20') distance = distance.toString().includes('/') ? distance.split('/').map((item) => parseInt(item)) : [distance];
+    if (provider === 'dnd5' || provider === 'dnd2024' || provider === 'dc20' || provider === 'cosmere') distance = distance.toString().includes('/') ? distance.split('/').map((item) => parseInt(item)) : [distance];
 
     const result = distance.map((item) => {
       if (settings()[provider] === 'imperial') return item;
