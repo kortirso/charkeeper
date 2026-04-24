@@ -156,7 +156,11 @@ Rails.application.routes.draw do
     end
 
     namespace :cosmere do
-      resources :characters, only: %i[create update]
+      resources :characters, only: %i[create update] do
+        scope module: :characters do
+          resources :rest, only: %i[create]
+        end
+      end
     end
 
     namespace :fallout do
