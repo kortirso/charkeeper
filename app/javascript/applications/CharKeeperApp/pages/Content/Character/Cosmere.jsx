@@ -73,7 +73,7 @@ export const Cosmere = (props) => {
             <Match when={activeMobileTab() === 'combat'}>
               <CosmereDefenses character={character()} />
               <div class="mt-4">
-                <CosmereHealth character={character()} />
+                <CosmereHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
                 <Combat
@@ -148,7 +148,7 @@ export const Cosmere = (props) => {
             <Match when={activeTab() === 'combat'}>
               <CosmereDefenses character={character()} />
               <div class="mt-4">
-                <CosmereHealth character={character()} />
+                <CosmereHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
                 <Combat
