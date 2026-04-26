@@ -31,6 +31,7 @@ module CharactersContext
           optional(:skill_points).filled(:integer, gteq?: 0)
           optional(:health).filled(:integer, gteq?: 0)
           optional(:focus).filled(:integer, gteq?: 0)
+          optional(:investiture).filled(:integer, gteq?: 0)
         end
 
         rule(:abilities) do
