@@ -38,7 +38,7 @@ export const Pathfinder2ArchetypeSpells = (props) => {
           activeTab() === null ? character().spent_spell_slots : (character().spent_archetype_spell_slots[activeTab()] || {})
         }
         preparedBy={activeTab()}
-        openDiceRoll={props.openDiceRoll}
+        openD20Test={props.openD20Test}
         onReplaceCharacter={props.onReplaceCharacter}
       />
     </>

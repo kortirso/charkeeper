@@ -413,7 +413,7 @@ export const Dnd2024Spells = (props) => {
                         width="36"
                         height="36"
                         text={modifier(character().spell_classes[activeSpellClass()].attack_bonus)}
-                        onClick={() => props.openDiceRoll('/check attack spell', character().spell_classes[activeSpellClass()].attack_bonus, localize(TRANSLATION, locale())['check'])}
+                        onClick={() => props.openD20Test('/check attack spell', localize(TRANSLATION, locale()).check, character().spell_classes[activeSpellClass()].attack_bonus)}
                       />
                   },
                   { title: localize(TRANSLATION, locale())['saveDC'], value: character().spell_classes[activeSpellClass()].save_dc }
@@ -476,8 +476,8 @@ export const Dnd2024Spells = (props) => {
               onEnableSpell={enableSpell}
               onDisableSpell={disableSpell}
               onUpdateCharacterSpell={updateCharacterSpell}
-              openDiceRoll={props.openDiceRoll}
-              openAttackRoll={props.openAttackRoll}
+              openD20Test={props.openD20Test}
+              openD20Attack={props.openD20Attack}
             />
             <For each={Array.from([...Array(character().available_spell_level).keys()], (x) => x + 1)}>
               {(level) =>
@@ -495,8 +495,8 @@ export const Dnd2024Spells = (props) => {
                   onSpendSpellSlot={spendSpellSlot}
                   onFreeSpellSlot={freeSpellSlot}
                   onUpdateCharacterSpell={updateCharacterSpell}
-                  openDiceRoll={props.openDiceRoll}
-                  openAttackRoll={props.openAttackRoll}
+                  openD20Test={props.openD20Test}
+                  openD20Attack={props.openD20Attack}
                 />
               }
             </For>

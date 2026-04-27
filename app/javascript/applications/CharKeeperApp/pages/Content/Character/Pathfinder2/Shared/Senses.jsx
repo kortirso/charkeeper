@@ -51,7 +51,7 @@ export const Pathfinder2SharedSenses = (props) => {
             width="36"
             height="36"
             text={modifier(props.perception)}
-            onClick={() => props.openDiceRoll('/check initiative empty', props.perception)}
+            onClick={() => props.openD20Test('/check initiative empty', localize(TRANSLATION, locale()).perception, props.perception)}
           />
       },
       { title: localize(TRANSLATION, locale()).speed, value: props.speed }

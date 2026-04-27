@@ -140,7 +140,7 @@ export const Dnd5Combat = (props) => {
                   width="36"
                   height="36"
                   text={modifier(character().initiative)}
-                  onClick={() => props.openDiceRoll('/check initiative empty', character().initiative, localize(TRANSLATION, locale())['check'])}
+                  onClick={() => props.openD20Test('/check initiative empty', localize(TRANSLATION, locale()).check, character().initiative)}
                 />
               
             },
@@ -236,22 +236,13 @@ export const Dnd5Combat = (props) => {
                   <tr>
                     <td>{damage}</td>
                     <td>
-                      <Checkbox
-                        checked={damageConditions().vulnerability.includes(slug)}
-                        onToggle={() => toggleDamageCondition('vulnerability', slug)}
-                      />
+                      <Checkbox checked={damageConditions().vulnerability.includes(slug)} onToggle={() => toggleDamageCondition('vulnerability', slug)} />
                     </td>
                     <td>
-                      <Checkbox
-                        checked={damageConditions().resistance.includes(slug)}
-                        onToggle={() => toggleDamageCondition('resistance', slug)}
-                      />
+                      <Checkbox checked={damageConditions().resistance.includes(slug)} onToggle={() => toggleDamageCondition('resistance', slug)} />
                     </td>
                     <td>
-                      <Checkbox
-                        checked={damageConditions().immunity.includes(slug)}
-                        onToggle={() => toggleDamageCondition('immunity', slug)}
-                      />
+                      <Checkbox checked={damageConditions().immunity.includes(slug)} onToggle={() => toggleDamageCondition('immunity', slug)} />
                     </td>
                   </tr>
                 }

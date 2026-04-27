@@ -225,6 +225,11 @@ es:
         level: "%{value} nivel"
     bot_context:
       representers:
+        cosmere:
+          light_complication: Complication +2
+          heavy_complication: Complication +4
+          opportunity: Opportunity
+          blank: Blank
         check:
           result: Resultado de tirada - %{result}
           dnd:

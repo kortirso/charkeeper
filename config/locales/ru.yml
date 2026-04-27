@@ -225,6 +225,11 @@ ru:
         level: "%{value} уровень"
     bot_context:
       representers:
+        cosmere:
+          light_complication: Осложнение +2
+          heavy_complication: Осложнение +4
+          opportunity: Возможность
+          blank: Пусто
         check:
           result: Результат броска - %{result}
           dnd:

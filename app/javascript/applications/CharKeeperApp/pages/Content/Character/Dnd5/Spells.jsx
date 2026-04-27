@@ -324,13 +324,13 @@ export const Dnd5Spells = (props) => {
               <StatsBlock
                 items={[
                   {
-                    title: localize(TRANSLATION, locale())['spellAttack'],
+                    title: localize(TRANSLATION, locale()).spellAttack,
                     value:
                       <Dice
                         width="36"
                         height="36"
                         text={modifier(character().spell_classes[activeSpellClass()].attack_bonus)}
-                        onClick={() => props.openDiceRoll('/check attack spell', character().spell_classes[activeSpellClass()].attack_bonus)}
+                        onClick={() => props.openD20Test('/check attack spell', localize(TRANSLATION, locale()).spellAttack, character().spell_classes[activeSpellClass()].attack_bonus)}
                       />
                   },
                   { title: localize(TRANSLATION, locale())['saveDC'], value: character().spell_classes[activeSpellClass()].save_dc }

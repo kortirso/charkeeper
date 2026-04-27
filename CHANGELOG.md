@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rest effects for Cosmere characters
 - rendering attacks for Cosmere characters
 - changing resources for Cosmere characters
+- Cosmere dice rolls
 
 ## [0.4.29] - 2026-04-21
 ### Added

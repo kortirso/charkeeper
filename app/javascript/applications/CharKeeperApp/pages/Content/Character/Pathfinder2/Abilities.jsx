@@ -138,7 +138,7 @@ export const Pathfinder2Abilities = (props) => {
                               height="64"
                               text={modifier(character().modified_abilities[slug])}
                               textClassList="text-4xl"
-                              onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_abilities[slug])}
+                              onClick={() => props.openD20Test(`/check attr ${slug}`, ability, character().modified_abilities[slug])}
                             />
                             <Show when={boosted(abilitiesData()[slug])}>
                               <div class="absolute -top-1 -right-3">

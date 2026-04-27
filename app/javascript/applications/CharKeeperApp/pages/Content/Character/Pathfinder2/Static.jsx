@@ -12,7 +12,7 @@ export const Pathfinder2Static = (props) => {
         speed={character().speed}
         classDc={character().class_dc}
         speeds={character().speeds}
-        openDiceRoll={props.openDiceRoll}
+        openD20Test={props.openD20Test}
       />
     </ErrorWrapper>
   );

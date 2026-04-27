@@ -174,7 +174,7 @@ export const DaggerheartDomainCards = (props) => {
             width="28"
             height="28"
             text={modifier(character().modified_traits[trait])}
-            onClick={() => props.openDiceRoll(`/check attack ${trait}`, character().modified_traits[trait])}
+            onClick={() => props.openDualityTest(`/check attack ${trait}`, null, character().modified_traits[trait])}
           />
         </p>
       }

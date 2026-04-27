@@ -7,7 +7,7 @@ import {
   Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses, Dnd2024Spells, Dnd5Info, Dnd2024Bonuses
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createRoll, Conditions, Combat, Gold
 } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
@@ -36,7 +36,7 @@ export const Dnd5 = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { DiceRoll, openDiceRoll, openAttackRoll } = createDiceRoll();
+  const { Roll, openD20Test, openD20Attack } = createRoll();
   const [appState] = useAppState();
   const [locale, dict] = useAppLocale();
 
@@ -122,7 +122,7 @@ export const Dnd5 = (props) => {
               <div class="mt-4">
                 <Dnd5Abilities
                   character={character()}
-                  openDiceRoll={openDiceRoll}
+                  openD20Test={openD20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -133,7 +133,7 @@ export const Dnd5 = (props) => {
               <div class="mt-4">
                 <Dnd5Skills
                   character={character()}
-                  openDiceRoll={openDiceRoll}
+                  openD20Test={openD20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                   onNextGuideStepClick={() => setActiveMobileTab('equipment')}
@@ -159,7 +159,7 @@ export const Dnd5 = (props) => {
             <Match when={activeMobileTab() === 'combat'}>
               <Dnd5Combat
                 character={character()}
-                openDiceRoll={openDiceRoll}
+                openD20Test={openD20Test}
                 onReloadCharacter={updateCharacter}
                 onRefreshCharacter={refreshCharacter}
                 onReplaceCharacter={props.onReplaceCharacter}
@@ -168,8 +168,8 @@ export const Dnd5 = (props) => {
                 <Show when={character().beastform === null} fallback={<BeastFeatures character={character()} />}>
                   <Combat
                     character={character()}
-                    openDiceRoll={openDiceRoll}
-                    openAttackRoll={openAttackRoll}
+                    openD20Test={openD20Test}
+                    openD20Attack={openD20Attack}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 </Show>
@@ -217,13 +217,13 @@ export const Dnd5 = (props) => {
                 fallback={
                   <Dnd2024Spells
                     character={character()}
-                    openDiceRoll={openDiceRoll}
-                    openAttackRoll={openAttackRoll}
+                    openD20Test={openD20Test}
+                    openD20Attack={openD20Attack}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 }
               >
-                <Dnd5Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+                <Dnd5Spells character={character()} openD20Test={openD20Test} onReplaceCharacter={props.onReplaceCharacter} />
               </Show>
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
@@ -269,7 +269,7 @@ export const Dnd5 = (props) => {
         <div class="mt-4">
           <Dnd5Abilities
             character={character()}
-            openDiceRoll={openDiceRoll}
+            openD20Test={openD20Test}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
           />
@@ -280,7 +280,7 @@ export const Dnd5 = (props) => {
         <div class="mt-4">
           <Dnd5Skills
             character={character()}
-            openDiceRoll={openDiceRoll}
+            openD20Test={openD20Test}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
             onNextGuideStepClick={() => setActiveTab('equipment')}
@@ -315,7 +315,7 @@ export const Dnd5 = (props) => {
             <Match when={activeTab() === 'combat'}>
               <Dnd5Combat
                 character={character()}
-                openDiceRoll={openDiceRoll}
+                openD20Test={openD20Test}
                 onReloadCharacter={updateCharacter}
                 onRefreshCharacter={refreshCharacter}
                 onReplaceCharacter={props.onReplaceCharacter}
@@ -324,8 +324,8 @@ export const Dnd5 = (props) => {
                 <Show when={character().beastform === null} fallback={<BeastFeatures character={character()} />}>
                   <Combat
                     character={character()}
-                    openDiceRoll={openDiceRoll}
-                    openAttackRoll={openAttackRoll}
+                    openD20Test={openD20Test}
+                    openD20Attack={openD20Attack}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 </Show>
@@ -373,13 +373,13 @@ export const Dnd5 = (props) => {
                 fallback={
                   <Dnd2024Spells
                     character={character()}
-                    openDiceRoll={openDiceRoll}
-                    openAttackRoll={openAttackRoll}
+                    openD20Test={openD20Test}
+                    openD20Attack={openD20Attack}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 }
               >
-                <Dnd5Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+                <Dnd5Spells character={character()} openD20Test={openD20Test} onReplaceCharacter={props.onReplaceCharacter} />
               </Show>
             </Match>
             <Match when={activeTab() === 'notes'}>
@@ -427,7 +427,7 @@ export const Dnd5 = (props) => {
   return (
     <>
       <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
-      <DiceRoll provider="dnd" characterId={character().id} />
+      <Roll provider="dnd" characterId={character().id} />
     </>
   );
 }

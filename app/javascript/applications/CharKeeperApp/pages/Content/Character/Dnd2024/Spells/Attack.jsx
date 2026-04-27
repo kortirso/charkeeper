@@ -22,9 +22,9 @@ export const SpellAttack = (props) => {
         dices.push(`D${parsedItem[1]}`)
       }
 
-      props.openAttackRoll(`/check attack "${props.title}"`, props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus, props.title, dices, 0);
+      props.openD20Attack(`/check attack "${props.title}"`, props.title, props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus, dices, 0);
     } else {
-      props.openDiceRoll(`/check attack "${props.title}"`, props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus, props.title);
+      props.openD20Test(`/check attack "${props.title}"`, props.title, props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus);
     }
   }
 
@@ -44,7 +44,7 @@ export const SpellAttack = (props) => {
               text={
                 modifier(props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus)
               }
-              onClick={(event) => rollAttack(event)}
+              onClick={rollAttack}
             />
           </div>
         </Show>

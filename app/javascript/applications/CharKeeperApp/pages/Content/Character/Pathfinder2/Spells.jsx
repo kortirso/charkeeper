@@ -392,7 +392,7 @@ export const Pathfinder2Spells = (props) => {
                         width="36"
                         height="36"
                         text={modifier(props.spellsInfo.spell_attack)}
-                        onClick={() => props.openDiceRoll('/check attack spell', props.spellsInfo.spell_attack, localize(TRANSLATION, locale()).check)}
+                        onClick={() => props.openD20Test('/check attack spell', localize(TRANSLATION, locale()).check, props.spellsInfo.spell_attack)}
                       />
                   },
                   { title: localize(TRANSLATION, locale()).saveDC, value: props.spellsInfo.spell_dc },
@@ -591,7 +591,7 @@ export const Pathfinder2Spells = (props) => {
                             spellAttack={characterSpell.spell_attack}
                             spellDc={characterSpell.spell_dc}
                             limit={characterSpell.limit}
-                            onOpenDiceRoll={props.openDiceRoll}
+                            openD20Test={props.openD20Test}
                             cantripLevel={Math.round(character().level / 2)}
                           />
                         }

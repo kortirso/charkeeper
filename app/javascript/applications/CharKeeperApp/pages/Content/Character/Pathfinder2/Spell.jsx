@@ -52,7 +52,7 @@ export const Pathfinder2Spell = (props) => {
   const onInnateDiceRoll = (e) => {
     e.stopPropagation();
 
-    props.onOpenDiceRoll('/check attack spell', props.spellAttack, localize(TRANSLATION, locale()).check)
+    props.openD20Test('/check attack spell', localize(TRANSLATION, locale()).check, props.spellAttack)
   }
 
   const renderEnhancementTitle = (enhancement) => {

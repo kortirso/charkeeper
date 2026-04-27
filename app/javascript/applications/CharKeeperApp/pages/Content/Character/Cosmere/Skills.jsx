@@ -1,7 +1,7 @@
 import { createEffect, createSignal, createMemo, For, Show, batch } from 'solid-js';
 import { Key } from '@solid-primitives/keyed';
 
-import { ErrorWrapper, Levelbox, Input, EditWrapper, Button, Select } from '../../../../components';
+import { ErrorWrapper, Levelbox, Input, EditWrapper, Button, Select, Dice } from '../../../../components';
 import config from '../../../../data/cosmere.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
@@ -150,7 +150,12 @@ export const CosmereSkills = (props) => {
                           <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>
                             {config.skills[skill.slug] ? localize(config.skills[skill.slug].name, locale()) : character().additional_skills[skill.slug].name}
                           </p>
-                          <p>{modifier(skill.modifier)}</p>
+                          <Dice
+                            width="28"
+                            height="28"
+                            text={modifier(skill.modifier)}
+                            onClick={() => props.openCosmereTest(`/check skill "${skill.slug}"`, null, skill.modifier)}
+                          />
                         </div>
                       }
                     </For>

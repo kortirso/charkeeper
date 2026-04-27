@@ -8,7 +8,7 @@ import {
   DaggerheartStances, DaggerheartBonuses, DaggerheartCraft, DaggerheartScars, DaggerheartInfo, DaggerheartLootTable
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createRoll, Conditions, Combat, Gold
 } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
@@ -38,7 +38,7 @@ export const Daggerheart = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('traits');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { DiceRoll, openDiceRoll, openAttackRoll } = createDiceRoll();
+  const { Roll, openDualityTest, openDualityAttack } = createRoll();
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -117,7 +117,7 @@ export const Daggerheart = (props) => {
               <div class="mt-4">
                 <DaggerheartTraits
                   character={character()}
-                  openDiceRoll={openDiceRoll}
+                  openDualityTest={openDualityTest}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -152,8 +152,8 @@ export const Daggerheart = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
-                  openDiceRoll={openDiceRoll}
-                  openAttackRoll={openAttackRoll}
+                  openD20Test={openDualityTest}
+                  openD20Attack={openDualityAttack}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
@@ -211,7 +211,7 @@ export const Daggerheart = (props) => {
                 guideStep={4}
                 helpMessage={localize(TRANSLATION, locale())['domainHelpMessage']}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
-                openDiceRoll={openDiceRoll}
+                openDualityTest={openDualityTest}
               />
             </Match>
             <Match when={activeMobileTab() === 'states'}>
@@ -267,7 +267,7 @@ export const Daggerheart = (props) => {
         <div class="mt-4">
           <DaggerheartTraits
             character={character()}
-            openDiceRoll={openDiceRoll}
+            openDualityTest={openDualityTest}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
           />
@@ -319,8 +319,8 @@ export const Daggerheart = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
-                  openDiceRoll={openDiceRoll}
-                  openAttackRoll={openAttackRoll}
+                  openD20Test={openDualityTest}
+                  openD20Attack={openDualityAttack}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
@@ -378,7 +378,7 @@ export const Daggerheart = (props) => {
                 guideStep={4}
                 helpMessage={localize(TRANSLATION, locale())['domainHelpMessage']}
                 onNextGuideStepClick={() => setActiveTab('classLevels')}
-                openDiceRoll={openDiceRoll}
+                openDualityTest={openDualityTest}
               />
             </Match>
             <Match when={activeTab() === 'states'}>
@@ -428,7 +428,7 @@ export const Daggerheart = (props) => {
   return (
     <>
       <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
-      <DiceRoll provider="daggerheart" characterId={character().id} advantageDice={character().advantage_dice} />
+      <Roll provider="daggerheart" characterId={character().id} advantageDice={character().advantage_dice} />
     </>
   );
 }

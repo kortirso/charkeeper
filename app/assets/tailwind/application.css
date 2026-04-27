@@ -985,3 +985,35 @@ body.web {
 .companion-ability-dice {
   @apply text-2xl font-normal!;
 }
+
+.dice-portal {
+  @apply fixed bottom-0 right-0 pb-8 px-6 sm:pb-4 sm:pr-6 z-40 flex items-center justify-end sm:justify-center; 
+}
+
+.dice-tests-box {
+  @apply flex-1 flex justify-end items-end; 
+}
+
+.dice-test {
+  @apply w-full sm:w-xs relative p-4 flex flex-col gap-4;
+}
+
+.dice-list {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+.total-advantage {
+  @apply mb-1 py-1 px-2 text-center border border-dusty rounded dark:border-snow dark:text-snow;
+}
+
+.dice-opens {
+  @aplly flex flex-col;
+}
+
+.dice-opens-list {
+  @apply p-2 flex justify-between flex-col gap-2 ml-4 mt-2;
+}
+
+.roll-results {
+  @apply flex flex-1 items-center justify-end dark:text-snow;
+}

@@ -170,7 +170,7 @@ export const Pathfinder2Skills = (props) => {
                             width="28"
                             height="28"
                             text={modifier(skill.total_modifier)}
-                            onClick={() => props.openDiceRoll(`/check skill "${skill.slug}"`, skill.total_modifier)}
+                            onClick={() => props.openD20Test(`/check skill "${skill.slug}"`, null, skill.total_modifier)}
                           />
                         </div>
                       }

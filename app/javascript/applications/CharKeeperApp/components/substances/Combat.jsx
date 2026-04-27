@@ -172,9 +172,9 @@ export const Combat = (props) => {
     }, []);
 
     if (dices.length > 0) {
-      props.openAttackRoll(`/check attack "${attack.name}"`, attackBonus, attack.name, dices, attack.damage_bonus);
+      props.openD20Attack(`/check attack "${attack.name}"`, attack.name, attackBonus, dices, attack.damage_bonus);
     } else {
-      props.openDiceRoll(`/check attack "${attack.name}"`, attackBonus, attack.name);
+      props.openD20Test(`/check attack "${attack.name}"`, attack.name, attackBonus);
     }
   }
 
