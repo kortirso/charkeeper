@@ -296,7 +296,7 @@ export const Dc20Spells = (props) => {
                       width="36"
                       height="36"
                       text={modifier(character().attack)}
-                      onClick={() => props.openDiceRoll('/check attack spell', character().attack)}
+                      onClick={() => props.openD20Test('/check attack spell', null, character().attack, 10)}
                     />
                 }
               ]}

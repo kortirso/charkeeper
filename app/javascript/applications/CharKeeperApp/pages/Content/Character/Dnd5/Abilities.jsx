@@ -89,22 +89,22 @@ export const Dnd5Abilities = (props) => {
       <GuideWrapper
         character={character()}
         guideStep={1}
-        helpMessage={localize(TRANSLATION, locale())['helpMessage']}
+        helpMessage={localize(TRANSLATION, locale()).helpMessage}
         onReloadCharacter={props.onReloadCharacter}
       >
         <Show when={character().ability_boosts && character().ability_boosts.length > 0}>
           <div class="warning">
-            <p class="text-sm">{localize(TRANSLATION, locale())['abilityBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().ability_boosts.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
+            <p class="text-sm">{localize(TRANSLATION, locale()).abilityBoosts} {Object.entries(config.abilities).filter(([slug]) => character().ability_boosts.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
           </div>
         </Show>
         <Show when={character().leveling_ability_boosts > 0}>
           <div class="warning">
-            <p class="text-sm">{localize(TRANSLATION, locale())['levelingAbilityBoosts']}, {character().leveling_ability_boosts}</p>
+            <p class="text-sm">{localize(TRANSLATION, locale()).levelingAbilityBoosts}, {character().leveling_ability_boosts}</p>
             <Show
               when={character().leveling_ability_boosts_list.length > 0}
-              fallback={<p class="text-sm">{localize(TRANSLATION, locale())['anySplitBoosts']}</p>}
+              fallback={<p class="text-sm">{localize(TRANSLATION, locale()).anySplitBoosts}</p>}
             >
-              <p class="text-sm">{localize(TRANSLATION, locale())['splitBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().leveling_ability_boosts_list.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
+              <p class="text-sm">{localize(TRANSLATION, locale()).splitBoosts} {Object.entries(config.abilities).filter(([slug]) => character().leveling_ability_boosts_list.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
             </Show>
           </div>
         </Show>
@@ -129,12 +129,12 @@ export const Dnd5Abilities = (props) => {
                               height="64"
                               text={modifier(character().modifiers[slug])}
                               textClassList="text-4xl"
-                              onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modifiers[slug], `${localize(TRANSLATION, locale()).check}, ${localize(values.name, locale())}`)}
+                              onClick={() => props.openD20Test(`/check attr ${slug}`, `${localize(TRANSLATION, locale()).check}, ${localize(values.name, locale())}`, character().modifiers[slug])}
                             />
                             <div class="dc20-ability-savebox">
                               <Dice
                                 text={modifier(character().save_dc[slug])}
-                                onClick={() => props.openDiceRoll(`/check save ${slug}`, character().save_dc[slug], `${localize(TRANSLATION, locale()).saveCheck}, ${localize(values.name, locale())}`)}
+                                onClick={() => props.openD20Test(`/check save ${slug}`, `${localize(TRANSLATION, locale()).saveCheck}, ${localize(values.name, locale())}`, character().save_dc[slug])}
                               />
                               <p class="text-xs text-center">{localize(TRANSLATION, locale()).save}</p>
                             </div>

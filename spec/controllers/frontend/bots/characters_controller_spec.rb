@@ -115,6 +115,30 @@ describe Frontend::Bots::CharactersController do
           end
         end
 
+        context 'for /plotRoll' do
+          context 'for invalid command' do
+            let(:values) { ['/plotROll 1'] }
+
+            it 'returns errors messages', :aggregate_failures do
+              request
+
+              expect(response.parsed_body.dig(:result, 0, :errors)).to eq(['Invalid command'])
+              expect(response).to have_http_status :ok
+            end
+          end
+
+          context 'for valid params' do
+            let(:values) { ['/plotRoll 2'] }
+
+            it 'returns result', :aggregate_failures do
+              request
+
+              expect(response.parsed_body[:errors]).to be_nil
+              expect(response).to have_http_status :ok
+            end
+          end
+        end
+
         context 'for dnd checks' do
           %w[save attr skill attack initiative].each do |attr|
             let(:values) { ["/check #{attr} athletics --bonus 1"] }

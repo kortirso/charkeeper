@@ -63,7 +63,7 @@ export const Pathfinder2SavingThrows = (props) => {
                       <p class="text-2xl font-normal!">
                         <Dice
                           text={modifier(character().saving_throws_value[slug])}
-                          onClick={() => props.openDiceRoll(`/check save ${slug}`, character().saving_throws_value[slug])}
+                          onClick={() => props.openD20Test(`/check save ${slug}`, localize(savingName.name, locale()), character().saving_throws_value[slug])}
                         />
                       </p>
                     }

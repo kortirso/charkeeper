@@ -37,7 +37,7 @@ export * from './substances/SharedBonusesV2';
 export * from './substances/Equipment';
 export * from './substances/ItemContent';
 export * from './substances/Feats';
-export * from './substances/DiceRoll';
+export * from './substances/Roll';
 export * from './substances/Conditions';
 export * from './substances/Combat';
 export * from './substances/Gold';

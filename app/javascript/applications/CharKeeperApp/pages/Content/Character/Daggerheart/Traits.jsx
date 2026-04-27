@@ -104,7 +104,7 @@ export const DaggerheartTraits = (props) => {
                             height="64"
                             text={modifier(character().modified_traits[slug])}
                             textClassList="text-4xl"
-                            onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_traits[slug], `${localize(TRANSLATION, locale()).check}, ${trait}`)}
+                            onClick={() => props.openDualityTest(`/check attr ${slug}`, `${localize(TRANSLATION, locale()).check}, ${trait}`, character().modified_traits[slug])}
                           />
                         }
                       </p>

@@ -46,7 +46,7 @@ import {
   Pathfinder2Damages
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll, Combat, Feats
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createRoll, Combat, Feats
 } from '../../../components';
 import config from '../../../data/pathfinder2.json';
 import { useAppLocale } from '../../../context';
@@ -59,7 +59,7 @@ export const Pathfinder2 = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { DiceRoll, openDiceRoll, openAttackRoll } = createDiceRoll();
+  const { Roll, openD20Test, openD20Attack } = createRoll();
   const [locale] = useAppLocale();
 
   const simpleMFilter = (item) => item.kind === 'weapon' && item.info.type === 'melee' && item.info.weapon_skill === 'simple';
@@ -122,21 +122,21 @@ export const Pathfinder2 = (props) => {
               <div class="mt-4">
                 <Pathfinder2Abilities
                   character={character()}
-                  openDiceRoll={openDiceRoll}
+                  openD20Test={openD20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
               <div class="mt-4">
                 <Pathfinder2SavingThrows
                   character={character()}
-                  openDiceRoll={openDiceRoll}
+                  openD20Test={openD20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
               <div class="mt-4">
                 <Pathfinder2Skills
                   character={character()}
-                  openDiceRoll={openDiceRoll}
+                  openD20Test={openD20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
@@ -145,7 +145,7 @@ export const Pathfinder2 = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
-              <Pathfinder2Static character={character()} openDiceRoll={openDiceRoll} />
+              <Pathfinder2Static character={character()} openD20Test={openD20Test} />
               <div class="mt-4">
                 <Pathfinder2Health character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
@@ -155,8 +155,8 @@ export const Pathfinder2 = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
-                  openDiceRoll={openDiceRoll}
-                  openAttackRoll={openAttackRoll}
+                  openD20Test={openD20Test}
+                  openD20Attack={openD20Attack}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
@@ -174,7 +174,7 @@ export const Pathfinder2 = (props) => {
             <Match when={activeMobileTab() === 'spells'}>
               <Pathfinder2ArchetypeSpells
                 character={character()}
-                openDiceRoll={openDiceRoll}
+                openD20Test={openD20Test}
                 onReplaceCharacter={props.onReplaceCharacter}
               />
             </Match>
@@ -213,7 +213,8 @@ export const Pathfinder2 = (props) => {
                 type="animal"
                 character={character()}
                 onReloadCharacter={props.onReloadCharacter}
-                openDiceRoll={openDiceRoll}
+                openD20Test={openD20Test}
+                openD20Attack={openD20Attack}
               />
             </Match>
             <Match when={activeMobileTab() === 'companion'}>
@@ -221,7 +222,7 @@ export const Pathfinder2 = (props) => {
                 type="pet"
                 character={character()}
                 onReloadCharacter={props.onReloadCharacter}
-                openDiceRoll={openDiceRoll}
+                openD20Test={openD20Test}
               />
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
@@ -254,21 +255,21 @@ export const Pathfinder2 = (props) => {
         <div class="mt-4">
           <Pathfinder2Abilities
             character={character()}
-            openDiceRoll={openDiceRoll}
+            openD20Test={openD20Test}
             onReplaceCharacter={props.onReplaceCharacter}
           />
         </div>
         <div class="mt-4">
           <Pathfinder2SavingThrows
             character={character()}
-            openDiceRoll={openDiceRoll}
+            openD20Test={openD20Test}
             onReplaceCharacter={props.onReplaceCharacter}
           />
         </div>
         <div class="mt-4">
           <Pathfinder2Skills
             character={character()}
-            openDiceRoll={openDiceRoll}
+            openD20Test={openD20Test}
             onReplaceCharacter={props.onReplaceCharacter}
           />
         </div>
@@ -292,7 +293,7 @@ export const Pathfinder2 = (props) => {
         <div class="p-2 pb-16 flex-1">
           <Switch>
             <Match when={activeTab() === 'combat'}>
-              <Pathfinder2Static character={character()} openDiceRoll={openDiceRoll} />
+              <Pathfinder2Static character={character()} openD20Test={openD20Test} />
               <div class="mt-4">
                 <Pathfinder2Health character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
@@ -302,8 +303,8 @@ export const Pathfinder2 = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
-                  openDiceRoll={openDiceRoll}
-                  openAttackRoll={openAttackRoll}
+                  openD20Test={openD20Test}
+                  openD20Attack={openD20Attack}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
@@ -321,7 +322,7 @@ export const Pathfinder2 = (props) => {
             <Match when={activeTab() === 'spells'}>
               <Pathfinder2ArchetypeSpells
                 character={character()}
-                openDiceRoll={openDiceRoll}
+                openD20Test={openD20Test}
                 onReplaceCharacter={props.onReplaceCharacter}
               />
             </Match>
@@ -360,7 +361,8 @@ export const Pathfinder2 = (props) => {
                 type="animal"
                 character={character()}
                 onReloadCharacter={props.onReloadCharacter}
-                openDiceRoll={openDiceRoll}
+                openD20Test={openD20Test}
+                openD20Attack={openD20Attack}
               />
             </Match>
             <Match when={activeTab() === 'companion'}>
@@ -368,7 +370,7 @@ export const Pathfinder2 = (props) => {
                 type="pet"
                 character={character()}
                 onReloadCharacter={props.onReloadCharacter}
-                openDiceRoll={openDiceRoll}
+                openD20Test={openD20Test}
               />
             </Match>
             <Match when={activeTab() === 'rest'}>
@@ -395,7 +397,7 @@ export const Pathfinder2 = (props) => {
   return (
     <>
       <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
-      <DiceRoll provider="dnd" characterId={character().id} />
+      <Roll provider="pathfinder" characterId={character().id} />
     </>
   );
 }

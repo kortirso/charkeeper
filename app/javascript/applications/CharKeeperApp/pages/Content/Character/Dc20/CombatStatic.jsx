@@ -70,7 +70,7 @@ export const Dc20CombatStatic = (props) => {
                       <p class="dc20-stat-value">
                         <Dice
                           text={modifier(item.value)}
-                          onClick={() => props.openDiceRoll(`/check ${item.label} self`, item.value)}
+                          onClick={() => props.openD20Test(`/check ${item.label} self`, localize(TRANSLATION, locale())[item.label], item.value, 10)}
                         />
                       </p>
                     </div>

@@ -92,6 +92,7 @@ class CosmereDecorator < ApplicationDecoratorV2
       name: translate(item[:items_name]),
       attack_bonus: skill[:modifier],
       damage: item.dig(:items_info, 'damage'),
+      damage_bonus: 0,
       notes: item[:notes],
       tags: { damage_type => I18n.t("tags.cosmere.weapon.title.#{damage_type}") }.merge(
         tooltips.except('reach').to_h do |key, value|

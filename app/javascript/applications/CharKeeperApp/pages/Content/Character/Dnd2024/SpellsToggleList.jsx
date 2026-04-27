@@ -188,8 +188,8 @@ export const SpellsToggleList = (props) => {
                       effects={characterSpell.spell.effects}
                       character={props.character}
                       activeSpellClass={props.activeSpellClass || characterSpell.prepared_by}
-                      openDiceRoll={props.openDiceRoll}
-                      openAttackRoll={props.openAttackRoll}
+                      openD20Test={props.openD20Test}
+                      openD20Attack={props.openD20Attack}
                       alterHit={characterSpell.spell.data?.attack_bonus}
                       alterDc={characterSpell.spell.data?.save_dc}
                     />

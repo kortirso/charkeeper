@@ -304,6 +304,7 @@ module Charkeeper
     register('services.bot_context_v2.commands.rolls.default') { BotContextV2::Commands::Rolls::Default.new }
     register('services.bot_context_v2.commands.rolls.duality') { BotContextV2::Commands::Rolls::Duality.new }
     register('services.bot_context_v2.commands.rolls.fate') { BotContextV2::Commands::Rolls::Fate.new }
+    register('services.bot_context_v2.commands.rolls.cosmere') { BotContextV2::Commands::Rolls::Cosmere.new }
   end
 end
 

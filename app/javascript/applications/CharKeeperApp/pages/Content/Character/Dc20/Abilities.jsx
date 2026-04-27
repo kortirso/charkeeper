@@ -121,12 +121,12 @@ export const Dc20Abilities = (props) => {
                               height="64"
                               text={modifier(character().modified_abilities[slug])}
                               textClassList="text-4xl"
-                              onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_abilities[slug])}
+                              onClick={() => props.openD20Test(`/check attr ${slug}`, ability, character().modified_abilities[slug], 10)}
                             />
                             <div class="dc20-ability-savebox">
                               <Dice
                                 text={modifier(character().attribute_saves[slug])}
-                                onClick={() => props.openDiceRoll(`/check save ${slug}`, character().attribute_saves[slug])}
+                                onClick={() => props.openD20Test(`/check save ${slug}`, null, character().attribute_saves[slug], 10)}
                               />
                               <p class="text-xs text-center">{localize(TRANSLATION, locale()).save}</p>
                             </div>

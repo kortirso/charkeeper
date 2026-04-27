@@ -283,6 +283,20 @@ export const Pathfinder2Companion = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const openAttackRoll = (attack) => {
+    const dices = attack.damage.toString().split('+').reduce((acc, item) => {
+      if (!item.includes('d')) return acc;
+
+      const parsedItem = item.split('d');
+      for (var i = 0; i < parsedItem[0]; i++) {
+        acc.push(`D${parsedItem[1]}`)
+      }
+      return acc;
+    }, []);
+    console.log(dices)
+    props.openD20Attack(`/check attack "${attack.name}"`, attack.name, attack.attack_bonus, dices, attack.damage_bonus)
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Companion' }}>
       <GuideWrapper character={character()}>
@@ -369,7 +383,7 @@ export const Pathfinder2Companion = (props) => {
             perception={companion().perception}
             speed={companion().speed}
             speeds={companion().speeds}
-            openDiceRoll={props.openDiceRoll}
+            openD20Test={props.openD20Test}
           />
           <Pathfinder2SharedHealth
             currentHealth={companion().health}
@@ -389,7 +403,12 @@ export const Pathfinder2Companion = (props) => {
                         <p class="weapon-item-name">{attack.name}</p>
                         <div class="weapon-item-stats">
                           <div class="weapon-damage">
-                            <Dice width="28" height="28" text={modifier(attack.attack_bonus)} onClick={() => props.openDiceRoll(`/check attack "${attack.name}"`, attack.attack_bonus)} />
+                            <Dice
+                              width="28"
+                              height="28"
+                              text={modifier(attack.attack_bonus)}
+                              onClick={() => openAttackRoll(attack)}
+                            />
                           </div>
                           <p>{attack.damage}{attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}</p>
                         </div>
@@ -419,7 +438,7 @@ export const Pathfinder2Companion = (props) => {
                       <p class="companion-ability-dice">
                         <Dice
                           text={modifier(companion().abilities[slug])}
-                          onClick={() => props.openDiceRoll(`/check attr ${slug}`, companion().abilities[slug])}
+                          onClick={() => props.openD20Test(`/check attr ${slug}`, ability, companion().abilities[slug])}
                         />
                       </p>
                     </div>
@@ -436,7 +455,7 @@ export const Pathfinder2Companion = (props) => {
                   <p class="companion-ability-dice">
                     <Dice
                       text={modifier(companion().saving_throws_value[slug])}
-                      onClick={() => props.openDiceRoll(`/check save ${slug}`, companion().saving_throws_value[slug])}
+                      onClick={() => props.openD20Test(`/check save ${slug}`, localize(savingName.name, locale()), companion().saving_throws_value[slug])}
                     />
                   </p>
                 </div>
@@ -458,7 +477,7 @@ export const Pathfinder2Companion = (props) => {
                           width="28"
                           height="28"
                           text={modifier(skill.modifier)}
-                          onClick={() => props.openDiceRoll(`/check skill "${skill.slug}"`, skill.modifier)}
+                          onClick={() => props.openD20Test(`/check skill "${skill.slug}"`, localize(config.skills[skill.slug].name, locale()), skill.modifier)}
                         />
                       </div>
                     }
