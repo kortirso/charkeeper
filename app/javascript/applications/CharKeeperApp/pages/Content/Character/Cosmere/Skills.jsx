@@ -29,7 +29,7 @@ const TRANSLATION = {
 export const CosmereSkills = (props) => {
   const character = () => props.character;
 
-  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
+  const [lastTimestamp, setLastTimestamp] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
   const [skillsData, setSkillsData] = createSignal(character().skills);
   const [loresData, setLoresData] = createSignal(character().additional_skills);
@@ -43,18 +43,16 @@ export const CosmereSkills = (props) => {
   const [locale] = useAppLocale();
 
   createEffect(() => {
-    if (lastActiveCharacterId() === character().id && character().guide_step !== 1) {
-      setEditMode(character().guide_step === 2);
-      return;
-    }
+    if (lastTimestamp() === character().updated_at) return;
 
     batch(() => {
       setSkillsData(character().skills);
       setSkillPoints(character().skill_points)
       setLoresData(character().additional_skills);
       setEditMode(character().guide_step === 2);
-      setLastActiveCharacterId(character().id);
     });
+
+    setLastTimestamp(character().updated_at);
   });
 
   const maxSkillLevel = createMemo(() => Math.min(5, character().tier + 1));

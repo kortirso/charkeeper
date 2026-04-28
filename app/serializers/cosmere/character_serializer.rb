@@ -7,13 +7,13 @@ module Cosmere
     attributes :provider, :id, :name, :created_at, :avatar, :skills, :defense, :health_max, :focus_max, :investiture_max, :load,
                :movement, :recovery_die, :senses_range, :level, :abilities, :guide_step, :health, :focus, :investiture,
                :attribute_points, :skill_points, :deflect, :additional_skills, :tier, :ancestry, :cultures, :attacks,
-               :talent_points
+               :talent_points, :updated_at
 
-    delegate :skills, :defense, :health_max, :focus_max, :investiture_max, :load, :movement, :recovery_die, :senses_range,
+    delegate :skills, :defense, :focus_max, :investiture_max, :load, :movement, :recovery_die, :senses_range,
              :abilities, :deflect, :tier, :attacks, :talent_points, to: :decorator
     delegate :id, :data, to: :object
     delegate :attribute_points, :skill_points, :health, :focus, :investiture, :level, :guide_step, :additional_skills, :ancestry,
-             :cultures, to: :data
+             :cultures, :health_max, to: :data
 
     def provider
       'cosmere'
@@ -21,6 +21,10 @@ module Cosmere
 
     def avatar
       cache.fetch_item(id: object.id)
+    end
+
+    def updated_at
+      object.updated_at.to_i
     end
 
     def decorator

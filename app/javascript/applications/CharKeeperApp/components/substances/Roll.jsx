@@ -2,7 +2,7 @@ import { Portal } from 'solid-js/web';
 import { createEffect, createSignal, createMemo, Show, Switch, Match, For, batch } from 'solid-js';
 import { createStore, reconcile } from 'solid-js/store';
 
-import { Dice, DualityDice, Button } from '../../components';
+import { ErrorWrapper, Dice, DualityDice, Button } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { clickOutside, modifier, localize, readFromCache, writeToCache } from '../../helpers';
 import { Close, Edit } from '../../assets';
@@ -390,261 +390,263 @@ export const createRoll = () => {
 
       return (
         <Portal>
-          <div
-            class="dice-portal"
-            classList={{ 'dark': appState.colorSchema === 'dark', 'w-full sm:w-auto': open() }}
-            use:clickOutside={() => close()}
-          >
-            <div class="dice-tests-box">
-              <div class="flex flex-col gap-2">
-                {/* Блок для тестов D20 - D&D, DC20, Cosmere, Pathfinder */}
-                <Show when={d20Test.command}>
-                  <div class="blockable dice-test">
-                    <Show when={d20Test.title}><p>{d20Test.title}</p></Show>
-                    <div class="dice-list">
-                      <Show
-                        when={d20TestResult() === undefined}
-                        fallback={
-                          <Dice
-                            text={d20TestResult().rolls[0][1]}
-                            minimum={d20TestResult().rolls[0][1] !== d20TestResult().final_roll}
-                            onClick={() => rerollD20Test(0)}
-                          />
-                        }
-                      >
-                        <Dice text="D20" />
+          <ErrorWrapper payload={{ provider: props.provider, key: 'Roll' }}>
+            <div
+              class="dice-portal"
+              classList={{ 'dark': appState.colorSchema === 'dark', 'w-full sm:w-auto': open() }}
+              use:clickOutside={() => close()}
+            >
+              <div class="dice-tests-box">
+                <div class="flex flex-col gap-2">
+                  {/* Блок для тестов D20 - D&D, DC20, Cosmere, Pathfinder */}
+                  <Show when={d20Test.command}>
+                    <div class="blockable dice-test">
+                      <Show when={d20Test.title}><p>{d20Test.title}</p></Show>
+                      <div class="dice-list">
+                        <Show
+                          when={d20TestResult() === undefined}
+                          fallback={
+                            <Dice
+                              text={d20TestResult().rolls[0][1]}
+                              minimum={d20TestResult().rolls[0][1] !== d20TestResult().final_roll}
+                              onClick={() => rerollD20Test(0)}
+                            />
+                          }
+                        >
+                          <Dice text="D20" />
+                        </Show>
+                        <Show when={d20Test.adv !== 0}>
+                          <For each={Array.from([...Array(Math.abs(d20Test.adv)).keys()], (x) => x + 1)}>
+                            {(index) =>
+                              <Show
+                                when={d20TestResult() === undefined}
+                                fallback={
+                                  <Dice
+                                    text={d20TestResult().rolls[index][1]}
+                                    minimum={d20TestResult().rolls[index][1] !== d20TestResult().final_roll}
+                                    onClick={() => rerollD20Test(index)}
+                                  />
+                                }
+                              >
+                                <Dice text={d20Test.adv > 0 ? 'Adv' : 'Dis'} />
+                              </Show>
+                            }
+                          </For>
+                        </Show>
+                        <Show when={d20Test.bonus + d20Test.addBonus !== 0}>
+                          <p class="text-xl ml-2 dark:text-snow">{modifier(d20Test.bonus + d20Test.addBonus)}</p>
+                        </Show>
+                        <Show when={d20TestResult() !== undefined}>
+                          <div class="roll-results">
+                            <p class="font-medium! text-xl">{d20TestResult().total}</p>
+                            <span class={`roll-result ${d20TestResult().status}`}>
+                              <Switch>
+                                <Match when={d20TestResult().status === 'crit_success'}>{localize(TRANSLATION, locale()).crit}</Match>
+                                <Match when={d20TestResult().status === 'crit_failure'}>{localize(TRANSLATION, locale()).critFailure}</Match>
+                              </Switch>
+                            </span>
+                          </div>
+                        </Show>
+                      </div>
+                      <div class="flex gap-x-4">
+                        <div class="flex-1">
+                          <p
+                            class="mb-1 dice-button"
+                            onClick={() => d20Test.adv >= d20Test.maxAdv ? null : updateAdvantage(1)}
+                          >{localize(TRANSLATION, locale()).advantage}</p>
+                          <p
+                            class="dice-button"
+                            onClick={() => d20Test.adv <= -d20Test.maxAdv ? null : updateAdvantage(-1)}
+                          >{localize(TRANSLATION, locale()).disadvantage}</p>
+                        </div>
+                        <div class="flex-1">
+                          <p class="total-advantage">{d20Test.addBonus}</p>
+                          <div class="flex gap-x-2">
+                            <p class="dice-button flex-1" onClick={() => setD20Test({ ...d20Test, addBonus: d20Test.addBonus - 1 })}>-</p>
+                            <p class="dice-button flex-1" onClick={() => setD20Test({ ...d20Test, addBonus: d20Test.addBonus + 1 })}>+</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Show>
+                  {/* Блок для бросков костей дуализма */}
+                  <Show when={dualityTest.command}>
+                    <div class="blockable dice-test">
+                      <Show when={props.provider === 'daggerheart'}>
+                        <Button default classList="weapon-settings min-w-6 min-h-6" onClick={() => setShowDhSettings(!showDhSettings())}><Edit /></Button>
                       </Show>
-                      <Show when={d20Test.adv !== 0}>
-                        <For each={Array.from([...Array(Math.abs(d20Test.adv)).keys()], (x) => x + 1)}>
-                          {(index) =>
+                      <Show when={dualityTest.title}><p>{dualityTest.title}</p></Show>
+                      <div class="dice-list">
+                        <Show
+                          when={dualityTestResult() === undefined}
+                          fallback={
+                            <>
+                              <Dice mode="hope" type={dualityDices.hopeDice} onClick={() => rerollDhDice(dualityDices.hopeDice.toLowerCase(), 0)} text={dualityTestResult().rolls[0][1]} />
+                              <Dice mode="fear" type={dualityDices.fearDice} onClick={() => rerollDhDice(dualityDices.fearDice.toLowerCase(), 1)} text={dualityTestResult().rolls[1][1]} />
+                            </>
+                          }
+                        >
+                          <Show when={showDhSettings()}>
+                            <p class="dice-button" onClick={() => changeDhDice('hopeDice')}>+</p>
+                          </Show>
+                          <Dice mode="hope" type={dualityDices.hopeDice} text={dualityDices.hopeDice} />
+                          <Show when={showDhSettings()}>
+                            <p class="dice-button" onClick={() => changeDhDice('fearDice')}>+</p>
+                          </Show>
+                          <Dice mode="fear" type={dualityDices.fearDice} text={dualityDices.fearDice} />
+                        </Show>
+                        <Show when={dualityTest.adv !== 0}>
+                          <div class="ml-2">
                             <Show
-                              when={d20TestResult() === undefined}
+                              when={dualityTestResult() === undefined}
                               fallback={
-                                <Dice
-                                  text={d20TestResult().rolls[index][1]}
-                                  minimum={d20TestResult().rolls[index][1] !== d20TestResult().final_roll}
-                                  onClick={() => rerollD20Test(index)}
-                                />
+                                <Dice type={dualityTest.adv > 0 ? props.advantageDice.toUpperCase() : 'D6'} onClick={() => rerollDhDice('d6', 2)} text={dualityTestResult().rolls[2][1]} />
                               }
                             >
-                              <Dice text={d20Test.adv > 0 ? 'Adv' : 'Dis'} />
+                              <Dice type={dualityTest.adv > 0 ? props.advantageDice.toUpperCase() : 'D6'} text={dualityTest.adv > 0 ? 'Adv' : 'Dis'} />
                             </Show>
+                          </div>
+                        </Show>
+                        <Show when={dualityTest.bonus + dualityTest.addBonus !== 0}>
+                          <p class="text-xl ml-2 dark:text-snow">{modifier(dualityTest.bonus + dualityTest.addBonus)}</p>
+                        </Show>
+                        <Show when={dualityTestResult() !== undefined}>
+                          <div class="roll-results">
+                            <p class="font-medium! text-xl">{dualityTestResult().total}</p>
+                            <span class={`roll-result ${dualityTestResult().status}`}>
+                              <Switch>
+                                <Match when={dualityTestResult().status === 'crit_success'}>{localize(TRANSLATION, locale()).crit}</Match>
+                                <Match when={dualityTestResult().status === 'with_hope'}>{localize(TRANSLATION, locale()).hope}</Match>
+                                <Match when={dualityTestResult().status === 'with_fear'}>{localize(TRANSLATION, locale()).fear}</Match>
+                              </Switch>
+                            </span>
+                          </div>
+                        </Show>
+                      </div>
+                      <div class="flex gap-x-4">
+                        <div class="flex-1">
+                          <p
+                            class="mb-1 dice-button"
+                            onClick={() => dualityTest.adv >= dualityTest.maxAdv ? null : updateAdvantage(1)}
+                          >{localize(TRANSLATION, locale()).advantage}</p>
+                          <p
+                            class="dice-button"
+                            onClick={() => dualityTest.adv <= -dualityTest.maxAdv ? null : updateAdvantage(-1)}
+                          >{localize(TRANSLATION, locale()).disadvantage}</p>
+                        </div>
+                        <div class="flex-1">
+                          <p class="total-advantage">{dualityTest.addBonus}</p>
+                          <div class="flex gap-x-2">
+                            <p class="dice-button flex-1" onClick={() => setDualityTest({ ...dualityTest, addBonus: dualityTest.addBonus - 1 })}>-</p>
+                            <p class="dice-button flex-1" onClick={() => setDualityTest({ ...dualityTest, addBonus: dualityTest.addBonus + 1 })}>+</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Show>
+                  {/* Блок для бросков костей истории */}
+                  <Show when={plotDices() > 0}>
+                    <div class="blockable dice-test">
+                      <p>{localize(TRANSLATION, locale()).plotDice}</p>
+                      <div class="dice-list">
+                        <Show
+                          when={plotResult() === undefined}
+                          fallback={
+                            <>
+                              <Dice type="D6" text={representPlotRoll(0)} />
+                              <Show when={plotDices() === 2}><Dice type="D6" text={representPlotRoll(1)} /></Show>
+                            </>
+                          }
+                        >
+                          <Dice type="D6" />
+                          <Show when={plotDices() === 2}><Dice type="D6" /></Show>
+                        </Show>
+                      </div>
+                      <div class="flex gap-x-2">
+                        <p class="dice-button flex-1" onClick={() => plotDices() <= 1 ? null : setPlotDices(plotDices() - 1)}>-</p>
+                        <p class="dice-button flex-1" onClick={() => plotDices() >= 2 ? null : setPlotDices(plotDices() + 1)}>+</p>
+                      </div>
+                    </div>
+                  </Show>
+                  {/* Блок для всевозможных бросков */}
+                  <Show when={dices.open}>
+                    <div class="blockable dice-test">
+                      <Show when={dices.title}><p>{dices.title}, {d20Test.title || dualityTest.title}</p></Show>
+                      <div class="dice-list">
+                        <For each={dices.dices}>
+                          {(dice, index) =>
+                            <Dice
+                              type={dice}
+                              onClick={() => refreshDice(index())}
+                              text={dicesResult() ? (dicesResult().rolls.length - 1 >= index() && dicesResult().rolls[index()][0].includes('d') ? dicesResult().rolls[index()][1] : dice) : dice}
+                            />
+                          }
+                        </For>
+                        <Show when={dices.damageBonus !== 0}><p class="text-xl ml-2">{modifier(dices.damageBonus)}</p></Show>
+                        <Show when={dicesResult() !== undefined}>
+                          <div class="roll-results">
+                            <p class="font-medium! text-xl">{dicesResult().total}</p>
+                          </div>
+                        </Show>
+                      </div>
+                      <div class="flex gap-x-2">
+                        <p class="dice-button flex-1" onClick={() => setSimpleBonus(-1)}>-</p>
+                        <p class="dice-button flex-1" onClick={() => setSimpleBonus(1)}>+</p>
+                      </div>
+                    </div>
+                  </Show>
+                  {/* Кнопка бросков */}
+                  <Show when={open()}>
+                    <div class="mt-2">
+                      <Button withSuspense default textable classList="flex-1" onClick={performRoll}>
+                        {localize(TRANSLATION, locale()).roll}
+                      </Button>
+                    </div>
+                  </Show>
+                </div>
+                {/* Выбор кубиков */}
+                <div class="dice-opens">
+                  <Show when={D20_TESTS_PROVIDERS.includes(props.provider)}>
+                    <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
+                      <Dice
+                        onClick={() => d20Test.command ? closeD20Test() : openD20Test()}
+                        text={d20Test.command ? <Close /> : 'D20'}
+                      />
+                    </div>
+                  </Show>
+                  <Show when={props.provider === 'daggerheart'}>
+                    <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
+                      <DualityDice onClick={() => dualityTest.command ? closeDualityTest() : openDualityTest()} />
+                    </div>
+                  </Show>
+                  <Show when={props.provider === 'cosmere'}>
+                    <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
+                      <Dice
+                        type="D6"
+                        onClick={() => plotDices() > 0 ? closeCosmereTest() : openCosmereTest()}
+                        text={plotDices() > 0 ? <Close /> : 'C'}
+                      />
+                    </div>
+                  </Show>
+                  <Show when={!open() || dices.open}>
+                    <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
+                      <Show when={open()}>
+                        <For each={['D4', 'D6', 'D8', 'D10', 'D12', 'D20', 'D100']}>
+                          {(item) =>
+                            <Dice type={item === 'D100' ? 'D20' : item} onClick={() => addDice(item)} text={item} />
                           }
                         </For>
                       </Show>
-                      <Show when={d20Test.bonus + d20Test.addBonus !== 0}>
-                        <p class="text-xl ml-2 dark:text-snow">{modifier(d20Test.bonus + d20Test.addBonus)}</p>
-                      </Show>
-                      <Show when={d20TestResult() !== undefined}>
-                        <div class="roll-results">
-                          <p class="font-medium! text-xl">{d20TestResult().total}</p>
-                          <span class={`roll-result ${d20TestResult().status}`}>
-                            <Switch>
-                              <Match when={d20TestResult().status === 'crit_success'}>{localize(TRANSLATION, locale()).crit}</Match>
-                              <Match when={d20TestResult().status === 'crit_failure'}>{localize(TRANSLATION, locale()).critFailure}</Match>
-                            </Switch>
-                          </span>
-                        </div>
-                      </Show>
+                      <Dice
+                        onClick={() => open() ? close() : openRolls()}
+                        text={open() ? <Close /> : 'Dx'}
+                      />
                     </div>
-                    <div class="flex gap-x-4">
-                      <div class="flex-1">
-                        <p
-                          class="mb-1 dice-button"
-                          onClick={() => d20Test.adv >= d20Test.maxAdv ? null : updateAdvantage(1)}
-                        >{localize(TRANSLATION, locale()).advantage}</p>
-                        <p
-                          class="dice-button"
-                          onClick={() => d20Test.adv <= -d20Test.maxAdv ? null : updateAdvantage(-1)}
-                        >{localize(TRANSLATION, locale()).disadvantage}</p>
-                      </div>
-                      <div class="flex-1">
-                        <p class="total-advantage">{d20Test.addBonus}</p>
-                        <div class="flex gap-x-2">
-                          <p class="dice-button flex-1" onClick={() => setD20Test({ ...d20Test, addBonus: d20Test.addBonus - 1 })}>-</p>
-                          <p class="dice-button flex-1" onClick={() => setD20Test({ ...d20Test, addBonus: d20Test.addBonus + 1 })}>+</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Show>
-                {/* Блок для бросков костей дуализма */}
-                <Show when={dualityTest.command}>
-                  <div class="blockable dice-test">
-                    <Show when={props.provider === 'daggerheart'}>
-                      <Button default classList="weapon-settings min-w-6 min-h-6" onClick={() => setShowDhSettings(!showDhSettings())}><Edit /></Button>
-                    </Show>
-                    <Show when={dualityTest.title}><p>{dualityTest.title}</p></Show>
-                    <div class="dice-list">
-                      <Show
-                        when={dualityTestResult() === undefined}
-                        fallback={
-                          <>
-                            <Dice mode="hope" type={dualityDices.hopeDice} onClick={() => rerollDhDice(dualityDices.hopeDice.toLowerCase(), 0)} text={dualityTestResult().rolls[0][1]} />
-                            <Dice mode="fear" type={dualityDices.fearDice} onClick={() => rerollDhDice(dualityDices.fearDice.toLowerCase(), 1)} text={dualityTestResult().rolls[1][1]} />
-                          </>
-                        }
-                      >
-                        <Show when={showDhSettings()}>
-                          <p class="dice-button" onClick={() => changeDhDice('hopeDice')}>+</p>
-                        </Show>
-                        <Dice mode="hope" type={dualityDices.hopeDice} text={dualityDices.hopeDice} />
-                        <Show when={showDhSettings()}>
-                          <p class="dice-button" onClick={() => changeDhDice('fearDice')}>+</p>
-                        </Show>
-                        <Dice mode="fear" type={dualityDices.fearDice} text={dualityDices.fearDice} />
-                      </Show>
-                      <Show when={dualityTest.adv !== 0}>
-                        <div class="ml-2">
-                          <Show
-                            when={dualityTestResult() === undefined}
-                            fallback={
-                              <Dice type={dualityTest.adv > 0 ? props.advantageDice.toUpperCase() : 'D6'} onClick={() => rerollDhDice('d6', 2)} text={dualityTestResult().rolls[2][1]} />
-                            }
-                          >
-                            <Dice type={dualityTest.adv > 0 ? props.advantageDice.toUpperCase() : 'D6'} text={dualityTest.adv > 0 ? 'Adv' : 'Dis'} />
-                          </Show>
-                        </div>
-                      </Show>
-                      <Show when={dualityTest.bonus + dualityTest.addBonus !== 0}>
-                        <p class="text-xl ml-2 dark:text-snow">{modifier(dualityTest.bonus + dualityTest.addBonus)}</p>
-                      </Show>
-                      <Show when={dualityTestResult() !== undefined}>
-                        <div class="roll-results">
-                          <p class="font-medium! text-xl">{dualityTestResult().total}</p>
-                          <span class={`roll-result ${dualityTestResult().status}`}>
-                            <Switch>
-                              <Match when={dualityTestResult().status === 'crit_success'}>{localize(TRANSLATION, locale()).crit}</Match>
-                              <Match when={dualityTestResult().status === 'with_hope'}>{localize(TRANSLATION, locale()).hope}</Match>
-                              <Match when={dualityTestResult().status === 'with_fear'}>{localize(TRANSLATION, locale()).fear}</Match>
-                            </Switch>
-                          </span>
-                        </div>
-                      </Show>
-                    </div>
-                    <div class="flex gap-x-4">
-                      <div class="flex-1">
-                        <p
-                          class="mb-1 dice-button"
-                          onClick={() => dualityTest.adv >= dualityTest.maxAdv ? null : updateAdvantage(1)}
-                        >{localize(TRANSLATION, locale()).advantage}</p>
-                        <p
-                          class="dice-button"
-                          onClick={() => dualityTest.adv <= -dualityTest.maxAdv ? null : updateAdvantage(-1)}
-                        >{localize(TRANSLATION, locale()).disadvantage}</p>
-                      </div>
-                      <div class="flex-1">
-                        <p class="total-advantage">{dualityTest.addBonus}</p>
-                        <div class="flex gap-x-2">
-                          <p class="dice-button flex-1" onClick={() => setDualityTest({ ...dualityTest, addBonus: dualityTest.addBonus - 1 })}>-</p>
-                          <p class="dice-button flex-1" onClick={() => setDualityTest({ ...dualityTest, addBonus: dualityTest.addBonus + 1 })}>+</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Show>
-                {/* Блок для бросков костей истории */}
-                <Show when={plotDices() > 0}>
-                  <div class="blockable dice-test">
-                    <p>{localize(TRANSLATION, locale()).plotDice}</p>
-                    <div class="dice-list">
-                      <Show
-                        when={plotResult() === undefined}
-                        fallback={
-                          <>
-                            <Dice type="D6" text={representPlotRoll(0)} />
-                            <Show when={plotDices() === 2}><Dice type="D6" text={representPlotRoll(1)} /></Show>
-                          </>
-                        }
-                      >
-                        <Dice type="D6" />
-                        <Show when={plotDices() === 2}><Dice type="D6" /></Show>
-                      </Show>
-                    </div>
-                    <div class="flex gap-x-2">
-                      <p class="dice-button flex-1" onClick={() => plotDices() <= 1 ? null : setPlotDices(plotDices() - 1)}>-</p>
-                      <p class="dice-button flex-1" onClick={() => plotDices() >= 2 ? null : setPlotDices(plotDices() + 1)}>+</p>
-                    </div>
-                  </div>
-                </Show>
-                {/* Блок для всевозможных бросков */}
-                <Show when={dices.open}>
-                  <div class="blockable dice-test">
-                    <Show when={dices.title}><p>{dices.title}, {d20Test.title || dualityTest.title}</p></Show>
-                    <div class="dice-list">
-                      <For each={dices.dices}>
-                        {(dice, index) =>
-                          <Dice
-                            type={dice}
-                            onClick={() => refreshDice(index())}
-                            text={dicesResult() ? (dicesResult().rolls.length - 1 >= index() && dicesResult().rolls[index()][0].includes('d') ? dicesResult().rolls[index()][1] : dice) : dice}
-                          />
-                        }
-                      </For>
-                      <Show when={dices.damageBonus !== 0}><p class="text-xl ml-2">{modifier(dices.damageBonus)}</p></Show>
-                      <Show when={dicesResult() !== undefined}>
-                        <div class="roll-results">
-                          <p class="font-medium! text-xl">{dicesResult().total}</p>
-                        </div>
-                      </Show>
-                    </div>
-                    <div class="flex gap-x-2">
-                      <p class="dice-button flex-1" onClick={() => setSimpleBonus(-1)}>-</p>
-                      <p class="dice-button flex-1" onClick={() => setSimpleBonus(1)}>+</p>
-                    </div>
-                  </div>
-                </Show>
-                {/* Кнопка бросков */}
-                <Show when={open()}>
-                  <div class="mt-2">
-                    <Button withSuspense default textable classList="flex-1" onClick={performRoll}>
-                      {localize(TRANSLATION, locale()).roll}
-                    </Button>
-                  </div>
-                </Show>
-              </div>
-              {/* Выбор кубиков */}
-              <div class="dice-opens">
-                <Show when={D20_TESTS_PROVIDERS.includes(props.provider)}>
-                  <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
-                    <Dice
-                      onClick={() => d20Test.command ? closeD20Test() : openD20Test()}
-                      text={d20Test.command ? <Close /> : 'D20'}
-                    />
-                  </div>
-                </Show>
-                <Show when={props.provider === 'daggerheart'}>
-                  <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
-                    <DualityDice onClick={() => dualityTest.command ? closeDualityTest() : openDualityTest()} />
-                  </div>
-                </Show>
-                <Show when={props.provider === 'cosmere'}>
-                  <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
-                    <Dice
-                      type="D6"
-                      onClick={() => plotDices() > 0 ? closeCosmereTest() : openCosmereTest()}
-                      text={plotDices() > 0 ? <Close /> : 'C'}
-                    />
-                  </div>
-                </Show>
-                <Show when={!open() || dices.open}>
-                  <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
-                    <Show when={open()}>
-                      <For each={['D4', 'D6', 'D8', 'D10', 'D12', 'D20', 'D100']}>
-                        {(item) =>
-                          <Dice type={item === 'D100' ? 'D20' : item} onClick={() => addDice(item)} text={item} />
-                        }
-                      </For>
-                    </Show>
-                    <Dice
-                      onClick={() => open() ? close() : openRolls()}
-                      text={open() ? <Close /> : 'Dx'}
-                    />
-                  </div>
-                </Show>
+                  </Show>
+                </div>
               </div>
             </div>
-          </div>
+          </ErrorWrapper>
         </Portal>
       );
     }
