@@ -1,4 +1,4 @@
-import { createStore } from 'solid-js/store';
+import { createStore, reconcile } from 'solid-js/store';
 
 import { CharacterForm } from '../../../../pages';
 import { Input, Checkbox, Select } from '../../../../components';
@@ -11,24 +11,28 @@ const TRANSLATION = {
     name: 'Name',
     skipGuide: 'Skip new character guide',
     ancestry: 'Select ancestry',
-    cultures: 'Select cultures'
+    cultures: 'Select cultures',
+    path: 'Select heroic path'
   },
   ru: {
     name: 'Имя',
     skipGuide: 'Пропустить настройку нового персонажа',
     ancestry: 'Выберите наследие',
-    cultures: 'Выберите культуры'
+    cultures: 'Выберите культуры',
+    path: 'Выберите героический путь'
   },
   es: {
     name: 'Nombre',
     skipGuide: 'Omitir guía de personaje nuevo',
     ancestry: 'Select ancestry',
-    cultures: 'Select cultures'
+    cultures: 'Select cultures',
+    path: 'Select heroic path'
   }
 }
+const DEFAULT_FORM = { name: '', ancestry: null, cultures: [], path: null, skip_guide: false }
 
 export const CosmereCharacterForm = (props) => {
-  const [characterForm, setCharacterForm] = createStore({ name: '', ancestry: null, cultures: [], skip_guide: false });
+  const [characterForm, setCharacterForm] = createStore(DEFAULT_FORM);
 
   const [locale] = useAppLocale();
 
@@ -42,7 +46,7 @@ export const CosmereCharacterForm = (props) => {
   const saveCharacter = async () => {
     const result = await props.onCreateCharacter(characterForm);
     if (result === null) {
-      setCharacterForm({ name: '', skip_guide: true });
+      setCharacterForm(reconcile(DEFAULT_FORM));
     }
   }
 
@@ -67,6 +71,13 @@ export const CosmereCharacterForm = (props) => {
         items={translate(config.cultures, locale())}
         selectedValues={characterForm.cultures}
         onSelect={updateCulturesValue}
+      />
+      <Select
+        containerClassList="mt-2"
+        labelText={localize(TRANSLATION, locale()).path}
+        items={translate(config.paths, locale())}
+        selectedValue={characterForm.path}
+        onSelect={(value) => setCharacterForm({ ...characterForm, path: value })}
       />
       <Checkbox
         labelText={localize(TRANSLATION, locale()).skipGuide}

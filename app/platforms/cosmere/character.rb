@@ -7,6 +7,7 @@ module Cosmere
     attribute :level, :integer, default: 1
     attribute :ancestry, :string
     attribute :cultures, array: true, default: []
+    attribute :path, :string
     attribute :abilities, array: true, default: { 'str' => 0, 'spd' => 0, 'int' => 0, 'wil' => 0, 'awa' => 0, 'pre' => 0 }
     attribute :health, :integer, default: 10
     attribute :focus, :integer, default: 2

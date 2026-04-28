@@ -23,7 +23,7 @@
     "deception": { "name": { "en": "Deception", "ru": "Обман" } },
     "insight": { "name": { "en": "Insight", "ru": "Проницательность" } },
     "leadership": { "name": { "en": "Leadership", "ru": "Лидерство" } },
-    "perception": { "name": { "en": "Perception", "ru": "Внимательность" } },
+    "perception": { "name": { "en": "Perception", "ru": "Наблюдательность" } },
     "persuation": { "name": { "en": "Persuation", "ru": "Убеждение" } },
     "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
   },
@@ -44,5 +44,13 @@
     "unkalaki": { "name": { "en": "Unkalaki", "ru": "Ункалаки" } },
     "veden": { "name": { "en": "Veden", "ru": "Веденец" } },
     "wayfarer": { "name": { "en": "Wayfarer", "ru": "Скиталец" } }
+  },
+  "paths": {
+    "agent": { "name": { "en": "Agent", "ru": "Агент" } },
+    "envoy": { "name": { "en": "Envoy", "ru": "Посланник" } },
+    "hunter": { "name": { "en": "Hunter", "ru": "Охотник" } },
+    "leader": { "name": { "en": "Leader", "ru": "Лидер" } },
+    "scholar": { "name": { "en": "Scholar", "ru": "Учёный" } },
+    "warrior": { "name": { "en": "Warrior", "ru": "Воин" } }
   }
 }
