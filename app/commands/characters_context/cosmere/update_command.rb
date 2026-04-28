@@ -7,6 +7,9 @@ module CharactersContext
         cache: 'cache.avatars'
       ]
 
+      CHANGE_HEALTH_BY_STR_AT_LEVEL = [1, 6].freeze
+      CHANGE_ATTRIBUTE_POINTS_AT_LEVEL = [3, 6, 9, 12, 15, 18].freeze
+
       # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :cosmere_character
@@ -48,10 +51,21 @@ module CharactersContext
       def lock_key(input) = "character_update_#{input[:character].id}"
       def lock_time = 0
 
-      def do_prepare(input)
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize
         %i[abilities].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
+
+        if input.key?(:level)
+          if CHANGE_ATTRIBUTE_POINTS_AT_LEVEL.include?(input[:level])
+            input[:attribute_points] = input[:character].data.attribute_points.to_i + 1
+          end
+          input[:skill_points] = input[:character].data.skill_points.to_i + 2
+        end
+
+        current_health = input[:character].data.health_max
+        input[:health_max] = current_health + change_health_by_level(input) if input.key?(:level)
+        input[:health_max] = current_health + change_health_by_str(input) if input.key?(:abilities)
       end
 
       def do_persist(input)
@@ -62,6 +76,27 @@ module CharactersContext
         upload_avatar(input)
 
         { result: input[:character] }
+      end
+
+      def change_health_by_level(input)
+        current_str = input[:character].data.abilities['str']
+
+        return 1 if input[:level] >= 21
+        return 2 if input[:level] >= 17
+        return 2 + current_str if input[:level] == 16
+        return 3 if input[:level] >= 12
+        return 3 + current_str if input[:level] == 11
+        return 4 if input[:level] >= 7
+        return 4 + current_str if input[:level] == 6
+
+        5
+      end
+
+      def change_health_by_str(input)
+        current_level = input[:character].data.level
+        return 0 if CHANGE_HEALTH_BY_STR_AT_LEVEL.exclude?(current_level)
+
+        input.dig(:abilities, :str) - input[:character].data.abilities['str']
       end
 
       def upload_avatar(input)

@@ -104,7 +104,9 @@ FactoryBot.define do
       type { 'Cosmere::Character' }
       data {
         {
-          'abilities' => { 'str' => 0, 'spd' => 0, 'int' => 0, 'wil' => 0, 'awa' => 0, 'pre' => 0 }
+          'level' => 1,
+          'abilities' => { 'str' => 0, 'spd' => 0, 'int' => 0, 'wil' => 0, 'awa' => 0, 'pre' => 0 },
+          'health_max' => 10
         }
       }
     end

@@ -30,7 +30,6 @@ class CosmereDecorator < ApplicationDecoratorV2
       'spiritual' => 10 + abilities['awa'] + abilities['pre']
     }
     @result['deflect'] = 0
-    @result['health_max'] = 10 + abilities['str']
     @result['focus_max'] = 2 + abilities['wil']
     @result['investiture_max'] = 2 + [abilities['awa'], abilities['pre']].max
     @result['load'] = find_load

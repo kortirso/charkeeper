@@ -25,7 +25,7 @@ const TRANSLATION = {
 export const CosmereAbilities = (props) => {
   const character = () => props.character;
 
-  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
+  const [lastTimestamp, setLastTimestamp] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
   const [abilitiesData, setAbilitiesData] = createSignal(character().abilities);
   const [attributePoints, setAttributePoints] = createSignal(character().attribute_points);
@@ -35,14 +35,15 @@ export const CosmereAbilities = (props) => {
   const [locale] = useAppLocale();
 
   createEffect(() => {
-    if (lastActiveCharacterId() === character().id) return;
+    if (lastTimestamp() === character().updated_at) return;
 
     batch(() => {
       setAbilitiesData(character().abilities);
       setAttributePoints(character().attribute_points);
       setEditMode(character().guide_step === 1);
-      setLastActiveCharacterId(character().id);
     });
+
+    setLastTimestamp(character().updated_at);
   });
 
   const changeValue = (slug, modifier) => {
@@ -108,18 +109,25 @@ export const CosmereAbilities = (props) => {
                     <p class="ability-title">{trait}</p>
                     <div class="ability-value-box">
                       <p class="ability-value">
-                        {editMode() ?
-                          abilitiesData()[slug] :
-                          abilitiesData()[slug]
-                        }
+                        {abilitiesData()[slug]}
                       </p>
                     </div>
                     <Show when={editMode()}>
                       <div class="ability-changebox">
-                        <Button default size="small" onClick={() => abilitiesData()[slug] === 0 ? null : changeValue(slug, -1)}>
+                        <Button
+                          default
+                          size="small"
+                          disabled={abilitiesData()[slug] === 0}
+                          onClick={() => changeValue(slug, -1)}
+                        >
                           <Minus />
                         </Button>
-                        <Button default size="small" onClick={() => changeValue(slug, 1)}><Plus /></Button>
+                        <Button
+                          default
+                          size="small"
+                          disabled={abilitiesData()[slug] === 3 && character().level === 1}
+                          onClick={() => changeValue(slug, 1)}
+                        ><Plus /></Button>
                       </div>
                     </Show>
                   </div>
