@@ -37,6 +37,7 @@ class CosmereDecorator < ApplicationDecoratorV2
     @result['movement'] = find_movement
     @result['recovery_die'] = find_recovery_die
     @result['senses_range'] = find_senses_range
+    @result['talent_points'] = find_talent_points
   end
 
   def find_attacks
@@ -183,6 +184,12 @@ class CosmereDecorator < ApplicationDecoratorV2
     when 5, 6 then 50
     when 7, 8 then 100
     end
+  end
+
+  def find_talent_points
+    total = level
+    total += ((level + 4) / 5) if ancestry == 'human'
+    total
   end
 
   def weapons

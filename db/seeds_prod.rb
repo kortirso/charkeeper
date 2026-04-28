@@ -24,6 +24,15 @@ end
   end
 end
 
+[
+  'feats_path.json'
+].each do |filename|
+  JSON.parse(File.read("db/data_prod/cosmere/#{filename}")).each do |item|
+    feat = ::Cosmere::Feat.find_by(slug: item['slug'])
+    feat ? feat.update!(item) : ::Cosmere::Feat.create!(item)
+  end
+end
+
 ['weapon.json', 'armor.json', 'items.json'].each do |filename|
   JSON.parse(File.read("db/data_prod/cosmere/#{filename}")).each do |data|
     item = ::Cosmere::Item.find_by(slug: data['slug'])
