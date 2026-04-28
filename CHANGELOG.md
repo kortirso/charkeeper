@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering attacks for Cosmere characters
 - changing resources for Cosmere characters
 - Cosmere dice rolls
+- leveling for Cosmere characters
+- selecting heroic path for Cosmere characters
 
 ## [0.4.29] - 2026-04-21
 ### Added
