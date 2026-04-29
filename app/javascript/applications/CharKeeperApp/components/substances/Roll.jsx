@@ -93,7 +93,7 @@ export const createRoll = () => {
     openD20Attack(command, title, bonus, dices, damageBonus, maxAdv = 1) {
       batch(() => {
         setD20Test({ command: command, title: title, bonus: bonus, maxAdv: maxAdv, adv: 0, addBonus: 0 });
-        setDices({ dices: dices, damageBonus: damageBonus, title: localize(TRANSLATION, locale()).damage });
+        setDices({ dices: dices, damageBonus: damageBonus, title: localize(TRANSLATION, locale()).damage, open: true });
         setD20TestResult(undefined);
         setDicesResult(undefined);
       });
@@ -107,7 +107,7 @@ export const createRoll = () => {
     openDualityAttack(command, title, bonus, dices, damageBonus) {
       batch(() => {
         setDualityTest({ command: command, title: title, bonus: bonus, maxAdv: 1, adv: 0, addBonus: 0 });
-        setDices({ dices: dices, damageBonus: damageBonus, title: localize(TRANSLATION, locale()).damage });
+        setDices({ dices: dices, damageBonus: damageBonus, title: localize(TRANSLATION, locale()).damage, open: true });
         setDualityTestResult(undefined);
         setDicesResult(undefined);
       });
