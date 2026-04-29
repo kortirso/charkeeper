@@ -35,6 +35,15 @@ module CharactersContext
           optional(:health).filled(:integer, gteq?: 0)
           optional(:focus).filled(:integer, gteq?: 0)
           optional(:investiture).filled(:integer, gteq?: 0)
+          optional(:expertises).hash do
+            required(:weapon).maybe(:array)
+            required(:armor).maybe(:array)
+            required(:culture).maybe(:array)
+          end
+          optional(:custom_expertises).maybe(:array).each(:hash) do
+            required(:name).filled(:string, max_size?: 50)
+            required(:desc).filled(:string, max_size?: 500)
+          end
         end
 
         rule(:abilities) do
