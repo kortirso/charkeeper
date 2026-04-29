@@ -1,30 +1,69 @@
-import { createSignal, createEffect } from 'solid-js';
+import { createSignal, createEffect, For, Show } from 'solid-js';
+import { Key } from '@solid-primitives/keyed';
 
-import { Button, ErrorWrapper } from '../../../../components';
+import { Button, ErrorWrapper, Toggle, Checkbox, Input, TextArea, Text } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Upgrade } from '../../../../assets';
+import config from '../../../../data/cosmere.json';
+import { Upgrade, Close } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { fetchItemsRequest } from '../../../../requests/fetchItemsRequest';
 import { localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
     currentLevel: 'level',
-    updated: 'Character is updated'
+    updated: 'Character is updated',
+    expertises: 'Expertises',
+    add: 'Add expertise',
+    expName: 'Expertise name',
+    expDesc: 'Expertise description',
+    expertisesList: {
+      weapon: 'Weapon',
+      armor: 'Armor',
+      culture: 'Culture',
+      utility: 'Utility'
+    }
   },
   ru: {
     currentLevel: 'уровень',
-    updated: 'Персонаж обновлён'
+    updated: 'Персонаж обновлён',
+    expertises: 'Компетенции',
+    add: 'Добавить компетенцию',
+    expName: 'Название',
+    expDesc: 'Описание',
+    expertisesList: {
+      weapon: 'Оружие',
+      armor: 'Доспехи',
+      culture: 'Культура',
+      utility: 'Утилитарные'
+    }
   },
   es: {
     currentLevel: 'nivel',
-    updated: 'Personaje actualizado'
+    updated: 'Personaje actualizado',
+    expertises: 'Expertises',
+    add: 'Add expertise',
+    expName: 'Expertise name',
+    expDesc: 'Expertise description',
+    expertisesList: {
+      weapon: 'Weapon',
+      armor: 'Armor',
+      culture: 'Culture',
+      utility: 'Utility'
+    }
   }
 }
+const ITEM_EXPERTISES = ['weapon', 'armor'];
 
 export const CosmereLeveling = (props) => {
   const character = () => props.character;
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
+  const [editMode, setEditMode] = createSignal(false);
+
+  const [items, setItems] = createSignal(undefined);
+  const [expName, setExpName] = createSignal('');
+  const [expDesc, setExpDesc] = createSignal('');
 
   const [appState] = useAppState();
   const [{ renderAlerts, renderNotice }] = useAppAlert();
@@ -33,8 +72,36 @@ export const CosmereLeveling = (props) => {
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
+    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, character().provider);
+
+    Promise.all([fetchItems()]).then(
+      ([itemsData]) => {
+        setItems(itemsData.items.filter((item) => ITEM_EXPERTISES.includes(item.kind)).sort((a, b) => a.name > b.name));
+      }
+    );
+
     setLastActiveCharacterId(character().id);
   });
+
+  const toggleExpertise = (kind, slug) => {
+    const expertises = character().expertises[kind];
+    const newValue = expertises.includes(slug) ? expertises.filter((item) => item !== slug) : expertises.concat([slug]);
+    const payload = { ...character().expertises, [kind]: newValue };
+    updateCharacter({ expertises: payload });
+  }
+
+  const saveNewSkill = () => {
+    if (expName().length === 0 || expName().length > 50) return;
+    if (expDesc().length === 0 || expDesc().length > 500) return;
+
+    const payload = character().custom_expertises.concat([{ name: expName(), desc: expDesc() }]);
+    updateCharacter({ custom_expertises: payload }, true);
+  }
+
+  const removeExpertise = (value) => {
+    const payload = character().custom_expertises.filter((item) => item !== value);
+    updateCharacter({ custom_expertises: payload }, true);
+  }
 
   const updateCharacter = async (payload, onlyHead = false) => {
     const requestPayload = { character: payload, only_head: onlyHead }
@@ -43,7 +110,10 @@ export const CosmereLeveling = (props) => {
       result,
       function() { // eslint-disable-line solid/reactivity
         props.onReplaceCharacter(onlyHead ? payload : result.character);
-        renderNotice(localize(TRANSLATION, locale()).updated)
+        renderNotice(localize(TRANSLATION, locale()).updated);
+        setEditMode(false);
+        setExpName('');
+        setExpDesc('');
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -59,6 +129,73 @@ export const CosmereLeveling = (props) => {
           <p>{character().level} {localize(TRANSLATION, locale()).currentLevel}</p>
         </div>
       </div>
+      <Show when={items()}>
+        <Toggle
+          innerClassList="p-2! flex flex-col gap-2"
+          title={<p>{localize(TRANSLATION, locale()).expertises}</p>}
+        >
+          <For each={['weapon', 'armor']}>
+            {(kind) =>
+              <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList[kind]} >
+                <For each={items().filter((item) => item.kind === kind)}>
+                  {(item) =>
+                    <div class="ancestry-item">
+                      <Checkbox
+                        labelText={item.name}
+                        labelPosition="right"
+                        labelClassList="ml-2"
+                        checked={character().expertises[kind].includes(item.slug)}
+                        onToggle={() => toggleExpertise(kind, item.slug)}
+                      />
+                    </div>
+                  }
+                </For>
+              </Toggle>
+            }
+          </For>
+          <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList.culture} >
+            <For each={Object.entries(config.cultures)}>
+              {([slug, values]) =>
+                <div class="ancestry-item">
+                  <Checkbox
+                    labelText={values.name[locale()]}
+                    labelPosition="right"
+                    labelClassList="ml-2"
+                    checked={character().expertises.culture.includes(slug)}
+                    onToggle={() => toggleExpertise('culture', slug)}
+                  />
+                </div>
+              }
+            </For>
+          </Toggle>
+          <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList.utility} >
+            <div class="flex flex-col gap-4">
+              <div>
+                <Key each={character().custom_expertises} by={item => item.name}>
+                  {(expertise) =>
+                    <div class="ancestry-item flex justify-beetween items-start">
+                      <Text containerClassList="flex-1" labelText={expertise().name} text={expertise().desc} />
+                      <Button default size="small" classList="ml-4 opacity-75" onClick={() => removeExpertise(expertise())}>
+                        <Close />
+                      </Button>
+                    </div>
+                  }
+                </Key>
+              </div>
+              <Show
+                when={editMode()}
+                fallback={<Button default textable onClick={() => setEditMode(true)}>{localize(TRANSLATION, locale()).add}</Button>}
+              >
+                <div>
+                  <Input labelText={localize(TRANSLATION, locale()).expName} value={expName()} onInput={setExpName} />
+                  <TextArea rows="3" containerClassList="mt-2" labelText={localize(TRANSLATION, locale()).expDesc} value={expDesc()} onChange={setExpDesc} />
+                  <Button default textable classList="mt-2" onClick={saveNewSkill}>{localize(TRANSLATION, locale()).add}</Button>
+                </div>
+              </Show>
+            </div>
+          </Toggle>
+        </Toggle>
+      </Show>
     </ErrorWrapper>
   );
 }

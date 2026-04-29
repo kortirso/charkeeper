@@ -29,11 +29,11 @@ class CosmereDecorator < ApplicationDecoratorV2
       'cognitive' => 10 + abilities['int'] + abilities['wil'],
       'spiritual' => 10 + abilities['awa'] + abilities['pre']
     }
-    @result['deflect'] = 0
+    @result['deflect'] = equiped_armor&.dig(:items_info, 'deflect').to_i
     @result['focus_max'] = 2 + abilities['wil']
     @result['investiture_max'] = 2 + [abilities['awa'], abilities['pre']].max
     @result['load'] = find_load
-    @result['movement'] = find_movement
+    @result['movement'] = modify_by_armor(find_movement)
     @result['recovery_die'] = find_recovery_die
     @result['senses_range'] = find_senses_range
     @result['talent_points'] = find_talent_points
@@ -87,6 +87,7 @@ class CosmereDecorator < ApplicationDecoratorV2
   def attack_values(item, tooltips, expert_tooltips) # rubocop: disable Metrics/AbcSize
     damage_type = item.dig(:items_info, 'damage_type')
     skill = skills.find { |skill| skill[:slug] == item.dig(:items_info, 'weapon_skill') }
+    current_tooltips = expertises['weapon'].include?(item[:items_slug]) ? expert_tooltips : tooltips
     {
       slug: item[:items_slug],
       name: translate(item[:items_name]),
@@ -95,18 +96,18 @@ class CosmereDecorator < ApplicationDecoratorV2
       damage_bonus: 0,
       notes: item[:notes],
       tags: { damage_type => I18n.t("tags.cosmere.weapon.title.#{damage_type}") }.merge(
-        tooltips.except('reach').to_h do |key, value|
+        current_tooltips.except('reach').to_h do |key, value|
           [key, I18n.t("tags.cosmere.weapon.title.#{key}", value: value)]
         end
       ),
       ready_to_use: item[:states] ? item.dig(:states, 'hands').positive? : true,
-      distance: distance(item, tooltips, expert_tooltips)
+      distance: distance(item, current_tooltips)
     }.compact
   end
 
-  def distance(item, tooltips, _expert_tooltips)
+  def distance(item, tooltips)
     return item.dig(:items_info, 'dist') if item.dig(:items_info, 'type') == 'ranged'
-    return item.dig(:items_info, 'dist') if tooltips.key?('thrown')
+    return tooltips['thrown'] if tooltips.key?('thrown')
 
     tooltips.key?('reach') ? 10 : nil
   end
@@ -164,6 +165,17 @@ class CosmereDecorator < ApplicationDecoratorV2
     end
   end
 
+  def modify_by_armor(value)
+    return value if equiped_armor.nil?
+
+    current_tooltips =
+      equiped_armor.dig(:items_info, expertises['armor'].include?(equiped_armor[:items_slug]) ? 'expert_tooltips' : 'tooltips')
+    cumbersome = current_tooltips.find { |item| item.starts_with?('cumbersome') }
+    return value unless cumbersome
+
+    abilities['str'] >= cumbersome.split('-')[1].to_i ? value : (value / 2)
+  end
+
   def find_recovery_die
     case abilities['wil']
     when 0 then 4
@@ -189,6 +201,19 @@ class CosmereDecorator < ApplicationDecoratorV2
     total = level
     total += ((level + 4) / 5) if ancestry == 'human'
     total
+  end
+
+  def equiped_armor
+    @equiped_armor ||= active_items.find { |item| item[:items_kind] == 'armor' }
+  end
+
+  def active_items
+    @active_items ||=
+      @character
+        .items
+        .where("states->>'hands' != ? OR states->>'equipment' != ?", '0', '0')
+        .joins(:item)
+        .hashable_pluck('items.slug', 'items.kind', 'items.data', 'items.info', 'items.modifiers', :states, :modifiers)
   end
 
   def weapons
