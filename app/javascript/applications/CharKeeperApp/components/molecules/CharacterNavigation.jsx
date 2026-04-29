@@ -23,7 +23,9 @@ export const CharacterNavigation = (props) => {
               }}
               onClick={() => props.setActiveTab(tab)}
             >
-              {t(`pages.characterNavigation.${tab}`)}
+              <Show when={props.directTranslation} fallback={t(`pages.characterNavigation.${tab}`)}>
+                {props.filters.find((item) => item.title === tab).translation}
+              </Show>
             </p>
           }
         </For>

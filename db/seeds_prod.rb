@@ -25,7 +25,7 @@ end
 end
 
 [
-  'feats_path.json'
+  'feats_path.json', 'feats_agent.json'
 ].each do |filename|
   JSON.parse(File.read("db/data_prod/cosmere/#{filename}")).each do |item|
     feat = ::Cosmere::Feat.find_by(slug: item['slug'])

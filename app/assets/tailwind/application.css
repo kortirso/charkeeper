@@ -451,12 +451,24 @@ nav.pagy.nav a.gap {
   @apply dark:text-stone-200;
 }
 
+.feat-markdown-small {
+  @apply text-xs text-stone-800;
+  @apply dark:text-stone-200;
+}
+
 .feat-markdown p:nth-of-type(n+2) {
   @apply mt-1;
 }
 
 .feat-markdown strong {
   @apply text-[15px] text-black;
+  @apply dark:text-snow;
+
+  font-weight: 500;
+}
+
+.feat-markdown-small strong {
+  @apply text-[13px] text-black;
   @apply dark:text-snow;
 
   font-weight: 500;
@@ -1017,3 +1029,7 @@ body.web {
 .roll-results {
   @apply flex flex-1 items-center justify-end dark:text-snow;
 }
+
+.cosmere-feat {
+  @apply pb-2 border-b border-gray-200 dark:border-neutral-800;
+ }

@@ -3,6 +3,10 @@
 module CharactersContext
   module Cosmere
     class CreateCommand < BaseCommand
+      include Deps[
+        add_feat: 'commands.characters_context.cosmere.feats.add'
+      ]
+
       use_contract do
         config.messages.namespace = :cosmere_character
 
@@ -25,7 +29,7 @@ module CharactersContext
 
       def do_persist(input)
         character = ::Cosmere::Character.create!(input.slice(:user, :name, :data))
-        # add_initial_talent(character, input)
+        add_initial_talent(character, input)
 
         { result: character }
       end
@@ -35,12 +39,12 @@ module CharactersContext
           .then { |result| CosmereCharacter::PathBuilder.new.call(result: result) }
       end
 
-      # def add_initial_talent(character, input)
-      #   feat = ::Cosmere::Feat.find_by(slug: input[:initial_talent])
-      #   return unless feat
+      def add_initial_talent(character, input)
+        feat = ::Cosmere::Feat.find_by(slug: input[:initial_talent])
+        return unless feat
 
-      #   add_feat.call(character: character, id: feat.id)
-      # end
+        add_feat.call(character: character, feat: feat)
+      end
     end
   end
 end

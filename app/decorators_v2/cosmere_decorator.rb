@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class CosmereDecorator < ApplicationDecoratorV2
+  ONLY_ADD_MODIFIERS = %w[str dex con wis int cha].freeze
+  WEAPON_MODIFIERS = %w[attack unarmed_attacks melee_attacks range_attacks damage unarmed_damage melee_damage range_damage].freeze
+
   def call(character:, simple: false, version: nil)
     @character = character
     @version = version
@@ -9,8 +12,12 @@ class CosmereDecorator < ApplicationDecoratorV2
     generate_basis
     return self if simple
 
+    # apply_add_bonuses_to_abilities
     calculate_secondary_abilities
     find_attacks
+    apply_add_modifiers
+
+    @result['features'] = apply_features
 
     self
   end
@@ -47,6 +54,55 @@ class CosmereDecorator < ApplicationDecoratorV2
 
         attack_values(item, tooltips, expert_tooltips)
       end
+  end
+
+  def apply_add_modifiers # rubocop: disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/PerceivedComplexity
+    res = all_modifiers.flat_map do |items|
+      items.filter_map do |key, value|
+        ONLY_ADD_MODIFIERS.exclude?(key) && WEAPON_MODIFIERS.exclude?(key) && value['type'] == 'add' && { key => value['value'] }
+      end
+    end.compact_blank.each_with_object({}) do |value, acc|
+      key = value.keys[0]
+      acc[key] ||= []
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      formula_result ? (acc[key] << formula_result) : monitoring_formula_error(formula)
+    end
+
+    res.each do |(key_name, values)|
+      values.each do |value|
+        if key_name.include?('.')
+          primary, secondary = key_name.split('.')
+          @result[primary][secondary] += value
+        else
+          @result[key_name] = @result[key_name] + value
+        end
+      end
+    end
+  end
+
+  def apply_features
+    available_features.filter_map { |feature| feature_payload(feature).merge(used_count: feature.used_count) }
+  end
+
+  def feature_payload(feature)
+    {
+      id: feature.id,
+      slug: feature.feat.slug || feature.id,
+      kind: feature.feat.kind,
+      title: translate(feature.feat.title),
+      description: update_feature_description(feature),
+      origin: feature.feat.origin,
+      origin_value: feature.feat.origin_value,
+      price: feature.feat.price,
+      info: feature.feat.info
+    }.compact
+  end
+
+  def update_feature_description(feature)
+    description = translate(feature.feat.description)
+    return if description.blank?
+
+    markdown.call(value: description, version: @version)
   end
 
   def parse_tooltips(tooltips)
@@ -224,5 +280,45 @@ class CosmereDecorator < ApplicationDecoratorV2
       .hashable_pluck(
         'items.slug', 'items.name', 'items.kind', 'items.info', 'items.modifiers', :notes, :states, :modifiers, :name
       )
+  end
+
+  def all_modifiers
+    @all_modifiers ||= character_modifiers + feature_modifiers
+  end
+
+  def character_modifiers
+    @character.bonuses.where(enabled: true).pluck(:value).flatten
+  end
+
+  def feature_modifiers
+    available_features
+      .hashable_pluck(:active, 'feats.continious', 'feats.modifiers')
+      .select { |item| !item[:feats_continious] || item[:active] }
+      .pluck(:feats_modifiers)
+      .compact_blank
+  end
+
+  def available_features
+    @available_features ||=
+      @character
+        .feats.includes(:feat)
+        .order('feats.origin ASC, feats.created_at ASC')
+        .where(ready_to_use: [true, nil])
+  end
+
+  def formula_variables
+    @formula_variables ||=
+      {
+        level: level
+      }
+      .merge(abilities.symbolize_keys)
+  end
+
+  def monitoring_formula_error(formula)
+    Charkeeper::Container.resolve('monitoring.client').notify(
+      exception: Monitoring::FormulaError.new('Formula error'),
+      metadata: { formula: formula },
+      severity: :info
+    )
   end
 end

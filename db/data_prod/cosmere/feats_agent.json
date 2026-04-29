@@ -1,0 +1,127 @@
+[
+  {
+    "slug": "opportunist",
+    "kind": "static",
+    "title": {
+      "en": "Opportunist",
+      "ru": "Оппортунист"
+    },
+    "description": {
+      "en": "Once per round, you can reroll your plot die.",
+      "ru": "Один раз за раунд, когда вы бросаете Кость истории, вы можете перебросить её результат. В этом случае первый бросок аннулируется, и вы должны использовать новый результат."
+    },
+    "origin": "path",
+    "origin_value": "agent",
+    "info": {
+      "required_for": [
+        "watchful_gaze", "make_him_talk", "predictable_outcome", "reasonable_excuse", "risky_behavior", "dirty_hit"
+      ]
+    }
+  },
+  {
+    "slug": "watchful_gaze",
+    "kind": "static",
+    "title": {
+      "en": "Watchful Gaze",
+      "ru": "Бдительный взгляд"
+    },
+    "description": {
+      "en": "**Requirements** Deduction 1+.\n\nWhen a willing ally within 20 feet of you that you can influence rolls a plot die, you can use this reaction to apply the **Opportunist** power to that roll as if it were your own.",
+      "ru": "**Требования** Дедукция 1+.\n\nКогда согласный союзник в пределах 20 футов от вас, на которого вы можете повлиять, бросает кость истории, вы можете использовать эту реакцию, чтобы применить талант **Оппортунист** к этому броску, как если бы он был вашим собственным."
+    },
+    "origin": "path",
+    "origin_value": "agent",
+    "price": { "r": 1 }
+  },
+  {
+    "slug": "make_him_talk",
+    "kind": "static",
+    "title": {
+      "en": "Make Him Talk",
+      "ru": "Заставить говорить"
+    },
+    "description": {
+      "en": "**Requirements** Insight 2+.\n\nSpend 1 focus to make a **Deduction** check against the **Spiritual Defense** of a character you can influence. If successful, you learn the target's motivation for this scene. For the rest of the scene, whenever you make a check using this motivation against the target, you can raise the stakes.",
+      "ru": "**Требования** Проницательность 2+.\n\nПотратьте 1 фокус, чтобы совершить проверку **Дедукции** против **Духовной защиты** персонажа, на которого вы можете повлиять. При успехе вы узнаёте мотивацию цели в этой сцене. До конца сцены, когда вы совершаете проверку, используя эту мотивацию против цели, вы можете повысить ставки."
+    },
+    "origin": "path",
+    "origin_value": "agent",
+    "price": { "a": 2 }
+  },
+  {
+    "slug": "predictable_outcome",
+    "kind": "static",
+    "title": {
+      "en": "Predictable Outcome",
+      "ru": "Предсказуемый исход"
+    },
+    "description": {
+      "en": "**Requirements** Insight 2+.\n\nWhen you use the **Opportunist** talent, instead of rerolling the plot die, you can spend 2 focus to change the die to a different result. If the die rolls **Opportunity**, change it to **Complication 4**. If the die rolls any **Complication**, change the result to **Opportunity**.",
+      "ru": "**Требования** Проницательность 2+.\n\nКогда вы используете талант **Оппортунист**, вместо того чтобы перебрасывать Кость истории, вы можете потратить 2 фокуса и изменить значение кости на другой результат. Если на кости выпала **Возможность**, измените её на **Осложнение 4**. Если выпало любое **Осложнение**, измените результат на **Возможность**."
+    },
+    "origin": "path",
+    "origin_value": "agent",
+    "info": {
+      "required_for": ["self_control"]
+    }
+  },
+  {
+    "slug": "reasonable_excuse",
+    "kind": "static",
+    "title": {
+      "en": "Reasonable Excuse",
+      "ru": "Уместное оправдание"
+    },
+    "description": {
+      "en": "**Requirements** Deception 1+.\n\nAfter being discovered while hiding or otherwise acting suspiciously, you can use this reaction and spend two focus to convince those around you that you were doing something innocent. You influence every character capable of detecting you, causing them to believe your excuse.\n\nA character can resist this influence, but doing so loses an additional focus equal to your rank in **Deception**.\n\nAdditionally, acquiring this talent grants you the **Sleight of Hand** utility expertise.",
+      "ru": "**Требования** Обман 1+.\n\nПосле того как вас раскрыли, пока вы прятались или иным образом вели себя подозрительно, вы можете использовать эту реакцию и потратить 2 фокуса, чтобы убедить окружающих в том, что занимались чем-то невинным. Вы оказываете влияние на каждого персонажа, способного вас обнаружить, заставляя его поверить вашему оправданию.\n\nПерсонаж может сопротивляться этому влиянию, но после того как он это сделает, он потеряет дополнительное количество фокуса, равное вашему рангу в **Обмане**.\n\nКроме того, приобретая этот талант, вы получаете утилитарную компетенцию **Ловкость рук**."
+    },
+    "origin": "path",
+    "origin_value": "agent",
+    "price": { "r": 1 }
+  },
+  {
+    "slug": "risky_behavior",
+    "kind": "static",
+    "title": {
+      "en": "Risky Behavior",
+      "ru": "Рисковое поведение"
+    },
+    "description": {
+      "en": "**Requirements** Insight 2+.\n\nBefore making a check, you can spend 1 focus to raise the stakes.",
+      "ru": "**Требования** Проницательность 2+.\n\nПеред совершением проверки, вы можете потратить 1 фокус, чтобы повысить ставки."
+    },
+    "origin": "path",
+    "origin_value": "agent"
+  },
+  {
+    "slug": "dirty_hit",
+    "kind": "static",
+    "title": {
+      "en": "Dirty Hit",
+      "ru": "Грязный удар"
+    },
+    "description": {
+      "en": "While you have a free hand, you can spend 1 focus to make an unarmed attack using **Thievery** against an enemy your size or smaller with **Cognitive Defense**, this check being made at escalating stakes.\n\nOn a hit, the target is *Stunned* until the end of their next turn. On a hit or graze, you can also spend **Opportunity** to steal one item from the target that they aren't holding or using. Whether you can steal a specific item is at the GM's discretion.",
+      "ru": "Пока вы имеете свободную руку, вы можете потратить 1 фокус, чтобы совершить безоружную атаку с использованием **Воровства** против **Когнитивной защиты** врага вашего размера или меньше, эта проверка проводится с повышением ставок.\n\nПри попадании цель становится *Ошеломлённой* до конца своего следующего хода. При попадании или задевании вы также можете потратить **Возможность**, чтобы украсть один предмет у цели, который она не держит в руках и не использует. Можете ли вы украсть тот или иной предмет, остается на усмотрение Ведущего."
+    },
+    "origin": "path",
+    "origin_value": "agent",
+    "price": { "a": 1 }
+  },
+  {
+    "slug": "self_control",
+    "kind": "update_result",
+    "title": {
+      "en": "Self-Control",
+      "ru": "Самообладание"
+    },
+    "description": {
+      "en": "Acquiring this talent increases your Cognitive and Spiritual Defense by 2.",
+      "ru": "Приобретая этот талант, вы увеличиваете свою Когнитивную и Духовную защиту на 2."
+    },
+    "origin": "path",
+    "origin_value": "agent",
+    "modifiers": { "defense.cognitive": { "type": "add", "value": 2 }, "defense.spiritual": { "type": "add", "value": 2 } }
+  }
+]
