@@ -159,6 +159,7 @@ Rails.application.routes.draw do
       resources :characters, only: %i[create update] do
         scope module: :characters do
           resources :rest, only: %i[create]
+          resources :talents, only: %i[index create destroy]
         end
       end
     end

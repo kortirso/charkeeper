@@ -597,6 +597,10 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       .compact_blank
   end
 
+  def available_features_values
+    @available_features_values ||= available_features.pluck(:slug, :value).to_h.compact_blank
+  end
+
   def available_features
     @available_features ||=
       @character
@@ -604,10 +608,6 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
         .order('feats.origin ASC, feats.created_at ASC')
         .where(ready_to_use: [true, nil])
         .where.not(feats: { origin: 4 })
-  end
-
-  def available_features_values
-    @available_features_values ||= @available_features.pluck(:slug, :value).to_h.compact_blank
   end
 
   def weapons

@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, Show } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import { Key } from '@solid-primitives/keyed';
 
 import { Button, ErrorWrapper, Toggle, Checkbox, Input, TextArea, Text } from '../../../../components';
@@ -7,6 +7,8 @@ import config from '../../../../data/cosmere.json';
 import { Upgrade, Close } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchItemsRequest } from '../../../../requests/fetchItemsRequest';
+import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
+import { createTalentRequest } from '../../../../requests/createTalentRequest';
 import { localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
@@ -21,8 +23,11 @@ const TRANSLATION = {
       weapon: 'Weapon',
       armor: 'Armor',
       culture: 'Culture',
-      utility: 'Utility'
-    }
+      utility: 'General'
+    },
+    heroicTalents: 'Talents',
+    showDescription: 'Show description',
+    talentPoints: 'Talent points'
   },
   ru: {
     currentLevel: 'уровень',
@@ -35,8 +40,11 @@ const TRANSLATION = {
       weapon: 'Оружие',
       armor: 'Доспехи',
       culture: 'Культура',
-      utility: 'Утилитарные'
-    }
+      utility: 'Общие'
+    },
+    heroicTalents: 'Таланты',
+    showDescription: 'Показывать описание',
+    talentPoints: 'Очки талантов'
   },
   es: {
     currentLevel: 'nivel',
@@ -49,19 +57,26 @@ const TRANSLATION = {
       weapon: 'Weapon',
       armor: 'Armor',
       culture: 'Culture',
-      utility: 'Utility'
-    }
+      utility: 'General'
+    },
+    heroicTalents: 'Talents',
+    showDescription: 'Mostrar descripción',
+    talentPoints: 'Talent points'
   }
 }
 const ITEM_EXPERTISES = ['weapon', 'armor'];
+const PADDING_MAP = { 0: 'pl-0', 1: 'pl-2', 2: 'pl-4' };
 
 export const CosmereLeveling = (props) => {
   const character = () => props.character;
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
+  const [showDescription, setShowDescription] = createSignal(false);
 
   const [items, setItems] = createSignal(undefined);
+  const [feats, setFeats] = createSignal(undefined);
+  const [featsCount, setFeatsCount] = createSignal(0);
   const [expName, setExpName] = createSignal('');
   const [expDesc, setExpDesc] = createSignal('');
 
@@ -69,14 +84,20 @@ export const CosmereLeveling = (props) => {
   const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
 
+  const fetchTalents = async () => await fetchTalentsRequest(appState.accessToken, character().provider, character().id);
+
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
     const fetchItems = async () => await fetchItemsRequest(appState.accessToken, character().provider);
 
-    Promise.all([fetchItems()]).then(
-      ([itemsData]) => {
-        setItems(itemsData.items.filter((item) => ITEM_EXPERTISES.includes(item.kind)).sort((a, b) => a.name > b.name));
+    Promise.all([fetchItems(), fetchTalents()]).then(
+      ([itemsData, talentsData]) => {
+        batch(() => {
+          setItems(itemsData.items.filter((item) => ITEM_EXPERTISES.includes(item.kind)).sort((a, b) => a.name > b.name));
+          setFeats(talentsData.feats);
+          setFeatsCount(talentsData.selected_talents_count);
+        });
       }
     );
 
@@ -119,6 +140,55 @@ export const CosmereLeveling = (props) => {
     );
   }
 
+  const renderFeat = (feat, index) => {
+    const className = PADDING_MAP[index];
+
+    return (
+      <div class={className}>
+        <Checkbox
+          labelText={feat.title}
+          labelPosition="right"
+          labelClassList="ml-2"
+          classList="p-1"
+          checked={feat.selected}
+          onToggle={() => feat.selected ? console.log(feat.id) : selectFeat(feat.id)}
+        />
+        <Show when={showDescription()}>
+          <p
+            class="cosmere-feat feat-markdown-small mt-1 mb-2"
+            innerHTML={feat.description} // eslint-disable-line solid/no-innerhtml
+          />
+        </Show>
+        <Show when={feat.feats}>
+          <For each={feat.feats}>
+            {(item) => renderFeat(item, index + 1)}
+          </For>
+        </Show>
+      </div>
+    );
+  }
+
+  const selectFeat = async (id) => {
+    const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { feat_id: id });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onReloadCharacter();
+        refetchSelectedFeats();
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
+
+  const refetchSelectedFeats = async () => {
+    const result = await fetchTalents();
+    performResponse(
+      result,
+      function() { setFeats(result.feats) },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'CosmereLeveling' }}>
       <div class="blockable py-4 px-2 mb-2">
@@ -136,7 +206,7 @@ export const CosmereLeveling = (props) => {
         >
           <For each={['weapon', 'armor']}>
             {(kind) =>
-              <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList[kind]} >
+              <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList[kind]}>
                 <For each={items().filter((item) => item.kind === kind)}>
                   {(item) =>
                     <div class="ancestry-item">
@@ -153,7 +223,7 @@ export const CosmereLeveling = (props) => {
               </Toggle>
             }
           </For>
-          <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList.culture} >
+          <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList.culture}>
             <For each={Object.entries(config.cultures)}>
               {([slug, values]) =>
                 <div class="ancestry-item">
@@ -168,7 +238,7 @@ export const CosmereLeveling = (props) => {
               }
             </For>
           </Toggle>
-          <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList.utility} >
+          <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList.utility}>
             <div class="flex flex-col gap-4">
               <div>
                 <Key each={character().custom_expertises} by={item => item.name}>
@@ -194,6 +264,33 @@ export const CosmereLeveling = (props) => {
               </Show>
             </div>
           </Toggle>
+        </Toggle>
+      </Show>
+      <Show when={feats()}>
+        <Toggle
+          innerClassList="p-2! flex flex-col gap-2"
+          title={
+            <div class="flex justify-between items-center">
+              <p>{localize(TRANSLATION, locale()).heroicTalents}</p>
+              <p>{localize(TRANSLATION, locale()).talentPoints} - {featsCount()}/{character().talent_points}</p>
+            </div>
+          }
+        >
+          <Checkbox
+            labelText={localize(TRANSLATION, locale()).showDescription}
+            labelPosition="right"
+            labelClassList="ml-2"
+            checked={showDescription()}
+            classList="mb-2"
+            onToggle={() => setShowDescription(!showDescription())}
+          />
+          <For each={Object.entries(config.paths)}>
+            {([kind, values]) =>
+              <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(values.name, locale())}>
+                {renderFeat(feats().heroic[kind], 0)}
+              </Toggle>
+            }
+          </For>
         </Toggle>
       </Show>
     </ErrorWrapper>

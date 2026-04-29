@@ -210,7 +210,9 @@ export const Feats = (props) => {
           }
         >
           <CharacterNavigation
+            directTranslation={props.directTranslation}
             tabsList={filters().map((item) => item.title).filter((item) => item !== 'personal' || filtering() === undefined || filtering().includes('showPersonal'))}
+            filters={filters()}
             activeTab={activeFilter()}
             setActiveTab={setActiveFilter}
           >

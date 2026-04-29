@@ -1,19 +1,5 @@
 [
   {
-    "slug": "opportunist",
-    "kind": "static",
-    "title": {
-      "en": "Opportunist",
-      "ru": "Оппортунист"
-    },
-    "description": {
-      "en": "Once per round, you can reroll your plot die.",
-      "ru": "Один раз за раунд, когда вы бросаете Кость истории, вы можете перебросить её результат. В этом случае первый бросок аннулируется, и вы должны использовать новый результат."
-    },
-    "origin": "path",
-    "origin_value": "agent"
-  },
-  {
     "slug": "rousing_presence",
     "kind": "static",
     "title": {
