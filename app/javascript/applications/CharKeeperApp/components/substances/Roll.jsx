@@ -603,47 +603,47 @@ export const createRoll = () => {
                       </Button>
                     </div>
                   </Show>
+                  <div class="dice-opens">
+                    <Show when={D20_TESTS_PROVIDERS.includes(props.provider)}>
+                      <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
+                        <Dice
+                          onClick={() => d20Test.command ? closeD20Test() : openD20Test()}
+                          text={d20Test.command ? <Close /> : 'D20'}
+                        />
+                      </div>
+                    </Show>
+                    <Show when={props.provider === 'daggerheart'}>
+                      <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
+                        <DualityDice onClick={() => dualityTest.command ? closeDualityTest() : openDualityTest()} />
+                      </div>
+                    </Show>
+                    <Show when={props.provider === 'cosmere' && d20Test.command}>
+                      <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
+                        <Dice
+                          type="D6"
+                          onClick={() => plotDices() > 0 ? closeCosmereTest() : openCosmereTest()}
+                          text={plotDices() > 0 ? <Close /> : 'C'}
+                        />
+                      </div>
+                    </Show>
+                  </div>
                 </div>
                 {/* Выбор кубиков */}
-                <div class="dice-opens">
-                  <Show when={D20_TESTS_PROVIDERS.includes(props.provider)}>
-                    <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
-                      <Dice
-                        onClick={() => d20Test.command ? closeD20Test() : openD20Test()}
-                        text={d20Test.command ? <Close /> : 'D20'}
-                      />
-                    </div>
-                  </Show>
-                  <Show when={props.provider === 'daggerheart'}>
-                    <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
-                      <DualityDice onClick={() => dualityTest.command ? closeDualityTest() : openDualityTest()} />
-                    </div>
-                  </Show>
-                  <Show when={props.provider === 'cosmere'}>
-                    <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
-                      <Dice
-                        type="D6"
-                        onClick={() => plotDices() > 0 ? closeCosmereTest() : openCosmereTest()}
-                        text={plotDices() > 0 ? <Close /> : 'C'}
-                      />
-                    </div>
-                  </Show>
-                  <Show when={!open() || dices.open}>
-                    <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
-                      <Show when={open()}>
-                        <For each={['D4', 'D6', 'D8', 'D10', 'D12', 'D20', 'D100']}>
-                          {(item) =>
-                            <Dice type={item === 'D100' ? 'D20' : item} onClick={() => addDice(item)} text={item} />
-                          }
-                        </For>
-                      </Show>
-                      <Dice
-                        onClick={() => open() ? close() : openRolls()}
-                        text={open() ? <Close /> : 'Dx'}
-                      />
-                    </div>
-                  </Show>
-                </div>
+                <Show when={!open() || dices.open}>
+                  <div class="blockable ml-4 p-2" classList={{ 'w-auto': open() }}>
+                    <Show when={open()}>
+                      <For each={['D4', 'D6', 'D8', 'D10', 'D12', 'D20', 'D100']}>
+                        {(item) =>
+                          <Dice type={item === 'D100' ? 'D20' : item} onClick={() => addDice(item)} text={item} />
+                        }
+                      </For>
+                    </Show>
+                    <Dice
+                      onClick={() => open() ? close() : openRolls()}
+                      text={open() ? <Close /> : 'Dx'}
+                    />
+                  </div>
+                </Show>
               </div>
             </div>
           </ErrorWrapper>

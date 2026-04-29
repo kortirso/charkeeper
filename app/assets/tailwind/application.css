@@ -1007,11 +1007,11 @@ body.web {
 }
 
 .dice-opens {
-  @aplly flex flex-col;
+  @apply flex flex-row justify-end gap-4;
 }
 
 .dice-opens-list {
-  @apply p-2 flex justify-between flex-col gap-2 ml-4 mt-2;
+  @apply p-2 flex justify-between flex-col gap-2;
 }
 
 .roll-results {
