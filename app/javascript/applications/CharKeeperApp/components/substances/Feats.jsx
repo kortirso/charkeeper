@@ -71,7 +71,7 @@ export const Feats = (props) => {
 
   const [showFilters, setShowFilters] = createSignal(false);
   const [filtering, setFiltering] = createSignal(undefined);
-  const [activeFilter, setActiveFilter] = createSignal(filters()[0].title);
+  const [activeFilter, setActiveFilter] = createSignal(filters()[0]?.title);
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [featValues, setFeatValues] = createSignal(
     character().features.reduce((acc, item) => { acc[item.slug] = item.value; return acc; }, {})
@@ -94,7 +94,7 @@ export const Feats = (props) => {
     batch(() => {
       setFeatValues(character().features.reduce((acc, item) => { acc[item.slug] = item.value; return acc; }, {}));
       setLastActiveCharacterId(character().id);
-      setActiveFilter(filters()[0].title);
+      setActiveFilter(filters()[0]?.title);
     });
 
     readFeaturesToggle();
@@ -209,17 +209,19 @@ export const Feats = (props) => {
             </div>
           }
         >
-          <CharacterNavigation
-            directTranslation={props.directTranslation}
-            tabsList={filters().map((item) => item.title).filter((item) => item !== 'personal' || filtering() === undefined || filtering().includes('showPersonal'))}
-            filters={filters()}
-            activeTab={activeFilter()}
-            setActiveTab={setActiveFilter}
-          >
-            <Button default classList='rounded min-w-6 min-h-6 opacity-50 m-0!' onClick={() => setShowFilters(!showFilters())}>
-              <Edit />
-            </Button>
-          </CharacterNavigation>
+          <Show when={activeFilter()}>
+            <CharacterNavigation
+              directTranslation={props.directTranslation}
+              tabsList={filters().map((item) => item.title).filter((item) => item !== 'personal' || filtering() === undefined || filtering().includes('showPersonal'))}
+              filters={filters()}
+              activeTab={activeFilter()}
+              setActiveTab={setActiveFilter}
+            >
+              <Button default classList='rounded min-w-6 min-h-6 opacity-50 m-0!' onClick={() => setShowFilters(!showFilters())}>
+                <Edit />
+              </Button>
+            </CharacterNavigation>
+          </Show>
         </Show>
         <div class="mt-2">
           <Show when={filtering() !== undefined && activeFilterOptions()}>
