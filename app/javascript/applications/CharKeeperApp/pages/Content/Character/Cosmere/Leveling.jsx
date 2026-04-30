@@ -9,6 +9,7 @@ import { updateCharacterRequest } from '../../../../requests/updateCharacterRequ
 import { fetchItemsRequest } from '../../../../requests/fetchItemsRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
+import { removeTalentRequest } from '../../../../requests/removeTalentRequest';
 import { localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
@@ -27,7 +28,8 @@ const TRANSLATION = {
     },
     heroicTalents: 'Talents',
     showDescription: 'Show description',
-    talentPoints: 'Talent points'
+    talentPoints: 'Talent points',
+    nested: 'There are nested selected talents'
   },
   ru: {
     currentLevel: 'уровень',
@@ -44,7 +46,8 @@ const TRANSLATION = {
     },
     heroicTalents: 'Таланты',
     showDescription: 'Показывать описание',
-    talentPoints: 'Очки талантов'
+    talentPoints: 'Очки талантов',
+    nested: 'Сперва удалите вложенные таланты'
   },
   es: {
     currentLevel: 'nivel',
@@ -61,7 +64,8 @@ const TRANSLATION = {
     },
     heroicTalents: 'Talents',
     showDescription: 'Mostrar descripción',
-    talentPoints: 'Talent points'
+    talentPoints: 'Talent points',
+    nested: 'There are nested selected talents'
   }
 }
 const ITEM_EXPERTISES = ['weapon', 'armor'];
@@ -81,7 +85,7 @@ export const CosmereLeveling = (props) => {
   const [expDesc, setExpDesc] = createSignal('');
 
   const [appState] = useAppState();
-  const [{ renderAlerts, renderNotice }] = useAppAlert();
+  const [{ renderAlerts, renderNotice, renderAlert }] = useAppAlert();
   const [locale] = useAppLocale();
 
   const fetchTalents = async () => await fetchTalentsRequest(appState.accessToken, character().provider, character().id);
@@ -151,7 +155,7 @@ export const CosmereLeveling = (props) => {
           labelClassList="ml-2"
           classList="p-1"
           checked={feat.selected}
-          onToggle={() => feat.selected ? console.log(feat.id) : selectFeat(feat.id)}
+          onToggle={() => feat.selected ? removeFeat(feat) : selectFeat(feat.id)}
         />
         <Show when={showDescription()}>
           <p
@@ -165,6 +169,20 @@ export const CosmereLeveling = (props) => {
           </For>
         </Show>
       </div>
+    );
+  }
+
+  const removeFeat = async (feat) => {
+    if (feat.feats && feat.feats.find((item) => item.selected)) return renderAlert(localize(TRANSLATION, locale()).nested);
+
+    const result = await removeTalentRequest(appState.accessToken, character().provider, character().id, feat.id);
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onReloadCharacter();
+        refetchSelectedFeats();
+      },
+      function() { renderAlerts(result.errors_list) }
     );
   }
 
@@ -184,7 +202,12 @@ export const CosmereLeveling = (props) => {
     const result = await fetchTalents();
     performResponse(
       result,
-      function() { setFeats(result.feats) },
+      function() {
+        batch(() => {
+          setFeats(result.feats);
+          setFeatsCount(result.selected_talents_count);
+        });
+      },
       function() { renderAlerts(result.errors_list) }
     );
   }

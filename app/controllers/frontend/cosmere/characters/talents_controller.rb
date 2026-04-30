@@ -11,6 +11,7 @@ module Frontend
 
         before_action :find_character
         before_action :find_feat, only: %i[create]
+        before_action :find_feat_for_destroy, only: %i[destroy]
 
         def index
           render json: {
@@ -28,7 +29,10 @@ module Frontend
           end
         end
 
-        def destroy; end
+        def destroy
+          @character.feats.find_by!(feat_id: @feat.id)&.destroy
+          only_head_response
+        end
 
         private
 
@@ -38,6 +42,10 @@ module Frontend
 
         def find_feat
           @feat = ::Cosmere::Feat.find(params[:feat_id])
+        end
+
+        def find_feat_for_destroy
+          @feat = ::Cosmere::Feat.find(params[:id])
         end
 
         def selected_feat_slugs
