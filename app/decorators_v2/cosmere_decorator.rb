@@ -17,6 +17,7 @@ class CosmereDecorator < ApplicationDecoratorV2
     find_attacks
     apply_add_modifiers
 
+    @result['movement'] = modify_by_armor(movement)
     @result['features'] = apply_features
 
     self
@@ -37,10 +38,11 @@ class CosmereDecorator < ApplicationDecoratorV2
       'spiritual' => 10 + abilities['awa'] + abilities['pre']
     }
     @result['deflect'] = equiped_armor&.dig(:items_info, 'deflect').to_i
+    @result['health_max'] = health_max
     @result['focus_max'] = 2 + abilities['wil']
     @result['investiture_max'] = 2 + [abilities['awa'], abilities['pre']].max
     @result['load'] = find_load
-    @result['movement'] = modify_by_armor(find_movement)
+    @result['movement'] = find_movement
     @result['recovery_die'] = find_recovery_die
     @result['senses_range'] = find_senses_range
     @result['talent_points'] = find_talent_points

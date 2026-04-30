@@ -10,10 +10,10 @@ module Cosmere
                :talent_points, :updated_at, :expertises, :custom_expertises, :features
 
     delegate :skills, :defense, :focus_max, :investiture_max, :load, :movement, :recovery_die, :senses_range,
-             :abilities, :deflect, :tier, :attacks, :talent_points, :features, to: :decorator
+             :abilities, :deflect, :tier, :attacks, :talent_points, :features, :health_max, to: :decorator
     delegate :id, :data, to: :object
     delegate :attribute_points, :skill_points, :health, :focus, :investiture, :level, :guide_step, :additional_skills, :ancestry,
-             :cultures, :health_max, :expertises, :custom_expertises, to: :data
+             :cultures, :expertises, :custom_expertises, to: :data
 
     def provider
       'cosmere'
