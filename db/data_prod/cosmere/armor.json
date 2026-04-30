@@ -100,5 +100,21 @@
       "tooltips": ["cumbersome-5"],
       "expert_tooltips": ["cumbersome-5"]
     }
+  },
+  {
+    "slug": "shardplate",
+    "kind": "armor",
+    "name": {
+      "en": "Shardplate",
+      "ru": "Осколочный доспех"
+    },
+    "data": {
+      "weight": 1400
+    },
+    "info": {
+      "deflect": 5,
+      "tooltips": ["dangerous"],
+      "expert_tooltips": []
+    }
   }
 ]

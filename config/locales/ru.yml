@@ -360,6 +360,7 @@ ru:
         two_handed: Two-Handed
         impact: Impact
         keen: Keen
+        spirit: Spirit
         title:
           cumbersome: Cumbersome
           dangerous: Dangerous
@@ -377,6 +378,7 @@ ru:
           two_handed: Two-Handed
           impact: Impact
           keen: Keen
+          spirit: Spirit
     pathfinder:
       general:
         acid: Кислота

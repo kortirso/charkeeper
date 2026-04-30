@@ -69,7 +69,7 @@ const TRANSLATION = {
   }
 }
 const ITEM_EXPERTISES = ['weapon', 'armor'];
-const PADDING_MAP = { 0: 'pl-0', 1: 'pl-2', 2: 'pl-4' };
+const PADDING_MAP = { 0: 'pl-0', 1: 'pl-2', 2: 'pl-4', 3: 'pl-6' };
 
 export const CosmereLeveling = (props) => {
   const character = () => props.character;

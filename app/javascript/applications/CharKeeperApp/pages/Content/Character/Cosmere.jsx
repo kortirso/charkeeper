@@ -10,7 +10,8 @@ import { localize } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
-    weapons: 'Weapons',
+    lightWeapon: 'Light weapons',
+    heavyWeapon: 'Heavy weapons',
     armor: 'Armor',
     items: 'Items',
     agentFilter: 'Agent',
@@ -21,7 +22,8 @@ const TRANSLATION = {
     warriorFilter: 'Warrior'
   },
   ru: {
-    weapons: 'Оружие',
+    lightWeapon: 'Лёгкое оружие',
+    heavyWeapon: 'Тяжёлое оружие',
     armor: 'Доспехи',
     items: 'Предметы',
     agentFilter: 'Агент',
@@ -32,7 +34,8 @@ const TRANSLATION = {
     warriorFilter: 'Воин'
   },
   es: {
-    weapons: 'Weapons',
+    lightWeapon: 'Light weapons',
+    heavyWeapon: 'Heavy weapons',
     armor: 'Armor',
     items: 'Items',
     agentFilter: 'Agent',
@@ -54,7 +57,8 @@ export const Cosmere = (props) => {
   const { Roll, openCosmereTest } = createRoll();
   const [locale] = useAppLocale();
 
-  const weaponFilter = (item) => item.kind === 'weapon';
+  const lightWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'light_weaponry';
+  const heavyWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'heavy_weaponry';
   const armorFilter = (item) => item.kind === 'armor';
   const itemFilter = (item) => item.kind === 'item';
 
@@ -143,7 +147,8 @@ export const Cosmere = (props) => {
               <Equipment
                 character={character()}
                 itemFilters={[
-                  { title: localize(TRANSLATION, locale()).weapons, callback: weaponFilter },
+                  { title: localize(TRANSLATION, locale()).lightWeapon, callback: lightWeaponFilter },
+                  { title: localize(TRANSLATION, locale()).heavyWeapon, callback: heavyWeaponFilter },
                   { title: localize(TRANSLATION, locale()).armor, callback: armorFilter },
                   { title: localize(TRANSLATION, locale()).items, callback: itemFilter }
                 ]}
@@ -235,7 +240,8 @@ export const Cosmere = (props) => {
               <Equipment
                 character={character()}
                 itemFilters={[
-                  { title: localize(TRANSLATION, locale()).weapons, callback: weaponFilter },
+                  { title: localize(TRANSLATION, locale()).lightWeapon, callback: lightWeaponFilter },
+                  { title: localize(TRANSLATION, locale()).heavyWeapon, callback: heavyWeaponFilter },
                   { title: localize(TRANSLATION, locale()).armor, callback: armorFilter },
                   { title: localize(TRANSLATION, locale()).items, callback: itemFilter }
                 ]}

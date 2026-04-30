@@ -1,5 +1,45 @@
 [
   {
+    "slug": "javelin",
+    "kind": "weapon",
+    "name": {
+      "en": "Javelin",
+      "ru": "Метательное копьё"
+    },
+    "data": {
+      "weight": 2,
+      "price": 20
+    },
+    "info": {
+      "weapon_skill": "light_weaponry",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "keen",
+      "tooltips": ["thrown-30/120"],
+      "expert_tooltips": ["thrown-30/120", "indirect"]
+    }
+  },
+  {
+    "slug": "rapier",
+    "kind": "weapon",
+    "name": {
+      "en": "Rapier",
+      "ru": "Рапира"
+    },
+    "data": {
+      "weight": 2,
+      "price": 100
+    },
+    "info": {
+      "weapon_skill": "light_weaponry",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "keen",
+      "tooltips": ["quickdraw"],
+      "expert_tooltips": ["quickdraw", "defensive"]
+    }
+  },
+  {
     "slug": "knife",
     "kind": "weapon",
     "name": {
@@ -121,6 +161,27 @@
     }
   },
   {
+    "slug": "sling",
+    "kind": "weapon",
+    "name": {
+      "en": "Sling",
+      "ru": "Праща"
+    },
+    "data": {
+      "weight": 1,
+      "price": 2
+    },
+    "info": {
+      "weapon_skill": "light_weaponry",
+      "type": "ranged",
+      "damage": "1d4",
+      "damage_type": "impact",
+      "tooltips": ["discreet"],
+      "expert_tooltips": ["discreet", "indirect"],
+      "dist": "30/120"
+    }
+  },
+  {
     "slug": "axe",
     "kind": "weapon",
     "name": {
@@ -138,6 +199,26 @@
       "damage_type": "keen",
       "tooltips": ["thrown-20/60"],
       "expert_tooltips": ["thrown-20/60", "offhand"]
+    }
+  },
+  {
+    "slug": "greatsword",
+    "kind": "weapon",
+    "name": {
+      "en": "Greatsword",
+      "ru": "Двуручный меч"
+    },
+    "data": {
+      "weight": 7,
+      "price": 200
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "keen",
+      "tooltips": ["two_handed"],
+      "expert_tooltips": ["two_handed", "deadly"]
     }
   },
   {
@@ -201,6 +282,26 @@
     }
   },
   {
+    "slug": "poleaxe",
+    "kind": "weapon",
+    "name": {
+      "en": "Poleaxe",
+      "ru": "Двуручная секира"
+    },
+    "data": {
+      "weight": 5,
+      "price": 40
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "keen",
+      "tooltips": ["two_handed"],
+      "expert_tooltips": ["two_handed", "reach"]
+    }
+  },
+  {
     "slug": "shield",
     "kind": "weapon",
     "name": {
@@ -216,8 +317,130 @@
       "type": "melee",
       "damage": "1d4",
       "damage_type": "impact",
-      "tooltips": ["defensive"],
-      "expert_tooltips": ["defensive", "offhand"]
+      "tooltips": ["loaded", "defensive"],
+      "expert_tooltips": ["loaded", "defensive", "offhand"]
+    }
+  },
+  {
+    "slug": "Crossbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Crossbow",
+      "ru": "Арбалет"
+    },
+    "data": {
+      "weight": 7,
+      "price": 200
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "ranged",
+      "damage": "1d8",
+      "damage_type": "keen",
+      "tooltips": ["two_handed"],
+      "expert_tooltips": ["two_handed", "deadly"],
+      "dist": "100/400"
+    }
+  },
+  {
+    "slug": "Longbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Longbow",
+      "ru": "Длинный лук"
+    },
+    "data": {
+      "weight": 3,
+      "price": 100
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "ranged",
+      "damage": "1d6",
+      "damage_type": "keen",
+      "tooltips": ["two_handed"],
+      "expert_tooltips": ["two_handed", "indirect"],
+      "dist": "150/600"
+    }
+  },
+  {
+    "slug": "half_shard",
+    "kind": "weapon",
+    "name": {
+      "en": "Half-Shard",
+      "ru": "Half-Shard"
+    },
+    "data": {
+      "weight": 10,
+      "price": 2000
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "melee",
+      "damage": "2d4",
+      "damage_type": "impact",
+      "tooltips": ["defensive", "two_handed"],
+      "expert_tooltips": ["defensive", "two_handed", "momentum"]
+    }
+  },
+  {
+    "slug": "shardblade",
+    "kind": "weapon",
+    "name": {
+      "en": "Shardblade",
+      "ru": "Осколочный клинок"
+    },
+    "data": {
+      "weight": 4
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "melee",
+      "damage": "2d8",
+      "damage_type": "spirit",
+      "tooltips": ["dangerous", "deadly"],
+      "expert_tooltips": ["deadly"]
+    }
+  },
+  {
+    "slug": "warhammer",
+    "kind": "weapon",
+    "name": {
+      "en": "Warhammer",
+      "ru": "Боевой молот"
+    },
+    "data": {
+      "weight": 150,
+      "price": 400
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "melee",
+      "damage": "2d10",
+      "damage_type": "impact",
+      "tooltips": ["cumbersome-5", "two_handed"],
+      "expert_tooltips": ["cumbersome-5"]
+    }
+  },
+  {
+    "slug": "grandbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Grandbow",
+      "ru": "Grandbow"
+    },
+    "data": {
+      "weight": 20,
+      "price": 1000
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "ranged",
+      "damage": "2d6",
+      "damage_type": "keen",
+      "tooltips": ["cumbersome-5", "two_handed"],
+      "expert_tooltips": ["cumbersome-5", "two_handed", "pierce"],
+      "dist": "200/800"
     }
   }
 ]
