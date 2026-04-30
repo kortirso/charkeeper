@@ -1,5 +1,15 @@
 en:
   changelogs:
+    '4031':
+      cosmere:
+        title1: Easy character creation
+        title2: Equipment and available attacks
+        title3: Plot die
+        title4: Leveling
+        desc1: For new Cosmere character you need just select ancestry, culture and heroic path
+        desc2: You can select any equipment for your character, combat section will render all available attacks
+        desc3: In addition to simple D20 rolls you can make plot die rolls
+        desc4: You can change level of your characters, select expertises and talents
     '4026':
       pf:
         title1: Archetypes
