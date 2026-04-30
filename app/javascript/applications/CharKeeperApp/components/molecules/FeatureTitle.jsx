@@ -22,7 +22,9 @@ const TRANSLATION = {
     mp: 'MP',
     hope: 'Hope',
     stress: 'Stress',
-    spent: 'Resource is spent'
+    spent: 'Resource is spent',
+    a: 'A',
+    r: 'R'
   },
   ru: {
     one_at_short_rest: 'Короткий - 1, длинный - все',
@@ -35,7 +37,9 @@ const TRANSLATION = {
     mp: 'ОМ',
     hope: 'Надежда',
     stress: 'Стресс',
-    spent: 'Ресурс потрачен'
+    spent: 'Ресурс потрачен',
+    a: 'Д',
+    r: 'Р'
   },
   es: {
     one_at_short_rest: 'Corto - 1, largo - todo',
@@ -48,10 +52,13 @@ const TRANSLATION = {
     mp: 'PM',
     hope: 'Esperanza',
     stress: 'Estrés',
-    spent: 'Resource is spent'
+    spent: 'Resource is spent',
+    a: 'A',
+    r: 'R'
   }
 }
 const SPENDING_RESOURCES_PROVIDERS = ['daggerheart'];
+const PRICE_WITHOUT_VALUE = ['r'];
 
 export const FeatureTitle = (props) => {
   const character = () => props.character;
@@ -130,7 +137,11 @@ export const FeatureTitle = (props) => {
                   <For each={Object.entries(feature().price)}>
                     {([slug, value]) =>
                       <Show when={localize(TRANSLATION, locale())[slug]}>
-                        <p class="text-xs">{localize(TRANSLATION, locale())[slug]} {value}</p>
+                        <p class="text-xs">
+                          <Show when={!PRICE_WITHOUT_VALUE.includes(slug)} fallback={localize(TRANSLATION, locale())[slug]}>
+                            {localize(TRANSLATION, locale())[slug]} {value}
+                          </Show>
+                        </p>
                       </Show>
                     }
                   </For>
