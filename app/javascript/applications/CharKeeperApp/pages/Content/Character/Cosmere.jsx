@@ -54,7 +54,7 @@ export const Cosmere = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { Roll, openCosmereTest } = createRoll();
+  const { Roll, openCosmereTest, openD20Attack } = createRoll();
   const [locale] = useAppLocale();
 
   const lightWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'light_weaponry';
@@ -129,7 +129,7 @@ export const Cosmere = (props) => {
                 <Combat
                   character={character()}
                   openD20Test={openCosmereTest}
-                  openD20Attack={openCosmereTest}
+                  openD20Attack={openD20Attack}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
@@ -222,7 +222,7 @@ export const Cosmere = (props) => {
                 <Combat
                   character={character()}
                   openD20Test={openCosmereTest}
-                  openD20Attack={openCosmereTest}
+                  openD20Attack={openD20Attack}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>

@@ -1019,7 +1019,7 @@ body.web {
 }
 
 .dice-opens {
-  @apply flex flex-row justify-end gap-4;
+  @apply flex flex-row justify-end gap-2;
 }
 
 .dice-opens-list {

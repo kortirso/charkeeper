@@ -597,11 +597,9 @@ export const createRoll = () => {
                   </Show>
                   {/* Кнопка бросков */}
                   <Show when={open()}>
-                    <div class="mt-2">
-                      <Button withSuspense default textable classList="flex-1" onClick={performRoll}>
-                        {localize(TRANSLATION, locale()).roll}
-                      </Button>
-                    </div>
+                    <Button withSuspense default textable classList="flex-1" onClick={performRoll}>
+                      {localize(TRANSLATION, locale()).roll}
+                    </Button>
                   </Show>
                   <div class="dice-opens">
                     <Show when={D20_TESTS_PROVIDERS.includes(props.provider)}>
@@ -630,7 +628,7 @@ export const createRoll = () => {
                 </div>
                 {/* Выбор кубиков */}
                 <Show when={!open() || dices.open}>
-                  <div class="blockable ml-4 p-2" classList={{ 'w-auto': open() }}>
+                  <div class="blockable ml-2 p-2" classList={{ 'w-auto': open() }}>
                     <Show when={open()}>
                       <For each={['D4', 'D6', 'D8', 'D10', 'D12', 'D20', 'D100']}>
                         {(item) =>
