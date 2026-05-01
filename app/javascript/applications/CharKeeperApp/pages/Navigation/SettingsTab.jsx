@@ -38,7 +38,7 @@ export const SettingsTab = () => {
 
   const readHostData = async () => {
     const cacheValue = await readFromCache(CHARKEEPER_HOST_CACHE_NAME);
-    setHost(cacheValue === null || cacheValue === undefined ? 'charkeeper.org' : cacheValue);
+    setHost(cacheValue === null || cacheValue === undefined ? appState.rootHost : cacheValue);
   }
 
   createEffect(() => {

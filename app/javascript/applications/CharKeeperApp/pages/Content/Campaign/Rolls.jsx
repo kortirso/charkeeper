@@ -16,7 +16,7 @@ export const CampaignRolls = (props) => {
 
   const readHostData = async () => {
     const cacheValue = await readFromCache(CHARKEEPER_HOST_CACHE_NAME);
-    return cacheValue === null || cacheValue === undefined ? 'charkeeper.org' : cacheValue;
+    return cacheValue === null || cacheValue === undefined ? appState.rootHost : cacheValue;
   }
 
   const connectToCable = async () => {
