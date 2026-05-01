@@ -204,6 +204,7 @@ export const Dc20Damages = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Damages' }}>
       <GuideWrapper character={character()}>
         <EditWrapper
+          position="right"
           editMode={editMode()}
           onSetEditMode={setEditMode}
           onCancelEditing={cancelEditing}

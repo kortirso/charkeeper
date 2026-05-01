@@ -304,7 +304,6 @@ export const CosmereLeveling = (props) => {
             labelPosition="right"
             labelClassList="ml-2"
             checked={showDescription()}
-            classList="mb-2"
             onToggle={() => setShowDescription(!showDescription())}
           />
           <For each={Object.entries(config.paths)}>

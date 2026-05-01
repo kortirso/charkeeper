@@ -155,10 +155,6 @@ export const Pathfinder2Damages = (props) => {
   }
 
   const removeReduction = (impact, type) => {
-    console.log(impact)
-    console.log(type)
-    console.log(reduction())
-
     setReduction({
       ...reduction(),
       [impact]: Object.fromEntries(Object.entries(reduction()[impact]).filter(([key,]) => key !== type))
@@ -192,6 +188,7 @@ export const Pathfinder2Damages = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Damages' }}>
       <GuideWrapper character={character()}>
         <EditWrapper
+          position="right"
           editMode={editMode()}
           onSetEditMode={setEditMode}
           onCancelEditing={cancelEditing}
