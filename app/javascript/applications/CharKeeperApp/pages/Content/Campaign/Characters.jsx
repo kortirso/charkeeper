@@ -11,7 +11,7 @@ export const CampaignCharacters = (props) => {
   const campaign = () => props.campaign;
 
   const [appState, { navigate }] = useAppState();
-  const [,dict] = useAppLocale();
+  const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
