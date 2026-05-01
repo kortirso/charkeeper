@@ -5,7 +5,9 @@ module CampaignsContext
     use_contract do
       config.messages.namespace = :campaign
 
-      Providers = Dry::Types['strict.string'].enum('dnd5', 'dnd2024', 'daggerheart', 'pathfinder2', 'dc20', 'fate', 'fallout')
+      Providers = Dry::Types['strict.string'].enum(
+        'dnd5', 'dnd2024', 'daggerheart', 'pathfinder2', 'dc20', 'fate', 'fallout', 'cosmere'
+      )
 
       params do
         required(:user).filled(type?: User)

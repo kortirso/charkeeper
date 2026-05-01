@@ -9,7 +9,8 @@ module CampaignsContext
       'Pathfinder2::Character' => 'pathfinder2',
       'Dc20::Character' => 'dc20',
       'Fate::Character' => 'fate',
-      'Fallout::Character' => 'fallout'
+      'Fallout::Character' => 'fallout',
+      'Cosmere::Character' => 'cosmere'
     }.freeze
 
     use_contract do

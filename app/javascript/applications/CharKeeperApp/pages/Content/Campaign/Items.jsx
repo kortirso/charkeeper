@@ -16,7 +16,11 @@ const TRANSLATION = {
     lightArmor: 'Light armor',
     mediumArmor: 'Medium armor',
     heavyArmor: 'Heavy armor',
-    shields: 'Shields'
+    shields: 'Shields',
+    lightWeapon: 'Light weapons',
+    heavyWeapon: 'Heavy weapons',
+    armor: 'Armor',
+    items: 'Items'
   },
   ru: {
     simpleM: 'Простое оружие ближнего боя',
@@ -28,7 +32,11 @@ const TRANSLATION = {
     lightArmor: 'Лёгкая броня',
     mediumArmor: 'Средняя броня',
     heavyArmor: 'Тяжёлая броня',
-    shields: 'Щиты'
+    shields: 'Щиты',
+    lightWeapon: 'Лёгкое оружие',
+    heavyWeapon: 'Тяжёлое оружие',
+    armor: 'Доспехи',
+    items: 'Предметы'
   },
   es: {
     simpleM: 'Arma cuerpo a cuerpo simple',
@@ -40,7 +48,11 @@ const TRANSLATION = {
     lightArmor: 'Armadura ligera',
     mediumArmor: 'Armadura media',
     heavyArmor: 'Armadura pesada',
-    shields: 'Escudos'
+    shields: 'Escudos',
+    lightWeapon: 'Light weapons',
+    heavyWeapon: 'Heavy weapons',
+    armor: 'Armor',
+    items: 'Items'
   }
 }
 
@@ -74,6 +86,11 @@ export const CampaignItems = (props) => {
   const toolsFilter = (item) => item.kind === 'tools';
   const musicFilter = (item) => item.kind === 'music';
   const potionFilter = (item) => item.kind === 'potion';
+
+  const lightWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'light_weaponry';
+  const heavyWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'heavy_weaponry';
+  const armorCosmereFilter = (item) => item.kind === 'armor';
+  const itemCosmereFilter = (item) => item.kind === 'item';
 
   const primaryWeaponFilterT1 = (item) => item.kind === 'primary weapon' && item.info.tier === 1 && item.info.damage_type === 'physical';
   const primaryWeaponFilterT1Magic = (item) => item.kind === 'primary weapon' && item.info.tier === 1 && item.info.damage_type === 'magic';
@@ -181,6 +198,20 @@ export const CampaignItems = (props) => {
               { title: localize(TRANSLATION, locale()).mediumArmor, callback: mediumFilter },
               { title: localize(TRANSLATION, locale()).heavyArmor, callback: heavyFilter },
               { title: localize(TRANSLATION, locale()).shields, callback: shieldFilter }
+            ]}
+            onReloadCharacter={() => console.log('Equipment refresh')}
+          />
+        </Match>
+        <Match when={campaign().provider === 'cosmere'}>
+          <Equipment
+            forCampaign
+            character={campaign()}
+            characters={props.characters}
+            itemFilters={[
+              { title: localize(TRANSLATION, locale()).lightWeapon, callback: lightWeaponFilter },
+              { title: localize(TRANSLATION, locale()).heavyWeapon, callback: heavyWeaponFilter },
+              { title: localize(TRANSLATION, locale()).armor, callback: armorCosmereFilter },
+              { title: localize(TRANSLATION, locale()).items, callback: itemCosmereFilter }
             ]}
             onReloadCharacter={() => console.log('Equipment refresh')}
           />
