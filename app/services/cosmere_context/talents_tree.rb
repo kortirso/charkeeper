@@ -21,19 +21,33 @@ module CosmereContext
 
     private
 
-    def feat_info(slug)
+    def feat_info(slug) # rubocop: disable Metrics/AbcSize
       feat = feats[slug]
+      # если для доступа необходимо несколько талантов
+      return if feat.dig(:info, 'required')&.any? { |item| !selected?(feat, item) }
+
+      selected = selected?(feat, slug)
       payload = {
         id: feat[:id],
         slug: feat[:slug],
         title: translate(feat[:title]),
         description: markdown.call(value: translate(feat[:description]), version: '0.4.31'),
-        selected: @selected_feat_slugs.include?(slug)
+        selected: selected
       }
-      if @selected_feat_slugs.include?(slug) && feat.dig(:info, 'required_for')
-        payload[:feats] = feat.dig(:info, 'required_for').map { |item| feat_info(item) }
+      if selected && feat.dig(:info, 'required_for')
+        payload[:feats] = feat.dig(:info, 'required_for').filter_map { |item| feat_info(item) }
       end
       payload
+    end
+
+    def selected?(feat, slug)
+      return true if @selected_feat_slugs[slug] # просто выбран
+
+      selected_double_slugs.include?(feat.dig(:info, 'double_slug')) # выбран дубль
+    end
+
+    def selected_double_slugs
+      @selected_double_slugs ||= @selected_feat_slugs.values.filter_map { |item| item['double_slug'] }.flatten
     end
 
     def feats

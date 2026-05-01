@@ -49,7 +49,7 @@ module Frontend
         end
 
         def selected_feat_slugs
-          @selected_feat_slugs ||= @character.feats.joins(:feat).pluck('feats.slug')
+          @selected_feat_slugs ||= @character.feats.joins(:feat).pluck('feats.slug', 'feats.info').to_h
         end
       end
     end

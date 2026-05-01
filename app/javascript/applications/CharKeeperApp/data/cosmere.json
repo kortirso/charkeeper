@@ -13,7 +13,7 @@
     "heavy_weaponry": { "name": { "en": "Heavy Weaponry", "ru": "Тяжёлое оружие" } },
     "light_weaponry": { "name": { "en": "Light Weaponry", "ru": "Лёгкое оружие" } },
     "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },
-    "thievery": { "name": { "en": "Thievery", "ru": "Выровство" } },
+    "thievery": { "name": { "en": "Thievery", "ru": "Воровство" } },
     "crafting": { "name": { "en": "Crafting", "ru": "Ремесло" } },
     "deduction": { "name": { "en": "Deduction", "ru": "Дедукция" } },
     "discipline": { "name": { "en": "Discipline", "ru": "Дисциплина" } },

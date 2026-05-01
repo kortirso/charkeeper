@@ -1,20 +1,5 @@
 [
   {
-    "slug": "rousing_presence",
-    "kind": "static",
-    "title": {
-      "en": "Rousing Presence",
-      "ru": "Побуждающее присутствие"
-    },
-    "description": {
-      "en": "An ally becomes *Determined* until end of scene.",
-      "ru": "Выберите союзника, на которого вы можете повлиять. Он становится *Решительным* до тех пор, пока не воспользуется эффектом этого состояния или до конца сцены."
-    },
-    "origin": "path",
-    "origin_value": "envoy",
-    "price": { "a": 1 }
-  },
-  {
     "slug": "seek_quarry",
     "kind": "static",
     "title": {

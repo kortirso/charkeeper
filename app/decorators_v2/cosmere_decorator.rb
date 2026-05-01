@@ -311,7 +311,8 @@ class CosmereDecorator < ApplicationDecoratorV2
   def formula_variables
     @formula_variables ||=
       {
-        level: level
+        level: level,
+        tier: tier
       }
       .merge(abilities.symbolize_keys)
   end

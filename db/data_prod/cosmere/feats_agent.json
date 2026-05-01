@@ -137,7 +137,10 @@
     },
     "origin": "path",
     "origin_value": "agent",
-    "modifiers": { "defense.cognitive": { "type": "add", "value": 2 }, "defense.spiritual": { "type": "add", "value": 2 } }
+    "modifiers": { "defense.cognitive": { "type": "add", "value": 2 }, "defense.spiritual": { "type": "add", "value": 2 } },
+    "info": {
+      "double_slug": "collected"
+    }
   },
   {
     "slug": "quick_analysis",
@@ -282,7 +285,10 @@
       "ru": "Когда вы попадаете безоружной атакой или атакой оружием за каждое потраченное действие на эту атаку, она наносит дополнительный урон, равный 1 + ваш тир."
     },
     "origin": "path",
-    "origin_value": "agent"
+    "origin_value": "agent",
+    "info": {
+      "double_slug": "mighty"
+    }
   },
   {
     "slug": "mercurial_facade",
@@ -306,11 +312,14 @@
       "ru": "Связи из высшего общества"
     },
     "description": {
-      "en": "**Requirements** Patron in high society.\n\nWhen you make a test to interact socially in high society, you can spend 2 focus to add an *Opportunity* to the result.\n\nAdditionally, when you acquire this talent, gain a cultural expertise in **High Society**.",
+      "en": "**Requirements** Patron in high society.\n\nWhen you make a test to interact socially in high society, you can spend 2 focus to add an **Opportunity** to the result.\n\nAdditionally, when you acquire this talent, gain a cultural expertise in **High Society**.",
       "ru": "**Требования** Иметь покровителя из высшего общества.\n\nКогда вы совершаете проверку на социальное взаимодействие в высшем обществе, вы можете потратить 2 фокуса, чтобы добавить *Возможность* к результату. Кроме того, приобретая этот талант, вы получаете культурную компетенцию **Высшее общество**."
     },
     "origin": "path",
-    "origin_value": "agent"
+    "origin_value": "agent",
+    "info": {
+      "double_slug": "high_society_contacts"
+    }
   },
   {
     "slug": "double_down",
