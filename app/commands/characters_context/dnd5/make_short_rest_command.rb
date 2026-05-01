@@ -43,7 +43,7 @@ module CharactersContext
       end
 
       def do_persist(input)
-        input[:character].feats.where(limit_refresh: 0).update_all(used_count: 0)
+        input[:character].feats.joins(:feat).where.not(feats: { origin: 6 }).where(limit_refresh: 0).update_all(used_count: 0)
         update_character(input)
 
         { result: :ok }

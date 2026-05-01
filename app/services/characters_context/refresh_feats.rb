@@ -34,7 +34,7 @@ module CharactersContext
           character_id: character.id,
           feat_id: item.id,
           used_count: 0,
-          limit_refresh: item.limit_refresh,
+          limit_refresh: item.class.limit_refreshes[item.limit_refresh],
           ready_to_use: true
         }
       end
