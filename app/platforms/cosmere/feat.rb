@@ -14,5 +14,7 @@ module Cosmere
       PATH_ORIGIN => 0
     }
     enum :kind, { STATIC => 0, TEXT => 1, UPDATE_RESULT => 2 }
+
+    def self.limit_refreshes = {}
   end
 end

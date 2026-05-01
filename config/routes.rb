@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resources :feedbacks, only: %i[index]
     resources :notifications, only: %i[index new create]
 
+    namespace :cosmere do
+      resources :characters, only: %i[index]
+    end
     namespace :fallout do
       resources :characters, only: %i[index]
     end
