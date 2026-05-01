@@ -25,7 +25,7 @@ module CharactersContext
 
         input[:spent_hit_dice] = input[:options].stringify_keys.each_with_object({}) do |(key, value), acc|
           key = key.split('d')[1]
-          next acc if input[:character].data.spent_hit_dice[key].nil?
+          next acc[key] = value if input[:character].data.spent_hit_dice[key].nil?
 
           acc[key] = [input[:character].data.spent_hit_dice[key] + value, input[:character].data.hit_dice[key].to_i].min
         end

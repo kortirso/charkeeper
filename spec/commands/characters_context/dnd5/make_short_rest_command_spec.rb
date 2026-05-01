@@ -50,6 +50,31 @@ describe CharactersContext::Dnd5::MakeShortRestCommand do
       expect(data.health['current']).not_to eq 1
       expect(data.health['current']).not_to eq 0
     end
+
+    context 'when character has empty spent_hit_dice' do
+      let!(:character) {
+        create :character, data: {
+          energy: { short_slug: 5, long_slug: 2 },
+          spent_spell_slots: { 1 => 3, 2 => 1 },
+          spent_hit_dice: {},
+          hit_dice: { '6' => 2, '8' => 1, '10' => 2, '12' => 3 },
+          health: { max: 10, current: 1 }
+        }
+      }
+
+      it 'updates some character data', :aggregate_failures do
+        command_call
+
+        data = character.reload.data
+
+        expect(character_feat1.reload.used_count).to eq 2
+        expect(character_feat2.reload.used_count).to eq 0
+        expect(data.spent_spell_slots).to eq({ '1' => 3, '2' => 1 })
+        expect(data.spent_hit_dice).to eq({ '6' => 1, '8' => 0, '10' => 0, '12' => 0 })
+        expect(data.health['current']).not_to eq 1
+        expect(data.health['current']).not_to eq 0
+      end
+    end
   end
 
   context 'with too many rolls' do
