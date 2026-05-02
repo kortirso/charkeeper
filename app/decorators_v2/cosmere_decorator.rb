@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class CosmereDecorator < ApplicationDecoratorV2
-  ONLY_ADD_MODIFIERS = %w[str dex con wis int cha].freeze
-  WEAPON_MODIFIERS = %w[attack unarmed_attacks melee_attacks range_attacks damage unarmed_damage melee_damage range_damage].freeze
+  ONLY_ADD_MODIFIERS = %w[str spd int wil awa pre].freeze
+  WEAPON_MODIFIERS = %w[attack melee_attacks range_attacks damage melee_damage range_damage].freeze
 
   def call(character:, simple: false, version: nil)
     @character = character
@@ -12,8 +12,9 @@ class CosmereDecorator < ApplicationDecoratorV2
     generate_basis
     return self if simple
 
-    # apply_add_bonuses_to_abilities
+    apply_add_bonuses_to_abilities
     calculate_secondary_abilities
+    find_general_attack_modifiers
     find_attacks
     apply_add_modifiers
 
@@ -30,22 +31,40 @@ class CosmereDecorator < ApplicationDecoratorV2
     @result['tier'] = find_tier
   end
 
+  def apply_add_bonuses_to_abilities
+    @result['modified_abilities'] = abilities.to_h { |key, value| [key, value + find_modifiers(key, 'add').sum] }
+  end
+
   def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize
     @result['skills'] = generate_skills_payload
     @result['defense'] = {
-      'physical' => 10 + abilities['str'] + abilities['spd'],
-      'cognitive' => 10 + abilities['int'] + abilities['wil'],
-      'spiritual' => 10 + abilities['awa'] + abilities['pre']
+      'physical' => 10 + modified_abilities['str'] + modified_abilities['spd'],
+      'cognitive' => 10 + modified_abilities['int'] + modified_abilities['wil'],
+      'spiritual' => 10 + modified_abilities['awa'] + modified_abilities['pre']
     }
     @result['deflect'] = equiped_armor&.dig(:items_info, 'deflect').to_i
     @result['health_max'] = health_max
-    @result['focus_max'] = 2 + abilities['wil']
-    @result['investiture_max'] = 2 + [abilities['awa'], abilities['pre']].max
+    @result['focus_max'] = 2 + modified_abilities['wil']
+    @result['investiture_max'] = 2 + [modified_abilities['awa'], modified_abilities['pre']].max
     @result['load'] = find_load
     @result['movement'] = find_movement
     @result['recovery_die'] = find_recovery_die
     @result['senses_range'] = find_senses_range
     @result['talent_points'] = find_talent_points
+  end
+
+  # модификаторы атаки от обычных предметов, распространяются на всё оружие
+  def find_general_attack_modifiers # rubocop: disable Metrics/AbcSize
+    @general_attack_modifiers = all_modifiers.flat_map do |items|
+      items.filter_map do |key, value|
+        WEAPON_MODIFIERS.include?(key) && value['type'] == 'add' && { key => value['value'] }
+      end
+    end.compact_blank.each_with_object({}) do |value, acc|
+      key = value.keys[0]
+      acc[key] ||= []
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      formula_result ? (acc[key] << formula_result) : monitoring_formula_error(formula)
+    end
   end
 
   def find_attacks
@@ -133,7 +152,7 @@ class CosmereDecorator < ApplicationDecoratorV2
   end
 
   def unarmed_damage
-    case abilities['str']
+    case modified_abilities['str']
     when 0, 1, 2 then '1'
     when 3, 4 then '1d4'
     when 5, 6 then '1d8'
@@ -142,16 +161,21 @@ class CosmereDecorator < ApplicationDecoratorV2
     end
   end
 
-  def attack_values(item, tooltips, expert_tooltips) # rubocop: disable Metrics/AbcSize
+  def attack_values(item, tooltips, expert_tooltips) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    attack_bonus =
+      find_weapon_modifiers(item.dig(:items_info, 'type') == 'ranged' ? %w[attack range_attacks] : %w[attack melee_attacks])
+    damage_bonus =
+      find_weapon_modifiers(item.dig(:items_info, 'type') == 'ranged' ? %w[damage range_damage] : %w[damage melee_damage])
+
     damage_type = item.dig(:items_info, 'damage_type')
     skill = skills.find { |skill| skill[:slug] == item.dig(:items_info, 'weapon_skill') }
     current_tooltips = expertises['weapon'].include?(item[:items_slug]) ? expert_tooltips : tooltips
     {
       slug: item[:items_slug],
       name: translate(item[:items_name]),
-      attack_bonus: skill[:modifier],
+      attack_bonus: skill[:modifier] + attack_bonus,
       damage: item.dig(:items_info, 'damage'),
-      damage_bonus: 0,
+      damage_bonus: 0 + damage_bonus,
       notes: item[:notes],
       tags: { damage_type => I18n.t("tags.cosmere.weapon.title.#{damage_type}") }.merge(
         current_tooltips.except('reach').to_h do |key, value|
@@ -161,6 +185,10 @@ class CosmereDecorator < ApplicationDecoratorV2
       ready_to_use: item[:states] ? item.dig(:states, 'hands').positive? : true,
       distance: distance(item, current_tooltips)
     }.compact
+  end
+
+  def find_weapon_modifiers(modifiers)
+    @general_attack_modifiers.slice(*modifiers).values.flatten.sum
   end
 
   def distance(item, tooltips)
@@ -188,7 +216,7 @@ class CosmereDecorator < ApplicationDecoratorV2
       slug: slug,
       ability: ability,
       level: skill_level,
-      modifier: skill_level + abilities[ability]
+      modifier: skill_level + modified_abilities[ability]
     }
   end
 
@@ -202,7 +230,7 @@ class CosmereDecorator < ApplicationDecoratorV2
   end
 
   def find_load
-    case abilities['str']
+    case modified_abilities['str']
     when 0 then 50
     when 1, 2 then 100
     when 3, 4 then 250
@@ -213,7 +241,7 @@ class CosmereDecorator < ApplicationDecoratorV2
   end
 
   def find_movement
-    case abilities['spd']
+    case modified_abilities['spd']
     when 0 then 20
     when 1, 2 then 25
     when 3, 4 then 30
@@ -231,11 +259,11 @@ class CosmereDecorator < ApplicationDecoratorV2
     cumbersome = current_tooltips.find { |item| item.starts_with?('cumbersome') }
     return value unless cumbersome
 
-    abilities['str'] >= cumbersome.split('-')[1].to_i ? value : (value / 2)
+    modified_abilities['str'] >= cumbersome.split('-')[1].to_i ? value : (value / 2)
   end
 
   def find_recovery_die
-    case abilities['wil']
+    case modified_abilities['wil']
     when 0 then 4
     when 1, 2 then 6
     when 3, 4 then 8
@@ -246,7 +274,7 @@ class CosmereDecorator < ApplicationDecoratorV2
   end
 
   def find_senses_range
-    case abilities['awa']
+    case modified_abilities['awa']
     when 0 then 5
     when 1, 2 then 10
     when 3, 4 then 20
@@ -284,6 +312,10 @@ class CosmereDecorator < ApplicationDecoratorV2
       )
   end
 
+  def find_modifiers(key, type)
+    all_modifiers.map { |item| item.dig(key, 'type') == type && item.dig(key, 'value') }.compact_blank.map(&:to_i)
+  end
+
   def all_modifiers
     @all_modifiers ||= character_modifiers + feature_modifiers
   end
@@ -314,7 +346,7 @@ class CosmereDecorator < ApplicationDecoratorV2
         level: level,
         tier: tier
       }
-      .merge(abilities.symbolize_keys)
+      .merge(modified_abilities.symbolize_keys)
   end
 
   def monitoring_formula_error(formula)

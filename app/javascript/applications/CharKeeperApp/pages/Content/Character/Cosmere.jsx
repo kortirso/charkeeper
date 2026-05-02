@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  CosmereAbilities, CosmereSkills, CosmereDefenses, CosmereHealth, CosmereInfo, CosmereRest, CosmereLeveling
+  CosmereAbilities, CosmereSkills, CosmereDefenses, CosmereHealth, CosmereInfo, CosmereRest, CosmereLeveling, CosmereBonuses
 } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, createRoll, Feats } from '../../../components';
 import { useAppLocale } from '../../../context';
@@ -88,7 +88,7 @@ export const Cosmere = (props) => {
   });
 
   const characterTabs = createMemo(() => {
-    return ['combat', 'equipment', 'rest', 'classLevels', 'notes', 'avatar'];
+    return ['combat', 'equipment', 'rest', 'classLevels', 'bonuses', 'notes', 'avatar'];
   });
 
   const mobileView = createMemo(() => {
@@ -164,6 +164,9 @@ export const Cosmere = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               />
+            </Match>
+            <Match when={activeMobileTab() === 'bonuses'}>
+              <CosmereBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -257,6 +260,9 @@ export const Cosmere = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               />
+            </Match>
+            <Match when={activeTab() === 'bonuses'}>
+              <CosmereBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />

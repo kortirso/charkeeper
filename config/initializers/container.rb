@@ -113,6 +113,8 @@ module Charkeeper
     register('commands.characters_context.pathfinder2.rest.perform') { CharactersContext::Pathfinder2::Rest::PerformCommand.new }
     register('commands.characters_context.pathfinder2.bonuses.add') { CharactersContext::Pathfinder2::Bonuses::AddCommand.new }
 
+    register('commands.characters_context.cosmere.bonuses.add') { CharactersContext::Cosmere::Bonuses::AddCommand.new }
+
     register('commands.characters_context.fate.create') { CharactersContext::Fate::CreateCommand.new }
     register('commands.characters_context.fate.update') { CharactersContext::Fate::UpdateCommand.new }
 
