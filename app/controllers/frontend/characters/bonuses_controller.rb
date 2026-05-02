@@ -12,7 +12,8 @@ module Frontend
         add_daggerheart_bonus_v2: 'commands.characters_context.daggerheart.bonuses.add',
         change_command: 'commands.bonuses_context.change',
         add_dc20_bonus: 'commands.characters_context.dc20.bonuses.add',
-        add_pathfinder2_bonus: 'commands.characters_context.pathfinder2.bonuses.add'
+        add_pathfinder2_bonus: 'commands.characters_context.pathfinder2.bonuses.add',
+        add_cosmere_bonus: 'commands.characters_context.cosmere.bonuses.add'
       ]
       include SerializeRelation
       include SerializeResource
@@ -66,6 +67,7 @@ module Frontend
         when 'pathfinder2' then authorized_scope(Character.all).pathfinder2
         when 'daggerheart' then authorized_scope(Character.all).daggerheart
         when 'dc20' then authorized_scope(Character.all).dc20
+        when 'cosmere' then authorized_scope(Character.all).cosmere
         else Character.none
         end
       end
@@ -79,6 +81,7 @@ module Frontend
             when 'daggerheart' then add_daggerheart_bonus_v2
             when 'dc20' then add_dc20_bonus
             when 'pathfinder2' then add_pathfinder2_bonus
+            when 'cosmere' then add_cosmere_bonus
             end
           elsif feature_requirement.call(current: params[:version], initial: '0.3.23')
             case params[:provider]

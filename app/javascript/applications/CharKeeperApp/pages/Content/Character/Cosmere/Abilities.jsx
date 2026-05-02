@@ -109,7 +109,9 @@ export const CosmereAbilities = (props) => {
                     <p class="ability-title">{trait}</p>
                     <div class="ability-value-box">
                       <p class="ability-value">
-                        {abilitiesData()[slug]}
+                        <Show when={editMode()} fallback={character().modified_abilities[slug]}>
+                          {abilitiesData()[slug]}
+                        </Show>
                       </p>
                     </div>
                     <Show when={editMode()}>
