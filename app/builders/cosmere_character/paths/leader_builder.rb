@@ -5,7 +5,7 @@ module CosmereCharacter
     class LeaderBuilder
       def call(result:)
         result[:selected_skills] = { 'leadership' => 1 }
-        result[:initial_talent] = 'decisive_command'
+        result[:initial_talents] = ['decisive_command']
         result
       end
     end

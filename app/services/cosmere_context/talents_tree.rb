@@ -8,6 +8,9 @@ module CosmereContext
     def call(selected_feat_slugs:)
       @selected_feat_slugs = selected_feat_slugs
       {
+        ancestry: {
+          singer: feat_info('change_form')
+        }.compact,
         heroic: {
           agent: feat_info('opportunist'),
           envoy: feat_info('rousing_presence'),
@@ -15,8 +18,8 @@ module CosmereContext
           leader: feat_info('decisive_command'),
           scholar: feat_info('erudition'),
           warrior: feat_info('vigilant_stance')
-        }
-      }
+        }.compact
+      }.compact
     end
 
     private

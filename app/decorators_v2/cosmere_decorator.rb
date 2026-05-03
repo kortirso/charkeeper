@@ -284,8 +284,8 @@ class CosmereDecorator < ApplicationDecoratorV2
   end
 
   def find_talent_points
-    total = level
-    total += ((level + 4) / 5) if ancestry == 'human'
+    total = level + ((level + 4) / 5)
+    total += 1 if ancestry == 'singer'
     total
   end
 

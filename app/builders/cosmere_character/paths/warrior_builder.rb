@@ -5,7 +5,7 @@ module CosmereCharacter
     class WarriorBuilder
       def call(result:)
         result[:selected_skills] = { 'athletics' => 1 }
-        result[:initial_talent] = 'vigilant_stance'
+        result[:initial_talents] = ['vigilant_stance']
         result
       end
     end

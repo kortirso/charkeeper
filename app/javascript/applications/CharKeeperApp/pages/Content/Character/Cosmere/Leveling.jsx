@@ -306,6 +306,11 @@ export const CosmereLeveling = (props) => {
             checked={showDescription()}
             onToggle={() => setShowDescription(!showDescription())}
           />
+          <Show when={feats().ancestry[character().ancestry]}>
+            <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(config.ancestries[character().ancestry].name, locale())}>
+              {renderFeat(feats().ancestry[character().ancestry], 0)}
+            </Toggle>
+          </Show>
           <For each={Object.entries(config.paths)}>
             {([kind, values]) =>
               <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(values.name, locale())}>

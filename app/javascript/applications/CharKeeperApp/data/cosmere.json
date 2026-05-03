@@ -28,7 +28,8 @@
     "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
   },
   "ancestries": {
-    "human": { "name": { "en": "Human", "ru": "Человек" } }
+    "human": { "name": { "en": "Human", "ru": "Человек" } },
+    "singer": { "name": { "en": "Singer", "ru": "Певец" } }
   },
   "cultures": {
     "alethi": { "name": { "en": "Alethi", "ru": "Алети" } },
