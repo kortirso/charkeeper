@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class CosmereDecorator < ApplicationDecoratorV2
+  include Deps[markdown: 'markdown']
+  include TranslateHelper
+
   ONLY_ADD_MODIFIERS = %w[str spd int wil awa pre].freeze
   WEAPON_MODIFIERS = %w[attack melee_attacks range_attacks damage melee_damage range_damage].freeze
 
@@ -20,6 +23,7 @@ class CosmereDecorator < ApplicationDecoratorV2
 
     @result['movement'] = modify_by_armor(movement)
     @result['features'] = apply_features
+    @result['singer_forms'] = find_available_singer_forms
 
     self
   end
@@ -317,7 +321,7 @@ class CosmereDecorator < ApplicationDecoratorV2
   end
 
   def all_modifiers
-    @all_modifiers ||= character_modifiers + feature_modifiers
+    @all_modifiers ||= character_modifiers + feature_modifiers + singer_form_modifiers
   end
 
   def character_modifiers
@@ -330,6 +334,12 @@ class CosmereDecorator < ApplicationDecoratorV2
       .select { |item| !item[:feats_continious] || item[:active] }
       .pluck(:feats_modifiers)
       .compact_blank
+  end
+
+  def singer_form_modifiers
+    return [] unless ancestry == 'singer'
+
+    [::Config.data('cosmere', 'singer_forms').dig(singer_form, 'modifiers')].compact
   end
 
   def available_features
@@ -355,5 +365,18 @@ class CosmereDecorator < ApplicationDecoratorV2
       metadata: { formula: formula },
       severity: :info
     )
+  end
+
+  def find_available_singer_forms
+    return [] unless ancestry == 'singer'
+
+    slugs = features.pluck(:slug)
+    ::Config.data('cosmere', 'singer_forms').transform_values do |value|
+      next if slugs.exclude?(value['required_talent'])
+
+      value['name'] = translate(value['name'])
+      value['description'] = markdown.call(value: translate(value['description']), version: '0.4.9')
+      value.slice('name', 'description')
+    end.compact
   end
 end

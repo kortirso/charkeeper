@@ -317,8 +317,8 @@
       "type": "melee",
       "damage": "1d4",
       "damage_type": "impact",
-      "tooltips": ["loaded", "defensive"],
-      "expert_tooltips": ["loaded", "defensive", "offhand"]
+      "tooltips": ["defensive"],
+      "expert_tooltips": ["defensive", "offhand"]
     }
   },
   {
@@ -337,8 +337,8 @@
       "type": "ranged",
       "damage": "1d8",
       "damage_type": "keen",
-      "tooltips": ["two_handed"],
-      "expert_tooltips": ["two_handed", "deadly"],
+      "tooltips": ["loaded-1", "two_handed"],
+      "expert_tooltips": ["loaded-1", "two_handed", "deadly"],
       "dist": "100/400"
     }
   },

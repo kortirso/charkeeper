@@ -55,6 +55,7 @@ module CharactersContext
             required(:id).filled(:integer)
             required(:text).filled(:string, max_size?: 100)
           end
+          optional(:singer_form).filled(:string)
         end
 
         rule(:abilities) do

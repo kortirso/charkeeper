@@ -1,0 +1,36 @@
+{
+  "dullform": {
+    "name": { "en": "Dullform", "ru": "Тупоформа" },
+    "description": {
+      "en": "Your form isn't specialized, as your bonded spren grants no form. You can pass unnoticed as a *parshman* in most human societies.",
+      "ru": "Ваша форма не обладает особыми свойствами, поскольку вы не связаны со спреном. Находясь в этой форме, вы можете оставаться незамеченным в большинстве человеческих обществ, выдавая себя за *паршуна*."
+    },
+    "required_talent": "change_form"
+  },
+  "mateform": {
+    "name": { "en": "Mateform", "ru": "Бракоформа" },
+    "description": {
+      "en": "You have bonded with a lifespren, and your form is specialized for reproduction.",
+      "ru": "Вы связываете себя со спреном жизни, и ваша форма становится специализированной для размножения."
+    },
+    "required_talent": "change_form"
+  },
+  "artform": {
+    "name": { "en": "Artform", "ru": "Искусствоформа" },
+    "description": {
+      "en": "You've bonded with a creationspren. While in this form, you increase your **Awareness** by 1, and you gain utility expertises in **Painting and Music**.\n\nAdditionally, you gain an advantage on **Crafting** tests and on tests related to entertaining, such as singing and dancing.",
+      "ru": "Вы связываете себя со cпреном творчества. В этой форме ваше **Восприятие** увеличивается на 1, а также вы приобретаете утилитарные компетенции в области **Живописи и Музыки**. Кроме того, вы получаете преимущество на проверках **Ремесла**, а также на проверках, связанных с развлечениями, такими как пение и танцы."
+    },
+    "required_talent": "forms_of_finesse",
+    "modifiers": { "awa": { "type": "add", "value": 1 } }
+  },
+  "nimbleform": {
+    "name": { "en": "Nimbleform", "ru": "Шустроформа" },
+    "description": {
+      "en": "You've bonded with a windspren. While in this form, your **Speed** increases by 1. When you change into this form, your maximum focus and current focus both increase by 2, and when you assume a different form, both decrease by 2.",
+      "ru": "Вы связываете себя со cпреном ветра. В этой форме ваша **Скорость** увеличивается на 1. При переходе в эту форму ваш максимальный и текущий фокус увеличиваются на 2; при смене формы оба эти значения обратно уменьшаются на 2."
+    },
+    "required_talent": "forms_of_finesse",
+    "modifiers": { "spd": { "type": "add", "value": 1 }, "focus_max": { "type": "add", "value": 2 } }
+  }
+}
