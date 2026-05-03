@@ -5,7 +5,7 @@ module CosmereCharacter
     class ScholarBuilder
       def call(result:)
         result[:selected_skills] = { 'lore' => 1 }
-        result[:initial_talent] = 'erudition'
+        result[:initial_talents] = ['erudition']
         result
       end
     end

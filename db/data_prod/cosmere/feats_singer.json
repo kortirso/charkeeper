@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "change_form",
+    "kind": "static",
+    "title": {
+      "en": "Change Form",
+      "ru": "Смена формы"
+    },
+    "description": {
+      "en": "During a highstorm, you can change your form.",
+      "ru": "Во время Великой Бури вы можете изменить форму."
+    },
+    "origin": "ancestry",
+    "origin_value": "singer",
+    "price": { "a": 3 },
+    "info": {
+      "required_for": ["forms_of_finesse"]
+    }
+  },
+  {
+    "slug": "forms_of_finesse",
+    "kind": "update_result",
+    "title": {
+      "en": "Forms of Finesse",
+      "ru": "Формы ловкости"
+    },
+    "description": {
+      "en": "Gain artform and nimbleform.",
+      "ru": "Вы получаете искусствоформу и шустроформу."
+    },
+    "origin": "ancestry",
+    "origin_value": "singer"
+  }
+]

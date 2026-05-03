@@ -5,7 +5,7 @@ module CosmereCharacter
     class EnvoyBuilder
       def call(result:)
         result[:selected_skills] = { 'discipline' => 1 }
-        result[:initial_talent] = 'rousing_presence'
+        result[:initial_talents] = ['rousing_presence']
         result
       end
     end

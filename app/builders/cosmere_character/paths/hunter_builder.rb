@@ -5,7 +5,7 @@ module CosmereCharacter
     class HunterBuilder
       def call(result:)
         result[:selected_skills] = { 'perception' => 1 }
-        result[:initial_talent] = 'seek_quarry'
+        result[:initial_talents] = ['seek_quarry']
         result
       end
     end

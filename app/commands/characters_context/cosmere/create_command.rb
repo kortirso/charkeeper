@@ -24,12 +24,12 @@ module CharactersContext
 
       def do_prepare(input)
         input[:data] = build_fresh_character(input.slice(:ancestry, :cultures, :path, :skip_guide).symbolize_keys)
-        input[:initial_talent] = input[:data].delete(:initial_talent)
+        input[:initial_talents] = input[:data].delete(:initial_talents)
       end
 
       def do_persist(input)
         character = ::Cosmere::Character.create!(input.slice(:user, :name, :data))
-        add_initial_talent(character, input)
+        add_initial_talents(character, input)
 
         { result: character }
       end
@@ -37,13 +37,13 @@ module CharactersContext
       def build_fresh_character(data)
         CosmereCharacter::BaseBuilder.new.call(result: data)
           .then { |result| CosmereCharacter::PathBuilder.new.call(result: result) }
+          .then { |result| CosmereCharacter::AncestryBuilder.new.call(result: result) }
       end
 
-      def add_initial_talent(character, input)
-        feat = ::Cosmere::Feat.find_by(slug: input[:initial_talent])
-        return unless feat
-
-        add_feat.call(character: character, feat: feat)
+      def add_initial_talents(character, input)
+        ::Cosmere::Feat.where(slug: input[:initial_talents]).find_each do |feat|
+          add_feat.call(character: character, feat: feat)
+        end
       end
     end
   end

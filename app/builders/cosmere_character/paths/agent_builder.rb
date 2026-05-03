@@ -5,7 +5,7 @@ module CosmereCharacter
     class AgentBuilder
       def call(result:)
         result[:selected_skills] = { 'insight' => 1 }
-        result[:initial_talent] = 'opportunist'
+        result[:initial_talents] = ['opportunist']
         result
       end
     end
