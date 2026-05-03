@@ -32,5 +32,23 @@
     },
     "required_talent": "forms_of_finesse",
     "modifiers": { "spd": { "type": "add", "value": 1 }, "focus_max": { "type": "add", "value": 2 } }
+  },
+  "mediationform": {
+    "name": { "en": "Mediationform", "ru": "Форма посредника" },
+    "description": {
+      "en": "You've bonded with a bindspren. While in this form, your Presence increases by 1.\n\nAdditionally, you don't have to spend focus to use the Aid reaction.",
+      "ru": "Вы связываете себя со cпреном уз. В этой форме ваша Харизма увеличивается на 1.\n\nКроме того, вам не нужно тратить фокус для использования реакции Помощь."
+    },
+    "required_talent": "forms_of_wisdom",
+    "modifiers": { "pre": { "type": "add", "value": 1 } }
+  },
+  "workform": {
+    "name": { "en": "Workform", "ru": "Трудоформа" },
+    "description": {
+      "en": "You've bonded with a gravitationspren. While in this form, your Willpower increases by 1, and you ignore the effects of the *Exhausted* condition.\n\nAdditionally, you can easily disguise yourself to pass unnoticed as a *parshman* in most human societies, though people might begin noticing the differences in your form if you're caught doing anything suspicious.",
+      "ru": "Вы связываете себя со cпреном гравитации. В этой форме ваша Воля увеличивается на 1, и вы игнорируете эффекты от состояния *Истощение*.\n\nПомимо этого, вы можете оставаться незамеченным в большинстве человеческих обществ, выдавая себя за *паршуна*, но при подозрительном поведении окружающие могут начать замечать небольшие отличия вашей формы."
+    },
+    "required_talent": "forms_of_resolve",
+    "modifiers": { "wil": { "type": "add", "value": 1 } }
   }
 }

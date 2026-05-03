@@ -14,7 +14,7 @@
     "origin_value": "singer",
     "price": { "a": 3 },
     "info": {
-      "required_for": ["forms_of_finesse"]
+      "required_for": ["forms_of_finesse", "forms_of_wisdom", "forms_of_resolve"]
     }
   },
   {
@@ -27,6 +27,34 @@
     "description": {
       "en": "Gain artform and nimbleform.",
       "ru": "Вы получаете искусствоформу и шустроформу."
+    },
+    "origin": "ancestry",
+    "origin_value": "singer"
+  },
+  {
+    "slug": "forms_of_wisdom",
+    "kind": "update_result",
+    "title": {
+      "en": "Forms of Wisdom",
+      "ru": "Формы мудрости"
+    },
+    "description": {
+      "en": "Gain mediationform and scholarform.",
+      "ru": "Вы получаете форму посредника и мыслеформу."
+    },
+    "origin": "ancestry",
+    "origin_value": "singer"
+  },
+  {
+    "slug": "forms_of_resolve",
+    "kind": "update_result",
+    "title": {
+      "en": "Forms of Resolve",
+      "ru": "Формы решимости"
+    },
+    "description": {
+      "en": "Gain warform and workform.",
+      "ru": "Вы получаете боеформу и трудоформу."
     },
     "origin": "ancestry",
     "origin_value": "singer"
