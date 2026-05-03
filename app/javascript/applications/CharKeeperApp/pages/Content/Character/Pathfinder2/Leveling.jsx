@@ -92,12 +92,15 @@ export const Pathfinder2Leveling = (props) => {
           setTags(Object.fromEntries(Object.entries(talentsData.tags).sort(([, a], [, b]) => a.localeCompare(b))));
           setFeats(talentsData.feats);
           setSelectedFeats(talentsData.character_feats);
-          setExperience(character().experience)
+          
         });
       }
     );
 
-    setLastActiveCharacterId(character().id);
+    batch(() => {
+      setExperience(character().experience);
+      setLastActiveCharacterId(character().id);
+    });
   });
 
   const selectedFeatIds = createMemo(() => selectedFeats().map((item) => item.feat.id));

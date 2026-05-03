@@ -7,14 +7,15 @@ module Cosmere
     attributes :provider, :id, :name, :created_at, :avatar, :skills, :defense, :health_max, :focus_max, :investiture_max, :load,
                :movement, :recovery_die, :senses_range, :level, :abilities, :guide_step, :health, :focus, :investiture,
                :attribute_points, :skill_points, :deflect, :additional_skills, :tier, :ancestry, :cultures, :attacks,
-               :talent_points, :updated_at, :expertises, :custom_expertises, :features, :modified_abilities
+               :talent_points, :updated_at, :expertises, :custom_expertises, :features, :modified_abilities, :purpose, :obstacle,
+               :goals, :connections
 
     delegate :skills, :defense, :focus_max, :investiture_max, :load, :movement, :recovery_die, :senses_range,
              :deflect, :tier, :attacks, :talent_points, :features, :health_max, :modified_abilities,
              to: :decorator
     delegate :id, :data, to: :object
     delegate :attribute_points, :skill_points, :health, :focus, :investiture, :level, :guide_step, :additional_skills, :ancestry,
-             :cultures, :expertises, :custom_expertises, :abilities, to: :data
+             :cultures, :expertises, :custom_expertises, :abilities, :purpose, :obstacle, :goals, :connections, to: :data
 
     def provider
       'cosmere'

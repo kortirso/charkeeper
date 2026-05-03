@@ -57,7 +57,8 @@
       "skill": "Skill",
       "archetype": "Archetype",
       "animalCompanion": "Animal companion",
-      "rolls": "Rolls history"
+      "rolls": "Rolls history",
+      "goals": "Goals"
     },
     "campaignsPage": {
       "title": "Campaigns",
