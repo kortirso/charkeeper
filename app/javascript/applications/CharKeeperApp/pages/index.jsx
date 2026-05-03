@@ -31,6 +31,7 @@ export * from './Content/Character/Cosmere/Info';
 export * from './Content/Character/Cosmere/Rest';
 export * from './Content/Character/Cosmere/Leveling';
 export * from './Content/Character/Cosmere/Bonuses';
+export * from './Content/Character/Cosmere/Goals';
 
 export * from './Content/Character/Dnd5';
 export * from './Content/Character/Dnd5/Abilities';

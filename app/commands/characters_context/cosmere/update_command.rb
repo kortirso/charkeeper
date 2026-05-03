@@ -44,6 +44,17 @@ module CharactersContext
             required(:name).filled(:string, max_size?: 50)
             required(:desc).filled(:string, max_size?: 500)
           end
+          optional(:purpose).filled(:string, max_size?: 200)
+          optional(:obstacle).filled(:string, max_size?: 200)
+          optional(:goals).maybe(:array).each(:hash) do
+            required(:id).filled(:integer)
+            required(:text).filled(:string, max_size?: 100)
+            required(:counter).filled(:integer, gteq?: 0)
+          end
+          optional(:connections).maybe(:array).each(:hash) do
+            required(:id).filled(:integer)
+            required(:text).filled(:string, max_size?: 100)
+          end
         end
 
         rule(:abilities) do

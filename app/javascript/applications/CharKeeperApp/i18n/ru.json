@@ -57,7 +57,8 @@
       "skill": "Навыки",
       "archetype": "Архетип",
       "animalCompanion": "Верный зверь",
-      "rolls": "История бросков"
+      "rolls": "История бросков",
+      "goals": "Цели"
     },
     "campaignsPage": {
       "title": "Кампании",
