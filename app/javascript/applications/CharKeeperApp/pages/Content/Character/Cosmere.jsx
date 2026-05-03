@@ -1,9 +1,9 @@
-import { createSignal, createMemo, Switch, Match } from 'solid-js';
+import { createSignal, createMemo, Switch, Match, Show } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   CosmereAbilities, CosmereSkills, CosmereDefenses, CosmereHealth, CosmereInfo, CosmereRest, CosmereLeveling, CosmereBonuses,
-  CosmereGoals
+  CosmereGoals, CosmereSingerForm
 } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, createRoll, Feats } from '../../../components';
 import { useAppLocale } from '../../../context';
@@ -113,6 +113,11 @@ export const Cosmere = (props) => {
                   onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
+              <Show when={character().ancestry === 'singer'}>
+                <div class="mt-4">
+                  <CosmereSingerForm character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                </div>
+              </Show>
               <div class="mt-4">
                 <CosmereSkills
                   character={character()}
@@ -197,6 +202,11 @@ export const Cosmere = (props) => {
             onReloadCharacter={props.onReloadCharacter}
           />
         </div>
+        <Show when={character().ancestry === 'singer'}>
+          <div class="mt-4">
+            <CosmereSingerForm character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+          </div>
+        </Show>
         <div class="mt-4">
           <CosmereSkills
             character={character()}

@@ -21,6 +21,7 @@ module Cosmere
     attribute :obstacle, :string
     attribute :goals, array: true, default: [] # [{ id: 1, text: '', counter: 0 }]
     attribute :connections, array: true, default: [] # [{ id: 1, text: '' }]
+    attribute :singer_form, :string, default: 'dullform'
     # для левелинга
     attribute :attribute_points, :integer
     attribute :skill_points, :integer

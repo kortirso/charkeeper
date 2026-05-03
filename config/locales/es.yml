@@ -344,20 +344,20 @@ es:
   tags:
     cosmere:
       weapon:
-        cumbersome: Cumbersome
-        dangerous: Dangerous
-        deadly: Deadly
-        defensive: Defensive
-        discreet: Discreet
-        fragile: Fragile
-        indirect: Indirect
-        loaded: Loaded
-        momentum: Momentum
-        offhand: Offhand
-        pierce: Pierce
-        quickdraw: Quickdraw
-        thrown: Thrown
-        two_handed: Two-Handed
+        cumbersome: To wield this weapon easily, your Strength score must be equal to or greater than the number indicated in brackets. If your Strength is lower than that number, you gain a disadvantage on all attacks using this weapon and are Slowed while wielding it.
+        dangerous: The GM can spend Complication from an attack with this weapon to cause you to also accidentally graze an ally within the weapon's reach or range. This deals the usual damage for a graze.
+        deadly: When you hit a target with this weapon, you can spend Opportunity to cause the target to immediately suffer an injury.
+        defensive: While wielding this weapon, you can use the Brace action without cover nearby.
+        discreet: This weapon is less obtrusive than others, and thus less likely to be confiscated in secure settings. In non-combat scenes, you gain an advantage on any test you make to disguise this weapon, to hide it on your person, or to convince others not to take it from you.
+        fragile: When you attack with this weapon, the GM can spend Complication to cause it to break after the attack is resolved.
+        indirect: This ranged weapon can arc shots over cover and obscuring terrain. If a target isn't in your line of effect but you can sense them, you can still attack them with this weapon if there's a reasonably open path for your projectile to indirectly arc to them. Your target can't benefit from the Brace action against attacks made with this weapon.
+        loaded: This weapon stores ammunition equal to the number indicated in brackets. To make a ranged attack with this weapon, you must spend 1 stored ammunition. As action, you can reload this weapon to full ammunition. The GM can spend Complication from an attack with this weapon to reduce your stored ammunition; after they do, the weapon only has only one shot remaining.
+        momentum: When you attack using this weapon, if you already moved at least 10 feet in a straight line toward your target on this turn, you gain an advantage on the attack.
+        offhand: While wielding this weapon in your offhand, it only costs you 1 focus (instead of 2) to Strike with it.
+        pierce: This weapon's damage can't be reduced by the target's deflect value.
+        quickdraw: You can use the Interact action as free action to draw this weapon.
+        thrown: You can throw this weapon at a target, making a ranged attack when you do. The two numbers in brackets express the weapon's short and long range; as with ranged weapons, you gain a disadvantage when attacking a target outside short range. Once the weapon is thrown, it is lost until you recover it from your target.
+        two_handed: You must wield this weapon in two hands, not just one. When you attack with it, it uses both hands.
         impact: Impact
         keen: Keen
         spirit: Spirit
@@ -369,12 +369,12 @@ es:
           discreet: Discreet
           fragile: Fragile
           indirect: Indirect
-          loaded: Loaded
+          loaded: Loaded [%{value}]
           momentum: Momentum
           offhand: Offhand
           pierce: Pierce
           quickdraw: Quickdraw
-          thrown: Thrown
+          thrown: Thrown %{value}
           two_handed: Two-Handed
           impact: Impact
           keen: Keen

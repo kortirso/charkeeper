@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - bonuses system for Cosmere characters
 - rendering and editing goals for Cosmere characters
 - selecting singer ancestry for Cosmere characters
+- changing singer form for Cosmere characters
 
 ## [0.4.32] - 2026-05-01
 ### Added
