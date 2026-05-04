@@ -53,5 +53,11 @@
     "leader": { "name": { "en": "Leader", "ru": "Лидер" } },
     "scholar": { "name": { "en": "Scholar", "ru": "Учёный" } },
     "warrior": { "name": { "en": "Warrior", "ru": "Воин" } }
+  },
+  "radiant_paths": {
+    "dustbringer": { "name": { "en": "Dustbringer", "ru": "Пыленосец" } }
+  },
+  "surges": {
+    "abrasion": { "name": { "en": "Abrasion", "ru": "Абразия" } }
   }
 }

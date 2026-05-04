@@ -12,7 +12,7 @@ module Cosmere
     attribute :health, :integer, default: 10
     attribute :health_max, :integer, default: 10
     attribute :focus, :integer, default: 2
-    attribute :investiture, :integer, default: 2
+    attribute :investiture, :integer, default: 0
     attribute :selected_skills, array: true, default: {} # { 'acrobatics' => 2, 'arcana' => 1, 'crafting' => 3, 'id' => 1 }
     attribute :additional_skills, array: true, default: {} # { 'id' => { 'name' => '', 'ability' => 'str' } }
     attribute :expertises, array: true, default: { 'weapon' => [], 'armor' => [], 'culture' => [] }

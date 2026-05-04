@@ -20,7 +20,9 @@ const TRANSLATION = {
     hunterFilter: 'Hunter',
     leaderFilter: 'Leader',
     scholarFilter: 'Scholar',
-    warriorFilter: 'Warrior'
+    warriorFilter: 'Warrior',
+    radiantFilter: 'Radiant Path',
+    abrasionFilter: 'Abrasion'
   },
   ru: {
     lightWeapon: 'Лёгкое оружие',
@@ -32,7 +34,9 @@ const TRANSLATION = {
     hunterFilter: 'Охотник',
     leaderFilter: 'Лидер',
     scholarFilter: 'Учёный',
-    warriorFilter: 'Воин'
+    warriorFilter: 'Воин',
+    radiantFilter: 'Сияющий путь',
+    abrasionFilter: 'Абразия'
   },
   es: {
     lightWeapon: 'Light weapons',
@@ -44,7 +48,9 @@ const TRANSLATION = {
     hunterFilter: 'Hunter',
     leaderFilter: 'Leader',
     scholarFilter: 'Scholar',
-    warriorFilter: 'Warrior'
+    warriorFilter: 'Warrior',
+    radiantFilter: 'Radiant Path',
+    abrasionFilter: 'Abrasion'
   }
 }
 
@@ -70,8 +76,17 @@ export const Cosmere = (props) => {
   const scholarFilter = (item) => item.origin_value === 'scholar';
   const warriorFilter = (item) => item.origin_value === 'warrior';
 
+  const radiantFilter = (item) => item.origin === 'radiant_path';
+
+  const abrasionFilter = (item) => item.origin_value === 'abrasion';
+
   const originValues = createMemo(() => {
     const values = character().features.map((item) => item.origin_value);
+    return [...new Set(values)];
+  });
+
+  const origins = createMemo(() => {
+    const values = character().features.map((item) => item.origin);
     return [...new Set(values)];
   });
 
@@ -84,6 +99,10 @@ export const Cosmere = (props) => {
     if (originValues().includes('leader')) result.push({ title: 'leader', translation: localize(TRANSLATION, locale()).leaderFilter, callback: leaderFilter });
     if (originValues().includes('scholar')) result.push({ title: 'scholar', translation: localize(TRANSLATION, locale()).scholarFilter, callback: scholarFilter });
     if (originValues().includes('warrior')) result.push({ title: 'warrior', translation: localize(TRANSLATION, locale()).warriorFilter, callback: warriorFilter });
+
+    if (origins().includes('radiant_path')) result.push({ title: 'radiant', translation: localize(TRANSLATION, locale()).radiantFilter, callback: radiantFilter });
+
+    if (originValues().includes('abrasion')) result.push({ title: 'abrasion', translation: localize(TRANSLATION, locale()).abrasionFilter, callback: abrasionFilter });
 
     return result;
   });

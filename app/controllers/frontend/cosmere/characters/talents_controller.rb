@@ -18,7 +18,7 @@ module Frontend
             feats: CosmereContext::TalentsTree.new.call(
               selected_feat_slugs: selected_feat_slugs
             ),
-            selected_talents_count: selected_feat_slugs.size
+            selected_talents_count: selected_feat_slugs.size - extra_feats_size
           }, status: :ok
         end
 
@@ -50,6 +50,10 @@ module Frontend
 
         def selected_feat_slugs
           @selected_feat_slugs ||= @character.feats.joins(:feat).pluck('feats.slug', 'feats.info').to_h
+        end
+
+        def extra_feats_size
+          selected_feat_slugs.values.pluck('extra_feats').flatten.compact.size
         end
       end
     end

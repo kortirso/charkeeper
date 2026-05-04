@@ -29,7 +29,8 @@ const TRANSLATION = {
     heroicTalents: 'Talents',
     showDescription: 'Show description',
     talentPoints: 'Talent points',
-    nested: 'There are nested selected talents'
+    nested: 'There are nested selected talents',
+    showOnlyActive: 'Show only active paths'
   },
   ru: {
     currentLevel: 'уровень',
@@ -47,7 +48,8 @@ const TRANSLATION = {
     heroicTalents: 'Таланты',
     showDescription: 'Показывать описание',
     talentPoints: 'Очки талантов',
-    nested: 'Сперва удалите вложенные таланты'
+    nested: 'Сперва удалите вложенные таланты',
+    showOnlyActive: 'Показывать только активные пути'
   },
   es: {
     currentLevel: 'nivel',
@@ -65,7 +67,8 @@ const TRANSLATION = {
     heroicTalents: 'Talents',
     showDescription: 'Mostrar descripción',
     talentPoints: 'Talent points',
-    nested: 'There are nested selected talents'
+    nested: 'There are nested selected talents',
+    showOnlyActive: 'Show only active paths'
   }
 }
 const ITEM_EXPERTISES = ['weapon', 'armor'];
@@ -77,6 +80,8 @@ export const CosmereLeveling = (props) => {
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
   const [showDescription, setShowDescription] = createSignal(false);
+  const [showActive, setShowActive] = createSignal(true);
+  const [leveling, setLeveling] = createSignal(false);
 
   const [items, setItems] = createSignal(undefined);
   const [feats, setFeats] = createSignal(undefined);
@@ -126,6 +131,14 @@ export const CosmereLeveling = (props) => {
   const removeExpertise = (value) => {
     const payload = character().custom_expertises.filter((item) => item !== value);
     updateCharacter({ custom_expertises: payload }, true);
+  }
+
+  const levelUp = async () => {
+    setLeveling(true);
+
+    await updateCharacter({ level: character().level + 1 });
+
+    setTimeout(() => setLeveling(false), 3000);
   }
 
   const updateCharacter = async (payload, onlyHead = false) => {
@@ -216,7 +229,7 @@ export const CosmereLeveling = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'CosmereLeveling' }}>
       <div class="blockable py-4 px-2 mb-2">
         <div class="flex items-center">
-          <Button default classList="rounded mr-4" onClick={() => updateCharacter({ level: character().level + 1 })}>
+          <Button default disabled={leveling()} classList="rounded mr-4" onClick={levelUp()}>
             <Upgrade width="24" height="24" />
           </Button>
           <p>{character().level} {localize(TRANSLATION, locale()).currentLevel}</p>
@@ -306,16 +319,29 @@ export const CosmereLeveling = (props) => {
             checked={showDescription()}
             onToggle={() => setShowDescription(!showDescription())}
           />
+          <Checkbox
+            labelText={localize(TRANSLATION, locale()).showOnlyActive}
+            labelPosition="right"
+            labelClassList="ml-2"
+            checked={showActive()}
+            onToggle={() => setShowActive(!showActive())}
+          />
           <Show when={feats().ancestry[character().ancestry]}>
             <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(config.ancestries[character().ancestry].name, locale())}>
               {renderFeat(feats().ancestry[character().ancestry], 0)}
             </Toggle>
           </Show>
-          <For each={Object.entries(config.paths)}>
-            {([kind, values]) =>
-              <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(values.name, locale())}>
-                {renderFeat(feats().heroic[kind], 0)}
-              </Toggle>
+          <For each={[['paths', 'heroic'], ['radiant_paths', 'radiant'], ['surges', 'surge']]}>
+            {(item) =>
+              <For each={Object.entries(config[item[0]])}>
+                {([kind, values]) =>
+                  <Show when={!showActive() || feats()[item[1]][kind].selected}>
+                    <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(values.name, locale())}>
+                      {renderFeat(feats()[item[1]][kind], 0)}
+                    </Toggle>
+                  </Show>
+                }
+              </For>
             }
           </For>
         </Toggle>
