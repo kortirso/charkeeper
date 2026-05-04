@@ -18,6 +18,12 @@ module CosmereContext
           leader: feat_info('decisive_command'),
           scholar: feat_info('erudition'),
           warrior: feat_info('vigilant_stance')
+        }.compact,
+        radiant: {
+          dustbringer: feat_info('first_ideal_dustbringer')
+        }.compact,
+        surge: {
+          abrasion: feat_info('abrasion_surge')
         }.compact
       }.compact
     end

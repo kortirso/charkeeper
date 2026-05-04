@@ -47,7 +47,7 @@ export const CosmereSkills = (props) => {
 
     batch(() => {
       setSkillsData(character().skills);
-      setSkillPoints(character().skill_points)
+      setSkillPoints(character().skill_points);
       setLoresData(character().additional_skills);
       setEditMode(character().guide_step === 2);
     });
@@ -72,6 +72,8 @@ export const CosmereSkills = (props) => {
   const cancelEditing = () => {
     batch(() => {
       setSkillsData(character().skills);
+      setSkillPoints(character().skill_points);
+      setLoresData(character().additional_skills);
       setEditMode(false);
     });
   }
@@ -146,7 +148,19 @@ export const CosmereSkills = (props) => {
                           <Levelbox classList="mr-2" value={skill.level} />
                           <p class="uppercase mr-4">{skill.ability}</p>
                           <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>
-                            {config.skills[skill.slug] ? localize(config.skills[skill.slug].name, locale()) : character().additional_skills[skill.slug].name}
+                            <Show
+                              when={config.skills[skill.slug]}
+                              fallback={
+                                <Show
+                                  when={config.surges[skill.slug]}
+                                  fallback={character().additional_skills[skill.slug].name}
+                                >
+                                  {localize(config.surges[skill.slug].name, locale())}
+                                </Show>
+                              }
+                            >
+                              {localize(config.skills[skill.slug].name, locale())}
+                            </Show>
                           </p>
                           <Dice
                             width="28"
@@ -165,7 +179,14 @@ export const CosmereSkills = (props) => {
                         <p class={`flex-1 flex items-center ${skill().level > 0 ? 'font-medium!' : ''}`}>
                           <Show
                             when={loresData()[skill().slug]}
-                            fallback={localize(config.skills[skill().slug].name, locale())}
+                            fallback={
+                              <Show
+                                when={config.skills[skill().slug]}
+                                fallback={localize(config.surges[skill().slug].name, locale())}
+                              >
+                                {localize(config.skills[skill().slug].name, locale())}
+                              </Show>
+                            }
                           >
                             <Input
                               value={loresData()[skill().slug].name}

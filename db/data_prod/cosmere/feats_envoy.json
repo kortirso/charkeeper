@@ -133,7 +133,7 @@
       "ru": "Мирное решение"
     },
     "description": {
-      "en": "**Requirements** Discipline 3+.\n\nIn combat, if all non-minion enemies are currently pacified (such as by **Calm Appeal**) and all other non-minion characters agree to cease hostilities, you can ease tensions. The combat immediately ends and becomes a conversation.\n\nAt the GM’s discretion, you can use this talent in non-combat scenes.",
+      "en": "**Requirements** Discipline 3+.\n\nIn combat, if all non-minion enemies are currently pacified (such as by **Calm Appeal**) and all other non-minion characters agree to cease hostilities, you can ease tensions. The combat immediately ends and becomes a conversation.\n\nAt the GM's discretion, you can use this talent in non-combat scenes.",
       "ru": "**Требования** Дисциплина 3+.\n\nВ бою, если все враги, не являющиеся приспешниками, находятся в состоянии спокойствия (например, из-за **Призыва к спокойствию**), и все остальные персонажи, также не являющиеся приспешниками, согласны прекратить враждебные действия, вы можете урегулировать напряжение. В этом случае бой немедленно завершается и переходит в разговор.\n\nПо усмотрению Ведущего этот талант может использоваться и вне боевых сцен."
     },
     "origin": "path",
@@ -161,7 +161,7 @@
       "ru": "Привычное облачение"
     },
     "description": {
-      "en": "While you’re visibly wearing Presentable armor or clothing appropriate for your station, your **Physical and Spiritual defenses** increase by 2.",
+      "en": "While you're visibly wearing Presentable armor or clothing appropriate for your station, your **Physical and Spiritual defenses** increase by 2.",
       "ru": "Пока на вас надета видимая Презентабельная броня или одежда, подчеркивающая ваш статус, ваша **Физическая и Духовная защита** увеличивается на 2."
     },
     "origin": "path",
@@ -197,7 +197,7 @@
       "ru": "Непоколебимое присутствие"
     },
     "description": {
-      "en": "**Requirements** Discipline 2+.\n\nWhen you use your **Rousing Presence**, you can spend 1 focus to increase one of the target’s defenses (your choice) by 2 until the end of the next round.",
+      "en": "**Requirements** Discipline 2+.\n\nWhen you use your **Rousing Presence**, you can spend 1 focus to increase one of the target's defenses (your choice) by 2 until the end of the next round.",
       "ru": "**Требования** Дисциплина 2+.\n\nКогда вы используете **Побуждающее присутствие**, вы можете потратить 1 фокус, чтобы повысить значение одной из защит цели (на ваш выбор) на 2 до конца следующего раунда."
     },
     "origin": "path",

@@ -1,0 +1,73 @@
+[
+  {
+    "slug": "skate",
+    "kind": "static",
+    "title": {
+      "en": "Skate",
+      "ru": "Катание"
+    },
+    "description": {
+      "en": "**Requirements** infused with Abrasion.\n\nYou can skate across the ground as if it were ice. Spend 2 focus to Move (as free action) in a straight line on the ground.",
+      "ru": "**Требования** наполнение Абразией.\n\nВы можете кататься по поверхности, как по льду. Потратьте 2 фокуса, чтобы совершить Перемещение (в качестве свободного действия) по прямой линии на земле."
+    },
+    "origin": "surge",
+    "origin_value": "abrasion"
+  },
+  {
+    "slug": "slide",
+    "kind": "static",
+    "title": {
+      "en": "Slide",
+      "ru": "Скольжение"
+    },
+    "description": {
+      "en": "**Requirements** infused with Abrasion.\n\nYou instinctively remove friction from parts of your body to more easily slide over obstacles or escape bonds. You count as one size smaller when squeezing through spaces, and you gain an advantage on tests to escape restraints that hold you via friction or pressure.",
+      "ru": "**Требования** наполнение Абразией.\n\nВы инстинктивно убираете трение с частей своего тела, чтобы легче проскальзывать через препятствия или освобождаться из пут. При этом вы считаетесь на один размер меньше при протискивании через узкие пространства и получаете преимущество на проверки для освобождения от того, что пытается удержать вас за счет трения или давления."
+    },
+    "origin": "surge",
+    "origin_value": "abrasion"
+  },
+  {
+    "slug": "breathe_stormlight",
+    "kind": "static",
+    "title": {
+      "en": "Breathe Stormlight",
+      "ru": "Вдохнуть буресвет"
+    },
+    "description": {
+      "en": "You draw Stormlight into yourself from infused spheres within 5 feet of you; if you have enough spheres, you recover Investiture up to your maximum.\n\nYou can use this action even if you're Unconscious or otherwise prevented from using actions.",
+      "ru": "Вы вбираете в себя Буресвет из наполненных сфер в пределах 5 футов от вас; если у вас достаточно сфер, вы восстанавливаете Инвеституру до своего максимального значения.\n\nВы можете использовать это действие даже если находитесь Без сознания или иным образом лишены возможности совершать действия."
+    },
+    "origin": "radiant_path",
+    "price": { "a": 2 }
+  },
+  {
+    "slug": "enhance",
+    "kind": "static",
+    "title": {
+      "en": "Enhance",
+      "ru": "Усиление"
+    },
+    "description": {
+      "en": "**Spend 1 Investiture** to become Enhanced [Strength +1] and Enhanced [Speed +1] until the end of your next turn. At the end of that turn and each of your turns thereafter, you can **spend 1 Investiture** as to maintain these conditions until the end of your next turn.",
+      "ru": "**Потратьте 1 Инвеституру**, чтобы получить Усиление [Сила +1] и Усиление [Скорость +1] до конца вашего следующего хода. В конце этого и каждого последующего вашего хода вы можете **тратить 1 Инвеституру**, чтобы поддерживать эти состояния до конца следующего хода."
+    },
+    "origin": "radiant_path",
+    "price": { "a": 1 },
+    "modifiers": { "str": { "type": "add", "value": 1 }, "spd": { "type": "add", "value": 1 } },
+    "continious": true
+  },
+  {
+    "slug": "regenerate",
+    "kind": "static",
+    "title": {
+      "en": "Regenerate",
+      "ru": "Регенерация"
+    },
+    "description": {
+      "en": "**Spend 1 Investiture** to recover health equal to 1d6 + your current tier.\n\nYou can use this free action even if you're *Unconscious* or otherwise prevented from using actions.",
+      "ru": "**Потратьте 1 Инвеституру**, чтобы восстановить здоровье в размере 1d6 + ваш текущий тир.\n\nВы можете использовать это действие даже если находитесь *Без сознания* или иным образом лишены возможности совершать действия."
+    },
+    "origin": "radiant_path"
+  }
+]
