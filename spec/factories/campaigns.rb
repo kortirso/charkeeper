@@ -3,6 +3,7 @@
 FactoryBot.define do
   factory :campaign do
     sequence(:name) { |i| "Campaign #{i}" }
+    provider { 'dnd5' }
     user
 
     trait :dnd5 do

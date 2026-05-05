@@ -5,15 +5,15 @@ class Campaign < ApplicationRecord
 
   has_many :campaign_characters, class_name: '::Campaign::Character', dependent: :destroy
   has_many :characters, through: :campaign_characters
-
   has_many :channels, class_name: '::Channel', dependent: :destroy
   has_many :notes, class_name: '::Campaign::Note', dependent: :destroy
-
   has_many :items, class_name: '::Campaign::Item', dependent: :destroy
+  has_many :custom_resources, as: :resourceable, dependent: :destroy
 
   scope :dnd5, -> { where(provider: 'dnd5') }
   scope :dnd2024, -> { where(provider: 'dnd2024') }
   scope :pathfinder2, -> { where(provider: 'pathfinder2') }
   scope :daggerheart, -> { where(provider: 'daggerheart') }
   scope :dc20, -> { where(provider: 'dc20') }
+  scope :cosmere, -> { where(provider: 'cosmere') }
 end
