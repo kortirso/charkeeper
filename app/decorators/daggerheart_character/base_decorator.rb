@@ -23,6 +23,11 @@ module DaggerheartCharacter
     def advantage_dice = 'd6'
     def disadvantage_dice = 'd6'
 
+    def resources
+      __getobj__.resources.joins(:custom_resource)
+        .hashable_pluck(:id, :value, 'custom_resources.name', 'custom_resources.max_value')
+    end
+
     def proficiency
       @proficiency ||=
         tier +

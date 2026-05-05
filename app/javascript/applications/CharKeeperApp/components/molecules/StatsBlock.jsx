@@ -3,8 +3,9 @@ import { For, children } from 'solid-js';
 export const StatsBlock = (props) => {
   const safeChildren = children(() => props.children);
 
+
   return (
-    <div class="blockable mb-2">
+    <div class={props.classList || 'blockable mb-2'}>
       <div
         class="py-4 grid"
         classList={{

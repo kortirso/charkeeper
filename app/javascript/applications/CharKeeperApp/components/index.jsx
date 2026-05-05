@@ -44,3 +44,4 @@ export * from './substances/Gold';
 export * from './substances/Languages';
 
 export * from './wrappers/Guide';
+export * from './wrappers/Resource';

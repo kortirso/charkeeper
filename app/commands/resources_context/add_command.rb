@@ -2,6 +2,10 @@
 
 module ResourcesContext
   class AddCommand < BaseCommand
+    include Deps[
+      attach_resource: 'commands.resources_context.attach'
+    ]
+
     use_contract do
       config.messages.namespace = :resource
 
@@ -22,10 +26,13 @@ module ResourcesContext
     def do_prepare(input)
       input[:name] = sanitize(input[:name])
       input[:description] = sanitize(input[:description]) if input[:description]
+      input[:resets]&.transform_values!(&:to_i)
     end
 
     def do_persist(input)
       result = ::CustomResource.create!(input)
+
+      attach_resource.call(character: input[:resourceable], custom_resource: result) if input[:resourceable].is_a?(::Character)
 
       { result: result }
     end

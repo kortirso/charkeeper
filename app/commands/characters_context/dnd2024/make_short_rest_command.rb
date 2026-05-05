@@ -22,6 +22,7 @@ module CharactersContext
         input[:character].feats.where(limit_refresh: 0).update_all(used_count: 0)
         input[:character].feats.where(limit_refresh: 2).where.not(used_count: 0).find_each { |item| item.decrement!(:used_count) }
         update_character(input)
+        refresh_resources(input)
 
         { result: :ok }
       end

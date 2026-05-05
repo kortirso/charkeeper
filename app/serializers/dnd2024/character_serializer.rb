@@ -13,11 +13,11 @@ module Dnd2024
                :selected_beastforms, :beastform, :weapon_mastery, :speeds, :money, :guide_step, :ability_boosts,
                :any_skill_boosts, :skill_boosts, :skill_boosts_list, :heroic_inspiration, :bardic_inspiration, :selected_talents,
                :leveling_ability_boosts, :leveling_ability_boosts_list, :available_talents, :skills, :exhaustion, :alignment,
-               :selected_additional_talents, :background_name
+               :selected_additional_talents, :background_name, :resources
 
     delegate :features, :level, :species, :legacy, :main_class, :classes, :subclasses, :abilities, :skills,
              :modifiers, :save_dc, :proficiency_bonus, :hit_dice, :armor_class, :initiative, :speed, :attacks_per_action,
-             :attacks, :resistances, :death_saving_throws, :health, :spent_hit_dice,
+             :attacks, :resistances, :death_saving_throws, :health, :spent_hit_dice, :resources,
              :spent_spell_slots, :coins, :load, :languages, :tools, :music, :weapon_core_skills, :weapon_skills,
              :armor_proficiency, :spell_classes, :spells_slots, :static_spells, :selected_feats, :darkvision,
              :modified_abilities, :available_spell_level, :formatted_static_spells, :selected_beastforms, :beastform,

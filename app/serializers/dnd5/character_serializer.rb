@@ -9,14 +9,14 @@ module Dnd5
                :attacks, :features, :selected_features, :resistances, :death_saving_throws, :health, :spent_hit_dice,
                :spent_spell_slots, :coins, :load, :languages, :tools, :music, :weapon_core_skills, :weapon_skills,
                :armor_proficiency, :spell_classes, :spells_slots, :static_spells, :created_at, :avatar, :modified_abilities,
-               :available_spell_level, :formatted_static_spells, :conditions, :beastform, :speeds, :money,
+               :available_spell_level, :formatted_static_spells, :conditions, :beastform, :speeds, :money, :resources,
                :heroic_inspiration, :bardic_inspiration, :alignment, :selected_talents, :selected_additional_talents
 
     delegate :id, :name, :level, :race, :subrace, :main_class, :classes, :subclasses, :abilities, :skills,
              :modifiers, :save_dc, :proficiency_bonus, :hit_dice, :armor_class, :initiative, :speed, :attacks_per_action,
              :attacks, :features, :selected_features, :resistances, :death_saving_throws, :health, :spent_hit_dice,
              :spent_spell_slots, :coins, :load, :languages, :tools, :music, :weapon_core_skills, :weapon_skills,
-             :armor_proficiency, :spell_classes, :spells_slots, :static_spells, :modified_abilities,
+             :armor_proficiency, :spell_classes, :spells_slots, :static_spells, :modified_abilities, :resources,
              :available_spell_level, :formatted_static_spells, :beastform, :speeds, :money, to: :decorator
     delegate :created_at, :data, to: :object
     delegate :heroic_inspiration, :bardic_inspiration, :alignment, :selected_talents, :selected_additional_talents, to: :data
