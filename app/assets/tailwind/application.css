@@ -335,11 +335,15 @@
   @apply flex dark:text-snow items-center py-1;
 }
 
-.experience:nth-of-type(2n) {
+.character-resource {
+  @apply py-1;
+}
+
+.experience:nth-of-type(2n), .character-resource:nth-of-type(2n) {
   @apply bg-gray-50 dark:bg-dusty;
 }
 
-.experience:nth-of-type(n+2) {
+.experience:nth-of-type(n+2), .character-resource:nth-of-type(n+2) {
   @apply border-t border-gray-200 dark:border-neutral-800;
 }
 

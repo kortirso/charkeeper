@@ -93,6 +93,7 @@ module CharactersContext
         refresh_reverse_feats(input)
         refresh_companion(input) if input[:companion_stress_marked]
         refresh_project(input) if input.dig(:project, :id)
+        refresh_resources(input)
 
         if input[:data]
           input[:character].data = ::Daggerheart::CharacterData.new(input[:character].data.attributes.merge(input[:data]))
@@ -108,6 +109,24 @@ module CharactersContext
         input[:character].companion.data =
           input[:character].companion.data.attributes.merge('stress_marked' => input[:companion_stress_marked])
         input[:character].companion.save
+      end
+
+      def refresh_resources(input) # rubocop: disable Metrics/AbcSize
+        input[:character].resources.includes(:custom_resource).find_each do |resource|
+          max_value = resource.custom_resource.max_value
+          reset_direction = resource.custom_resource.reset_direction
+          change = resource.custom_resource.resets[input[:value]]
+
+          value =
+            case change
+            when -1 then reset_direction.zero? ? 0 : max_value
+            when 0 then resource.value
+            else
+              reset_direction.zero? ? [resource.value - change.abs, 0].max : [resource.value + change.abs, max_value].min
+            end
+
+          resource.update(value: value)
+        end
       end
 
       def refresh_feats_limit(input)

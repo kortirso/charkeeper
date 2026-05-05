@@ -40,12 +40,18 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     update_save_dc
     update_speeds
     @result['formatted_static_spells'] = format_static_spells
+    @result['resources'] = find_resources
     @result = @result.except('selected_features', 'defense_gear')
 
     self
   end
 
   private
+
+  def find_resources
+    @character.resources.joins(:custom_resource)
+      .hashable_pluck(:id, :value, 'custom_resources.name', 'custom_resources.max_value')
+  end
 
   def generate_basis # rubocop: disable Metrics/AbcSize
     @result['name'] = @character.name

@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { Dnd2024Exhaustion } from '../../../../pages';
 import {
-  createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button, GuideWrapper, Dice
+  createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button, GuideWrapper, Dice, ResourceWrapper
 } from '../../../../components';
 import { useAppState, useAppLocale } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -157,69 +157,73 @@ export const Dnd5Combat = (props) => {
             </div>
           </Show>
         </StatsBlock>
-        <StatsBlock
-          items={[
-            { title: t('terms.health.current'), value: character().health.current },
-            { title: t('terms.health.max'), value: character().health.max },
-            { title: t('terms.health.temp'), value: character().health.temp }
-          ]}
-          onClick={openModal}
-        >
-          <div class="flex items-center pt-0 p-4">
-            <Button default textable classList="flex-1" onClick={() => changeHealth(-1)}>
-              {t('character.damage')}
-            </Button>
-            <Input
-              numeric
-              containerClassList="w-20 mx-4"
-              value={damageHealValue()}
-              onInput={(value) => setDamageHealValue(Number(value))}
-            />
-            <Button default textable classList="flex-1" onClick={() => changeHealth(1)}>
-              {t('character.heal')}
-            </Button>
-          </div>
-          <div class="flex">
-            <Show when={character().provider === 'dnd2024'}>
-              <div class="flex-1 pt-0 p-4">
-                <Dnd2024Exhaustion character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
-            </Show>
-            <div class="flex-1 pt-0 p-4">
-              <p class="mb-2 dark:text-snow">{t('character.deathSavingThrows')}</p>
-              <div class="flex mb-2">
-                <p class="dark:text-snow w-20">{t('character.deathSuccess')}</p>
-                <div class="flex">
-                  <For each={[...Array((character().death_saving_throws.success || 0))]}>
-                    {() =>
-                      <Checkbox checked classList="mr-1" onToggle={() => freeDeath('success')} />
-                    }
-                  </For>
-                  <For each={[...Array(3 - (character().death_saving_throws.success || 0))]}>
-                    {() =>
-                      <Checkbox classList="mr-1" onToggle={() => gainDeath('success')} />
-                    }
-                  </For>
+
+        <ResourceWrapper classList="mb-2" character={character()} onReplaceCharacter={props.onReplaceCharacter}>
+          <StatsBlock
+            classList="mb-0"
+            items={[
+              { title: t('terms.health.current'), value: character().health.current },
+              { title: t('terms.health.max'), value: character().health.max },
+              { title: t('terms.health.temp'), value: character().health.temp }
+            ]}
+            onClick={openModal}
+          >
+            <div class="flex items-center pt-0 pb-4">
+              <Button default textable classList="flex-1" onClick={() => changeHealth(-1)}>
+                {t('character.damage')}
+              </Button>
+              <Input
+                numeric
+                containerClassList="w-20 mx-4"
+                value={damageHealValue()}
+                onInput={(value) => setDamageHealValue(Number(value))}
+              />
+              <Button default textable classList="flex-1" onClick={() => changeHealth(1)}>
+                {t('character.heal')}
+              </Button>
+            </div>
+            <div class="flex gap-4">
+              <Show when={character().provider === 'dnd2024'}>
+                <div class="flex-1">
+                  <Dnd2024Exhaustion character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
-              </div>
-              <div class="flex">
-                <p class="dark:text-snow w-20">{t('character.deathFailure')}</p>
+              </Show>
+              <div class="flex-1">
+                <p class="mb-2 dark:text-snow">{t('character.deathSavingThrows')}</p>
+                <div class="flex mb-2">
+                  <p class="dark:text-snow w-20">{t('character.deathSuccess')}</p>
+                  <div class="flex">
+                    <For each={[...Array((character().death_saving_throws.success || 0))]}>
+                      {() =>
+                        <Checkbox checked classList="mr-1" onToggle={() => freeDeath('success')} />
+                      }
+                    </For>
+                    <For each={[...Array(3 - (character().death_saving_throws.success || 0))]}>
+                      {() =>
+                        <Checkbox classList="mr-1" onToggle={() => gainDeath('success')} />
+                      }
+                    </For>
+                  </div>
+                </div>
                 <div class="flex">
-                  <For each={[...Array((character().death_saving_throws.failure || 0))]}>
-                    {() =>
-                      <Checkbox checked classList="mr-1" onToggle={() => freeDeath('failure')} />
-                    }
-                  </For>
-                  <For each={[...Array(3 - (character().death_saving_throws.failure || 0))]}>
-                    {() =>
-                      <Checkbox classList="mr-1" onToggle={() => gainDeath('failure')} />
-                    }
-                  </For>
+                  <p class="dark:text-snow w-20">{t('character.deathFailure')}</p>
+                  <div class="flex">
+                    <For each={[...Array((character().death_saving_throws.failure || 0))]}>
+                      {() =>
+                        <Checkbox checked classList="mr-1" onToggle={() => freeDeath('failure')} />
+                      }
+                    </For>
+                    <For each={[...Array(3 - (character().death_saving_throws.failure || 0))]}>
+                      {() =>
+                        <Checkbox classList="mr-1" onToggle={() => gainDeath('failure')} />
+                      }
+                    </For>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </StatsBlock>
+          </StatsBlock>
+        </ResourceWrapper>
         <Toggle title={t('character.damageConditions')}>
           <table class="table w-full first-column-full-width">
             <thead>

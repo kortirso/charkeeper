@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_20_163223) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_05_081511) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -175,6 +175,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_20_163223) do
     t.index ["character_id"], name: "index_character_notes_on_character_id"
   end
 
+  create_table "character_resources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "character_id", null: false
+    t.datetime "created_at", null: false
+    t.uuid "custom_resource_id", null: false
+    t.datetime "updated_at", null: false
+    t.integer "value", default: 0, null: false
+    t.index ["character_id"], name: "index_character_resources_on_character_id"
+    t.index ["custom_resource_id"], name: "index_character_resources_on_custom_resource_id"
+  end
+
   create_table "character_spells", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "character_id", null: false
     t.datetime "created_at", null: false
@@ -194,6 +204,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_20_163223) do
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "custom_resources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.integer "max_value", default: 1, null: false
+    t.string "name", null: false
+    t.integer "reset_direction", default: 0, null: false, comment: "0 - сброс к нулю, 1 - сброс к максимуму"
+    t.jsonb "resets", default: {}, null: false
+    t.uuid "resourceable_id", null: false
+    t.string "resourceable_type", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resourceable_id", "resourceable_type"], name: "idx_on_resourceable_id_resourceable_type_718cca992a"
   end
 
   create_table "daggerheart_character_features", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

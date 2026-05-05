@@ -13,6 +13,11 @@ module Dnd5Character
     def parent = __getobj__
     def method_missing(_method, *args); end
 
+    def resources
+      __getobj__.resources.joins(:custom_resource)
+        .hashable_pluck(:id, :value, 'custom_resources.name', 'custom_resources.max_value')
+    end
+
     def proficiency_bonus
       @proficiency_bonus ||= 2 + ((level - 1) / 4)
     end

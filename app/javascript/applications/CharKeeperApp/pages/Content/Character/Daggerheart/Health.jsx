@@ -1,7 +1,7 @@
 import { For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Checkbox, ErrorWrapper, GuideWrapper } from '../../../../components';
+import { Checkbox, ErrorWrapper, GuideWrapper, ResourceWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
@@ -50,7 +50,7 @@ export const DaggerheartHealth = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartHealth' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable py-4 px-2 md:px-4">
+        <ResourceWrapper character={character()} onReplaceCharacter={props.onReplaceCharacter}>
           <div class="flex mb-4">
             <div class="damage-caption">
               <p>{t('daggerheart.health.minor')}</p>
@@ -75,7 +75,7 @@ export const DaggerheartHealth = (props) => {
           {renderAttribute(t('daggerheart.health.health'), character().health_max, 'health_marked')}
           {renderAttribute(t('daggerheart.health.stress'), character().stress_max, 'stress_marked')}
           {renderAttribute(t('daggerheart.health.hope'), character().hope_max, 'hope_marked', character().scarred_hope)}
-        </div>
+        </ResourceWrapper>
       </GuideWrapper>
     </ErrorWrapper>
   );

@@ -37,7 +37,27 @@ module CharactersContext
         input[:character].save!
         input[:character].feats.update_all(used_count: 0)
 
+        refresh_resources(input)
+
         { result: :ok }
+      end
+
+      def refresh_resources(input) # rubocop: disable Metrics/AbcSize
+        input[:character].resources.includes(:custom_resource).find_each do |resource|
+          max_value = resource.custom_resource.max_value
+          reset_direction = resource.custom_resource.reset_direction
+          change = resource.custom_resource.resets['long']
+
+          value =
+            case change
+            when -1 then reset_direction.zero? ? 0 : max_value
+            when 0 then resource.value
+            else
+              reset_direction.zero? ? [resource.value - change.abs, 0].max : [resource.value + change.abs, max_value].min
+            end
+
+          resource.update(value: value)
+        end
       end
     end
   end

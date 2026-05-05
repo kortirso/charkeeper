@@ -264,6 +264,11 @@ module Charkeeper
       HomebrewContext::Daggerheart::AddBookDomainsCommand.new
     }
 
+    register('commands.resources_context.add') { ResourcesContext::AddCommand.new }
+    register('commands.resources_context.change') { ResourcesContext::ChangeCommand.new }
+    register('commands.resources_context.attach') { ResourcesContext::AttachCommand.new }
+    register('commands.resources_context.refresh') { ResourcesContext::RefreshCommand.new }
+
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }
 
