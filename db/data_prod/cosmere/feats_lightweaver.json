@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "first_ideal_lightweaver",
+    "kind": "update_result",
+    "title": {
+      "en": "First Ideal",
+      "ru": "Первый Идеал"
+    },
+    "description": {
+      "en": "**Requirements** Level 2+.\n\nYou begin bonding an cryptic, allowing you to breathe in and use Stormlight.",
+      "ru": "**Требования** Уровень 2+.\n\nВы начинаете формировать узы со криптиком, что позволяет вам вдыхать и использовать Буресвет."
+    },
+    "origin": "radiant_path",
+    "origin_value": "lightweaver",
+    "info": {
+      "required_for": [],
+      "extra_feats": ["transformation_surge", "illumination_surge", "breathe_stormlight", "enhance", "regenerate"],
+      "extra_skills": ["transformation", "illumination"],
+      "investiture": true
+    }
+  }
+]

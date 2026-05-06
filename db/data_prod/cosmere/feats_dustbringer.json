@@ -14,7 +14,7 @@
     "origin_value": "dustbringer",
     "info": {
       "required_for": [],
-      "extra_feats": ["abrasion_surge", "breathe_stormlight", "enhance", "regenerate"],
+      "extra_feats": ["abrasion_surge", "division_surge", "breathe_stormlight", "enhance", "regenerate"],
       "extra_skills": ["abrasion", "division"],
       "investiture": true
     }

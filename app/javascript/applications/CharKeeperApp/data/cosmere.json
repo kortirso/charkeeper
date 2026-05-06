@@ -55,9 +55,26 @@
     "warrior": { "name": { "en": "Warrior", "ru": "Воин" } }
   },
   "radiant_paths": {
-    "dustbringer": { "name": { "en": "Dustbringer", "ru": "Пыленосец" } }
+    "dustbringer": { "name": { "en": "Dustbringer", "ru": "Пыленосец" } },
+    "edgedancer": { "name": { "en": "Edgedancer", "ru": "Гранетанцор" } },
+    "elsecaller": { "name": { "en": "Elsecaller", "ru": "Инозватель" } },
+    "lightweaver": { "name": { "en": "Lightweaver", "ru": "Светоплет" } },
+    "skybreaker": { "name": { "en": "Skybreaker", "ru": "Неболом" } },
+    "stoneward": { "name": { "en": "Stoneward", "ru": "Камнестраж" } },
+    "truthwatcher": { "name": { "en": "Truthwatcher", "ru": "Правдогляд" } },
+    "willshaper": { "name": { "en": "Willshaper", "ru": "Волеформатор" } },
+    "windrunner": { "name": { "en": "Windrunner", "ru": "Ветробегун" } } 
   },
   "surges": {
-    "abrasion": { "name": { "en": "Abrasion", "ru": "Абразия" } }
+    "abrasion": { "name": { "en": "Abrasion", "ru": "Абразия" } },
+    "adhesion": { "name": { "en": "Adhesion", "ru": "Адгезия" } },
+    "cohesion": { "name": { "en": "Cohesion", "ru": "Когезия" } },
+    "division": { "name": { "en": "Division", "ru": "Расщепление" } },
+    "gravitation": { "name": { "en": "Gravitation", "ru": "Гравитация" } },
+    "illumination": { "name": { "en": "Illumination", "ru": "Иллюминация" } },
+    "progression": { "name": { "en": "Progression", "ru": "Прогрессия" } },
+    "tension": { "name": { "en": "Tension", "ru": "Напряжение" } },
+    "transformation": { "name": { "en": "Transformation", "ru": "Трансформация" } },
+    "transportation": { "name": { "en": "Transportation", "ru": "Транспортация" } }
   }
 }

@@ -335,7 +335,7 @@ export const CosmereLeveling = (props) => {
             {(item) =>
               <For each={Object.entries(config[item[0]])}>
                 {([kind, values]) =>
-                  <Show when={!showActive() || feats()[item[1]][kind].selected}>
+                  <Show when={(!showActive() && feats()[item[1]][kind]) || feats()[item[1]][kind]?.selected}>
                     <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(values.name, locale())}>
                       {renderFeat(feats()[item[1]][kind], 0)}
                     </Toggle>

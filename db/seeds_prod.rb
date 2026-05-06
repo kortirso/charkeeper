@@ -25,8 +25,11 @@ end
 end
 
 [
-  'feats_singer.json', 'feats_path.json', 'feats_agent.json', 'feats_envoy.json',
-  'feats_dustbringer.json', 'feats_abrasion.json', 'feats_actions.json'
+  'feats_singer.json', 'feats_path.json', 'feats_actions.json',
+  'feats_agent.json', 'feats_envoy.json',
+  'feats_abrasion.json', 'feats_adhesion.json', 'feats_cohesion.json', 'feats_division.json', 'feats_gravitation.json',
+  'feats_dustbringer.json', 'feats_edgedancer.json', 'feats_elsecaller.json', 'feats_lightweaver.json', 'feats_skybreaker.json',
+  'feats_stoneward.json', 'feats_truthwatcher.json', 'feats_willshaper.json', 'feats_windrunner.json'
 ].each do |filename|
   JSON.parse(File.read("db/data_prod/cosmere/#{filename}")).each do |item|
     feat = ::Cosmere::Feat.find_by(slug: item['slug'])

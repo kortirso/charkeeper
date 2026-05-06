@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "first_ideal_skybreaker",
+    "kind": "update_result",
+    "title": {
+      "en": "First Ideal",
+      "ru": "Первый Идеал"
+    },
+    "description": {
+      "en": "**Requirements** Level 2+.\n\nYou begin bonding an highspren, allowing you to breathe in and use Stormlight.",
+      "ru": "**Требования** Уровень 2+.\n\nВы начинаете формировать узы с высшим спреном, что позволяет вам вдыхать и использовать Буресвет."
+    },
+    "origin": "radiant_path",
+    "origin_value": "skybreaker",
+    "info": {
+      "required_for": [],
+      "extra_feats": ["division_surge", "gravitation_surge", "breathe_stormlight", "enhance", "regenerate"],
+      "extra_skills": ["division", "gravitation"],
+      "investiture": true
+    }
+  }
+]
