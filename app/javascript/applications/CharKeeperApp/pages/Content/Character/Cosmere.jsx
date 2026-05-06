@@ -8,6 +8,7 @@ import {
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, createRoll, Feats } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
+import config from '../../../data/cosmere.json';
 
 const TRANSLATION = {
   en: {
@@ -15,42 +16,81 @@ const TRANSLATION = {
     heavyWeapon: 'Heavy weapons',
     armor: 'Armor',
     items: 'Items',
-    agentFilter: 'Agent',
-    envoyFilter: 'Envoy',
-    hunterFilter: 'Hunter',
-    leaderFilter: 'Leader',
-    scholarFilter: 'Scholar',
-    warriorFilter: 'Warrior',
+    heroicFilters: {
+      agent: 'Agent',
+      envoy: 'Envoy',
+      hunter: 'Hunter',
+      leader: 'Leader',
+      scholar: 'Scholar',
+      warrior: 'Warrior'
+    },
     radiantFilter: 'Radiant Path',
-    abrasionFilter: 'Abrasion'
+    surgeFilters: {
+      abrasion: 'Abrasion',
+      adhesion: 'Adhesion',
+      cohesion: 'Cohesion',
+      division: 'Division',
+      gravitation: 'Gravitation',
+      illumination: 'Illumination',
+      progression: 'Progression',
+      tension: 'Tension',
+      transformation: 'Transformation',
+      transportation: 'Transportation'
+    }
   },
   ru: {
     lightWeapon: 'Лёгкое оружие',
     heavyWeapon: 'Тяжёлое оружие',
     armor: 'Доспехи',
     items: 'Предметы',
-    agentFilter: 'Агент',
-    envoyFilter: 'Посланник',
-    hunterFilter: 'Охотник',
-    leaderFilter: 'Лидер',
-    scholarFilter: 'Учёный',
-    warriorFilter: 'Воин',
+    heroicFilters: {
+      agent: 'Агент',
+      envoy: 'Посланник',
+      hunter: 'Охотник',
+      leader: 'Лидер',
+      scholar: 'Учёный',
+      warrior: 'Воин'
+    },
     radiantFilter: 'Сияющий путь',
-    abrasionFilter: 'Абразия'
+    surgeFilters: {
+      abrasion: 'Абразия',
+      adhesion: 'Адгезия',
+      cohesion: 'Когезия',
+      division: 'Расщепление',
+      gravitation: 'Гравитация',
+      illumination: 'Иллюминация',
+      progression: 'Прогрессия',
+      tension: 'Напряжение',
+      transformation: 'Трансформация',
+      transportation: 'Транспортация'
+    }
   },
   es: {
     lightWeapon: 'Light weapons',
     heavyWeapon: 'Heavy weapons',
     armor: 'Armor',
     items: 'Items',
-    agentFilter: 'Agent',
-    envoyFilter: 'Envoy',
-    hunterFilter: 'Hunter',
-    leaderFilter: 'Leader',
-    scholarFilter: 'Scholar',
-    warriorFilter: 'Warrior',
+    heroicFilters: {
+      agent: 'Agent',
+      envoy: 'Envoy',
+      hunter: 'Hunter',
+      leader: 'Leader',
+      scholar: 'Scholar',
+      warrior: 'Warrior'
+    },
     radiantFilter: 'Radiant Path',
-    abrasionFilter: 'Abrasion'
+    surgeFilters: {
+      abrasion: 'Abrasion',
+      adhesion: 'Adhesion',
+      cohesion: 'Cohesion',
+      division: 'Division',
+      gravitation: 'Gravitation',
+      illumination: 'Illumination',
+      progression: 'Progression',
+      tension: 'Tension',
+      transformation: 'Transformation',
+      transportation: 'Transportation'
+    }
   }
 }
 
@@ -69,16 +109,21 @@ export const Cosmere = (props) => {
   const armorFilter = (item) => item.kind === 'armor';
   const itemFilter = (item) => item.kind === 'item';
 
-  const agentFilter = (item) => item.origin_value === 'agent';
-  const envoyFilter = (item) => item.origin_value === 'envoy';
-  const hunterFilter = (item) => item.origin_value === 'hunter';
-  const leaderFilter = (item) => item.origin_value === 'leader';
-  const scholarFilter = (item) => item.origin_value === 'scholar';
-  const warriorFilter = (item) => item.origin_value === 'warrior';
+  const heroicFilters = createMemo(() => {
+    return Object.keys(config.paths).reduce((acc, element) => {
+      acc[element] = (item) => item.origin_value === element;
+      return acc;
+    }, {});
+  });
+
+  const surgeFilters = createMemo(() => {
+    return Object.keys(config.surges).reduce((acc, element) => {
+      acc[element] = (item) => item.origin_value === element;
+      return acc;
+    }, {});
+  });
 
   const radiantFilter = (item) => item.origin === 'radiant_path';
-
-  const abrasionFilter = (item) => item.origin_value === 'abrasion';
 
   const originValues = createMemo(() => {
     const values = character().features.map((item) => item.origin_value);
@@ -93,16 +138,15 @@ export const Cosmere = (props) => {
   const featFilters = createMemo(() => {
     const result = [];
 
-    if (originValues().includes('agent')) result.push({ title: 'agent', translation: localize(TRANSLATION, locale()).agentFilter, callback: agentFilter });
-    if (originValues().includes('envoy')) result.push({ title: 'envoy', translation: localize(TRANSLATION, locale()).envoyFilter, callback: envoyFilter });
-    if (originValues().includes('hunter')) result.push({ title: 'hunter', translation: localize(TRANSLATION, locale()).hunterFilter, callback: hunterFilter });
-    if (originValues().includes('leader')) result.push({ title: 'leader', translation: localize(TRANSLATION, locale()).leaderFilter, callback: leaderFilter });
-    if (originValues().includes('scholar')) result.push({ title: 'scholar', translation: localize(TRANSLATION, locale()).scholarFilter, callback: scholarFilter });
-    if (originValues().includes('warrior')) result.push({ title: 'warrior', translation: localize(TRANSLATION, locale()).warriorFilter, callback: warriorFilter });
+    Object.keys(config.paths).forEach((item) => {
+      if (originValues().includes(item)) result.push({ title: item, translation: localize(TRANSLATION, locale()).heroicFilters[item], callback: heroicFilters()[item] });
+    });
 
     if (origins().includes('radiant_path')) result.push({ title: 'radiant', translation: localize(TRANSLATION, locale()).radiantFilter, callback: radiantFilter });
 
-    if (originValues().includes('abrasion')) result.push({ title: 'abrasion', translation: localize(TRANSLATION, locale()).abrasionFilter, callback: abrasionFilter });
+    Object.keys(config.surges).forEach((item) => {
+      if (originValues().includes(item)) result.push({ title: item, translation: localize(TRANSLATION, locale()).surgeFilters[item], callback: surgeFilters()[item] });
+    });
 
     return result;
   });

@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "progression_surge",
+    "kind": "static",
+    "title": {
+      "en": "Progression Surge",
+      "ru": "Поток Прогрессии"
+    },
+    "description": {
+      "en": "You infuse life into a living thing other than yourself within your reach; you must have a hand free and touch the target.\n\n**Plant Growth.** If you target a living plant (or its seed) with Growth, **spend 1 Investiture** to cause it to rapidly grow to a size of your choice. This can't exceed the surge size for your ranks in Progression, nor the normal limits of the largest plants of its species.\n\n**Character Regrowth.** If you target a living character with Regrowth, **infuse 1 Investiture or more** into them. The infusion uses 1 Investiture each round, and for the duration, that character recovers health equal to 1d4 + your Progression modifier at the start of each of their turns. The size of this die increases with your ranks in Progression.",
+      "ru": "Вы наполняете жизнью живое существо, не являющиеся вами, в пределах вашей досягаемости; для этого у вас должна быть свободная рука, и вы должны коснуться цели.\n\n**Рост растений.** Если вы выбираете целью живое растение (или его семя) для Роста, **потратьте 1 Инвеституру**, чтобы вызвать его быстрый рост до размера по вашему выбору. Этот размер не может превышать размер, допустимый для вашего ранга в Прогрессии, а также нормальные размеры крупнейших представителей его вида.\n\n**Исцеление персонажа.** Если вы выбираете целью живого персонажа для Исцеления, **наполните его 1 Инвеститурой или более**. Наполнение расходует 1 Инвеституру каждый раунд, в течение действия которого персонаж будет восстанавливать количество здоровья, равное 1d4 + ваш модификатор Прогрессии, в начале каждого своего хода. Размер этой кости увеличивается с ростом вашего ранга в Прогрессии."
+    },
+    "origin": "surge",
+    "origin_value": "progression",
+    "price": { "a": 2 },
+    "info": {
+      "required_for": ["injury_regrowth", "explosive_growth"]
+    }
+  },
+  {
+    "slug": "injury_regrowth",
+    "kind": "static",
+    "title": {
+      "en": "Injury Regrowth",
+      "ru": "Исцеление травмы"
+    },
+    "description": {
+      "en": "**Requirements** Speak the First Ideal.\n\n**Spend 2 Investiture** to cause yourself or a willing character you touch to instantly recover from a temporary injury of the target's choice, or **spend 3 Investiture** to recover from a permanent injury.",
+      "ru": "**Требования** Произнести Первый идеал.\n\n**Потратьте 2 Инвеституры**, чтобы вы или согласная цель, к которой вы прикасаетесь, немедленно исцелили временную травму по выбору цели. Либо **потратьте 3 Инвеституры**, чтобы исцелить постоянную травму."
+    },
+    "origin": "surge",
+    "origin_value": "progression",
+    "info": {
+      "required_for": []
+    },
+    "price": { "a": 2 }
+  },
+  {
+    "slug": "explosive_growth",
+    "kind": "static",
+    "title": {
+      "en": "Explosive Growth",
+      "ru": "Взрывной рост"
+    },
+    "description": {
+      "en": "**Requirements** Speak the First Ideal.\n\n**Spend 1 Investiture** to use Growth in an area up to the size you can affect with your ranks in Progression. Make one Progression attack and compare the test result to the Physical defense of each character of your choice in that area. Roll 2d4 damage, dealing either impact or keen damage (whichever is logical for the grown plants). The size of this attack's damage dice increases with your ranks in Progression.\n\nYou can spend **Opportunity** to cause any number of the targets you hit to become Immobilized until the end of your next turn.",
+      "ru": "**Требования** Произнести Первый идеал.\n\n**Потратьте 1 Инвеституру**, чтобы применить Рост в области, размер которой не превышает тот, на который вы можете воздействовать в соответствии с вашим рангом в Прогрессии. Совершите одну атаку Прогрессии и сравните результат проверки с Физической защитой каждого выбранного вами персонажа в этой области. Бросьте 2d4 урона — дробящего или острого (в зависимости от вида выросших растений). Размер костей урона этой атаки увеличивается с ростом вашего ранга в Прогрессии.\n\nВы можете потратить **Возможность**, чтобы любое количество целей, по которым вы попали этой атакой, оказались Обездвижены до конца вашего следующего хода."
+    },
+    "origin": "surge",
+    "origin_value": "progression",
+    "info": {
+      "required_for": []
+    },
+    "price": { "a": 2 }
+  }
+]

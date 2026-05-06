@@ -1,0 +1,55 @@
+[
+  {
+    "slug": "illumination_surge",
+    "kind": "static",
+    "title": {
+      "en": "Illumination Surge",
+      "ru": "Поток Иллюминации"
+    },
+    "description": {
+      "en": "To Lightweave an illusion, **spend 1 Investiture or more** to infuse it into thin air in a space within your spren bond range. This illusion can't exceed the surge size for your ranks in Illumination.\n\nLightweavings typically take the form of a threedimensional hologram representing a character, object, or phenomenon you're familiar with. This illusion is composed of light, complete with animation and accompanying sounds produced by the vibrations of your bonded spren.\n\n**Simple and Complex Illusions.** If the illusion depicts a simple object with no sound or animations, the infusion uses 1 Investiture every 10 minutes. If the illusion depicts a character or more complex object, it instead uses 1 Investiture each round. For the duration, the illusion remains active even if you move out of range. You can move and control a complex illusion.\n\n**Disguising Yourself.** Alternatively, if you have 1 Investiture or more, you can use Illumination to create an illusory disguise on yourself without spending Investiture. This disguise lasts until you end it as or run out of Investiture.\n\n**Deceiving Characters.** If your illusion is a simple object or a disguise on yourself, it automatically convinces characters unless they have a reason to be suspicious. If you create a more complex illusion (such as disguising another character), the GM might require you to make an Illumination test against the Cognitive defense of any character who passively observes the illusion; on a success, your illusion is convincing to them.\n\nA character might decide to Use a Skill to scrutinize your illusion, especially if you fail the above Illumination test or if you or your allies roll a Complication on a related test. In this case, make an Illumination test opposed by the character's Perception test. If their test result exceeds your own, they notice the illusion.\n\nYou can make these tests to deceive characters even if that illusion is currently out of your spren bond range.",
+      "ru": "Для Светоплетения иллюзии, **потратьте 1 Инвеституру или более**, наполняя её в воздух в пределах вашего радиуса уз со спренов. Иллюзия не должна превышать размер, допустим для вашего ранга в Иллюминации.\n\nСветоплетение обычно представляет собой трёхмерную голограмму, изображающую персонажа, объект или явление, с которыми вы знакомы. Эта иллюзия состоит из света, и дополнена анимацией и сопровождающими звуками, создаваемыми вибрациями вашего спрена.\n\n**Простые и сложные иллюзии.** Если иллюзия изображает простой объект без звуков и анимации, она расходует 1 Инвеституру каждые 10 минут. Если иллюзия изображает персонажа или более сложный объект, она расходует 1 Инвеституру каждый раунд. На протяжении своего действия иллюзия остаётся активной, даже если вы выйдете за пределы её радиуса. Вы можете перемещать и управлять сложной иллюзией.\n\n**Создание маскировки.** В качестве альтернативы, если у вас есть 1 или более Инвеститура, вы можете использовать Иллюминацию, чтобы создать иллюзорную маскировку на себе, не тратя при этом Инвеституру. Эта маскировка сохраняется до тех пор, пока вы не завершите её 0 или пока у вас не закончится Инвеститура.\n\n**Обман персонажей.** Если ваша иллюзия представляет собой простой объект или маскировку, она автоматически считается убедительной для персонажей, если у них нет причин для подозрений. Если вы создаёте более сложную иллюзию, ведущий может потребовать совершить проверку Светоплетения против Когнитивной защиты любого персонажа, который пассивно наблюдает иллюзию; в случае успеха ваша иллюзия выглядит убедительной для них.\n\nПерсонаж может решить *Использовать навык*, чтобы тщательно изучить вашу иллюзию, особенно если вы провалили вышеуказанную проверку Светоплетения или если вы или ваши союзники получили Осложнение в схожей проверке. В этом случае совершите проверку Светоплетения против проверки Наблюдательности персонажа. Если результат проверки персонажа превышает ваш, он обнаруживают что это иллюзия.\n\nВы можете совершать подобные проверки для обмана персонажей, даже если иллюзия находится за пределами вашего радиуса уз со спренов."
+    },
+    "origin": "surge",
+    "origin_value": "illumination",
+    "price": { "a": 1 },
+    "info": {
+      "required_for": ["distracting_illusion", "lingering_lightweavings"]
+    }
+  },
+  {
+    "slug": "distracting_illusion",
+    "kind": "static",
+    "title": {
+      "en": "Distracting Illusion",
+      "ru": "Отвлекающая иллюзия"
+    },
+    "description": {
+      "en": "**Requirements** Speak the First Ideal.\n\n**Spend 1 Investiture** to Lightweave an illusory duplicate, either of yourself or an ally you can sense within your spren bond range. The illusion appears in that character's space and moves with them. Attacks against that character gain a disadvantage and can't graze. The illusion ends after an attack misses that character or at the end of the scene.",
+      "ru": "**Требования** Произнести Первый идеал.\n\n**Потратьте 1 Инвеституру**, чтобы светосплести иллюзорную копию себя или союзника, которого вы можете обнаружить в пределах вашего радиуса уз со спреном. Иллюзия появляется в том же пространстве, что и этот персонаж, и перемещается вместе с ним. Атаки по этому персонажу получают помеху и не могут задеть его. Как только атака по нему промахивается, иллюзия исчезает, в противном случае она исчезает в конце сцены."
+    },
+    "origin": "surge",
+    "origin_value": "illumination",
+    "info": {
+      "required_for": []
+    },
+    "price": { "a": 1 }
+  },
+  {
+    "slug": "lingering_lightweavings",
+    "kind": "static",
+    "title": {
+      "en": "Lingering Lightweavings",
+      "ru": "Карманное светоплетение"
+    },
+    "description": {
+      "en": "**Requirements** Speak the First Ideal.\n\nWhen you Lightweave an illusion, instead of creating it in thin air, you can instead infuse its Investiture in a sphere or unencased gem within 5 feet of that illusion. For the duration, the illusion moves with the gem; for example, an ally could carry this gem to extend the duration of an illusory disguise you created for them. Instead of the infusion expending 1 Investiture per round, it expends 1 Investiture per number of rounds equal to your ranks in Illumination.",
+      "ru": "**Требования** Произнести Первый идеал.\n\nКогда вы Светоплетете иллюзию, вместо того чтобы создать её в пустом пространстве, вы можете наполнить Инвеститурой сферу или неогранённый самосвет, находящийся в пределах 5 футов от создаваемой иллюзии. На протяжения всего время действия иллюзия будет перемещаться вместе с этим самосветом; благодаря чему, например, ваш союзник может носить этот самосвет при себе, продлевая за счет него время действия созданного вами на нём иллюзорного облика. Кроме того, вместо расхода 1 Инвеституры каждый раунд, такое наполнение будет тратить лишь 1 Инвеституру раз в количество раундов, равное вашему рангу в Иллюминации."
+    },
+    "origin": "surge",
+    "origin_value": "illumination",
+    "info": {
+      "required_for": []
+    }
+  }
+]

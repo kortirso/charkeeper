@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "transformation_surge",
+    "kind": "static",
+    "title": {
+      "en": "Transformation Surge",
+      "ru": "Поток Трансформации"
+    },
+    "description": {
+      "en": "To Soulcast a material, choose a non-living object or portion of a surface within your reach and make a Transformation test. To do so, you must have a hand free and touch the target. This target can’t exceed the surge size for your ranks in Transformation.\n\nYou can’t use this surge on Invested objects or objects that have been infused with Stormlight. Additionally, you can’t initially Soulcast living materials, including characters and plants.\n\n**Transformation DC.** Soulcasting one material into a similar one is relatively simple, but the more you change its Essence, the more skill is required.\n\n**Successful Transformation.** On a successful Transformation test, you compel the material to transform. Spend Investiture equal to the ranks required to transform an object of that size: 1 Investiture for a Small object, 2 Investiture for a Medium one, 3 Investiture for a Large one, 4 Investiture for a Huge one, and 5 Investiture for a Gargantuan one. Your target transforms into that substance.\n\n**Failed Transformation.** On a failure, you don’t transform your target and you don’t spend Investiture on the attempt. Since you’ve failed to compel that material to transform, you can’t attempt to Soulcast that same object again during this scene.",
+      "ru": "Для Духозаклятия материала, выберите неживой объект или участок поверхности в пределах вашей досягаемости и совершите проверку Трансформации. Для этого у вас должна быть свободная рука, и вы должны коснуться цели. Цель не должна превышать размер, допустимый для вашего ранга в Трансформации.\n\nВы не можете использовать этот поток на Инвестированных объектах или объектах, уже наполненных Буресветом. Кроме того, изначально вы не можете Духозаклинать живые материалы, включая персонажей и растения.\n\n**Сложность Трансформации.** Духозаклинать один материала в похожий относительно просто, но чем сильнее вы изменяете его Суть, тем больше мастерства требуется.\n\n**Успешное Духозаклятие.** При успешной проверке Трансформации вы убеждаете материал преобразоваться. Потратьте количество Инвеституры, зависящее от размера объекта: 1 для Маленького, 2 для Среднего, 3 для Большого, 4 для Огромного и 5 для Громадного. Объект преобразуется в выбранное вами вещество.\n\n**Провальное Духозаклятие.** При провале проверки Трансформации объект остаётся неизменным, но и вы не тратите Инвеституру за попытку. Однако, поскольку вы не смогли убедить материал преобразоваться, Духозаклясть этом объект в текущей сцене вы уже не сможете."
+    },
+    "origin": "surge",
+    "origin_value": "transformation",
+    "price": { "a": 2 },
+    "info": {
+      "required_for": ["soulcast_defense", "living_soulcasting"]
+    }
+  },
+  {
+    "slug": "soulcast_defense",
+    "kind": "static",
+    "title": {
+      "en": "Soulcast Defense",
+      "ru": "Защитное духозаклятие"
+    },
+    "description": {
+      "en": "**Requirements** Speak the First Ideal.\n\nBefore you or an ally within your reach is hit by a projectile from a ranged attack, you can use this reaction and **spend 1 Investiture** to make a Transformation test. The DC of this test equals the triggering attack’s test result; you can choose whether to use this reaction after you learn the DC. On a failure, the attack grazes instead of hitting. On a success, the attack instead misses and can’t graze, and you transform the projectile into a material of your choice. If you choose a non-solid material, this destroys the projectile.",
+      "ru": "**Требования** Произнести Первый идеал.\n\nПрежде чем по вам или союзнику в пределах вашей досягаемости попадёт снаряд от атаки дальнего боя, вы можете использовать эту реакцию и **потратить 1 Инвеституру**, чтобы совершить проверку Трансформации. Сл этой проверки равна результату проверки атаки; вы можете решить, использовать ли эту реакцию, уже после того как узнаете Сл проверки. При провале атака вместо попадания лишь задевает цель. При успехе атака промахивается и не может задеть, а вы преобразуете снаряд в материал по вашему выбору. Если выбранный материал не является твёрдым, снаряд разрушается."
+    },
+    "origin": "surge",
+    "origin_value": "transformation",
+    "info": {
+      "required_for": []
+    },
+    "price": { "r": 1 }
+  },
+  {
+    "slug": "living_soulcasting",
+    "kind": "static",
+    "title": {
+      "en": "Living Soulcasting",
+      "ru": "Духозаклятие жизни"
+    },
+    "description": {
+      "en": "**Requirements** Speak the First Ideal.\n\n**Spend 1 Investiture** and make a melee Transformation attack against the Spiritual defense of a character, plant, or other living organism within your reach. Roll 3d4 spirit damage. The size of these damage dice increases with your ranks in Transformation. If this reduces the target to 0 health, they die, and you transform their body into your choice of material without spending additional actions or Investiture.",
+      "ru": "**Требования** Произнести Первый идеал.\n\n**Потратьте 1 Инвеституру** и совершите атаку ближнего боя Трансформацией против Духовной защиты персонажа, растения или другого живого существа в пределах вашей досягаемости, нанося 3d4 духовного урона. Размер этих костей урона увеличивается с ростом вашего ранга в Трансформации. Если это снижает здоровье цели до 0, она умирает, и вы преобразуете её тело в выбранный вами материал без траты дополнительных действий или Инвеституры."
+    },
+    "origin": "surge",
+    "origin_value": "transformation",
+    "info": {
+      "required_for": []
+    },
+    "price": { "a": 2 }
+  }
+]

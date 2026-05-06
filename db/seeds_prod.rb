@@ -28,6 +28,8 @@ end
   'feats_singer.json', 'feats_path.json', 'feats_actions.json',
   'feats_agent.json', 'feats_envoy.json',
   'feats_abrasion.json', 'feats_adhesion.json', 'feats_cohesion.json', 'feats_division.json', 'feats_gravitation.json',
+  'feats_illumination.json', 'feats_progression.json', 'feats_tension.json', 'feats_transformation.json',
+  'feats_transportation.json',
   'feats_dustbringer.json', 'feats_edgedancer.json', 'feats_elsecaller.json', 'feats_lightweaver.json', 'feats_skybreaker.json',
   'feats_stoneward.json', 'feats_truthwatcher.json', 'feats_willshaper.json', 'feats_windrunner.json'
 ].each do |filename|

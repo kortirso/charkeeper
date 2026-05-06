@@ -1,0 +1,55 @@
+[
+  {
+    "slug": "tension_surge",
+    "kind": "static",
+    "title": {
+      "en": "Tension Surge",
+      "ru": "Поток Напряжения"
+    },
+    "description": {
+      "en": "To use this surge, **spend 1 or more Investiture** to infuse a soft object within your reach; you must have a hand free and touch the target. The infusion uses 1 Investiture each round, and for the duration, the object becomes completely rigid.\n\nThis object can't exceed the surge size for your ranks in Tension.\n\nWhen you activate this surge, you can first form the soft material into a rough shape as part of that action, but any elaborate molding requires more time.\n\nYou can't use this surge on characters, Invested objects, or objects that have been infused with Stormlight.\n\n**Hardened Defense.** When you infuse a soft material worn by you or a willing character, you can increase the wearer's Physical defense by 2. Alternatively, before you infuse a material, you can wrap it around a character as part of that action, granting the same effect. A character's Physical defense can't benefit from more than one Tension surge at a time.",
+      "ru": "Для использования этого потока **потратьте 1 Инвеституру или более**, наполняя ею мягкий объект в пределах вашей досягаемости, для этого у вас должна быть свободная рука, и вы должны коснуться цели. Наполнение расходует 1 Инвеституру каждый раунд, и на время действия делает объект абсолютно жёстким.\n\nЭтот объект не должен превышать размер, допустимый для вашего ранга в Напряжения.\n\nПри активации этого потока вы можете сразу придать мягкому материалу нужную форму перед его огрублением в рамках того же действия, однако для более сложного или детализированного формирования потребуется больше времени.\n\nВы не можете использовать этот поток на персонажей, Инвестированных объектах или объектах, уже наполненных Буресветом.\n\n**Укреплённая защита.** Если вы наполняете мягкий материал, носимый вами или согласным персонажем, вы можете увеличить Физическую защиту носителя на 2. В качестве альтернативы перед огрублением материала вы можете обернуть его вокруг персонажа в рамках того же действия, предоставляя этот же эффект. Физическая защита персонажа не может получать бонус более чем от одного потока Напряжения одновременно."
+    },
+    "origin": "surge",
+    "origin_value": "tension",
+    "price": { "a": 1 },
+    "info": {
+      "required_for": ["tension_parry", "stormlight_reclamation"]
+    }
+  },
+  {
+    "slug": "tension_parry",
+    "kind": "static",
+    "title": {
+      "en": "Tension Parry",
+      "ru": "Парирование напряжением"
+    },
+    "description": {
+      "en": "**Requirements** Speak the First Ideal.\n\nBefore you or an ally within your reach is hit or grazed by an attack against Physical defense, you can use this reaction to infuse Tension into the target's clothing or a soft material you wrap around the target, spending Investiture as usual. They gain the **Hardened Defense** effect, increasing their Physical defense by 2 for the duration, including against the triggering attack. If the attack hit, this increase can change it to a miss. If the attack grazed, the target ignores its effects.",
+      "ru": "**Требования** Произнести Первый идеал.\n\nПрежде чем вы или союзник, находящийся в пределах вашей досягаемости подвергаетесь попаданию или задеванию от атаки против Физической защиты, вы можете использовать эту реакцию, чтобы наполнить Напряжением одежду цели или мягкий материал, которым вы её оборачиваете. Вы тратите Инвеституру на это, как обычно. Цель получает эффект **Укрепленная защита**, увеличивающий её Физическую защиту на 2 на время действия эффекта, это увеличение применяется в том числе против спровоцировавшей атаки. Если атака была попаданием, это увеличение может превратить её в промах. Если же атака была задеванием, цель избегает его эффектов."
+    },
+    "origin": "surge",
+    "origin_value": "tension",
+    "info": {
+      "required_for": []
+    },
+    "price": { "r": 1 }
+  },
+  {
+    "slug": "stormlight_reclamation",
+    "kind": "static",
+    "title": {
+      "en": "Stormlight Reclamation",
+      "ru": "Возвращение буресвета"
+    },
+    "description": {
+      "en": "**Requirements** Speak the First Ideal.\n\nAfter your infusions expend their infused Investiture at the start of your turn, you can end any number of those infusions within your reach, recovering all remaining Investiture they were infused with.",
+      "ru": "**Требования** Произнести Первый идеал.\n\nПосле того как ваши наполнения расходуют вложенную в них Инвеституру в начале вашего хода, вы можете завершить любое количество активных наполнений в пределах вашей досягаемости и вернуть себе всю оставшуюся в них Инвеституру."
+    },
+    "origin": "surge",
+    "origin_value": "tension",
+    "info": {
+      "required_for": []
+    }
+  }
+]
