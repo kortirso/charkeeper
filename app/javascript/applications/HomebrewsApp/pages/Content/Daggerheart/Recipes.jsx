@@ -173,6 +173,7 @@ export const DaggerheartRecipes = () => {
         />
         <Select
           relative
+          searchable
           containerClassList="mb-2"
           labelText={TRANSLATION[locale()].item}
           items={Object.fromEntries(items().map(({ id, name }) => [id, name[locale()]]))}
