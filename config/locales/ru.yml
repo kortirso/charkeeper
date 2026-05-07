@@ -299,7 +299,9 @@ ru:
         switch_eu: Переключиться на EU
         ttrpgs: Поддержка различных настольных игр
         ttrpgs_desc: "В данный момент CharKeeper поддерживает различные системы настольных игр: D&D версии 2014 и 2024, Daggerheart, Pathfinder 2, Fate, DC20, Cosmere RPG и Fallout 2d20. Вы можете сохранять данные о своих персонажах без ограничений."
-        ttrpgs_desc2: 'Данные для Pathfinder 2 предоставлены сайтом <a href="https://pf2.ru/" target="_blank" rel="noopener noreferrer" class="underline">Pathfinder 2E</a>'
+        ttrpgs_desc2: 'Данные для Pathfinder 2 предоставлены сайтом <a href="https://pf2.ru/" target="_blank" rel="noopener noreferrer" class="underline">Pathfinder 2E</a>.'
+        ttrpgs_desc3: Это неофициальный фанатский контент, созданный и распространяемый для некоммерческого использования.
+        ttrpgs_desc4: "Cosmere RPG заметка: Это не было проверено Dragonsteel Entertainment, LLC или Brotherwise Games, LLC."
         integrations: Интеграции
         integrations_desc: CharKeeper имеет возможности интеграции с Owlbear Rodeo и Telegram для отображения результатов бросков кубиков внутри приложения и выполнения различных команд.
         cross: Кроссплатформенность

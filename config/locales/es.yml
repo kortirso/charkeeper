@@ -299,7 +299,9 @@ es:
         switch_eu: Cambiar a EU
         ttrpgs: Soporte para varios juegos de rol de mesa
         ttrpgs_desc: "CharKeeper es compatible actualmente con varios sistemas de juego de mesa: D&D 2014 y 2024, Daggerheart, Pathfinder 2, Fate, DC20, Cosmere RPG y Fallout 2d20. Puedes guardar los datos de tu personaje sin limitaciones."
-        ttrpgs_desc2: 'Data for Pathfinder 2 is provided by <a href="https://pf2.ru/" target="_blank" rel="noopener noreferrer" class="underline">Pathfinder 2E</a>'
+        ttrpgs_desc2: 'Data for Pathfinder 2 is provided by <a href="https://pf2.ru/" target="_blank" rel="noopener noreferrer" class="underline">Pathfinder 2E</a>.'
+        ttrpgs_desc3: This is unofficial fan content, created and shared for non-commercial use.
+        ttrpgs_desc4: "Cosmere RPG note: It has not been reviewed by Dragonsteel Entertainment, LLC or Brotherwise Games, LLC."
         integrations: Integraciones
         integrations_desc: CharKeeper tiene capacidades de integración con Owlbear Rodeo y Telegram para mostrar los resultados de las tiradas de dados dentro de la aplicación y ejecutar varios comandos.
         cross: Multiplataforma
