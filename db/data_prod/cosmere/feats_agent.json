@@ -380,7 +380,8 @@
     "origin": "path",
     "origin_value": "agent",
     "info": {
-      "required_for": ["shadow_step", "trickster_hand"]
+      "required_for": ["shadow_step", "trickster_hand"],
+      "double_slug": "surefooted"
     },
     "modifiers": { "movement": { "type": "add", "value": 10 } }
   },
