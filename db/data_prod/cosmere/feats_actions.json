@@ -69,5 +69,33 @@
       "ru": "**Потратьте 1 Инвеституру**, чтобы восстановить здоровье в размере 1d6 + ваш текущий тир.\n\nВы можете использовать это действие даже если находитесь *Без сознания* или иным образом лишены возможности совершать действия."
     },
     "origin": "radiant_path"
+  },
+  {
+    "slug": "entangling_trap",
+    "kind": "static",
+    "title": {
+      "en": "Entangling Trap",
+      "ru": "Опутывающая ловушка"
+    },
+    "description": {
+      "en": "Survival vs. Cognitive defense.\n\nYou create a trap with rope, debris, or other ensnaring objects. On a hit, the target takes 2d4 impact damage and becomes *Immobilized* for 1 round, then the trap’s area becomes difficult terrain until the end of the scene.",
+      "ru": "Выживание против Когнитивной защиты.\n\nВы сооружаете ловушку из верёвок, обломков или других сковывающих предметов. При попадании цель получает 2d4 дробящего урона и становится *Обездвиженной* на 1 раунд, после чего область с ловушкой превращается в труднопроходимую местность до конца сцены."
+    },
+    "origin": "path",
+    "origin_value": "hunter"
+  },
+  {
+    "slug": "impaling_trap",
+    "kind": "static",
+    "title": {
+      "en": "Impaling Trap",
+      "ru": "Пронзающая ловушка"
+    },
+    "description": {
+      "en": "Survival vs. Physical defense.\n\nYou create a trap with caltrops, spikes, or other sharp objects. On a hit, the target takes 2d4 keen damage and becomes *Afflicted* [vital damage equal to 3 + your ranks in Survival] for 1 round, and you can spend **Opportunity** to inflict an injury on the target.",
+      "ru": "Выживание против Физической защиты.\n\nВы создаёте ловушку из шипов, калтропов или других острых предметов. При попадании цель получает 2d4 острого урона и становится *Поражённой* [Жизненный урон равный 3 + ваш ранг в Выживание] на 1 раунд. Вы также можете потратить **Возможность**, чтобы нанести цели травму."
+    },
+    "origin": "path",
+    "origin_value": "hunter"
   }
 ]

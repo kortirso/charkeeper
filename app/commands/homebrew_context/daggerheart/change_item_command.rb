@@ -12,7 +12,7 @@ module HomebrewContext
       use_contract do
         config.messages.namespace = :homebrew_item
 
-        Kinds = Dry::Types['strict.string'].enum('primary weapon', 'secondary weapon', 'armor')
+        Kinds = Dry::Types['strict.string'].enum('primary weapon', 'secondary weapon', 'armor', 'consumables')
         ConsumeAttributes = Dry::Types['strict.string'].enum('health_marked', 'stress_marked', 'hope_marked')
 
         params do

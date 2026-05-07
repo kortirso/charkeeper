@@ -189,12 +189,22 @@ export const DaggerheartItems = () => {
   }
 
   const updateItem = async () => {
-    const result = await changeItemRequest(appState.accessToken, 'daggerheart', itemForm.id, { brewery: itemForm, bonuses: bonuses(), consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0), only_head: true });
+    const result = await changeItemRequest(appState.accessToken, 'daggerheart', itemForm.id, { brewery: itemForm, bonuses: bonuses(), consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0) });
 
     if (result.errors_list === undefined) {
       if (itemForm.convert) {
         batch(() => {
-          setItems(items().filter(({ id }) => id !== itemForm.id ));
+          if (itemForm.convert === 'consumables') {
+            setItems(
+              items().map((item) => {
+                if (item.id !== itemForm.id) return item;
+
+                return result.item;
+              })
+            );
+          } else {
+            setItems(items().filter(({ id }) => id !== itemForm.id ));
+          }
           setItemForm({ id: null, name: '', description: '', kind: 'item', public: false, own: true });
           setItemBonuses([]);
           setConsume([]);
@@ -336,7 +346,7 @@ export const DaggerheartItems = () => {
           <Select
             containerClassList="mt-2"
             labelText={TRANSLATION[locale()].convert}
-            items={translate({ "primary weapon": { "name": { "en": "Primary Weapon", "ru": "Основное оружие" } }, "secondary weapon": { "name": { "en": "Secondary Weapon", "ru": "Запасное оружие" } }, "armor": { "name": { "en": "Armor", "ru": "Броня" } } }, locale())}
+            items={translate({ "primary weapon": { "name": { "en": "Primary Weapon", "ru": "Основное оружие" } }, "secondary weapon": { "name": { "en": "Secondary Weapon", "ru": "Запасное оружие" } }, "armor": { "name": { "en": "Armor", "ru": "Броня" } }, "consumables": { "name": { "en": "Consumable", "ru": "Расходник" } } }, locale())}
             selectedValue={itemForm.convert}
             onSelect={(value) => setItemForm({ ...itemForm, convert: value })}
           />
