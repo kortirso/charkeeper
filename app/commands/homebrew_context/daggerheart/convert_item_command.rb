@@ -6,7 +6,7 @@ module HomebrewContext
       use_contract do
         config.messages.namespace = :homebrew_item
 
-        Kinds = Dry::Types['strict.string'].enum('primary weapon', 'secondary weapon', 'armor')
+        Kinds = Dry::Types['strict.string'].enum('primary weapon', 'secondary weapon', 'armor', 'consumables')
 
         params do
           required(:item).filled(type?: ::Daggerheart::Item)
@@ -21,6 +21,7 @@ module HomebrewContext
           case input[:kind]
           when 'primary weapon', 'secondary weapon' then weapon_info
           when 'armor' then armor_info
+          when 'consumables' then consumables_info
           end
       end
 
@@ -56,6 +57,10 @@ module HomebrewContext
           },
           features: []
         }
+      end
+
+      def consumables_info
+        {}
       end
     end
   end

@@ -29,7 +29,7 @@ module Homebrews
     def update
       case change_item.call(item_params.merge(item: @item, bonuses: bonuses_params, consume: consume_params))
       in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
-      in { result: result } then serialize_resource(result, serializer, :item, {}, :ok)
+      in { result: result } then serialize_resource(result, serializer, :item, {}, :ok, { current_user_id: current_user.id })
       end
     end
 

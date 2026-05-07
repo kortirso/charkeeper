@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - creating and refreshing custom resources
 
+### Modified
+- converting items to consumables for DH characters
+
 ## [0.4.33] - 2026-05-03
 ### Added
 - bonuses system for Cosmere characters
