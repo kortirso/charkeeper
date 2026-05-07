@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - converting items to consumables for DH characters
+- searchable select for homebrews
 
 ## [0.4.33] - 2026-05-03
 ### Added

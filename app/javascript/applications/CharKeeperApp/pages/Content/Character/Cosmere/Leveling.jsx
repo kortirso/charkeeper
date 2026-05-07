@@ -30,7 +30,12 @@ const TRANSLATION = {
     showDescription: 'Show description',
     talentPoints: 'Talent points',
     nested: 'There are nested selected talents',
-    showOnlyActive: 'Show only active paths'
+    showOnlyActive: 'Show only active paths',
+    titles: {
+      paths: 'Heroic paths',
+      radiant_paths: 'Radiant paths',
+      surges: 'Surges'
+    }
   },
   ru: {
     currentLevel: 'уровень',
@@ -49,7 +54,12 @@ const TRANSLATION = {
     showDescription: 'Показывать описание',
     talentPoints: 'Очки талантов',
     nested: 'Сперва удалите вложенные таланты',
-    showOnlyActive: 'Показывать только активные пути'
+    showOnlyActive: 'Показывать только активные пути',
+    titles: {
+      paths: 'Героические пути',
+      radiant_paths: 'Сияющие пути',
+      surges: 'Потоки'
+    }
   },
   es: {
     currentLevel: 'nivel',
@@ -68,7 +78,12 @@ const TRANSLATION = {
     showDescription: 'Mostrar descripción',
     talentPoints: 'Talent points',
     nested: 'There are nested selected talents',
-    showOnlyActive: 'Show only active paths'
+    showOnlyActive: 'Show only active paths',
+    titles: {
+      paths: 'Heroic paths',
+      radiant_paths: 'Radiant paths',
+      surges: 'Surges'
+    }
   }
 }
 const ITEM_EXPERTISES = ['weapon', 'armor'];
@@ -333,15 +348,18 @@ export const CosmereLeveling = (props) => {
           </Show>
           <For each={[['paths', 'heroic'], ['radiant_paths', 'radiant'], ['surges', 'surge']]}>
             {(item) =>
-              <For each={Object.entries(config[item[0]])}>
-                {([kind, values]) =>
-                  <Show when={(!showActive() && feats()[item[1]][kind]) || feats()[item[1]][kind]?.selected}>
-                    <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(values.name, locale())}>
-                      {renderFeat(feats()[item[1]][kind], 0)}
-                    </Toggle>
-                  </Show>
-                }
-              </For>
+              <>
+                <p>{localize(TRANSLATION, locale()).titles[item[0]]}</p>
+                <For each={Object.entries(config[item[0]])}>
+                  {([kind, values]) =>
+                    <Show when={(!showActive() && feats()[item[1]][kind]) || feats()[item[1]][kind]?.selected}>
+                      <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(values.name, locale())}>
+                        {renderFeat(feats()[item[1]][kind], 0)}
+                      </Toggle>
+                    </Show>
+                  }
+                </For>
+              </>
             }
           </For>
         </Toggle>
