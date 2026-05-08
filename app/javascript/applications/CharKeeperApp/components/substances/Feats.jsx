@@ -125,7 +125,7 @@ export const Feats = (props) => {
 
   const updateFeatureValue = (feature, value) => {
     setFeatValues({ ...featValues(), [feature.slug]: value });
-    refreshFeatures(feature.id, { value: value }, false);
+    refreshFeatures(feature.id, { value: value });
   }
 
   const updateMultiFeatureValue = (feature, value) => {
@@ -136,28 +136,16 @@ export const Feats = (props) => {
     } else {
       setFeatValues({ ...featValues(), [feature.slug]: [value] });
     }
-    refreshFeatures(feature.id, { value: featValues()[feature.slug] }, false);
+    refreshFeatures(feature.id, { value: featValues()[feature.slug] });
   }
 
-  const refreshFeatures = async (featureId, payload, refresh = true) => {
+  const refreshFeatures = async (featureId, payload) => {
     const result = await updateCharacterFeatRequest(
-      appState.accessToken,
-      character().provider,
-      character().id,
-      featureId,
-      { character_feat: payload, only_head: true }
+      appState.accessToken, character().provider, character().id, featureId, { character_feat: payload }
     );
 
     if (result.errors_list === undefined) {
-      if (refresh) {
-        const newFeatures = character().features.slice().map((element) => {
-          if (element.id !== featureId) return element;
-          return { ...element, ...payload };
-        });
-        props.onReplaceCharacter({ features: newFeatures });
-      } else {
-        props.onReloadCharacter();
-      }
+      props.onReloadCharacter();
     } else renderAlerts(result.errors_list);
   }
 

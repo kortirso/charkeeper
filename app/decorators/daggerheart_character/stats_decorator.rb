@@ -231,7 +231,10 @@ module DaggerheartCharacter
     end
 
     def calculate_attack_bonus(attack_bonus)
-      attack_bonus += 1 if available_feature_slugs.include?('no_mercy')
+      if available_feature_slugs.include?('no_mercy')
+        feat = available_features.find { |item| item.feat.slug == 'no_mercy' }
+        attack_bonus += feat.used_count.abs.to_i if feat
+      end
       attack_bonus
     end
 
