@@ -87,7 +87,8 @@
     "origin": "path",
     "origin_value": "envoy",
     "info": {
-      "required_for": ["envoy_high_society_contacts"]
+      "required_for": ["envoy_high_society_contacts"],
+      "double_slug": "well_dressed"
     }
   },
   {
@@ -167,7 +168,8 @@
     "origin": "path",
     "origin_value": "envoy",
     "info": {
-      "required_for": ["devoted_presence"]
+      "required_for": ["devoted_presence"],
+      "double_slug": "customary_garb"
     },
     "continious": true,
     "modifiers": { "defense.physical": { "type": "add", "value": 2 }, "defense.spiritual": { "type": "add", "value": 2 } }
@@ -265,7 +267,10 @@
     },
     "origin": "path",
     "origin_value": "envoy",
-    "modifiers": { "focus_max": { "type": "add", "value": "tier" } }
+    "modifiers": { "focus_max": { "type": "add", "value": "tier" } },
+    "info": {
+      "double_slug": "composed"
+    }
   },
   {
     "slug": "applied_motivation",

@@ -187,7 +187,8 @@
     "origin": "path",
     "origin_value": "agent",
     "info": {
-      "required_for": ["agent_hardy"]
+      "required_for": ["agent_hardy"],
+      "double_slug": "baleful"
     }
   },
   {

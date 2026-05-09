@@ -26,7 +26,7 @@ end
 
 [
   'feats_singer.json', 'feats_path.json', 'feats_actions.json',
-  'feats_agent.json', 'feats_envoy.json', 'feats_hunter.json',
+  'feats_agent.json', 'feats_envoy.json', 'feats_hunter.json', 'feats_leader.json',
   'feats_abrasion.json', 'feats_adhesion.json', 'feats_cohesion.json', 'feats_division.json', 'feats_gravitation.json',
   'feats_illumination.json', 'feats_progression.json', 'feats_tension.json', 'feats_transformation.json',
   'feats_transportation.json',

@@ -1,0 +1,421 @@
+[
+  {
+    "slug": "decisive_command",
+    "kind": "static",
+    "title": {
+      "en": "Decisive Command",
+      "ru": "Решительное командование"
+    },
+    "description": {
+      "en": "When you acquire this talent, gain a command die, which begins as a d4.\n\nSpend 1 focus to choose an ally you can influence within 20 feet of you. The next time they make a test before the end of their next turn, they can roll your command die along with the other dice for that test. After rolling, they can choose one die roll from that test, other than the plot die, and add the command die to that roll.",
+      "ru": "Вы получаете кость командования, которая изначально равна d4.\n\nПотратьте 1 фокус и выберите союзника в пределах 20 футов, на которого вы можете повлиять. До конца его следующего хода, когда он совершает проверку, он может бросить вашу кость командования вместе с остальными костями. После броска он может выбрать одну из костей (кроме кости истории) и прибавить к ней результат броска кости командования."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "price": { "a": 1 },
+    "info": {
+      "required_for": [
+        "combat_coordination", "valiant_intervention", "leader_composed", "through_the_fray", "cutthroat_tactics", "tactical_ploy"
+      ]
+    }
+  },
+  {
+    "slug": "combat_coordination",
+    "kind": "static",
+    "title": {
+      "en": "Combat Coordination",
+      "ru": "Боевая координация"
+    },
+    "description": {
+      "en": "**Requirements** Leadership 2+.\n\nAfter you use the Strike action, use Decisive Command as free action. If your Strike didn't hit, you also don't have to spend the usual focus for **Decisive Command**.",
+      "ru": "**Требования** Лидерство 2+.\n\nПосле вашего использования действия Удар вы можете использовать **Решительное командование** как свободное действие. Если ваш Удар не попадает, то вам не нужно тратить фокус для **Решительного командования**."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "required_for": ["imposing_posture"]
+    }
+  },
+  {
+    "slug": "imposing_posture",
+    "kind": "static",
+    "title": {
+      "en": "Imposing Posture",
+      "ru": "Внушительный вид"
+    },
+    "description": {
+      "en": "**Requirements** Athletics 2+.\n\nAfter an enemy resists your influence while within your weapon's reach, they become *Disoriented* until the end of their next turn.",
+      "ru": "**Требования** Атлетика 2+.\n\nПосле того как враг сопротивляется вашему влиянию, находясь в пределах досягаемости вашего оружия, он становится *Дезориентированым* до конца своего следующего хода."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "required_for": ["leader_mighty"]
+    }
+  },
+  {
+    "slug": "leader_mighty",
+    "kind": "static",
+    "title": {
+      "en": "Mighty",
+      "ru": "Мощь"
+    },
+    "description": {
+      "en": "When you hit with a weapon or unarmed attack, for each action you used on that attack's action, increase the damage you deal by 1 + your tier.",
+      "ru": "Когда вы попадаете безоружной атакой или атакой оружием за каждое потраченное действие на эту атаку, она наносит дополнительный урон, равный 1 + ваш тир."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "double_slug": "mighty"
+    }
+  },
+  {
+    "slug": "valiant_intervention",
+    "kind": "static",
+    "title": {
+      "en": "Valiant Intervention",
+      "ru": "Доблестное вмешательство"
+    },
+    "description": {
+      "en": "**Requirements** Athletics 1+.\n\n**Spend 1 focus** to move up to 10 feet, then make an Athletics test against the Spiritual defense of an enemy you can influence. On a success, they gain a disadvantage on tests against your allies until the end of the target's next turn.\n\nA target can resist this influence, but after they do, you gain an advantage on your next test against them until the end of your next turn.",
+      "ru": "**Требования** Атлетика 1+.\n\n**Потратьте 1 фокус**, чтобы переместиться на расстояние до 10 футов, затем совершите проверку Атлетики против Духовной защиты врага, на которого вы можете повлиять. При успехе цель получает помеху на проверки против ваших союзников до конца своего следующего хода.\n\nЦель может сопротивляться этому влиянию, но после того как она это делает, вы получаете преимущество на следующую проверку против неё до конца своего следующего хода."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "price": { "a": 1 },
+    "info": {
+      "required_for": ["leader_hardy"]
+    }
+  },
+  {
+    "slug": "leader_hardy",
+    "kind": "update_result",
+    "title": {
+      "en": "Hardy",
+      "ru": "Крепкий"
+    },
+    "description": {
+      "en": "When you acquire this talent, your maximum and current health increase by 1 per level.",
+      "ru": "Приобретая этот талант, ваше максимальное и текущее здоровье увеличивается на 1 за каждый уровень."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "required_for": ["resolute_stand"],
+      "double_slug": "hardy"
+    },
+    "modifiers": { "health_max": { "type": "add", "value": "level" } }
+  },
+  {
+    "slug": "resolute_stand",
+    "kind": "static",
+    "title": {
+      "en": "Resolute Stand",
+      "ru": "Решительное противостояние"
+    },
+    "description": {
+      "en": "**Requirements** Athletics 1+.\n\nWhen you use your **Valiant Intervention**, you can spend focus up to your ranks in Leadership to target that many additional characters. Additionally, after you affect a target with **Valiant Intervention**, they can't make Reactive Strikes against your allies until the end of that target's next turn.",
+      "ru": "**Требования** Атлетика 1+.\n\nКогда вы используете талант **Доблестное вмешательство**, вы можете потратить количество фокуса вплоть до вашего ранга в Лидерстве, чтобы выбрать столько же дополнительных целей. Кроме того, после воздействия на цель **Доблестным вмешательством**, она не может совершать Удары реакцией против ваших союзников до конца своего следующего хода."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "required_for": ["resilient_hero", "demonstrative_command"]
+    }
+  },
+  {
+    "slug": "resilient_hero",
+    "kind": "static",
+    "title": {
+      "en": "Resilient Hero",
+      "ru": "Стойкий герой"
+    },
+    "description": {
+      "en": "**Requirements** Athletics 3+.\n\nOnce per scene, before you are reduced to 0 health, you can use this reaction to instead change your health to equal your Athletics modifier.",
+      "ru": "**Требования** Атлетика 3+.\n\nОдин раз за сцену, перед тем как ваше здоровье будет снижено до 0, вы можете использовать эту реакцию, чтобы вместо этого изменить текущее здоровье на значение равное вашему модификатору Атлетики."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "price": { "r": 1 }
+  },
+  {
+    "slug": "demonstrative_command",
+    "kind": "static",
+    "title": {
+      "en": "Demonstrative Command",
+      "ru": "Демонстративное командование"
+    },
+    "description": {
+      "en": "**Requirements** Leadership 2+.\n\nBefore you make an Athletics, Agility, or Leadership test, you **can spend 1 focus** to roll your command die and add the result to your d20 roll.\n\nAdditionally, when you acquire this talent, increase the size of your command die by one size.",
+      "ru": "**Требования** Лидерство 2+.\n\nПеред тем как совершить проверку Атлетики, Ловкости или Лидерства, вы **можете потратить 1 фокус**, чтобы бросить свою кость командования и прибавить её результат к своему броску d20.\n\nКроме того, приобретая этот талант размер вашей кости командования увеличивается на один."
+    },
+    "origin": "path",
+    "origin_value": "leader"
+  },
+  {
+    "slug": "leader_composed",
+    "kind": "update_result",
+    "title": {
+      "en": "Composed",
+      "ru": "Собранность"
+    },
+    "description": {
+      "en": "When you acquire this talent, your maximum and current focus increase by a number equal to your tier.",
+      "ru": "Приобретая этот талант, ваш максимальный и текущий фокус увеличивается на значение, равное вашему тиpу."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "modifiers": { "focus_max": { "type": "add", "value": "tier" } },
+    "info": {
+      "required_for": ["well_supplied"],
+      "double_slug": "composed"
+    }
+  },
+  {
+    "slug": "well_supplied",
+    "kind": "static",
+    "title": {
+      "en": "Well Supplied",
+      "ru": "Хорошее снабжение"
+    },
+    "description": {
+      "en": "**Requirements** Persuasion 2+.\n\nWhen you make a test to requisition or allocate resources, you can **spend 2 focus** to add an **Opportunity** to the result.\n\nAdditionally, when you acquire this talent, gain a utility expertise in **Military Logistics**.",
+      "ru": "**Требования** Убеждение 2+.\n\nКогда вы совершаете проверку на получение или распределение ресурсов, вы можете **потратить 2 фокуса**, чтобы добавить **Возможность** к её результату.\n\nКроме того, приобретая этот талант, вы получаете утилитарную компетенцию **Военная логистика**."
+    },
+    "origin": "path",
+    "origin_value": "leader"
+  },
+  {
+    "slug": "through_the_fray",
+    "kind": "static",
+    "title": {
+      "en": "Through the Fray",
+      "ru": "Cквозь гущу сражения"
+    },
+    "description": {
+      "en": "**Requirements** Persuasion 1+.\n\nChoose an ally you can influence within 20 feet of you. Before the end of your turn, they can use the Disengage or Gain Advantage action as reaction.",
+      "ru": "**Требования** Убеждение 1+.\n\nВыберите союзника, на которого вы можете повлиять и который находится в пределах 20 футов от вас. До конца вашего хода он может использовать действие Отход или Получить преимущество как реакцию."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "price": { "a": 1 },
+    "info": {
+      "required_for": ["leader_customary_garb"]
+    }
+  },
+  {
+    "slug": "leader_customary_garb",
+    "kind": "static",
+    "title": {
+      "en": "Customary Garb",
+      "ru": "Привычное облачение"
+    },
+    "description": {
+      "en": "While you're visibly wearing Presentable armor or clothing appropriate for your station, your **Physical and Spiritual defenses** increase by 2.",
+      "ru": "Пока на вас надета видимая Презентабельная броня или одежда, подчеркивающая ваш статус, ваша **Физическая и Духовная защита** увеличивается на 2."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "required_for": ["confident_command"],
+      "double_slug": "customary_garb"
+    },
+    "continious": true,
+    "modifiers": { "defense.physical": { "type": "add", "value": 2 }, "defense.spiritual": { "type": "add", "value": 2 } }
+  },
+  {
+    "slug": "confident_command",
+    "kind": "static",
+    "title": {
+      "en": "Confident Command",
+      "ru": "Уверенное командование"
+    },
+    "description": {
+      "en": "**Requirements** Leadership 2+.\n\nBefore you make an Intimidation, Leadership, or Persuasion test, you can **spend 1 focus** to roll your command die and add the result to your d20 roll.\n\nAdditionally, when you acquire this talent, increase the size of your command die by one size.",
+      "ru": "**Требования** Лидерство 2+.\n\nПеред тем как совершить проверку Запугивания, Лидерства или Убеждения, вы можете **потратить 1 фокус**, чтобы бросить свою кость командования и прибавить её результат к своему броску d20.\n\nКроме того, приобретая этот талант размер вашей кости командования увеличивается на один."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "required_for": ["relentless_march", "authority"]
+    }
+  },
+  {
+    "slug": "relentless_march",
+    "kind": "static",
+    "title": {
+      "en": "Relentless March",
+      "ru": "Непреклонный марш"
+    },
+    "description": {
+      "en": "**Requirements** Persuasion 3+.\n\nAfter you use your **Decisive Command** on an ally, until the end of their next turn, their movement rate increases by 10 feet and they ignore the effects of the *Exhausted*, *Slowed*, and *Surprised conditions*.",
+      "ru": "**Требования** Убеждение 3+.\n\nПосле того как вы используете **Решительное командование** на союзника, до конца его следующего хода его скорость передвижения увеличивается на 10 футов, и он игнорирует эффекты состояний *Истощение*, *Замедлен* и *Взят врасплох*."
+    },
+    "origin": "path",
+    "origin_value": "leader"
+  },
+  {
+    "slug": "authority",
+    "kind": "static",
+    "title": {
+      "en": "Authority",
+      "ru": "Авторитет"
+    },
+    "description": {
+      "en": "**Requirements** Title granting you command of 5+ people.\n\nYour Leader talents that affect allies now have double the range (if they had one) and can affect up to twice as many allies as usual.",
+      "ru": "**Требования** Иметь титул, дающий командование над как минимум 5 людьми.\n\nВаши таланты Лидера, воздействующие на союзников, теперь имеют в два раза большую дальность (если она есть) и могут воздействовать на вдвое большее количество союзников, чем обычно."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "required_for": ["synchronized_assault"]
+    }
+  },
+  {
+    "slug": "synchronized_assault",
+    "kind": "static",
+    "title": {
+      "en": "Synchronized Assault",
+      "ru": "Скоординированная атака"
+    },
+    "description": {
+      "en": "**Requirements** Leadership 3+.\n\n**Spend 2 focus** to make a Leadership test against the Cognitive defense of an enemy you can sense. On a success, choose a number of allies up to your ranks in Leadership. On a failure, choose one ally you can influence. On the next turn of each of your chosen allies, they gain that can be spent only to Strike against that enemy. This Strike doesn't count against their allowed number of Strike actions for the hands holding that weapon.",
+      "ru": "**Требования** Лидерство 3+.\n\n**Потратьте 2 фокуса**, чтобы совершить проверку Лидерства против Когнитивной защиты врага, которого вы можете обнаружить. При успехе выберите количество союзников, не превышающее ваш ранг в Лидерстве. При провале выберите одного союзника, на которого вы можете повлиять. На следующем ходу каждого выбранного союзника он получает1 , которое можно потратить только на Удар по этому врагу. Этот удар не учитывается в числе количества нанесённых ударов удерживаемым оружием."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "price": { "a": 3 }
+  },
+  {
+    "slug": "cutthroat_tactics",
+    "kind": "static",
+    "title": {
+      "en": "Cutthroat Tactics",
+      "ru": "Безжалостные методы"
+    },
+    "description": {
+      "en": "**Requirements** Deception 1+.\n\nBefore an ally rolls your command die on a test, they can choose to instead raise the stakes on that test. If they do so and roll a **Complication**, you recover 1 focus.",
+      "ru": "**Требования** Обман 1+.\n\nПрежде чем союзник бросит вашу кость командования в проверке, он может выбрать вместо этого повысить ставки. Если он это делает и выпадает **Осложнение**, вы восстанавливаете 1 фокус."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "required_for": ["rumormonger"]
+    }
+  },
+  {
+    "slug": "rumormonger",
+    "kind": "static",
+    "title": {
+      "en": "Rumormonger",
+      "ru": "Сплетник"
+    },
+    "description": {
+      "en": "**Requirements** A patron.\n\nWhen you make a test to spread misinformation or gather rumors, you can **spend 2 focus** to add an **Opportunity** to the result.\n\nAdditionally, when you acquire this talent, gain a utility expertise in Scandal.",
+      "ru": "**Требования** Иметь покровителя.\n\nКогда вы совершаете проверку для распространения дезинформации или сбора слухов, вы можете **потратить 2 фокуса**, чтобы добавить **Возможность** к результату.\n\nКроме того, приобретая этот талант вы получаете утилитарную компетенцию **Скандалы**."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "required_for": ["leader_baleful", "leader_well_dressed", "shrewd_command"]
+    }
+  },
+  {
+    "slug": "leader_baleful",
+    "kind": "static",
+    "title": {
+      "en": "Baleful",
+      "ru": "Грозный"
+    },
+    "description": {
+      "en": "To resist your influence, a character must spend additional focus equal to your tier.",
+      "ru": "Чтобы сопротивляться вашему влиянию, персонаж должен потратить дополнительное количество фокуса, равное вашему тиру."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "required_for": ["set_at_odds"],
+      "double_slug": "baleful"
+    }
+  },
+  {
+    "slug": "set_at_odds",
+    "kind": "static",
+    "title": {
+      "en": "Set at Odds",
+      "ru": "Посеять разлад"
+    },
+    "description": {
+      "en": "**Requirements** Leadership 3+.\n\nChoose two or more characters you can influence and spend that many focus to seed division among them. Describe a potential source of conflict, then make a Leadership test (DC equals highest Spiritual defense among those targets). On a success, you influence each target to become hostile toward the other targets, which sparks an argument, combat, or other conflict until they find a way to resolve it.\n\nA target can resist this influence, but after they do, they lose additional focus equal to your ranks in Leadership. If only some of the targets resist influence, the others remain hostile, but their conflict might become easier to resolve.",
+      "ru": "**Требования** Лидерство 3+.\n\nВыберите двух или более персонажей, на которых вы можете повлиять, и потратьте столько фокуса, сколько персонажей выбрали, чтобы посеять между ними раздор. Опишите возможный источник конфликта, затем совершите проверку Лидерства (Сл равна наивысшей Духовной защите среди этих целей). При успехе вы влияете на каждого из выбранных персонажей так, что они становятся враждебны друг другу, что провоцирует спор, драку или иной конфликт, пока они не найдут способ его разрешить.\n\nЦель может сопротивляться вашему влиянию, но после того как она это делает, она теряет дополнительное количество фокуса, равное вашему рангу в Лидерстве. Если сопротивляются лишь некоторые цели, остальные остаются враждебны, однако их конфликт может стать проще для разрешения."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "price": { "a": 2 }
+  },
+  {
+    "slug": "leader_well_dressed",
+    "kind": "static",
+    "title": {
+      "en": "Well Dressed",
+      "ru": "Хорошо одетый"
+    },
+    "description": {
+      "en": "While visibly wearing presentable armor or fashionable clothing, you gain an advantage on the first **Deception**, **Leadership**, or **Persuasion** test you make during each scene.\n\nAdditionally, when you acquire this talent, gain a cultural expertise in **Fashion**.",
+      "ru": "Пока на вас надета видимая презентабельная броня или модная одежда, вы получаете преимущество на первую проверку **Обмана**, **Лидерства** или **Убеждения**, совершаемую во время любой сцены. Кроме того, приобретая этот талант, вы получаете культурную компетенцию **Мода**."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "info": {
+      "double_slug": "well_dressed"
+    }
+  },
+  {
+    "slug": "shrewd_command",
+    "kind": "static",
+    "title": {
+      "en": "Shrewd Command",
+      "ru": "Проницательное командование"
+    },
+    "description": {
+      "en": "**Requirements** Leadership 2+.\n\nBefore you make a Deception, Insight, or Leadership test, you can **spend 1 focus** to roll your command die and add the result to your d20 roll.\n\nAdditionally, when you acquire this talent, increase the size of your command die by one size.",
+      "ru": "**Требования** Лидерство 2+.\n\nПеред тем как совершить проверку Обмана, Проницательности или Лидерства, вы можете **потратить 1 фокус**, чтобы бросить свою кость командования и прибавить её результат к своему броску d20.\n\nКроме того, приобретая этот талант размер вашей кости командования увеличивается на один."
+    },
+    "origin": "path",
+    "origin_value": "leader", 
+    "info": {
+      "required_for": ["grand_deception"]
+    }
+  },
+  {
+    "slug": "grand_deception",
+    "kind": "static",
+    "title": {
+      "en": "Grand Deception",
+      "ru": "Великий обман"
+    },
+    "description": {
+      "en": "**Requirements** Deception 3+.\n\n**Spend 3 focus** to make a DC 15 Deception test. On a success, choose a detail you established since the start of the last scene and reveal that it was actually a ruse. This ruse must be plausible. For example, it's reasonable to reveal you hid a powerful artifact in a different place than you previously said, or to reveal you moved your army east instead of west. It's not reasonable to reveal that a mundane item is actually a priceless artifact, nor to suddenly declare you recruited an army when you previously said you had no allies in the region. The GM is the final arbiter of what sort of ruse you can reveal.",
+      "ru": "**Требования** Обман 3+.\n\n**Потратьте 3 фокуса**, чтобы совершить проверку Обмана со Сл 15. При успехе выберите факт, объявленный вами с начала последней сцены, и раскройте, что это на самом деле была уловка. Эта уловка должна быть правдоподобной. Например, допустимо раскрыть, что вы спрятали могущественный артефакт не там, где говорили ранее, или что переместили армию на восток вместо запада. Недопустимо заявлять, что обычный предмет на самом деле является бесценным артефактом, или внезапно объявить о совершённом наборе армии, если ранее вы говорили, что у вас нет союзников в этом регионе. Окончательное решение о том, какие уловки являются допустимы, остаётся за Ведущим."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "price": { "a": 3 }
+  },
+  {
+    "slug": "tactical_ploy",
+    "kind": "static",
+    "title": {
+      "en": "Tactical Ploy",
+      "ru": "Тактическая уловка"
+    },
+    "description": {
+      "en": "Make a Deception test against the Cognitive defense of an enemy you can influence. On a success, your target loses one and gains a disadvantage on their next cognitive or spiritual test.\n\nA target can resist this influence, but after they do, you gain an advantage on your next test targeting them before the end of your next turn.",
+      "ru": "Совершите проверку Обмана против Когнитивной защиты врага, на которого вы можете повлиять. При успехе цель теряет одну4и получает помеху на свою следующую Когнитивную или Духовную проверку.\n\nЦель может сопротивляться этому влиянию, но после того как она это делает, вы получаете преимущество на следующую проверку против этой цели до конца вашего следующего хода."
+    },
+    "origin": "path",
+    "origin_value": "leader",
+    "price": { "a": 1 }
+  }
+]

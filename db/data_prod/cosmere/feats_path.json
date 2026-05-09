@@ -1,20 +1,5 @@
 [
   {
-    "slug": "decisive_command",
-    "kind": "static",
-    "title": {
-      "en": "Decisive Command",
-      "ru": "Решительное командование"
-    },
-    "description": {
-      "en": "Spend 1 focus to give an ally within 20 feet a d4 command die. They can add it to one die roll on their next test.",
-      "ru": "Вы получаете кость командования, которая изначально равна d4.\n\nПотратьте 1 фокус и выберите союзника в пределах 20 футов, на которого вы можете повлиять. До конца его следующего хода, когда он совершает проверку, он может бросить вашу кость командования вместе с остальными костями. После броска он может выбрать одну из костей (кроме кости истории) и прибавить к ней результат броска кости командования."
-    },
-    "origin": "path",
-    "origin_value": "leader",
-    "price": { "a": 1 }
-  },
-  {
     "slug": "erudition",
     "kind": "text",
     "title": {
