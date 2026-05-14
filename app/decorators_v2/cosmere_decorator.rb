@@ -10,7 +10,7 @@ class CosmereDecorator < ApplicationDecoratorV2
   ONLY_ADD_MODIFIERS = %w[str spd int wil awa pre].freeze
   WEAPON_MODIFIERS = %w[attack melee_attacks range_attacks damage melee_damage range_damage].freeze
 
-  def call(character:, simple: false, version: nil) # rubocop: disable Metrics/AbcSize
+  def call(character:, simple: false, version: nil)
     @character = character
     @version = version
     @result = character.data.attributes
@@ -27,7 +27,6 @@ class CosmereDecorator < ApplicationDecoratorV2
     @result['movement'] = modify_by_armor(movement)
     @result['features'] = apply_features
     @result['singer_forms'] = find_available_singer_forms
-    @result['investiture_max'] = @investiture ? (2 + [modified_abilities['awa'], modified_abilities['pre']].max) : 0
 
     self
   end
@@ -53,6 +52,7 @@ class CosmereDecorator < ApplicationDecoratorV2
     @result['deflect'] = equiped_armor&.dig(:items_info, 'deflect').to_i
     @result['health_max'] = health_max
     @result['focus_max'] = 2 + modified_abilities['wil']
+    @result['investiture_max'] = allowed_investiture ? (2 + [modified_abilities['awa'], modified_abilities['pre']].max) : 0
     @result['load'] = find_load
     @result['movement'] = find_movement
     @result['recovery_die'] = find_recovery_die
@@ -113,7 +113,6 @@ class CosmereDecorator < ApplicationDecoratorV2
   end
 
   def feature_payload(feature) # rubocop: disable Metrics/AbcSize
-    allow_investiture if feature.feat.info['investiture']
     {
       id: feature.id,
       slug: feature.feat.slug || feature.id,
@@ -409,7 +408,7 @@ class CosmereDecorator < ApplicationDecoratorV2
     end.compact
   end
 
-  def allow_investiture
-    @investiture = true
+  def allowed_investiture
+    available_features.any? { |feature| feature.feat.info['investiture'] }
   end
 end
