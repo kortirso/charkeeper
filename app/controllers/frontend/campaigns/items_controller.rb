@@ -94,6 +94,7 @@ module Frontend
         when 'daggerheart' then ::Item.daggerheart
         when 'dc20' then ::Item.dc20
         when 'fallout' then ::Item.fallout
+        when 'cosmere' then ::Item.cosmere
         else []
         end
       end

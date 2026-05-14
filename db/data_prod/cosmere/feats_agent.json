@@ -7,7 +7,7 @@
       "ru": "Оппортунист"
     },
     "description": {
-      "en": "Once per round, when you roll a plot die, you can reroll that result. The original roll has no effect and you must use the new result.",
+      "en": "Once per round, you can reroll plot die and use the new result.",
       "ru": "Один раз за раунд, когда вы бросаете Кость истории, вы можете перебросить её результат. В этом случае первый бросок аннулируется, и вы должны использовать новый результат."
     },
     "origin": "path",
@@ -26,7 +26,7 @@
       "ru": "Бдительный взгляд"
     },
     "description": {
-      "en": "**Requirements** Deduction 1+.\n\nWhen a willing ally you can influence within 20 feet of you rolls a plot die, you can use this reaction to use **Opportunist** on that plot die as if it were your own.",
+      "en": "**Requirements** Deduction 1+.\n\nWhen a willing ally within 20 feet of you rolls a plot die die, you can use this reaction to use the **Opportunist** to that roll.",
       "ru": "**Требования** Дедукция 1+.\n\nКогда согласный союзник в пределах 20 футов от вас, на которого вы можете повлиять, бросает кость истории, вы можете использовать эту реакцию, чтобы применить талант **Оппортунист** к этому броску, как если бы он был вашим собственным."
     },
     "origin": "path",
@@ -44,8 +44,8 @@
       "ru": "Заставить говорить"
     },
     "description": {
-      "en": "**Requirements** Insight 2+.\n\nSpend 1 focus to make a **Deduction** test against the **Spiritual defense** of a character you can influence. On a success, you learn the target's motivation for being in the scene. Until the end of the scene, when you make a test to leverage this motivation against the target, you can raise the stakes.",
-      "ru": "**Требования** Проницательность 2+.\n\nПотратьте 1 фокус, чтобы совершить проверку **Дедукции** против **Духовной защиты** персонажа, на которого вы можете повлиять. При успехе вы узнаёте мотивацию цели в этой сцене. До конца сцены, когда вы совершаете проверку, используя эту мотивацию против цели, вы можете повысить ставки."
+      "en": "**Requirements** Insight 2+.\n\n**Spend 1 Focus** to make a check (Deduction vs Spiritual Defense). If successful, you learn the target's motivation. Whenever you make a check using this motivation against the target, you can raise the stakes.",
+      "ru": "**Требования** Проницательность 2+.\n\n**Потратьте 1 фокус**, чтобы совершить проверку Дедукции против Духовной защиты персонажа, на которого вы можете повлиять. При успехе вы узнаёте мотивацию цели в этой сцене. До конца сцены, когда вы совершаете проверку, используя эту мотивацию против цели, вы можете повысить ставки."
     },
     "origin": "path",
     "origin_value": "agent",
@@ -62,8 +62,8 @@
       "ru": "Предсказуемый исход"
     },
     "description": {
-      "en": "**Requirements** Insight 2+.\n\nWhen you use the **Opportunist** talent, instead of rerolling the plot die, you can spend 2 focus to flip it to a specific result. If the die was showing **Opportunity**, flip it to **Complication 4**. If the die was showing any **Complication**, flip it to **Opportunity**.",
-      "ru": "**Требования** Проницательность 2+.\n\nКогда вы используете талант **Оппортунист**, вместо того чтобы перебрасывать Кость истории, вы можете потратить 2 фокуса и изменить значение кости на другой результат. Если на кости выпала **Возможность**, измените её на **Осложнение 4**. Если выпало любое **Осложнение**, измените результат на **Возможность**."
+      "en": "**Requirements** Insight 2+.\n\nInstead of rerolling the plot die for **Opportunist**, you can **spend 2 Focus** and change the die. If the die rolls **Opportunity**, change it to **Complication +4**. If any **Complication** is rolled, change the result to **Opportunity**.",
+      "ru": "**Требования** Проницательность 2+.\n\nКогда вы используете талант **Оппортунист**, вместо того чтобы перебрасывать Кость истории, вы можете **потратить 2 фокуса** и изменить значение кости на другой результат. Если на кости выпала **Возможность**, измените её на **Осложнение 4**. Если выпало любое **Осложнение**, измените результат на **Возможность**."
     },
     "origin": "path",
     "origin_value": "agent",
@@ -79,8 +79,8 @@
       "ru": "Уместное оправдание"
     },
     "description": {
-      "en": "**Requirements** Deception 1+.\n\nAfter you are discovered while hiding or otherwise skulking about, you can use this reaction and spend 2 focus to pass yourself off as doing something innocent. You influence each character who can sense you to believe your excuse.\n\nA character can resist this influence, but after they do, they lose additional focus equal to your ranks in Deception.\n\nAdditionally, when you acquire this talent, gain a utility expertise in **Sleight of Hand**.",
-      "ru": "**Требования** Обман 1+.\n\nПосле того как вас раскрыли, пока вы прятались или иным образом вели себя подозрительно, вы можете использовать эту реакцию и потратить 2 фокуса, чтобы убедить окружающих в том, что занимались чем-то невинным. Вы оказываете влияние на каждого персонажа, способного вас обнаружить, заставляя его поверить вашему оправданию.\n\nПерсонаж может сопротивляться этому влиянию, но после того как он это сделает, он потеряет дополнительное количество фокуса, равное вашему рангу в **Обмане**.\n\nКроме того, приобретая этот талант, вы получаете утилитарную компетенцию **Ловкость рук**."
+      "en": "**Requirements** Deception 1+.\n\nAfter being discovered, you can use this reaction and **spend 2 Focus** to convince others that you were doing something innocent. You influence every character capable of detecting you.\n\nA character can resist this influence, but doing so loses an additional Focus equal to your rank in Deception.\n\nYou gain the **Sleight of Hand** expertise.",
+      "ru": "**Требования** Обман 1+.\n\nПосле того как вас раскрыли, пока вы прятались или иным образом вели себя подозрительно, вы можете использовать эту реакцию и **потратить 2 фокуса**, чтобы убедить окружающих в том, что занимались чем-то невинным. Вы оказываете влияние на каждого персонажа, способного вас обнаружить, заставляя его поверить вашему оправданию.\n\nПерсонаж может сопротивляться этому влиянию, но после того как он это сделает, он потеряет дополнительное количество фокуса, равное вашему рангу в Обмане.\n\nКроме того, приобретая этот талант, вы получаете утилитарную компетенцию **Ловкость рук**."
     },
     "origin": "path",
     "origin_value": "agent",
@@ -97,8 +97,8 @@
       "ru": "Рисковое поведение"
     },
     "description": {
-      "en": "**Requirements** Insight 2+.\n\nBefore you make a test, you can spend 1 focus to raise the stakes.",
-      "ru": "**Требования** Проницательность 2+.\n\nПеред совершением проверки, вы можете потратить 1 фокус, чтобы повысить ставки."
+      "en": "**Requirements** Insight 2+.\n\n**Spend 1 Focus** to raise the stakes.",
+      "ru": "**Требования** Проницательность 2+.\n\nПеред совершением проверки, вы можете **потратить 1 фокус**, чтобы повысить ставки."
     },
     "origin": "path",
     "origin_value": "agent",
@@ -114,8 +114,8 @@
       "ru": "Грязный удар"
     },
     "description": {
-      "en": "While you have a hand free, spend 1 focus to make an unarmed attack using **Thievery** against the **Cognitive defense** of an enemy of your size or smaller, raising the stakes when you do.\n\nOn a hit, the target also becomes *Stunned* until the end of their next turn. On a hit or graze, you can also spend an *Opportunity* to steal one item on the target's person that they aren't holding or wielding. The exact item you can steal is up to the GM's discretion.",
-      "ru": "Пока вы имеете свободную руку, вы можете потратить 1 фокус, чтобы совершить безоружную атаку с использованием **Воровства** против **Когнитивной защиты** врага вашего размера или меньше, эта проверка проводится с повышением ставок.\n\nПри попадании цель становится *Ошеломлённой* до конца своего следующего хода. При попадании или задевании вы также можете потратить **Возможность**, чтобы украсть один предмет у цели, который она не держит в руках и не использует. Можете ли вы украсть тот или иной предмет, остается на усмотрение Ведущего."
+      "en": "You can **spend 1 Focus** and raise the stakes to make an unarmed attack with your free hand (Thievery vs Cognitive Defense) against enemy your size or smaller.\n\nOn a hit, the target is *Stunned* until the end of its next turn. On a hit or graze, you can also **spend Opportunity** to steal one item from the target that they aren't holding or using.",
+      "ru": "Пока вы имеете свободную руку, вы можете **потратить 1 фокус**, чтобы совершить безоружную атаку с использованием Воровства против Когнитивной защиты врага вашего размера или меньше, эта проверка проводится с повышением ставок.\n\nПри попадании цель становится *Ошеломлённой* до конца своего следующего хода. При попадании или задевании вы также можете **потратить Возможность**, чтобы украсть один предмет у цели, который она не держит в руках и не использует. Можете ли вы украсть тот или иной предмет, остается на усмотрение Ведущего."
     },
     "origin": "path",
     "origin_value": "agent",
@@ -132,7 +132,7 @@
       "ru": "Самообладание"
     },
     "description": {
-      "en": "When you acquire this talent, increase your Cognitive and Spiritual defenses by 2.",
+      "en": "You gain calculated bonus +2 to your Cognitive and Spiritual defenses.",
       "ru": "Приобретая этот талант, вы увеличиваете свою Когнитивную и Духовную защиту на 2."
     },
     "origin": "path",
@@ -150,8 +150,8 @@
       "ru": "Быстрый анализ"
     },
     "description": {
-      "en": "Spend 2 focus to gain 2A, which you can only use to make cognitive skill tests via the following actions: Use a Skill, Gain Advantage, or an action from any Agent talent.\n\nDuring a conversation or endeavor, at the GM's discretion, you can instead use both 2A to make an additional contribution for the round.",
-      "ru": "Потратьте 2 фокуса, чтобы получить 2Д, которые вы можете использовать только на совершение проверок когнитивных навыков применяя следующие действия: Использовать навык, Получить преимущество или любое действие из талантов Агента.\n\nВо время разговора или усилия, на усмотрение Ведущего, вы можете вместо этого использовать эти 2Д, для того чтобы внести дополнительный вклад в раунд."
+      "en": "**Spend 2 Focus** to gain 2A, which you can only use to make cognitive skill checks using the following actions: Use a Skill, Gain Advantage, or any action from the Agent's talents.",
+      "ru": "**Потратьте 2 фокуса**, чтобы получить 2Д, которые вы можете использовать только на совершение проверок когнитивных навыков применяя следующие действия: Использовать навык, Получить преимущество или любое действие из талантов Агента.\n\nВо время разговора или усилия, на усмотрение Ведущего, вы можете вместо этого использовать эти 2Д, для того чтобы внести дополнительный вклад в раунд."
     },
     "origin": "path",
     "origin_value": "agent",
@@ -167,7 +167,7 @@
       "ru": "Сбор доказательств"
     },
     "description": {
-      "en": "**Requirements** Insight 2+.\n\nAfter you succeed on a cognitive test against another character, you become *Focused* until the end of your next turn.\n\nAdditionally, when you acquire this talent, gain a utility expertise in **Legal Codes**.",
+      "en": "**Requirements** Insight 2+.\n\nAfter successfully performing a Cognitive Skill check against another character, you become *Focused* until the end of your next turn. You gain the **Legal Codes** expertise.",
       "ru": "**Требования** Проницательность 2+.\n\nПосле успешной проверки Когнитивного навыка против другого персонажа вы становитесь *Сфокусированным* до конца своего следующего хода. Кроме того, приобретая этот талант, вы получаете утилитарную компетенцию **Свод законов**."
     },
     "origin": "path",
@@ -181,14 +181,15 @@
       "ru": "Грозный"
     },
     "description": {
-      "en": "To resist your influence, a character must spend additional focus equal to your tier.",
-      "ru": "Чтобы сопротивляться вашему влиянию, персонаж должен потратить дополнительное количество фокуса, равное вашему тиру."
+      "en": "For resisting your influence, a character must spend a Focus equal to {{value}}<<your tier>>.",
+      "ru": "Чтобы сопротивляться вашему влиянию, персонаж должен потратить дополнительное количество фокуса, равное {{value}}<<вашему тиру>>."
     },
     "origin": "path",
     "origin_value": "agent",
     "info": {
       "required_for": ["agent_hardy"],
-      "double_slug": "baleful"
+      "double_slug": "baleful",
+      "formulas": { "value": "tier" }
     }
   },
   {
@@ -199,14 +200,15 @@
       "ru": "Крепкий"
     },
     "description": {
-      "en": "When you acquire this talent, your maximum and current health increase by 1 per level.",
-      "ru": "Приобретая этот талант, ваше максимальное и текущее здоровье увеличивается на 1 за каждый уровень."
+      "en": "You gain calculated bonus (equal to {{value}}<<your level>>) to your maximum health.",
+      "ru": "Приобретая этот талант, ваше максимальное и текущее здоровье увеличивается на {{value}}<<1 за каждый уровень>>."
     },
     "origin": "path",
     "origin_value": "agent",
     "info": {
       "required_for": ["sleuth_instincts", "close_the_case"],
-      "double_slug": "hardy"
+      "double_slug": "hardy",
+      "formulas": { "value": "level" }
     },
     "modifiers": { "health_max": { "type": "add", "value": "level" } }
   },
@@ -218,7 +220,7 @@
       "ru": "Инстинкты сыщика"
     },
     "description": {
-      "en": "**Requirements** Deduction 3+.\n\nYou gain an advantage on cognitive tests against a character whose motivation you know; you might learn this motivation from the **Get'Em Talking** talent, or from other activities such as researching them.\n\nAdditionally, after a character whose motivation you know lies to you, you automatically know they're being deceitful (but not the nature of their lie).",
+      "en": "**Requirements** Deduction 3+.\n\nYou gain advantage on Cognitive checks against a character whose motivation you know.\n\nIf a such character lies to you, you automatically know they are deceiving you.",
       "ru": "**Требования** Дедукция 3+.\n\nВы получаете преимущество в Когнитивных проверках против персонажа, чью мотивацию вы знаете: будь то благодаря таланту **Заставить говорить** или другим способам, например, тщательному изучению этого персонажа.\n\nКроме того, если персонаж, чью мотивацию вы знаете, лжёт вам, вы автоматически понимаете, что он вас обманывает (но не в чём именно заключается ложь)."
     },
     "origin": "path",
@@ -232,8 +234,8 @@
       "ru": "Закрыть дело"
     },
     "description": {
-      "en": "**Requirements** Deduction 3+.\n\nOnce per scene, spend 3 focus to make a Deduction test against the Cognitive defense of a character you can influence. You gain an advantage on this test if you know the target's current motivation, and a disadvantage if you don't.\n\nOn a failure, the target gains an advantage on all tests against you until the end of their next turn.\n\nOn a success, you influence the target to back down. They stop opposing your immediate aims in this scene and might even leave the scene. A target can resist this influence, but after they do, they gain a disadvantage on all tests until the end of their next turn.",
-      "ru": "**Требования** Дедукция 3+.\n\nОдин раз за сцену вы можете потратить 3 фокуса и совершить проверку Дедукции против Когнитивной защиты персонажа, на которого вы можете повлиять. Вы получаете преимущество на эту проверку, если знаете текущую мотивацию цели, и получаете помеху, если не знаете.\n\nПри провале цель получает преимущество на все проверки против вас до конца своего следующего хода.\n\nПри успехе вы оказываете влияние на цель, заставляя её отступить. Она прекращает противодействовать вашим текущим целям в этой сцене и, возможно, захочет покинуть её. Цель может сопротивляться этому влиянию, но если сделает это, то получит помеху на все последующие проверки до конца своего следующего хода."
+      "en": "**Requirements** Deduction 3+.\n\nOnce per scene, you can **spend 3 Focus** and make a check (Deduction vs Cognitive Defense). You gain advantage on this check if you know the target's current motivation, and disadvantage if you don't.\n\nOn a failed check, the target gains advantage on all checks against you until the end of its next turn.\n\nOn a successful check, you force it to retreat. It stops countering your current goals for this scene. The target can resist this influence, but if it does, it gains disadvantage on all subsequent checks until the end of its next turn.",
+      "ru": "**Требования** Дедукция 3+.\n\nОдин раз за сцену вы можете **потратить 3 фокуса** и совершить проверку Дедукции против Когнитивной защиты персонажа, на которого вы можете повлиять. Вы получаете преимущество на эту проверку, если знаете текущую мотивацию цели, и получаете помеху, если не знаете.\n\nПри провале цель получает преимущество на все проверки против вас до конца своего следующего хода.\n\nПри успехе вы оказываете влияние на цель, заставляя её отступить. Она прекращает противодействовать вашим текущим целям в этой сцене и, возможно, захочет покинуть её. Цель может сопротивляться этому влиянию, но если сделает это, то получит помеху на все последующие проверки до конца своего следующего хода."
     },
     "origin": "path",
     "origin_value": "agent",
@@ -247,7 +249,7 @@
       "ru": "Прикрытие"
     },
     "description": {
-      "en": "When you acquire this talent, you put the finishing touches on a false identity for yourself. Discuss the details of this identity with your GM, including which communities you use this identity to move through and what its reputation is within those communities.\n\nAdditionally, when you acquire this talent, gain a cultural expertise relevant to your false identity's culture.",
+      "en": "You complete the creation of your false identity.\n\nYou gain cultural expertise.",
       "ru": "Приобретая этот талант, вы завершаете создание своей фальшивой личности. Обсудите детали этой личности с Ведущим, включая то, в каких сообществах вы её используете и какой репутацией она там обладает.\n\nКроме того, приобретая этот талант, вы получаете культурную компетенцию, подчеркивающую правдоподобность вашей фальшивой личности."
     },
     "origin": "path",
@@ -264,7 +266,7 @@
       "ru": "Тихая расправа"
     },
     "description": {
-      "en": "**Requirements** Insight 3+.\n\nMake an unarmed attack using Insight against the Cognitive defense of a character who is *Surprised*, doesn't sense you, or doesn't view you as a threat (such as if you're disguised). The target must be your size or smaller. Raise the stakes on this attack test. On a hit, the target also can't communicate until the end of their next turn. Also on a hit, you can spend an *Opportunity* to Grapple them as free action, automatically succeeding on your test; while *Restrained* by this grapple, they are also *Prone*.",
+      "en": "**Requirements** Insight 3+.\n\nMake an unarmed attack with increased stakes (Insight vs Cognitive Defense) if target is *Surprised*, doesn't detect you, or doesn't perceive you as a threat. The target must be your size. On a hit, the target can't communicate until the end of its next turn. On a hit, you can **spend Opportunity** to Grab the target as a free action, automatically succeeding on the check; while the target is *Restrained* by this grapple, it is also considered *Prone*.",
       "ru": "**Требования** Проницательность 3+.\n\nСовершите безоружную атаку, используя Проницательность против Когнитивной защиты персонажа, который *Взят врасплох*, не обнаруживает вас или не воспринимает как угрозу (например, если вы замаскированы). Цель должна быть вашего размера или меньше. Проверка этой атаки проводится с повышением ставок. При попадании цель не может коммуницировать до конца своего следующего хода. При попадании вы можете потратить *Возможность*, чтобы совершить Захват этой цели как свободное действие, автоматически преуспевая в проверке; пока цель *Скована* этим захватом, она также считается *Сбитой с ног*."
     },
     "origin": "path",
@@ -282,13 +284,14 @@
       "ru": "Мощь"
     },
     "description": {
-      "en": "When you hit with a weapon or unarmed attack, for each action you used on that attack's action, increase the damage you deal by 1 + your tier.",
-      "ru": "Когда вы попадаете безоружной атакой или атакой оружием за каждое потраченное действие на эту атаку, она наносит дополнительный урон, равный 1 + ваш тир."
+      "en": "When you hit increase the damage you deal by {{value}}<<1 + your tier>> (for each action on attack).",
+      "ru": "Когда вы попадаете безоружной атакой или атакой оружием за каждое потраченное действие на эту атаку, она наносит дополнительный урон, равный {{value}}<<1 + ваш тир>>."
     },
     "origin": "path",
     "origin_value": "agent",
     "info": {
-      "double_slug": "mighty"
+      "double_slug": "mighty",
+      "formulas": { "value": "1 + tier" }
     }
   },
   {
@@ -299,7 +302,7 @@
       "ru": "Переменчивая маска"
     },
     "description": {
-      "en": "**Requirements** Deception 3+.\n\nWhen you attempt to disguise yourself, you can use Deception instead of Thievery. You can do this even if you don't have supplies for a physical disguise.\n\nThe first character who sees through your disguise, or who you choose to surprise by revealing your identity, becomes *Surprised* until the end of your next turn.",
+      "en": "**Requirements** Deception 3+.\n\nYou can use Deception instead of Thievery when attempting to disguise yourself. You can disguise yourself this way even if you don't have physical disguise equipment.\n\nThe first character to recognize your disguise is *Surprised* until the end of your next turn.",
       "ru": "**Требования** Обман 3+.\n\nКогда вы пытаетесь замаскироваться, вы можете использовать Обман вместо Воровства. Вы можете замаскироваться подобным образом, даже если у вас нет при себе принадлежностей для физической маскировки.\n\nПервый персонаж, который распознает вашу маскировку, или которого вы решите удивить, раскрыв свою истинную личность, оказывается *Взят врасплох* до конца вашего следующего хода."
     },
     "origin": "path",
@@ -313,8 +316,8 @@
       "ru": "Связи из высшего общества"
     },
     "description": {
-      "en": "**Requirements** Patron in high society.\n\nWhen you make a test to interact socially in high society, you can spend 2 focus to add an **Opportunity** to the result.\n\nAdditionally, when you acquire this talent, gain a cultural expertise in **High Society**.",
-      "ru": "**Требования** Иметь покровителя из высшего общества.\n\nКогда вы совершаете проверку на социальное взаимодействие в высшем обществе, вы можете потратить 2 фокуса, чтобы добавить *Возможность* к результату. Кроме того, приобретая этот талант, вы получаете культурную компетенцию **Высшее общество**."
+      "en": "**Requirements** Patron in high society.\n\nWhen you make a social interaction check in high society, you can **spend 2 Focus** to add **Opportunity** to the result.\n\nYou gain **High Society** expertise.",
+      "ru": "**Требования** Иметь покровителя из высшего общества.\n\nКогда вы совершаете проверку на социальное взаимодействие в высшем обществе, вы можете **потратить 2 фокуса**, чтобы добавить **Возможность** к результату. Кроме того, приобретая этот талант, вы получаете культурную компетенцию **Высшее общество**."
     },
     "origin": "path",
     "origin_value": "agent",
@@ -330,7 +333,7 @@
       "ru": "Удвоенный риск"
     },
     "description": {
-      "en": "After you use your **Opportunist** talent, you can reroll the die one additional time. You must use this final result, and if it includes a **Complication**, you lose 2 focus.",
+      "en": "You can reroll the plot die one additional time while using **Opportunist**. You must use this final result. If it includes a **Complication**, you lose 2 focus.",
       "ru": "После использования таланта **Оппортунист** вы можете дополнительно перебросить кость ещё раз. Если вы это делаете, вы обязаны использовать новый результат броска, и если на нём выпадает Осложнение, вы теряете 2 фокуса."
     },
     "origin": "path",
@@ -347,8 +350,8 @@
       "ru": "Связи из преступного мира"
     },
     "description": {
-      "en": "**Requirements** Patron or follower in criminal underworld.\n\nBefore you make a test to interact socially with criminal individuals or groups, you can spend 2 focus to add an Opportunity to the result.\n\nAdditionally, when you acquire this talent, gain a utility expertise in **Criminal Groups**.",
-      "ru": "**Требования** Иметь покровителя или последователя из преступного мира.\n\nПеред тем как совершить проверку на социальное взаимодействие с представителями или группировками преступного мира, вы можете потратить 2 фокуса, чтобы добавить к результату Возможность. Кроме того, приобретая этот талант, вы получаете утилитарную компетенцию **Преступные группировки**."
+      "en": "**Requirements** Patron or follower in criminal underworld.\n\nBefore making a social interaction check against criminals or groups, you can **spend 2 Focus** to add **Opportunity** to the result.\n\nYou gain **Criminal Groups** expertise.",
+      "ru": "**Требования** Иметь покровителя или последователя из преступного мира.\n\nПеред тем как совершить проверку на социальное взаимодействие с представителями или группировками преступного мира, вы можете **потратить 2 фокуса**, чтобы добавить к результату **Возможность**. Кроме того, приобретая этот талант, вы получаете утилитарную компетенцию **Преступные группировки**."
     },
     "origin": "path",
     "origin_value": "agent"
@@ -361,8 +364,8 @@
       "ru": "Болтун"
     },
     "description": {
-      "en": "**Requirements** Insight 3+.\n\nSpend 2 focus to gain 2A, which you can only use to make spiritual skill tests via the following actions: Use a Skill, Gain Advantage, or an action from any Agent talent. During a conversation or endeavor, at the GM's discretion, you can instead use both 2A to make an additional contribution for the round.",
-      "ru": "**Требования** Проницательность 3+.\n\nПотратьте 2 фокуса, чтобы получить 2Д, которые вы можете использовать только на совершение проверок духовных навыков применяя следующие действия: Использовать навык, Получить преимущество или любое действие из талантов Агента. Во время разговора или усилия, на усмотрение Ведущего, вы можете вместо этого использовать эти 2Д, для того чтобы внести дополнительный вклад в раунд."
+      "en": "**Requirements** Insight 3+.\n\n**Spend 2 Focus** to gain 2A, which you can only use to make spiritual skill checks using the following actions: Use a Skill, Gain Advantage, or any action from the Agent's talents.",
+      "ru": "**Требования** Проницательность 3+.\n\n**Потратьте 2 фокуса**, чтобы получить 2Д, которые вы можете использовать только на совершение проверок духовных навыков применяя следующие действия: Использовать навык, Получить преимущество или любое действие из талантов Агента. Во время разговора или усилия, на усмотрение Ведущего, вы можете вместо этого использовать эти 2Д, для того чтобы внести дополнительный вклад в раунд."
     },
     "origin": "path",
     "origin_value": "agent"
@@ -375,14 +378,15 @@
       "ru": "Уверенная поступь"
     },
     "description": {
-      "en": "When you acquire this talent, increase your movement rate by 10.\n\nAdditionally, before you take damage from dangerous terrain or falling, reduce that damage by 2 × your tier.",
-      "ru": "Приобретая этот талант, вы увеличиваете свою Скорость передвижения на 10.\n\nКроме того, перед тем как получить урон от опасной местности или падения, уменьшите его значение на 2 × ваш тир."
+      "en": "Your movement rate gains calculated bonus +10.\n\nBefore you take damage from dangerous terrain or falling, reduce that damage by {{value}}<<2 × your tier>>.",
+      "ru": "Приобретая этот талант, вы увеличиваете свою Скорость передвижения на 10.\n\nКроме того, перед тем как получить урон от опасной местности или падения, уменьшите его значение на {{value}}<<2 × ваш тир>>."
     },
     "origin": "path",
     "origin_value": "agent",
     "info": {
       "required_for": ["shadow_step", "trickster_hand"],
-      "double_slug": "surefooted"
+      "double_slug": "surefooted",
+      "formulas": { "value": "2 * tier" }
     },
     "modifiers": { "movement": { "type": "add", "value": 10 } }
   },
@@ -394,8 +398,8 @@
       "ru": "Теневой шаг"
     },
     "description": {
-      "en": "**Requirements** Thievery 3+.\n\nAfter you *Disengage*, you can spend 2 focus to make a Thievery test and compare the result against the Cognitive defense of each enemy who can sense you. You gain an advantage on this test if you're in cover or an area where your target's primary sense is obscured (such as darkness). If you succeed against an enemy, you're hidden as if you'd succeeded on a Stealth test to hide from them.",
-      "ru": "**Требования** Воровство 3+.\n\nПосле вашего *Отхода* вы можете потратить 2 фокуса, чтобы совершить проверку Воровства и сравнить её результат с Когнитивной защитой каждого врага, который может вас обнаружить. Вы получаете преимущество на эту проверку, если находитесь в укрытии или в месте, где основное чувство восприятия цели затуманено (например, в темноте). Если вы преуспеваете в проверке против врага, вы скрываетесь от него, как если бы успешно прошли проверку Скрытности."
+      "en": "**Requirements** Thievery 3+.\n\nAfter your *Disengage*, you can **spend 2 Focuses** to make a check (Thievery vs Cognitive Defense). You gain advantage on this check if you are in cover or in a location where the target's primary sense is obscured. If you succeed on the check against an enemy, you are hidden from them.",
+      "ru": "**Требования** Воровство 3+.\n\nПосле вашего *Отхода* вы можете **потратить 2 фокуса**, чтобы совершить проверку Воровства и сравнить её результат с Когнитивной защитой каждого врага, который может вас обнаружить. Вы получаете преимущество на эту проверку, если находитесь в укрытии или в месте, где основное чувство восприятия цели затуманено (например, в темноте). Если вы преуспеваете в проверке против врага, вы скрываетесь от него, как если бы успешно прошли проверку Скрытности."
     },
     "origin": "path",
     "origin_value": "agent"
@@ -408,8 +412,8 @@
       "ru": "Рука мошенника"
     },
     "description": {
-      "en": "**Requirements** Thievery 3+.\n\nSpend 2 focus to gain , which you can only use to make physical skill tests via the following actions: Use a Skill, Gain Advantage, or an action from any Agent talent. During a conversation or endeavor, at the GM's discretion, you can instead use both to make an additional contribution for the round.",
-      "ru": "**Требования** Воровство 3+.\n\nПотратьте 2 фокуса, чтобы получить 2Д, которые вы можете использовать только на совершение проверок физических навыков применяя следующие действия: Использовать навык, Получить преимущество или любое действие из талантов Агента. Во время разговора или усилия, на усмотрение Ведущего, вы можете вместо этого использовать эти 2Д, для того чтобы внести дополнительный вклад в раунд."
+      "en": "**Requirements** Thievery 3+.\n\n**Spend 2 Focus** to gain 2A, which you can only use to make physical skill checks using the following actions: Use a Skill, Gain Advantage, or any action from the Agent's talents.",
+      "ru": "**Требования** Воровство 3+.\n\n**Потратьте 2 фокуса**, чтобы получить 2Д, которые вы можете использовать только на совершение проверок физических навыков применяя следующие действия: Использовать навык, Получить преимущество или любое действие из талантов Агента. Во время разговора или усилия, на усмотрение Ведущего, вы можете вместо этого использовать эти 2Д, для того чтобы внести дополнительный вклад в раунд."
     },
     "origin": "path",
     "origin_value": "agent"

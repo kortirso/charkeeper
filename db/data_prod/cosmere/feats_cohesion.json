@@ -7,7 +7,7 @@
       "ru": "Поток Когезии"
     },
     "description": {
-      "en": "**Infuse 1 Investiture or more** into an unattended object or portion of a surface within your reach that is made of stone; to do so, you must have a hand free and touch the target. This infusion uses 1 Investiture each round, and for the duration, the stone becomes moldable and soft like clay. When you activate this surge, you can immediately form the stone into a rough shape as part of that action, but any elaborate molding requires more time. This object or portion of the surface can't exceed the surge size for your ranks in Cohesion. You can't use this surge on characters, Invested objects, or objects that have been infused with Stormlight.",
+      "en": "**Spend 1 or more Investiture** into an unguarded stone object or surface area within your reach. This imbuement consumes 1 Investiture each round, and over the course of the effect, the stone becomes soft. When you activate this surge, you can immediately shape the stone into a rough form within the same action.",
       "ru": "**Наполните 1 Инвеститурой или более** неохраняемый объект или участок поверхности из камня в пределах вашей досягаемости; для этого у вас должна быть свободная рука, и вы должны коснуться цели. Это наполнение расходует 1 Инвеституру каждый раунд, и в течения действия камень становится податливым и мягким, как глина. При активации этого потока вы можете сразу придать камню грубую форму в рамках того же действия, однако для сложного формирования потребуется больше времени. Выбранный объект или участок поверхности не должен превышать размер, допустимый для вашего ранга в Когезии. Вы не можете использовать этот поток на персонажах, Инвестированных объектах или на объектах, уже наполненных Буресветом."
     },
     "origin": "surge",
@@ -25,8 +25,8 @@
       "ru": "Каменное копье"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\n**Spend 1 Investiture** to make a ranged Cohesion attack against the Physical defense of a target within 60 feet of you, rolling 2d4 impact damage. On a hit, you can also spend to knock the target *Prone*. The size of this attack's damage dice increases with your ranks in Cohesion.",
-      "ru": "**Требования** Произнести Первый идеал.\n\n**Потратьте 1 Инвеституру**, чтобы совершить атаку дальнего боя Когезией против Физической защиты цели в пределах 60 футов, нанося 2d4 дробящего урона. При попадание вы можете потратить **Возможность**, чтобы цель оказалась *Сбита с ног*. Размер костей урона этой атаки увеличивается с ростом вашего ранга в Когезии."
+      "en": "**Requirements** Speak the First Ideal.\n\n**Spend 1 Investiture** to make a ranged attack (Cohesion vs Physical defense) within 60 feet of you, 2d4 (damage dice increases by ranks in Cohesion) impact damage. On a hit, you can **spend Opportunity** to knock the target *Prone*.",
+      "ru": "**Требования** Произнести Первый идеал.\n\n**Потратьте 1 Инвеституру**, чтобы совершить атаку дальнего боя Когезией против Физической защиты цели в пределах 60 футов, нанося 2d4 дробящего урона. При попадание вы можете **потратить Возможность**, чтобы цель оказалась *Сбита с ног*. Размер костей урона этой атаки увеличивается с ростом вашего ранга в Когезии."
     },
     "origin": "surge",
     "origin_value": "cohesion",
@@ -42,7 +42,7 @@
       "ru": "Воспоминания камня"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\n**Spend 1 Investiture** to communicate for 1 round with stone you're touching. The earth's knowledge reaches far, including the area's history and memories of nearby events, but it communicates in sculpted images and faint whispers that might be cryptic or incomplete. To interpret these communications, the GM might require you to succeed on a Cohesion test. To communicate with the stone for more than 1 round, you must use this talent multiple times.",
+      "en": "**Requirements** Speak the First Ideal.\n\n**Spend 1 Investiture** to establish contact with the stone you touch for 1 round. During this time, you listen to the earth, which holds vast knowledge: the history of the area and the echoes of memories of recent events.",
       "ru": "**Требования** Произнести Первый идеал.\n\n**Потратьте 1 Инвеституру**, чтобы на 1 раунд установить контакт с камнем, к которому прикасаетесь. В течение этого времени вы прислушиваетесь к земле, что хранит в себе обширные знания: историю местности и отголоски воспоминаний недавних событий. Однако передаёт она их в виде вытесанных образов и тихих шёпотов, которые могут быть загадочными или неполными. Чтобы верно истолковать полученные сведения, ведущий может потребовать совершить успешную проверку Когезии. Для поддержания контакта с камнем более 1 раунда этот талант нужно использовать несколько раз."
     },
     "origin": "surge",

@@ -7,7 +7,7 @@
       "ru": "Поток Расщепления"
     },
     "description": {
-      "en": "**Targeting a Character.** You can target a character regardless of their size. **Spend 1 Investiture** to make a melee Division attack against the Spiritual defense of the target, rolling 3d4 spirit damage. If this reduces the target to 0 health, they crumble into dust and die. The size of this attack's damage dice increases with your ranks in Division. As usual, on a hit, add your Division modifier to damage, and on a miss, you can spend 1 focus to graze with the attack.\n\n**Targeting an Object or Area.** To destroy an object or the contents of an area, spend Investiture equal to the number of surge ranks required to affect a target of that size: 1 for Small, 2 for Medium, and so on. As usual, this object or area can't exceed the surge size for your ranks in Division, even if you have more Investiture than that.\n\nIf you're in combat or another tense situation, you must succeed on a Division test. On a success, your target decays in a manner of your choosing.",
+      "en": "**Targeting a Character.** You can target any character. **Spend 1 Investiture** to make a usual melee attack (Division vs Spiritual defense), 3d4 (damage dice increases by ranks in Division) spirit damage.\n\n**Targeting an Object or Area.** To destroy an object or the contents of an area, spend Investiture equal to the number of surge ranks required to affect a target of that size.\n\nIf you're in combat or another tense situation, you must succeed on a Division test.",
       "ru": "**Персонажи в качестве цели.** Вы можете выбрать в качестве цели персонажа любого размера. **Потратьте 1 Инвеституру**, чтобы совершить атаку ближнего боя Расщеплением против Духовной защиты цели, нанося 3d4 духовного урона. Если этот урон уменьшает здоровье цели до 0, она рассыпается в пыль и погибает. Размер костей урона этой атаки увеличивается с ростом вашего ранга в Расщеплении. Как обычно, при попадании добавляйте свой модификатор Расщепления к урону, а при промахе можете потратить 1 фокус для задевания атакой.\n\n**Объект или область в качестве цели.** Чтобы уничтожить объект или содержимое области, потратьте количество Инвеституры, равное рангу потока, который необходим для воздействия на цель данного размера: 1 для Малого, 2 для Среднего и так далее. Как обычно, объект или область не должен превышать размер, допустимый для вашего ранга в Расщеплении, даже если у вас есть необходимое количество Инвеституры для этого.\n\nЕсли вы находитесь в бою или другой напряжённой ситуации, для этого необходимо успешно пройти проверку Расщепления. При успехе цель разрушается так, как вы пожелаете."
     },
     "origin": "surge",
@@ -25,7 +25,7 @@
       "ru": "Телесное разложение"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\nWhen you hit with a Division attack, you can **spend Opportunity** to inflict an injury on one target of that attack.",
+      "en": "**Requirements** Speak the First Ideal.\n\nOn a Division attack, you can **spend Opportunity** to cause an injury on one target of that attack.",
       "ru": "**Требования** Произнести Первый идеал.\n\nКогда вы попадаете атакой Расщепления, вы можете **потратить Возможность**, чтобы нанести травму одной из целей этой атаки."
     },
     "origin": "surge",
@@ -42,7 +42,7 @@
       "ru": "Освобождающая эрозия"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\n**Spend 1 Investiture or more** to end that many effects on yourself or an ally within your reach. The chosen effects must either be applying the *Immobilized* or *Restrained* condition, or be adding a disadvantage to one or more physical tests. Depending on the effect's source, this talent might not fully destroy the source at the GM's discretion, but it creates space or opportunity for your target to move around it or free themselves from its constraint. If the effect's source remains at the end of the target's next turn, the effect then reasserts itself.",
+      "en": "**Requirements** Speak the First Ideal.\n\n**Spend 1 or more Investiture** to remove the same number of effects from yourself or an ally within your reach. The chosen effects must either inflict the *Immobilized* or *Restrained* condition, or impose one or more disadvantages on physical checks.",
       "ru": "**Требования** Произнести Первый идеал.\n\n**Потратьте 1 Инвеституру или более**, чтобы снять с себя или союзника в пределах вашей досягаемости такое же количество эффектов. Выбранные эффекты должны либо накладывать состояние *Обездвижен* или *Скован*, либо давать одну или более помеху на физические проверки. В зависимости от источника эффекта, этот талант по усмотрению ведущего может не полностью уничтожить его, но создать пространство или возможность для цели обойти препятствие или временно освободиться от наложенного ограничения. Если источник эффекта остается актуален к концу следующего хода цели, эффект снова начинает воздействовать на него."
     },
     "origin": "surge",

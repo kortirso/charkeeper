@@ -47,7 +47,7 @@ module CosmereContext
 
     private
 
-    def feat_info(slug) # rubocop: disable Metrics/AbcSize
+    def feat_info(slug)
       feat = feats[slug]
       return unless feat
       # если для доступа необходимо несколько талантов
@@ -58,13 +58,21 @@ module CosmereContext
         id: feat[:id],
         slug: feat[:slug],
         title: translate(feat[:title]),
-        description: markdown.call(value: translate(feat[:description]), version: '0.4.31'),
+        description: find_description(feat),
         selected: selected
       }
       if selected && feat.dig(:info, 'required_for')
         payload[:feats] = feat.dig(:info, 'required_for').filter_map { |item| feat_info(item) }
       end
       payload
+    end
+
+    def find_description(feat)
+      result = translate(feat[:description])
+      result.gsub!(/{{[a-z]+}}/, '')
+      result.gsub!('<<', '')
+      result.gsub!('>>', '')
+      markdown.call(value: result, version: '0.4.31')
     end
 
     def selected?(feat, slug)

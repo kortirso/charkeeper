@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class CosmereDecorator < ApplicationDecoratorV2
-  include Deps[markdown: 'markdown']
+  include Deps[
+    markdown: 'markdown',
+    feature_requirement: 'feature_requirement'
+  ]
   include TranslateHelper
 
   ONLY_ADD_MODIFIERS = %w[str spd int wil awa pre].freeze
@@ -126,10 +129,23 @@ class CosmereDecorator < ApplicationDecoratorV2
     }.compact
   end
 
-  def update_feature_description(feature)
+  def update_feature_description(feature) # rubocop: disable Metrics/AbcSize
     description = translate(feature.feat.description)
     return if description.blank?
 
+    if feature_requirement.call(current: @version, initial: '0.4.34')
+      feature.feat.info['formulas']&.each do |key, value|
+        formula_result = formula.call(formula: value, variables: formula_variables)
+        description.gsub!("{{#{key}}}", formula_result.to_s)
+      end
+      description.gsub!(/<<(.+?)>>/, '')
+    else
+      feature.feat.info['formulas']&.each do |key, _value|
+        description.gsub!("{{#{key}}}", '')
+      end
+      description.gsub!('<<', '')
+      description.gsub!('>>', '')
+    end
     markdown.call(value: description, version: @version)
   end
 
@@ -369,6 +385,7 @@ class CosmereDecorator < ApplicationDecoratorV2
         tier: tier
       }
       .merge(modified_abilities.symbolize_keys)
+      .merge(skills.each_with_object({}) { |item, acc| acc[item[:slug]] = item[:level] }.symbolize_keys)
   end
 
   def monitoring_formula_error(formula)

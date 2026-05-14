@@ -21,8 +21,8 @@
       "ru": "Стойка бдительности"
     },
     "description": {
-      "en": "Reduce the focus cost of **Dodge** and **Reactive Strike** by 1, and you can enter other stances as free action.",
-      "ru": "Пока вы находитесь в этой стойке, ваша стоимость фокуса для **Уклонения** и **Удара реакцией** снижается на 1. Кроме того, вы можете принять другую известную вам стойку как свободное действие."
+      "en": "Reduce the focus cost of *Dodge* and *Reactive Strike* by 1, and you can enter other stances as free action.",
+      "ru": "Пока вы находитесь в этой стойке, ваша стоимость фокуса для *Уклонения* и *Удара реакцией* снижается на 1. Кроме того, вы можете принять другую известную вам стойку как свободное действие."
     },
     "origin": "path",
     "origin_value": "warrior",

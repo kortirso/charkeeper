@@ -7,7 +7,7 @@
       "ru": "Поиск добычи"
     },
     "description": {
-      "en": "After spending 1 minute mentally preparing, you choose a character who you can sense or who you've previously encountered. That character becomes your quarry until you choose to end this effect or select a new quarry.\n\nAdditionally, you gain an advantage on tests made to find, attack, or study your quarry (such as the **Gain Advantage action**).",
+      "en": "After 1 minute of mental preparations, you choose a character. That character becomes your quarry.\n\nYou gain an advantage on tests made to find, attack or study your quarry.",
       "ru": "После того как вы потратите 1 минуту на ментальную подготовку, выберите персонажа, которого вы можете обнаружить или с которым ранее сталкивались. Этот персонаж становится вашей добычей до тех пор, пока вы не решите завершить действие этого эффекта или не выберете новую добычу.\n\nКроме того, вы получаете преимущество на проверки, связанные с поиском, атакой или изучением вашей добычи (включая на действие **Получить преимущество**)."
     },
     "origin": "path",
@@ -24,7 +24,7 @@
       "ru": "Отмечающий выстрел"
     },
     "description": {
-      "en": "**Requirements** Perception 2+.\n\nMove up to 5 feet and make a ranged weapon attack against the Physical defense of a target. On a hit or a graze, you also make the target your quarry for your **Seek Quarry** talent.",
+      "en": "**Requirements** Perception 2+.\n\nMove up to 5 feet and make a ranged weapon attack. If not miss, you also make the target your quarry for your **Seek Quarry**.",
       "ru": "**Требования** Наблюдательность 2+.\n\nПереместитесь на расстояние до 5 футов и совершите атаку оружием дальнего боя против Физической защиты цели. При попадании или задевании цель становится вашей добычей для таланта **Поиск Добычи**."
     },
     "origin": "path",
@@ -42,7 +42,7 @@
       "ru": "Острый взгляд"
     },
     "description": {
-      "en": "After you observe your quarry for one action, or after you observe another character for at least 1 minute, make a Perception test against their Cognitive defense. On a success, you learn one of the following of your choice:\n\n- The target's lowest attribute score.\n\n- The target's lowest defense.\n\n- Whether the target has lost more than half of their maximum health, focus, or Investiture.",
+      "en": "After you observe your quarry (1A) or another character (1 minute), make a check (Perception vs Cognitive defense). On a success, you learn one of the following:\n\n- Lowest attribute score.\n\n- Lowest defense.\n\n- Whether the target has lost more than half of their health, focus, or Investiture.",
       "ru": "Если вы потратите действие на наблюдение за своей добычей или как минимум 1 минуту на наблюдение за другим персонажем, совершите проверку Наблюдательности против Когнитивной защиты цели. При успехе вы узнаёте одну из следующих деталей на ваш выбор:\n\n- Какой из атрибутов цели имеет наименьшее значение.\n\n- Какой из показателей защиты цели имеет наименьшее значение.\n\n- Снизилось ли текущее здоровье, фокус или Инвеститура цели более чем наполовину."
     },
     "origin": "path",
@@ -59,7 +59,7 @@
       "ru": "Использование слабостей"
     },
     "description": {
-      "en": "**Requirements** Perception 3+.\n\nUse the Gain Advantage action as free action, targeting only your quarry.",
+      "en": "**Requirements** Perception 3+.\n\nAgainst your quarry you can use the Gain Advantage action as free action.",
       "ru": "**Требования** Наблюдательность 3+.\n\nПротив своей добычи вы можете использовать действие Получить преимущество как свободное действие."
     },
     "origin": "path",
@@ -73,7 +73,7 @@
       "ru": "Боевая подготовка"
     },
     "description": {
-      "en": "Once per round, when you miss on a weapon attack, you can graze one target without spending focus.\n\nAdditionally, when you acquire this talent, gain a weapon expertise and an armor expertise of your choice, and gain a cultural expertise in **Military Life**.",
+      "en": "Once per round, when you miss on a attack, you can graze one target without spending focus.\n\nYou gain a weapon expertise and an armor expertise of your choice, and gain **Military Life** expertise.",
       "ru": "Один раз за раунд, когда вы промахиваетесь атакой оружием, вы можете вместо этого задеть одну цель, не тратя на это фокус.\n\nКроме того, приобретая этот талант, вы получаете оружейную и броневую компетенцию по вашему выбору, а также культурную компетенцию **Военная жизнь**."
     },
     "origin": "path",
@@ -90,13 +90,14 @@
       "ru": "Точное прицеливание"
     },
     "description": {
-      "en": "**Requirements** Agility 1+.\n\nUntil the end of your turn, both the short and long ranges of your ranged weapons increase by half, and when you hit with a ranged weapon attack, you deal extra damage equal to your ranks in Perception.",
-      "ru": "**Требования** Ловкость 1+.\n\nДо конца вашего хода дальность стрельбы вашего оружия дальнего боя на ближней и дальней дистанции увеличивается на половину. Кроме того, при попадании вы наносите дополнительный урон, равный вашему рангу в Наблюдательности."
+      "en": "**Requirements** Agility 1+.\n\nFor this turn both ranges of your ranged weapons increase by half and while hit you deal extra damage +{{value}}<<ranks in Perception>>.",
+      "ru": "**Требования** Ловкость 1+.\n\nДо конца вашего хода дальность стрельбы вашего оружия дальнего боя на ближней и дальней дистанции увеличивается на половину. Кроме того, при попадании вы наносите дополнительный урон +{{value}}<<ранг в Наблюдательности>>."
     },
     "origin": "path",
     "origin_value": "hunter",
     "info": {
-      "required_for": ["backstep", "hunter_hardy"]
+      "required_for": ["backstep", "hunter_hardy"],
+      "formulas": { "value": "perception" }
     },
     "price": { "a": 1 }
   },
@@ -108,8 +109,8 @@
       "ru": "Шаг назад"
     },
     "description": {
-      "en": "**Requirements** Agility 2+.\n\nAfter you make a ranged attack, spend 2 focus to *Disengage* as free action. If you then end your turn in cover or an area where your enemy's senses are obscured, you gain the benefit of the Brace action.",
-      "ru": "**Требования** Ловкость 2+.\n\nПосле совершения атаки оружием дальнего боя вы можете потратить 2 фокуса, чтобы совершить *Отход* как свободное действие. Если в конце своего хода вы окажетесь за Укрытием или в области, где чувства врага затуманены, вы также получаете бонусы от действия Укрыться."
+      "en": "**Requirements** Agility 2+.\n\nFor a ranged attack **spend 2 Focus** to *Disengage* as free action. If you end your turn in cover you gain the benefit of the Brace action.",
+      "ru": "**Требования** Ловкость 2+.\n\nПосле совершения атаки оружием дальнего боя вы можете **потратить 2 фокуса**, чтобы совершить *Отход* как свободное действие. Если в конце своего хода вы окажетесь за Укрытием или в области, где чувства врага затуманены, вы также получаете бонусы от действия Укрыться."
     },
     "origin": "path",
     "origin_value": "hunter"
@@ -122,14 +123,15 @@
       "ru": "Крепкий"
     },
     "description": {
-      "en": "When you acquire this talent, your maximum and current health increase by 1 per level.",
-      "ru": "Приобретая этот талант, ваше максимальное и текущее здоровье увеличивается на 1 за каждый уровень."
+      "en": "You gain calculated bonus (equal to {{value}}<<your level>>) to your maximum health.",
+      "ru": "Приобретая этот талант, ваше максимальное и текущее здоровье увеличивается на {{value}}<<1 за каждый уровень>>."
     },
     "origin": "path",
     "origin_value": "hunter",
     "info": {
       "required_for": ["unrelenting_salvo"],
-      "double_slug": "hardy"
+      "double_slug": "hardy",
+      "formulas": { "value": "level" }
     },
     "modifiers": { "health_max": { "type": "add", "value": "level" } }
   },
@@ -141,7 +143,7 @@
       "ru": "Неумолимый залп"
     },
     "description": {
-      "en": "**Requirements** Agility 3+.\n\nYou can use the same ranged weapon to Strike against your quarry more than once a turn, instead of being limited to one Strike per hand.",
+      "en": "**Requirements** Agility 3+.\n\nYou can make multiple strikes with the same ranged weapon against your quarry.",
       "ru": "**Требования** Ловкость 3+.\n\nВы можете использовать одно и то же оружие дальнего боя для действия Удар по вашей добыче несколько раз за ход, вместо того чтобы ограничиваться лишь одним Ударом оружием за ход."
     },
     "origin": "path",
@@ -155,7 +157,7 @@
       "ru": "Неожиданный удар"
     },
     "description": {
-      "en": "**Requirements** Stealth 1+.\n\nMake an unarmed or improvised weapon attack against the Cognitive defense of a target of your size or smaller. On a hit or graze, the target also becomes *Surprised* until the end of your next turn.",
+      "en": "**Requirements** Stealth 1+.\n\nMake an unarmed or improvised weapon attack (vs Cognitive defense). On success target becomes *Surprised* until the end of your next turn.",
       "ru": "**Требования** Скрытность 1+.\n\nСовершите безоружную атаку или атаку импровизированным оружием против Когнитивной защиты цели вашего размера или меньше. При попадании или задевании цель также оказывается *Взятой врасплох* до конца вашего следующего хода."
     },
     "origin": "path",
@@ -173,7 +175,7 @@
       "ru": "Смертельный удар"
     },
     "description": {
-      "en": "**Requirements** Perception 3+.\n\nUsing a light weapon, make a melee attack against the Cognitive defense of a target who is *urprised*, doesn't sense you, or doesn't view you as a threat. If this weapon has the Discreet trait, you gain two advantages on the test.\n\nWhen you roll damage for this attack, add an extra 4d4 damage (T3 - 6d4, T4 - 8d4, T5 - 10d4), then count the number of your damage dice that rolled their maximum value (including your weapon's usual damage plus the extra damage). For each die that rolled its maximum, your target must subtract 2 from any injury roll they make for that attack.",
+      "en": "**Requirements** Perception 3+.\n\nMake a melee attack with light weapon (vs Cognitive defense) of a *Surprised* target. If weapon is Discreet, you gain two advantages.\n\nWhen you roll damage, add an extra 4d4 damage (T3 - 6d4, T4 - 8d4, T5 - 10d4), then count the number of your damage dice that rolled their maximum. For each maximum die, your target must subtract 2 from any injury roll.",
       "ru": "**Требования** Наблюдательность 3+.\n\nИспользуя лёгкое оружие, совершите атаку ближнего боя против Когнитивной защиты цели, которая *Взята врасплох*, не обнаруживает вас или не воспринимает вас как угрозу. Если оружие обладает свойством Неприметное, вы получаете два преимущества на проверку.\n\nЭта атака наносит дополнительные 4d4 (T3 - 6d4, T4 - 8d4, T5 - 10d4) урона. После броска урона посчитайте количество костей, на которых выпало максимальное значение (включая как стандартные кости урона оружия так и дополнительные). За каждую кость с максимальным результатом цель вычитает 2 из итогового результата своего броска травмы, если она совершает его из-за этой атаки."
     },
     "origin": "path",
@@ -188,8 +190,8 @@
       "ru": "Смертоносное оружие"
     },
     "description": {
-      "en": "**Requirements** Perception 2+.\n\nWhen you acquire this talent, gain weapon expertises in **Knives** and **Slings**.\n\nAdditionally, while you wield a knife or sling, it also has the **Deadly** and **Quickdraw** expert traits for you.",
-      "ru": "**Требования** Наблюдательность 2+.\n\nПриобретая этот талант, вы получаете оружейную компетенцию в **Ножах** и **Пращах**. Кроме того, пока вы используете нож или пращу, это оружие для вас обладает экспертными свойствами **Смертоносное** и **Быстроизвлекаемое**."
+      "en": "**Requirements** Perception 2+.\n\nYou gain **Knives** and **Slings** expertises.\n\nYour knife or sling has the *Deadly* and *Quickdraw*.",
+      "ru": "**Требования** Наблюдательность 2+.\n\nПриобретая этот талант, вы получаете оружейную компетенцию в **Ножах** и **Пращах**. Кроме того, пока вы используете нож или пращу, это оружие для вас обладает экспертными свойствами *Смертоносное* и *Быстроизвлекаемое*."
     },
     "origin": "path",
     "origin_value": "hunter",
@@ -205,8 +207,8 @@
       "ru": "Скрытый в тени"
     },
     "description": {
-      "en": "**Requirements** Stealth 2+.\n\nYou gain an advantage on tests to avoid being sensed by your quarry, and your quarry gains a disadvantage on tests to sense you.\n\nAdditionally, when you succeed on a test against an enemy's Spiritual defense while you're in cover or an area where your target's senses are obscured, you can spend 3 focus to designate that target as your quarry for your **Seek Quarry** talent.",
-      "ru": "**Требования** Скрытность 2+.\n\nВы получаете преимущество на все проверки, направленные на то, чтобы ваша добыча вас не обнаружила, а ваша добыча получает помеху на все проверки, направленные на обнаружение вас.\n\nКроме того, когда вы успешно проходите проверку против Духовной защиты врага, пока находитесь в укрытии или в области, где органы чувств цели затуманены, вы можете потратить 3 фокуса, чтобы назначить этого врага своей добычей для таланта **Поиск добычи**."
+      "en": "**Requirements** Stealth 2+.\n\nYou gain an advantage on checks to avoid being sensed by your quarry, your quarry gains a disadvantage on checks to sense you.\n\nWhen you succeed on a test against Spiritual defense while you're in cover, you can **spend 3 Focus** to designate it as quarry for **Seek Quarry**.",
+      "ru": "**Требования** Скрытность 2+.\n\nВы получаете преимущество на все проверки, направленные на то, чтобы ваша добыча вас не обнаружила, а ваша добыча получает помеху на все проверки, направленные на обнаружение вас.\n\nКроме того, когда вы успешно проходите проверку против Духовной защиты врага, пока находитесь в укрытии или в области, где органы чувств цели затуманены, вы можете **потратить 3 фокуса**, чтобы назначить этого врага своей добычей для таланта **Поиск добычи**."
     },
     "origin": "path",
     "origin_value": "hunter",
@@ -222,7 +224,7 @@
       "ru": "Холодный взгляд"
     },
     "description": {
-      "en": "After you kill or incapacitate an enemy who is your quarry, you recover 1 focus and can designate another enemy you can sense as your quarry for your **eek Quarry** talent. At the GM's discretion, you might not be able to use this talent on some characters, such as those who pose no threat.",
+      "en": "After you incapacitate your quarry, you recover 1 focus and can designate another enemy as your quarry **Seek Quarry**.",
       "ru": "После того как вы убили или нейтрализовали врага, который был вашей добычей, вы восстанавливаете 1 фокус и можете выбрать другого врага, которого можете обнаружить, в качестве своей новой добычи для таланта **Поиск добычи**. По усмотрению ведущего, применение этого таланта может быть невозможно против некоторых персонажей, например тех, кто не представляет угрозы."
     },
     "origin": "path",
@@ -239,13 +241,14 @@
       "ru": "Мощь"
     },
     "description": {
-      "en": "When you hit with a weapon or unarmed attack, for each action you used on that attack's action, increase the damage you deal by 1 + your tier.",
-      "ru": "Когда вы попадаете безоружной атакой или атакой оружием за каждое потраченное действие на эту атаку, она наносит дополнительный урон, равный 1 + ваш тир."
+      "en": "When you hit increase the damage you deal by {{value}}<<1 + your tier>> (for each action on attack).",
+      "ru": "Когда вы попадаете безоружной атакой или атакой оружием за каждое потраченное действие на эту атаку, она наносит дополнительный урон, равный {{value}}<<1 + ваш тир>>."
     },
     "origin": "path",
     "origin_value": "hunter",
     "info": {
-      "double_slug": "mighty"
+      "double_slug": "mighty",
+      "formulas": { "value": "1 + tier" }
     }
   },
   {
@@ -256,8 +259,8 @@
       "ru": "Стремительные удары"
     },
     "description": {
-      "en": "Spend 1 focus to make a second Strike action with a hand you already used for a Strike this turn.",
-      "ru": "Потратьте 1 фокус, чтобы совершить второе действие Удар той же рукой, которой вы уже совершали Удар в этом ходу."
+      "en": "**Spend 1 Focus** to make a second Strike.",
+      "ru": "**Потратьте 1 фокус**, чтобы совершить второе действие Удар той же рукой, которой вы уже совершали Удар в этом ходу."
     },
     "origin": "path",
     "origin_value": "hunter",
@@ -271,7 +274,7 @@
       "ru": "Шаг в сторону"
     },
     "description": {
-      "en": "**Requirements** Stealth 3+.\n\nGain an additional reaction at the start of combat and at the start of each of your turns, which you can use only to Dodge. You can't benefit from this talent while wearing armor with a deflect value of 2 or higher.",
+      "en": "**Requirements** Stealth 3+.\n\nGain an additional reaction at the start of combat and at the start of each of your turns (only for Dodge). You can't use it while wearing armor with a deflect more than 1.",
       "ru": "**Требования** Скрытность 3+.\n\nВы получаете дополнительную реакцию в начале боя и в начале каждого своего хода, которую можете использовать только на Уклонения. Этот талант не действует, если вы носите броню с показателем отражения 2 или выше."
     },
     "origin": "path",
@@ -285,8 +288,8 @@
       "ru": "Смертельная ловушка"
     },
     "description": {
-      "en": "**Requirements** Survival 1+.\n\nUsing foraged supplies or specialized equipment, you create and conceal a trap within your reach.\n\nThis trap covers a 5-foot-diameter circle on the ground or other surface concealing it; the trap remains until triggered, then it is expended. When a character touches this surface, the trap triggers. Make an attack using your Survival against the defense listed for that trap, gaining an advantage if the target is your quarry. On a hit, the target suffers the trap's effects. This attack can't graze.\n\nYou can have a maximum number of active traps equal to your ranks in Survival. You can't overlap the areas of active traps. If another character makes a test to search for or disarm a trap, the DC equals your Spiritual defense.",
-      "ru": "**Требования** Выживание 1+.\n\nИспользуя найденные предметы или специальное снаряжение, вы создаёте и маскируете ловушку в пределах своей досягаемости.\n\nЛовушка охватывает область диаметром 5 футов на земле или другой поверхности, скрывающей её. Ловушка сохраняется до тех пор, пока не сработает, после чего расходуется. Когда персонаж касается этой поверхности, ловушка срабатывает. Совершите атаку, используя свой навык Выживание против защиты, указанной для ловушки, получая преимущество, если цель является вашей добычей. При попадании цель подвергается эффектам ловушки. Эта атака не может быть задеванием.\n\nВы можете иметь максимальное количество одновременно активных ловушек, равное вашему рангу Выживание. Области действия ловушек не могут пересекаться. Если другой персонаж совершает проверку, чтобы найти или обезвредить ловушку, Сл этой проверки равна вашей Духовной защите."
+      "en": "**Requirements** Survival 1+.\n\nTrap is a 5-foot-diameter circle on the ground. You gain an advantage if the target is your quarry. This attack can't graze.\n\nMaximum number of active traps is {{value}}<<your Survival ranks>>. You can't overlap the areas of traps. DC for disarming equals your Spiritual defense.",
+      "ru": "**Требования** Выживание 1+.\n\nИспользуя найденные предметы или специальное снаряжение, вы создаёте и маскируете ловушку в пределах своей досягаемости.\n\nЛовушка охватывает область диаметром 5 футов на земле или другой поверхности, скрывающей её. Ловушка сохраняется до тех пор, пока не сработает, после чего расходуется. Когда персонаж касается этой поверхности, ловушка срабатывает. Совершите атаку, используя свой навык Выживание против защиты, указанной для ловушки, получая преимущество, если цель является вашей добычей. При попадании цель подвергается эффектам ловушки. Эта атака не может быть задеванием.\n\nВы можете иметь максимальное количество одновременно активных ловушек, равное {{value}}<<вашему рангу Выживания>>. Области действия ловушек не могут пересекаться. Если другой персонаж совершает проверку, чтобы найти или обезвредить ловушку, Сл этой проверки равна вашей Духовной защите."
     },
     "origin": "path",
     "origin_value": "hunter",
@@ -304,13 +307,14 @@
       "ru": "Опытный траппер"
     },
     "description": {
-      "en": "**Requirements** Perception 2+.\n\nWhen you forage as part of a short rest, it doesn't take your full attention, so you can roll your recovery die or engage in other activities as usual. When you make a Survival test to forage for food and water, you automatically succeed as long as they exist in your environment and nothing prevents you from foraging. Your foraging can sustain a number of characters equal to your ranks in Survival.\n\nAdditionally, after a long rest in the wilderness, you can fashion a tool from natural materials using your Survival modifier instead of Crafting. This foraged tool could be a spear, sling, tent, or another survival tool that can be made from materials found in the area, as determined by the GM.\n\nFinally, when you acquire this talent, the damage from your **eadly Traps** talent increases from 2d4 to 2d6, and when that talent applies a condition, its duration increases from 1 round to 2 rounds.",
-      "ru": "**Требования** Наблюдательность 2+.\n\nКогда вы добываете пищу и ресурсы во время короткого отдыха, это не требует от вас полного внимания, поэтому вы можете совмещать это с броском кости восстановления или с другими делами. Когда вы совершаете проверку Выживания, чтобы найти еду и воду, вы автоматически преуспеваете, если в вашей среде они в принципе существуют и ничто не мешает вам их добыть. Ваши поиски способны обеспечить припасами количество персонажей, равное вашему рангу в Выживании.\n\nКроме того, после продолжительного отдыха в дикой местности вы можете изготовить инструмент из природных материалов, используя ваш модификатор Выживания вместо Ремесла. Такой инструмент может быть, например, копьём, пращой, палаткой или любым другим предметом, который реально создать из подручных материалов данной местности по усмотрению Ведущего.\n\nНаконец, приобретая этот талант, урон вашего таланта **Смертельная ловушка** увеличивается с 2d4 до 2d6, а длительность накладываемого им состояния возрастает с 1 до 2 раундов."
+      "en": "**Requirements** Perception 2+.\n\nWhen you forage while short rest you can roll your recovery die. When you make a Survival check to forage for food and water, you automatically succeed. Your foraging can sustain a number of characters equal to {{value}}<<your Survival ranks>>.\n\nAfter a long rest in the wilderness, you can fashion a tool from natural materials using your Survival modifier instead of Crafting.\n\nDamage from **Deadly Traps** talent increases to 2d6 and its duration increases to 2 rounds.",
+      "ru": "**Требования** Наблюдательность 2+.\n\nКогда вы добываете пищу и ресурсы во время короткого отдыха, это не требует от вас полного внимания, поэтому вы можете совмещать это с броском кости восстановления или с другими делами. Когда вы совершаете проверку Выживания, чтобы найти еду и воду, вы автоматически преуспеваете, если в вашей среде они в принципе существуют и ничто не мешает вам их добыть. Ваши поиски способны обеспечить припасами количество персонажей, равное {{value}}<<вашему рангу в Выживании>>.\n\nКроме того, после продолжительного отдыха в дикой местности вы можете изготовить инструмент из природных материалов, используя ваш модификатор Выживания вместо Ремесла. Такой инструмент может быть, например, копьём, пращой, палаткой или любым другим предметом, который реально создать из подручных материалов данной местности по усмотрению Ведущего.\n\nНаконец, приобретая этот талант, урон вашего таланта **Смертельная ловушка** увеличивается с 2d4 до 2d6, а длительность накладываемого им состояния возрастает с 1 до 2 раундов."
     },
     "origin": "path",
     "origin_value": "hunter",
     "info": {
-      "required_for": ["hunter_surefooted", "hunter_edge"]
+      "required_for": ["hunter_surefooted", "hunter_edge"],
+      "formulas": { "value": "survival" }
     }
   },
   {
@@ -321,13 +325,14 @@
       "ru": "Уверенная поступь"
     },
     "description": {
-      "en": "When you acquire this talent, increase your movement rate by 10.\n\nAdditionally, before you take damage from dangerous terrain or falling, reduce that damage by 2 × your tier.",
-      "ru": "Приобретая этот талант, вы увеличиваете свою Скорость передвижения на 10.\n\nКроме того, перед тем как получить урон от опасной местности или падения, уменьшите его значение на 2 × ваш тир."
+      "en": "When you acquire this talent, increase your movement rate by 10.\n\nBefore you take damage from dangerous terrain or falling, reduce that damage by {{value}}<<2 × your tier>>.",
+      "ru": "Приобретая этот талант, вы увеличиваете свою Скорость передвижения на 10.\n\nКроме того, перед тем как получить урон от опасной местности или падения, уменьшите его значение на {{value}}<<2 × ваш тир>>."
     },
     "origin": "path",
     "origin_value": "hunter",
     "info": {
-      "double_slug": "surefooted"
+      "double_slug": "surefooted",
+      "formulas": { "value": "2 * tier" }
     },
     "modifiers": { "movement": { "type": "add", "value": 10 } }
   },
@@ -339,7 +344,7 @@
       "ru": "Клинок охотника"
     },
     "description": {
-      "en": "**Requirements** Survival 3+.\n\nYour animal companion gains an advantage on tests against your quarry.\n\nAdditionally, when you acquire this talent, the damage from your **Deadly Traps** talent increases from 2d6 to 2d8, and when that talent applies a condition, its duration increases from 2 rounds to 3 rounds.",
+      "en": "**Requirements** Survival 3+.\n\nAnimal companion gains an advantage on checks against your quarry.\n\nDamage from **Deadly Traps** increases to 2d8 and its duration increases to 3 rounds.",
       "ru": "**Требования** Выживание 3+.\n\nВаш животный-компаньон получает преимущество на проверки против вашей добычи. Кроме того, когда вы приобретаете этот таланта урон от вашего таланта **Смертельная ловушка** увеличивается с 2d6 до 2d8, а длительность накладываемого им состояния возрастает с 2 до 3 раундов."
     },
     "origin": "path",
@@ -370,7 +375,7 @@
       "ru": "Оберегающие узы"
     },
     "description": {
-      "en": "You assign your animal companion to protect an ally within 30 feet of you, and your animal companion moves to that ally's side. While your animal companion remains within reach of the ally, you lose the bonus to your defenses from your Animal Bond, and the ally gains this bonus instead.\n\nYou can end this effect as action if you're within 30 feet of your animal companion and can influence them, at which point the animal companion returns to your side. Otherwise, this effect ends at the end of the scene.",
+      "en": "You assign your animal companion to protect an ally within 30 feet of you. The ally gains bonus to defenses instead of you. You can end this effect as action.",
       "ru": "Вы поручаете вашему животному-компаньону защищать союзника в пределах 30 футов от вас, после чего животный-компаньон перемещается к нему. Пока животное-компаньон остаётся в досягаемости союзника, вы теряете бонус к своим защитам от таланта «Связи с животным», а союзник получает этот бонус вместо вас.\n\nВы можете прекратить это действие как действие, если находитесь в пределах 30 футов от вашего компаньона и можете повлиять на него — в этом случае компаньон возвращается к вам. В противном случае эффект прекращается в конце сцены."
     },
     "origin": "path",
@@ -388,11 +393,14 @@
       "ru": "Звериная связь"
     },
     "description": {
-      "en": "**Requirements** Survival 2+.\n\nWhen you acquire this talent, your animal companion's maximum and current health increase by 5 × your tier; when your tier increases, your animal companion's health does as well.\n\nThey also increase their Physical, Cognitive, and Spiritual defenses by 2 each. When your animal companion makes a test, they add a bonus equal to your ranks in Survival.\n\nAdditionally, when you acquire this talent, gain a utility expertise in **Animal Care**.",
-      "ru": "**Требования** Выживание 2+.\n\nПриобретая этот талант, максимальное и текущее здоровье вашего животного-компаньона увеличивается на 5 × ваш тир; с повышением вашего тира здоровье компаньона также растёт.\n\nКроме того, его Физическая, Когнитивная и Духовная защита увеличиваются на 2. Когда ваше животное-компаньон совершает проверку оно добавляет к ней бонус, равный вашему рангу в Выживании.\n\nТакже при приобретении этого таланта вы получаете утилитарную компетенцию **Уход за животными**."
+      "en": "**Requirements** Survival 2+.\n\nYour animal companion's maximum health increase by 5 × your tier.\n\nThey also increase their defenses by 2. Companion adds +{{value}}<<your Survival ranks>> to checks.\n\nYou gain **Animal Care** expertise.",
+      "ru": "**Требования** Выживание 2+.\n\nПриобретая этот талант, максимальное и текущее здоровье вашего животного-компаньона увеличивается на 5 × ваш тир; с повышением вашего тира здоровье компаньона также растёт.\n\nКроме того, его Физическая, Когнитивная и Духовная защита увеличиваются на 2. Когда ваше животное-компаньон совершает проверку оно добавляет к ней бонус +{{value}}<<ваш ранг Выживания>>.\n\nТакже при приобретении этого таланта вы получаете утилитарную компетенцию **Уход за животными**."
     },
     "origin": "path",
-    "origin_value": "hunter"
+    "origin_value": "hunter",
+    "info": {
+      "formulas": { "value": "survival" }
+    }
   },
   {
     "slug": "pack_hunting",
@@ -402,11 +410,14 @@
       "ru": "Групповая охота"
     },
     "description": {
-      "en": "**Requirements** Perception 3+.\n\nWhen an ally in your line of effect attacks your quarry, you can use this reaction and spend 1 focus to add your ranks in Survival to either the result of their attack test or their damage roll.",
-      "ru": "**Требования** Наблюдательность 3+.\n\nКогда союзник в вашей линии видимости атакует вашу добычу, вы можете использовать эту реакцию и потратить 1 фокус, чтобы добавить ваш ранг Выживания либо к результату его проверки атаки, либо к броску урона"
+      "en": "**Requirements** Perception 3+.\n\nWhen you see how ally attacks your quarry, you can **spend 1 Focus** to add +{{value}}<<your Survival ranks>> to the result of their attack check or damage roll.",
+      "ru": "**Требования** Наблюдательность 3+.\n\nКогда союзник в вашей линии видимости атакует вашу добычу, вы можете использовать эту реакцию и **потратить 1 фокус**, чтобы добавить +{{value}}<<ваш ранг Выживания>> к результату его проверки атаки или к броску урона"
     },
     "origin": "path",
     "origin_value": "hunter",
-    "price": { "r": 1 }
+    "price": { "r": 1 },
+    "info": {
+      "formulas": { "value": "survival" }
+    }
   }
 ]

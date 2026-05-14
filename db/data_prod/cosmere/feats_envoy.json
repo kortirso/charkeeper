@@ -7,7 +7,7 @@
       "ru": "Побуждающее присутствие"
     },
     "description": {
-      "en": "Choose an ally you can influence. They become *Determined* until they benefit from that condition or until the scene ends.",
+      "en": "Choose an ally, they become *Determined* until they benefit from that condition.",
       "ru": "Выберите союзника, на которого вы можете повлиять. Он становится *Решительным* до тех пор, пока не воспользуется эффектом этого состояния или до конца сцены."
     },
     "origin": "path",
@@ -27,8 +27,8 @@
       "ru": "Непоколебимый вызов"
     },
     "description": {
-      "en": "**Requirements** Discipline 1+.\n\nSpend 1 focus to make a **Discipline** test against the **Spiritual defense** of an enemy you can influence. On a success, they become *Disoriented* and gain a disadvantage on tests against you until the end of their next turn.",
-      "ru": "**Требования** Дисциплина 1+.\n\nПотратьте 1 фокус, чтобы совершить проверку **Дисциплины** против **Духовной защиты** врага, на которого вы можете повлиять. При успехе цель становится *Дезориентированной* и получает помеху на проверки против вас до конца своего следующего хода."
+      "en": "**Requirements** Discipline 1+.\n\n**Spend 1 Focus** to make a test (Discipline vs Spiritual defense). If succeeds they become *Disoriented* and gain a disadvantage on tests against you until the end of their next turn.",
+      "ru": "**Требования** Дисциплина 1+.\n\n**Потратьте 1 фокус**, чтобы совершить проверку **Дисциплины** против **Духовной защиты** врага, на которого вы можете повлиять. При успехе цель становится *Дезориентированной* и получает помеху на проверки против вас до конца своего следующего хода."
     },
     "origin": "path",
     "origin_value": "envoy",
@@ -45,7 +45,7 @@
       "ru": "Самообладание"
     },
     "description": {
-      "en": "When you acquire this talent, increase your Cognitive and Spiritual defenses by 2.",
+      "en": "You gain calculated bonus +2 to your Cognitive and Spiritual defenses.",
       "ru": "Приобретая этот талант, вы увеличиваете свою Когнитивную и Духовную защиту на 2."
     },
     "origin": "path",
@@ -63,8 +63,8 @@
       "ru": "Угнетающий отпор"
     },
     "description": {
-      "en": "**Requirements** Discipline 2+.\n\nBefore a character you can sense targets you with an attack test, you can use your **Steadfast Challenge** as reaction. When you do, also increase your deflect value against this attack by your ranks in **Discipline**.",
-      "ru": "**Требования** Дисциплина 2+.\n\nПеред тем как персонаж, которого вы можете обнаружить, выберет вас целью для своей проверки атаки, вы можете использовать свой талант **Непоколебимый вызов** как реакцию. Когда вы это делаете, увеличьте своё отражение против этой атаки на значение, равное вашему рангу в **Дисциплине**."
+      "en": "**Requirements** Discipline 2+.\n\nBefore an enemy targets you with an attack, you can use **Steadfast Challenge** as reaction and increase your deflect value against this attack by your ranks in Discipline.",
+      "ru": "**Требования** Дисциплина 2+.\n\nПеред тем как персонаж, которого вы можете обнаружить, выберет вас целью для своей проверки атаки, вы можете использовать свой талант **Непоколебимый вызов** как реакцию. Когда вы это делаете, увеличьте своё отражение против этой атаки на значение, равное вашему рангу в Дисциплине."
     },
     "origin": "path",
     "origin_value": "envoy",
@@ -81,7 +81,7 @@
       "ru": "Хорошо одетый"
     },
     "description": {
-      "en": "While visibly wearing presentable armor or fashionable clothing, you gain an advantage on the first **Deception**, **Leadership**, or **Persuasion** test you make during each scene.\n\nAdditionally, when you acquire this talent, gain a cultural expertise in **Fashion**.",
+      "en": "While wearing presentable armor, you gain an advantage on the first Deception, Leadership or Persuasion test you make during scene.\n\nYou gain a **Fashion** expertise.",
       "ru": "Пока на вас надета видимая презентабельная броня или модная одежда, вы получаете преимущество на первую проверку **Обмана**, **Лидерства** или **Убеждения**, совершаемую во время любой сцены. Кроме того, приобретая этот талант, вы получаете культурную компетенцию **Мода**."
     },
     "origin": "path",
@@ -99,8 +99,8 @@
       "ru": "Призыв к спокойствию"
     },
     "description": {
-      "en": "**Requirements** Discipline 2+.\n\nWhen your **Steadfast Challenge** makes a character *Disoriented*, you can spend 1 focus to also pacify them until the end of this scene. A pacified character makes no attacks or similar hostile actions without provocation. However, if you or your ally attacks them or similarly acts hostilely, or if one of their allies suffers an injury or dies, the pacified character ceases to be pacified.\n\nAdditionally, after a target resists the influence of your **Steadfast Challenge**, they lose additional focus equal to your ranks in **Discipline**.",
-      "ru": "**Требования** Дисциплина 2+.\n\nКогда ваш **Непоколебимый вызов** накладывает на персонажа *Дезориентацию*, вы можете потратить 1 фокус, чтобы также успокоить его до конца сцены. Успокоенная цель не совершает атак и прочих враждебных действий без провокации. Однако, если вы или ваш союзник атакуете её либо проявите иную враждебность, или если один из её союзников получит травму или погибнет, цель перестаёт быть успокоенной.\n\nКроме того, после того как цель сопротивляется влиянию вашего **Непоколебимого вызова**, она теряет дополнительное количество фокуса, равное вашему рангу в *Дисциплине*."
+      "en": "**Requirements** Discipline 2+.\n\nWhen an enemy is *Disoriented* by **Steadfast Challenge**, you can **spend 1 Focus** to also pacify them. A pacified character makes no attacks or similar hostile actions without provocation.\n\nAfter a target resists the influence of your **Steadfast Challenge**, they lose additional focus equal to your ranks in Discipline.",
+      "ru": "**Требования** Дисциплина 2+.\n\nКогда ваш **Непоколебимый вызов** накладывает на персонажа *Дезориентацию*, вы можете **потратить 1 фокус**, чтобы также успокоить его до конца сцены. Успокоенная цель не совершает атак и прочих враждебных действий без провокации. Однако, если вы или ваш союзник атакуете её либо проявите иную враждебность, или если один из её союзников получит травму или погибнет, цель перестаёт быть успокоенной.\n\nКроме того, после того как цель сопротивляется влиянию вашего **Непоколебимого вызова**, она теряет дополнительное количество фокуса, равное вашему рангу в Дисциплине."
     },
     "origin": "path",
     "origin_value": "envoy",
@@ -116,8 +116,8 @@
       "ru": "Связи из высшего общества"
     },
     "description": {
-      "en": "**Requirements** Patron in high society.\n\nWhen you make a test to interact socially in high society, you can spend 2 focus to add an **Opportunity** to the result.\n\nAdditionally, when you acquire this talent, gain a cultural expertise in **High Society**.",
-      "ru": "**Требования** Покровитель из высшего общества.\n\nКогда вы совершаете проверку на социальное взаимодействие в высшем обществе, вы можете потратить 2 фокуса, чтобы добавить **Возможность** к результату. Кроме того, приобретая этот талант, вы получаете культурную компетенцию **Высшее общество**."
+      "en": "**Requirements** Patron in high society.\n\nWhen you make a test to interact socially in high society, you can **spend 2 Focus** to add an Opportunity to the result.\n\nYou gain a **High Society** expertise.",
+      "ru": "**Требования** Покровитель из высшего общества.\n\nКогда вы совершаете проверку на социальное взаимодействие в высшем обществе, вы можете потратить 2 фокуса, чтобы добавить **Возможность** к результату.\n\nКроме того, приобретая этот талант, вы получаете культурную компетенцию **Высшее общество**."
     },
     "origin": "path",
     "origin_value": "envoy",
@@ -134,8 +134,8 @@
       "ru": "Мирное решение"
     },
     "description": {
-      "en": "**Requirements** Discipline 3+.\n\nIn combat, if all non-minion enemies are currently pacified (such as by **Calm Appeal**) and all other non-minion characters agree to cease hostilities, you can ease tensions. The combat immediately ends and becomes a conversation.\n\nAt the GM's discretion, you can use this talent in non-combat scenes.",
-      "ru": "**Требования** Дисциплина 3+.\n\nВ бою, если все враги, не являющиеся приспешниками, находятся в состоянии спокойствия (например, из-за **Призыва к спокойствию**), и все остальные персонажи, также не являющиеся приспешниками, согласны прекратить враждебные действия, вы можете урегулировать напряжение. В этом случае бой немедленно завершается и переходит в разговор.\n\nПо усмотрению Ведущего этот талант может использоваться и вне боевых сцен."
+      "en": "**Requirements** Discipline 3+.\n\nIn combat, if all non-minion enemies are currently pacified and all other non-minion characters agree to cease hostilities, the combat immediately ends and becomes a conversation.",
+      "ru": "**Требования** Дисциплина 3+.\n\nВ бою, если все враги, не являющиеся приспешниками, находятся в состоянии спокойствия, и все остальные персонажи, также не являющиеся приспешниками, согласны прекратить враждебные действия, вы можете урегулировать напряжение. В этом случае бой немедленно завершается и переходит в разговор.\n\nПо усмотрению Ведущего этот талант может использоваться и вне боевых сцен."
     },
     "origin": "path",
     "origin_value": "envoy"
@@ -148,8 +148,8 @@
       "ru": "Ораторское мастерство"
     },
     "description": {
-      "en": "**Requirements** Persuasion 3+.\n\nWhen you use your **Rousing Presence** or **Steadfast Challenge**, you can spend focus up to your ranks in **Persuasion** to affect that many additional targets.",
-      "ru": "**Требования** Убеждение 3+.\n\nКогда вы используете **Побуждающее присутствие** или **Непоколебимый вызов**, вы можете потратить количество фокуса, не превышающее ваш ранг в **Убеждение**, чтобы воздействовать эффектом на такое же количество дополнительных целей."
+      "en": "**Requirements** Persuasion 3+.\n\nWhen you use **Rousing Presence** or **Steadfast Challenge**, you can **spend Focus** up to your ranks in Persuasion to affect additional targets.",
+      "ru": "**Требования** Убеждение 3+.\n\nКогда вы используете **Побуждающее присутствие** или **Непоколебимый вызов**, вы можете **потратить количество фокуса**, не превышающее ваш ранг в Убеждение, чтобы воздействовать эффектом на такое же количество дополнительных целей."
     },
     "origin": "path",
     "origin_value": "envoy"
@@ -162,8 +162,8 @@
       "ru": "Привычное облачение"
     },
     "description": {
-      "en": "While you're visibly wearing Presentable armor or clothing appropriate for your station, your **Physical and Spiritual defenses** increase by 2.",
-      "ru": "Пока на вас надета видимая Презентабельная броня или одежда, подчеркивающая ваш статус, ваша **Физическая и Духовная защита** увеличивается на 2."
+      "en": "While you're wearing presentable armor, your gain calculated bonus +2 to Physical and Spiritual defenses.",
+      "ru": "Пока на вас надета видимая Презентабельная броня или одежда, подчеркивающая ваш статус, ваша Физическая и Духовная защита увеличивается на 2."
     },
     "origin": "path",
     "origin_value": "envoy",
@@ -182,8 +182,8 @@
       "ru": "Наставляющее присутствие"
     },
     "description": {
-      "en": "**Requirements** Lore 1+.\n\nWhen you use your **Rousing Presence** on one or more allies, you can spend 1 focus per target to remove any number of the following conditions from them: *Prone*, *Slowed*, *Stunned*, and *Surprised*.",
-      "ru": "**Требования** Знания 1+.\n\nКогда вы используете **Побуждающее присутствие** на одного или более союзников, вы можете потратить 1 фокус за каждую цель, чтобы снять с неё любое количество следующих состояний: *Сбит с ног*, *Замедлен*, *Ошеломлён* и *Взят врасплох*."
+      "en": "**Requirements** Lore 1+.\n\nWhen you use **Rousing Presence**, you **can spend 1 Focus per target** to remove any number of conditions from them: *Prone*, *Slowed*, *Stunned*, and *Surprised*.",
+      "ru": "**Требования** Знания 1+.\n\nКогда вы используете **Побуждающее присутствие** на одного или более союзников, вы можете **потратить 1 фокус за каждую цель**, чтобы снять с неё любое количество следующих состояний: *Сбит с ног*, *Замедлен*, *Ошеломлён* и *Взят врасплох*."
     },
     "origin": "path",
     "origin_value": "envoy",
@@ -199,8 +199,8 @@
       "ru": "Непоколебимое присутствие"
     },
     "description": {
-      "en": "**Requirements** Discipline 2+.\n\nWhen you use your **Rousing Presence**, you can spend 1 focus to increase one of the target's defenses (your choice) by 2 until the end of the next round.",
-      "ru": "**Требования** Дисциплина 2+.\n\nКогда вы используете **Побуждающее присутствие**, вы можете потратить 1 фокус, чтобы повысить значение одной из защит цели (на ваш выбор) на 2 до конца следующего раунда."
+      "en": "**Requirements** Discipline 2+.\n\nWhile using **Rousing Presence**, you can **spend 1 Focus** to give bonus +2 to target's defenses until the end of the next round.",
+      "ru": "**Требования** Дисциплина 2+.\n\nКогда вы используете **Побуждающее присутствие**, вы можете **потратить 1 фокус**, чтобы повысить значение одной из защит цели (на ваш выбор) на 2 до конца следующего раунда."
     },
     "origin": "path",
     "origin_value": "envoy",
@@ -216,8 +216,8 @@
       "ru": "Мудрое наставление"
     },
     "description": {
-      "en": "**Requirements** Lore 3+.\n\nAfter you use the Aid reaction on an ally, spend 1 focus to grant that ally the benefits of your **Rousing Presence** (no action required).",
-      "ru": "**Требования** Знания 3+.\n\nПосле того как вы используете реакцию Помощь на союзника, вы можете потратить 1 фокус, чтобы применить на него эффект вашего «**обуждающего присутствия»**(действие не требуется)."
+      "en": "**Requirements** Lore 3+.\n\nAfter using Aid reaction, **spend 1 Focus** to grant ally the benefits of **Rousing Presence**.",
+      "ru": "**Требования** Знания 3+.\n\nПосле того как вы используете реакцию Помощь на союзника, вы можете **потратить 1 фокус**, чтобы применить на него эффект вашего **Побуждающего присутствия**."
     },
     "origin": "path",
     "origin_value": "envoy"
@@ -230,7 +230,7 @@
       "ru": "Воодушевляющее рвение"
     },
     "description": {
-      "en": "**Requirements** Discipline 3+.\n\nAfter an ally you can sense uses their *Determined* condition to add an **Opportunity** to a test, you can choose a number of other allies you can influence up to your ranks in **Discipline**. Each target recovers 1 focus (no action required).",
+      "en": "**Requirements** Discipline 3+.\n\nAfter an ally uses their *Determined* condition to add an **Opportunity** to a test, you can choose ally (for each rank in Discipline) and he recovers 1 focus.",
       "ru": "**Требования** Дисциплина 3+.\n\nПосле того как союзник, которого вы можете обнаружить, использует состояние *Решительный*, чтобы добавить **Возможность** к проверке, вы можете выбрать количество других союзников, на которых можете повлиять, не превышающее значение вашего ранга в **Дисциплине**. Каждая выбранная цель восстанавливает 1 фокус (действия не требуется)."
     },
     "origin": "path",
@@ -244,7 +244,7 @@
       "ru": "Ободрение"
     },
     "description": {
-      "en": "Once per scene, choose an ally you can influence. They can roll their recovery die (no action required) and recover focus equal to the result.",
+      "en": "Once per scene, choose an ally. They can roll their recovery die for recovering focus.",
       "ru": "Один раз за сцену выберите союзника, на которого вы можете повлиять. Он может бросить свою кость восстановления (действия не требуется) и восстановить количество фокуса, равное результату броска."
     },
     "origin": "path",
@@ -262,7 +262,7 @@
       "ru": "Собранность"
     },
     "description": {
-      "en": "When you acquire this talent, your maximum and current focus increase by a number equal to your tier.",
+      "en": "You gain calculated bonus (equal to your tier) to maximum focus.",
       "ru": "Приобретая этот талант, ваш максимальный и текущий фокус увеличивается на значение, равное вашему тиpу."
     },
     "origin": "path",
@@ -280,8 +280,8 @@
       "ru": "Ободряющая мотивация"
     },
     "description": {
-      "en": "**Requirements** Discipline 2+.\n\nWhen you cause a character to recover focus, they recover additional focus equal to half your ranks in **Lore** (rounded up).",
-      "ru": "**Требования** Дисциплина 2+.\n\nКогда вы восстанавливаете персонажу фокус, он восстанавливает дополнительное количество фокуса, равное половине вашего ранга в **Знаниях** (с округлением вверх)."
+      "en": "**Requirements** Discipline 2+.\n\nWhen character recovers focus because of you, they recover additional focus equal to half your ranks in Lore (rounded up).",
+      "ru": "**Требования** Дисциплина 2+.\n\nКогда вы восстанавливаете персонажу фокус, он восстанавливает дополнительное количество фокуса, равное половине вашего ранга в Знаниях (с округлением вверх)."
     },
     "origin": "path",
     "origin_value": "envoy",
@@ -297,8 +297,8 @@
       "ru": "Хороший совет"
     },
     "description": {
-      "en": "After an ally you can influence fails a skill test, you can spend 1 focus to use your **Rousing Presence** on them as reaction.",
-      "ru": "После того как союзник, на которого вы можете повлиять, проваливает проверку навыка, вы можете потратить 1 фокус, чтобы использовать **Побуждающее присутствие** как реакцию."
+      "en": "After an ally fails a skill test, you can **spend 1 Focus** to use your **Rousing Presence** on them as reaction.",
+      "ru": "После того как союзник, на которого вы можете повлиять, проваливает проверку навыка, вы можете **потратить 1 фокус**, чтобы использовать **Побуждающее присутствие** как реакцию."
     },
     "origin": "path",
     "origin_value": "envoy",
@@ -315,7 +315,7 @@
       "ru": "Уроки терпения"
     },
     "description": {
-      "en": "**Requirements** Discipline 2+.\n\nAfter you use your **Rousing Presence**, the target recovers 1 focus.\n\nAdditionally, when you acquire this talent, gain a utility expertise in **Motivational Speech**.",
+      "en": "**Requirements** Discipline 2+.\n\nAfter using **Rousing Presence**, the target recovers 1 focus.\n\nYou gain a **Motivational Speech** expertise.",
       "ru": "**Требования** Дисциплина 2+.\n\nПосле использования вами **Побуждающего присутствия** ваша цель также восстанавливает 1 фокус.\n\nКроме того, приобретая этот талант, вы получаете утилитарную компетенцию **Мотивационная речь**."
     },
     "origin": "path",
@@ -332,7 +332,7 @@
       "ru": "Вселить уверенность"
     },
     "description": {
-      "en": "**Requirements** A companion.\n\nWhen you use your **Rousing Presence**, instead of the target becoming *Determined*, you can make them *Focused* until the end of the scene.",
+      "en": "**Requirements** A companion.\n\nWhile using **Rousing Presence** you can make target *Focused* (instead of *Determined*) until the end of the scene.",
       "ru": "**Требования** Компаньон.\n\nКогда вы используете **Побуждающее присутствие**, вместо того чтобы сделать цель *Решительной*, вы можете сделать её *Сфокусированной* до конца сцены."
     },
     "origin": "path",
@@ -349,7 +349,7 @@
       "ru": "Дальновидность"
     },
     "description": {
-      "en": "**Requirements** Discipline 3+.\n\nAt the beginning of combat and at the start of each of your turns, gain an additional reaction.",
+      "en": "**Requirements** Discipline 3+.\n\nYou gain an additional reaction at the beginning of combat and at the start of each of your turns.",
       "ru": "**Требования** Дисциплина 3+.\n\nВ начале боя, а также в начале каждого вашего хода, вы получаете дополнительную реакцию."
     },
     "origin": "path",
@@ -380,14 +380,15 @@
       "ru": "Мощь"
     },
     "description": {
-      "en": "When you hit with a weapon or unarmed attack, for each action you used on that attack's action, increase the damage you deal by 1 + your tier.",
-      "ru": "Когда вы попадаете безоружной атакой или атакой оружием за каждое потраченное действие на эту атаку, она наносит дополнительный урон, равный 1 + ваш тир."
+      "en": "When you hit increase the damage you deal by {{value}}<<1 + your tier>> (for each action on attack).",
+      "ru": "Когда вы попадаете безоружной атакой или атакой оружием за каждое потраченное действие на эту атаку, она наносит дополнительный урон, равный {{value}}<<1 + ваш тир>>."
     },
     "origin": "path",
     "origin_value": "envoy",
     "info": {
       "double_slug": "mighty",
-      "required_for": ["guiding_oration"]
+      "required_for": ["guiding_oration"],
+      "formulas": { "value": "1 + tier" }
     }
   },
   {
@@ -398,7 +399,7 @@
       "ru": "Направляющие слова"
     },
     "description": {
-      "en": "**Requirements** Leadership 2+.\n\nAfter you succeed on a test to Gain Advantage, you can choose an ally you can influence within 10 feet of your target. Until the end of their next turn, that ally gains an advantage on their next test against your target.",
+      "en": "**Requirements** Leadership 2+.\n\nAfter you succeed on gaining advantage, you can choose an ally within 10 feet of your target. Ally gains an advantage on their next test against your target until the end of their next turn.",
       "ru": "**Требования** Лидерство 2+.\n\nПосле успешной проверки действия «Получить преимущество» вы можете выбрать союзника, на которого можете повлиять, в пределах 10 футов от вашей цели. До конца вашего следующего хода этот союзник получает преимущество на следующую проверку против этой цели."
     },
     "origin": "path",
@@ -415,8 +416,8 @@
       "ru": "Оживляющий крик"
     },
     "description": {
-      "en": "**Requirements** Leadership 3+.\n\nWhen you use your **Rousing Presence**, you can target an *Unconscious* ally you can sense. When you do, the target is no longer *Unconscious*, and if they have 0 health, they roll their recovery die and recover health equal to the result + your ranks in **Leadership**.",
-      "ru": "**Требования** Лидерство 3+.\n\nКогда вы используете **Побуждающее присутствие**, вы можете выбрать в качестве цели находящегося *Без сознания* союзника, которого можете обнаружить. Если вы это делаете, цель приходит в сознание, и если её здоровье было равно 0, она совершает бросок своей кости восстановления и восстанавливает количество здоровья, равное её результату броска + ваш ранг в **Лидерстве**."
+      "en": "**Requirements** Leadership 3+.\n\nWhen using **Rousing Presence**, you can target an *Unconscious* ally. The target is no longer *Unconscious*, and if they have 0 health, they roll their recovery die and recover health (roll result + your ranks in Leadership).",
+      "ru": "**Требования** Лидерство 3+.\n\nКогда вы используете **Побуждающее присутствие**, вы можете выбрать в качестве цели находящегося *Без сознания* союзника, которого можете обнаружить. Если вы это делаете, цель приходит в сознание, и если её здоровье было равно 0, она совершает бросок своей кости восстановления и восстанавливает количество здоровья, равное её результату броска + ваш ранг в Лидерстве."
     },
     "origin": "path",
     "origin_value": "envoy"

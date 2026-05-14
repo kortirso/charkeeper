@@ -7,8 +7,8 @@
       "ru": "Поток Абразии"
     },
     "description": {
-      "en": "**Spend 1 Investiture or more** to infuse an object or portion of a surface within your reach, making it nearly frictionless; to do so, you must have a hand free and touch the target. This infusion uses 1 Investiture each round, and for the duration, the object or surface slides freely.\n\nThis target can't exceed the surge size for your ranks in Abrasion (see the Surge Scaling table at the beginning of this chapter).\n\nYou can't use this surge on other characters, Invested objects, or objects that have been infused with Stormlight.\n\nAlternatively, you can infuse your body with Abrasion, regardless of your size, spending 1 Investiture each round to maintain the surge. While infused, you can freely change which parts of your body are frictionless.",
-      "ru": "**Потратьте 1 Инвеституру или более**, наполняя ею объект или участок поверхности в пределах вашей досягаемости, почти полностью лишая её трения. Для этого у вас должна быть свободная рука, и вы должны коснуться цели. Наполнение расходует 1 Инвеституру каждый раунд, и в течение его действия объект или поверхность свободно скользит.\n\nВыбранная цель не должна превышать размер, допустимый для вашего ранга в Абразии.\n\nВы не можете использовать этот поток на других персонажей, Инвестированных объектах или объектах, уже наполненных Буресветом.\n\nВ качестве альтернативы, вы можете наполнить Абразией своё тело, независимо от вашего размера, расходуя 1 Инвеституру каждый раунд для поддержания потока. Наполнив себя, вы можете свободно менять, какие части тела лишены трения, и можете использовать Катание и Скольжение, пока действие потока не закончится."
+      "en": "**Spend 1 Investiture or more** to infuse an object or surface within your reach for frictionless. Infusing consumes 1 Investiture each round.\n\nYou can infuse your body with Abrasion, spending 1 Investiture each round to maintain the flow. Once infused, you can freely change which parts of your body are frictionless and can use **Skate** and **Slide** until the flow ends.",
+      "ru": "**Потратьте 1 Инвеституру или более**, наполняя ею объект или участок поверхности в пределах вашей досягаемости, почти полностью лишая её трения. Для этого у вас должна быть свободная рука, и вы должны коснуться цели. Наполнение расходует 1 Инвеституру каждый раунд, и в течение его действия объект или поверхность свободно скользит.\n\nВыбранная цель не должна превышать размер, допустимый для вашего ранга в Абразии.\n\nВы не можете использовать этот поток на других персонажей, Инвестированных объектах или объектах, уже наполненных Буресветом.\n\nВ качестве альтернативы, вы можете наполнить Абразией своё тело, независимо от вашего размера, расходуя 1 Инвеституру каждый раунд для поддержания потока. Наполнив себя, вы можете свободно менять, какие части тела лишены трения, и можете использовать **Катание** и **Скольжение**, пока действие потока не закончится."
     },
     "origin": "surge",
     "origin_value": "abrasion",
@@ -26,8 +26,8 @@
       "ru": "Скользящее перемещение"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\nWhile infused with Abrasion, your movement rate increases by 10 feet, and you ignore the Slowed condition when imposed by difficult terrain, climbing, crawling, and swimming.",
-      "ru": "**Требования** Произнести Первый идеал.\n\nПока вы наполнены Абразией, ваша скорость передвижения увеличивается на 10 футов, и вы игнорируете состояние Замедленный от труднопроходимой местности, лазанья, ползания и плавания."
+      "en": "**Requirements** Speak the First Ideal.\n\nWhile infused, you gain calculated bonus +10 to movement speed, and you ignore the *Slowed* condition from difficult terrain, climbing, crawling, and swimming.",
+      "ru": "**Требования** Произнести Первый идеал.\n\nПока вы наполнены Абразией, ваша скорость передвижения увеличивается на 10 футов, и вы игнорируете состояние *Замедленный* от труднопроходимой местности, лазанья, ползания и плавания."
     },
     "origin": "surge",
     "origin_value": "abrasion",
@@ -45,7 +45,7 @@
       "ru": "Обратная абразия"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\nWhen you infuse an object or surface with Abrasion, you can choose to increase the infused target's friction instead of reducing it. When a character interacts with such an object, they gain an advantage on Agility and Athletics tests made to do so. When a character moves across such a surface, they ignore any *Slowed* condition the surface would normally apply.",
+      "en": "**Requirements** Speak the First Ideal.\n\nWhen you infuse an object or surface, you can choose to increase friction. A character interacting with such an object gains advantage on Agility and Athletics checks that benefit from increased friction. When moving across such a surface, the character ignores the *Slowed* condition.",
       "ru": "**Требования** Произнести Первый идеал.\n\nКогда вы наполняете объект или поверхность Абразией, вы можете выбрать не снижать, а увеличить трение. Персонаж, взаимодействующий с таким объектом, получает преимущество на проверки Ловкости и Атлетики, в которых повышенное трение может помочь. При перемещении по такой поверхности персонаж игнорирует состояние *Замедленный*, которое обычно накладывалось бы в других условиях."
     },
     "origin": "surge",

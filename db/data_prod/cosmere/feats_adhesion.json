@@ -7,7 +7,7 @@
       "ru": "Поток Адгезии"
     },
     "description": {
-      "en": "To perform a Full Lashing, **spend 1 Investiture or more**, infusing it into two unsecured objects within your reach and within 5 feet of each other; you must have a hand free and touch the targets. The infusion uses 1 Investiture each round, and the two objects become stuck together for the duration.\n\nEach object you target can't exceed the surge size for your ranks in Adhesion.\n\nIf you wish, one of these two objects can instead be the ground, wall, ceiling, or similar surface; you can target this surface regardless of its size. You can't use this surge on characters, Invested objects, or objects that have been infused with Stormlight.",
+      "en": "**Spend 1 or more Investiture** to infuse two unattached objects within your reach and no more than 5 feet apart. You must have a free hand and be touching the targets. This effect consumes 1 Investiture each round.\n\nIf you choose, one of the two objects may be the ground, a wall or a similar surface.",
       "ru": "Чтобы выполнить Полное Сплетение, **потратьте 1 Инвеституру или более**, наполняя ею два незакрепленных объекта в пределах вашей досягаемости и на расстоянии не более 5 футов друг от друга. Для этого у вас должна быть свободная рука, и вы должны коснуться целей. Эффект потребляет 1 Инвеституру каждый раунд, и в течение его действия два объекта остаются скрепленными друг с другом.\n\nКаждый объект, выбранный вами в качестве цели, не должен превышать размер, допустимый для вашего ранга в Адгезии.\n\nЕсли вы пожелаете, одним из двух объектов может быть земля, стена, потолок или аналогичная поверхность; вы можете выбрать эту поверхность в качестве цели независимо от её размера. Вы не можете использовать этот поток на других персонажей, Инвестированных объектах или объектах, уже наполненных Буресветом."
     },
     "origin": "surge",
@@ -25,7 +25,7 @@
       "ru": "Возвращение буресвета"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\nAfter your infusions expend their infused Investiture at the start of your turn, you can end any number of those infusions within your reach, recovering all remaining Investiture they were infused with.",
+      "en": "**Requirements** Speak the First Ideal.\n\nAfter your infusions spend their Investiture at the start of your turn, you may complete any number of active infusions within your reach and regain any remaining Investiture.",
       "ru": "**Требования** Произнести Первый идеал.\n\nПосле того как ваши наполнения расходуют вложенную в них Инвеституру в начале вашего хода, вы можете завершить любое количество активных наполнений в пределах вашей досягаемости и вернуть себе всю оставшуюся в них Инвеституру."
     },
     "origin": "surge",
@@ -42,7 +42,7 @@
       "ru": "Сплетающий удар"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\nAfter you hit with a melee attack, you can **spend Opportunity** or 2 focus to use Adhesion, infusing Investiture as usual but without spending an action. At least one target must be an object the target is holding or wearing, and you automatically succeed on the test to infuse it. As usual, the other object or surface must be within 5 feet of the first object, but you don't need to touch it or have a hand free.",
+      "en": "**Requirements** Speak the First Ideal.\n\nWhen you hit with a melee attack, you can **spend an Opportunity** or **spend 2 Focus** to use Adhesion, infusing objects with Investiture as normal, but without spending an action. At least one of the objects must be something the target is holding or wearing. The other object or surface must be within 5 feet of the first, but you don't need to be touching it or have a free hand.",
       "ru": "**Требования** Произнести Первый идеал.\n\nКогда вы попадаете атакой ближнего боя, вы можете **потратить Возможность** или 2 фокуса, чтобы использовать Адгезию, наполняя объекты Инвеститурой как обычно, но без траты действия. По крайней мере один из объектов должен быть тем, который цель держит или носит, проверка на его наполнение считается автоматически успешной. Как и обычно, другой объект или поверхность должны находиться в пределах 5 футов от первого, но при этом вам не нужно к ним прикасаться или иметь для этого свободную руку."
     },
     "origin": "surge",

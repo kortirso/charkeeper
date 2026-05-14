@@ -7,7 +7,7 @@
       "ru": "Поток Гравитации"
     },
     "description": {
-      "en": "To perform a Basic Lashing, **spend 1 Investiture or more** to infuse a character or object within your reach; you must have a hand free and touch the target. Your target can't exceed the surge size for your ranks in Gravitation.\n\nThe infusion uses 1 Investiture each round, and for the duration, the target's gravity changes directions. This change uses your gravitation rate, which begins at 25 feet.\n\nYour target doesn't move fast enough to deal damage on impact. However, if a target is aloft when the surge ends, they fall and take the usual damage from the fall.\n\n**Targeting a Character.** You can target a willing character, granting them a flying rate equal to your gravitation rate for the duration.\n\nAlternatively, you can infuse yourself with Gravitation regardless of your size, gaining the same flying rate and spending 1 Investiture each round to maintain the surge.\n\n**Targeting an Object.** You can target an object, declaring a new direction for its gravity. At the start of each of your turns, after the infusion expends another 1 Investiture, move that object in a straight line up to your gravitation rate.\n\nYou can't use this surge on Invested objects or objects that have been infused with Stormlight.",
+      "en": "**Spend 1 Investiture or more** to infuse a character or object within your reach with it. This imbuement consumes 1 Investiture each round.\n\nDuring its duration, the direction of the target's gravity changes.\n\n**Targeting Characters.** You may target a willing character, granting them a fly speed equal to your gravitational speed.\n\nYou may infuse yourself with gravity.\n\n**Targeting Objects.** You may target an object by specifying a new direction for its gravitational pull. At the start of each of your turns, after infusing it spends 1 Investiture, move this object in a straight line up to your gravitational speed.",
       "ru": "Чтобы выполнить Основное Плетение, **потратьте 1 Инвеституру или более**, наполняя ею персонажа или объект в пределах вашей досягаемости. Для этого у вас должна быть свободная рука, и вы должны коснуться цели. Выбранная цель не должна превышать размер, допустимый для вашего ранга в Гравитации. Наполнение расходует 1 Инвеституру каждый раунд.\n\nВ течение его действия направление гравитации цели изменяется. Это изменение использует вашу скорость гравитации, которая изначально равна 25 футам.\n\nИзначально цель движется с недостаточной скоростью, чтобы столкновение могло нанести урон. Однако если к моменту завершения действия потока цель оказывается в воздухе, она начинает падать и, как следствие, получает обычный урон от падения.\n\n**Персонажи в качестве цели.** Вы можете выбрать в качестве цели согласного персонажа, даровав ему скорость полёта, равную вашей скорости гравитации, на время действия эффекта.\n\nКроме того, вы можете наполнить Гравитацией самого себя, независимо от вашего размера, получая ту же скорость полёта и тратить 1 Инвеституру каждый раунд для поддержания эффекта потока.\n\n**Объекты в качестве цели.** Вы можете выбрать объект в качестве цели, указав новое направление его гравитационного притяжения. В начале каждого вашего хода, после того как наполнение расходует 1 Инвеституру, переместите этот объект по прямой на расстояние, не превышающее вашу скорость гравитации.\n\nВы не можете использовать этот поток на Инвестированных объектах или объектах, уже наполненных Буресветом."
     },
     "origin": "surge",
@@ -15,7 +15,8 @@
     "price": { "a": 1 },
     "info": {
       "required_for": ["flying_ace", "gravitational_slam"]
-    }
+    },
+    "modifiers": { "speeds.gravitation": { "type": "set", "value": 25 } }
   },
   {
     "slug": "flying_ace",
@@ -25,15 +26,16 @@
       "ru": "Мастер полетов"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\nWhile maintaining a Basic Lashing on yourself, fly a distance up to your gravitation rate. Once during this movement, you can spend 1 focus to make a melee weapon attack as part of the same action. After resolving that attack, you can continue your movement.\n\nAdditionally, when you acquire this talent, your gravitation rate increases to 40 feet.",
-      "ru": "**Требования** Произнести Первый идеал.\n\nПока вы поддерживаете Основное плетение на себе, вы можете летать на расстояние до вашей Скорости гравитации. Один раз во время этого перемещения вы можете потратить 1 фокус, чтобы совершить атаку оружием ближнего боя как часть того же действия.\n\nПосле выполнения атаки вы можете продолжить своё перемещения. Кроме того, приобретая этот талант ваша Скорость гравитации увеличивается до 40 футов."
+      "en": "**Requirements** Speak the First Ideal.\n\nWhile maintaining a surge on yourself, fly a distance up to your gravitation speed. During this movement, you can **spend 1 Focus** to make a melee weapon attack as part of the same action.\n\nYour gravitation rate increases to 40 feet.",
+      "ru": "**Требования** Произнести Первый идеал.\n\nПока вы поддерживаете Основное плетение на себе, вы можете летать на расстояние до вашей Скорости гравитации. Один раз во время этого перемещения вы можете **потратить 1 фокус**, чтобы совершить атаку оружием ближнего боя как часть того же действия.\n\nПосле выполнения атаки вы можете продолжить своё перемещения. Кроме того, приобретая этот талант ваша Скорость гравитации увеличивается до 40 футов."
     },
     "origin": "surge",
     "origin_value": "gravitation",
     "info": {
       "required_for": []
     },
-    "price": { "a": 1 }
+    "price": { "a": 1 },
+    "modifiers": { "speeds.gravitation": { "type": "set", "value": 40 } }
   },
   {
     "slug": "gravitational_slam",
@@ -43,7 +45,7 @@
       "ru": "Гравитационный удар"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\nWhen you use a Basic Lashing to move an unwilling creature or object into a solid surface, the collision stops that movement early, and you can choose for the Lashed target to take 1d4 impact damage for every 10 feet they were moved with that Lashing on this turn.\n\nYour target can use the Avoid Danger reaction to make an Agility test opposed by your Gravitation, taking half as much damage on a success.\n\nThe size of these damage dice increases with your ranks in Gravitation.",
+      "en": "**Requirements** Speak the First Ideal.\n\nYou touch an unguarded object and launch it at a target within your line of sight, spending an amount of Investiture equal to the distance to the target divided by your Gravity Speed (rounded up).\n\nMake a ranged attack (Gravity vs Physical Defense), 2d4 (damage dice increases by ranks in Gravity) bludgeoning damage.",
       "ru": "**Требования** Произнести Первый идеал.\n\nВы прикасаетесь к неохраняемому объекту размера, допустимого для вашего ранга в Гравитации, и запускаете его в цель в пределах вашей линии видимости, тратя количество Инвеституры, равное расстоянию до цели, делённому на вашу Скорость гравитации (с округлением вверх).\n\nСовершите атаку дальнего боя Гравитацией против Физической защиты цели. Бросьте 2d4 дробящего урона. Размер этих костей увеличивается с ростом вашего ранга в Гравитации."
     },
     "origin": "surge",

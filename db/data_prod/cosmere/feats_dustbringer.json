@@ -7,16 +7,141 @@
       "ru": "Первый Идеал"
     },
     "description": {
-      "en": "**Requirements** Level 2+.\n\nYou begin bonding an ashspren, allowing you to breathe in and use Stormlight.",
-      "ru": "**Требования** Уровень 2+.\n\nВы начинаете формировать узы со спреном пепла, что позволяет вам вдыхать и использовать Буресвет."
+      "en": "**Requirements** Level 2+.\n\nYou begin bonding an spren.",
+      "ru": "**Требования** Уровень 2+.\n\nВы начинаете формировать узы со спреном."
     },
     "origin": "radiant_path",
     "origin_value": "dustbringer",
     "info": {
-      "required_for": [],
+      "required_for": ["second_ideal_dustbringer", "searing_dust_storm"],
       "extra_feats": ["abrasion_surge", "division_surge", "breathe_stormlight", "enhance", "regenerate"],
       "extra_skills": ["abrasion", "division"],
       "investiture": true
     }
+  },
+  {
+    "slug": "second_ideal_dustbringer",
+    "kind": "static",
+    "title": {
+      "en": "Second Ideal",
+      "ru": "Второй Идеал"
+    },
+    "description": {
+      "en": "**Requirements** Level 4+; Speak the First Ideal.\n\nWhile you have 1 Investiture or more, you:\n\n- can use **Enhance** as free action,\n\n- don't need to spend Investiture to use this action or maintain it.",
+      "ru": "**Требования** Уровень 4+; Произнести Первый Идеал.\n\nПока у вас есть 1 Инвеститура или более, вы:\n\n- можете использовать **Усиление** как свободное действие,\n\n- вам не нужно тратить Инвеституру ни для его активации, ни для поддержания эффекта."
+    },
+    "origin": "radiant_path",
+    "origin_value": "dustbringer",
+    "info": {
+      "required_for": ["third_ideal_dustbringer"]
+    }
+  },
+  {
+    "slug": "third_ideal_dustbringer",
+    "kind": "static",
+    "title": {
+      "en": "Third Ideal",
+      "ru": "Третий Идеал"
+    },
+    "description": {
+      "en": "**Requirements** Level 8+; Speak the Second Ideal.\n\nYou can summon your spren as a Radiant Shardblade.",
+      "ru": "**Требования** Уровень 8+; Произнести Второй Идеал.\n\nВы можете призвать своего спрена в виде Осколочного клинка Сияющего."
+    },
+    "origin": "radiant_path",
+    "origin_value": "dustbringer",
+    "info": {
+      "required_for": ["fourth_ideal_dustbringer", "deepened_bond_dustbringer", "take_squire_dustbringer"]
+    }
+  },
+  {
+    "slug": "fourth_ideal_dustbringer",
+    "kind": "static",
+    "title": {
+      "en": "Fourth Ideal",
+      "ru": "Четвертый Идеал"
+    },
+    "description": {
+      "en": "**Requirements** Level 13+; Speak the Third Ideal.\n\nYou can call a swarm of spren as Radiant Shardplate.",
+      "ru": "**Требования** Уровень 13+; Произнести Третий Идеал.\n\nВы можете призвать рой спреном жизни в виде Осколочного доспеха Сияющего."
+    },
+    "origin": "radiant_path",
+    "origin_value": "dustbringer"
+  },
+  {
+    "slug": "deepened_bond_dustbringer",
+    "kind": "static",
+    "title": {
+      "en": "Deepened Bond",
+      "ru": "Углубленные узы"
+    },
+    "description": {
+      "en": "**Requirements** Speak the Third Ideal.\n\nYour spren bond range increases to 100 feet. When you spend focus to give your spren a task, it costs you 1 fewer focus (1 is minimum).",
+      "ru": "**Требования** Произнести Третий Идеал.\n\nВаш радиус уз со спреном увеличивается с 30 до 100 футов. Кроме того, когда вы тратите фокус, чтобы поручить спрену выполнить какую-то задачу, это стоит на 1 фокус меньше (но не меньше 1 фокуса)."
+    },
+    "origin": "radiant_path",
+    "origin_value": "dustbringer"
+  },
+  {
+    "slug": "take_squire_dustbringer",
+    "kind": "static",
+    "title": {
+      "en": "Take Squire",
+      "ru": "Взять оруженосца"
+    },
+    "description": {
+      "en": "**Requirements** Speak the Third Ideal.\n\nAfter a long rest, choose a companion or player character to make your squire. They must be intelligent and willing to accept.\n\nYou can have up to a maximum number of squires equal to your current Ideal.",
+      "ru": "**Требования** Произнести Третий Идеал.\n\nПосле продолжительного отдыха выберите компаньона или персонажа игрока, на которого вы можете повлиять, чтобы сделать его своим оруженосцем. Для этого он должен быть разумным и согласным на это, вы должны быть знакомы с ним не менее одной игровой сессии, и он не должен иметь уз со спреном Сияющих.\n\nКогда вы выбираете оруженосца, решите, хотите ли вы дать ему оба ваших потока, один из них или ни одного. Этот персонаж становится вашим оруженосцем и получает выбранные вами потоки.\n\nВы можете иметь число оруженосцев, не превышающее ваш текущий Идеал."
+    },
+    "origin": "radiant_path",
+    "origin_value": "dustbringer"
+  },
+  {
+    "slug": "searing_dust_storm",
+    "kind": "static",
+    "title": {
+      "en": "Searing Dust Storm",
+      "ru": "Раскалённая пыльная буря"
+    },
+    "description": {
+      "en": "**Requirements** Speak the First Ideal.\n\nWhen you move along a solid surface, you can **spend 1 Investiture or more** to raise up a cloud of dust in spaces of your choice. This cloud remains for a number of rounds equal to the Investiture spent.\n\nWhen enemy within this cloud takes damage for the first time during a round, that damage increases by your ranks in Discipline.",
+      "ru": "**Требования** Произнести Первый Идеал.\n\nКогда вы используете действие Перемещение для передвижения по твёрдой поверхности, вы можете **потратить 1 Инвеституру или более**, чтобы поднять застилающие облако пыли в пространствах по вашему выбору, в которые вы заходили или покидали во время этого перемещения. Это облако сохраняется в течение количества раундов, равное потраченной Инвеституре, либо до тех пор, пока его не рассеет достаточно сильный порыв ветра.\n\nКаждый раз, когда враг, находящийся в пределах этого облака, впервые за раунд получает урон, он также получает дополнительный урон, равный вашему рангу в Дисциплине."
+    },
+    "origin": "radiant_path",
+    "origin_value": "dustbringer",
+    "info": {
+      "required_for": ["invested_dustbringer"]
+    }
+  },
+  {
+    "slug": "invested_dustbringer",
+    "kind": "update_result",
+    "title": {
+      "en": "Invested",
+      "ru": "Инвестированный"
+    },
+    "description": {
+      "en": "You gain calculated bonus (equal to your tier) to maximum Investiture.",
+      "ru": "Приобретая этот талант, ваше максимальное значение Инвеституры увеличивается на величину, равную значению вашего тира."
+    },
+    "origin": "radiant_path",
+    "origin_value": "dustbringer",
+    "info": {
+      "required_for": ["wound_regeneration_dustbringer"]
+    },
+    "modifiers": { "investiture_max": { "type": "add", "value": "tier" } }
+  },
+  {
+    "slug": "wound_regeneration_dustbringer",
+    "kind": "static",
+    "title": {
+      "en": "Wound Regeneration",
+      "ru": "Регенерация травм"
+    },
+    "description": {
+      "en": "When you use the Regenerate as free action, you can **spend 2 Investiture** to recover from a temporary injury or **spend 3 Investiture** to recover from a permanent.",
+      "ru": "Когда вы используете действие Регенерация как свободное действие, вы можете потратить Инвеституру для мгновенного восстановления от травмы по вашему выбору. **Потратьте 2 Инвеституры**, чтобы восстановиться от временной травмы, или **потратьте 3 Инвеституры** чтобы восстановиться от постоянной травмы."
+    },
+    "origin": "radiant_path",
+    "origin_value": "dustbringer"
   }
 ]

@@ -7,8 +7,8 @@
       "ru": "Катание"
     },
     "description": {
-      "en": "**Requirements** infused with Abrasion.\n\nYou can skate across the ground as if it were ice. Spend 2 focus to Move (as free action) in a straight line on the ground.",
-      "ru": "**Требования** наполнение Абразией.\n\nВы можете кататься по поверхности, как по льду. Потратьте 2 фокуса, чтобы совершить Перемещение (в качестве свободного действия) по прямой линии на земле."
+      "en": "**Requirements** infused with Abrasion.\n\n**Spend 2 Focus** to Move in a straight line on the ground.",
+      "ru": "**Требования** наполнение Абразией.\n\n**Потратьте 2 фокуса**, чтобы совершить Перемещение (в качестве свободного действия) по прямой линии на земле."
     },
     "origin": "surge",
     "origin_value": "abrasion"
@@ -21,7 +21,7 @@
       "ru": "Скольжение"
     },
     "description": {
-      "en": "**Requirements** infused with Abrasion.\n\nYou instinctively remove friction from parts of your body to more easily slide over obstacles or escape bonds. You count as one size smaller when squeezing through spaces, and you gain an advantage on tests to escape restraints that hold you via friction or pressure.",
+      "en": "**Requirements** infused with Abrasion.\n\nYou are considered one size smaller when squeezing through tight spaces and have advantage on checks to escape anything that tries to hold you back through friction or pressure.",
       "ru": "**Требования** наполнение Абразией.\n\nВы инстинктивно убираете трение с частей своего тела, чтобы легче проскальзывать через препятствия или освобождаться из пут. При этом вы считаетесь на один размер меньше при протискивании через узкие пространства и получаете преимущество на проверки для освобождения от того, что пытается удержать вас за счет трения или давления."
     },
     "origin": "surge",
@@ -35,8 +35,8 @@
       "ru": "Вдохнуть буресвет"
     },
     "description": {
-      "en": "You draw Stormlight into yourself from infused spheres within 5 feet of you; if you have enough spheres, you recover Investiture up to your maximum.\n\nYou can use this action even if you're Unconscious or otherwise prevented from using actions.",
-      "ru": "Вы вбираете в себя Буресвет из наполненных сфер в пределах 5 футов от вас; если у вас достаточно сфер, вы восстанавливаете Инвеституру до своего максимального значения.\n\nВы можете использовать это действие даже если находитесь Без сознания или иным образом лишены возможности совершать действия."
+      "en": "You draw Stormlight into yourself from infused spheres within 5 feet of you. You recover all Investiture.\n\nYou can use this action even if you're *Unconscious*.",
+      "ru": "Вы вбираете в себя Буресвет из наполненных сфер в пределах 5 футов от вас; если у вас достаточно сфер, вы восстанавливаете Инвеституру до своего максимального значения.\n\nВы можете использовать это действие даже если находитесь *Без сознания* или иным образом лишены возможности совершать действия."
     },
     "origin": "radiant_path",
     "price": { "a": 2 }
@@ -49,7 +49,7 @@
       "ru": "Усиление"
     },
     "description": {
-      "en": "**Spend 1 Investiture** to become Enhanced [Strength +1] and Enhanced [Speed +1] until the end of your next turn. At the end of that turn and each of your turns thereafter, you can **spend 1 Investiture** as to maintain these conditions until the end of your next turn.",
+      "en": "**Spend 1 Investiture** to get bonus +1 to Strength and Speed until the end of your next turn. At the end of turn, you can **spend 1 Investiture** as to maintain these conditions until the end of your next turn.",
       "ru": "**Потратьте 1 Инвеституру**, чтобы получить Усиление [Сила +1] и Усиление [Скорость +1] до конца вашего следующего хода. В конце этого и каждого последующего вашего хода вы можете **тратить 1 Инвеституру**, чтобы поддерживать эти состояния до конца следующего хода."
     },
     "origin": "radiant_path",
@@ -65,10 +65,13 @@
       "ru": "Регенерация"
     },
     "description": {
-      "en": "**Spend 1 Investiture** to recover health equal to 1d6 + your current tier.\n\nYou can use this free action even if you're *Unconscious* or otherwise prevented from using actions.",
-      "ru": "**Потратьте 1 Инвеституру**, чтобы восстановить здоровье в размере 1d6 + ваш текущий тир.\n\nВы можете использовать это действие даже если находитесь *Без сознания* или иным образом лишены возможности совершать действия."
+      "en": "**Spend 1 Investiture** to recover health equal to 1d6+{{value}}<<your tier>>.\n\nYou can use it even if you're *Unconscious*.",
+      "ru": "**Потратьте 1 Инвеституру**, чтобы восстановить здоровье в размере 1d6+{{value}}<<ваш тир>>.\n\nВы можете использовать это действие даже если находитесь *Без сознания* или иным образом лишены возможности совершать действия."
     },
-    "origin": "radiant_path"
+    "origin": "radiant_path",
+    "info": {
+      "formulas": { "value": "tier" }
+    }
   },
   {
     "slug": "entangling_trap",
@@ -78,7 +81,7 @@
       "ru": "Опутывающая ловушка"
     },
     "description": {
-      "en": "Survival vs. Cognitive defense.\n\nYou create a trap with rope, debris, or other ensnaring objects. On a hit, the target takes 2d4 impact damage and becomes *Immobilized* for 1 round, then the trap’s area becomes difficult terrain until the end of the scene.",
+      "en": "Survival vs. Cognitive defense.\n\nYou create a trap. On a hit, the target takes 2d4 impact damage and becomes *Immobilized* for 1 round, then the trap's area becomes difficult terrain.",
       "ru": "Выживание против Когнитивной защиты.\n\nВы сооружаете ловушку из верёвок, обломков или других сковывающих предметов. При попадании цель получает 2d4 дробящего урона и становится *Обездвиженной* на 1 раунд, после чего область с ловушкой превращается в труднопроходимую местность до конца сцены."
     },
     "origin": "path",
@@ -92,10 +95,13 @@
       "ru": "Пронзающая ловушка"
     },
     "description": {
-      "en": "Survival vs. Physical defense.\n\nYou create a trap with caltrops, spikes, or other sharp objects. On a hit, the target takes 2d4 keen damage and becomes *Afflicted* [vital damage equal to 3 + your ranks in Survival] for 1 round, and you can spend **Opportunity** to inflict an injury on the target.",
-      "ru": "Выживание против Физической защиты.\n\nВы создаёте ловушку из шипов, калтропов или других острых предметов. При попадании цель получает 2d4 острого урона и становится *Поражённой* [Жизненный урон равный 3 + ваш ранг в Выживание] на 1 раунд. Вы также можете потратить **Возможность**, чтобы нанести цели травму."
+      "en": "Survival vs. Physical defense.\n\nYou create a trap. On a hit, the target takes 2d4 keen damage and becomes *Afflicted* (vital damage equal to {{value}}<<3 + Survival rank>>) for 1 round, and you can **spend Opportunity** to inflict an injury on the target.",
+      "ru": "Выживание против Физической защиты.\n\nВы создаёте ловушку из шипов, калтропов или других острых предметов. При попадании цель получает 2d4 острого урона и становится *Поражённой* (Жизненный урон равный {{value}}<<3 + ваш ранг в Выживание>>) на 1 раунд. Вы также можете **потратить Возможность**, чтобы нанести цели травму."
     },
     "origin": "path",
-    "origin_value": "hunter"
+    "origin_value": "hunter",
+    "info": {
+      "formulas": { "value": "3 + survival" }
+    }
   }
 ]
