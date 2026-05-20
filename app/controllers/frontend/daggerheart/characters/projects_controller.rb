@@ -40,11 +40,11 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).daggerheart.find(params[:character_id])
+          @character = authorized_scope(Character.all).daggerheart.find(params.expect(:character_id))
         end
 
         def find_project
-          @project = @character.projects.find(params[:id])
+          @project = @character.projects.find(params.expect(:id))
         end
 
         def projects

@@ -46,7 +46,7 @@ module Homebrews
     end
 
     def find_own_book
-      @book = Homebrew::Book.where(provider: provider, user_id: current_user.id).find(params[:id])
+      @book = Homebrew::Book.where(provider: provider, user_id: current_user.id).find(params.expect(:id))
     end
 
     def book_params

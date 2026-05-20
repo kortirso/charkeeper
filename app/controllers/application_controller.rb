@@ -23,10 +23,8 @@ class ApplicationController < ActionController::Base
 
   def not_found = page_not_found
 
-  # rubocop: disable Lint/UselessMethodDefinition
   # https://github.com/dry-rb/dry-auto_inject/issues/91
-  def initialize = super
-  # rubocop: enable Lint/UselessMethodDefinition
+  def initialize = super # rubocop: disable Style/RedundantInitialize
 
   private
 

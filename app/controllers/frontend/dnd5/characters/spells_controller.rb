@@ -35,7 +35,7 @@ module Frontend
         end
 
         def destroy
-          character_spell = @character.spells.find_by!(spell_id: params[:id])
+          character_spell = @character.spells.find_by!(spell_id: params.expect(:id))
           character_spell.destroy
           only_head_response
         end
@@ -43,11 +43,11 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).dnd5.find(params[:character_id])
+          @character = authorized_scope(Character.all).dnd5.find(params.expect(:character_id))
         end
 
         def find_spell
-          @spell = ::Spell.dnd5.find(params[:spell_id])
+          @spell = ::Spell.dnd5.find(params.expect(:spell_id))
         end
 
         def spells
@@ -62,7 +62,7 @@ module Frontend
           result =
             params
               .permit(:notes).to_h
-              .merge({ character: @character, character_spell: @character.spells.find(params[:id]) })
+              .merge({ character: @character, character_spell: @character.spells.find(params.expect(:id)) })
           result[:ready_to_use] = to_bool.call(params[:ready_to_use]) if params.key?(:ready_to_use)
           result
         end

@@ -26,11 +26,11 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).daggerheart.find(params[:character_id])
+          @character = authorized_scope(Character.all).daggerheart.find(params.expect(:character_id))
         end
 
         def find_item
-          @item = ::Daggerheart::Item.find(params[:item_id])
+          @item = ::Daggerheart::Item.find(params.expect(:item_id))
         end
 
         def tools

@@ -20,7 +20,7 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).dnd2024.find(params[:character_id])
+          @character = authorized_scope(Character.all).dnd2024.find(params.expect(:character_id))
         end
 
         def create_params

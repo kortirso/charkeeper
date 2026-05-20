@@ -19,7 +19,7 @@ module Frontend
       private
 
       def find_spell
-        @spell = ::Pathfinder2::Feat.where(origin: 4).find(params[:id])
+        @spell = ::Pathfinder2::Feat.where(origin: 4).find(params.expect(:id))
       end
 
       def cache_options

@@ -33,7 +33,7 @@ module Frontend
     private
 
     def find_campaign
-      @campaign = Campaign.find(params[:id])
+      @campaign = Campaign.find(params.expect(:id))
     end
 
     def create_params

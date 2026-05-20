@@ -32,7 +32,7 @@ module Frontend
       end
 
       def character
-        authorized_scope(Character.all).fallout.find(params[:id])
+        authorized_scope(Character.all).fallout.find(params.expect(:id))
       end
 
       def request_params

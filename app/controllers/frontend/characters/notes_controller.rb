@@ -6,7 +6,7 @@ module Frontend
       private
 
       def noteable
-        authorized_scope(Character.all).find(params[:character_id])
+        authorized_scope(Character.all).find(params.expect(:character_id))
       end
     end
   end

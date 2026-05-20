@@ -26,11 +26,11 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).dnd2024.find(params[:character_id])
+          @character = authorized_scope(Character.all).dnd2024.find(params.expect(:character_id))
         end
 
         def find_item
-          @item = ::Dnd5::Item.find(params[:item_id])
+          @item = ::Dnd5::Item.find(params.expect(:item_id))
         end
 
         def tools

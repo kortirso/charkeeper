@@ -6,7 +6,7 @@ module Frontend
       private
 
       def noteable
-        Campaign.find(params[:campaign_id])
+        Campaign.find(params.expect(:campaign_id))
       end
     end
   end

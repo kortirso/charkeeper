@@ -40,11 +40,11 @@ module Frontend
         end
 
         def find_character
-          @character = authorized_scope(Character.all).pathfinder2.find(params[:character_id])
+          @character = authorized_scope(Character.all).pathfinder2.find(params.expect(:character_id))
         end
 
         def find_character_feat
-          @character_feat = @character.feats.find(params[:id])
+          @character_feat = @character.feats.find(params.expect(:id))
         end
 
         def character_feats

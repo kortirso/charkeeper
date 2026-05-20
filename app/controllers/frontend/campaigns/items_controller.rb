@@ -53,23 +53,23 @@ module Frontend
       private
 
       def find_campaign
-        @campaign = Campaign.find(params[:campaign_id])
+        @campaign = Campaign.find(params.expect(:campaign_id))
       end
 
       def find_campaign_item
-        @campaign_item = @campaign.items.find(params[:id])
+        @campaign_item = @campaign.items.find(params.expect(:id))
       end
 
       def find_campaign_item_for_send
         return unless to_bool.call(params[:character_item][:for_campaign])
 
-        @campaign_item = @campaign.items.find(params[:id])
+        @campaign_item = @campaign.items.find(params.expect(:id))
       end
 
       def find_character_item
         return if to_bool.call(params[:character_item][:for_campaign])
 
-        @character_item = Character::Item.find(params[:id])
+        @character_item = Character::Item.find(params.expect(:id))
       end
 
       def items
@@ -79,7 +79,7 @@ module Frontend
       def create_params
         {
           campaign: @campaign,
-          item: items_relation.find(params[:item_id])
+          item: items_relation.find(params.expect(:item_id))
         }
       end
 

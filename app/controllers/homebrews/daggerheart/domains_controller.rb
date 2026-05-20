@@ -69,7 +69,7 @@ module Homebrews
       end
 
       def find_domain
-        @domain = ::Daggerheart::Homebrew::Domain.find_by!(id: params[:id], user_id: current_user.id)
+        @domain = ::Daggerheart::Homebrew::Domain.find_by!(id: params.expect(:id), user_id: current_user.id)
       end
 
       def domain_params

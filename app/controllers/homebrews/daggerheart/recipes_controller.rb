@@ -57,11 +57,11 @@ module Homebrews
       end
 
       def find_recipe
-        @recipe = ::Item::Recipe.find_by!(id: params[:id], user_id: current_user.id)
+        @recipe = ::Item::Recipe.find_by!(id: params.expect(:id), user_id: current_user.id)
       end
 
       def find_another_recipe
-        @recipe = ::Item::Recipe.where.not(user_id: current_user.id).find(params[:id])
+        @recipe = ::Item::Recipe.where.not(user_id: current_user.id).find(params.expect(:id))
       end
 
       def recipe_params

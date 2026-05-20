@@ -17,7 +17,7 @@ module Frontend
         private
 
         def character
-          @character ||= authorized_scope(Character.all).dnd.find(params[:character_id])
+          @character ||= authorized_scope(Character.all).dnd.find(params.expect(:character_id))
         end
 
         def serializer

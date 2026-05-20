@@ -46,7 +46,7 @@ module Frontend
     end
 
     def find_character
-      @character = authorized_scope(Character.all).find(params[:id])
+      @character = authorized_scope(Character.all).find(params.expect(:id))
     end
 
     def set_current_provider(character_type=nil)

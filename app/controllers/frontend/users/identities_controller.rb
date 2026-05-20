@@ -4,7 +4,7 @@ module Frontend
   module Users
     class IdentitiesController < Frontend::BaseController
       def destroy
-        current_user.identities.find(params[:id]).destroy
+        current_user.identities.find(params.expect(:id)).destroy
         only_head_response
       end
     end

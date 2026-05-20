@@ -33,11 +33,11 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).fallout.find(params[:character_id])
+          @character = authorized_scope(Character.all).fallout.find(params.expect(:character_id))
         end
 
         def find_talent
-          @talent = ::Fallout::Feat.where(origin: 0).find(params[:talent_id])
+          @talent = ::Fallout::Feat.where(origin: 0).find(params.expect(:talent_id))
         end
       end
     end

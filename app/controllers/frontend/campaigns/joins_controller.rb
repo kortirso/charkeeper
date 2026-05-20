@@ -30,15 +30,15 @@ module Frontend
       private
 
       def find_campaign
-        @campaign = Campaign.find(params[:campaign_id])
+        @campaign = Campaign.find(params.expect(:campaign_id))
       end
 
       def find_character
-        @character = current_user.characters.send(@campaign.provider).find(params[:character_id])
+        @character = current_user.characters.send(@campaign.provider).find(params.expect(:character_id))
       end
 
       def find_campaign_character
-        @campaign_character = @campaign.campaign_characters.find(params[:character_id])
+        @campaign_character = @campaign.campaign_characters.find(params.expect(:character_id))
       end
     end
   end

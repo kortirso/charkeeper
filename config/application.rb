@@ -67,8 +67,6 @@ module Charkeeper
     # Don't generate system test files.
     config.generators.system_tests = nil
 
-    config.active_support.to_time_preserves_timezone = :zone
-
     # config.hosts << 'sklh4i-2001-41d0-800-4d0f--.nl.tuna.am'
 
     config.skylight.environments << 'ru_production'

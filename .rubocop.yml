@@ -281,3 +281,15 @@ Rails/UnknownEnv:
     - test
     - production
     - ru_production
+
+Style/OneClassPerFile:
+  Enabled: false
+
+RSpec/Output:
+  Enabled: false
+
+Style/ReduceToHash:
+  Enabled: false
+
+Style/EmptyClassDefinition:
+  Enabled: false

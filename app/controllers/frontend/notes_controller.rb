@@ -37,7 +37,7 @@ module Frontend
     private
 
     def find_note
-      @note = noteable.notes.find(params[:id])
+      @note = noteable.notes.find(params.expect(:id))
     end
 
     def note_params

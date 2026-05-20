@@ -20,7 +20,7 @@ module SerializeResource
   end
 
   def only_fields
-    { only: params[:only].split(',').map(&:to_sym) }
+    { only: params.expect(:only).split(',').map(&:to_sym) }
   end
 
   def default_context

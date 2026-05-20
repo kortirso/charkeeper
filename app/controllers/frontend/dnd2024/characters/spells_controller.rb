@@ -37,7 +37,7 @@ module Frontend
         end
 
         def destroy
-          character_spell = @character.feats.find_by!(feat_id: params[:id])
+          character_spell = @character.feats.find_by!(feat_id: params.expect(:id))
           character_spell.destroy
           only_head_response
         end
@@ -45,15 +45,15 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).dnd2024.find(params[:character_id])
+          @character = authorized_scope(Character.all).dnd2024.find(params.expect(:character_id))
         end
 
         def find_spell
-          @spell = ::Dnd2024::Feat.where(origin: ::Dnd2024::Feat::SPELL_ORIGIN).find(params[:spell_id])
+          @spell = ::Dnd2024::Feat.where(origin: ::Dnd2024::Feat::SPELL_ORIGIN).find(params.expect(:spell_id))
         end
 
         def find_character_spell
-          @character_spell = @character.feats.find(params[:id])
+          @character_spell = @character.feats.find(params.expect(:id))
         end
 
         def spells

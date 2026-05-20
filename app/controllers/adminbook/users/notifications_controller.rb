@@ -16,7 +16,7 @@ module Adminbook
       end
 
       def edit
-        @notification = User::Notification.find(params[:id])
+        @notification = User::Notification.find(params.expect(:id))
       end
 
       def create
@@ -26,13 +26,13 @@ module Adminbook
       end
 
       def update
-        notification = User::Notification.find(params[:id])
+        notification = User::Notification.find(params.expect(:id))
         notification.update(notification_params)
         redirect_to adminbook_users_notifications_path
       end
 
       def destroy
-        notification = User::Notification.find(params[:id])
+        notification = User::Notification.find(params.expect(:id))
         notification.destroy
         redirect_to adminbook_users_notifications_path
       end

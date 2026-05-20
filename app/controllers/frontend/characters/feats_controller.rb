@@ -20,11 +20,11 @@ module Frontend
       private
 
       def find_character
-        @character = characters_relation.find(params[:character_id])
+        @character = characters_relation.find(params.expect(:character_id))
       end
 
       def find_character_feat
-        @character_feat = @character.feats.find(params[:id])
+        @character_feat = @character.feats.find(params.expect(:id))
       end
 
       def update_params

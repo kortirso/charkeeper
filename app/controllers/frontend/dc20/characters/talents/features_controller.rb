@@ -16,7 +16,7 @@ module Frontend
           private
 
           def find_character
-            @character = authorized_scope(Character.all).dc20.find(params[:character_id])
+            @character = authorized_scope(Character.all).dc20.find(params.expect(:character_id))
           end
 
           # rubocop: disable Style/IdenticalConditionalBranches, Lint/DuplicateBranch

@@ -76,7 +76,7 @@ module Homebrews
       end
 
       def find_speciality
-        @speciality = ::Daggerheart::Homebrew::Speciality.kept.find_by!(id: params[:id], user_id: current_user.id)
+        @speciality = ::Daggerheart::Homebrew::Speciality.kept.find_by!(id: params.expect(:id), user_id: current_user.id)
       end
 
       def find_existing_characters

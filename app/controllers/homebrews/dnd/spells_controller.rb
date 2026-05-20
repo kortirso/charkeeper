@@ -69,11 +69,11 @@ module Homebrews
       end
 
       def find_spell
-        @spell = ::Dnd2024::Feat.find_by!(id: params[:id], user_id: current_user.id, origin: 6)
+        @spell = ::Dnd2024::Feat.find_by!(id: params.expect(:id), user_id: current_user.id, origin: 6)
       end
 
       def find_another_spell
-        @spell = ::Dnd2024::Feat.where.not(user_id: current_user.id).find_by!(id: params[:id], origin: 6)
+        @spell = ::Dnd2024::Feat.where.not(user_id: current_user.id).find_by!(id: params.expect(:id), origin: 6)
       end
 
       def spell_params

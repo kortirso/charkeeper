@@ -23,15 +23,15 @@ module Frontend
         private
 
         def find_character
-          @character = characters_relation.find(params[:character_id])
+          @character = characters_relation.find(params.expect(:character_id))
         end
 
         def find_bonus
-          @character_bonus = Character::Bonus.find(params[:bonuse_id])
+          @character_bonus = Character::Bonus.find(params.expect(:bonuse_id))
         end
 
         def find_character_item
-          @character_item = Character::Item.find(params[:character_item_id])
+          @character_item = Character::Item.find(params.expect(:character_item_id))
         end
 
         def characters_relation

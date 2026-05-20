@@ -33,11 +33,11 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).dnd2024.find(params[:character_id])
+          @character = authorized_scope(Character.all).dnd2024.find(params.expect(:character_id))
         end
 
         def find_talent
-          @talent = ::Dnd2024::Feat.where(origin: 4).find(params[:talent_id])
+          @talent = ::Dnd2024::Feat.where(origin: 4).find(params.expect(:talent_id))
         end
 
         def available_talents

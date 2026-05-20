@@ -41,7 +41,7 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).pathfinder2.find(params[:character_id])
+          @character = authorized_scope(Character.all).pathfinder2.find(params.expect(:character_id))
         end
 
         def find_existing_pet

@@ -11,7 +11,7 @@ module Adminbook
     end
 
     def edit
-      @item = item_class.find(params[:id])
+      @item = item_class.find(params.expect(:id))
     end
 
     def create
@@ -20,12 +20,12 @@ module Adminbook
     end
 
     def update
-      item = item_class.find(params[:id])
+      item = item_class.find(params.expect(:id))
       redirect_to adminbook_items_path(provider: params[:provider]) if item.update(transform_params(item_params))
     end
 
     def destroy
-      item = item_class.find(params[:id])
+      item = item_class.find(params.expect(:id))
       item.destroy
       redirect_to adminbook_items_path(provider: params[:provider])
     end

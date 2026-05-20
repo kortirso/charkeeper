@@ -42,11 +42,11 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).dc20.find(params[:character_id])
+          @character = authorized_scope(Character.all).dc20.find(params.expect(:character_id))
         end
 
         def find_spell
-          @spell = ::Dc20::Feat.where(origin: 7).find(params[:spell_id])
+          @spell = ::Dc20::Feat.where(origin: 7).find(params.expect(:spell_id))
         end
 
         def find_character_spell

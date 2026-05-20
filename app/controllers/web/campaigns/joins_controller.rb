@@ -14,7 +14,7 @@ module Web
       private
 
       def find_campaign
-        @campaign = Campaign.find(params[:campaign_id])
+        @campaign = Campaign.find(params.expect(:campaign_id))
       end
     end
   end

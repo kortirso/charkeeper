@@ -12,7 +12,7 @@ module Adminbook
     end
 
     def edit
-      @feat = feat_class.find(params[:id])
+      @feat = feat_class.find(params.expect(:id))
     end
 
     def create
@@ -22,13 +22,13 @@ module Adminbook
     end
 
     def update
-      feat = feat_class.find(params[:id])
+      feat = feat_class.find(params.expect(:id))
       feat.update(transform_params(feat_params))
       redirect_to adminbook_feats_path(provider: params[:provider])
     end
 
     def destroy
-      feat = feat_class.find(params[:id])
+      feat = feat_class.find(params.expect(:id))
       feat.destroy
       redirect_to adminbook_feats_path(provider: params[:provider])
     end

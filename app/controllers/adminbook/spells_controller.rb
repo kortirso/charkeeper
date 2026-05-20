@@ -11,7 +11,7 @@ module Adminbook
     end
 
     def edit
-      @spell = spell_class.find(params[:id])
+      @spell = spell_class.find(params.expect(:id))
     end
 
     def create
@@ -20,12 +20,12 @@ module Adminbook
     end
 
     def update
-      spell = spell_class.find(params[:id])
+      spell = spell_class.find(params.expect(:id))
       redirect_to adminbook_spells_path(provider: params[:provider]) if spell.update(transform_params(spell_params))
     end
 
     def destroy
-      spell = spell_class.find(params[:id])
+      spell = spell_class.find(params.expect(:id))
       spell.destroy
       redirect_to adminbook_spells_path(provider: params[:provider])
     end

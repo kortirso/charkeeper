@@ -51,7 +51,7 @@ module Homebrews
     def find_items
       return @items = all_available_items if params[:kind].blank?
 
-      relation = item_class.where(kind: params[:kind].split(','))
+      relation = item_class.where(kind: params.expect(:kind).split(','))
       @items =
         relation.where(user_id: current_user.id)
           .or(
@@ -69,11 +69,11 @@ module Homebrews
     end
 
     def find_item
-      @item = item_class.find_by!(id: params[:id], user_id: current_user.id)
+      @item = item_class.find_by!(id: params.expect(:id), user_id: current_user.id)
     end
 
     def find_another_item
-      @item = item_class.where.not(user_id: current_user.id).find(params[:id])
+      @item = item_class.where.not(user_id: current_user.id).find(params.expect(:id))
     end
 
     def item_params

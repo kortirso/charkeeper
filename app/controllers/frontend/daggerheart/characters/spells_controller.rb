@@ -45,19 +45,19 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).daggerheart.find(params[:character_id])
+          @character = authorized_scope(Character.all).daggerheart.find(params.expect(:character_id))
         end
 
         def find_spell
           raise ActiveRecord::RecordNotFound if params[:version].blank?
 
-          @spell = ::Daggerheart::Feat.where(origin: 7).find(params[:spell_id])
+          @spell = ::Daggerheart::Feat.where(origin: 7).find(params.expect(:spell_id))
         end
 
         def find_character_spell
           raise ActiveRecord::RecordNotFound if params[:version].blank?
 
-          @character_spell = @character.feats.find(params[:id])
+          @character_spell = @character.feats.find(params.expect(:id))
         end
 
         def spells

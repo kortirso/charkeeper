@@ -37,15 +37,15 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).cosmere.find(params[:character_id])
+          @character = authorized_scope(Character.all).cosmere.find(params.expect(:character_id))
         end
 
         def find_feat
-          @feat = ::Cosmere::Feat.find(params[:feat_id])
+          @feat = ::Cosmere::Feat.find(params.expect(:feat_id))
         end
 
         def find_feat_for_destroy
-          @feat = ::Cosmere::Feat.find(params[:id])
+          @feat = ::Cosmere::Feat.find(params.expect(:id))
         end
 
         def selected_feat_slugs

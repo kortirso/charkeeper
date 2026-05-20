@@ -87,11 +87,11 @@ module Homebrews
       end
 
       def find_subclass
-        @subclass = ::Dnd2024::Homebrew::Subclass.kept.find_by!(id: params[:id], user_id: current_user.id)
+        @subclass = ::Dnd2024::Homebrew::Subclass.kept.find_by!(id: params.expect(:id), user_id: current_user.id)
       end
 
       def find_another_subclass
-        @subclass = ::Dnd2024::Homebrew::Subclass.kept.where.not(user_id: current_user.id).find(params[:id])
+        @subclass = ::Dnd2024::Homebrew::Subclass.kept.where.not(user_id: current_user.id).find(params.expect(:id))
       end
 
       def find_existing_characters

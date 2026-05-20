@@ -20,7 +20,7 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).daggerheart.find(params[:character_id])
+          @character = authorized_scope(Character.all).daggerheart.find(params.expect(:character_id))
         end
 
         def create_params

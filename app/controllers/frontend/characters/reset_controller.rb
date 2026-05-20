@@ -20,7 +20,7 @@ module Frontend
       private
 
       def find_character
-        @character = Character.find(params[:character_id])
+        @character = Character.find(params.expect(:character_id))
       end
 
       def find_command

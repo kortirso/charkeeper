@@ -35,15 +35,15 @@ module Frontend
       private
 
       def find_character
-        @character = authorized_scope(Character.all).find(params[:character_id])
+        @character = authorized_scope(Character.all).find(params.expect(:character_id))
       end
 
       def find_custom_resource
-        @custom_resource = @character.custom_resources.find(params[:resource_id])
+        @custom_resource = @character.custom_resources.find(params.expect(:resource_id))
       end
 
       def find_resource
-        @resource = @character.resources.find(params[:id])
+        @resource = @character.resources.find(params.expect(:id))
       end
 
       def resource_params

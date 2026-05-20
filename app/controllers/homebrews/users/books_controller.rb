@@ -14,7 +14,7 @@ module Homebrews
       private
 
       def find_book
-        @book = Homebrew::Book.shared.find(params[:id])
+        @book = Homebrew::Book.shared.find(params.expect(:id))
       end
 
       def find_user_book

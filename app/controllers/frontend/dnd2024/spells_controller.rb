@@ -24,7 +24,7 @@ module Frontend
       private
 
       def find_spell
-        @spell = ::Dnd2024::Feat.where(origin: 6).find(params[:id])
+        @spell = ::Dnd2024::Feat.where(origin: 6).find(params.expect(:id))
       end
 
       def cache_options

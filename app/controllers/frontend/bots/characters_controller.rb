@@ -17,7 +17,7 @@ module Frontend
       private
 
       def character
-        current_user.characters.find(params[:id])
+        current_user.characters.find(params.expect(:id))
       end
     end
   end

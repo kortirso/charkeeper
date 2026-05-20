@@ -46,7 +46,7 @@ module Frontend
     end
 
     def user_data
-      @user_data ||= JSON.parse(params[:check_string].split("\n").to_h { |item| item.split('=') }['user'])
+      @user_data ||= JSON.parse(params.expect(:check_string).split("\n").to_h { |item| item.split('=') }['user'])
     end
 
     def locale

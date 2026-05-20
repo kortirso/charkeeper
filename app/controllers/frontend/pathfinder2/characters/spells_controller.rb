@@ -45,15 +45,15 @@ module Frontend
         private
 
         def find_character
-          @character = authorized_scope(Character.all).pathfinder2.find(params[:character_id])
+          @character = authorized_scope(Character.all).pathfinder2.find(params.expect(:character_id))
         end
 
         def find_spell
-          @spell = ::Pathfinder2::Feat.where(origin: ::Pathfinder2::Feat::SPELL_ORIGIN).find(params[:spell_id])
+          @spell = ::Pathfinder2::Feat.where(origin: ::Pathfinder2::Feat::SPELL_ORIGIN).find(params.expect(:spell_id))
         end
 
         def find_character_spell
-          @character_spell = @character.feats.find(params[:id])
+          @character_spell = @character.feats.find(params.expect(:id))
         end
 
         def spells

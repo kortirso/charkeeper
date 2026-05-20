@@ -52,15 +52,15 @@ module Frontend
       end
 
       def find_character
-        @character = characters_relation.find(params[:character_id])
+        @character = characters_relation.find(params.expect(:character_id))
       end
 
       def find_character_item
-        @character_item = @character.items.where(name: nil).find(params[:id])
+        @character_item = @character.items.where(name: nil).find(params.expect(:id))
       end
 
       def find_character_item_for_destroy
-        @character_item = @character.items.find(params[:id])
+        @character_item = @character.items.find(params.expect(:id))
       end
 
       def items
@@ -70,7 +70,7 @@ module Frontend
       def create_params
         {
           character: @character,
-          item: items_relation.find(params[:item_id])
+          item: items_relation.find(params.expect(:item_id))
         }
       end
 

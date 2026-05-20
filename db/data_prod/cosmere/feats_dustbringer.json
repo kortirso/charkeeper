@@ -138,7 +138,7 @@
       "ru": "Регенерация травм"
     },
     "description": {
-      "en": "When you use the Regenerate as free action, you can **spend 2 Investiture** to recover from a temporary injury or **spend 3 Investiture** to recover from a permanent.",
+      "en": "While using Regenerate as free action, you can **spend 2 Investiture** to recover from a temporary injury or **spend 3 Investiture** to recover from a permanent.",
       "ru": "Когда вы используете действие Регенерация как свободное действие, вы можете потратить Инвеституру для мгновенного восстановления от травмы по вашему выбору. **Потратьте 2 Инвеституры**, чтобы восстановиться от временной травмы, или **потратьте 3 Инвеституры** чтобы восстановиться от постоянной травмы."
     },
     "origin": "radiant_path",

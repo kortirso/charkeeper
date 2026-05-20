@@ -24,7 +24,7 @@ module Web
     private
 
     def find_character
-      @character = Character.find(params[:id])
+      @character = Character.find(params.expect(:id))
     end
   end
 end

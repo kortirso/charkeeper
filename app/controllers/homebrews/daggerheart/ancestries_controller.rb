@@ -92,11 +92,11 @@ module Homebrews
       end
 
       def find_ancestry
-        @ancestry = ::Daggerheart::Homebrew::Race.kept.find_by!(id: params[:id], user_id: current_user.id)
+        @ancestry = ::Daggerheart::Homebrew::Race.kept.find_by!(id: params.expect(:id), user_id: current_user.id)
       end
 
       def find_another_ancestry
-        @ancestry = ::Daggerheart::Homebrew::Race.kept.where.not(user_id: current_user.id).find(params[:id])
+        @ancestry = ::Daggerheart::Homebrew::Race.kept.where.not(user_id: current_user.id).find(params.expect(:id))
       end
 
       def find_existing_characters

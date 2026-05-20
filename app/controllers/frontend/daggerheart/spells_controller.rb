@@ -21,7 +21,7 @@ module Frontend
               .where.not(user_id: nil)
               .where(origin_value: (current_user.user_homebrew&.data&.dig('daggerheart', 'domains') || {}).keys)
           )
-        relation = relation.where(origin_value: params[:domains].split(',')) if params[:domains]
+        relation = relation.where(origin_value: params.expect(:domains).split(',')) if params[:domains]
         relation = relation.where("conditions ->> 'level' IN (?)", (0..params[:max_level].to_i).to_a.map(&:to_s)) if params[:max_level] # rubocop: disable Layout/LineLength
         relation
       end
