@@ -16,12 +16,19 @@ module HomebrewContext
               required(:selected_feats).filled(:array).each(:string)
               required(:selected_skills).hash
               required(:ability_boosts).filled(:array).each(:string)
+              required(:names).hash
+              required(:descriptions).hash
             end
             optional(:public).filled(:bool)
           end
         end
 
         private
+
+        def do_prepare(input)
+          input[:data][:names].transform_values! { |value| sanitize(value) }
+          input[:data][:descriptions].transform_values! { |value| sanitize(value) }
+        end
 
         def do_persist(input)
           result = ::Dnd2024::Homebrew::Background.create!(input)

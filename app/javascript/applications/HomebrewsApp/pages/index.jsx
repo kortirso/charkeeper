@@ -2,6 +2,7 @@ export * from './ContentPage';
 
 export * from './Content/Dnd2024';
 export * from './Content/Daggerheart';
+export * from './Content/Cosmere';
 export * from './Content/Pathfinder2';
 export * from './Content/Dc20';
 
@@ -25,3 +26,5 @@ export * from './Content/Dnd/Subclasses';
 export * from './Content/Dnd/Spells';
 export * from './Content/Dnd/Feats';
 export * from './Content/Dnd/Backgrounds';
+
+export * from './Content/Cosmere/HeroicPaths';

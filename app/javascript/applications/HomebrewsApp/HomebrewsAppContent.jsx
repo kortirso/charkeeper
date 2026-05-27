@@ -9,7 +9,7 @@ export const HomebrewsAppContent = () => {
   return (
     <div class="mx-auto w-7xl">
       <div class="flex gap-x-4 my-4">
-        <For each={[['dnd2024', 'D&D 2024'], ['daggerheart', 'Daggerheart'], ['pathfinder2', 'Pathfinder 2'], ['dc20', 'DC20']]}>
+        <For each={[['dnd2024', 'D&D 2024'], ['daggerheart', 'Daggerheart'], ['cosmere', 'Cosmere'], ['pathfinder2', 'Pathfinder 2'], ['dc20', 'DC20']]}>
           {(item) =>
             <p
               class="homebrew-provider-nav"

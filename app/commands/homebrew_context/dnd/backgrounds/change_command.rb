@@ -17,11 +17,18 @@ module HomebrewContext
               required(:selected_feats).filled(:array).each(:string)
               required(:selected_skills).hash
               required(:ability_boosts).filled(:array).each(:string)
+              required(:names).hash
+              required(:descriptions).hash
             end
           end
         end
 
         private
+
+        def do_prepare(input)
+          input[:data][:names].transform_values! { |value| sanitize(value) }
+          input[:data][:descriptions].transform_values! { |value| sanitize(value) }
+        end
 
         def do_persist(input)
           input[:background].update!(input.slice(:name, :public, :data))

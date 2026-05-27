@@ -8,6 +8,8 @@ module Dnd2024
       attribute :selected_feats, array: true, default: []
       attribute :selected_skills, array: true, default: {}
       attribute :ability_boosts, array: true, default: []
+      attribute :names, array: true, default: {}
+      attribute :descriptions, array: true, default: {}
     end
 
     class Background < ::Homebrew::Community

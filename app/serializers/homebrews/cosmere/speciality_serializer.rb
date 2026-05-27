@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Homebrews
-  module Dnd
-    class BackgroundSerializer < ApplicationSerializer
-      attributes :id, :name, :public, :own, :data, :upvotes_count
+  module Cosmere
+    class SpecialitySerializer < ApplicationSerializer
+      attributes :id, :name, :data, :public, :own
 
       def own # rubocop: disable Naming/PredicateMethod
         return false unless context

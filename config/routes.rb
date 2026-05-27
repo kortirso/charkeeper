@@ -237,6 +237,11 @@ Rails.application.routes.draw do
   end
 
   namespace :homebrews do
+    namespace :cosmere do
+      resources :specialities, only: %i[index create]
+      resources :subclasses, only: %i[index]
+    end
+
     namespace :daggerheart do
       resources :ancestries, only: %i[index show create update destroy] do
         post :copy, on: :member

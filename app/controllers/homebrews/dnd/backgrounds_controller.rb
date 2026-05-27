@@ -39,7 +39,9 @@ module Homebrews
         case change_dnd_background.call(background_params.merge(background: @background))
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
-          serialize_resource(result, ::Homebrews::Dnd::BackgroundSerializer, :background, {}, :ok)
+          serialize_resource(
+            result, ::Homebrews::Dnd::BackgroundSerializer, :background, {}, :ok, { current_user_id: current_user.id }
+          )
         end
       end
 
@@ -52,7 +54,9 @@ module Homebrews
         case copy_dnd_background.call({ background: @background, user: current_user })
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
-          serialize_resource(result, ::Homebrews::Dnd::BackgroundSerializer, :background, {}, :created)
+          serialize_resource(
+            result, ::Homebrews::Dnd::BackgroundSerializer, :background, {}, :created, { current_user_id: current_user.id }
+          )
         end
       end
 

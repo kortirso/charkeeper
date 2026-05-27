@@ -3,6 +3,7 @@
 class Homebrew
   class Community < ApplicationRecord
     include Discard::Model
+    include Upvoteable
 
     belongs_to :user, touch: :homebrew_updated_at
 

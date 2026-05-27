@@ -2,7 +2,7 @@
 
 module Cache
   class DndNames
-    CACHE_KEY = 'dnd_names/0.4.17/v1'
+    CACHE_KEY = 'dnd_names/0.4.17/v2'
 
     def fetch_list
       Rails.cache.fetch(CACHE_KEY, expires_in: 1.day) { load_initial_data }
@@ -32,18 +32,17 @@ module Cache
     end
 
     def ids_with_names(relation)
-      name_json_defined = relation.method_defined?(:name_json)
       relation.all.each_with_object({}) do |item, acc|
-        next acc[item.id] = { name: { en: item.name, ru: item.name } } unless name_json_defined
+        next acc[item.id] = { name: item.data.names } if item.data.attributes['names']
 
-        acc[item.id] = { name: item.name_json.keys.blank? ? { en: item.name, ru: item.name } : item.name_json }
+        acc[item.id] = { name: { en: item.name, ru: item.name } }
       end
     end
 
     def new_item_value(item)
-      return { name: { en: item.name, ru: item.name } } if item.attributes.keys.exclude?('name_json')
+      return { name: item.data.names } if item.data.attributes['names']
 
-      { name: item.name_json.keys.blank? ? { en: item.name, ru: item.name } : item.name_json }
+      { name: { en: item.name, ru: item.name } }
     end
   end
 end

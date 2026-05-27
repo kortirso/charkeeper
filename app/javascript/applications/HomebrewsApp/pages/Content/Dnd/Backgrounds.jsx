@@ -4,8 +4,8 @@ import { createStore } from 'solid-js/store';
 import config from '../../../../CharKeeperApp/data/dnd2024.json';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { Button, Input, Select, createModal, Checkbox } from '../../../components';
-import { Edit, Trash, Copy } from '../../../assets';
+import { Button, Input, Select, Checkbox, Toggle, TextArea } from '../../../components';
+import { Edit, Trash, Copy, Stroke } from '../../../assets';
 import { fetchBooksRequest } from '../../../requests/books/fetchBooksRequest';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchBackgroundsRequest } from '../../../requests/fetchBackgroundsRequest';
@@ -14,7 +14,7 @@ import { changeBackgroundRequest } from '../../../requests/changeBackgroundReque
 import { removeBackgroundRequest } from '../../../requests/removeBackgroundRequest';
 import { copyBackgroundRequest } from '../../../requests/copyBackgroundRequest';
 import { fetchBackgroundTalentsRequest } from '../../../requests/fetchBackgroundTalentsRequest';
-import { translate } from '../../../helpers';
+import { translate, localize } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -24,6 +24,7 @@ const TRANSLATION = {
     add: 'Add background',
     newItemTitle: 'Background form',
     name: 'Background name',
+    descriptions: 'Description',
     showPublic: 'Show public',
     public: 'Public',
     copyCompleted: 'Spell copy is completed',
@@ -31,6 +32,7 @@ const TRANSLATION = {
     skills: 'Skill expertise (select 2)',
     feats: 'Feat',
     save: 'Save',
+    cancel: 'Cancel',
     selectedAbilities: 'Abilities to boost',
     selectedSkills: 'Skill expertise'
   },
@@ -41,6 +43,7 @@ const TRANSLATION = {
     add: 'Добавить происхождение',
     newItemTitle: 'Редактирование происхождения',
     name: 'Название происхождения',
+    descriptions: 'Описание',
     showPublic: 'Показать общедоступные',
     public: 'Общедоступный',
     copyCompleted: 'Копирование происхождения завершено',
@@ -48,6 +51,7 @@ const TRANSLATION = {
     skills: 'Владение навыками (выберите 2)',
     feats: 'Черта',
     save: 'Сохранить',
+    cancel: 'Отменить',
     selectedAbilities: 'Характеристики для повышения',
     selectedSkills: 'Владение навыками'
   },
@@ -58,6 +62,7 @@ const TRANSLATION = {
     add: 'Agregar trasfondo',
     newItemTitle: 'Forma de trasfondo',
     name: 'Nombre del trasfondo',
+    descriptions: 'Description',
     showPublic: 'Mostrar públicos',
     public: 'Público',
     copyCompleted: 'Copia de trasfondo completada',
@@ -65,25 +70,30 @@ const TRANSLATION = {
     skills: 'Maestría en habilidades (seleccione 2)',
     feats: 'Proesa',
     save: 'Guardar',
+    cancel: 'Cancel',
     selectedAbilities: 'Habilidades para mejorar',
     selectedSkills: 'Maestría en habilidades'
   }
 }
 
 export const DndBackgrounds = () => {
-  const [form, setForm] = createStore({ name: '', selected_feats: [], selected_skills: [], ability_boosts: [] });
+  const [form, setForm] = createStore({
+    names: { en: '', ru: '', es: '' }, descriptions: { en: '', ru: '', es: '' }, selected_feats: [], selected_skills: [], ability_boosts: []
+  });
   const [selectedIds, setSelectedIds] = createSignal([]);
   const [book, setBook] = createSignal(null);
+  const [formLocale, setFormLocale] = createSignal('en');
 
   const [books, setBooks] = createSignal(undefined);
   const [backgrounds, setBackgrounds] = createSignal(undefined);
   const [talents, setTalents] = createSignal(undefined);
+  
   const [open, setOpen] = createSignal(false);
+  const [ownFilter, setOwnFilter] = createSignal(true);
 
   const [appState] = useAppState();
   const [{ renderNotice, renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
-  const { Modal, openModal, closeModal } = createModal();
 
   createEffect(() => {
     const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'dnd');
@@ -104,22 +114,28 @@ export const DndBackgrounds = () => {
   const filteredBackgrounds = createMemo(() => {
     if (backgrounds() === undefined) return [];
 
-    return backgrounds().filter(({ own }) => open() ? !own : own);
+    return backgrounds().filter(({ own }) => ownFilter() ? own : !own);
   });
 
-  const openCreateModal = () => {
+  const onSelect = (e, backgroundId) => {
+    e.stopPropagation();
+
+    selectedIds().includes(backgroundId) ? setSelectedIds(selectedIds().filter((id) => id !== backgroundId)) : setSelectedIds(selectedIds().concat(backgroundId));
+  }
+
+  const openCreateForm = () => {
     batch(() => {
-      setForm({ id: null, name: '', selected_feats: [], selected_skills: [], ability_boosts: [] });
-      openModal();
+      setForm({ id: null, names: { en: '', ru: '', es: '' }, descriptions: { en: '', ru: '', es: '' }, selected_feats: [], selected_skills: [], ability_boosts: [] });
+      setOpen(true);
     });
   }
 
-  const openChangeModal = (background) => {
+  const openEditForm = (background) => {
     batch(() => {
       setForm({
-        id: background.id, name: background.name, selected_feats: background.data.selected_feats, selected_skills: Object.keys(background.data.selected_skills), ability_boosts: background.data.ability_boosts
+        id: background.id, names: background.data.names, descriptions: background.data.descriptions, selected_feats: background.data.selected_feats, selected_skills: Object.keys(background.data.selected_skills), ability_boosts: background.data.ability_boosts
       });
-      openModal();
+      setOpen(true);
     });
   }
 
@@ -130,10 +146,9 @@ export const DndBackgrounds = () => {
   }
 
   const saveBackground = () => {
-    const { name: name, ...data } = form; // eslint-disable-line solid/reactivity
     const formData = {
-      name: name,
-      data: { ...data, selected_skills: form.selected_skills.reduce((acc, item) => { acc[item] = 1; return acc; }, {}) }
+      name: form.names.en,
+      data: { ...form, selected_skills: form.selected_skills.reduce((acc, item) => { acc[item] = 1; return acc; }, {}) }
     }
     form.id === null ? createBackground(formData) : updateBackground(formData);
   }
@@ -144,7 +159,7 @@ export const DndBackgrounds = () => {
     if (result.errors_list === undefined) {
       batch(() => {
         setBackgrounds([result.background].concat(backgrounds()));
-        closeModal();
+        setOpen(false);
       });
     } else renderAlerts(result.errors_list);
   }
@@ -161,7 +176,7 @@ export const DndBackgrounds = () => {
 
       batch(() => {
         setBackgrounds(newBackgrounds);
-        closeModal();
+        setOpen(false);
       });
     } else renderAlerts(result.errors_list);
   }
@@ -197,14 +212,70 @@ export const DndBackgrounds = () => {
 
   return (
     <Show when={backgrounds() !== undefined} fallback={<></>}>
-      <div class="flex">
-        <Button default classList="mb-4 px-2 py-1" onClick={openCreateModal}>{TRANSLATION[locale()].add}</Button>
-        <Button default active={open()} classList="ml-4 mb-4 px-2 py-1" onClick={() => setOpen(!open())}>{TRANSLATION[locale()].showPublic}</Button>
+      <div class="flex my-4">
+        <Button default classList="px-2 py-1" onClick={openCreateForm}>{TRANSLATION[locale()].add}</Button>
+        <Button default active={!ownFilter()} classList="ml-4 px-2 py-1" onClick={() => setOwnFilter(!ownFilter())}>{TRANSLATION[locale()].showPublic}</Button>
       </div>
-      <Show when={filteredBackgrounds().length > 0}>
-        <div class="flex items-center">
+      <Show
+        when={!open()}
+        fallback={
+          <div class="flex flex-col gap-2">
+            <p class="text-xl">{TRANSLATION[locale()].newItemTitle}</p>
+            <div class="flex gap-1">
+              <Button default classList="px-2 py-1" active={formLocale() === 'en'} onClick={() => setFormLocale('en')}>EN</Button>
+              <Button default classList="px-2 py-1" active={formLocale() === 'ru'} onClick={() => setFormLocale('ru')}>RU</Button>
+              <Button default classList="px-2 py-1" active={formLocale() === 'es'} onClick={() => setFormLocale('es')}>ES</Button>
+            </div>
+            <Input
+              containerClassList="form-field"
+              labelText={TRANSLATION[locale()].name}
+              value={form.names[formLocale()]}
+              onInput={(value) => setForm({ ...form, names: { ...form.names, [formLocale()]: value } })}
+            />
+            <TextArea
+              rows="5"
+              labelText={TRANSLATION[locale()].descriptions}
+              value={form.descriptions[formLocale()]}
+              onChange={(value) => setForm({ ...form, descriptions: { ...form.descriptions, [formLocale()]: value } })}
+            />
+            <Select
+              multi
+              labelText={TRANSLATION[locale()].abilities}
+              items={translate(config.abilities, locale())}
+              selectedValues={form.ability_boosts}
+              onSelect={(value) => updateValues(value, 'ability_boosts')}
+            />
+            <Select
+              multi
+              labelText={TRANSLATION[locale()].skills}
+              items={translate(config.skills, locale())}
+              selectedValues={form.selected_skills}
+              onSelect={(value) => updateValues(value, 'selected_skills')}
+            />
+            <Select
+              relative
+              labelText={TRANSLATION[locale()].feats}
+              items={talents()}
+              selectedValue={form.selected_feats[0]}
+              onSelect={(value) => setForm({ ...form, selected_feats: [value] })}
+            />
+            <Checkbox
+              labelText={TRANSLATION[locale()].public}
+              labelPosition="right"
+              labelClassList="ml-2"
+              checked={form.public}
+              onToggle={() => setForm({ ...form, public: !form.public })}
+            />
+            <div class="flex gap-1">
+              <Button default classList="px-2 py-1" onClick={() => setOpen(false)}>{TRANSLATION[locale()].cancel}</Button>
+              <Button default classList="px-2 py-1" onClick={saveBackground}>{TRANSLATION[locale()].save}</Button>
+            </div>
+          </div>
+        }
+      >
+        <div class="flex items-center mb-2">
           <Select
-            containerClassList="w-40"
+            containerClassList="w-80"
             labelText={TRANSLATION[locale()].selectBook}
             items={Object.fromEntries(books().filter(({ shared }) => shared === null).map((item) => [item.id, item.name]))}
             selectedValue={book()}
@@ -216,47 +287,33 @@ export const DndBackgrounds = () => {
             </Button>
           </Show>
         </div>
-        <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
-        <table class="w-full table">
-          <thead>
-            <tr class="text-sm">
-              <td class="p-1" />
-              <td class="p-1" />
-              <td class="p-1">{TRANSLATION[locale()].description}</td>
-              <td class="p-1" />
-            </tr>
-          </thead>
-          <tbody>
+        <Show when={book()}><p class="text-sm mb-2">{TRANSLATION[locale()].selectBookHelp}</p></Show>
+        <Show when={filteredBackgrounds().length > 0}>
+          <div class="flex flex-col gap-2">
             <For each={filteredBackgrounds()}>
               {(background) =>
-                <tr>
-                  <td class="minimum-width py-1">
-                    <Checkbox
-                      checked={selectedIds().includes(background.id)}
-                      classList="mr-1"
-                      innerClassList="small"
-                      onToggle={() => selectedIds().includes(background.id) ? setSelectedIds(selectedIds().filter((id) => id !== background.id)) : setSelectedIds(selectedIds().concat(background.id))}
-                    />
-                  </td>
-                  <td class="py-1">{background.name}</td>
-                  <td class="py-1">
-                    <p>{TRANSLATION[locale()].selectedAbilities}: {background.data.ability_boosts.map((item) => config.abilities[item].name[locale()]).join(', ')}</p>
-                    <p>{TRANSLATION[locale()].selectedSkills}: {Object.keys(background.data.selected_skills).map((item) => config.skills[item].name[locale()]).join(', ')}</p>
-                    <p>{TRANSLATION[locale()].feats}: {background.data.selected_feats.map((item) => talents()[item]).join(', ')}</p>
-                  </td>
-                  <td>
-                    <div class="col-span-2 flex items-start justify-end gap-2">
-                      <Show
-                        when={!open()}
-                        fallback={
-                          <Button default classList="px-2 py-1" onClick={() => copyBackground(background.id)}>
-                            <Copy width="20" height="20" />
-                          </Button>
-                        }
-                      >
-                        <Show when={filteredBackgrounds().length > 0}>
-                          <div class="flex items-center justify-end gap-x-2 text-neutral-700">
-                            <Button default classList="px-2 py-1" onClick={() => openChangeModal(background)}>
+                <Toggle
+                  title={
+                    <div class="flex items-center">
+                      <p class="flex-1">{localize(background.data.names, locale())}</p>
+                      <div class="col-span-2 flex items-start justify-end gap-2">
+                        <Show
+                          when={ownFilter()}
+                          fallback={
+                            <Button default classList="px-2 py-1" onClick={() => copyBackground(background.id)}>
+                              <Copy width="20" height="20" />
+                            </Button>
+                          }
+                        >
+                          <div class="flex items-center justify-end gap-1 text-neutral-700">
+                            <Show when={book()}>
+                              <Button default classList="p-2" onClick={(e) => onSelect(e, background.id)}>
+                                <span classList={{ 'opacity-25': !selectedIds().includes(background.id) }}>
+                                  <Stroke width="16" height="12" />
+                                </span>
+                              </Button>
+                            </Show>
+                            <Button default classList="px-2 py-1" onClick={() => openEditForm(background)}>
                               <Edit width="20" height="20" />
                             </Button>
                             <Button default classList="px-2 py-1" onClick={() => removeBackground(background.id)}>
@@ -264,57 +321,22 @@ export const DndBackgrounds = () => {
                             </Button>
                           </div>
                         </Show>
-                      </Show>
+                      </div>
                     </div>
-                  </td>
-                </tr>
+                  }
+                >
+                  <Show when={localize(background.data.descriptions, locale())}>
+                    <p class="mb-2">{localize(background.data.descriptions, locale())}</p>
+                  </Show>
+                  <p class="text-sm">{TRANSLATION[locale()].selectedAbilities}: {background.data.ability_boosts.map((item) => config.abilities[item].name[locale()]).join(', ')}</p>
+                  <p class="text-sm">{TRANSLATION[locale()].selectedSkills}: {Object.keys(background.data.selected_skills).map((item) => config.skills[item].name[locale()]).join(', ')}</p>
+                  <p class="text-sm">{TRANSLATION[locale()].feats}: {background.data.selected_feats.map((item) => talents()[item]).join(', ')}</p>
+                </Toggle>
               }
             </For>
-          </tbody>
-        </table>
+          </div>
+        </Show>
       </Show>
-      <Modal>
-        <p class="text-xl">{TRANSLATION[locale()].newItemTitle}</p>
-        <Input
-          containerClassList="form-field mt-2"
-          labelText={TRANSLATION[locale()].name}
-          value={form.name}
-          onInput={(value) => setForm({ ...form, name: value })}
-        />
-        <Select
-          multi
-          containerClassList="mt-2"
-          labelText={TRANSLATION[locale()].abilities}
-          items={translate(config.abilities, locale())}
-          selectedValues={form.ability_boosts}
-          onSelect={(value) => updateValues(value, 'ability_boosts')}
-        />
-        <Select
-          multi
-          containerClassList="mt-2"
-          labelText={TRANSLATION[locale()].skills}
-          items={translate(config.skills, locale())}
-          selectedValues={form.selected_skills}
-          onSelect={(value) => updateValues(value, 'selected_skills')}
-        />
-        <Select
-          relative
-          containerClassList="mt-2"
-          labelText={TRANSLATION[locale()].feats}
-          items={talents()}
-          selectedValue={form.selected_feats[0]}
-          onSelect={(value) => setForm({ ...form, selected_feats: [value] })}
-        />
-        <Checkbox
-          labelText={TRANSLATION[locale()].public}
-          labelPosition="right"
-          labelClassList="ml-2"
-          checked={form.public}
-          classList="mt-4"
-          onToggle={() => setForm({ ...form, public: !form.public })}
-        />
-        <Button default classList="mt-4 px-2 py-1" onClick={saveBackground}>{TRANSLATION[locale()].save}</Button>
-      </Modal>
     </Show>
   );
 }

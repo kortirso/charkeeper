@@ -7,11 +7,11 @@ import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select } from '../../../components';
 import { Edit, Trash } from '../../../assets';
 import { fetchHomebrewsList } from '../../../requests/fetchHomebrewsList';
-import { fetchDaggerheartSpecialities } from '../../../requests/fetchDaggerheartSpecialities';
-import { fetchDaggerheartSpeciality } from '../../../requests/fetchDaggerheartSpeciality';
-import { createDaggerheartSpeciality } from '../../../requests/createDaggerheartSpeciality';
-import { changeDaggerheartSpeciality } from '../../../requests/changeDaggerheartSpeciality';
-import { removeDaggerheartSpeciality } from '../../../requests/removeDaggerheartSpeciality';
+import { fetchSpecialitiesRequest } from '../../../requests/specialities/fetchSpecialitiesRequest';
+import { fetchSpecialityRequest } from '../../../requests/specialities/fetchSpecialityRequest';
+import { createSpecialityRequest } from '../../../requests/specialities/createSpecialityRequest';
+import { changeSpecialityRequest } from '../../../requests/specialities/changeSpecialityRequest';
+import { removeSpecialityRequest } from '../../../requests/specialities/removeSpecialityRequest';
 import { createFeat } from '../../../requests/createFeat';
 import { removeFeat } from '../../../requests/removeFeat';
 import { translate } from '../../../helpers';
@@ -69,7 +69,7 @@ export const DaggerheartClasses = () => {
 
   createEffect(() => {
     const fetchHomebrews = async () => await fetchHomebrewsList(appState.accessToken, 'daggerheart');
-    const fetchSpecialities = async () => await fetchDaggerheartSpecialities(appState.accessToken);
+    const fetchSpecialities = async () => await fetchSpecialitiesRequest(appState.accessToken, 'daggerheart');
 
     Promise.all([fetchSpecialities(), fetchHomebrews()]).then(
       ([specialitiesData, homebrewsData]) => {
@@ -123,7 +123,7 @@ export const DaggerheartClasses = () => {
   }
 
   const createSpeciality = async () => {
-    const result = await createDaggerheartSpeciality(appState.accessToken, { brewery: specialityForm });
+    const result = await createSpecialityRequest(appState.accessToken, 'daggerheart', { brewery: specialityForm });
 
     if (result.errors_list === undefined) {
       batch(() => {
@@ -135,7 +135,7 @@ export const DaggerheartClasses = () => {
   }
 
   const updateSpeciality = async () => {
-    const result = await changeDaggerheartSpeciality(appState.accessToken, specialityForm.id, { brewery: specialityForm, only_head: true });
+    const result = await changeSpecialityRequest(appState.accessToken, 'daggerheart', specialityForm.id, { brewery: specialityForm, only_head: true });
 
     if (result.errors_list === undefined) {
       const newSpecialities = specialities().map((item) => {
@@ -153,7 +153,7 @@ export const DaggerheartClasses = () => {
   }
 
   const removeSpeciality = async (speciality) => {
-    const result = await removeDaggerheartSpeciality(appState.accessToken, speciality.id);
+    const result = await removeSpecialityRequest(appState.accessToken, 'daggerheart', speciality.id);
 
     if (result.errors_list === undefined) {
       setSpecialities(specialities().filter(({ id }) => id !== speciality.id ));
@@ -164,7 +164,7 @@ export const DaggerheartClasses = () => {
     const result = await createFeat(appState.accessToken, 'daggerheart', payload);
 
     if (result.errors_list === undefined) {
-      const speciality = await fetchDaggerheartSpeciality(appState.accessToken, featureSpeciality().id)
+      const speciality = await fetchSpecialityRequest(appState.accessToken, 'daggerheart', featureSpeciality().id)
 
       if (speciality.errors_list === undefined) {
         const newSpecialities = specialities().map((item) => {
@@ -187,7 +187,7 @@ export const DaggerheartClasses = () => {
     const result = await removeFeat(appState.accessToken, 'daggerheart', feature.id);
 
     if (result.errors_list === undefined) {
-      const speciality = await fetchDaggerheartSpeciality(appState.accessToken, feature.origin_value)
+      const speciality = await fetchSpecialityRequest(appState.accessToken, 'daggerheart', feature.origin_value)
 
       if (speciality.errors_list === undefined) {
         const newSpecialities = specialities().map((item) => {

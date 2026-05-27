@@ -1,6 +1,6 @@
 export const translate = (obj, locale) => {
   return Object.fromEntries(
-    Object.entries(obj).map(([key, values]) => [key, values.name[locale]])
+    Object.entries(obj).map(([key, values]) => [key, values.name[locale] || values.name.en])
   );
 }
 
@@ -11,3 +11,5 @@ export const replace = (initialValue, values) => {
   });
   return resultValue;
 }
+
+export const localize = (dict, locale) => dict[locale] || dict.en;

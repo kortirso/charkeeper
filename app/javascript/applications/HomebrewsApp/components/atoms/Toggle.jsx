@@ -8,7 +8,7 @@ export const Toggle = (props) => {
 
   return (
     <div
-      class={[props.containerClassList, 'mb-2 flex flex-col'].join(' ')}
+      class={[props.containerClassList, 'flex flex-col'].join(' ')}
       classList={{
         'blockable': !props.noInnerPadding,
         '': props.noInnerPadding
