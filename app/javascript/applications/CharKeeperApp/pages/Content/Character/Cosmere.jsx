@@ -16,6 +16,7 @@ const TRANSLATION = {
     heavyWeapon: 'Heavy weapons',
     armor: 'Armor',
     items: 'Items',
+    fabrials: 'Fabrials',
     heroicFilters: {
       agent: 'Agent',
       envoy: 'Envoy',
@@ -43,6 +44,7 @@ const TRANSLATION = {
     heavyWeapon: 'Тяжёлое оружие',
     armor: 'Доспехи',
     items: 'Предметы',
+    fabrials: 'Фабриали',
     heroicFilters: {
       agent: 'Агент',
       envoy: 'Посланник',
@@ -70,6 +72,7 @@ const TRANSLATION = {
     heavyWeapon: 'Heavy weapons',
     armor: 'Armor',
     items: 'Items',
+    fabrials: 'Fabrials',
     heroicFilters: {
       agent: 'Agent',
       envoy: 'Envoy',
@@ -108,6 +111,7 @@ export const Cosmere = (props) => {
   const heavyWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'heavy_weaponry';
   const armorFilter = (item) => item.kind === 'armor';
   const itemFilter = (item) => item.kind === 'item';
+  const fabrialFilter = (item) => item.kind === 'fabrial';
 
   const heroicFilters = createMemo(() => {
     return Object.keys(config.paths).reduce((acc, element) => {
@@ -219,7 +223,8 @@ export const Cosmere = (props) => {
                   { title: localize(TRANSLATION, locale()).lightWeapon, callback: lightWeaponFilter },
                   { title: localize(TRANSLATION, locale()).heavyWeapon, callback: heavyWeaponFilter },
                   { title: localize(TRANSLATION, locale()).armor, callback: armorFilter },
-                  { title: localize(TRANSLATION, locale()).items, callback: itemFilter }
+                  { title: localize(TRANSLATION, locale()).items, callback: itemFilter },
+                  { title: localize(TRANSLATION, locale()).fabrials, callback: fabrialFilter }
                 ]}
                 onReloadCharacter={props.onReloadCharacter}
               />
@@ -323,7 +328,8 @@ export const Cosmere = (props) => {
                   { title: localize(TRANSLATION, locale()).lightWeapon, callback: lightWeaponFilter },
                   { title: localize(TRANSLATION, locale()).heavyWeapon, callback: heavyWeaponFilter },
                   { title: localize(TRANSLATION, locale()).armor, callback: armorFilter },
-                  { title: localize(TRANSLATION, locale()).items, callback: itemFilter }
+                  { title: localize(TRANSLATION, locale()).items, callback: itemFilter },
+                  { title: localize(TRANSLATION, locale()).fabrials, callback: fabrialFilter }
                 ]}
                 onReloadCharacter={props.onReloadCharacter}
               />

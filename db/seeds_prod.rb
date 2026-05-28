@@ -39,7 +39,7 @@ end
   end
 end
 
-['weapon.json', 'armor.json', 'items.json'].each do |filename|
+['weapon.json', 'armor.json', 'items.json', 'fabrials.json'].each do |filename|
   JSON.parse(File.read("db/data_prod/cosmere/#{filename}")).each do |data|
     item = ::Cosmere::Item.find_by(slug: data['slug'])
     item ? item.update!(data) : ::Cosmere::Item.create!(data)

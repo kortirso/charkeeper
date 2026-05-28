@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "alerter",
+    "kind": "fabrial",
+    "name": { "en": "Alerter", "ru": "Сигнализатор" },
+    "data": { "weight": 10, "price": 500 },
+    "info": {
+      "features": [
+        {
+          "en": "While active, an alerter detects the presence of approaching people or objects, blinking if they're within a certain radius.",
+          "ru": "В активном состоянии сигнализатор обнаруживает приближение людей или объектов, мигая, если они находятся в определенном радиусе."
+        }
+      ]
+    }
+  }
+]
