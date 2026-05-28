@@ -25,7 +25,8 @@ describe Homebrews::Dnd::SpellsController do
     context 'for logged users' do
       let(:valid_params) {
         {
-          title: 'Title', description: 'Descr', origin_values: ['bard'], info: {
+          title: { en: 'Title' }, description: { en: 'Descr' }, origin_values: ['bard'],
+          info: {
             level: 0, school: 'necromancy', time: '1,m', range: '60,ft', components: 'v', duration: 'instant',
             effects: []
           }

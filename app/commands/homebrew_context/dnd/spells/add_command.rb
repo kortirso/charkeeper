@@ -12,8 +12,8 @@ module HomebrewContext
 
           params do
             required(:user).filled(type?: ::User)
-            required(:title).filled(:string, max_size?: 50)
-            optional(:description).filled(:string, max_size?: 1000)
+            required(:title).hash
+            optional(:description).hash
             required(:origin_values).filled(:array).each(Classes)
             optional(:public).filled(:bool)
             required(:info).hash do
@@ -37,8 +37,8 @@ module HomebrewContext
           input[:slug] = SecureRandom.alphanumeric(10)
           input[:origin] = 6
           input[:kind] = 'static'
-          input[:title] = { en: sanitize(input[:title]), ru: sanitize(input[:title]) }
-          input[:description] = { en: sanitize(input[:description]), ru: sanitize(input[:description]) }
+          input[:title].transform_values! { |value| sanitize(value) }
+          input[:description].transform_values! { |value| sanitize(value) }
           input[:info] = input[:info].compact_blank
         end
 

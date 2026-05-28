@@ -12,8 +12,8 @@ module HomebrewContext
 
           params do
             required(:spell).filled(type?: ::Dnd2024::Feat)
-            required(:title).filled(:string, max_size?: 50)
-            optional(:description).filled(:string, max_size?: 1000)
+            required(:title).hash
+            optional(:description).hash
             required(:origin_values).filled(:array).each(Classes)
             optional(:public).filled(:bool)
             required(:info).hash do
@@ -34,8 +34,8 @@ module HomebrewContext
         private
 
         def do_prepare(input)
-          input[:title] = { en: sanitize(input[:title]), ru: sanitize(input[:title]) }
-          input[:description] = { en: sanitize(input[:description]), ru: sanitize(input[:description]) }
+          input[:title].transform_values! { |value| sanitize(value) }
+          input[:description].transform_values! { |value| sanitize(value) }
           input[:info] = input[:info].compact_blank
         end
 
