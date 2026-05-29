@@ -19,14 +19,14 @@
     }
   },
   {
-    "slug": "frictionless motion",
+    "slug": "frictionless_motion",
     "kind": "static",
     "title": {
       "en": "Frictionless Motion",
       "ru": "Скользящее перемещение"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\nWhile infused, you gain calculated bonus +10 to movement speed, and you ignore the *Slowed* condition from difficult terrain, climbing, crawling, and swimming.",
+      "en": "**Requirements** Speak the First Ideal.\n\nWhile infused, you gain calculated bonus +10 to movement speed, and you ignore the *Slowed* condition from difficult terrain, climbing, crawling and swimming.",
       "ru": "**Требования** Произнести Первый идеал.\n\nПока вы наполнены Абразией, ваша скорость передвижения увеличивается на 10 футов, и вы игнорируете состояние *Замедленный* от труднопроходимой местности, лазанья, ползания и плавания."
     },
     "origin": "surge",
@@ -51,7 +51,7 @@
     "origin": "surge",
     "origin_value": "abrasion",
     "info": {
-      "required_for": ["stormlight_reclamation", "distant_surgebinding"]
+      "required_for": ["stormlight_reclamation_abrasion", "distant_surgebinding"]
     }
   },
   {
@@ -62,7 +62,7 @@
       "ru": "Грациозное скольжение"
     },
     "description": {
-      "en": "When you Skate, you aren’t restricted to moving in a straight line.",
+      "en": "You aren't restricted to moving in a straight line while scating.",
       "ru": "Когда вы Катаетесь, вы не ограничены передвижением по прямой линии."
     },
     "origin": "surge",
@@ -79,7 +79,7 @@
       "ru": "Скользкая мишень"
     },
     "description": {
-      "en": "While you are infused with Abrasion, attacks can’t graze you and Reactive Strikes against you gain a disadvantage.",
+      "en": "While you are infused attacks can't graze you, Reactive Strikes against you has disadvantage.",
       "ru": "Пока вы наполнены Абразией, атаки не могут вас задевать, а Удары реакцией по вам получают помеху."
     },
     "origin": "surge",
@@ -96,7 +96,7 @@
       "ru": "Скользкий боец"
     },
     "description": {
-      "en": "When you Skate or otherwise Move while infused with Abrasion, you can interrupt your movement at one or more points, use other actions as if you’d finished your Move, then use your remaining movement as if you were still in the middle of that Move action.\n\nOnce per round, when you make a melee weapon attack after starting that Move but before finishing it, you can roll an extra 1d4 damage for that attack. The size of this die increases with your ranks in Abrasion: at 2 ranks, roll an extra 1d6 damage (instead of 1d4), and so on. However, if you add this damage die, the GM can spend **Complication** from the attack test to cause you to fall Prone and immediately end your Move action.",
+      "en": "When you move while infused, you can interrupt your movement, use other actions as if you'd finished your Move, then use your remaining movement.\n\nOnce per round, when you make a melee weapon attack after starting that Move but before finishing it, you can roll an extra 1d4 damage for that attack (damage dice increases by ranks in Abrasion).",
       "ru": "Когда вы Катаетесь или иным образом сами Перемещаетесь, будучи наполнены Абразией, вы можете прерывать своё передвижение в одной или нескольких точках, выполнить другие действия, как если бы уже завершили Перемещение, а затем возобновить его, словно ваше действие Перемещения не прерывалось.\n\nОдин раз за раунд, когда вы совершаете атаку оружием ближнего боя после начала, но до завершения Перемещения, вы можете добавить к этой атаке дополнительную 1d4 кость урона. Размер этой кости увеличивается с ростом вашего ранга в Абразии: на 2 ранге вы бросаете 1d6 (вместо 1d4) и так далее. Однако, если вы добавляете эту кость урона, ведущий может потратить **Осложнение** из проверки атаки, чтобы вы оказались Сбиты с ног и немедленно завершить ваше действие Перемещения."
     },
     "origin": "surge",
@@ -105,14 +105,14 @@
     }
   },
   {
-    "slug": "stormlight_reclamation",
+    "slug": "stormlight_reclamation_abrasion",
     "kind": "static",
     "title": {
       "en": "Stormlight Reclamation",
       "ru": "Возвращение буресвета"
     },
     "description": {
-      "en": "After your infusions expend their infused Investiture at the start of your turn, you can end any number of those infusions within your reach, recovering all remaining Investiture they were infused with.",
+      "en": "After infusions expend their Investiture at the start of your turn, you can end any infusions within your reach, recovering all remaining Investiture they were infused with.",
       "ru": "После того как ваши наполнения расходуют вложенную в них Инвеституру в начале вашего хода, вы можете завершить любое количество активных наполнений в пределах вашей досягаемости и вернуть себе всю оставшуюся в них Инвеституру."
     },
     "origin": "surge",
@@ -128,7 +128,7 @@
       "ru": "Дистанционное плетение"
     },
     "description": {
-      "en": "You can use your surges and their talents as though your reach is 20 feet, and you don’t need to touch the target.",
+      "en": "You can use your surges as though your reach is 20 feet.",
       "ru": "Вы можете использовать свои потоки и их таланты так, как если бы ваша досягаемость составляла 20 футов, и вам больше не требуется прикасаться к цели."
     },
     "origin": "surge",
@@ -145,7 +145,7 @@
       "ru": "Мастер скольжения"
     },
     "description": {
-      "en": "While you have 1 Investiture or more, you gain the benefits of being infused with Abrasion without spending Investiture, and it costs you 1 fewer focus to Skate.",
+      "en": "While you have at least 1 Investiture, you gain the benefits of being infused without spending Investiture, it costs you 1 fewer focus to Skate.",
       "ru": "Пока у вас есть 1 Инвеститура или более, вы можете наполнять себя Абразией без траты Инвеституры, а на Катания тратите на 1 фокус меньше."
     },
     "origin": "surge",

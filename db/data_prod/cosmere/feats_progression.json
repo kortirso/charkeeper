@@ -52,7 +52,7 @@
       "required_for": ["overgrowth"]
     },
     "price": { "a": 2 }
-  }
+  },
   {
     "slug": "swift_regeneration",
     "kind": "static",
@@ -61,8 +61,8 @@
       "ru": "Быстрая регенерация"
     },
     "description": {
-      "en": "**Progression 2+**.\n\nWhen you use Regenerate, instead of recovering the normal amount of health, you can recover health equal to 1d6 + your Progression modifier. The size of this die increases with your ranks in Progression: at 3 ranks, roll 1d8 (instead of 1d6), and so on.\n\nAdditionally, while you have 1 Investiture or more, you and any character infused with your Regrowth can add your Progression modifier to injury rolls.",
-      "ru": "**Прогрессия 2+**.\n\nКогда вы используете Регенерацию, вместо обычного количества здоровья вы восстанавливаете 1d6 + ваш модификатор Прогрессии. Размер этой кости увеличивается с ростом вашего ранга в Прогресии: при 3 ранге вы бросаете 1d8 (вместо 1d6), и так далее.\n\nКроме того, пока у вас есть 1 Инвеститура или более, вы и любой персонаж, наполненный вашим Исцелением, можете добавлять ваш модификатор Прогрессии к броскам травмы."
+      "en": "**Requirements** Progression 2+.\n\nWhen you use **Regenerate** you can recover health equal to 1d6 (dice increases by ranks in Progression) + your Progression modifier.\n\nWhile you have at least 1 Investiture, anybody infused with your **Regrowth** can add your Progression modifier to injury rolls.",
+      "ru": "**Требования** Прогрессия 2+.\n\nКогда вы используете **Регенерацию**, вместо обычного количества здоровья вы восстанавливаете 1d6 + ваш модификатор Прогрессии. Размер этой кости увеличивается с ростом вашего ранга в Прогресии: при 3 ранге вы бросаете 1d8 (вместо 1d6), и так далее.\n\nКроме того, пока у вас есть 1 Инвеститура или более, вы и любой персонаж, наполненный вашим Исцелением, можете добавлять ваш модификатор Прогрессии к броскам травмы."
     },
     "origin": "surge",
     "origin_value": "progression",
@@ -78,8 +78,8 @@
       "ru": "Продолжительное исцеление"
     },
     "description": {
-      "en": "When you infuse Regrowth into a character, instead of the infusion expending 1 Investiture per round, it expends 1 Investiture per number of rounds equal to your ranks in Progression. For example, if you have 3 ranks in Progression, those infusions expend Investiture once every 3 rounds.",
-      "ru": "Когда вы наполняете Исцелением персонажа, вместо того чтобы наполнение расходовало 1 Инвеституру каждый раунд, оно тратит 1 Инвеституру раз в количество раундов, равное вашему рангу в Прогрессии. Например, при 3 ранге Прогрессии наполнение будет расходовать 1 Инвеституру лишь каждые 3 раунда."
+      "en": "When you infuse **Regrowth** into a character, instead of expending 1 Investiture per round, it expends 1 Investiture per number of rounds equal to your ranks in Progression",
+      "ru": "Когда вы наполняете **Исцелением** персонажа, вместо того чтобы наполнение расходовало 1 Инвеституру каждый раунд, оно тратит 1 Инвеституру раз в количество раундов, равное вашему рангу в Прогрессии. Например, при 3 ранге Прогрессии наполнение будет расходовать 1 Инвеституру лишь каждые 3 раунда."
     },
     "origin": "surge",
     "origin_value": "progression",
@@ -95,8 +95,8 @@
       "ru": "C края пропасти"
     },
     "description": {
-      "en": "**Progression 3+**.\n\n**Spend 3 Investiture** and touch the body of a character who died within the last minute. If the target is willing, they return to life Unconscious with 0 health. ",
-      "ru": "**Прогрессия 3+**.\n\n**Потратьте 3 Инвеституры** и коснитесь тела персонажа, умершего в течение последней минуты. Если цель согласна, она возвращается к жизни Без сознания, имея 0 здоровья."
+      "en": "**Requirements** Progression 3+.\n\n**Spend 3 Investiture** and touch the body of a character who died within the last minute. They return to life *Unconscious* with 0 health. ",
+      "ru": "**Требования** Прогрессия 3+.\n\n**Потратьте 3 Инвеституры** и коснитесь тела персонажа, умершего в течение последней минуты. Если цель согласна, она возвращается к жизни *Без сознания*, имея 0 здоровья."
     },
     "origin": "surge",
     "origin_value": "progression",
@@ -112,7 +112,7 @@
       "ru": "Чрезмерный рост"
     },
     "description": {
-      "en": "When you infuse Growth into a plant, you can make a DC 15 Progression test as part of that action. On a success, you cause the plant to grow beyond its species’ normal limits, up to the surge size for your ranks in Progression, and the plant’s current and total health increase by 2d4. The size of these dice increases with your ranks in Progression; at 2 ranks, roll 2d6 (instead of 2d4), and so on.",
+      "en": "When you infuse **Growth** into a plant, you can make Progression test (DC 15). On a success, you cause the plant to grow beyond its species' normal limits and the plant's total health increase by 2d4 (dice increases by ranks in Progression).",
       "ru": "Когда вы наполняете растение Ростом, вы можете совершить проверку Прогрессии со Сл 15 как часть этого действия. При успехе растение вырастает сверх обычных пределов своего вида — до размера, соответствующего вашему рангу в Прогрессии, а его текущее и максимальное здоровье увеличиваются на 2d4. Размер этих костей увеличивается с ростом вашего ранга в Прогресии: при 2 ранге вы бросаете 2d6 (вместо 2d4), и так далее."
     },
     "origin": "surge",
@@ -120,7 +120,8 @@
     "info": {
       "required_for": ["reliable_progression"]
     }
-  },{
+  },
+  {
     "slug": "reliable_progression",
     "kind": "static",
     "title": {
@@ -128,8 +129,8 @@
       "ru": "Надежная прогрессия"
     },
     "description": {
-      "en": "**Progression 2+**.\n\nWhen you roll a die whose size increases with your ranks in Progression (such as when using the Explosive Growth, Overgrowth, and Swift Regeneration talents) or when a willing character rolls a die to recover health from your Regrowth, if the die rolls a number lower than your ranks in Progression, you can change that result to instead equal your ranks in Progression (no action required).",
-      "ru": "**Прогрессия 2+**.\n\nКогда вы бросаете кости, размер которых увеличивается с вашим рангом в Прогрессии (например, при использовании талантов Взрывной рост, Чрезмерный рост и Быстрая регенерация), или когда согласная цель бросает кости для восстановления здоровья от вашего Исцеления, — если результат броска меньше вашего ранга в Прогрессии, вы можете заменить его на значение, равное вашему рангу в Прогрессии (действия не требуется)."
+      "en": "**Requirements** Progression 2+.\n\nWhen you roll a die whose size increases with your ranks in Progression or when a willing character rolls a die to recover health from your **Regrowth**, your minimum result is equal your ranks in Progression.",
+      "ru": "**Требования** Прогрессия 2+.\n\nКогда вы бросаете кости, размер которых увеличивается с вашим рангом в Прогрессии (например, при использовании талантов Взрывной рост, Чрезмерный рост и Быстрая регенерация), или когда согласная цель бросает кости для восстановления здоровья от вашего Исцеления, — если результат броска меньше вашего ранга в Прогрессии, вы можете заменить его на значение, равное вашему рангу в Прогрессии (действия не требуется)."
     },
     "origin": "surge",
     "origin_value": "progression",
@@ -145,7 +146,7 @@
       "ru": "Источник жизни"
     },
     "description": {
-      "en": "It costs you one action fewer to use Progression and its talents.",
+      "en": "Using Progression costs you one action fewer.",
       "ru": "Использование Прогрессии и её талантов стоит на 1 Действие меньше."
     },
     "origin": "surge",

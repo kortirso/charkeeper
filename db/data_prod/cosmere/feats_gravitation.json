@@ -53,7 +53,7 @@
     "info": {
       "required_for": ["multiple_lashings", "lashing_shot"]
     }
-  }
+  },
   {
     "slug": "stable_flight",
     "kind": "static",
@@ -62,7 +62,7 @@
       "ru": "Устойчивый полет"
     },
     "description": {
-      "en": "While maintaining a Basic Lashing on yourself, your ranged attacks don’t gain a disadvantage due to flying or other causes of unstable footing.",
+      "en": "With Basic Lashing on yourself, your ranged attacks don't gain a disadvantage due to flying.",
       "ru": "Пока вы поддерживаете Основное плетение на себе, ваши атаки дальнего боя не получают помех из-за полета или других причин, связанных с нестабильным положением."
     },
     "origin": "surge",
@@ -79,8 +79,8 @@
       "ru": "Групповой полет"
     },
     "description": {
-      "en": "While not in combat, when you spend 1 Investiture or more to infuse yourself or a willing character with a Basic Lashing, you can also infuse a number of additional willing characters up to your ranks in Gravitation. Each target must be within your reach. These infusions last for the duration of the original infusion and require no additional Investiture to create or maintain.",
-      "ru": "Вне боя, когда вы тратите 1 Инвеституру или более, чтобы наполнить себя или согласного персонажа Основным плетением, вы также можете наполнить дополнительное количество согласных персонажей до вашего значения ранга в Гравитации. Каждая цель должна находиться в пределах вашей досягае- мости. Эти дополнительные плетения действуют столько же, сколько и первое, и не требуют допол- нительных трат Инвеституры для их создания или поддержания."
+      "en": "When you **spend 1 Investiture or more** not in combat to infuse yourself or a willing character, you can also infuse a number (ranks in Gravitation) of additional willing characters.",
+      "ru": "Вне боя, когда **вы тратите 1 Инвеституру или более**, чтобы наполнить себя или согласного персонажа Основным плетением, вы также можете наполнить дополнительное количество согласных персонажей до вашего значения ранга в Гравитации. Каждая цель должна находиться в пределах вашей досягаемости. Эти дополнительные плетения действуют столько же, сколько и первое, и не требуют дополнительных трат Инвеституры для их создания или поддержания."
     },
     "origin": "surge",
     "origin_value": "gravitation",
@@ -96,8 +96,8 @@
       "ru": "Воздушная эскадрилия"
     },
     "description": {
-      "en": "**Gravitation 3+**.\n\nYou can use your **Group Flight** in combat.",
-      "ru": "**Гравитация 3+**.\n\n Вы можете использовать **Групповой полет** во время боя."
+      "en": "**Requirements** Gravitation 3+.\n\nYou can use **Group Flight** while in combat.",
+      "ru": "**Требования** Гравитация 3+.\n\n Вы можете использовать **Групповой полет** во время боя."
     },
     "origin": "surge",
     "origin_value": "gravitation",
@@ -112,7 +112,7 @@
       "ru": "Многократное плетение"
     },
     "description": {
-      "en": "After you succeed on a Gravitation test to move an unwilling character, you can infuse them with an amount of Investiture up to your ranks in Gravitation (instead of only 1 Investiture). When you do, the effect continues until the infusion ends (instead of until the start of your next turn).",
+      "en": "After you succeed on a Gravitation test against an unwilling character, you can infuse them with an amount (ranks in Gravitation) of Investiture. The effect continues until the infusion ends.",
       "ru": "После совершения успешной проверки Гравитации для перемещения несогласного персонажа вы можете наполнить его количеством Инвеституры до вашего ранга в Гравитации (вместо 1 Инвеституры). В этом случае эффект продолжается до тех пор, пока наполнение не закончится (вместо того чтобы завершиться в начале вашего следующего хода)."
     },
     "origin": "surge",
@@ -146,7 +146,7 @@
       "ru": "Хозяин небес"
     },
     "description": {
-      "en": "While you have 1 Investiture or more, you gain the benefits of being infused with Gravitation without spending Investiture.",
+      "en": "While you have at least 1 Investiture, you gain the benefits of being infused without spending Investiture.",
       "ru": "Пока у вас есть 1 Инвеститура или более, вы имеете все эффекты от наполнения себя потоком Гравитации, без необходимости тратить на это Инвеституру."
     },
     "origin": "surge",
