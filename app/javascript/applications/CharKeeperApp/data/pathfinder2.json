@@ -40,8 +40,8 @@
         "vine_leshy": { "name": { "en": "Vine leshy", "ru": "Лианный леший" } },
         "leaf_leshy": { "name": { "en": "Leaf leshy", "ru": "Лиственный леший" } },
         "lotus_leshy": { "name": { "en": "Lotus leshy", "ru": "Лотосовый леший" } },
-        "gourd_leshy": { "name": { "en": "Gourd leshy", "ru": "Персиковый леший" } },
-        "fruit_leshy": { "name": { "en": "Fruid leshy", "ru": "Тыквенный леший" } }
+        "gourd_leshy": { "name": { "en": "Gourd leshy", "ru": "Тыквенный леший" } },
+        "fruit_leshy": { "name": { "en": "Fruit leshy", "ru": "Фруктовый леший" } }
       }
     },
     "orc": {
