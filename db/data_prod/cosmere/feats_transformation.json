@@ -31,7 +31,7 @@
     "origin": "surge",
     "origin_value": "transformation",
     "info": {
-      "required_for": []
+      "required_for": ["soulcast_parry"]
     },
     "price": { "r": 1 }
   },
@@ -49,8 +49,108 @@
     "origin": "surge",
     "origin_value": "transformation",
     "info": {
-      "required_for": []
+      "required_for": ["bloodcasting"]
     },
     "price": { "a": 2 }
+  }
+  {
+    "slug": "soulcast_parry",
+    "kind": "static",
+    "title": {
+      "en": "Soulcast Parry",
+      "ru": "Парирование духозаклятием"
+    },
+    "description": {
+      "en": "You can now use Soulcast Defense on melee weapon attacks as well as ranged ones.",
+      "ru": "Вы можете использовать **Защитное духозаклятие** против атак ближнего боя."
+    },
+    "origin": "surge",
+    "origin_value": "transformation",
+    "info": {
+      "required_for": ["distant_surgebinding", "flamecasting"]
+    }
+  },
+  {
+    "slug": "distant_surgebinding",
+    "kind": "static",
+    "title": {
+      "en": "Distant Surgebinding",
+      "ru": "Дистанционное плетение"
+    },
+    "description": {
+      "en": "You can use your surges and their talents as though your reach is 20 feet, and you don’t need to touch the target.",
+      "ru": "Вы можете использовать свои потоки и их таланты так, как если бы ваша досягаемость составляла 20 футов, и вам больше не требуется прикасаться к цели."
+    },
+    "origin": "surge",
+    "origin_value": "transformation",
+    "info": {
+      "required_for": ["persistent_transformation"]
+    }
+  },
+  {
+    "slug": "persistent_transformation",
+    "kind": "static",
+    "title": {
+      "en": "Persistent Transformation",
+      "ru": "Настойчивая трансформация"
+    },
+    "description": {
+      "en": "**Transformation 2+**.\n\nWhen transforming a non-living material, your Trans- formation test has a maximum DC of 15.\n\nAdditionally, after you fail to Soulcast an object, you can attempt to do so again during the same scene. When you succeed on this test, you must spend 1 additional Investiture per time you failed to Soulcast that object during this scene; if you can’t spend that much Investiture, the object isn’t transformed.",
+      "ru": "**Трансформация 2+**.\n\nКогда вы трансформируете неживой материал, Сл вашей проверки Трансформации не может превышать 15.\n\nКроме того, если вы провалили Духозаклинание объекта, вы можете повторить попытку в течение той же сцены. При успешной проверке вам нужно потратить дополнительное количество Инвеституры, равное числу ваших предыдущих провальных попыток Духозаклинания этого объекта в течение этой сцены. Если у вас нет достаточного количества Инвеституры, трансформация не происходит."
+    },
+    "origin": "surge",
+    "origin_value": "transformation",
+    "info": {
+    }
+  },
+  {
+    "slug": "bloodcasting",
+    "kind": "static",
+    "title": {
+      "en": "Bloodcasting",
+      "ru": "Духозаклятие крови"
+    },
+    "description": {
+      "en": "While touching a character, spend 1 Investiture and make a DC 15 Transformation test to cleanse their blood. On a success, the effects of any poison end for the target, and you can reduce the recovery time of one of their injuries by 5 days.\n\nThe GM can **spend Complication** from this test to reduce the target’s maximum health by twice their level until after the target’s next long rest.",
+      "ru": "Прикоснувшись к персонажу, потратьте 1 Инвеституру и совершите проверку Трансформации со Сл 15, чтобы очистить его кровь. При успехе действие любых ядов на цели прекращается, а время восстановления одной из её травм сокращается на 5 дней.\n\nВедущий может **потратить Осложнение** из этой проверки, чтобы уменьшить максимальное здоровье цели на величину, в два раза превышающую её уровень, до завершения следующего продолжительного отдыха."
+    },
+    "origin": "surge",
+    "origin_value": "transformation",
+    "price": { "a": 2 },
+    "info": {
+    }
+  },
+  {
+    "slug": "flamecasting",
+    "kind": "static",
+    "title": {
+      "en": "Flamecasting",
+      "ru": "Духозаклятие пламени"
+    },
+    "description": {
+      "en": "On your surge’s list of Soulcasting materials, you gain a sixth category called “Flame,” which follows the entry for “Clear Air.” When Soulcasting a material that’s five spaces away on this expanded list, the DC is 30 (such as when Soulcasting stone into flame).\n\nWhen you Soulcast an object into flame, the flames last for only a moment before dissipating. However, before they do, they can catch flammable objects on fire.\n\nAdditionally, when you Soulcast an object into flame, use the result of that Transformation test to make an attack as **Free Action** against the Physical defense of each character within 5 feet of the Soulcast object. Roll 2d4 energy damage. The size of these damage dice increases with your ranks in Transformation; at 2 ranks, roll 2d6 (instead of 2d4), and so on.",
+      "ru": "В списке материалов вашего потока для Духозаклятия появляется шестая категория — «Пламя», расположен- ная после «Воздуха». При Духозаклинании материала, находящегося на расстоянии пяти шагов от исходного в расширенном списке, Сл проверки равна 30 (например, при Духозаклинании камня в пламя).\n\nКогда вы Духозаклинаете объект в пламя, огонь вспыхивает лишь на пару мгновении, после чего рассеивается. Однако этого времени достаточно, чтобы воспламенить горючие объекты поблизости.\n\nКроме того, когда вы Духозаклинаете объект в пламя, используйте результат вашей проверки Трансформации, чтобы совершить атаку как **Свободное Действие** против Физической защите всех персонажей в пределах 5 футов от Духозаклинаемого объекта. Бросьте 2d4 энергетического урона. Размер этих костей увеличивается с ростом вашего ранга в Трансформации: на 2 ранге вы бросаете 2d6 вместо 2d4, и так далее."
+    },
+    "origin": "surge",
+    "origin_value": "transformation",
+    "info": {
+      "required_for": ["expansive_transmuter"]
+    }
+  },
+  {
+    "slug": "expansive_transmuter",
+    "kind": "static",
+    "title": {
+      "en": "Expansive Transmuter",
+      "ru": "Продвинутое преобразование"
+    },
+    "description": {
+      "en": "When you Soulcast non-living material, reduce the Investiture cost by 2 (to a minimum of 1 Investiture). For example, it now costs you only 1 Investiture to Soulcast either a Small, Medium, or Large object.",
+      "ru": "Когда вы Духозаклинаете неживые объектов вы тратите на 2 Инвеституры меньше, чем обычно (но не менее 1 Инвеституры). Например, при Духозаклятие Маленького, Среднего или Большого объекта вы должны потратить всего 1 Инвеституру."
+    },
+    "origin": "surge",
+    "origin_value": "transformation",
+    "info": {
+    }
   }
 ]

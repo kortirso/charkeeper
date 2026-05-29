@@ -31,7 +31,7 @@
     "origin": "surge",
     "origin_value": "illumination",
     "info": {
-      "required_for": []
+      "required_for": ["disorienting_flash", "stormlight_reclamation"]
     },
     "price": { "a": 1 }
   },
@@ -50,6 +50,109 @@
     "origin_value": "illumination",
     "info": {
       "required_for": []
+    }
+  }
+  {
+    "slug": "disorienting_flash",
+    "kind": "static",
+    "title": {
+      "en": "Disorienting Flash",
+      "ru": "Дезориентирующая вспышка"
+    },
+    "description": {
+      "en": "**Spend 1 Investiture** to project a burst of light in an area within your reach, up to the size you can create with your ranks in Illumination. Make one Illumination test and compare the result against the Cognitive defense of each character in that area. If you succeed against a target, they become Disoriented until the end of their next turn.",
+      "ru": "**Потратьте 1 Инвеституру**, чтобы создать вспышку света в области в пределах вашей досягаемости, размер которой не превышает допустимый для вашего ранга в Иллюминации. Совершите проверку Иллюминации и сравните её результат с Когнитивной защитой каждого персонажа в области эффекта. Каждая цель, против которой вы успешно проходите проверку, становится Дезориентированной до конца своего следующего хода."
+    },
+    "origin": "surge",
+    "origin_value": "illumination",
+    "price": { "a": 2 },
+    "info": {
+      "required_for": ["spiritual_illumination"]
+    }
+  },
+  {
+    "slug": "spiritual_illumination",
+    "kind": "static",
+    "title": {
+      "en": "Spiritual Illumination",
+      "ru": "Вдохновляющая иллюминация"
+    },
+    "description": {
+      "en": "**Spend 2 Investiture** to create a momentary Light- weaving near an ally you can sense within your spren bond range. That ally becomes Determined and Focused until the end of their next turn.",
+      "ru": "**Потратьте 2 Инвеституры**, чтобы создать мимолетное Светоплетение рядом с союзником, которого вы можете обнаружить в пределах вашего радиуса уз со спреном. Этот союзник становится Решительным и Сфокусированным до конца своего следующего хода."
+    },
+    "origin": "surge",
+    "origin_value": "illumination",
+    "price": { "a": 1 },
+    "info": {
+      "required_for": ["painful_truth", "endless_illusions"]
+    }
+  },
+  {
+    "slug": "painful_truth",
+    "kind": "static",
+    "title": {
+      "en": "Painful Truth",
+      "ru": "Болезненная правда"
+    },
+    "description": {
+      "en": "**Spend 2 Investiture** and make an Illumination test against the Spiritual defense of a target you can sense within your spren bond range. On a success, they stumble in shock, becoming Slowed until the end of their next turn.\n\nAt the start of the target’s next turn, they must either spend focus equal to your ranks in Illumination to end this effect as free action, or immediately use the Move action to move as far as possible away from you.",
+      "ru": "**Потратьте 2 Инвеституры** и совершите проверку Иллюминации против Духовной защиты цели, которую вы можете обнаружить в пределах вашего радиуса уз со спреном. При успехе вы шокируетецель, и она становится Замедленной до конца своего следующего хода.\n\nВ начале следующего хода цели она должна либо потратить количество фокуса, равное вашему рангу в Иллюминации, чтобы снять с себя этот эффект в качестве свободного действия, либо немедленно использовать Действие Перемещение, чтобы отойти от вас на максимально возможное расстояние."
+    },
+    "origin": "surge",
+    "origin_value": "illumination",
+    "price": { "a": 1 },
+    "info": {
+    }
+  },
+  {
+    "slug": "stormlight_reclamation",
+    "kind": "static",
+    "title": {
+      "en": "Stormlight Reclamation",
+      "ru": "Возвращение буресвета"
+    },
+    "description": {
+      "en": "After your infusions expend their infused Investiture at the start of your turn, you can end any number of those infusions within your reach, recovering all remaining Investiture they were infused with.",
+      "ru": "После того как ваши наполнения расходуют вложенную в них Инвеституру в начале вашего хода, вы можете завершить любое количество активных наполнений в пределах вашей досягаемости и вернуть себе всю оставшуюся в них Инвеституру."
+    },
+    "origin": "surge",
+    "origin_value": "illumination",
+    "info": {
+      "required_for": ["multiplicative_lightweaving"]
+    }
+  },
+  {
+    "slug": "multiplicative_lightweaving",
+    "kind": "static",
+    "title": {
+      "en": "Multiplicative Lightweaving",
+      "ru": "Множественное светоплетение"
+    },
+    "description": {
+      "en": "When you Lightweave an illusion, you can create a number of additional illusions up to your ranks in Illumination. These infusions last for the duration of the original infusion and require no additional Investiture to create or maintain.",
+      "ru": "Когда вы Светоплетете иллюзию, вы можете создать дополнительное количество иллюзий, равное вашему рангу в Иллюминации. Эти дополнительные иллюзии действуют на протяжении всей продолжительности действия первоначальной иллюзии и не требуют дополнительных трат Инвеституры для их создания или поддержания."
+    },
+    "origin": "surge",
+    "origin_value": "illumination",
+    "info": {
+      "required_for": ["endless_illusions"]
+    }
+  },
+  {
+    "slug": "endless_illusions",
+    "kind": "static",
+    "title": {
+      "en": "Endless Illusions",
+      "ru": "Бесконечные иллюзии"
+    },
+    "description": {
+      "en": "While you have 1 Investiture or more, each of your Illumination infusions within your spren bond range expends no infused Investiture at the start of your turn.",
+      "ru": "Пока у вас есть 1 Инвеститура или более, ни одно из ваших Иллюминационых наполнений в пределах вашего радиуса уз со спреном не расходует вложенную в них Инвеституру в начале вашего хода."
+    },
+    "origin": "surge",
+    "origin_value": "illumination",
+    "info": {
     }
   }
 ]

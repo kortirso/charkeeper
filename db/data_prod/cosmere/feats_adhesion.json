@@ -31,7 +31,7 @@
     "origin": "surge",
     "origin_value": "adhesion",
     "info": {
-      "required_for": []
+      "required_for": ["distant_surgebinding"]
     }
   },
   {
@@ -48,7 +48,107 @@
     "origin": "surge",
     "origin_value": "adhesion",
     "info": {
-      "required_for": []
+      "required_for": ["binding_shot"]
+    }
+  },
+  {
+    "slug": "distant_surgebinding",
+    "kind": "static",
+    "title": {
+      "en": "Distant Surgebinding",
+      "ru": "Дистанционное плетение"
+    },
+    "description": {
+      "en": "You can use your surges and their talents as though your reach is 20 feet, and you don’t need to touch the target.",
+      "ru": "Вы можете использовать свои потоки и их таланты так, как если бы ваша досягаемость составляла 20 футов, и вам больше не требуется прикасаться к цели."
+    },
+    "origin": "surge",
+    "origin_value": "adhesion",
+    "info": {
+      "required_for": ["extended_adhesion"]
+    }
+  },
+  {
+    "slug": "extended_adhesion",
+    "kind": "static",
+    "title": {
+      "en": "Extended Adhesion",
+      "ru": "Продолжительная адгезия"
+    },
+    "description": {
+      "en": "When you perform a Full Lashing, instead of the infusion using 1 Investiture per round, it expends 1 Investiture per number of rounds equal to your ranks in Adhesion. For example, if you have 3 ranks in Adhesion, those infusions expend Investiture once every 3 rounds.",
+      "ru": "Когда вы выполняете Полное Сплетение, вместо того чтобы наполнение расходовало 1 Инвеституру каждый раунд, оно тратит 1 Инвеституру раз в количество раундов, равное вашему рангу в Адгезии. Например, при 3 ранге Адгезии, наполнения будут расходовать 1 Инвеституру каждые 3 раунда."
+    },
+    "origin": "surge",
+    "origin_value": "adhesion",
+    "info": {
+      "required_for": ["living_adhesion", "superior_bond"]
+    }
+  },
+  {
+    "slug": "living_adhesion",
+    "kind": "static",
+    "title": {
+      "en": "Living Adhesion",
+      "ru": "Сплетение жизни"
+    },
+    "description": {
+      "en": "You can use Adhesion on characters, making a test as if you were targeting an object in their possession. When you Lash a character to an object or surface that’s larger than them, that character becomes Restrained, they gain a disadvantage on all physical tests, and all attack tests against them gain an advantage.",
+      "ru": "Вы можете использовать Адгезию на персонажей, совершая проверку так, как если бы целью был объект, который они держат или носят. Когда вы Сплетаете персонажа с объектом или поверхностью, больше его самого, он становится Скованным, получает помеху на все физические проверки, а все проверки атаки против него получают преимущество."
+    },
+    "origin": "surge",
+    "origin_value": "adhesion",
+    "info": {
+    }
+  },
+  {
+    "slug": "binding_shot",
+    "kind": "static",
+    "title": {
+      "en": "Binding Shot",
+      "ru": "Сплетающий выстрел"
+    },
+    "description": {
+      "en": "You can use **Binding Strike** when you hit with a ranged attack at any distance, and you don’t need to touch the infused targets or have a hand free.",
+      "ru": "Вы можете использовать **Сплетающий удар**, когда попадаете атакой дальнего боя с любого расстояния, и вам не нужно прикасаться для этого к объектам или иметь свободную руку."
+    },
+    "origin": "surge",
+    "origin_value": "adhesion",
+    "info": {
+      "required_for": ["adhesive_trap"]
+    }
+  },
+  {
+    "slug": "adhesive_trap",
+    "kind": "static",
+    "title": {
+      "en": "Adhesive Trap",
+      "ru": "Сплетающая ловушка"
+    },
+    "description": {
+      "en": "When you use Adhesion, you can choose to infuse no objects, and instead only infuse a portion of one surface, up to the size you can affect with your ranks in Adhesion.\n\nWhen another character touches this infused area, they become subject to a Full Lashing with that surface for the duration of the infusion, and your test to Lash them in this way automatically succeeds. For example, a character becomes Lashed to the surface if they’re touching it when you infuse it, if they later touch it while moving through its space, or if they’re forcibly moved into its space.",
+      "ru": "Когда вы используете Адгезию, вы можете выбрать не наполнять объекты, а вместо этого наполнить участок поверхности, размер которой не превышает допустимый для вашего ранга в Адгезии.\n\nКогда другой персонаж соприкасается с этой наполненной областью, он становится подвержен Полному Сплетению с этой поверхностью на время действия наполнения, а проверка для его воздействия считается автоматически успешной против этой цели. Например, персонаж приклеивается к поверх- ности, если он касается её в момент наполнения, если позже соприкасается с ней, проходя через её пространство, или если его насильно перемещают на эту поверхность."
+    },
+    "origin": "surge",
+    "origin_value": "adhesion",
+    "info": {
+      "required_for": ["superior_bond"]
+    }
+  },
+  {
+    "slug": "superior_bond",
+    "kind": "static",
+    "title": {
+      "en": "Superior Bond",
+      "ru": "Превосходное сплетение"
+    },
+    "description": {
+      "en": "When a character attempts to break one of your Full Lashings, if their Strength attribute is lower than or equal to your ranks in Adhesion, you automatically succeed on the opposed test without either of you rolling.",
+      "ru": "Когда персонаж пытается разорвать одно из ваших Полных Сплетений, если его атрибут Силы равен или меньше вашего ранга в Адгезии, вы автомати- чески преуспеваете в этой соревновательной проверке, без необходимости её совершения."
+    },
+    "origin": "surge",
+    "origin_value": "adhesion",
+    "info": {
     }
   }
 ]

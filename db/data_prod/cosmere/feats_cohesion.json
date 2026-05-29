@@ -31,7 +31,7 @@
     "origin": "surge",
     "origin_value": "cohesion",
     "info": {
-      "required_for": []
+      "required_for": ["sinkhole"]
     }
   },
   {
@@ -48,7 +48,108 @@
     "origin": "surge",
     "origin_value": "cohesion",
     "info": {
-      "required_for": []
+    }
+  }
+  {
+    "slug": "sinkhole",
+    "kind": "static",
+    "title": {
+      "en": "Sinkhole",
+      "ru": "Каменный провал"
+    },
+    "description": {
+      "en": "**Spend 1 Investiture** and choose an area of stone ground of a size you can affect with your ranks in Cohesion. Then choose one or more characters who are touching the ground in that area. Make one Cohesion test and compare the result to the Cognitive defense of each chosen character. If you succeed against a target, they sink into the ground and are Immobilized as you resolidify the rock.",
+      "ru": "**Потратьте 1 Инвеституру** и выберите область каменной поверхности размером, допустимым для вашего ранга в Когезии. Затем выберите одного или нескольких персонажей, которые соприкасаются с землей в этой области. Совершите одну проверку Когезии и сравните её результат с Когнитивной защитой каждого выбранного персонажа. Если вы преуспеваете против цели, она погружается в землю и становится Обездвиженной, когда вы вновь уплотняете камень. "
+    },
+    "origin": "surge",
+    "origin_value": "cohesion",
+    "price": { "a": 1 },
+    "info": {
+      "required_for": ["through_the_stone", "tunneling"]
+    }
+  },
+  {
+    "slug": "through_the_stone",
+    "kind": "static",
+    "title": {
+      "en": "Through the Stone",
+      "ru": "Каменный канал"
+    },
+    "description": {
+      "en": "You can use your surges and their talents as though your reach is 20 feet, as long as there is a stone surface between you and your target that you can touch.",
+      "ru": "Вы можете использовать свои потоки и их таланты так, как если бы ваша досягаемость составляла 20 футов, при условии что между вами и целью есть общая каменная поверхность, до которой вы можете коснуться."
+    },
+    "origin": "surge",
+    "origin_value": "cohesion",
+    "info": {
+      "required_for": ["unbound_cohesion"]
+    }
+  },
+  {
+    "slug": "unbound_cohesion",
+    "kind": "static",
+    "title": {
+      "en": "Unbound Cohesion",
+      "ru": "Неограниченная когезия"
+    },
+    "description": {
+      "en": "**Cohesion 4+**.\n\nYou can use Cohesion and its talents not only on stone, but on any solid material that isn’t alive, Invested, or infused with Stormlight.",
+      "ru": "**Когезия 4+**.\n\nВы можете использовать Когезию и её таланты не только на камне, но и на любые твёрдые материалы, которые являются не живыми, не инвеститурными и не наполнеными буресветом. "
+    },
+    "origin": "surge",
+    "origin_value": "cohesion",
+    "info": {
+    }
+  },
+  {
+    "slug": "tunneling",
+    "kind": "static",
+    "title": {
+      "en": "Tunneling",
+      "ru": "Прохождение"
+    },
+    "description": {
+      "en": "**Spend 1 Investiture** to infuse yourself with Cohesion.For the duration, you can move through stone surfaces and objects as if moving through difficult terrain. You leave a 5-foot-radius tunnel in your wake through which others can follow. At the start of each of your turns, you can spend 1 Investiture as to maintain this infusion.\n\nIf you create tunnels near the surface, an observant character might detect ripples from the diverted material, potentially sensing your presence.",
+      "ru": "**Потратьте 1 Инвеституру**, чтобы наполнить себя Когезией. На время действия эффекта вы можете перемещаться через каменные поверхности и объекты, словно перемещаетесь через труднопроходимую местность. За вами остаётся туннель радиусом 5 футов, по которому могут следовать другие. В начале каждого вашего хода вы можете тратить 1 Инвеституру как 0, чтобы поддерживать это наполнение.\n\nЕсли вы создаёте туннели близко к поверхности, наблюдательный персонаж может заметить рябь на земле от смещения материала под ней и таким образом узнать о вашем присутствие."
+    },
+    "origin": "surge",
+    "origin_value": "cohesion",
+    "price": { "a": 1 },
+    "info": {
+      "required_for": ["true_stoneshaping"]
+    }
+  },
+  {
+    "slug": "true_stoneshaping",
+    "kind": "static",
+    "title": {
+      "en": "True Stoneshaping",
+      "ru": "Cовершенное формирование"
+    },
+    "description": {
+      "en": "**Cohesion 2+**.\n\nWhen you use Cohesion to shape an object or surface, you can automatically reshape it to your will without using additional actions or time. For example, you can instantly raise or lower elevation, form walls or pillars, create or remove difficult terrain, or create intricate shapes or images.",
+      "ru": "**Когезия 2+**.\n\nКогда вы используете Когезию для сложного формирования объекта или поверхности, вы можете автоматически придать ему нужную форму без дополнительных трат действий или времени. Например, вы можете мгновенно поднять или опустить рельеф, сформировать стены или колонны, создать или убрать труднопроходимую местность, а также моментально формировать сложные формы или изображения."
+    },
+    "origin": "surge",
+    "origin_value": "cohesion",
+    "info": {
+      "required_for": ["flowing_earth"]
+    }
+  },
+  {
+    "slug": "flowing_earth",
+    "kind": "static",
+    "title": {
+      "en": "Flowing Earth",
+      "ru": "Течение земли"
+    },
+    "description": {
+      "en": "After you use Cohesion or spend at least action on one of its talents, you can shape the stone beneath your feet without spending additional Investiture to do so. The stone pushes you up to 5 feet × your ranks in Cohesion, and you can choose to be pushed in any direction, such as rising upward on a pillar. This movement doesn’t trigger Reactive Strikes.",
+      "ru": "После того как вы используете Когезию или тратите как минимум одно действие на один из её талантов, вы можете формировать камень под своими ногами без дополнительной траты Инвеституры. Камень отталкивает вас на расстояние до 5 футов × на ваш ранг в Когезии, и вы можете выбрать любое направление толчка, например, подняться вверх по выдвигающейся из земли колонне. Такое перемещение не провоцирует Удары реакции."
+    },
+    "origin": "surge",
+    "origin_value": "cohesion",
+    "info": {
     }
   }
 ]

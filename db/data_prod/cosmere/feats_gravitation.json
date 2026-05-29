@@ -32,7 +32,7 @@
     "origin": "surge",
     "origin_value": "gravitation",
     "info": {
-      "required_for": []
+      "required_for": ["stable_flight"]
     },
     "price": { "a": 1 },
     "modifiers": { "speeds.gravitation": { "type": "set", "value": 40 } }
@@ -51,7 +51,107 @@
     "origin": "surge",
     "origin_value": "gravitation",
     "info": {
-      "required_for": []
+      "required_for": ["multiple_lashings", "lashing_shot"]
+    }
+  }
+  {
+    "slug": "stable_flight",
+    "kind": "static",
+    "title": {
+      "en": "Stable Flight",
+      "ru": "Устойчивый полет"
+    },
+    "description": {
+      "en": "While maintaining a Basic Lashing on yourself, your ranged attacks don’t gain a disadvantage due to flying or other causes of unstable footing.",
+      "ru": "Пока вы поддерживаете Основное плетение на себе, ваши атаки дальнего боя не получают помех из-за полета или других причин, связанных с нестабильным положением."
+    },
+    "origin": "surge",
+    "origin_value": "gravitation",
+    "info": {
+      "required_for": ["group_flight"]
+    }
+  },
+  {
+    "slug": "group_flight",
+    "kind": "static",
+    "title": {
+      "en": "Group Flight",
+      "ru": "Групповой полет"
+    },
+    "description": {
+      "en": "While not in combat, when you spend 1 Investiture or more to infuse yourself or a willing character with a Basic Lashing, you can also infuse a number of additional willing characters up to your ranks in Gravitation. Each target must be within your reach. These infusions last for the duration of the original infusion and require no additional Investiture to create or maintain.",
+      "ru": "Вне боя, когда вы тратите 1 Инвеституру или более, чтобы наполнить себя или согласного персонажа Основным плетением, вы также можете наполнить дополнительное количество согласных персонажей до вашего значения ранга в Гравитации. Каждая цель должна находиться в пределах вашей досягае- мости. Эти дополнительные плетения действуют столько же, сколько и первое, и не требуют допол- нительных трат Инвеституры для их создания или поддержания."
+    },
+    "origin": "surge",
+    "origin_value": "gravitation",
+    "info": {
+      "required_for": ["aerial_squadron", "master_of_the_skies"]
+    }
+  },
+  {
+    "slug": "aerial_squadron",
+    "kind": "static",
+    "title": {
+      "en": "Aerial Squadron",
+      "ru": "Воздушная эскадрилия"
+    },
+    "description": {
+      "en": "**Gravitation 3+**.\n\nYou can use your **Group Flight** in combat.",
+      "ru": "**Гравитация 3+**.\n\n Вы можете использовать **Групповой полет** во время боя."
+    },
+    "origin": "surge",
+    "origin_value": "gravitation",
+    "info": {
+    }
+  },
+  {
+    "slug": "multiple_lashings",
+    "kind": "static",
+    "title": {
+      "en": "Multiple Lashings",
+      "ru": "Многократное плетение"
+    },
+    "description": {
+      "en": "After you succeed on a Gravitation test to move an unwilling character, you can infuse them with an amount of Investiture up to your ranks in Gravitation (instead of only 1 Investiture). When you do, the effect continues until the infusion ends (instead of until the start of your next turn).",
+      "ru": "После совершения успешной проверки Гравитации для перемещения несогласного персонажа вы можете наполнить его количеством Инвеституры до вашего ранга в Гравитации (вместо 1 Инвеституры). В этом случае эффект продолжается до тех пор, пока наполнение не закончится (вместо того чтобы завершиться в начале вашего следующего хода)."
+    },
+    "origin": "surge",
+    "origin_value": "gravitation",
+    "info": {
+    }
+  },
+  {
+    "slug": "lashing_shot",
+    "kind": "static",
+    "title": {
+      "en": "Lashing Shot",
+      "ru": "Гравитационный выстрел"
+    },
+    "description": {
+      "en": "You touch an unattended object of a size you can affect with your ranks in Gravitation, then you propel that object at a target in your line of effect, spending Investiture equal to the distance to that target divided by your gravitation rate.\n\nMake a ranged Gravitation attack against the Physical defense of that target, rolling 2d4 impact damage. The size of these damage dice increases with your ranks in Gravitation; at 2 ranks, roll 2d6 (instead of 2d4), and so on.",
+      "ru": "Вы прикасаетесь к неохраняемому объекту размера, допустимого для вашего ранга в Гравитации,и запускаете его в цель в пределах вашей линии видимости, тратя количество Инвеституры, равное расстоянию до цели, делённому на вашу Скорость гравитации.\n\nСовершите атаку дальнего боя Гравитацией против Физической защиты цели. Бросьте 2d4 дробящего урона. Размер этих костей увеличивается с ростом вашего ранга в Гравитации: при 2 ранге вы бросаете 2d6 (вместо 2d4), и так далее."
+    },
+    "origin": "surge",
+    "origin_value": "gravitation",
+    "price": { "a": 2 },
+    "info": {
+      "required_for": ["master_of_the_skies"]
+    }
+  },
+  {
+    "slug": "master_of_the_skies",
+    "kind": "static",
+    "title": {
+      "en": "Master of the Skies",
+      "ru": "Хозяин небес"
+    },
+    "description": {
+      "en": "While you have 1 Investiture or more, you gain the benefits of being infused with Gravitation without spending Investiture.",
+      "ru": "Пока у вас есть 1 Инвеститура или более, вы имеете все эффекты от наполнения себя потоком Гравитации, без необходимости тратить на это Инвеституру."
+    },
+    "origin": "surge",
+    "origin_value": "gravitation",
+    "info": {
     }
   }
 ]

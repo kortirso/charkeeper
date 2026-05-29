@@ -31,7 +31,7 @@
     "origin": "surge",
     "origin_value": "transportation",
     "info": {
-      "required_for": []
+      "required_for": ["cognitive_vision"]
     }
   },
   {
@@ -48,8 +48,109 @@
     "origin": "surge",
     "origin_value": "transportation",
     "info": {
-      "required_for": []
+      "required_for": ["realmic_step"]
     },
     "price": { "r": 1 }
   }
+  {
+    "slug": "cognitive_vision",
+    "kind": "static",
+    "title": {
+      "en": "Cognitive Vision",
+      "ru": "Когнитивное зрение"
+    },
+    "description": {
+      "en": "The following entries are added to the list of things you can spot when you use Transportation to look into the Cognitive Realm:\n\n**Learn Intent.** Make a Transportation test as **Free Action** against the Cognitive defense of an enemy you can sense. On a success, you extrapolate their likely intentions based on the spren lurking around them, and you can share that information with your allies.That enemy gains a disadvantage on their next test against you or one of your allies.\n\n**Locate Objects.** By briefly reaching into Shadesmar, you can examine the various soul beads and their relative locations in the bead ocean. This might reveal nearby objects or other information about your immediate environment, depending on which beads you touch.\n\nAs usual, spotting more difficult things might require a Transportation test at the GM’s discretion.",
+      "ru": "Следующие опции добавляются в список того, что вы можете увидеть, когда используете Транспортацию, чтобы заглянуть в Когнитивную сферу.\n\n**Понять намерение.** Совершите проверку Транспортации как **Свободное Действие** против Когнитивной защиты врага, которого вы можете обнаружить. При успехе вы можете определить его вероятные намерения по спренам, окружающим его, и поделиться этой информацией с союзниками. Этот враг получает помеху на свою следующую проверку против вас или одного из ваших союзников.\n\n**Обнаружение объектов.** Кратковременно заглянув в Шейдсмар, вы можете изучить разные бусины душ и их расположение в океане бусин. В зависимости от того, к каким бусинам вы прикоснётесь, это может показать ближайшие к вам объекты или дать другую информацию о вашем непосредственном окружении.\n\nКак обычно, по усмотрению ведущего распознавание более сложных вещей может потребовать прохождения проверки Транспортации."
+    },
+    "origin": "surge",
+    "origin_value": "transportation",
+    "info": {
+    }
+  },
+  {
+    "slug": "shared_transportation",
+    "kind": "static",
+    "title": {
+      "en": "Shared Transportation",
+      "ru": "Совместная транспортация"
+    },
+    "description": {
+      "en": "**Transportation 4+**.\n\nWhen you move yourself through Shadesmar with your Elsecalling or Realmic Step talent, you can spend additional Investiture to also transport willing characters within your reach, along with everything they’re wearing or carrying. Spend 1 Investiture per additional character you choose to transport. ",
+      "ru": "**Транспортация 4+**.\n\nКогда вы перемещаетесь через Шейдсмар с помощью таланта Иносхождение или Сферный переход, вы можете потратить дополнительное количество Инвеституры, чтобы перенести с собой такое же количество согласных персонажей в пределах вашей досягаемости, вместе со всем, что они носят и держат."
+    },
+    "origin": "surge",
+    "origin_value": "transportation",
+    "info": {
+      "required_for": ["elsegate"]
+    }
+  },
+  {
+    "slug": "elsegate",
+    "kind": "static",
+    "title": {
+      "en": "Elsegate",
+      "ru": "Врата иного"
+    },
+    "description": {
+      "en": "**Speak the Fourth Ideal**\n\nAfter a long rest, you can instantly transport yourself and up to ten more willing characters, along with each object the targets are wearing or carrying. Choose an Oathgate platform or permanent perpendicularity you’ve visited before. After spending Investiture as described below, you and the other targets are transported to that destination.\n\nThis Transportation requires significant Investiture; you must have infused spheres worth twice as many marks as the number of characters you’re transporting, and when you arrive, those spheres all become dun.\n\nAt the GM’s discretion, you might be able to choose other destinations that are highly Invested locations you’ve visited before.",
+      "ru": "**Произнести Четвертый идеал**\n\nПосле продолжительного отдыха вы можете мгно- венно перенести себя и до десяти других согласных персонажей, вместе со всеми предметами, которые они несут или носят. Выберите платформу Клят- венных врат или постоянную перпендикулярность, которую вы посещали ранее. После того как вы потратите Инвеституру, как описано ниже, вы и остальные цели перемещаетесь к выбранной точке.\n\nТакая Транспортация требует значительного коли- чества Инвеституры: у вас должно быть количество заряженных сфер номиналом в одну марку, равное в два раза большему числу перемещаемых персо- нажей, и по прибытии все эти сферы становятся тусклыми.\n\nПо усмотрению ведущего вы можете выбрать и другие пункты назначения, например, другие ранее посещённые локации с высокой концентрацией Инвеституры."
+    },
+    "origin": "surge",
+    "origin_value": "transportation",
+    "info": {
+    }
+  },
+  {
+    "slug": "realmic_step",
+    "kind": "static",
+    "title": {
+      "en": "Realmic Step",
+      "ru": "Сферный переход"
+    },
+    "description": {
+      "en": "Make a DC 15 Transportation test. On a success, spend 2 Investiture to move through Shadesmar (along with each object you’re wearing or carrying), transporting yourself to an unoccupied space you can sense within your spren bond range. This movement doesn’t trigger Reactive Strikes.\n\nIf you are on or above a large body of water, using this talent only costs 1 Investiture, as you don't have to shape the sea of beads beneath yourself to move around.",
+      "ru": "Совершите проверку Транспортации со Сл 15. При успехе потратьте 2 Инвеституры, чтобы переместиться через Шейдсмар (вместе со всеми предметами, которые вы носите или держите) в незанятое пространство, которое вы можете обнаружить в пределах вашего радиуса уз со спреном. Это перемещение не провоцирует Ударов реакцией.\n\nЕсли вы находитесь на большой водной поверхности или над ней, использование этого таланта тратит только 1 Инвеституру, так как вам не нужно формировать море бусин под собой для перемещения."
+    },
+    "origin": "surge",
+    "origin_value": "transportation",
+    "price": { "a": 1 },
+    "info": {
+      "required_for": ["elsecalling"]
+    }
+  },{
+    "slug": "elsecalling",
+    "kind": "static",
+    "title": {
+      "en": "Elsecalling",
+      "ru": "Иносхождение"
+    },
+    "description": {
+      "en": "**Speak the Third Ideal**.\n\nYou can transport yourself from the Physical Realm to the same location within the Cognitive Realm, or vice versa, along with each object you’re wearing or carrying. This movement doesn’t trigger Reactive Strikes.\n\nIf you’re in the Physical Realm, spend 1 Investiture to transport yourself to the Cognitive Realm. Elsecalling in this way is simple, requiring no skill test.\n\nIf you’re in the Cognitive Realm, make a DC 20 Transportation test. On a success, spend 2 Investiture to transport yourself to the Physical Realm. On a failure, you don’t spend Investiture or transport yourself; on a later turn, you can attempt to Elsecall again.",
+      "ru": "**Произнести Третий идеал**.\n\nВы можете перенести себя из Физической сферы в то же место, но уже в Когнитивной сфере — или наоборот — вместе со всеми предметами, которые держите или носите. Это перемещение не прово- цирует Ударов реакцией.\n\nЕсли вы находитесь в Физической сфере, потратьте 1 Инвеституру, чтобы перенести себя в Когнитивную сферу. Такое Иносхождение является простым и не требует проверки навыка.\n\nЕсли вы находитесь в Когнитивной сфере, совершите проверку Транспортации со Сл 20. При успехе потратьте 2 Инвеституры, чтобы перенести себя в Физическую сферу. При провале вы не тратите Инвеституру и не перемещаетесь; в последующие ходы вы можете попытаться совершить Иносхождение снова."
+    },
+    "origin": "surge",
+    "origin_value": "transportation",
+    "price": { "a": 2 },
+    "info": {
+      "required_for": ["shared_transportation", "realmwalker"]
+    }
+  },
+  {
+    "slug": "realmwalker",
+    "kind": "static",
+    "title": {
+      "en": "Realmwalker",
+      "ru": "Сфераходец"
+    },
+    "description": {
+      "en": "When you make a Transportation test to use a Transportation talent, you automatically succeed.",
+      "ru": "Когда вы совершаете проверку Транспортации для использования одного из талантов Транспортации, вы автоматически в ней преуспеваете."
+    },
+    "origin": "surge",
+    "origin_value": "transportation",
+    "info": {
+    }
+  }
 ]
+
