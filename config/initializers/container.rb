@@ -46,6 +46,9 @@ module Charkeeper
     register('commands.characters_context.items.consume') { CharactersContext::Items::ConsumeCommand.new }
     register('commands.characters_context.change_feat') { CharactersContext::ChangeFeatCommand.new }
 
+    register('commands.characters_context.cthulhu7.create') { CharactersContext::Cthulhu7::CreateCommand.new }
+    register('commands.characters_context.cthulhu7.update') { CharactersContext::Cthulhu7::UpdateCommand.new }
+
     register('commands.characters_context.cosmere.create') { CharactersContext::Cosmere::CreateCommand.new }
     register('commands.characters_context.cosmere.update') { CharactersContext::Cosmere::UpdateCommand.new }
     register('commands.characters_context.cosmere.rest.perform') { CharactersContext::Cosmere::Rest::PerformCommand.new }

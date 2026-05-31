@@ -57,16 +57,7 @@ module Frontend
     end
 
     def serializer(character_type)
-      case character_type
-      when 'Dnd5::Character' then ::Dnd5::CharacterSerializer
-      when 'Dnd2024::Character' then ::Dnd2024::CharacterSerializer
-      when 'Pathfinder2::Character' then ::Pathfinder2::CharacterSerializer
-      when 'Daggerheart::Character' then ::Daggerheart::CharacterSerializer
-      when 'Dc20::Character' then ::Dc20::CharacterSerializer
-      when 'Fate::Character' then ::Fate::CharacterSerializer
-      when 'Fallout::Character' then ::Fallout::CharacterSerializer
-      when 'Cosmere::Character' then ::Cosmere::CharacterSerializer
-      end
+      "#{character_type}Serializer".constantize
     end
 
     def serialize_fields(character_type)
@@ -74,7 +65,7 @@ module Frontend
       when 'Dnd5::Character', 'Dnd2024::Character', 'Pathfinder2::Character' then DND_SERIALIZE_FIELDS
       when 'Daggerheart::Character' then DAGGERHEART_SERIALIZE_FIELDS
       when 'Dc20::Character' then DC20_SERIALIZE_FIELDS
-      when 'Fate::Character' then FATE_SERIALIZE_FIELDS
+      when 'Fate::Character', 'Cthulhu7::Character' then FATE_SERIALIZE_FIELDS
       when 'Fallout::Character' then FALLOUT_SERIALIZE_FIELDS
       when 'Cosmere::Character' then COSMERE_SERIALIZE_FIELDS
       end

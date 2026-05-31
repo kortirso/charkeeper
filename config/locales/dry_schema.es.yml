@@ -9,6 +9,8 @@ es:
       included_in?: Valor desconocido
       max_size?: Valor muy largo
       filled?: There is required field
+      gteq?: Too small value
+      lteq?: Too big value
       pathfinder2_animal_companion:
         rules:
           name:

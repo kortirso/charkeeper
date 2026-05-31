@@ -110,5 +110,14 @@ FactoryBot.define do
         }
       }
     end
+
+    trait :cthulhu7 do
+      type { 'Cthulhu7::Character' }
+      data {
+        {
+          'abilities' => { 'str' => 0, 'con' => 0, 'siz' => 0, 'dex' => 0, 'app' => 0, 'int' => 0, 'pow' => 0, 'edu' => 0 }
+        }
+      }
+    end
   end
 end

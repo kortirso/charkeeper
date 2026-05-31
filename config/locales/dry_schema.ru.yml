@@ -9,6 +9,8 @@ ru:
       included_in?: Неизвестное значение
       max_size?: Размер превышен
       filled?: Есть обязательное поле
+      gteq?: Слишком маленькое значение
+      lteq?: Слишком большое значение
       pathfinder2_animal_companion:
         rules:
           name:

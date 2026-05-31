@@ -169,6 +169,10 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :cthulhu7 do
+      resources :characters, only: %i[create update]
+    end
+
     namespace :fallout do
       resources :characters, only: %i[create update] do
         resources :talents, only: %i[index create], module: 'characters'

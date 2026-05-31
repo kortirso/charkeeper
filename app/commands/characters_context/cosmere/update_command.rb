@@ -18,12 +18,12 @@ module CharactersContext
           required(:character).filled(type?: ::Cosmere::Character)
           optional(:level).filled(:integer)
           optional(:abilities).hash do
-            required(:str).filled(:integer, gteq?: 0)
-            required(:spd).filled(:integer, gteq?: 0)
-            required(:int).filled(:integer, gteq?: 0)
-            required(:wil).filled(:integer, gteq?: 0)
-            required(:awa).filled(:integer, gteq?: 0)
-            required(:pre).filled(:integer, gteq?: 0)
+            required(:str).filled(:integer, gteq?: 0, lteq?: 20)
+            required(:spd).filled(:integer, gteq?: 0, lteq?: 20)
+            required(:int).filled(:integer, gteq?: 0, lteq?: 20)
+            required(:wil).filled(:integer, gteq?: 0, lteq?: 20)
+            required(:awa).filled(:integer, gteq?: 0, lteq?: 20)
+            required(:pre).filled(:integer, gteq?: 0, lteq?: 20)
           end
           optional(:selected_skills).hash
           optional(:additional_skills).hash
@@ -56,13 +56,6 @@ module CharactersContext
             required(:text).filled(:string, max_size?: 100)
           end
           optional(:singer_form).filled(:string)
-        end
-
-        rule(:abilities) do
-          next if value.nil?
-          next if value.values.all? { |item| item.between?(0, 20) }
-
-          key.failure(:invalid_value)
         end
       end
       # rubocop: enable Metrics/BlockLength
