@@ -59,12 +59,16 @@ class BaseCommand
   # persisting
   def do_persist(input) = raise NotImplementedError
 
-  def validate(input)
+  def validate(input) # rubocop: disable Metrics/AbcSize
     result = contract.call(input)
     {
       result: result.to_h,
       errors: flatten_hash_from(contract.call(input).errors(locale: I18n.locale).to_h),
-      errors_list: contract.call(input).errors(locale: I18n.locale).to_h.values.flatten
+      errors_list: contract.call(input).errors(locale: I18n.locale).to_h.values.flat_map do |item|
+        next item.values if item.is_a?(Hash)
+
+        item
+      end
     }
   rescue Dry::Validation::MissingMessageError => _e
     monitoring_validation_error(input)

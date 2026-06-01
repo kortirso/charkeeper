@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 
 import {
   CharactersListItem, Dc20CharacterForm, DaggerheartCharacterForm, Dnd5CharacterForm, Dnd2024CharacterForm,
-  Pathfinder2CharacterForm, FateCharacterForm, FalloutCharacterForm, CosmereCharacterForm
+  Pathfinder2CharacterForm, FateCharacterForm, FalloutCharacterForm, CosmereCharacterForm, Cthulhu7CharacterForm
 } from '../../pages';
 import { CharacterNavigation, createModal, PageHeader, Select, Input, Button, Loading } from '../../components';
 import { Plus } from '../../assets';
@@ -107,6 +107,32 @@ export const CharactersTab = () => {
     return characters().filter((item) => item.provider === activeFilter());
   });
 
+  const characterComponent = createMemo(() => {
+    if (!platform()) return (
+      <div class="flex mt-4">
+        <Button outlined size="default" classList="w-full mr-2" onClick={() => setCurrentTab('characters')}>
+          {t('back')}
+        </Button>
+      </div>
+    );
+
+    if (platform() === 'dnd2024') {
+      return <Dnd2024CharacterForm onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} dnd2024Races={dnd2024Races} />;
+    }
+
+    const HOMEBREW_COMPONENTS = { dnd5: Dnd5CharacterForm, pathfinder2: Pathfinder2CharacterForm, daggerheart: DaggerheartCharacterForm }
+    if (HOMEBREW_COMPONENTS[platform()]) {
+      const Component = HOMEBREW_COMPONENTS[platform()];
+      return <Component onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />;
+    }
+
+    const COMPONENTS = {
+      fate: FateCharacterForm, dc20: Dc20CharacterForm, fallout: FalloutCharacterForm, cosmere: CosmereCharacterForm, cthulhu7: Cthulhu7CharacterForm
+    }
+    const Component = COMPONENTS[platform()];
+    return <Component onCreateCharacter={saveCharacter} setCurrentTab={setCurrentTab} />
+  });
+
   const deleteCharacter = (event, characterId) => {
     event.stopPropagation();
 
@@ -188,7 +214,7 @@ export const CharactersTab = () => {
             </Button>
           </Show>
           <CharacterNavigation
-            tabsList={['allFilter'].concat(['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart', 'fate', 'fallout', 'cosmere', 'dc20'].filter((item) => characterProviders().includes(item)))}
+            tabsList={['allFilter'].concat(['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart', 'fate', 'fallout', 'cosmere', 'dc20', 'cthulhu7'].filter((item) => characterProviders().includes(item)))}
             activeTab={activeFilter()}
             setActiveTab={setActiveFilter}
           />
@@ -234,44 +260,12 @@ export const CharactersTab = () => {
               containerClassList="mb-2"
               classList="w-full"
               labelText={t('newCharacterPage.platform')}
-              items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'fate': 'Fate', 'fallout': 'Fallout 2D20', 'cosmere': 'Cosmere', 'dc20': 'DC20 0.10' }}
+              items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'fate': 'Fate', 'fallout': 'Fallout 2D20', 'cosmere': 'Cosmere', 'cthulhu7': 'Cthulhu 7', 'dc20': 'DC20 0.10' }}
               selectedValue={platform()}
               onSelect={(value) => setPlatform(value)}
               dataTestId="new-character-platform-select"
             />
-            <Switch>
-              <Match when={platform() === 'dnd5'}>
-                <Dnd5CharacterForm onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />
-              </Match>
-              <Match when={platform() === 'dnd2024'}>
-                <Dnd2024CharacterForm onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} dnd2024Races={dnd2024Races} />
-              </Match>
-              <Match when={platform() === 'pathfinder2'}>
-                <Pathfinder2CharacterForm onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />
-              </Match>
-              <Match when={platform() === 'daggerheart'}>
-                <DaggerheartCharacterForm onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />
-              </Match>
-              <Match when={platform() === 'fate'}>
-                <FateCharacterForm onCreateCharacter={saveCharacter} setCurrentTab={setCurrentTab} />
-              </Match>
-              <Match when={platform() === 'dc20'}>
-                <Dc20CharacterForm onCreateCharacter={saveCharacter} setCurrentTab={setCurrentTab} />
-              </Match>
-              <Match when={platform() === 'fallout'}>
-                <FalloutCharacterForm onCreateCharacter={saveCharacter} setCurrentTab={setCurrentTab} />
-              </Match>
-              <Match when={platform() === 'cosmere'}>
-                <CosmereCharacterForm onCreateCharacter={saveCharacter} setCurrentTab={setCurrentTab} />
-              </Match>
-            </Switch>
-            <Show when={platform() === undefined}>
-              <div class="flex mt-4">
-                <Button outlined size="default" classList="w-full mr-2" onClick={() => setCurrentTab('characters')}>
-                  {t('back')}
-                </Button>
-              </div>
-            </Show>
+            {characterComponent()}
           </div>
         </Match>
       </Switch>

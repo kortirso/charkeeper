@@ -24,6 +24,7 @@ module CharactersContext
           end
           optional(:name).filled(:string, max_size?: 50)
           optional(:file)
+          optional(:guide_step).maybe(:integer)
         end
       end
 

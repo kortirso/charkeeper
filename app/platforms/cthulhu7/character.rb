@@ -12,6 +12,14 @@ module Cthulhu7
   end
 
   class Character < Character
+    def self.config
+      @config ||= PlatformConfig.data('cthulhu7')
+    end
+
+    def self.abilities
+      config['abilities']
+    end
+
     attribute :data, Cthulhu7::CharacterData.to_type
 
     def decorator(simple: false, version: nil)

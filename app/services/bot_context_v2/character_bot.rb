@@ -83,6 +83,7 @@ module BotContextV2
       when 'Daggerheart::Character' then 'daggerheart'
       when 'Fate::Character' then 'fate'
       when 'Fallout::Character' then 'fallout'
+      when 'Cthulhu7::Character' then 'cthulhu7'
       end
     end
 

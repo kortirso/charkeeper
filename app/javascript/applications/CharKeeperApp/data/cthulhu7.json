@@ -1,0 +1,12 @@
+{
+  "abilities": {
+    "str": { "name": { "en": "Strength", "ru": "Сила" } },
+    "con": { "name": { "en": "Constitution", "ru": "Выносливость" } },
+    "siz": { "name": { "en": "Size", "ru": "Телосложение" } },
+    "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" } },
+    "app": { "name": { "en": "Appearance", "ru": "Наружность" } },
+    "pow": { "name": { "en": "Power", "ru": "Мощь" } },
+    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
+    "edu": { "name": { "en": "Education", "ru": "Образование" } }
+  }
+}

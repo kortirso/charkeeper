@@ -16,7 +16,7 @@ module CharactersContext
       private
 
       def do_prepare(input)
-        input[:data] = input.slice(:skip_guide).symbolize_keys
+        input[:data] = { guide_step: input[:skip_guide] ? nil : 1 }
       end
 
       def do_persist(input)

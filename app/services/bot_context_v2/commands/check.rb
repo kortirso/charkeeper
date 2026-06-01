@@ -17,6 +17,7 @@ module BotContextV2
         when 'Dc20::Character' then BotContextV2::Commands::Checks::Dc20.new
         when 'Fate::Character' then BotContextV2::Commands::Checks::Fate.new
         when 'Fallout::Character' then BotContextV2::Commands::Checks::Fallout.new
+        when 'Cthulhu7::Character' then BotContextV2::Commands::Checks::Cthulhu7.new
         end
       end
     end

@@ -17,6 +17,7 @@ module BotContextV2
             act.on('--target [TEXT]', Integer) { |text=0| result[:target] = text.to_i }
             act.on('--expertise [TEXT]', Integer) { |text=0| result[:expertise] = text.to_i }
             act.on('--id [TEXT]', String) { |text| result[:id] = text }
+            act.on('--dc [TEXT]', Integer) { |text| result[:dc] = text }
           end
           parser.parse! arguments
           result
