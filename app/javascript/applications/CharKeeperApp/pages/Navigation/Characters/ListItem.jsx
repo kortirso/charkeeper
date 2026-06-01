@@ -11,7 +11,7 @@ import falloutConfig from '../../../data/fallout.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { clickOutside, copyToClipboard, localize } from '../../../helpers';
 
-const AVAILABLE_JSON = ['daggerheart'];
+const AVAILABLE_JSON = ['daggerheart', 'pathfinder2'];
 const AVAILABLE_PDF = ['daggerheart', 'dnd5', 'dnd2024', 'pathfinder2'];
 const AVAILABLE_RESET = ['daggerheart'];
 const TRANSLATION = {

@@ -4,8 +4,7 @@ module SheetsContext
   module Json
     module Daggerheart
       class Generate
-        # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
-        def to_json(character:)
+        def to_json(character:) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
           decorator = character.decorator
 
           {
@@ -13,7 +12,7 @@ module SheetsContext
             ancestry: character.ancestry_name,
             community: character.community_name,
             level: decorator.level,
-            classes: decorator.subclasses.map { |key, value| "#{class_name(key)} (#{subclass_name(key, value)})" },
+            classes: decorator.subclass_names.map { |key, value| "#{key} (#{value})" }.join(' / '),
             domains: domains(decorator),
             domain_cards: domain_cards(character),
             traits: decorator.modified_traits,
@@ -31,19 +30,8 @@ module SheetsContext
             attacks: attacks(decorator)
           }
         end
-        # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 
         private
-
-        def class_name(class_slug)
-          default = ::Daggerheart::Character.class_info(class_slug)
-          default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Speciality.find(class_slug).name
-        end
-
-        def subclass_name(class_slug, subclass_slug)
-          default = ::Daggerheart::Character.subclass_info(class_slug, subclass_slug)
-          default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Subclass.find(subclass_slug).name
-        end
 
         def domains(decorator)
           decorator.selected_domains.map(&:capitalize)

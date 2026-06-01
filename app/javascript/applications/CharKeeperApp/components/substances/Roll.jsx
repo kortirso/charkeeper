@@ -467,7 +467,7 @@ export const createRoll = () => {
               use:clickOutside={() => close()}
             >
               <div class="dice-tests-box">
-                <div class="flex flex-col gap-2">
+                <div class="flex flex-col gap-2 flex-1">
                   {/* Блок для тестов D20 - D&D, DC20, Cosmere, Pathfinder */}
                   <Show when={d20Test.command}>
                     <div class="blockable dice-test">
@@ -761,7 +761,7 @@ export const createRoll = () => {
                 </div>
                 {/* Выбор кубиков */}
                 <Show when={!open() || dices.open}>
-                  <div class="blockable ml-2 p-2" classList={{ 'w-auto': open() }}>
+                  <div class="blockable ml-2 p-2 flex flex-col gap-2" classList={{ 'w-auto': open() }}>
                     <Show when={open()}>
                       <For each={['D4', 'D6', 'D8', 'D10', 'D12', 'D20', 'D100']}>
                         {(item) =>

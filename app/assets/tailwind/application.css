@@ -963,7 +963,7 @@ body.web {
 }
 
 .cthulhu-abilities-box {
-  @apply grid grid-cols-4 gap-x-2 gap-y-4;
+  @apply grid grid-cols-3 md:grid-cols-4 gap-x-2 gap-y-4;
 }
 
 .ability-title {
