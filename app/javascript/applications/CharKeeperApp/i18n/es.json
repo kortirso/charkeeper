@@ -84,19 +84,6 @@
       "traits": "Atributos",
       "thresholds": "Umbrales de daño"
     },
-    "health": {
-      "armorScore": "Puntuación de armadura",
-      "armorSlots": "Ranuras de armadura",
-      "minor": "Daño menor",
-      "major": "Daño mayor",
-      "severe": "Daño severo",
-      "minorDamage": "Marca 1 PV",
-      "majorDamage": "Marca 2 PV",
-      "severeDamage": "Marca 3 PV",
-      "health": "Salud",
-      "stress": "Estrés",
-      "hope": "Esperanza"
-    },
     "domainCards": {
       "limit": "Límite de cartas",
       "spellcastTraits": "Atributos de conjuro",

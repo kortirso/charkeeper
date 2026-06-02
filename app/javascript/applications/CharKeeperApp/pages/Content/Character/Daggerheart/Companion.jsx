@@ -50,7 +50,8 @@ const TRANSLATION = {
     feet: 'ft',
     meters: 'm',
     training: 'Training',
-    availableTraining: 'Available options for your companion'
+    availableTraining: 'Available options for your companion',
+    stress: 'Stress'
   },
   ru: {
     name: 'Имя компаньона',
@@ -88,7 +89,8 @@ const TRANSLATION = {
     feet: 'фт',
     meters: 'м',
     training: 'Обучение',
-    availableTraining: 'Доступно опций для выбора для вашего компаньона'
+    availableTraining: 'Доступно опций для выбора для вашего компаньона',
+    stress: 'Стресс'
   },
   es: {
     name: 'Nombre del compañero',
@@ -126,7 +128,8 @@ const TRANSLATION = {
     feet: 'ft',
     meters: 'm',
     training: 'Entrenamiento',
-    availableTraining: 'Opciones disponibles para tu compañero'
+    availableTraining: 'Opciones disponibles para tu compañero',
+    stress: 'Estrés'
   }
 }
 const DISTANCE_SETTINGS_CACHE_NAME = 'DistanceSettings';
@@ -314,7 +317,7 @@ export const DaggerheartCompanion = (props) => {
                           </div>
                           <p class="text-xl">{companion().name}</p>
                         </div>
-                        <p class="text-sm/4 uppercase mb-1">{t('daggerheart.health.stress')}</p>
+                        <p class="text-sm/4 uppercase mb-1">{localize(TRANSLATION, locale()).stress}</p>
                         <div class="flex">
                           <For each={Array.from([...Array(companion().stress_max).keys()], (x) => x + 1)}>
                             {(index) =>

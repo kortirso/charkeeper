@@ -84,19 +84,6 @@
       "traits": "Traits",
       "thresholds": "Damage thresholds"
     },
-    "health": {
-      "armorScore": "Armor Score",
-      "armorSlots": "Armor Slots",
-      "minor": "Minor damage",
-      "major": "Major damage",
-      "severe": "Severe damage",
-      "minorDamage": "Mark 1 HP",
-      "majorDamage": "Mark 2 HP",
-      "severeDamage": "Mark 3 HP",
-      "health": "Health",
-      "stress": "Stress",
-      "hope": "Hope"
-    },
     "domainCards": {
       "limit": "Cards limit",
       "spellcastTraits": "Spellcast traits",

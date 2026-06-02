@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Cthulhu 7 characters creating
 - rendering json data for PF2 characters
 
+### Modified
+- rendering health for DH characters
+
 ## [0.4.34] - 2026-05-29
 ### Added
 - creating and refreshing custom resources

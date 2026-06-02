@@ -1,18 +1,55 @@
 import { For, Show } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
 
 import { Checkbox, ErrorWrapper, GuideWrapper, ResourceWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { localize } from '../../../../helpers';
+
+const TRANSLATION = {
+  en: {
+    armorSlots: 'Armor Slots',
+    minor: 'Minor damage',
+    major: 'Major damage',
+    severe: 'Severe damage',
+    minorDamage: 'Mark 1 H',
+    majorDamage: 'Mark 2 H',
+    severeDamage: 'Mark 3 H',
+    health: 'Health',
+    stress: 'Stress',
+    hope: 'Hope'
+  },
+  ru: {
+    armorSlots: 'Слоты Доспеха',
+    minor: 'Малый урон',
+    major: 'Ощутимый урон',
+    severe: 'Тяжёлый урон',
+    minorDamage: '1 рана',
+    majorDamage: '2 раны',
+    severeDamage: '3 раны',
+    health: 'Раны',
+    stress: 'Стресс',
+    hope: 'Надежда'
+  },
+  es: {
+    armorSlots: 'Ranuras de armadur',
+    minor: 'Daño menor',
+    major: 'Daño mayor',
+    severe: 'Daño severo',
+    minorDamage: 'Marca 1 P',
+    majorDamage: 'Marca 2 P',
+    severeDamage: 'Marca 3 P',
+    health: 'Salud',
+    stress: 'Estrés',
+    hope: 'Esperanza'
+  }
+}
 
 export const DaggerheartHealth = (props) => {
   const character = () => props.character;
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
+  const [locale] = useAppLocale();
 
   const updateAttribute = async (attribute, value) => {
     const newValue = character()[attribute] === value ? (value - 1) : value;
@@ -51,30 +88,27 @@ export const DaggerheartHealth = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartHealth' }}>
       <GuideWrapper character={character()}>
         <ResourceWrapper character={character()} onReplaceCharacter={props.onReplaceCharacter}>
-          <div class="flex mb-4">
+          <div class="flex gap-4 mb-4">
             <div class="damage-caption">
-              <p>{t('daggerheart.health.minor')}</p>
-              <p>{t('daggerheart.health.minorDamage')}</p>
-            </div>
-            <div class="damage-threshold">
-              <p>{character().damage_thresholds.major}</p>
+              <p>{localize(TRANSLATION, locale()).minor}</p>
+              <p>1-{character().damage_thresholds.major - 1}</p>
+              <p>{localize(TRANSLATION, locale()).minorDamage}</p>
             </div>
             <div class="damage-caption">
-              <p>{t('daggerheart.health.major')}</p>
-              <p>{t('daggerheart.health.majorDamage')}</p>
-            </div>
-            <div class="damage-threshold">
-              <p>{character().damage_thresholds.severe}</p>
+              <p>{localize(TRANSLATION, locale()).major}</p>
+              <p>{character().damage_thresholds.major}-{character().damage_thresholds.severe - 1}</p>
+              <p>{localize(TRANSLATION, locale()).majorDamage}</p>
             </div>
             <div class="damage-caption">
-              <p>{t('daggerheart.health.severe')}</p>
-              <p>{t('daggerheart.health.severeDamage')}</p>
+              <p>{localize(TRANSLATION, locale()).severe}</p>
+              <p>{character().damage_thresholds.severe}+</p>
+              <p>{localize(TRANSLATION, locale()).severeDamage}</p>
             </div>
           </div>
-          {renderAttribute(t('daggerheart.health.armorSlots'), character().armor_slots, 'spent_armor_slots')}
-          {renderAttribute(t('daggerheart.health.health'), character().health_max, 'health_marked')}
-          {renderAttribute(t('daggerheart.health.stress'), character().stress_max, 'stress_marked')}
-          {renderAttribute(t('daggerheart.health.hope'), character().hope_max, 'hope_marked', character().scarred_hope)}
+          {renderAttribute(localize(TRANSLATION, locale()).armorSlots, character().armor_slots, 'spent_armor_slots')}
+          {renderAttribute(localize(TRANSLATION, locale()).health, character().health_max, 'health_marked')}
+          {renderAttribute(localize(TRANSLATION, locale()).stress, character().stress_max, 'stress_marked')}
+          {renderAttribute(localize(TRANSLATION, locale()).hope, character().hope_max, 'hope_marked', character().scarred_hope)}
         </ResourceWrapper>
       </GuideWrapper>
     </ErrorWrapper>
