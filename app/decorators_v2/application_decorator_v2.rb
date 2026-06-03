@@ -2,7 +2,7 @@
 
 class ApplicationDecoratorV2
   include TranslateHelper
-  include Deps[formula: 'formula', markdown: 'markdown']
+  include Deps[formula: 'formula', markdown: 'markdown', feature_requirement: 'feature_requirement']
 
   def method_missing(method, *_args)
     return @character.data if method == :data && defined?(@character)

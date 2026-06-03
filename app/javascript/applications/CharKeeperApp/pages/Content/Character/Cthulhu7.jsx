@@ -1,7 +1,7 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { Cthulhu7Abilities } from '../../../pages';
+import { Cthulhu7Abilities, Cthulhu7Skills } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, createRoll } from '../../../components';
 
 export const Cthulhu7 = (props) => {
@@ -38,6 +38,14 @@ export const Cthulhu7 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               />
+              <div class="mt-4">
+                <Cthulhu7Skills
+                  character={character()}
+                  openCthulhuTest={openCthulhuTest}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
+                />
+              </div>
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -62,6 +70,14 @@ export const Cthulhu7 = (props) => {
           onReplaceCharacter={props.onReplaceCharacter}
           onReloadCharacter={props.onReloadCharacter}
         />
+        <div class="mt-4">
+          <Cthulhu7Skills
+            character={character()}
+            openCthulhuTest={openCthulhuTest}
+            onReplaceCharacter={props.onReplaceCharacter}
+            onReloadCharacter={props.onReloadCharacter}
+          />
+        </div>
       </>
     );
   });

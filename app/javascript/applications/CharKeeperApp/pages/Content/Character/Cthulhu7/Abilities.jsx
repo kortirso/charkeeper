@@ -55,7 +55,7 @@ export const Cthulhu7Abilities = (props) => {
       appState.accessToken,
       character().provider,
       character().id,
-      { character: { abilities: abilitiesData(), guide_step: null } }
+      { character: { abilities: abilitiesData() } }
     );
 
     if (result.errors_list === undefined) {
@@ -74,7 +74,6 @@ export const Cthulhu7Abilities = (props) => {
           guideStep={1}
           helpMessage={localize(TRANSLATION, locale()).helpMessage}
           onReloadCharacter={props.onReloadCharacter}
-          finishGuideStep={true}
         >
           <div class="blockable py-4 px-2 md:px-4">
             <div class="cthulhu-abilities-box">
@@ -96,8 +95,8 @@ export const Cthulhu7Abilities = (props) => {
                                   onClick={() => props.openCthulhuTest(`/check attr ${slug}`, `${localize(TRANSLATION, locale()).check}, ${trait}`, character().abilities[slug])}
                                 />
                                 <div>
-                                  <p class="text-sm text-center">{character().abilities[slug] / 2}</p>
-                                  <p class="text-sm text-center">{character().abilities[slug] / 5}</p>
+                                  <p class="text-sm text-center">{Math.trunc(character().abilities[slug] / 2)}</p>
+                                  <p class="text-sm text-center">{Math.trunc(character().abilities[slug] / 5)}</p>
                                 </div>
                               </div>
                             }

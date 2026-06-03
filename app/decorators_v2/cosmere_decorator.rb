@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
 class CosmereDecorator < ApplicationDecoratorV2
-  include Deps[
-    markdown: 'markdown',
-    feature_requirement: 'feature_requirement'
-  ]
-  include TranslateHelper
-
   ONLY_ADD_MODIFIERS = %w[str spd int wil awa pre].freeze
   WEAPON_MODIFIERS = %w[attack melee_attacks range_attacks damage melee_damage range_damage].freeze
 

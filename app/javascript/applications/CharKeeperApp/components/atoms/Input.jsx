@@ -20,6 +20,9 @@ export const Input = (props) => {
           <input
             type="text"
             class="default-input"
+            classList={{
+              'h-8! text-sm': props.size === 'small'
+            }}
             placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -34,6 +37,9 @@ export const Input = (props) => {
             pattern="[0-9]*"
             inputmode="numeric"
             class="default-input"
+            classList={{
+              'h-8! text-sm': props.size === 'small'
+            }}
             placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -45,6 +51,9 @@ export const Input = (props) => {
           <input
             type="password"
             class="default-input"
+            classList={{
+              'h-8! text-sm': props.size === 'small'
+            }}
             placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
             onKeyDown={handleKeyDown}

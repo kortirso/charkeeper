@@ -25,6 +25,10 @@ module CharactersContext
           optional(:name).filled(:string, max_size?: 50)
           optional(:file)
           optional(:guide_step).maybe(:integer)
+          optional(:selected_skills).hash
+          optional(:additional_skills).hash
+          optional(:improved_skills).maybe(:array)
+          optional(:hidden_skills).maybe(:array)
         end
       end
 
@@ -36,6 +40,10 @@ module CharactersContext
       def do_prepare(input)
         %i[abilities].each do |key|
           input[key]&.transform_values!(&:to_i)
+        end
+
+        if input.key?(:abilities) && input[:character].data.selected_skills.empty?
+          input[:selected_skills] = { dodge: input.dig(:abilities, :dex) / 2, language: input.dig(:abilities, :edu) }
         end
       end
 
