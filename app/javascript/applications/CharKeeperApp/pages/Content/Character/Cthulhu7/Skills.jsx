@@ -10,17 +10,17 @@ const TRANSLATION = {
   en: {
     helpMessage: 'Fill data about skills.',
     skills: 'Skills',
-    add: 'Add skill'
+    add: 'Add'
   },
   ru: {
     helpMessage: 'Заполните данные по навыкам.',
     skills: 'Навыки',
-    add: 'Добавить навык'
+    add: 'Добавить'
   },
   es: {
     helpMessage: 'Rellena los datos sobre las habilidades.',
     skills: 'Habilidades',
-    add: 'Agregar habilidad'
+    add: 'Agregar'
   }
 }
 
@@ -33,6 +33,10 @@ export const Cthulhu7Skills = (props) => {
   const [selectedSkills, setSelectedSkills] = createSignal(character().selected_skills);
   const [improvedSkills, setImprovedSkills] = createSignal(character().improved_skills);
   const [hiddenSkills, setHiddenSkills] = createSignal(character().hidden_skills);
+  const [additionalSkills, setAdditionalSkills] = createSignal(character().additional_skills);
+
+  const [newSkill, setNewSkill] = createSignal('');
+  const [newSkillStart, setNewSkillStart] = createSignal(1);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -46,6 +50,7 @@ export const Cthulhu7Skills = (props) => {
       setSelectedSkills(character().selected_skills);
       setImprovedSkills(character().improved_skills);
       setHiddenSkills(character().hidden_skills);
+      setAdditionalSkills(character().additional_skills);
       setEditMode(character().guide_step === 2);
     });
 
@@ -58,7 +63,21 @@ export const Cthulhu7Skills = (props) => {
       setSelectedSkills(character().selected_skills);
       setImprovedSkills(character().improved_skills);
       setHiddenSkills(character().hidden_skills);
+      setAdditionalSkills(character().additional_skills);
       setEditMode(false);
+    });
+  }
+
+  const saveNewSkill = () => {
+    if (newSkill().length === 0) return;
+    if (!newSkillStart()) return;
+
+    const id = Math.floor(Math.random() * 1000000).toString();
+    batch(() => {
+      setSkillsData(skillsData().concat({ slug: id, name: newSkill(), level: newSkillStart(), start: newSkillStart() }));
+      setAdditionalSkills({ ...additionalSkills(), [id]: { name: newSkill(), start: newSkillStart() } });
+      setNewSkill('');
+      setNewSkillStart(1);
     });
   }
 
@@ -66,7 +85,8 @@ export const Cthulhu7Skills = (props) => {
     const payload = {
       selected_skills: selectedSkills(),
       improved_skills: improvedSkills(),
-      hidden_skills: hiddenSkills()
+      hidden_skills: hiddenSkills(),
+      additional_skills: additionalSkills()
     }
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
 
@@ -149,6 +169,11 @@ export const Cthulhu7Skills = (props) => {
                     </div>
                   }
                 </For>
+                <div class="flex flex-row items-center gap-x-2">
+                  <Input containerClassList="flex-1" value={newSkill()} onInput={setNewSkill} />
+                  <Input containerClassList="flex-1" value={newSkillStart()} onInput={setNewSkillStart} />
+                  <Button default textable onClick={saveNewSkill}>{localize(TRANSLATION, locale()).add}</Button>
+                </div>
               </Show>
             </div>
           </div>
