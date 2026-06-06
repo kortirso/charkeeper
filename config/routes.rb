@@ -41,6 +41,9 @@ Rails.application.routes.draw do
     namespace :pathfinder2 do
       resources :characters, only: %i[index]
     end
+    namespace :cthulhu7 do
+      resources :characters, only: %i[index]
+    end
     namespace :daggerheart do
       resources :characters, only: %i[index]
       resources :recipes, only: %i[index new create]
