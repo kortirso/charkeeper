@@ -20,8 +20,14 @@ class Cthulhu7Decorator < ApplicationDecoratorV2
     @result['name'] = @character.name
   end
 
-  def calculate_secondary_abilities
+  def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize
     @result['skills'] = generate_skills_payload
+    @result['health_max'] = (abilities['con'] + abilities['siz']) / 10
+    @result['magic_max'] = abilities['pow'] / 5
+    @result['sanity_max'] = abilities['pow']
+    @result['damage_bonus'] = find_damage_bonus
+    @result['build'] = find_build
+    @result['speed'] = 8
   end
 
   def generate_skills_payload
@@ -39,5 +45,25 @@ class Cthulhu7Decorator < ApplicationDecoratorV2
       improved: improved_skills.include?(slug),
       hidden: hidden_skills.include?(slug)
     }
+  end
+
+  def find_damage_bonus
+    value = abilities['str'] + abilities['siz']
+    return -2 if value <= 64
+    return -1 if value <= 84
+    return 0 if value <= 124
+    return '1d4' if value <= 164
+
+    '1d6'
+  end
+
+  def find_build
+    value = abilities['str'] + abilities['siz']
+    return -2 if value <= 64
+    return -1 if value <= 84
+    return 0 if value <= 124
+    return 1 if value <= 164
+
+    2
   end
 end

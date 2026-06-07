@@ -4,12 +4,14 @@ module Cthulhu7
   class CharacterSerializer < ApplicationSerializer
     include Deps[cache: 'cache.avatars']
 
-    attributes :provider, :id, :name, :created_at, :avatar, :abilities, :guide_step, :skills, :additional_skills,
-               :improved_skills, :hidden_skills, :selected_skills
+    attributes :provider, :id, :name, :created_at, :avatar, :abilities, :guide_step, :skills, :additional_skills, :speed, :luck,
+               :improved_skills, :hidden_skills, :selected_skills, :health, :health_max, :magic, :magic_max, :sanity, :build,
+               :sanity_max, :luck_max, :damage_bonus
 
-    delegate :skills, to: :decorator
+    delegate :skills, :health_max, :magic_max, :sanity_max, :damage_bonus, :build, :speed, to: :decorator
     delegate :data, to: :object
-    delegate :guide_step, :abilities, :additional_skills, :improved_skills, :hidden_skills, :selected_skills, to: :data
+    delegate :guide_step, :abilities, :additional_skills, :improved_skills, :hidden_skills, :selected_skills, :health, :magic,
+             :sanity, :luck, :luck_max, to: :data
 
     def provider
       'cthulhu7'

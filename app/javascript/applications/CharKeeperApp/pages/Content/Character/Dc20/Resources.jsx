@@ -149,7 +149,7 @@ export const Dc20Resources = (props) => {
 
   const renderAttribute = (points, slug) => (
     <Show when={points.max !== 0} fallback={<></>}>
-      <div class="flex items-center mb-2 dark:text-snow">
+      <div class="flex items-center mb-2">
         <p class="text-sm/4 w-56">{localize(TRANSLATION, locale())[slug]}</p>
         <div class="flex items-center">
           <Button default size="small" onClick={() => updateResource(slug, -1)}>

@@ -11,6 +11,11 @@ module Cthulhu7
     attribute :additional_skills, array: true, default: {} # { 'id' => { 'name' => '', 'start' => 1 } }
     attribute :improved_skills, array: true, default: [] # ['accounting', 'archaeology', 'id']
     attribute :hidden_skills, array: true, default: [] # ['lasers']
+    attribute :health, :integer, default: 1
+    attribute :magic, :integer, default: 1
+    attribute :sanity, :integer, default: 1
+    attribute :luck_max, :integer, default: 1
+    attribute :luck, :integer, default: 1
     # для левелинга
     attribute :guide_step, :integer # этап помощи при создании персонажа
   end

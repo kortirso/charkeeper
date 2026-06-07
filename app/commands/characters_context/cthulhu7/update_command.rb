@@ -7,6 +7,7 @@ module CharactersContext
         cache: 'cache.avatars'
       ]
 
+      # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :cthulhu7_character
 
@@ -29,21 +30,30 @@ module CharactersContext
           optional(:additional_skills).hash
           optional(:improved_skills).maybe(:array)
           optional(:hidden_skills).maybe(:array)
+          optional(:health).maybe(:integer, gteq?: 0)
+          optional(:magic).maybe(:integer, gteq?: 0)
+          optional(:sanity).maybe(:integer, gteq?: 0)
+          optional(:luck_max).maybe(:integer, gteq?: 0)
+          optional(:luck).maybe(:integer, gteq?: 0)
         end
       end
+      # rubocop: enable Metrics/BlockLength
 
       private
 
       def lock_key(input) = "character_update_#{input[:character].id}"
       def lock_time = 0
 
-      def do_prepare(input)
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize
         %i[abilities].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
 
         if input.key?(:abilities) && input[:character].data.selected_skills.empty?
           input[:selected_skills] = { dodge: input.dig(:abilities, :dex) / 2, language: input.dig(:abilities, :edu) }
+          input[:health] = (input.dig(:abilities, :con) + input.dig(:abilities, :siz)) / 10
+          input[:magic] = input.dig(:abilities, :pow) / 5
+          input[:sanity] = input.dig(:abilities, :pow)
         end
       end
 

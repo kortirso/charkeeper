@@ -1,4 +1,4 @@
-import { For, children } from 'solid-js';
+import { For, Show, children } from 'solid-js';
 
 export const StatsBlock = (props) => {
   const safeChildren = children(() => props.children);
@@ -21,6 +21,7 @@ export const StatsBlock = (props) => {
             <div class="flex-1 flex flex-col items-center">
               <p class="stat-title">{item.title}</p>
               <p class="text-2xl mb-1">{item.value}</p>
+              <Show when={item.footer}>{item.footer}</Show>
             </div>
           }
         </For>

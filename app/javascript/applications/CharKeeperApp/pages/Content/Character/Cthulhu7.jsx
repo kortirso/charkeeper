@@ -1,7 +1,7 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { Cthulhu7Abilities, Cthulhu7Skills } from '../../../pages';
+import { Cthulhu7Abilities, Cthulhu7Skills, Cthulhu7Combat } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, createRoll } from '../../../components';
 
 export const Cthulhu7 = (props) => {
@@ -9,12 +9,12 @@ export const Cthulhu7 = (props) => {
   const character = () => props.character;
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
-  const [activeTab, setActiveTab] = createSignal('notes');
+  const [activeTab, setActiveTab] = createSignal('combat');
 
   const { Roll, openCthulhuTest } = createRoll();
 
   const characterTabs = createMemo(() => {
-    return ['notes', 'avatar'];
+    return ['combat', 'notes', 'avatar'];
   });
 
   const mobileView = createMemo(() => {
@@ -46,6 +46,13 @@ export const Cthulhu7 = (props) => {
                   onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
+            </Match>
+            <Match when={activeMobileTab() === 'combat'}>
+              <Cthulhu7Combat
+                character={character()}
+                openCthulhuTest={openCthulhuTest}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -96,6 +103,13 @@ export const Cthulhu7 = (props) => {
         />
         <div class="p-2 pb-20 flex-1">
           <Switch>
+            <Match when={activeTab() === 'combat'}>
+              <Cthulhu7Combat
+                character={character()}
+                openCthulhuTest={openCthulhuTest}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
+            </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />
             </Match>
