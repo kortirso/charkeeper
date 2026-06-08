@@ -91,6 +91,7 @@ export * from './Content/Character/Daggerheart/DomainCardsTable';
 export * from './Content/Character/Daggerheart/Rest';
 export * from './Content/Character/Daggerheart/Beastform';
 export * from './Content/Character/Daggerheart/Companion';
+export * from './Content/Character/Daggerheart/CompanionBonuses';
 export * from './Content/Character/Daggerheart/Transformation';
 export * from './Content/Character/Daggerheart/Stances';
 export * from './Content/Character/Daggerheart/Bonuses';

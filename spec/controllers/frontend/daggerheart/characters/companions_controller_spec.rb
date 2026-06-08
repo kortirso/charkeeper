@@ -49,7 +49,7 @@ describe Frontend::Daggerheart::Characters::CompanionsController do
             expect(response.parsed_body['companion'].keys).to(
               contain_exactly(
                 'id', 'name', 'caption', 'evasion', 'damage', 'distance', 'stress_max', 'stress_marked',
-                'character_id', 'experience', 'leveling', 'avatar'
+                'character_id', 'experience', 'leveling', 'avatar', 'damage_bonus', 'provider'
               )
             )
           end

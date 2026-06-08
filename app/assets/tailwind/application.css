@@ -1019,3 +1019,11 @@ body.web {
 .cosmere-feat {
   @apply pb-2 border-b border-gray-200 dark:border-neutral-800;
 }
+
+.blockable-padding {
+  @apply py-4 px-2 md:px-4 mt-2;
+}
+
+.companion-stat-title {
+  @apply text-sm uppercase text-center mb-4;
+}

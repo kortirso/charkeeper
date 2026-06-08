@@ -154,6 +154,12 @@ export const createRoll = () => {
         setPlotResult(undefined);
       });
     },
+    openDices(dices, damageBonus) {
+      batch(() => {
+        setDices({ dices: dices, damageBonus: damageBonus, title: localize(TRANSLATION, locale()).damage, open: true });
+        setDicesResult(undefined);
+      });
+    },
     Roll(props) {
       const open = createMemo(() => {
         return d20Test.command || dualityTest.command || cthulhuTest.command || plotDices() > 0 || dices.open;
@@ -291,9 +297,9 @@ export const createRoll = () => {
             }
             if (dices.dices) {
               if (dualityTest.command && result.result[0].result.status === 'crit_success') {
-                calculateDualityCritDamage(result.result[1].result);
+                calculateDualityCritDamage(result.result[resultsIndex].result);
               } else {
-                setDicesResult(result.result[1].result);
+                setDicesResult(result.result[resultsIndex].result);
               }
               resultsIndex += 1;
             }
@@ -729,7 +735,14 @@ export const createRoll = () => {
                   {/* Блок для всевозможных бросков */}
                   <Show when={dices.open}>
                     <div class="blockable dice-test">
-                      <Show when={dices.title}><p>{dices.title}, {d20Test.title || dualityTest.title}</p></Show>
+                      <Show when={dices.title}>
+                        <p>
+                          {dices.title}
+                          <Show when={d20Test.title || dualityTest.title}>
+                            , {d20Test.title || dualityTest.title}
+                          </Show>
+                        </p>
+                      </Show>
                       <div class="dice-list">
                         <For each={dices.dices}>
                           {(dice, index) =>

@@ -10,6 +10,7 @@ module Frontend
         add_dnd_bonus_v2: 'commands.characters_context.dnd2024.bonuses.add',
         add_dnd_bonus_v3: 'commands.characters_context.dnd2024.bonuses.add_v3',
         add_daggerheart_bonus_v2: 'commands.characters_context.daggerheart.bonuses.add',
+        add_daggerheart_companion_bonus: 'commands.characters_context.daggerheart.bonuses.add_companion',
         change_command: 'commands.bonuses_context.change',
         add_dc20_bonus: 'commands.characters_context.dc20.bonuses.add',
         add_pathfinder2_bonus: 'commands.characters_context.pathfinder2.bonuses.add',
@@ -61,11 +62,13 @@ module Frontend
         @character.bonuses.order(created_at: :desc)
       end
 
-      def characters_relation
+      def characters_relation # rubocop: disable Metrics/AbcSize
         case params[:provider]
         when 'dnd5', 'dnd2024' then authorized_scope(Character.all).dnd
         when 'pathfinder2' then authorized_scope(Character.all).pathfinder2
         when 'daggerheart' then authorized_scope(Character.all).daggerheart
+        when 'daggerheart_companion'
+          ::Daggerheart::Character::Companion.joins(:character).where(characters: { user_id: current_user.id })
         when 'dc20' then authorized_scope(Character.all).dc20
         when 'cosmere' then authorized_scope(Character.all).cosmere
         else Character.none
@@ -79,6 +82,7 @@ module Frontend
             when 'dnd2024' then add_dnd_bonus_v3
             when 'dnd5' then add_dnd_bonus_v2
             when 'daggerheart' then add_daggerheart_bonus_v2
+            when 'daggerheart_companion' then add_daggerheart_companion_bonus
             when 'dc20' then add_dc20_bonus
             when 'pathfinder2' then add_pathfinder2_bonus
             when 'cosmere' then add_cosmere_bonus

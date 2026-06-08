@@ -21,6 +21,10 @@ module Daggerheart
 
     class Companion < Character::Companion
       attribute :data, Daggerheart::Character::CompanionData.to_type
+
+      def decorator
+        Daggerheart::CompanionDecorator.new.call(companion: self)
+      end
     end
   end
 end

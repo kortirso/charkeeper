@@ -381,14 +381,6 @@ class CosmereDecorator < ApplicationDecoratorV2
       .merge(skills.each_with_object({}) { |item, acc| acc[item[:slug]] = item[:level] }.symbolize_keys)
   end
 
-  def monitoring_formula_error(formula)
-    Charkeeper::Container.resolve('monitoring.client').notify(
-      exception: Monitoring::FormulaError.new('Formula error'),
-      metadata: { formula: formula },
-      severity: :info
-    )
-  end
-
   def find_available_singer_forms
     return [] unless ancestry == 'singer'
 
