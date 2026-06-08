@@ -181,7 +181,6 @@ export const createRoll = () => {
       }
 
       const openCthulhuTest = () => {
-        console.log(1)
         batch(() => {
           setCthulhuTest({ command: '/check attr empty', title: null, maxAdv: 2, adv: 0 });
           setCthulhuTestResult(undefined);
@@ -240,6 +239,28 @@ export const createRoll = () => {
         });
       }
 
+      const calculateDualityCritDamage = (result, crit = true) => {
+        if (!result) return;
+
+        let total = 0;
+        const rolls = result.rolls.map((item) => {
+          if (!item[0].includes('d')) return item;
+
+          const diceValue = parseInt(item[0].split('d')[1]);
+          const currentRoll = typeof item[1] === 'string' ? parseInt(item[1].split('+')[0]) : item[1];
+
+          if (crit) {
+            total += (diceValue + currentRoll);
+            return [item[0], `${currentRoll}+${diceValue}`];
+          } else {
+            total += currentRoll;
+            return [item[0], currentRoll];
+          }
+        });
+
+        setDicesResult({ rolls: rolls, total: total });
+      }
+
       const performRoll = async () => {
         const rolls = [];
         if (d20Test.command) rolls.push(generateD20Test());
@@ -269,7 +290,11 @@ export const createRoll = () => {
               resultsIndex += 1;
             }
             if (dices.dices) {
-              setDicesResult(result.result[resultsIndex].result);
+              if (dualityTest.command && result.result[0].result.status === 'crit_success') {
+                calculateDualityCritDamage(result.result[1].result);
+              } else {
+                setDicesResult(result.result[1].result);
+              }
               resultsIndex += 1;
             }
           });
@@ -410,8 +435,12 @@ export const createRoll = () => {
           if (result.errors_list === undefined) {
             const newDamageResults = [...dicesResult().rolls.slice(0, index), result.result[0].result.rolls[0], ...dicesResult().rolls.slice(index + 1)];
 
-            const total = newDamageResults.reduce((acc, item) => acc + item[1], 0);
-            setDicesResult({ ...dicesResult(), rolls: newDamageResults, total: total });
+            if (dualityTest.command) {
+              calculateDualityCritDamage({ rolls: newDamageResults }, dualityTestResult().status === 'crit_success');
+            } else {
+              const total = newDamageResults.reduce((acc, item) => acc + item[1], 0);
+              setDicesResult({ ...dicesResult(), rolls: newDamageResults, total: total });
+            }
           } else renderAlerts(result.errors_list);
         } else {
           removeDice(index);
@@ -447,6 +476,7 @@ export const createRoll = () => {
         if (newRollResults[0][1] < newRollResults[1][1]) status = 'with_fear';
 
         setDualityTestResult({ ...dualityTestResult(), rolls: newRollResults, total: total, status: status });
+        calculateDualityCritDamage(dicesResult(), status === 'crit_success');
       }
 
       const representPlotRoll = (index) => {
