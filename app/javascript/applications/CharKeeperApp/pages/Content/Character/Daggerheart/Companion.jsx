@@ -1,14 +1,14 @@
 import { createSignal, createEffect, Show, batch, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { DaggerheartExperience } from '../../../../pages';
-import { ErrorWrapper, Input, Button, EditWrapper, Checkbox, GuideWrapper, AvatarInput } from '../../../../components';
+import { DaggerheartExperience, DaggerheartCompanionBonuses } from '../../../../pages';
+import { ErrorWrapper, Input, Button, EditWrapper, Checkbox, GuideWrapper, AvatarInput, Dice } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus, Avatar } from '../../../../assets';
 import { fetchCompanionRequest } from '../../../../requests/fetchCompanionRequest';
 import { createCompanionRequest } from '../../../../requests/createCompanionRequest';
 import { updateCompanionRequest } from '../../../../requests/updateCompanionRequest';
-import { readFromCache, localize } from '../../../../helpers';
+import { readFromCache, localize, modifier } from '../../../../helpers';
 
 const DAMAGE = ['d6', 'd8', 'd10', 'd12'];
 const DISTANCE = ['melee', 'very close', 'close', 'far'];
@@ -169,11 +169,11 @@ export const DaggerheartCompanion = (props) => {
     setSettings(cacheValue === null || cacheValue === undefined ? {} : JSON.parse(cacheValue));
   }
 
+  const fetchCompanion = async () => await fetchCompanionRequest(appState.accessToken, character().provider, character().id);
+
   createEffect(() => {
     if (!character().can_have_companion) return;
     if (lastActiveCharacterId() === character().id) return;
-
-    const fetchCompanion = async () => await fetchCompanionRequest(appState.accessToken, character().provider, character().id);
 
     Promise.all([fetchCompanion()]).then(
       ([companionData]) => {
@@ -193,6 +193,13 @@ export const DaggerheartCompanion = (props) => {
     setLastActiveCharacterId(character().id);
     readDistanceSettings();
   });
+
+  const refreshCompanion = async () => {
+    const result = await fetchCompanion();
+
+    if (result.errors_list === undefined) setCompanion(result.companion);
+    else renderAlerts(result.errors_list);
+  }
 
   const renderAttackDistance = (distance) => {
     if (settings().daggerheart === 'narrative' || settings().daggerheart === undefined) {
@@ -296,15 +303,16 @@ export const DaggerheartCompanion = (props) => {
             </>
           }
         >
-          <div class="flex flex-col emd:flex-row gap-x-4 gap-y-2">
-            <div class="flex-1">
+          <div class="flex flex-col">
+            <div class="grid grid-cols-1 emd:grid-cols-2 gap-x-2 gap-y-4">
               <EditWrapper
+                position="right"
                 editMode={editNameMode()}
                 onSetEditMode={setEditNameMode}
                 onCancelEditing={cancelNameEditing}
                 onSaveChanges={changeCompanion}
               >
-                <div class="py-4 px-2 md:px-4 blockable">
+                <div class="blockable blockable-padding">
                   <Show
                     when={editNameMode()}
                     fallback={
@@ -344,23 +352,38 @@ export const DaggerheartCompanion = (props) => {
                 </div>
               </EditWrapper>
               <EditWrapper
+                position="right"
                 editMode={editDamageMode()}
                 onSetEditMode={setEditDamageMode}
                 onCancelEditing={cancelDamageEditing}
                 onSaveChanges={() => updateCompanion({ damage: damageData(), distance: distanceData() }, setEditDamageMode)}
               >
-                <div class="blockable py-4 px-2 md:px-4 mt-4">
+                <div class="blockable blockable-padding h-full">
                   <div class="grid grid-cols-3 gap-2">
                     <div>
-                      <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).evasion}</p>
-                      <p class="font-normal! text-center">
+                      <p class="companion-stat-title">{localize(TRANSLATION, locale()).evasion}</p>
+                      <p class="text-2xl text-center py-1">
                         {companion().evasion}
                       </p>
                     </div>
                     <div>
-                      <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).damage}</p>
-                      <p class="font-normal! text-center">
-                        {editDamageMode() ? damageData() : `${character().proficiency}${companion().damage}`}
+                      <p class="companion-stat-title">{localize(TRANSLATION, locale()).damage}</p>
+                      <p>
+                        <Show
+                          when={editDamageMode()}
+                          fallback={
+                            <div class="w-10 mx-auto">
+                              <Dice
+                                width="40"
+                                height="40"
+                                text={`${character().proficiency}${companion().damage}${companion().damage_bonus !== 0 ? modifier(companion().damage_bonus) : ''}`}
+                                onClick={() => props.openDices(Array.from([...Array(character().proficiency).keys()], () => companion().damage.toUpperCase()), companion().damage_bonus)}
+                              />
+                            </div>
+                          }
+                        >
+                          {damageData()}
+                        </Show>
                       </p>
                       <Show when={editDamageMode()}>
                         <div class="mt-2 flex justify-center gap-2">
@@ -370,8 +393,8 @@ export const DaggerheartCompanion = (props) => {
                       </Show>
                     </div>
                     <div>
-                      <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).distance}</p>
-                      <p class="font-normal! text-center">
+                      <p class="companion-stat-title">{localize(TRANSLATION, locale()).distance}</p>
+                      <p class="font-normal! text-center py-2">
                         {editDamageMode() ? renderAttackDistance(distanceData()) : renderAttackDistance(companion().distance)}
                       </p>
                       <Show when={editDamageMode()}>
@@ -384,48 +407,47 @@ export const DaggerheartCompanion = (props) => {
                   </div>
                 </div>
               </EditWrapper>
-              <div class="mt-4">
-                <DaggerheartExperience object={companion()} callback={updateCompanion} />
-              </div>
             </div>
-            <div class="flex-1">
-              <div class="py-4 px-2 md:px-4 blockable">
-                <h2 class="text-lg mb-2">{localize(TRANSLATION, locale()).training}</h2>
-                <p class="text-sm mb-4">{localize(TRANSLATION, locale()).availableTraining} - {character().level - 1}</p>
-                <For
-                  each={[
-                    { max: 3, attribute: 'intelligent' },
-                    { max: 1, attribute: 'light' },
-                    { max: 1, attribute: 'comfort' },
-                    { max: 1, attribute: 'armored' },
-                    { max: 3, attribute: 'vicious' },
-                    { max: 3, attribute: 'resilient' },
-                    { max: 1, attribute: 'bonded' },
-                    { max: 3, attribute: 'aware' }
-                  ]}
-                >
-                  {(item, index) =>
-                    <div class="p-2" classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
-                      <div class="flex items-center mb-1">
-                        <p class="text-sm/4 uppercase mr-4">{localize(TRANSLATION, locale()).leveling[item.attribute]}</p>
-                        <div class="flex">
-                          <For each={Array.from([...Array(item.max).keys()], (x) => x + 1)}>
-                            {(index) =>
-                              <Checkbox
-                                filled
-                                checked={companion().leveling[item.attribute] >= index}
-                                classList="mr-1"
-                                onToggle={() => updateLeveling(item.attribute, index)}
-                              />
-                            }
-                          </For>
-                        </div>
+            <div class="mt-4"><DaggerheartExperience object={companion()} callback={updateCompanion} /></div>
+            <div class="blockable blockable-padding">
+              <h2 class="text-lg mb-2">{localize(TRANSLATION, locale()).training}</h2>
+              <p class="text-sm mb-4">{localize(TRANSLATION, locale()).availableTraining} - {character().level - 1}</p>
+              <For
+                each={[
+                  { max: 3, attribute: 'intelligent' },
+                  { max: 1, attribute: 'light' },
+                  { max: 1, attribute: 'comfort' },
+                  { max: 1, attribute: 'armored' },
+                  { max: 3, attribute: 'vicious' },
+                  { max: 3, attribute: 'resilient' },
+                  { max: 1, attribute: 'bonded' },
+                  { max: 3, attribute: 'aware' }
+                ]}
+              >
+                {(item, index) =>
+                  <div class="p-2" classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
+                    <div class="flex items-center mb-1">
+                      <p class="text-sm/4 uppercase mr-4">{localize(TRANSLATION, locale()).leveling[item.attribute]}</p>
+                      <div class="flex">
+                        <For each={Array.from([...Array(item.max).keys()], (x) => x + 1)}>
+                          {(index) =>
+                            <Checkbox
+                              filled
+                              checked={companion().leveling[item.attribute] >= index}
+                              classList="mr-1"
+                              onToggle={() => updateLeveling(item.attribute, index)}
+                            />
+                          }
+                        </For>
                       </div>
-                      <p class="text-xs">{localize(TRANSLATION, locale()).levelingDescriptions[item.attribute]}</p>
                     </div>
-                  }
-                </For>
-              </div>
+                    <p class="text-xs">{localize(TRANSLATION, locale()).levelingDescriptions[item.attribute]}</p>
+                  </div>
+                }
+              </For>
+            </div>
+            <div class="mt-4">
+              <DaggerheartCompanionBonuses companion={companion()} refreshCompanion={refreshCompanion} />
             </div>
           </div>
         </Show>

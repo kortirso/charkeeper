@@ -38,7 +38,7 @@ export const Daggerheart = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('traits');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { Roll, openDualityTest, openDualityAttack } = createRoll();
+  const { Roll, openDualityTest, openDualityAttack, openDices } = createRoll();
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -221,7 +221,7 @@ export const Daggerheart = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'companion'}>
-              <DaggerheartCompanion character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <DaggerheartCompanion openDices={openDices} character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
               <DaggerheartBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -388,7 +388,7 @@ export const Daggerheart = (props) => {
               </div>
             </Match>
             <Match when={activeTab() === 'companion'}>
-              <DaggerheartCompanion character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <DaggerheartCompanion openDices={openDices} character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'bonuses'}>
               <DaggerheartBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />

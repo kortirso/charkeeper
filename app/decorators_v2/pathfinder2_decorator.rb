@@ -668,14 +668,6 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       .merge(modified_abilities.symbolize_keys)
   end
 
-  def monitoring_formula_error(formula)
-    Charkeeper::Container.resolve('monitoring.client').notify(
-      exception: Monitoring::FormulaError.new('Formula error'),
-      metadata: { formula: formula },
-      severity: :info
-    )
-  end
-
   def find_info
     {
       'race' => translate(::Pathfinder2::Character.race_info(race)['name']),
