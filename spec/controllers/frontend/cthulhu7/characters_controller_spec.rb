@@ -58,7 +58,7 @@ describe Frontend::Cthulhu7::CharactersController do
           }
 
           expect(response).to have_http_status :unprocessable_content
-          expect(response.parsed_body['errors']['abilities.edu']).to eq(['Слишком маленькое значение'])
+          expect(response.parsed_body['errors']['abilities.edu']).to eq(['Слишком маленькое значение, минимум 1'])
         end
       end
     end

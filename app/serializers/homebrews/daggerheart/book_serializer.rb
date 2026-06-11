@@ -13,7 +13,9 @@ module Homebrews
           communities: ::Daggerheart::Homebrew::Community.where(id: object_items['Daggerheart::Homebrew::Community']).pluck(:name),
           classes: subclasses_info(object_items),
           items: ::Daggerheart::Item.where(id: object_items['Daggerheart::Item']).pluck(:name).map { |item| translate(item) },
-          transformations: ::Daggerheart::Homebrew::Transformation.where(id: object_items['Daggerheart::Homebrew::Transformation']).pluck(:name),
+          transformations: ::Daggerheart::Homebrews::Transformation.where(
+            id: object_items['Daggerheart::Homebrews::Transformation']
+          ).pluck(:title).map { |item| translate(item) },
           domains: ::Daggerheart::Homebrew::Domain.where(id: object_items['Daggerheart::Homebrew::Domain']).pluck(:name)
         }
       end

@@ -116,15 +116,15 @@ module HomebrewsContext
     end
 
     def daggerheart_transformations(user_id)
-      relation = ::Daggerheart::Homebrew::Transformation
+      relation = ::Daggerheart::Homebrews::Transformation
       relation.where(user_id: user_id)
         .or(
           relation.where(
-            id: available_books_data(user_id)['Daggerheart::Homebrew::Transformation']
+            id: available_books_data(user_id)['Daggerheart::Homebrews::Transformation']
           )
         )
         .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: item.name_json.keys.blank? ? { en: item.name, ru: item.name } : item.name_json }
+          acc[item.id] = { name: item.title }
         end
     end
 

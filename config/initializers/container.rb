@@ -234,6 +234,12 @@ module Charkeeper
     register('commands.homebrew_context.dnd.spells.change') { HomebrewContext::Dnd::Spells::ChangeCommand.new }
     register('commands.homebrew_context.dnd.spells.copy') { HomebrewContext::Dnd::Spells::CopyCommand.new }
 
+    register('commands.homebrews_v2_context.publications.create') { HomebrewsV2Context::Publications::CreateCommand.new }
+
+    register('commands.homebrews_v2_context.import.daggerheart.feats.add') {
+      HomebrewsV2Context::Import::Daggerheart::Feats::AddCommand.new
+    }
+
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }
     register('commands.campaigns_context.remove_campaign') { CampaignsContext::RemoveCampaignCommand.new }
@@ -243,19 +249,6 @@ module Charkeeper
     register('commands.campaigns_context.items.send') { CampaignsContext::Items::SendCommand.new }
 
     register('commands.channels_context.add_channel') { ChannelsContext::AddChannelCommand.new }
-
-    register('commands.homebrew_context.daggerheart.transformations.add') {
-      HomebrewContext::Daggerheart::Transformations::AddCommand.new
-    }
-    register('commands.homebrew_context.daggerheart.transformations.change') {
-      HomebrewContext::Daggerheart::Transformations::ChangeCommand.new
-    }
-    register('commands.homebrew_context.daggerheart.transformations.copy') {
-      HomebrewContext::Daggerheart::Transformations::CopyCommand.new
-    }
-    register('commands.homebrew_context.daggerheart.add_book_transformations') {
-      HomebrewContext::Daggerheart::AddBookTransformationsCommand.new
-    }
 
     register('commands.homebrew_context.daggerheart.add_domain') {
       HomebrewContext::Daggerheart::AddDomainCommand.new

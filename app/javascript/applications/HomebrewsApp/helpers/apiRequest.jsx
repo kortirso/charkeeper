@@ -18,4 +18,6 @@ export const options = (method, accessToken, payload) => {
   return result;
 }
 
-
+export const formDataOptions = (method, accessToken, payload) => {
+  return { method: method, body: payload, headers: { 'Authorization': `Bearer ${accessToken}` } };
+}

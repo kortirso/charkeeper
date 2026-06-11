@@ -281,10 +281,6 @@ es:
       free: libre
       int: + modificador Int
   frontend:
-    homebrews:
-      transformations:
-        daggerheart:
-          character_exists: Existe un personaje con tal transformación
     characters:
       bonuses:
         need_update: Please update app version

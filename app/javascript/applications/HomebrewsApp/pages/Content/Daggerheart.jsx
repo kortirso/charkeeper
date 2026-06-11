@@ -2,7 +2,7 @@ import { For, Switch, Match } from 'solid-js';
 
 import {
   DaggerheartAncestries, DaggerheartCommunities, DaggerheartClasses, DaggerheartSubclasses, DaggerheartItems,
-  DaggerheartWeapons, DaggerheartArmor, DaggerheartDomains, DaggerheartTransformations, DaggerheartBooks,
+  DaggerheartWeapons, DaggerheartArmor, DaggerheartDomains, DaggerheartTransformationsV2, DaggerheartBooks,
   DaggerheartRecipes, DaggerheartFeatures
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
@@ -77,7 +77,7 @@ export const Daggerheart = () => {
           Object.entries({
             ancestries: DaggerheartAncestries, communities: DaggerheartCommunities, classes: DaggerheartClasses,
             subclasses: DaggerheartSubclasses, items: DaggerheartItems, weapons: DaggerheartWeapons,
-            armor: DaggerheartArmor, domains: DaggerheartDomains, transformations: DaggerheartTransformations,
+            armor: DaggerheartArmor, domains: DaggerheartDomains, transformations: DaggerheartTransformationsV2,
             books: DaggerheartBooks, recipes: DaggerheartRecipes, features: DaggerheartFeatures
           })
         }>

@@ -281,10 +281,6 @@ ru:
       free: На ваш выбор
       int: + модификатор Инт
   frontend:
-    homebrews:
-      transformations:
-        daggerheart:
-          character_exists: Персонаж с такой трансформацией существует
     characters:
       bonuses:
         need_update: Please update app version

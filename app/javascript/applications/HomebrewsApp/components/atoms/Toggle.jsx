@@ -18,7 +18,7 @@ export const Toggle = (props) => {
         classList={{
           '': !props.noInnerPadding,
           'blockable': props.noInnerPadding,
-          'cursor-pointer': !props.disabled
+          'cursor-pointer': (!props.disabled || props.onParentClick)
         }}
         class="py-2 px-4"
         onClick={() => props.disabled ? (props.onParentClick ? props.onParentClick() : null) : setIsOpen(!isOpen())}

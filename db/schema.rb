@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_27_104339) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_11_093044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -465,6 +465,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_27_104339) do
     t.index ["user_id"], name: "index_homebrew_communities_on_user_id"
   end
 
+  create_table "homebrew_publications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.jsonb "errors_list", default: {}, null: false
+    t.string "parent_type", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "user_id", null: false
+    t.index ["user_id"], name: "index_homebrew_publications_on_user_id"
+  end
+
   create_table "homebrew_races", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false, comment: "Кастомные данные расы"
@@ -506,12 +516,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_27_104339) do
   end
 
   create_table "homebrews", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "brewery_id", null: false
-    t.string "brewery_type", null: false
     t.datetime "created_at", null: false
+    t.jsonb "description", default: {}, null: false
+    t.datetime "discarded_at"
+    t.jsonb "info", default: {}, null: false
+    t.boolean "public", default: false, null: false
+    t.jsonb "title", default: {}, null: false
+    t.string "type", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
-    t.index ["brewery_id", "brewery_type"], name: "index_homebrews_on_brewery_id_and_brewery_type"
+    t.index ["discarded_at"], name: "index_homebrews_on_discarded_at"
+    t.index ["type"], name: "index_homebrews_on_type"
     t.index ["user_id"], name: "index_homebrews_on_user_id"
   end
 

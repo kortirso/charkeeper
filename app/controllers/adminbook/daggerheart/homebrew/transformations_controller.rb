@@ -5,7 +5,7 @@ module Adminbook
     module Homebrew
       class TransformationsController < Adminbook::BaseController
         def index
-          @pagy, @transformations = pagy(::Daggerheart::Homebrew::Transformation.order(created_at: :desc), limit: 25)
+          @pagy, @transformations = pagy(::Daggerheart::Homebrews::Transformation.order(created_at: :desc), limit: 25)
         end
       end
     end

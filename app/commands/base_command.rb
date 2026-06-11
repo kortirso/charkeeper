@@ -13,7 +13,11 @@ class BaseCommand
   def call(input={})
     lockable(input) do
       contract_result = validate_contract(input)
-      return { errors: contract_result[:errors], errors_list: contract_result[:errors_list] } if contract_result[:errors].present?
+      if contract_result[:errors].present?
+        return {
+          errors: contract_result[:errors], errors_list: contract_result[:errors_list], raw_errors: contract_result[:raw_errors]
+        }
+      end
 
       input = contract_result[:result]
       errors = validate_content(input)
@@ -59,12 +63,14 @@ class BaseCommand
   # persisting
   def do_persist(input) = raise NotImplementedError
 
-  def validate(input) # rubocop: disable Metrics/AbcSize
+  def validate(input)
     result = contract.call(input)
+    raw_errors = contract.call(input).errors(locale: I18n.locale).to_h
     {
       result: result.to_h,
-      errors: flatten_hash_from(contract.call(input).errors(locale: I18n.locale).to_h),
-      errors_list: contract.call(input).errors(locale: I18n.locale).to_h.values.flat_map do |item|
+      raw_errors: raw_errors,
+      errors: flatten_hash_from(raw_errors),
+      errors_list: raw_errors.values.flat_map do |item|
         next item.values if item.is_a?(Hash)
 
         item

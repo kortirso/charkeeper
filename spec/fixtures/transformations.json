@@ -1,0 +1,44 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "title": {
+      "en": "Transformation's title"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Transformation's description, **Markdown is available** for editing."
+    },
+    "public": false,
+    "features": [
+      {
+        /* required, allowed locale keys - en, ru, es */
+        "title": {
+          "en": "Feature's title"
+        },
+        /* required, allowed locale keys - en, ru, es */
+        "description": {
+          "en": "Feature's description, **Markdown is available** for editing."
+        },
+        /* required, allowed values - static/text/update_result/hidden */
+        /* static - Simple rendering */
+        /* text - Like static + allow to add text value */
+        /* update_result - Like static + can be hidden by settings */
+        /* hidden - Always hidden */
+        "kind": "static",
+        /* optional */
+        "limit": 1,
+        /* optional, allowed values - short_rest/long_rest/session */
+        "limit_refresh": "short_rest"
+      },
+      {
+        "title": {
+          "en": "Feature's title"
+        },
+        "description": {
+          "en": "Feature's description, **Markdown is available** for editing."
+        },
+        "kind": "static"
+      }
+    ]
+  }
+]

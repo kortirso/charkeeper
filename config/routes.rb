@@ -261,7 +261,6 @@ Rails.application.routes.draw do
         post :copy, on: :member
       end
       resources :domains, only: %i[index show create update destroy]
-      resources :transformations, only: %i[index show create update destroy]
       resources :feats, only: %i[index create update destroy]
       resources :items, only: %i[index show create update destroy] do
         post :copy, on: :member
@@ -296,6 +295,17 @@ Rails.application.routes.draw do
 
     namespace :users do
       resources :books, only: %i[update]
+    end
+  end
+
+  namespace :homebrews_v2 do
+    resources :list, only: %i[index]
+    resources :publications, only: %i[index create destroy]
+
+    namespace :daggerheart do
+      resources :transformations, only: %i[show destroy] do
+        post :copy, on: :member
+      end
     end
   end
 
