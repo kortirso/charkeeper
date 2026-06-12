@@ -57,10 +57,6 @@ ru:
           complexity:
             filled?: Необходимо указать сложность
             gt?: Сложность должна быть больше, чем 0
-      homebrew_book:
-        rules:
-          provider:
-            included_in?: Неизвестное значение
       daggerheart_rest:
         rules:
           options:

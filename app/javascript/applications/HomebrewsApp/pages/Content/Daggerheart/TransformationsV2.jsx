@@ -1,13 +1,15 @@
 import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { Toggle, Button, Label } from '../../../components';
-import { Trash, Copy } from '../../../assets';
+import { Toggle, Button, Label, Select } from '../../../components';
+import { Trash, Copy, Stroke } from '../../../assets';
 import { fetchListRequest } from '../../../requests_v2/list';
 import { fetchPublicationsRequest, createPublicationRequest } from '../../../requests_v2/publications';
 import {
   fetchTransformationRequest, removeTransformationRequest, copyTransformationRequest
 } from '../../../requests_v2/daggerheart/transformations';
+import { fetchBooksForItemsRequest } from '../../../requests_v2/books';
+import { createBookItemRequest } from '../../../requests_v2/bookItems';
 import { localize } from '../../../helpers';
 
 const TRANSLATION = {
@@ -22,7 +24,11 @@ const TRANSLATION = {
     copyCompleted: 'Copy is completed',
     fileExample: 'You can download file example, modify it with your data and use it for importing data to Charkeeper.',
     fileExampleDescription: 'Data example',
-    cancel: 'Cancel'
+    cancel: 'Cancel',
+    selectBook: 'Select book',
+    selectBookHelp: 'Select required elements for adding to the book',
+    save: 'Save',
+    added: 'Content is added to the book'
   },
   ru: {
     add: 'Добавить',
@@ -35,7 +41,11 @@ const TRANSLATION = {
     copyCompleted: 'Копирование завершено',
     fileExample: 'Вы можете скачать шаблон файла, изменить данные и использовать новый файл для импорта данных в Charkeeper.',
     fileExampleDescription: 'Пример файла',
-    cancel: 'Отменить'
+    cancel: 'Отменить',
+    selectBook: 'Выберите книгу',
+    selectBookHelp: 'Выберите необходимые элементы для добавления в книгу',
+    save: 'Сохранить',
+    added: 'Контент добавлен в книгу'
   },
   es: {
     add: 'Agregar',
@@ -48,12 +58,20 @@ const TRANSLATION = {
     copyCompleted: 'Copy is completed',
     fileExample: 'You can download file example, modify it with your data and use it for importing data to Charkeeper.',
     fileExampleDescription: 'Data example',
-    cancel: 'Cancel'
+    cancel: 'Cancel',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    save: 'Guardar',
+    added: 'Contenido agregado al libro'
   }
 }
 const PARENT_TYPE = 'Daggerheart::Homebrews::Transformation';
 
 export const DaggerheartTransformationsV2 = () => {
+  const [books, setBooks] = createSignal(undefined);
+  const [selectedIds, setSelectedIds] = createSignal([]);
+  const [book, setBook] = createSignal(null);
+
   const [transformations, setTransformations] = createSignal(undefined);
   const [publications, setPublications] = createSignal(undefined);
 
@@ -71,12 +89,14 @@ export const DaggerheartTransformationsV2 = () => {
   const [locale] = useAppLocale();
 
   createEffect(() => {
+    const fetchBooks = async () => await fetchBooksForItemsRequest(appState.accessToken, 'daggerheart');
     const fetchTransformations = async () => await fetchListRequest(appState.accessToken, PARENT_TYPE);
     const fetchPublications = async () => await fetchPublicationsRequest(appState.accessToken, PARENT_TYPE);
 
-    Promise.all([fetchTransformations(), fetchPublications()]).then(
-      ([transformationsData, publicationsData]) => {
+    Promise.all([fetchTransformations(), fetchPublications(), fetchBooks()]).then(
+      ([transformationsData, publicationsData, booksData]) => {
         batch(() => {
+          setBooks(booksData.books);
           setPublications(publicationsData.publications);
           setTransformations(transformationsData.homebrews);
         });
@@ -147,6 +167,24 @@ export const DaggerheartTransformationsV2 = () => {
     } else renderAlerts(result.errors_list);
   }
 
+  const select = (e, id) => {
+    e.stopPropagation();
+
+    selectedIds().includes(id) ? setSelectedIds(selectedIds().filter((item) => item !== id)) : setSelectedIds(selectedIds().concat(id));
+  }
+
+  const addToBook = async () => {
+    const result = await createBookItemRequest(appState.accessToken, book(), { ids: selectedIds(), itemable_type: PARENT_TYPE });
+
+    if (result.errors_list === undefined) {
+      batch(() => {
+        setBook(null);
+        setSelectedIds([]);
+      });
+      renderNotice(TRANSLATION[locale()].added)
+    } else renderAlerts(result.errors_list);
+  }
+
   return (
     <Show when={transformations() !== undefined} fallback={<></>}>
       <div class="flex my-4">
@@ -208,6 +246,21 @@ export const DaggerheartTransformationsV2 = () => {
         }
       >
         <Show when={filtered().length > 0}>
+          <div class="flex items-center">
+            <Select
+              containerClassList="w-40"
+              labelText={localize(TRANSLATION, locale()).selectBook}
+              items={Object.fromEntries(books().map((item) => [item.id, item.name]))}
+              selectedValue={book()}
+              onSelect={setBook}
+            />
+            <Show when={book() && selectedIds().length > 0}>
+              <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
+                {localize(TRANSLATION, locale()).save}
+              </Button>
+            </Show>
+          </div>
+          <p class="text-sm mt-1 mb-2">{localize(TRANSLATION, locale()).selectBookHelp}</p>
           <div class="flex flex-col gap-2">
             <For each={filtered()}>
               {(transformation) =>
@@ -224,7 +277,6 @@ export const DaggerheartTransformationsV2 = () => {
                           innerHTML={transformation.description} // eslint-disable-line solid/no-innerhtml
                         />
                       </div>
-
                       <div class="col-span-2 flex items-start justify-end gap-2">
                         <Show
                           when={ownFilter()}
@@ -235,13 +287,23 @@ export const DaggerheartTransformationsV2 = () => {
                           }
                         >
                           <div class="flex items-center justify-end gap-1 text-neutral-700">
+                            <Show when={book()}>
+                              <Button
+                                default
+                                classList="p-2"
+                                onClick={(e) => select(e, transformation.id)}
+                              >
+                                <span classList={{ 'opacity-25': !selectedIds().includes(transformation.id) }}>
+                                  <Stroke width="16" height="12" />
+                                </span>
+                              </Button>
+                            </Show>
                             <Button default classList="px-2 py-1" onClick={(e) => remove(e, transformation.id)}>
                               <Trash width="20" height="20" />
                             </Button>
                           </div>
                         </Show>
                       </div>
-
                     </div>
                   }
                 >

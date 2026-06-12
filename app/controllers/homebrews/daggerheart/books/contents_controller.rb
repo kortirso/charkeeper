@@ -7,7 +7,6 @@ module Homebrews
         include Deps[
           add_book_races_command: 'commands.homebrew_context.daggerheart.add_book_races',
           add_book_communities_command: 'commands.homebrew_context.daggerheart.add_book_communities',
-          add_book_transformations_command: 'commands.homebrew_context.daggerheart.add_book_transformations',
           add_book_domains_command: 'commands.homebrew_context.daggerheart.add_book_domains',
           add_book_subclasses_command: 'commands.homebrew_context.daggerheart.add_book_subclasses',
           add_book_items_command: 'commands.homebrew_context.daggerheart.add_book_items'
@@ -28,7 +27,6 @@ module Homebrews
           case params[:type]
           when 'ancestry' then add_book_races_command
           when 'community' then add_book_communities_command
-          when 'transformation' then add_book_transformations_command
           when 'domain' then add_book_domains_command
           when 'subclass' then add_book_subclasses_command
           when 'item' then add_book_items_command

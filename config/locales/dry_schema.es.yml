@@ -57,10 +57,6 @@ es:
           complexity:
             filled?: Se requiere una dificultad
             gt?: La complejidad debe ser positiva
-      homebrew_book:
-        rules:
-          provider:
-            included_in?: Valor desconocido
       daggerheart_rest:
         rules:
           options:

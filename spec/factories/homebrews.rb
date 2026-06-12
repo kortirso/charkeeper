@@ -6,7 +6,7 @@ FactoryBot.define do
     info { {} }
 
     trait :daggerheart_transformation do
-      type { 'Homebrews::Daggerheart::Transformation' }
+      type { 'Daggerheart::Homebrews::Transformation' }
       title { { 'en' => 'Title' } }
       description { { 'en' => 'Description' } }
     end

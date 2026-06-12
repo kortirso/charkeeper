@@ -57,10 +57,6 @@ en:
           complexity:
             filled?: A complexity is required
             gt?: Сomplexity must be positive
-      homebrew_book:
-        rules:
-          provider:
-            included_in?: Unknown value
       daggerheart_rest:
         rules:
           options:
