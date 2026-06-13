@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering resources for Cthulhu 7 characters
 - critical damage calculations for DH characters
 - companion bonuses for DH characters
+- spell bonuses for D&D characters
 
 ### Modified
 - rendering health for DH characters

@@ -175,10 +175,12 @@ describe Frontend::Characters::ItemsController do
             }
           }
 
-          it 'does not update character item' do
+          it 'updates character item', :aggregate_failures do
             request
 
-            expect(response).to have_http_status :not_found
+            expect(item.reload.quantity).to eq 100
+            expect(response).to have_http_status :ok
+            expect(response.parsed_body).to eq({ 'result' => 'ok' })
           end
         end
 

@@ -56,7 +56,7 @@ module Frontend
       end
 
       def find_character_item
-        @character_item = @character.items.where(name: nil).find(params.expect(:id))
+        @character_item = @character.items.find(params.expect(:id))
       end
 
       def find_character_item_for_destroy

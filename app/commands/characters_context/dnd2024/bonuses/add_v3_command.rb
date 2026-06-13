@@ -7,6 +7,7 @@ module CharactersContext
         NO_FORMULA_FIELDS = %i[str dex con wis int cha].freeze
         ONLY_ADD_TYPE_FIELDS = %i[
           attack unarmed_attacks melee_attacks range_attacks damage unarmed_damage melee_damage range_damage
+          spell_save_dc spell_attack_bonus
         ].freeze
         ANY_VALUE_FIELDS = %i[
           'save_dc.str' 'save_dc.dex' 'save_dc.con' 'save_dc.wis' 'save_dc.int' 'save_dc.cha' initiative
@@ -28,6 +29,8 @@ module CharactersContext
               optional(:wis).hash
               optional(:int).hash
               optional(:cha).hash
+              optional(:spell_save_dc).hash
+              optional(:spell_attack_bonus).hash
               # with add type
               optional(:attack).hash
               optional(:unarmed_attacks).hash
