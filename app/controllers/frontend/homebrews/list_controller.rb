@@ -35,7 +35,7 @@ module Frontend
         }
       end
 
-      def races = ::Daggerheart::Homebrew::Race.where(user_id: current_user.id).order(name: :asc)
+      def races = ::Daggerheart::Homebrews::Ancestry.where(user_id: current_user.id).order(Arel.sql("title->>'en' ASC"))
       def comms = ::Daggerheart::Homebrew::Community.where(user_id: current_user.id).order(name: :asc)
 
       def transformations

@@ -303,6 +303,9 @@ Rails.application.routes.draw do
     resources :publications, only: %i[index create destroy]
 
     namespace :daggerheart do
+      resources :ancestries, only: %i[show destroy] do
+        post :copy, on: :member
+      end
       resources :transformations, only: %i[show destroy] do
         post :copy, on: :member
       end

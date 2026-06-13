@@ -3,7 +3,7 @@
 module HomebrewsV2Context
   module Import
     module Daggerheart
-      module Transformation
+      module Transformations
         class AddCommand < BaseCommand
           include Deps[
             add_feat: 'commands.homebrews_v2_context.import.daggerheart.feats.add'

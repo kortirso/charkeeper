@@ -76,16 +76,16 @@ module HomebrewsContext
     def daggerheart_heritages(user_id)
       return @daggerheart_heritages if defined?(@daggerheart_heritages)
 
-      relation = ::Daggerheart::Homebrew::Race
+      relation = ::Daggerheart::Homebrews::Ancestry
       @daggerheart_heritages =
         relation.where(user_id: user_id)
           .or(
             relation.where(
-              id: available_books_data(user_id)['Daggerheart::Homebrew::Race'] || available_books_data(user_id)['Homebrew::Race']
+              id: available_books_data(user_id)['Daggerheart::Homebrews::Ancestry'] || available_books_data(user_id)['Homebrew']
             )
           )
           .each_with_object({}) do |item, acc|
-            acc[item.id] = { name: { en: item.name, ru: item.name } }
+            acc[item.id] = { name: item.title }
           end
     end
 
@@ -119,9 +119,7 @@ module HomebrewsContext
       relation = ::Daggerheart::Homebrews::Transformation
       relation.where(user_id: user_id)
         .or(
-          relation.where(
-            id: available_books_data(user_id)['Daggerheart::Homebrews::Transformation']
-          )
+          relation.where(id: available_books_data(user_id)['Daggerheart::Homebrews::Transformation'])
         )
         .each_with_object({}) do |item, acc|
           acc[item.id] = { name: item.title }

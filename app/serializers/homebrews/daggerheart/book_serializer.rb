@@ -9,7 +9,9 @@ module Homebrews
         object_items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
-          races: ::Daggerheart::Homebrew::Race.where(id: object_items['Daggerheart::Homebrew::Race']).pluck(:name),
+          races: ::Daggerheart::Homebrews::Ancestry.where(
+            id: object_items['Daggerheart::Homebrews::Ancestry']
+          ).pluck(:title).map { |item| translate(item) },
           communities: ::Daggerheart::Homebrew::Community.where(id: object_items['Daggerheart::Homebrew::Community']).pluck(:name),
           classes: subclasses_info(object_items),
           items: ::Daggerheart::Item.where(id: object_items['Daggerheart::Item']).pluck(:name).map { |item| translate(item) },

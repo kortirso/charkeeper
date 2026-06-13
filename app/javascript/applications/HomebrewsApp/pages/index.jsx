@@ -6,8 +6,9 @@ export * from './Content/Cosmere';
 export * from './Content/Pathfinder2';
 export * from './Content/Dc20';
 
+export * from './Content/SharedContent';
+
 export * from './Content/Daggerheart/Books';
-export * from './Content/Daggerheart/Ancestries';
 export * from './Content/Daggerheart/Communities';
 export * from './Content/Daggerheart/Classes';
 export * from './Content/Daggerheart/Subclasses';
@@ -18,6 +19,7 @@ export * from './Content/Daggerheart/Domains';
 export * from './Content/Daggerheart/Recipes';
 export * from './Content/Daggerheart/Features';
 
+export * from './Content/Daggerheart/AncestriesV2';
 export * from './Content/Daggerheart/TransformationsV2';
 
 export * from './Content/Dnd/Books';

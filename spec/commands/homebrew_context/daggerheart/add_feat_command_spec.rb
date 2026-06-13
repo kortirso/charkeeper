@@ -5,8 +5,8 @@ describe HomebrewContext::Daggerheart::AddFeatCommand do
 
   let(:instance) { described_class.new }
   let!(:user) { create :user }
-  let!(:origin) { create :homebrew_race, :daggerheart, user: user }
-  let!(:another_origin) { create :homebrew_race, :daggerheart }
+  let!(:origin) { create :homebrew, :daggerheart_ancestry, user: user }
+  let!(:another_origin) { create :homebrew, :daggerheart_ancestry }
   let(:valid_params) do
     { user: user, title: 'Title', description: 'Descr', origin: 'ancestry', origin_value: origin.id, kind: 'static' }
   end

@@ -4,8 +4,8 @@ describe HomebrewsContext::FindAvailableService do
   subject(:service_call) { described_class.new.call(user_id: user.id) }
 
   let!(:user) { create :user }
-  let!(:own_race) { create :homebrew_race, :daggerheart, user: user }
-  let!(:book_race) { create :homebrew_race, :daggerheart, name: 'Booked race' }
+  let!(:own_race) { create :homebrew, :daggerheart_ancestry, user: user }
+  let!(:book_race) { create :homebrew, :daggerheart_ancestry, title: { en: 'Booked race' } }
 
   before do
     book = create :homebrew_book, shared: true

@@ -20,10 +20,10 @@ module HomebrewsV2Context
 
       def command_object(publication)
         @command_object ||=
-          (%w[HomebrewsV2Context Import] + publication.parent_type.split('::') - ['Homebrews'] + ['AddCommand'])
-            .join('::')
-            .constantize
-            .new
+          case publication.parent_type
+          when 'transformation' then HomebrewsV2Context::Import::Daggerheart::Transformations::AddCommand.new
+          when 'ancestry' then HomebrewsV2Context::Import::Daggerheart::Ancestries::AddCommand.new
+          end
       end
     end
   end

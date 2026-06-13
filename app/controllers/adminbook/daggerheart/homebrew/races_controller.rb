@@ -5,7 +5,7 @@ module Adminbook
     module Homebrew
       class RacesController < Adminbook::BaseController
         def index
-          @pagy, @races = pagy(::Daggerheart::Homebrew::Race.order(created_at: :desc), limit: 25)
+          @pagy, @races = pagy(::Daggerheart::Homebrews::Ancestry.order(created_at: :desc), limit: 25)
         end
       end
     end

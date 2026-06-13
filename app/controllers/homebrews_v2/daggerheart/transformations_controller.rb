@@ -5,7 +5,8 @@ module HomebrewsV2
     class TransformationsController < Homebrews::BaseController
       include SerializeResource
 
-      before_action :find_transformation, only: %i[show destroy]
+      before_action :find_transformation, only: %i[show]
+      before_action :find_own_transformation, only: %i[destroy]
       before_action :find_features, only: %i[show]
       before_action :find_existing_characters, only: %i[destroy]
       before_action :find_another_transformation, only: %i[copy]
@@ -14,7 +15,7 @@ module HomebrewsV2
         serialize_resource(
           @transformation,
           ::HomebrewsV2::Daggerheart::TransformationSerializer,
-          :transformation,
+          :homebrew,
           {},
           :ok,
           { features: @features }
@@ -27,18 +28,22 @@ module HomebrewsV2
       end
 
       def copy
-        case HomebrewsV2Context::Import::Daggerheart::Transformation::CopyCommand.new.call({
+        case HomebrewsV2Context::Import::Daggerheart::Transformations::CopyCommand.new.call({
           transformation: @transformation, user: current_user
         })
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
-          serialize_resource(result, ::HomebrewsV2::ListElementSerializer, :transformation, {}, :created)
+          serialize_resource(result, ::HomebrewsV2::ListElementSerializer, :homebrew, {}, :created)
         end
       end
 
       private
 
       def find_transformation
+        @transformation = ::Daggerheart::Homebrews::Transformation.kept.find(params.expect(:id))
+      end
+
+      def find_own_transformation
         @transformation = ::Daggerheart::Homebrews::Transformation.kept.find_by!(id: params.expect(:id), user_id: current_user.id)
       end
 

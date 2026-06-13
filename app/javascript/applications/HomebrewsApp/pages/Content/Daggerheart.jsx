@@ -1,7 +1,7 @@
 import { For, Switch, Match } from 'solid-js';
 
 import {
-  DaggerheartAncestries, DaggerheartCommunities, DaggerheartClasses, DaggerheartSubclasses, DaggerheartItems,
+  DaggerheartAncestriesV2, DaggerheartCommunities, DaggerheartClasses, DaggerheartSubclasses, DaggerheartItems,
   DaggerheartWeapons, DaggerheartArmor, DaggerheartDomains, DaggerheartTransformationsV2, DaggerheartBooks,
   DaggerheartRecipes, DaggerheartFeatures
 } from '../../pages';
@@ -75,7 +75,7 @@ export const Daggerheart = () => {
       <Switch fallback={<></>}>
         <For each={
           Object.entries({
-            ancestries: DaggerheartAncestries, communities: DaggerheartCommunities, classes: DaggerheartClasses,
+            ancestries: DaggerheartAncestriesV2, communities: DaggerheartCommunities, classes: DaggerheartClasses,
             subclasses: DaggerheartSubclasses, items: DaggerheartItems, weapons: DaggerheartWeapons,
             armor: DaggerheartArmor, domains: DaggerheartDomains, transformations: DaggerheartTransformationsV2,
             books: DaggerheartBooks, recipes: DaggerheartRecipes, features: DaggerheartFeatures

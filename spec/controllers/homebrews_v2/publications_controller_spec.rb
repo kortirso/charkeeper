@@ -7,12 +7,10 @@ describe HomebrewsV2::PublicationsController do
   describe 'GET#index' do
     context 'for logged users' do
       let!(:publication) do
-        create :homebrew_publication, user: user_session.user, parent_type: 'Homebrews::Daggerheart::Transformation'
+        create :homebrew_publication, user: user_session.user, parent_type: 'transformation'
       end
 
-      let(:request) do
-        get :index, params: { type: 'Homebrews::Daggerheart::Transformation', charkeeper_access_token: access_token }
-      end
+      let(:request) { get :index, params: { type: 'transformation', charkeeper_access_token: access_token } }
 
       it 'returns data', :aggregate_failures do
         request
@@ -26,14 +24,10 @@ describe HomebrewsV2::PublicationsController do
 
   describe 'POST#create' do
     context 'for logged users' do
-      let(:file_path) { Rails.root.join('spec/fixtures/transformations.json') }
+      let(:file_path) { Rails.root.join('spec/fixtures/transformation.json') }
       let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
       let(:request) {
-        post :create, params: {
-          parent_type: 'Homebrews::Daggerheart::Transformation',
-          file: file,
-          charkeeper_access_token: access_token
-        }
+        post :create, params: { parent_type: 'transformation', file: file, charkeeper_access_token: access_token }
       }
 
       context 'for valid params' do

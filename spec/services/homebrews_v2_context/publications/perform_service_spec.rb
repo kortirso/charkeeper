@@ -3,10 +3,10 @@
 describe HomebrewsV2Context::Publications::PerformService do
   subject(:service_call) { described_class.new.call(publication: publication) }
 
-  let!(:publication) { create :homebrew_publication, parent_type: 'Daggerheart::Homebrews::Transformation' }
+  let!(:publication) { create :homebrew_publication, parent_type: 'transformation' }
 
   context 'for valid file' do
-    let(:file_path) { Rails.root.join('spec/fixtures/transformations.json') }
+    let(:file_path) { Rails.root.join('spec/fixtures/transformation.json') }
     let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
 
     before do

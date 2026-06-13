@@ -25,7 +25,7 @@ describe Homebrews::Daggerheart::FeatsController do
 
   describe 'POST#create' do
     context 'for logged users' do
-      let!(:origin) { create :homebrew_race, :daggerheart, user: user_session.user }
+      let!(:origin) { create :homebrew, :daggerheart_ancestry, user: user_session.user }
       let(:valid_params) { { title: 'Title', description: 'Descr', origin: 'ancestry', origin_value: origin.id, kind: 'static' } }
       let(:request) {
         post :create, params: {

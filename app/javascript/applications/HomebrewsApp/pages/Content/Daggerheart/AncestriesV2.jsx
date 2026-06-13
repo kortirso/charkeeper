@@ -1,11 +1,9 @@
 import { For } from 'solid-js';
 
 import { SharedContent } from '../../../pages';
-import {
-  fetchTransformationRequest, removeTransformationRequest, copyTransformationRequest
-} from '../../../requests_v2/daggerheart/transformations';
+import { fetchAncestryRequest, removeAncestryRequest, copyAncestryRequest } from '../../../requests_v2/daggerheart/ancestries';
 
-export const DaggerheartTransformationsV2 = () => {
+export const DaggerheartAncestriesV2 = () => {
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-2">
       <For each={props.info.features}>
@@ -25,11 +23,11 @@ export const DaggerheartTransformationsV2 = () => {
   return (
     <SharedContent
       provider="daggerheart"
-      parentType="Daggerheart::Homebrews::Transformation"
-      publicationType="transformation"
-      onShowRequest={fetchTransformationRequest}
-      onRemoveRequest={removeTransformationRequest}
-      onCopyRequest={copyTransformationRequest}
+      parentType="Daggerheart::Homebrews::Ancestry"
+      publicationType="ancestry"
+      onShowRequest={fetchAncestryRequest}
+      onRemoveRequest={removeAncestryRequest}
+      onCopyRequest={copyAncestryRequest}
       childrenComponent={ChildrenComponent}
     />
   );

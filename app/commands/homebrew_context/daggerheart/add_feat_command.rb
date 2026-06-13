@@ -43,7 +43,7 @@ module HomebrewContext
           origin =
             case values[:origin]
             when 'ancestry'
-              ::Daggerheart::Homebrew::Race.find_by(user_id: values[:user].id, id: values[:origin_value]) ||
+              ::Daggerheart::Homebrews::Ancestry.find_by(user_id: values[:user].id, id: values[:origin_value]) ||
                 ::Daggerheart::Character.heritage_info(values[:origin_value])
             when 'community'
               ::Daggerheart::Homebrew::Community.find_by(user_id: values[:user].id, id: values[:origin_value]) ||
@@ -54,7 +54,7 @@ module HomebrewContext
             when 'subclass'
               ::Daggerheart::Homebrew::Subclass.find_by(user_id: values[:user].id, id: values[:origin_value])
             when 'transformation'
-              ::Daggerheart::Homebrew::Transformation.find_by(user_id: values[:user].id, id: values[:origin_value])
+              ::Daggerheart::Homebrews::Transformation.find_by(user_id: values[:user].id, id: values[:origin_value])
             when 'domain_card'
               ::Daggerheart::Homebrew::Domain.find_by(user_id: values[:user].id, id: values[:origin_value])
             when 'character'

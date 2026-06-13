@@ -29,7 +29,7 @@ describe CharactersContext::Daggerheart::CreateCommand do
     end
 
     context 'for valid homebrew heritage' do
-      let!(:heritage) { create :homebrew_race, :daggerheart, user: user }
+      let!(:heritage) { create :homebrew, :daggerheart_ancestry, user: user }
       let(:valid_params) do
         {
           user: user, name: 'Char', community: 'highborne', main_class: 'bard', subclass: 'troubadour', heritage: heritage.id
