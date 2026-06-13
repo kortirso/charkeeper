@@ -101,7 +101,7 @@ export const Cthulhu7Combat = (props) => {
           <Show
             when={!editMode()}
             fallback={
-              <div class="blockable py-4 px-2 md:px-4">
+              <div class="blockable blockable-padding">
                 <div class="cthulhu-abilities-box">
                   <div>
                     <p class="ability-title">{localize(TRANSLATION, locale()).luck}</p>

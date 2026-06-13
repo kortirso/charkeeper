@@ -16,6 +16,16 @@ module Cthulhu7
     attribute :sanity, :integer, default: 1
     attribute :luck_max, :integer, default: 1
     attribute :luck, :integer, default: 1
+    attribute :description, :string
+    attribute :ideology, :string
+    attribute :people, :string
+    attribute :locations, :string
+    attribute :treasure, :string
+    attribute :traits, :string
+    attribute :scars, :string
+    attribute :phobias, :string
+    attribute :tomes, :string
+    attribute :strange, :string
     # для левелинга
     attribute :guide_step, :integer # этап помощи при создании персонажа
   end

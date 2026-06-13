@@ -312,7 +312,7 @@ export const DaggerheartCompanion = (props) => {
                 onCancelEditing={cancelNameEditing}
                 onSaveChanges={changeCompanion}
               >
-                <div class="blockable blockable-padding">
+                <div class="blockable blockable-padding mt-2">
                   <Show
                     when={editNameMode()}
                     fallback={
@@ -358,7 +358,7 @@ export const DaggerheartCompanion = (props) => {
                 onCancelEditing={cancelDamageEditing}
                 onSaveChanges={() => updateCompanion({ damage: damageData(), distance: distanceData() }, setEditDamageMode)}
               >
-                <div class="blockable blockable-padding h-full">
+                <div class="blockable blockable-padding mt-2 h-full">
                   <div class="grid grid-cols-3 gap-2">
                     <div>
                       <p class="companion-stat-title">{localize(TRANSLATION, locale()).evasion}</p>
@@ -409,7 +409,7 @@ export const DaggerheartCompanion = (props) => {
               </EditWrapper>
             </div>
             <div class="mt-4"><DaggerheartExperience object={companion()} callback={updateCompanion} /></div>
-            <div class="blockable blockable-padding">
+            <div class="blockable blockable-padding mt-2">
               <h2 class="text-lg mb-2">{localize(TRANSLATION, locale()).training}</h2>
               <p class="text-sm mb-4">{localize(TRANSLATION, locale()).availableTraining} - {character().level - 1}</p>
               <For

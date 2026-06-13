@@ -1,7 +1,7 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { Cthulhu7Abilities, Cthulhu7Skills, Cthulhu7Combat } from '../../../pages';
+import { Cthulhu7Abilities, Cthulhu7Skills, Cthulhu7Combat, Cthulhu7Backstory } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, createRoll } from '../../../components';
 
 export const Cthulhu7 = (props) => {
@@ -14,7 +14,7 @@ export const Cthulhu7 = (props) => {
   const { Roll, openCthulhuTest } = createRoll();
 
   const characterTabs = createMemo(() => {
-    return ['combat', 'notes', 'avatar'];
+    return ['combat', 'backstory', 'notes', 'avatar'];
   });
 
   const mobileView = createMemo(() => {
@@ -51,6 +51,12 @@ export const Cthulhu7 = (props) => {
               <Cthulhu7Combat
                 character={character()}
                 openCthulhuTest={openCthulhuTest}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
+            </Match>
+            <Match when={activeMobileTab() === 'backstory'}>
+              <Cthulhu7Backstory
+                character={character()}
                 onReplaceCharacter={props.onReplaceCharacter}
               />
             </Match>
@@ -107,6 +113,12 @@ export const Cthulhu7 = (props) => {
               <Cthulhu7Combat
                 character={character()}
                 openCthulhuTest={openCthulhuTest}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
+            </Match>
+            <Match when={activeTab() === 'backstory'}>
+              <Cthulhu7Backstory
+                character={character()}
                 onReplaceCharacter={props.onReplaceCharacter}
               />
             </Match>

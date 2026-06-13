@@ -113,7 +113,7 @@ export const Cthulhu7Skills = (props) => {
           onReloadCharacter={props.onReloadCharacter}
           finishGuideStep={true}
         >
-          <div class="blockable py-4 px-2 md:px-4">
+          <div class="blockable blockable-padding">
             <p class="text-lg">{localize(TRANSLATION, locale()).skills}</p>
             <div class="fallout-skills">
               <Show

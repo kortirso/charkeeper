@@ -59,7 +59,8 @@
       "archetype": "Архетип",
       "animalCompanion": "Верный зверь",
       "rolls": "История бросков",
-      "goals": "Цели"
+      "goals": "Цели",
+      "backstory": "Биография"
     },
     "campaignsPage": {
       "title": "Кампании",

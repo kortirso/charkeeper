@@ -75,7 +75,7 @@ export const Cthulhu7Abilities = (props) => {
           helpMessage={localize(TRANSLATION, locale()).helpMessage}
           onReloadCharacter={props.onReloadCharacter}
         >
-          <div class="blockable py-4 px-2 md:px-4">
+          <div class="blockable blockable-padding">
             <div class="cthulhu-abilities-box">
               <For each={Object.entries(config.abilities).map(([key, values]) => [key, localize(values.name, locale())])}>
                 {([slug, trait]) =>

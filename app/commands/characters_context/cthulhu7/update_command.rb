@@ -35,6 +35,16 @@ module CharactersContext
           optional(:sanity).maybe(:integer, gteq?: 0)
           optional(:luck_max).maybe(:integer, gteq?: 0)
           optional(:luck).maybe(:integer, gteq?: 0)
+          optional(:description).maybe(:string, max_size?: 200)
+          optional(:ideology).maybe(:string, max_size?: 200)
+          optional(:people).maybe(:string, max_size?: 200)
+          optional(:locations).maybe(:string, max_size?: 200)
+          optional(:treasure).maybe(:string, max_size?: 200)
+          optional(:traits).maybe(:string, max_size?: 200)
+          optional(:scars).maybe(:string, max_size?: 200)
+          optional(:phobias).maybe(:string, max_size?: 200)
+          optional(:tomes).maybe(:string, max_size?: 200)
+          optional(:strange).maybe(:string, max_size?: 200)
         end
       end
       # rubocop: enable Metrics/BlockLength

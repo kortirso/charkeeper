@@ -59,7 +59,8 @@
       "archetype": "Archetype",
       "animalCompanion": "Animal companion",
       "rolls": "Rolls history",
-      "goals": "Goals"
+      "goals": "Goals",
+      "backstory": "Backstory"
     },
     "campaignsPage": {
       "title": "Campaigns",
