@@ -2,7 +2,7 @@ import { Show, createEffect, createSignal, createMemo, batch, For, Switch, Match
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { PageHeader, IconButton, Input, Button, Select, Label } from '../../components';
-import { Arrow, Google, Discord, Telegram, Close } from '../../assets';
+import { Arrow, Google, Discord, Telegram, Close, Yandex } from '../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateUserRequest } from '../../requests/updateUserRequest';
 import { removeIdentityRequest } from '../../requests/removeIdentityRequest';
@@ -110,6 +110,12 @@ export const UsernameTab = (props) => {
     return appState.identities.map((item) => item.provider);
   });
 
+  const availableProviders = createMemo(() => {
+    if (appState.oauthLinks === undefined) return [];
+
+    return Object.keys(appState.oauthLinks).concat(Object.keys(appState.oauthCredentials));
+  });
+
   const updateProfile = async () => {
     let payload = { color_schema: colorSchema(), locale: localeValue() };
     if (username() !== appState.username) payload = { ...payload, username: username() };
@@ -200,6 +206,7 @@ export const UsernameTab = (props) => {
                             <Match when={identity.provider === 'discord'}><Discord /></Match>
                             <Match when={identity.provider === 'google'}><Google /></Match>
                             <Match when={identity.provider === 'telegram'}><Telegram /></Match>
+                            <Match when={identity.provider === 'yandex'}><Yandex /></Match>
                           </Switch>
                           <p class="dark:text-snow ml-4">{identity.uid}</p>
                         </td>
@@ -217,17 +224,18 @@ export const UsernameTab = (props) => {
             <div>
               <Label labelText={localize(TRANSLATION, locale()).availableIdentities} />
               <Show
-                when={['google', 'discord', 'telegram'].filter((item) => !identityProviders().includes(item)).length > 0}
+                when={availableProviders().filter((item) => !identityProviders().includes(item)).length > 0}
                 fallback={
                   <p class="dark:text-snow">{localize(TRANSLATION, locale()).connected}</p>
                 }
               >
                 <div class="p-1">
-                  <For each={['google', 'discord', 'telegram'].filter((item) => !identityProviders().includes(item))}>
+                  <For each={availableProviders().filter((item) => !identityProviders().includes(item))}>
                     {(provider) =>
                       <Switch>
                         <Match when={provider === 'discord'}><a href={appState.oauthLinks.discord}><Discord /></a></Match>
                         <Match when={provider === 'google'}><a href={appState.oauthLinks.google}><Google /></a></Match>
+                        <Match when={provider === 'yandex'}><a href={appState.oauthLinks.yandex}><Yandex /></a></Match>
                         <Match when={provider === 'telegram'}>
                           <script
                             async

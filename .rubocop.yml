@@ -165,7 +165,7 @@ Rails/FilePath:
   EnforcedStyle: slashes
 
 RSpec/NestedGroups:
-  Max: 8
+  Max: 10
 
 RSpec/ContextWording:
   Prefixes:

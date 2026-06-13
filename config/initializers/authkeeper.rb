@@ -6,17 +6,19 @@ Authkeeper.configure do |config|
   if Rails.env.production?
     config.domain = 'charkeeper.org'
     config.access_token_name = :charkeeper_access_token
+    config.omniauth_providers = %w[telegram google discord]
   elsif Rails.env.ru_production?
     config.domain = 'charkeeper.ru'
     config.access_token_name = :charkeeper_ru_access_token
+    config.omniauth_providers = %w[telegram google discord yandex]
   else
     config.access_token_name = :charkeeper_access_token
+    config.omniauth_providers = %w[telegram google discord yandex]
   end
 
   config.fallback_url_session_name = :charkeeper_fallback_url
   config.current_user_cache_minutes = 5
-
-  config.omniauth_providers = %w[telegram google discord]
+  config.token_expiration_seconds = 54_432_000
 
   config.omniauth :telegram,
                   bot_name: credentials.dig(:telegram, :bot_name),
@@ -32,4 +34,10 @@ Authkeeper.configure do |config|
                   client_id: credentials.dig(:discord, :client_id),
                   client_secret: credentials.dig(:discord, :client_secret),
                   redirect_url: credentials.dig(:discord, :redirect_url)
+
+  unless Rails.env.production?
+    config.omniauth :yandex,
+                    client_id: credentials.dig(:yandex, :client_id),
+                    client_secret: credentials.dig(:yandex, :client_secret)
+  end
 end

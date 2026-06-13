@@ -5,10 +5,11 @@ class User
     TELEGRAM = 'telegram'
     GOOGLE = 'google'
     DISCORD = 'discord'
+    YANDEX = 'yandex'
 
     belongs_to :user
 
-    enum :provider, { TELEGRAM => 0, GOOGLE => 1, DISCORD => 2 }
+    enum :provider, { TELEGRAM => 0, GOOGLE => 1, DISCORD => 2, YANDEX => 3 }
 
     scope :telegram, -> { where(provider: TELEGRAM) }
     scope :active, -> { where(active: true) }

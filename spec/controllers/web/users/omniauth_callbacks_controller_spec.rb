@@ -57,18 +57,46 @@ describe Web::Users::OmniauthCallbacksController do
           let(:telegram_auth_result) { { result: auth_payload } }
 
           context 'for not logged user' do
-            context 'for valid payload' do
-              let(:auth_payload) do
-                {
-                  uid: '123',
-                  provider: 'telegram',
-                  login: 'octocat'
-                }
+            let(:auth_payload) do
+              {
+                uid: '123',
+                provider: 'telegram',
+                login: 'octocat'
+              }
+            end
+
+            it 'redirects to dashboard_path', :aggregate_failures do
+              expect { request }.to change(User, :count)
+              expect(response).to redirect_to dashboard_path
+            end
+
+            context 'for disabled russian provider' do
+              before { allow(Rails.env).to receive(:ru_production?).and_return(true) }
+
+              it 'redirects to login path', :aggregate_failures do
+                expect { request }.not_to change(User, :count)
+                expect(response).to redirect_to root_path
               end
 
-              it 'redirects to dashboard_path', :aggregate_failures do
-                expect { request }.to change(User, :count)
-                expect(response).to redirect_to dashboard_path
+              context 'when user exists' do
+                let!(:user) { create :user }
+
+                before { create :user_identity, user: user, uid: '123' }
+
+                it 'redirects to dashboard_path', :aggregate_failures do
+                  expect { request }.not_to change(User, :count)
+                  expect(response).to redirect_to dashboard_path
+                  expect(user.reload.russian_login).to be_truthy
+                end
+
+                context 'when user logged before' do
+                  before { user.update!(russian_login: true) }
+
+                  it 'redirects to login path', :aggregate_failures do
+                    expect { request }.not_to change(User, :count)
+                    expect(response).to redirect_to root_path
+                  end
+                end
               end
             end
           end

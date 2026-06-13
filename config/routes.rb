@@ -335,6 +335,7 @@ Rails.application.routes.draw do
       scope module: :users do
         resources :signin, only: %i[new create]
         resources :signup, only: %i[new create]
+        resources :external, only: %i[new] unless Rails.env.production?
 
         get 'logout', to: 'signin#destroy'
       end

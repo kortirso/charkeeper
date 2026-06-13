@@ -312,7 +312,14 @@ es:
         open_source: Código abierto
         os_desc: CharKeeper está disponible como código abierto en GitHub. Puedes publicar problemas con comentarios o reportar errores, o contribuir al desarrollo de CharKeeper.
         os_link: Source code link
+        support:
+          title: Soporte
+          description: CharKeeper es totalmente gratuito, pero si te gusta utilizar CharKeeper y deseas contribuir al desarrollo de la aplicación, puedes realizar una pequeña donación mediante alguna de las formas que se indican a continuación.
     users:
+      ru_signup:
+        have: Already have account through external services?
+        title: A law was passed in the RU region, making it illegal to use foreign services to create a new account. If you've already created an account this way, you can only log in once more to set your username and password in your profile settings.
+        contacts: If you are unable to regain access to your account, please contact us using any of the contact information listed in the footer.
       auth:
         notice: La autenticación se ha realizado correctamente
         alert: Error en la autenticación

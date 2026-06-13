@@ -40,6 +40,7 @@ export * from './Star';
 export * from './socials/Discord';
 export * from './socials/Telegram';
 export * from './socials/Vk';
+export * from './socials/Yandex';
 export * from './socials/Boosty';
 export * from './socials/Google';
 export * from './socials/BuyMeACoffee';

@@ -1,0 +1,29 @@
+<div class="max-w-7xl mx-auto flex-1 flex flex-col justify-center items-center">
+  <div class="p-4 bg-cosmos">
+    <h2 class="text-2xl mb-4"><%= t('web.users.signup.title') %></h2>
+    <p class="mb-4"><%= t('web.users.ru_signup.title') %></p>
+    <p class="mb-4"><%= t('web.users.ru_signup.contacts') %></p>
+    <div class="mb-2 flex items-center gap-4">
+      <%= link_to omniauth_link(:google) do %>
+        <%= image_tag 'google.svg', class: 'w-6 h-6', alt: 'google', width: 24, height: 24 %>
+      <% end %>
+      <%= link_to omniauth_link(:discord) do %>
+        <%= image_tag 'discord.svg', class: 'w-6 h-6', alt: 'discord', width: 24, height: 24 %>
+      <% end %>
+      <script
+        async
+        src="https://telegram.org/js/telegram-widget.js?22"
+        data-telegram-login="<%= Rails.application.credentials.dig(Rails.env.to_sym, :oauth, :telegram, :bot_name) %>"
+        data-size="medium"
+        data-userpic="false"
+        data-radius="0"
+        data-auth-url="<%= Rails.application.credentials.dig(Rails.env.to_sym, :oauth, :telegram, :redirect_url) %>"
+        data-request-access="write">
+      </script>
+    </div>
+    <div class="mb-2">
+      <%= t('web.users.signup.have') %>
+      <%= link_to t('web.users.signup.login'), new_signin_path, class: 'underline' %>
+    </div>
+  </div>
+</div>

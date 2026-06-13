@@ -7,8 +7,10 @@ module Web
         add_identity: 'commands.auth_context.add_identity'
       ]
 
-      def create # rubocop: disable Metrics/AbcSize
-        user = current_user.nil? ? auth_login(auth) : auth_attach(auth, current_user)
+      DISABLED_RUSSIAN_PROVIDERS = %w[google discord telegram].freeze
+
+      def create
+        user = current_user.nil? ? auth_login : auth_attach(current_user)
         if user
           sign_in(user) if current_user.nil?
           I18n.locale = user.locale.to_sym if user.locale
@@ -20,20 +22,37 @@ module Web
 
       private
 
-      def auth_login(auth)
-        identity = User::Identity.find_by(uid: auth[:uid], provider: auth[:provider])
-        return identity.user if identity.present?
+      def auth_login # rubocop: disable Metrics/AbcSize
+        identity = User::Identity.find_by(uid: parsed_auth[:uid], provider: parsed_auth[:provider])
+        if identity.present?
+          if disabled_russian_provider?
+            return if identity.user.russian_login? # если юзер логинится второй раз после запрета
 
-        identity = add_identity.call(auth.merge(username: auth[:login] || auth[:email]).compact)[:result]
+            identity.user.update(russian_login: true) # отметить, что логинится первый раз после запрета
+          end
+
+          return identity.user
+        end
+
+        return if disabled_russian_provider? # запретить создание аккаунта
+
+        identity = add_identity.call(parsed_auth.merge(username: parsed_auth[:login] || parsed_auth[:email]).compact)[:result]
         identity.user
       end
 
-      def auth_attach(auth, user)
-        identity = User::Identity.find_by(uid: auth[:uid], provider: auth[:provider])
+      def disabled_russian_provider?
+        Rails.env.ru_production? && DISABLED_RUSSIAN_PROVIDERS.include?(parsed_auth[:provider].to_s)
+      end
+
+      def auth_attach(user)
+        identity = User::Identity.find_by(uid: parsed_auth[:uid], provider: parsed_auth[:provider])
         if identity.nil?
-          identity = add_identity.call(auth.merge(user: user, username: auth[:login] || auth[:email]).compact)[:result]
+          identity =
+            add_identity.call(
+              parsed_auth.merge(user: user, username: parsed_auth[:login] || parsed_auth[:email]).compact
+            )[:result]
         end
-        identity.update(user: user) if identity.user != user
+        identity.update(user: user) if identity&.user != user
         user
       end
 
@@ -44,6 +63,10 @@ module Web
         return fall_back_url if fall_back_url
 
         dashboard_path
+      end
+
+      def parsed_auth
+        @parsed_auth ||= auth.key?(:user_info) ? auth[:user_info] : auth
       end
     end
   end

@@ -10,23 +10,45 @@
       <%= form.password_field :password, class: 'form-value w-full', data: { 'test-id' => 'password-input' } %>
     </div>
     <div class="mb-2 flex items-center gap-4">
-      <%= link_to omniauth_link(:google) do %>
-        <%= image_tag 'google.svg', class: 'w-6 h-6', alt: 'google', width: 24, height: 24 %>
+      <% if Rails.env.production? %>
+        <%= link_to omniauth_link(:google) do %>
+          <%= image_tag 'google.svg', class: 'w-6 h-6', alt: 'google', width: 24, height: 24 %>
+        <% end %>
+        <%= link_to omniauth_link(:discord) do %>
+          <%= image_tag 'discord.svg', class: 'w-6 h-6', alt: 'discord', width: 24, height: 24 %>
+        <% end %>
+        <script
+          async
+          src="https://telegram.org/js/telegram-widget.js?22"
+          data-telegram-login="<%= Rails.application.credentials.dig(Rails.env.to_sym, :oauth, :telegram, :bot_name) %>"
+          data-size="medium"
+          data-userpic="false"
+          data-radius="0"
+          data-auth-url="<%= Rails.application.credentials.dig(Rails.env.to_sym, :oauth, :telegram, :redirect_url) %>"
+          data-request-access="write">
+        </script>
+      <% elsif Rails.env.ru_production? %>
+        <%= link_to omniauth_link(:yandex) do %>
+          <%= image_tag 'yandex.svg', class: 'w-6 h-6', alt: 'yandex', width: 24, height: 24 %>
+        <% end %>
+      <% else %>
+        <%= link_to omniauth_link(:google) do %>
+          <%= image_tag 'google.svg', class: 'w-6 h-6', alt: 'google', width: 24, height: 24 %>
+        <% end %>
+        <%= link_to omniauth_link(:discord) do %>
+          <%= image_tag 'discord.svg', class: 'w-6 h-6', alt: 'discord', width: 24, height: 24 %>
+        <% end %>
+        <%= link_to omniauth_link(:yandex) do %>
+          <%= image_tag 'yandex.svg', class: 'w-6 h-6', alt: 'yandex', width: 24, height: 24 %>
+        <% end %>
       <% end %>
-      <%= link_to omniauth_link(:discord) do %>
-        <%= image_tag 'discord.svg', class: 'w-6 h-6', alt: 'discord', width: 24, height: 24 %>
-      <% end %>
-      <script
-        async
-        src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-login="<%= Rails.application.credentials.dig(Rails.env.to_sym, :oauth, :telegram, :bot_name) %>"
-        data-size="medium"
-        data-userpic="false"
-        data-radius="0"
-        data-auth-url="<%= Rails.application.credentials.dig(Rails.env.to_sym, :oauth, :telegram, :redirect_url) %>"
-        data-request-access="write">
-      </script>
     </div>
+    <% unless Rails.env.production? %>
+      <div class="mb-2">
+        <%= t('web.users.ru_signup.have') %>
+        <%= link_to t('web.users.signup.login'), new_external_path, class: 'underline' %>
+      </div>
+    <% end %>
     <div class="mb-2">
       <%= t('web.users.signin.have_not') %>
       <%= link_to t('web.users.signin.signup'), new_signup_path, class: 'underline' %>

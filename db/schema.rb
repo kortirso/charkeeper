@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_12_181853) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_13_110207) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -662,6 +662,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_12_181853) do
     t.string "locale", default: "en", null: false
     t.string "password_digest"
     t.jsonb "provider_locales", default: {}, comment: "Альтернативные переводы"
+    t.boolean "russian_login", default: false, null: false
     t.datetime "updated_at", null: false
     t.string "username"
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
