@@ -6,7 +6,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
   }.freeze
   ARMOR_TYPES = %w[armor shield].freeze
   DEFAULT_SPEEDS = %w[swim climb flight].freeze
-  ONLY_ADD_MODIFIERS = %w[str dex con wis int cha].freeze
+  ONLY_ADD_MODIFIERS = %w[str dex con wis int cha spell_save_dc spell_attack_bonus].freeze
   WEAPON_MODIFIERS = %w[attack unarmed_attacks melee_attacks range_attacks damage unarmed_damage melee_damage range_damage].freeze
   DEFAULT_CLASSES = %w[artificer barbarian bard cleric druid fighter monk paladin ranger rogue sorcerer warlock wizard].freeze
 
@@ -33,6 +33,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     @result = Dnd2024::SubclassDecorator.new.call(result: @result)
 
     apply_add_modifiers
+    apply_spell_modifiers
 
     @result['features'] = apply_features
 
@@ -47,6 +48,16 @@ class Dnd2024Decorator < ApplicationDecoratorV2
   end
 
   private
+
+  def apply_spell_modifiers
+    spell_save_dc = find_modifiers('spell_save_dc', 'add').sum
+    spell_attack_bonus = find_modifiers('spell_attack_bonus', 'add').sum
+    @result['spell_classes'] = spell_classes.transform_values do |values|
+      values[:save_dc] += spell_save_dc if values[:save_dc]
+      values[:attack_bonus] += spell_attack_bonus if values[:attack_bonus]
+      values
+    end
+  end
 
   def find_resources
     @character.resources.joins(:custom_resource)

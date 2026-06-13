@@ -44,7 +44,9 @@ const MAPPING = {
     'unarmed_damage': 'Unarmed damage',
     'melee_damage': 'Melee damage',
     'thrown_damage': 'Thrown damage',
-    'range_damage': 'Range damage'
+    'range_damage': 'Range damage',
+    'spell_save_dc': 'Spell DC',
+    'spell_attack_bonus': 'Spell attack'
   },
   ru: {
     'str': 'Сила',
@@ -74,11 +76,13 @@ const MAPPING = {
     'unarmed_damage': 'Безоружный урон',
     'melee_damage': 'Рукопашный урон',
     'thrown_damage': 'Метательный урон',
-    'range_damage': 'Дистанционный урон'
+    'range_damage': 'Дистанционный урон',
+    'spell_save_dc': 'УС заклинаний',
+    'spell_attack_bonus': 'Заклинательные атаки'
   }
 }
 const NO_VARIABLES = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
-const ONLY_ADD = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'attack', 'damage'];
+const ONLY_ADD = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'attack', 'damage', 'spell_save_dc', 'spell_attack_bonus'];
 const VARIABLES_LIST = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'proficiency_bonus', 'level', 'no_body_armor', 'no_armor', 'paladin_level'];
 
 export const Dnd2024Bonuses = (props) => {
