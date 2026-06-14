@@ -119,6 +119,7 @@ Rails.application.routes.draw do
 
     namespace :dnd5 do
       resources :characters, only: %i[create update] do
+        post :import, on: :collection
         resources :spells, only: %i[index create update destroy], module: 'characters'
         resources :rest, only: %i[create], module: 'characters'
         resources :health, only: %i[create], module: 'characters'

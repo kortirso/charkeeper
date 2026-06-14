@@ -1,0 +1,134 @@
+{
+  "unitName": "Audentes Fortuna",
+  "unitDesc": "Half-Elf Bard (College of Lore). Battlefield controller and support specialist focused on debuffs, inspiration, and reaction disruption.",
+  "maxHP": 23,
+  "armorClass": 12,
+  "unitType": "Humanoid",
+  "unitSize": "Medium",
+  "strScore": 8,
+  "strSave": -1,
+  "dexScore": 13,
+  "dexSave": 3,
+  "conScore": 10,
+  "conSave": 0,
+  "intScore": 14,
+  "intSave": 2,
+  "wisScore": 16,
+  "wisSave": 3,
+  "chaScore": 17,
+  "chaSave": 5,
+  "damageVulnerabilities": "",
+  "damageImmunities": "Magical Sleep",
+  "damageResistances": "",
+  "conditionImmunities": "",
+  "challengeRating": "4 (Player Character)",
+  "experiencePoints": 0,
+  "alignment": "Chaotic Good",
+  "standardActions": [
+    {
+      "name": "Vicious Mockery",
+      "desc": "Target within 60 ft must succeed on DC 13 WIS save or take 4 (1d4 + 2) psychic damage and have disadvantage on its next attack."
+    },
+    {
+      "name": "Fire Bolt",
+      "desc": "Ranged Spell Attack +5 to hit, range 120 ft., one target. 5 (1d10) fire damage."
+    },
+    {
+      "name": "Shocking Grasp",
+      "desc": "Melee Spell Attack +5 to hit, reach 5 ft., one target. 4 (1d8) lightning damage. Target cannot take reactions until start of its next turn."
+    },
+    {
+      "name": "Shard-Siphon Knives",
+      "desc": "Melee or Ranged Weapon Attack +3 to hit, reach 5 ft. or range 20/60 ft., one target. 6 (1d4 + 1 + 1d6 piercing + 1d6 force) damage."
+    }
+  ],
+  "bonusActions": [
+    {
+      "name": "Bardic Inspiration (3/Long Rest)",
+      "desc": "Grant a creature within 60 ft a 1d6 inspiration die. They can add it to a failed roll within 1 hour."
+    }
+  ],
+  "reactions": [
+    {
+      "name": "Cutting Words",
+      "desc": "When a creature within 60 ft succeeds on an attack, ability check, or damage roll, expend Bardic Inspiration and subtract 1d6 from the roll."
+    }
+  ],
+  "specialAbilities": [
+    {
+      "name": "Spellcasting",
+      "desc": "Bard spellcaster (CHA). Spell Save DC 13, Spell Attack +5."
+    },
+    {
+      "name": "Jack of All Trades",
+      "desc": "Add +1 to ability checks not already proficient."
+    },
+    {
+      "name": "Expertise",
+      "desc": "Double proficiency in selected skills."
+    },
+    {
+      "name": "Fey Ancestry",
+      "desc": "Advantage vs charm; immune to magical sleep."
+    },
+    {
+      "name": "Darkvision",
+      "desc": "Darkvision 60 ft."
+    }
+  ],
+  "spellActions": [
+    {
+      "name": "Control & Debuff",
+      "desc": "Bane, Vicious Mockery"
+    },
+    {
+      "name": "Support",
+      "desc": "Cure Wounds, Aid, Bardic Inspiration"
+    },
+    {
+      "name": "Area Control",
+      "desc": "Thunderwave"
+    },
+    {
+      "name": "Utility",
+      "desc": "Speak with Animals, Magic Missile (1/Long Rest)"
+    }
+  ],
+  "spellList": [
+    {
+      "level": "Cantrips",
+      "spells": [
+        "Vicious Mockery",
+        "True Strike",
+        "Fire Bolt",
+        "Shocking Grasp"
+      ]
+    },
+    {
+      "level": "1st Level (4 Slots)",
+      "spells": [
+        "Bane",
+        "Cure Wounds",
+        "Thunderwave",
+        "Speak with Animals",
+        "Magic Missile (1/LR)"
+      ]
+    },
+    {
+      "level": "2nd Level (3 Slots)",
+      "spells": [
+        "Aid"
+      ]
+    }
+  ],
+  "legendaryDescription": "",
+  "legendaryActions": [],
+  "skills": "Deception +5, Insight +5, Intimidation +5, Perception +7, Performance +7, Persuasion +5",
+  "senses": "Darkvision 60 ft., Passive Perception 17",
+  "languages": "Common, Celestial, Dwarvish, Elvish",
+  "speedWalk": 30,
+  "speedFly": 0,
+  "speedClimb": 0,
+  "speedBurrow": 0,
+  "speedSwim": 0
+}

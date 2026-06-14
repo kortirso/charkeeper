@@ -1,5 +1,5 @@
 import { createMemo, Show } from 'solid-js';
-import { createStore } from 'solid-js/store';
+import { createStore, reconcile } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import { CharacterForm } from '../../../../pages';
@@ -35,10 +35,10 @@ export const Dnd2024CharacterForm = (props) => {
     const result = await props.onCreateCharacter(characterDnd2024Form);
 
     if (result === null) {
-      setCharacterDnd2024Form({
+      setCharacterDnd2024Form(reconcile({
         name: '', species: undefined, legacy: undefined, size: undefined, background: undefined,
         main_class: undefined, alignment: 'neutral', skip_guide: true
-      });
+      }));
     }
   }
 

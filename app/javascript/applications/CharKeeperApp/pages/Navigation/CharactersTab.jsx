@@ -12,6 +12,7 @@ import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { fetchCharactersRequest } from '../../requests/fetchCharactersRequest';
 import { fetchCharacterRequest } from '../../requests/fetchCharacterRequest';
 import { createCharacterRequest } from '../../requests/createCharacterRequest';
+import { importCharacterRequest } from '../../requests/importCharacterRequest';
 import { removeCharacterRequest } from '../../requests/removeCharacterRequest';
 import { fetchHomebrewsRequest } from '../../requests/fetchHomebrewsRequest';
 import { resetCharacterRequest } from '../../requests/resetCharacterRequest';
@@ -123,7 +124,7 @@ export const CharactersTab = () => {
     const HOMEBREW_COMPONENTS = { dnd5: Dnd5CharacterForm, pathfinder2: Pathfinder2CharacterForm, daggerheart: DaggerheartCharacterForm }
     if (HOMEBREW_COMPONENTS[platform()]) {
       const Component = HOMEBREW_COMPONENTS[platform()];
-      return <Component onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />;
+      return <Component onCreateCharacter={saveCharacter} onImportCharacter={importCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />;
     }
 
     const COMPONENTS = {
@@ -176,6 +177,21 @@ export const CharactersTab = () => {
     } else renderAlerts(result.errors_list);
   }
 
+  const importCharacter = async (provider, json) => {
+    if (platform() === undefined) return undefined;
+
+    const result = await importCharacterRequest(appState.accessToken, platform(), { provider: provider, data: json });
+    
+    if (result.errors_list === undefined) {
+      batch(() => {
+        setCharacters([result.character, ...characters()]);
+        setPlatform(undefined);
+        setCurrentTab('characters');
+      });
+      return null;
+    } else renderAlerts(result.errors_list);
+  }
+
   const saveCharacter = async (characterForm) => {
     if (platform() === undefined) return undefined;
 
@@ -189,9 +205,7 @@ export const CharactersTab = () => {
         setCurrentTab('characters');
       });
       return null;
-    } else {
-      renderAlerts(result.errors_list);
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   return (

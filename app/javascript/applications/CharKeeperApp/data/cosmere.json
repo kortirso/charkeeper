@@ -24,7 +24,7 @@
     "insight": { "name": { "en": "Insight", "ru": "Проницательность" } },
     "leadership": { "name": { "en": "Leadership", "ru": "Лидерство" } },
     "perception": { "name": { "en": "Perception", "ru": "Наблюдательность" } },
-    "persuation": { "name": { "en": "Persuation", "ru": "Убеждение" } },
+    "persuation": { "name": { "en": "Persuasion", "ru": "Убеждение" } },
     "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
   },
   "ancestries": {

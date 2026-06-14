@@ -26,7 +26,16 @@ module Frontend
         end
       end
 
+      def import
+        case character_import.call(user: current_user, provider: params[:provider], data: params[:data])
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
+        in { result: result } then render_character(result, { only: CREATE_SERIALIZE_FIELDS }, :created)
+        end
+      end
+
       private
+
+      def character_import = ImportContext::Dnd5.new
 
       def render_character(result, fields, status)
         serialize_resource(result, ::Dnd5::CharacterSerializer, :character, fields, status)
