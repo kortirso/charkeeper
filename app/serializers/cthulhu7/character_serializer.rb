@@ -7,9 +7,9 @@ module Cthulhu7
     attributes :provider, :id, :name, :created_at, :avatar, :abilities, :guide_step, :skills, :additional_skills, :speed, :luck,
                :improved_skills, :hidden_skills, :selected_skills, :health, :health_max, :magic, :magic_max, :sanity, :build,
                :sanity_max, :luck_max, :damage_bonus, :description, :ideology, :people, :locations, :treasure, :traits, :scars,
-               :phobias, :tomes, :strange
+               :phobias, :tomes, :strange, :attacks
 
-    delegate :skills, :health_max, :magic_max, :sanity_max, :damage_bonus, :build, :speed, to: :decorator
+    delegate :skills, :health_max, :magic_max, :sanity_max, :damage_bonus, :build, :speed, :attacks, to: :decorator
     delegate :data, to: :object
     delegate :guide_step, :abilities, :additional_skills, :improved_skills, :hidden_skills, :selected_skills, :health, :magic,
              :sanity, :luck, :luck_max, :description, :ideology, :people, :locations, :treasure, :traits, :scars, :phobias,

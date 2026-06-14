@@ -10,6 +10,7 @@ class Cthulhu7Decorator < ApplicationDecoratorV2
     return self if simple
 
     calculate_secondary_abilities
+    find_attacks
 
     self
   end
@@ -28,6 +29,39 @@ class Cthulhu7Decorator < ApplicationDecoratorV2
     @result['damage_bonus'] = find_damage_bonus
     @result['build'] = find_build
     @result['speed'] = 8
+  end
+
+  def find_attacks
+    @result['attacks'] = ([unarmed_weapon] + weapons).flat_map { |item| attack_values(item) }
+  end
+
+  def unarmed_weapon
+    {
+      items_slug: 'unarmed',
+      items_name: { 'en' => 'Unarmed', 'ru' => 'Безоружная' },
+      items_info: {
+        'skill' => 'fighting',
+        'damage' => '1d3',
+        'with_damage_bonus' => true,
+        'distance' => '-',
+        'attacks' => 1
+      }
+    }
+  end
+
+  def attack_values(item)
+    skill = skills.find { |skill| skill[:slug] == item.dig(:items_info, 'skill') }
+    {
+      slug: skill[:slug],
+      name: translate(item[:items_name]),
+      attack_bonus: skill[:level],
+      damage: item.dig(:items_info, 'damage'),
+      damage_bonus: item.dig(:items_info, 'with_damage_bonus') ? damage_bonus : nil,
+      notes: item[:notes],
+      ready_to_use: item[:states] ? item.dig(:states, 'hands').positive? : true,
+      distance: item.dig(:items_info, 'distance'),
+      attacks: item.dig(:items_info, 'attacks').to_i
+    }.compact
   end
 
   def generate_skills_payload
@@ -65,5 +99,13 @@ class Cthulhu7Decorator < ApplicationDecoratorV2
     return 1 if value <= 164
 
     2
+  end
+
+  def weapons
+    @character
+      .items
+      .joins(:item)
+      .where(items: { kind: 'weapon' })
+      .hashable_pluck('items.slug', 'items.name', 'items.info', :notes, :states)
   end
 end

@@ -174,7 +174,11 @@ Rails.application.routes.draw do
     end
 
     namespace :cthulhu7 do
-      resources :characters, only: %i[create update]
+      resources :characters, only: %i[create update] do
+        resources :items, only: %i[], module: 'characters' do
+          post :load, on: :collection
+        end
+      end
     end
 
     namespace :fallout do
