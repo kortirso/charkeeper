@@ -131,6 +131,7 @@ export * from './Content/Character/Cthulhu7/Abilities';
 export * from './Content/Character/Cthulhu7/Skills';
 export * from './Content/Character/Cthulhu7/Combat';
 export * from './Content/Character/Cthulhu7/Backstory';
+export * from './Content/Character/Cthulhu7/Equipment';
 
 export * from './Navigation/Characters/ListItem';
 export * from './Navigation/Characters/CharacterForm';

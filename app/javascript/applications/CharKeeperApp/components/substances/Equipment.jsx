@@ -153,7 +153,8 @@ const HOMEBREWED_PROVIDERS = ['daggerheart', 'dnd2024']
 
 export const Equipment = (props) => {
   const safeChildren = children(() => props.children);
-  const LootTableComponent = props.lootTableComponent;
+  const LootTableComponent = props.lootTableComponent; // eslint-disable-line solid/reactivity
+  const SelectingComponent = props.selectingComponent; // eslint-disable-line solid/reactivity
 
   const character = () => props.character;
 
@@ -475,71 +476,78 @@ export const Equipment = (props) => {
         <Show
           when={!itemsSelectingMode()}
           fallback={
-            <>
-              <div class="mb-2 flex">
-                <Input
-                  containerClassList="mr-2 flex-1"
-                  placeholder={localize(TRANSLATION, locale()).searchByName}
-                  value={filterByName()}
-                  onInput={setFilterByName}
-                />
-                <Button default size="small" classList="px-2" onClick={() => setFilterByName('')}>
-                  {localize(TRANSLATION, locale()).clear}
-                </Button>
-              </div>
-              <For each={props.itemFilters}>
-                {(itemFilter) =>
-                  <Show when={filteredItems().filter(itemFilter.callback).length > 0}>
-                    <Toggle isOpenByParent={filterByName().length >= 3 ? true : undefined} title={itemFilter.title}>
-                      <table class="w-full table first-column-full-width">
-                        <thead>
-                          <tr>
-                            <td />
-                            <Show when={props.withWeight}><td class="text-center px-2">{t('equipment.weight')}</td></Show>
-                            <Show when={props.withPrice}><td class="text-center text-nowrap px-2">{t('equipment.cost')}</td></Show>
-                            <td />
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <For each={filteredItems().filter(itemFilter.callback)}>
-                            {(item) =>
+            <Show
+              when={props.selectingComponent}
+              fallback={
+                <>
+                  <div class="mb-2 flex">
+                    <Input
+                      containerClassList="mr-2 flex-1"
+                      placeholder={localize(TRANSLATION, locale()).searchByName}
+                      value={filterByName()}
+                      onInput={setFilterByName}
+                    />
+                    <Button default size="small" classList="px-2" onClick={() => setFilterByName('')}>
+                      {localize(TRANSLATION, locale()).clear}
+                    </Button>
+                  </div>
+                  <For each={props.itemFilters}>
+                    {(itemFilter) =>
+                      <Show when={filteredItems().filter(itemFilter.callback).length > 0}>
+                        <Toggle isOpenByParent={filterByName().length >= 3 ? true : undefined} title={itemFilter.title}>
+                          <table class="w-full table first-column-full-width">
+                            <thead>
                               <tr>
-                                <td class="py-1 pl-1">
-                                  <p>
-                                    {item.name}
-                                    <Show when={filterByName().length >= 3 && item.original_name && locale() !== 'en'}>
-                                      <span class="text-xs"> ({item.original_name})</span>
-                                    </Show>
-                                    <Show when={item.homebrew}>
-                                      <span title="Homebrew" class="text-xs ml-2">HB</span>
-                                    </Show>
-                                  </p>
-                                </td>
-                                <Show when={props.withWeight}><td class="py-1 text-center">{item.data.weight}</td></Show>
-                                <Show when={props.withPrice}><td class="py-1 text-center">{item.data.price / 100}</td></Show>
-                                <td>
-                                  <div class="flex justify-end gap-x-2">
-                                    <Show when={ITEMS_INFO.includes(character().provider)}>
-                                      <Button default size="small" onClick={() => showInfo(item)}>
-                                        <Info width="20" height="20" />
-                                      </Button>
-                                    </Show>
-                                    <Button default size="small" onClick={() => buyItem(item)}>
-                                      <PlusSmall />
-                                    </Button>
-                                  </div>
-                                </td>
+                                <td />
+                                <Show when={props.withWeight}><td class="text-center px-2">{t('equipment.weight')}</td></Show>
+                                <Show when={props.withPrice}><td class="text-center text-nowrap px-2">{t('equipment.cost')}</td></Show>
+                                <td />
                               </tr>
-                            }
-                          </For>
-                        </tbody>
-                      </table>
-                    </Toggle>
-                  </Show>
-                }
-              </For>
-              <Button default textable onClick={() => setItemsSelectingMode(false)}>{t('back')}</Button>
-            </>
+                            </thead>
+                            <tbody>
+                              <For each={filteredItems().filter(itemFilter.callback)}>
+                                {(item) =>
+                                  <tr>
+                                    <td class="py-1 pl-1">
+                                      <p>
+                                        {item.name}
+                                        <Show when={filterByName().length >= 3 && item.original_name && locale() !== 'en'}>
+                                          <span class="text-xs"> ({item.original_name})</span>
+                                        </Show>
+                                        <Show when={item.homebrew}>
+                                          <span title="Homebrew" class="text-xs ml-2">HB</span>
+                                        </Show>
+                                      </p>
+                                    </td>
+                                    <Show when={props.withWeight}><td class="py-1 text-center">{item.data.weight}</td></Show>
+                                    <Show when={props.withPrice}><td class="py-1 text-center">{item.data.price / 100}</td></Show>
+                                    <td>
+                                      <div class="flex justify-end gap-x-2">
+                                        <Show when={ITEMS_INFO.includes(character().provider)}>
+                                          <Button default size="small" onClick={() => showInfo(item)}>
+                                            <Info width="20" height="20" />
+                                          </Button>
+                                        </Show>
+                                        <Button default size="small" onClick={() => buyItem(item)}>
+                                          <PlusSmall />
+                                        </Button>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                }
+                              </For>
+                            </tbody>
+                          </table>
+                        </Toggle>
+                      </Show>
+                    }
+                  </For>
+                  <Button default textable onClick={() => setItemsSelectingMode(false)}>{t('back')}</Button>
+                </>
+              }
+            >
+              <SelectingComponent character={character()} onReloadCharacter={props.onReloadCharacter} />
+            </Show>
           }
         >
           {safeChildren()}
@@ -547,7 +555,7 @@ export const Equipment = (props) => {
             <LootTableComponent buyItem={buyItem} />
           </Show>
           <Show when={characterItems() !== undefined}>
-            <Button default textable classList="my-2" onClick={() => setItemsSelectingMode(true)}>{t('equipment.addItems')}</Button>
+            <Button default textable classList="mb-2" onClick={() => setItemsSelectingMode(true)}>{t('equipment.addItems')}</Button>
             <For each={storages()}>
               {(state) =>
                 <ItemsTable

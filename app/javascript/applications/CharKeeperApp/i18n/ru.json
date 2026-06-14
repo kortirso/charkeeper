@@ -116,7 +116,7 @@
   "equipment": {
     "weight": "Вес",
     "cost": "Цена",
-    "addItems": "Найти предметы",
+    "addItems": "Добавить предметы",
     "itemNote": "Заметка",
     "weaponsList": "Оружие",
     "primaryWeapon": "Основное оружие",

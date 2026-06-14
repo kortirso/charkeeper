@@ -102,7 +102,7 @@ export const DaggerheartLootTable = (props) => {
 
   return (
     <ErrorWrapper payload={{ key: 'DaggerheartLootTable' }}>
-      <div class="blockable px-2 py-4 md:px-4 mt-2">
+      <div class="blockable blockable-padding mb-2">
         <h2 class="equipment-title">{localize(TRANSLATION, locale()).title}</h2>
         <div class="grid grid-cols-5 gap-x-2">
           <Select
