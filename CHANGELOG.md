@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - rendering backstory for Cthulhu characters
+- managing equipment for Cthulhu characters
 
 ## [0.4.35] - 2026-06-13
 ### Added

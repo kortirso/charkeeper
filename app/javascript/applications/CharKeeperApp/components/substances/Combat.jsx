@@ -1,4 +1,4 @@
-import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, Switch, Match, batch } from 'solid-js';
 
 import { ErrorWrapper, Dice, GuideWrapper, createModal, Button, Select } from '../../components';
 import daggerheartConfig from '../../data/daggerheart.json';
@@ -34,7 +34,8 @@ const TRANSLATION = {
     },
     squares: 'sq',
     feet: 'ft',
-    meters: 'm'
+    meters: 'm',
+    attacks: 'Attks'
   },
   ru: {
     attack: 'Атака',
@@ -61,7 +62,8 @@ const TRANSLATION = {
     },
     squares: 'кв',
     feet: 'фт',
-    meters: 'м'
+    meters: 'м',
+    attacks: 'Атак'
   },
   es: {
     attack: 'Ataque',
@@ -88,7 +90,8 @@ const TRANSLATION = {
     },
     squares: 'cuad',
     feet: 'ft',
-    meters: 'm'
+    meters: 'm',
+    attacks: 'Attks'
   }
 }
 const DH_SQUARE_DISTANCES = {
@@ -241,8 +244,7 @@ export const Combat = (props) => {
                 <div class="weapon-item-header">
                   <p class="weapon-item-name">{attack.name}</p>
                   <div class="weapon-item-stats">
-                    <Show
-                      when={character().provider === 'fallout'}
+                    <Switch
                       fallback={
                         <>
                           <div class="weapon-damage">
@@ -260,14 +262,29 @@ export const Combat = (props) => {
                         </>
                       }
                     >
-                      <>
+                      <Match when={character().provider === 'fallout'}>
                         <div class="weapon-damage gap-x-2">
                           {renderFalloutAttackDice(attack)}
                           <Dice type="D6" width="32" height="32" text={attack.damage} />
                           {renderFalloutDistance(attack)}
                         </div>
-                      </>
-                    </Show>
+                      </Match>
+                      <Match when={character().provider === 'cthulhu7'}>
+                        <>
+                          <div class="weapon-damage">
+                            <Dice
+                              width="28"
+                              height="28"
+                              text={attack.attack_bonus}
+                              onClick={() => props.openCthulhuTest(`/check skill "${attack.slug}"`, attack.name, attack.attack_bonus)}
+                            />
+                          </div>
+                          <p>{attack.damage}{attack.damage_bonus ? attack.damage_bonus : ''}</p>
+                          <p class="text-sm">{attack.distance}</p>
+                          <p class="text-xs">{localize(TRANSLATION, locale()).attacks} - {attack.attacks}</p>
+                        </>
+                      </Match>
+                    </Switch>
                   </div>
                 </div>
                 <Show when={attack.tags && Object.keys(attack.tags).length > 0}>
@@ -312,7 +329,9 @@ export const Combat = (props) => {
           </Show>
           {renderAttacksBox(localize(TRANSLATION, locale()).primary, character().attacks.filter((item) => item.ready_to_use))}
           {renderAttacksBox(localize(TRANSLATION, locale()).additional, character().attacks.filter((item) => !item.ready_to_use))}
-          <Button default classList="weapon-settings min-w-6 min-h-6" onClick={() => setShowSettings(!showSettings())}><Edit /></Button>
+          <Show when={character().provider !== 'cthulhu7'}>
+            <Button default classList="weapon-settings min-w-6 min-h-6" onClick={() => setShowSettings(!showSettings())}><Edit /></Button>
+          </Show>
         </div>
         <Modal classList="md:max-w-md!">
           <p class="mb-3 text-xl">{tagInfo()[0]}</p>

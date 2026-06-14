@@ -111,7 +111,6 @@ export const Cthulhu7Backstory = (props) => {
                 <For each={KEYS}>
                   {(kind) =>
                     <Text
-                      labelClassList="uppercase text-xs!"
                       labelText={localize(TRANSLATION, locale()).kinds[kind]}
                       text={character()[kind] && character()[kind].length > 0 ? character()[kind] : '-'}
                       textClassList="text-xl"
@@ -122,7 +121,7 @@ export const Cthulhu7Backstory = (props) => {
             >
               <For each={KEYS}>
                 {(kind) =>
-                  <Input labelText={localize(TRANSLATION, locale()).kinds[kind]} labelClassList="uppercase text-xs!" value={backstory()[kind]} onInput={(value) => setBackstory({ ...backstory(), [kind]: value })} />
+                  <Input labelText={localize(TRANSLATION, locale()).kinds[kind]} value={backstory()[kind]} onInput={(value) => setBackstory({ ...backstory(), [kind]: value })} />
                 }
               </For>
             </Show>

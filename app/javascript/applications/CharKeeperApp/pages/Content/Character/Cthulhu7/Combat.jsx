@@ -88,7 +88,7 @@ export const Cthulhu7Combat = (props) => {
       <Show when={withTitle}><p class="text-sm/4">{localize(TRANSLATION, locale())[slug]}</p></Show>
       <div class="flex items-center gap-4">
         <Button default size="small" onClick={() => updateResource(slug, -1)}><Minus /></Button>
-        <p>{current} / {max}</p>
+        <Show when={withTitle}><p>{current} / {max}</p></Show>
         <Button default size="small" onClick={() => updateResource(slug, 1)}><PlusSmall /></Button>
       </div>
     </div>

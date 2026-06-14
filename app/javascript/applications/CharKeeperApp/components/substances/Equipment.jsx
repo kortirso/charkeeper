@@ -546,7 +546,12 @@ export const Equipment = (props) => {
                 </>
               }
             >
-              <SelectingComponent character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <SelectingComponent
+                character={character()}
+                onReloadCharacter={props.onReloadCharacter}
+                reloadCharacterItems={() => reloadCharacterItems()}
+                onBack={() => setItemsSelectingMode(false)}
+              />
             </Show>
           }
         >

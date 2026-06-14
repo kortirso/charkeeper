@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { Cthulhu7Abilities, Cthulhu7Skills, Cthulhu7Combat, Cthulhu7Backstory, Cthulhu7Equipment } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, createRoll, Equipment } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, createRoll, Equipment, Combat } from '../../../components';
 
 export const Cthulhu7 = (props) => {
   const size = createWindowSize();
@@ -53,6 +53,12 @@ export const Cthulhu7 = (props) => {
                 openCthulhuTest={openCthulhuTest}
                 onReplaceCharacter={props.onReplaceCharacter}
               />
+              <div class="mt-4">
+                <Combat
+                  character={character()}
+                  openCthulhuTest={openCthulhuTest}
+                />
+              </div>
             </Match>
             <Match when={activeMobileTab() === 'backstory'}>
               <Cthulhu7Backstory

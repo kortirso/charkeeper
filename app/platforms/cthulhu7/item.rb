@@ -3,11 +3,6 @@
 module Cthulhu7
   class ItemData
     include StoreModel::Model
-
-    attribute :skill, :string
-    attribute :damage, :string
-    attribute :distance, :string
-    attribute :attacks, :integer
   end
 end
 
