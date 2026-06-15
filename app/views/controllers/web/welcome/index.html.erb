@@ -48,8 +48,8 @@
           <%= image_tag 'google_store.svg', alt: 'Google store', width: 149, height: 44 %>
         <% end %>
       </div>
-      <p class="mb-4"><%= t('web.welcome.index_v2.app_for') %> <%= link_to 'MacOS', 'https://charkeeper.org/Charkeeper_aarch64.dmg', class: 'underline', download: 'Charkeeper_aarch64.dmg' %></p>
-      <p class="mb-4"><%= t('web.welcome.index_v2.app_for') %> <%= link_to 'Android', 'https://charkeeper.org/Charkeeper.apk', class: 'underline', download: 'Charkeeper.apk' %></p>
+      <p class="mb-4"><%= t('web.welcome.index_v2.app_for') %> <%= link_to 'MacOS', "#{root_url}Charkeeper_aarch64.dmg", class: 'underline', download: 'Charkeeper_aarch64.dmg' %></p>
+      <p class="mb-4"><%= t('web.welcome.index_v2.app_for') %> <%= link_to 'Android', "#{root_url}Charkeeper.apk", class: 'underline', download: 'Charkeeper.apk' %></p>
       <p>
         <%= t('web.welcome.index_v2.telegram_description', href: link_to(t('web.welcome.index_v2.telegram_link'), (Rails.env.ru_production? ? 'https://t.me/charkeeper_ru_bot' : 'https://t.me/charkeeper_bot'), class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
       </p>
@@ -69,7 +69,7 @@
       <p class="text-center lg:text-left"><%= t('web.welcome.index_v2.integrations_desc') %></p>
       <h2 id="extensions" class="mt-8 text-2xl mb-4 lg:text-4xl text-center lg:text-left"><%= t('web.welcome.index_v2.extension') %></h2>
       <p class="text-center lg:text-left mb-4"><%= t('web.welcome.index_v2.extension_desc') %></p>
-      <p><%= t('web.welcome.index_v2.extension_for') %> <%= link_to 'Firefox', 'https://charkeeper.org/charkeeper-1.0.xpi', class: 'underline', download: 'Charkeeper.xpi' %></p>
+      <p><%= t('web.welcome.index_v2.extension_for') %> <%= link_to 'Firefox', "#{root_url}charkeeper-1.0.xpi", class: 'underline', download: 'Charkeeper.xpi' %></p>
     </div>
   </div>
 </section>
