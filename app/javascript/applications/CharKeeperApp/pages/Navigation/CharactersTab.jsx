@@ -118,7 +118,7 @@ export const CharactersTab = () => {
     );
 
     if (platform() === 'dnd2024') {
-      return <Dnd2024CharacterForm onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} dnd2024Races={dnd2024Races} />;
+      return <Dnd2024CharacterForm onCreateCharacter={saveCharacter} onImportCharacter={importCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} dnd2024Races={dnd2024Races} />;
     }
 
     const HOMEBREW_COMPONENTS = { dnd5: Dnd5CharacterForm, pathfinder2: Pathfinder2CharacterForm, daggerheart: DaggerheartCharacterForm }

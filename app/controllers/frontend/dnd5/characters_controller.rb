@@ -27,7 +27,7 @@ module Frontend
       end
 
       def import
-        case character_import.call(user: current_user, provider: params[:provider], data: params[:data])
+        case character_import.call(user: current_user, provider: params[:provider], data: expect(:data).permit!.to_h)
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result } then render_character(result, { only: CREATE_SERIALIZE_FIELDS }, :created)
         end
