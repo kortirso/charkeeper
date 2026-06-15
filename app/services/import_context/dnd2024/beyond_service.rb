@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module ImportContext
-  class Dnd5
+  class Dnd2024
     class BeyondService
       include Deps[
-        character_create: 'commands.characters_context.dnd5.create',
-        character_update: 'commands.characters_context.dnd5.update'
+        character_create: 'commands.characters_context.dnd2024.create',
+        character_update: 'commands.characters_context.dnd2024.update'
       ]
 
       def call(user:, data:)
@@ -20,10 +20,11 @@ module ImportContext
       def attributes_for_create(data)
         {
           name: data['name'],
-          race: data['race'],
-          subrace: data['subrace'],
+          species: data['race'],
+          legacy: data['subrace'],
           main_class: data['main_class'],
-          alignment: data['alignment'] || 'neutral'
+          alignment: data['alignment'] || 'neutral',
+          size: 'medium'
         }.compact
       end
 
@@ -33,10 +34,11 @@ module ImportContext
           subclasses: data['subclasses'],
           health: { max: data['max_health'], current: data['max_health'], temp: 0 },
           abilities: data['abilities'],
-          selected_skills: data['selected_proficiencies'] & ::Dnd2024::Character.skills.keys,
+          selected_skills: (data['selected_proficiencies'] & ::Dnd2024::Character.skills.keys).index_with(1),
           languages: data['languages'],
           heroic_inspiration: data['heroic_inspiration'],
-          money: data['money']
+          money: data['money'],
+          guide_step: nil
         }
       end
     end

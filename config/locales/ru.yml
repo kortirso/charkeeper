@@ -298,6 +298,9 @@ ru:
         ttrpgs_desc2: 'Данные для Pathfinder 2 предоставлены сайтом <a href="https://pf2.ru/" target="_blank" rel="noopener noreferrer" class="underline">Pathfinder 2E</a>.'
         ttrpgs_desc3: Это неофициальный фанатский контент, созданный и распространяемый для некоммерческого использования.
         ttrpgs_desc4: "Cosmere RPG заметка: Это не было проверено Dragonsteel Entertainment, LLC или Brotherwise Games, LLC."
+        extension: Расширения для браузеров
+        extension_desc: CharKeeper имеет возможности импорта персонажей с D&D Beyond через специальные расширения для браузеров. Просто установите расширение, посетите страницу с персонажем и скачайте файл персонажа через расширение.
+        extension_for: Расширение для
         integrations: Интеграции
         integrations_desc: CharKeeper имеет возможности интеграции с Owlbear Rodeo и Telegram для отображения результатов бросков кубиков внутри приложения и выполнения различных команд.
         cross: Кроссплатформенность

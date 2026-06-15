@@ -129,6 +129,7 @@ Rails.application.routes.draw do
 
     namespace :dnd2024 do
       resources :characters, only: %i[create update] do
+        post :import, on: :collection
         scope module: :characters do
           resources :spells, only: %i[index create update destroy]
           resources :rest, only: %i[create]

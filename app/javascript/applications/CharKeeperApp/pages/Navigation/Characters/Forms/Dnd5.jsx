@@ -15,13 +15,13 @@ const DND5_DEFAULT_FORM = {
 
 const TRANSLATION = {
   en: {
-    beyondFile: 'You can import your character by using JSON file from D&D Beyond'
+    beyondFile: 'You can import your character from D&D Beyond by using JSON file (you can find extension description at main page)'
   },
   ru: {
-    beyondFile: 'You can import your character by using JSON file from D&D Beyond'
+    beyondFile: 'Вы можете импортировать своего персонажа из D&D Beyond, используя JSON-файл (описание расширения можно найти на главной странице).'
   },
   es: {
-    beyondFile: 'You can import your character by using JSON file from D&D Beyond'
+    beyondFile: 'Puedes importar tu personaje usando de D&D Beyond un archivo JSON (puedes encontrar la descripción de la extensión en la página principal).'
   }
 }
 
