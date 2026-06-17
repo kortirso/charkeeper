@@ -5,8 +5,6 @@ module Homebrews
     module Books
       class ContentsController < Homebrews::BaseController
         include Deps[
-          add_book_races_command: 'commands.homebrew_context.daggerheart.add_book_races',
-          add_book_communities_command: 'commands.homebrew_context.daggerheart.add_book_communities',
           add_book_domains_command: 'commands.homebrew_context.daggerheart.add_book_domains',
           add_book_subclasses_command: 'commands.homebrew_context.daggerheart.add_book_subclasses',
           add_book_items_command: 'commands.homebrew_context.daggerheart.add_book_items'
@@ -25,8 +23,6 @@ module Homebrews
 
         def command
           case params[:type]
-          when 'ancestry' then add_book_races_command
-          when 'community' then add_book_communities_command
           when 'domain' then add_book_domains_command
           when 'subclass' then add_book_subclasses_command
           when 'item' then add_book_items_command

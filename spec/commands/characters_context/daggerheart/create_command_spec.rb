@@ -84,7 +84,7 @@ describe CharactersContext::Daggerheart::CreateCommand do
     end
 
     context 'for invalid homebrew heritage' do
-      let!(:heritage) { create :homebrew_race, :daggerheart }
+      let!(:heritage) { create :homebrew, :daggerheart_ancestry }
       let(:params) { valid_params.merge(heritage: heritage.id).compact }
 
       it 'does not create character', :aggregate_failures do

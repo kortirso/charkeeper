@@ -312,6 +312,9 @@ Rails.application.routes.draw do
       resources :ancestries, only: %i[show destroy] do
         post :copy, on: :member
       end
+      resources :communities, only: %i[show destroy] do
+        post :copy, on: :member
+      end
       resources :transformations, only: %i[show destroy] do
         post :copy, on: :member
       end

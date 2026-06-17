@@ -103,15 +103,13 @@ module HomebrewsContext
     end
 
     def daggerheart_communities(user_id)
-      relation = ::Daggerheart::Homebrew::Community
+      relation = ::Daggerheart::Homebrews::Community
       relation.where(user_id: user_id)
         .or(
-          relation.where(
-            id: available_books_data(user_id)['Daggerheart::Homebrew::Community'] || available_books_data(user_id)['Homebrew::Community']
-          )
+          relation.where(id: available_books_data(user_id)['Daggerheart::Homebrews::Community'])
         )
         .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: { en: item.name, ru: item.name } }
+          acc[item.id] = { name: item.title }
         end
     end
 

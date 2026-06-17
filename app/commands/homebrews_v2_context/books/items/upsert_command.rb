@@ -5,7 +5,9 @@ module HomebrewsV2Context
     module Items
       class UpsertCommand < BaseCommand
         use_contract do
-          Types = Dry::Types['strict.string'].enum('Daggerheart::Homebrews::Transformation', 'Daggerheart::Homebrews::Ancestry')
+          Types = Dry::Types['strict.string'].enum(
+            'Daggerheart::Homebrews::Transformation', 'Daggerheart::Homebrews::Ancestry', 'Daggerheart::Homebrews::Community'
+          )
 
           params do
             required(:user).filled(type?: ::User)

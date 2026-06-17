@@ -11,8 +11,8 @@ describe Homebrews::Daggerheart::BooksController do
 
         before do
           book = create :homebrew_book, user: user_session.user
-          race = create :homebrew_race, :daggerheart, user: user_session.user
-          create :homebrew_book_item, homebrew_book: book, itemable_id: race.id, itemable_type: 'Daggerheart::Homebrew::Race'
+          race = create :homebrew, :daggerheart_ancestry, user: user_session.user
+          create :homebrew_book_item, homebrew_book: book, itemable_id: race.id, itemable_type: 'Daggerheart::Homebrews::Ancestry'
         end
 
         it 'returns data', :aggregate_failures do

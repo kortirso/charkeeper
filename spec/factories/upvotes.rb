@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :upvote do
     user
-    upvoteable factory: :homebrew_community
+    upvoteable factory: :homebrew
   end
 end

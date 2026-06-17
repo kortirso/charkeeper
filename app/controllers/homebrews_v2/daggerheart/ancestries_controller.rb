@@ -33,7 +33,9 @@ module HomebrewsV2
         })
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
-          serialize_resource(result, ::HomebrewsV2::ListElementSerializer, :homebrew, {}, :created)
+          serialize_resource(
+            result, ::HomebrewsV2::ListElementSerializer, :homebrew, {}, :created, { current_user_id: current_user.id }
+          )
         end
       end
 

@@ -23,6 +23,7 @@ module HomebrewsV2Context
           case publication.parent_type
           when 'transformation' then HomebrewsV2Context::Import::Daggerheart::Transformations::AddCommand.new
           when 'ancestry' then HomebrewsV2Context::Import::Daggerheart::Ancestries::AddCommand.new
+          when 'community' then HomebrewsV2Context::Import::Daggerheart::Communities::AddCommand.new
           end
       end
     end
