@@ -279,9 +279,9 @@ export const Combat = (props) => {
                               onClick={() => props.openCthulhuTest(`/check skill "${attack.slug}"`, attack.name, attack.attack_bonus)}
                             />
                           </div>
-                          <p>{attack.damage}{attack.damage_bonus ? attack.damage_bonus : ''}</p>
+                          <p>{attack.damage}{attack.damage_bonus ? `+${attack.damage_bonus}` : ''}</p>
                           <p class="text-sm">{attack.distance}</p>
-                          <p class="text-xs">{localize(TRANSLATION, locale()).attacks} - {attack.attacks}</p>
+                          <p class="text-xs">{localize(TRANSLATION, locale()).attacks} {attack.attacks}</p>
                         </>
                       </Match>
                     </Switch>
