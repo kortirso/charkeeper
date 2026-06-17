@@ -128,6 +128,12 @@ export const Cthulhu7 = (props) => {
                 openCthulhuTest={openCthulhuTest}
                 onReplaceCharacter={props.onReplaceCharacter}
               />
+              <div class="mt-4">
+                <Combat
+                  character={character()}
+                  openCthulhuTest={openCthulhuTest}
+                />
+              </div>
             </Match>
             <Match when={activeTab() === 'backstory'}>
               <Cthulhu7Backstory
