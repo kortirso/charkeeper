@@ -73,9 +73,6 @@ en:
           name:
             filled?: Name can't be blank
             max_size?: Name's size cannot be greater than 50
-          domains:
-            filled?: Domains can't be blank
-            only_two: Domains list should contain 2 values
       homebrew_item:
         rules:
           name:

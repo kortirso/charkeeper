@@ -5,8 +5,8 @@ module Daggerheart
     class SpecialitySerializer < ApplicationSerializer
       attributes :id, :name, :evasion, :health_max, :domains
 
-      delegate :evasion, :health_max, :domains, to: :data
-      delegate :data, to: :object
+      delegate :evasion, :health_max, :domains, to: :info
+      delegate :info, to: :object
     end
   end
 end

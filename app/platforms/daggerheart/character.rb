@@ -129,7 +129,7 @@ module Daggerheart
     def selected_domains
       (
         (
-          self.class.domains_info(data.main_class) || ::Daggerheart::Homebrew::Speciality.find(data.main_class).data.domains
+          self.class.domains_info(data.main_class) || ::Daggerheart::Homebrews::Speciality.find(data.main_class).info.domains
         ) + data.domains.values
       ).uniq
     end

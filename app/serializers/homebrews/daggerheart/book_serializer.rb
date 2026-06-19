@@ -12,7 +12,9 @@ module Homebrews
           races: ::Daggerheart::Homebrews::Ancestry.where(
             id: object_items['Daggerheart::Homebrews::Ancestry']
           ).pluck(:title).map { |item| translate(item) },
-          communities: ::Daggerheart::Homebrew::Community.where(id: object_items['Daggerheart::Homebrew::Community']).pluck(:name),
+          communities: ::Daggerheart::Homebrews::Community.where(
+            id: object_items['Daggerheart::Homebrews::Community']
+          ).pluck(:title).map { |item| translate(item) },
           classes: subclasses_info(object_items),
           items: ::Daggerheart::Item.where(id: object_items['Daggerheart::Item']).pluck(:name).map { |item| translate(item) },
           transformations: ::Daggerheart::Homebrews::Transformation.where(
@@ -39,8 +41,8 @@ module Homebrews
             .where(id: object_items['Daggerheart::Homebrew::Subclass'])
             .hashable_pluck(:name, :class_name)
             .group_by { |i| i[:class_name] }
-        classes = ::Daggerheart::Homebrew::Speciality.where(id: subclasses.keys).pluck(:id, :name).to_h
-        subclasses.transform_keys { |key| classes[key] }.transform_values { |value| value.map { |item| item[:name] } }
+        classes = ::Daggerheart::Homebrews::Speciality.where(id: subclasses.keys).pluck(:id, :title).to_h
+        subclasses.transform_keys { |key| translate(classes[key]) }.transform_values { |value| value.map { |item| item[:name] } }
       end
     end
   end

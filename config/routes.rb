@@ -318,6 +318,9 @@ Rails.application.routes.draw do
       resources :transformations, only: %i[show destroy] do
         post :copy, on: :member
       end
+      resources :specialities, only: %i[show destroy] do
+        post :copy, on: :member
+      end
       resources :books, only: %i[index create update destroy] do
         get :for_items, on: :collection
       end

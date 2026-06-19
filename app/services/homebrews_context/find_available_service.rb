@@ -139,7 +139,7 @@ module HomebrewsContext
 
     # rubocop: disable Rails/PluckInWhere
     def daggerheart_classes(user_id)
-      relation = ::Daggerheart::Homebrew::Speciality
+      relation = ::Daggerheart::Homebrews::Speciality
       relation.where(user_id: user_id)
         .or(
           relation.where(
@@ -147,7 +147,7 @@ module HomebrewsContext
           )
         )
         .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: { en: item.name, ru: item.name }, domains: item.data.domains }
+          acc[item.id] = { name: item.title, domains: item.data.domains }
         end
     end
     # rubocop: enable Rails/PluckInWhere

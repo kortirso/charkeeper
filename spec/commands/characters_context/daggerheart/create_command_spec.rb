@@ -50,7 +50,7 @@ describe CharactersContext::Daggerheart::CreateCommand do
 
     context 'for valid homebrew class' do
       let!(:speciality) do
-        create :homebrew_speciality, :daggerheart, user: user, data: { evasion: 12, health_max: 6, domains: %w[codex grace] }
+        create :homebrew, :daggerheart_class, user: user, info: { evasion: 12, health_max: 6, domains: %w[codex grace] }
       end
       let!(:subclass) { create :homebrew_subclass, :daggerheart, user: user }
       let(:valid_params) do

@@ -73,9 +73,6 @@ es:
           name:
             filled?: El nombre no puede estar en blanco
             max_size?: El tamaño del nombre no puede ser más de 50
-          domains:
-            filled?: Los Dominios no pueden estar en blanco
-            only_two: La lista de Dominios debería contener 2 valores
       homebrew_item:
         rules:
           name:

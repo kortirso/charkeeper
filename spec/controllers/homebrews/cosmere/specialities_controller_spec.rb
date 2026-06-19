@@ -9,8 +9,6 @@ describe Homebrews::Cosmere::SpecialitiesController do
       let(:request) { get :index, params: { charkeeper_access_token: access_token } }
       let!(:class1) { create :homebrew_speciality, :cosmere, user: user_session.user }
 
-      before { create :homebrew_speciality, :daggerheart }
-
       it 'returns data', :aggregate_failures do
         request
 

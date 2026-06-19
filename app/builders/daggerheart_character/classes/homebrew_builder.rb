@@ -4,12 +4,12 @@ module DaggerheartCharacter
   module Classes
     class HomebrewBuilder
       def initialize(id:)
-        @data = Daggerheart::Homebrew::Speciality.find_by(id: id)&.data
+        @info = Daggerheart::Homebrews::Speciality.find_by(id: id)&.info
       end
 
       def call(result:)
-        result[:evasion] = @data&.evasion || 10
-        result[:health_max] = @data&.health_max || 6
+        result[:evasion] = @info&.evasion || 10
+        result[:health_max] = @info&.health_max || 6
         result[:stress_max] = 6
         result[:hope_max] = 6
         result

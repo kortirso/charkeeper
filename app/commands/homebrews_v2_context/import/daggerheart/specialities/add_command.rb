@@ -3,7 +3,7 @@
 module HomebrewsV2Context
   module Import
     module Daggerheart
-      module Communities
+      module Specialities
         class AddCommand < BaseCommand
           include Deps[
             add_feat: 'commands.homebrews_v2_context.import.daggerheart.feats.add',
@@ -27,8 +27,11 @@ module HomebrewsV2Context
                 optional(:ru).maybe(:string, max_size?: 500)
                 optional(:es).maybe(:string, max_size?: 500)
               end
+              required(:domains).filled(:array, size?: 2).each(:string)
+              required(:evasion).filled(:integer, gteq?: 1, lteq?: 20)
+              required(:health_max).filled(:integer, gteq?: 1, lteq?: 10)
               optional(:public).filled(:bool)
-              required(:features).filled(:array, size?: 1).each(:hash) do
+              required(:features).filled(:array, size?: 2).each(:hash) do
                 required(:title).hash do
                   required(:en).filled(:string, max_size?: 50)
                   optional(:ru).maybe(:string, max_size?: 50)
@@ -52,22 +55,23 @@ module HomebrewsV2Context
           def do_prepare(input)
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description].transform_values! { |value| sanitize(value) }
+            itput[:info] = input.slice(:domains, :evasion, :health_max)
           end
 
           def do_persist(input)
             result = ActiveRecord::Base.transaction do
-              community = ::Daggerheart::Homebrews::Community.create!(input.slice(:user, :title, :description, :public))
+              speciality = ::Daggerheart::Homebrews::Speciality.create!(input.slice(:user, :title, :description, :public, :info))
               input[:features].each do |feature|
                 add_feat.call(
                   feature.merge({
-                    user: input[:user], origin: 'community', origin_value: community.id, no_refresh: true
+                    user: input[:user], origin: 'speciality', origin_value: speciality.id, no_refresh: true
                   })
                 )
               end
-              community
+              speciality
             end
 
-            cache.push_item(key: :communities, item: community)
+            cache.push_item(key: :classes, item: speciality)
 
             { result: result }
           end

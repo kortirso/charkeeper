@@ -9,7 +9,6 @@ export * from './Content/Dc20';
 export * from './Content/SharedContent';
 
 export * from './Content/Daggerheart/Books';
-export * from './Content/Daggerheart/Classes';
 export * from './Content/Daggerheart/Subclasses';
 export * from './Content/Daggerheart/Items';
 export * from './Content/Daggerheart/Weapons';
@@ -21,6 +20,7 @@ export * from './Content/Daggerheart/Features';
 export * from './Content/Daggerheart/AncestriesV2';
 export * from './Content/Daggerheart/TransformationsV2';
 export * from './Content/Daggerheart/CommunitiesV2';
+export * from './Content/Daggerheart/Specialities';
 
 export * from './Content/Dnd/Books';
 export * from './Content/Dnd/Items';

@@ -4,7 +4,6 @@ module HomebrewContext
   module Daggerheart
     class CopySubclassCommand < BaseCommand
       include Deps[
-        add_speciality: 'commands.homebrew_context.daggerheart.add_speciality',
         add_subclass: 'commands.homebrew_context.daggerheart.add_subclass',
         copy_feats: 'commands.homebrew_context.daggerheart.copy_feats'
       ]
@@ -24,7 +23,7 @@ module HomebrewContext
         if input[:class_name].nil?
           input[:default] = ::Daggerheart::Character.class_info(input[:subclass].class_name)
           if input[:default].nil?
-            speciality = ::Daggerheart::Homebrew::Speciality.find_by(id: input[:subclass].class_name)
+            speciality = ::Daggerheart::Homebrews::Speciality.find_by(id: input[:subclass].class_name)
             input[:class_attributes] =
               speciality.data.attributes.symbolize_keys.merge({ id: speciality.id, name: speciality.name, user: input[:user] })
           end

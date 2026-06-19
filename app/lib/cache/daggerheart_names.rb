@@ -27,8 +27,8 @@ module Cache
     def load_initial_data
       {
         ancestries: ids_with_names(::Daggerheart::Homebrews::Ancestry),
-        communities: ids_with_names(::Daggerheart::Homebrew::Community),
-        classes: ids_with_names(::Daggerheart::Homebrew::Speciality),
+        communities: ids_with_names(::Daggerheart::Homebrews::Community),
+        classes: ids_with_names(::Daggerheart::Homebrews::Speciality),
         subclasses: ids_with_names(::Daggerheart::Homebrew::Subclass)
       }
     end

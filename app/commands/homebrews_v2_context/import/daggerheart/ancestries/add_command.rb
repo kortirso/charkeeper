@@ -6,7 +6,8 @@ module HomebrewsV2Context
       module Ancestries
         class AddCommand < BaseCommand
           include Deps[
-            add_feat: 'commands.homebrews_v2_context.import.daggerheart.feats.add'
+            add_feat: 'commands.homebrews_v2_context.import.daggerheart.feats.add',
+            cache: 'cache.daggerheart_names'
           ]
 
           # rubocop: disable Metrics/BlockLength
@@ -65,6 +66,8 @@ module HomebrewsV2Context
               end
               ancestry
             end
+
+            cache.push_item(key: :ancestries, item: ancestry)
 
             { result: result }
           end
