@@ -52,7 +52,7 @@ module HomebrewContext
               ::Daggerheart::Homebrews::Speciality.find_by(user_id: values[:user].id, id: values[:origin_value]) ||
                 ::Daggerheart::Character.class_info(values[:origin_value])
             when 'subclass'
-              ::Daggerheart::Homebrew::Subclass.find_by(user_id: values[:user].id, id: values[:origin_value])
+              ::Daggerheart::Homebrews::Subclass.find_by(user_id: values[:user].id, id: values[:origin_value])
             when 'transformation'
               ::Daggerheart::Homebrews::Transformation.find_by(user_id: values[:user].id, id: values[:origin_value])
             when 'domain_card'

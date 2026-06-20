@@ -5,7 +5,7 @@ module Adminbook
     module Homebrew
       class SubclassesController < Adminbook::BaseController
         def index
-          @pagy, @subclasses = pagy(::Daggerheart::Homebrew::Subclass.order(created_at: :desc), limit: 25)
+          @pagy, @subclasses = pagy(::Daggerheart::Homebrews::Subclass.order(created_at: :desc), limit: 25)
         end
       end
     end

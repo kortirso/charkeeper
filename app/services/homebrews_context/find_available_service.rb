@@ -137,32 +137,28 @@ module HomebrewsContext
         end
     end
 
-    # rubocop: disable Rails/PluckInWhere
     def daggerheart_classes(user_id)
       relation = ::Daggerheart::Homebrews::Speciality
       relation.where(user_id: user_id)
         .or(
           relation.where(
-            id: ::Daggerheart::Homebrew::Subclass.where(id: available_books_data(user_id)['Daggerheart::Homebrew::Subclass']).pluck(:class_name)
+            id: ::Daggerheart::Homebrews::Subclass.where(id: available_books_data(user_id)['Daggerheart::Homebrews::Subclass']).pluck(:info).map { |info| info['class_id'] }
           )
         )
         .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: item.title, domains: item.data.domains }
+          acc[item.id] = { name: item.title, domains: item.info.domains }
         end
     end
-    # rubocop: enable Rails/PluckInWhere
 
     def daggerheart_subclasses(user_id)
-      relation = ::Daggerheart::Homebrew::Subclass
+      relation = ::Daggerheart::Homebrews::Subclass
       relation.where(user_id: user_id)
         .or(
-          relation.where(
-            id: available_books_data(user_id)['Daggerheart::Homebrew::Subclass'] || available_books_data(user_id)['Homebrew::Subclass']
-          )
+          relation.where(id: available_books_data(user_id)['Daggerheart::Homebrews::Subclass'])
         )
         .each_with_object({}) do |item, acc|
-          acc[item.class_name] ||= {}
-          acc[item.class_name][item.id] = { name: { en: item.name, ru: item.name }, spellcast: item.data.spellcast }
+          acc[item.info.class_id] ||= {}
+          acc[item.info.class_id][item.id] = { name: item.title, spellcast: item.info.spellcast }
         end
     end
 

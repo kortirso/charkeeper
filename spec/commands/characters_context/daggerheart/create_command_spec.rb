@@ -52,7 +52,7 @@ describe CharactersContext::Daggerheart::CreateCommand do
       let!(:speciality) do
         create :homebrew, :daggerheart_class, user: user, info: { evasion: 12, health_max: 6, domains: %w[codex grace] }
       end
-      let!(:subclass) { create :homebrew_subclass, :daggerheart, user: user }
+      let!(:subclass) { create :homebrew, :daggerheart_subclass, user: user }
       let(:valid_params) do
         {
           user: user, name: 'Char', community: 'highborne', main_class: speciality.id, subclass: subclass.id, heritage: 'clank'

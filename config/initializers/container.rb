@@ -186,14 +186,8 @@ module Charkeeper
     register('commands.homebrew_context.daggerheart.add_item') { HomebrewContext::Daggerheart::AddItemCommand.new }
     register('commands.homebrew_context.daggerheart.change_item') { HomebrewContext::Daggerheart::ChangeItemCommand.new }
     register('commands.homebrew_context.daggerheart.convert_item') { HomebrewContext::Daggerheart::ConvertItemCommand.new }
-    register('commands.homebrew_context.daggerheart.add_subclass') { HomebrewContext::Daggerheart::AddSubclassCommand.new }
-    register('commands.homebrew_context.daggerheart.change_subclass') { HomebrewContext::Daggerheart::ChangeSubclassCommand.new }
     register('commands.homebrew_context.daggerheart.copy_feats') { HomebrewContext::Daggerheart::CopyFeatsCommand.new }
-    register('commands.homebrew_context.daggerheart.copy_subclass') { HomebrewContext::Daggerheart::CopySubclassCommand.new }
     register('commands.homebrew_context.daggerheart.copy_item') { HomebrewContext::Daggerheart::CopyItemCommand.new }
-    register('commands.homebrew_context.daggerheart.add_book_subclasses') {
-      HomebrewContext::Daggerheart::AddBookSubclassesCommand.new
-    }
     register('commands.homebrew_context.daggerheart.add_book_items') { HomebrewContext::Daggerheart::AddBookItemsCommand.new }
 
     register('commands.homebrew_context.dnd.books.add_subclasses') { HomebrewContext::Dnd::Books::AddSubclassesCommand.new }

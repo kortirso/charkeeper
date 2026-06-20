@@ -2,7 +2,7 @@
 
 module Cache
   class DaggerheartNames
-    CACHE_KEY = 'daggerheart_names/0.4.33'
+    CACHE_KEY = 'daggerheart_names/0.4.34'
 
     def fetch_list
       Rails.cache.fetch(CACHE_KEY, expires_in: 1.day) { load_initial_data }
@@ -29,26 +29,18 @@ module Cache
         ancestries: ids_with_names(::Daggerheart::Homebrews::Ancestry),
         communities: ids_with_names(::Daggerheart::Homebrews::Community),
         classes: ids_with_names(::Daggerheart::Homebrews::Speciality),
-        subclasses: ids_with_names(::Daggerheart::Homebrew::Subclass)
+        subclasses: ids_with_names(::Daggerheart::Homebrews::Subclass)
       }
     end
 
-    def ids_with_names(relation) # rubocop: disable Metrics/AbcSize
-      name_json_defined = relation.method_defined?(:name_json)
-      title_defined = relation.method_defined?(:title)
+    def ids_with_names(relation)
       relation.all.each_with_object({}) do |item, acc|
-        next acc[item.id] = { name: item.title } if title_defined
-        next acc[item.id] = { name: { en: item.name, ru: item.name } } unless name_json_defined
-
-        acc[item.id] = { name: item.name_json.keys.blank? ? { en: item.name, ru: item.name } : item.name_json }
+        acc[item.id] = { name: item.title }
       end
     end
 
     def new_item_value(item)
-      return { name: item.title } if item.attributes.key?('title')
-      return { name: { en: item.name, ru: item.name } } if item.attributes.keys.exclude?('name_json')
-
-      { name: item.name_json.keys.blank? ? { en: item.name, ru: item.name } : item.name_json }
+      { name: item.title }
     end
   end
 end

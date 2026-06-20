@@ -1,0 +1,47 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "title": {
+      "en": "Subclass's title"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Subclass's description, **Markdown is available** for editing."
+    },
+    "public": false,
+    /* required, parent class */
+    /* bard, druid, guardian, ranger, rogue, seraph, sorcerer, warrior, wizard or ID of homebrew class */
+    "class_id": "bard",
+    /* optional, spellcast trait */
+    /* agi, str, fin, ins, pre, know */
+    "spellcast": null,
+    /* "spellcast": "agi", */
+    /* optional, available mechanics, list can be empty */
+    /* beastform, companion, stances */
+    "mechanics": ["companion"],
+    "features": [
+      {
+        /* required, allowed locale keys - en, ru, es */
+        "title": {
+          "en": "Feature's title"
+        },
+        /* required, allowed locale keys - en, ru, es */
+        "description": {
+          "en": "Feature's description, **Markdown is available** for editing."
+        },
+        /* required, allowed values - static/text/update_result/hidden */
+        /* static - Simple rendering */
+        /* text - Like static + allow to add text value */
+        /* update_result - Like static + can be hidden by settings */
+        /* hidden - Always hidden */
+        "kind": "static",
+        /* optional */
+        "limit": 1,
+        /* optional, allowed values - short_rest/long_rest/session */
+        "limit_refresh": "short_rest",
+        /* required, allowed values - 1/2/3 */
+        "subclass_mastery": 1
+      }
+    ]
+  }
+]

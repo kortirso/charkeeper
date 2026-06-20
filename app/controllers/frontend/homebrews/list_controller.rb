@@ -44,7 +44,7 @@ module Frontend
 
       def domains = ::Daggerheart::Homebrew::Domain.where(user_id: current_user.id).order(name: :asc)
       def classes = ::Daggerheart::Homebrews::Speciality.where(user_id: current_user.id).order(Arel.sql("title->>'en' ASC"))
-      def subclasses = ::Daggerheart::Homebrew::Subclass.where(user_id: current_user.id).order(name: :asc)
+      def subclasses = ::Daggerheart::Homebrews::Subclass.where(user_id: current_user.id).order(Arel.sql("title->>'en' ASC"))
       def feats = ::Daggerheart::Feat.where(user_id: current_user.id).order(Arel.sql("title->>'en' ASC"))
       def items = ::Daggerheart::Item.where(user_id: current_user.id).order(Arel.sql("name->>'en' ASC"))
 

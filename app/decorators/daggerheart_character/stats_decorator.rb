@@ -369,11 +369,11 @@ module DaggerheartCharacter
     end
 
     def spellcast_for_homebrew_subclass(subclass)
-      homebrew_subclass(subclass).data.spellcast
+      homebrew_subclass(subclass).info.spellcast
     end
 
     def mechanics_for_homebrew_subclass(subclass)
-      homebrew_subclass(subclass).data.mechanics
+      homebrew_subclass(subclass).info.mechanics
     end
 
     def level_thresholds_bonuses
@@ -389,7 +389,7 @@ module DaggerheartCharacter
     end
 
     def homebrew_subclass(subclass)
-      @homebrew_subclass ||= Daggerheart::Homebrew::Subclass.find(subclass)
+      @homebrew_subclass ||= Daggerheart::Homebrews::Subclass.find(subclass)
     end
   end
 end

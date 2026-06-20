@@ -16,10 +16,10 @@
       <tr>
         <td class="pr-2"><%= (@pagy.page - 1) * 25 + index + 1 %></td>
         <td class="pr-2"><%= speciality.id %></td>
-        <td class="pr-2"><%= speciality.name %></td>
-        <td class="pr-2"><%= speciality.data.evasion %></td>
-        <td class="pr-2"><%= speciality.data.health_max %></td>
-        <td class="pr-2"><%= speciality.data.domains %></td>
+        <td class="pr-2"><%= speciality.title %></td>
+        <td class="pr-2"><%= speciality.info.evasion %></td>
+        <td class="pr-2"><%= speciality.info.health_max %></td>
+        <td class="pr-2"><%= speciality.info.domains %></td>
         <td class="pr-2"><%= speciality.user_id %></td>
         <td><%= speciality.created_at.strftime('%d-%m-%Y') %></td>
       </tr>
