@@ -5,7 +5,6 @@ module Homebrews
     module Books
       class ContentsController < Homebrews::BaseController
         include Deps[
-          add_book_domains_command: 'commands.homebrew_context.daggerheart.add_book_domains',
           add_book_items_command: 'commands.homebrew_context.daggerheart.add_book_items'
         ]
 
@@ -22,7 +21,6 @@ module Homebrews
 
         def command
           case params[:type]
-          when 'domain' then add_book_domains_command
           when 'item' then add_book_items_command
           end
         end

@@ -256,17 +256,6 @@ Rails.application.routes.draw do
     end
 
     namespace :daggerheart do
-      resources :ancestries, only: %i[index show create update destroy] do
-        post :copy, on: :member
-      end
-      resources :communities, only: %i[index show create update destroy] do
-        post :copy, on: :member
-      end
-      resources :specialities, only: %i[index show create update destroy]
-      resources :subclasses, only: %i[index show create update destroy] do
-        post :copy, on: :member
-      end
-      resources :domains, only: %i[index show create update destroy]
       resources :feats, only: %i[index create update destroy]
       resources :items, only: %i[index show create update destroy] do
         post :copy, on: :member
@@ -322,6 +311,9 @@ Rails.application.routes.draw do
         post :copy, on: :member
       end
       resources :subclasses, only: %i[show destroy] do
+        post :copy, on: :member
+      end
+      resources :domains, only: %i[show destroy] do
         post :copy, on: :member
       end
       resources :books, only: %i[index create update destroy] do

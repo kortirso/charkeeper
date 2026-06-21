@@ -7,7 +7,7 @@ module HomebrewsV2Context
         use_contract do
           Types = Dry::Types['strict.string'].enum(
             'Daggerheart::Homebrews::Transformation', 'Daggerheart::Homebrews::Ancestry', 'Daggerheart::Homebrews::Community',
-            'Daggerheart::Homebrews::Speciality', 'Daggerheart::Homebrews::Subclass'
+            'Daggerheart::Homebrews::Speciality', 'Daggerheart::Homebrews::Subclass', 'Daggerheart::Homebrews::Domain'
           )
 
           params do

@@ -230,19 +230,6 @@ module Charkeeper
 
     register('commands.channels_context.add_channel') { ChannelsContext::AddChannelCommand.new }
 
-    register('commands.homebrew_context.daggerheart.add_domain') {
-      HomebrewContext::Daggerheart::AddDomainCommand.new
-    }
-    register('commands.homebrew_context.daggerheart.change_domain') {
-      HomebrewContext::Daggerheart::ChangeDomainCommand.new
-    }
-    register('commands.homebrew_context.daggerheart.copy_domain') {
-      HomebrewContext::Daggerheart::CopyDomainCommand.new
-    }
-    register('commands.homebrew_context.daggerheart.add_book_domains') {
-      HomebrewContext::Daggerheart::AddBookDomainsCommand.new
-    }
-
     register('commands.resources_context.add') { ResourcesContext::AddCommand.new }
     register('commands.resources_context.change') { ResourcesContext::ChangeCommand.new }
     register('commands.resources_context.attach') { ResourcesContext::AttachCommand.new }

@@ -125,15 +125,13 @@ module HomebrewsContext
     end
 
     def daggerheart_domains(user_id)
-      relation = ::Daggerheart::Homebrew::Domain
+      relation = ::Daggerheart::Homebrews::Domain
       relation.where(user_id: user_id)
         .or(
-          relation.where(
-            id: available_books_data(user_id)['Daggerheart::Homebrew::Domain']
-          )
+          relation.where(id: available_books_data(user_id)['Daggerheart::Homebrews::Domain'])
         )
         .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: { en: item.name, ru: item.name } }
+          acc[item.id] = { name: item.title }
         end
     end
 

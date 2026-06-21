@@ -5,22 +5,16 @@ module Homebrews
     class BookSerializer < ApplicationSerializer
       attributes :id, :name, :provider, :items, :shared, :public, :enabled, :own
 
-      def items # rubocop: disable Metrics/AbcSize
-        object_items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
+      def items
+        items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
-          races: ::Daggerheart::Homebrews::Ancestry.where(
-            id: object_items['Daggerheart::Homebrews::Ancestry']
-          ).pluck(:title).map { |item| translate(item) },
-          communities: ::Daggerheart::Homebrews::Community.where(
-            id: object_items['Daggerheart::Homebrews::Community']
-          ).pluck(:title).map { |item| translate(item) },
-          classes: subclasses_info(object_items),
-          items: ::Daggerheart::Item.where(id: object_items['Daggerheart::Item']).pluck(:name).map { |item| translate(item) },
-          transformations: ::Daggerheart::Homebrews::Transformation.where(
-            id: object_items['Daggerheart::Homebrews::Transformation']
-          ).pluck(:title).map { |item| translate(item) },
-          domains: ::Daggerheart::Homebrew::Domain.where(id: object_items['Daggerheart::Homebrew::Domain']).pluck(:name)
+          races: titles(items, ::Daggerheart::Homebrews::Ancestry, 'Daggerheart::Homebrews::Ancestry'),
+          communities: titles(items, ::Daggerheart::Homebrews::Community, 'Daggerheart::Homebrews::Community'),
+          transformations: titles(items, ::Daggerheart::Homebrews::Transformation, 'Daggerheart::Homebrews::Transformation'),
+          domains: titles(items, ::Daggerheart::Homebrews::Domain, 'Daggerheart::Homebrews::Domain'),
+          classes: subclasses_info(items),
+          items: ::Daggerheart::Item.where(id: items['Daggerheart::Item']).pluck(:name).map { |item| translate(item) }
         }
       end
 
@@ -35,14 +29,20 @@ module Homebrews
         object.user_id == context[:current_user_id]
       end
 
-      def subclasses_info(object_items)
+      def titles(object_items, model, key)
+        model.where(id: object_items[key]).pluck(:title).map { |item| translate(item) }
+      end
+
+      def subclasses_info(items)
         subclasses =
-          ::Daggerheart::Homebrew::Subclass
-            .where(id: object_items['Daggerheart::Homebrew::Subclass'])
-            .hashable_pluck(:name, :class_name)
-            .group_by { |i| i[:class_name] }
+          ::Daggerheart::Homebrews::Subclass
+            .where(id: items['Daggerheart::Homebrews::Subclass'])
+            .hashable_pluck(:title, :info)
+            .group_by { |item| item[:info].class_id }
         classes = ::Daggerheart::Homebrews::Speciality.where(id: subclasses.keys).pluck(:id, :title).to_h
-        subclasses.transform_keys { |key| translate(classes[key]) }.transform_values { |value| value.map { |item| item[:name] } }
+        subclasses
+          .transform_keys { |key| translate(classes[key]) }
+          .transform_values { |value| value.map { |item| translate(item[:title]) } }
       end
     end
   end

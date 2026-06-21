@@ -9,7 +9,7 @@ class BackfillDataForDhTransformations < ActiveRecord::Migration[8.1]
         description: {}
       )
 
-      item.homebrew_book_items.update_all(itemable_type: 'Daggerheart::Homebrews::Transformation')
+      item.homebrew_book_items.update_all(itemable_type: 'Daggerheart::Homebrews::Transformation', itemable_id: new_item.id)
     end
   end
 

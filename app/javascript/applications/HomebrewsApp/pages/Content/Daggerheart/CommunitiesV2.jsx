@@ -5,7 +5,7 @@ import { fetchCommunityRequest, removeCommunityRequest, copyCommunityRequest } f
 
 export const DaggerheartCommunitiesV2 = () => {
   const ChildrenComponent = (props) => (
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-4">
       <For each={props.info.features}>
         {(feature) =>
           <div>

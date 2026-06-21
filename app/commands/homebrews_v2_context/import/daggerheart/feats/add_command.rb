@@ -25,15 +25,19 @@ module HomebrewsV2Context
               optional(:limit).filled(:integer)
               optional(:limit_refresh).filled(:string)
               optional(:subclass_mastery).filled(:integer)
+              optional(:level).filled(:integer)
               optional(:no_refresh).filled(:bool)
             end
           end
 
           private
 
-          def do_prepare(input)
+          def do_prepare(input) # rubocop: disable Metrics/AbcSize
             if input[:origin] == 'subclass' && input.key?(:subclass_mastery)
               input[:conditions] = { subclass_mastery: input[:subclass_mastery] }
+            end
+            if input[:origin] == 'domain_card' && input.key?(:level)
+              input[:conditions] = { level: input[:level] }
             end
 
             input[:description_eval_variables] = { limit: input[:limit].to_s } if input.key?(:limit)
@@ -42,7 +46,7 @@ module HomebrewsV2Context
           end
 
           def do_persist(input)
-            result = ::Daggerheart::Feat.create!(input.except(:limit, :no_refresh, :subclass_mastery))
+            result = ::Daggerheart::Feat.create!(input.except(:limit, :no_refresh, :subclass_mastery, :level))
 
             unless input.key?(:no_refresh)
               input[:user].characters.daggerheart.find_each { |character| refresh_feats.call(character: character) }

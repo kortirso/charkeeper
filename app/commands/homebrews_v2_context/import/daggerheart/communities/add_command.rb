@@ -67,7 +67,7 @@ module HomebrewsV2Context
               community
             end
 
-            cache.push_item(key: :communities, item: community)
+            cache.push_item(key: :communities, item: result)
 
             { result: result }
           end

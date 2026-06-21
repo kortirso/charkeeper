@@ -3,11 +3,10 @@
 module HomebrewsV2Context
   module Import
     module Daggerheart
-      module Specialities
+      module Domains
         class AddCommand < BaseCommand
           include Deps[
-            add_feat: 'commands.homebrews_v2_context.import.daggerheart.feats.add',
-            cache: 'cache.daggerheart_names'
+            add_feat: 'commands.homebrews_v2_context.import.daggerheart.feats.add'
           ]
 
           # rubocop: disable Metrics/BlockLength
@@ -27,9 +26,6 @@ module HomebrewsV2Context
                 optional(:ru).maybe(:string, max_size?: 500)
                 optional(:es).maybe(:string, max_size?: 500)
               end
-              required(:domains).filled(:array, size?: 2).each(:string)
-              required(:evasion).filled(:integer, gteq?: 1, lteq?: 20)
-              required(:health_max).filled(:integer, gteq?: 1, lteq?: 10)
               optional(:public).filled(:bool)
               required(:features).filled(:array).each(:hash) do
                 required(:title).hash do
@@ -45,6 +41,7 @@ module HomebrewsV2Context
                 required(:kind).filled(Kinds)
                 optional(:limit).filled(:integer, gteq?: 1)
                 optional(:limit_refresh).filled(Limits)
+                required(:level).filled(:integer, gteq?: 1, lteq?: 10)
               end
             end
           end
@@ -55,23 +52,20 @@ module HomebrewsV2Context
           def do_prepare(input)
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description].transform_values! { |value| sanitize(value) }
-            input[:info] = input.slice(:domains, :evasion, :health_max)
           end
 
           def do_persist(input)
             result = ActiveRecord::Base.transaction do
-              speciality = ::Daggerheart::Homebrews::Speciality.create!(input.slice(:user, :title, :description, :public, :info))
+              domain = ::Daggerheart::Homebrews::Domain.create!(input.slice(:user, :title, :description, :public))
               input[:features].each do |feature|
                 add_feat.call(
                   feature.merge({
-                    user: input[:user], origin: 'class', origin_value: speciality.id, no_refresh: true
+                    user: input[:user], origin: 'domain_card', origin_value: domain.id, no_refresh: true
                   })
                 )
               end
-              speciality
+              domain
             end
-
-            cache.push_item(key: :classes, item: result)
 
             { result: result }
           end

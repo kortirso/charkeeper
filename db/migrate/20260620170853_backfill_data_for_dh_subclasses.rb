@@ -15,6 +15,8 @@ class BackfillDataForDhSubclasses < ActiveRecord::Migration[8.1]
           class_id: item.class_name
         }
       )
+
+      item.homebrew_book_items.update_all(itemable_type: 'Daggerheart::Homebrews::Subclass', itemable_id: new_item.id)
     end
   end
 

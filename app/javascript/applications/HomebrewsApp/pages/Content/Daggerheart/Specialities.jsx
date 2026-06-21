@@ -27,7 +27,8 @@ export const DaggerheartSpecialities = () => {
   const [locale] = useAppLocale();
 
   const ChildrenComponent = (props) => (
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-4">
+      <p>ID - {props.info.id}</p>
       <p>{localize(TRANSLATION, locale()).evasion} - {props.info.info.evasion}</p>
       <p>{localize(TRANSLATION, locale()).healthMax} - {props.info.info.health_max}</p>
       <p>{localize(TRANSLATION, locale()).domains} - {props.info.domains.join(', ')}</p>

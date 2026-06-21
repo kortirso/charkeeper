@@ -14,6 +14,8 @@ module HomebrewsV2Context
           use_contract do
             Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'session')
+            Spellcasts = Dry::Types['strict.string'].enum('agi', 'str', 'fin', 'ins', 'pre', 'know')
+            Mechanics = Dry::Types['strict.string'].enum('beastform', 'companion', 'stances')
 
             params do
               required(:user).filled(type?: ::User)
@@ -28,8 +30,8 @@ module HomebrewsV2Context
                 optional(:es).maybe(:string, max_size?: 500)
               end
               required(:class_id).filled(:string)
-              required(:spellcast).filled(:string)
-              optional(:mechanics).maybe(:array).each(:string)
+              optional(:spellcast).maybe(Spellcasts)
+              optional(:mechanics).maybe(:array).each(Mechanics)
               optional(:public).filled(:bool)
               required(:features).filled(:array).each(:hash) do
                 required(:title).hash do
@@ -54,9 +56,10 @@ module HomebrewsV2Context
           private
 
           def do_prepare(input)
+            input[:class_id] = sanitize(input[:class_id])
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description].transform_values! { |value| sanitize(value) }
-            itput[:info] = input.slice(:class_id, :spellcast, :mechanics)
+            input[:info] = input.slice(:class_id, :spellcast, :mechanics)
           end
 
           def do_persist(input)
@@ -72,7 +75,7 @@ module HomebrewsV2Context
               subclass
             end
 
-            cache.push_item(key: :subclasses, item: subclass)
+            cache.push_item(key: :subclasses, item: result)
 
             { result: result }
           end

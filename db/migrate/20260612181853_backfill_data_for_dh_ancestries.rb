@@ -10,7 +10,7 @@ class BackfillDataForDhAncestries < ActiveRecord::Migration[8.1]
         description: {}
       )
 
-      item.homebrew_book_items.update_all(itemable_type: 'Daggerheart::Homebrews::Ancestry')
+      item.homebrew_book_items.update_all(itemable_type: 'Daggerheart::Homebrews::Ancestry', itemable_id: new_item.id)
     end
   end
 

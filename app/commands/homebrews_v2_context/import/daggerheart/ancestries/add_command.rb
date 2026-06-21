@@ -67,7 +67,7 @@ module HomebrewsV2Context
               ancestry
             end
 
-            cache.push_item(key: :ancestries, item: ancestry)
+            cache.push_item(key: :ancestries, item: result)
 
             { result: result }
           end

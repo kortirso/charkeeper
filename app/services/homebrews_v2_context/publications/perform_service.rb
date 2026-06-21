@@ -24,8 +24,9 @@ module HomebrewsV2Context
           when 'transformation' then HomebrewsV2Context::Import::Daggerheart::Transformations::AddCommand.new
           when 'ancestry' then HomebrewsV2Context::Import::Daggerheart::Ancestries::AddCommand.new
           when 'community' then HomebrewsV2Context::Import::Daggerheart::Communities::AddCommand.new
-          when 'speciality' then HomebrewsV2Context::Import::Daggerheart::Speciality::AddCommand.new
-          when 'subclass' then HomebrewsV2Context::Import::Daggerheart::Subclass::AddCommand.new
+          when 'speciality' then HomebrewsV2Context::Import::Daggerheart::Specialities::AddCommand.new
+          when 'subclass' then HomebrewsV2Context::Import::Daggerheart::Subclasses::AddCommand.new
+          when 'domain' then HomebrewsV2Context::Import::Daggerheart::Domains::AddCommand.new
           end
       end
     end

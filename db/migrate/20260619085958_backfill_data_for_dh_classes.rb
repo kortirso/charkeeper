@@ -2,7 +2,7 @@ class BackfillDataForDhClasses < ActiveRecord::Migration[8.1]
   def up
     Daggerheart::Homebrew::Speciality.find_each do |item|
       data = item.data
-      new_item = ::Daggerheart::Homebrews::Speciality.create(
+      ::Daggerheart::Homebrews::Speciality.create(
         id: item.id,
         user_id: item.user_id,
         title: { en: item.name, ru: item.name },
