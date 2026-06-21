@@ -13,6 +13,7 @@ es:
       lteq?: Too big value
       key?: Missing value
       size?: Size must be %{num}
+      int?: Must be integer
       pathfinder2_animal_companion:
         rules:
           name:
@@ -68,11 +69,6 @@ es:
             max_size?: El tamaño del nombre no puede ser más de 50
           provider:
             filled?: El proveedor no puede estar en blanco Provider
-      homebrew_speciality:
-        rules:
-          name:
-            filled?: El nombre no puede estar en blanco
-            max_size?: El tamaño del nombre no puede ser más de 50
       homebrew_item:
         rules:
           name:

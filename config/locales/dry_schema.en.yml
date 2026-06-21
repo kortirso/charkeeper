@@ -13,6 +13,7 @@ en:
       lteq?: Too big value, maximum is %{num}
       key?: Missing value
       size?: Size must be %{num}
+      int?: Must be integer
       pathfinder2_animal_companion:
         rules:
           name:
@@ -68,11 +69,6 @@ en:
             max_size?: Name's size cannot be greater than 50
           provider:
             filled?: Provider can't be blank
-      homebrew_speciality:
-        rules:
-          name:
-            filled?: Name can't be blank
-            max_size?: Name's size cannot be greater than 50
       homebrew_item:
         rules:
           name:

@@ -13,6 +13,7 @@ ru:
       lteq?: Слишком большое значение, максимум %{num}
       key?: Не указано значение
       size?: "Размер должен быть %{num}"
+      int?: Должно быть числом
       pathfinder2_animal_companion:
         rules:
           name:
@@ -68,11 +69,6 @@ ru:
             max_size?: Название не может быть длиннее, чем 50 символов
           provider:
             filled?: Необходимо указать систему
-      homebrew_speciality:
-        rules:
-          name:
-            filled?: Необходимо указать название
-            max_size?: Название не может быть длиннее, чем 50 символов
       homebrew_item:
         rules:
           name:
