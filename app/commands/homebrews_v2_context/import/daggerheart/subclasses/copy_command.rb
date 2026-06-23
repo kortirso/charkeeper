@@ -14,10 +14,13 @@ module HomebrewsV2Context
 
           private
 
-          def do_prepare(input)
-            input[:attributes] = input[:subclass].attributes.slice('title', 'description', 'public', 'info').symbolize_keys
+          def do_prepare(input) # rubocop: disable Metrics/AbcSize
+            input[:attributes] = input[:subclass].attributes.slice('title', 'description', 'public').symbolize_keys
             input[:attributes][:user] = input[:user]
             input[:attributes][:features] = features_payload(input)
+            input[:attributes][:class_id] = input[:subclass].info.class_id
+            input[:attributes][:spellcast] = input[:subclass].info.spellcast
+            input[:attributes][:mechanics] = input[:subclass].info.mechanics
           end
 
           def do_persist(input)

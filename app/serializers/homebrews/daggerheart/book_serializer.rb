@@ -3,7 +3,11 @@
 module Homebrews
   module Daggerheart
     class BookSerializer < ApplicationSerializer
-      attributes :id, :name, :provider, :items, :shared, :public, :enabled, :own
+      attributes :id, :title, :provider, :items, :shared, :public, :enabled, :own
+
+      def title
+        object.name
+      end
 
       def items
         items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }

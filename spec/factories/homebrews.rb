@@ -28,12 +28,14 @@ FactoryBot.define do
       type { 'Daggerheart::Homebrews::Speciality' }
       title { { 'en' => 'Title' } }
       description { { 'en' => 'Description' } }
+      info { { 'domains' => %w[codex bone], 'evasion' => 5, 'health_max' => 5 } }
     end
 
     trait :daggerheart_subclass do
       type { 'Daggerheart::Homebrews::Subclass' }
       title { { 'en' => 'Title' } }
       description { { 'en' => 'Description' } }
+      info { { 'class_id' => '1' } }
     end
 
     trait :daggerheart_domain do

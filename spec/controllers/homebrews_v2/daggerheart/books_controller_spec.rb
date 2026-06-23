@@ -19,9 +19,9 @@ describe HomebrewsV2::Daggerheart::BooksController do
         request
 
         expect(response).to have_http_status :ok
-        expect(response.parsed_body['books'].size).to eq 2
-        expect(response.parsed_body.dig('books', 0).keys).to(
-          contain_exactly('id', 'name', 'provider', 'items', 'shared', 'public', 'enabled', 'own')
+        expect(response.parsed_body['homebrews'].size).to eq 2
+        expect(response.parsed_body.dig('homebrews', 0).keys).to(
+          contain_exactly('id', 'title', 'provider', 'shared', 'public', 'enabled', 'own')
         )
       end
     end
@@ -41,7 +41,7 @@ describe HomebrewsV2::Daggerheart::BooksController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['books'].size).to eq 1
-        expect(response.parsed_body.dig('books', 0).keys).to contain_exactly('id', 'name')
+        expect(response.parsed_body.dig('books', 0).keys).to contain_exactly('id')
       end
     end
   end
@@ -74,47 +74,6 @@ describe HomebrewsV2::Daggerheart::BooksController do
         it 'creates book', :aggregate_failures do
           expect { request }.to change(Homebrew::Book, :count)
           expect(response).to have_http_status :created
-        end
-      end
-    end
-  end
-
-  describe 'PATCH#update' do
-    context 'for logged users' do
-      context 'for unexisting book' do
-        let(:request) { patch :update, params: { id: 'unexisting', charkeeper_access_token: access_token } }
-
-        it 'returns error' do
-          request
-
-          expect(response).to have_http_status :not_found
-        end
-      end
-
-      context 'for existing book' do
-        let!(:book) { create :homebrew_book, user: user_session.user }
-        let(:request) { patch :update, params: { id: book.id, book: { public: true }, charkeeper_access_token: access_token } }
-
-        it 'updates book', :aggregate_failures do
-          request
-
-          expect(book.reload.public?).to be_truthy
-          expect(response).to have_http_status :ok
-        end
-      end
-
-      context 'for existing book with the same name' do
-        let!(:another_book) { create :homebrew_book, name: 'Name' }
-        let!(:book) { create :homebrew_book, user: user_session.user }
-        let(:request) { patch :update, params: { id: book.id, book: { name: 'Name' }, charkeeper_access_token: access_token } }
-
-        it 'updates book', :aggregate_failures do
-          request
-
-          expect(another_book.reload.name).to eq 'Name'
-          expect(book.reload.name).not_to eq 'Name'
-          expect(book.name.include?('Name')).to be_truthy
-          expect(response).to have_http_status :ok
         end
       end
     end

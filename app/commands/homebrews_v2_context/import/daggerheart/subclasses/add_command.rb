@@ -33,7 +33,7 @@ module HomebrewsV2Context
               optional(:spellcast).maybe(Spellcasts)
               optional(:mechanics).maybe(:array).each(Mechanics)
               optional(:public).filled(:bool)
-              required(:features).filled(:array).each(:hash) do
+              optional(:features).maybe(:array).each(:hash) do
                 required(:title).hash do
                   required(:en).filled(:string, max_size?: 50)
                   optional(:ru).maybe(:string, max_size?: 50)
@@ -65,7 +65,7 @@ module HomebrewsV2Context
           def do_persist(input)
             result = ActiveRecord::Base.transaction do
               subclass = ::Daggerheart::Homebrews::Subclass.create!(input.slice(:user, :title, :description, :public, :info))
-              input[:features].each do |feature|
+              input[:features]&.each do |feature|
                 add_feat.call(
                   feature.merge({
                     user: input[:user], origin: 'subclass', origin_value: subclass.id, no_refresh: true

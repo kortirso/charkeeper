@@ -1,6 +1,6 @@
 import { Switch, Match } from 'solid-js';
 
-import { Dnd2024, Daggerheart, Pathfinder2, Dc20, Cosmere } from '../pages';
+import { Daggerheart } from '../pages';
 
 import { useAppState } from '../context';
 
@@ -10,20 +10,8 @@ export const ContentPage = (props) => {
   return (
     <div>
       <Switch fallback={<></>}>
-        <Match when={appState.activePage === 'dnd2024'}>
-          <Dnd2024 onNavigate={props.onNavigate} />
-        </Match>
         <Match when={appState.activePage === 'daggerheart'}>
           <Daggerheart onNavigate={props.onNavigate} />
-        </Match>
-        <Match when={appState.activePage === 'cosmere'}>
-          <Cosmere onNavigate={props.onNavigate} />
-        </Match>
-        <Match when={appState.activePage === 'pathfinder2'}>
-          <Pathfinder2 onNavigate={props.onNavigate} />
-        </Match>
-        <Match when={appState.activePage === 'dc20'}>
-          <Dc20 onNavigate={props.onNavigate} />
         </Match>
       </Switch>
     </div>

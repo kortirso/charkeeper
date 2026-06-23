@@ -257,14 +257,8 @@ Rails.application.routes.draw do
 
     namespace :daggerheart do
       resources :feats, only: %i[index create update destroy]
-      resources :items, only: %i[index show create update destroy] do
-        post :copy, on: :member
-      end
       resources :recipes, only: %i[index create destroy] do
         post :copy, on: :member
-      end
-      resources :books, only: %i[index create update destroy] do
-        resource :content, only: %i[create], module: :books
       end
     end
 
@@ -316,7 +310,7 @@ Rails.application.routes.draw do
       resources :domains, only: %i[show destroy] do
         post :copy, on: :member
       end
-      resources :books, only: %i[index create update destroy] do
+      resources :books, only: %i[index show create destroy] do
         get :for_items, on: :collection
       end
       resources :items, only: %i[index show destroy] do

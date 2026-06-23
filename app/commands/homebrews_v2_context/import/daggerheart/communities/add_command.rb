@@ -28,7 +28,7 @@ module HomebrewsV2Context
                 optional(:es).maybe(:string, max_size?: 500)
               end
               optional(:public).filled(:bool)
-              required(:features).filled(:array, size?: 1).each(:hash) do
+              optional(:features).maybe(:array).each(:hash) do
                 required(:title).hash do
                   required(:en).filled(:string, max_size?: 50)
                   optional(:ru).maybe(:string, max_size?: 50)
@@ -57,7 +57,7 @@ module HomebrewsV2Context
           def do_persist(input)
             result = ActiveRecord::Base.transaction do
               community = ::Daggerheart::Homebrews::Community.create!(input.slice(:user, :title, :description, :public))
-              input[:features].each do |feature|
+              input[:features]&.each do |feature|
                 add_feat.call(
                   feature.merge({
                     user: input[:user], origin: 'community', origin_value: community.id, no_refresh: true

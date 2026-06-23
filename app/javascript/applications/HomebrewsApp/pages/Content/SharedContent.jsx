@@ -190,7 +190,9 @@ export const SharedContent = (props) => {
       <div class="flex my-4">
         <div class="flex-1">
           <Button default classList="px-2 py-1" onClick={() => setCreateMode(true)}>{localize(TRANSLATION, locale()).add}</Button>
-          <Button default active={!ownFilter()} classList="ml-4 px-2 py-1" onClick={() => setOwnFilter(!ownFilter())}>{localize(TRANSLATION, locale()).showPublic}</Button>
+          <Show when={props.onCopyRequest}>
+            <Button default active={!ownFilter()} classList="ml-4 px-2 py-1" onClick={() => setOwnFilter(!ownFilter())}>{localize(TRANSLATION, locale()).showPublic}</Button>
+          </Show>
         </div>
         <div class="relative flex-1 flex justify-end">
           <Button default active={showPublications()} classList="px-2 py-1" onClick={() => setShowPublications(!showPublications())}>{localize(TRANSLATION, locale()).publications}</Button>
@@ -246,21 +248,23 @@ export const SharedContent = (props) => {
         }
       >
         <Show when={filtered().length > 0}>
-          <div class="flex items-center">
-            <Select
-              containerClassList="w-40"
-              labelText={localize(TRANSLATION, locale()).selectBook}
-              items={Object.fromEntries(books().map((item) => [item.id, item.name]))}
-              selectedValue={book()}
-              onSelect={setBook}
-            />
-            <Show when={book() && selectedIds().length > 0}>
-              <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
-                {localize(TRANSLATION, locale()).save}
-              </Button>
-            </Show>
-          </div>
-          <p class="text-sm mt-1 mb-2">{localize(TRANSLATION, locale()).selectBookHelp}</p>
+          <Show when={props.onCopyRequest}>
+            <div class="flex items-center">
+              <Select
+                containerClassList="w-40"
+                labelText={localize(TRANSLATION, locale()).selectBook}
+                items={Object.fromEntries(books().map((item) => [item.id, item.name]))}
+                selectedValue={book()}
+                onSelect={setBook}
+              />
+              <Show when={book() && selectedIds().length > 0}>
+                <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
+                  {localize(TRANSLATION, locale()).save}
+                </Button>
+              </Show>
+            </div>
+            <p class="text-sm mt-1 mb-2">{localize(TRANSLATION, locale()).selectBookHelp}</p>
+          </Show>
           <div class="flex flex-col gap-2">
             <For each={filtered()}>
               {(element) =>
