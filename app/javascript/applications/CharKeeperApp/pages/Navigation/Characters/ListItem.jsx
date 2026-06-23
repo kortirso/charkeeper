@@ -11,21 +11,25 @@ import falloutConfig from '../../../data/fallout.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { clickOutside, copyToClipboard, localize } from '../../../helpers';
 
+const AVAILABLE_COPY = ['cthulhu7'];
 const AVAILABLE_JSON = ['daggerheart', 'pathfinder2'];
 const AVAILABLE_PDF = ['daggerheart', 'dnd5', 'dnd2024', 'pathfinder2'];
 const AVAILABLE_RESET = ['daggerheart'];
 const TRANSLATION = {
   en: {
     delete: 'Delete',
-    reset: 'Reset'
+    reset: 'Reset',
+    copy: 'Copy'
   },
   ru: {
     delete: 'Удалить',
-    reset: 'Сбросить'
+    reset: 'Сбросить',
+    copy: 'Копировать'
   },
   es: {
     delete: 'Eliminar',
-    reset: 'Restablecer'
+    reset: 'Restablecer',
+    copy: 'Copy'
   }
 }
 
@@ -61,6 +65,11 @@ export const CharactersListItem = (props) => {
   const resetClick = (event) => {
     setIsOpen(false);
     props.onResetCharacter(event);
+  }
+
+  const copyClick = (event) => {
+    setIsOpen(false);
+    props.onCopyCharacter(event);
   }
 
   const copy = (event) => {
@@ -142,6 +151,9 @@ export const CharactersListItem = (props) => {
               <p class="dots-item" onClick={deleteClick}>{localize(TRANSLATION, locale()).delete}</p>
               <Show when={AVAILABLE_RESET.includes(character().provider)}>
                 <p class="dots-item" onClick={resetClick}>{localize(TRANSLATION, locale()).reset}</p>
+              </Show>
+              <Show when={AVAILABLE_COPY.includes(character().provider)}>
+                <p class="dots-item" onClick={copyClick}>{localize(TRANSLATION, locale()).copy}</p>
               </Show>
               <Show when={AVAILABLE_JSON.includes(character().provider)}>
                 <p class="dots-item" onClick={copy}>{t('charactersPage.onCopyCharacter')}</p>
