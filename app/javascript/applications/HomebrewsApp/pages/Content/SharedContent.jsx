@@ -3,7 +3,6 @@ import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Toggle, Button, Label, Select } from '../../components';
 import { Trash, Copy, Stroke } from '../../assets';
-import { fetchListRequest } from '../../requests_v2/list';
 import { fetchPublicationsRequest, createPublicationRequest } from '../../requests_v2/publications';
 import { fetchBooksForItemsRequest } from '../../requests_v2/books';
 import { createBookItemRequest } from '../../requests_v2/bookItems';
@@ -88,10 +87,9 @@ export const SharedContent = (props) => {
 
   createEffect(() => {
     const fetchBooks = async () => await fetchBooksForItemsRequest(appState.accessToken, props.provider);
-    const fetchElements = async () => await fetchListRequest(appState.accessToken, props.parentType);
     const fetchPublications = async () => await fetchPublicationsRequest(appState.accessToken, props.publicationType);
 
-    Promise.all([fetchElements(), fetchPublications(), fetchBooks()]).then(
+    Promise.all([props.onFetchRequest(), fetchPublications(), fetchBooks()]).then(
       ([elementsData, publicationsData, booksData]) => {
         batch(() => {
           setBooks(booksData.books);
@@ -135,6 +133,8 @@ export const SharedContent = (props) => {
   }
 
   const showInfo = async (element) => {
+    if (!props.onShowRequest) return;
+
     if (infos()[element.id]) {
       setOpenInfos({ ...openInfos(), [element.id]: !openInfos()[element.id] })
     } else {
@@ -309,7 +309,7 @@ export const SharedContent = (props) => {
                     </div>
                   }
                 >
-                  <Show when={infos()[element.id]}>
+                  <Show when={props.childrenComponent && infos()[element.id]}>
                     <ChildrenComponent info={infos()[element.id]} />
                   </Show>
                 </Toggle>

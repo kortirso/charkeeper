@@ -1,7 +1,8 @@
 import { For } from 'solid-js';
 
-import { useAppLocale } from '../../../context';
+import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
+import { fetchListRequest } from '../../../requests_v2/list';
 import { fetchDomainRequest, removeDomainRequest, copyDomainRequest } from '../../../requests_v2/daggerheart/domains';
 import { localize } from '../../../helpers';
 
@@ -19,6 +20,9 @@ const TRANSLATION = {
 
 export const DaggerheartDomainsV2 = () => {
   const [locale] = useAppLocale();
+  const [appState] = useAppState();
+
+  const fetchList = async () => await fetchListRequest(appState.accessToken, 'Daggerheart::Homebrews::Domain');
 
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-4">
@@ -41,6 +45,7 @@ export const DaggerheartDomainsV2 = () => {
       provider="daggerheart"
       parentType="Daggerheart::Homebrews::Domain"
       publicationType="domain"
+      onFetchRequest={fetchList}
       onShowRequest={fetchDomainRequest}
       onRemoveRequest={removeDomainRequest}
       onCopyRequest={copyDomainRequest}

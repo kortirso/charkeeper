@@ -1,9 +1,17 @@
 import { For } from 'solid-js';
 
+import { useAppState } from '../../../context';
 import { SharedContent } from '../../../pages';
-import { fetchCommunityRequest, removeCommunityRequest, copyCommunityRequest } from '../../../requests_v2/daggerheart/communities';
+import { fetchListRequest } from '../../../requests_v2/list';
+import {
+  fetchCommunityRequest, removeCommunityRequest, copyCommunityRequest
+} from '../../../requests_v2/daggerheart/communities';
 
 export const DaggerheartCommunitiesV2 = () => {
+  const [appState] = useAppState();
+
+  const fetchList = async () => await fetchListRequest(appState.accessToken, 'Daggerheart::Homebrews::Community');
+
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-4">
       <For each={props.info.features}>
@@ -25,6 +33,7 @@ export const DaggerheartCommunitiesV2 = () => {
       provider="daggerheart"
       parentType="Daggerheart::Homebrews::Community"
       publicationType="community"
+      onFetchRequest={fetchList}
       onShowRequest={fetchCommunityRequest}
       onRemoveRequest={removeCommunityRequest}
       onCopyRequest={copyCommunityRequest}

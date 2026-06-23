@@ -2,8 +2,9 @@ import { For, Show } from 'solid-js';
 
 import config from '../../../../CharKeeperApp/data/daggerheart.json';
 
-import { useAppLocale } from '../../../context';
+import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
+import { fetchListRequest } from '../../../requests_v2/list';
 import { fetchSubclassRequest, removeSubclassRequest, copySubclassRequest } from '../../../requests_v2/daggerheart/subclasses';
 import { localize } from '../../../helpers';
 
@@ -30,6 +31,9 @@ const TRANSLATION = {
 
 export const DaggerheartSubclasses = () => {
   const [locale] = useAppLocale();
+  const [appState] = useAppState();
+
+  const fetchList = async () => await fetchListRequest(appState.accessToken, 'Daggerheart::Homebrews::Subclass');
 
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-4">
@@ -56,6 +60,7 @@ export const DaggerheartSubclasses = () => {
       provider="daggerheart"
       parentType="Daggerheart::Homebrews::Subclass"
       publicationType="subclass"
+      onFetchRequest={fetchList}
       onShowRequest={fetchSubclassRequest}
       onRemoveRequest={removeSubclassRequest}
       onCopyRequest={copySubclassRequest}

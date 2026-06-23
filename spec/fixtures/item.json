@@ -1,0 +1,15 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "name": {
+      "en": "Item's name"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Item's description, **Markdown is available** for editing."
+    },
+    /* required, item or recipe */
+    "kind": "recipe",
+    "public": false
+  }
+]

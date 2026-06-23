@@ -1,0 +1,25 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "name": {
+      "en": "Consumable's name"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Consumable's description, **Markdown is available** for editing."
+    },
+    "public": false,
+    "consume": [
+      {
+        /* required, random number from 1 to 100000 */
+        "id": 1,
+        /* required, one from health_marked/stress_marked/hope_marked */
+        "attribute": "health_marked",
+        /* required, formula for consume effect */
+        /* D(4)+2 */
+        /* -1 * 2 * D(4) + 3 */
+        "formula": "-1 * 2 * D(4) + 3"
+      }
+    ]
+  }
+]

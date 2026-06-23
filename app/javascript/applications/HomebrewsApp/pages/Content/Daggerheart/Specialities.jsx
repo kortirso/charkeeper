@@ -1,7 +1,8 @@
 import { For } from 'solid-js';
 
-import { useAppLocale } from '../../../context';
+import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
+import { fetchListRequest } from '../../../requests_v2/list';
 import { fetchSpecialityRequest, removeSpecialityRequest, copySpecialityRequest } from '../../../requests_v2/daggerheart/specialities';
 import { localize } from '../../../helpers';
 
@@ -25,6 +26,9 @@ const TRANSLATION = {
 
 export const DaggerheartSpecialities = () => {
   const [locale] = useAppLocale();
+  const [appState] = useAppState();
+
+  const fetchList = async () => await fetchListRequest(appState.accessToken, 'Daggerheart::Homebrews::Speciality');
 
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-4">
@@ -51,6 +55,7 @@ export const DaggerheartSpecialities = () => {
       provider="daggerheart"
       parentType="Daggerheart::Homebrews::Speciality"
       publicationType="speciality"
+      onFetchRequest={fetchList}
       onShowRequest={fetchSpecialityRequest}
       onRemoveRequest={removeSpecialityRequest}
       onCopyRequest={copySpecialityRequest}

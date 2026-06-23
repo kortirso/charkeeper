@@ -319,6 +319,9 @@ Rails.application.routes.draw do
       resources :books, only: %i[index create update destroy] do
         get :for_items, on: :collection
       end
+      resources :items, only: %i[index show destroy] do
+        post :copy, on: :member
+      end
     end
 
     resources :books, only: %i[] do

@@ -1,9 +1,9 @@
 import { For, Switch, Match } from 'solid-js';
 
 import {
-  DaggerheartAncestriesV2, DaggerheartCommunitiesV2, DaggerheartSpecialities, DaggerheartSubclasses, DaggerheartItems,
-  DaggerheartWeapons, DaggerheartArmor, DaggerheartDomainsV2, DaggerheartTransformationsV2, DaggerheartBooks,
-  DaggerheartRecipes, DaggerheartFeatures
+  DaggerheartAncestriesV2, DaggerheartCommunitiesV2, DaggerheartSpecialities, DaggerheartSubclasses, DaggerheartDomainsV2,
+  DaggerheartTransformationsV2, DaggerheartBooks, DaggerheartFeatures, DaggerheartItemsV2, DaggerheartConsumables,
+  DaggerheartWeaponsV2, DaggerheartArmorV2
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -14,11 +14,12 @@ const TRANSLATION = {
     communities: 'Communities',
     classes: 'Classes',
     subclasses: 'Subclasses',
-    items: 'Items',
-    weapons: 'Weapons',
-    armor: 'Armor',
     domains: 'Domains',
     transformations: 'Transformations',
+    items: 'Items',
+    consumables: 'Consumables',
+    weapons: 'Weapons',
+    armor: 'Armor',
     recipes: 'Recipes',
     features: 'Features'
   },
@@ -28,11 +29,12 @@ const TRANSLATION = {
     communities: 'Общества',
     classes: 'Классы',
     subclasses: 'Подклассы',
-    items: 'Предметы',
-    weapons: 'Оружие',
-    armor: 'Броня',
     domains: 'Домены',
     transformations: 'Трансформации',
+    items: 'Предметы',
+    consumables: 'Consumables',
+    weapons: 'Оружие',
+    armor: 'Броня',
     recipes: 'Рецепты',
     features: 'Способности'
   },
@@ -42,11 +44,12 @@ const TRANSLATION = {
     communities: 'Comunidades',
     classes: 'Clases',
     subclasses: 'Subclases',
-    items: 'Objetos',
-    weapons: 'Armas',
-    armor: 'Armadura',
     domains: 'Dominios',
     transformations: 'Transformaciones',
+    items: 'Objetos',
+    consumables: 'Consumables',
+    weapons: 'Armas',
+    armor: 'Armadura',
     recipes: 'Recetas',
     features: 'Características'
   }
@@ -59,9 +62,9 @@ export const Daggerheart = () => {
 
   return (
     <>
-      <div class="flex gap-x-4 my-4">
+      <div class="flex flex-wrap gap-x-4 gap-y-2 my-4">
         <For each={
-          ['books', 'ancestries', 'communities', 'classes', 'subclasses', 'domains', 'transformations', 'items', 'weapons', 'armor', 'recipes', 'features']
+          ['books', 'ancestries', 'communities', 'classes', 'subclasses', 'domains', 'transformations', 'items', 'consumables', 'weapons', 'armor', 'features']
         }>
           {(item) =>
             <p
@@ -76,9 +79,9 @@ export const Daggerheart = () => {
         <For each={
           Object.entries({
             ancestries: DaggerheartAncestriesV2, communities: DaggerheartCommunitiesV2, classes: DaggerheartSpecialities,
-            subclasses: DaggerheartSubclasses, items: DaggerheartItems, weapons: DaggerheartWeapons,
-            armor: DaggerheartArmor, domains: DaggerheartDomainsV2, transformations: DaggerheartTransformationsV2,
-            books: DaggerheartBooks, recipes: DaggerheartRecipes, features: DaggerheartFeatures
+            subclasses: DaggerheartSubclasses, domains: DaggerheartDomainsV2, transformations: DaggerheartTransformationsV2,
+            books: DaggerheartBooks, features: DaggerheartFeatures, items: DaggerheartItemsV2, weapons: DaggerheartWeaponsV2,
+            consumables: DaggerheartConsumables, armor: DaggerheartArmorV2
           })
         }>
           {([item, Component]) =>

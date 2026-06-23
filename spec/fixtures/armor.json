@@ -1,0 +1,34 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "name": {
+      "en": "Armor's name"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Armor's description, **Markdown is available** for editing."
+    },
+    /* required, primary weapon or secondary weapon */
+    "kind": "primary weapon",
+    "public": false,
+    "info": {
+      /* required, from 1 to 4 */
+      "tier": 1,
+      /* required, from 1 to 12 */
+      "base_score": 4,
+      /* required, from 1 to 100 */
+      "bonuses": {
+        "thresholds": {
+          "major": 4,
+          "severe": 10
+        }
+      },
+      "features": [
+        {
+          /* required, allowed locale keys - en, ru, es */
+          "en": "Feature"
+        }
+      ]
+    }
+  }
+]
