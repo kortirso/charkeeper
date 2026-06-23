@@ -179,6 +179,7 @@ Rails.application.routes.draw do
         resources :items, only: %i[], module: 'characters' do
           post :load, on: :collection
         end
+        resources :copy, only: %i[create], module: 'characters'
       end
     end
 

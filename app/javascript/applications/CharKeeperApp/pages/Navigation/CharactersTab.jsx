@@ -16,6 +16,7 @@ import { importCharacterRequest } from '../../requests/importCharacterRequest';
 import { removeCharacterRequest } from '../../requests/removeCharacterRequest';
 import { fetchHomebrewsRequest } from '../../requests/fetchHomebrewsRequest';
 import { resetCharacterRequest } from '../../requests/resetCharacterRequest';
+import { copyCharacterRequest } from '../../requests/copyCharacterRequest';
 import { localize } from '../../helpers';
 
 const TRANSLATION = {
@@ -208,6 +209,15 @@ export const CharactersTab = () => {
     } else renderAlerts(result.errors_list);
   }
 
+   const copyCharacter = async (event, character) => {
+    event.stopPropagation();
+
+    const result = await copyCharacterRequest(appState.accessToken, character.provider, character.id);
+    if (result.errors_list === undefined) {
+      setCharacters([result.character, ...characters()]);
+    } else renderAlerts(result.errors_list);
+  }
+
   return (
     <>
       <Switch>
@@ -248,6 +258,7 @@ export const CharactersTab = () => {
                     onViewClick={() => navigate('characterView', { id: character.id })}
                     onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                     onResetCharacter={(e) => resetCharacter(e, character.id)}
+                    onCopyCharacter={(e) => copyCharacter(e, character)}
                   />
                 }
               </For>
