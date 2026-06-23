@@ -237,7 +237,7 @@ export const SharedContent = (props) => {
         fallback={
           <>
             <p>{localize(TRANSLATION, locale()).fileExample}</p>
-            <p class="mb-4"><a download={`${props.publicationType}.json`} class="underline" href={`https://github.com/kortirso/charkeeper/blob/master/spec/fixtures/${props.publicationType}.json`}>{localize(TRANSLATION, locale()).fileExampleDescription}</a></p>
+            <p class="mb-4"><a download={`${props.publicationType}.json`} class="underline" href={`https://github.com/kortirso/charkeeper/blob/master/spec/fixtures/daggerheart/${props.publicationType}.json`}>{localize(TRANSLATION, locale()).fileExampleDescription}</a></p>
             <Label labelText={localize(TRANSLATION, locale()).avatarFile} />
             <input class="block mb-2" type="file" accept="application/json" onChange={handleFileChange} />
             <div class="flex gap-1">
@@ -253,7 +253,7 @@ export const SharedContent = (props) => {
               <Select
                 containerClassList="w-40"
                 labelText={localize(TRANSLATION, locale()).selectBook}
-                items={Object.fromEntries(books().map((item) => [item.id, item.name]))}
+                items={Object.fromEntries(books().map((item) => [item.id, item.title]))}
                 selectedValue={book()}
                 onSelect={setBook}
               />

@@ -24,7 +24,7 @@ describe HomebrewsV2::PublicationsController do
 
   describe 'POST#create' do
     context 'for logged users' do
-      let(:file_path) { Rails.root.join('spec/fixtures/transformation.json') }
+      let(:file_path) { Rails.root.join('spec/fixtures/daggerheart/transformation.json') }
       let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
       let(:request) {
         post :create, params: { parent_type: 'transformation', file: file, charkeeper_access_token: access_token }

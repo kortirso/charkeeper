@@ -41,7 +41,7 @@ describe HomebrewsV2::Daggerheart::BooksController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['books'].size).to eq 1
-        expect(response.parsed_body.dig('books', 0).keys).to contain_exactly('id')
+        expect(response.parsed_body.dig('books', 0).keys).to contain_exactly('id', 'title')
       end
     end
   end

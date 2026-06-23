@@ -38,7 +38,7 @@ module HomebrewsV2
     end
 
     def for_items
-      serialize_relation(books_for_items, serializer, :books, { only: %i[id name] })
+      serialize_relation(books_for_items, serializer, :books, { only: %i[id title] })
     end
 
     private
