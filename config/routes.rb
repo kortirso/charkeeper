@@ -76,6 +76,7 @@ Rails.application.routes.draw do
     end
     resources :bots, only: %i[create]
     namespace :homebrews do
+      resources :books, only: %i[index update]
       get ':provider', to: 'list#index'
     end
     resources :homebrews, only: %i[index]
