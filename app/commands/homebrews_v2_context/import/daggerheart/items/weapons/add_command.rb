@@ -22,6 +22,7 @@ module HomebrewsV2Context
               params do
                 required(:user).filled(type?: ::User)
                 required(:kind).filled(Kinds)
+                optional(:itemable).maybe(type_included_in?: [::Feat])
                 required(:name).hash do
                   required(:en).filled(:string, max_size?: 50)
                   optional(:ru).maybe(:string, max_size?: 50)

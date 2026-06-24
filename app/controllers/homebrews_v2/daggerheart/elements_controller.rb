@@ -41,7 +41,7 @@ module HomebrewsV2
       end
 
       def find_features
-        @features = ::Daggerheart::Feat.where(origin_value: @element.id).order(created_at: :asc)
+        @features = ::Daggerheart::Feat.where(origin_value: @element.id).includes(:items).order(created_at: :asc)
       end
 
       def find_another_element

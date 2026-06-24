@@ -44,7 +44,48 @@
         "description": {
           "en": "Feature's description, **Markdown is available** for editing."
         },
-        "kind": "static"
+        "kind": "static",
+        "attacks": [
+          {
+            /* required, allowed locale keys - en, ru, es */
+            "name": {
+              "en": "Ability weapon's name"
+            },
+            /* required, allowed locale keys - en, ru, es */
+            "description": {
+              "en": "Ability weapon's description, **Markdown is available** for editing."
+            },
+            /* required, primary weapon or secondary weapon */
+            "kind": "primary weapon",
+            "info": {
+              /* required, 1 or 2 */
+              "burden": 1,
+              /* required, from 1 to 4 */
+              "tier": 1,
+              /* required */
+              /* agi, str, fin, ins, pre, know */
+              "trait": "agi",
+              /* required */
+              /* melee, very close, close, far, very far */
+              "range": "very close",
+              /* required */
+              /* physical or magic */
+              "damage_type": "physical",
+              /* required */
+              /* d4, d6, d8, d10, d12, d20 */
+              "damage": "d10",
+              /* required, from 0 to 20 */
+              "damage_bonus": 1,
+              /* optional, list of features */
+              "features": [
+                {
+                  /* required, allowed locale keys - en, ru, es */
+                  "en": "Feature"
+                }
+              ]
+            }
+          }
+        ]
       }
     ]
   }

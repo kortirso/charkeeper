@@ -1,6 +1,7 @@
 import { For, Show } from 'solid-js';
 
 import config from '../../../../CharKeeperApp/data/daggerheart.json';
+import { SharedWeapon } from './SharedWeapon';
 
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
@@ -49,6 +50,15 @@ export const DaggerheartSubclasses = () => {
               class="feat-markdown mt-1"
               innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
             />
+            <Show when={feature?.items}>
+              <div class="pl-4 mt-2">
+                <For each={feature?.items}>
+                  {(item) =>
+                    <SharedWeapon info={item} />
+                  }
+                </For>
+              </div>
+            </Show>
           </div>
         }
       </For>

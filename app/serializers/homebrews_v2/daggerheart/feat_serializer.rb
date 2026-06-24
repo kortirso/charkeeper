@@ -3,7 +3,7 @@
 module HomebrewsV2
   module Daggerheart
     class FeatSerializer < ApplicationSerializer
-      attributes :id, :title, :description, :limit, :limit_refresh, :conditions
+      attributes :id, :title, :description, :limit, :limit_refresh, :conditions, :items
 
       def title
         translate(object.title)
@@ -15,6 +15,10 @@ module HomebrewsV2
 
       def limit
         object.description_eval_variables['limit']
+      end
+
+      def items
+        object.items.hashable_pluck(:info, :kind)
       end
     end
   end

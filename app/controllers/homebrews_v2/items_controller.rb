@@ -35,7 +35,9 @@ module HomebrewsV2
     private
 
     def items
-      class_name.where(user_id: current_user.id).or(class_name.where(public: true)).where(kind: params.expect(:type).split(','))
+      class_name.where(user_id: current_user.id).or(class_name.where(public: true))
+        .where(itemable: nil)
+        .where(kind: params.expect(:type).split(','))
     end
 
     def find_item
