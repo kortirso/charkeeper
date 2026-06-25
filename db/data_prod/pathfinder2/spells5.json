@@ -99,7 +99,7 @@
       "level": 5,
       "range": "120,ft",
       "defense": "reflex",
-      "area": "burst,20",
+      "area": "burst,20"
     }
   },
   {
@@ -124,7 +124,7 @@
       "level": 5,
       "range": "touch",
       "duration": "8,h",
-      "time": "10,m",
+      "time": "10,m"
     }
   },
   {
@@ -135,8 +135,8 @@
       "ru": "Форма элементаля"
     },
     "description": {
-      "en": "You call upon the power of the planes to transform into a Medium elemental battle form. When you Cast this Spell, choose a listed element. While in this form, you gain the corresponding trait and the elemental trait. You have hands in this battle form and can take manipulate actions. You can Dismiss the spell. \n\nYou gain the following statistics and abilities regardless of which battle form you choose:\n\n- AC = 19 + your level. Ignore your armor's check penalty and Speed reduction.\n\n- 10 temporary Hit Points.\n\n- Darkvision.\n\n- One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can Strike with. You're trained with them. Your attack modifier is +18, and your damage bonus is +9. These are Dexterity based (air, fire, or metal) or Strength based (earth, water, or wood). If your corresponding unarmed attack modifier is higher, you can use it instead.\n\n- Acrobatics (air, fire, or metal) or Athletics (earth, water, or wood) modifier of +20; ignore this change if your own modifier is higher. You gain specific abilities based on the element you choose:\n\n-**Air** fly 80 feet, movement doesn't trigger reactions; **Melee** [one-action]  gust, **Damage** 1d4 bludgeoning.\n\n- **Earth** Speed 20 feet, burrow 20 feet; **Melee** [one-action]  boulder, **Damage** 2d10 bludgeoning.\n\n- **Fire** Speed 50 feet; fire resistance 10, weakness 5 to cold and 5 to water; **Melee** [one-action]  tendril, **Damage** 1d8 fire plus 1d4 persistent fire.\n\n- **Metal** Speed 40 feet, fly 20 feet; Melee  [one-action]  blade (versatile piercing), Damage 1d8 slashing plus 1d4 electricity.\n\n- **Water** Speed 20 feet, swim 60 feet; fire resistance 5; **Melee** [one-action]  wave, **Damage** 1d12 bludgeoning, and you can spend an action immediately after a hit to push the target 5 feet with the effects of a successful Shove.\n\n- **Wood** Speed 20 feet, climb 30 feet; **Melee** [one-action]  branch, **Damage** 2d10 bludgeoning.**Heightened (6th)** Your battle form is Large and your attacks have 10-foot reach. You instead gain AC = 22 + your level, 15 temporary HP, an attack modifier of +23, a damage bonus of +13, and Acrobatics or Athletics +23.\n\n**Heightened (7th)** Your battle form is Huge and your attacks have 15-foot reach. You instead gain AC = 22 + your level, 20 temporary HP, an attack modifier of +25, a damage bonus of +11, double the number of damage dice (including persistent damage), and Acrobatics or Athletics +25.",
-      "ru": "Вы взываете к силам планов, чтобы принять боевую форму элементаля среднего размера.\n\nКогда вы сотворяете это заклинание, вы выбираете, в какого элементаля обратитесь: воды, воздуха, земли или огня. Пока вы в этой форме, вы получаете соответствующий стихии дескриптор и дескриптор «элементаль». В форме элементаля у вас есть руки, и вы можете совершать действия с дескриптором «манипуляция». Вы можете использовать Прекращение для этого заклинания.\n\nВне зависимости от принятой формы вы получаете следующие параметры и способности:\n\n- КБ = 19 + ваш уровень. Вы игнорируете штрафы за броню к навыкам и скорости. \n\n- 10 временных ПЗ. \n\n- Ночное зрение. \n\n- Одна или несколько безоружных атак в ближнем бою, зависящих от выбранной формы. Эти атаки считаются для вас изученными, и вы не можете использовать другие атаки. Ваш модификатор атаки +18, бонус урона +9. Атаки зависят от Силы (для элементалей воды и земли) или Ловкости (для элементалей воздуха и огня). Если ваш модификатор атаки для соответствующей безоружной атаки выше, вы можете использовать его. \n\n- Модификатор Акробатики (для элементалей воздуха и огня) или Атлетики (для элементалей воды и земли) +20 (если ваш собственный выше, используйте его). \nКроме этого, вы получаете особые способности в зависимости от выбранной формы:\n\n-**Элементаль воды** скорость 20 футов, скорость плавания 60 футов; устойчивость 5 к огню. **В ближнем бою** [one-action]: волна, **урон** 1d12 (дробящий), немедленно после попадания вы можете потратить действие, чтобы оттолкнуть цель на 5 футов (как при успешном Толчке). \n\n-**Элементаль воздуха** скорость полёта 80 футов, перемещение не провоцирует ответных действий. **В ближнем бою** [one-action]: порыв, **урон** 1d4 (дробящий). \n\n-**Элементаль земли** скорость 20 футов, скорость рытья 20 футов. **В ближнем бою**[one-action]: кулак, **урон** 2d10 (дробящий). \n\n-**Элементаль огня** скорость 50 футов; устойчивость 10 к огню, уязвимость 5 к воде и 5 к холоду. **В ближнем бою** [one-action]: язык пламени, **урон** 1d8 (огонь) и 1d4 (продолжительный урон огнём).\n\n**Повышенное (6 круг)** у боевой формы крупный размер, и ваши атаки обладают зоной досягаемости 10 футов. Вам требуется пространство для увеличения в размере, иначе заклинание тратится впустую. Вместо описанных преимуществ вы получаете КБ = 22 + ваш уровень, 15 временных ПЗ, модификатор атаки +23, бонус урона +13, модификатор Акробатики или Атлетики +23.\n\n**Повышенное (7 круг)** у боевой формы огромный размер, и ваши атаки обладают зоной досягаемости 15 футов. Вам требуется пространство для увеличения в размере, иначе заклинание тратится впустую. Вместо описанных преимуществ вы получаете КБ = 22 + ваш уровень, 20 временных ПЗ, модификатор атаки +25, бонус урона +11 и удвоенное количество костей урона (в том числе продолжительного), модификатор Акробатики или Атлетики +25."
+      "en": "You call upon the power of the planes to transform into a Medium elemental battle form. When you Cast this Spell, choose a listed element. While in this form, you gain the corresponding trait and the elemental trait. You have hands in this battle form and can take manipulate actions. You can Dismiss the spell.\n\nYou gain the following statistics and abilities regardless of which battle form you choose:\n\n- AC = 19 + your level. Ignore your armor's check penalty and Speed reduction.\n\n- 10 temporary Hit Points.\n\n- Darkvision.\n\n- One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can Strike with. You're trained with them. Your attack modifier is +18, and your damage bonus is +9. These are Dexterity based (air, fire, or metal) or Strength based (earth, water, or wood). If your corresponding unarmed attack modifier is higher, you can use it instead.\n\n- Acrobatics (air, fire, or metal) or Athletics (earth, water, or wood) modifier of +20; ignore this change if your own modifier is higher. You gain specific abilities based on the element you choose:\n\n- **Air** fly 80 feet, movement doesn't trigger reactions; **Melee** [one-action]  gust, **Damage** 1d4 bludgeoning.\n\n- **Earth** Speed 20 feet, burrow 20 feet; **Melee** [one-action]  boulder, **Damage** 2d10 bludgeoning.\n\n- **Fire** Speed 50 feet; fire resistance 10, weakness 5 to cold and 5 to water; **Melee** [one-action]  tendril, **Damage** 1d8 fire plus 1d4 persistent fire.\n\n- **Metal** Speed 40 feet, fly 20 feet; Melee  [one-action]  blade (versatile piercing), Damage 1d8 slashing plus 1d4 electricity.\n\n- **Water** Speed 20 feet, swim 60 feet; fire resistance 5; **Melee** [one-action]  wave, **Damage** 1d12 bludgeoning, and you can spend an action immediately after a hit to push the target 5 feet with the effects of a successful Shove.\n\n- **Wood** Speed 20 feet, climb 30 feet; **Melee** [one-action]  branch, **Damage** 2d10 bludgeoning.**Heightened (6th)** Your battle form is Large and your attacks have 10-foot reach. You instead gain AC = 22 + your level, 15 temporary HP, an attack modifier of +23, a damage bonus of +13, and Acrobatics or Athletics +23.\n\n**Heightened (7th)** Your battle form is Huge and your attacks have 15-foot reach. You instead gain AC = 22 + your level, 20 temporary HP, an attack modifier of +25, a damage bonus of +11, double the number of damage dice (including persistent damage), and Acrobatics or Athletics +25.",
+      "ru": "Вы взываете к силам планов, чтобы принять боевую форму элементаля среднего размера.\n\nКогда вы сотворяете это заклинание, вы выбираете, в какого элементаля обратитесь: воды, воздуха, земли или огня. Пока вы в этой форме, вы получаете соответствующий стихии дескриптор и дескриптор «элементаль». В форме элементаля у вас есть руки, и вы можете совершать действия с дескриптором «манипуляция». Вы можете использовать Прекращение для этого заклинания.\n\nВне зависимости от принятой формы вы получаете следующие параметры и способности:\n\n- КБ = 19 + ваш уровень. Вы игнорируете штрафы за броню к навыкам и скорости.\n\n- 10 временных ПЗ.\n\n- Ночное зрение.\n\n- Одна или несколько безоружных атак в ближнем бою, зависящих от выбранной формы. Эти атаки считаются для вас изученными, и вы не можете использовать другие атаки. Ваш модификатор атаки +18, бонус урона +9. Атаки зависят от Силы (для элементалей воды и земли) или Ловкости (для элементалей воздуха и огня). Если ваш модификатор атаки для соответствующей безоружной атаки выше, вы можете использовать его.\n\n- Модификатор Акробатики (для элементалей воздуха и огня) или Атлетики (для элементалей воды и земли) +20 (если ваш собственный выше, используйте его). \nКроме этого, вы получаете особые способности в зависимости от выбранной формы:\n\n- **Элементаль воды** скорость 20 футов, скорость плавания 60 футов; устойчивость 5 к огню. **В ближнем бою** [one-action]: волна, **урон** 1d12 (дробящий), немедленно после попадания вы можете потратить действие, чтобы оттолкнуть цель на 5 футов (как при успешном Толчке).\n\n- **Элементаль воздуха** скорость полёта 80 футов, перемещение не провоцирует ответных действий. **В ближнем бою** [one-action]: порыв, **урон** 1d4 (дробящий).\n\n- **Элементаль земли** скорость 20 футов, скорость рытья 20 футов. **В ближнем бою**[one-action]: кулак, **урон** 2d10 (дробящий).\n\n- **Элементаль огня** скорость 50 футов; устойчивость 10 к огню, уязвимость 5 к воде и 5 к холоду. **В ближнем бою** [one-action]: язык пламени, **урон** 1d8 (огонь) и 1d4 (продолжительный урон огнём).\n\n**Повышенное (6 круг)** у боевой формы крупный размер, и ваши атаки обладают зоной досягаемости 10 футов. Вам требуется пространство для увеличения в размере, иначе заклинание тратится впустую. Вместо описанных преимуществ вы получаете КБ = 22 + ваш уровень, 15 временных ПЗ, модификатор атаки +23, бонус урона +13, модификатор Акробатики или Атлетики +23.\n\n**Повышенное (7 круг)** у боевой формы огромный размер, и ваши атаки обладают зоной досягаемости 15 футов. Вам требуется пространство для увеличения в размере, иначе заклинание тратится впустую. Вместо описанных преимуществ вы получаете КБ = 22 + ваш уровень, 20 временных ПЗ, модификатор атаки +25, бонус урона +11 и удвоенное количество костей урона (в том числе продолжительного), модификатор Акробатики или Атлетики +25."
     },
     "origin": "spell",
     "origin_value": "arcane,primal",
@@ -148,7 +148,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 5,
-      "duration": "1,m",
+      "duration": "1,m"
     }
   },
   {
@@ -175,7 +175,7 @@
       "range": "touch",
       "duration": "1,d",
       "time": "10,m",
-      "area": "burst,100",
+      "area": "burst,100"
     }
   },
   {
@@ -186,7 +186,7 @@
       "ru": "Галлюцинация"
     },
     "description": {
-      "en": "The target consistently detects one thing as another, can't detect something that's there, or detects something that's not there, though it doesn't alter their beliefs. You choose which of these effects applies, and you determine the specifics of the hallucination. For example, you could make the target see all elves as humans, be unable to detect the presence of their brother, see their beloved good luck charm on their person even when it isn't, or see a tower in the center of town.\n\n The target can attempt an initial Will save, with effects below. They also receive a Will save to disbelieve the hallucination every time they Seek or directly interact with the hallucination. For example, the target could attempt to disbelieve the hallucination each time they interacted with an elf, bumped into their brother accidentally, tried to check their charm, or studied the tower. The target can attempt to disbelieve with a large circumstance bonus in situations determined by the GM, such as if the target attempted to climb the nonexistent tower.\n\n**Critical Success** The creature is unaffected.\n\n**Success** The creature perceives what you chose until it disbelieves, but it knows what the hallucination is.\n\n**Failure** The creature perceives what you chose until it disbelieves.\n\n**Critical Failure** The creature perceives what you chose until it disbelieves, and it trusts its false senses, taking a –4 circumstance penalty to saves to disbelieve.\n\n**Heightened (6th)** Choose to either target up to 10 creatures or change the spell's duration to until your next daily preparations.\n\n**Heightened (8th)** Choose to either target any number of creatures or change the spell's duration to unlimited.",
+      "en": "The target consistently detects one thing as another, can't detect something that's there, or detects something that's not there, though it doesn't alter their beliefs. You choose which of these effects applies, and you determine the specifics of the hallucination. For example, you could make the target see all elves as humans, be unable to detect the presence of their brother, see their beloved good luck charm on their person even when it isn't, or see a tower in the center of town.\n\nThe target can attempt an initial Will save, with effects below. They also receive a Will save to disbelieve the hallucination every time they Seek or directly interact with the hallucination. For example, the target could attempt to disbelieve the hallucination each time they interacted with an elf, bumped into their brother accidentally, tried to check their charm, or studied the tower. The target can attempt to disbelieve with a large circumstance bonus in situations determined by the GM, such as if the target attempted to climb the nonexistent tower.\n\n**Critical Success** The creature is unaffected.\n\n**Success** The creature perceives what you chose until it disbelieves, but it knows what the hallucination is.\n\n**Failure** The creature perceives what you chose until it disbelieves.\n\n**Critical Failure** The creature perceives what you chose until it disbelieves, and it trusts its false senses, taking a –4 circumstance penalty to saves to disbelieve.\n\n**Heightened (6th)** Choose to either target up to 10 creatures or change the spell's duration to until your next daily preparations.\n\n**Heightened (8th)** Choose to either target any number of creatures or change the spell's duration to unlimited.",
       "ru": "Вы изменяете восприятие цели, заставляя её что-то не замечать, принимать одно за другое или видеть что-то, чего на самом деле нет, хотя убеждений цели это никак не меняет. Вы выбираете, какой из эффектов применяется, и определяете подробности галлюцинации. Например, все эльфы могут казаться цели людьми, она может в упор не замечать присутствия своего брата, видеть, что талисман удачи по-прежнему у неё, хотя его давно нет, или увидеть новую башню прямо в центре города.\n\nЦель может пройти начальное испытание Воли с описанными ниже эффектами. Кроме этого, цель может проходить испытание Воли для разоблачения галлюцинации всякий раз, когда совершает Поиск или напрямую взаимодействует с ней. В вышеописанных примерах цель могла бы пытаться разоблачить галлюцинацию каждый раз, когда общается с эльфом, случайно натыкается на брата, пытается найти талисман или внимательно присмотреться к новой башне. В некоторых ситуациях ведущий может дать цели большой ситуативный бонус к испытанию — например, если существо попытается забраться на несуществующую башню.\n\n**Критический успех** существо избегает эффекта.\n\n**Успех** существо воспринимает то, что вы выбрали, пока не разоблачит галлюцинацию, но при этом знает, что является галлюцинацией.\n\n**Провал** существо воспринимает то, что вы выбрали, пока не разоблачит галлюцинацию.\n\n**Критический провал** существо воспринимает то, что вы выбрали, пока не разоблачит галлюцинацию, но полностью доверяет своему восприятию, получая ситуативный штраф -4 к испытаниям для разоблачения.\n\n**Повышенное (6 круг)** вы либо выбираете целями 10 или менее существ, либо увеличиваете длительность заклинания до следующей вашей ежедневной подготовки.\n\n**Повышенное (8 круг)** вы либо выбираете целями любое количество существ, либо длительность заклинания становится неограниченной."
     },
     "origin": "spell",
@@ -226,7 +226,7 @@
     ],
     "info": {
       "level": 5,
-      "defense": "reflex",
+      "defense": "reflex"
     }
   },
   {
@@ -237,7 +237,7 @@
       "ru": "Иллюзорная сцена"
     },
     "description": {
-      "en": "You craft an imaginary scene that includes up to 10 discrete creatures or objects of various sizes, all of which must be within the spell's area. These elements generate appropriate sounds and smells, and they feel right to the touch. Elements of an illusory scene are incapable of speech. Unlike with the illusory creature spell, creatures in your scene lack combat abilities and statistics. Your scene doesn't include changes to the environment around it, though you can place your scene within the illusory environment of a **mirage** spell.\n\n When you create the scene, you can choose to have it be static or follow a program. Though a static scene is stationary, it includes basic natural movement. For example, wind blowing on an illusory piece of paper would rustle it. A program can be up to 1 minute long and repeats when finished. For instance, you could create a scene of two orcs fighting each other, and the fight would go the same way for each repetition. If you create a loop, the two fighters end up in the same place at the start of the scene and at the end of it, but you can smooth the program so it's hard to tell when the loop ends and begins. Anyone observing the scene for more than a few minutes almost always notices it looping. You're unable to alter the program after you create the illusion.\n\n Any creature that touches any part of the image or uses the Seek action to examine it can attempt to disbelieve your illusion. If they interact with a portion of the illusion, they disbelieve only that portion. They disbelieve the entire scene only on a critical success.\n\n**Heightened (6th)** Creatures or objects in your scene can speak. You must speak the specific lines for each actor when creating your program. The spell disguises your voice for each actor.\n\n**Heightened (8th)** As the 6th-rank version, and the duration is unlimited.",
+      "en": "You craft an imaginary scene that includes up to 10 discrete creatures or objects of various sizes, all of which must be within the spell's area. These elements generate appropriate sounds and smells, and they feel right to the touch. Elements of an illusory scene are incapable of speech. Unlike with the illusory creature spell, creatures in your scene lack combat abilities and statistics. Your scene doesn't include changes to the environment around it, though you can place your scene within the illusory environment of a **mirage** spell.\n\nWhen you create the scene, you can choose to have it be static or follow a program. Though a static scene is stationary, it includes basic natural movement. For example, wind blowing on an illusory piece of paper would rustle it. A program can be up to 1 minute long and repeats when finished. For instance, you could create a scene of two orcs fighting each other, and the fight would go the same way for each repetition. If you create a loop, the two fighters end up in the same place at the start of the scene and at the end of it, but you can smooth the program so it's hard to tell when the loop ends and begins. Anyone observing the scene for more than a few minutes almost always notices it looping. You're unable to alter the program after you create the illusion.\n\nAny creature that touches any part of the image or uses the Seek action to examine it can attempt to disbelieve your illusion. If they interact with a portion of the illusion, they disbelieve only that portion. They disbelieve the entire scene only on a critical success.\n\n**Heightened (6th)** Creatures or objects in your scene can speak. You must speak the specific lines for each actor when creating your program. The spell disguises your voice for each actor.\n\n**Heightened (8th)** As the 6th-rank version, and the duration is unlimited.",
       "ru": "Вы создаёте иллюзорную сцену из 10 или менее отдельных существ или объектов разных размеров. Они должны умещаться в пределы области заклинания. Составляющие сцены издают соответствующие звуки и запахи и правдоподобны на ощупь, но говорить не могут. Это заклинание, в отличие от иллюзорного существа, не наделяет существ боевыми способностями и параметрами. Иллюзорная сцена не изменяет окружение, но её можно разместить в пределах миража.\n\nКогда вы создаёте сцену, вы выбираете, будет ли она статичной или станет следовать сценарию. Статичная сцена неподвижна, но включает в себя простые естественные движения: например, ветер перевернёт иллюзорные страницы книги. Сценарий позволяет разыграть сцену длиной не более 1 минуты, после чего она повторяется. Например, вы можете создать сцену битвы двух орков, и каждую минуту она будет повторяться снова и снова. В этом случае два бойца в конце сцены займут те же позиции, что и в начале, но вы можете настолько точно подогнать сцену, что будет сложно понять, где она заканчивается и начинается. Если кто-то понаблюдает за сценой дольше нескольких минут, он, скорее всего, поймёт, что сцена повторяется. После создания иллюзии сценарий изменить невозможно.\n\nЛюбое существо, прикоснувшееся к какой-либо части образа или использовавшее Поиск, чтобы изучить его, может попытаться разоблачить иллюзию. Если оно взаимодействует лишь с частью иллюзии, то и разоблачить сможет только эту часть. Всю сцену целиком можно разоблачить только при критическом успехе.\n\n**Повышенное (6 круг)** существа и объекты в вашей сцене могут говорить. При создании сценария вы должны произнести конкретные реплики для каждого актёра, и заклинание замаскирует ваш голос для каждого участника сцены.\n\n**Повышенное (8 круг)** аналогично версии 6 круга, но длительность неограниченная."
     },
     "origin": "spell",
@@ -255,7 +255,7 @@
       "range": "500,ft",
       "duration": "1,h",
       "time": "10,m",
-      "area": "burst,30",
+      "area": "burst,30"
     }
   },
   {
@@ -267,7 +267,7 @@
     },
     "description": {
       "en": "You conjure a spike that thrusts up from the earth beneath a target creature, potentially impaling it. The spike is made of cold iron and deals 8d6 piercing damage. The target must attempt a Reflex save.\n\n**Critical Success** The target dodges the spike and is unaffected.\n\n**Success** The target is struck by the spike and takes half damage.\n\n**Failure** The target is impaled through a leg or another non-vital body part. The creature takes full damage and, if it's standing on solid ground, becomes immobilized. It can attempt to Escape (the DC is your spell DC). While it remains impaled, it takes damage from any weakness to cold iron it has at the end of each of its turns.\n\n**Critical Failure** As failure, but the creature is impaled through a vital organ or its center of mass, taking double damage, and it is off-guard as long as it's impaled.\n\n**Heightened (+1)** The damage increases by 2d6.",
-      "ru": "**Традиции** мистическая, первобытная\n\n**Божество** Лаудинмио, Формы тускнеющего блеска, Вэрг, Xiquiripat \n\n**Сотворение** [two-actions] \n\n**Дистанция** 30 футов; **Цели** 1 существо\n\n**Защита** Реакция; **Длительность** 1 минута.\n\nВы создаёте шип, вырывающийся из земли под целью с достаточной силой, чтобы пронзить её. Шип состоит из холодного железа и наносит 8d6 колющего урона. Цель проходит испытание Реакции.\n\n**Критический успех** цель уклоняется от шипа и избегает эффекта.\n\n**Успех** шип задевает цель, нанося половину урона.\n\n**Провал** шип пронзает ногу или иной не жизненно важный орган цели, нанося полный урон. Если цель при этом стоит на твёрдой поверхности, то получает неподвижность, но может совершить Освобождение (СЛ равна вашей СЛ заклинаний). Пока цель остаётся пронзённой, в конце каждого своего хода она получает урон от уязвимости к холодному железу (если таковая есть).\n\n**Критический провал** аналогичен провалу, но шип пронзает жизненно важный орган или центр масс существа, нанося двойной урон и делая существо застигнутым врасплох, пока оно остаётся пронзённым.\n\n**Повышенное (+1)** урон увеличивается на 2d6."
+      "ru": "**Традиции** мистическая, первобытная\n\n**Божество** Лаудинмио, Формы тускнеющего блеска, Вэрг, Xiquiripat\n\n**Сотворение** [two-actions]\n\n**Дистанция** 30 футов; **Цели** 1 существо\n\n**Защита** Реакция; **Длительность** 1 минута.\n\nВы создаёте шип, вырывающийся из земли под целью с достаточной силой, чтобы пронзить её. Шип состоит из холодного железа и наносит 8d6 колющего урона. Цель проходит испытание Реакции.\n\n**Критический успех** цель уклоняется от шипа и избегает эффекта.\n\n**Успех** шип задевает цель, нанося половину урона.\n\n**Провал** шип пронзает ногу или иной не жизненно важный орган цели, нанося полный урон. Если цель при этом стоит на твёрдой поверхности, то получает неподвижность, но может совершить Освобождение (СЛ равна вашей СЛ заклинаний). Пока цель остаётся пронзённой, в конце каждого своего хода она получает урон от уязвимости к холодному железу (если таковая есть).\n\n**Критический провал** аналогичен провалу, но шип пронзает жизненно важный орган или центр масс существа, нанося двойной урон и делая существо застигнутым врасплох, пока оно остаётся пронзённым.\n\n**Повышенное (+1)** урон увеличивается на 2d6."
     },
     "origin": "spell",
     "origin_value": "arcane,primal",
@@ -292,7 +292,7 @@
       "ru": "Воззвание к духам"
     },
     "description": {
-      "en": "Ragged apparitions of the dead rise to stalk the living. They deal 2d4 mental damage and 2d4 void damage to each living creature in the area, with a basic Will save. Additionally, creatures that critically fail the save are frightened 2 and are fleeing for 1 round. \n\nOn subsequent rounds, the first time you Sustain the spell each round, you can move the area up to 30 feet within the range of the spell. Living creatures in the new area must attempt saves with the same effects as above, except that critically failing doesn't make them flee.\n\n**Heightened (+2)** The mental damage and void damage each increase by 1d4.",
+      "en": "Ragged apparitions of the dead rise to stalk the living. They deal 2d4 mental damage and 2d4 void damage to each living creature in the area, with a basic Will save. Additionally, creatures that critically fail the save are frightened 2 and are fleeing for 1 round.\n\nOn subsequent rounds, the first time you Sustain the spell each round, you can move the area up to 30 feet within the range of the spell. Living creatures in the new area must attempt saves with the same effects as above, except that critically failing doesn't make them flee.\n\n**Heightened (+2)** The mental damage and void damage each increase by 1d4.",
       "ru": "Измученные призраки мёртвых возвращаются, чтобы терзать живых. Они наносят 2d4 ментального урона и 2d4 урона пустотой всем живым существам в области (обычное испытание Воли). Кроме того, существа, критически провалившие испытание, получают испуг 2 и панику на 1 раунд.\n\nВ последующие раунды, когда вы впервые за раунд используете Поддержание этого заклинания, вы можете переместить область на расстояние до 30 футов в пределах дистанции заклинания. Живые существа в новой области должны пройти испытание с теми же эффектами, но критический провал не вызовет панику.\n\n**Повышенное (+2)** ментальный урон и урон пустотой увеличиваются на 1d4."
     },
     "origin": "spell",
@@ -312,7 +312,7 @@
       "duration": "1,m",
       "defense": "will",
       "area": "burst,10",
-      "sustained": true,
+      "sustained": true
     }
   },
   {
@@ -349,7 +349,7 @@
       "ru": "Проклятие моряка"
     },
     "description": {
-      "en": "You afflict the target with the curse of the roiling, unforgiving sea. The target must attempt a Will save.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target becomes sickened 1. Reducing its sickened condition to 0 ends the curse. \n\n**Failure** The target becomes sickened 1 and can't reduce its sickened condition below 1 while the curse remains. The curse can be lifted by 4th-rank cleanse affliction or similar magic. Whenever the target is sickened and on the water at least a mile from shore, it is also slowed 1.\n\n**Critical Failure** As failure, but the target becomes sickened 2.",
+      "en": "You afflict the target with the curse of the roiling, unforgiving sea. The target must attempt a Will save.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target becomes sickened 1. Reducing its sickened condition to 0 ends the curse.\n\n**Failure** The target becomes sickened 1 and can't reduce its sickened condition below 1 while the curse remains. The curse can be lifted by 4th-rank cleanse affliction or similar magic. Whenever the target is sickened and on the water at least a mile from shore, it is also slowed 1.\n\n**Critical Failure** As failure, but the target becomes sickened 2.",
       "ru": "**Вы поражаете цель проклятием бушующего штормового моря. Цель проходит испытание Воли.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель получает тошноту 1. Если значение тошноты снижается до 0, проклятие прекращается.\n\n**Провал** цель получает тошноту 1 и не может снизить значение тошноты ниже 1, пока проклятие действует. Снять проклятие можно избавлением от недуга 4 круга или другой подобной магией. Пока цель находится на воде на расстоянии не менее 1 мили от берега и у неё тошнота, она дополнительно получает замедление 1.\n\n**Критический провал** аналогичен провалу, но цель получает тошноту 2."
     },
     "origin": "spell",
@@ -392,7 +392,7 @@
       "defense": "will",
       "time": "1,m",
       "duration": "1,m",
-      "sustained": true,
+      "sustained": true
     }
   },
   {
@@ -403,7 +403,7 @@
       "ru": "Лунное бешенство"
     },
     "description": {
-      "en": "A feral aspect overcomes the targets, filling them with strength and ferocity. Targets gain 5 temporary Hit Points, a +10-foot status bonus to their Speeds, and weakness 5 to silver. They also grow vicious fangs and claws, which are unarmed attacks. The fangs deal 2d8 piercing damage; the claws deal 2d6 slashing damage and have the agile and finesse traits. The targets use their highest weapon or unarmed attack proficiency with these attacks, and if they have weapon specialization or greater weapon specialization, they add this damage as well. On a critical hit with one of these unarmed attacks, the creature struck takes 1d4 persistent bleed damage.\n\n The targets can't use concentrate actions unless those actions also have the rage trait, with the exception of Seek. A creature can attempt to end the spell's effect on itself by using a single action, which has the rage trait, to attempt a Will save against your spell DC; on a success, it ends the spell's effect on itself.\n\n If a target is in the light of a full moon, it also grows by one size if it were Medium or smaller. This increases the reach of a Medium or Tiny creature by 5 feet.\n\n**Heightened (6th)** The temporary Hit Points increase to 10, the silver weakness to 10, and the damage dealt by the attacks to three dice.\n\n**Heightened (10th)** The temporary Hit Points increase to 20, the silver weakness to 20, and the damage dealt by the attacks to four dice.",
+      "en": "A feral aspect overcomes the targets, filling them with strength and ferocity. Targets gain 5 temporary Hit Points, a +10-foot status bonus to their Speeds, and weakness 5 to silver. They also grow vicious fangs and claws, which are unarmed attacks. The fangs deal 2d8 piercing damage; the claws deal 2d6 slashing damage and have the agile and finesse traits. The targets use their highest weapon or unarmed attack proficiency with these attacks, and if they have weapon specialization or greater weapon specialization, they add this damage as well. On a critical hit with one of these unarmed attacks, the creature struck takes 1d4 persistent bleed damage.\n\nThe targets can't use concentrate actions unless those actions also have the rage trait, with the exception of Seek. A creature can attempt to end the spell's effect on itself by using a single action, which has the rage trait, to attempt a Will save against your spell DC; on a success, it ends the spell's effect on itself.\n\nIf a target is in the light of a full moon, it also grows by one size if it were Medium or smaller. This increases the reach of a Medium or Tiny creature by 5 feet.\n\n**Heightened (6th)** The temporary Hit Points increase to 10, the silver weakness to 10, and the damage dealt by the attacks to three dice.\n\n**Heightened (10th)** The temporary Hit Points increase to 20, the silver weakness to 20, and the damage dealt by the attacks to four dice.",
       "ru": "В целях пробуждаются первобытные инстинкты, делая их сильнее и яростнее. Цели получают 5 временных ПЗ, бонус состояния +10 футов к скоростям и уязвимость 5 к серебру. Кроме того, они отращивают острые когти и клыки, которые могут применять для безоружных атак. Клыки наносят 2d8 колющего урона; когти наносят 2d6 режущего урона и обладают дескрипторами «быстрое» и «фехтовальное». Для этих атак цели используют свой наивысший уровень умения в оружии или безоружных атаках и добавляют урон за привычное или улучшенное привычное оружие (если он есть). При критическом ударе этими безоружными атаками существо, в которое попали, получает 1d4 продолжительного урона от кровотечения.\n\nЦели заклинания не могут использовать действия с дескриптором «концентрация» за исключением Поиска, если у них нет ещё и дескриптора «ярость». Существо может попытаться прекратить эффект заклинания для себя, использовав одиночное действие с дескриптором «ярость», чтобы пройти испытание Воли против вашей СЛ заклинаний; при успехе эффект заклинания прекращается для этой цели. Если цель среднего или меньшего размера находится под светом полной луны, она также увеличивается на одну категорию размера. При этом зона досягаемости средних и маленьких существ увеличивается на 5 футов.\n\n**Повышенное (6 круг)** 10 временных ПЗ, уязвимость 10 к серебру, атаки наносят три кости урона.\n\n**Повышенное (10 круг)** 20 временных ПЗ, уязвимость 20 к серебру, атаки наносят четыре кости урона."
     },
     "origin": "spell",
@@ -443,7 +443,7 @@
     ],
     "info": {
       "level": 5,
-      "time": "1,m",
+      "time": "1,m"
     }
   },
   {
@@ -454,8 +454,8 @@
       "ru": "Форма растения"
     },
     "description": {
-      "en": "Taking inspiration from verdant creatures, you transform into a Large plant battle form. When you Cast this Spell, choose a listed battle form. You can substitute a similar specific plant to turn into (such as a pitcher plant instead of a flytrap), but this has no effect on the form's Size or statistics. While in this form, you gain the plant trait. You can Dismiss the spell.\n\n You gain the following statistics and abilities regardless of which battle form you choose:\n\n- AC = 19 + your level. Ignore your armor's check penalty and Speed reduction.\n\n- 12 temporary Hit Points.\n\n- Resistance 10 to poison.\n\n- Low-light vision.\n\n- One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can Strike with. You're trained with them. Your attack modifier is +17, and your damage bonus is +11. These attacks are Strength based (for the purpose of the enfeebled condition, for example). If your unarmed attack modifier is higher, you can use it instead.\n\n- Athletics modifier of +19, unless your own is higher. You gain specific abilities based on the plant you choose:\n\n-**Arboreal** Speed 30 feet; Melee  [one-action]  branch (reach 15 feet), **Damage** 2d10 bludgeoning; Melee  [one-action]  foot, **Damage** 2d8 bludgeoning; you can speak in this form.\n\n- **Flytrap** Speed 15 feet; resistance 10 to acid; **Melee** [one-action]  leaf (reach 10 feet), **Damage** 2d8 piercing, and you can spend an action after a hit to Grab the target.**Heightened (6th)** Your battle form is Huge, and the reach of your attacks increases by 5 feet. You instead gain AC = 22 + your level, 24 temporary HP, attack modifier +21, damage bonus +16, and Athletics +22.",
-      "ru": "Вы вдохновляетесь растительными существами и принимаете боевую форму растения крупного размера. Когда вы сотворяете это заклинание, выберите одну из перечисленных далее боевых форм. Вы можете заменить одно растение другим похожим (например, обратиться не в мухоловку, а в иное плотоядное растение), но на размер или параметры формы это не повлияет. Пока вы в этой форме, вы получаете дескриптор «растение». Вы можете использовать Прекращение для этого заклинания.\n\nВне зависимости от принятой формы вы получаете следующие параметры и способности.\n\n-    КБ = 19 + ваш уровень. Вы игнорируете штрафы за броню к навыкам и скорости.\n\n-    12 временных ПЗ.\n\n-    Устойчивость 10 к яду.\n\n-    Сумеречное зрение.\n\n-    Одна или несколько безоружных атак в ближнем бою, зависящих от выбранной формы. Эти атаки считаются для вас изученными, и вы можете совершать Удар только ими. Ваш модификатор атаки +17, бонус урона +11. Атаки зависят от Силы (это важно учитывать, например, для состояния слабости). Если ваш модификатор атаки для безоружных атак выше, вы можете использовать его.\n\n-    Модификатор Атлетики +19 (если ваш собственный выше, используйте его).    Кроме этого, вы получаете особые способности в зависимости от выбранной формы.\n\n-**Лесовик** скорость 30 футов. **В ближнем бою** [one-action]: ветвь (зона досягаемости 15 футов), **урон** 2d10 (дробящий). **В ближнем бою** [one-action]: стопа, **урон** 2d8 (дробящий). В этой форме вы способны разговаривать.\n\n-**Мухоловка** скорость 15 футов; устойчивость 10 к кислоте. **В ближнем бою** [one-action]: лист (зона досягаемости 10 футов), **урон** 2d8 (колющий), и после попадания вы можете потратить действие, чтобы использовать Хватку против цели.\n\n**Повышенное (6 круг)** у боевой формы огромный размер, и зона досягаемости ваших атак увеличивается на 5 футов. Вместо описанных преимуществ вы получаете КБ = 22 + ваш уровень, 24 временных ПЗ, модификатор атаки +21, бонус урона +16 и модификатор Атлетики +22."
+      "en": "Taking inspiration from verdant creatures, you transform into a Large plant battle form. When you Cast this Spell, choose a listed battle form. You can substitute a similar specific plant to turn into (such as a pitcher plant instead of a flytrap), but this has no effect on the form's Size or statistics. While in this form, you gain the plant trait. You can Dismiss the spell.\n\nYou gain the following statistics and abilities regardless of which battle form you choose:\n\n- AC = 19 + your level. Ignore your armor's check penalty and Speed reduction.\n\n- 12 temporary Hit Points.\n\n- Resistance 10 to poison.\n\n- Low-light vision.\n\n- One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can Strike with. You're trained with them. Your attack modifier is +17, and your damage bonus is +11. These attacks are Strength based (for the purpose of the enfeebled condition, for example). If your unarmed attack modifier is higher, you can use it instead.\n\n- Athletics modifier of +19, unless your own is higher. You gain specific abilities based on the plant you choose:\n\n- **Arboreal** Speed 30 feet; Melee  [one-action]  branch (reach 15 feet), **Damage** 2d10 bludgeoning; Melee  [one-action]  foot, **Damage** 2d8 bludgeoning; you can speak in this form.\n\n- **Flytrap** Speed 15 feet; resistance 10 to acid; **Melee** [one-action]  leaf (reach 10 feet), **Damage** 2d8 piercing, and you can spend an action after a hit to Grab the target.**Heightened (6th)** Your battle form is Huge, and the reach of your attacks increases by 5 feet. You instead gain AC = 22 + your level, 24 temporary HP, attack modifier +21, damage bonus +16, and Athletics +22.",
+      "ru": "Вы вдохновляетесь растительными существами и принимаете боевую форму растения крупного размера. Когда вы сотворяете это заклинание, выберите одну из перечисленных далее боевых форм. Вы можете заменить одно растение другим похожим (например, обратиться не в мухоловку, а в иное плотоядное растение), но на размер или параметры формы это не повлияет. Пока вы в этой форме, вы получаете дескриптор «растение». Вы можете использовать Прекращение для этого заклинания.\n\nВне зависимости от принятой формы вы получаете следующие параметры и способности.\n\n-    КБ = 19 + ваш уровень. Вы игнорируете штрафы за броню к навыкам и скорости.\n\n-    12 временных ПЗ.\n\n-    Устойчивость 10 к яду.\n\n-    Сумеречное зрение.\n\n-    Одна или несколько безоружных атак в ближнем бою, зависящих от выбранной формы. Эти атаки считаются для вас изученными, и вы можете совершать Удар только ими. Ваш модификатор атаки +17, бонус урона +11. Атаки зависят от Силы (это важно учитывать, например, для состояния слабости). Если ваш модификатор атаки для безоружных атак выше, вы можете использовать его.\n\n-    Модификатор Атлетики +19 (если ваш собственный выше, используйте его).    Кроме этого, вы получаете особые способности в зависимости от выбранной формы.\n\n- **Лесовик** скорость 30 футов. **В ближнем бою** [one-action]: ветвь (зона досягаемости 15 футов), **урон** 2d10 (дробящий). **В ближнем бою** [one-action]: стопа, **урон** 2d8 (дробящий). В этой форме вы способны разговаривать.\n\n- **Мухоловка** скорость 15 футов; устойчивость 10 к кислоте. **В ближнем бою** [one-action]: лист (зона досягаемости 10 футов), **урон** 2d8 (колющий), и после попадания вы можете потратить действие, чтобы использовать Хватку против цели.\n\n**Повышенное (6 круг)** у боевой формы огромный размер, и зона досягаемости ваших атак увеличивается на 5 футов. Вместо описанных преимуществ вы получаете КБ = 22 + ваш уровень, 24 временных ПЗ, модификатор атаки +21, бонус урона +16 и модификатор Атлетики +22."
     },
     "origin": "spell",
     "origin_value": "primal",
@@ -480,7 +480,7 @@
       "ru": "Глаз-разведчик"
     },
     "description": {
-      "en": "You create an invisible, floating eye, 1 inch in diameter, at a location you can see within 500 feet. It sees in all directions with your normal visual senses and continuously transmits what it sees to you.\n\n The first time you Sustain the spell each round, you can either move the eye up to 30 feet, seeing only things in front of the eye, or move it up to 10 feet, seeing everything in all directions around it. There is no limit to how far from you the eye can move, but the spell ends immediately if you and the eye ever cease to be on the same plane of existence. You can attempt Seek actions through the eye if you want to attempt Perception checks with it. Any damage dealt to the eye destroys it and ends the spell.",
+      "en": "You create an invisible, floating eye, 1 inch in diameter, at a location you can see within 500 feet. It sees in all directions with your normal visual senses and continuously transmits what it sees to you.\n\nThe first time you Sustain the spell each round, you can either move the eye up to 30 feet, seeing only things in front of the eye, or move it up to 10 feet, seeing everything in all directions around it. There is no limit to how far from you the eye can move, but the spell ends immediately if you and the eye ever cease to be on the same plane of existence. You can attempt Seek actions through the eye if you want to attempt Perception checks with it. Any damage dealt to the eye destroys it and ends the spell.",
       "ru": "Вы создаёте в месте, которое видите в пределах 500 футов, невидимый парящий глаз диаметром 1 дюйм. Каждый глаз видит вашим обычным зрением во всех направлениях и непрерывно передаёт вам всё, что видит.\n\nКогда вы первый раз в каждом раунде используете Поддержание для этого заклинания, вы можете либо переместить глаз на 30 или менее футов, видя при этом лишь то, что находится перед ним, либо переместить его на 10 или менее футов, но при этом видеть во всех направлениях сразу. Глаз может отдалиться от вас на неограниченное расстояние, но заклинание немедленно прекращается, если вы по любой причине окажетесь на разных планах бытия. Чтобы совершать проверки Внимания при помощи глаза, вам нужно использовать Поиск с его помощью. Если глаз получает урон, он уничтожается и заклинание прекращается."
     },
     "origin": "spell",
@@ -516,7 +516,7 @@
     ],
     "price": { "a": 3 },
     "info": {
-      "level": 5,
+      "level": 5
     }
   },
   {
@@ -539,7 +539,7 @@
     ],
     "price": { "a": 2 },
     "info": {
-      "level": 5,
+      "level": 5
     }
   },
   {
@@ -601,8 +601,8 @@
       "ru": "Призрачный страж"
     },
     "description": {
-      "en": "A Medium guardian made of magical force appears in an unoccupied space in range. The spiritual guardian is translucent and wields a ghostly echo of one weapon you're wielding or wearing. If you have a deity, the guardian takes the form of one of your deity's attendants or servitors. If you sanctify the spell, the guardian's attacks are sanctified as well.\n\n Creatures can move through the guardian's space but can't end their movement in it. You and your allies can flank with the guardian. The guardian doesn't have any other attributes a creature would normally have, aside from 50 Hit Points that it can't recover by any means and that it can lose only when protecting a creature (see below).\n\n When you Cast the Spell and each time you Sustain it, you can have the guardian move to any unoccupied space within 120 feet of you and either attack or protect.\n\n- **Attack** The guardian makes a melee spell attack against an adjacent creature, dealing 3d8 damage on a hit (or double damage on a critical hit). The damage type is the same as the chosen weapon (or any of its types for a versatile weapon). The attack deals spirit damage instead if that would be more detrimental to the creature (as determined by the GM). This attack uses and contributes to your multiple attack penalty.\n\n- **Protect** The guardian protects a creature of your choice. Each time the chosen creature would take damage and the guardian is adjacent to it, the guardian takes the first 10 damage instead of the ally. This protection lasts until you command the guardian to attack or to protect a different creature, or the guardian is destroyed.**Heightened (+2)** The guardian's damage increases by 1d8, and its Hit Points increase by 20.",
-      "ru": "Вы создаёте из магической силы стража среднего размера в незанятом пространстве в пределах дистанции. Страж выглядит как полупрозрачная фигура, использующая призрачное отражение одного оружия, которое вы носите или используете. Если у вас есть божество, страж принимает форму его помощника или служителя. Если вы дали заклинанию дескриптор «священный» или «нечестивый», атаки стража также получают этот дескриптор.\n\nСущества могут перемещаться через пространство стража, но не могут заканчивать в нём свой ход. Вы и ваши союзники можете использовать стража, чтобы брать противника в тиски. Страж не обладает параметрами существ, кроме 50 ПЗ, которые может потерять, только защищая существ (см. далее), и не может восстановить.\n\nПри Сотворении заклинания и всякий раз, когда вы используете его Поддержание, вы можете переместить стража в незанятое пространство в пределах 120 футов от вас и атаковать либо защищать.\n\n- Атаковать: страж совершает атаку заклинанием в ближнем бою по существу рядом с ним и наносит 3d8 урона при попадании (двойной урон при критическом успехе). Тип урона соответствует выбранному оружию (или любому из доступных, если оружие универсальное). Атака наносит урон духом вместо обычного урона, если тот для цели более опасен (по усмотрению ведущего). Атака использует ваш штраф за последовательные атаки и увеличивает его. \n\n- Защищать: страж защищает существо по вашему выбору. Всякий раз, когда это существо должно получить урон, а страж находится рядом с ним, тот принимает первые 10 урона на себя. Защита длится, пока вы не прикажете стражу атаковать или защищать другое существо либо пока страж не уничтожен.\n\n**Повышенное (+2)** наносимый стражем урон увеличивается на 1d8, а его ПЗ увеличиваются на 20."
+      "en": "A Medium guardian made of magical force appears in an unoccupied space in range. The spiritual guardian is translucent and wields a ghostly echo of one weapon you're wielding or wearing. If you have a deity, the guardian takes the form of one of your deity's attendants or servitors. If you sanctify the spell, the guardian's attacks are sanctified as well.\n\nCreatures can move through the guardian's space but can't end their movement in it. You and your allies can flank with the guardian. The guardian doesn't have any other attributes a creature would normally have, aside from 50 Hit Points that it can't recover by any means and that it can lose only when protecting a creature (see below).\n\nWhen you Cast the Spell and each time you Sustain it, you can have the guardian move to any unoccupied space within 120 feet of you and either attack or protect.\n\n- **Attack** The guardian makes a melee spell attack against an adjacent creature, dealing 3d8 damage on a hit (or double damage on a critical hit). The damage type is the same as the chosen weapon (or any of its types for a versatile weapon). The attack deals spirit damage instead if that would be more detrimental to the creature (as determined by the GM). This attack uses and contributes to your multiple attack penalty.\n\n- **Protect** The guardian protects a creature of your choice. Each time the chosen creature would take damage and the guardian is adjacent to it, the guardian takes the first 10 damage instead of the ally. This protection lasts until you command the guardian to attack or to protect a different creature, or the guardian is destroyed.**Heightened (+2)** The guardian's damage increases by 1d8, and its Hit Points increase by 20.",
+      "ru": "Вы создаёте из магической силы стража среднего размера в незанятом пространстве в пределах дистанции. Страж выглядит как полупрозрачная фигура, использующая призрачное отражение одного оружия, которое вы носите или используете. Если у вас есть божество, страж принимает форму его помощника или служителя. Если вы дали заклинанию дескриптор «священный» или «нечестивый», атаки стража также получают этот дескриптор.\n\nСущества могут перемещаться через пространство стража, но не могут заканчивать в нём свой ход. Вы и ваши союзники можете использовать стража, чтобы брать противника в тиски. Страж не обладает параметрами существ, кроме 50 ПЗ, которые может потерять, только защищая существ (см. далее), и не может восстановить.\n\nПри Сотворении заклинания и всякий раз, когда вы используете его Поддержание, вы можете переместить стража в незанятое пространство в пределах 120 футов от вас и атаковать либо защищать.\n\n- Атаковать: страж совершает атаку заклинанием в ближнем бою по существу рядом с ним и наносит 3d8 урона при попадании (двойной урон при критическом успехе). Тип урона соответствует выбранному оружию (или любому из доступных, если оружие универсальное). Атака наносит урон духом вместо обычного урона, если тот для цели более опасен (по усмотрению ведущего). Атака использует ваш штраф за последовательные атаки и увеличивает его.\n\n- Защищать: страж защищает существо по вашему выбору. Всякий раз, когда это существо должно получить урон, а страж находится рядом с ним, тот принимает первые 10 урона на себя. Защита длится, пока вы не прикажете стражу атаковать или защищать другое существо либо пока страж не уничтожен.\n\n**Повышенное (+2)** наносимый стражем урон увеличивается на 1d8, а его ПЗ увеличиваются на 20."
     },
     "origin": "spell",
     "origin_value": "divine",
@@ -617,7 +617,7 @@
       "level": 5,
       "range": "120,ft",
       "duration": "1,m",
-      "sustained": true,
+      "sustained": true
     }
   },
   {
@@ -672,7 +672,7 @@
       "level": 5,
       "range": "30,ft",
       "duration": "1,m",
-      "sustained": true,
+      "sustained": true
     }
   },
   {
@@ -698,7 +698,7 @@
       "level": 5,
       "range": "30,ft",
       "duration": "1,m",
-      "sustained": true,
+      "sustained": true
     }
   },
   {
@@ -724,7 +724,7 @@
       "level": 5,
       "range": "30,ft",
       "duration": "1,m",
-      "sustained": true,
+      "sustained": true
     }
   },
   {
@@ -751,7 +751,7 @@
       "level": 5,
       "range": "30,ft",
       "duration": "1,m",
-      "sustained": true,
+      "sustained": true
     }
   },
   {
@@ -777,7 +777,7 @@
       "level": 5,
       "range": "30,ft",
       "duration": "1,m",
-      "sustained": true,
+      "sustained": true
     }
   },
   {
@@ -803,7 +803,7 @@
       "level": 5,
       "range": "30,ft",
       "duration": "1,m",
-      "sustained": true,
+      "sustained": true
     }
   },
   {
@@ -831,7 +831,7 @@
       "range": "",
       "defense": "will",
       "duration":"1,r",
-      "area": "emanation,30",
+      "area": "emanation,30"
     }
   },
   {
@@ -856,7 +856,7 @@
       "level": 5,
       "range": "120,ft",
       "duration": "1,m",
-      "sustained": true,
+      "sustained": true
     }
   },
   {
@@ -947,7 +947,7 @@
       "ru": "Стена льда"
     },
     "description": {
-      "en": "You sculpt an ice barrier that blocks sight and, once shattered, freezes foes. You create either a 1-foot-thick wall of ice in a straight line up to 60 feet long and 10 feet high (the wall doesn't have to be vertical, but it must be anchored on both sides to a solid surface) or a 1-foot-thick, 10-foot radius hemisphere of ice. The ice that makes up the wall is opaque. If you wish, the wall can be of a smaller length, height, or radius. You must create the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost.\n\n Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 40 Hit Points, and it's immune to critical hits, cold damage, and precision damage. A section also has weakness to fire 15; a section of the wall destroyed by fire melts, evaporating into water and steam. A section destroyed by means other than fire leaves behind a chilling mass of ice that is difficult terrain and deals 2d6 cold damage to any creature passing through it.\n\n**Heightened (+2)** The Hit Points of each section of the wall increase by 10, and the cold damage dealt to creatures crossing a destroyed section increases by 1d6.",
+      "en": "You sculpt an ice barrier that blocks sight and, once shattered, freezes foes. You create either a 1-foot-thick wall of ice in a straight line up to 60 feet long and 10 feet high (the wall doesn't have to be vertical, but it must be anchored on both sides to a solid surface) or a 1-foot-thick, 10-foot radius hemisphere of ice. The ice that makes up the wall is opaque. If you wish, the wall can be of a smaller length, height, or radius. You must create the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost.\n\nEach 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 40 Hit Points, and it's immune to critical hits, cold damage, and precision damage. A section also has weakness to fire 15; a section of the wall destroyed by fire melts, evaporating into water and steam. A section destroyed by means other than fire leaves behind a chilling mass of ice that is difficult terrain and deals 2d6 cold damage to any creature passing through it.\n\n**Heightened (+2)** The Hit Points of each section of the wall increase by 10, and the cold damage dealt to creatures crossing a destroyed section increases by 1d6.",
       "ru": "Вы создаёте блокирующую зрение ледяную преграду, обломки которой могут заморозить противников. Вы можете создать либо ледяную стену на прямой линии в 1 дюйм толщиной, до 10 футов в высоту и до 60 футов в длину (необязательно вертикальную, но оба её края должны крепиться к твёрдой поверхности), либо ледяную полусферу радиусом 10 футов и толщиной в 1 фут. Вы можете сделать стену короче, ниже или меньшего радиуса, если пожелаете. Лёд, из которого состоит стена, непрозрачный. Стену можно создать только в непрерывном свободном пространстве, её края не должны проходить через объекты или существ, в противном случае заклинание тратится впустую.\n\nУ каждого участка стены размерами 10 на 10 футов КБ 10, твёрдость 10 и 40 ПЗ, уязвимость 15 к огню, а также невосприимчивость к критическим ударам, урону холодом и урону за точность. Если участок уничтожить огнём, он тает, превращаясь в воду и пар. На месте уничтоженного иным способом участка появляется заваленная льдом брешь, которая считается пересечённой местностью и наносит 2d6 урона холодом любому существу, проходящему сквозь неё.\n\n**Повышенное (+2)** ПЗ каждого участка стены увеличиваются на 10, урон холодом, наносимый существам, проходящим через брешь, увеличивается на 1d6."
     },
     "origin": "spell",
@@ -973,7 +973,7 @@
       "ru": "Каменная стена"
     },
     "description": {
-      "en": "You shape a wall of solid stone. You create a 1-inch-thick wall of stone up to 120 feet long, and 20 feet high. You can shape the wall's path, placing each 5 feet of the wall on the border between squares. The wall doesn't need to stand vertically, so you can use it to form a bridge or set of stairs, for example. You must conjure the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost. \n\nEach 10-foot-by-10-foot section of the wall has AC 10, Hardness 14, and 50 Hit Points, and it's immune to critical hits and precision damage. A destroyed section of the wall can be moved through, but the rubble created from it is difficult terrain.\n\n**Heightened (+2)** The Hit Points of each section of the wall increase by 15.",
+      "en": "You shape a wall of solid stone. You create a 1-inch-thick wall of stone up to 120 feet long, and 20 feet high. You can shape the wall's path, placing each 5 feet of the wall on the border between squares. The wall doesn't need to stand vertically, so you can use it to form a bridge or set of stairs, for example. You must conjure the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost.\n\nEach 10-foot-by-10-foot section of the wall has AC 10, Hardness 14, and 50 Hit Points, and it's immune to critical hits and precision damage. A destroyed section of the wall can be moved through, but the rubble created from it is difficult terrain.\n\n**Heightened (+2)** The Hit Points of each section of the wall increase by 15.",
       "ru": "Вы создаёте каменную стену в 1 дюйм толщиной, до 20 футов в высоту и до 120 футов в длину. Стену можно сформировать как угодно, но каждые 5 футов стены размещаются на границе между клетками. Стена может быть и не вертикальной, поэтому из неё можно сделать мост или ступени. Стену можно создать только в непрерывном свободном пространстве, её края не должны проходить через объекты или существ, в противном случае заклинание тратится впустую.\n\nУ каждого участка стены размерами 10 на 10 футов КБ 10, твёрдость 14 и 50 ПЗ, а также невосприимчивость к критическим ударам и урону за точность. На месте уничтоженного участка появляется брешь, через которую можно перемещаться, но из-за камней она считается пересечённой местностью.\n\n**Повышенное (+2)** ПЗ каждого участка стены увеличиваются на 15."
     },
     "origin": "spell",
@@ -986,7 +986,7 @@
     "price": { "a": 3 },
     "info": {
       "level": 5,
-      "range": "120,ft",
+      "range": "120,ft"
     }
   },
   {
@@ -1012,7 +1012,7 @@
     "info": {
       "level": 5,
       "area": "cone,30",
-      "defense": "will",
+      "defense": "will"
     }
   },
   {
@@ -1038,7 +1038,7 @@
     "price": { "r": 1 },
     "info": {
       "level": 5,
-      "range": "60,ft",
+      "range": "60,ft"
     }
   },
   {
@@ -1064,7 +1064,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 5,
-      "range": "30,ft",
+      "range": "30,ft"
     }
   },
   {
@@ -1090,7 +1090,7 @@
     "info": {
       "level": 5,
       "range": "30,ft",
-      "duration": "10,m",
+      "duration": "10,m"
     }
   },
   {
@@ -1117,7 +1117,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 5,
-      "range": "90,ft",
+      "range": "90,ft"
     }
   },
   {
@@ -1128,7 +1128,7 @@
       "ru": "Проклятие смерти"
     },
     "description": {
-      "en": "Your patron wraps a hand around your target's heart. The target must attempt a Fortitude saving throw. Regardless of the result, the target is temporarily immune to all **curses of death** for 1 day. \n\n**Critical Success** The target is unaffected.\n\n**Success** The target is afflicted with the curse of death at stage 1, and the stage of the curse can't increase beyond stage 1.\n\n**Failure** The target is afflicted with the curse of death at stage 1.\n\n**Critical Failure** The target is afflicted with the curse of death at stage 2. **Curse of Death** (curse, death, void) This curse ends when the spell ends; **Stage 1** 4d6 void damage and fatigued (1 round); **Stage 2** 8d6 void damage and fatigued (1 round); **Stage 3** 12d6 void damage and fatigued (1 round); **Stage 4** death **Heightened (+1)** Increase the void damage taken on a success and during the first three stages of the curse by 1d6.",
+      "en": "Your patron wraps a hand around your target's heart. The target must attempt a Fortitude saving throw. Regardless of the result, the target is temporarily immune to all **curses of death** for 1 day.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target is afflicted with the curse of death at stage 1, and the stage of the curse can't increase beyond stage 1.\n\n**Failure** The target is afflicted with the curse of death at stage 1.\n\n**Critical Failure** The target is afflicted with the curse of death at stage 2. **Curse of Death** (curse, death, void) This curse ends when the spell ends; **Stage 1** 4d6 void damage and fatigued (1 round); **Stage 2** 8d6 void damage and fatigued (1 round); **Stage 3** 12d6 void damage and fatigued (1 round); **Stage 4** death **Heightened (+1)** Increase the void damage taken on a success and during the first three stages of the curse by 1d6.",
       "ru": "Ваш покровитель сжимает сердце цели. Цель проходит испытание Стойкости. Вне зависимости от результата цель временно невосприимчива к этому заклинанию на 1 день.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель получает проклятие смерти на стадии 1, стадия проклятия не может увеличиться выше 1.\n\n**Провал** цель получает проклятие смерти на стадии 1.\n\n**Критический провал** цель получает проклятие смерти на стадии 2.\n\n**Проклятие смерти** (проклятие, смерть, пустота): после прекращения заклинания проклятие немедленно снимается. **Стадия 1** 4d6 урона пустотой и утомление (1 раунд). **Стадия 2** 8d6 урона пустотой и утомление (1 раунд). **Стадия 3** 12d6 урона пустотой и утомление (1 раунд). **Стадия 4** смерть.\n\n**Повышенное (+1)** урон пустотой при успехе и во время первых трёх стадий проклятия увеличивается на 1d6."
     },
     "origin": "spell",
@@ -1150,7 +1150,7 @@
       "range": "30,ft",
       "defense": "fortitude",
       "duration": "1,m",
-      "sustained": true,
+      "sustained": true
     }
   },
   {
@@ -1177,7 +1177,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 5,
-      "range": "30,ft",
+      "range": "30,ft"
     }
   }
 ]
