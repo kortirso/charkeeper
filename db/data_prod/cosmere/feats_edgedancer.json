@@ -28,7 +28,7 @@
     },
     "description": {
       "en": "**Requirements** Level 4+; Speak the First Ideal.\n\nWhile you have 1 Investiture or more, you:\n\n- can use **Enhance** as free action,\n\n- don't need to spend Investiture to use this action or maintain it.",
-      "ru": "**Требования** Уровень 4+; Произнести Первый Идеал.\n\nПока у вас есть 1 Инвеститура или более, вы можете использовать Усиление как свободное действие и вам не нужно тратить Инвеституру ни для его активации, ни для поддержания эффекта."
+      "ru": "**Требования** Уровень 4+; Произнести Первый Идеал.\n\nПока у вас есть 1 Инвеститура или более, вы:\n\n- можете использовать **Усиление** как свободное действие,\n\n- вам не нужно тратить Инвеституру ни для его активации, ни для поддержания эффекта."
     },
     "origin": "radiant_path",
     "origin_value": "edgedancer",
