@@ -13,14 +13,14 @@
     "origin": "radiant_path",
     "origin_value": "willshaper",
     "info": {
-      "required_for": [],
+      "required_for": ["second_ideal_willshaper", "spiritual_cohesion"],
       "extra_feats": ["cohesion_surge", "transportation_surge", "breathe_stormlight", "enhance", "regenerate"],
       "extra_skills": ["cohesion", "transportation"],
       "investiture": true
     }
   },
   {
-    "slug": "second_ideal_dustbringer",
+    "slug": "second_ideal_willshaper",
     "kind": "static",
     "title": {
       "en": "Second Ideal",
@@ -31,13 +31,13 @@
       "ru": "**Требования** Уровень 4+; Произнести Первый Идеал.\n\nПока у вас есть 1 Инвеститура или более, вы:\n\n- можете использовать **Усиление** как свободное действие,\n\n- вам не нужно тратить Инвеституру ни для его активации, ни для поддержания эффекта."
     },
     "origin": "radiant_path",
-    "origin_value": "dustbringer",
+    "origin_value": "willshaper",
     "info": {
-      "required_for": ["third_ideal_dustbringer"]
+      "required_for": ["third_ideal_willshaper"]
     }
   },
   {
-    "slug": "third_ideal_dustbringer",
+    "slug": "third_ideal_willshaper",
     "kind": "static",
     "title": {
       "en": "Third Ideal",
@@ -48,13 +48,13 @@
       "ru": "**Требования** Уровень 8+; Произнести Второй Идеал.\n\nВы можете призвать своего спрена в виде Осколочного клинка Сияющего."
     },
     "origin": "radiant_path",
-    "origin_value": "dustbringer",
+    "origin_value": "willshaper",
     "info": {
-      "required_for": ["fourth_ideal_dustbringer", "deepened_bond_dustbringer", "take_squire_dustbringer"]
+      "required_for": ["fourth_ideal_willshaper", "deepened_bond_willshaper", "take_squire_willshaper"]
     }
   },
   {
-    "slug": "fourth_ideal_dustbringer",
+    "slug": "fourth_ideal_willshaper",
     "kind": "static",
     "title": {
       "en": "Fourth Ideal",
@@ -65,10 +65,10 @@
       "ru": "**Требования** Уровень 13+; Произнести Третий Идеал.\n\nВы можете призвать рой спреном жизни в виде Осколочного доспеха Сияющего."
     },
     "origin": "radiant_path",
-    "origin_value": "dustbringer"
+    "origin_value": "willshaper"
   },
   {
-    "slug": "deepened_bond_dustbringer",
+    "slug": "deepened_bond_willshaper",
     "kind": "static",
     "title": {
       "en": "Deepened Bond",
@@ -79,10 +79,10 @@
       "ru": "**Требования** Произнести Третий Идеал.\n\nВаш радиус уз со спреном увеличивается с 30 до 100 футов. Кроме того, когда вы тратите фокус, чтобы поручить спрену выполнить какую-то задачу, это стоит на 1 фокус меньше (но не меньше 1 фокуса)."
     },
     "origin": "radiant_path",
-    "origin_value": "dustbringer"
+    "origin_value": "willshaper"
   },
   {
-    "slug": "take_squire_dustbringer",
+    "slug": "take_squire_willshaper",
     "kind": "static",
     "title": {
       "en": "Take Squire",
@@ -93,27 +93,28 @@
       "ru": "**Требования** Произнести Третий Идеал.\n\nПосле продолжительного отдыха выберите компаньона или персонажа игрока, на которого вы можете повлиять, чтобы сделать его своим оруженосцем. Для этого он должен быть разумным и согласным на это, вы должны быть знакомы с ним не менее одной игровой сессии, и он не должен иметь уз со спреном Сияющих.\n\nКогда вы выбираете оруженосца, решите, хотите ли вы дать ему оба ваших потока, один из них или ни одного. Этот персонаж становится вашим оруженосцем и получает выбранные вами потоки.\n\nВы можете иметь число оруженосцев, не превышающее ваш текущий Идеал."
     },
     "origin": "radiant_path",
-    "origin_value": "dustbringer"
+    "origin_value": "willshaper"
   },
   {
-    "slug": "searing_dust_storm",
+    "slug": "spiritual_cohesion",
     "kind": "static",
     "title": {
-      "en": "Searing Dust Storm",
-      "ru": "Раскалённая пыльная буря"
+      "en": "Spiritual Cohesion",
+      "ru": "Духовная Когезия"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\nWhen you move along a solid surface, you can **spend 1 Investiture or more** to raise up a cloud of dust in spaces of your choice. This cloud remains for a number of rounds equal to the Investiture spent.\n\nWhen enemy within this cloud takes damage for the first time during a round, that damage increases by your ranks in Discipline.",
-      "ru": "**Требования** Произнести Первый Идеал.\n\nКогда вы используете действие Перемещение для передвижения по твёрдой поверхности, вы можете **потратить 1 Инвеституру или более**, чтобы поднять застилающие облако пыли в пространствах по вашему выбору, в которые вы заходили или покидали во время этого перемещения. Это облако сохраняется в течение количества раундов, равное потраченной Инвеституре, либо до тех пор, пока его не рассеет достаточно сильный порыв ветра.\n\nКаждый раз, когда враг, находящийся в пределах этого облака, впервые за раунд получает урон, он также получает дополнительный урон, равный вашему рангу в Дисциплине."
+      "en": "**Requirements** Speak the First Ideal.\n\nOnce per scene, choose allies up to a number equaling your current Ideal. Each target becomes *Determined* until the end of the scene. If a target uses that condition to add an Opportunity to a test, increase their Cognitive defense and Spiritual defense by 2 until the end of the scene.",
+      "ru": "**Требования** Произнести Первый Идеал.\n\nОдин раз за сцену выберите союзников в количестве, не превышающем ваш текущий Идеал. Каждая цель становится *Решительной* до конца сцены. Если цель использует это условие для добавления Возможности к проверке, увеличьте её Когнитивную защиту и Духовную защиту на 2 до конца сцены."
     },
     "origin": "radiant_path",
-    "origin_value": "dustbringer",
+    "origin_value": "willshaper",
     "info": {
-      "required_for": ["invested_dustbringer"]
-    }
+      "required_for": ["invested_willshaper"]
+    },
+    "price": { "a": 2 }
   },
   {
-    "slug": "invested_dustbringer",
+    "slug": "invested_willshaper",
     "kind": "update_result",
     "title": {
       "en": "Invested",
@@ -124,14 +125,14 @@
       "ru": "Приобретая этот талант, ваше максимальное значение Инвеституры увеличивается на величину, равную значению вашего тира."
     },
     "origin": "radiant_path",
-    "origin_value": "dustbringer",
+    "origin_value": "willshaper",
     "info": {
-      "required_for": ["wound_regeneration_dustbringer"]
+      "required_for": ["wound_regeneration_willshaper"]
     },
     "modifiers": { "investiture_max": { "type": "add", "value": "tier" } }
   },
   {
-    "slug": "wound_regeneration_dustbringer",
+    "slug": "wound_regeneration_willshaper",
     "kind": "static",
     "title": {
       "en": "Wound Regeneration",
@@ -142,8 +143,6 @@
       "ru": "Когда вы используете действие Регенерация как свободное действие, вы можете потратить Инвеституру для мгновенного восстановления от травмы по вашему выбору. **Потратьте 2 Инвеституры**, чтобы восстановиться от временной травмы, или **потратьте 3 Инвеституры** чтобы восстановиться от постоянной травмы."
     },
     "origin": "radiant_path",
-    "origin_value": "dustbringer"
+    "origin_value": "willshaper"
   }
-]
-
 ]

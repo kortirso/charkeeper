@@ -291,18 +291,20 @@ export const CosmereLeveling = (props) => {
           </Toggle>
           <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList.utility}>
             <div class="flex flex-col gap-4">
-              <div>
-                <Key each={character().custom_expertises} by={item => item.name}>
-                  {(expertise) =>
-                    <div class="ancestry-item flex justify-beetween items-start">
-                      <Text containerClassList="flex-1" labelText={expertise().name} text={expertise().desc} />
-                      <Button default size="small" classList="ml-4 opacity-75" onClick={() => removeExpertise(expertise())}>
-                        <Close />
-                      </Button>
-                    </div>
-                  }
-                </Key>
-              </div>
+              <Show when={character().custom_expertises.length > 0}>
+                <div>
+                  <Key each={character().custom_expertises} by={item => item.name}>
+                    {(expertise) =>
+                      <div class="ancestry-item flex justify-beetween items-start">
+                        <Text containerClassList="flex-1" labelText={expertise().name} text={expertise().desc} />
+                        <Button default size="small" classList="ml-4 opacity-75" onClick={() => removeExpertise(expertise())}>
+                          <Close />
+                        </Button>
+                      </div>
+                    }
+                  </Key>
+                </div>
+              </Show>
               <Show
                 when={editMode()}
                 fallback={<Button default textable onClick={() => setEditMode(true)}>{localize(TRANSLATION, locale()).add}</Button>}

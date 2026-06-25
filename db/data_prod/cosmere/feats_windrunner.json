@@ -13,7 +13,7 @@
     "origin": "radiant_path",
     "origin_value": "windrunner",
     "info": {
-      "required_for": [],
+      "required_for": ["second_ideal_windrunner", "reverse_lashing"],
       "extra_feats": ["adhesion_surge", "gravitation_surge", "breathe_stormlight", "enhance", "regenerate"],
       "extra_skills": ["adhesion", "gravitation"],
       "investiture": true
@@ -96,15 +96,15 @@
     "origin_value": "windrunner"
   },
   {
-    "slug": "searing_dust_storm",
+    "slug": "reverse_lashing",
     "kind": "static",
     "title": {
-      "en": "Searing Dust Storm",
-      "ru": "Раскалённая пыльная буря"
+      "en": "Reverse Lashing",
+      "ru": "Обратное плетение"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\nWhen you move along a solid surface, you can **spend 1 Investiture or more** to raise up a cloud of dust in spaces of your choice. This cloud remains for a number of rounds equal to the Investiture spent.\n\nWhen enemy within this cloud takes damage for the first time during a round, that damage increases by your ranks in Discipline.",
-      "ru": "**Требования** Произнести Первый Идеал.\n\nКогда вы используете действие Перемещение для передвижения по твёрдой поверхности, вы можете **потратить 1 Инвеституру или более**, чтобы поднять застилающие облако пыли в пространствах по вашему выбору, в которые вы заходили или покидали во время этого перемещения. Это облако сохраняется в течение количества раундов, равное потраченной Инвеституре, либо до тех пор, пока его не рассеет достаточно сильный порыв ветра.\n\nКаждый раз, когда враг, находящийся в пределах этого облака, впервые за раунд получает урон, он также получает дополнительный урон, равный вашему рангу в Дисциплине."
+      "en": "**Requirements** Speak the First Ideal.\n\nBefore you infuse something with a Basic Lashing, you can instead infuse the target with a Reverse Lashing. Declare a type of object for the infused target to attract. Only unattended, unsecured objects can be attracted, and each must be of a size you can affect with your ranks in Adhesion. When those objects come within a number of feet equal to your gravitation rate, they fly straight toward and stick to the infused target; this can divert ranged attacks from their intended targets.",
+      "ru": "**Требования** Произнести Первый Идеал.\n\nПрежде чем наделить что-либо Основным плетением, вы можете вместо этого наделить цель Обратным плетением. Укажите тип объекта, который будет притягивать наделенная цель. Притягиваться могут только бесхозные, незакрепленные объекты, и каждый из них должен быть такого размера, на который вы можете воздействовать с помощью ваших уровней в навыке Адгезия. Когда эти объекты окажутся на расстоянии, равном вашей скорости гравитации, они полетят прямо к наделенной цели и прилипнут к ней; это может отвлечь атаки дальнего боя от намеченных целей."
     },
     "origin": "radiant_path",
     "origin_value": "windrunner",
@@ -144,6 +144,4 @@
     "origin": "radiant_path",
     "origin_value": "windrunner"
   }
-]
-
 ]

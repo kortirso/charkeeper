@@ -13,7 +13,7 @@
     "origin": "radiant_path",
     "origin_value": "lightweaver",
     "info": {
-      "required_for": [],
+      "required_for": ["second_ideal_lightweaver", "physical_illusion"],
       "extra_feats": ["transformation_surge", "illumination_surge", "breathe_stormlight", "enhance", "regenerate"],
       "extra_skills": ["transformation", "illumination"],
       "investiture": true
@@ -103,11 +103,12 @@
       "ru": "Физическая иллюзия"
     },
     "description": {
-      "en": "**Requirements** Speak the First Ideal.\n\n",
-      "ru": "**Требования** Произнести Первый Идеал.\n\n"
+      "en": "**Requirements** Speak the First Ideal.\n\n**Spend 1 Investiture or more** to infuse a physical illusion in thin air. This physical illusione occupies its space as if it were real. This illusion weighs half as much as the real version would (maximum of 25 pounds per surge rank). It has health equal to 5 × your ranks in Transformation, and each of its defenses equals 10 + your Transformation modifier. If the illusion is reduced to 0 health, its infusion ends early and any infused Investiture is lost.",
+      "ru": "**Требования** Произнести Первый Идеал.\n\n**Потратьте 1 Инвеституру или больше**, чтобы вселить физическую иллюзию в воздух. Эта физическая иллюзия занимает пространство, как если бы она была реальной. Эта иллюзия весит вдвое меньше, чем реальная версия (максимум 25 фунтов за каждый ранг). Она имеет здоровье, равное 5 × вашим рангам в Трансформации, и каждая из её защит равна 10 + ваш модификатор Трансформации. Если здоровье иллюзии уменьшится до 0, она прекратится досрочно, и вся вложенная Инвеститура будет потеряна."
     },
     "origin": "radiant_path",
     "origin_value": "lightweaver",
+    "price": { "a": 2 },
     "info": {
     }
   },
@@ -141,8 +142,9 @@
       "ru": "Когда вы используете действие Регенерация как свободное действие, вы можете потратить Инвеституру для мгновенного восстановления от травмы по вашему выбору. **Потратьте 2 Инвеституры**, чтобы восстановиться от временной травмы, или **потратьте 3 Инвеституры** чтобы восстановиться от постоянной травмы."
     },
     "origin": "radiant_path",
-    "origin_value": "lightweaver"
+    "origin_value": "lightweaver",
+    "info": {
+      "required_for": ["physical_illusion"]
+    }
   }
-]
-
 ]

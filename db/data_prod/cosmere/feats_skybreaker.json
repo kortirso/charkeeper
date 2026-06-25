@@ -13,7 +13,7 @@
     "origin": "radiant_path",
     "origin_value": "skybreaker",
     "info": {
-      "required_for": [],
+      "required_for": ["second_ideal_skybreaker", "soaring_destruction"],
       "extra_feats": ["division_surge", "gravitation_surge", "breathe_stormlight", "enhance", "regenerate"],
       "extra_skills": ["division", "gravitation"],
       "investiture": true
@@ -144,6 +144,4 @@
     "origin": "radiant_path",
     "origin_value": "skybreaker"
   }
-]
-
 ]

@@ -13,7 +13,7 @@
     "origin": "radiant_path",
     "origin_value": "stoneward",
     "info": {
-      "required_for": [],
+      "required_for": ["second_ideal_stoneward", "cohesive_teamwork"],
       "extra_feats": ["cohesion_surge", "tension_surge", "breathe_stormlight", "enhance", "regenerate"],
       "extra_skills": ["cohesion", "tension"],
       "investiture": true
@@ -144,6 +144,4 @@
     "origin": "radiant_path",
     "origin_value": "stoneward"
   }
-]
-
 ]
