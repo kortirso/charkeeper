@@ -100,11 +100,11 @@
     "kind": "static",
     "title": {
       "en": "Physical Illusion",
-      "ru": "Физическая иллюзия"
+      "ru": "Физические иллюзии"
     },
     "description": {
       "en": "**Requirements** Speak the First Ideal.\n\n**Spend 1 Investiture or more** to infuse a physical illusion in thin air. This physical illusione occupies its space as if it were real. This illusion weighs half as much as the real version would (maximum of 25 pounds per surge rank). It has health equal to 5 × your ranks in Transformation, and each of its defenses equals 10 + your Transformation modifier. If the illusion is reduced to 0 health, its infusion ends early and any infused Investiture is lost.",
-      "ru": "**Требования** Произнести Первый Идеал.\n\n**Потратьте 1 Инвеституру или больше**, чтобы вселить физическую иллюзию в воздух. Эта физическая иллюзия занимает пространство, как если бы она была реальной. Эта иллюзия весит вдвое меньше, чем реальная версия (максимум 25 фунтов за каждый ранг). Она имеет здоровье, равное 5 × вашим рангам в Трансформации, и каждая из её защит равна 10 + ваш модификатор Трансформации. Если здоровье иллюзии уменьшится до 0, она прекратится досрочно, и вся вложенная Инвеститура будет потеряна."
+      "ru": "**Требования** Произнести Первый Идеал.\n\n**Потратьте 1 Инвеституру или более**, чтобы с помощью потока Иллюминации наполнить воздух физической иллюзией. Физическая иллюзия занимает пространство так, словно она реальна. Такая иллюзия весит вдвое меньше своего реального аналога (максимум 25 фунтов за каждый ранг потока). Хотя она не считается персонажем, её здоровье равно 5 × ваш ранг Трансформации, а значения всех её защит составляют 10 + ваш модификатор Трансформации. Если здоровье иллюзии опускается до 0, иллюзия рассеивается, а вся вложенная в неё Инвеститура теряется."
     },
     "origin": "radiant_path",
     "origin_value": "lightweaver",

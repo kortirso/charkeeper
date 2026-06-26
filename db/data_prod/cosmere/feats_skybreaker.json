@@ -100,11 +100,11 @@
     "kind": "static",
     "title": {
       "en": "Soaring Destruction",
-      "ru": "Взлетающие разрушения"
+      "ru": "Парящее разрушение"
     },
     "description": {
       "en": "**Requirements** Speak the First Ideal.\n\nAfter you Move while maintaining a Basic Lashing on yourself with your Gravitation surge, **spend 1 focus** to gain one action, which can be used only for Division or one of its talents.",
-      "ru": "**Требования** Произнести Первый Идеал.\n\nПосле перемещения, сохраняя при этом базовое воздействие гравитации, **потратьте 1 фокус**, чтобы получить одно действие, которое можно использовать только для Разделения или одного из его талантов."
+      "ru": "**Требования** Произнести Первый Идеал.\n\nПосле того как вы Переместитесь, пока поддерживаете на себе Основное плетение потока Гравитации, вы можете **потратить 1 фокус**, чтобы получить 1 действие, которое можно использовать только на применение потока Расщепления или одного из его талантов."
     },
     "origin": "radiant_path",
     "origin_value": "skybreaker",
