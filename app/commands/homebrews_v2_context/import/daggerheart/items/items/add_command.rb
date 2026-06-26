@@ -33,6 +33,7 @@ module HomebrewsV2Context
                   required(:value).hash
                 end
                 optional(:public).filled(:bool)
+                optional(:item_names).maybe(:array).each(:string, max_size?: 50)
               end
             end
 
@@ -44,7 +45,17 @@ module HomebrewsV2Context
             end
 
             def do_persist(input)
-              result = ::Daggerheart::Item.create!(input.except(:bonuses))
+              result = ::Daggerheart::Item.create!(input.except(:bonuses, :item, :item_names))
+
+              if input[:kind] == 'recipe' && input[:item_names]&.any?
+                input[:item_names].each do |item_name|
+                  item =
+                    ::Daggerheart::Item.find_by("name ->> 'en' = ? OR name ->> 'ru' = ?", item_name, item_name)
+                  next unless item
+
+                  ::Item::Recipe.create!(input.slice(:user, :public).merge(tool: result, item: item))
+                end
+              end
 
               refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
 

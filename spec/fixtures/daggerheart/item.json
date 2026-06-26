@@ -10,6 +10,8 @@
     },
     /* required, item or recipe */
     "kind": "recipe",
-    "public": false
+    "public": false,
+    /* required for recipe, names of items for crafting, en or ru value */
+    "item_names": ["Верёвка", "Спальник"]
   }
 ]
