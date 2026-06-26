@@ -21,6 +21,7 @@ module HomebrewsV2Context
       def command_object(publication) # rubocop: disable Metrics/CyclomaticComplexity
         @command_object ||=
           case publication.parent_type
+          when 'character' then HomebrewsV2Context::Import::Daggerheart::Characters::AddCommand.new
           when 'transformation' then HomebrewsV2Context::Import::Daggerheart::Transformations::AddCommand.new
           when 'ancestry' then HomebrewsV2Context::Import::Daggerheart::Ancestries::AddCommand.new
           when 'community' then HomebrewsV2Context::Import::Daggerheart::Communities::AddCommand.new

@@ -11,6 +11,7 @@ import { updateCharacterFeatRequest } from '../../requests/updateCharacterFeatRe
 import { readFromCache, writeToCache, localize, translate } from '../../helpers';
 
 const FEATURES_FILTER_NAME = 'FeaturesFiltersStatus';
+const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
 const TRANSLATION = {
   en: {
     activeFeat: 'Active',
@@ -27,7 +28,8 @@ const TRANSLATION = {
       ap: 'AP',
       sp: 'SP',
       'ap/sp': 'AP/SP'
-    }
+    },
+    here: 'here'
   },
   ru: {
     activeFeat: 'Активен',
@@ -44,7 +46,8 @@ const TRANSLATION = {
       ap: 'ОД',
       sp: 'ОВ',
       'ap/sp': 'ОД/ОВ'
-    }
+    },
+    here: 'тут'
   },
   es: {
     activeFeat: 'Activo',
@@ -61,7 +64,8 @@ const TRANSLATION = {
       ap: 'PA',
       sp: 'PE',
       'ap/sp': 'PA/PE'
-    }
+    },
+    here: 'aquí'
   }
 }
 
@@ -69,6 +73,7 @@ export const Feats = (props) => {
   const character = () => props.character;
   const filters = () => props.filters;
 
+  const [host, setHost] = createSignal('https://charkeeper.org/homebrews');
   const [showFilters, setShowFilters] = createSignal(false);
   const [filtering, setFiltering] = createSignal(undefined);
   const [activeFilter, setActiveFilter] = createSignal(filters()[0]?.title);
@@ -88,6 +93,12 @@ export const Feats = (props) => {
     setFiltering(cacheValue === null || cacheValue === undefined ? ['groupFeatures'] : cacheValue.split(','));
   }
 
+  const readHost = async () => {
+    const cacheValue = await readFromCache(CHARKEEPER_HOST_CACHE_NAME);
+    const baseHost = cacheValue === null || cacheValue === undefined ? appState.rootHost : cacheValue;
+    setHost(baseHost.includes('localhost') ? `http://${baseHost}/homebrews` : `https://${baseHost}/homebrews`);
+  }
+
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
@@ -98,6 +109,7 @@ export const Feats = (props) => {
     });
 
     readFeaturesToggle();
+    readHost();
   });
 
   const activeFilterOptions = createMemo(() => filters().find((item) => item.title === activeFilter()));
@@ -229,7 +241,7 @@ export const Feats = (props) => {
               />
             </Show>
             <Show when={activeFilter() === 'personal'}>
-              <p class="dark:text-snow mb-2 text-sm">{localize(TRANSLATION, locale()).personalFeats}</p>
+              <p class="dark:text-snow mb-2 text-sm">{localize(TRANSLATION, locale()).personalFeats} <a href={host()} class='underline' target='_blank' rel='noopener noreferrer'>{localize(TRANSLATION, locale()).here}</a></p>
             </Show>
             <Key
               each={filteredFeatures()}

@@ -2,8 +2,12 @@
 
 module HomebrewsV2
   module Daggerheart
-    class AncestrySerializer < ApplicationSerializer
-      attributes :id, :features
+    class CharacterSerializer < ApplicationSerializer
+      attributes :id, :title, :features, :own
+
+      def title
+        object.name
+      end
 
       def features
         return [] unless context
@@ -15,6 +19,8 @@ module HomebrewsV2
           each_serializer: HomebrewsV2::Daggerheart::FeatSerializer
         ).serialize(relation)
       end
+
+      def own = true # rubocop: disable Naming/PredicateMethod
     end
   end
 end

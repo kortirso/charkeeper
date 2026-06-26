@@ -16,3 +16,4 @@ export * from './Content/Daggerheart/Consumables';
 export * from './Content/Daggerheart/WeaponsV2';
 export * from './Content/Daggerheart/ArmorV2';
 export * from './Content/Daggerheart/BooksV2';
+export * from './Content/Daggerheart/Personal';

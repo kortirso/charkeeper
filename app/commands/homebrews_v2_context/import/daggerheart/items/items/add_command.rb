@@ -23,7 +23,7 @@ module HomebrewsV2Context
                   optional(:es).maybe(:string, max_size?: 50)
                 end
                 required(:description).hash do
-                  required(:en).filled(:string, max_size?: 500)
+                  optional(:en).maybe(:string, max_size?: 500)
                   optional(:ru).maybe(:string, max_size?: 500)
                   optional(:es).maybe(:string, max_size?: 500)
                 end

@@ -16,7 +16,7 @@ module HomebrewsV2
         return [] unless context
         return [] unless context[:features]
 
-        relation = context[:features].select { |item| item.origin_value == object.id }
+        relation = context[:features]
         Panko::ArraySerializer.new(
           relation,
           each_serializer: HomebrewsV2::Daggerheart::FeatSerializer

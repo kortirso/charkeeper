@@ -251,49 +251,12 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :homebrews do
-    namespace :cosmere do
-      resources :specialities, only: %i[index create]
-      resources :subclasses, only: %i[index]
-    end
-
-    namespace :daggerheart do
-      resources :feats, only: %i[index create update destroy]
-      resources :recipes, only: %i[index create destroy] do
-        post :copy, on: :member
-      end
-    end
-
-    namespace :dnd do
-      resources :items, only: %i[index show create update destroy] do
-        post :copy, on: :member
-      end
-      resources :spells, only: %i[index show create update destroy] do
-        post :copy, on: :member
-      end
-      resources :books, only: %i[index create update destroy] do
-        resource :content, only: %i[create], module: :books
-      end
-      resources :subclasses, only: %i[index show create update destroy] do
-        post :copy, on: :member
-      end
-      resources :feats, only: %i[index create update destroy]
-      resources :backgrounds, only: %i[index create update destroy] do
-        post :copy, on: :member
-        get :origin_feats, on: :collection
-      end
-    end
-
-    namespace :users do
-      resources :books, only: %i[update]
-    end
-  end
-
   namespace :homebrews_v2 do
     resources :list, only: %i[index]
     resources :publications, only: %i[index create destroy]
 
     namespace :daggerheart do
+      resources :characters, only: %i[index show]
       resources :ancestries, only: %i[show destroy] do
         post :copy, on: :member
       end

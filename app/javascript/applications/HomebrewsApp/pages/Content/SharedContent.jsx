@@ -304,9 +304,11 @@ export const SharedContent = (props) => {
                                 </span>
                               </Button>
                             </Show>
-                            <Button default classList="px-2 py-1" onClick={(e) => remove(e, element.id)}>
-                              <Trash width="20" height="20" />
-                            </Button>
+                            <Show when={props.onRemoveRequest}>
+                              <Button default classList="px-2 py-1" onClick={(e) => remove(e, element.id)}>
+                                <Trash width="20" height="20" />
+                              </Button>
+                            </Show>
                           </div>
                         </Show>
                       </div>

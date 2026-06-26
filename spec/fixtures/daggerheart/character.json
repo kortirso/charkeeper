@@ -1,0 +1,78 @@
+[
+  {
+    /* required, character ID */
+    "id": "8efdaec7-69c2-48da-acf4-ee3191c9ead8",
+    "features": [
+      {
+        /* required, allowed locale keys - en, ru, es */
+        "title": {
+          "en": "Feature's title"
+        },
+        /* required, allowed locale keys - en, ru, es */
+        "description": {
+          "en": "Feature's description, **Markdown is available** for editing."
+        },
+        /* required, allowed values - static/text/update_result/hidden */
+        /* static - Simple rendering */
+        /* text - Like static + allow to add text value */
+        /* update_result - Like static + can be hidden by settings */
+        /* hidden - Always hidden */
+        "kind": "static",
+        /* optional */
+        "limit": 1,
+        /* optional, allowed values - short_rest/long_rest/session */
+        "limit_refresh": "short_rest"
+      },
+      {
+        "title": {
+          "en": "Feature's title"
+        },
+        "description": {
+          "en": "Feature's description, **Markdown is available** for editing."
+        },
+        "kind": "static",
+        "attacks": [
+          {
+            /* required, allowed locale keys - en, ru, es */
+            "name": {
+              "en": "Ability weapon's name"
+            },
+            /* required, allowed locale keys - en, ru, es */
+            "description": {
+              "en": "Ability weapon's description, **Markdown is available** for editing."
+            },
+            /* required, primary weapon or secondary weapon */
+            "kind": "primary weapon",
+            "info": {
+              /* required, 1 or 2 */
+              "burden": 1,
+              /* required, from 1 to 4 */
+              "tier": 1,
+              /* required */
+              /* agi, str, fin, ins, pre, know */
+              "trait": "agi",
+              /* required */
+              /* melee, very close, close, far, very far */
+              "range": "very close",
+              /* required */
+              /* physical or magic */
+              "damage_type": "physical",
+              /* required */
+              /* d4, d6, d8, d10, d12, d20 */
+              "damage": "d10",
+              /* required, from 0 to 20 */
+              "damage_bonus": 1,
+              /* optional, list of features */
+              "features": [
+                {
+                  /* required, allowed locale keys - en, ru, es */
+                  "en": "Feature"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
