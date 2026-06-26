@@ -23,7 +23,7 @@ module HomebrewsV2
     end
 
     def copy
-      case HomebrewsV2Context::Import::Daggerheart::Specialities::CopyCommand.new.call({
+      case HomebrewsV2Context::Import::Daggerheart::Items::Items::CopyCommand.new.call({
         item: @item, user: current_user
       })
       in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)

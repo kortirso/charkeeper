@@ -10,9 +10,12 @@ module HomebrewsV2Context
               refresh_bonuses: 'commands.bonuses_context.refresh'
             ]
 
+            # rubocop: disable Metrics/BlockLength
             use_contract do
               BonusTypes = Dry::Types['strict.string'].enum('static', 'dynamic')
-              Kinds = Dry::Types['strict.string'].enum('item', 'recipe')
+              Kinds = Dry::Types['strict.string'].enum(
+                'item', 'recipe', 'armor', 'primary weapon', 'secondary weapon', 'consumables'
+              )
 
               params do
                 required(:user).filled(type?: ::User)
@@ -34,8 +37,10 @@ module HomebrewsV2Context
                 end
                 optional(:public).filled(:bool)
                 optional(:item_names).maybe(:array).each(:string, max_size?: 50)
+                optional(:info).hash
               end
             end
+            # rubocop: enable Metrics/BlockLength
 
             private
 
