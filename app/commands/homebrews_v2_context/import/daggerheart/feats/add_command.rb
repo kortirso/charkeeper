@@ -68,6 +68,7 @@ module HomebrewsV2Context
           private
 
           def do_prepare(input) # rubocop: disable Metrics/AbcSize
+            input[:slug] = SecureRandom.uuid
             if input[:origin] == 'subclass' && input.key?(:subclass_mastery)
               input[:conditions] = { subclass_mastery: input[:subclass_mastery] }
             end

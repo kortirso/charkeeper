@@ -1,6 +1,7 @@
 export * from './ContentPage';
 
 export * from './Content/Daggerheart';
+export * from './Content/Dnd2024';
 
 export * from './Content/SharedContent';
 export * from './Content/SharedBookContent';
@@ -17,3 +18,5 @@ export * from './Content/Daggerheart/WeaponsV2';
 export * from './Content/Daggerheart/ArmorV2';
 export * from './Content/Daggerheart/BooksV2';
 export * from './Content/Daggerheart/Personal';
+
+export * from './Content/Dnd2024/Feats';

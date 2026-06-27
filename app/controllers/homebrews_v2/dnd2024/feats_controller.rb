@@ -1,0 +1,23 @@
+# frozen_string_literal: true
+
+module HomebrewsV2
+  module Dnd2024
+    class FeatsController < HomebrewsV2::FeatsController
+      private
+
+      def serializer = ::HomebrewsV2::Dnd2024::FeatSerializer
+      def class_name = ::Dnd2024::Feat
+
+      def copy_command
+        HomebrewsV2Context::Import::Dnd2024::Feats::CopyCommand.new.call({
+          feat: @feat, user: current_user
+        })
+      end
+
+      def feats
+        class_name.where(user_id: current_user.id).or(class_name.where(public: true))
+          .where(origin: 'feat')
+      end
+    end
+  end
+end

@@ -18,21 +18,34 @@ module HomebrewsV2Context
 
       private
 
-      def command_object(publication) # rubocop: disable Metrics/CyclomaticComplexity
+      def command_object(publication)
         @command_object ||=
-          case publication.parent_type
-          when 'character' then HomebrewsV2Context::Import::Daggerheart::Characters::AddCommand.new
-          when 'transformation' then HomebrewsV2Context::Import::Daggerheart::Transformations::AddCommand.new
-          when 'ancestry' then HomebrewsV2Context::Import::Daggerheart::Ancestries::AddCommand.new
-          when 'community' then HomebrewsV2Context::Import::Daggerheart::Communities::AddCommand.new
-          when 'speciality' then HomebrewsV2Context::Import::Daggerheart::Specialities::AddCommand.new
-          when 'subclass' then HomebrewsV2Context::Import::Daggerheart::Subclasses::AddCommand.new
-          when 'domain' then HomebrewsV2Context::Import::Daggerheart::Domains::AddCommand.new
-          when 'armor' then HomebrewsV2Context::Import::Daggerheart::Items::Armors::AddCommand.new
-          when 'consumables' then HomebrewsV2Context::Import::Daggerheart::Items::Consumables::AddCommand.new
-          when 'item' then HomebrewsV2Context::Import::Daggerheart::Items::Items::AddCommand.new
-          when 'weapon' then HomebrewsV2Context::Import::Daggerheart::Items::Weapons::AddCommand.new
+          case publication.provider
+          when 'dnd2024' then dnd2024_commands(publication)
+          else daggerheart_commands(publication)
           end
+      end
+
+      def dnd2024_commands(publication)
+        case publication.parent_type
+        when 'feat' then HomebrewsV2Context::Import::Dnd2024::Feats::AddCommand.new
+        end
+      end
+
+      def daggerheart_commands(publication) # rubocop: disable Metrics/CyclomaticComplexity
+        case publication.parent_type
+        when 'character' then HomebrewsV2Context::Import::Daggerheart::Characters::AddCommand.new
+        when 'transformation' then HomebrewsV2Context::Import::Daggerheart::Transformations::AddCommand.new
+        when 'ancestry' then HomebrewsV2Context::Import::Daggerheart::Ancestries::AddCommand.new
+        when 'community' then HomebrewsV2Context::Import::Daggerheart::Communities::AddCommand.new
+        when 'speciality' then HomebrewsV2Context::Import::Daggerheart::Specialities::AddCommand.new
+        when 'subclass' then HomebrewsV2Context::Import::Daggerheart::Subclasses::AddCommand.new
+        when 'domain' then HomebrewsV2Context::Import::Daggerheart::Domains::AddCommand.new
+        when 'armor' then HomebrewsV2Context::Import::Daggerheart::Items::Armors::AddCommand.new
+        when 'consumables' then HomebrewsV2Context::Import::Daggerheart::Items::Consumables::AddCommand.new
+        when 'item' then HomebrewsV2Context::Import::Daggerheart::Items::Items::AddCommand.new
+        when 'weapon' then HomebrewsV2Context::Import::Daggerheart::Items::Weapons::AddCommand.new
+        end
       end
     end
   end

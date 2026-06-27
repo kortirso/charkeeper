@@ -5,11 +5,6 @@ FactoryBot.define do
     name { 'Race' }
     user
 
-    trait :daggerheart do
-      type { 'Daggerheart::Homebrew::Race' }
-      data { {} }
-    end
-
     trait :dnd2024 do
       type { 'Dnd2024::Homebrew::Race' }
       data { {} }
