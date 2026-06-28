@@ -27,12 +27,14 @@ module Cache
     def load_initial_data
       {
         subclasses: ids_with_names(::Dnd2024::Homebrew::Subclass),
-        backgrounds: ids_with_names(::Dnd2024::Homebrew::Background)
+        backgrounds: ids_with_names(::Dnd2024::Homebrews::Background)
       }
     end
 
     def ids_with_names(relation)
+      title_defined = relation.method_defined?(:title)
       relation.all.each_with_object({}) do |item, acc|
+        next acc[item.id] = { name: item.title } if title_defined
         next acc[item.id] = { name: item.data.names } if item.data.attributes['names']
 
         acc[item.id] = { name: { en: item.name, ru: item.name } }
@@ -40,6 +42,7 @@ module Cache
     end
 
     def new_item_value(item)
+      return { name: item.title } if item.attributes.key?('title')
       return { name: item.data.names } if item.data.attributes['names']
 
       { name: { en: item.name, ru: item.name } }

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module HomebrewsV2
-  class ListController < HomebrewsV2::BaseController
+  class HomebrewsController < HomebrewsV2::BaseController
     include SerializeRelation
 
     before_action :find_homebrews, only: %i[index]

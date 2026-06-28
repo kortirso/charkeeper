@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe HomebrewsV2::ListController do
+describe HomebrewsV2::HomebrewsController do
   let!(:user_session) { create :user_session }
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
 

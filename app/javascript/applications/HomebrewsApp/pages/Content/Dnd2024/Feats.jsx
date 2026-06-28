@@ -8,10 +8,10 @@ export const Dnd2024Feats = () => {
   const fetchList = async () => await fetchFeatsRequest(appState.accessToken);
 
   const ChildrenComponent = (props) => (
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-2">
       <p>ID - {props.info.id}</p>
       <p
-        class="feat-markdown mt-1"
+        class="feat-markdown"
         innerHTML={props.info.description} // eslint-disable-line solid/no-innerhtml
       />
     </div>

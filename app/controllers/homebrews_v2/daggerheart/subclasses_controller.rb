@@ -2,7 +2,7 @@
 
 module HomebrewsV2
   module Daggerheart
-    class SubclassesController < HomebrewsV2::Daggerheart::ElementsController
+    class SubclassesController < HomebrewsV2::HomebrewController
       include SerializeResource
 
       private

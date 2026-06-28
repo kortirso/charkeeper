@@ -2,7 +2,7 @@
 
 module HomebrewsV2
   module Daggerheart
-    class CommunitiesController < HomebrewsV2::Daggerheart::ElementsController
+    class CommunitiesController < HomebrewsV2::HomebrewController
       include SerializeResource
 
       private

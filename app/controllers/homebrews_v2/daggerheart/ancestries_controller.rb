@@ -2,7 +2,7 @@
 
 module HomebrewsV2
   module Daggerheart
-    class AncestriesController < HomebrewsV2::Daggerheart::ElementsController
+    class AncestriesController < HomebrewsV2::HomebrewController
       include SerializeResource
 
       private

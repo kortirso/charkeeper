@@ -2,7 +2,7 @@
 
 module HomebrewsV2
   module Daggerheart
-    class TransformationsController < HomebrewsV2::Daggerheart::ElementsController
+    class TransformationsController < HomebrewsV2::HomebrewController
       include SerializeResource
 
       private

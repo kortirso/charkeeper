@@ -252,7 +252,7 @@ Rails.application.routes.draw do
   end
 
   namespace :homebrews_v2 do
-    resources :list, only: %i[index]
+    resources :homebrews, only: %i[index]
     resources :publications, only: %i[index create destroy]
 
     namespace :daggerheart do
@@ -284,6 +284,9 @@ Rails.application.routes.draw do
     end
 
     namespace :dnd2024 do
+      resources :backgrounds, only: %i[show destroy] do
+        post :copy, on: :member
+      end
       resources :feats, only: %i[index show destroy] do
         post :copy, on: :member
       end

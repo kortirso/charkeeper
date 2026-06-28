@@ -1,6 +1,6 @@
 import { For, Switch, Match } from 'solid-js';
 
-import { Dnd2024Feats } from '../../pages';
+import { Dnd2024Feats, Dnd2024Backgrounds } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
 const TRANSLATION = {
@@ -41,7 +41,7 @@ export const Dnd2024 = () => {
   return (
     <>
       <div class="flex gap-x-4 my-4">
-        <For each={['feats']}>
+        <For each={['backgrounds', 'feats']}>
           {(item) =>
             <p
               class="homebrew-provider-nav"
@@ -54,7 +54,7 @@ export const Dnd2024 = () => {
       <Switch fallback={<></>}>
         <For each={
           Object.entries({
-            feats: Dnd2024Feats
+            feats: Dnd2024Feats, backgrounds: Dnd2024Backgrounds
           })
         }>
           {([item, Component]) =>
