@@ -6,7 +6,7 @@ module HomebrewsV2
       private
 
       def serializer = ::Homebrews::Dnd::BookSerializer
-      def provider = 'dnd2024'
+      def provider = 'dnd'
     end
   end
 end

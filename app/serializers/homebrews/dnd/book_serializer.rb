@@ -3,17 +3,21 @@
 module Homebrews
   module Dnd
     class BookSerializer < ApplicationSerializer
-      attributes :id, :name, :provider, :items, :shared, :public, :enabled, :own
+      attributes :id, :title, :provider, :items, :shared, :public, :enabled, :own
+
+      def title
+        object.name
+      end
 
       def items # rubocop: disable Metrics/AbcSize
-        object_items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
+        items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
-          items: ::Dnd5::Item.where(id: object_items['Dnd5::Item']).pluck(:name).map { |item| translate(item) },
-          classes: subclasses_info(object_items),
-          spells: feats(object_items, 6).pluck(:title).map { |item| translate(item) },
-          feats: feats(object_items, 4).pluck(:title).map { |item| translate(item) },
-          backgrounds: ::Dnd2024::Homebrew::Background.where(id: object_items['Dnd2024::Homebrew::Background']).pluck(:name)
+          items: ::Dnd5::Item.where(id: items['Dnd5::Item']).pluck(:name).map { |item| translate(item) },
+          classes: subclasses_info(items),
+          spells: feats(items, 6).pluck(:title).map { |item| translate(item) },
+          feats: feats(items, 4).pluck(:title).map { |item| translate(item) },
+          backgrounds: titles(items, ::Dnd2024::Homebrews::Background, 'Dnd2024::Homebrews::Background')
         }
       end
 
@@ -41,6 +45,10 @@ module Homebrews
         ::Dnd2024::Feat
           .where(origin: origin)
           .where(id: object_items['Dnd2024::Feat'].to_a + object_items['Feat'].to_a)
+      end
+
+      def titles(object_items, model, key)
+        model.where(id: object_items[key]).pluck(:title).map { |item| translate(item) }
       end
     end
   end

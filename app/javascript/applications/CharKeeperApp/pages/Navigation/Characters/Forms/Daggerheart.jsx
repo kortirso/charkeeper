@@ -110,7 +110,7 @@ export const DaggerheartCharacterForm = (props) => {
 
   return (
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
-      <p class="dark:text-snow mb-2">{localize(TRANSLATION, locale()).options}</p>
+      <p class="dark:text-snow text-sm mb-2">{localize(TRANSLATION, locale()).options}</p>
       <Input
         containerClassList="mb-2"
         labelText={t('newCharacterPage.name')}

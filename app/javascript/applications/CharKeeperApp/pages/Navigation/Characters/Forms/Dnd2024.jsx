@@ -15,14 +15,17 @@ const DND2024_DEFAULT_FORM = {
 
 const TRANSLATION = {
   en: {
+    options: 'There are books available in Homebrews/Modules section for additional options for character creation.',
     skipGuide: 'Skip new character guide',
     beyondFile: 'You can import your character from D&D Beyond by using JSON file (you can find extension description at main page)'
   },
   ru: {
+    options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.',
     skipGuide: 'Пропустить настройку нового персонажа',
     beyondFile: 'Вы можете импортировать своего персонажа из D&D Beyond, используя JSON-файл (описание расширения можно найти на главной странице).'
   },
   es: {
+    options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
     skipGuide: 'Omitir guía de personaje nuevo',
     beyondFile: 'Puedes importar tu personaje usando de D&D Beyond un archivo JSON (puedes encontrar la descripción de la extensión en la página principal).'
   }
@@ -73,6 +76,7 @@ export const Dnd2024CharacterForm = (props) => {
   return (
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <div class="flex flex-col gap-2">
+        <p class="dark:text-snow text-sm">{localize(TRANSLATION, locale()).options}</p>
         <Input
           labelText={t('newCharacterPage.name')}
           value={characterDnd2024Form.name}

@@ -16,7 +16,7 @@ export const createBookRequest = async (accessToken, provider, payload) => {
 
 export const changeUserBook = async (accessToken, id) => {
   return await apiRequest({
-    url: `/homebrews/users/books/${id}.json`,
+    url: `/homebrews_v2/users/books/${id}.json`,
     options: options('PATCH', accessToken)
   });
 }

@@ -3,51 +3,48 @@ import { Show, For } from 'solid-js';
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedBookContent } from '../../../pages';
 import { fetchBooksRequest } from '../../../requests_v2/books';
-import { fetchBookRequest, removeBookRequest } from '../../../requests_v2/daggerheart/books';
+import { fetchBookRequest, removeBookRequest } from '../../../requests_v2/dnd2024/books';
 import { localize } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
-    races: 'Ancestries',
-    communities: 'Communities',
-    classes: 'Classes',
     items: 'Items',
-    transformations: 'Transformations',
-    domains: 'Domains',
+    spells: 'Spells',
+    classes: 'Classes',
+    feats: 'Feats',
+    backgrounds: 'Backgrounds',
     official: 'Approved'
   },
   ru: {
-    races: 'Расы',
-    communities: 'Общества',
-    classes: 'Классы',
     items: 'Предметы',
-    transformations: 'Трансформации',
-    domains: 'Домены',
+    spells: 'Заклинания',
+    classes: 'Классы',
+    feats: 'Черты',
+    backgrounds: 'Предыстории',
     official: 'Одобренная'
   },
   es: {
-    races: 'Ancestrías',
-    communities: 'Comunidades',
-    classes: 'Clases',
     items: 'Objetos',
-    transformations: 'Transformaciones',
-    domains: 'Dominios',
+    spells: 'Hechizos',
+    classes: 'Clases',
+    feats: 'Proesas',
+    backgrounds: 'Trasfondos',
     official: 'Aprobado'
   }
 }
 
-export const DaggerheartBooksV2 = () => {
+export const Dnd2024Books = () => {
   const [locale] = useAppLocale();
   const [appState] = useAppState();
 
-  const fetchList = async () => await fetchBooksRequest(appState.accessToken, 'daggerheart');
+  const fetchList = async () => await fetchBooksRequest(appState.accessToken, 'dnd2024');
 
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-4">
       <Show when={props.info.shared}>
         <p class="font-medium!">{localize(TRANSLATION, locale()).official}</p>
       </Show>
-      <For each={['races', 'communities', 'classes', 'items', 'transformations', 'domains']}>
+      <For each={['items', 'classes', 'backgrounds', 'feats', 'spells']}>
         {(kind) =>
           <Show
             when={kind !== 'classes'}

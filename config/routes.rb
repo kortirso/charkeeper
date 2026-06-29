@@ -298,6 +298,10 @@ Rails.application.routes.draw do
     resources :books, only: %i[] do
       resources :items, only: %i[create], module: :books
     end
+
+    namespace :users do
+      resources :books, only: %i[update]
+    end
   end
 
   namespace :webhooks do
