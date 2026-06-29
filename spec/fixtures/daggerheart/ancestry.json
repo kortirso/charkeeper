@@ -28,7 +28,16 @@
         /* optional */
         "limit": 1,
         /* optional, allowed values - short_rest/long_rest/session */
-        "limit_refresh": "short_rest"
+        "limit_refresh": "short_rest",
+        /* optional */
+        /* available keys - str/agi/fin/ins/pre/know/health/stress/hope/evasion/armor_score/major/severe/attack/damage/spell_bonus */
+        /* type - add */
+        /* value - integer or formula */
+        /* formulas - "level", "tier", "proficiency", "tier * 2", "level + 2" */
+        "modifiers": {
+          "str": { "type": "add", "value": 1 },
+          "evasion": { "type": "add", "value": "tier" }
+        }
       },
       {
         "title": {

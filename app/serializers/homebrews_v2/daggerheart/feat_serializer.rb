@@ -3,7 +3,7 @@
 module HomebrewsV2
   module Daggerheart
     class FeatSerializer < ApplicationSerializer
-      attributes :id, :title, :description, :limit, :limit_refresh, :conditions, :items
+      attributes :id, :title, :description, :limit, :limit_refresh, :conditions, :items, :modifiers
 
       def title
         translate(object.title)

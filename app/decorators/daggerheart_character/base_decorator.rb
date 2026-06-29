@@ -33,7 +33,6 @@ module DaggerheartCharacter
         tier +
         leveling['proficiency'].to_i +
         bonuses.pluck('proficiency').sum(&:to_i) +
-        static_feat_bonuses.pluck('proficiency').sum(&:to_i) +
         static_item_bonuses.pluck('proficiency').sum(&:to_i)
     end
 
@@ -122,16 +121,8 @@ module DaggerheartCharacter
       @dynamic_bonuses ||= __getobj__.bonuses.enabled.pluck(:dynamic_value).compact
     end
 
-    def static_feat_bonuses
-      @static_feat_bonuses ||= feat_bonuses.pluck(:value).compact
-    end
-
     def static_item_bonuses
       @static_item_bonuses ||= item_bonuses.pluck(:value).compact
-    end
-
-    def feat_bonuses
-      @feat_bonuses ||= Character::Bonus.where(bonusable_id: __getobj__.feats.pluck(:feat_id)).to_a
     end
 
     def item_bonuses
@@ -140,6 +131,32 @@ module DaggerheartCharacter
 
     def attack
       0
+    end
+
+    def feat_bonuses
+      @feat_bonuses ||=
+        __getobj__.feats.joins(:feat).pluck('feats.modifiers').compact_blank.each_with_object({}) do |modifiers, acc|
+          modifiers.each do |key, value|
+            formula_result = formula_service.call(formula: value['value'], variables: formula_variables)
+            next unless formula_result
+
+            acc[key] ||= 0
+            acc[key] += formula_result
+          end
+        end
+    end
+
+    def formula_variables
+      @formula_variables ||=
+        {
+          level: level,
+          tier: tier,
+          proficiency: proficiency
+        }
+    end
+
+    def formula_service
+      Charkeeper::Container.resolve('formula')
     end
   end
 end

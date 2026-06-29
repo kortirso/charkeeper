@@ -31,6 +31,15 @@
         "limit_refresh": "short_rest",
         /* required, from 1 to 10 */
         "level": 1,
+        /* optional */
+        /* available keys - str/agi/fin/ins/pre/know/health/stress/hope/evasion/armor_score/major/severe/attack/damage/spell_bonus */
+        /* type - add */
+        /* value - integer or formula */
+        /* formulas - "level", "tier", "proficiency", "tier * 2", "level + 2" */
+        "modifiers": {
+          "spell_bonus": { "type": "add", "value": 2 },
+          "severe": { "type": "add", "value": "tier" }
+        },
         "attacks": [
           {
             /* required, allowed locale keys - en, ru, es */

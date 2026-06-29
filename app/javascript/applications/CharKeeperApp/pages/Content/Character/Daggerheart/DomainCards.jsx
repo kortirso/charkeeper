@@ -173,8 +173,8 @@ export const DaggerheartDomainCards = (props) => {
           <Dice
             width="28"
             height="28"
-            text={modifier(character().modified_traits[trait])}
-            onClick={() => props.openDualityTest(`/check attack ${trait}`, null, character().modified_traits[trait])}
+            text={modifier(character().modified_traits[trait] + character().spell_bonus)}
+            onClick={() => props.openDualityTest(`/check attack ${trait}`, null, character().modified_traits[trait] + character().spell_bonus)}
           />
         </p>
       }

@@ -28,7 +28,7 @@ module HomebrewsV2Context
             ::Daggerheart::Feat
               .where(origin: 'ancestry', origin_value: input[:ancestry].id)
               .map do |feat|
-                result = feat.attributes.slice('title', 'description', 'kind', 'limit_refresh').symbolize_keys
+                result = feat.attributes.slice('title', 'description', 'kind', 'limit_refresh', 'modifiers').symbolize_keys
                 result[:limit] = feat.description_eval_variables['limit']
                 result.compact
               end

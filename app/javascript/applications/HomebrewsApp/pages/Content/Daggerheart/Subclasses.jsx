@@ -2,6 +2,7 @@ import { For, Show } from 'solid-js';
 
 import config from '../../../../CharKeeperApp/data/daggerheart.json';
 import { SharedWeapon } from './SharedWeapon';
+import { FeatureModifiers } from './FeatureModifiers';
 
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
@@ -44,15 +45,18 @@ export const DaggerheartSubclasses = () => {
       </p>
       <For each={props.info.features}>
         {(feature) =>
-          <div>
+          <div class="flex flex-col gap-1">
             <p class="font-medium!">{feature.title}</p>
             <p
-              class="feat-markdown mt-1"
+              class="feat-markdown"
               innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
             />
-            <Show when={feature?.items}>
-              <div class="pl-4 mt-2">
-                <For each={feature?.items}>
+            <Show when={Object.keys(feature.modifiers).length > 0}>
+              <FeatureModifiers items={feature.modifiers} />
+            </Show>
+            <Show when={feature.items}>
+              <div class="pl-4">
+                <For each={feature.items}>
                   {(item) =>
                     <SharedWeapon info={item} />
                   }

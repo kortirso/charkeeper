@@ -16,15 +16,14 @@ module DaggerheartCharacter
     end
     # rubocop: enable Naming/PredicateMethod
 
-    def modified_traits # rubocop: disable Metrics/AbcSize
+    def modified_traits
       @modified_traits ||=
         __getobj__.modified_traits.merge(
           *[
             *equiped_traits_bonuses,
             *bonuses.pluck('traits'),
             *dynamic_bonuses.pluck('traits'),
-            *static_feat_bonuses.pluck('traits'),
-            *dynamic_feat_bonuses.pluck('traits'),
+            feat_bonuses.slice('str', 'agi', 'fin', 'ins', 'pre', 'know'),
             *static_item_bonuses.pluck('traits'),
             *dynamic_item_bonuses.pluck('traits'),
             beastform_config['traits'],
@@ -43,8 +42,7 @@ module DaggerheartCharacter
               equiped_thresholds_bonuses,
               *bonuses.pluck('thresholds'),
               *dynamic_bonuses.pluck('thresholds'),
-              *static_feat_bonuses.pluck('thresholds'),
-              *dynamic_feat_bonuses.pluck('thresholds'),
+              feat_bonuses.slice('major', 'severe'),
               *static_item_bonuses.pluck('thresholds'),
               *dynamic_item_bonuses.pluck('thresholds')
             ].compact
@@ -58,8 +56,7 @@ module DaggerheartCharacter
         item_bonuses.pluck('evasion').compact.sum +
         sum(bonuses.pluck('evasion')) +
         sum(dynamic_bonuses.pluck('evasion')) +
-        sum(static_feat_bonuses.pluck('evasion')) +
-        sum(dynamic_feat_bonuses.pluck('evasion')) +
+        feat_bonuses['evasion'].to_i +
         sum(static_item_bonuses.pluck('evasion')) +
         sum(dynamic_item_bonuses.pluck('evasion')) +
         beastform_config['evasion'] +
@@ -72,8 +69,7 @@ module DaggerheartCharacter
         leveling['health'].to_i +
         sum(bonuses.pluck('health')) +
         sum(dynamic_bonuses.pluck('health')) +
-        sum(static_feat_bonuses.pluck('health')) +
-        sum(dynamic_feat_bonuses.pluck('health')) +
+        feat_bonuses['health'].to_i +
         sum(static_item_bonuses.pluck('health')) +
         sum(dynamic_item_bonuses.pluck('health'))
     end
@@ -84,8 +80,7 @@ module DaggerheartCharacter
         leveling['stress'].to_i +
         sum(bonuses.pluck('stress')) +
         sum(dynamic_bonuses.pluck('stress')) +
-        sum(static_feat_bonuses.pluck('stress')) +
-        sum(dynamic_feat_bonuses.pluck('stress')) +
+        feat_bonuses['stress'].to_i +
         sum(static_item_bonuses.pluck('stress')) +
         sum(dynamic_item_bonuses.pluck('stress'))
     end
@@ -96,8 +91,7 @@ module DaggerheartCharacter
         beastbound_pet_bonus +
         sum(bonuses.pluck('hope')) +
         sum(dynamic_bonuses.pluck('hope')) +
-        sum(static_feat_bonuses.pluck('hope')) +
-        sum(dynamic_feat_bonuses.pluck('hope')) +
+        feat_bonuses['hope'].to_i +
         sum(static_item_bonuses.pluck('hope')) +
         sum(dynamic_item_bonuses.pluck('hope')) -
         scars.size
@@ -126,6 +120,10 @@ module DaggerheartCharacter
           default = Daggerheart::Character.subclass_info(key, value)
           default ? default['spellcast'] : spellcast_for_homebrew_subclass(value)
         end.uniq
+    end
+
+    def spell_bonus
+      feat_bonuses['spell_bonus'].to_i
     end
 
     def available_mechanics
@@ -240,7 +238,7 @@ module DaggerheartCharacter
 
     def calculate_damage_bonus(damage_bonus, damage_type)
       damage_bonus += level if available_feature_slugs.include?('combat_training') && damage_type == 'physical'
-      damage_bonus
+      damage_bonus.to_i + feat_bonuses['damage'].to_i
     end
 
     def trait_bonus(item)
@@ -264,8 +262,7 @@ module DaggerheartCharacter
       @attack_bonuses ||=
         sum(bonuses.pluck('attack').compact) +
         sum(dynamic_bonuses.pluck('attack').compact) +
-        sum(static_feat_bonuses.pluck('attack').compact) +
-        sum(dynamic_feat_bonuses.pluck('attack').compact) +
+        feat_bonuses['attack'].to_i +
         sum(static_item_bonuses.pluck('attack').compact) +
         sum(dynamic_item_bonuses.pluck('attack').compact) +
         attack
