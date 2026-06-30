@@ -80,7 +80,7 @@
       "ru": "Всезнайка"
     },
     "description": {
-      "en": "**Prerequisites** enigma muse. When you succeed at a check to Recall Knowledge, you gain additional information or context. When you critically succeed at a check to Recall Knowledge, you get additional information or context or can ask an additional follow-up question.",
+      "en": "**Prerequisites** enigma muse.\n\nWhen you succeed at a check to Recall Knowledge, you gain additional information or context. When you critically succeed at a check to Recall Knowledge, you get additional information or context or can ask an additional follow-up question.",
       "ru": "**Критерии** энигма.\n\nКогда вы успешно проходите проверку, чтобы Вспомнить информацию, вы получаете дополнительную информацию или сведения. Когда вы критически успешно проходите такую проверку, то по решению ведущего сможете получить ещё больше дополнительной информации или полезных сведений, чем обычно, либо сможете задать дополнительный вопрос."
     },
     "origin": "class",
@@ -98,7 +98,7 @@
       "ru": "Внеочередная отвага"
     },
     "description": {
-      "en": "**Prerequisites** warrior muse\n\n**Trigger** A creature within your reach uses an auditory effect, manipulate action, or move action; makes a ranged attack; or leaves a square during its move action\n\n**Requirements** You are affected by courageous anthem.\n\nYou bellow a ferocious call to arms, inspiring yourself to lash out at a foe. Make a melee Strike against the triggering creature. If the attack is a critical hit and the trigger was a manipulate action, the action is disrupted.",
+      "en": "**Prerequisites** warrior muse\n\n**Trigger** A creature within your reach uses an auditory effect, manipulate action, or move action; makes a ranged attack; or leaves a square during its move action.\n\n**Requirements** You are affected by courageous anthem.\n\nYou bellow a ferocious call to arms, inspiring yourself to lash out at a foe. Make a melee Strike against the triggering creature. If the attack is a critical hit and the trigger was a manipulate action, the action is disrupted.",
       "ru": "**Критерии** воитель\n\n**Условие** существо в вашей зоне досягаемости использует действие с дескриптором «движение» или «манипуляция» либо эффект с дескриптором «слух», совершает дистанционную атаку или покидает клетку в ходе совершаемого им действия с дескриптором «движение».\n\n**Требования** вы под действием песни отваги.\n\nВы издаёте грохочущий клич, вдохновляя себя на атаку по врагу. Совершите Удар в ближнем бою по спровоцировавшему существу. Если это критический удар, а спровоцировало его действие с дескриптором «манипуляция», вы срываете это действие."
     },
     "origin": "class",
@@ -364,6 +364,7 @@
     "description_eval_variables": {
       "limit": "1"
     },
+    "limit_refresh": "long_rest"
   },
   {
     "slug": "incredible_companion",
@@ -390,17 +391,14 @@
       "ru": "Поднятие менгира"
     },
     "description": {
-      "en": "You raise a druidic monument, such as a standing stone or warding tree, from the ground, creating a powerful primal ward that blocks other types of magic. The monument appears in an unoccupied square on the ground within 30 feet, making that square difficult terrain. Choose arcane, divine, or occult; all creatures within 15 feet of the monument gain a +2 status bonus to their saving throws against effects with that trait. The monument lasts for 1 round before crumbling back into the earth or wilting away into nothingness, but you can Sustain the monument for up to 1 minute.",
-      "ru": "Вы поднимаете из земли монумент друидов вроде менгира или охранного древа, создавая мощную первобытную защиту, которая блокирует все остальные типы магии. Монумент появляется в свободной клетке на земле в пределах 30 футов, которая становится пересечённой местностью. Выберите дескриптор «мистический», «оккультный» или «сакральный»; все существа в пределах 15 футов от монумента получают бонус состояния +2 к испытаниям против эффектов с этим дескриптором. Монумент существует 1 раунд, после чего рассыпается и исчезает в земле или же увядает, превращаясь в ничто, но вы можете использовать для него Поддержание вплоть до 1 минуты."
+      "en": "**Frequency** once per hour.\n\nYou raise a druidic monument, such as a standing stone or warding tree, from the ground, creating a powerful primal ward that blocks other types of magic. The monument appears in an unoccupied square on the ground within 30 feet, making that square difficult terrain. Choose arcane, divine, or occult; all creatures within 15 feet of the monument gain a +2 status bonus to their saving throws against effects with that trait. The monument lasts for 1 round before crumbling back into the earth or wilting away into nothingness, but you can Sustain the monument for up to 1 minute.",
+      "ru": "**Частота** 1 в час.\n\nВы поднимаете из земли монумент друидов вроде менгира или охранного древа, создавая мощную первобытную защиту, которая блокирует все остальные типы магии. Монумент появляется в свободной клетке на земле в пределах 30 футов, которая становится пересечённой местностью. Выберите дескриптор «мистический», «оккультный» или «сакральный»; все существа в пределах 15 футов от монумента получают бонус состояния +2 к испытаниям против эффектов с этим дескриптором. Монумент существует 1 раунд, после чего рассыпается и исчезает в земле или же увядает, превращаясь в ничто, но вы можете использовать для него Поддержание вплоть до 1 минуты."
     },
     "origin": "class",
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 8 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
+    "conditions": { "level": 8 }
   },
   {
     "slug": "soaring_shape",

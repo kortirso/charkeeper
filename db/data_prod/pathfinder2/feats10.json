@@ -97,6 +97,7 @@
     "description_eval_variables": {
       "limit": "1"
     },
+    "limit_refresh": "long_rest"
   },
   {
     "slug": "symphony_of_the_unfettered_heart",
