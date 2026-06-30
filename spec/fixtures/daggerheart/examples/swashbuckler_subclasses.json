@@ -1,0 +1,159 @@
+[
+  {
+    "title": {
+      "en": "Duelist",
+      "ru": "Дуэлянт"
+    },
+    "description": {
+      "en": "Play the Duelist if you prefer to fight your foes one on one, without ever breaking a sweat.",
+      "ru": "Играйте за Дуэлянта, если предпочитаете сражаться с врагами один на один, никогда не прилагая особых усилий."
+    },
+    "public": true,
+    "class_id": "27c3324a-d703-47d0-8da9-be41f165a224",
+    "spellcast": "pre",
+    "features": [
+      {
+        "title": {
+          "en": "Poise",
+          "ru": "Самообладание"
+        },
+        "description": {
+          "en": "Gain an additional Stress slot.",
+          "ru": "Получите добавленную ячейку Стресса."
+        },
+        "kind": "update_result",
+        "subclass_mastery": 1,
+        "modifiers": {
+          "stress": { "type": "add", "value": 1 }
+        }
+      },
+      {
+        "title": {
+          "en": "Rivalry",
+          "ru": "Соперничество"
+        },
+        "description": {
+          "en": "**Spend 2 Hope** to make an adversary within Close range your Rival until the scene ends. You have a +2 bonus to Evasion against attacks from your Rival. You can only have one Rival at a time.",
+          "ru": "**Потратьте 2 Надежды**, чтобы отметить противника в пределах средней дистанции вашим соперником до конца сцены. Вы получаете ситуативный бонус +2 к Уклонению против атак вашего соперника. У вас может быть только 1 соперник в момент времени."
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "No Quarter",
+          "ru": "Без пощады"
+        },
+        "description": {
+          "en": "When your Rival is the only adversary in a scene, your attack rolls against them have advantage.",
+          "ru": "Если ваш соперник остаётся единственным противником, то ваши броски атаки против него совершаются с преимуществом."
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "In The Face Of Danger",
+          "ru": "Перед лицом опасности"
+        },
+        "description": {
+          "en": "When you roll with Fear, you can change it into a roll with Hope instead.",
+          "ru": "Когда вы совершаете бросок со Страхом, вы можете изменить его на бросок с Надеждой."
+        },
+        "kind": "static",
+        "subclass_mastery": 2,
+        "limit": 1,
+        "limit_refresh": "long_rest"
+      },
+      {
+        "title": {
+          "en": "Mano A Mano",
+          "ru": "Рука об руку"
+        },
+        "description": {
+          "en": "When you have advantage on an Attack Roll against your Rival, you can roll a d10 as your advantage die.",
+          "ru": "Когда у вас есть преимущество на броски атаки против вашего соперника, то вы можете использовать d10 как куб преимущества."
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Ruffian",
+      "ru": "Головорез"
+    },
+    "description": {
+      "en": "Play the Ruffian if you are not afraid to use dirty tactics to win your battles.",
+      "ru": "Играйте за Головореза, если вы не боитесь использовать грязные тактики для победы в бою."
+    },
+    "public": true,
+    "class_id": "27c3324a-d703-47d0-8da9-be41f165a224",
+    "spellcast": "pre",
+    "features": [
+      {
+        "title": {
+          "en": "Back Alley Tactics",
+          "ru": "Тактика подворотни"
+        },
+        "description": {
+          "en": "When you succeed on an attack roll against an adversary within Close Range, you can **spend a Hope** to make them temporarily *Vulnerable*.",
+          "ru": "Когда вы успешно атакуете противника в пределах средней дистанции, то вы можете **потратить Надежду**, чтобы сделать его временно уязвимым."
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Get In Their Head",
+          "ru": "Залезть в их головы"
+        },
+        "description": {
+          "en": "You make Presence Rolls with advantage against targets that are *Vulnerable*.",
+          "ru": "Ваши броски Влияния против уязвимых противников получают преимущество."
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Mockery",
+          "ru": "Насмешка"
+        },
+        "description": {
+          "en": "When an adversary within Close range makes an attack roll, you can **spend 2 Hope** to make them roll a d12 instead of a d20 for the attack.",
+          "ru": "Когда противник в пределах средней дистанции делает бросок атаки, вы можете **потратить 2 Надежды**, чтобы изменить их бросок с d20 на d12."
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Pride",
+          "ru": "Гордость"
+        },
+        "description": {
+          "en": "When you deal enough damage to defeat an enemy that was *Vulnerable*, you can gain a Hope or clear a Stress.",
+          "ru": "Когда вы наносите достаточно урона, чтобы победить уязвимого противника, вы можете получить Надежду или очистить Стресс."
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      },
+      {
+        "title": {
+          "en": "Come At Me",
+          "ru": "Давай, нападай на меня"
+        },
+        "description": {
+          "en": "When you use your **Valiant** feature, you can remove an additional Fear from the GM's Fear Pool.",
+          "ru": "Когда вы используете **Хвастовство**, вы можете дополнительно удалить Страх из запаса Страха Мастера."
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "limit": 1,
+        "limit_refresh": "long_rest"
+      }
+    ]
+  }
+]

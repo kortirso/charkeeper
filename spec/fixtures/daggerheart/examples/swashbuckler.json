@@ -1,0 +1,53 @@
+[
+  {
+    "title": {
+      "en": "Swashbuckler",
+      "ru": "Сорвиголова"
+    },
+    "description": {
+      "en": "Swashbucklers know how to blend swordplay with flair, dodging and deflecting while laughing heartily. Their lives are half told, half fought, and filled with duels, taunts and stolen kisses.",
+      "ru": "Лихие воины умеют сочетать фехтование с изяществом, уклоняясь и отражая удары, при этом от души смеясь. Их жизнь наполовину состоит из хвастовства, наполовину полна сражений, дуэлей, насмешек и украденных поцелуев."
+    },
+    "public": true,
+    "domains": ["grace", "bone"],
+    "evasion": 11,
+    "health_max": 6,
+    "features": [
+      {
+        "title": {
+          "en": "Valiant",
+          "ru": "Доблесть"
+        },
+        "description": {
+          "en": "**Spend 3 Hope** to remove a Fear from the GM's Fear Pool.",
+          "ru": "**Потратьте 3 Надежды**, чтобы удалить 3 Страха из запаса Страха Мастера."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Valiant",
+          "ru": "Хвастовство"
+        },
+        "description": {
+          "en": "You can **mark a Stress** to gain advantage on an action roll. If you make that roll with Hope, you gain an additional Hope, but if you make that roll with Fear, the GM gains an additional Fear.",
+          "ru": "Вы можете **отметить Стресс**, чтобы получить преимущество на бросок действия. Если результат броска с Надеждой, то вы получаете дополнительную Надежду, если со Страхом, то Мастер получает дополнительный страх в запас Страха Мастера."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Save Face",
+          "ru": "Сохранить лицо"
+        },
+        "description": {
+          "en": "When you fail a Presence Roll, you can reroll it and use a d20 as your Hope die.",
+          "ru": "Когда вы проваливаете бросок Влияния, то вы можете перебросить его, используя d20 как кость Надежды."
+        },
+        "kind": "static",
+        "limit": 1,
+        "limit_refresh": "long_rest"
+      }
+    ]
+  }
+]
