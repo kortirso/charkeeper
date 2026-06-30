@@ -7,7 +7,7 @@ module HomebrewsV2Context
         errors = {}
         JSON.parse(publication.file.download).each_with_index do |object, index|
           result = command_object(publication).call(object.symbolize_keys.merge({ user: publication.user }))
-          errors[index.to_s] = result[:raw_errors] if result[:raw_errors]
+          errors[index.to_s] = result[:errors] if result[:errors]
         end
         publication.update!(errors_list: errors, completed_at: DateTime.now)
       rescue JSON::ParserError => _e

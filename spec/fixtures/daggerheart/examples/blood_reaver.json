@@ -6,7 +6,7 @@
     },
     "description": {
       "en": "Blood Reavers are predators forged of steel and shadow. Every tremor of doubt, every drop of fear fuels their Bloodforge, tempering their strikes into ruinous blows. Whether they stand drenched in blood or vanish into the gloom, one truth remains — when a Blood Reaver is near,fear is never wasted.",
-      "ru": ""
+      "ru": "Кровавые похитители — хищники, закалённые в стали и тени. Каждая дрожь сомнения, каждая капля страха питают их **Кровавую кузницу**, закаляя их удары в разрушительные. Стоят ли они, облитые кровью, или исчезают во мраке, одна истина остаётся неизменной — когда рядом Кровавый похититель, страх никогда не пропадает даром."
     },
     "public": true,
     "domains": ["blade", "midnight"],
@@ -19,12 +19,13 @@
           "ru": "Красный туман"
         },
         "description": {
-          "en": "**Spend 3 Hope** to drink in the room's terror. Remove 1 Fear from the GM, place 1 Blood in your Bloodforge, and clear 1 Stress.",
-          "ru": ""
+          "en": "**Spend 3 Hope** to drink in the room's terror. Remove a Fear from the GM, place 1 Blood in your Bloodforge, and clear a Stress.",
+          "ru": "**Потратьте 3 Надежды**, чтобы впитать ужас, царящий в комнате. Удалите Страх из запаса Страха Мастера, добавьте 1 Кровь в свою **Кровавую Кузницу** и очистите Стресс."
         },
         "kind": "static",
         "limit": 1,
-        "limit_refresh": "short_rest"
+        "limit_refresh": "short_rest",
+        "price": { "hope": 3 }
       },
       {
         "title": {
@@ -32,8 +33,8 @@
           "ru": "Кровавая кузница"
         },
         "description": {
-          "en": "Start each scene with 1 Blood. You can place 1 Blood when any of the following happen:\n\n- You succeed with Fear on an action you make.\n\n- An adversary marks Stress within Close range.\n\n- The GM spends Fear to make a move or use a Fear Feature.\n\nYou can gain Blood from this list up to your Proficiency each scene. Max Blood equals your Proficiency.\n\nWhen you make a melee attack, before rolling damage you may spend Blood. On a success, apply one of the following:\n\n- Spend 1: Add 1d4 to the damage roll.\n\n- Spend 2: The target becomes temporarily Vulnerable.\n\n- Spend 3: Treat this attack as at least Major damage threshold.",
-          "ru": ""
+          "en": "Start each scene with 1 Blood. You can place 1 Blood when any of the following happen:\n\n- You succeed with Fear on an action you make.\n\n- An adversary marks Stress within Close range.\n\n- The GM spends Fear to make a move or use a Fear Feature.\n\nYou can gain Blood from this list up to your Proficiency each scene. Max Blood equals your Proficiency.\n\nWhen you make a melee attack, before rolling damage you may spend Blood. On a success, apply one of the following:\n\n- Spend 1: Add 1d4 to the damage roll.\n\n- Spend 2: The target becomes temporarily *Vulnerable*.\n\n- Spend 3: Treat this attack as at least Major damage threshold.",
+          "ru": "Вы начинаете каждую сцену с 1 Кровью. Вы можете добавить 1 Кровь когда:\n\n- Когда вы преуспеваете со Страхом.\n\n- Противник в пределах средней дистанции отмечает Стресс.\n\n- Мастер тратит Страх, чтобы выполнить движение или использовать способность со Страхом.\n\nВ течение каждой сцены вы можете получить кол-во Крови, равное вашему мастерству. Лимит Крови равен вашему Мастерству.\n\nВо время атаки ближнего боя до броска урона вы можете потратить Кровь:\n\n- Потратить 1: добавьте 1d4 к броску урона.\n\n- Потратить 2: цель становится *Уязвимой*.\n\n- Потратить 3: эта атака причиняет как минимум ощутимые повреждения."
         },
         "kind": "static",
         "limit": 0
@@ -45,7 +46,7 @@
         },
         "description": {
           "en": "Once per scene, when you defeat a target within Melee, immediately move up to Close range and make a melee attack against a different target.",
-          "ru": ""
+          "ru": "Один раз за сцену, когда вы побеждаете цель в ближнем бою, мгновенно переместитесь в пределах средней дистанции к другой цели и выполните против неё атаку ближнего боя."
         },
         "kind": "static"
       }

@@ -28,7 +28,8 @@ module HomebrewsV2Context
             ::Daggerheart::Feat
               .where(origin: 'domain_card', origin_value: input[:domain].id)
               .map do |feat|
-                result = feat.attributes.slice('title', 'description', 'kind', 'limit_refresh', 'modifiers').symbolize_keys
+                result =
+                  feat.attributes.slice('title', 'description', 'kind', 'limit_refresh', 'modifiers', 'price').symbolize_keys
                 result[:limit] = feat.description_eval_variables['limit']
                 result[:level] = feat.conditions['level']
                 result.compact

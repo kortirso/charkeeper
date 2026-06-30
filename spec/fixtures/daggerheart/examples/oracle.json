@@ -6,7 +6,7 @@
     },
     "description": {
       "en": "Your source of divine power isn't that of prayer and preaching—it comes from something beyond. You can see beyond the Mortal Realm to gain access to sacred truths and dark secrets, circumventing the scope of deities. Your power comes with a terrible price: either a curse that grows stronger the more you draw upon it, or your very own lifeforce.",
-      "ru": ""
+      "ru": "Ваш источник божественной силы — не молитва и проповедь, а нечто потустороннее. Вы можете видеть за пределами Царства Смертных, чтобы получить доступ к священным истинам и темным тайнам, минуя власть божеств. Ваша сила имеет ужасную цену: либо проклятие, которое становится сильнее по мере того, как вы к ней обращаетесь, либо ваша собственная жизненная сила."
     },
     "public": true,
     "domains": ["splendor", "arcana"],
@@ -20,9 +20,10 @@
         },
         "description": {
           "en": "When you or an ally within Close range fails an Instinct or Presence roll, you can **spend 3 Hope** to reroll the Duality Dice.",
-          "ru": ""
+          "ru": "Когда вы или ваш союзник в пределах средней дистанции проваливаете проверку Инстинкта или Влияния, то вы можете **Потратить 3 Надежды**, чтобы перебросить Кости Дуальности."
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "hope": 3 }
       },
       {
         "title": {
@@ -30,21 +31,22 @@
           "ru": "Генезис"
         },
         "description": {
-          "en": "Whenever you roll a Critical Success, additionally clear I Hit Point.",
-          "ru": ""
+          "en": "Whenever you roll a Critical Success, additionally clear a Hit Point.",
+          "ru": "После критического успеха при броске вы можете очистить рану."
         },
         "kind": "static"
       },
       {
         "title": {
           "en": "Oracular Font",
-          "ru": ""
+          "ru": "Вещий текст"
         },
         "description": {
           "en": "Determine the source of your power, known as your Oracular Font. Before you make an action or reaction roll related to your Oracular Font, you can **spend a Hope** to add a +2 modifier to the roll's result. Once per session, you can add this modifier to any Spellcast Roll you make.",
-          "ru": ""
+          "ru": "Определите источник вашей силы, известный как Вещий текст. До броска действия или реакции, связанного с вашим Вещим текстом, вы можете **потратить Надежду**, чтобы добавить бонус +2 к результату броска. Один раз за сессию вы можете добавить этот бонус к любому броску заклинания."
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "hope": 1 }
       }
     ]
   }

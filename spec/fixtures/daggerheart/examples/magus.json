@@ -2,11 +2,11 @@
   {
     "title": {
       "en": "Magus",
-      "ru": "Маг"
+      "ru": "Магус"
     },
     "description": {
       "en": "As a Magus, you combine the physical regimen of a warrior with the magical research of a wizard, and incorporate both into a hybrid combat style of spellcraft and bladework.",
-      "ru": ""
+      "ru": "В роли Магуса вы сочетаете физическую подготовку воина с магическими исследованиями волшебника, объединяя оба подхода в гибридный боевой стиль, сочетающий в себе колдовство и владение мечом."
     },
     "public": true,
     "domains": ["blade", "codex"],
@@ -20,9 +20,10 @@
         },
         "description": {
           "en": "**Spend 3 Hope** to make your next Spellstrike without marking the required Stress.",
-          "ru": ""
+          "ru": "**Потратьте 3 Надежды**, чтобы выполнить **Удар заклинанием** без требуемого стресса."
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "hope": 3 }
       },
       {
         "title": {
@@ -30,8 +31,8 @@
           "ru": "Удар заклинанием"
         },
         "description": {
-          "en": "You expertly combine the motions of attacking and imbuing your weapon with magic. When you take the spotlight, you can roll your Duality Dice and use the result for the following two action rolls:\n\n- Make an attack in melee or very close range with your primary weapon.\n\n- Make a Spellcasting Roll from one spell or grimoire card in your loadout. You must **mark the Stress** shown in the card’s Recall Cost.",
-          "ru": ""
+          "en": "When you take the spotlight, you can roll your Duality Dice and use the result for the following two action rolls:\n\n- Make an attack in melee or very close range with your primary weapon.\n\n- Make a Spellcast Roll from one spell or grimoire card in your loadout. You must **mark a Stress** shown in the card's Recall Cost.",
+          "ru": "Когда вы получаете активность вы можете выполнить бросок Костей Дуальности и использовать результат для следующих 2 бросков:\n\n- Выполнить атаку вплотную или в пределах близкой дистанции основным оружием.\n\n- Выполните **бросок заклинания** одним из заклинаний или гримуаром из вашего инвентаря. Вы должны заплатить как за её призыв. "
         },
         "kind": "static"
       }

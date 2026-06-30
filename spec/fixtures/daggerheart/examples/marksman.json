@@ -2,11 +2,11 @@
   {
     "title": {
       "en": "Marksman",
-      "ru": ""
+      "ru": "Снайпер"
     },
     "description": {
-      "en": "Some Marksmen fight from afar, eliminating threats before they’re ever seen. Others rush the fray, using speed and unpredictability to stay one step ahead. Whether training in a disciplined regiment, learning through street-scarred experience, or forging their path through relentless practice, Marksmen are more than mere sharpshooters—they are tacticians of the moment, battlefield artists who read the flow of combat like music. They thrive in sync with others, especially their chosen Partner, moving as one unit through chaos, covering angles and turning every confrontation into a carefully constructed advantage.",
-      "ru": ""
+      "en": "Some Marksmen fight from afar, eliminating threats before they’re ever seen. Others rush the fray, using speed and unpredictability to stay one step ahead. Whether training in a disciplined regiment, learning through street-scarred experience, or forging their path through relentless practice, Marksmen are more than mere sharpshooters—they are tacticians of the moment, battlefield artists who read the flow of combat like music.",
+      "ru": "Некоторые Снайперы сражаются издалека, нейтрализуя угрозы еще до того, как их увидят. Другие же бросаются в бой, используя скорость и непредсказуемость, чтобы всегда быть на шаг впереди. Будь то тренировки в дисциплинированном полку, обучение на основе уличного опыта или прокладывание пути посредством неустанных тренировок, Снайперы — это больше, чем просто меткие стрелки; это тактики момента, мастера поля боя, которые читают ход сражения как музыку."
     },
     "public": true,
     "domains": ["bone", "blade"],
@@ -19,30 +19,31 @@
           "ru": "Обнажить уязвимость"
         },
         "description": {
-          "en": "**Spend 3 Hope.** Mark a target within Far range. The target becomes temporarily Vulnerable.",
-          "ru": ""
+          "en": "**Spend 3 Hope** Mark a target within Far range. The target becomes temporarily *Vulnerable*.",
+          "ru": "**Потратьте 3 Надежды**, чтобы отметить цель в пределах далёкой дистанции, которая становится *Уязвимой*."
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "hope": 3 }
       },
       {
         "title": {
           "en": "Team Up",
-          "ru": ""
+          "ru": "Объединение"
         },
         "description": {
-          "en": "At the beginning of each session, choose a willing ally as your Partner. While your Partner is within Far range and you can see them, you gain:\n\n- Idioglossia: You and your Partner share a silent, instinctive coded language.\n\n- Marked Quarry: Once per session, both you and your Partner may **mark a Stress** to designate an adversary within Close range of either. Until the scene ends, both of you treat that target as one range segment closer.\n\n- Coordinated Strike: If you and your Partner successfully hit the same target in quick succession, the target becomes temporarily Vulnerable.",
-          "ru": ""
+          "en": "At the beginning of each session, choose a willing ally as your Partner. While your Partner is within Far range and you can see them, you gain:\n\n- **Idioglossia** You and your Partner share a silent, instinctive coded language.\n\n- **Marked Quarry** Once per session, both you and your Partner may **mark a Stress** to designate an adversary within Close range of either. Until the scene ends, both of you treat that target as one range segment closer.\n\n- **oordinated Strike** If you and your Partner successfully hit the same target in quick succession, the target becomes temporarily *Vulnerable*.",
+          "ru": "В начале сессии выберите согласного союзника как вашего Партнера. Пока вы находитесь в пределах далёкой дистанции и видите друг друга, то вы получаете:\n\n- **Идиоглоссия** Вы и ваш партнер используете невербальный, инстинктивный закодированный язык.\n\n- **Отмеченная цель** Один раз за сессию вы и ваш партнер можете **отметить Стресс**, чтобы обозначить противника в пределах средней дистанции. До окончания сцены вы оба считаете эту цель на один сегмент ближе.\n\n- **Скоординированный удар** Если вы и ваш партнер успешно поразите одну и ту же цель в быстрой последовательности, цель временно становится *Уязвимой*."
         },
         "kind": "static"
       },
       {
         "title": {
           "en": "Quick Draw",
-          "ru": ""
+          "ru": "Быстрая стрельба"
         },
         "description": {
           "en": "You may switch your equipped weapons at any time without marking Stress.",
-          "ru": ""
+          "ru": "Вы можете заменить оружие на другое без необходимости отмечать Стресс."
         },
         "kind": "static"
       }

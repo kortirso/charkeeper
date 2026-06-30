@@ -22,7 +22,8 @@
           "en": "**Spend 3 Hope** to remove a Fear from the GM's Fear Pool.",
           "ru": "**Потратьте 3 Надежды**, чтобы удалить 3 Страха из запаса Страха Мастера."
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "hope": 3 }
       },
       {
         "title": {
@@ -33,7 +34,8 @@
           "en": "You can **mark a Stress** to gain advantage on an action roll. If you make that roll with Hope, you gain an additional Hope, but if you make that roll with Fear, the GM gains an additional Fear.",
           "ru": "Вы можете **отметить Стресс**, чтобы получить преимущество на бросок действия. Если результат броска с Надеждой, то вы получаете дополнительную Надежду, если со Страхом, то Мастер получает дополнительный страх в запас Страха Мастера."
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "stress": 1 }
       },
       {
         "title": {
