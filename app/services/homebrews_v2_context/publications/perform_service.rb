@@ -30,6 +30,7 @@ module HomebrewsV2Context
         case publication.parent_type
         when 'feat' then HomebrewsV2Context::Import::Dnd2024::Feats::AddCommand.new
         when 'background' then HomebrewsV2Context::Import::Dnd2024::Backgrounds::AddCommand.new
+        when 'spell' then HomebrewsV2Context::Import::Dnd2024::Spells::AddCommand.new
         end
       end
 

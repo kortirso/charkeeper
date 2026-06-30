@@ -1,0 +1,46 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "title": {
+      "en": "Spell's title"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Spell's description, **Markdown is available** for editing."
+    },
+    /* required, classes can use spell - artificer, bard, cleric, druid, paladin, ranger, sorcerer, warlock, wizard */
+    "origin_values": ["bard", "paladin"],
+    "public": true,
+    "info": {
+      /* required, spell level */
+      "level": 1,
+      /* required, cast time, "A", "BA", "R", "1,m", "10,m", "1,h", "8,h", "12,h", "24,h" */
+      "time": "A",
+      /* required, "enchantment", "conjuration", "evocation", "abjuration", "illusion", "divination", "necromancy", "transmutation" */
+      "school": "conjuration",
+      /* required, "touch", "self", "5,ft", "10,ft", "15,ft", "30,ft", "60,ft", "90,ft", "100,ft", "120,ft", "150,ft", "300,ft", "500,ft", "none", "1,mile", "500,mile" */
+      "range": "touch",
+      /* optional, sphere/emanation/square/cylinder/cone/cube/line */
+      /* sphere,15 */
+      /* emanation,10 */
+      /* square,20 */
+      /* cylinder,10,40 */
+      /* cone,60 */
+      /* cube,15 */
+      /* line,5,60 */
+      "area": "emanation,10",
+      /* optional, "1,m", "24,h", "instant", "8,h", "1,h", "10,m", "1,r", "10,d", "7,d", "30,d", "2,h", "1,d", "6,r" */
+      "duration": "instant",
+      /* optional, "v", "v,s,m", "v,s", "s,m", "s", "v,m" */
+      "components": "v,s",
+      /* optional, spell must hit target */
+      "hit": true,
+      /* optional, "str", "dex", "con", "wis", "int", "cha" */
+      "dc": "dex",
+      /* optional */
+      "concentration": true,
+      /* optional */
+      "ritual": true
+    }
+  }
+]

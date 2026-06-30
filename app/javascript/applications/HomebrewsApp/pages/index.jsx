@@ -20,5 +20,6 @@ export * from './Content/Daggerheart/BooksV2';
 export * from './Content/Daggerheart/Personal';
 
 export * from './Content/Dnd2024/Feats';
+export * from './Content/Dnd2024/Spells';
 export * from './Content/Dnd2024/Backgrounds';
 export * from './Content/Dnd2024/Books';

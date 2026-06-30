@@ -25,7 +25,7 @@ const TRANSLATION = {
 }
 
 export const Dnd2024Backgrounds = () => {
-   const [locale] = useAppLocale();
+  const [locale] = useAppLocale();
   const [appState] = useAppState();
 
   const fetchList = async () => await fetchListRequest(appState.accessToken, 'Dnd2024::Homebrews::Background');

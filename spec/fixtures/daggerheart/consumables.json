@@ -8,7 +8,7 @@
     "description": {
       "en": "Consumable's description, **Markdown is available** for editing."
     },
-    "public": false,
+    "public": true,
     "consume": [
       {
         /* required, random number from 1 to 100000 */

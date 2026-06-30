@@ -42,6 +42,7 @@
     "ability_conditions": ["int", "wis"],
     /* optional, one of abilities can be up during level up */
     /* str/dex/con/int/wis/cha */
-    "leveling_ability_boosts": ["int", "wis", "cha"]
+    "leveling_ability_boosts": ["int", "wis", "cha"],
+    "public": true
   }
 ]

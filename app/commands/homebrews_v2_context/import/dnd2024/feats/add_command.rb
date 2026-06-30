@@ -7,7 +7,7 @@ module HomebrewsV2Context
         class AddCommand < BaseCommand
           # rubocop: disable Metrics/BlockLength
           use_contract do
-            Origins = Dry::Types['strict.string'].enum('feat')
+            Origins = Dry::Types['strict.string'].enum('feat', 'spell')
             Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'one_at_short_rest')
 
@@ -34,6 +34,7 @@ module HomebrewsV2Context
               optional(:static_spells).hash
               optional(:ability_conditions).maybe(:array).each(:string) # требуемые характеристики, Сил 13+
               optional(:leveling_ability_boosts).maybe(:array).each(:string) # характеристики, которые могут быть повышены
+              optional(:public).filled(:bool)
             end
 
             rule(:limit, :limit_refresh).validate(:check_all_or_nothing_present)

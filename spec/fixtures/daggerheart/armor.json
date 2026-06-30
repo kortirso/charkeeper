@@ -10,7 +10,7 @@
     },
     /* required, primary weapon or secondary weapon */
     "kind": "primary weapon",
-    "public": false,
+    "public": true,
     "info": {
       /* required, from 1 to 4 */
       "tier": 1,

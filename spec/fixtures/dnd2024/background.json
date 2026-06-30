@@ -8,7 +8,7 @@
     "description": {
       "en": "Background's description, **Markdown is available** for editing."
     },
-    "public": false,
+    "public": true,
     /* required, id or feat name */
     "selected_feat": "Monk's Focus",
     /* required, acrobatics/animal/arcana/athletics/deception/history/insight/intimidation/investigation/medicine/nature/perception/performance/persuasion/religion/sleight/stealth/survival */

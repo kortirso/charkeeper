@@ -8,7 +8,7 @@
     "description": {
       "en": "Domain's description, **Markdown is available** for editing."
     },
-    "public": false,
+    "public": true,
     "features": [
       {
         /* required, allowed locale keys - en, ru, es */

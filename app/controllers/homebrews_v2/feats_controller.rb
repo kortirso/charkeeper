@@ -9,7 +9,14 @@ module HomebrewsV2
     before_action :find_another_feat, only: %i[copy]
 
     def index
-      serialize_relation(feats, serializer, :homebrews, { only: %i[id title own] }, { current_user_id: current_user.id })
+      serialize_relation_v2(
+        feats,
+        serializer,
+        :homebrews,
+        serialized_fields: { only: %i[id title own] },
+        order_options: order_options,
+        context: { current_user_id: current_user.id }
+      )
     end
 
     def show

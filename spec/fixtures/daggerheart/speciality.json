@@ -8,7 +8,7 @@
     "description": {
       "en": "Class's description, **Markdown is available** for editing."
     },
-    "public": false,
+    "public": true,
     /* required, list of domains for class, max 2 */
     /* arcana, blade, bone, codex, grace, midnight, sage, splendor, valor, dread or ID of homebrew domain */
     "domains": ["arcana", "blade"],

@@ -8,7 +8,7 @@
     "description": {
       "en": "Subclass's description, **Markdown is available** for editing."
     },
-    "public": false,
+    "public": true,
     /* required, parent class */
     /* bard, druid, guardian, ranger, rogue, seraph, sorcerer, warrior, wizard or ID of homebrew class */
     "class_id": "bard",

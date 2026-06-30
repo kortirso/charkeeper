@@ -10,7 +10,7 @@
     },
     /* required, primary weapon or secondary weapon */
     "kind": "primary weapon",
-    "public": false,
+    "public": true,
     "info": {
       /* required, 1 or 2 */
       "burden": 1,
