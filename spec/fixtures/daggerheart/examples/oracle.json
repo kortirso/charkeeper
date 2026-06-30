@@ -1,0 +1,51 @@
+[
+  {
+    "title": {
+      "en": "Oracle",
+      "ru": "Оракул"
+    },
+    "description": {
+      "en": "Your source of divine power isn't that of prayer and preaching—it comes from something beyond. You can see beyond the Mortal Realm to gain access to sacred truths and dark secrets, circumventing the scope of deities. Your power comes with a terrible price: either a curse that grows stronger the more you draw upon it, or your very own lifeforce.",
+      "ru": ""
+    },
+    "public": true,
+    "domains": ["splendor", "arcana"],
+    "evasion": 10,
+    "health_max": 6,
+    "features": [
+      {
+        "title": {
+          "en": "Revelation",
+          "ru": "Откровение"
+        },
+        "description": {
+          "en": "When you or an ally within Close range fails an Instinct or Presence roll, you can **spend 3 Hope** to reroll the Duality Dice.",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Genesis",
+          "ru": "Генезис"
+        },
+        "description": {
+          "en": "Whenever you roll a Critical Success, additionally clear I Hit Point.",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Oracular Font",
+          "ru": ""
+        },
+        "description": {
+          "en": "Determine the source of your power, known as your Oracular Font. Before you make an action or reaction roll related to your Oracular Font, you can **spend a Hope** to add a +2 modifier to the roll's result. Once per session, you can add this modifier to any Spellcast Roll you make.",
+          "ru": ""
+        },
+        "kind": "static"
+      }
+    ]
+  }
+]

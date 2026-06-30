@@ -1,0 +1,51 @@
+[
+  {
+    "title": {
+      "en": "Mesmer",
+      "ru": "Месмер"
+    },
+    "description": {
+      "en": "Mesmers are dreamwalkers, manipulators of feeling and perception who twist reality at its seams. Whether as honey-voiced healers, oracles or ruthless deceivers, they charm, distract, and reshape the world through illusion, empathy, and psychic finesse. To a Mesmer, emotion is both weapon and shield—capable of restoring shattered spirits or breaking wills with a whisper. Some tread gently, soothing hearts like silk over skin. Others revel in mental theater, crafting dazzling lies or haunting echoes that compel, confuse, or comfort—whatever the moment demands.",
+      "ru": ""
+    },
+    "public": true,
+    "domains": ["grace", "splendor"],
+    "evasion": 10,
+    "health_max": 5,
+    "features": [
+      {
+        "title": {
+          "en": "Velvet Restoration",
+          "ru": "Реставрация бархата"
+        },
+        "description": {
+          "en": "**Spend 3 Hope** to clear 1d4 Stress on yourself or an ally.",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Heart's Whisper",
+          "ru": "Шёпот сердца"
+        },
+        "description": {
+          "en": "You instinctively sense the surface emotions of creatures within Very Close range. This does not reveal specific thoughts or secrets, only general states.",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Veil Sight",
+          "ru": "Взгляд сквозь завесу"
+        },
+        "description": {
+          "en": "**Mark a stress.** Describe what you see—a flicker of wrongness, a whisper of the past, or a place where the world feels thin. The GM may pick a category which it represents from the options below, or combine elements:\n\n- **Hidden Flaw:** An unnatural distortion in an object or space. You or an ally gains Advantage on the next interaction with it.\n\n- **Residual Echo:** Lingering traces of powerful emotion or events, or a fractured psychic impression from the recent past or a nearby mind. Learn one relevant, useful fact.\n\n- **Thin Spot:** A fragile point in reality's fabric. Interact with it in one unexpected, beneficial way",
+          "ru": ""
+        },
+        "kind": "static"
+      }
+    ]
+  }
+]

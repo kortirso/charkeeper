@@ -1,0 +1,40 @@
+[
+  {
+    "title": {
+      "en": "Magus",
+      "ru": "Маг"
+    },
+    "description": {
+      "en": "As a Magus, you combine the physical regimen of a warrior with the magical research of a wizard, and incorporate both into a hybrid combat style of spellcraft and bladework.",
+      "ru": ""
+    },
+    "public": true,
+    "domains": ["blade", "codex"],
+    "evasion": 10,
+    "health_max": 6,
+    "features": [
+      {
+        "title": {
+          "en": "Battlemage Gambit",
+          "ru": "Гамбит боевого мага"
+        },
+        "description": {
+          "en": "**Spend 3 Hope** to make your next Spellstrike without marking the required Stress.",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Spellstrike",
+          "ru": "Удар заклинанием"
+        },
+        "description": {
+          "en": "You expertly combine the motions of attacking and imbuing your weapon with magic. When you take the spotlight, you can roll your Duality Dice and use the result for the following two action rolls:\n\n- Make an attack in melee or very close range with your primary weapon.\n\n- Make a Spellcasting Roll from one spell or grimoire card in your loadout. You must **mark the Stress** shown in the card’s Recall Cost.",
+          "ru": ""
+        },
+        "kind": "static"
+      }
+    ]
+  }
+]

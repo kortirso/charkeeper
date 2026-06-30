@@ -1,0 +1,54 @@
+[
+  {
+    "title": {
+      "en": "Blood Reaver",
+      "ru": "Кровавый похититель"
+    },
+    "description": {
+      "en": "Blood Reavers are predators forged of steel and shadow. Every tremor of doubt, every drop of fear fuels their Bloodforge, tempering their strikes into ruinous blows. Whether they stand drenched in blood or vanish into the gloom, one truth remains — when a Blood Reaver is near,fear is never wasted.",
+      "ru": ""
+    },
+    "public": true,
+    "domains": ["blade", "midnight"],
+    "evasion": 11,
+    "health_max": 6,
+    "features": [
+      {
+        "title": {
+          "en": "Red Mist",
+          "ru": "Красный туман"
+        },
+        "description": {
+          "en": "**Spend 3 Hope** to drink in the room's terror. Remove 1 Fear from the GM, place 1 Blood in your Bloodforge, and clear 1 Stress.",
+          "ru": ""
+        },
+        "kind": "static",
+        "limit": 1,
+        "limit_refresh": "short_rest"
+      },
+      {
+        "title": {
+          "en": "Blood Forge",
+          "ru": "Кровавая кузница"
+        },
+        "description": {
+          "en": "Start each scene with 1 Blood. You can place 1 Blood when any of the following happen:\n\n- You succeed with Fear on an action you make.\n\n- An adversary marks Stress within Close range.\n\n- The GM spends Fear to make a move or use a Fear Feature.\n\nYou can gain Blood from this list up to your Proficiency each scene. Max Blood equals your Proficiency.\n\nWhen you make a melee attack, before rolling damage you may spend Blood. On a success, apply one of the following:\n\n- Spend 1: Add 1d4 to the damage roll.\n\n- Spend 2: The target becomes temporarily Vulnerable.\n\n- Spend 3: Treat this attack as at least Major damage threshold.",
+          "ru": ""
+        },
+        "kind": "static",
+        "limit": 0
+      },
+      {
+        "title": {
+          "en": "Bloody Momentum",
+          "ru": "Кровавый импульс"
+        },
+        "description": {
+          "en": "Once per scene, when you defeat a target within Melee, immediately move up to Close range and make a melee attack against a different target.",
+          "ru": ""
+        },
+        "kind": "static"
+      }
+    ]
+  }
+]

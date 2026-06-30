@@ -1,0 +1,62 @@
+[
+  {
+    "title": {
+      "en": "Revenant",
+      "ru": ""
+    },
+    "description": {
+      "en": "While most career choices are made in life, the choice of becoming a Revenant is only offered to those who already lost their life: Revenants usually manifest their new earthly existence either by means of sheer force of will or by being recruited to serve on a specific mission issued by a powerful being from The Realms Beyond. Imbued with powers from The Realms Beyond, they display otherworldy martial cunning and bend shadows to their will. No matter their origin, these warriors are always driven by a powerful goal or purpose.",
+      "ru": ""
+    },
+    "public": true,
+    "domains": ["midnight", "blade"],
+    "evasion": 9,
+    "health_max": 7,
+    "features": [
+      {
+        "title": {
+          "en": "Rend",
+          "ru": ""
+        },
+        "description": {
+          "en": "**Spend 3 Hope** to ignore a particular adversary's resistances or reduce their immunities to resistances until your next rest. This effect cannot stack.",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Marked by the Veil",
+          "ru": "Отмеченный Завесой"
+        },
+        "description": {
+          "en": "You may always sense if a death has occured within Very Far range as long as it happened within the last month, even if it left no trace.",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Twice-Born Fortitude",
+          "ru": "Стойкость дважды рожденного"
+        },
+        "description": {
+          "en": "Twice per session, when you would mark your last Hit Point, you can **mark 2 Stress** instead.",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Fearmonger",
+          "ru": "Нагнетатель страха"
+        },
+        "description": {
+          "en": "Whenever you score a critical hit, you can **mark a Stress** to make the target temporarily *Horrified*. While *Horrified*, they are *Vulnerable*.",
+          "ru": ""
+        },
+        "kind": "static"
+      }
+    ]
+  }
+]
