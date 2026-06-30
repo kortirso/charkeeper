@@ -1045,7 +1045,7 @@
     },
     "description": {
       "en": "**Prerequisites** Basic Arcana.\n\nYou gain one wizard feat. For the purpose of meeting its prerequisites, your wizard level is equal to half your character level.",
-      "ru": "\n\n**Критерии** Простой мистицизм.\n\nВы получаете одну черту волшебника. При определении соответствия её критериям ваш уровень волшебника считается равным половине уровня персонажа."
+      "ru": "**Критерии** Простой мистицизм.\n\nВы получаете одну черту волшебника. При определении соответствия её критериям ваш уровень волшебника считается равным половине уровня персонажа."
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
