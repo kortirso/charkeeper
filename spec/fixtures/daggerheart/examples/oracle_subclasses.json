@@ -1,0 +1,128 @@
+[
+  {
+    "title": {
+      "en": "Cursebound",
+      "ru": "Скованный проклятием"
+    },
+    "description": {
+      "en": "Play the Cursebound if you want to draw additional power from your Oracular Font-weal or woe.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "",
+    "features": [
+      {
+        "title": {
+          "en": "Curseward",
+          "ru": "Защита от проклятий"
+        },
+        "description": {
+          "en": "After you use your Oracular Font feature, until your next rest, all rolls with Hope have advantage, and all rolls with Fear have disadvantage.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "IIl Omens",
+          "ru": "Дурные предзнаменования"
+        },
+        "description": {
+          "en": "henever you roll with Fear, you can **mark 2 Stress** to instead Fail with Hope.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Invoke Curse",
+          "ru": "Наложить проклятие"
+        },
+        "description": {
+          "en": "Whenever an adversary succeeds on an attack roll against you, you can cast your curse upon them, making them temporarily Vulnerable.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Foresight",
+          "ru": "Форсайт"
+        },
+        "description": {
+          "en": "After using your Oracular Font feature, add a Vision token to this card. Whenever you Fail with Hope, you can remove a Vision token to instead succeed with Hopе.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Martyr",
+      "ru": "Мученик"
+    },
+    "description": {
+      "en": "Play the Martyr if you want to make vital sacrifices to gain powerful boons.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "",
+    "features": [
+      {
+        "title": {
+          "en": "Blessed Vitality",
+          "ru": "Благословенная жизненная сила"
+        },
+        "description": {
+          "en": "When you would mark a Hit Point, you can instead **spend 3 Hopе.**",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Halt Fear",
+          "ru": "Останови страх"
+        },
+        "description": {
+          "en": "Whenever the GM would gain a Fear, you can **mark 2 Hit Points** instead.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Divine Balance",
+          "ru": "Божественное равновесие"
+        },
+        "description": {
+          "en": "Whenever you would mark Stress from a Recall Cost, you can choose to either:\n\n- instead gain that much Hope and cause the GM to gain that much Fear.\n\n- instead mark that many Hit Points.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "At What Cost",
+          "ru": ""
+        },
+        "description": {
+          "en": "You can choose a domain card from your loadout and choose to either:\n\n- Place the card in your vault permanently to Critically Succeed on your next action or reaction Roll.\n\n- Place it in your vault to gain advantage on your next action or reaction Roll.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      }
+    ]
+  }
+]

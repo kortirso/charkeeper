@@ -1,0 +1,287 @@
+[
+  {
+    "title": {
+      "en": "Centaur",
+      "ru": ""
+    },
+    "description": {
+      "en": "Centaurs are humanoids with the lower body of a horse. These come in a wide variety of skin and fur colors.",
+      "ru": ""
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Gallop",
+          "ru": ""
+        },
+        "description": {
+          "en": "You are fast, really fast. When moving you can move within Far range without making an Agility Roll. ",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Shepherds of Nature",
+          "ru": ""
+        },
+        "description": {
+          "en": "Centaurs have a born connection with the forces of nature. You can **spend 3 Hope** to clear 1 Hit Point on a creature your touch.",
+          "ru": ""
+        },
+        "kind": "static",
+        "price": { "hope": 3 }
+      }
+    ]
+  },  
+  {
+    "title": {
+      "en": "Aviani",
+      "ru": ""
+    },
+    "description": {
+      "en": "Aviana come in many different shapes and, above all, colors. They look like humanoid birds and are correspondingly versatile. Some are more reminiscent of birds of prey such as eagles, owls or falcons, others look like woodpeckers, herons or seagulls. While most of them are not capable of true flight, a majority of them still have a dense plumage, which is reminiscent of mighty wings. They usually vary in size between 3 and 5 feet, but you can also find specimens that grow almost 7 feet tall. On average, Aviani live to be around 55 years old. ",
+      "ru": ""
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Take to the sky",
+          "ru": ""
+        },
+        "description": {
+          "en": "Your body is not built for long journeys, but you can use your wings for a short distance. You can fly anywhere within Close range, and you can **mark a Stress** to fly anywhere within Far range. ",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Sharp Senses",
+          "ru": "Острые чувства"
+        },
+        "description": {
+          "en": "When you make an Instinct Roll, you can **spend 2 Hope** to reroll your Hope Die. ",
+          "ru": ""
+        },
+        "kind": "static",
+        "price": { "hope": 2 }
+      }
+    ]
+  },  
+  {
+    "title": {
+      "en": "Minotaur",
+      "ru": "Минотавр"
+    },
+    "description": {
+      "en": "Minotaurs are large creatures whose appearance is reminiscent of a bull or cow. They have large horns that grow from their heads. It is very popular to decorate or even engrave them. Their coat color ranges from a deep black to a very light blonde. There are also multicolored fur patterns, although they are rarer. Most minotaurs are between 6-8 feet tall, which often makes them stand out from crowds. On average, they live to be around 80 years old.",
+      "ru": ""
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Horned Charge",
+          "ru": "Атака рогами"
+        },
+        "description": {
+          "en": "When you succeed on an Agility Roll to move from Far or Very Far range into Melee range with one or more targets, you can mark a Stress to deal 1d12 physical damage to one target within Melee range. That target becomes Vulnerable against the next attack.",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Beast of Burden",
+          "ru": "Вьючное животное"
+        },
+        "description": {
+          "en": "You ignore disadvantage on Strength Rolls. ",
+          "ru": ""
+        },
+        "kind": "static"
+      }
+    ]
+  },  
+  {
+    "title": {
+      "en": "Lupisian",
+      "ru": ""
+    },
+    "description": {
+      "en": "Lupisians are canine humanoids with small claws, pointed snouts and ears. They can seem more humanoid in appearance or more animal-like, but always have a bushy tail. Their eyes are slit and have something animalistic about them. The fur is often patterned, ranging from black to an arctic white. They can vary greatly in size, smaller Lupisians are between 3-4 feet tall, while larger specimens can reach 6 1/2 feet. On average, they live to be around 50 years old.",
+      "ru": ""
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Drawn to the moon",
+          "ru": ""
+        },
+        "description": {
+          "en": "Lupisians are by nature drawn to the moon, admiring its beauty. When taking a Long Rest you **gain 1 Hope.**",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Loyal",
+          "ru": "Лояльный"
+        },
+        "description": {
+          "en": "Once part of a pack you are not easy to shake. You can initiate a Tag Team Roll by **spending 2 Hope.** ",
+          "ru": ""
+        },
+        "kind": "static"
+      }
+    ]
+  },  
+  {
+    "title": {
+      "en": "Chitani",
+      "ru": ""
+    },
+    "description": {
+      "en": "The Chitani are a colorful race of humanoid insects that come in many different forms. They have the typical shells of a beetle, biting tools and antennae. Often, they feature multiple arms or legs, some even have wings, even if they cannot carry them through the air. Among them, it is common to add small carvings to parts of their chitin, which are culturally very important. They are between 4 and 5 feet tall and can reach an age of about 45 years. ",
+      "ru": ""
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Carapace",
+          "ru": "Панцирь"
+        },
+        "description": {
+          "en": "When you would take damage, you can **mark a Stress** to roll your Hope die. Subtract the result from the incoming damage. ",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Intuition",
+          "ru": "Интуиция"
+        },
+        "description": {
+          "en": "You ignore disadvantage in Instinct Rolls. ",
+          "ru": ""
+        },
+        "kind": "static"
+      }
+    ]
+  },  
+  {
+    "title": {
+      "en": "Ursusfolk",
+      "ru": ""
+    },
+    "description": {
+      "en": "These gentle giants resemble humanoid bear-men in appearance. Their appearance can seem more humanoid, with only some animal features such as ears or a slight muzzle. Alternatively, they can be covered all over their bodies with fur that varies between light brown and black, as well as having small, bushy tails. They are known for being enduring and strong, reaching a height of almost 8 feet and can live up to 110 years. ",
+      "ru": ""
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Strong and Enduring",
+          "ru": "Прочные и долговечные"
+        },
+        "description": {
+          "en": "When rolling damage, you can **spend 1 Hope** to reroll one of your damage dice. ",
+          "ru": ""
+        },
+        "kind": "static",
+        "price": { "hope": 1 }
+      },
+      {
+        "title": {
+          "en": "Gentle Giants",
+          "ru": "Добрые великаны"
+        },
+        "description": {
+          "en": "When you Short Rest and Tend to Wounds or Repair Armor to an ally, treat your tier as one higher. In addition, when you Prepare with an ally, that ally clears one Stress. ",
+          "ru": ""
+        },
+        "kind": "static"
+      }
+    ]
+  },  
+  {
+    "title": {
+      "en": "Shaperfolk",
+      "ru": ""
+    },
+    "description": {
+      "en": "Often misunderstood, shaperfolk is very rare and there are always prejudices against them. They have the innate ability to change their appearance, a change that is part physical but also part magical. How well this change works depends on the experience of the respective shaperfolk. They rarely take their natural form, usually only towards people they trust. These are pale faces that have almost no distinguishing features. Their skin is very pale, sometimes even turning grey. On average, they grow between 5 and 6 feet tall, but can adjust size slightly. On average, they live up to 90 years.",
+      "ru": ""
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Shapechange",
+          "ru": "Смена облика"
+        },
+        "description": {
+          "en": "You can mark a Stress to change your appearance within a few moments. If you want to look like a specific person, make an **Instinct Roll (12).**",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Born Actors",
+          "ru": "Прирожденные актеры"
+        },
+        "description": {
+          "en": "When you make a Presence Roll, you can **spend 2 Hope** to reroll your Hope Die. ",
+          "ru": ""
+        },
+        "kind": "static",
+        "price": { "hope": 2 }
+      }
+    ]
+  },  
+  {
+    "title": {
+      "en": "Plasmosian",
+      "ru": ""
+    },
+    "description": {
+      "en": "Plasmosians are bizarre beings that can best be described as humanoid slime creatures. They differ immensely in shape and appearance, especially in the color of their liquid. This can change even during the life of a plasmosian, usually when they go through important milestones in their personal development. Their size varies from 4 to 6 feet. However, they can change the shape of their bodies slightly if they have enough time to carry out the process properly. On average, they live to be around 40 years old.",
+      "ru": ""
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Formable",
+          "ru": ""
+        },
+        "description": {
+          "en": "**Mark a Stress** to change the form of your body for a short amount of time. This for example allows you to fit through small spaces, hide in spots others can´t reach or getting bigger or smaller. ",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "No weak-spot",
+          "ru": ""
+        },
+        "description": {
+          "en": "When you would take damage from a critical hit, you can **spend 3 Hope** to just take a normal hit instead. ",
+          "ru": ""
+        },
+        "kind": "static",
+        "price": { "hope": 3 }
+      }
+    ]
+  }
+]
