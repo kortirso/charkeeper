@@ -56,6 +56,7 @@ Rails.application.routes.draw do
         resources :domains, only: %i[index]
         resources :specialities, only: %i[index]
         resources :subclasses, only: %i[index]
+        resources :domains, only: %i[index]
         resources :feats, only: %i[index]
         resources :items, only: %i[index]
       end

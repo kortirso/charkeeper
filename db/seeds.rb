@@ -559,3 +559,11 @@ ids = JSON.parse(file_content).map do |item|
 end
 
 HomebrewContext::Dnd::Books::AddBackgroundsCommand.new.call(user: User.first, book: book, ids: ids)
+
+Daggerheart::Homebrews::Ancestry.find_each do |item|
+  beautified_json_string = JSON.pretty_generate(item.to_json)
+  # # Write the beautified JSON string to a file
+  File.open("db/data_prod/daggerheart/homebrews/ancestries/#{item.title['en']}_#{rand(10)}.json", 'w') do |file|
+    file.write(beautified_json_string)
+  end
+end
