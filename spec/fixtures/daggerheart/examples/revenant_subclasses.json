@@ -10,7 +10,7 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
+    "spellcast": "str",
     "features": [
       {
         "title": {
@@ -18,11 +18,14 @@
           "ru": "Орудие возмездия"
         },
         "description": {
-          "en": "Marked by the Veil also informs you about the circumstances of the death (murder, accident, etc.). Once per long rest, you can also spend a Hope to make a particular death your active case.\n\nYou may ask your GM one *yes or no* question about your case. The GM must answer truthfully. Additionally, You gain advantage on Instinct Rolls to track or perceive individuals plausibly related to your case.",
+          "en": "Marked by the Veil also informs you about the circumstances of the death (murder, accident, etc.). Once per long rest, you can also **spend a Hope** to make a particular death your active case.\n\nYou may ask your GM one *yes or no* question about your case. The GM must answer truthfully. Additionally, You gain advantage on Instinct Rolls to track or perceive individuals plausibly related to your case.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "limit": 1,
+        "limit_refresh": "long_rest",
+        "price": { "hope": 1 }
       },
       {
         "title": {
@@ -30,7 +33,7 @@
           "ru": "Катарсис"
         },
         "description": {
-          "en": "Whenever you force an adversary to mark their last Hit Point, you **clear a Stress.**",
+          "en": "Whenever you force an adversary to mark their last Hit Point, you **clear a Stress**.",
           "ru": ""
         },
         "kind": "static",
@@ -42,11 +45,12 @@
           "ru": "Уверенность"
         },
         "description": {
-          "en": "Mark a Stress to gain advantage on your next Action Roll or increase your Proficiency on your next damage roll by +1.\n\nWhen targeting a suspect in your active case, the effects of **Certainty** last until your next rest and the Proficieny bonus increases to +2.",
+          "en": "**Mark a Stress** to gain advantage on your next Action Roll or increase your Proficiency on your next damage roll by +1.\n\nWhen targeting a suspect in your active case, the effects of **Certainty** last until your next rest and the Proficieny bonus increases to +2.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -54,7 +58,7 @@
           "ru": "Инквизитор"
         },
         "description": {
-          "en": "When targeting a suspect in your active case, Fearmonger can also be activated whenever you succeed an Attack or Spellcast Roll with Fear against them.",
+          "en": "When targeting a suspect in your active case, **Fearmonger** can also be activated whenever you succeed an Attack or Spellcast Roll with Fear against them.",
           "ru": ""
         },
         "kind": "static",
@@ -66,7 +70,7 @@
           "ru": ""
         },
         "description": {
-          "en": "Dealing Severe damage triggers **Catharsis.**",
+          "en": "Dealing Severe damage triggers **Catharsis**.",
           "ru": ""
         },
         "kind": "static",
@@ -78,11 +82,12 @@
           "ru": "Неповиновение"
         },
         "description": {
-          "en": " Twice per session, when your GM would **gain a Fear**, you can instead **mark 3 Stress** to **grant 2 Hope** to any ally within Far range.",
+          "en": "Twice per session, when your GM would **gain a Fear**, you can instead **mark 3 Stress** to grant 2 Hope to any ally within Far range.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "price": { "stress": 3 }
       }
     ]
   },
@@ -97,7 +102,7 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
+    "spellcast": "know",
     "features": [
       {
         "title": {
@@ -105,11 +110,12 @@
           "ru": "Руны полуночи"
         },
         "description": {
-          "en": "When you would wield a physical weapon, that calls for Strength, you instead treat it as a magical weapon calling for Knowledge. However, you can only wield magical weapons.\n\nIf you hit a Vulnerable target with your weapon, **spend 2 Hope** to make it temporarily Restrained and vice versa.",
+          "en": "When you would wield a physical weapon, that calls for Strength, you instead treat it as a magical weapon calling for Knowledge. However, you can only wield magical weapons.\n\nIf you hit a *Vulnerable* target with your weapon, **spend 2 Hope** to make it temporarily *Restrained* and vice versa.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "hope": 2 }
       },
       {
         "title": {
@@ -121,7 +127,12 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "continious": true,
+        "modifiers": {
+          "evasion": { "type": "add", "value": 2 },
+          "armor_score": { "type": "add", "value": 2 }
+        }
       },
       {
         "title": {
@@ -141,11 +152,13 @@
           "ru": ""
         },
         "description": {
-          "en": "Once per rest, you can expand your shadow into a haunting realm that encompasses Close range around you. This area follows you as you move.\n\nWhen an adversary enters this area for the first time, they must succeed a Reaction Roll (16) or be drawn into your realm. This realm reflects your character's history, emotional landscape or a similar feature.\n\nAs long as they are within your realm, adversaries cannot remove the Vulnerable or Restrained condition and any **Dreadmarks** on them can be triggered without spending Hope.",
+          "en": "You can expand your shadow into a haunting realm that encompasses Close range around you. This area follows you as you move.\n\nWhen an adversary enters this area for the first time, they must succeed a **Reaction Roll (16)** or be drawn into your realm. This realm reflects your character's history, emotional landscape or a similar feature.\n\nAs long as they are within your realm, adversaries cannot remove the Vulnerable or Restrained condition and any **Dreadmarks** on them can be triggered without spending Hope.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "limit": 1,
+        "limit_refresh": "short_rest"
       }
     ]
   }

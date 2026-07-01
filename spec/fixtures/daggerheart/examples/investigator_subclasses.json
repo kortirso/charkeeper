@@ -10,7 +10,7 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
+    "spellcast": "know",
     "features": [
       {
         "title": {
@@ -18,11 +18,14 @@
           "ru": "Этому место в музее"
         },
         "description": {
-          "en": "Once per rest, after an adversary is spotlighted, you may spend a Hope to make the target Vulnerable until the next time it takes damage.",
+          "en": "After an adversary is spotlighted, you may **spend a Hope** to make the target *Vulnerable* until the next time it takes damage.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "limit": 1,
+        "limit_refresh": "short_rest",
+        "price": { "hope": 1 }
       },
       {
         "title": {
@@ -30,11 +33,13 @@
           "ru": "Найденное в храме"
         },
         "description": {
-          "en": "Once per long rest, when an ally attempts a Knowledge roll, that ally may use your Knowledge modifier instead of their own.",
+          "en": "When an ally attempts a Knowledge roll, that ally may use your Knowledge modifier instead of their own.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "limit": 1,
+        "limit_refresh": "long_rest"
       },
       {
         "title": {
@@ -42,11 +47,12 @@
           "ru": ""
         },
         "description": {
-          "en": "Whenever an ally strikes a Vulnerable adversary with an attack, you can spend a Hope to add a d6 to the damage roll.",
+          "en": "Whenever an ally strikes a Vulnerable adversary with an attack, you can **spend a Hope** to add a d6 to the damage roll.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "hope": 1 }
       },
       {
         "title": {
@@ -73,7 +79,7 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
+    "spellcast": "know",
     "features": [
       {
         "title": {
@@ -81,11 +87,14 @@
           "ru": "Твердое убеждение"
         },
         "description": {
-          "en": "Gain a permanet +1 to your Armor Score.",
+          "en": "Gain a calculated bonus +1 to your Armor Score.",
           "ru": ""
         },
-        "kind": "static",
-        "subclass_mastery": 1
+        "kind": "update_result",
+        "subclass_mastery": 1,
+        "modifiers": {
+          "armor_score": { "type": "add", "value": 1 }
+        }
       },
       {
         "title": {
@@ -93,11 +102,12 @@
           "ru": "Целеустремленное преследование"
         },
         "description": {
-          "en": "If an adversary within Close range attempts to leave that range, you can mark a Stress to react and move within Very Close range of them after their movement is complete.",
+          "en": "If an adversary within Close range attempts to leave that range, you can **mark a Stress** to react and move within Very Close range of them after their movement is complete.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -105,11 +115,12 @@
           "ru": "Лихорадочная погоня"
         },
         "description": {
-          "en": "If an adversary within Close range attempts to leave that range, you can mark a Stress to react and move within Very Close range of them after their movement is complete.",
+          "en": "If an adversary within Close range attempts to leave that range, you can **mark a Stress** to react and move within Very Close range of them after their movement is complete.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "stress": 1 }
       },
       {
         "title": {

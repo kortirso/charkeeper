@@ -5,7 +5,7 @@
       "ru": ""
     },
     "description": {
-      "en": "Shamans are intermediaries between the seen and the unseen, blending ancient traditions with personal rituals passed down through spirit or blood. They carry the weight of ancestral knowledge in bark, bone, and breath, calling on powers both revered and feared. Some work in service of their community, others wander alone, led by whispers only they can hear. A shaman’s strength lies not in command, but in connection to the spirits, to the land, and to the threads between all things. Few understand the cost of channeling unseen forces, and fewer still survive it unchanged.",
+      "en": "Shamans are intermediaries between the seen and the unseen, blending ancient traditions with personal rituals passed down through spirit or blood. They carry the weight of ancestral knowledge in bark, bone, and breath, calling on powers both revered and feared. Some work in service of their community, others wander alone, led by whispers only they can hear. A shaman's strength lies not in command, but in connection to the spirits, to the land, and to the threads between all things. Few understand the cost of channeling unseen forces, and fewer still survive it unchanged.",
       "ru": ""
     },
     "public": true,
@@ -22,7 +22,8 @@
           "en": "**Spend 3 Hope** to force an adversary within Close range to mark a Stress.",
           "ru": ""
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "hope": 3 }
       },
       {
         "title": {
@@ -30,10 +31,12 @@
           "ru": "Духовная связь"
         },
         "description": {
-          "en": "Once per long rest, you can Tether a target within Close range, linking them to you until you fall unconscious or the scene ends. While Tethered, whenever you mark any number of Hit Points or Stress, you can **spend a Hope** to force them to mark one of the same.",
+          "en": "You can Tether a target within Close range, linking them to you until you fall unconscious or the scene ends. While Tethered, whenever you mark any number of Hit Points or Stress, you can **spend a Hope** to force them to mark one of the same.",
           "ru": ""
         },
-        "kind": "static"
+        "kind": "static",
+        "limit": 1,
+        "limit_refresh": "long_rest"
       }
     ]
   }

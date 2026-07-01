@@ -32,7 +32,7 @@
         },
         "description": {
           "en": "When you take the spotlight, you can roll your Duality Dice and use the result for the following two action rolls:\n\n- Make an attack in melee or very close range with your primary weapon.\n\n- Make a Spellcast Roll from one spell or grimoire card in your loadout. You must **mark a Stress** shown in the card's Recall Cost.",
-          "ru": "Когда вы получаете активность вы можете выполнить бросок Костей Дуальности и использовать результат для следующих 2 бросков:\n\n- Выполнить атаку вплотную или в пределах близкой дистанции основным оружием.\n\n- Выполните **бросок заклинания** одним из заклинаний или гримуаром из вашего инвентаря. Вы должны заплатить как за её призыв. "
+          "ru": "Когда вы получаете активность вы можете выполнить бросок Костей Дуальности и использовать результат для следующих 2 бросков:\n\n- Выполнить атаку вплотную или в пределах близкой дистанции основным оружием.\n\n- Выполните **бросок заклинания** одним из заклинаний или гримуаром из вашего инвентаря. Вы должны заплатить как за её призыв."
         },
         "kind": "static"
       }

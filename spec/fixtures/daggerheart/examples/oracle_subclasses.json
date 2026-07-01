@@ -10,7 +10,7 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
+    "spellcast": "ins",
     "features": [
       {
         "title": {
@@ -18,7 +18,7 @@
           "ru": "Защита от проклятий"
         },
         "description": {
-          "en": "After you use your Oracular Font feature, until your next rest, all rolls with Hope have advantage, and all rolls with Fear have disadvantage.",
+          "en": "After you use your **Oracular Font** feature, until your next rest, all rolls with Hope have advantage, and all rolls with Fear have disadvantage.",
           "ru": ""
         },
         "kind": "static",
@@ -26,15 +26,16 @@
       },
       {
         "title": {
-          "en": "IIl Omens",
+          "en": "Ill Omens",
           "ru": "Дурные предзнаменования"
         },
         "description": {
-          "en": "henever you roll with Fear, you can **mark 2 Stress** to instead Fail with Hope.",
+          "en": "Whenever you roll with Fear, you can **mark 2 Stress** to instead Fail with Hope.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "stress": 2 }
       },
       {
         "title": {
@@ -42,7 +43,7 @@
           "ru": "Наложить проклятие"
         },
         "description": {
-          "en": "Whenever an adversary succeeds on an attack roll against you, you can cast your curse upon them, making them temporarily Vulnerable.",
+          "en": "Whenever an adversary succeeds on an attack roll against you, you can cast your curse upon them, making them temporarily *Vulnerable*.",
           "ru": ""
         },
         "kind": "static",
@@ -54,7 +55,7 @@
           "ru": "Форсайт"
         },
         "description": {
-          "en": "After using your Oracular Font feature, add a Vision token to this card. Whenever you Fail with Hope, you can remove a Vision token to instead succeed with Hopе.",
+          "en": "After using your **Oracular Font** feature, add a Vision token to this card. Whenever you Fail with Hope, you can remove a Vision token to instead succeed with Hopе.",
           "ru": ""
         },
         "kind": "static",
@@ -73,7 +74,7 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
+    "spellcast": "ins",
     "features": [
       {
         "title": {
@@ -81,11 +82,12 @@
           "ru": "Благословенная жизненная сила"
         },
         "description": {
-          "en": "When you would mark a Hit Point, you can instead **spend 3 Hopе.**",
+          "en": "When you would mark a Hit Point, you can instead **spend 3 Hopе**.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "hope": 3 }
       },
       {
         "title": {
@@ -93,7 +95,7 @@
           "ru": "Останови страх"
         },
         "description": {
-          "en": "Whenever the GM would gain a Fear, you can **mark 2 Hit Points** instead.",
+          "en": "Whenever the GM would gain a Fear, you can mark 2 Hit Points instead.",
           "ru": ""
         },
         "kind": "static",

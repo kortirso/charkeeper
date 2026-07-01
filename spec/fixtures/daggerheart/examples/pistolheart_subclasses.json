@@ -10,7 +10,6 @@
     },
     "public": true,
     "class_id": "guardian",
-    "spellcast": "",
     "features": [
       {
         "title": {
@@ -18,11 +17,12 @@
           "ru": ""
         },
         "description": {
-          "en": "**Mark a Stress** to choose a point within Close range. Make an attack roll against all creatures in a Very Close area around the point. On a success, you deal d6+4 physical damage using your Proficiency",
+          "en": "**Mark a Stress** to choose a point within Close range. Make an attack roll against all creatures in a Very Close area around the point. On a success, you deal d6+4 physical damage using your Proficiency.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -30,7 +30,7 @@
           "ru": "Боец штурмовой группы"
         },
         "description": {
-          "en": "No door can hold you. You have advantage on action rolls to break down obstacles. ",
+          "en": "No door can hold you. You have advantage on action rolls to break down obstacles.",
           "ru": ""
         },
         "kind": "static",
@@ -42,11 +42,12 @@
           "ru": "Ударь меня!"
         },
         "description": {
-          "en": "**Spend a Hope.** Until the end of the scene, or until you take Severe damage, creatures within Melee range of you must **mark a Stress** to target a creature other than you. ",
+          "en": "**Spend a Hope**. Until the end of the scene, or until you take Severe damage, creatures within Melee range of you must **mark a Stress** to target a creature other than you.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "hope": 1 }
       },
       {
         "title": {
@@ -70,7 +71,8 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "price": { "hope": 2 }
       },
       {
         "title": {
@@ -82,7 +84,12 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "continious": true,
+        "modifiers": {
+          "major": { "type": "add", "value": 2 },
+          "severe": { "type": "add", "value": 2 }
+        }
       }
     ]
   },
@@ -92,12 +99,12 @@
       "ru": ""
     },
     "description": {
-      "en": "Play the Longbarrel if you prefer to keep your distance, striking foes down before they know you’re there.",
+      "en": "Play the Longbarrel if you prefer to keep your distance, striking foes down before they know you're there.",
       "ru": ""
     },
     "public": true,
     "class_id": "ranger",
-    "spellcast": "",
+    "spellcast": "ins",
     "features": [
       {
         "title": {
@@ -105,11 +112,12 @@
           "ru": ""
         },
         "description": {
-          "en": " You can **mark a Stress** when you deal damage to a target at Close range or farther to make it temporarily Vulnerable.",
+          "en": "You can **mark a Stress** when you deal damage to a target at Close range or farther to make it temporarily Vulnerable.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -141,11 +149,12 @@
           "ru": ""
         },
         "description": {
-          "en": "When you deal Severe damage, you can **spend a Hope** to make the target mark a Hit Point, mark a Stress, and become temporarily Vulnerable.",
+          "en": "When you deal Severe damage, you can **spend a Hope** to make the target mark a Hit Point, mark a Stress, and become temporarily *Vulnerable*.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "price": { "hope": 1 }
       },
       {
         "title": {
@@ -172,7 +181,7 @@
     },
     "public": true,
     "class_id": "seraph",
-    "spellcast": "",
+    "spellcast": "str",
     "features": [
       {
         "title": {
@@ -180,11 +189,14 @@
           "ru": ""
         },
         "description": {
-          "en": "Once per long rest, you can **spend a Hope** to place 3 tokens on this card. You or another PC can spend a token instead of spending a Hope to Help an Ally.",
+          "en": "You can **spend a Hope** to place 3 tokens on this card. You or another PC can spend a token instead of spending a Hope to Help an Ally.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "limit": 1,
+        "limit_refresh": "long_rest",
+        "price": { "hope": 1 }
       },
       {
         "title": {
@@ -196,7 +208,8 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "hope": 1 }
       },
       {
         "title": {
@@ -216,11 +229,12 @@
           "ru": ""
         },
         "description": {
-          "en": "You can **spend 2 Hope** to make a creature within Far range Wanted. ",
+          "en": "You can **spend 2 Hope** to make a creature within Far range Wanted.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "hope": 2 }
       },
       {
         "title": {
@@ -228,7 +242,7 @@
           "ru": "Живым или мертвым"
         },
         "description": {
-          "en": " When you attack a Wanted creature, you can roll a d20 as your Hope Die. When allies within Close range of you attack a Wanted creature, they can roll a d20 as their Hope Die. ",
+          "en": "When you attack a Wanted creature, you can roll a d20 as your Hope Die. When allies within Close range of you attack a Wanted creature, they can roll a d20 as their Hope Die.",
           "ru": ""
         },
         "kind": "static",
@@ -254,12 +268,12 @@
       "ru": "Вне закона"
     },
     "description": {
-      "en": "Play the Outlaw if you’re always on the move, one step ahead of your foes.",
+      "en": "Play the Outlaw if you're always on the move, one step ahead of your foes.",
       "ru": ""
     },
     "public": true,
     "class_id": "rogue",
-    "spellcast": "",
+    "spellcast": "agi",
     "features": [
       {
         "title": {
@@ -267,11 +281,12 @@
           "ru": ""
         },
         "description": {
-          "en": "When you succeed on an attack roll with a firearm, you can **spend a Hope** to become Cloaked in gunsmoke. While Cloaked, you remain unseen if you are stationary when an adversary moves to where they would normally see you. When you move into or within an adversary’s line of sight or make an attack, you are no longer Cloaked.",
+          "en": "When you succeed on an attack roll with a firearm, you can **spend a Hope** to become Cloaked in gunsmoke. While Cloaked, you remain unseen if you are stationary when an adversary moves to where they would normally see you. When you move into or within an adversary's line of sight or make an attack, you are no longer Cloaked.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "hope": 1 }
       },
       {
         "title": {
@@ -279,11 +294,13 @@
           "ru": "В бегах"
         },
         "description": {
-          "en": "Once per short rest, when you make a downtime move, you can roll 1d6 instead of 1d4.",
+          "en": "When you make a downtime move, you can roll 1d6 instead of 1d4.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "limit": 1,
+        "limit_refresh": "short_rest"
       },
       {
         "title": {
@@ -295,7 +312,8 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -303,7 +321,7 @@
           "ru": "Секретное оружие"
         },
         "description": {
-          "en": " When you finish a long rest, choose one primary weapon to make Secret. A Secret weapon can’t be discovered in a search or removed from your person. You can swap to a Secret weapon without paying the Stress cost. Once equipped, the weapon loses Secret.",
+          "en": "When you finish a long rest, choose one primary weapon to make Secret. A Secret weapon can't be discovered in a search or removed from your person. You can swap to a Secret weapon without paying the Stress cost. Once equipped, the weapon loses Secret.",
           "ru": ""
         },
         "kind": "static",
@@ -315,7 +333,7 @@
           "ru": ""
         },
         "description": {
-          "en": "When you Risk It All and roll with Hope, you can either:\n\n- Treat the Risk it All roll as if it were a critical success.\n\n- You and each PC within Close range clear a number of HP and Stress equal to your Hope roll, divided equally among each PC.",
+          "en": "When you **Risk It All** and roll with Hope, you can either:\n\n- Treat the Risk it All roll as if it were a critical success.\n\n- You and each PC within Close range clear a number of HP and Stress equal to your Hope roll, divided equally among each PC.",
           "ru": ""
         },
         "kind": "static",
@@ -345,8 +363,7 @@
       "ru": ""
     },
     "public": true,
-    "class_id": "",
-    "spellcast": "",
+    "class_id": "warrior",
     "features": [
       {
         "title": {
@@ -354,11 +371,12 @@
           "ru": "Оттяжка"
         },
         "description": {
-          "en": "When you have a pistol or revolver equipped, you can **mark a Stress** to use Attack of Opportunity on a target within range that moves out of Melee range of another PC. ",
+          "en": "When you have a pistol or revolver equipped, you can **mark a Stress** to use Attack of Opportunity on a target within range that moves out of Melee range of another PC.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -370,7 +388,8 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "hope": 1 }
       },
       {
         "title": {
@@ -378,7 +397,7 @@
           "ru": ""
         },
         "description": {
-          "en": "Once per scene, you can ignore line of sight when making an attack roll with a pistol or revolver. Additionally, in a moment of calm, you can **spend a Hope** to gain advantage on an action roll that uses a pistol or revolver to affect the scene, such as severing a rope or knocking an item out of someone’s hand.",
+          "en": "Once per scene, you can ignore line of sight when making an attack roll with a pistol or revolver. Additionally, in a moment of calm, you can **spend a Hope** to gain advantage on an action roll that uses a pistol or revolver to affect the scene, such as severing a rope or knocking an item out of someone's hand.",
           "ru": ""
         },
         "kind": "static",
@@ -394,7 +413,8 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "price": { "hope": 1 }
       },
       {
         "title": {
@@ -402,11 +422,13 @@
           "ru": "Седельные сумки"
         },
         "description": {
-          "en": "Once per rest, while mounted, you can swap a card into your loadout without paying the Recall Cost. While mounted, you can swap weapons with no Stress cost.",
+          "en": "While mounted, you can swap a card into your loadout without paying the Recall Cost. While mounted, you can swap weapons with no Stress cost.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "limit": 1,
+        "limit_refresh": "short_rest"
       }
     ]
   }
@@ -421,7 +443,7 @@
     },
     "public": true,
     "class_id": "bard",
-    "spellcast": "",
+    "spellcast": "pre",
     "features": [
       {
         "title": {
@@ -429,7 +451,7 @@
           "ru": "Таинственный тоник"
         },
         "description": {
-          "en": "At the end of a rest, place a d4 Tonic Die on this card. You can spend a Tonic Die by rolling it and choose a willing target within Close range. On a result of 1, the target **marks a Stress**. On a result of 2–4, the target clears a number of Hit Points or Stress equal to the result (divided however the target chooses). ",
+          "en": "At the end of a rest, place a d4 Tonic Die on this card. You can spend a Tonic Die by rolling it and choose a willing target within Close range. On a result of 1, the target **marks a Stress**. On a result of 2–4, the target clears a number of Hit Points or Stress equal to the result (divided however the target chooses).",
           "ru": ""
         },
         "kind": "static",
@@ -453,11 +475,13 @@
           "ru": "Обвести вокруг пальца"
         },
         "description": {
-          "en": "Once per rest, when you make an action roll to distract or con one or more people, you can use a d20 as your Hope Die. On a roll with Fear, the GM gains an additional Fear.",
+          "en": "When you make an action roll to distract or con one or more people, you can use a d20 as your Hope Die. On a roll with Fear, the GM gains an additional Fear.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "limit": 1,
+        "limit_refresh": "short_rest"
       },
       {
         "title": {
@@ -477,7 +501,7 @@
           "ru": "Чудодейственные тоники"
         },
         "description": {
-          "en": " Your Tonic Die increases to a d6. Additionally, when you spend a Tonic Die, the target can choose to gain any number of Hope instead of clearing the same number of Hit Points or Stress (even if they have no marked Hit Points or Stress). ",
+          "en": "Your Tonic Die increases to a d6. Additionally, when you spend a Tonic Die, the target can choose to gain any number of Hope instead of clearing the same number of Hit Points or Stress (even if they have no marked Hit Points or Stress).",
           "ru": ""
         },
         "kind": "static",
@@ -489,7 +513,7 @@
           "ru": "Беспечный ездок"
         },
         "description": {
-          "en": "When you take a short rest while mounted, you can roll a d6 instead of a d4 for your downtime moves. When you whistle for your party’s mounts you can **spend a handful of gold** to introduce a stagecoach, drawn by the party's mounts, to the scene.",
+          "en": "When you take a short rest while mounted, you can roll a d6 instead of a d4 for your downtime moves. When you whistle for your party's mounts you can **spend a handful of gold** to introduce a stagecoach, drawn by the party's mounts, to the scene.",
           "ru": ""
         },
         "kind": "static",
@@ -508,7 +532,7 @@
     },
     "public": true,
     "class_id": "druid",
-    "spellcast": "",
+    "spellcast": "ins",
     "features": [
       {
         "title": {
@@ -540,11 +564,12 @@
           "ru": "Паническое бегство"
         },
         "description": {
-          "en": "When you use Migratory Instincts, you can **mark a Stress** to force each target you or an ally passes within Melee range to make a Reaction Roll (15). Each target that fails takes d6+4 physical damage using your Proficiency as they are trampled.",
+          "en": "When you use **Migratory Instincts**, you can **mark a Stress** to force each target you or an ally passes within Melee range to make a Reaction Roll (15). Each target that fails takes d6+4 physical damage using your Proficiency as they are trampled.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -595,7 +620,7 @@
     },
     "public": true,
     "class_id": "sorcerer",
-    "spellcast": "",
+    "spellcast": "pre",
     "features": [
       {
         "title": {
@@ -603,7 +628,7 @@
           "ru": "Пустота зовёт"
         },
         "description": {
-          "en": "Gain a scar when you take this card. Scars don’t reduce your maximum Hope. You gain a −1 penalty to your damage thresholds for each scar you have. When you gain a sixth scar, your body crumbles into dust and you fade into nothingness. You cannot be resurrected by any means.",
+          "en": "Gain a scar when you take this card. Scars don't reduce your maximum Hope. You gain a −1 penalty to your damage thresholds for each scar you have. When you gain a sixth scar, your body crumbles into dust and you fade into nothingness. You cannot be resurrected by any means.",
           "ru": ""
         },
         "kind": "static",
@@ -619,7 +644,8 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -627,11 +653,13 @@
           "ru": "Дурное предзнаменование"
         },
         "description": {
-          "en": "Once per long rest, you can give the GM a Fear to make all creatures within Close range Afeared. An Afeared creature can’t willingly move toward you and has disadvantage on attack rolls targeting you until it marks a Stress to clear the condition.",
+          "en": "You can give the GM a Fear to make all creatures within Close range Afeared. An Afeared creature can't willingly move toward you and has disadvantage on attack rolls targeting you until it marks a Stress to clear the condition.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "limit": 1,
+        "limit_refresh": "long_rest"
       },
       {
         "title": {
@@ -651,7 +679,7 @@
           "ru": "Призрак могильной земли"
         },
         "description": {
-          "en": " You can give the GM a Fear to transform into a horrifying specter, gaining the following benefits until the end of the scene:\n\n- You ignore the penalty to damage thresholds from The Void Calls.\n\n- When you would mark your last Hit Point, you can give the GM a Fear instead.\n\n- When you or an ally within Close range rolls with Fear, you gain a Hope.",
+          "en": "You can give the GM a Fear to transform into a horrifying specter, gaining the following benefits until the end of the scene:\n\n- You ignore the penalty to damage thresholds from The Void Calls.\n\n- When you would mark your last Hit Point, you can give the GM a Fear instead.\n\n- When you or an ally within Close range rolls with Fear, you gain a Hope.",
           "ru": ""
         },
         "kind": "static",
@@ -670,8 +698,7 @@
         "subclass_mastery": 3
       }
     ]
-  }
-]
+  },
   {
     "title": {
       "en": "School of Gambling",
@@ -683,7 +710,7 @@
     },
     "public": true,
     "class_id": "wizard",
-    "spellcast": "",
+    "spellcast": "know",
     "features": [
       {
         "title": {
@@ -694,7 +721,7 @@
           "en": "When you take this card, choose a number between 1 and 12. This choice is permanent. When you roll that number on a Duality Die, gain a Hope or clear a Stress.",
           "ru": ""
         },
-        "kind": "static",
+        "kind": "text",
         "subclass_mastery": 1
       },
       {
@@ -719,7 +746,8 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "hope": 1 }
       },
       {
         "title": {
@@ -731,7 +759,8 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -739,7 +768,7 @@
           "ru": ""
         },
         "description": {
-          "en": " When your loadout is a Full House (2 from one domain and 3 cards from another), a Flush (5 cards from one domain), or a Straight (5 cards with levels in an unbroken sequence), you gain the following benefits:\n\n- When your Weighted Dice feature is triggered, you also clear a Hit Point.\n\n- You can activate your Card Sleeve feature without spending a Hope.\n\n- You can activate your Gilded Vault feature without marking a Stress.",
+          "en": "When your loadout is a Full House (2 from one domain and 3 cards from another), a Flush (5 cards from one domain), or a Straight (5 cards with levels in an unbroken sequence), you gain the following benefits:\n\n- When your Weighted Dice feature is triggered, you also clear a Hit Point.\n\n- You can activate your Card Sleeve feature without spending a Hope.\n\n- You can activate your Gilded Vault feature without marking a Stress.",
           "ru": ""
         },
         "kind": "static",

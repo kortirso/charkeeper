@@ -10,7 +10,7 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
+    "spellcast": "pre",
     "features": [
       {
         "title": {
@@ -18,7 +18,7 @@
           "ru": ""
         },
         "description": {
-          "en": "You can use this ability a number of times equal to your Spellcast trait per long rest. Choose one:\n\n- **Soothe:** Clear a Stress from yourself and an ally within Close range. If you Describe how you bring comfort or calm, you both gain 1 Hope.\n\n- **Torment:** Inflict a Stress on an adversary within Close range. Their next attack has Disadvantage.",
+          "en": "You can use this ability a number of times equal to your Spellcast trait per long rest. Choose one:\n\n- **Soothe** Clear a Stress from yourself and an ally within Close range. If you Describe how you bring comfort or calm, you both gain 1 Hope.\n\n- **Torment** Inflict a Stress on an adversary within Close range. Their next attack has Disadvantage.",
           "ru": ""
         },
         "kind": "static",
@@ -30,7 +30,7 @@
           "ru": ""
         },
         "description": {
-          "en": "When you’ve run out of uses, you may still invoke **Heartlink** — but each time you do, the GM gains a Fear.",
+          "en": "When you've run out of uses, you may still invoke **Heartlink** — but each time you do, the GM gains a Fear.",
           "ru": ""
         },
         "kind": "static",
@@ -42,7 +42,7 @@
           "ru": ""
         },
         "description": {
-          "en": "When you use Heartlink, you may also inflict one of the following temporary eects. Choose two targets within Close range.\n\n- **Shared Suering:** If any target clears a Stress, the other targets clear a Stress as well.\n\n- **Empathic Reflection:** If any target marks a Stress, the other targets gain a Hope.\n\n- **Double Sorrow:** If any target marks a Stress, the other targets mark a Stress as well.",
+          "en": "When you use **Heartlink**, you may also inflict one of the following temporary effects. Choose two targets within Close range.\n\n- **Shared Suering** If any target clears a Stress, the other targets clear a Stress as well.\n\n- **Empathic Reflection** If any target marks a Stress, the other targets gain a Hope.\n\n- **Double Sorrow** If any target marks a Stress, the other targets mark a Stress as well.",
           "ru": ""
         },
         "kind": "static",
@@ -54,7 +54,7 @@
           "ru": "Паутина сердец"
         },
         "description": {
-          "en": "For every Stress you have currently marked, you can choose an additional target to be aected by the chosen eect of **Soulthether**.",
+          "en": "For every Stress you have currently marked, you can choose an additional target to be affected by the chosen effect of **Soulthether**.",
           "ru": ""
         },
         "kind": "static",
@@ -73,7 +73,7 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
+    "spellcast": "know",
     "features": [
       {
         "title": {
@@ -81,11 +81,13 @@
           "ru": "Мираж"
         },
         "description": {
-          "en": "Once per long rest, you conjure an illusory double of yourself within Close range. The illusion lasts for the remainder of the scene.\n\n- You and the illusion can move independently. At any time, you may decide which of the two is your true body. The other becomes the illusion.\n\n- When taking an action, you may choose whether it originates from your true self or the illusion.\n\n- If an eect or attack targets the illusion, it instead aects you.\n\n- When you would lose Hit Points or gain a Condition, you may dissipate the illusion to negate the eect entirely.",
+          "en": "You conjure an illusory double of yourself within Close range. The illusion lasts for the remainder of the scene.\n\n- You and the illusion can move independently. At any time, you may decide which of the two is your true body. The other becomes the illusion.\n\n- When taking an action, you may choose whether it originates from your true self or the illusion.\n\n- If an eect or attack targets the illusion, it instead aects you.\n\n- When you would lose Hit Points or gain a Condition, you may dissipate the illusion to negate the eect entirely.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "limit": 1,
+        "limit_refresh": "long_rest"
       },
       {
         "title": {
@@ -97,7 +99,11 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "continious": true,
+        "modifiers": {
+          "evasion": { "type": "add", "value": 1 }
+        }
       },
       {
         "title": {
@@ -105,7 +111,7 @@
           "ru": "Мерцание"
         },
         "description": {
-          "en": " Make a **Spellcast Roll (15)** to swap places with a target within Close range of you or your Mirage. The target cannot be bigger than you. If you succeed, the target can be:\n\n- **Spend 2 Hope.** A willing ally or an object.\n\n- **Mark a Stress.** An adversary.",
+          "en": "Make a **Spellcast Roll (15)** to swap places with a target within Close range of you or your **Mirage**. The target cannot be bigger than you. If you succeed, the target can be:\n\n- **Spend 2 Hope** A willing ally or an object.\n\n- **Mark a Stress** An adversary.",
           "ru": ""
         },
         "kind": "static",
@@ -117,11 +123,12 @@
           "ru": "Парадокс близнецов"
         },
         "description": {
-          "en": "**Spend 3 Hope.** Once per session, you create a mirror image of yourself or an ally within Far range. This image acts simultaneously with the target, initiating a **Tag Team Roll.** This does not count towards your or your allies' Tag Team uses.",
+          "en": "**Spend 3 Hope**. Once per session, you create a mirror image of yourself or an ally within Far range. This image acts simultaneously with the target, initiating a **Tag Team Roll**. This does not count towards your or your allies' Tag Team uses.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "price": { "hope": 3 }
       }
     ]
   }

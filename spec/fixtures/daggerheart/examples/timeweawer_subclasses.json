@@ -10,7 +10,7 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
+    "spellcast": "ins",
     "features": [
       {
         "title": {
@@ -42,11 +42,13 @@
           "ru": ""
         },
         "description": {
-          "en": " Once per rest, when you succeed on a Spellcast attack, resolve its damage twice against the same target. **Mark 1 Stress.**",
+          "en": "When you succeed on a Spellcast attack, resolve its damage twice against the same target. **Mark 1 Stress**.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "limit": 1,
+        "limit_refresh": "short_rest"
       },
       {
         "title": {
@@ -54,11 +56,14 @@
           "ru": "Парадоксальный взрыв"
         },
         "description": {
-          "en": "nce per long rest, when you hit with a Spellcast attack, you may **spend 2 Hope** to roll the damage twice and take the higher result. **Mark 1 Stress.** You may instead add +2d6 damage; if you do, mark 1 Stress and 1 Hit Point.",
+          "en": "When you hit with a Spellcast attack, you may **spend 2 Hope** to roll the damage twice and take the higher result. **Mark 1 Stress**. You may instead add +2d6 damage; if you do, mark 1 Stress and 1 Hit Point.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "limit": 1,
+        "limit_refresh": "long_rest",
+        "price": { "hope": 2 }
       }
     ]
   },
@@ -73,7 +78,7 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
+    "spellcast": "know",
     "features": [
       {
         "title": {
@@ -105,11 +110,13 @@
           "ru": "Доля секунды"
         },
         "description": {
-          "en": "Once per long rest, after you succeed on a Spellcast Roll, choose one:\n\n- **JustASecond:** Immediately take the spotlight again. Gain 1 Hope.\n\n- **Friends With Benefits:** An ally in Close range immediately takes the spotlight to make one move or action, and they may reposition within Close as part of that action. They gain 1 Hope.\n\nYou cannot use Split Second during the extra turn.",
+          "en": "After you succeed on a Spellcast Roll, choose one:\n\n- **JustASecond** Immediately take the spotlight again. Gain 1 Hope.\n\n- **Friends With Benefits** An ally in Close range immediately takes the spotlight to make one move or action, and they may reposition within Close as part of that action. They gain 1 Hope.\n\nYou cannot use Split Second during the extra turn.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "limit": 1,
+        "limit_refresh": "long_rest"
       }
     ]
   }

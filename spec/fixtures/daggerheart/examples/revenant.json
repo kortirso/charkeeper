@@ -22,7 +22,8 @@
           "en": "**Spend 3 Hope** to ignore a particular adversary's resistances or reduce their immunities to resistances until your next rest. This effect cannot stack.",
           "ru": ""
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "hope": 3 }
       },
       {
         "title": {
@@ -55,7 +56,8 @@
           "en": "Whenever you score a critical hit, you can **mark a Stress** to make the target temporarily *Horrified*. While *Horrified*, they are *Vulnerable*.",
           "ru": ""
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "stress": 1 }
       }
     ]
   }

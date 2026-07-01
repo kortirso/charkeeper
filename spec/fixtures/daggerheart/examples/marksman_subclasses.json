@@ -10,7 +10,6 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
     "features": [
       {
         "title": {
@@ -18,11 +17,12 @@
           "ru": "Гамбит"
         },
         "description": {
-          "en": "**Mark a Stress.** You may move up to Close range as part of your next action, then perform a maneuver on a target within weapon range:\n\n- **Scatter Step:** Force an adversary to retreat up to Close distance away from you.\n\n- **Rebound:** If you miss an attack, retarget another adversary and repeat the attack.\n\n- **Feint:** Distract or feint toward an adversary. The next attack they make is at a disadvantage.",
+          "en": "**Mark a Stress**. You may move up to Close range as part of your next action, then perform a maneuver on a target within weapon range:\n\n- **Scatter Step** Force an adversary to retreat up to Close distance away from you.\n\n- **Rebound** If you miss an attack, retarget another adversary and repeat the attack.\n\n- **Feint** Distract or feint toward an adversary. The next attack they make is at a disadvantage.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -30,7 +30,7 @@
           "ru": ""
         },
         "description": {
-          "en": " Once per scene, when a Partner within Very Close range successfully strikes an adversary, you may make a reaction roll using a trait of your choice against the adversary’s Diculty. On a success, your Partner deals an additional Hit Point of damage.",
+          "en": "Once per scene, when a Partner within Very Close range successfully strikes an adversary, you may make a reaction roll using a trait of your choice against the adversary's Diculty. On a success, your Partner deals an additional Hit Point of damage.",
           "ru": ""
         },
         "kind": "static",
@@ -54,7 +54,7 @@
           "ru": "На волне успеха"
         },
         "description": {
-          "en": "After hitting an adversary at Very Close range, or after you or a Partner incapacitates a foe, your next Gambit costs no Stress.",
+          "en": "After hitting an adversary at Very Close range, or after you or a Partner incapacitates a foe, your next **Gambit** costs no Stress.",
           "ru": ""
         },
         "kind": "static",
@@ -66,11 +66,12 @@
           "ru": "Поворотный момент"
         },
         "description": {
-          "en": "**Spend 3 Hope.** During the GM’s Fear turn, you may declare an action. You and the GM act simultaneously.",
+          "en": "**Spend 3 Hope**. During the GM's Fear turn, you may declare an action. You and the GM act simultaneously.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "price": { "hope": 3 }
       }
     ]
   },
@@ -85,7 +86,6 @@
     },
     "public": true,
     "class_id": "",
-    "spellcast": "",
     "features": [
       {
         "title": {
@@ -93,11 +93,12 @@
           "ru": "Подготовка"
         },
         "description": {
-          "en": "When you take time to scout, hide, or plan an ambush, **mark a Stress** and declare a vantage point or hiding spot you’ve secured. Until the scene ends: You may begin combat from that position if the fiction supports it. The first attack you make from hiding gains advantage.",
+          "en": "When you take time to scout, hide, or plan an ambush, **mark a Stress** and declare a vantage point or hiding spot you've secured. Until the scene ends: You may begin combat from that position if the fiction supports it. The first attack you make from hiding gains advantage.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -105,11 +106,12 @@
           "ru": "Огневое прикрытие"
         },
         "description": {
-          "en": "If your Partner is marking Hit Points after being attacked, **mark a Stress** to make a reaction roll using a trait of your choice within your weapon range against their adversaries' Diculty. Choose one eect on a success, or two if you critically succeed:\n\n- The severity of physical damage they take is reduced by one threshold.\n\n- You deal damage to the adversary equal to your primary weapon’s damage.\n\n- Your partner may immediately reposition.",
+          "en": "If your Partner is marking Hit Points after being attacked, **mark a Stress** to make a reaction roll using a trait of your choice within your weapon range against their adversaries' Difficulty. Choose one effect on a success, or two if you critically succeed:\n\n- The severity of physical damage they take is reduced by one threshold.\n\n- You deal damage to the adversary equal to your primary weapon's damage.\n\n- Your partner may immediately reposition.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -117,7 +119,7 @@
           "ru": "Сосредоточиться"
         },
         "description": {
-          "en": " Gain a +1 bonus to hit attacks beyond Very Close range.",
+          "en": "Gain a +1 bonus to hit attacks beyond Very Close range.",
           "ru": ""
         },
         "kind": "static",
@@ -129,7 +131,7 @@
           "ru": "Набор сталкера"
         },
         "description": {
-          "en": "Once per session, you can declare that you prepared a specific tool or item in your Stalker’s Kit for the current situation. Describe the item and how it fits within the confines of a small, specialized bag (something that could realistically be carried by a single person for a long patrol).This item must be a mundane object, a unique tool, or specialized ammunition/equipment that a stalker would realistically carry or acquire for a mission.",
+          "en": "Once per session, you can declare that you prepared a specific tool or item in your Stalker's Kit for the current situation. Describe the item and how it fits within the confines of a small, specialized bag (something that could realistically be carried by a single person for a long patrol).This item must be a mundane object, a unique tool, or specialized ammunition/equipment that a stalker would realistically carry or acquire for a mission.",
           "ru": ""
         },
         "kind": "static",
@@ -141,11 +143,12 @@
           "ru": "Невозможный выстрел"
         },
         "description": {
-          "en": "**Spend 3 Hope.** Make a ranged attack against any target you have seen within the last minute. This attack ignores line of sight, cover, and range limitations.",
+          "en": "**Spend 3 Hope**. Make a ranged attack against any target you have seen within the last minute. This attack ignores line of sight, cover, and range limitations.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "price": { "hope": 3 }
       }
     ]
   }
