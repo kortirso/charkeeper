@@ -12,6 +12,20 @@ module Daggerheart
 
     class Subclass < ::Homebrew
       attribute :info, Daggerheart::Homebrews::SubclassData.to_type
+
+      def to_json
+        [
+          {
+            title: title,
+            description: description,
+            public: attributes['public'],
+            class_id: info.class_id,
+            spellcast: info.spellcast,
+            mechanics: info.mechanics,
+            features: Daggerheart::Feat.where(origin_value: id).map { _1.to_json }
+          }
+        ]
+      end
     end
   end
 end

@@ -201,7 +201,7 @@ export const SharedContent = (props) => {
             <div class="absolute top-8 z-10 bg-white rounded border border-black">
               <For each={publications()}>
                 {(publication) =>
-                  <div class="flex flex-col gap-2 p-4">
+                  <div class="flex flex-col p-4">
                     <p class="text-sm">{publication.completed_at}</p>
                     <div>
                       <Show
@@ -210,7 +210,7 @@ export const SharedContent = (props) => {
                           <For each={Object.entries(publication.errors_list)}>
                             {([index, values]) =>
                               <div>
-                                <p class="text-sm">{index}</p>
+                                <p class="text-sm">Index {index}</p>
                                 <For each={Object.entries(values)}>
                                   {([slug, list]) =>
                                     <p class="text-sm">

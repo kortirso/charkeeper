@@ -1,0 +1,106 @@
+[
+  {
+    "title": {
+      "en": "Mystic Knight",
+      "ru": "Мистический рыцарь"
+    },
+    "description": {
+      "en": "Play the Mystic Knight if you wish to make close-combat Spellstrikes with runic weapons in hand.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "know",
+    "features": [
+      {
+        "title": {
+          "en": "Runewright",
+          "ru": "Рунотворец"
+        },
+        "description": {
+          "en": "As a downtime move, you can upgrade a tier 1 primary weapon and a tier 1 secondary weapon into tier 2 improved weapons of their kind. The upgrade lasts until you take this downtime move again.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Invoke Runes",
+          "ru": "Призвать руны"
+        },
+        "description": {
+          "en": "When you use a spell or grimoire card to make a **Spellstrike**, that card can be in your loadout or vault.\n\nIn addition, your runewright weapons are now upgraded into tier 3 advanced weapons of their kind.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Runemaster",
+          "ru": "Рунемастер"
+        },
+        "description": {
+          "en": "When you use a spell or grimoire card in your vault to make a **Spellstrike**, you can immediately swap it into your loadout without paying its Recall Cost.\n\nIn addition, your runewright weapons are now upgraded into tier 4 legendary weapons of their kind.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Eldritch Sniper",
+      "ru": "Мистический снайпер"
+    },
+    "description": {
+      "en": "Play the Eldritch Sniper if you wish to make **Spellstrikes** from afar as a solo or alongside a spotter.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "know",
+    "features": [
+      {
+        "title": {
+          "en": "Sharpshooter",
+          "ru": "Меткий стрелок"
+        },
+        "description": {
+          "en": " If the range of your primary weapon is greater than very close, you can increase the range of the action rolls involved in your **Spellstrike** to that of the weapon.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Sniping Duo",
+          "ru": ""
+        },
+        "description": {
+          "en": "You can initiate a Tag Team Roll, but only to make a **Spellstrike**.\n\nWhen you and an ally make a **Spellstrike** as a Tag Team Roll, that ally rolls one of your Duality dice and makes one of the two action rolls involved in your **Spellstrike**, using their own weapon or card as needed.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2,
+        "limit": 1,
+        "limit_refresh": "short_rest"
+      },
+      {
+        "title": {
+          "en": "Overwatch",
+          "ru": ""
+        },
+        "description": {
+          "en": "When you and an ally make a **Spellstrike** as a Tag Team Roll, each gains 1 additional Hope on a roll with Hope, and the DM gains no Fear token on a roll with Fear.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      }
+    ]
+  }
+]

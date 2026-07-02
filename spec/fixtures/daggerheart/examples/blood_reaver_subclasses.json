@@ -1,0 +1,127 @@
+[
+  {
+    "title": {
+      "en": "Crimson Harbinger",
+      "ru": "Багровый вестник"
+    },
+    "description": {
+      "en": "Play this if you want constant damage and sheer brutality.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "str",
+    "features": [
+      {
+        "title": {
+          "en": "Grind Them Down",
+          "ru": "Перемолоть их"
+        },
+        "description": {
+          "en": "When you succeed on a melee attack, you can **mark a Stress** to roll an extra d6 and add it to the damage. You can do this a number of times per scene equal to your Proficiency.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "price": { "stress": 1 }
+      },
+      {
+        "title": {
+          "en": "Used To It",
+          "ru": ""
+        },
+        "description": {
+          "en": "When you would mark Stress, you can instead spend 1 Blood to ignore that Stress.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "limit": 1,
+        "limit_refresh": "short_rest"
+      },
+      {
+        "title": {
+          "en": "Relentless",
+          "ru": "Безжалостный"
+        },
+        "description": {
+          "en": "Once per scene when you defeat an adversary within Melee, gain a Hope and 1 Blood.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Red Reaper",
+          "ru": "Красный Жнец"
+        },
+        "description": {
+          "en": "When you succeed on a melee attack, you may expend any or all Blood from your Bloodforge to empower the strike. For each Blood spent, add +1d6 damage to the attack's damage roll.\n\nIf this attack defeats its target, you may immediately make a melee attack against another adversary within Very Close range. That attack deals half the total extra damage you rolled from Blood.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "limit": 1,
+        "limit_refresh": "long_rest"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Shadowfang",
+      "ru": ""
+    },
+    "description": {
+      "en": "Play this if you want control, counter-attacks, and shadowdriven disruption.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "pre",
+    "features": [
+      {
+        "title": {
+          "en": "Echo of Midnight",
+          "ru": "Эхо полуночи"
+        },
+        "description": {
+          "en": "When you use a Midnight domain attack or feature against a foe within Close range, you can **mark 1 Stress** to force a **Reaction Roll (13)**. On a failure, the target marks a Stress and is pulled one range step toward you. On a success, they're temporarily *Vulnerable* until they mark a Hit Point. Once per scene.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "price": { "stress": 1 }
+      },
+      {
+        "title": {
+          "en": "Black Veil Step",
+          "ru": "Шаг Черной Вуали"
+        },
+        "description": {
+          "en": "When you take damage, you can vanish into shadow, instantly moving to any space within Close range and gaining advantage on your next melee attack.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2,
+        "limit": 1,
+        "limit_refresh": "short_rest"
+      },
+      {
+        "title": {
+          "en": "Drink the Darkness",
+          "ru": ""
+        },
+        "description": {
+          "en": "**Spend a Hope** to emanate a blood-aura until the end of the scene. Adversaries within Very Close suffer a −1 penalty on Reaction Rolls. While your aura is active, each time you mark Stress, gain 1 Blood on your Bloodforge.\n\nWhile your aura is active:\n\n- Each time you mark a stress, gain 1 Blood in your Bloodforge.\n\n- Your Bloodforge maximum increases by 3.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "limit": 1,
+        "limit_refresh": "long_rest",
+        "price": { "hope": 1 }
+      }
+    ]
+  }
+]

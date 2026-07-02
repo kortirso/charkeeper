@@ -40,14 +40,18 @@ module HomebrewsV2Context
                   optional(:es).maybe(:string, max_size?: 50)
                 end
                 required(:description).hash do
-                  required(:en).filled(:string, max_size?: 500)
-                  optional(:ru).maybe(:string, max_size?: 500)
-                  optional(:es).maybe(:string, max_size?: 500)
+                  required(:en).filled(:string, max_size?: 1_000)
+                  optional(:ru).maybe(:string, max_size?: 1_000)
+                  optional(:es).maybe(:string, max_size?: 1_000)
                 end
                 required(:kind).filled(Kinds)
-                optional(:limit).filled(:integer, gteq?: 1)
+                optional(:limit).filled(:integer, gteq?: 0)
                 optional(:limit_refresh).filled(Limits)
                 optional(:modifiers).hash
+                optional(:price).hash do
+                  optional(:stress).filled(:integer, gteq?: 1, lteq?: 10)
+                  optional(:hope).filled(:integer, gteq?: 1, lteq?: 10)
+                end
                 optional(:attacks).maybe(:array).each(:hash) do
                   required(:kind).filled(WeaponKinds)
                   required(:name).hash do

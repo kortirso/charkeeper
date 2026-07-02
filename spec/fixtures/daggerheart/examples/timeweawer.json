@@ -1,0 +1,57 @@
+[
+  {
+    "title": {
+      "en": "Timeweaver",
+      "ru": "Ткач времени"
+    },
+    "description": {
+      "en": "Timeweavers are a walking paradox. They are someone who treads the fragile boundary between literal seconds, snatching back moments before they vanish. They manipulate tempo through spells like Borrowed Seconds, exchanging a piece of their vitality for an instant burst of power, while Fragile Tempo turns stress into a fragile second chance. Time itself is slippery and unexplainable - impossible to fully grasp or trust - and that leaves them spectacularly potent, and just as spectacularly vulnerable. A Timeweaver's magic is raw, urgent, and fleeting… dancing at the edge of time itself.",
+      "ru": ""
+    },
+    "public": true,
+    "domains": ["chronos", "codex"],
+    "evasion": 11,
+    "health_max": 5,
+    "features": [
+      {
+        "title": {
+          "en": "Temporal Slip",
+          "ru": "Временной сдвиг"
+        },
+        "description": {
+          "en": "**Spend 3 Hope** after you roll but before outcomes resolve. Reroll the action and keep the new result. If you succeed with Hope, **clear 1 Stress**.",
+          "ru": ""
+        },
+        "kind": "static",
+        "price": { "hope": 3 }
+      },
+      {
+        "title": {
+          "en": "Borrowed Seconds",
+          "ru": "Одолженные секунды"
+        },
+        "description": {
+          "en": "Once per scene when you succeed on a Spellcast Roll against an adversary, you can **mark 1 Hit Point** to immediately make a second Spellcast Roll against a different target within the same range band using the same card. If either roll critically succeeds, **mark 1 Stress**. This does not bypass any 'once per rest' limits printed on that card.",
+          "ru": ""
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Fragile Tempo",
+          "ru": "Хрупкий темп"
+        },
+        "description": {
+          "en": "While your Stress is 3 or more, you gain +1 to Spellcast Rolls and −1 Evasion.",
+          "ru": ""
+        },
+        "kind": "static",
+        "continious": true,
+        "modifiers": {
+          "spell_bonus": { "type": "add", "value": 1 },
+          "evasion": { "type": "add", "value": -1 }
+        }
+      }
+    ]
+  }
+]

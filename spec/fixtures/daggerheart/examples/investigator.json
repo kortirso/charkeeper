@@ -1,0 +1,55 @@
+[
+  {
+    "title": {
+      "en": "Investigator",
+      "ru": "Следователь"
+    },
+    "description": {
+      "en": "Entering into investigation is more than just looking for clues. It's knowing what the clues truly mean. Whether it's from an ancient tome, a scroll deep within a dragon's hoard, or someone deep in hiding, an investigator will eventual find what they're looking for. And they will wield that knowledge for the better of themselves and those around them.",
+      "ru": "Расследование – это не просто поиск улик. Это понимание истинного смысла этих улик. Будь то древний фолиант, свиток из сокровищницы дракона или информация от человека, скрывающегося в укрытии, следователь в конце концов найдет то, что ищет. И он будет использовать эти знания во благо себе и окружающим."
+    },
+    "public": true,
+    "domains": ["codex", "midnight"],
+    "evasion": 10,
+    "health_max": 6,
+    "features": [
+      {
+        "title": {
+          "en": "It's In The Clues",
+          "ru": "Ответ кроется в подсказках"
+        },
+        "description": {
+          "en": "**Spend 3 Hope** to recognize things in an adversary, allowing you to reduce their Damage Thresholds by 2. You cannot perform this on an adversary more than once.",
+          "ru": "**Потратьте 3 Надежды**, чтобы распознать особенности противника, что позволит вам снизить его пороги урона на 2. Вы не можете выполнить это действие на одном и том же противнике более одного раза."
+        },
+        "kind": "static",
+        "price": { "hope": 3 }
+      },
+      {
+        "title": {
+          "en": "Myths",
+          "ru": "Мифы"
+        },
+        "description": {
+          "en": "You have advantage on Knowledge rolls to remember important historical or religious information.",
+          "ru": "Вы получаете преимущество к броску Знаний, чтобы вспомнить важную историческую или религиозную информацию."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "And Legends",
+          "ru": "И легенды"
+        },
+        "description": {
+          "en": "You can **mark a Stress** to increase or decrease a duality die by an amount equal to your Knowledge modifier. This cannot result in a critical success.",
+          "ru": "Вы можете **отметить Стресс**, чтобы изменить результат броска кости дуальности на число, равное вашему Знанию. Это не может привести к критическому успеху."
+        },
+        "kind": "static",
+        "limit": 1,
+        "limit_refresh": "long_rest",
+        "price": { "stress": 1 }
+      }
+    ]
+  }
+]

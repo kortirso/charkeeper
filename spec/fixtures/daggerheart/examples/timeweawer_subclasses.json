@@ -1,0 +1,123 @@
+[
+  {
+    "title": {
+      "en": "Hourglass Duelist",
+      "ru": "Дуэлянт Песочных часов"
+    },
+    "description": {
+      "en": "Play this if you want massive damage spikes and speed.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "ins",
+    "features": [
+      {
+        "title": {
+          "en": "Cadence",
+          "ru": ""
+        },
+        "description": {
+          "en": "Once per spotlight, when you succeed on a Spellcast attack, you can mark 1 Stress to add +2 to the damage total.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Temporal Riposte",
+          "ru": "Временной ответный удар"
+        },
+        "description": {
+          "en": "Once per scene, when you miss with a Spellcast attack during your spotlight, you can mark 1 Hit Point to make one immediate follow-up Spellcast melee attack against the same target. If it hits, add +3 to the damage total",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Hasteslash",
+          "ru": ""
+        },
+        "description": {
+          "en": "When you succeed on a Spellcast attack, resolve its damage twice against the same target. **Mark 1 Stress**.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2,
+        "limit": 1,
+        "limit_refresh": "short_rest"
+      },
+      {
+        "title": {
+          "en": "Paradox Blast",
+          "ru": "Парадоксальный взрыв"
+        },
+        "description": {
+          "en": "When you hit with a Spellcast attack, you may **spend 2 Hope** to roll the damage twice and take the higher result. **Mark 1 Stress**. You may instead add +2d6 damage; if you do, mark 1 Stress and 1 Hit Point.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "limit": 1,
+        "limit_refresh": "long_rest",
+        "price": { "hope": 2 }
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Sandscholar",
+      "ru": "Песочный ученый"
+    },
+    "description": {
+      "en": "Play this if you want control, counters, and team setups.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "know",
+    "features": [
+      {
+        "title": {
+          "en": "Time Shield",
+          "ru": "Щит времени"
+        },
+        "description": {
+          "en": "Once per scene, when an adversary makes an attack against you or an ally in Close range, you can impose disadvantage on that attack or effect by spending 1 Stress. If the attack still hits, reduce incoming damage by 2.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Resonant Recal",
+          "ru": "Резонансное воспоминание"
+        },
+        "description": {
+          "en": "When you succeed on a Spellcast Roll that grants a beneficial effect to an ally, you may **mark 1 Stress** to immediately repeat that effect on a different ally within Far range, once per triggering effect.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Split Second",
+          "ru": "Доля секунды"
+        },
+        "description": {
+          "en": "After you succeed on a Spellcast Roll, choose one:\n\n- **JustASecond** Immediately take the spotlight again. Gain 1 Hope.\n\n- **Friends With Benefits** An ally in Close range immediately takes the spotlight to make one move or action, and they may reposition within Close as part of that action. They gain 1 Hope.\n\nYou cannot use Split Second during the extra turn.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "limit": 1,
+        "limit_refresh": "long_rest"
+      }
+    ]
+  }
+]

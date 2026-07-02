@@ -1,0 +1,119 @@
+[
+  {
+    "title": {
+      "en": "Dreamweaver",
+      "ru": "Ткач снов"
+    },
+    "description": {
+      "en": "Play the Dreamweaver if you want to turn stress into strength and disrupt the minds of your enemies",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "ins",
+    "features": [
+      {
+        "title": {
+          "en": "Dream Eate",
+          "ru": "Пожиратель снов"
+        },
+        "description": {
+          "en": "When you choose a downtime move that clears Stress on yourself, you can also have an ally clear the same amount of Stress.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Font of Anguish",
+          "ru": "Источник мук"
+        },
+        "description": {
+          "en": "When you use your **Dream Eater** feature, place a number of tokens equal to your Spellcast trait on this card. When you make a Spellcast Roll or reaction roll, you can spend any number of these tokens to roll an equal number of d4s and add the total to the roll. When you start a rest, clear any unspent tokens on this card and gain a Hope per token cleared.",
+          "ru": "**"
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "limit": 0
+      },
+      {
+        "title": {
+          "en": "Invoke Nightmare",
+          "ru": "Призвать кошмар"
+        },
+        "description": {
+          "en": "Whenever an adversary within Far range marks a Stress, you can **mark a Stress** to make them temporarily *Vulnerable* and remove a Fear from the GM's Fear pool.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2,
+        "price": { "stress": 1 }
+      },
+      {
+        "title": {
+          "en": "Reverie",
+          "ru": "Грезы"
+        },
+        "description": {
+          "en": "Once per session, when an adversary within Far range succeeds on an attack roll, you can **spend 3 Hope** to make a reaction roll using your Spellcast trait against their Difficulty. On a success, they become temporarily *Stunned* and the attack is negated. While *Stunned*, they can't use reactions and can't take any other actions until they clear this condition.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "price": { "hope": 3 }
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Spiritcaller",
+      "ru": "Призыватель духов"
+    },
+    "description": {
+      "en": "Play the Spiritcaller if you want to bind spirits into physical totems and wield their blessings",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "ins",
+    "features": [
+      {
+        "title": {
+          "en": "Totemic Binding",
+          "ru": "Тотемная привязь"
+        },
+        "description": {
+          "en": "You carry three handcrafted totems, each housing a spirit that empowers you. Describe each totem's appearance and the nature of the spirit it contains. You can invoke each totem once per long rest:\n\n- **Protective Totem** When you mark an Armor Slot, reduce the severity of the attack by two thresholds instead of one.\n\n- **Muddling Totem** Make a target within Close range temporarily Muddled. While Muddled, they have disadvantage on attack rolls.\n\n- **Leeching Totem** Choose a target within Melee range. They mark a Hit Point, and you clear a Hit Point.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Spiritual Blessing",
+          "ru": "Духовное благословение"
+        },
+        "description": {
+          "en": "When you invoke one of the totems from your **Totemic Binding** feature, you can also choose one of the following:\n\n- You gain a Hope.\n\n- You clear an Armor Slot.\n\nAdditionally, you can **mark a Stress** to grant the same benefit to an ally within Close range.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Empowered Spirits",
+          "ru": ""
+        },
+        "description": {
+          "en": "Your connections to the spirits within your totems have grown stronger. You can invoke each of your **Totemic Binding** feature's totems twice instead of once per long rest.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      }
+    ]
+  }
+]

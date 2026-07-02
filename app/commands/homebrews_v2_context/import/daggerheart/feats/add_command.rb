@@ -34,6 +34,10 @@ module HomebrewsV2Context
               optional(:subclass_mastery).filled(:integer)
               optional(:level).filled(:integer)
               optional(:no_refresh).filled(:bool)
+              optional(:price).hash do
+                optional(:stress).filled(:integer, gteq?: 1, lteq?: 10)
+                optional(:hope).filled(:integer, gteq?: 1, lteq?: 10)
+              end
               optional(:attacks).maybe(:array).each(:hash) do
                 required(:kind).filled(Kinds)
                 required(:name).hash do

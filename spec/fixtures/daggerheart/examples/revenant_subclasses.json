@@ -1,0 +1,165 @@
+[
+  {
+    "title": {
+      "en": "Vindicator",
+      "ru": ""
+    },
+    "description": {
+      "en": "Play the Vindicator ifyou want to use martial prowess to enact your own personal justice.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "str",
+    "features": [
+      {
+        "title": {
+          "en": "Agent of Vengeance",
+          "ru": "Орудие возмездия"
+        },
+        "description": {
+          "en": "Marked by the Veil also informs you about the circumstances of the death (murder, accident, etc.). Once per long rest, you can also **spend a Hope** to make a particular death your active case.\n\nYou may ask your GM one *yes or no* question about your case. The GM must answer truthfully. Additionally, You gain advantage on Instinct Rolls to track or perceive individuals plausibly related to your case.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "limit": 1,
+        "limit_refresh": "long_rest",
+        "price": { "hope": 1 }
+      },
+      {
+        "title": {
+          "en": "Catharsis",
+          "ru": "Катарсис"
+        },
+        "description": {
+          "en": "Whenever you force an adversary to mark their last Hit Point, you **clear a Stress**.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Certainty",
+          "ru": "Уверенность"
+        },
+        "description": {
+          "en": "**Mark a Stress** to gain advantage on your next Action Roll or increase your Proficiency on your next damage roll by +1.\n\nWhen targeting a suspect in your active case, the effects of **Certainty** last until your next rest and the Proficieny bonus increases to +2.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2,
+        "price": { "stress": 1 }
+      },
+      {
+        "title": {
+          "en": "Inquisitor",
+          "ru": "Инквизитор"
+        },
+        "description": {
+          "en": "When targeting a suspect in your active case, **Fearmonger** can also be activated whenever you succeed an Attack or Spellcast Roll with Fear against them.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Revel in Battle",
+          "ru": ""
+        },
+        "description": {
+          "en": "Dealing Severe damage triggers **Catharsis**.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      },
+      {
+        "title": {
+          "en": "Defiance",
+          "ru": "Неповиновение"
+        },
+        "description": {
+          "en": "Twice per session, when your GM would **gain a Fear**, you can instead **mark 3 Stress** to grant 2 Hope to any ally within Far range.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "price": { "stress": 3 }
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Wraith",
+      "ru": "Призрак"
+    },
+    "description": {
+      "en": "Play the Wraith if you want to manipulate both adversaries and environments with the power of shadows and fear.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "know",
+    "features": [
+      {
+        "title": {
+          "en": "Runes of Midnight",
+          "ru": "Руны полуночи"
+        },
+        "description": {
+          "en": "When you would wield a physical weapon, that calls for Strength, you instead treat it as a magical weapon calling for Knowledge. However, you can only wield magical weapons.\n\nIf you hit a *Vulnerable* target with your weapon, **spend 2 Hope** to make it temporarily *Restrained* and vice versa.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "price": { "hope": 2 }
+      },
+      {
+        "title": {
+          "en": "Veil of Midnight",
+          "ru": "Покров полуночи"
+        },
+        "description": {
+          "en": "While you have two or fewer Hit Points unmarked, temporarily gain a +2 bonus to your Evasion and 1 additional Armor slot.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "continious": true,
+        "modifiers": {
+          "evasion": { "type": "add", "value": 2 },
+          "armor_score": { "type": "add", "value": 2 }
+        }
+      },
+      {
+        "title": {
+          "en": "Dreadmarks",
+          "ru": "Метки ужаса"
+        },
+        "description": {
+          "en": "You gain an amount of tokens equal to your Spellcast Trait called **Dreadmarks**. You can assign any number of them to creatures within Far range you can clearly identify.\n\nOnce per Scene, you may **mark a Stress** to gain an additional temporary **Dreadmarks** token. **Dreadmarks** reset on a long rest.\n\n**Spend 2 Hope** to trigger a Dreadmark for one of the following effects:\n\n- The target becomes temporarily Vulnerable.\n\n- You gain advantage on Presence rolls against the target until your next rest.\n\n- The target must **mark a Stress**.\n\n- You teleport to the target as long as it is within Far range.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Into the Pale",
+          "ru": ""
+        },
+        "description": {
+          "en": "You can expand your shadow into a haunting realm that encompasses Close range around you. This area follows you as you move.\n\nWhen an adversary enters this area for the first time, they must succeed a **Reaction Roll (16)** or be drawn into your realm. This realm reflects your character's history, emotional landscape or a similar feature.\n\nAs long as they are within your realm, adversaries cannot remove the Vulnerable or Restrained condition and any **Dreadmarks** on them can be triggered without spending Hope.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "limit": 1,
+        "limit_refresh": "short_rest"
+      }
+    ]
+  }
+]

@@ -1,0 +1,139 @@
+[
+  {
+    "title": {
+      "en": "The Antiquarian",
+      "ru": "Антиквар"
+    },
+    "description": {
+      "en": "Play the Antiquarian if you want to use information to bolster your allies.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "know",
+    "features": [
+      {
+        "title": {
+          "en": "Belongs In A Museum",
+          "ru": "Этому место в музее"
+        },
+        "description": {
+          "en": "After an adversary is spotlighted, you may **spend a Hope** to make the target *Vulnerable* until the next time it takes damage.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "limit": 1,
+        "limit_refresh": "short_rest",
+        "price": { "hope": 1 }
+      },
+      {
+        "title": {
+          "en": "Found In A Temple",
+          "ru": "Найденное в храме"
+        },
+        "description": {
+          "en": "When an ally attempts a Knowledge roll, that ally may use your Knowledge modifier instead of their own.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "limit": 1,
+        "limit_refresh": "long_rest"
+      },
+      {
+        "title": {
+          "en": "Use This Trinket",
+          "ru": ""
+        },
+        "description": {
+          "en": "Whenever an ally strikes a Vulnerable adversary with an attack, you can **spend a Hope** to add a d6 to the damage roll.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2,
+        "price": { "hope": 1 }
+      },
+      {
+        "title": {
+          "en": "Try This One",
+          "ru": ""
+        },
+        "description": {
+          "en": "You pull an ancient relic from your pocket and pass it to an ally. As you do, you both feel the aura it gives off. If you are involved in a tag team roll, you and your ally both roll with advantage.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "The Inquisitor",
+      "ru": "Инквизитор"
+    },
+    "description": {
+      "en": "Play the Inquisitor if you want to use religion to relentlessly pursue adversaries.",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "know",
+    "features": [
+      {
+        "title": {
+          "en": "Sturdy Belief",
+          "ru": "Твердое убеждение"
+        },
+        "description": {
+          "en": "Gain a calculated bonus +1 to your Armor Score.",
+          "ru": ""
+        },
+        "kind": "update_result",
+        "subclass_mastery": 1,
+        "modifiers": {
+          "armor_score": { "type": "add", "value": 1 }
+        }
+      },
+      {
+        "title": {
+          "en": "Determined Pursuit",
+          "ru": "Целеустремленное преследование"
+        },
+        "description": {
+          "en": "If an adversary within Close range attempts to leave that range, you can **mark a Stress** to react and move within Very Close range of them after their movement is complete.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "price": { "stress": 1 }
+      },
+      {
+        "title": {
+          "en": "Fevered Pursuit",
+          "ru": "Лихорадочная погоня"
+        },
+        "description": {
+          "en": "If an adversary within Close range attempts to leave that range, you can **mark a Stress** to react and move within Very Close range of them after their movement is complete.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2,
+        "price": { "stress": 1 }
+      },
+      {
+        "title": {
+          "en": "Endless Pursuit",
+          "ru": "Бесконечная погоня"
+        },
+        "description": {
+          "en": "When you would move within Very Close range of an adversary as a result of a reaction, you may make an attack against that adversary.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      }
+    ]
+  }
+]
