@@ -65,7 +65,9 @@ class FeaturesDecorator
       continious: feature.feat.continious,
       price: feature.feat.price,
       info: feature.feat.info,
-      selected_count: feature.selected_count
+      selected_count: feature.selected_count,
+      tokens: feature.tokens,
+      tokens_max: feature.tokens ? feature.feat.tokens['limit'] : nil
     }.compact
   end
 

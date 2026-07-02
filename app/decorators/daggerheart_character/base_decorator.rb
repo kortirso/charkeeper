@@ -133,17 +133,22 @@ module DaggerheartCharacter
       0
     end
 
-    def feat_bonuses
+    def feat_bonuses # rubocop: disable Metrics/AbcSize
       @feat_bonuses ||=
-        __getobj__.feats.joins(:feat).pluck('feats.modifiers').compact_blank.each_with_object({}) do |modifiers, acc|
-          modifiers.each do |key, value|
-            formula_result = formula_service.call(formula: value['value'], variables: formula_variables)
-            next unless formula_result
+        __getobj__.feats.joins(:feat)
+          .hashable_pluck(:active, 'feats.continious', 'feats.modifiers')
+          .select { |feat| !feat[:feats_continious] || feat[:active] }
+          .pluck(:feats_modifiers)
+          .compact_blank
+          .each_with_object({}) do |modifiers, acc|
+            modifiers.each do |key, value|
+              formula_result = formula_service.call(formula: value['value'], variables: formula_variables)
+              next unless formula_result
 
-            acc[key] ||= 0
-            acc[key] += formula_result
+              acc[key] ||= 0
+              acc[key] += formula_result
+            end
           end
-        end
     end
 
     def formula_variables

@@ -46,6 +46,7 @@ module CharactersContext
 
       def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
         input[:rolls] = {}
+        input[:decorator] = input[:character].decorator
         return if input[:options].nil?
 
         companion = input[:character].companion
@@ -89,6 +90,7 @@ module CharactersContext
       end
 
       def do_persist(input) # rubocop: disable Metrics/AbcSize
+        refresh_feats_tokens(input)
         refresh_feats_limit(input)
         refresh_reverse_feats(input)
         refresh_companion(input) if input[:companion_stress_marked]
@@ -126,6 +128,39 @@ module CharactersContext
             end
 
           resource.update(value: value)
+        end
+      end
+
+      def refresh_feats_tokens(input) # rubocop: disable Metrics/AbcSize
+        input[:character].feats.where.not(tokens: nil).includes(:feat).find_each do |feature|
+          settings = feature.feat.tokens
+          next unless settings['reset_at']
+          next if tokens_refresh(input).exclude?(settings['reset_at'])
+
+          case settings['reset']
+          when 'zero' then feature.update(tokens: 0)
+          when 'limit' then feature.update(tokens: find_max_value(input[:decorator], settings['limit'])) # TODO: вычислить лимит
+          else feature.update(tokens: feature.tokens + settings['reset'].to_i)
+          end
+        end
+      end
+
+      def find_max_value(decorator, limit)
+        if limit == 'spellcast'
+          numbers = decorator.spellcast_traits.map { |trait| decorator.modified_traits[trait] + decorator.spell_bonus }
+          return (numbers + [1]).max
+        end
+        return decorator.level if limit == 'level'
+        return decorator.proficiency if limit == 'proficiency'
+        return decorator.tier if limit == 'tier'
+
+        decorator.modified_traits[limit]
+      end
+
+      def tokens_refresh(input)
+        case input[:value]
+        when 'long' then %w[short long]
+        else input[:value]
         end
       end
 

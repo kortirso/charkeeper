@@ -6,7 +6,7 @@ import {
   Toggle, Button, Select, ErrorWrapper, FeatureTitle, TextArea, CharacterNavigation, Checkbox, GuideWrapper
 } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
-import { Edit } from '../../assets';
+import { Edit, PlusSmall, Minus } from '../../assets';
 import { updateCharacterFeatRequest } from '../../requests/updateCharacterFeatRequest';
 import { readFromCache, writeToCache, localize, translate } from '../../helpers';
 
@@ -29,7 +29,8 @@ const TRANSLATION = {
       sp: 'SP',
       'ap/sp': 'AP/SP'
     },
-    here: 'here'
+    here: 'here',
+    tokens: 'Tokens'
   },
   ru: {
     activeFeat: 'Активен',
@@ -47,7 +48,8 @@ const TRANSLATION = {
       sp: 'ОВ',
       'ap/sp': 'ОД/ОВ'
     },
-    here: 'тут'
+    here: 'тут',
+    tokens: 'Жетоны'
   },
   es: {
     activeFeat: 'Activo',
@@ -65,7 +67,8 @@ const TRANSLATION = {
       sp: 'PE',
       'ap/sp': 'PA/PE'
     },
-    here: 'aquí'
+    here: 'aquí',
+    tokens: 'Tokens'
   }
 }
 
@@ -195,6 +198,40 @@ export const Feats = (props) => {
     return translate(props.config[feature.info.options_list], locale());
   }
 
+  const findTokensMax = (tokensMax) => {
+    if (tokensMax === 'spellcast') {
+      const numbers = character().spellcast_traits.map((trait) => character().modified_traits[trait] + character().spell_bonus);
+      return Math.max(...numbers, 1);
+    }
+    if (tokensMax === 'level') return character().level;
+    if (tokensMax === 'proficiency') return character().proficiency;
+    if (tokensMax === 'tier') return character().tier;
+
+    return character().modified_traits[tokensMax];
+  }
+
+  const spendToken = (feature) => {
+    refreshFeatures(feature.id, { tokens: feature.tokens - 1 });
+  }
+
+  const restoreToken = (feature) => {
+    refreshFeatures(feature.id, { tokens: feature.tokens + 1 });
+  }
+
+  const renderTokens = (feature) => {
+    const current = feature.tokens;
+    const max = findTokensMax(feature.tokens_max)
+
+    return (
+      <div class="flex items-center gap-4">
+        <p>{localize(TRANSLATION, locale()).tokens}</p>
+        <Button default size="small" disabled={current === 0} onClick={() => current > 0 ? spendToken(feature) : null}><Minus /></Button>
+        <p>{current} / {max}</p>
+        <Button default size="small" disabled={current === max} onClick={() => current < max ? restoreToken(feature) : null}><PlusSmall /></Button>
+      </div>
+    )
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Feats' }}>
       <GuideWrapper character={character()}>
@@ -202,7 +239,7 @@ export const Feats = (props) => {
           when={filtering() === undefined || filtering().includes('groupFeatures')}
           fallback={
             <div id="character-navigation">
-              <p class="active">{localize(TRANSLATION, locale())['allFeatures']}</p>
+              <p class="active">{localize(TRANSLATION, locale()).allFeatures}</p>
               <Button default classList='rounded min-w-6 min-h-6 opacity-50 m-0!' onClick={() => setShowFilters(!showFilters())}>
                 <Edit />
               </Button>
@@ -253,102 +290,104 @@ export const Feats = (props) => {
                   isOpen={filtering().includes('expandAll')}
                   title={<FeatureTitle feature={feature()} character={character()} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} onReplaceCharacter={props.onReplaceCharacter} />}
                 >
-                  <div
-                    class="feat-markdown"
-                    innerHTML={feature().description} // eslint-disable-line solid/no-innerhtml
-                  />
-                  <Show when={character().provider === 'dc20'}>
-                    <Show when={feature().info.range}>
-                      <p class="text-sm mt-2">{localize(TRANSLATION, locale()).dc20Range}: {localize(feature().info.range, locale())}</p>
+                  <div class="flex flex-col gap-2">
+                    <Show when={feature().tokens !== undefined}>{renderTokens(feature())}</Show>
+                    <div
+                      class="feat-markdown"
+                      innerHTML={feature().description} // eslint-disable-line solid/no-innerhtml
+                    />
+                    <Show when={character().provider === 'dc20'}>
+                      <Show when={feature().info.range}>
+                        <p class="text-sm">{localize(TRANSLATION, locale()).dc20Range}: {localize(feature().info.range, locale())}</p>
+                      </Show>
                     </Show>
-                  </Show>
-                  <Switch fallback={<></>}>
-                    <Match when={feature().kind === 'text'}>
-                      <TextArea
-                        rows="5"
-                        containerClassList="mt-2"
-                        value={featValues()[feature().slug] || ''}
-                        onChange={(value) => setFeatValues({ ...featValues(), [feature().slug]: value })}
-                      />
-                      <div class="flex justify-end mt-2">
-                        <Button
-                          default
-                          textable
-                          size="small"
-                          onClick={() => updateFeatureValue(feature(), featValues()[feature().slug])}
-                        >
-                          {t('save')}
-                        </Button>
-                      </div>
-                    </Match>
-                    <Match when={(feature().kind === 'static_list' || feature().kind === 'one_from_list') && feature().options}>
-                      <Select
-                        withNull
-                        containerClassList="w-full mt-2"
-                        items={Object.entries(feature().options).reduce((acc, [key, value]) => { acc[key] = localize(value, locale()); return acc; }, {})}
-                        selectedValue={featValues()[feature().slug]}
-                        onSelect={(option) => updateFeatureValue(feature(), option)}
-                      />
-                    </Match>
-                    <Match when={feature().kind === 'many_from_list' && feature().options}>
-                      <Select
-                        multi
-                        containerClassList="w-full mt-2"
-                        items={Object.entries(feature().options).reduce((acc, [key, value]) => { acc[key] = localize(value, locale()); return acc; }, {})}
-                        selectedValues={featValues()[feature().slug] || []}
-                        onSelect={(option) => updateMultiFeatureValue(feature(), option)}
-                      />
-                    </Match>
-                    <Match when={(feature().kind === 'one_from_list' || feature().kind === 'many_from_list') && !feature().options && feature().info.options_list}>
-                      <Show
-                        when={feature().kind === 'many_from_list'}
-                        fallback={
-                          <Select
-                            containerClassList="w-full mt-2"
-                            items={renderFeatureOptions(feature())}
-                            selectedValue={featValues()[feature().slug] || []}
-                            onSelect={(option) => updateFeatureValue(feature(), option)}
-                          />
-                        }
-                      >
+                    <Switch fallback={<></>}>
+                      <Match when={feature().kind === 'text'}>
+                        <TextArea
+                          rows="5"
+                          value={featValues()[feature().slug] || ''}
+                          onChange={(value) => setFeatValues({ ...featValues(), [feature().slug]: value })}
+                        />
+                        <div class="flex justify-end">
+                          <Button
+                            default
+                            textable
+                            size="small"
+                            onClick={() => updateFeatureValue(feature(), featValues()[feature().slug])}
+                          >
+                            {t('save')}
+                          </Button>
+                        </div>
+                      </Match>
+                      <Match when={(feature().kind === 'static_list' || feature().kind === 'one_from_list') && feature().options}>
+                        <Select
+                          withNull
+                          containerClassList="w-full"
+                          items={Object.entries(feature().options).reduce((acc, [key, value]) => { acc[key] = localize(value, locale()); return acc; }, {})}
+                          selectedValue={featValues()[feature().slug]}
+                          onSelect={(option) => updateFeatureValue(feature(), option)}
+                        />
+                      </Match>
+                      <Match when={feature().kind === 'many_from_list' && feature().options}>
                         <Select
                           multi
-                          containerClassList="w-full mt-2"
-                          items={renderFeatureOptions(feature())}
+                          containerClassList="w-full"
+                          items={Object.entries(feature().options).reduce((acc, [key, value]) => { acc[key] = localize(value, locale()); return acc; }, {})}
                           selectedValues={featValues()[feature().slug] || []}
                           onSelect={(option) => updateMultiFeatureValue(feature(), option)}
                         />
-                      </Show>
-                    </Match>
-                    <Match when={feature().continious}>
-                      <div class="mt-2 flex justify-end">
-                        <Checkbox
-                          filled
-                          labelText={localize(TRANSLATION, locale())['activeFeat']}
-                          labelPosition="right"
-                          labelClassList="ml-2"
-                          checked={feature().active}
-                          onToggle={() => refreshFeatures(feature().id, { active: !feature().active }, false)}
-                        />
-                      </div>
-                    </Match>
-                  </Switch>
-                  <Show when={feature().info.enhancements && feature().info.enhancements.length > 0}>
-                    <div class="mt-2">
-                      <For each={feature().info.enhancements}>
-                        {(enhancement) =>
-                          <p class="feat-markdown text-sm mt-1">
-                            <span class="font-medium!">{localize(enhancement.name, locale())} </span>
-                            <Show when={enhancement.price}><span>: ({renderFeatPrice(enhancement)}) </span></Show>
-                            <span
-                              class="feat-markdown"
-                              innerHTML={localize(enhancement.description, locale())} // eslint-disable-line solid/no-innerhtml
+                      </Match>
+                      <Match when={(feature().kind === 'one_from_list' || feature().kind === 'many_from_list') && !feature().options && feature().info.options_list}>
+                        <Show
+                          when={feature().kind === 'many_from_list'}
+                          fallback={
+                            <Select
+                              containerClassList="w-full"
+                              items={renderFeatureOptions(feature())}
+                              selectedValue={featValues()[feature().slug] || []}
+                              onSelect={(option) => updateFeatureValue(feature(), option)}
                             />
-                          </p>
-                        }
-                      </For>
-                    </div>
-                  </Show>
+                          }
+                        >
+                          <Select
+                            multi
+                            containerClassList="w-full"
+                            items={renderFeatureOptions(feature())}
+                            selectedValues={featValues()[feature().slug] || []}
+                            onSelect={(option) => updateMultiFeatureValue(feature(), option)}
+                          />
+                        </Show>
+                      </Match>
+                      <Match when={feature().continious}>
+                        <div class="flex justify-end">
+                          <Checkbox
+                            filled
+                            labelText={localize(TRANSLATION, locale())['activeFeat']}
+                            labelPosition="right"
+                            labelClassList="ml-2"
+                            checked={feature().active}
+                            onToggle={() => refreshFeatures(feature().id, { active: !feature().active }, false)}
+                          />
+                        </div>
+                      </Match>
+                    </Switch>
+                    <Show when={feature().info.enhancements && feature().info.enhancements.length > 0}>
+                      <div class="flex flex-col gap-1">
+                        <For each={feature().info.enhancements}>
+                          {(enhancement) =>
+                            <p class="feat-markdown text-sm">
+                              <span class="font-medium!">{localize(enhancement.name, locale())} </span>
+                              <Show when={enhancement.price}><span>: ({renderFeatPrice(enhancement)}) </span></Show>
+                              <span
+                                class="feat-markdown"
+                                innerHTML={localize(enhancement.description, locale())} // eslint-disable-line solid/no-innerhtml
+                              />
+                            </p>
+                          }
+                        </For>
+                      </div>
+                    </Show>
+                  </div>
                 </Toggle>
               }
             </Key>

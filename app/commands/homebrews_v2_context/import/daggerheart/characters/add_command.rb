@@ -38,6 +38,12 @@ module HomebrewsV2Context
                 required(:kind).filled(Kinds)
                 optional(:limit).filled(:integer, gteq?: 0)
                 optional(:limit_refresh).filled(Limits)
+                optional(:continious).filled(:bool)
+                optional(:tokens).hash do
+                  optional(:limit).filled(:string)
+                  optional(:reset_at).filled(:string)
+                  optional(:reset).filled(:string)
+                end
                 optional(:price).hash do
                   optional(:stress).filled(:integer, gteq?: 1, lteq?: 10)
                   optional(:hope).filled(:integer, gteq?: 1, lteq?: 10)
