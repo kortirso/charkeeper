@@ -13,7 +13,7 @@ module Daggerheart
     class Speciality < ::Homebrew
       attribute :info, Daggerheart::Homebrews::SpecialityData.to_type
 
-      def to_json
+      def to_homebrew_json
         [
           {
             title: title,
@@ -22,7 +22,7 @@ module Daggerheart
             domains: info.domains,
             evasion: info.evasion,
             health_max: info.health_max,
-            features: Daggerheart::Feat.where(origin_value: id).map { _1.to_json }
+            features: Daggerheart::Feat.where(origin_value: id).map(&:to_homebrew_json)
           }
         ]
       end

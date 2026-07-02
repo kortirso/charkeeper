@@ -3,13 +3,13 @@
 module Daggerheart
   module Homebrews
     class Domain < ::Homebrew
-      def to_json
+      def to_homebrew_json
         [
           {
             title: title,
             description: description,
             public: attributes['public'],
-            features: Daggerheart::Feat.where(origin_value: id).map { _1.to_json }
+            features: Daggerheart::Feat.where(origin_value: id).map(&:to_homebrew_json)
           }
         ]
       end
