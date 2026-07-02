@@ -1,4 +1,4 @@
-import { createMemo, Show } from 'solid-js';
+import { createSignal, createMemo, Show } from 'solid-js';
 import { createStore, reconcile } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
@@ -17,21 +17,26 @@ const TRANSLATION = {
   en: {
     options: 'There are books available in Homebrews/Modules section for additional options for character creation.',
     skipGuide: 'Skip new character guide',
-    beyondFile: 'You can import your character from D&D Beyond by using JSON file (you can find extension description at main page)'
+    beyondFile: 'You can import your character from D&D Beyond by using JSON file (you can find extension description at main page)',
+    showHomebrew: 'Allow to select homebrews'
   },
   ru: {
     options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.',
     skipGuide: 'Пропустить настройку нового персонажа',
-    beyondFile: 'Вы можете импортировать своего персонажа из D&D Beyond, используя JSON-файл (описание расширения можно найти на главной странице).'
+    beyondFile: 'Вы можете импортировать своего персонажа из D&D Beyond, используя JSON-файл (описание расширения можно найти на главной странице).',
+    showHomebrew: 'Выбирать из homebrew'
   },
   es: {
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
     skipGuide: 'Omitir guía de personaje nuevo',
-    beyondFile: 'Puedes importar tu personaje usando de D&D Beyond un archivo JSON (puedes encontrar la descripción de la extensión en la página principal).'
+    beyondFile: 'Puedes importar tu personaje usando de D&D Beyond un archivo JSON (puedes encontrar la descripción de la extensión en la página principal).',
+    showHomebrew: 'Allow to select homebrews'
   }
 }
 
 export const Dnd2024CharacterForm = (props) => {
+  const [showHomebrew, setShowHomebrew] = createSignal(true);
+
   const [characterDnd2024Form, setCharacterDnd2024Form] = createStore(DND2024_DEFAULT_FORM);
 
   const [locale, dict] = useAppLocale();
@@ -69,6 +74,7 @@ export const Dnd2024CharacterForm = (props) => {
 
   const dndBackgrounds = createMemo(() => {
     if (props.homebrews() === undefined) return {};
+    if (!showHomebrew()) return config.backgrounds;
 
     return { ...config.backgrounds, ...props.homebrews().dnd2024.backgrounds };
   });
@@ -77,6 +83,13 @@ export const Dnd2024CharacterForm = (props) => {
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <div class="flex flex-col gap-2">
         <p class="dark:text-snow text-sm">{localize(TRANSLATION, locale()).options}</p>
+        <Checkbox
+          labelText={localize(TRANSLATION, locale()).showHomebrew}
+          labelPosition="right"
+          labelClassList="ml-2"
+          checked={showHomebrew()}
+          onToggle={() => setShowHomebrew(!showHomebrew())}
+        />
         <Input
           labelText={t('newCharacterPage.name')}
           value={characterDnd2024Form.name}

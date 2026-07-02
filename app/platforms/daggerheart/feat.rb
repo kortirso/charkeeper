@@ -42,7 +42,7 @@ module Daggerheart
     enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, SESSION => 2 }
     enum :reset_on_rest, { SHORT_REST => 0, LONG_REST => 1, SESSION => 2 }, prefix: :reset
 
-    def to_json
+    def to_homebrew_json
       attributes.slice('title', 'description', 'kind', 'price', 'description_eval_variables', 'conditions', 'limit_refresh')
     end
   end

@@ -16,20 +16,24 @@ const DAGGERHEART_DEFAULT_FORM = {
 const TRANSLATION = {
   en: {
     options: 'There are books available in Homebrews/Modules section for additional options for character creation.',
-    skipGuide: 'Skip new character guide'
+    skipGuide: 'Skip new character guide',
+    showHomebrew: 'Allow to select homebrews'
   },
   ru: {
     options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.',
-    skipGuide: 'Пропустить настройку нового персонажа'
+    skipGuide: 'Пропустить настройку нового персонажа',
+    showHomebrew: 'Выбирать из homebrew'
   },
   es: {
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
-    skipGuide: 'Omitir guía de personaje nuevo'
+    skipGuide: 'Omitir guía de personaje nuevo',
+    showHomebrew: 'Allow to select homebrews'
   }
 }
 
 export const DaggerheartCharacterForm = (props) => {
   const [customHeritage, setCustomHeritage] = createSignal(false);
+  const [showHomebrew, setShowHomebrew] = createSignal(true);
 
   const [characterDaggerheartForm, setCharacterDaggerheartForm] = createStore(DAGGERHEART_DEFAULT_FORM);
 
@@ -45,18 +49,21 @@ export const DaggerheartCharacterForm = (props) => {
 
   const daggerheartHeritages = createMemo(() => {
     if (props.homebrews() === undefined) return {};
+    if (!showHomebrew()) return daggerheartConfig.heritages;
 
     return { ...daggerheartConfig.heritages, ...props.homebrews().daggerheart.races };
   });
 
   const daggerheartCommunities = createMemo(() => {
     if (props.homebrews() === undefined) return {};
+    if (!showHomebrew()) return daggerheartConfig.communities;
 
     return { ...daggerheartConfig.communities, ...props.homebrews().daggerheart.communities };
   });
 
   const daggerheartClasses = createMemo(() => {
     if (props.homebrews() === undefined) return {};
+    if (!showHomebrew()) return daggerheartConfig.classes;
 
     return { ...daggerheartConfig.classes, ...props.homebrews().daggerheart.classes };
   });
@@ -64,6 +71,7 @@ export const DaggerheartCharacterForm = (props) => {
   const daggerheartSubclasses = createMemo(() => {
     if (!characterDaggerheartForm.main_class) return {};
     if (props.homebrews() === undefined) return {};
+    if (!showHomebrew()) return daggerheartConfig.classes[characterDaggerheartForm.main_class]?.subclasses || {};
 
     return {
       ...(daggerheartConfig.classes[characterDaggerheartForm.main_class]?.subclasses || {}),
@@ -111,6 +119,14 @@ export const DaggerheartCharacterForm = (props) => {
   return (
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <p class="dark:text-snow text-sm mb-2">{localize(TRANSLATION, locale()).options}</p>
+      <Checkbox
+        labelText={localize(TRANSLATION, locale()).showHomebrew}
+        labelPosition="right"
+        labelClassList="ml-2"
+        checked={showHomebrew()}
+        classList="mb-2"
+        onToggle={() => setShowHomebrew(!showHomebrew())}
+      />
       <Input
         containerClassList="mb-2"
         labelText={t('newCharacterPage.name')}
