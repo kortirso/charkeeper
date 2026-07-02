@@ -18,6 +18,7 @@ module CharactersContext
         required(:character_feat).filled(type?: ::Character::Feat)
         optional(:active).filled(:bool)
         optional(:used_count).filled(:integer)
+        optional(:tokens).filled(:integer)
         optional(:value)
       end
     end

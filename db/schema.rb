@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_28_171914) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_02_114547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -144,6 +144,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_28_171914) do
     t.string "prepared_by"
     t.boolean "ready_to_use"
     t.integer "selected_count"
+    t.integer "tokens", comment: "Текущее кол-во токенов"
     t.datetime "updated_at", null: false
     t.integer "used_count", comment: "Кол-во использований"
     t.jsonb "value", comment: "Выбранные опции навыка, либо введенный текст"
@@ -330,6 +331,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_28_171914) do
     t.boolean "reverse_refresh", default: false
     t.string "slug"
     t.jsonb "title", default: {}, null: false
+    t.jsonb "tokens", comment: "Настройки токенов для навыков"
     t.string "type", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id"

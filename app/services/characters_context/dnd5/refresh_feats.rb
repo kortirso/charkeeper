@@ -3,7 +3,7 @@
 module CharactersContext
   module Dnd5
     class RefreshFeats < CharactersContext::RefreshFeats
-      REQUIRED_ATTRIBUTES = %i[id slug conditions origin origin_value limit_refresh exclude].freeze
+      REQUIRED_ATTRIBUTES = %i[id slug conditions origin origin_value limit_refresh exclude tokens].freeze
 
       private
 

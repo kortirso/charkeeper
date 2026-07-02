@@ -35,7 +35,8 @@ module CharactersContext
           feat_id: item.id,
           used_count: 0,
           limit_refresh: item.class.limit_refreshes[item.limit_refresh],
-          ready_to_use: true
+          ready_to_use: true,
+          tokens: item.tokens.nil? ? nil : 0
         }
       end
       ::Character::Feat.upsert_all(feats_for_adding) if feats_for_adding.any?

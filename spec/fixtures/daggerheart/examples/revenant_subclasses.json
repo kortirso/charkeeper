@@ -9,7 +9,7 @@
       "ru": ""
     },
     "public": true,
-    "class_id": "",
+    "class_id": "4fd1a091-b39f-4c56-b0fb-0b62f823ff2b",
     "spellcast": "str",
     "features": [
       {
@@ -101,7 +101,7 @@
       "ru": ""
     },
     "public": true,
-    "class_id": "",
+    "class_id": "4fd1a091-b39f-4c56-b0fb-0b62f823ff2b",
     "spellcast": "know",
     "features": [
       {
@@ -140,11 +140,16 @@
           "ru": "Метки ужаса"
         },
         "description": {
-          "en": "You gain an amount of tokens equal to your Spellcast Trait called **Dreadmarks**. You can assign any number of them to creatures within Far range you can clearly identify.\n\nOnce per Scene, you may **mark a Stress** to gain an additional temporary **Dreadmarks** token. **Dreadmarks** reset on a long rest.\n\n**Spend 2 Hope** to trigger a Dreadmark for one of the following effects:\n\n- The target becomes temporarily Vulnerable.\n\n- You gain advantage on Presence rolls against the target until your next rest.\n\n- The target must **mark a Stress**.\n\n- You teleport to the target as long as it is within Far range.",
+          "en": "You gain an amount of tokens equal to your Spellcast Trait called **Dreadmarks**. You can assign any number of them to creatures within Far range you can clearly identify.\n\nOnce per Scene, you may **mark a Stress** to gain an additional temporary **Dreadmarks** token. **Dreadmarks** reset on a long rest.\n\n**Spend 2 Hope** to trigger a Dreadmark for one of the following effects:\n\n- The target becomes temporarily *Vulnerable*.\n\n- You gain advantage on Presence rolls against the target until your next rest.\n\n- The target must **mark a Stress**.\n\n- You teleport to the target as long as it is within Far range.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "tokens": {
+          "limit": "spellcast",
+          "reset_at": "long",
+          "reset": "limit"
+        }
       },
       {
         "title": {

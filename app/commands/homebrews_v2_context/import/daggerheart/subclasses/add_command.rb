@@ -54,10 +54,16 @@ module HomebrewsV2Context
                 optional(:limit_refresh).filled(Limits)
                 optional(:modifiers).hash
                 required(:subclass_mastery).filled(:integer)
+                optional(:tokens).hash do
+                  optional(:limit).filled(:string)
+                  optional(:reset_at).filled(:string)
+                  optional(:reset).filled(:string)
+                end
                 optional(:price).hash do
                   optional(:stress).filled(:integer, gteq?: 1, lteq?: 10)
                   optional(:hope).filled(:integer, gteq?: 1, lteq?: 10)
                 end
+                optional(:continious).filled(:bool)
                 optional(:attacks).maybe(:array).each(:hash) do
                   required(:kind).filled(WeaponKinds)
                   required(:name).hash do
