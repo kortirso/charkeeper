@@ -199,6 +199,7 @@ export const Feats = (props) => {
   }
 
   const findTokensMax = (tokensMax) => {
+    if (tokensMax === 'none') return 1000;
     if (tokensMax === 'spellcast') {
       const numbers = character().spellcast_traits.map((trait) => character().modified_traits[trait] + character().spell_bonus);
       return Math.max(...numbers, 1);
@@ -206,8 +207,9 @@ export const Feats = (props) => {
     if (tokensMax === 'level') return character().level;
     if (tokensMax === 'proficiency') return character().proficiency;
     if (tokensMax === 'tier') return character().tier;
+    if (['str', 'agi', 'fin', 'ins', 'pre', 'know'].includes(tokensMax)) return character().modified_traits[tokensMax];
 
-    return character().modified_traits[tokensMax];
+    return parseInt(tokensMax);
   }
 
   const spendToken = (feature) => {
@@ -226,7 +228,7 @@ export const Feats = (props) => {
       <div class="flex items-center gap-4">
         <p>{localize(TRANSLATION, locale()).tokens}</p>
         <Button default size="small" disabled={current === 0} onClick={() => current > 0 ? spendToken(feature) : null}><Minus /></Button>
-        <p>{current} / {max}</p>
+        <Show when={max !== 1000} fallback={current}><p>{current} / {max}</p></Show>
         <Button default size="small" disabled={current === max} onClick={() => current < max ? restoreToken(feature) : null}><PlusSmall /></Button>
       </div>
     )

@@ -567,3 +567,30 @@ Daggerheart::Homebrews::Ancestry.find_each do |item|
     file.write(beautified_json_string)
   end
 end
+
+es_file_content = JSON.parse(File.read('db/data/daggerheart/feats.json'))
+file_content = File.read('db/data_prod/daggerheart/feats.json')
+
+content = JSON.parse(file_content).map do |item|
+  es = es_file_content.find { item['slug'] == _1['slug'] }
+  next item unless es
+
+  item['title'] = item['title'].merge({ 'es' => es['title']['es'] }).compact
+  item['description'] = item['description'].merge({ 'es' => es['description']['es'] }).compact
+  item
+end
+
+feats = Daggerheart::Feat.where(user_id: nil).map { _1.attributes.except('id', 'type', 'created_at', 'updated_at') }
+beautified_json_string = JSON.pretty_generate(content)
+# # Write the beautified JSON string to a file
+File.open('db/data_prod/daggerheart/feats.json', 'w') do |file|
+  file.write(beautified_json_string)
+end
+
+file_content = File.read('db/data_prod/daggerheart/feats.json')
+JSON.parse(file_content).each do |item|
+  feat = Daggerheart::Feat.find_by(slug: item['slug'])
+  next unless feat
+
+  feat.update!(item.slice('description', 'kind', 'limit_refresh', 'description_eval_variables', 'eval_variables', 'continious', 'bonus_eval_variables', 'price', 'modifiers', 'tokens'))
+end

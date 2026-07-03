@@ -8,6 +8,8 @@ module DaggerheartCharacter
              :leveling, :experience, :heritage_features, :domains, :beastform, :beast, :transformation,
              :selected_features, :conditions, :scars, to: :data
 
+    BASE_BONUSES = %w[proficiency].freeze
+
     def parent = __getobj__
 
     def method_missing(method, *args) # rubocop: disable Lint/UnusedMethodArgument
@@ -33,7 +35,8 @@ module DaggerheartCharacter
         tier +
         leveling['proficiency'].to_i +
         bonuses.pluck('proficiency').sum(&:to_i) +
-        static_item_bonuses.pluck('proficiency').sum(&:to_i)
+        static_item_bonuses.pluck('proficiency').sum(&:to_i) +
+        base_feat_bonuses['proficiency'].to_i
     end
 
     def modified_traits
@@ -133,15 +136,29 @@ module DaggerheartCharacter
       0
     end
 
-    def feat_bonuses # rubocop: disable Metrics/AbcSize
-      @feat_bonuses ||=
-        __getobj__.feats.joins(:feat)
-          .hashable_pluck(:active, 'feats.continious', 'feats.modifiers')
-          .select { |feat| !feat[:feats_continious] || feat[:active] }
-          .pluck(:feats_modifiers)
-          .compact_blank
+    def base_feat_bonuses
+      @base_feat_bonuses ||=
+        active_feats_modifiers
           .each_with_object({}) do |modifiers, acc|
             modifiers.each do |key, value|
+              next if BASE_BONUSES.exclude?(key)
+
+              formula_result = formula_service.call(formula: value['value'], variables: base_formula_variables)
+              next unless formula_result
+
+              acc[key] ||= 0
+              acc[key] += formula_result
+            end
+          end
+    end
+
+    def feat_bonuses
+      @feat_bonuses ||=
+        active_feats_modifiers
+          .each_with_object({}) do |modifiers, acc|
+            modifiers.each do |key, value|
+              next if BASE_BONUSES.include?(key)
+
               formula_result = formula_service.call(formula: value['value'], variables: formula_variables)
               next unless formula_result
 
@@ -151,13 +168,31 @@ module DaggerheartCharacter
           end
     end
 
-    def formula_variables
-      @formula_variables ||=
+    def active_feats_modifiers
+      @active_feats_modifiers ||=
+        __getobj__.feats.joins(:feat)
+          .hashable_pluck(:active, 'feats.continious', 'feats.modifiers')
+          .select { |feat| !feat[:feats_continious] || feat[:active] }
+          .pluck(:feats_modifiers)
+          .compact_blank
+    end
+
+    def base_formula_variables
+      @base_formula_variables ||=
         {
           level: level,
           tier: tier,
-          proficiency: proficiency
-        }
+          no_armor: equiped_armor_info.blank?,
+          no_weapon: equiped_weapon_info.blank?,
+          stress_marked: stress_marked,
+          health_marked: health_marked
+        }.merge(subclasses_mastery.transform_keys { |key| "#{key}_mastery" })
+    end
+
+    def formula_variables
+      @formula_variables ||=
+        base_formula_variables
+          .merge(proficiency: proficiency)
     end
 
     def formula_service

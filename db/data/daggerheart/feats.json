@@ -16,67 +16,6 @@
     }
   },
   {
-    "id": "1ee7ddc2-1bca-49f4-84ce-3a731e3b41fb",
-    "slug": "internal_compass",
-    "title": {
-      "en": "Internal Compass",
-      "ru": "Внутренний компас",
-      "es": "Compás interno"
-    },
-    "description": {
-      "en": "When you roll a 1 on your Hope Die, you can reroll it.",
-      "ru": "Когда вы выбрасываете 1 на кости Надежды, вы можете перебросить его.",
-      "es": "Cuando te sale 1 en tu dado de Esperanza, puedes volver a tirar.",
-      "ru-DHM": "Если вы выбросили 1 на кости Надежды, можете её перебросить."
-    }
-  },
-  {
-    "id": "9a7fc99d-f3ef-4706-b981-0b3a5a81c9b2",
-    "slug": "nimble_grazer_fragile",
-    "title": {
-      "en": "Fragile",
-      "ru": "Хрупкость",
-      "es": "Fragíl",
-      "ru-DHM": "Хрупкий"
-    },
-    "description": {
-      "en": "When you take Major or greater damage, you drop out of Beastform.",
-      "ru": "Когда вы получаете ощутимый урон или больше, вы теряете звериный облик.",
-      "es": "Cuando sufres daño Mayor o peor, tu Forma Bestial deshace.",
-      "ru-DHM": "При получении ощутимого урона или выше вы немедленно выходите из звериной формы."
-    }
-  },
-  {
-    "id": "614f8cb9-a37f-4bd1-87e2-6b9fc3041caf",
-    "slug": "hobbling_strike",
-    "title": {
-      "en": "Hobbling Strike",
-      "ru": "Калечащий удар",
-      "es": "Golpe debilitador"
-    },
-    "description": {
-      "en": "When you succeed on an attack against a target within Melee range, you can **mark a Stress** to make the target temporarily *Vulnerable*.",
-      "ru": "Когда вы успешно атакуете цель вплотную, вы можете **отметить Стресс**, чтобы сделать цель временно *уязвимой*.",
-      "es": "Cuando tienes éxito en un ataque cuerpo a cuerpo, puedes **Marcar un estrés** para hacer que el objetivo sea **Vulnerable** temporalmente."
-    }
-  },
-  {
-    "id": "eb6981e0-c376-4a24-aed3-4d480a2ccf6d",
-    "slug": "aquatic",
-    "title": {
-      "en": "Aquatic",
-      "ru": "Водное",
-      "es": "Acuático",
-      "ru-DHM": "Водный"
-    },
-    "description": {
-      "en": "You can breathe and move naturally underwater.",
-      "ru": "Вы дышите и естественно передвигаетесь под водой.",
-      "es": "Puedes respirar y moverte de manera natural bajo el agua.",
-      "ru-DHM": "Вы можете свободно передвигаться и дышать под водой."
-    }
-  },
-  {
     "id": "9d3a9cc3-75cb-48eb-ac57-fe9f21404eb1",
     "slug": "fleet",
     "title": {
@@ -88,53 +27,6 @@
       "en": "**Spend a Hope** to move up to Far range without rolling.",
       "ru": "**Потратьте Надежду** чтобы передвинуться вплоть до далёкой дистанции не совершая бросок.",
       "es": "**Gasta una Esperanza** para moverte hasta una distancia Lejana sin tirar"
-    }
-  },
-  {
-    "id": "60e4d2ce-ee91-4cca-b8c3-316dda9fe77a",
-    "slug": "at_ease",
-    "title": {
-      "en": "At Ease",
-      "ru": "Спокойствие",
-      "es": "Relajado",
-      "ru-DHM": "Хладнокровие"
-    },
-    "description": {
-      "en": "Gain a calculated Stress slot.",
-      "ru": "Получите добавленную ячейку Стресса.",
-      "es": "Gana una casilla de Estrés adicional (ya calculada).",
-      "ru-DHM": "Получите дополнительную ячейку Стресса."
-    }
-  },
-  {
-    "id": "2b1a4a30-dc1d-4089-ad49-acd2bb956ba9",
-    "slug": "hold_them_off",
-    "title": {
-      "en": "Hold Them Off",
-      "ru": "Задержи их",
-      "es": "Manténlos a raya",
-      "ru-DHM": "Сдержать натиск"
-    },
-    "description": {
-      "en": "**Spend 3 Hope** when you succeed on an attack with a weapon to use that same roll against two additional adversaries within range of the attack.",
-      "ru": "**Потратьте 3 Надежды** когда вы успешно атакуете оружием, чтобы использовать тот же бросок атаки против двух дополнительных противников в пределах досягаемости атаки.",
-      "es": "**Gasta 3 Esperanzas** cuando atacas éxitosamente con un arma para usar el mismo resultado contra dos adversarios adicionales dentro del rango del ataque.",
-      "ru-DHM": "**Потратьте 3 Надежды** при успешной атаке оружием, чтобы применить тот же бросок против двух дополнительных противников в пределах дистанции атаки."
-    }
-  },
-  {
-    "id": "8166a9dd-0c4c-4c3c-978e-75ce7224327e",
-    "slug": "adrenaline",
-    "title": {
-      "en": "Adrenaline",
-      "ru": "Адреналин",
-      "es": "Adrenalina"
-    },
-    "description": {
-      "en": "While you're *Vulnerable*, add +{{value}} situative bonus to your damage rolls.",
-      "ru": "Пока вы *уязвимы*, добавьте ситуативный бонус +{{value}} к броскам урона.",
-      "es": "Mientras estés *Vulnerable*, añade una bonificación situacional de +{{value}} a tus tiradas de daño.",
-      "ru-DHM": "Пока вы *уязвимы*, добавляйте ситуативный бонус +{{value}} к броскам урона."
     }
   },
   {
@@ -163,21 +55,6 @@
       "en": "While you don't have any equipped weapons you gain a +1 calculated bonus to Evasion.",
       "ru": "Пока у вас не экипировано любое оружие вы получаете +1 добавленный бонус к уклонению.",
       "es": "Mientras no tengas armas equipadas, ganas una bonificación (ya calculada) de +1 a tu Evasión."
-    }
-  },
-  {
-    "id": "da5e1195-016c-4c50-94e2-46af9875642b",
-    "slug": "prestidigitation",
-    "title": {
-      "en": "Prestidigitation",
-      "ru": "Фокусы",
-      "es": "Prestidigitación"
-    },
-    "description": {
-      "en": "You can perform harmless, subtle magical effects at will.",
-      "ru": "Вы можете создавать безобидные, незначительные магические эффекты по своему желанию.",
-      "es": "Puedes realizar efectos mágicos sútiles e inofensios cuando quieras.",
-      "ru-DHM": "Вы можете по своему желанию творить безвредные, едва заметные магические эффекты."
     }
   },
   {
@@ -315,20 +192,6 @@
     }
   },
   {
-    "id": "4710c751-75c5-4fc4-b619-08c66e0fa5b4",
-    "slug": "great_winged_beast_carrier",
-    "title": {
-      "en": "Carrier",
-      "ru": "Перевозчик",
-      "es": "Transportador"
-    },
-    "description": {
-      "en": "You can carry up to two willing allies with you when you move.",
-      "ru": "Вы можете перевозить на себе до двух согласных союзников.",
-      "es": "Puedes cargar contigo hasta dos aliados que estén dispuestos cuando te muevas."
-    }
-  },
-  {
     "id": "ccca29ba-4a1f-4977-996a-0341f74c8848",
     "slug": "book-of-korvax",
     "title": {
@@ -355,20 +218,6 @@
       "en": "When you succeed on an attack against a target within Melee range, you can **spend a Hope** to clamp that opponent in your jaws, making them temporarily *Restrained* and *Vulnerable*.",
       "ru": "Когда вы успешно атакуете цель, находящуюся вплотную к вам, вы можете **потратить Надежду**, чтобы захватить цель в вашей челюсти, сделав её временно *уязвимой* и *обездвиженной*.",
       "es": "Cuando atacas éxitosamente a un objetivo dentro de una distancia cuerpo a cuerpo, puedes **Gastar una Esperanza** para amordazar ese oponente en tu mandíbula, haciendo que estén *Restringidos* y *Vulnerables*."
-    }
-  },
-  {
-    "id": "f70492eb-cd32-4c87-8e33-5667e3edd3d1",
-    "slug": "vicious_maul",
-    "title": {
-      "en": "Vicious Maul",
-      "ru": "Свирепость",
-      "es": "Páliza brutal"
-    },
-    "description": {
-      "en": "When you succeed on an attack against a target, you can **spend a Hope** to make them temporarily Vulnerable and gain a +1 situation bonus to your Proficiency for this attack.",
-      "ru": "Когда вы успешно совершаете атаку по цели, вы можете **потратить Надежду** чтобы сделать её *уязвимой* и получить ситуативный бонус +1 к вашему мастерству для этой атаки.",
-      "es": "Cuanto atacas éxitosamentde a un obejtivo, puedes **Gasta una Esperanza** para hacer que sean Vulnerables temporalmente y ganar una bonificación situacional de +1 a tu Competencia para *este ataque*."
     }
   },
   {
@@ -453,20 +302,6 @@
       "en": "When you succeed on an attack against a target, you can **spend a Hope** to make them Vulnerable and gain a +1 situation bonus to your Proficiency for this attack.",
       "ru": "Когда вы успешно совершаете атаку по цели, вы можете **потратить Надежду** чтобы сделать её *уязвимой* и получить ситуативный бонус +1 к вашему мастерству для этой атаки.",
       "es": "Cuanto atacas éxitosamentde a un obejtivo, puedes **Gasta una Esperanza** para hacer que sean Vulnerables temporalmente y ganar una bonificación situacional de +1 a tu Competencia para *este ataque*."
-    }
-  },
-  {
-    "id": "0f14ec52-dfa2-49fe-8bfc-6b85cacb1018",
-    "slug": "devastating_strikes",
-    "title": {
-      "en": "Devastating Strikes",
-      "ru": "Сокрушительный удар",
-      "es": "Golpes devastadores"
-    },
-    "description": {
-      "en": "When you deal Severe damage to a target within Melee range, you can **mark a Stress** to force them to mark an additional Hit Point.",
-      "ru": "Когда вы наносите тяжёлый урон по цели, находящейся вплотную к вам, вы можете **отметить Стресс** чтобы заставить цель отметить дополнительную рану.",
-      "es": "Cuando inflinges daño Severo a un objetivo a una distancia Cuerpo a cuerpo, puedes **Marca un Estrés** para forzarlos a marca un Punto de Vida adicional."
     }
   },
   {
@@ -5125,21 +4960,6 @@
       "en": "When an attack roll against you would succeed, you can **mark a Stress** and roll a **d4**. Add the result to your Evasion against this attack.",
       "ru": "Когда Бросок Атаки против вас успешен, вы можете **Отметить Стресс** и бросить **d4**. Добавьте результат к вашему уклонению против этой атаки.",
       "es": ""
-    }
-  },
-  {
-    "id": "58df3429-6e18-4130-8ca5-638bbc02abf2",
-    "slug": "amphibious",
-    "title": {
-      "en": "Amphibious",
-      "ru": "Амфибия",
-      "es": ""
-    },
-    "description": {
-      "en": "You can breathe and move naturally underwater.",
-      "ru": "Вы можете дышать и двигаться под водой естественным образом.",
-      "es": "",
-      "ru-DHM": "Вы можете дышать и свободно передвигаться под водой."
     }
   },
   {
