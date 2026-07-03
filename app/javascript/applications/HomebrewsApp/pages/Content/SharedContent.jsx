@@ -238,7 +238,7 @@ export const SharedContent = (props) => {
         fallback={
           <>
             <p>{localize(TRANSLATION, locale()).fileExample}</p>
-            <p class="mb-4"><a download={`${props.publicationType}.json`} class="underline" href={`https://github.com/kortirso/charkeeper/blob/master/spec/fixtures/${props.provider}/${props.publicationType}.json`}>{localize(TRANSLATION, locale()).fileExampleDescription}</a></p>
+            <p class="mb-4"><a target="_blank" rel="noopener noreferrer" class="underline" href={`https://github.com/kortirso/charkeeper/blob/master/spec/fixtures/${props.provider}/${props.publicationType}.json`}>{localize(TRANSLATION, locale()).fileExampleDescription}</a></p>
             <Label labelText={localize(TRANSLATION, locale()).avatarFile} />
             <input class="block mb-2" type="file" accept="application/json" onChange={handleFileChange} />
             <div class="flex gap-1">
