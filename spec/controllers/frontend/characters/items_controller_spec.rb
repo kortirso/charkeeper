@@ -39,7 +39,7 @@ describe Frontend::Characters::ItemsController do
           expect(response.parsed_body['items'].size).to eq 1
           expect(response_values.keys).to(
             contain_exactly(
-              'id', 'quantity', 'ready_to_use', 'notes', 'name', 'kind', 'bonuses', 'custom',
+              'id', 'notes', 'name', 'kind', 'bonuses', 'custom', 'charges', 'charges_max',
               'data', 'state', 'has_description', 'item_id', 'states', 'info', 'modifiers', 'item_modifiers'
             )
           )
@@ -98,11 +98,16 @@ describe Frontend::Characters::ItemsController do
           end
 
           context 'for existing character item' do
-            let!(:character_item) { create :character_item, character: user_character, item: item, quantity: 2 }
+            let!(:character_item) {
+              create :character_item,
+                     character: user_character,
+                     item: item,
+                     states: Character::Item.default_states.merge(hands: 1)
+            }
 
             it 'updates existing character item', :aggregate_failures do
               expect { request }.not_to change(Character::Item, :count)
-              expect(character_item.reload.quantity).to eq 3
+              expect(character_item.reload.states).to eq({ 'hands' => 1, 'equipment' => 0, 'backpack' => 1, 'storage' => 0 })
               expect(response).to have_http_status :ok
               expect(response.parsed_body).to eq({ 'result' => 'ok' })
             end
@@ -143,55 +148,16 @@ describe Frontend::Characters::ItemsController do
       end
 
       context 'for user character' do
-        before { create :character_item, character: user_character }
-
-        context 'for unexisting item' do
-          let(:request) {
-            patch :update, params: {
-              character_id: user_character.id,
-              id: 'unexisting',
-              provider: 'dnd5',
-              character_item: { quantity: 100 },
-              charkeeper_access_token: access_token
-            }
-          }
-
-          it 'does not update character item' do
-            request
-
-            expect(response).to have_http_status :not_found
-          end
-        end
-
-        context 'for custom item' do
-          let!(:item) { create :character_item, character: user_character, name: 'Custom' }
-          let(:request) {
-            patch :update, params: {
-              character_id: user_character.id,
-              id: item.id,
-              provider: 'dnd5',
-              character_item: { quantity: 100 },
-              charkeeper_access_token: access_token
-            }
-          }
-
-          it 'updates character item', :aggregate_failures do
-            request
-
-            expect(item.reload.quantity).to eq 100
-            expect(response).to have_http_status :ok
-            expect(response.parsed_body).to eq({ 'result' => 'ok' })
-          end
-        end
-
         context 'for existing item' do
-          let!(:item) { create :character_item, character: user_character }
+          let!(:item) {
+            create :character_item, character: user_character, states: Character::Item.default_states.merge(hands: 1)
+          }
           let(:request) {
             patch :update, params: {
               character_id: user_character.id,
               id: item.id,
               provider: 'dnd5',
-              character_item: { quantity: 100 },
+              character_item: { states: { backpack: 1 } },
               charkeeper_access_token: access_token
             }
           }
@@ -199,7 +165,7 @@ describe Frontend::Characters::ItemsController do
           it 'updates character item', :aggregate_failures do
             request
 
-            expect(item.reload.quantity).to eq 100
+            expect(item.reload.states).to eq({ 'hands' => 1, 'equipment' => 0, 'backpack' => 1, 'storage' => 0 })
             expect(response).to have_http_status :ok
             expect(response.parsed_body).to eq({ 'result' => 'ok' })
           end

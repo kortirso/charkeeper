@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - filtering homebrews during character creation
 - feat tokens with autorefreshing
+- charges for items
 
 ## [0.4.37] - 2026-06-24
 ### Added

@@ -593,7 +593,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
       .joins(:item)
       .where(items: { kind: 'weapon' })
       .hashable_pluck(
-        'items.slug', 'items.name', 'items.kind', 'items.info', 'items.modifiers', :quantity, :notes, :states, :modifiers, :name
+        'items.slug', 'items.name', 'items.kind', 'items.info', 'items.modifiers', :notes, :states, :modifiers, :name
       )
   end
 

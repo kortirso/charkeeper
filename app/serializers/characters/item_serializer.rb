@@ -3,10 +3,9 @@
 module Characters
   class ItemSerializer < ApplicationSerializer
     ATTRIBUTES = %i[
-      id quantity ready_to_use notes name kind data state item_id has_description states info bonuses modifiers item_modifiers
-      custom
+      id notes name kind data state item_id has_description states info bonuses modifiers item_modifiers custom
+      charges charges_max
     ].freeze
-    READY_TO_USE_STATES = %w[hands equipment].freeze
 
     attributes(*ATTRIBUTES)
 
@@ -33,17 +32,16 @@ module Characters
       translate(item.description).present?
     end
 
-    # DEPRECATED
-    def ready_to_use # rubocop: disable Naming/PredicateMethod
-      READY_TO_USE_STATES.include?(object.state)
-    end
-
     def data
       item.data.attributes
     end
 
     def custom # rubocop: disable Naming/PredicateMethod
       object.name.present?
+    end
+
+    def charges_max
+      item.charges
     end
   end
 end

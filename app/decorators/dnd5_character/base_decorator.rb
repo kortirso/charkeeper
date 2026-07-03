@@ -241,7 +241,7 @@ module Dnd5Character
         .items
         .joins(:item)
         .where(items: { kind: 'weapon' })
-        .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', 'items.info', :quantity, :notes, :state)
+        .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', 'items.info', :notes, :state)
     end
 
     def equiped_armor_items

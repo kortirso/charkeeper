@@ -15,9 +15,9 @@ describe Daggerheart::Character do
       armor = create :item, type: 'Daggerheart::Item', kind: 'light armor', info: { bonuses: {} }
 
       create :character_item, character: character, item: torch
-      create :character_item, character: character, item: primary_weapon, ready_to_use: true
-      create :character_item, character: character, item: secondary_weapon, ready_to_use: true
-      create :character_item, character: character, item: armor, ready_to_use: true
+      create :character_item, character: character, item: primary_weapon
+      create :character_item, character: character, item: secondary_weapon
+      create :character_item, character: character, item: armor
 
       create :character_feat, character: character, feat: feat, ready_to_use: true
     end

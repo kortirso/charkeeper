@@ -72,6 +72,7 @@ export const ItemsTable = (props) => {
                     <p class="equipment-item-name">
                       {item.name}
                       <Show when={item.states[props.state] > 1}><span> ({item.states[props.state]})</span></Show>
+                      <Show when={item.charges}><span> ({item.charges})</span></Show>
                     </p>
                     <Show when={item.notes}>
                       <p class="equipment-item-notes">{item.notes}</p>

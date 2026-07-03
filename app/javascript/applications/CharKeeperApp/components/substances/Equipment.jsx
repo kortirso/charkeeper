@@ -60,7 +60,9 @@ const TRANSLATION = {
     character: 'Select character',
     sendAmount: 'Items amount',
     sendItem: 'Send item',
-    campaign: 'Select campaign'
+    campaign: 'Select campaign',
+    charges: 'Charges',
+    chargesMax: 'Max'
   },
   ru: {
     searchByName: 'Поиск по названию (от 3 символов)',
@@ -102,7 +104,9 @@ const TRANSLATION = {
     character: 'Выберите персонажа',
     sendAmount: 'Кол-во предметов',
     sendItem: 'Отправить',
-    campaign: 'Выберите кампанию'
+    campaign: 'Выберите кампанию',
+    charges: 'Заряды',
+    chargesMax: 'Макс'
   },
   es: {
     searchByName: 'Buscar por nombre (desde 3 caracteres)',
@@ -144,7 +148,9 @@ const TRANSLATION = {
     character: 'Select character',
     sendAmount: 'Items amount',
     sendItem: 'Send item',
-    campaign: 'Select campaign'
+    campaign: 'Select campaign',
+    charges: 'Charges',
+    chargesMax: 'Max'
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
@@ -359,7 +365,7 @@ export const Equipment = (props) => {
 
     updateCharacterItem(
       changingItem(),
-      { character_item: { states: changingItem().states, notes: changingItem().notes } }
+      { character_item: { states: changingItem().states, notes: changingItem().notes, charges: changingItem().charges } }
     );
   }
 
@@ -621,18 +627,32 @@ export const Equipment = (props) => {
       <Modal classList="md:max-w-md!">
         <Show when={changingItem()}>
           <p class="text-lg mb-2">{changingItem().name}</p>
-          <div class="grid grid-cols-2 gap-2 mb-2">
-            <For each={storages()}>
-              {(state) =>
+          <Show
+            when={!changingItem().charges_max}
+            fallback={
+              <div class="mb-2">
                 <Input
                   numeric
-                  labelText={localize(TRANSLATION, locale()).in[state].title}
-                  value={changingItem().states[state]}
-                  onInput={(value) => setChangingItem({ ...changingItem(), states: { ...changingItem().states, [state]: parseInt(value) } })}
+                  labelText={`${localize(TRANSLATION, locale()).charges} (${localize(TRANSLATION, locale()).chargesMax} - ${changingItem().charges_max})`}
+                  value={changingItem().charges}
+                  onInput={(value) => setChangingItem({ ...changingItem(), charges: value })}
                 />
-              }
-            </For>
-          </div>
+              </div>
+            }
+          >
+            <div class="grid grid-cols-2 gap-2 mb-2">
+              <For each={storages()}>
+                {(state) =>
+                  <Input
+                    numeric
+                    labelText={localize(TRANSLATION, locale()).in[state].title}
+                    value={changingItem().states[state]}
+                    onInput={(value) => setChangingItem({ ...changingItem(), states: { ...changingItem().states, [state]: parseInt(value) } })}
+                  />
+                }
+              </For>
+            </div>
+          </Show>
           <TextArea
             rows="2"
             labelText={t('equipment.itemNote')}

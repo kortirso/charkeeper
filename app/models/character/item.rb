@@ -13,7 +13,6 @@ class Character
 
     enum :state, { HANDS => 0, EQUIPMENT => 1, BACKPACK => 2, STORAGE => 3 }
 
-    scope :ready_to_use, -> { where(ready_to_use: true) }
     scope :active_states, -> { where(state: ACTIVE_STATES) }
 
     def self.default_states

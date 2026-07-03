@@ -10,8 +10,9 @@ describe CharactersContext::Items::AddCommand do
   context 'without name and modifiers' do
     let(:params) { { character: character, item: item } }
 
-    it 'adds item' do
+    it 'adds item', :aggregate_failures do
       expect { command_call }.to change(Character::Item, :count).by(1)
+      expect(Character::Item.last.charges).to be_nil
     end
 
     context 'with existing item in backpack' do
@@ -43,6 +44,19 @@ describe CharactersContext::Items::AddCommand do
         expect { command_call }.to change(Character::Item, :count).by(1)
         expect(character_item.reload.states['hands']).to eq 1
         expect(character_item.states.values.sum).to eq 1
+      end
+    end
+
+    context 'with existing charged item' do
+      let!(:character_item) { create :character_item, character: character, item: item, states: { 'hands' => 1 } }
+
+      before { item.update!(charges: 5) }
+
+      it 'adds item', :aggregate_failures do
+        expect { command_call }.to change(Character::Item, :count).by(1)
+        expect(character_item.reload.states['hands']).to eq 1
+        expect(character_item.states.values.sum).to eq 1
+        expect(Character::Item.last.charges).to eq 5
       end
     end
   end

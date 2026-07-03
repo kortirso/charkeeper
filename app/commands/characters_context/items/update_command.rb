@@ -3,48 +3,40 @@
 module CharactersContext
   module Items
     class UpdateCommand < BaseCommand
-      READY_TO_USE_STATES = %w[hands equipment].freeze
-
       use_contract do
         config.messages.namespace = :character_item
-
-        States = Dry::Types['strict.string'].enum(*::Character::Item.states.keys)
 
         params do
           required(:character_item).filled(type?: ::Character::Item)
           optional(:notes).maybe(:string, max_size?: 500)
           optional(:states).hash
-          # DEPRECATED
-          optional(:quantity).filled(:integer)
-          optional(:state).filled(States)
-          optional(:ready_to_use).filled(:bool)
+          optional(:charges).filled(:integer, gteq?: 0)
         end
 
-        # rubocop: disable Rails/Present
-        rule(:ready_to_use, :state, :character_item, :states) do
-          next if values[:states].present?
-          next if values[:ready_to_use].blank? && values[:state].blank?
-          next if !values[:ready_to_use].blank? && values[:ready_to_use] == false
-          next if !values[:state].blank? && READY_TO_USE_STATES.exclude?(values[:state])
+        rule(:character_item, :states) do
+          next if values[:states].nil?
           next unless values[:character_item].item.kind == 'armor'
-          next unless values[:character_item].character.items.where(state: ::Character::Item::ACTIVE_STATES).joins(:item).exists?(items: { kind: 'armor' }) # rubocop: disable Layout/LineLength
+
+          in_hands = values[:states].slice('hands', 'equipment').values.sum
+          next if in_hands.zero?
+
+          other_in_hands =
+            values[:character_item].character.items
+              .where.not(id: values[:character_item].id)
+              .where(state: ::Character::Item::ACTIVE_STATES)
+              .joins(:item).exists?(items: { kind: 'armor' })
+          next if in_hands == 1 && !other_in_hands
 
           key(:ready_to_use).failure(:only_one)
         end
-        # rubocop: enable Rails/Present
       end
 
       private
 
-      def do_prepare(input) # rubocop: disable Metrics/AbcSize
+      def do_prepare(input)
         if input.key?(:states)
-          input[:states].transform_values!(&:to_i)
+          input[:states] = input[:character_item].states.stringify_keys.merge(input[:states].transform_values!(&:to_i))
           input[:state] = input[:states].slice('hands', 'equipment').values.sum.positive? ? 'hands' : 'backpack'
-          input[:quantity] = input[:states].values.sum
-        elsif input.key?(:state)
-          input[:states] = ::Character::Item.default_states.merge({ input[:state] => input[:character_item].quantity })
-        elsif input.key?(:quantity)
-          input[:states] = ::Character::Item.default_states.merge({ input[:character_item].state => input[:quantity] })
         end
       end
 
