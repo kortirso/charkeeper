@@ -1,7 +1,7 @@
 import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
-import { Toggle, Button, Label, Select } from '../../components';
+import { Toggle, Button, Label, Select, createModal } from '../../components';
 import { Trash, Copy, Stroke } from '../../assets';
 import { fetchPublicationsRequest, createPublicationRequest } from '../../requests_v2/publications';
 import { fetchBooksForItemsRequest } from '../../requests_v2/books';
@@ -24,7 +24,12 @@ const TRANSLATION = {
     selectBook: 'Select book',
     selectBookHelp: 'Select required elements for adding to the book',
     save: 'Save',
-    added: 'Content is added to the book'
+    added: 'Content is added to the book',
+    deletingHomebrew: 'Deleting is not revertable!',
+    delete: 'Delete',
+    deletingProgress: 'Deleting',
+    deleteAll: 'Delete selected',
+    deletingAll: 'Deleting selected homebrews'
   },
   ru: {
     add: 'Добавить',
@@ -41,7 +46,12 @@ const TRANSLATION = {
     selectBook: 'Выберите книгу',
     selectBookHelp: 'Выберите необходимые элементы для добавления в книгу',
     save: 'Сохранить',
-    added: 'Контент добавлен в книгу'
+    added: 'Контент добавлен в книгу',
+    deletingHomebrew: 'Удаление не обратимо!',
+    delete: 'Удалить',
+    deletingProgress: 'Удаление',
+    deleteAll: 'Удалить выбранные',
+    deletingAll: 'Удаление выбранных homebrews'
   },
   es: {
     add: 'Agregar',
@@ -58,7 +68,12 @@ const TRANSLATION = {
     selectBook: 'Seleccionar libro',
     selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
     save: 'Guardar',
-    added: 'Contenido agregado al libro'
+    added: 'Contenido agregado al libro',
+    deletingHomebrew: 'Deleting is not revertable!',
+    delete: 'Delete',
+    deletingProgress: 'Deleting',
+    deleteAll: 'Delete selected',
+    deletingAll: 'Deleting selected homebrews'
   }
 }
 
@@ -70,6 +85,8 @@ export const SharedContent = (props) => {
   const [book, setBook] = createSignal(null);
 
   const [elements, setElements] = createSignal(undefined);
+  const [deletingHomebrew, setDeletingHomebrew] = createSignal(null);
+  const [deletingAll, setDeletingAll] = createSignal(false);
   const [publications, setPublications] = createSignal(undefined);
 
   const [createMode, setCreateMode] = createSignal(false);
@@ -81,6 +98,7 @@ export const SharedContent = (props) => {
 
   const [selectedFile, setSelectedFile] = createSignal(null);
 
+  const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
   const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
@@ -149,12 +167,50 @@ export const SharedContent = (props) => {
     }
   }
 
-  const remove = async (e, id) => {
+  const removeAll = () => {
+    batch(() => {
+      setDeletingAll(true);
+      setDeletingHomebrew(null);
+    });
+    openModal();
+  }
+
+  const cancelDeletingAll = () => {
+    setDeletingAll(false);
+    closeModal();
+  }
+
+  const removeAllHomebrew = async () => {
+    const result = await props.onBatchDestroy(selectedIds());
+    if (result.errors_list === undefined) {
+      batch(() => {
+        setElements(elements().filter((item) => !selectedIds().includes(item.id) ));
+        setSelectedIds([]);
+      });
+      closeModal();
+    } else renderAlerts(result.errors_list);
+  }
+
+  const remove = (e, element) => {
     e.stopPropagation();
 
-    const result = await props.onRemoveRequest(appState.accessToken, id);
+    batch(() => {
+      setDeletingAll(false);
+      setDeletingHomebrew(element);
+    });
+    openModal();
+  }
+
+  const cancelDeleting = () => {
+    setDeletingHomebrew(null);
+    closeModal();
+  }
+
+  const removeHomebrew = async () => {
+    const result = await props.onRemoveRequest(appState.accessToken, deletingHomebrew().id);
     if (result.errors_list === undefined) {
-      setElements(elements().filter((item) => item.id !== id ));
+      setElements(elements().filter((item) => item.id !== deletingHomebrew().id ));
+      closeModal();
     } else renderAlerts(result.errors_list);
   }
 
@@ -249,7 +305,7 @@ export const SharedContent = (props) => {
         }
       >
         <Show when={filtered().length > 0}>
-          <Show when={props.onCopyRequest}>
+          <div class="flex items-center justify-between mb-2">
             <div class="flex items-center">
               <Select
                 containerClassList="w-40"
@@ -264,8 +320,10 @@ export const SharedContent = (props) => {
                 </Button>
               </Show>
             </div>
-            <p class="text-sm mt-1 mb-2">{localize(TRANSLATION, locale()).selectBookHelp}</p>
-          </Show>
+            <Show when={props.onBatchDestroy && selectedIds().length > 0 && ownFilter()}>
+              <Button default disabled={selectedIds().length === 0} classList="px-2 py-1" onClick={removeAll}>{localize(TRANSLATION, locale()).deleteAll}</Button>
+            </Show>
+          </div>
           <div class="flex flex-col gap-2">
             <For each={filtered()}>
               {(element) =>
@@ -294,19 +352,17 @@ export const SharedContent = (props) => {
                           }
                         >
                           <div class="flex items-center justify-end gap-1 text-neutral-700">
-                            <Show when={book()}>
-                              <Button
-                                default
-                                classList="p-2"
-                                onClick={(e) => select(e, element.id)}
-                              >
-                                <span classList={{ 'opacity-25': !selectedIds().includes(element.id) }}>
-                                  <Stroke width="16" height="12" />
-                                </span>
-                              </Button>
-                            </Show>
+                            <Button
+                              default
+                              classList="p-2"
+                              onClick={(e) => select(e, element.id)}
+                            >
+                              <span classList={{ 'opacity-25': !selectedIds().includes(element.id) }}>
+                                <Stroke width="16" height="12" />
+                              </span>
+                            </Button>
                             <Show when={props.onRemoveRequest}>
-                              <Button default classList="px-2 py-1" onClick={(e) => remove(e, element.id)}>
+                              <Button default classList="px-2 py-1" onClick={(e) => remove(e, element)}>
                                 <Trash width="20" height="20" />
                               </Button>
                             </Show>
@@ -325,6 +381,23 @@ export const SharedContent = (props) => {
           </div>
         </Show>
       </Show>
+      <Modal>
+        <Show when={deletingHomebrew()}>
+          <p class="mb-2 text-xl">{localize(TRANSLATION, locale()).deletingProgress} - {deletingHomebrew().title}</p>
+          <p class="mb-4">{localize(TRANSLATION, locale()).deletingHomebrew}</p>
+          <div class="flex gap-4 w-full">
+            <Button default classList="flex-1 text-center" onClick={cancelDeleting}>{localize(TRANSLATION, locale()).cancel}</Button>
+            <Button default classList="flex-1 text-center" onClick={removeHomebrew}>{localize(TRANSLATION, locale()).delete}</Button>
+          </div>
+        </Show>
+        <Show when={deletingAll()}>
+          <p class="mb-4 text-xl">{localize(TRANSLATION, locale()).deletingAll}</p>
+          <div class="flex gap-4 w-full">
+            <Button default classList="flex-1 text-center" onClick={cancelDeletingAll}>{localize(TRANSLATION, locale()).cancel}</Button>
+            <Button default classList="flex-1 text-center" onClick={removeAllHomebrew}>{localize(TRANSLATION, locale()).delete}</Button>
+          </div>
+        </Show>
+      </Modal>
     </Show>
   );
 }

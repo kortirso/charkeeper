@@ -5,7 +5,7 @@ import { FeatureModifiers } from './FeatureModifiers';
 
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
-import { fetchListRequest } from '../../../requests_v2/list';
+import { fetchListRequest, batchDestroyRequest } from '../../../requests_v2/list';
 import { fetchSpecialityRequest, removeSpecialityRequest, copySpecialityRequest } from '../../../requests_v2/daggerheart/specialities';
 import { localize } from '../../../helpers';
 
@@ -32,6 +32,7 @@ export const DaggerheartSpecialities = () => {
   const [appState] = useAppState();
 
   const fetchList = async () => await fetchListRequest(appState.accessToken, 'Daggerheart::Homebrews::Speciality');
+  const batchDestroy = async (ids) => await batchDestroyRequest(appState.accessToken, 'Daggerheart::Homebrews::Speciality', ids);
 
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-4">
@@ -71,6 +72,7 @@ export const DaggerheartSpecialities = () => {
       parentType="Daggerheart::Homebrews::Speciality"
       publicationType="speciality"
       onFetchRequest={fetchList}
+      onBatchDestroy={batchDestroy}
       onShowRequest={fetchSpecialityRequest}
       onRemoveRequest={removeSpecialityRequest}
       onCopyRequest={copySpecialityRequest}

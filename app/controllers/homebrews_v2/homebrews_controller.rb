@@ -5,6 +5,7 @@ module HomebrewsV2
     include SerializeRelation
 
     before_action :find_homebrews, only: %i[index]
+    before_action :find_homebrews_for_batch_destroy, only: %i[batch_destroy]
 
     def index
       serialize_relation(
@@ -16,6 +17,11 @@ module HomebrewsV2
       )
     end
 
+    def batch_destroy
+      @homebrews.update_all(discarded_at: Time.current)
+      only_head_response
+    end
+
     private
 
     def find_homebrews
@@ -24,6 +30,10 @@ module HomebrewsV2
           .or(
             ::Homebrew.where.not(user_id: current_user.id).where(public: true, type: params[:type])
           ).kept.order(created_at: :desc)
+    end
+
+    def find_homebrews_for_batch_destroy
+      @homebrews = ::Homebrew.where(user_id: current_user.id, type: params[:type], id: params[:ids]).kept
     end
   end
 end

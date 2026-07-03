@@ -8,6 +8,7 @@ module HomebrewsV2
     before_action :find_item, only: %i[show]
     before_action :find_own_item, only: %i[destroy]
     before_action :find_another_item, only: %i[copy]
+    before_action :find_items_for_batch_destroy, only: %i[batch_destroy]
 
     def index
       serialize_relation(items, serializer, :homebrews, {}, { current_user_id: current_user.id })
@@ -18,7 +19,7 @@ module HomebrewsV2
     end
 
     def destroy
-      @item.destroy
+      @item.discard
       only_head_response
     end
 
@@ -32,11 +33,17 @@ module HomebrewsV2
       end
     end
 
+    def batch_destroy
+      @items.update_all(discarded_at: Time.current)
+      only_head_response
+    end
+
     private
 
     def items
       class_name.where(user_id: current_user.id).or(class_name.where(public: true))
-        .where(itemable: nil)
+        .visible
+        .kept
         .where(kind: params.expect(:type).split(','))
     end
 
@@ -50,6 +57,10 @@ module HomebrewsV2
 
     def find_another_item
       @item = class_name.where.not(user_id: current_user.id).find(params.expect(:id))
+    end
+
+    def find_items_for_batch_destroy
+      @items = class_name.visible.where(user_id: current_user.id, id: params[:ids]).kept
     end
   end
 end

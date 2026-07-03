@@ -3,6 +3,12 @@ import { children } from 'solid-js';
 export const Button = (props) => {
   const safeChildren = children(() => props.children);
 
+  const click = (e) => {
+    if (props.disabled) return;
+
+    props.onClick(e);
+  }
+
   return (
     <p
       class={[props.classList, 'inline-block rounded cursor-pointer flex justify-center items-center'].join(' ')}
@@ -11,7 +17,7 @@ export const Button = (props) => {
         'text-sm': props.small,
         'bg-neutral-800! text-snow': props.active
       }}
-      onClick={props.onClick} // eslint-disable-line solid/reactivity
+      onClick={click}
     >
       {safeChildren()}
     </p>

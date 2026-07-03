@@ -7,6 +7,7 @@ module HomebrewsV2
 
     before_action :find_feat, only: %i[show]
     before_action :find_another_feat, only: %i[copy]
+    before_action :find_feats_for_batch_destroy, only: %i[batch_destroy]
 
     def index
       serialize_relation_v2(
@@ -33,6 +34,11 @@ module HomebrewsV2
       end
     end
 
+    def batch_destroy
+      @feats.destroy_all
+      only_head_response
+    end
+
     private
 
     def find_feat
@@ -41,6 +47,10 @@ module HomebrewsV2
 
     def find_another_feat
       @feat = feats.find(params.expect(:id))
+    end
+
+    def find_feats_for_batch_destroy
+      @feats = class_name.where(user_id: current_user.id, id: params[:ids])
     end
   end
 end

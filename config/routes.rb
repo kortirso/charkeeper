@@ -253,7 +253,9 @@ Rails.application.routes.draw do
   end
 
   namespace :homebrews_v2 do
-    resources :homebrews, only: %i[index]
+    resources :homebrews, only: %i[index] do
+      post :batch_destroy, on: :collection
+    end
     resources :publications, only: %i[index create destroy]
 
     namespace :daggerheart do
@@ -281,6 +283,7 @@ Rails.application.routes.draw do
       end
       resources :items, only: %i[index show destroy] do
         post :copy, on: :member
+        post :batch_destroy, on: :collection
       end
     end
 
@@ -290,6 +293,7 @@ Rails.application.routes.draw do
       end
       resources :feats, only: %i[index show destroy] do
         post :copy, on: :member
+        post :batch_destroy, on: :collection
       end
       resources :spells, only: %i[index show destroy] do
         post :copy, on: :member

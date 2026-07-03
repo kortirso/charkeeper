@@ -11,7 +11,8 @@ module HomebrewsV2
 
       def items
         class_name.where(user_id: current_user.id).or(class_name.where(public: true))
-          .where(itemable: nil)
+          .visible
+          .kept
           .where(kind: params.expect(:type).split(','))
           .includes(recipes: :item)
       end
