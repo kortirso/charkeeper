@@ -8,8 +8,6 @@
     "description": {
       "en": "Armor's description, **Markdown is available** for editing."
     },
-    /* required, primary weapon or secondary weapon */
-    "kind": "primary weapon",
     "public": true,
     "info": {
       /* required, from 1 to 4 */
