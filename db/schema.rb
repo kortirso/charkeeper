@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_03_080827) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_03_100314) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -549,6 +549,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_03_080827) do
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false, comment: "Свойства предмета"
     t.jsonb "description", default: {"en" => "", "ru" => ""}, null: false
+    t.datetime "discarded_at"
     t.jsonb "info", default: {}, null: false
     t.uuid "itemable_id"
     t.string "itemable_type"
@@ -560,6 +561,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_03_080827) do
     t.string "type", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id"
+    t.index ["discarded_at"], name: "index_items_on_discarded_at"
     t.index ["itemable_id", "itemable_type"], name: "index_items_on_itemable_id_and_itemable_type", where: "((itemable_id IS NOT NULL) AND (itemable_type IS NOT NULL))"
     t.index ["slug"], name: "index_items_on_slug"
     t.index ["user_id"], name: "index_items_on_user_id"

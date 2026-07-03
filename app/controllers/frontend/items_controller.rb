@@ -6,7 +6,7 @@ module Frontend
     include SerializeRelation
 
     def index
-      serialize_relation_v2(items, ::ItemSerializer, :items, cache_options: cache_options)
+      serialize_relation_v2(items.visible.kept, ::ItemSerializer, :items, cache_options: cache_options)
     end
 
     private
@@ -21,12 +21,12 @@ module Frontend
     def items # rubocop: disable Metrics/AbcSize
       if feature_requirement.call(current: params[:version], initial: '0.3.26')
         if params[:homebrew]
-          relation.visible.where(user_id: current_user.id).or(relation.visible.where(id: homebrew_item_ids))
+          relation.where(user_id: current_user.id).or(relation.where(id: homebrew_item_ids))
         else
-          relation.visible.where(user_id: nil)
+          relation.where(user_id: nil)
         end
       else
-        relation.visible.where(user_id: [nil, current_user.id]).or(relation.visible.where(id: homebrew_item_ids))
+        relation.where(user_id: [nil, current_user.id]).or(relation.where(id: homebrew_item_ids))
       end
     end
 

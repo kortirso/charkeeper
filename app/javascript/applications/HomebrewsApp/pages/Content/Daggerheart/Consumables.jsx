@@ -2,7 +2,7 @@ import { For } from 'solid-js';
 
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
-import { fetchItemsRequest } from '../../../requests_v2/items';
+import { fetchItemsRequest, batchDestroyRequest } from '../../../requests_v2/items';
 import { fetchItemRequest, removeItemRequest, copyItemRequest } from '../../../requests_v2/daggerheart/items';
 import { localize } from '../../../helpers';
 
@@ -29,6 +29,7 @@ export const DaggerheartConsumables = () => {
   const [appState] = useAppState();
 
   const fetchList = async () => await fetchItemsRequest(appState.accessToken, 'daggerheart', 'consumables');
+  const batchDestroy = async (ids) => await batchDestroyRequest(appState.accessToken, 'daggerheart', ids);
 
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-4">
@@ -49,6 +50,7 @@ export const DaggerheartConsumables = () => {
       parentType="Daggerheart::Item"
       publicationType="consumables"
       onFetchRequest={fetchList}
+      onBatchDestroy={batchDestroy}
       onShowRequest={fetchItemRequest}
       onRemoveRequest={removeItemRequest}
       onCopyRequest={copyItemRequest}
