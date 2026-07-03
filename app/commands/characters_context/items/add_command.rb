@@ -22,12 +22,11 @@ module CharactersContext
         input[:state] ||= 'backpack'
       end
 
-      def do_persist(input) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+      def do_persist(input) # rubocop: disable Metrics/AbcSize
         character_item = input.key?(:name) ? nil : ::Character::Item.find_by(input.slice(:character, :item).merge(name: nil))
 
-        if character_item
+        if input[:item].charges.nil? && character_item
           character_item.update!(
-            quantity: character_item.quantity + 1,
             state: character_item.states.slice('hands', 'equipment').values.sum.positive? ? 'hands' : 'backpack',
             states: (character_item.states.presence || ::Character::Item.default_states).merge({
               'backpack' => character_item.states['backpack'].to_i + 1
@@ -37,11 +36,11 @@ module CharactersContext
         else
           character_item =
             ::Character::Item.create!(
-              input.merge(
-                quantity: 1,
+              input.merge({
                 state: input[:state],
-                states: ::Character::Item.default_states.merge({ input[:state] => 1 })
-              )
+                states: ::Character::Item.default_states.merge({ input[:state] => 1 }),
+                charges: input[:item].charges
+              }.compact)
             )
         end
 

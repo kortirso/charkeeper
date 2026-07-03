@@ -17,7 +17,7 @@ describe Dnd2024::Character do
       create :character_item, character: character, item: melee_weapon
       create :character_item, character: character, item: thrown_weapon
       create :character_item, character: character, item: range_weapon
-      create :character_item, character: character, item: armor, ready_to_use: true
+      create :character_item, character: character, item: armor
 
       feat = create :feat, :dnd2024_bardic_inspiration
       create :character_feat, feat: feat, character: character, ready_to_use: true

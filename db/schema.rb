@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_03_100314) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_03_151123) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -153,14 +153,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_03_100314) do
 
   create_table "character_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "character_id", null: false
+    t.integer "charges"
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false, comment: "Свойства предметов в экипировке"
     t.uuid "item_id", null: false
     t.jsonb "modifiers", default: {}, null: false
     t.string "name", comment: "Измененное название предмета"
     t.text "notes"
-    t.integer "quantity", default: 1, null: false
-    t.boolean "ready_to_use", default: false, null: false
     t.integer "state", limit: 2, default: 2, null: false
     t.jsonb "states", default: {}, null: false
     t.datetime "updated_at", null: false
@@ -546,6 +545,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_03_100314) do
   end
 
   create_table "items", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Предметы", force: :cascade do |t|
+    t.integer "charges"
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false, comment: "Свойства предмета"
     t.jsonb "description", default: {"en" => "", "ru" => ""}, null: false
