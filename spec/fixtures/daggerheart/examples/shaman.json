@@ -2,11 +2,11 @@
   {
     "title": {
       "en": "Shaman",
-      "ru": ""
+      "ru": "Шаман"
     },
     "description": {
-      "en": "Shamans are intermediaries between the seen and the unseen, blending ancient traditions with personal rituals passed down through spirit or blood. They carry the weight of ancestral knowledge in bark, bone, and breath, calling on powers both revered and feared. Some work in service of their community, others wander alone, led by whispers only they can hear. A shaman's strength lies not in command, but in connection to the spirits, to the land, and to the threads between all things. Few understand the cost of channeling unseen forces, and fewer still survive it unchanged.",
-      "ru": ""
+      "en": "Shamans are intermediaries between the seen and the unseen, blending ancient traditions with personal rituals passed down through spirit or blood. They carry the weight of ancestral knowledge in bark, bone, and breath, calling on powers both revered and feared. Some work in service of their community, others wander alone, led by whispers only they can hear.",
+      "ru": "Шаманы — это посредники между видимым и невидимым, сочетающие древние традиции с личными ритуалами, передаваемыми по духу или крови. Они несут в себе груз знаний предков, заключенный в коре, костях и дыхании, призывая силы, которые одновременно почитаются и внушают страх. Некоторые служат своей общине, другие странствуют в одиночестве, ведомые шепотом, который слышат только они."
     },
     "public": true,
     "domains": ["sage", "dread"],
@@ -16,11 +16,11 @@
       {
         "title": {
           "en": "Curse",
-          "ru": ""
+          "ru": "Проклятье"
         },
         "description": {
           "en": "**Spend 3 Hope** to force an adversary within Close range to mark a Stress.",
-          "ru": ""
+          "ru": "**Потратьте 3 Надежды**, чтобы противник в пределах средней дистанции отметил Стресс."
         },
         "kind": "static",
         "price": { "hope": 3 }
@@ -32,7 +32,7 @@
         },
         "description": {
           "en": "You can Tether a target within Close range, linking them to you until you fall unconscious or the scene ends. While Tethered, whenever you mark any number of Hit Points or Stress, you can **spend a Hope** to force them to mark one of the same.",
-          "ru": ""
+          "ru": "Вы можете связать цель в пределах средней дистанции до конца сцены или пока вы не потеряет сознание. Когда вы отмечаете любое кол-во Ран или Стресса, то вы можете **потратить Надежду**, чтобы цель отметила 1 единицу аналогичного типа."
         },
         "kind": "static",
         "limit": 1,

@@ -2,11 +2,11 @@
   {
     "title": {
       "en": "Revenant",
-      "ru": ""
+      "ru": "Ревенант"
     },
     "description": {
       "en": "While most career choices are made in life, the choice of becoming a Revenant is only offered to those who already lost their life: Revenants usually manifest their new earthly existence either by means of sheer force of will or by being recruited to serve on a specific mission issued by a powerful being from The Realms Beyond. Imbued with powers from The Realms Beyond, they display otherworldy martial cunning and bend shadows to their will.",
-      "ru": ""
+      "ru": "В то время как большинство профессиональных решений принимается при жизни, возможность стать Ревенантом предоставляется только тем, кто уже погиб: Ревенанты обычно обретают свою новую земную жизнь либо силой воли, либо будучи завербованными для выполнения конкретной миссии, порученной могущественным существом из Запредельных Царств. Наделенные силами из Запредельных Царств, они демонстрируют неземную боевую хитрость и подчиняют себе тени."
     },
     "public": true,
     "domains": ["midnight", "blade"],
@@ -16,11 +16,11 @@
       {
         "title": {
           "en": "Rend",
-          "ru": ""
+          "ru": "Разрывание"
         },
         "description": {
           "en": "**Spend 3 Hope** to ignore a particular adversary's resistances or reduce their immunities to resistances until your next rest. This effect cannot stack.",
-          "ru": ""
+          "ru": "**Потратьте 3 Надежды**, чтобы игнорировать определённое сопротивление цели или ослабить иммунитет до сопротивления до конца вашего следующего отдыха. Эффект не суммируется."
         },
         "kind": "static",
         "price": { "hope": 3 }
@@ -32,7 +32,7 @@
         },
         "description": {
           "en": "You may always sense if a death has occured within Very Far range as long as it happened within the last month, even if it left no trace.",
-          "ru": ""
+          "ru": "Вы всегда сможете определить, произошла ли смерть в пределах очень далёкого расстояния, если это случилось в течение последнего месяца, даже если она не оставила следов."
         },
         "kind": "static"
       },
@@ -42,10 +42,12 @@
           "ru": "Стойкость дважды рожденного"
         },
         "description": {
-          "en": "Twice per session, when you would mark your last Hit Point, you can **mark 2 Stress** instead.",
-          "ru": ""
+          "en": "When you would mark your last Hit Point, you can **mark 2 Stress** instead.",
+          "ru": "Когда вам необходимо отметить последнюю Рану, то вы можете **отметить 2 Стресса** вместо этого."
         },
-        "kind": "static"
+        "kind": "static",
+        "limit": "2",
+        "limit_refresh": "session"
       },
       {
         "title": {
@@ -54,7 +56,7 @@
         },
         "description": {
           "en": "Whenever you score a critical hit, you can **mark a Stress** to make the target temporarily *Horrified*. While *Horrified*, they are *Vulnerable*.",
-          "ru": ""
+          "ru": "Когда вы наносите критический удар, вы можете **отметить Стресс**, чтобы цель стала временно *Испугана*. Пока цель *Испугана*, она *Уязвима*."
         },
         "kind": "static",
         "price": { "stress": 1 }

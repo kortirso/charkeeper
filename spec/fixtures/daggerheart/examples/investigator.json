@@ -32,7 +32,7 @@
         },
         "description": {
           "en": "You have advantage on Knowledge rolls to remember important historical or religious information.",
-          "ru": "Вы получаете преимущество к броску Знаний, чтобы вспомнить важную историческую или религиозную информацию."
+          "ru": "Вы получаете преимущество к броскам Знаний, чтобы вспомнить важную историческую или религиозную информацию."
         },
         "kind": "static"
       },
@@ -43,7 +43,7 @@
         },
         "description": {
           "en": "You can **mark a Stress** to increase or decrease a duality die by an amount equal to your Knowledge modifier. This cannot result in a critical success.",
-          "ru": "Вы можете **отметить Стресс**, чтобы изменить результат броска кости дуальности на число, равное вашему Знанию. Это не может привести к критическому успеху."
+          "ru": "Вы можете **отметить Стресс**, чтобы изменить результат броска Кости Дуальности на число, равное вашему Знанию. Это не может привести к критическому успеху."
         },
         "kind": "static",
         "limit": 1,

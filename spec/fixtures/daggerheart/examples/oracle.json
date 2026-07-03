@@ -42,8 +42,8 @@
           "ru": "Вещий текст"
         },
         "description": {
-          "en": "Determine the source of your power, known as your Oracular Font. Before you make an action or reaction roll related to your Oracular Font, you can **spend a Hope** to add a +2 modifier to the roll's result. Once per session, you can add this modifier to any Spellcast Roll you make.",
-          "ru": "Определите источник вашей силы, известный как Вещий текст. До броска действия или реакции, связанного с вашим Вещим текстом, вы можете **потратить Надежду**, чтобы добавить бонус +2 к результату броска. Один раз за сессию вы можете добавить этот бонус к любому броску заклинания."
+          "en": "Determine the source of your power, known as your Oracular Font. Before you make an action or reaction roll related to your **Oracular Font**, you can **spend a Hope** to add a +2 modifier to the roll's result. Once per session, you can add this modifier to any Spellcast Roll you make.",
+          "ru": "Определите источник вашей силы, известный как Вещий текст. До броска действия или реакции, связанного с вашим **Вещим текстом**, вы можете **потратить Надежду**, чтобы добавить бонус +2 к результату броска. Один раз за сессию вы можете добавить этот бонус к любому броску заклинания."
         },
         "kind": "static",
         "price": { "hope": 1 }

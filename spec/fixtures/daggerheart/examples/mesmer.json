@@ -6,7 +6,7 @@
     },
     "description": {
       "en": "Mesmers are dreamwalkers, manipulators of feeling and perception who twist reality at its seams. Whether as honey-voiced healers, oracles or ruthless deceivers, they charm, distract, and reshape the world through illusion, empathy, and psychic finesse. To a Mesmer, emotion is both weapon and shield—capable of restoring shattered spirits or breaking wills with a whisper.",
-      "ru": "Завораживатели — это странники снов, манипуляторы чувств и восприятия, которые искажают реальность до неузнаваемости. Будь то целители с медовым голосом, оракулы или безжалостные обманщики, они очаровывают, отвлекают и перекраивают мир с помощью иллюзий, эмпатии и экстрасенсорного мастерства. Для месмера эмоции — это одновременно оружие и щит, способный восстановить сломленные души или сломить волю шепотом."
+      "ru": "Завораживатели — это странники снов, манипуляторы чувств и восприятия, которые искажают реальность до неузнаваемости. Будь то целители с медовым голосом, оракулы или безжалостные обманщики, они очаровывают, отвлекают и перекраивают мир с помощью иллюзий, эмпатии и экстрасенсорного мастерства. Для Завораживателя эмоции — это одновременно оружие и щит, способный восстановить сломленные души или сломить волю шепотом."
     },
     "public": true,
     "domains": ["grace", "splendor"],

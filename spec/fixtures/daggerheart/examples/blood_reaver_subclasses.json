@@ -6,7 +6,7 @@
     },
     "description": {
       "en": "Play this if you want constant damage and sheer brutality.",
-      "ru": ""
+      "ru": "Играйте за этот подкласс, если хотите постоянного урона и абсолютной жестокости."
     },
     "public": true,
     "class_id": "",
@@ -19,7 +19,7 @@
         },
         "description": {
           "en": "When you succeed on a melee attack, you can **mark a Stress** to roll an extra d6 and add it to the damage. You can do this a number of times per scene equal to your Proficiency.",
-          "ru": ""
+          "ru": "При успешной атаке ближнего боя вы можете **отметить Стресс**, чтобы добавить d6 к урону этой атаки. Вы можете использовать эту способность в сцене кол-во раз, равное вашему Мастерству."
         },
         "kind": "static",
         "subclass_mastery": 1,
@@ -32,7 +32,7 @@
         },
         "description": {
           "en": "When you would mark Stress, you can instead spend 1 Blood to ignore that Stress.",
-          "ru": ""
+          "ru": "Когда вам надо отметить Стресс, то вы можете потратить 1 Кровь вместо этого."
         },
         "kind": "static",
         "subclass_mastery": 1,
@@ -46,7 +46,7 @@
         },
         "description": {
           "en": "Once per scene when you defeat an adversary within Melee, gain a Hope and 1 Blood.",
-          "ru": ""
+          "ru": "Один раз за сцену, когда вы побеждаете противника в ближнем бою, получите Надежду и Кровь."
         },
         "kind": "static",
         "subclass_mastery": 2
@@ -57,8 +57,8 @@
           "ru": "Красный Жнец"
         },
         "description": {
-          "en": "When you succeed on a melee attack, you may expend any or all Blood from your Bloodforge to empower the strike. For each Blood spent, add +1d6 damage to the attack's damage roll.\n\nIf this attack defeats its target, you may immediately make a melee attack against another adversary within Very Close range. That attack deals half the total extra damage you rolled from Blood.",
-          "ru": ""
+          "en": "When you succeed on a melee attack, you may expend any or all Blood from your **Blood Forge** to empower the strike. For each Blood spent, add +1d6 damage to the attack's damage roll.\n\nIf this attack defeats its target, you may immediately make a melee attack against another adversary within Very Close range. That attack deals half the total extra damage you rolled from Blood.",
+          "ru": "При успешной атаке ближнего боя вы можете потратить любое кол-во Крови. За каждую потраченную Кровь добавьте +1d6 к урону атаки.\n\nЕсли вы побеждаете противника этой атакой, вы можете сразу атаковать другого противника в пределах близкой дистанции. Эта атака наносит половину от урона, нанесенного за потраченную Кровь."
         },
         "kind": "static",
         "subclass_mastery": 3,
@@ -70,11 +70,11 @@
   {
     "title": {
       "en": "Shadowfang",
-      "ru": ""
+      "ru": "Пожиратель теней"
     },
     "description": {
       "en": "Play this if you want control, counter-attacks, and shadowdriven disruption.",
-      "ru": ""
+      "ru": "Играйте этим подклассом, если вам нужен контроль, контратаки и разрушительные действия с помощью теней."
     },
     "public": true,
     "class_id": "",
@@ -86,8 +86,8 @@
           "ru": "Эхо полуночи"
         },
         "description": {
-          "en": "When you use a Midnight domain attack or feature against a foe within Close range, you can **mark 1 Stress** to force a **Reaction Roll (13)**. On a failure, the target marks a Stress and is pulled one range step toward you. On a success, they're temporarily *Vulnerable* until they mark a Hit Point. Once per scene.",
-          "ru": ""
+          "en": "When you use a Midnight domain attack or feature against a foe within Close range, you can **mark 1 Stress** to force a Reaction Roll (13). On a failure, the target marks a Stress and is pulled one range step toward you. On a success, they're temporarily *Vulnerable* until they mark a Hit Point. Once per scene.",
+          "ru": "Один раз за сцену когда вы используете атаку или способность домена Полуночи против цели в пределах средней дистанции, вы можете **отметить Стресс**, чтобы вынудить его сделать Бросок Реакции (13). При провале цель отмечает Стресс и притягивается к вам на 1 шаг дистанции. При успехе цель становится временно *Уязвимой* пока не отметит Рану."
         },
         "kind": "static",
         "subclass_mastery": 1,
@@ -100,7 +100,7 @@
         },
         "description": {
           "en": "When you take damage, you can vanish into shadow, instantly moving to any space within Close range and gaining advantage on your next melee attack.",
-          "ru": ""
+          "ru": "Когда вам наносят урон, вы можете исчезнуть в тенях, мгновенно переместившись в любое пространство в пределах средней дистанции, и получаете преимущество на вашу слудующую атаку ближнего боя."
         },
         "kind": "static",
         "subclass_mastery": 2,
@@ -113,8 +113,8 @@
           "ru": ""
         },
         "description": {
-          "en": "**Spend a Hope** to emanate a blood-aura until the end of the scene. Adversaries within Very Close suffer a −1 penalty on Reaction Rolls. While your aura is active, each time you mark Stress, gain 1 Blood on your Bloodforge.\n\nWhile your aura is active:\n\n- Each time you mark a stress, gain 1 Blood in your Bloodforge.\n\n- Your Bloodforge maximum increases by 3.",
-          "ru": ""
+          "en": "**Spend a Hope** to emanate a blood-aura until the end of the scene. Adversaries within Very Close suffer a −1 penalty on Reaction Rolls.\n\nWhile your aura is active:\n\n- Each time you mark a stress, gain 1 Blood in your Bloodforge.\n\n- Your **Blood Forge** maximum increases by 3.",
+          "ru": "**Потратьте Надежду** для создания кровавой эманации до конца сцены. Противника в пределах близкой дистанции получают штраф -1 к броскам реакции. Пока ваша аура активна:\n\n- Когда вы отмечаете Стресс, то вы получаете 1 Кровь в **Кровавую кузницу**.\n\n- Максимальный запас Крови увеличивается на 3."
         },
         "kind": "static",
         "subclass_mastery": 3,
