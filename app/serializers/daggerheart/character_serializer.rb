@@ -4,11 +4,11 @@ module Daggerheart
   class CharacterSerializer < ApplicationSerializer
     include Deps[cache: 'cache.avatars']
 
-    attributes :features, :provider, :avatar, :id, :name, :level, :heritage, :main_class, :classes, :traits, :created_at, :gold,
+    attributes :proficiency, :features, :provider, :avatar, :id, :name, :level, :heritage, :classes, :traits, :created_at, :gold,
                :spent_armor_slots, :health_marked, :health_max, :stress_marked, :hope_marked, :modified_traits, :money,
                :damage_thresholds, :evasion, :base_armor_score, :armor_score, :stress_max, :hope_max, :armor_slots,
                :leveling, :subclasses, :subclasses_mastery, :attacks, :experience, :heritage_name, :names, :community,
-               :domains, :selected_domains, :domain_cards_max, :spellcast_traits, :beastform, :beastforms, :tier, :proficiency,
+               :domains, :selected_domains, :domain_cards_max, :spellcast_traits, :beastform, :beastforms, :tier, :main_class,
                :can_have_companion, :transformations, :homebrew_domains, :transformation, :can_have_stances, :selected_stances,
                :stance, :selected_features, :guide_step, :conditions, :advantage_dice, :disadvantage_dice, :scars, :scarred_hope,
                :can_have_beastform, :beast, :hybrid, :rally_dice, :resources, :spell_bonus

@@ -36,7 +36,8 @@ module CharactersContext
           feat: input[:spell],
           used_count: 0,
           limit_refresh: input[:spell].limit_refresh,
-          ready_to_use: input[:ready_to_use]
+          ready_to_use: input[:ready_to_use],
+          tokens: input[:spell].tokens.nil? ? nil : 0
         )
 
         refresh_feats.call(character: input[:character])

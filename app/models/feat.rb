@@ -12,4 +12,8 @@ class Feat < ApplicationRecord
 
   has_many :character_feats, class_name: 'Character::Feat', dependent: :destroy
   has_many :bonuses, class_name: '::Character::Bonus', as: :bonusable, dependent: :destroy
+
+  def to_homebrew_json
+    attributes.slice('title', 'description', 'kind', 'price', 'description_eval_variables', 'conditions', 'limit_refresh')
+  end
 end

@@ -97,7 +97,7 @@
     "advantages": ["deceive", "distract", "locate"],
     "examples": { "en": "Giant Eagle, Falcon", "ru": "Гигантский орёл, Сокол" },
     "features": {
-      "bird_eye_view": { "en": "Bird's-Eye View", "ru": "Высота птичьего полёта" },
+      "great_bird_eye_view": { "en": "Bird's-Eye View", "ru": "Высота птичьего полёта" },
       "great_winged_beast_carrier": { "en": "Carrier", "ru": "Перевозчик" }
     }
   },
@@ -123,7 +123,7 @@
     "advantages": ["attack", "sneak", "sprint"],
     "examples": { "en": "Dire Wolf, Velociraptor, Sabertooth Tiger", "ru": "Ужасный волк, Велоцираптор, Саблезубый тигр" },
     "features": {
-      "carrier": { "en": "Carrier", "ru": "Перевозчик" },
+      "great_carrier": { "en": "Carrier", "ru": "Перевозчик" },
       "vicious_maul": { "en": "Vicious Maul", "ru": "Свирепость" }
     }
   },
@@ -266,7 +266,7 @@
     "advantages": ["navigate", "sneak", "swim"],
     "examples": { "en": "Eel, Fish, Octopus", "ru": "Угорь, Рыба, Осьминог" },
     "features": {
-      "aquatic": { "en": "Aquatic", "ru": "Водное" },
+      "aquatic_scout": { "en": "Aquatic", "ru": "Водное" },
       "aquatic_scout_fragile": { "en": "Fragile", "ru": "Хрупкость" }
     }
   },
