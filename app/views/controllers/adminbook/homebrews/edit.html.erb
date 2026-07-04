@@ -1,0 +1,15 @@
+<%= form_with model: @homebrew, scope: :homebrew, url: adminbook_homebrew_path(@homebrew), method: 'patch', class: 'font-cascadia-light' do |form| %>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Название', class: 'form-label' %></div>
+    <div><%= form.textarea :title, value: @homebrew.title, class: 'form-text text-sm', required: true, size: '100x7' %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Описание', class: 'form-label' %></div>
+    <div><%= form.textarea :description, value: @homebrew.description, class: 'form-text text-sm', required: true, size: '100x7' %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Данные', class: 'form-label' %></div>
+    <div><%= form.textarea :info, value: @homebrew.info, class: 'form-text text-sm', required: true, size: '100x7' %></div>
+  </div>
+  <%= form.submit 'Update', class: 'btn btn-primary' %>
+<% end %>

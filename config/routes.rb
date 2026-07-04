@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'web_telegram', to: 'web_telegram#index'
 
   namespace :adminbook do
+    resources :homebrews, only: %i[edit update]
     namespace :users do
       resources :notifications, except: %i[show]
       resources :identities, only: %i[index]
