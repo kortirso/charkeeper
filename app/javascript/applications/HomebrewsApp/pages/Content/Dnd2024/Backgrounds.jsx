@@ -41,7 +41,7 @@ export const Dnd2024Backgrounds = () => {
   return (
     <SharedContent
       provider="dnd2024"
-      parentType="Dnd2024::Homebrews::Background"
+      parentType="Homebrew"
       publicationType="background"
       onFetchRequest={fetchList}
       onShowRequest={fetchBackgroundRequest}

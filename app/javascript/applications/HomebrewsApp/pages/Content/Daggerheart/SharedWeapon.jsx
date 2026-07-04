@@ -57,7 +57,9 @@ export const SharedWeapon = (props) => {
     <div class="flex flex-col gap-1 text-sm">
       <p>{localize(TRANSLATION, locale()).tier} - {props.info.info.tier}</p>
       <p>{localize(TRANSLATION, locale()).kind} - {localize(TRANSLATION, locale()).kinds[props.info.kind]}</p>
-      <p>{localize(TRANSLATION, locale()).trait} - {localize(config.traits[props.info.info.trait].name, locale())}</p>
+      <Show when={props.info.info.trait}>
+        <p>{localize(TRANSLATION, locale()).trait} - {localize(config.traits[props.info.info.trait].name, locale())}</p>
+      </Show>
       <p>{localize(TRANSLATION, locale()).damageType} - {localize(config.damageTypes[props.info.info.damage_type].name, locale())}</p>
       <p>{localize(TRANSLATION, locale()).damage} - {props.info.info.damage}</p>
       <p>{localize(TRANSLATION, locale()).damageBonus} - {props.info.info.damage_bonus}</p>

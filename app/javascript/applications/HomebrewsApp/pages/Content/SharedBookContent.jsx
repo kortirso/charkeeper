@@ -91,7 +91,7 @@ export const SharedBookContent = (props) => {
   }
 
   const createBook = async () => {
-    const result = await createBookRequest(appState.accessToken, 'daggerheart', { book: bookForm });
+    const result = await createBookRequest(appState.accessToken, props.provider, { book: bookForm });
 
     if (result.errors_list === undefined) {
       batch(() => {

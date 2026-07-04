@@ -47,7 +47,7 @@ export const DaggerheartTransformationsV2 = () => {
   return (
     <SharedContent
       provider="daggerheart"
-      parentType="Daggerheart::Homebrews::Transformation"
+      parentType="Homebrew"
       publicationType="transformation"
       onFetchRequest={fetchList}
       onBatchDestroy={batchDestroy}

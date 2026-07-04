@@ -75,6 +75,7 @@ export const Dnd2024Books = () => {
 
   return (
     <SharedBookContent
+      provider="dnd2024"
       onFetchRequest={fetchList}
       onShowRequest={fetchBookRequest}
       onRemoveRequest={removeBookRequest}

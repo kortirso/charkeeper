@@ -73,7 +73,7 @@ export const DaggerheartSubclasses = () => {
   return (
     <SharedContent
       provider="daggerheart"
-      parentType="Daggerheart::Homebrews::Subclass"
+      parentType="Homebrew"
       publicationType="subclass"
       onFetchRequest={fetchList}
       onBatchDestroy={batchDestroy}

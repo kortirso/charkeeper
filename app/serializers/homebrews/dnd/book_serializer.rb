@@ -17,7 +17,7 @@ module Homebrews
           classes: subclasses_info(items),
           spells: feats(items, 6).pluck(:title).map { |item| translate(item) },
           feats: feats(items, 4).pluck(:title).map { |item| translate(item) },
-          backgrounds: titles(items, ::Dnd2024::Homebrews::Background, 'Dnd2024::Homebrews::Background')
+          backgrounds: titles(items, ::Dnd2024::Homebrews::Background, 'Homebrew')
         }
       end
 
