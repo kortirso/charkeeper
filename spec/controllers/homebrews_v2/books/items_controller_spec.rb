@@ -23,7 +23,7 @@ describe HomebrewsV2::Books::ItemsController do
           post :create, params: {
             book_id: book.id,
             ids: [homebrew.id],
-            itemable_type: 'Daggerheart::Homebrews::Transformation',
+            itemable_type: 'Homebrew',
             charkeeper_access_token: access_token
           }
         }

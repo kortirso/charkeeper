@@ -29,7 +29,8 @@ const TRANSLATION = {
     delete: 'Delete',
     deletingProgress: 'Deleting',
     deleteAll: 'Delete selected',
-    deletingAll: 'Deleting selected homebrews'
+    deletingAll: 'Deleting selected homebrews',
+    inBooks: 'Included in books'
   },
   ru: {
     add: 'Добавить',
@@ -51,7 +52,8 @@ const TRANSLATION = {
     delete: 'Удалить',
     deletingProgress: 'Удаление',
     deleteAll: 'Удалить выбранные',
-    deletingAll: 'Удаление выбранных homebrews'
+    deletingAll: 'Удаление выбранных homebrews',
+    inBooks: 'Добавлено в книги'
   },
   es: {
     add: 'Agregar',
@@ -73,7 +75,8 @@ const TRANSLATION = {
     delete: 'Delete',
     deletingProgress: 'Deleting',
     deleteAll: 'Delete selected',
-    deletingAll: 'Deleting selected homebrews'
+    deletingAll: 'Deleting selected homebrews',
+    inBooks: 'Included in books'
   }
 }
 
@@ -307,17 +310,19 @@ export const SharedContent = (props) => {
         <Show when={filtered().length > 0}>
           <div class="flex items-center justify-between mb-2">
             <div class="flex items-center">
-              <Select
-                containerClassList="w-40"
-                labelText={localize(TRANSLATION, locale()).selectBook}
-                items={Object.fromEntries(books().map((item) => [item.id, item.title]))}
-                selectedValue={book()}
-                onSelect={setBook}
-              />
-              <Show when={book() && selectedIds().length > 0}>
-                <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
-                  {localize(TRANSLATION, locale()).save}
-                </Button>
+              <Show when={props.parentType}>
+                <Select
+                  containerClassList="w-40"
+                  labelText={localize(TRANSLATION, locale()).selectBook}
+                  items={Object.fromEntries(books().map((item) => [item.id, item.title]))}
+                  selectedValue={book()}
+                  onSelect={setBook}
+                />
+                <Show when={book() && selectedIds().length > 0}>
+                  <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
+                    {localize(TRANSLATION, locale()).save}
+                  </Button>
+                </Show>
               </Show>
             </div>
             <Show when={props.onBatchDestroy && selectedIds().length > 0 && ownFilter()}>
@@ -341,6 +346,9 @@ export const SharedContent = (props) => {
                             innerHTML={element.description} // eslint-disable-line solid/no-innerhtml
                           />
                         </Show>
+                        <Show when={element.books.length > 0}>
+                          <p class="text-sm">{localize(TRANSLATION, locale()).inBooks}: {element.books.join(', ')}</p>
+                        </Show>
                       </div>
                       <div class="col-span-2 flex items-start justify-end gap-2">
                         <Show
@@ -352,15 +360,17 @@ export const SharedContent = (props) => {
                           }
                         >
                           <div class="flex items-center justify-end gap-1 text-neutral-700">
-                            <Button
-                              default
-                              classList="p-2"
-                              onClick={(e) => select(e, element.id)}
-                            >
-                              <span classList={{ 'opacity-25': !selectedIds().includes(element.id) }}>
-                                <Stroke width="16" height="12" />
-                              </span>
-                            </Button>
+                            <Show when={props.onBatchDestroy || props.parentType}>
+                              <Button
+                                default
+                                classList="p-2"
+                                onClick={(e) => select(e, element.id)}
+                              >
+                                <span classList={{ 'opacity-25': !selectedIds().includes(element.id) }}>
+                                  <Stroke width="16" height="12" />
+                                </span>
+                              </Button>
+                            </Show>
                             <Show when={props.onRemoveRequest}>
                               <Button default classList="px-2 py-1" onClick={(e) => remove(e, element)}>
                                 <Trash width="20" height="20" />

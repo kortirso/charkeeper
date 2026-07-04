@@ -13,10 +13,10 @@ module Homebrews
         items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
-          races: titles(items, ::Daggerheart::Homebrews::Ancestry, 'Daggerheart::Homebrews::Ancestry'),
-          communities: titles(items, ::Daggerheart::Homebrews::Community, 'Daggerheart::Homebrews::Community'),
-          transformations: titles(items, ::Daggerheart::Homebrews::Transformation, 'Daggerheart::Homebrews::Transformation'),
-          domains: titles(items, ::Daggerheart::Homebrews::Domain, 'Daggerheart::Homebrews::Domain'),
+          races: titles(items, ::Daggerheart::Homebrews::Ancestry, 'Homebrew'),
+          communities: titles(items, ::Daggerheart::Homebrews::Community, 'Homebrew'),
+          transformations: titles(items, ::Daggerheart::Homebrews::Transformation, 'Homebrew'),
+          domains: titles(items, ::Daggerheart::Homebrews::Domain, 'Homebrew'),
           classes: subclasses_info(items),
           items: ::Daggerheart::Item.where(id: items['Daggerheart::Item']).pluck(:name).map { |item| translate(item) }
         }
@@ -40,7 +40,7 @@ module Homebrews
       def subclasses_info(items)
         subclasses =
           ::Daggerheart::Homebrews::Subclass
-            .where(id: items['Daggerheart::Homebrews::Subclass'])
+            .where(id: items['Homebrew'])
             .hashable_pluck(:title, :info)
             .group_by { |item| item[:info].class_id }
         classes = ::Daggerheart::Homebrews::Speciality.where(id: subclasses.keys).pluck(:id, :title).to_h

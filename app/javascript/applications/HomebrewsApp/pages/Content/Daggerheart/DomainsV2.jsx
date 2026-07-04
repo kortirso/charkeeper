@@ -59,7 +59,7 @@ export const DaggerheartDomainsV2 = () => {
   return (
     <SharedContent
       provider="daggerheart"
-      parentType="Daggerheart::Homebrews::Domain"
+      parentType="Homebrew"
       publicationType="domain"
       onFetchRequest={fetchList}
       onBatchDestroy={batchDestroy}

@@ -45,7 +45,7 @@ export const DaggerheartAncestriesV2 = () => {
   return (
     <SharedContent
       provider="daggerheart"
-      parentType="Daggerheart::Homebrews::Ancestry"
+      parentType="Homebrew"
       publicationType="ancestry"
       onFetchRequest={fetchList}
       onBatchDestroy={batchDestroy}

@@ -78,6 +78,7 @@ export const DaggerheartBooksV2 = () => {
 
   return (
     <SharedBookContent
+      provider="daggerheart"
       onFetchRequest={fetchList}
       onShowRequest={fetchBookRequest}
       onRemoveRequest={removeBookRequest}
