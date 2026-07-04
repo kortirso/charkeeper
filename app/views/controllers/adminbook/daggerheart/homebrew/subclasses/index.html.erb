@@ -7,7 +7,7 @@
       <td>Class name</td>
       <td>Spellcast</td>
       <td>Mechanics</td>
-      <td>User ID</td>
+      <td></td>
       <td></td>
     </tr>
   </thead>
@@ -15,13 +15,13 @@
     <% @subclasses.each_with_index do |subclass, index| %>
       <tr>
         <td class="pr-2"><%= (@pagy.page - 1) * 25 + index + 1 %></td>
-        <td class="pr-2"><%= subclass.id %></td>
+        <td class="pr-2"><%= subclass.id %></br><%= subclass.user_id %></td>
         <td class="pr-2"><%= subclass.title %></td>
-        <td class="pr-2"><%= subclass.info.class_id %></td>
+        <td class="pr-2"><%= @classes[subclass.info.class_id] ? "HB #{translate(@classes[subclass.info.class_id])}" : subclass.info.class_id %></td>
         <td class="pr-2"><%= subclass.info.spellcast %></td>
         <td class="pr-2"><%= subclass.info.mechanics %></td>
-        <td class="pr-2"><%= subclass.user_id %></td>
-        <td><%= subclass.created_at.strftime('%d-%m-%Y') %></td>
+        <td class="pr-2"><%= subclass.created_at.strftime('%d-%m-%Y') %></td>
+        <td><%= link_to 'Edit', edit_adminbook_homebrew_path(subclass.id) %></td>
       </tr>
     <% end %>
   </tbody>

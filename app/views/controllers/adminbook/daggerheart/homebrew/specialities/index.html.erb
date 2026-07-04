@@ -9,6 +9,7 @@
       <td>Domains</td>
       <td>User ID</td>
       <td></td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +22,8 @@
         <td class="pr-2"><%= speciality.info.health_max %></td>
         <td class="pr-2"><%= speciality.info.domains %></td>
         <td class="pr-2"><%= speciality.user_id %></td>
-        <td><%= speciality.created_at.strftime('%d-%m-%Y') %></td>
+        <td class="pr-2"><%= speciality.created_at.strftime('%d-%m-%Y') %></td>
+        <td><%= link_to 'Edit', edit_adminbook_homebrew_path(speciality.id) %></td>
       </tr>
     <% end %>
   </tbody>
