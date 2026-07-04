@@ -11,6 +11,7 @@ module HomebrewsV2Context
 
           # rubocop: disable Metrics/BlockLength
           use_contract do
+            Types = Dry::Types['strict.string'].enum('spell', 'ability', 'grimoire')
             Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'session')
             WeaponKinds = Dry::Types['strict.string'].enum('primary weapon', 'secondary weapon')
@@ -47,7 +48,6 @@ module HomebrewsV2Context
                 optional(:limit).filled(:integer, gteq?: 0)
                 optional(:limit_refresh).filled(Limits)
                 optional(:modifiers).hash
-                required(:level).filled(:integer, gteq?: 1, lteq?: 10)
                 optional(:price).hash do
                   optional(:stress).filled(:integer, gteq?: 1, lteq?: 10)
                   optional(:hope).filled(:integer, gteq?: 1, lteq?: 10)
@@ -58,6 +58,9 @@ module HomebrewsV2Context
                   optional(:reset_at).filled(:string)
                   optional(:reset).filled(:string)
                 end
+                required(:level).filled(:integer, gteq?: 1, lteq?: 10)
+                required(:type).filled(Types)
+                optional(:recall).filled(:integer, gteq?: 1, lteq?: 10)
                 optional(:attacks).maybe(:array).each(:hash) do
                   required(:kind).filled(WeaponKinds)
                   required(:name).hash do

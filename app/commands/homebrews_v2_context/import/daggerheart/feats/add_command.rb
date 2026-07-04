@@ -20,6 +20,7 @@ module HomebrewsV2Context
             Ranges = Dry::Types['strict.string'].enum('melee', 'very close', 'close', 'far', 'very far')
             DamageTypes = Dry::Types['strict.string'].enum('physical', 'magic')
             Damages = Dry::Types['strict.string'].enum('d4', 'd6', 'd8', 'd10', 'd12', 'd20')
+            Types = Dry::Types['strict.string'].enum('spell', 'ability', 'grimoire')
 
             params do
               required(:user).filled(type?: ::User)
@@ -35,6 +36,8 @@ module HomebrewsV2Context
               optional(:level).filled(:integer)
               optional(:no_refresh).filled(:bool)
               optional(:continious).filled(:bool)
+              optional(:type).filled(Types)
+              optional(:recall).filled(:integer, gteq?: 1, lteq?: 10)
               optional(:tokens).hash do
                 optional(:limit).filled(:string)
                 optional(:reset_at).filled(:string)
@@ -82,8 +85,9 @@ module HomebrewsV2Context
             if input[:origin] == 'subclass' && input.key?(:subclass_mastery)
               input[:conditions] = { subclass_mastery: input[:subclass_mastery] }
             end
-            if input[:origin] == 'domain_card' && input.key?(:level)
+            if input[:origin] == 'domain_card'
               input[:conditions] = { level: input[:level] }
+              input[:info] = { type: input[:type], recall: input[:recall] }.compact
             end
 
             input[:description_eval_variables] = { limit: input[:limit].to_s } if input.key?(:limit)

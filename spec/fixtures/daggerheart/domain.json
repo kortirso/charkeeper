@@ -40,6 +40,12 @@
           "spell_bonus": { "type": "add", "value": 2 },
           "severe": { "type": "add", "value": "tier" }
         },
+        /* optional, hope or stress */
+        "price": { "hope": 1 },
+        /* required, allowed values - spell, ability, grimoire */
+        "type": "spell",
+        /* optional */
+        "recall": 1,
         "attacks": [
           {
             /* required, allowed locale keys - en, ru, es */

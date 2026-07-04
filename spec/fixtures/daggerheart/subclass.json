@@ -41,6 +41,8 @@
         "limit_refresh": "short_rest",
         /* required, allowed values - 1/2/3 */
         "subclass_mastery": 1,
+        /* optional, hope or stress */
+        "price": { "hope": 1 },
         /* optional */
         /* available keys - str/agi/fin/ins/pre/know/health/stress/hope/evasion/armor_score/major/severe/attack/damage/spell_bonus */
         /* type - add */
