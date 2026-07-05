@@ -37,9 +37,8 @@ module ImportContext
           selected_skills: (data['selected_proficiencies'] & ::Dnd2024::Character.skills.keys).index_with(1),
           languages: data['languages'],
           heroic_inspiration: data['heroic_inspiration'],
-          money: data['money'],
-          guide_step: nil
-        }
+          money: data['money']
+        }.compact.merge(guide_step: nil)
       end
     end
   end

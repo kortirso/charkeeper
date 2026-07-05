@@ -37,7 +37,7 @@ module ImportContext
           languages: data['languages'],
           heroic_inspiration: data['heroic_inspiration'],
           money: data['money']
-        }
+        }.compact
       end
     end
   end

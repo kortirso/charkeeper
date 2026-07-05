@@ -73,4 +73,45 @@ describe Frontend::Dnd5::CharactersController do
       end
     end
   end
+
+  describe 'POST#import' do
+    context 'for logged users' do
+      let(:request) {
+        post :import, params: {
+          provider: 'beyond',
+          data: {
+            name: 'Грундар', race: 'human', size: 'medium', main_class: 'monk', alignment: 'neutral',
+            classes: { monk: 5 }, max_health: 30, selected_proficiencies: ['nature'],
+            languages: %w[common gnomish dwarvish], money: 8_052,
+            abilities: { str: 10, dex: 12, con: 14, int: 16, wis: 14, cha: 10 }
+          }, charkeeper_access_token: access_token
+        }
+      }
+
+      before { user_session.user.update(locale: 'en') }
+
+      it 'creates character', :aggregate_failures do
+        expect { request }.to change(user_session.user.characters, :count).by(1)
+        expect(response).to have_http_status :created
+        expect(Dnd5::Character.last.data.classes).to eq({ 'monk' => 5 })
+      end
+
+      context 'for invalid request' do
+        let(:request) {
+          post :import, params: {
+            provider: 'beyond',
+            data: {
+              name: '', race: 'human', size: 'medium', main_class: 'monk', alignment: 'neutral'
+            }, charkeeper_access_token: access_token
+          }
+        }
+
+        it 'returns error', :aggregate_failures do
+          expect { request }.not_to change(Character, :count)
+          expect(response).to have_http_status :unprocessable_content
+          expect(response.parsed_body['errors']).not_to be_nil
+        end
+      end
+    end
+  end
 end
