@@ -47,7 +47,7 @@ export const DaggerheartConsumables = () => {
   return (
     <SharedContent
       provider="daggerheart"
-      parentType="Daggerheart::Item"
+      parentType="Item"
       publicationType="consumables"
       onFetchRequest={fetchList}
       onBatchDestroy={batchDestroy}

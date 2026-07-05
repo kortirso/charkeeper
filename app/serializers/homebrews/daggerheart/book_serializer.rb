@@ -18,7 +18,7 @@ module Homebrews
           transformations: titles(items, ::Daggerheart::Homebrews::Transformation, 'Homebrew'),
           domains: titles(items, ::Daggerheart::Homebrews::Domain, 'Homebrew'),
           classes: subclasses_info(items),
-          items: ::Daggerheart::Item.where(id: items['Daggerheart::Item']).pluck(:name).map { |item| translate(item) }
+          items: ::Daggerheart::Item.where(id: items['Item']).pluck(:name).map { |item| translate(item) }
         }
       end
 

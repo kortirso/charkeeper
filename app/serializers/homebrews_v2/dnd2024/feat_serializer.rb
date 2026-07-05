@@ -3,7 +3,7 @@
 module HomebrewsV2
   module Dnd2024
     class FeatSerializer < ApplicationSerializer
-      attributes :id, :title, :description, :own
+      attributes :id, :title, :description, :own, :books
 
       def title
         translate(object.title)
@@ -18,6 +18,10 @@ module HomebrewsV2
         return false unless context[:current_user_id]
 
         object.user_id == context[:current_user_id]
+      end
+
+      def books
+        object.homebrew_books.pluck(:name)
       end
     end
   end

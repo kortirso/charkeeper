@@ -15,6 +15,7 @@ module HomebrewsV2
           .kept
           .where(kind: params.expect(:type).split(','))
           .includes(recipes: :item)
+          .includes(:homebrew_books)
       end
     end
   end

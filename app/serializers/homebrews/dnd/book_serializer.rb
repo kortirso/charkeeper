@@ -13,7 +13,7 @@ module Homebrews
         items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
-          items: ::Dnd5::Item.where(id: items['Dnd5::Item']).pluck(:name).map { |item| translate(item) },
+          items: ::Dnd5::Item.where(id: items['Item']).pluck(:name).map { |item| translate(item) },
           classes: subclasses_info(items),
           spells: feats(items, 6).pluck(:title).map { |item| translate(item) },
           feats: feats(items, 4).pluck(:title).map { |item| translate(item) },
@@ -42,9 +42,7 @@ module Homebrews
       end
 
       def feats(object_items, origin)
-        ::Dnd2024::Feat
-          .where(origin: origin)
-          .where(id: object_items['Dnd2024::Feat'].to_a + object_items['Feat'].to_a)
+        ::Dnd2024::Feat.where(origin: origin).where(id: object_items['Feat'].to_a)
       end
 
       def titles(object_items, model, key)

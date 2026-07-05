@@ -346,7 +346,7 @@ export const SharedContent = (props) => {
                             innerHTML={element.description} // eslint-disable-line solid/no-innerhtml
                           />
                         </Show>
-                        <Show when={element.books.length > 0}>
+                        <Show when={element.books && element.books.length > 0}>
                           <p class="text-sm">{localize(TRANSLATION, locale()).inBooks}: {element.books.join(', ')}</p>
                         </Show>
                       </div>

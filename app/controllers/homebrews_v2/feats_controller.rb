@@ -14,7 +14,7 @@ module HomebrewsV2
         feats,
         serializer,
         :homebrews,
-        serialized_fields: { only: %i[id title own] },
+        serialized_fields: { only: %i[id title own books] },
         order_options: order_options,
         context: { current_user_id: current_user.id }
       )

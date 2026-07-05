@@ -2,6 +2,7 @@
 
 class Item < ApplicationRecord
   include Discard::Model
+  include Homebrewable
 
   belongs_to :user, optional: true, touch: :homebrew_updated_at
   belongs_to :itemable, polymorphic: true, optional: true

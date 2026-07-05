@@ -19,7 +19,7 @@ describe HomebrewsV2::Dnd2024::SpellsController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['homebrews'].size).to eq 2
-        expect(response.parsed_body.dig('homebrews', 0).keys).to contain_exactly('id', 'title', 'own')
+        expect(response.parsed_body.dig('homebrews', 0).keys).to contain_exactly('id', 'title', 'own', 'books')
       end
     end
   end
@@ -34,7 +34,7 @@ describe HomebrewsV2::Dnd2024::SpellsController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['homebrew'].keys).to(
-          contain_exactly('id', 'title', 'description', 'own', 'info', 'origin_values')
+          contain_exactly('id', 'title', 'description', 'own', 'info', 'origin_values', 'books')
         )
       end
     end

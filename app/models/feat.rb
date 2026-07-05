@@ -2,6 +2,7 @@
 
 class Feat < ApplicationRecord
   include Itemable
+  include Homebrewable
 
   scope :dnd5, -> { where(type: 'Dnd5::Feat') }
   scope :dnd2024, -> { where(type: 'Dnd2024::Feat') }

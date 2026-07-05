@@ -45,6 +45,7 @@ module HomebrewsV2
         .visible
         .kept
         .where(kind: params.expect(:type).split(','))
+        .includes(:homebrew_books)
     end
 
     def find_item
