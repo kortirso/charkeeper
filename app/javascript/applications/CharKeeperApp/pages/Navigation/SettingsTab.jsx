@@ -114,7 +114,7 @@ export const SettingsTab = () => {
             </p>
           </Show>
         </div>
-        <p class="py-3 px-4 dark:text-snow">{t('pages.settingsPage.version')} 0.4.37, 2026.06.24</p>
+        <p class="py-3 px-4 dark:text-snow">{t('pages.settingsPage.version')} 0.4.38, 2026.07.05</p>
       </div>
     </>
   );
