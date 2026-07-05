@@ -238,7 +238,10 @@ module DaggerheartCharacter
 
     def calculate_damage_bonus(damage_bonus, damage_type)
       damage_bonus += level if available_feature_slugs.include?('combat_training') && damage_type == 'physical'
-      damage_bonus.to_i + feat_bonuses['damage'].to_i
+      damage_bonus.to_i +
+      feat_bonuses['damage'].to_i +
+      sum(bonuses.pluck('damage').compact) +
+      sum(dynamic_bonuses.pluck('damage').compact)
     end
 
     def trait_bonus(item)

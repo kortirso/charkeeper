@@ -31,6 +31,7 @@ module CharactersContext
               optional(:armor_score).filled(:integer)
               optional(:attack).filled(:integer)
               optional(:proficiency).filled(:integer)
+              optional(:damage).filled(:integer)
             end
             optional(:dynamic_value).hash do
               optional(:traits).hash do
@@ -51,6 +52,7 @@ module CharactersContext
               optional(:evasion).filled(:string)
               optional(:armor_score).filled(:string)
               optional(:attack).filled(:string)
+              optional(:damage).filled(:string)
             end
           end
         end

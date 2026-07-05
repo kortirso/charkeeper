@@ -22,7 +22,8 @@ const MAPPING = {
     'major': 'Major threshold',
     'severe': 'Severe threshold',
     'attack': 'Attacks',
-    'proficiency': 'Proficiency'
+    'proficiency': 'Proficiency',
+    'damage': 'Damage'
   },
   ru: {
     'str': 'Сила',
@@ -39,7 +40,8 @@ const MAPPING = {
     'major': 'Порог ощутимого урона',
     'severe': 'Порог тяжёлого урона',
     'attack': 'Бонус атаки',
-    'proficiency': 'Мастерство'
+    'proficiency': 'Мастерство',
+    'damage': 'Бонус урона'
   }
 }
 const DYNAMIC_ITEMS = {
@@ -68,7 +70,7 @@ export const DaggerheartBonuses = (props) => {
         {([bonusSlug, value]) =>
           <Switch
             fallback={
-              <For each={['health', 'stress', 'hope', 'evasion', 'armor_score', 'attack', 'proficiency']}>
+              <For each={['health', 'stress', 'hope', 'evasion', 'armor_score', 'attack', 'proficiency', 'damage']}>
                 {(slug) =>
                   <Show when={bonusSlug === slug}>
                     <p class="bonus">
@@ -105,7 +107,7 @@ export const DaggerheartBonuses = (props) => {
           {([bonusSlug, value]) =>
             <Switch
               fallback={
-                <For each={['health', 'stress', 'hope', 'evasion', 'armor_score', 'attack']}>
+                <For each={['health', 'stress', 'hope', 'evasion', 'armor_score', 'attack', 'damage']}>
                   {(slug) =>
                     <Show when={bonusSlug === slug}>
                       <p class="bonus">
