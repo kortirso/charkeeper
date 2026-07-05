@@ -9,7 +9,7 @@
   </div>
   <div class="form-field mb-2">
     <div><%= form.label 'Данные', class: 'form-label' %></div>
-    <div><%= form.textarea :info, value: @homebrew.info, class: 'form-text text-sm', required: true, size: '100x7' %></div>
+    <div><%= form.textarea :info, value: @homebrew.info.is_a?(Hash) ? @homebrew.info : @homebrew.info.attributes, class: 'form-text text-sm', required: true, size: '100x7' %></div>
   </div>
   <%= form.submit 'Update', class: 'btn btn-primary' %>
 <% end %>
