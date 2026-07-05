@@ -5,8 +5,8 @@
       "ru": "Ткач снов"
     },
     "description": {
-      "en": "Play the Dreamweaver if you want to turn stress into strength and disrupt the minds of your enemies",
-      "ru": ""
+      "en": "Play the Dreamweaver if you want to turn stress into strength and disrupt the minds of your enemies.",
+      "ru": "Играйте за Ткача снов, если хотите превратить стресс в силу и дезориентировать умы своих врагов."
     },
     "public": true,
     "class_id": "",
@@ -14,7 +14,7 @@
     "features": [
       {
         "title": {
-          "en": "Dream Eate",
+          "en": "Dream Eater",
           "ru": "Пожиратель снов"
         },
         "description": {
@@ -31,11 +31,15 @@
         },
         "description": {
           "en": "When you use your **Dream Eater** feature, place a number of tokens equal to your Spellcast trait on this card. When you make a Spellcast Roll or reaction roll, you can spend any number of these tokens to roll an equal number of d4s and add the total to the roll. When you start a rest, clear any unspent tokens on this card and gain a Hope per token cleared.",
-          "ru": "**"
+          "ru": ""
         },
         "kind": "static",
         "subclass_mastery": 1,
-        "limit": 0
+        "tokens": {
+          "limit": "none",
+          "reset_at": "long",
+          "reset": "zero"
+        }
       },
       {
         "title": {
@@ -56,12 +60,14 @@
           "ru": "Грезы"
         },
         "description": {
-          "en": "Once per session, when an adversary within Far range succeeds on an attack roll, you can **spend 3 Hope** to make a reaction roll using your Spellcast trait against their Difficulty. On a success, they become temporarily *Stunned* and the attack is negated. While *Stunned*, they can't use reactions and can't take any other actions until they clear this condition.",
+          "en": "When an adversary within Far range succeeds on an attack roll, you can **spend 3 Hope** to make a reaction roll using your Spellcast trait against their Difficulty. On a success, they become temporarily *Stunned* and the attack is negated. While *Stunned*, they can't use reactions and can't take any other actions until they clear this condition.",
           "ru": ""
         },
         "kind": "static",
         "subclass_mastery": 3,
-        "price": { "hope": 3 }
+        "price": { "hope": 3 },
+        "level": 1,
+        "limit_refresh": "session"
       }
     ]
   },
@@ -71,8 +77,8 @@
       "ru": "Призыватель духов"
     },
     "description": {
-      "en": "Play the Spiritcaller if you want to bind spirits into physical totems and wield their blessings",
-      "ru": ""
+      "en": "Play the Spiritcaller if you want to bind spirits into physical totems and wield their blessings.",
+      "ru": "Играйте за Призывателя духов, если хотите привязывать духов к физическим тотемам и использовать их благословения."
     },
     "public": true,
     "class_id": "",
@@ -80,15 +86,45 @@
     "features": [
       {
         "title": {
-          "en": "Totemic Binding",
-          "ru": "Тотемная привязь"
+          "en": "Totemic Binding: Protective Totem",
+          "ru": "Связь с тотемами: "
         },
         "description": {
-          "en": "You carry three handcrafted totems, each housing a spirit that empowers you. Describe each totem's appearance and the nature of the spirit it contains. You can invoke each totem once per long rest:\n\n- **Protective Totem** When you mark an Armor Slot, reduce the severity of the attack by two thresholds instead of one.\n\n- **Muddling Totem** Make a target within Close range temporarily Muddled. While Muddled, they have disadvantage on attack rolls.\n\n- **Leeching Totem** Choose a target within Melee range. They mark a Hit Point, and you clear a Hit Point.",
+          "en": "When you mark an Armor Slot, reduce the severity of the attack by two thresholds instead of one.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "level": 1,
+        "limit_refresh": "long_rest"
+      },
+      {
+        "title": {
+          "en": "Totemic Binding: Muddling Totem",
+          "ru": "Связь с тотемами: "
+        },
+        "description": {
+          "en": "Make a target within Close range temporarily Muddled. While Muddled, they have disadvantage on attack rolls.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "level": 1,
+        "limit_refresh": "long_rest"
+      },
+      {
+        "title": {
+          "en": "Totemic Binding: Leeching Totem",
+          "ru": "Связь с тотемами: "
+        },
+        "description": {
+          "en": "Choose a target within Melee range. They mark a Hit Point, and you clear a Hit Point.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "level": 1,
+        "limit_refresh": "long_rest"
       },
       {
         "title": {
@@ -100,19 +136,53 @@
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "stress": 1 }
       },
       {
         "title": {
-          "en": "Empowered Spirits",
-          "ru": ""
+          "en": "Empowered Totemic Binding: Protective Totem",
+          "ru": "Сильная связь с тотемами: "
         },
         "description": {
-          "en": "Your connections to the spirits within your totems have grown stronger. You can invoke each of your **Totemic Binding** feature's totems twice instead of once per long rest.",
+          "en": "When you mark an Armor Slot, reduce the severity of the attack by two thresholds instead of one.",
           "ru": ""
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "limit": 2,
+        "limit_refresh": "long_rest",
+        "exclude": []
+      },
+      {
+        "title": {
+          "en": "Empowered Totemic Binding: Muddling Totem",
+          "ru": "Сильная связь с тотемами: "
+        },
+        "description": {
+          "en": "Make a target within Close range temporarily Muddled. While Muddled, they have disadvantage on attack rolls.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "limit": 2,
+        "limit_refresh": "long_rest",
+        "exclude": []
+      },
+      {
+        "title": {
+          "en": "Empowered Totemic Binding: Leeching Totem",
+          "ru": "Сильная связь с тотемами: "
+        },
+        "description": {
+          "en": "Choose a target within Melee range. They mark a Hit Point, and you clear a Hit Point.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "limit": 2,
+        "limit_refresh": "long_rest",
+        "exclude": []
       }
     ]
   }

@@ -64,6 +64,7 @@ module HomebrewsV2Context
                   optional(:hope).filled(:integer, gteq?: 1, lteq?: 10)
                 end
                 optional(:continious).filled(:bool)
+                optional(:exclude).filled(:array).each(:string, :uuid_v4?)
                 optional(:attacks).maybe(:array).each(:hash) do
                   required(:kind).filled(WeaponKinds)
                   required(:name).hash do

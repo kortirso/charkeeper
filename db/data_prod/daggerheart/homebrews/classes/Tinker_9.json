@@ -1,0 +1,368 @@
+[
+  {
+    "id": "16bedae3-449c-41e3-8681-bb59158fc0fc",
+    "title": {
+      "en": "Tinker",
+      "ru": "Tinker"
+    },
+    "description": {},
+    "public": false,
+    "domains": [
+      "codex",
+      "sage"
+    ],
+    "evasion": 10,
+    "health_max": 6,
+    "subclasses": [
+      [
+        {
+          "title": {
+            "en": "Gearsmith",
+            "ru": "Gearsmith"
+          },
+          "description": {},
+          "public": false,
+          "class_id": "16bedae3-449c-41e3-8681-bb59158fc0fc",
+          "spellcast": "know",
+          "mechanics": [],
+          "features": [
+            {
+              "title": {
+                "en": "Kinetic Capacitor",
+                "ru": "Kinetic Capacitor"
+              },
+              "description": {
+                "en": "Whenever you mark an Armor Slot to reduce incoming damage, place one Kinetic Token on this card. You can hold a maximum number of tokens equal to your Proficiency.\n\nYour Kinetic Die is D6. When you make a successful attack, you can spend any number of tokens to add that many Kinetic Dice of additional Magical Damage. \n\nIf you change your armor, all stored tokens are cleared.",
+                "ru": "Whenever you mark an Armor Slot to reduce incoming damage, place one Kinetic Token on this card. You can hold a maximum number of tokens equal to your Proficiency.\n\nYour Kinetic Die is D6. When you make a successful attack, you can spend any number of tokens to add that many Kinetic Dice of additional Magical Damage. \n\nIf you change your armor, all stored tokens are cleared."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 1
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Calculated Strike",
+                "ru": "Calculated Strike"
+              },
+              "description": {
+                "en": "Before making a weapon Attack Roll , you can mark a Stress to use your Spellcast trait  for the roll instead of the weapon's trait.",
+                "ru": "Before making a weapon Attack Roll , you can mark a Stress to use your Spellcast trait  for the roll instead of the weapon's trait."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 1
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Defensive Layer",
+                "ru": "Defensive Layer"
+              },
+              "description": {
+                "en": "When you take damage from an attack, you can spend any number of Kinetic Tokens. Roll a number of Kinetic Dice equal to the tokens spent and reduce the incoming damage by the total result.",
+                "ru": "When you take damage from an attack, you can spend any number of Kinetic Tokens. Roll a number of Kinetic Dice equal to the tokens spent and reduce the incoming damage by the total result."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 2
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Repelling Wave",
+                "ru": "Repelling Wave"
+              },
+              "description": {
+                "en": "As an Action, you can spend any number of Kinetic Tokens to unleash a kinetic blast. All enemies within Melee range must make a Reaction Roll with a Difficulty of 10 + your Spellcast trait. On a failure, the target is pushed back to Close range.\n\nRoll a number of Kinetic Dice equal to the tokens you spent; the target takes the total as Magic Damage.",
+                "ru": "As an Action, you can spend any number of Kinetic Tokens to unleash a kinetic blast. All enemies within Melee range must make a Reaction Roll with a Difficulty of 10 + your Spellcast trait. On a failure, the target is pushed back to Close range.\n\nRoll a number of Kinetic Dice equal to the tokens you spent; the target takes the total as Magic Damage."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 2
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Arcane Overload",
+                "ru": "Arcane Overload"
+              },
+              "description": {
+                "en": "Your Kinetic Die is now a D8. Additionally, while you are holding the maximum number of Kinetic Tokens, you have Resistance to Magic Damage.",
+                "ru": "Your Kinetic Die is now a D8. Additionally, while you are holding the maximum number of Kinetic Tokens, you have Resistance to Magic Damage."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 3
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Source Connection",
+                "ru": "Source Connection"
+              },
+              "description": {
+                "en": "As an Action, you can make a Spellcast Roll (15). On a success, you can spend any number of your Kinetic Tokens. For each token spent, you can clear either one Stress slot or one HP slot.",
+                "ru": "As an Action, you can make a Spellcast Roll (15). On a success, you can spend any number of your Kinetic Tokens. For each token spent, you can clear either one Stress slot or one HP slot."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 3
+              },
+              "limit_refresh": null
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "title": {
+            "en": "Glyphweaver",
+            "ru": "Glyphweaver"
+          },
+          "description": {},
+          "public": false,
+          "class_id": "16bedae3-449c-41e3-8681-bb59158fc0fc",
+          "spellcast": "know",
+          "mechanics": [],
+          "features": [
+            {
+              "title": {
+                "en": "Glyph Repertoire",
+                "ru": "Glyph Repertoire"
+              },
+              "description": {
+                "en": "Runic Mote Effects (One Effect per Item)\n• Runic Mesh (1 Mote, Armor): When taking damage, spend this Glyph to reduce severity by one Threshold. Roll a D6; on a 6, the Glyph is not spent.\n• Fine Tuning (1 Mote, Weapon): Choose a character trait when placed; weapon uses this trait for attack rolls while Glyph is active.\n• Enervating Glyph (2 Motes, Weapon): When dealing damage, target also marks a Stress.",
+                "ru": "Runic Mote Effects (One Effect per Item)\n• Runic Mesh (1 Mote, Armor): When taking damage, spend this Glyph to reduce severity by one Threshold. Roll a D6; on a 6, the Glyph is not spent.\n• Fine Tuning (1 Mote, Weapon): Choose a character trait when placed; weapon uses this trait for attack rolls while Glyph is active.\n• Enervating Glyph (2 Motes, Weapon): When dealing damage, target also marks a Stress."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 1
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Runic Arsenal",
+                "ru": "Runic Arsenal"
+              },
+              "description": {
+                "en": "* You have a maximum number of Runic Motes equal to your Spellcast Trait. After each Rest, you regain spent Runic Motes up to your maximum. Alternatively, as an Action, you can also mark 1 Stress to regain all spent Runic Motes.\n\n* As an Action, you can spend your Motes to create arcane effects according to your Glyph Repertoire. To modify an item, place the required number of Motes on the item as tokens. These Motes still count toward your maximum.",
+                "ru": "* You have a maximum number of Runic Motes equal to your Spellcast Trait. After each Rest, you regain spent Runic Motes up to your maximum. Alternatively, as an Action, you can also mark 1 Stress to regain all spent Runic Motes.\n\n* As an Action, you can spend your Motes to create arcane effects according to your Glyph Repertoire. To modify an item, place the required number of Motes on the item as tokens. These Motes still count toward your maximum."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 1
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Mote Recycler",
+                "ru": "Mote Recycler"
+              },
+              "description": {
+                "en": "As an Action, you can touch an item bearing one of your Glyphs and remove it. When you do, choose one: regain the Runic Mote, or spend the Glyph to clear 1D4 Stress.",
+                "ru": "As an Action, you can touch an item bearing one of your Glyphs and remove it. When you do, choose one: regain the Runic Mote, or spend the Glyph to clear 1D4 Stress."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 2
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Advanced Schematics pt1",
+                "ru": "Advanced Schematics pt1"
+              },
+              "description": {
+                "en": "You can now prepare the following Glyphs using your Runic Arsenal feature\n• Blinking Glyph: Place this Glyph on a piece of equipment. Its wielder can use an Action and mark 1 Stress to teleport to a point they can see within Far range.",
+                "ru": "You can now prepare the following Glyphs using your Runic Arsenal feature\n• Blinking Glyph: Place this Glyph on a piece of equipment. Its wielder can use an Action and mark 1 Stress to teleport to a point they can see within Far range."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 2
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Advanced Schematics pt2",
+                "ru": "Advanced Schematics pt2"
+              },
+              "description": {
+                "en": "• Resonating Glyph: Place this Glyph on a weapon with 2 Motes.\n    ◦ When its wielder rolls damage with this weapon, for each die that results in its maximum value, they add half of that value as bonus Magic damage.\n    ◦ Additionally, the wielder can choose to spend this Glyph after a successful attack to force the target to make a Strength Reaction Roll (12 + wielder's Proficiency). On a failure, the target is pushed into Far range.",
+                "ru": "• Resonating Glyph: Place this Glyph on a weapon with 2 Motes.\n    ◦ When its wielder rolls damage with this weapon, for each die that results in its maximum value, they add half of that value as bonus Magic damage.\n    ◦ Additionally, the wielder can choose to spend this Glyph after a successful attack to force the target to make a Strength Reaction Roll (12 + wielder's Proficiency). On a failure, the target is pushed into Far range."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 2
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Advanced Schematics pt3",
+                "ru": "Advanced Schematics pt3"
+              },
+              "description": {
+                "en": "• Warding Glyph: Place this Glyph on an Armor. When an attack from beyond Melee range targets the wielder, they can roll 1D6 and add the result to their Evasion against the attack. If the result of the Glyph roll is higher than the wielder's Tier, the Glyph is spent.",
+                "ru": "• Warding Glyph: Place this Glyph on an Armor. When an attack from beyond Melee range targets the wielder, they can roll 1D6 and add the result to their Evasion against the attack. If the result of the Glyph roll is higher than the wielder's Tier, the Glyph is spent."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 2
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Dual Weaving",
+                "ru": "Dual Weaving"
+              },
+              "description": {
+                "en": "Your mastery of runic engineering allows you to intertwine multiple streams of arcane power.\n\n• Glyph Intertwining: You can now install up to 2 Glyphs on the same item. Mote costs are paid for each Glyph individually.\n\n• Weaver's Essence: When you mark one or more HP, you can spend one Hope to regain a number of Runic Motes equal to the HP you marked (up to your maximum Motes).",
+                "ru": "Your mastery of runic engineering allows you to intertwine multiple streams of arcane power.\n\n• Glyph Intertwining: You can now install up to 2 Glyphs on the same item. Mote costs are paid for each Glyph individually.\n\n• Weaver's Essence: When you mark one or more HP, you can spend one Hope to regain a number of Runic Motes equal to the HP you marked (up to your maximum Motes)."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 3
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Deep List pt 1",
+                "ru": "Deep List pt 1"
+              },
+              "description": {
+                "en": "You now know the following Glyphs:\n\n• Vortex Glyph: Cost 1 Mote. Place this Glyph on any item. As an Action, its wielder can spend a Hope to teleport to the item's location, provided it is in the same dimension. After doing so, the Glyph is spent.\n\n• Deep Strike Glyph: Cost 1 Mote. Place this Glyph on a Weapon. It gains the following passive feature: \"When rolling damage for an attack with this weapon, add the weapon's trait modifier to the Damage Roll.\"",
+                "ru": "You now know the following Glyphs:\n\n• Vortex Glyph: Cost 1 Mote. Place this Glyph on any item. As an Action, its wielder can spend a Hope to teleport to the item's location, provided it is in the same dimension. After doing so, the Glyph is spent.\n\n• Deep Strike Glyph: Cost 1 Mote. Place this Glyph on a Weapon. It gains the following passive feature: \"When rolling damage for an attack with this weapon, add the weapon's trait modifier to the Damage Roll.\""
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 3
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Deep List pt 2",
+                "ru": "Deep List pt 2"
+              },
+              "description": {
+                "en": "• Elusive Flow Glyph: Cost 1 Mote. Place this Glyph on an Armor. Its wielder gains the following feature: \"When an attack targets you, you can spend any number of Hope. You gain a +2 bonus to Evasion against that attack for each Hope spent.\"\n\n• Might Glyph: Cost 2 Motes. Place this Glyph on an Armor. The wielder has Advantage on Strength rolls. Additionally, they add a Physical Damage bonus equal to their number of Unmarked Armor Slots.",
+                "ru": "• Elusive Flow Glyph: Cost 1 Mote. Place this Glyph on an Armor. Its wielder gains the following feature: \"When an attack targets you, you can spend any number of Hope. You gain a +2 bonus to Evasion against that attack for each Hope spent.\"\n\n• Might Glyph: Cost 2 Motes. Place this Glyph on an Armor. The wielder has Advantage on Strength rolls. Additionally, they add a Physical Damage bonus equal to their number of Unmarked Armor Slots."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 3
+              },
+              "limit_refresh": null
+            }
+          ]
+        }
+      ]
+    ],
+    "features": [
+      {
+        "title": {
+          "en": "Enchanted Trigger",
+          "ru": "Enchanted Trigger"
+        },
+        "description": {
+          "en": "As an action, spend 3 Hope to choose one of your infused items within Close range. You consume the infusion to unleash its stored power. Choose one of the following effects:\n\n• A creature within Close range clears slots from either their HP or Stress (their choice) equal to the consumed infusion Tier.\n• Gain a bonus to your next Duality Roll equal to the consumed infusion card's Tier.\n• Add magic damage to your next Damage Roll equal to the consumed infusion card's Tier + your Proficiency.",
+          "ru": "As an action, spend 3 Hope to choose one of your infused items within Close range. You consume the infusion to unleash its stored power. Choose one of the following effects:\n\n• A creature within Close range clears slots from either their HP or Stress (their choice) equal to the consumed infusion Tier.\n• Gain a bonus to your next Duality Roll equal to the consumed infusion card's Tier.\n• Add magic damage to your next Damage Roll equal to the consumed infusion card's Tier + your Proficiency."
+        },
+        "kind": "static",
+        "price": {},
+        "description_eval_variables": {
+          "limit": "1"
+        },
+        "conditions": {},
+        "limit_refresh": "session"
+      },
+      {
+        "title": {
+          "en": "Patchwork",
+          "ru": "Patchwork"
+        },
+        "description": {
+          "en": "As an Action, you can touch an Armor to make a Finesse roll against a 10 + Armor's Tier Difficulty. On a success, mark 1 Stress to roll a number of D4s equal to your Proficiency and clear a number of Armor Slots equal to the highest result.",
+          "ru": "As an Action, you can touch an Armor to make a Finesse roll against a 10 + Armor's Tier Difficulty. On a success, mark 1 Stress to roll a number of D4s equal to your Proficiency and clear a number of Armor Slots equal to the highest result."
+        },
+        "kind": "static",
+        "price": {},
+        "description_eval_variables": {},
+        "conditions": {},
+        "limit_refresh": null
+      },
+      {
+        "title": {
+          "en": "Arcane Infusion",
+          "ru": "Arcane Infusion"
+        },
+        "description": {
+          "en": "As an action, touch a willing character while also touching an item to imbue it with a copy of one Spell or Grimoire domain card from the character’s loadout. To perform this enchantment, spend a number of Hope equal to chosen card's Tier.\n\nTo use the imbued spell, the item's wielder must spend Hope equal to the card's Recall Cost + 1 and, if it requires a Spellcast Roll, makes it with Knowledge or Instinct instead.\n\nYou can hold a number of active infusions equal to your Proficiency.",
+          "ru": "As an action, touch a willing character while also touching an item to imbue it with a copy of one Spell or Grimoire domain card from the character’s loadout. To perform this enchantment, spend a number of Hope equal to chosen card's Tier.\n\nTo use the imbued spell, the item's wielder must spend Hope equal to the card's Recall Cost + 1 and, if it requires a Spellcast Roll, makes it with Knowledge or Instinct instead.\n\nYou can hold a number of active infusions equal to your Proficiency."
+        },
+        "kind": "static",
+        "price": {},
+        "description_eval_variables": {},
+        "conditions": {},
+        "limit_refresh": null
+      },
+      {
+        "title": {
+          "en": "Arcane Rigging",
+          "ru": "Arcane Rigging"
+        },
+        "description": {
+          "en": "You can use mundane and common items to create harmless magical effects. For example, you can create an arcane lighter or torch, combine small ingredients or pieces of items to create a compass that points to a specific place, or generate different sounds, smells, or color changes.",
+          "ru": "You can use mundane and common items to create harmless magical effects. For example, you can create an arcane lighter or torch, combine small ingredients or pieces of items to create a compass that points to a specific place, or generate different sounds, smells, or color changes."
+        },
+        "kind": "static",
+        "price": {},
+        "description_eval_variables": {},
+        "conditions": {},
+        "limit_refresh": null
+      }
+    ]
+  }
+]

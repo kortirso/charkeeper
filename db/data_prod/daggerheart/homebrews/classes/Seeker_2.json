@@ -1,0 +1,300 @@
+[
+  {
+    "id": "5c8e6206-5247-40c2-a501-279eb3d7bab0",
+    "title": {
+      "en": "Seeker",
+      "ru": "Seeker"
+    },
+    "description": {},
+    "public": false,
+    "domains": [
+      "arcana",
+      "codex"
+    ],
+    "evasion": 10,
+    "health_max": 6,
+    "subclasses": [
+      [
+        {
+          "title": {
+            "en": "Oracle",
+            "ru": "Oracle"
+          },
+          "description": {},
+          "public": false,
+          "class_id": "5c8e6206-5247-40c2-a501-279eb3d7bab0",
+          "spellcast": "ins",
+          "mechanics": [],
+          "features": [
+            {
+              "title": {
+                "en": "Prophetic Whispers",
+                "ru": "Prophetic Whispers"
+              },
+              "description": {
+                "en": "Once per scene you can open your mind to the whispers of fate. The GM will provide you with a cryptic hint or omen about an upcoming challenge or opportunity in the current scene. This hint might relate to an enemy’s weakness, an environmental hazard, or an upcoming crucial choice.",
+                "ru": "Once per scene you can open your mind to the whispers of fate. The GM will provide you with a cryptic hint or omen about an upcoming challenge or opportunity in the current scene. This hint might relate to an enemy’s weakness, an environmental hazard, or an upcoming crucial choice."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 1
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "A Bad Feeling About This",
+                "ru": "A Bad Feeling About This"
+              },
+              "description": {
+                "en": "When an ally within Very Close range of you rolls with Fear, you can spend 4 Esoteric Knowledge to allow them to re-roll their duality dice. At each new Tier the Esoteric Knowledge cost for this ability is reduced by -1. (3 at Tier 2, 2 at Tier 3, and 1 at Tier 4.)",
+                "ru": "When an ally within Very Close range of you rolls with Fear, you can spend 4 Esoteric Knowledge to allow them to re-roll their duality dice. At each new Tier the Esoteric Knowledge cost for this ability is reduced by -1. (3 at Tier 2, 2 at Tier 3, and 1 at Tier 4.)"
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 1
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Unsettling Premonition",
+                "ru": "Unsettling Premonition"
+              },
+              "description": {
+                "en": "You can spend 2 Esoteric Knowledge before rolling the duality dice to predict that you will roll with Fear. If you predict correctly, you can swap the outcome of your Hope and Fear die, effectively rolling with Hope instead.",
+                "ru": "You can spend 2 Esoteric Knowledge before rolling the duality dice to predict that you will roll with Fear. If you predict correctly, you can swap the outcome of your Hope and Fear die, effectively rolling with Hope instead."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 2
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Knew That Would Work",
+                "ru": "Knew That Would Work"
+              },
+              "description": {
+                "en": "When an ally succeeds with Hope on a roll using an advantage you created with Old Tricks are New\nAgain you also gain a Hope from the outcome.",
+                "ru": "When an ally succeeds with Hope on a roll using an advantage you created with Old Tricks are New\nAgain you also gain a Hope from the outcome."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 1
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Weave of Fate",
+                "ru": "Weave of Fate"
+              },
+              "description": {
+                "en": "Once per session you can spend 3 Esoteric Knowledge to roll a third d12 as part of your Duality Dice. This third die is called the “Fate die.” The Fate die is not added to the outcome, instead it can be used to replace either the Hope or Fear die after the roll is made (your choice.) The replaced die becomes the new “Fate die” and is put aside.",
+                "ru": "Once per session you can spend 3 Esoteric Knowledge to roll a third d12 as part of your Duality Dice. This third die is called the “Fate die.” The Fate die is not added to the outcome, instead it can be used to replace either the Hope or Fear die after the roll is made (your choice.) The replaced die becomes the new “Fate die” and is put aside."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {
+                "limit": "1"
+              },
+              "conditions": {
+                "subclass_mastery": 3
+              },
+              "limit_refresh": "session"
+            },
+            {
+              "title": {
+                "en": "Weave of Fate 2/2",
+                "ru": "Weave of Fate 2/2"
+              },
+              "description": {
+                "en": "After the initial roll creating the Fate die, you keep the Fate die on its face value off to the side. In all future rolls you make using the duality dice you can spend 1 Esoteric Knowledge to replace either the Hope or Fear die rolled with your Fate die, turning the replaced die into the new Fate die for later.",
+                "ru": "After the initial roll creating the Fate die, you keep the Fate die on its face value off to the side. In all future rolls you make using the duality dice you can spend 1 Esoteric Knowledge to replace either the Hope or Fear die rolled with your Fate die, turning the replaced die into the new Fate die for later."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 3
+              },
+              "limit_refresh": null
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "title": {
+            "en": "Sapper",
+            "ru": "Sapper"
+          },
+          "description": {},
+          "public": false,
+          "class_id": "5c8e6206-5247-40c2-a501-279eb3d7bab0",
+          "spellcast": "know",
+          "mechanics": [],
+          "features": [
+            {
+              "title": {
+                "en": "Grand Design",
+                "ru": "Grand Design"
+              },
+              "description": {
+                "en": "When you use Old Tricks are New Again your advantage die is a d12 instead of a d6. When you use Tactical Demolition you get a d12 advantage by default and can upgrade it to a d20.",
+                "ru": "When you use Old Tricks are New Again your advantage die is a d12 instead of a d6. When you use Tactical Demolition you get a d12 advantage by default and can upgrade it to a d20."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 3
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Dungeoneering 1/2",
+                "ru": "Dungeoneering 1/2"
+              },
+              "description": {
+                "en": "You cannot get lost underground. If you are familiar with a destination underground, either because you’ve been there before, or because it’s been a part of your studies (you’ve spend an Esoteric Knowledge to “know” the place) you know the shortest, most direct path to it. While underground you also know the shortest, most direct route back to the surface where you entered from.",
+                "ru": "You cannot get lost underground. If you are familiar with a destination underground, either because you’ve been there before, or because it’s been a part of your studies (you’ve spend an Esoteric Knowledge to “know” the place) you know the shortest, most direct path to it. While underground you also know the shortest, most direct route back to the surface where you entered from."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 1
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Dungeoneering 2/2",
+                "ru": "Dungeoneering 2/2"
+              },
+              "description": {
+                "en": "If you do somehow lose track of your location while underground you\ncan use 1 Esoteric Knowledge to learn either your current destination or find your trail back to the surface. What qualifies as “underground” or “a dungeon” is open to\ninterpretation by the GM.",
+                "ru": "If you do somehow lose track of your location while underground you\ncan use 1 Esoteric Knowledge to learn either your current destination or find your trail back to the surface. What qualifies as “underground” or “a dungeon” is open to\ninterpretation by the GM."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 1
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Trap Savant",
+                "ru": "Trap Savant"
+              },
+              "description": {
+                "en": "Your keen eye and understanding of archaic mechanics make you exceptionally adept at dealing with environmental hazards. You have advantage on attempts to perceive, disarm, or bypass traps and hazards. Additionally, if you successfully disarm a trap, you gain 1 Esoteric Knowledge.",
+                "ru": "Your keen eye and understanding of archaic mechanics make you exceptionally adept at dealing with environmental hazards. You have advantage on attempts to perceive, disarm, or bypass traps and hazards. Additionally, if you successfully disarm a trap, you gain 1 Esoteric Knowledge."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 1
+              },
+              "limit_refresh": null
+            },
+            {
+              "title": {
+                "en": "Tactical Demolition",
+                "ru": "Tactical Demolition"
+              },
+              "description": {
+                "en": "When you roll a critical on an attack roll, or your Hope die rolls 12 or higher, you can use Old Tricks are New Again for free, without spending an Esoteric Knowledge to do so. You may spend an Esoteric Knowledge to increase the advantage bonus to a d12 instead of a d6.",
+                "ru": "When you roll a critical on an attack roll, or your Hope die rolls 12 or higher, you can use Old Tricks are New Again for free, without spending an Esoteric Knowledge to do so. You may spend an Esoteric Knowledge to increase the advantage bonus to a d12 instead of a d6."
+              },
+              "kind": "static",
+              "price": {},
+              "description_eval_variables": {},
+              "conditions": {
+                "subclass_mastery": 2
+              },
+              "limit_refresh": null
+            }
+          ]
+        }
+      ]
+    ],
+    "features": [
+      {
+        "title": {
+          "en": "Esoteric Knowledge 2/2",
+          "ru": "Esoteric Knowledge 2/2"
+        },
+        "description": {
+          "en": "You have 5 uses of Esoteric Knowledge, gaining a new use at\neach tier. You can recover 1d4+1 uses of your Esoteric Knowledge by using one of your downtime moves.",
+          "ru": "You have 5 uses of Esoteric Knowledge, gaining a new use at\neach tier. You can recover 1d4+1 uses of your Esoteric Knowledge by using one of your downtime moves."
+        },
+        "kind": "text",
+        "price": {},
+        "description_eval_variables": {},
+        "conditions": {},
+        "limit_refresh": null
+      },
+      {
+        "title": {
+          "en": "Esoteric Knowledge 1/2",
+          "ru": "Esoteric Knowledge 1/2"
+        },
+        "description": {
+          "en": "You have access to unusual and impossible information thanks to years of studying the eldritch and strange. You can expend one use of your Esoteric Knowledge to “know” something useful about your current situation or circumstances in a scene. This knowledge manifests as a +2 roll to yourself and allies when engaging with the relevant information.",
+          "ru": "You have access to unusual and impossible information thanks to years of studying the eldritch and strange. You can expend one use of your Esoteric Knowledge to “know” something useful about your current situation or circumstances in a scene. This knowledge manifests as a +2 roll to yourself and allies when engaging with the relevant information."
+        },
+        "kind": "static",
+        "price": {},
+        "description_eval_variables": {},
+        "conditions": {},
+        "limit_refresh": null
+      },
+      {
+        "title": {
+          "en": "Old Tricks are New Again 1/2",
+          "ru": "Old Tricks are New Again 1/2"
+        },
+        "description": {
+          "en": "You’ve studied old manuscripts of unusual battles and know a trick or two that can help in a fight. You can spend an Esoteric Knowledge to create an advantage on the field. This could be flipping over a table to provide cover for your allies, or loosening the ropes on a chandelier for them to swing from for a daring attack. You describe the nature of this advantage, and how it might be used by a teammate to give them an edge.\n",
+          "ru": "You’ve studied old manuscripts of unusual battles and know a trick or two that can help in a fight. You can spend an Esoteric Knowledge to create an advantage on the field. This could be flipping over a table to provide cover for your allies, or loosening the ropes on a chandelier for them to swing from for a daring attack. You describe the nature of this advantage, and how it might be used by a teammate to give them an edge.\n"
+        },
+        "kind": "static",
+        "price": {},
+        "description_eval_variables": {},
+        "conditions": {},
+        "limit_refresh": null
+      },
+      {
+        "title": {
+          "en": "Old Tricks are New Again 2/2",
+          "ru": "Old Tricks are New Again 2/2"
+        },
+        "description": {
+          "en": "When an ally uses the trick you’ve created, they gain advantage on the roll. They add this advantage even if they already have advantage from another source (rolling 2d6 as well as their\nduality dice.)",
+          "ru": "When an ally uses the trick you’ve created, they gain advantage on the roll. They add this advantage even if they already have advantage from another source (rolling 2d6 as well as their\nduality dice.)"
+        },
+        "kind": "static",
+        "price": {},
+        "description_eval_variables": {},
+        "conditions": {},
+        "limit_refresh": null
+      }
+    ]
+  }
+]

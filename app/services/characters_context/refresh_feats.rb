@@ -16,7 +16,7 @@ module CharactersContext
     def find_available_feats(character)
       all_feats = filter_available_feats(character)
       exclude_feats = all_feats.pluck(:exclude).flatten.uniq.compact
-      all_feats.reject { |item| item.slug.in?(exclude_feats) }
+      all_feats.reject { |item| item.slug.in?(exclude_feats) || item.id.in?(exclude_feats) }
     end
 
     def remove_not_available_feats(character, existing_ids, available_feats)

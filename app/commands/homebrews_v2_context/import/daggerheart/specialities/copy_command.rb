@@ -33,7 +33,7 @@ module HomebrewsV2Context
               .map do |feat|
                 result =
                   feat.attributes.slice(
-                    'title', 'description', 'kind', 'limit_refresh', 'modifiers', 'price', 'continious', 'tokens'
+                    'title', 'description', 'kind', 'limit_refresh', 'modifiers', 'price', 'continious', 'tokens', 'exclude'
                   ).symbolize_keys
                 result[:limit] = feat.description_eval_variables['limit']
                 result.compact
