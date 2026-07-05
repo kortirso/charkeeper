@@ -8,7 +8,9 @@ module HomebrewsV2
       def domains
         default = ::Daggerheart::Character.domains
         object.info.domains.map do |domain|
-          default[domain] ? translate(default.dig(domain, 'name')) : ::Daggerheart::Homebrew::Domain.find_by(id: domain)&.name
+          next translate(default.dig(domain, 'name')) if default[domain]
+
+          translate(::Daggerheart::Homebrews::Domain.find_by(id: domain)&.title)
         end
       end
 
