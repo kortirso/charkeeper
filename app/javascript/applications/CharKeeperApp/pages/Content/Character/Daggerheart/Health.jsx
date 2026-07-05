@@ -11,9 +11,9 @@ const TRANSLATION = {
     minor: 'Minor damage',
     major: 'Major damage',
     severe: 'Severe damage',
-    minorDamage: 'Mark 1 H',
-    majorDamage: 'Mark 2 H',
-    severeDamage: 'Mark 3 H',
+    minorDamage: 'Mark 1 HP',
+    majorDamage: 'Mark 2 HP',
+    severeDamage: 'Mark 3 HP',
     health: 'Health',
     stress: 'Stress',
     hope: 'Hope'
@@ -35,10 +35,10 @@ const TRANSLATION = {
     minor: 'Daño menor',
     major: 'Daño mayor',
     severe: 'Daño severo',
-    minorDamage: 'Marca 1 P',
-    majorDamage: 'Marca 2 P',
-    severeDamage: 'Marca 3 P',
-    health: 'Salud',
+    minorDamage: 'Marca 1 HP',
+    majorDamage: 'Marca 2 HP',
+    severeDamage: 'Marca 3 HP',
+    health: 'HP',
     stress: 'Estrés',
     hope: 'Esperanza'
   }
