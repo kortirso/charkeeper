@@ -6,10 +6,11 @@ module Daggerheart
       def to_homebrew_json
         [
           {
+            id: id,
             title: title,
             description: description,
             public: attributes['public'],
-            features: Daggerheart::Feat.where(origin_value: id).map(&:to_homebrew_json)
+            features: Daggerheart::Feat.where(origin: 'domain_card', origin_value: id).map(&:to_homebrew_json)
           }
         ]
       end

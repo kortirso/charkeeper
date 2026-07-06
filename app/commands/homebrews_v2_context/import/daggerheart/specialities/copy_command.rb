@@ -29,7 +29,7 @@ module HomebrewsV2Context
 
           def features_payload(input)
             ::Daggerheart::Feat
-              .where(origin: 'speciality', origin_value: input[:speciality].id)
+              .where(origin: 'class', origin_value: input[:speciality].id)
               .map do |feat|
                 result =
                   feat.attributes.slice(

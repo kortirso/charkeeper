@@ -5,7 +5,7 @@ import { FeatureModifiers } from './FeatureModifiers';
 
 import { useAppState } from '../../../context';
 import { SharedContent } from '../../../pages';
-import { fetchListRequest, batchDestroyRequest } from '../../../requests_v2/list';
+import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
 import {
   fetchTransformationRequest, removeTransformationRequest, copyTransformationRequest
 } from '../../../requests_v2/daggerheart/transformations';
@@ -14,6 +14,7 @@ export const DaggerheartTransformationsV2 = () => {
   const [appState] = useAppState();
 
   const fetchList = async () => await fetchListRequest(appState.accessToken, 'Daggerheart::Homebrews::Transformation');
+  const fetchHomebrew = async (id) => await fetchHomebrewRequest(appState.accessToken, 'Daggerheart::Homebrews::Transformation', id);
   const batchDestroy = async (ids) => await batchDestroyRequest(appState.accessToken, 'Daggerheart::Homebrews::Transformation', ids);
 
   const ChildrenComponent = (props) => (
@@ -50,6 +51,7 @@ export const DaggerheartTransformationsV2 = () => {
       parentType="Homebrew"
       publicationType="transformation"
       onFetchRequest={fetchList}
+      onFetchHomebrew={fetchHomebrew}
       onBatchDestroy={batchDestroy}
       onShowRequest={fetchTransformationRequest}
       onRemoveRequest={removeTransformationRequest}

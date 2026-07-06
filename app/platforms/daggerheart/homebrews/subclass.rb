@@ -16,6 +16,7 @@ module Daggerheart
       def to_homebrew_json
         [
           {
+            id: id,
             title: title,
             description: description,
             public: attributes['public'],

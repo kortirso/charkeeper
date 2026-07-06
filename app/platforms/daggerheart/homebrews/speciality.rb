@@ -16,13 +16,14 @@ module Daggerheart
       def to_homebrew_json
         [
           {
+            id: id,
             title: title,
             description: description,
             public: attributes['public'],
             domains: info.domains,
             evasion: info.evasion,
             health_max: info.health_max,
-            features: Daggerheart::Feat.where(origin_value: id).map(&:to_homebrew_json)
+            features: Daggerheart::Feat.where(origin: 'class', origin_value: id).map(&:to_homebrew_json)
           }
         ]
       end

@@ -7,6 +7,13 @@ export const fetchListRequest = async (accessToken, type) => {
   });
 }
 
+export const fetchHomebrewRequest = async (accessToken, type, id) => {
+  return await apiRequest({
+    url: `/homebrews_v2/homebrews/${id}.json?type=${type}`,
+    options: options('GET', accessToken)
+  });
+}
+
 export const batchDestroyRequest = async (accessToken, type, ids) => {
   return await apiRequest({
     url: `/homebrews_v2/homebrews/batch_destroy.json?type=${type}`,

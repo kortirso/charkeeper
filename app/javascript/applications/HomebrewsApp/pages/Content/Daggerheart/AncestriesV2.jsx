@@ -5,13 +5,14 @@ import { FeatureModifiers } from './FeatureModifiers';
 
 import { useAppState } from '../../../context';
 import { SharedContent } from '../../../pages';
-import { fetchListRequest, batchDestroyRequest } from '../../../requests_v2/list';
+import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
 import { fetchAncestryRequest, removeAncestryRequest, copyAncestryRequest } from '../../../requests_v2/daggerheart/ancestries';
 
 export const DaggerheartAncestriesV2 = () => {
   const [appState] = useAppState();
 
   const fetchList = async () => await fetchListRequest(appState.accessToken, 'Daggerheart::Homebrews::Ancestry');
+  const fetchHomebrew = async (id) => await fetchHomebrewRequest(appState.accessToken, 'Daggerheart::Homebrews::Ancestry', id);
   const batchDestroy = async (ids) => await batchDestroyRequest(appState.accessToken, 'Daggerheart::Homebrews::Ancestry', ids);
 
   const ChildrenComponent = (props) => (
@@ -48,6 +49,7 @@ export const DaggerheartAncestriesV2 = () => {
       parentType="Homebrew"
       publicationType="ancestry"
       onFetchRequest={fetchList}
+      onFetchHomebrew={fetchHomebrew}
       onBatchDestroy={batchDestroy}
       onShowRequest={fetchAncestryRequest}
       onRemoveRequest={removeAncestryRequest}

@@ -15,6 +15,14 @@ class Feat < ApplicationRecord
   has_many :bonuses, class_name: '::Character::Bonus', as: :bonusable, dependent: :destroy
 
   def to_homebrew_json
-    attributes.slice('title', 'description', 'kind', 'price', 'description_eval_variables', 'conditions', 'limit_refresh')
+    attributes
+      .slice('id', 'title', 'description', 'kind', 'price', 'limit_refresh', 'modifiers', 'exclude', 'continious')
+      .merge({
+        limit: description_eval_variables['limit'],
+        subclass_mastery: conditions['subclass_mastery'],
+        level: conditions['level'],
+        type: info['type'],
+        recall: info['recall']
+      }).compact_blank
   end
 end

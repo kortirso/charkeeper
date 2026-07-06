@@ -6,7 +6,7 @@ import { FeatureModifiers } from './FeatureModifiers';
 
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
-import { fetchListRequest, batchDestroyRequest } from '../../../requests_v2/list';
+import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
 import { fetchSubclassRequest, removeSubclassRequest, copySubclassRequest } from '../../../requests_v2/daggerheart/subclasses';
 import { localize } from '../../../helpers';
 
@@ -36,6 +36,7 @@ export const DaggerheartSubclasses = () => {
   const [appState] = useAppState();
 
   const fetchList = async () => await fetchListRequest(appState.accessToken, 'Daggerheart::Homebrews::Subclass');
+  const fetchHomebrew = async (id) => await fetchHomebrewRequest(appState.accessToken, 'Daggerheart::Homebrews::Subclass', id);
   const batchDestroy = async (ids) => await batchDestroyRequest(appState.accessToken, 'Daggerheart::Homebrews::Subclass', ids);
 
   const ChildrenComponent = (props) => (
@@ -76,6 +77,7 @@ export const DaggerheartSubclasses = () => {
       parentType="Homebrew"
       publicationType="subclass"
       onFetchRequest={fetchList}
+      onFetchHomebrew={fetchHomebrew}
       onBatchDestroy={batchDestroy}
       onShowRequest={fetchSubclassRequest}
       onRemoveRequest={removeSubclassRequest}
