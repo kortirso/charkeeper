@@ -58,7 +58,7 @@ module HomebrewsV2Context
                   optional(:reset_at).filled(:string)
                   optional(:reset).filled(:string)
                 end
-                optional(:exclude).filled(:array).each(:string)
+                optional(:exclude).maybe(:array).each(:string)
                 optional(:attacks).maybe(:array).each(:hash) do
                   required(:kind).filled(WeaponKinds)
                   required(:name).hash do

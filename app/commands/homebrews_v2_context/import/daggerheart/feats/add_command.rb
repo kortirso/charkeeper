@@ -47,7 +47,7 @@ module HomebrewsV2Context
                 optional(:stress).filled(:integer, gteq?: 1, lteq?: 10)
                 optional(:hope).filled(:integer, gteq?: 1, lteq?: 10)
               end
-              optional(:exclude).filled(:array).each(:string, :uuid_v4?)
+              optional(:exclude).maybe(:array).each(:string, :uuid_v4?)
               optional(:attacks).maybe(:array).each(:hash) do
                 required(:kind).filled(Kinds)
                 required(:name).hash do

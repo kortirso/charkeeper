@@ -9,7 +9,7 @@
       "ru": "Играйте за Ткача снов, если хотите превратить стресс в силу и дезориентировать умы своих врагов."
     },
     "public": true,
-    "class_id": "",
+    "class_id": "bae2e970-675f-45b3-89f5-51041b1679a9",
     "spellcast": "ins",
     "features": [
       {
@@ -19,7 +19,7 @@
         },
         "description": {
           "en": "When you choose a downtime move that clears Stress on yourself, you can also have an ally clear the same amount of Stress.",
-          "ru": ""
+          "ru": "Если в качестве действия привала вы выбрали очистку стресса для себя, то вы один из союзников может очистить такое же кол-во стресса."
         },
         "kind": "static",
         "subclass_mastery": 1
@@ -31,7 +31,7 @@
         },
         "description": {
           "en": "When you use your **Dream Eater** feature, place a number of tokens equal to your Spellcast trait on this card. When you make a Spellcast Roll or reaction roll, you can spend any number of these tokens to roll an equal number of d4s and add the total to the roll. When you start a rest, clear any unspent tokens on this card and gain a Hope per token cleared.",
-          "ru": ""
+          "ru": "Когда вы используете **Пожиратель снов**, поместите на эту карту количество жетонов, равное вашей Характеристике Заклинателя. Когда вы совершаете бросок заклинания или бросок реакции, то вы можете потратить любое кол-во жетонов, за каждый жетон бросьте d4 и добавьте результат броска к проверке. Когда вы совершаете отдых, удалите все неиспользованные жетоны и получите Надежду за каждый жетон."
         },
         "kind": "static",
         "subclass_mastery": 1,
@@ -48,7 +48,7 @@
         },
         "description": {
           "en": "Whenever an adversary within Far range marks a Stress, you can **mark a Stress** to make them temporarily *Vulnerable* and remove a Fear from the GM's Fear pool.",
-          "ru": ""
+          "ru": "Когда противник в пределах далёкой дистанции отмечает Стресс, то вы можете **отметить Стресс**, чтобы сделать такого противника временно *Уязвимым*, и удалить один жетон Страха из запаса Страха Мастера."
         },
         "kind": "static",
         "subclass_mastery": 2,
@@ -61,7 +61,7 @@
         },
         "description": {
           "en": "When an adversary within Far range succeeds on an attack roll, you can **spend 3 Hope** to make a reaction roll using your Spellcast trait against their Difficulty. On a success, they become temporarily *Stunned* and the attack is negated. While *Stunned*, they can't use reactions and can't take any other actions until they clear this condition.",
-          "ru": ""
+          "ru": "Когда противник в пределах далёкой дистанции преуспевает при броске атаки, вы можете **потратить 3 Надежды**, чтобы совершить Бросок Реакции с использованием вашей Характеристики Заклинателя против его сложности. При успехе противник становится временно *Ошеломлённым*. Когда он *Ошеломлён*, он не может использовать реакции и другие действия, пока не очистит это состояние."
         },
         "kind": "static",
         "subclass_mastery": 3,
@@ -81,49 +81,49 @@
       "ru": "Играйте за Призывателя духов, если хотите привязывать духов к физическим тотемам и использовать их благословения."
     },
     "public": true,
-    "class_id": "",
+    "class_id": "bae2e970-675f-45b3-89f5-51041b1679a9",
     "spellcast": "ins",
     "features": [
       {
         "title": {
           "en": "Totemic Binding: Protective Totem",
-          "ru": "Связь с тотемами: "
+          "ru": "Связь с тотемами: Защитный тотем"
         },
         "description": {
           "en": "When you mark an Armor Slot, reduce the severity of the attack by two thresholds instead of one.",
-          "ru": ""
+          "ru": "Когда вы отмечаете Ячейку Брони, то уменьшите тяжесть атаки на 2 ступени вместо одной."
         },
         "kind": "static",
         "subclass_mastery": 1,
-        "level": 1,
+        "limil": 1,
         "limit_refresh": "long_rest"
       },
       {
         "title": {
           "en": "Totemic Binding: Muddling Totem",
-          "ru": "Связь с тотемами: "
+          "ru": "Связь с тотемами: Запутывающий тотем"
         },
         "description": {
           "en": "Make a target within Close range temporarily Muddled. While Muddled, they have disadvantage on attack rolls.",
-          "ru": ""
+          "ru": "Цель в пределах средней дистанции становится *Запутанной*. Пока *Запутана*, цель получает помеху на броски атаки."
         },
         "kind": "static",
         "subclass_mastery": 1,
-        "level": 1,
+        "limil": 1,
         "limit_refresh": "long_rest"
       },
       {
         "title": {
           "en": "Totemic Binding: Leeching Totem",
-          "ru": "Связь с тотемами: "
+          "ru": "Связь с тотемами: Высасывающий тотем"
         },
         "description": {
           "en": "Choose a target within Melee range. They mark a Hit Point, and you clear a Hit Point.",
-          "ru": ""
+          "ru": "Выберите цель, находящуюся вплотную. Цель отмечает Рану, а вы очищаете Рану."
         },
         "kind": "static",
         "subclass_mastery": 1,
-        "level": 1,
+        "limil": 1,
         "limit_refresh": "long_rest"
       },
       {
@@ -133,7 +133,7 @@
         },
         "description": {
           "en": "When you invoke one of the totems from your **Totemic Binding** feature, you can also choose one of the following:\n\n- You gain a Hope.\n\n- You clear an Armor Slot.\n\nAdditionally, you can **mark a Stress** to grant the same benefit to an ally within Close range.",
-          "ru": ""
+          "ru": "Когда вы призываете тотем, вы также можете:\n\n- получить Надежду,\n\n- или очистить Ячейку Брони.\n\nТакже вы можете **отметить Стресс**, чтобы союзник в пределах средней дистанции получил такой же бонус."
         },
         "kind": "static",
         "subclass_mastery": 2,
@@ -142,11 +142,11 @@
       {
         "title": {
           "en": "Empowered Totemic Binding: Protective Totem",
-          "ru": "Сильная связь с тотемами: "
+          "ru": "Сильная связь с тотемами: Защитный тотем"
         },
         "description": {
           "en": "When you mark an Armor Slot, reduce the severity of the attack by two thresholds instead of one.",
-          "ru": ""
+          "ru": "Когда вы отмечаете Ячейку Брони, то уменьшите тяжесть атаки на 2 ступени вместо одной."
         },
         "kind": "static",
         "subclass_mastery": 3,
@@ -157,11 +157,11 @@
       {
         "title": {
           "en": "Empowered Totemic Binding: Muddling Totem",
-          "ru": "Сильная связь с тотемами: "
+          "ru": "Сильная связь с тотемами: Запутывающий тотем"
         },
         "description": {
           "en": "Make a target within Close range temporarily Muddled. While Muddled, they have disadvantage on attack rolls.",
-          "ru": ""
+          "ru": "Цель в пределах средней дистанции становится *Запутанной*. Пока *Запутана*, цель получает помеху на броски атаки."
         },
         "kind": "static",
         "subclass_mastery": 3,
@@ -172,11 +172,11 @@
       {
         "title": {
           "en": "Empowered Totemic Binding: Leeching Totem",
-          "ru": "Сильная связь с тотемами: "
+          "ru": "Сильная связь с тотемами: Высасывающий тотем"
         },
         "description": {
           "en": "Choose a target within Melee range. They mark a Hit Point, and you clear a Hit Point.",
-          "ru": ""
+          "ru": "Выберите цель, находящуюся вплотную. Цель отмечает Рану, а вы очищаете Рану."
         },
         "kind": "static",
         "subclass_mastery": 3,

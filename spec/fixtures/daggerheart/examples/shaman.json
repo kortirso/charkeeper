@@ -32,7 +32,7 @@
         },
         "description": {
           "en": "You can Tether a target within Close range, linking them to you until you fall unconscious or the scene ends. While Tethered, whenever you mark any number of Hit Points or Stress, you can **spend a Hope** to force them to mark one of the same.",
-          "ru": "Вы можете связать цель в пределах средней дистанции до конца сцены или пока вы не потеряет сознание. Когда вы отмечаете любое кол-во Ран или Стресса, то вы можете **потратить Надежду**, чтобы цель отметила 1 единицу аналогичного типа."
+          "ru": "Вы можете связать цель в пределах средней дистанции до конца сцены или пока вы не потеряете сознание. Когда вы отмечаете любое кол-во Ран или Стресса, то вы можете **потратить Надежду**, чтобы цель отметила 1 единицу аналогичного типа."
         },
         "kind": "static",
         "limit": 1,
