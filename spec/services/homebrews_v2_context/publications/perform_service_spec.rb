@@ -19,6 +19,56 @@ describe HomebrewsV2Context::Publications::PerformService do
     end
   end
 
+  context 'for updating' do
+    context 'for existing record' do
+      let!(:ancestry) {
+        create :homebrew, :daggerheart_ancestry, id: 'd73d81a6-e3c3-40b0-8865-4af1c8370b36', user: publication.user
+      }
+      let!(:feat1) {
+        create :daggerheart_feat,
+               origin: 0,
+               origin_value: 'd73d81a6-e3c3-40b0-8865-4af1c8370b36',
+               id: 'b16b039c-75c8-45c0-ab6b-f39dc39fff21'
+      }
+      let!(:feat2) { create :daggerheart_feat, origin: 0, origin_value: 'd73d81a6-e3c3-40b0-8865-4af1c8370b36' }
+      let(:file_path) { Rails.root.join('spec/fixtures/daggerheart/ancestry_edit.json') }
+      let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
+
+      before do
+        publication.file.attach(file)
+        publication.update(parent_type: 'ancestry')
+      end
+
+      it 'calls import command', :aggregate_failures do
+        expect { service_call }.not_to change(Daggerheart::Homebrews::Ancestry, :count)
+        expect(publication.reload.errors_list).to eq({})
+        expect(ancestry.reload.title['en']).to eq "Changed ancestry's title"
+        expect(feat1.reload.title['en']).to eq "Changed feature's title"
+        expect(Feat.find_by(id: feat2.id)).to be_nil
+        expect(Feat.where(origin_value: ancestry.id).count).to eq 2
+      end
+    end
+
+    context 'for unexisting record' do
+      let!(:ancestry) {
+        create :homebrew, :daggerheart_ancestry, id: 'd73d81a6-e3c3-40b0-8865-4af1c8370b37', user: publication.user
+      }
+      let(:file_path) { Rails.root.join('spec/fixtures/daggerheart/ancestry_edit.json') }
+      let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
+
+      before do
+        publication.file.attach(file)
+        publication.update(parent_type: 'ancestry')
+      end
+
+      it 'does not call import command', :aggregate_failures do
+        expect { service_call }.not_to change(Daggerheart::Homebrews::Ancestry, :count)
+        expect(publication.reload.errors_list).not_to eq({})
+        expect(ancestry.reload.title['en']).not_to eq "Changed ancestry's title"
+      end
+    end
+  end
+
   context 'for corrupted file' do
     let(:file_path) { Rails.root.join('spec/fixtures/corrupted_file.json') }
     let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }

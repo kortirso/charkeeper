@@ -208,6 +208,9 @@ module Charkeeper
     register('commands.homebrews_v2_context.import.daggerheart.feats.add') {
       HomebrewsV2Context::Import::Daggerheart::Feats::AddCommand.new
     }
+    register('commands.homebrews_v2_context.import.daggerheart.feats.change') {
+      HomebrewsV2Context::Import::Daggerheart::Feats::ChangeCommand.new
+    }
 
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }

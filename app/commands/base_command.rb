@@ -12,16 +12,18 @@ class BaseCommand
 
   def call(input={})
     lockable(input) do
-      contract_result = validate_contract(input)
-      if contract_result[:errors].present?
-        return {
-          errors: contract_result[:errors], errors_list: contract_result[:errors_list], raw_errors: contract_result[:raw_errors]
-        }
-      end
+      unless input[:skip_contract_validation]
+        contract_result = validate_contract(input)
+        if contract_result[:errors].present?
+          return {
+            errors: contract_result[:errors], errors_list: contract_result[:errors_list], raw_errors: contract_result[:raw_errors]
+          }
+        end
 
-      input = contract_result[:result]
-      errors = validate_content(input)
-      return { errors: errors, errors_list: errors } if errors.present?
+        input = contract_result[:result]
+        errors = validate_content(input)
+        return { errors: errors, errors_list: errors } if errors.present?
+      end
 
       do_prepare(input)
       do_persist(input)

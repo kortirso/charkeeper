@@ -37,12 +37,12 @@ module HomebrewsV2Context
       def daggerheart_commands(publication) # rubocop: disable Metrics/CyclomaticComplexity
         case publication.parent_type
         when 'character' then HomebrewsV2Context::Import::Daggerheart::Characters::AddCommand.new
-        when 'transformation' then HomebrewsV2Context::Import::Daggerheart::Transformations::AddCommand.new
-        when 'ancestry' then HomebrewsV2Context::Import::Daggerheart::Ancestries::AddCommand.new
-        when 'community' then HomebrewsV2Context::Import::Daggerheart::Communities::AddCommand.new
-        when 'speciality' then HomebrewsV2Context::Import::Daggerheart::Specialities::AddCommand.new
-        when 'subclass' then HomebrewsV2Context::Import::Daggerheart::Subclasses::AddCommand.new
-        when 'domain' then HomebrewsV2Context::Import::Daggerheart::Domains::AddCommand.new
+        when 'transformation' then HomebrewsV2Context::Import::Daggerheart::Transformations::PerformCommand.new
+        when 'ancestry' then HomebrewsV2Context::Import::Daggerheart::Ancestries::PerformCommand.new
+        when 'community' then HomebrewsV2Context::Import::Daggerheart::Communities::PerformCommand.new
+        when 'speciality' then HomebrewsV2Context::Import::Daggerheart::Specialities::PerformCommand.new
+        when 'subclass' then HomebrewsV2Context::Import::Daggerheart::Subclasses::PerformCommand.new
+        when 'domain' then HomebrewsV2Context::Import::Daggerheart::Domains::PerformCommand.new
         when 'armor' then HomebrewsV2Context::Import::Daggerheart::Items::Armors::AddCommand.new
         when 'consumables' then HomebrewsV2Context::Import::Daggerheart::Items::Consumables::AddCommand.new
         when 'item' then HomebrewsV2Context::Import::Daggerheart::Items::Items::AddCommand.new

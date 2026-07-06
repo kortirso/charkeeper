@@ -2,7 +2,7 @@ import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-
 
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Toggle, Button, Label, Select, createModal } from '../../components';
-import { Trash, Copy, Stroke } from '../../assets';
+import { Trash, Copy, Stroke, Edit } from '../../assets';
 import { fetchPublicationsRequest, createPublicationRequest } from '../../requests_v2/publications';
 import { fetchBooksForItemsRequest } from '../../requests_v2/books';
 import { createBookItemRequest } from '../../requests_v2/bookItems';
@@ -227,6 +227,28 @@ export const SharedContent = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const edit = async (e, id) => {
+    e.stopPropagation();
+
+    const result = await props.onFetchHomebrew(id);
+    if (result.errors_list === undefined) {
+      const jsonString = JSON.stringify(result.homebrews, null, 2);
+      const blob = new Blob([jsonString], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+
+      // Create a temporary anchor element and trigger download
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${props.publicationType}.json`;
+      document.body.appendChild(link);
+      link.click();
+      
+      // Clean up
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } else renderAlerts(result.errors_list);
+  }
+
   const select = (e, id) => {
     e.stopPropagation();
 
@@ -369,6 +391,11 @@ export const SharedContent = (props) => {
                                 <span classList={{ 'opacity-25': !selectedIds().includes(element.id) }}>
                                   <Stroke width="16" height="12" />
                                 </span>
+                              </Button>
+                            </Show>
+                            <Show when={props.onFetchHomebrew}>
+                              <Button default classList="px-2 py-1" onClick={(e) => edit(e, element.id)}>
+                                <Edit width="20" height="20" />
                               </Button>
                             </Show>
                             <Show when={props.onRemoveRequest}>

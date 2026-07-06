@@ -24,6 +24,24 @@ describe HomebrewsV2::HomebrewsController do
     end
   end
 
+  describe 'GET#show' do
+    context 'for logged users' do
+      let(:request) {
+        get :show, params: { id: homebrew1.id, type: 'Daggerheart::Homebrews::Ancestry', charkeeper_access_token: access_token }
+      }
+
+      it 'returns data', :aggregate_failures do
+        request
+
+        expect(response).to have_http_status :ok
+        expect(response.parsed_body['homebrews'].size).to eq 1
+        expect(response.parsed_body.dig('homebrews', 0).keys).to(
+          contain_exactly('id', 'title', 'description', 'public', 'features')
+        )
+      end
+    end
+  end
+
   describe 'POST#batch_destroy' do
     context 'for logged users' do
       let(:request) {

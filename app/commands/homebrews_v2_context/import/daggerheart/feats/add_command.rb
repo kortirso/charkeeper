@@ -97,7 +97,9 @@ module HomebrewsV2Context
           end
 
           def do_persist(input)
-            result = ::Daggerheart::Feat.create!(input.except(:limit, :no_refresh, :subclass_mastery, :level, :attacks))
+            result = ::Daggerheart::Feat.create!(
+              input.except(:limit, :no_refresh, :subclass_mastery, :level, :attacks, :skip_contract_validation)
+            )
 
             if input.key?(:attacks)
               input[:attacks].each do |attack|
