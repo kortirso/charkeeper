@@ -6,7 +6,7 @@
     },
     "description": {
       "en": "Play the Antiquarian if you want to use information to bolster your allies.",
-      "ru": ""
+      "ru": "Выбирайте роль Антиквара, если хотите использовать информацию для укрепления своих союзников."
     },
     "public": true,
     "class_id": "",
@@ -19,7 +19,7 @@
         },
         "description": {
           "en": "After an adversary is spotlighted, you may **spend a Hope** to make the target *Vulnerable* until the next time it takes damage.",
-          "ru": ""
+          "ru": "После того, как противник получает активацию, вы можете **потратить Надежду**, чтобы он стал *Уязвимым* до момента, когда получит урон."
         },
         "kind": "static",
         "subclass_mastery": 1,
@@ -34,7 +34,7 @@
         },
         "description": {
           "en": "When an ally attempts a Knowledge roll, that ally may use your Knowledge modifier instead of their own.",
-          "ru": ""
+          "ru": "Когда союзник совершает бросок Знания, то он может использовать ваш модификатор Знания."
         },
         "kind": "static",
         "subclass_mastery": 1,
@@ -44,11 +44,11 @@
       {
         "title": {
           "en": "Use This Trinket",
-          "ru": ""
+          "ru": "Используй эту безделушку"
         },
         "description": {
-          "en": "Whenever an ally strikes a Vulnerable adversary with an attack, you can **spend a Hope** to add a d6 to the damage roll.",
-          "ru": ""
+          "en": "Whenever an ally strikes a *Vulnerable* adversary with an attack, you can **spend a Hope** to add a d6 to the damage roll.",
+          "ru": "Когда союзник попадает по *Уязвимому* противнику атакой, вы можете **потратить Надежду**, чтобы добавить d6 к броску урона."
         },
         "kind": "static",
         "subclass_mastery": 2,
@@ -57,79 +57,11 @@
       {
         "title": {
           "en": "Try This One",
-          "ru": ""
+          "ru": "Попробуй это"
         },
         "description": {
           "en": "You pull an ancient relic from your pocket and pass it to an ally. As you do, you both feel the aura it gives off. If you are involved in a tag team roll, you and your ally both roll with advantage.",
-          "ru": ""
-        },
-        "kind": "static",
-        "subclass_mastery": 3
-      }
-    ]
-  },
-  {
-    "title": {
-      "en": "The Inquisitor",
-      "ru": "Инквизитор"
-    },
-    "description": {
-      "en": "Play the Inquisitor if you want to use religion to relentlessly pursue adversaries.",
-      "ru": ""
-    },
-    "public": true,
-    "class_id": "",
-    "spellcast": "know",
-    "features": [
-      {
-        "title": {
-          "en": "Sturdy Belief",
-          "ru": "Твердое убеждение"
-        },
-        "description": {
-          "en": "Gain a calculated bonus +1 to your Armor Score.",
-          "ru": ""
-        },
-        "kind": "update_result",
-        "subclass_mastery": 1,
-        "modifiers": {
-          "armor_score": { "type": "add", "value": 1 }
-        }
-      },
-      {
-        "title": {
-          "en": "Determined Pursuit",
-          "ru": "Целеустремленное преследование"
-        },
-        "description": {
-          "en": "If an adversary within Close range attempts to leave that range, you can **mark a Stress** to react and move within Very Close range of them after their movement is complete.",
-          "ru": ""
-        },
-        "kind": "static",
-        "subclass_mastery": 1,
-        "price": { "stress": 1 }
-      },
-      {
-        "title": {
-          "en": "Fevered Pursuit",
-          "ru": "Лихорадочная погоня"
-        },
-        "description": {
-          "en": "If an adversary within Close range attempts to leave that range, you can **mark a Stress** to react and move within Very Close range of them after their movement is complete.",
-          "ru": ""
-        },
-        "kind": "static",
-        "subclass_mastery": 2,
-        "price": { "stress": 1 }
-      },
-      {
-        "title": {
-          "en": "Endless Pursuit",
-          "ru": "Бесконечная погоня"
-        },
-        "description": {
-          "en": "When you would move within Very Close range of an adversary as a result of a reaction, you may make an attack against that adversary.",
-          "ru": ""
+          "ru": "Вы достаёте из кармана древнюю реликвию и передаёте её союзнику. При этом вы оба чувствуете исходящую от неё ауру. Если вы участвуете в Командном Броске, то и вы, и ваш союзник получаете преимущество."
         },
         "kind": "static",
         "subclass_mastery": 3

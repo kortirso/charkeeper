@@ -2,60 +2,61 @@
   {
     "title": {
       "en": "Centaur",
-      "ru": ""
+      "ru": "Кентавр"
     },
     "description": {
       "en": "Centaurs are humanoids with the lower body of a horse. These come in a wide variety of skin and fur colors.",
-      "ru": ""
+      "ru": "Кентавры — это человекоподобные существа с нижней частью тела лошади. Они бывают самых разных цветов кожи и шерсти."
     },
     "public": true,
     "features": [
       {
         "title": {
           "en": "Gallop",
-          "ru": ""
+          "ru": "Галоп"
         },
         "description": {
-          "en": "You are fast, really fast. When moving you can move within Far range without making an Agility Roll.",
-          "ru": ""
+          "en": "When moving you can move within Far range without making an Agility Roll.",
+          "ru": "Вы можете передвигаться в пределах далёкой дистанции без броска Проворности."
         },
         "kind": "static"
       },
       {
         "title": {
           "en": "Shepherds of Nature",
-          "ru": ""
+          "ru": "Пастухи природы"
         },
         "description": {
-          "en": "Centaurs have a born connection with the forces of nature. You can **spend 3 Hope** to clear 1 Hit Point on a creature your touch.",
-          "ru": ""
+          "en": "You can **spend 3 Hope** to clear 1 Hit Point on a creature your touch.",
+          "ru": "Вы можете **потратить 3 Надежды**, чтобы очистить Рану существу, которого касаетесь."
         },
         "kind": "static",
         "price": { "hope": 3 }
       }
     ]
-  },  
+  },
   {
     "title": {
       "en": "Avian",
-      "ru": ""
+      "ru": "Авиан"
     },
     "description": {
       "en": "Avian looks like humanoid birds and are correspondingly versatile. Some are more reminiscent of birds of prey such as eagles, owls or falcons, others look like woodpeckers, herons or seagulls. While most of them are not capable of true flight, a majority of them still have a dense plumage, which is reminiscent of mighty wings.",
-      "ru": ""
+      "ru": "Авианы внешне напоминают человекоподобных птиц и, соответственно, обладают разносторонней морфологией. Некоторые больше похожи на хищных птиц, таких как орлы, совы или соколы, другие — на дятлов, цапель или чаек. Хотя большинство из них не способны к настоящему полёту, у большинства всё же густое оперение, напоминающее могучие крылья."
     },
     "public": true,
     "features": [
       {
         "title": {
           "en": "Take to the sky",
-          "ru": ""
+          "ru": "Достать до небес"
         },
         "description": {
-          "en": "Your body is not built for long journeys, but you can use your wings for a short distance. You can fly anywhere within Close range, and you can **mark a Stress** to fly anywhere within Far range.",
-          "ru": ""
+          "en": "You can fly anywhere within Close range, and you can **mark a Stress** to fly anywhere within Far range.",
+          "ru": "Вы можете летать в пределах средней дистанции, вы можете **отметить Стресс** и пролететь в пределах далёкой дистанции."
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "stress": 3 }
       },
       {
         "title": {
@@ -64,13 +65,13 @@
         },
         "description": {
           "en": "When you make an Instinct Roll, you can **spend 2 Hope** to reroll your Hope Die.",
-          "ru": ""
+          "ru": "Когда вы проводите бросок Инстинкта, вы можете **потратить 2 Надежды** и перебросить Кость Надежды."
         },
         "kind": "static",
         "price": { "hope": 2 }
       }
     ]
-  },  
+  },
   {
     "title": {
       "en": "Minotaur",
@@ -78,7 +79,7 @@
     },
     "description": {
       "en": "Minotaurs are large creatures whose appearance is reminiscent of a bull or cow. They have large horns that grow from their heads.",
-      "ru": ""
+      "ru": "Минотавры — это крупные существа, внешне напоминающие быка или корову. У них большие рога, растущие из головы."
     },
     "public": true,
     "features": [
@@ -89,9 +90,10 @@
         },
         "description": {
           "en": "When you succeed on an Agility Roll to move from Far or Very Far range into Melee range with one or more targets, you can **mark a Stress** to deal 1d12 physical damage to one target within Melee range. That target becomes *Vulnerable* against the next attack.",
-          "ru": ""
+          "ru": "Когда ваш бросок Проворности успешен для перемещения в пределах очень далёкой дистанции в область ближнего боя противников, вы можете **отметить Стресс**, чтобы нанести 1d12 физического урона одному из этих противников. Цель становится *Уязвимой* против следующей атаки."
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "stress": 1 }
       },
       {
         "title": {
@@ -100,191 +102,44 @@
         },
         "description": {
           "en": "You ignore disadvantage on Strength Rolls.",
-          "ru": ""
+          "ru": "Вы игнорируете помеху на броски Силы."
         },
         "kind": "static"
       }
     ]
-  },  
+  },
   {
     "title": {
-      "en": "Lupisian",
+      "en": "Kobold",
       "ru": ""
     },
     "description": {
-      "en": "Lupisians are canine humanoids with small claws, pointed snouts and ears. They can seem more humanoid in appearance or more animal-like, but always have a bushy tail. Their eyes are slit and have something animalistic about them. The fur is often patterned, ranging from black to an arctic white.",
-      "ru": ""
+      "en": "Kobolds resemble small humanoid dragons with tiny wings and create very tightly-knitted communities.",
+      "ru": "Кобольды напоминают маленьких человекоподобных драконов с крошечными крыльями и образуют очень сплоченные сообщества."
     },
     "public": true,
     "features": [
       {
         "title": {
-          "en": "Drawn to the moon",
-          "ru": ""
+          "en": "One and Many",
+          "ru": "Один и много"
         },
         "description": {
-          "en": "Lupisians are by nature drawn to the moon, admiring its beauty. When taking a Long Rest you gain 1 Hope.",
-          "ru": ""
+          "en": "While in a Group action any successful reaction rolls you make give the leader a +2 modifier.",
+          "ru": "Во время выполнения группового действия любой успешный бросок реакции дает лидеру бонус +2."
         },
         "kind": "static"
       },
       {
         "title": {
-          "en": "Loyal",
-          "ru": "Лояльный"
+          "en": "Pack Hunting",
+          "ru": "Стайная охота"
         },
         "description": {
-          "en": "Once part of a pack you are not easy to shake. You can initiate a Tag Team Roll by **spending 2 Hope**.",
-          "ru": ""
-        },
-        "kind": "static",
-        "price": { "hope": 2 }
-      }
-    ]
-  },  
-  {
-    "title": {
-      "en": "Chitani",
-      "ru": ""
-    },
-    "description": {
-      "en": "The Chitani are a colorful race of humanoid insects that come in many different forms. They have the typical shells of a beetle, biting tools and antennae. Often, they feature multiple arms or legs, some even have wings, even if they cannot carry them through the air.",
-      "ru": ""
-    },
-    "public": true,
-    "features": [
-      {
-        "title": {
-          "en": "Carapace",
-          "ru": "Панцирь"
-        },
-        "description": {
-          "en": "When you would take damage, you can **mark a Stress** to roll your Hope die. Subtract the result from the incoming damage.",
-          "ru": ""
-        },
-        "kind": "static",
-        "price": { "stress": 1 }
-      },
-      {
-        "title": {
-          "en": "Intuition",
-          "ru": "Интуиция"
-        },
-        "description": {
-          "en": "You ignore disadvantage in Instinct Rolls.",
-          "ru": ""
+          "en": "You have advantage on Melee range attack rolls when one or more Allies are also within Melee range of your target.",
+          "ru": "Вы получаете преимущество при бросках атаки в ближнем бою, если один или несколько союзников также находятся в пределах досягаемости вашей цели в ближнем бою."
         },
         "kind": "static"
-      }
-    ]
-  },  
-  {
-    "title": {
-      "en": "Ursusfolk",
-      "ru": ""
-    },
-    "description": {
-      "en": "These gentle giants resemble humanoid bear-men in appearance. Their appearance can seem more humanoid, with only some animal features such as ears or a slight muzzle.",
-      "ru": ""
-    },
-    "public": true,
-    "features": [
-      {
-        "title": {
-          "en": "Strong and Enduring",
-          "ru": "Прочные и долговечные"
-        },
-        "description": {
-          "en": "When rolling damage, you can **spend 1 Hope** to reroll one of your damage dice.",
-          "ru": ""
-        },
-        "kind": "static",
-        "price": { "hope": 1 }
-      },
-      {
-        "title": {
-          "en": "Gentle Giants",
-          "ru": "Добрые великаны"
-        },
-        "description": {
-          "en": "When you Short Rest and Tend to Wounds or Repair Armor to an ally, treat your tier as one higher. In addition, when you Prepare with an ally, that ally clears one Stress.",
-          "ru": ""
-        },
-        "kind": "static"
-      }
-    ]
-  },  
-  {
-    "title": {
-      "en": "Shaperfolk",
-      "ru": ""
-    },
-    "description": {
-      "en": "Often misunderstood, shaperfolk is very rare and there are always prejudices against them. They have the innate ability to change their appearance, a change that is part physical but also part magical.",
-      "ru": ""
-    },
-    "public": true,
-    "features": [
-      {
-        "title": {
-          "en": "Shapechange",
-          "ru": "Смена облика"
-        },
-        "description": {
-          "en": "You can **mark a Stress** to change your appearance within a few moments. If you want to look like a specific person, make an **Instinct Roll (12)**.",
-          "ru": ""
-        },
-        "kind": "static",
-        "price": { "stress": 1 }
-      },
-      {
-        "title": {
-          "en": "Born Actors",
-          "ru": "Прирожденные актеры"
-        },
-        "description": {
-          "en": "When you make a Presence Roll, you can **spend 2 Hope** to reroll your Hope Die.",
-          "ru": ""
-        },
-        "kind": "static",
-        "price": { "hope": 2 }
-      }
-    ]
-  },  
-  {
-    "title": {
-      "en": "Plasmosian",
-      "ru": ""
-    },
-    "description": {
-      "en": "Plasmosians are bizarre beings that can best be described as humanoid slime creatures. They differ immensely in shape and appearance, especially in the color of their liquid. This can change even during the life of a plasmosian, usually when they go through important milestones in their personal development.",
-      "ru": ""
-    },
-    "public": true,
-    "features": [
-      {
-        "title": {
-          "en": "Formable",
-          "ru": ""
-        },
-        "description": {
-          "en": "**Mark a Stress** to change the form of your body for a short amount of time. This for example allows you to fit through small spaces, hide in spots others can´t reach or getting bigger or smaller.",
-          "ru": ""
-        },
-        "kind": "static",
-        "price": { "stress": 1 }
-      },
-      {
-        "title": {
-          "en": "No weak-spot",
-          "ru": ""
-        },
-        "description": {
-          "en": "When you would take damage from a critical hit, you can **spend 3 Hope** to just take a normal hit instead.",
-          "ru": ""
-        },
-        "kind": "static",
-        "price": { "hope": 3 }
       }
     ]
   }

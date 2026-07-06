@@ -287,7 +287,7 @@
     "agi": { "name": { "en": "Agility", "ru": "Проворность" }, "shortName": { "en": "Agi", "ru": "Пров" } },
     "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
     "fin": { "name": { "en": "Finesse", "ru": "Искусность" }, "shortName": { "en": "Fin", "ru": "Иск" } },
-    "ins": { "name": { "en": "Instinct", "ru": "Инстинкт", "ru-DHM": "Чутьё" }, "shortName": { "en": "Ins", "ru": "Инс", "ru-DHM": "ЧУТ" } },
+    "ins": { "name": { "en": "Instinct", "ru": "Инстинкт", "ru-DHM": "Чутьё" }, "shortName": { "en": "Ins", "ru": "Инс", "ru-DHM": "Чут" } },
     "pre": { "name": { "en": "Presence", "ru": "Влияние" }, "shortName": { "en": "Pre", "ru": "Влн" } },
     "know": { "name": { "en": "Knowledge", "ru": "Знание" }, "shortName": { "en": "Know", "ru": "Знан" } }
   },

@@ -18,7 +18,7 @@ const TRANSLATION = {
   ru: {
     proficiency: 'Мастерство',
     evasion: 'Уклонение',
-    armor_score: 'Очки Доспеха',
+    armor_score: 'Ячейки брони',
     rallyDice: 'Кость сплочения',
     settings: 'Настройки',
     showRallyDice: 'Показывать кости сплочения'

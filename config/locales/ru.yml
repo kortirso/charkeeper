@@ -221,7 +221,7 @@ ru:
       daggerheart:
         proficiency: Мастерство
         evasion: Уклонение
-        armor_score: Очки доспеха
+        armor_score: Ячейки брони
         armor_slots: ДОСПЕХ
         hp: РАНЫ
         stress: СТРЕСС

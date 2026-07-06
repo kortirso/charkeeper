@@ -33,7 +33,7 @@ const TRANSLATION = {
     stress: 'Стресс',
     hope: 'Надежда',
     evasion: 'Уклонение',
-    armor_score: 'Слоты Доспеха',
+    armor_score: 'Ячейки брони',
     major: 'Ощутимый урон',
     severe: 'Тяжёлый урон',
     attack: 'Атаки',

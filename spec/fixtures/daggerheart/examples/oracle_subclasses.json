@@ -2,11 +2,11 @@
   {
     "title": {
       "en": "Cursebound",
-      "ru": "Скованный проклятием"
+      "ru": "Проклятый"
     },
     "description": {
-      "en": "Play the Cursebound if you want to draw additional power from your Oracular Font-weal or woe.",
-      "ru": ""
+      "en": "Play the Cursebound if you want to draw additional power from your **Oracular Font**-weal or woe.",
+      "ru": "Играйте Проклятым, если хотите извлечь дополнительную силу из своего **Вещего текста**."
     },
     "public": true,
     "class_id": "",
@@ -19,7 +19,7 @@
         },
         "description": {
           "en": "After you use your **Oracular Font** feature, until your next rest, all rolls with Hope have advantage, and all rolls with Fear have disadvantage.",
-          "ru": ""
+          "ru": "После того, как вы используете **Вещий текст**, до вашего следующего отдыха все броски с Надеждой имеют преимущество, а броски со Страхом имеют помеху."
         },
         "kind": "static",
         "subclass_mastery": 1
@@ -31,7 +31,7 @@
         },
         "description": {
           "en": "Whenever you roll with Fear, you can **mark 2 Stress** to instead Fail with Hope.",
-          "ru": ""
+          "ru": "Когда вы бросаете со Страхом, вы можете **отметить 2 Стресса**, чтобы изменить результат броска на неудачу со Надеждой."
         },
         "kind": "static",
         "subclass_mastery": 1,
@@ -44,7 +44,7 @@
         },
         "description": {
           "en": "Whenever an adversary succeeds on an attack roll against you, you can cast your curse upon them, making them temporarily *Vulnerable*.",
-          "ru": ""
+          "ru": "Когда противник успешен при броске атаки против вас, то вы можете проклять его, чтобы он стал временно *Уязвимым*."
         },
         "kind": "static",
         "subclass_mastery": 2
@@ -52,14 +52,17 @@
       {
         "title": {
           "en": "Foresight",
-          "ru": "Форсайт"
+          "ru": "Предвидение"
         },
         "description": {
           "en": "After using your **Oracular Font** feature, add a Vision token to this card. Whenever you Fail with Hope, you can remove a Vision token to instead succeed with Hopе.",
-          "ru": ""
+          "ru": "Когда вы используете **Вещий текст**, поместите жетон на эту карту. Когда результат броска неудача с Надеждой, вы можете потратить жетон и изменить результат на успех с Надеждой."
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "tokens": {
+          "limit": "none"
+        }
       }
     ]
   },
@@ -70,7 +73,7 @@
     },
     "description": {
       "en": "Play the Martyr if you want to make vital sacrifices to gain powerful boons.",
-      "ru": ""
+      "ru": "Выбирайте роль Мученика, если хотите принести важные жертвы ради получения могущественных преимуществ."
     },
     "public": true,
     "class_id": "",
@@ -83,7 +86,7 @@
         },
         "description": {
           "en": "When you would mark a Hit Point, you can instead **spend 3 Hopе**.",
-          "ru": ""
+          "ru": "Если вы должны отметить Рану, вы можете вместо этого **потратить 3 Надежды**."
         },
         "kind": "static",
         "subclass_mastery": 1,
@@ -95,8 +98,8 @@
           "ru": "Останови страх"
         },
         "description": {
-          "en": "Whenever the GM would gain a Fear, you can mark 2 Hit Points instead.",
-          "ru": ""
+          "en": "Whenever the GM would gain a Fear, you can **mark 2 Hit Points** instead.",
+          "ru": "Если Мастер должен получить Страх, вы можете вместо этого **отметить 2 Раны**."
         },
         "kind": "static",
         "subclass_mastery": 1
@@ -108,7 +111,7 @@
         },
         "description": {
           "en": "Whenever you would mark Stress from a Recall Cost, you can choose to either:\n\n- instead gain that much Hope and cause the GM to gain that much Fear.\n\n- instead mark that many Hit Points.",
-          "ru": ""
+          "ru": "Когда вы должны отметить Стресс за стоимость призыва, вы можете выбрать другое:\n\n- Вы получаете столько Надежды, а Мастер получает столько Страха.\n\n- Вы отмечаете столько Ран."
         },
         "kind": "static",
         "subclass_mastery": 2
@@ -116,11 +119,11 @@
       {
         "title": {
           "en": "At What Cost",
-          "ru": ""
+          "ru": "Какой ценой"
         },
         "description": {
           "en": "You can choose a domain card from your loadout and choose to either:\n\n- Place the card in your vault permanently to Critically Succeed on your next action or reaction Roll.\n\n- Place it in your vault to gain advantage on your next action or reaction Roll.",
-          "ru": ""
+          "ru": "Вы можете выбрать карту домена из инвентаря и:\n\n- Поместить карту в хранилище навсегда, чтобы критически преуспеть в следующем броске действия или реакции.\n\n- Поместить карту в хранилище, чтобы получить преимущество в следующем броске действия или реакции."
         },
         "kind": "static",
         "subclass_mastery": 3
