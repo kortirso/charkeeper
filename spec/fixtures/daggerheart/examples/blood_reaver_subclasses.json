@@ -28,7 +28,7 @@
       {
         "title": {
           "en": "Used To It",
-          "ru": ""
+          "ru": "Привык к этому"
         },
         "description": {
           "en": "When you would mark Stress, you can instead spend 1 Blood to ignore that Stress.",
@@ -110,7 +110,7 @@
       {
         "title": {
           "en": "Drink the Darkness",
-          "ru": ""
+          "ru": "Выпить тьму"
         },
         "description": {
           "en": "**Spend a Hope** to emanate a blood-aura until the end of the scene. Adversaries within Very Close suffer a −1 penalty on Reaction Rolls.\n\nWhile your aura is active:\n\n- Each time you mark a stress, gain 1 Blood in your Bloodforge.\n\n- Your **Blood Forge** maximum increases by 3.",
