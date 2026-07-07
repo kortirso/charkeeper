@@ -18,6 +18,7 @@ class RemoveOldTables < ActiveRecord::Migration[8.1]
 
       Daggerheart::Feat.find_by(slug: 'toxic_concoctions')&.update(
         description_eval_variables: {},
+        limit_refresh: nil,
         tokens: {
           limit: 'none',
           reset_at: 'long',
@@ -27,6 +28,7 @@ class RemoveOldTables < ActiveRecord::Migration[8.1]
 
       Daggerheart::Feat.find_by(slug: 'prayer_dice')&.update(
         description_eval_variables: {},
+        limit_refresh: nil,
         kind: 'static',
         tokens: {
           limit: 'spellcast',
