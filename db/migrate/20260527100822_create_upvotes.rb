@@ -11,10 +11,10 @@ class CreateUpvotes < ActiveRecord::Migration[8.1]
 
     add_column :homebrew_communities, :upvotes_count, :integer, null: false, default: 0
 
-    ::Homebrew::Community.reset_column_information
-    ::Homebrew::Community.find_each do |object|
-      ::Homebrew::Community.update_counters object.id, upvotes_count: object.upvotes.size
-    end
+    # ::Homebrew::Community.reset_column_information
+    # ::Homebrew::Community.find_each do |object|
+    #   ::Homebrew::Community.update_counters object.id, upvotes_count: object.upvotes.size
+    # end
   end
 
   def down

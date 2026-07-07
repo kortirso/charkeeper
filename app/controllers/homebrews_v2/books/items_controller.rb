@@ -2,7 +2,7 @@
 
 module HomebrewsV2
   module Books
-    class ItemsController < Homebrews::BaseController
+    class ItemsController < HomebrewsV2::BaseController
       before_action :find_book, only: %i[create]
 
       def create

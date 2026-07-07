@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module HomebrewsV2
-  class HomebrewController < Homebrews::BaseController
+  class HomebrewController < HomebrewsV2::BaseController
     include SerializeResource
 
     before_action :find_element, only: %i[show]

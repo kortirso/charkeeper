@@ -177,32 +177,6 @@ module Charkeeper
     register('commands.homebrew_context.books.add') { HomebrewContext::Books::AddCommand.new }
     register('commands.homebrew_context.books.change') { HomebrewContext::Books::ChangeCommand.new }
 
-    register('commands.homebrew_context.add_race') { HomebrewContext::AddRaceCommand.new }
-
-    register('commands.homebrew_context.dnd.books.add_subclasses') { HomebrewContext::Dnd::Books::AddSubclassesCommand.new }
-    register('commands.homebrew_context.dnd.books.add_feats') { HomebrewContext::Dnd::Books::AddFeatsCommand.new }
-    register('commands.homebrew_context.dnd.books.add_backgrounds') { HomebrewContext::Dnd::Books::AddBackgroundsCommand.new }
-
-    register('commands.homebrew_context.dnd.backgrounds.add') { HomebrewContext::Dnd::Backgrounds::AddCommand.new }
-    register('commands.homebrew_context.dnd.backgrounds.change') { HomebrewContext::Dnd::Backgrounds::ChangeCommand.new }
-    register('commands.homebrew_context.dnd.backgrounds.copy') { HomebrewContext::Dnd::Backgrounds::CopyCommand.new }
-
-    register('commands.homebrew_context.dnd.add_item') { HomebrewContext::Dnd::Items::AddCommand.new }
-    register('commands.homebrew_context.dnd.change_item') { HomebrewContext::Dnd::Items::ChangeCommand.new }
-    register('commands.homebrew_context.dnd.copy_item') { HomebrewContext::Dnd::Items::CopyCommand.new }
-
-    register('commands.homebrew_context.dnd.subclasses.add') { HomebrewContext::Dnd::Subclasses::AddCommand.new }
-    register('commands.homebrew_context.dnd.subclasses.change') { HomebrewContext::Dnd::Subclasses::ChangeCommand.new }
-    register('commands.homebrew_context.dnd.subclasses.copy') { HomebrewContext::Dnd::Subclasses::CopyCommand.new }
-
-    register('commands.homebrew_context.dnd.feats.add') { HomebrewContext::Dnd::Feats::AddCommand.new }
-    register('commands.homebrew_context.dnd.feats.change') { HomebrewContext::Dnd::Feats::ChangeCommand.new }
-    register('commands.homebrew_context.dnd.feats.copy') { HomebrewContext::Dnd::Feats::CopyCommand.new }
-
-    register('commands.homebrew_context.dnd.spells.add') { HomebrewContext::Dnd::Spells::AddCommand.new }
-    register('commands.homebrew_context.dnd.spells.change') { HomebrewContext::Dnd::Spells::ChangeCommand.new }
-    register('commands.homebrew_context.dnd.spells.copy') { HomebrewContext::Dnd::Spells::CopyCommand.new }
-
     register('commands.homebrews_v2_context.publications.create') { HomebrewsV2Context::Publications::CreateCommand.new }
 
     register('commands.homebrews_v2_context.import.daggerheart.feats.add') {

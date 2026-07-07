@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_05_072456) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_07_091531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -113,7 +113,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_05_072456) do
   create_table "character_bonus", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "bonusable_id", null: false
     t.string "bonusable_type", null: false
-    t.uuid "character_id"
     t.string "comment"
     t.datetime "created_at", null: false
     t.jsonb "dynamic_value", default: {}, null: false
@@ -219,41 +218,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_05_072456) do
     t.index ["resourceable_id", "resourceable_type"], name: "idx_on_resourceable_id_resourceable_type_718cca992a"
   end
 
-  create_table "daggerheart_character_features", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.jsonb "description", default: {}, null: false
-    t.jsonb "description_eval_variables", default: {}, null: false, comment: "Вычисляемые переменные для описания"
-    t.jsonb "eval_variables", default: {}, null: false
-    t.string "exclude", comment: "Заменяемые способности", array: true
-    t.integer "kind", limit: 2, null: false
-    t.integer "limit_refresh", limit: 2, comment: "Событие для обновления лимита"
-    t.integer "origin", limit: 2, null: false, comment: "Тип применимости особенности"
-    t.string "origin_value", null: false, comment: "Значение применимости особенности"
-    t.string "slug", null: false
-    t.jsonb "title", default: {}, null: false
-    t.datetime "updated_at", null: false
-    t.string "visible", null: false, comment: "Доступен ли бонус особенности"
-  end
-
-  create_table "daggerheart_homebrew_domains", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "name", null: false
-    t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
-    t.datetime "updated_at", null: false
-    t.uuid "user_id", null: false
-    t.index ["user_id"], name: "index_daggerheart_homebrew_domains_on_user_id"
-  end
-
-  create_table "daggerheart_homebrew_transformations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "name", null: false
-    t.jsonb "name_json", default: {}, null: false
-    t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
-    t.datetime "updated_at", null: false
-    t.uuid "user_id", null: false
-    t.index ["user_id"], name: "index_daggerheart_homebrew_transformations_on_user_id"
-  end
-
   create_table "daggerheart_projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "character_id", null: false
     t.integer "complexity", default: 1, null: false
@@ -266,45 +230,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_05_072456) do
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_daggerheart_projects_on_character_id"
     t.index ["goal_id", "goal_type"], name: "index_daggerheart_projects_on_goal_id_and_goal_type", where: "((goal_id IS NOT NULL) AND (goal_type IS NOT NULL))"
-  end
-
-  create_table "dnd2024_character_features", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.boolean "choose_once", default: false, null: false
-    t.datetime "created_at", null: false
-    t.jsonb "description", default: {}, null: false
-    t.jsonb "description_eval_variables", default: {}, null: false
-    t.jsonb "eval_variables", default: {}, null: false, comment: "Вычисляемые переменные"
-    t.string "exclude", array: true
-    t.integer "kind", limit: 2, null: false
-    t.integer "level", limit: 2, null: false
-    t.integer "limit_refresh", limit: 2, comment: "Событие для обновления лимита"
-    t.string "options", comment: "Список опций для выбора", array: true
-    t.string "options_type", comment: "Данные для выбора при kind CHOOSE_FROM"
-    t.integer "origin", limit: 2, null: false, comment: "Тип применимости особенности, раса/подраса/класс/подкласс"
-    t.string "origin_value", null: false, comment: "Значение применимости особенности"
-    t.string "slug", null: false
-    t.jsonb "title", default: {}, null: false
-    t.datetime "updated_at", null: false
-    t.string "visible", null: false, comment: "Доступен ли бонус особенности"
-  end
-
-  create_table "dnd5_character_features", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Расовые/классовые особенности", force: :cascade do |t|
-    t.boolean "choose_once", default: false, null: false
-    t.datetime "created_at", null: false
-    t.jsonb "description", default: {}, null: false
-    t.jsonb "description_eval_variables", default: {}, null: false
-    t.jsonb "eval_variables", default: {}, null: false, comment: "Вычисляемые переменные"
-    t.integer "kind", limit: 2, null: false
-    t.integer "level", limit: 2, null: false
-    t.integer "limit_refresh", limit: 2
-    t.string "options", comment: "Список опций для выбора", array: true
-    t.string "options_type", comment: "Данные для выбора при kind CHOOSE_FROM"
-    t.integer "origin", limit: 2, null: false, comment: "Тип применимости особенности, раса/подраса/класс/подкласс"
-    t.string "origin_value", null: false, comment: "Значение применимости особенности"
-    t.string "slug", null: false
-    t.jsonb "title", default: {}, null: false
-    t.datetime "updated_at", null: false
-    t.string "visible", null: false, comment: "Доступен ли бонус особенности"
   end
 
   create_table "feats", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Навыки", force: :cascade do |t|
@@ -327,7 +252,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_05_072456) do
     t.jsonb "price", default: {}, comment: "Цена активации способности"
     t.boolean "public", default: false
     t.integer "reset_on_rest", limit: 2, comment: "Сбрасывать выбор на отдыхе"
-    t.boolean "reverse_refresh", default: false
     t.string "slug"
     t.jsonb "title", default: {}, null: false
     t.jsonb "tokens", comment: "Настройки токенов для навыков"
@@ -452,20 +376,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_05_072456) do
     t.index ["user_id"], name: "index_homebrew_books_on_user_id"
   end
 
-  create_table "homebrew_communities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.jsonb "data", default: {}, null: false
-    t.datetime "discarded_at"
-    t.string "name", null: false
-    t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
-    t.string "type", null: false, comment: "Отношение к игровой системе"
-    t.datetime "updated_at", null: false
-    t.integer "upvotes_count", default: 0, null: false
-    t.uuid "user_id", null: false
-    t.index ["discarded_at"], name: "index_homebrew_communities_on_discarded_at"
-    t.index ["user_id"], name: "index_homebrew_communities_on_user_id"
-  end
-
   create_table "homebrew_publications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "completed_at"
     t.datetime "created_at", null: false
@@ -488,19 +398,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_05_072456) do
     t.uuid "user_id", null: false
     t.index ["discarded_at"], name: "index_homebrew_races_on_discarded_at"
     t.index ["user_id"], name: "index_homebrew_races_on_user_id"
-  end
-
-  create_table "homebrew_specialities", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Кастомные классы", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.jsonb "data", default: {}, null: false
-    t.datetime "discarded_at"
-    t.string "name", null: false
-    t.boolean "public", default: false
-    t.string "type", null: false, comment: "Отношение к игровой системе"
-    t.datetime "updated_at", null: false
-    t.uuid "user_id", null: false
-    t.index ["discarded_at"], name: "index_homebrew_specialities_on_discarded_at"
-    t.index ["user_id"], name: "index_homebrew_specialities_on_user_id"
   end
 
   create_table "homebrew_subclasses", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Кастомные подклассы", force: :cascade do |t|

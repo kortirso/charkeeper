@@ -92,7 +92,6 @@ module CharactersContext
       def do_persist(input) # rubocop: disable Metrics/AbcSize
         refresh_feats_tokens(input)
         refresh_feats_limit(input)
-        refresh_reverse_feats(input)
         refresh_companion(input) if input[:companion_stress_marked]
         refresh_project(input) if input.dig(:project, :id)
         refresh_resources(input)
@@ -186,14 +185,6 @@ module CharactersContext
 
         character.data.selected_features = selected_features.compact
         character.save
-      end
-
-      def refresh_reverse_feats(input)
-        input[:character].feats
-          .joins(:feat)
-          .where(feats: { reverse_refresh: true })
-          .where(limit_refresh: limit_refresh(input))
-          .update_all(used_count: nil)
       end
 
       def limit_refresh(input)

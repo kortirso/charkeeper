@@ -6,60 +6,29 @@ module HomebrewsContext
       {
         daggerheart: {
           races: races_with_features(user_id).to_h,
-          communities: daggerheart_communities(user_id),
-          transformations: daggerheart_transformations(user_id),
-          domains: daggerheart_domains(user_id),
+          communities: titles(user_id, ::Daggerheart::Homebrews::Community),
+          transformations: titles(user_id, ::Daggerheart::Homebrews::Transformation),
+          domains: titles(user_id, ::Daggerheart::Homebrews::Domain),
           classes: daggerheart_classes(user_id),
           subclasses: daggerheart_subclasses(user_id)
         },
         dnd2024: {
-          races: dnd2024_races(user_id),
-          subclasses: dnd2024_subclasses(user_id),
-          backgrounds: dnd2024_backgrounds(user_id)
+          races: {},
+          subclasses: {},
+          backgrounds: titles(user_id, ::Dnd2024::Homebrews::Background)
         }
       }
     end
 
     private
 
-    def dnd2024_races(user_id)
-      relation = ::Dnd2024::Homebrew::Race
+    def titles(user_id, class_name)
+      relation = class_name
       relation.where(user_id: user_id)
         .or(
-          relation.where(
-            id: available_books_data(user_id)['Dnd2024::Homebrew::Race'] || available_books_data(user_id)['Homebrew::Race']
-          )
+          relation.where(id: available_books_data(user_id))
         )
-        .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: { en: item.name, ru: item.name }, legacies: {}, sizes: item.data.size }
-        end
-    end
-
-    def dnd2024_subclasses(user_id)
-      relation = ::Dnd2024::Homebrew::Subclass
-      relation.where(user_id: user_id)
-        .or(
-          relation.where(
-            id: available_books_data(user_id)['Dnd2024::Homebrew::Subclass'] || available_books_data(user_id)['Homebrew::Subclass']
-          )
-        )
-        .each_with_object({}) do |item, acc|
-          acc[item.class_name] ||= {}
-          acc[item.class_name][item.id] = { name: { en: item.name, ru: item.name } }
-        end
-    end
-
-    def dnd2024_backgrounds(user_id)
-      relation = ::Dnd2024::Homebrew::Background
-      relation.where(user_id: user_id)
-        .or(
-          relation.where(
-            id: available_books_data(user_id)['Dnd2024::Homebrew::Background'] || available_books_data(user_id)['Homebrew::Community']
-          )
-        )
-        .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: { en: item.data.names['en'], ru: item.data.names['ru'], es: item.data.names['es'] } }
-        end
+        .each_with_object({}) { |item, acc| acc[item.id] = { name: item.title } }
     end
 
     def races_with_features(...)
@@ -74,19 +43,7 @@ module HomebrewsContext
     end
 
     def daggerheart_heritages(user_id)
-      return @daggerheart_heritages if defined?(@daggerheart_heritages)
-
-      relation = ::Daggerheart::Homebrews::Ancestry
-      @daggerheart_heritages =
-        relation.where(user_id: user_id)
-          .or(
-            relation.where(
-              id: available_books_data(user_id)['Daggerheart::Homebrews::Ancestry'] || available_books_data(user_id)['Homebrew']
-            )
-          )
-          .each_with_object({}) do |item, acc|
-            acc[item.id] = { name: item.title }
-          end
+      @daggerheart_heritages ||= titles(user_id, ::Daggerheart::Homebrews::Ancestry)
     end
 
     def daggerheart_heritage_features(...)
@@ -102,45 +59,12 @@ module HomebrewsContext
           end
     end
 
-    def daggerheart_communities(user_id)
-      relation = ::Daggerheart::Homebrews::Community
-      relation.where(user_id: user_id)
-        .or(
-          relation.where(id: available_books_data(user_id)['Daggerheart::Homebrews::Community'])
-        )
-        .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: item.title }
-        end
-    end
-
-    def daggerheart_transformations(user_id)
-      relation = ::Daggerheart::Homebrews::Transformation
-      relation.where(user_id: user_id)
-        .or(
-          relation.where(id: available_books_data(user_id)['Daggerheart::Homebrews::Transformation'])
-        )
-        .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: item.title }
-        end
-    end
-
-    def daggerheart_domains(user_id)
-      relation = ::Daggerheart::Homebrews::Domain
-      relation.where(user_id: user_id)
-        .or(
-          relation.where(id: available_books_data(user_id)['Daggerheart::Homebrews::Domain'])
-        )
-        .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: item.title }
-        end
-    end
-
     def daggerheart_classes(user_id)
       relation = ::Daggerheart::Homebrews::Speciality
       relation.where(user_id: user_id)
         .or(
           relation.where(
-            id: ::Daggerheart::Homebrews::Subclass.where(id: available_books_data(user_id)['Daggerheart::Homebrews::Subclass']).pluck(:info).map { |info| info['class_id'] }
+            id: ::Daggerheart::Homebrews::Subclass.where(id: available_books_data(user_id)).pluck(:info).map { |info| info['class_id'] }
           )
         )
         .each_with_object({}) do |item, acc|
@@ -152,7 +76,7 @@ module HomebrewsContext
       relation = ::Daggerheart::Homebrews::Subclass
       relation.where(user_id: user_id)
         .or(
-          relation.where(id: available_books_data(user_id)['Daggerheart::Homebrews::Subclass'])
+          relation.where(id: available_books_data(user_id))
         )
         .each_with_object({}) do |item, acc|
           acc[item.info.class_id] ||= {}
@@ -163,9 +87,9 @@ module HomebrewsContext
     def available_books_data(user_id)
       @available_books_data ||=
         ::Homebrew::Book::Item
+          .where(itemable_type: 'Homebrew')
           .where(homebrew_book_id: ::User::Book.where(user_id: user_id).select(:homebrew_book_id))
-          .group_by(&:itemable_type)
-          .transform_values { |item| item.pluck(:itemable_id) }
+          .pluck(:itemable_id)
     end
   end
 end

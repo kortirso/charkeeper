@@ -2,7 +2,7 @@
 
 module HomebrewsV2
   module Daggerheart
-    class CharactersController < Homebrews::BaseController
+    class CharactersController < HomebrewsV2::BaseController
       include SerializeResource
       include SerializeRelation
 
