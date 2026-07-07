@@ -32,6 +32,8 @@ module Charkeeper
     register('api.discord.client') { DiscordApi::Client.new }
 
     # commands
+    register('commands.homebrew_context.dnd.add_item') { HomebrewContext::Dnd::Items::AddCommand.new }
+
     register('commands.auth_context.add_identity') { AuthContext::AddIdentityCommand.new }
     register('commands.auth_context.add_user') { AuthContext::AddUserCommand.new }
     register('commands.users_context.update') { UsersContext::UpdateCommand.new }
