@@ -5,6 +5,7 @@ import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Toggle, Button, Checkbox, Input } from '../../components';
 import { Trash } from '../../assets';
 import { changeUserBook, createBookRequest } from '../../requests_v2/books';
+import { removeBookItemRequest } from '../../requests_v2/bookItems';
 import { localize } from '../../helpers';
 
 const TRANSLATION = {
@@ -15,7 +16,8 @@ const TRANSLATION = {
     disabled: 'Disabled',
     name: 'Book name',
     save: 'Save',
-    public: 'Public'
+    public: 'Public',
+    editMode: 'Edit books content'
   },
   ru: {
     add: 'Добавить',
@@ -24,7 +26,8 @@ const TRANSLATION = {
     disabled: 'Отключено',
     name: 'Название книги',
     save: 'Сохранить',
-    public: 'Общедоступная'
+    public: 'Общедоступная',
+    editMode: 'Режим редактирования книг'
   },
   es: {
     add: 'Agregar',
@@ -33,7 +36,8 @@ const TRANSLATION = {
     disabled: 'Deshabilitado',
     name: 'Nombre del libro',
     save: 'Guardar',
-    public: 'Público'
+    public: 'Público',
+    editMode: 'Edit books content'
   }
 }
 
@@ -45,6 +49,7 @@ export const SharedBookContent = (props) => {
 
   const [createMode, setCreateMode] = createSignal(false);
   const [ownFilter, setOwnFilter] = createSignal(true);
+  const [editMode, setEditMode] = createSignal(false);
 
   const [infos, setInfos] = createSignal({});
   const [openInfos, setOpenInfos] = createSignal({});
@@ -114,6 +119,17 @@ export const SharedBookContent = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const removeItem = async (bookId, id) => {
+    const removeResult = await removeBookItemRequest(appState.accessToken, bookId, id);
+
+    if (removeResult.errors_list === undefined) {
+      const result = await props.onShowRequest(appState.accessToken, bookId);
+      if (result.errors_list === undefined) {
+        setInfos({ ...infos(), [bookId]: result.homebrew });
+      } else renderAlerts(result.errors_list);
+    } else renderAlerts(removeResult.errors_list);
+  }
+
   return (
     <Show when={elements() !== undefined} fallback={<></>}>
       <div class="flex my-4">
@@ -146,6 +162,15 @@ export const SharedBookContent = (props) => {
       >
         <Show when={filtered().length > 0}>
           <div class="flex flex-col gap-2">
+            <Show when={ownFilter()}>
+              <Checkbox
+                labelText={localize(TRANSLATION, locale()).editMode}
+                labelPosition="right"
+                labelClassList="ml-2"
+                checked={editMode()}
+                onToggle={() => setEditMode(!editMode())}
+              />
+            </Show>
             <For each={filtered()}>
               {(element) =>
                 <Toggle
@@ -176,18 +201,21 @@ export const SharedBookContent = (props) => {
                   }
                 >
                   <Show when={infos()[element.id]}>
-                    <ChildrenComponent info={infos()[element.id]} />
+                    <ChildrenComponent
+                      id={element.id}
+                      info={infos()[element.id]}
+                      editMode={element.own && editMode()}
+                      onRemove={removeItem}
+                    />
                     <Show when={element.shared || !element.own}>
-                      <p class="mt-2 py-1 cursor-pointer">
-                        <Checkbox
-                          labelText={element.enabled ? localize(TRANSLATION, locale()).enabled : localize(TRANSLATION, locale()).disabled}
-                          labelPosition="right"
-                          labelClassList="ml-2"
-                          checked={element.enabled}
-                          classList="mr-1"
-                          onToggle={() => toggleBook(element.id)}
-                        />
-                      </p>
+                      <Checkbox
+                        labelText={element.enabled ? localize(TRANSLATION, locale()).enabled : localize(TRANSLATION, locale()).disabled}
+                        labelPosition="right"
+                        labelClassList="ml-2"
+                        checked={element.enabled}
+                        classList="mt-2"
+                        onToggle={() => toggleBook(element.id)}
+                      />
                     </Show>
                   </Show>
                 </Toggle>

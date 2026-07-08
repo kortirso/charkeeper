@@ -1,6 +1,8 @@
 import { Show, For } from 'solid-js';
 
 import { useAppState, useAppLocale } from '../../../context';
+import { Button } from '../../../components';
+import { Close } from '../../../assets';
 import { SharedBookContent } from '../../../pages';
 import { fetchBooksRequest } from '../../../requests_v2/books';
 import { fetchBookRequest, removeBookRequest } from '../../../requests_v2/dnd2024/books';
@@ -54,17 +56,45 @@ export const Dnd2024Books = () => {
                   <p class="font-medium! mb-2">{localize(TRANSLATION, locale())[kind]}</p>
                   <For each={Object.entries(props.info.items.classes)}>
                     {([className, subclasses]) =>
-                      <p>{className} - {subclasses.join(', ')}</p>
+                      <p class="flex flex-wrap gap-2">{className}:
+                        <For each={Object.entries(subclasses)}>
+                          {([id, value]) =>
+                            <p class="flex items-center">
+                              {value}
+                              <Show when={props.editMode}>
+                                <Button default classList="ml-2 rounded min-w-4 min-h-4" onClick={() => props.onRemove(props.id, id)}>
+                                  <Close width="20" height="20" />
+                                </Button>
+                              </Show>
+                              ,
+                            </p>
+                          }
+                        </For>
+                      </p>
                     }
                   </For>
                 </div>
               </Show>
             }
           >
-            <Show when={props.info.items[kind].length > 0}>
+            <Show when={Object.keys(props.info.items[kind]).length > 0}>
               <div>
                 <p class="font-medium! mb-2">{localize(TRANSLATION, locale())[kind]}</p>
-                <p>{props.info.items[kind].join(', ')}</p>
+                <div class="flex flex-wrap gap-2">
+                  <For each={Object.entries(props.info.items[kind])}>
+                    {([id, value]) =>
+                      <p class="flex items-center">
+                        {value}
+                        <Show when={props.editMode}>
+                          <Button default classList="ml-2 rounded min-w-4 min-h-4" onClick={() => props.onRemove(props.id, id)}>
+                            <Close width="20" height="20" />
+                          </Button>
+                        </Show>
+                        ,
+                      </p>
+                    }
+                  </For>
+                </div>
               </div>
             </Show>
           </Show>

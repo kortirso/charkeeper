@@ -9,14 +9,14 @@ module Homebrews
         object.name
       end
 
-      def items # rubocop: disable Metrics/AbcSize
+      def items
         items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
-          items: ::Dnd5::Item.where(id: items['Item']).pluck(:name).map { |item| translate(item) },
+          items: transform(::Dnd5::Item.where(id: items['Item']).pluck(:id, :name)),
           classes: subclasses_info(items),
-          spells: feats(items, 6).pluck(:title).map { |item| translate(item) },
-          feats: feats(items, 4).pluck(:title).map { |item| translate(item) },
+          spells: transform(feats(items, 6).pluck(:id, :title)),
+          feats: transform(feats(items, 4).pluck(:id, :title)),
           backgrounds: titles(items, ::Dnd2024::Homebrews::Background, 'Homebrew')
         }
       end
@@ -32,13 +32,13 @@ module Homebrews
         object.user_id == context[:current_user_id]
       end
 
-      def subclasses_info(object_items)
+      def subclasses_info(object_items) # rubocop: disable Metrics/AbcSize
         ::Dnd2024::Homebrew::Subclass
           .where(id: object_items['Dnd2024::Homebrew::Subclass'].to_a + object_items['Homebrew::Subclass'].to_a)
-          .hashable_pluck(:name, :class_name)
+          .hashable_pluck(:id, :name, :class_name)
           .group_by { |i| i[:class_name] }
           .transform_keys { |key| Dnd2024::Character.class_info(key).dig('name', I18n.locale.to_s) }
-          .transform_values { |value| value.map { |item| item[:name] } }
+          .transform_values { |value| value.each_with_object({}) { |item, acc| acc[item[:id]] = translate(item[:name]) } }
       end
 
       def feats(object_items, origin)
@@ -46,7 +46,11 @@ module Homebrews
       end
 
       def titles(object_items, model, key)
-        model.where(id: object_items[key]).pluck(:title).map { |item| translate(item) }
+        transform(model.where(id: object_items[key]).pluck(:id, :title))
+      end
+
+      def transform(values)
+        values.to_h.transform_values { |item| translate(item) }
       end
     end
   end
