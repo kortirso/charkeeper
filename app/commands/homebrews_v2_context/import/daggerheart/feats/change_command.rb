@@ -23,7 +23,9 @@ module HomebrewsV2Context
 
           def do_persist(input)
             input[:feat].update!(
-              input.except(:feat, :limit, :no_refresh, :subclass_mastery, :level, :attacks, :skip_contract_validation)
+              input.except(
+                :feat, :limit, :no_refresh, :subclass_mastery, :level, :attacks, :skip_contract_validation, :type, :recall
+              )
             )
 
             { result: :ok }
