@@ -305,7 +305,7 @@ Rails.application.routes.draw do
     end
 
     resources :books, only: %i[] do
-      resources :items, only: %i[create], module: :books
+      resources :items, only: %i[create destroy], module: :books
     end
 
     namespace :users do

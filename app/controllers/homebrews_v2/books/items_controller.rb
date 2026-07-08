@@ -3,7 +3,8 @@
 module HomebrewsV2
   module Books
     class ItemsController < HomebrewsV2::BaseController
-      before_action :find_book, only: %i[create]
+      before_action :find_book
+      before_action :find_book_item, only: %i[destroy]
 
       def create
         case command.call({ user: current_user, book: @book, ids: params[:ids], itemable_type: params[:itemable_type] })
@@ -12,10 +13,19 @@ module HomebrewsV2
         end
       end
 
+      def destroy
+        @item.destroy
+        only_head_response
+      end
+
       private
 
       def find_book
         @book = Homebrew::Book.where(user_id: current_user.id).find(params.expect(:book_id))
+      end
+
+      def find_book_item
+        @item = @book.items.find_by!(itemable_id: params.expect(:id))
       end
 
       def command = HomebrewsV2Context::Books::Items::UpsertCommand.new

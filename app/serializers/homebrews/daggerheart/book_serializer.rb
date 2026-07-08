@@ -18,7 +18,7 @@ module Homebrews
           transformations: titles(items, ::Daggerheart::Homebrews::Transformation, 'Homebrew'),
           domains: titles(items, ::Daggerheart::Homebrews::Domain, 'Homebrew'),
           classes: subclasses_info(items),
-          items: ::Daggerheart::Item.where(id: items['Item']).pluck(:name).map { |item| translate(item) }
+          items: ::Daggerheart::Item.where(id: items['Item']).pluck(:id, :name).to_h.transform_values { |item| translate(item) }
         }
       end
 
@@ -34,19 +34,19 @@ module Homebrews
       end
 
       def titles(object_items, model, key)
-        model.where(id: object_items[key]).pluck(:title).map { |item| translate(item) }
+        model.where(id: object_items[key]).pluck(:id, :title).to_h.transform_values { |item| translate(item) }
       end
 
-      def subclasses_info(items)
+      def subclasses_info(items) # rubocop: disable Metrics/AbcSize
         subclasses =
           ::Daggerheart::Homebrews::Subclass
             .where(id: items['Homebrew'])
-            .hashable_pluck(:title, :info)
+            .hashable_pluck(:id, :title, :info)
             .group_by { |item| item[:info].class_id }
         classes = ::Daggerheart::Homebrews::Speciality.where(id: subclasses.keys).pluck(:id, :title).to_h
         subclasses
           .transform_keys { |key| translate(classes[key]) }
-          .transform_values { |value| value.map { |item| translate(item[:title]) } }
+          .transform_values { |value| value.each_with_object({}) { |item, acc| acc[item[:id]] = translate(item[:title]) } }
       end
     end
   end
