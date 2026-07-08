@@ -11,13 +11,25 @@ import { localize } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
-    level: 'Level'
+    level: 'Level',
+    spell: 'Spell',
+    ability: 'Ability',
+    grimoire: 'Grimoire',
+    recall: 'Recall cost'
   },
   ru: {
-    level: 'Уровень'
+    level: 'Уровень',
+    spell: 'Заклинание',
+    ability: 'Способность',
+    grimoire: 'Гримуар',
+    recall: 'Цена призыва'
   },
   es: {
-    level: 'Level'
+    level: 'Level',
+    spell: 'Hechizo',
+    ability: 'Habilidad',
+    grimoire: 'Grimorio',
+    recall: 'Recall cost'
   }
 }
 
@@ -40,6 +52,14 @@ export const DaggerheartDomainsV2 = () => {
               class="feat-markdown"
               innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
             />
+            <p class="flex gap-4 text-sm">
+              <Show when={feature.info.type}>
+                <span>{localize(TRANSLATION, locale())[feature.info.type]}</span>
+              </Show>
+              <Show when={feature.info.recall}>
+                <span>{localize(TRANSLATION, locale()).recall} - {feature.info.recall}</span>
+              </Show>
+            </p>
             <Show when={Object.keys(feature.modifiers).length > 0}>
               <FeatureModifiers items={feature.modifiers} />
             </Show>
