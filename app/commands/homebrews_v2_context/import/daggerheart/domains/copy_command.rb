@@ -24,7 +24,7 @@ module HomebrewsV2Context
             HomebrewsV2Context::Import::Daggerheart::Domains::AddCommand.new.call(input[:attributes])
           end
 
-          def features_payload(input)
+          def features_payload(input) # rubocop: disable Metrics/AbcSize
             ::Daggerheart::Feat
               .where(origin: 'domain_card', origin_value: input[:domain].id)
               .map do |feat|
@@ -34,6 +34,8 @@ module HomebrewsV2Context
                   ).symbolize_keys
                 result[:limit] = feat.description_eval_variables['limit']
                 result[:level] = feat.conditions['level']
+                result[:type] = feat.info['type']
+                result[:recall] = feat.info['recall']
                 result.compact
               end
           end
