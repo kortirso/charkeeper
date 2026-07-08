@@ -32,7 +32,7 @@ module Web
     end
 
     def set_locale
-      locale = params[:locale]&.to_sym # rubocop: disable Rails/StrongParametersExpect
+      locale = params[:locale]&.to_sym
       I18n.locale =
         if I18n.available_locales.include?(locale)
           locale

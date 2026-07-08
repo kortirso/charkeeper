@@ -51,7 +51,7 @@ gem 'props_template'
 
 # auth
 gem 'action_policy'
-gem 'authkeeper', '0.1.15'
+gem 'authkeeper', '0.1.21'
 gem 'jwt', '~> 2.5'
 
 # Work with JSON-backed attributes
@@ -95,7 +95,7 @@ gem 'redcarpet'
 gem 'dentaku'
 
 # soft deleting
-gem 'discard', '~> 1.4'
+gem 'discard', '~> 2.0'
 
 # advisory locking for processes
 gem 'with_advisory_lock'
@@ -134,6 +134,6 @@ group :test do
   gem 'json_spec', '1.1.5'
   gem 'rails-controller-testing', '1.0.5'
   gem 'rspec-rails', '~> 8.0'
-  gem 'shoulda-matchers', '~> 6.0'
+  gem 'shoulda-matchers', '~> 8.0'
   gem 'simplecov', require: false
 end

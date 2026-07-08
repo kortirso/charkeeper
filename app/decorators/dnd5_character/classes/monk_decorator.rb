@@ -64,7 +64,7 @@ module Dnd5Character
         key_ability_bonus = [modifiers['str'], modifiers['dex']].max
 
         result.each do |attack|
-          next if attack[:caption].any? { |item| NOT_MONK_WEAPON_CAPTIONS.include?(item) }
+          next if attack[:caption].intersect?(NOT_MONK_WEAPON_CAPTIONS)
           next if attack[:kind] == 'martial' && attack[:slug] != 'shortsword'
 
           attack[:attack_bonus] = key_ability_bonus + proficiency_bonus
