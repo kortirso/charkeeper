@@ -587,6 +587,23 @@ File.open('db/data_prod/daggerheart/feats.json', 'w') do |file|
   file.write(beautified_json_string)
 end
 
+
+relation = Dnd2024::Feat.where(origin: 0..5)
+
+relation = relation.where.not(description_eval_variables: {})
+  .or(
+    relation.where.not(eval_variables: {})
+  ).or(
+    relation.where.not(bonus_eval_variables: {})
+  )
+
+feats = relation.map { _1.attributes.slice('slug', 'title', 'description', 'kind', 'limit_refresh', 'description_eval_variables', 'eval_variables', 'bonus_eval_variables', 'continious', 'info', 'modifiers', 'tokens') }
+beautified_json_string = JSON.pretty_generate(feats)
+# # Write the beautified JSON string to a file
+File.open('db/data_prod/dnd2024/feats.json', 'w') do |file|
+  file.write(beautified_json_string)
+end
+
 file_content = File.read('db/data_prod/daggerheart/feats.json')
 JSON.parse(file_content).each do |item|
   feat = Daggerheart::Feat.find_by(slug: item['slug'])
