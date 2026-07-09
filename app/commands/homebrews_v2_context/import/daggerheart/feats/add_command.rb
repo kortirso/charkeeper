@@ -91,7 +91,8 @@ module HomebrewsV2Context
             end
             if input[:origin] == 'domain_card'
               input[:conditions] = { level: input[:level] }
-              input[:info] = { type: input[:type], recall: input[:recall] }
+              input[:info][:type] = input[:type]
+              input[:info][:recall] = input[:recall]
             end
 
             input[:info] = input[:info].compact
