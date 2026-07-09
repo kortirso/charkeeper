@@ -14,6 +14,7 @@ module HomebrewsV2Context
             Ranges = Dry::Types['strict.string'].enum('melee', 'very close', 'close', 'far', 'very far')
             DamageTypes = Dry::Types['strict.string'].enum('physical', 'magic')
             Damages = Dry::Types['strict.string'].enum('d4', 'd6', 'd8', 'd10', 'd12', 'd20')
+            Dices = Dry::Types['strict.string'].enum('D4', 'D6', 'D8', 'D10', 'D12', 'D20')
 
             params do
               required(:user).filled(type?: ::User)
@@ -55,6 +56,8 @@ module HomebrewsV2Context
                   optional(:stress).filled(:integer, gteq?: 1, lteq?: 10)
                   optional(:hope).filled(:integer, gteq?: 1, lteq?: 10)
                 end
+                optional(:hope_dice).filled(Dices)
+                optional(:fear_dice).filled(Dices)
                 optional(:attacks).maybe(:array).each(:hash) do
                   required(:kind).filled(WeaponKinds)
                   required(:name).hash do

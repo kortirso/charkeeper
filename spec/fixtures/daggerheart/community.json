@@ -40,6 +40,20 @@
           "spell_bonus": { "type": "add", "value": 2 },
           "severe": { "type": "add", "value": "tier" }
         },
+        /* optional, if feature changes hope or fear dice - D4, D6, D8, D10, D12, D20 */
+        "hope_dice": "D20",
+        "fear_dice": "D12",
+        /* optional, if feature can be enabled/disabled */
+        "continious": true,
+        /* optional, counting tokens */
+        "tokens": {
+          /* optional, none/str/agi/fin/ins/pre/know/spellcast/level/tier/proficiency or number */
+          "limit": "proficiency",
+          /* optional, reset current tokens at, long/short/session */
+          "reset_at": "long",
+          /* optional, zero/limit */
+          "reset": "limit"
+        },
         "attacks": [
           {
             /* required, allowed locale keys - en, ru, es */

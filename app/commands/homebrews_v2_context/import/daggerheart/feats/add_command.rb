@@ -48,6 +48,8 @@ module HomebrewsV2Context
                 optional(:hope).filled(:integer, gteq?: 1, lteq?: 10)
               end
               optional(:exclude).maybe(:array).each(:string, :uuid_v4?)
+              optional(:hope_dice).filled(:string)
+              optional(:fear_dice).filled(:string)
               optional(:attacks).maybe(:array).each(:hash) do
                 required(:kind).filled(Kinds)
                 required(:name).hash do
@@ -83,14 +85,16 @@ module HomebrewsV2Context
 
           def do_prepare(input) # rubocop: disable Metrics/AbcSize
             input[:slug] = SecureRandom.uuid
+            input[:info] = { hope_dice: input[:hope_dice], fear_dice: input[:fear_dice] }
             if input[:origin] == 'subclass' && input.key?(:subclass_mastery)
               input[:conditions] = { subclass_mastery: input[:subclass_mastery] }
             end
             if input[:origin] == 'domain_card'
               input[:conditions] = { level: input[:level] }
-              input[:info] = { type: input[:type], recall: input[:recall] }.compact
+              input[:info] = { type: input[:type], recall: input[:recall] }
             end
 
+            input[:info] = input[:info].compact
             input[:description_eval_variables] = { limit: input[:limit].to_s } if input.key?(:limit)
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description].transform_values! { |value| sanitize(value) }
@@ -98,7 +102,10 @@ module HomebrewsV2Context
 
           def do_persist(input)
             result = ::Daggerheart::Feat.create!(
-              input.except(:limit, :no_refresh, :subclass_mastery, :level, :attacks, :skip_contract_validation, :type, :recall)
+              input.except(
+                :limit, :no_refresh, :subclass_mastery, :level, :attacks, :skip_contract_validation, :type, :recall,
+                :hope_dice, :fear_dice
+              )
             )
 
             if input.key?(:attacks)

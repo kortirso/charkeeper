@@ -5,7 +5,7 @@ describe HomebrewsV2Context::Publications::PerformService do
 
   let!(:publication) { create :homebrew_publication, parent_type: 'transformation' }
 
-  context 'for valid file' do
+  context 'for valid transformation' do
     let(:file_path) { Rails.root.join('spec/fixtures/daggerheart/transformation.json') }
     let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
 
@@ -15,6 +15,81 @@ describe HomebrewsV2Context::Publications::PerformService do
 
     it 'calls import command', :aggregate_failures do
       expect { service_call }.to change(Daggerheart::Homebrews::Transformation, :count).by(1)
+      expect(publication.reload.errors_list).to eq({})
+    end
+  end
+
+  context 'for valid ancestry' do
+    let(:file_path) { Rails.root.join('spec/fixtures/daggerheart/ancestry.json') }
+    let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
+
+    before do
+      publication.file.attach(file)
+      publication.update(parent_type: 'ancestry')
+    end
+
+    it 'calls import command', :aggregate_failures do
+      expect { service_call }.to change(Daggerheart::Homebrews::Ancestry, :count).by(1)
+      expect(publication.reload.errors_list).to eq({})
+    end
+  end
+
+  context 'for valid community' do
+    let(:file_path) { Rails.root.join('spec/fixtures/daggerheart/community.json') }
+    let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
+
+    before do
+      publication.file.attach(file)
+      publication.update(parent_type: 'community')
+    end
+
+    it 'calls import command', :aggregate_failures do
+      expect { service_call }.to change(Daggerheart::Homebrews::Community, :count).by(1)
+      expect(publication.reload.errors_list).to eq({})
+    end
+  end
+
+  context 'for valid speciality' do
+    let(:file_path) { Rails.root.join('spec/fixtures/daggerheart/speciality.json') }
+    let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
+
+    before do
+      publication.file.attach(file)
+      publication.update(parent_type: 'speciality')
+    end
+
+    it 'calls import command', :aggregate_failures do
+      expect { service_call }.to change(Daggerheart::Homebrews::Speciality, :count).by(1)
+      expect(publication.reload.errors_list).to eq({})
+    end
+  end
+
+  context 'for valid subclass' do
+    let(:file_path) { Rails.root.join('spec/fixtures/daggerheart/subclass.json') }
+    let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
+
+    before do
+      publication.file.attach(file)
+      publication.update(parent_type: 'subclass')
+    end
+
+    it 'calls import command', :aggregate_failures do
+      expect { service_call }.to change(Daggerheart::Homebrews::Subclass, :count).by(1)
+      expect(publication.reload.errors_list).to eq({})
+    end
+  end
+
+  context 'for valid domain' do
+    let(:file_path) { Rails.root.join('spec/fixtures/daggerheart/domain.json') }
+    let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
+
+    before do
+      publication.file.attach(file)
+      publication.update(parent_type: 'domain')
+    end
+
+    it 'calls import command', :aggregate_failures do
+      expect { service_call }.to change(Daggerheart::Homebrews::Domain, :count).by(1)
       expect(publication.reload.errors_list).to eq({})
     end
   end

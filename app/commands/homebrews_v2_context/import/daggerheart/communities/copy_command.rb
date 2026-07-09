@@ -33,6 +33,8 @@ module HomebrewsV2Context
                     'title', 'description', 'kind', 'limit_refresh', 'modifiers', 'price', 'continious', 'tokens'
                   ).symbolize_keys
                 result[:limit] = feat.description_eval_variables['limit']
+                result[:hope_dice] = feat.info['hope_dice']
+                result[:fear_dice] = feat.info['fear_dice']
                 result.compact
               end
           end

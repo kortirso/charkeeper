@@ -22,7 +22,9 @@ class Feat < ApplicationRecord
         subclass_mastery: conditions['subclass_mastery'],
         level: conditions['level'],
         type: info['type'],
-        recall: info['recall']
+        recall: info['recall'],
+        hope_dice: info['hope_dice'],
+        fear_dice: info['fear_dice']
       }).compact_blank
   end
 end
