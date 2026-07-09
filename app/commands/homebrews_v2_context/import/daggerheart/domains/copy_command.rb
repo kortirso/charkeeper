@@ -36,6 +36,8 @@ module HomebrewsV2Context
                 result[:level] = feat.conditions['level']
                 result[:type] = feat.info['type']
                 result[:recall] = feat.info['recall']
+                result[:hope_dice] = feat.info['hope_dice']
+                result[:fear_dice] = feat.info['fear_dice']
                 result.compact
               end
           end

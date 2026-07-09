@@ -21,7 +21,32 @@
         /* optional */
         "limit": 1,
         /* optional, allowed values - short_rest/long_rest/session */
-        "limit_refresh": "short_rest"
+        "limit_refresh": "short_rest",
+        /* optional, hope or stress */
+        "price": { "hope": 1 },
+        /* optional */
+        /* available keys - str/agi/fin/ins/pre/know/health/stress/hope/evasion/armor_score/major/severe/attack/damage/spell_bonus,proficiency */
+        /* type - add */
+        /* value - integer or formula */
+        /* formulas - "level", "tier", "proficiency", "tier * 2", "level + 2" */
+        "modifiers": {
+          "str": { "type": "add", "value": 1 },
+          "evasion": { "type": "add", "value": "tier" }
+        },
+        /* optional, if feature changes hope or fear dice - D4, D6, D8, D10, D12, D20 */
+        "hope_dice": "D20",
+        "fear_dice": "D12",
+        /* optional, if feature can be enabled/disabled */
+        "continious": true,
+        /* optional, counting tokens */
+        "tokens": {
+          /* optional, none/str/agi/fin/ins/pre/know/spellcast/level/tier/proficiency or number */
+          "limit": "proficiency",
+          /* optional, reset current tokens at, long/short/session */
+          "reset_at": "long",
+          /* optional, zero/limit */
+          "reset": "limit"
+        }
       },
       {
         "title": {
