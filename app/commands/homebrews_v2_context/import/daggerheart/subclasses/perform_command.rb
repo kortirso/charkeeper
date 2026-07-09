@@ -10,7 +10,6 @@ module HomebrewsV2Context
             Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden', 'static_list', 'many_from_list')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'session')
             Spellcasts = Dry::Types['strict.string'].enum('agi', 'str', 'fin', 'ins', 'pre', 'know')
-            Mechanics = Dry::Types['strict.string'].enum('beastform', 'companion', 'stances')
             WeaponKinds = Dry::Types['strict.string'].enum('primary weapon', 'secondary weapon')
             Traits = Dry::Types['strict.string'].enum('agi', 'str', 'fin', 'ins', 'pre', 'know')
             Ranges = Dry::Types['strict.string'].enum('melee', 'very close', 'close', 'far', 'very far')
@@ -33,7 +32,7 @@ module HomebrewsV2Context
               end
               required(:class_id).filled(:string)
               optional(:spellcast).maybe(Spellcasts)
-              optional(:mechanics).maybe(:array).each(Mechanics)
+              optional(:mechanics).maybe(:array, size?: 1).each(:string)
               optional(:public).filled(:bool)
               optional(:features).maybe(:array).each(:hash) do
                 optional(:id).filled(:string, :uuid_v4?)

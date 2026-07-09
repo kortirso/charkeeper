@@ -16,6 +16,7 @@ const TRANSLATION = {
     items: 'Items',
     transformations: 'Transformations',
     domains: 'Domains',
+    mechanics: 'Mechanics',
     official: 'Approved'
   },
   ru: {
@@ -25,6 +26,7 @@ const TRANSLATION = {
     items: 'Предметы',
     transformations: 'Трансформации',
     domains: 'Домены',
+    mechanics: 'Механики',
     official: 'Одобренная'
   },
   es: {
@@ -34,6 +36,7 @@ const TRANSLATION = {
     items: 'Objetos',
     transformations: 'Transformaciones',
     domains: 'Dominios',
+    mechanics: 'Mechanics',
     official: 'Aprobado'
   }
 }
@@ -49,7 +52,7 @@ export const DaggerheartBooksV2 = () => {
       <Show when={props.info.shared}>
         <p class="font-medium!">{localize(TRANSLATION, locale()).official}</p>
       </Show>
-      <For each={['races', 'communities', 'classes', 'items', 'transformations', 'domains']}>
+      <For each={['races', 'communities', 'classes', 'items', 'transformations', 'domains', 'mechanics']}>
         {(kind) =>
           <Show
             when={kind !== 'classes'}

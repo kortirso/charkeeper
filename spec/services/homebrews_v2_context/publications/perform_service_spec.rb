@@ -94,6 +94,24 @@ describe HomebrewsV2Context::Publications::PerformService do
     end
   end
 
+  context 'for valid mechanic' do
+    let(:file_path) { Rails.root.join('spec/fixtures/daggerheart/mechanic.json') }
+    let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
+
+    before do
+      publication.file.attach(file)
+      publication.update(parent_type: 'mechanic')
+    end
+
+    it 'calls import command', :aggregate_failures do
+      expect { service_call }.to(
+        change(Daggerheart::Homebrews::Mechanic, :count).by(1)
+          .and(change(Daggerheart::Homebrews::MechanicItem, :count).by(1))
+      )
+      expect(publication.reload.errors_list).to eq({})
+    end
+  end
+
   context 'for updating' do
     context 'for existing record' do
       let!(:ancestry) {

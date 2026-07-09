@@ -1,0 +1,310 @@
+[
+  {
+    "title": {
+      "en": "Martial Form",
+      "ru": "Боевая форма"
+    },
+    "description": {
+      "en": "**Spend a Focus** to activate or shift into a diff erent stance. It lasts until you mark your last Hit Point, you take Severe damage, the scene ends, or you shift into another martial stance.",
+      "ru": "**Потратьте Концентрацию**, чтобы встать в стойку до тех пор, пока вы не получите Тяжелый урон, не закончится сцена, не отметите последнюю Рану или не вы встанете в другую стойку."
+    },
+    "public": true,
+    "items": [
+      {
+        "title": {
+          "en": "Brutal",
+          "ru": "Брутальная"
+        },
+        "description": {
+          "en": "When you roll the maximum value on a damage die, roll an additional damage die.",
+          "ru": "Когда вы выбрасываете максимальное значение на кости урона, бросьте дополнительную кость урона."
+        },
+        "tier": 1
+      },
+      {
+        "title": {
+          "en": "Defensive",
+          "ru": "Защитная"
+        },
+        "description": {
+          "en": "Attack rolls against you have disadvantage unless the adversary marks a Stress.",
+          "ru": "Броски Атаки против вас имеют Помеху, если противник не решит отметить Стресс."
+        },
+        "tier": 1
+      },
+      {
+        "title": {
+          "en": "Grappling",
+          "ru": "Захватная"
+        },
+        "description": {
+          "en": "On a successful attack, you can **spend a Focus** to make the target temporarily *Restrained*.",
+          "ru": "При успешной атаке вы можете **потратить Концентрацию**, чтобы временно *Обездвижить* цель."
+        },
+        "tier": 1
+      },
+      {
+        "title": {
+          "en": "Steady",
+          "ru": "Устойчивая"
+        },
+        "description": {
+          "en": "Gain a -1 penalty to your Evasion. When you deal damage on a successful attack, roll an additional damage die and drop the lowest.",
+          "ru": "Получите штраф -1 к Уклонению. При нанесении урона от успешной атаки, бросьте дополнительную кость урона и отбросьте наименьший результат."
+        },
+        "tier": 1,
+        "features": [
+          {
+            "title": {},
+            "description": {},
+            "kind": "hidden",
+            "modifiers": {
+              "evasion": { "type": "add", "value": -1 }
+            }
+          }
+        ]
+      },
+      {
+        "title": {
+          "en": "Precise",
+          "ru": "Точная"
+        },
+        "description": {
+          "en": "Gain a +1 bonus to your attack rolls.",
+          "ru": "Получите бонус +1 к Броскам Атаки."
+        },
+        "tier": 1,
+        "features": [
+          {
+            "title": {},
+            "description": {},
+            "kind": "hidden",
+            "modifiers": {
+              "attack": { "type": "add", "value": 1 }
+            }
+          }
+        ]
+      },
+      {
+        "title": {
+          "en": "Quick",
+          "ru": "Быстрая"
+        },
+        "description": {
+          "en": "When making an attack roll, **spend a Focus** to include an additional target within range.",
+          "ru": "При совершении Броска Атаки **потратьте Концентрацию**, чтобы поразить дополнительную цель в пределах дистанции."
+        },
+        "tier": 1
+      },
+      {
+        "title": {
+          "en": "Deadly",
+          "ru": "Смертельная"
+        },
+        "description": {
+          "en": "When you deal Severe damage, the target marks an additional HP.",
+          "ru": "Когда вы наносите Тяжелый урон, цель отмечает дополнительную Рану."
+        },
+        "tier": 2
+      },
+      {
+        "title": {
+          "en": "Hindering",
+          "ru": "Ограничивающая"
+        },
+        "description": {
+          "en": "On a successful attack, you can **spend a Focus** to make the target temporarily *Hindered*. While *Hindered*, their attack rolls have a -2 penalty.",
+          "ru": "При успешной атаке вы можете **потратить Концентрацию**, чтобы временно *Ограничить* цель. Пока цель *Ограничена*, ее броски атаки получают штраф -2."
+        },
+        "tier": 2
+      },
+      {
+        "title": {
+          "en": "Invigorating",
+          "ru": "Энергичная"
+        },
+        "description": {
+          "en": "When you make a successful attack, roll a d4. On a 4, gain a Focus.",
+          "ru": "Когда вы совершаете успешную атаку, бросьте d4. При выпадении 4, получите Концентрацию."
+        },
+        "tier": 2
+      },
+      {
+        "title": {
+          "en": "Immovable",
+          "ru": "Неподвижная"
+        },
+        "description": {
+          "en": "Gain a +2 bonus to your damage thresholds and you cannot be moved unwillingly.",
+          "ru": "Получите +2 бонус к вашим порогам урона. Вас нельзя сдвинуть против вашей воли."
+        },
+        "tier": 2,
+        "features": [
+          {
+            "title": {},
+            "description": {},
+            "kind": "hidden",
+            "modifiers": {
+              "major": { "type": "add", "value": 2 },
+              "severe": { "type": "add", "value": 2 }
+            }
+          }
+        ]
+      },
+      {
+        "title": {
+          "en": "Nimble",
+          "ru": "Ловкая"
+        },
+        "description": {
+          "en": "When an adversary makes a successful attack roll against you, you can **spend a number of Focus** up to your Tier. Roll a number of d6s equal to 1 + the Focus spent. If any of the dice values match, you take no damage from the attack.",
+          "ru": "Когда противник совершает успешный бросок атаки по вам, вы можете потратить **количество Концентрации, равное вашему Рангу**. Бросьте количество костей d6, равное количеству потраченной Концентрации + 1. Если значения каких-либо костей совпадают, вы не получаете урона от этой атаки."
+        },
+        "tier": 2
+      },
+      {
+        "title": {
+          "en": "Otherworldly",
+          "ru": "Неземная"
+        },
+        "description": {
+          "en": "You can choose whether to do Physical or Magic damage.",
+          "ru": "Вы можете выбрать, будет ли ваш тип урона Физический или Магический."
+        },
+        "tier": 2
+      },
+      {
+        "title": {
+          "en": "Scary",
+          "ru": "Страшная"
+        },
+        "description": {
+          "en": "Successful attacks also force the target to mark a Stress.",
+          "ru": "Успешные атаки также заставляют цель отметить Стресс."
+        },
+        "tier": 2
+      },
+      {
+        "title": {
+          "en": "Deflecting",
+          "ru": "Отражающая"
+        },
+        "description": {
+          "en": "When you are targeted by an attack, you can **spend 2 Focus** to gain a bonus to your Evasion equal to your Armor Score against the attack.",
+          "ru": "Когда вы становитесь целью атаки, вы можете **потратить 2 Концентрации**, чтобы получить бонус к Уклонению, равный вашему Показателю Брони против этой атаки."
+        },
+        "tier": 3
+      },
+      {
+        "title": {
+          "en": "Devastating",
+          "ru": "Разрушительная"
+        },
+        "description": {
+          "en": "**Spend a Focus** before your attack roll to use d20s as your damage dice instead.",
+          "ru": "**Потратьте Концентрацию** перед броском атаки, чтобы использовать d20 в качестве костей урона."
+        },
+        "tier": 3
+      },
+      {
+        "title": {
+          "en": "Dueling",
+          "ru": "Дуэльная"
+        },
+        "description": {
+          "en": "Gain advantage on attack rolls when there are no other adversaries or allies in Very Close range of you or your target.",
+          "ru": "Получите преимущество для бросков атаки, когда нет других противников или союзников в пределах Близкой дистанции от вас или вашей цели."
+        },
+        "tier": 3
+      },
+      {
+        "title": {
+          "en": "Compounding",
+          "ru": "Комбинированная"
+        },
+        "description": {
+          "en": "When you roll the maximum value on a Combo Die, increase the size of the subsequent Combo Dice you roll for the attack (at a maximum of d12s).",
+          "ru": "Когда вы выбрасываете максимальное значение на Кости Комбо, увеличьте ступень последующих Костей Комбо, которые вы выбрасываете для атаки (максимум d12)."
+        },
+        "tier": 3
+      },
+      {
+        "title": {
+          "en": "Inexorable",
+          "ru": "Непреклонная"
+        },
+        "description": {
+          "en": "Attacks against you have disadvantage if you have more than two adversaries within Melee of you.",
+          "ru": "Атаки против вас имеют помеху, если у вас более двух противников Вплотную к вам."
+        },
+        "tier": 3
+      },
+      {
+        "title": {
+          "en": "Favored",
+          "ru": "Избранная"
+        },
+        "description": {
+          "en": "Add the trait of your choice to your damage roll.",
+          "ru": "Добавьте характеристику по вашему выбору к вашему броску урона."
+        },
+        "tier": 3
+      },
+      {
+        "title": {
+          "en": "Sheltering",
+          "ru": "Укрывающая"
+        },
+        "description": {
+          "en": "When you mark an Armor Slot, it reduces damage for you and all allies within Melee range of you who took the same damage.",
+          "ru": "Когда вы отмечаете Ячейку Брони, она уменьшает урон для вас и всех союзников, находящихся Вплотную, которые получили тот же урон."
+        },
+        "tier": 3
+      },
+      {
+        "title": {
+          "en": "Crushing",
+          "ru": "Сокрушающая"
+        },
+        "description": {
+          "en": "When you roll a 1 on a damage die, it can be treated as the highest value on the die instead.",
+          "ru": "Когда вы выбрасываете 1 на кости урона, она может считаться как самое высокое значение на этой кости."
+        },
+        "tier": 4
+      },
+      {
+        "title": {
+          "en": "Infuriating",
+          "ru": "Яростная"
+        },
+        "description": {
+          "en": "On a successful attack, the target becomes *Furious*. While *Furious*, they are *Vulnerable* and have a -2 penalty to their attack rolls. They can only clear *Furious* by succeeding on an attack against you.",
+          "ru": "При успешной атаке цель становится *Разъяренной*. Пока цель *Разъярена*, она *Уязвима* и получает штраф -2 к броскам атаки. Цель может снять *Разъяренность*, только если она успешно вас атакует."
+        },
+        "tier": 4
+      },
+      {
+        "title": {
+          "en": "Sweeping",
+          "ru": "Широкая"
+        },
+        "description": {
+          "en": "Your attack targets all adversaries within Very Close range. Deal half damage to all targets you succeed against.",
+          "ru": "Ваша атака нацелена на всех противников в пределах Близкой дистанции. Нанесите половину урона всем целям, против которых атака успешна."
+        },
+        "tier": 4
+      },
+      {
+        "title": {
+          "en": "Discerning",
+          "ru": "Проницательная"
+        },
+        "description": {
+          "en": "You may choose the target of your attack after making your attack roll. The GM will tell you who the attack would succeed against.",
+          "ru": "Вы можете выбрать цель своей атаки после того, как совершите бросок атаки. Мастер скажет вам, против кого атака будет успешной."
+        },
+        "tier": 4
+      }
+    ]
+  }
+]

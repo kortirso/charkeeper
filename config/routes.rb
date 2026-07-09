@@ -279,6 +279,9 @@ Rails.application.routes.draw do
       resources :domains, only: %i[show destroy] do
         post :copy, on: :member
       end
+      resources :mechanics, only: %i[show destroy] do
+        post :copy, on: :member
+      end
       resources :books, only: %i[index show create destroy] do
         get :for_items, on: :collection
       end

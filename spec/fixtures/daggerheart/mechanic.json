@@ -1,0 +1,74 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "title": {
+      "en": "Mechanic's title"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Mechanic's description, **Markdown is available** for editing."
+    },
+    "public": true,
+    "items": [
+      {
+        /* required, allowed locale keys - en, ru, es */
+        "title": {
+          "en": "Mechanic item's title"
+        },
+        /* required, allowed locale keys - en, ru, es */
+        "description": {
+          "en": "Mechanic item's description, **Markdown is available** for editing."
+        },
+        /* required, 1-4 */
+        "tier": 1,
+        "features": [
+          {
+            /* required, allowed locale keys - en, ru, es */
+            "title": {
+              "en": "Feature's title"
+            },
+            /* required, allowed locale keys - en, ru, es */
+            "description": {
+              "en": "Feature's description, **Markdown is available** for editing."
+            },
+            /* required, allowed values - static/text/update_result/hidden */
+            /* static - Simple rendering */
+            /* text - Like static + allow to add text value */
+            /* update_result - Like static + can be hidden by settings */
+            /* hidden - Always hidden */
+            "kind": "static",
+            /* optional */
+            "limit": 1,
+            /* optional, allowed values - short_rest/long_rest/session */
+            "limit_refresh": "short_rest",
+            /* optional, hope or stress */
+            "price": { "hope": 1 },
+            /* optional */
+            /* available keys - str/agi/fin/ins/pre/know/health/stress/hope/evasion/armor_score/major/severe/attack/damage/spell_bonus,proficiency */
+            /* type - add */
+            /* value - integer or formula */
+            /* formulas - "level", "tier", "proficiency", "tier * 2", "level + 2" */
+            "modifiers": {
+              "str": { "type": "add", "value": 1 },
+              "evasion": { "type": "add", "value": "tier" }
+            },
+            /* optional, if feature changes hope or fear dice - D4, D6, D8, D10, D12, D20 */
+            "hope_dice": "D20",
+            "fear_dice": "D12",
+            /* optional, if feature can be enabled/disabled */
+            "continious": true,
+            /* optional, counting tokens */
+            "tokens": {
+              /* optional, none/str/agi/fin/ins/pre/know/spellcast/level/tier/proficiency or number */
+              "limit": "proficiency",
+              /* optional, reset current tokens at, long/short/session */
+              "reset_at": "long",
+              /* optional, zero/limit */
+              "reset": "limit"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

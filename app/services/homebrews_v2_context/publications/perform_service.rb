@@ -43,6 +43,7 @@ module HomebrewsV2Context
         when 'speciality' then HomebrewsV2Context::Import::Daggerheart::Specialities::PerformCommand.new
         when 'subclass' then HomebrewsV2Context::Import::Daggerheart::Subclasses::PerformCommand.new
         when 'domain' then HomebrewsV2Context::Import::Daggerheart::Domains::PerformCommand.new
+        when 'mechanic' then HomebrewsV2Context::Import::Daggerheart::Mechanics::PerformCommand.new
         when 'armor' then HomebrewsV2Context::Import::Daggerheart::Items::Armors::AddCommand.new
         when 'consumables' then HomebrewsV2Context::Import::Daggerheart::Items::Consumables::AddCommand.new
         when 'item' then HomebrewsV2Context::Import::Daggerheart::Items::Items::AddCommand.new

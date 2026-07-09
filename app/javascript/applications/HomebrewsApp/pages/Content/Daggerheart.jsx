@@ -3,7 +3,7 @@ import { For, Switch, Match } from 'solid-js';
 import {
   DaggerheartAncestriesV2, DaggerheartCommunitiesV2, DaggerheartSpecialities, DaggerheartSubclasses, DaggerheartDomainsV2,
   DaggerheartTransformationsV2, DaggerheartBooksV2, DaggerheartItemsV2, DaggerheartConsumables,
-  DaggerheartWeaponsV2, DaggerheartArmorV2, DaggerheartPersonal
+  DaggerheartWeaponsV2, DaggerheartArmorV2, DaggerheartPersonal, DaggerheartMechanics
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -21,7 +21,8 @@ const TRANSLATION = {
     weapons: 'Weapons',
     armor: 'Armor',
     recipes: 'Recipes',
-    features: 'Features'
+    features: 'Features',
+    mechanics: 'Mechanics'
   },
   ru: {
     books: 'Книги',
@@ -36,7 +37,8 @@ const TRANSLATION = {
     weapons: 'Оружие',
     armor: 'Броня',
     recipes: 'Рецепты',
-    features: 'Способности'
+    features: 'Способности',
+    mechanics: 'Механики'
   },
   es: {
     books: 'Libros',
@@ -51,7 +53,8 @@ const TRANSLATION = {
     weapons: 'Armas',
     armor: 'Armadura',
     recipes: 'Recetas',
-    features: 'Características'
+    features: 'Características',
+    mechanics: 'Mechanics'
   }
 }
 
@@ -64,7 +67,10 @@ export const Daggerheart = () => {
     <>
       <div class="flex flex-wrap gap-x-4 gap-y-2 my-4">
         <For each={
-          ['books', 'ancestries', 'communities', 'classes', 'subclasses', 'domains', 'transformations', 'features', 'items', 'consumables', 'weapons', 'armor']
+          [
+            'books', 'ancestries', 'communities', 'classes', 'subclasses', 'domains', 'transformations', 'mechanics',
+            'features', 'items', 'consumables', 'weapons', 'armor'
+          ]
         }>
           {(item) =>
             <p
@@ -80,7 +86,7 @@ export const Daggerheart = () => {
           Object.entries({
             ancestries: DaggerheartAncestriesV2, communities: DaggerheartCommunitiesV2, classes: DaggerheartSpecialities,
             subclasses: DaggerheartSubclasses, domains: DaggerheartDomainsV2, transformations: DaggerheartTransformationsV2,
-            books: DaggerheartBooksV2, items: DaggerheartItemsV2, weapons: DaggerheartWeaponsV2,
+            books: DaggerheartBooksV2, items: DaggerheartItemsV2, weapons: DaggerheartWeaponsV2, mechanics: DaggerheartMechanics,
             consumables: DaggerheartConsumables, armor: DaggerheartArmorV2, features: DaggerheartPersonal
           })
         }>
