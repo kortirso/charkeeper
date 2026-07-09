@@ -25,7 +25,7 @@ describe HomebrewsV2::Daggerheart::SubclassesController do
           request
 
           expect(response).to have_http_status :ok
-          expect(response.parsed_body['homebrew'].keys).to contain_exactly('id', 'features', 'class_name', 'info')
+          expect(response.parsed_body['homebrew'].keys).to contain_exactly('id', 'features', 'class_name', 'info', 'mechanic')
         end
       end
     end

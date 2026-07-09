@@ -96,6 +96,10 @@ module Daggerheart
       config.dig('communities', value)
     end
 
+    def self.mechanics
+      config['mechanics']
+    end
+
     def self.beastforms
       config['beastforms']
     end

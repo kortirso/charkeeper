@@ -3,13 +3,23 @@
 module HomebrewsV2
   module Daggerheart
     class SubclassSerializer < ApplicationSerializer
-      attributes :id, :features, :info, :class_name
+      attributes :id, :features, :info, :class_name, :mechanic
 
       def class_name
         default = ::Daggerheart::Character.classes_info
         class_id = object.info.class_id
         translate(
           default[class_id] ? default.dig(class_id, 'name') : ::Daggerheart::Homebrews::Speciality.find_by(id: class_id)&.title
+        )
+      end
+
+      def mechanic
+        mechanic = object.info.mechanics.first
+        return unless mechanic
+
+        default = ::Daggerheart::Character.mechanics
+        translate(
+          default[mechanic] ? default.dig(mechanic, 'name') : ::Daggerheart::Homebrews::Mechanic.find_by(id: mechanic)&.title
         )
       end
 
