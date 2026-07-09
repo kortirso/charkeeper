@@ -14,10 +14,10 @@
     "class_id": "bard",
     /* optional, spellcast trait */
     /* agi, str, fin, ins, pre, know */
-    "spellcast": null,
     /* "spellcast": "agi", */
+    "spellcast": null,
     /* optional, available mechanics, list can be empty */
-    /* beastform, companion, stances */
+    /* beastform, companion, stances or ID of custom mechanic */
     "mechanics": ["companion"],
     "features": [
       {

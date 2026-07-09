@@ -43,5 +43,18 @@ FactoryBot.define do
       title { { 'en' => 'Title' } }
       description { { 'en' => 'Description' } }
     end
+
+    trait :daggerheart_mechanic do
+      type { 'Daggerheart::Homebrews::Mechanic' }
+      title { { 'en' => 'Title' } }
+      description { { 'en' => 'Description' } }
+    end
+
+    trait :daggerheart_mechanic_item do
+      type { 'Daggerheart::Homebrews::MechanicItem' }
+      title { { 'en' => 'Title' } }
+      description { { 'en' => 'Description' } }
+      info { { 'tier' => '1' } }
+    end
   end
 end

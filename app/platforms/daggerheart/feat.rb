@@ -12,6 +12,7 @@ module Daggerheart
     DOMAIN_CARD_ORIGIN = 'domain_card'
     PARENT = 'parent'
     COMPANION = 'companion'
+    MECHANIC = 'mechanic'
 
     STATIC = 'static' # рендерится текст
     TEXT = 'text' # можно добавить текст
@@ -36,7 +37,8 @@ module Daggerheart
       TRANSFORMATION_ORIGIN => 6,
       DOMAIN_CARD_ORIGIN => 7,
       PARENT => 8,
-      COMPANION => 9
+      COMPANION => 9,
+      MECHANIC => 10
     }
     enum :kind, { STATIC => 0, TEXT => 1, UPDATE_RESULT => 2, STATIC_LIST => 3, MANY_FROM_LIST => 4, HIDDEN => 5 }
     enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, SESSION => 2 }

@@ -6,4 +6,7 @@ class Homebrew < ApplicationRecord
   include Homebrewable
 
   belongs_to :user, touch: :homebrew_updated_at
+  belongs_to :homebrew, optional: true
+
+  has_many :homebrews, dependent: :destroy
 end

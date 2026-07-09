@@ -51,6 +51,8 @@ module Daggerheart
     attribute :conditions, array: true, default: []
     attribute :scars, array: true, default: []
     attribute :rally_dice, :integer
+    attribute :available_mechanic_items, array: true, default: []
+    attribute :selected_mechanic_items, array: true, default: []
   end
 
   class Character < Character
