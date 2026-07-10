@@ -3,13 +3,14 @@
 module HomebrewsV2
   class BooksController < HomebrewsV2::BaseController
     include Deps[
-      add_book: 'commands.homebrew_context.books.add'
+      add_book: 'commands.homebrew_context.books.add',
+      change_book: 'commands.homebrew_context.books.change'
     ]
     include SerializeRelation
     include SerializeResource
 
     before_action :find_book, only: %i[show]
-    before_action :find_own_book, only: %i[destroy]
+    before_action :find_own_book, only: %i[update destroy]
 
     def index
       serialize_relation(
@@ -29,6 +30,13 @@ module HomebrewsV2
       case add_book.call(book_params.merge(user: current_user, provider: provider))
       in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
       in { result: result } then serialize_resource(result, serializer, :book, {}, :created, current_user_id: current_user.id)
+      end
+    end
+
+    def update
+      case change_book.call(book_params.merge(book: @book))
+      in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
+      else serialize_resource(@book.reload, serializer, :book, {}, :ok, current_user_id: current_user.id)
       end
     end
 

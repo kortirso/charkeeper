@@ -3,8 +3,8 @@ import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Toggle, Button, Checkbox, Input } from '../../components';
-import { Trash } from '../../assets';
-import { changeUserBook, createBookRequest } from '../../requests_v2/books';
+import { Trash, Edit } from '../../assets';
+import { changeUserBook, createBookRequest, changeBookRequest } from '../../requests_v2/books';
 import { removeBookItemRequest } from '../../requests_v2/bookItems';
 import { localize } from '../../helpers';
 
@@ -95,12 +95,41 @@ export const SharedBookContent = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const edit = async (e, element) => {
+    e.stopPropagation();
+
+    batch(() => {
+      setCreateMode(true);
+      setBookForm({ id: element.id, name: element.title, public: element.public });
+    });
+  }
+
+  const performBook = () => bookForm.id ? updateBook() : createBook();
+
   const createBook = async () => {
     const result = await createBookRequest(appState.accessToken, props.provider, { book: bookForm });
 
     if (result.errors_list === undefined) {
       batch(() => {
         setElements([result.book].concat(elements()));
+        setBookForm({ id: null, name: '', public: false });
+        setCreateMode(false);
+      });
+    } else renderAlerts(result.errors_list);
+  }
+
+  const updateBook = async () => {
+    const result = await changeBookRequest(appState.accessToken, props.provider, bookForm.id, { book: bookForm, only_head: true });
+
+    if (result.errors_list === undefined) {
+      batch(() => {
+        setElements(
+          elements().map((item) => {
+            if (bookForm.id !== item.id) return item;
+
+            return { ...item, title: bookForm.name, public: bookForm.public };
+          })
+        );
         setBookForm({ id: null, name: '', public: false });
         setCreateMode(false);
       });
@@ -156,7 +185,7 @@ export const SharedBookContent = (props) => {
               classList="mb-4"
               onToggle={() => setBookForm({ ...bookForm, public: !bookForm.public })}
             />
-            <Button default classList="px-2 py-1" onClick={createBook}>{localize(TRANSLATION, locale()).save}</Button>
+            <Button default classList="px-2 py-1" onClick={performBook}>{localize(TRANSLATION, locale()).save}</Button>
           </>
         }
       >
@@ -180,7 +209,10 @@ export const SharedBookContent = (props) => {
                   title={
                     <div class="flex items-center">
                       <div class="flex-1 flex flex-col gap-2">
-                        <p class="text-xl">{element.title}</p>
+                        <p class="text-xl font-medium!">{element.title}</p>
+                        <Show when={element.public}>
+                          <p class="text-sm">{localize(TRANSLATION, locale()).public}</p>
+                        </Show>
                         <Show when={element.description}>
                           <p
                             class="feat-markdown mt-1"
@@ -191,6 +223,9 @@ export const SharedBookContent = (props) => {
                       <div class="col-span-2 flex items-start justify-end gap-2">
                         <Show when={ownFilter()}>
                           <div class="flex items-center justify-end gap-1 text-neutral-700">
+                            <Button default classList="px-2 py-1" onClick={(e) => edit(e, element)}>
+                              <Edit width="20" height="20" />
+                            </Button>
                             <Button default classList="px-2 py-1" onClick={(e) => remove(e, element.id)}>
                               <Trash width="20" height="20" />
                             </Button>

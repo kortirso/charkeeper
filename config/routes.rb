@@ -282,7 +282,7 @@ Rails.application.routes.draw do
       resources :mechanics, only: %i[show destroy] do
         post :copy, on: :member
       end
-      resources :books, only: %i[index show create destroy] do
+      resources :books, only: %i[index show create update destroy] do
         get :for_items, on: :collection
       end
       resources :items, only: %i[index show destroy] do
@@ -302,7 +302,7 @@ Rails.application.routes.draw do
       resources :spells, only: %i[index show destroy] do
         post :copy, on: :member
       end
-      resources :books, only: %i[index show create destroy] do
+      resources :books, only: %i[index show create update destroy] do
         get :for_items, on: :collection
       end
     end
