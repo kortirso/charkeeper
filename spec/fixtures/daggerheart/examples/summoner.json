@@ -1,0 +1,52 @@
+[
+  {
+    "title": {
+      "en": "Summoner",
+      "ru": ""
+    },
+    "description": {
+      "en": "As a summoner, you harness your occult training to call forth and command otherworldly entities that act on your behalf.",
+      "ru": ""
+    },
+    "public": true,
+    "domains": ["blood", "splendor"],
+    "evasion": 10,
+    "health_max": 6,
+    "features": [
+      {
+        "title": {
+          "en": "Aid of the Spirit",
+          "ru": ""
+        },
+        "description": {
+          "en": "**Spend 3 Hope** to conjure otherworldly aid. Distribute 2 Hope among one or more other PCs within Far range, and you clear a Stress.",
+          "ru": ""
+        },
+        "kind": "static",
+        "price": { "hope": 3 }
+      },
+      {
+        "title": {
+          "en": "Summon Entity",
+          "ru": ""
+        },
+        "description": {
+          "en": "You can summon otherworldly Entities: Fate Spirits and other Entities from your subclass. Each Entity is associated with a summoning circle below. **Mark a Stress** to summon a number of your Entities equal to your tier, and add them to the appropriate circles. You can hold a total number of Entities equal to your level. Summoned Entities stay within Very Close range, can perform harmless tasks within that range, and cannot be targeted. If a task requires an action roll, make a Spellcast Roll to command the Entity.",
+          "ru": ""
+        },
+        "kind": "text"
+      },
+      {
+        "title": {
+          "en": "First Circle — Fate Spirit",
+          "ru": ""
+        },
+        "description": {
+          "en": "After an adversary within Very Close range makes a successful attack roll, you can command a Fate Spirit to force the adversary to reroll the attack. The spirit then disappears.",
+          "ru": ""
+        },
+        "kind": "static"
+      }
+    ]
+  }
+]

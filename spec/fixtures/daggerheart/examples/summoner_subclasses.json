@@ -1,0 +1,236 @@
+[
+  {
+    "title": {
+      "en": "Necromancy",
+      "ru": ""
+    },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "know",
+    "features": [
+      {
+        "title": {
+          "en": "Second Circle — Shambling Corpse",
+          "ru": ""
+        },
+        "description": {
+          "en": "You can summon Shambling Corpses using your Second Circle.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Hunger of the Grave",
+          "ru": ""
+        },
+        "description": {
+          "en": "Make a **Spellcast Roll** a target within Far range. On a success, your Shambling Corpses move to attack the target, dealing 5 physical damage for each Shambling Corpse before returning to you. One Shambling Corpse then disappears.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Grim Harvest",
+          "ru": ""
+        },
+        "description": {
+          "en": "When an adversary within Far range marks its last Hit Point, you can summon one Shambling Corpse without marking a Stress.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Third Circle — Ghosts",
+          "ru": ""
+        },
+        "description": {
+          "en": "You can summon Ghosts using your Third Circle.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Ghostly Protectors",
+          "ru": ""
+        },
+        "description": {
+          "en": "While you have any Ghosts summoned, your Evasion has a +1 bonus as they swirl around you in protection.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Spectral Terror",
+          "ru": ""
+        },
+        "description": {
+          "en": "Make a **Spellcast Roll** against a target within Far range. On a success, one of your Ghosts flies to the target to scare it, causing it to mark a Stress. That Ghost then disappears.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Fourth Circle — Death Knight",
+          "ru": ""
+        },
+        "description": {
+          "en": "You can summon one Death Knight at a time using your Fourth Circle.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      },
+      {
+        "title": {
+          "en": "Deathly Warrior",
+          "ru": ""
+        },
+        "description": {
+          "en": "When you succeed on an attack roll with Hope, you can instead succeed with Fear, causing your Death Knight to rush your target, add 2d12 to the attack’s damage, and then return to you.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      },
+      {
+        "title": {
+          "en": "Knightly Bulwark",
+          "ru": ""
+        },
+        "description": {
+          "en": "When you take Severe damage, the Death Knight takes one of the Hit Points instead and then disappears.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Theurgy",
+      "ru": ""
+    },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "know",
+    "features": [
+      {
+        "title": {
+          "en": "Second Circle — Angel",
+          "ru": ""
+        },
+        "description": {
+          "en": "You can summon Angels using your Second Circle.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Angelic Presence",
+          "ru": ""
+        },
+        "description": {
+          "en": "While you have any Angels summoned, you have advantage on Presence rolls to influence others, as the angelic power around you inspires awe and fear.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Hopeful Strike",
+          "ru": ""
+        },
+        "description": {
+          "en": "When you succeed with Hope on an attack roll, you can command one Angel to deal an extra 1d10 magic damage to the target. The Angel then disappears.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Third Circle — Archangel",
+          "ru": ""
+        },
+        "description": {
+          "en": "You can summon Archangels using your Third Circle.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Divine Commander",
+          "ru": ""
+        },
+        "description": {
+          "en": "While you have any Archangels summoned, the extra damage of your Hopeful Strike is 1d12 instead of 1d10.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Heavenly Aid",
+          "ru": ""
+        },
+        "description": {
+          "en": "You can command an Archangel to do one of the following:\n\n- Fly you or an ally within Very Close range to a location within Far range.\n\n- Help an Ally within Close range without spending Hope.\n\nThe Archangel then disappears.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Fourth Circle — Divine Manifestation",
+          "ru": ""
+        },
+        "description": {
+          "en": "You can summon one Divine Manifestation at a time using your Fourth Circle.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      },
+      {
+        "title": {
+          "en": "Hallowed Hope",
+          "ru": ""
+        },
+        "description": {
+          "en": "When you summon a Divine Manifestation, place three extra Hope dice on this card. When you make an action or a reaction roll, you can roll and expend one Hope die from this card, along with your normal Hope die, and use the Hope die with the highest result. When there are no dice left on this card, the Divine Manifestation disappears.",
+          "ru": ""
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      }
+    ]
+  }
+]
