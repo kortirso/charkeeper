@@ -16,7 +16,7 @@ class Feat < ApplicationRecord
 
   def to_homebrew_json
     attributes
-      .slice('id', 'title', 'description', 'kind', 'price', 'limit_refresh', 'modifiers', 'exclude', 'continious')
+      .slice('id', 'title', 'description', 'kind', 'price', 'limit_refresh', 'modifiers', 'exclude', 'continious', 'tokens')
       .merge({
         limit: description_eval_variables['limit'],
         subclass_mastery: conditions['subclass_mastery'],
