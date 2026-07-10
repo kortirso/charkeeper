@@ -1,0 +1,103 @@
+[
+  {
+    "id": "fc34bcd0-93cb-49d1-b43a-35a688f803e3",
+    "title": {
+      "en": "Order of the Lycan",
+      "ru": "Орден ликана"
+    },
+    "description": {
+      "en": "It revolves around channeling and controlling lycanthropy through hemocraft to gain enhanced combat abilities, heightened senses, and a specialized hybrid form.",
+      "ru": "В основе сюжета лежит управление ликантропией с помощью гемокрафта для получения улучшенных боевых способностей, обостренных чувств и особой гибридной формы."
+    },
+    "public": true,
+    "class_id": "7806ca13-87ec-47f9-b9d7-275a4bad62be",
+    "spellcast": "str",
+    "features": [
+      {
+        "title": {
+          "en": "Hybrid Form",
+          "ru": "Гибридная форма"
+        },
+        "description": {
+          "en": "You can take on a lupine Hybrid Form. **Mark a Stress** to enter that form until all your Stress is marked or the scene ends. While in the form, you gain a **1d4** bonus to your action and damage rolls.",
+          "ru": "Вы можете принять волчью форму. **Отметьте Стресс**, чтобы принять эту форму, вы выходите из формы, когда у вас отмечен весь Стресс или сцена заканчивается. Пока вы в форме, вы получаете бонус **1d4** к броскам атаки и урона."
+        },
+        "kind": "static",
+        "subclass_mastery": 1,
+        "price": {
+          "stress": 1
+        }
+      },
+      {
+        "title": {
+          "en": "The Beast Within",
+          "ru": "Зверь внутри"
+        },
+        "description": {
+          "en": "When you gain a Hope while in Hybrid Form, you also mark a Stress.",
+          "ru": "Когда вы получаете Надежду в **Гибридной форме**, то вы также отмечаете Стресс."
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Bestial Focus",
+          "ru": "Звериный фокус"
+        },
+        "description": {
+          "en": "You can place a domain card into your vault, then clear a number of Stress equal to the card's Recall Cost.",
+          "ru": "Вы можете поместить карту домена в хранилище, затем очистите кол-во Стресса, равное цене призыва карты."
+        },
+        "kind": "static",
+        "subclass_mastery": 2,
+        "limit": 1,
+        "limit_refresh": "short_rest"
+      },
+      {
+        "title": {
+          "en": "Hybrid Form",
+          "ru": "Гибридная форма"
+        },
+        "description": {
+          "en": "You can take on a lupine Hybrid Form. **Mark a Stress** to enter that form until all your Stress is marked or the scene ends. While in the form, you gain a **1d6** bonus to your action and damage rolls.",
+          "ru": "Вы можете принять волчью форму. **Отметьте Стресс**, чтобы принять эту форму, вы выходите из формы, когда у вас отмечен весь Стресс или сцена заканчивается. Пока вы в форме, вы получаете бонус **1d6** к броскам атаки и урона."
+        },
+        "kind": "static",
+        "subclass_mastery": 2,
+        "exclude": [],
+        "price": {
+          "stress": 1
+        }
+      },
+      {
+        "title": {
+          "en": "Hybrid Form",
+          "ru": "Гибридная форма"
+        },
+        "description": {
+          "en": "You can take on a lupine Hybrid Form. **Mark a Stress** to enter that form until all your Stress is marked or the scene ends. While in the form, you gain a **1d8** bonus to your action and damage rolls.",
+          "ru": "Вы можете принять волчью форму. **Отметьте Стресс**, чтобы принять эту форму, вы выходите из формы, когда у вас отмечен весь Стресс или сцена заканчивается. Пока вы в форме, вы получаете бонус **1d8** к броскам атаки и урона."
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "exclude": [],
+        "price": {
+          "stress": 1
+        }
+      },
+      {
+        "title": {
+          "en": "Regeneration",
+          "ru": "Регенерация"
+        },
+        "description": {
+          "en": "When you succeed with Hope while in your Hybrid Form, roll a d4. If the result is higher than your current number of unmarked Hit Points, clear a Hit Point.",
+          "ru": "Когда вы преуспеваете с Надеждой в **Гибридной форме**, бросьте d4. Если результат больше, чем кол-во не отмеченных Ран, то очистите Рану."
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      }
+    ]
+  }
+]

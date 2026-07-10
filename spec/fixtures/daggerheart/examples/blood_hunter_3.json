@@ -1,0 +1,92 @@
+[
+  {
+    "id": "db233fed-cdd8-472d-9d46-175dacd599a3",
+    "title": {
+      "en": "Order of the Specter",
+      "ru": "Орден призрака"
+    },
+    "description": {
+      "en": "It allows characters to harness hemocraft to enter a realm between the living and the dead.",
+      "ru": "Это позволяет персонажам использовать гемокрафт для проникновения в царство между живыми и мертвыми."
+    },
+    "public": true,
+    "class_id": "7806ca13-87ec-47f9-b9d7-275a4bad62be",
+    "spellcast": "agi",
+    "features": [
+      {
+        "id": "c58d83d7-e987-4e23-a67f-c53bce000fd4",
+        "title": {
+          "en": "Veilwalker",
+          "ru": "Шаг за грань"
+        },
+        "description": {
+          "en": "You can briefly slip into the realm between the living and the dead. **Mark a Stress** to move up to Close range through creatures and objects.",
+          "ru": "Вы можете на мгновение пересечь границу между миром живых и мёртвых. **Отметьте Стресс**, чтобы переместиться на среднюю дистанцию через существ и объекты."
+        },
+        "kind": "static",
+        "price": {
+          "stress": 1
+        },
+        "subclass_mastery": 1
+      },
+      {
+        "id": "84e72bd3-407d-4c71-8635-68f39a87c79a",
+        "title": {
+          "en": "Shadowed Grit",
+          "ru": "Мрачное упорство"
+        },
+        "description": {
+          "en": "When you succeed on an Action Roll with Fear, you can **spend a Hope** to clear a Stress.",
+          "ru": "Когда вы преуспеваете при броске действия со Страхом, вы можете **потратить Надежду**, чтобы очистить Стресс."
+        },
+        "kind": "static",
+        "price": {
+          "hope": 1
+        },
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Veilstalker",
+          "ru": "Теневой сталкер"
+        },
+        "description": {
+          "en": "When you use your **Veilwalker** feature, you can now move to a location within Far range, and you have advantage on the next action roll you make in this scene.",
+          "ru": "Когда вы используете **Шаг за грань**, то вы можете перемещаться в пределах далёкой дистанции и вы получаете преимущество на следующий бросок действия в этой сцене."
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Horror Honed",
+          "ru": "Отточенный ужас"
+        },
+        "description": {
+          "en": "You cannot be made *Vulnerable* unless all your Stress is marked.",
+          "ru": "Вы не можете стать *Уязвимым* пока у вас есть неотмеченный Стресс."
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      },
+      {
+        "id": "77510c2b-5cab-46b4-9cd0-a945a0447a6d",
+        "title": {
+          "en": "Spectral Form",
+          "ru": "Спектральная форма"
+        },
+        "description": {
+          "en": "Once per long rest, when you would mark your last Hit Point, you can **mark a Stress** and enter your Spectral Form instead. While in this form, you can move through physical matter and have resistance to physical damage. Additionally, when you would mark a Hit Point, you mark a Stress instead. You drop out of this form if your last Stress is marked or you clear a Hit Point.",
+          "ru": "Один раз после длительный отдых, когда вы отмечаете свою последнюю Рану, вы можете **отметить Стресс** и вместо этого перейти в свою **Спектральную форму**. В этой форме вы можете перемещаться сквозь физическую материю и обладаете сопротивлением физическому урону. Кроме того, когда вы должны отметить Рану, вы отмечаете Стресс вместо этого. Вы выходите из этой формы, если весь ваш Стресс отмечен или вы очищаете Рану."
+        },
+        "kind": "static",
+        "subclass_mastery": 3,
+        "price": {
+          "stress": 1
+        },
+        "limit": 1,
+        "limit_refresh": "long_rest"
+      }
+    ]
+  }
+]

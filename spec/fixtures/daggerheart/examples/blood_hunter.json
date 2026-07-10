@@ -1,0 +1,61 @@
+[
+  {
+    "id": "7806ca13-87ec-47f9-b9d7-275a4bad62be",
+    "title": {
+      "en": "Blood Hunter",
+      "ru": "Кровавый охотник"
+    },
+    "description": {
+      "en": "As a blood hunter, you harness the power of hemocraft (that is, blood magic) in your relentless pursuit of evil creatures.",
+      "ru": "Будучи охотником за кровью, вы используете силу гемокрафта (то есть магии крови) в своей неустанной охоте на злых существ."
+    },
+    "public": true,
+    "domains": [
+      "blade",
+      "7e0a4346-059c-4e84-ae6b-ffb37ae924f6"
+    ],
+    "evasion": 11,
+    "health_max": 6,
+    "features": [
+      {
+        "id": "4d7c0cf5-8873-44b5-8eec-d55367997ea6",
+        "title": {
+          "en": "Crimson Rite",
+          "ru": "Багровый обряд"
+        },
+        "description": {
+          "en": "**Mark a Hit Point** to enchant one of your active weapons with bloodthirsty power until the end of your next rest or you use this feature again. When you succeed on an attack with the enchanted weapon, it deals an extra 1d4 magic damage. This extra damage increases to 2d4 at level 2, 3d4 at level 5, and 4d4 at level 8.",
+          "ru": "**Отметьте Рану**, чтобы зачаровать одно своё активное оружие. До завершения следующего отдыха или следующего использования этой способности это оружие будет наносить дополно 1d4 (2d4 - ранг 2, 3d4 - ранг 3, 4d4 - ранг 4) магического урона."
+        },
+        "kind": "text"
+      },
+      {
+        "id": "65843a47-d3e4-401a-94bc-1a1fc94757e8",
+        "title": {
+          "en": "Blood Maledict",
+          "ru": "Кровавое проклятье"
+        },
+        "description": {
+          "en": "**Spend 3 Hope** when an adversary succeeds on an attack roll within Close range to make them reroll with disadvantage.",
+          "ru": "Когда противник успешен при броске атаки в пределах средней дистанции, **потратьте 3 Надежды**, чтобы он перебросил бросок с помехой."
+        },
+        "kind": "static",
+        "price": {
+          "hope": 3
+        }
+      },
+      {
+        "id": "e7f2dc2b-f660-462a-aca5-c4682fd7b2b2",
+        "title": {
+          "en": "Grim Psychometry",
+          "ru": "Мрачная психометрия"
+        },
+        "description": {
+          "en": "Make a **Spellcast Roll (12)** to inspect a location within Very Close range. On a success, you have a vision of the last creature that committed violence there. Until you take a long rest or use this feature again, you have advantage on action rolls to track them or recall information about them.",
+          "ru": "Совершите **бросок заклинания (12)** для проверки области в пределах близкой дистанции. При успехе вы видите последнее существо, совершившее здесь насилие. До тех пор, пока вы не отдохнете или не воспользуетесь этой способностью снова, вы получаете преимущество при бросках действий, чтобы отследить его или вспомнить информацию о нем."
+        },
+        "kind": "static"
+      }
+    ]
+  }
+]
