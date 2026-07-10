@@ -76,7 +76,7 @@ export const HomebrewTab = () => {
       <PageHeader>
         {localize(TRANSLATION, locale()).title}
       </PageHeader>
-      <div class="p-4 flex-1 flex flex-col overflow-hidden dark:text-snow">
+      <div class="p-4 flex-1 flex flex-col overflow-y-auto dark:text-snow">
         <Show when={books()}>
           <p class="mb-2 text-sm">{localize(TRANSLATION, locale()).page}</p>
           <p class="mb-4 text-sm">{localize(TRANSLATION, locale()).link} <a href={host()} class='underline' target='_blank' rel='noopener noreferrer'>{localize(TRANSLATION, locale()).here}</a></p>
