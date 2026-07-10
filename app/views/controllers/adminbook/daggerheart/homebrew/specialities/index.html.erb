@@ -7,7 +7,8 @@
       <td>Evasion</td>
       <td>Health</td>
       <td>Domains</td>
-      <td>User ID</td>
+      <td></td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
@@ -16,14 +17,15 @@
     <% @specialities.each_with_index do |speciality, index| %>
       <tr>
         <td class="pr-2"><%= (@pagy.page - 1) * 25 + index + 1 %></td>
-        <td class="pr-2"><%= speciality.id %></td>
+        <td class="pr-2"><%= speciality.id %></br><%= speciality.user_id %></td>
         <td class="pr-2"><%= speciality.title %></td>
         <td class="pr-2"><%= speciality.info.evasion %></td>
         <td class="pr-2"><%= speciality.info.health_max %></td>
         <td class="pr-2"><%= speciality.info.domains %></td>
-        <td class="pr-2"><%= speciality.user_id %></td>
         <td class="pr-2"><%= speciality.created_at.strftime('%d-%m-%Y') %></td>
+        <td class="pr-2"><%= speciality.discarded? ? 'deleted' : '' %></td>
         <td><%= link_to 'Edit', edit_adminbook_homebrew_path(speciality.id) %></td>
+        <td><%= link_to "Download", adminbook_homebrew_download_report_path(speciality.id) %></td>
       </tr>
     <% end %>
   </tbody>

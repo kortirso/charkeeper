@@ -7,6 +7,8 @@
       <td>User ID</td>
       <td></td>
       <td></td>
+      <td></td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +19,9 @@
         <td class="pr-2"><%= domain.title %></td>
         <td class="pr-2"><%= domain.user_id %></td>
         <td class="pr-2"><%= domain.created_at.strftime('%d-%m-%Y') %></td>
+        <td class="pr-2"><%= domain.discarded? ? 'deleted' : '' %></td>
         <td><%= link_to 'Edit', edit_adminbook_homebrew_path(domain.id) %></td>
+        <td><%= link_to "Download", adminbook_homebrew_download_report_path(domain.id) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get 'web_telegram', to: 'web_telegram#index'
 
   namespace :adminbook do
-    resources :homebrews, only: %i[edit update]
+    resources :homebrews, only: %i[edit update] do
+      get 'download_report', to: 'reports#download'
+    end
     namespace :users do
       resources :notifications, except: %i[show]
       resources :identities, only: %i[index]
@@ -58,6 +60,7 @@ Rails.application.routes.draw do
         resources :specialities, only: %i[index]
         resources :subclasses, only: %i[index]
         resources :domains, only: %i[index]
+        resources :mechanics, only: %i[index]
         resources :feats, only: %i[index]
         resources :items, only: %i[index]
       end

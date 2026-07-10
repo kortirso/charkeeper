@@ -1,0 +1,33 @@
+<table class="table w-full text-sm">
+  <thead>
+    <tr>
+      <td></td>
+      <td>ID</td>
+      <td>Name</td>
+      <td>User ID</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mechanics.each_with_index do |mechanic, index| %>
+      <tr>
+        <td class="pr-2"><%= (@pagy.page - 1) * 25 + index + 1 %></td>
+        <td class="pr-2"><%= mechanic.id %></td>
+        <td class="pr-2"><%= mechanic.title %></td>
+        <td class="pr-2"><%= mechanic.user_id %></td>
+        <td class="pr-2"><%= mechanic.created_at.strftime('%d-%m-%Y') %></td>
+        <td class="pr-2"><%= mechanic.discarded? ? 'deleted' : '' %></td>
+        <td><%= link_to 'Edit', edit_adminbook_homebrew_path(mechanic.id) %></td>
+        <td><%= link_to "Download", adminbook_homebrew_download_report_path(mechanic.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if @pagy.pages > 1 %>
+  <div class="mt-6"><%== pagy_nav(@pagy) %></div>
+<% end %>

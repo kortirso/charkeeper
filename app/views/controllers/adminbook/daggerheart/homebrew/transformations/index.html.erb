@@ -7,6 +7,8 @@
       <td>User ID</td>
       <td></td>
       <td></td>
+      <td></td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +19,9 @@
         <td class="pr-2"><%= transformation.title %></td>
         <td class="pr-2"><%= transformation.user_id %></td>
         <td class="pr-2"><%= transformation.created_at.strftime('%d-%m-%Y') %></td>
+        <td class="pr-2"><%= transformation.discarded? ? 'deleted' : '' %></td>
         <td><%= link_to 'Edit', edit_adminbook_homebrew_path(transformation.id) %></td>
+        <td><%= link_to "Download", adminbook_homebrew_download_report_path(transformation.id) %></td>
       </tr>
     <% end %>
   </tbody>

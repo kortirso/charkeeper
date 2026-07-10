@@ -9,6 +9,8 @@
       <td>Mechanics</td>
       <td></td>
       <td></td>
+      <td></td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +23,9 @@
         <td class="pr-2"><%= subclass.info.spellcast %></td>
         <td class="pr-2"><%= subclass.info.mechanics %></td>
         <td class="pr-2"><%= subclass.created_at.strftime('%d-%m-%Y') %></td>
+        <td class="pr-2"><%= subclass.discarded? ? 'deleted' : '' %></td>
         <td><%= link_to 'Edit', edit_adminbook_homebrew_path(subclass.id) %></td>
+        <td><%= link_to "Download", adminbook_homebrew_download_report_path(subclass.id) %></td>
       </tr>
     <% end %>
   </tbody>
