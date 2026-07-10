@@ -18,7 +18,7 @@ describe HomebrewsV2::HomebrewsController do
         expect(response).to have_http_status :ok
         expect(response.parsed_body['homebrews'].size).to eq 2
         expect(response.parsed_body.dig('homebrews', 0).keys).to(
-          contain_exactly('id', 'title', 'description', 'own', 'books')
+          contain_exactly('id', 'title', 'description', 'own', 'books', 'public')
         )
       end
     end

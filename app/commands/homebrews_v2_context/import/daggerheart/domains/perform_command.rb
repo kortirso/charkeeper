@@ -59,7 +59,7 @@ module HomebrewsV2Context
                 end
                 required(:level).filled(:integer, gteq?: 1, lteq?: 10)
                 required(:type).filled(Types)
-                optional(:recall).filled(:integer, gteq?: 1, lteq?: 10)
+                optional(:recall).filled(:integer, gteq?: 0, lteq?: 10)
                 optional(:hope_dice).filled(Dices)
                 optional(:fear_dice).filled(Dices)
                 optional(:attacks).maybe(:array).each(:hash) do

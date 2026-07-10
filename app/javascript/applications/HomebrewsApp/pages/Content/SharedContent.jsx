@@ -30,7 +30,8 @@ const TRANSLATION = {
     deletingProgress: 'Deleting',
     deleteAll: 'Delete selected',
     deletingAll: 'Deleting selected homebrews',
-    inBooks: 'Included in books'
+    inBooks: 'Included in books',
+    public: 'Public'
   },
   ru: {
     add: 'Добавить',
@@ -53,7 +54,8 @@ const TRANSLATION = {
     deletingProgress: 'Удаление',
     deleteAll: 'Удалить выбранные',
     deletingAll: 'Удаление выбранных homebrews',
-    inBooks: 'Добавлено в книги'
+    inBooks: 'Добавлено в книги',
+    public: 'Общедоступное'
   },
   es: {
     add: 'Agregar',
@@ -76,7 +78,8 @@ const TRANSLATION = {
     deletingProgress: 'Deleting',
     deleteAll: 'Delete selected',
     deletingAll: 'Deleting selected homebrews',
-    inBooks: 'Included in books'
+    inBooks: 'Included in books',
+    public: 'Public'
   }
 }
 
@@ -361,7 +364,10 @@ export const SharedContent = (props) => {
                   title={
                     <div class="flex items-center">
                       <div class="flex-1 flex flex-col gap-2">
-                        <p class="text-xl">{element.title}</p>
+                        <p class="text-xl font-medium!">{element.title}</p>
+                        <Show when={element.public}>
+                          <p class="text-sm">{localize(TRANSLATION, locale()).public}</p>
+                        </Show>
                         <Show when={element.description}>
                           <p
                             class="feat-markdown mt-1"

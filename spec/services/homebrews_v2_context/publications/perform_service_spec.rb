@@ -172,7 +172,9 @@ describe HomebrewsV2Context::Publications::PerformService do
 
     it 'does not call import command', :aggregate_failures do
       expect { service_call }.not_to change(Daggerheart::Homebrews::Transformation, :count)
-      expect(publication.reload.errors_list).to eq({ '0' => { 'general' => ['Invalid file'] } })
+      expect(publication.reload.errors_list).to(
+        eq({ '0' => { 'general' => ["expected ',' or ']' after array value at line 31 column 1"] } })
+      )
     end
   end
 

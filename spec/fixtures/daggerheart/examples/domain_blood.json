@@ -1,0 +1,375 @@
+[
+  {
+    "id": "7e0a4346-059c-4e84-ae6b-ffb37ae924f6",
+    "title": {
+      "en": "Blood",
+      "ru": "Кровь"
+    },
+    "description": {
+      "en": "The Blood Domain focuses on hemocraft, vitality manipulation, and forbidden magic.",
+      "ru": "Домен Крови специализируется на гемомагии, манипулировании жизненной энергией и запретной магии."
+    },
+    "public": true,
+    "features": [
+      {
+        "id": "a319aac7-932e-44a3-ac45-5328c6e759dc",
+        "title": {
+          "en": "Power Through Pain",
+          "ru": "Сила через боль"
+        },
+        "description": {
+          "en": "When you **mark a Hit Point**, place a token on this card. On a successful attack, you can spend any number of tokens from this card to gain a 1d6 damage bonus on the attack for each token spent. This card can hold a maximum number of tokens equal to your Spellcast trait. Clear all tokens from this card when you take a long rest.",
+          "ru": "Когда вы **отмечаете Рану**, положите жетон на эту карту. При успешной атаке вы можете потратить любое количество жетонов с этой карты, чтобы получить бонус к урону 1d6 за каждый потраченный жетон. На этой карте может находиться максимальное количество жетонов, равное вашей Характеристике Заклинателя. Уберите все жетоны с этой карты при длительном отдыхе."
+        },
+        "kind": "static",
+        "level": 1,
+        "type": "ability",
+        "recall": 1,
+        "tokens": {
+          "limit": "spellcast",
+          "reset_at": "long",
+          "reset": "zero"
+        }
+      },
+      {
+        "id": "4076df97-dde6-4e75-9932-dd45c5e40057",
+        "title": {
+          "en": "Lifeblood Talisman",
+          "ru": "Талисман живокрови"
+        },
+        "description": {
+          "en": "**Mark a Hit Point** to conjure a talisman infused with your life essence. When the bearer of the talisman would take Severe or greater damage, they can destroy the talisman and reduce the damage by two thresholds. The talisman otherwise disappears when you take a rest or cast this spell again.",
+          "ru": "**Отметьте Рану**, чтобы создать в руке талисман, наполненный вашей жизненной энергией. Если носителю талисмана наносится 2 Раны или более, он может уничтожить талисман, чтобы получить на 2 Раны меньше. Талисман исчезает во время отдыха или если вы используете это заклинание снова."
+        },
+        "kind": "static",
+        "level": 1,
+        "type": "spell",
+        "recall": 0
+      },
+      {
+        "id": "099e935d-6098-4aa8-a23c-b00d204aa48c",
+        "title": {
+          "en": "Blood Spike",
+          "ru": "Кровавый шип"
+        },
+        "description": {
+          "en": "Make a **Spellcast Roll** against a target within Close range. On a success, spend a Hope to deal d8+2 magic damage to the target using your Proficiency, and the target marks a Stress. If you have at least 3 Hit Points marked, the damage die is a d10 instead.",
+          "ru": "Совершите **бросок заклинания** против цели в пределах средней дистанции. При успехе **потратьте Надежду**, чтобы нанести d8+2 магического урона цели, используя ваше мастерство, и цель также отмечает Стресс. Если у вас отмечено как минимум 3 Раны, вы наносите d10+2 урона."
+        },
+        "kind": "static",
+        "price": {
+          "hope": 1
+        },
+        "level": 1,
+        "type": "spell",
+        "recall": 1
+      },
+      {
+        "id": "f4a1a8f2-87db-4fa1-a4af-3b35c67b0ebf",
+        "title": {
+          "en": "Brand of Castigation",
+          "ru": "Клеймо истязания"
+        },
+        "description": {
+          "en": "When you succeed on an attack roll against a target, you can **mark a Stress** to Brand them until you take a long rest or cast this spell again. You always know the direction of the Branded target. If the Branded target deals damage to you, you can remove the Branded condition to make them mark 2 Stress.",
+          "ru": "Если вам удаётся успешно совершить бросок атаки по цели, вы можете **отметить Стресс** и заклеймить её, пока не отдохнёте или не примените это заклинание снова. Вы всегда знаете направление до цели. Если цель, отмеченная клеймом, наносит вам урон, вы можете снять с неё клеймо, заставив её отметить 2 Стресса."
+        },
+        "kind": "static",
+        "price": {
+          "stress": 1
+        },
+        "level": 2,
+        "type": "spell",
+        "recall": 1
+      },
+      {
+        "title": {
+          "en": "Palpitations",
+          "ru": "Сердцебиение"
+        },
+        "description": {
+          "en": "When you or an ally makes an action roll to frighten or intimidate a creature within Close range, you can **spend a Hope** to give the roll advantage. On a success, the target marks a Stress. Additionally, once per long rest, you can **spend a Hope** to calm yourself or a willing creature within Close range, letting the target clear 2 Stress.",
+          "ru": "Когда вы или ваш союзник совершаете бросок действия, чтобы напугать или запугать существо в пределах средней дистанции, вы можете **потратить Надежду**, чтобы дать бросок с преимуществом. В случае успеха цель отмечает Стресс. Кроме того, один раз за длительный отдых вы можете **потратить Надежду**, чтобы успокоить себя или пожелавшее этого существо в пределах средней дистанции, позволив цели очистить 2 Стресса."
+        },
+        "kind": "static",
+        "price": {
+          "hope": 1
+        },
+        "level": 2,
+        "type": "spell",
+        "recall": 2,
+        "limit_refresh": "long_rest",
+        "level": 1
+      },
+      {
+        "id": "abef2fa2-b994-4e5d-aea8-63e7518b63df",
+        "title": {
+          "en": "Blood Puppet",
+          "ru": "Кровавая марионетка"
+        },
+        "description": {
+          "en": "Make a Spellcast Roll against an adversary within Close range. On a success, **spend a Hope** to do any of following in the order you choose:\n\n- You move the target up to Close range from their current position. To move the target into dangerous terrain, you must **spend another Hope**.\n\n- The target makes a standard attack against another target of your choice within the attack's range.",
+          "ru": "Совершите **бросок заклинания** против противника в пределах средней дистанции. В случае успеха **потратьте Надежду**, чтобы выполнить одно из следующих действий в выбранном вами порядке:\n\n- Вы перемещаете цель на среднюю дистанцию из её текущего положения. Чтобы переместить цель на опасную местность, вы должны **потратить еще одну Надежду**.\n\n- Цель совершает стандартную атаку по другой цели по вашему выбору в пределах дальности атаки."
+        },
+        "kind": "static",
+        "price": {
+          "hope": 1
+        },
+        "level": 3,
+        "type": "spell",
+        "recall": 2
+      },
+      {
+        "title": {
+          "en": "Burning Gore",
+          "ru": "Горящая кровь"
+        },
+        "description": {
+          "en": "Make a Spellcast Roll (13). On a success, mark a Hit Point to inflame a group's lifeblood within Far range, making each target mark a Hit Point. If you have at least 3 Hit Points marked, each target marks 2 Hit Points instead.",
+          "ru": "Совершите **бросок заклинания (13)**. При успехе **отметьте Рану**, чтобы разжечь жизненные силы группы в пределах далёкой дистанции, каждая цель должна отметить Рану. Если у вас отмечено как минимум 3 Раны, то каждая цель отмечает 2 Раны вместо 1."
+        },
+        "kind": "static",
+        "level": 3,
+        "type": "spell",
+        "recall": 3
+      },
+      {
+        "id": "46561e62-b5de-4e4d-82e2-bba54a426da4",
+        "title": {
+          "en": "Weave the Flesh",
+          "ru": "Сплетение плоти"
+        },
+        "description": {
+          "en": "You can **mark a Hit Point** to clot, suture, and fortify others with your own lifeblood. Each willing target within Very Close range clears a Hit Point and an Armor Slot."
+          ,
+          "ru": "Вы можете **отметить Рану**, чтобы свертывать кровь, накладывать швы и укреплять других своей жизненной силой. Каждая желающая цель в пределах близкой дистанции очищает Рану и Ячейку Брони."
+        },
+        "kind": "static",
+        "limit_refresh": "long_rest",
+        "limit": "1",
+        "level": 4,
+        "type": "spell",
+        "recall": 1
+      },
+      {
+        "id": "3872540b-df72-4426-96f4-28e1668277af",
+        "title": {
+          "en": "Grisly Harpoon",
+          "ru": "Жуткий гарпун"
+        },
+        "description": {
+          "en": "Make a **Spellcast Roll** against a creature within Far range. On a success, **mark a Stress** to throw a conjured harpoon of magic blood at the target, dealing d10 magic damage using your Proficiency. Then you can pull yourself into Melee range with the target or pull the target into Melee range with you. Alternatively, if you target an unheld object or terrain within Far range, make a **Spellcast Roll (13)**. On a success, you pull the object to you, or you pull yourself to the terrain.",
+          "ru": "Совершите **бросок заклинания** против существа в пределах далёкой дистанции. В случае успеха, **отметьте Стресс**, чтобы метнуть созданный гарпун из магической крови в цель, нанеся d10 магического урона, используя ваше Мастерство. Затем вы можете притянуть себя к цели вплотную или притянуть цель к себе вплотную. В качестве альтернативы, если вы нацелились на незакрепленный объект или местность в пределах далёкой дистанции, совершите **бросок заклинания (13)**. В случае успеха вы притягиваете объект к себе или притягиваете себя к местности."
+        },
+        "kind": "static",
+        "price": {
+          "stress": 1
+        },
+        "level": 4,
+        "type": "spell",
+        "recall": 1
+      },
+      {
+        "id": "780f7484-d5a8-4003-89f4-00e72c1513fa",
+        "title": {
+          "en": "Parasite of the Will",
+          "ru": "Паразит воли"
+        },
+        "description": {
+          "en": "Make a **Spellcast Roll** against an adversary within Close range. Once per rest on a success, **mark a Hit Point** to Infect the target with a tiny magical bloodworm. Presence Rolls against the Infected target have advantage. When the Infected target makes an attack roll, you can **spend a Hope** to give the roll disadvantage. The Infected condition lasts until you take a rest or you sacrifice the bloodworm to make the Infected target mark a Hit Point.",
+          "ru": "Совершите **бросок заклинания** против противника в пределах средней дистанции. При успехе один раз за отдых **отметьте Рану**, чтобы заразить цель крошечным магическим червем. Проверки Влияния против зараженной цели совершаются с преимуществом. Когда зараженная цель совершает бросок атаки, вы можете **потратить Надежду**, чтобы сделать этот бросок с помехой. Состояние заражения длится до тех пор, пока вы не отдохнете или не пожертвуете червем, чтобы заставить зараженную цель отметить Рану."
+        },
+        "kind": "static",
+        "level": 5,
+        "type": "spell",
+        "recall": 2,
+        "limit_refresh": "short_rest",
+        "level": 1
+      },
+      {
+        "title": {
+          "en": "Viscous Form",
+          "ru": "Вязкая форма"
+        },
+        "description": {
+          "en": "**Mark a Stress** to place a number of tokens equal to your Spellcast trait onto this card and transform into a pool of blood. Remove a token each time you make an action roll or take damage. You drop out of this form when you remove the last token on this card. While in blood form, you gain resistance to physical damage and can slither through any space a liquid can traverse.",
+          "ru": "**Отметьте Стресс**, чтобы поместить на этой карте количество жетонов, равное вашей Характеристике Заклинателя, и превратиться в лужу крови. Удаляйте один жетон каждый раз, когда совершаете бросок действия или получаете урон. Вы выходите из этой формы, когда удаляете последний жетон с этой карты. Находясь в форме крови, вы получаете сопротивление физическому урону и можете скользить через любое пространство, доступное для жидкости."
+        },
+        "kind": "static",
+        "level": 5,
+        "type": "spell",
+        "recall": 1,
+        "price": {
+          "stress": 1
+        },
+        "tokens": {
+          "limit": "spellcast"
+        }
+      },
+      {
+        "id": "04417b90-fee9-46f1-86a0-314e79e86271",
+        "title": {
+          "en": "Blood Bind",
+          "ru": "Кровавые узы"
+        },
+        "description": {
+          "en": "Make a **Spellcast Roll** against an adversary within Close range. On a success, **mark a Stress** as you slow the target's vitality. The target is temporarily *Restrained* and *Vulnerable*. Each time the target is spotlighted while either of these conditions persists on them, the target marks a Stress.",
+          "ru": "Совершите **бросок заклинания** против противника в пределах средней дистанции. При успехе **отметьте Стресс**, цель становится временно *Обездвиженной* и *Уязвимой*. Когда цель становится активной будучи в таком состоянии, то она отмечает Стресс."
+        },
+        "kind": "static",
+        "price": {
+          "stress": 1
+        },
+        "level": 6,
+        "type": "spell",
+        "recall": 1
+      },
+      {
+        "title": {
+          "en": "Life Link",
+          "ru": "Жизненная связь"
+        },
+        "description": {
+          "en": "Make a **Spellcast Roll (14)**. Once per rest on a success, you conjure a magical tether between yourself and a willing target within Close range that lasts until the end of the scene. When either tethered creature would mark a Hit Point, the other tethered creature can mark a Hit Point instead.",
+          "ru": "Совершите **бросок заклинания (14)**. При успехе 1 раз до следующего отдыха вы создаёте магическую связь между собой и согласной целью в пределах средней дистанции, которая длится до конца сцены. Когда одно из связанных существ должно отметить Рану, другое связанное существо может отметить Рану вместо него."
+        },
+        "kind": "static",
+        "level": 6,
+        "type": "spell",
+        "recall": 0,
+        "limit_refresh": "short_rest",
+        "level": 1
+      },
+      {
+        "id": "d8354cd5-c4ec-497b-8ec7-2936b11dbeea",
+        "title": {
+          "en": "Blood-Touched",
+          "ru": "Отмеченный кровью"
+        },
+        "description": {
+          "en": "While 4 or more of the domain cards in your loadout are from the Blood domain, gain the following benefits:\n\n- You gain a Hope when you take Major or greater damage.\n\n- When you make a Spellcast Roll, you can **spend a Hope** to gain a bonus equal to the number of Hit Points you have marked.",
+          "ru": "Когда у вас на руке 4 или более карточек домена Крови, вы получаете следующие преимущества:\n\n- Вы получаете Надежду, когда вам наносят Ощутимый урон.\n\n- Когда вы совершаете бросок заклинания, вы можете **потратить Надежду**, чтобы получить бонус, равный кол-ву отмеченных Ран."
+        },
+        "kind": "static",
+        "level": 7,
+        "type": "ability",
+        "recall": 2
+      },
+      {
+        "id": "472523ac-6cfa-4284-bf06-8227d1ffb8ed",
+        "title": {
+          "en": "Vampiric Strike",
+          "ru": "Вампирский удар"
+        },
+        "description": {
+          "en": "When you deal Major or greater damage to an adversary within Close range, you can **mark a Stress** to clear a Hit Point.",
+          "ru": "Когда вы наносите как минимум Ощутимый урон противнику в пределах средней дистанции, вы можете **отметить Стресс**, чтобы очистить Рану."
+        },
+        "kind": "static",
+        "price": {
+          "stress": 1
+        },
+        "level": 7,
+        "type": "ability",
+        "recall": 2
+      },
+      {
+        "id": "abf714bf-3a4c-437f-9f18-85b2a0230b50",
+        "title": {
+          "en": "Vital Ward",
+          "ru": "Защита жизни"
+        },
+        "description": {
+          "en": "Choose the physical or magic damage type, and make a **Spellcast Roll (15)**. On a success, you trace a Very Close circle of blood on the ground around you that grants creatures of your choice inside it resistance against that damage type. The circle lasts until you take Major or greater damage, move outside the circle, or cast this spell again.",
+          "ru": "Выберите тип урона: физический или магический, и сделайте **бросок заклинания (15)**. В случае успеха вы рисуете на земле вокруг себя очень узкий круг крови, который дарует существам по вашему выбору внутри него сопротивление этому типу урона. Круг сохраняется до тех пор, пока вы не получите Ощутимый урон, не выйдете за его пределы или не примените это заклинание снова."
+        },
+        "kind": "static",
+        "level": 8,
+        "type": "spell",
+        "recall": 1
+      },
+      {
+        "title": {
+          "en": "Bleeding Tree",
+          "ru": "Кровоточащее дерево"
+        },
+        "description": {
+          "en": "When an adversary within Close range is defeated, you can cause their body to erupt with a twisting, veiny tree that oozes life force. Place a number of tokens on this card equal to your Spellcast trait. A PC within Melee range of the tree can spend a token from this card to siphon life force from the tree and clear a Hit Point.",
+          "ru": "Когда противник в пределах средней дистанции повержен, вы можете заставить его тело извергнуть извивающееся, жилистое дерево, источающее жизненную силу. Поместите на эту карту количество жетонов, равное вашей Характеристике Заклинателя. Персонаж, находящийся вплотную от дерева, может потратить жетон с этой карты, чтобы выкачать жизненную силу из дерева и очистить Рану."
+        },
+        "kind": "static",
+        "level": 8,
+        "type": "spell",
+        "recall": 2,
+        "limit_refresh": "long_rest",
+        "level": 1,
+        "tokens": {
+          "limit": "spellcast",
+          "reset_at": "long",
+          "reset": "zero"
+        }
+      },
+      {
+        "id": "3d3c1157-908e-480c-9f81-51ea9b5a71f9",
+        "title": {
+          "en": "Glyph of Hemorrhaging",
+          "ru": "Глиф кровотечения"
+        },
+        "description": {
+          "en": "Make a **Spellcast Roll** against a target within Close range. On a success, **spend a Hope** to mark the target with a magical glyph that causes them to bleed profusely. Until the glyph fades, damage the target takes is increased by one threshold. The glyph fades when you take a rest, you cast this spell again, or the target takes Severe or greater damage.",
+          "ru": "Совершите **бросок заклинания** против цели в пределах средней дистанции. При успехе - **потратьте Надежду**, чтобы пометить цель магическим глифом, вызывающим сильное кровотечение. Пока глиф не исчезнет, получаемый целью урон увеличивается на один порог. Глиф исчезает, когда вы отдыхаете, снова применяете это заклинание или цель получает сильный или более сильный урон."
+        },
+        "kind": "static",
+        "level": 9,
+        "type": "spell",
+        "recall": 3,
+        "price": { "hope": 1 }
+      },
+      {
+        "title": {
+          "en": "Ichor Wave",
+          "ru": "Волна ихора"
+        },
+        "description": {
+          "en": "**Mark a Hit Point** to make a **Spellcast Roll** against all targets within Close range in front of you. On a success, deal d10 magic damage using the number of Hit Points you have marked instead of your Proficiency. On a failure, deal half damage.",
+          "ru": "**Отметьте Рану** и совершите **бросок заклинания** против всех целей в пределах средней дистанции перед вами. При успехе нанесите d10 магического урона, используя отмеченные Раны вместо Мастерства. При провале - нанесите половину урона."
+        },
+        "kind": "static",
+        "level": 9,
+        "type": "spell",
+        "recall": 3
+      },
+      {
+        "id": "4a189526-d099-4286-a5c3-6b4d98540cd1",
+        "title": {
+          "en": "Sanguine Feast",
+          "ru": "Кровавый пир"
+        },
+        "description": {
+          "en": "Make a **Spellcast Roll** against an adversary within Close range. Once per rest on a success, roll a number of d6s equal to the number of Hit Points you have marked, and you can mark an additional Hit Point to reroll any number of these dice. The target marks a Hit Point for each result of 4 or higher.",
+          "ru": "Совершите **бросок заклинания** против противника в пределах средней дистанции. При успехе один раз за отдых, бросьте d6 кол-во раз, сколько у вас отмечено Ран, вы можете отметить любое кол-во Ран, чтобы перебросить любой результат. Цель отмечает Рану за каждый результат броска 4 или больше."
+        },
+        "kind": "static",
+        "level": 10,
+        "type": "spell",
+        "recall": 2,
+        "limit_refresh": "short_rest",
+        "level": 1
+      },
+      {
+        "title": {
+          "en": "Scabrous Adamance",
+          "ru": "Стойкая адамантия"
+        },
+        "description": {
+          "en": "When you mark 2 or more Hit Points from an attack, clear an Armor Slot.",
+          "ru": "Когда вы отмечаете 2 или более Раны от атаки, очистите Ячейку Брони."
+        },
+        "kind": "static",
+        "level": 10,
+        "type": "ability",
+        "recall": 1
+      }
+    ]
+  }
+]

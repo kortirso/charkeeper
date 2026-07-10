@@ -37,7 +37,7 @@ module HomebrewsV2Context
               optional(:no_refresh).filled(:bool)
               optional(:continious).filled(:bool)
               optional(:type).filled(Types)
-              optional(:recall).filled(:integer, gteq?: 1, lteq?: 10)
+              optional(:recall).filled(:integer, gteq?: 0, lteq?: 10)
               optional(:tokens).hash do
                 optional(:limit).filled(:string)
                 optional(:reset_at).filled(:string)

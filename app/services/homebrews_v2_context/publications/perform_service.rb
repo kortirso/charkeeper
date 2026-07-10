@@ -10,8 +10,8 @@ module HomebrewsV2Context
           errors[index.to_s] = result[:errors] if result[:errors]
         end
         publication.update!(errors_list: errors, completed_at: DateTime.now)
-      rescue JSON::ParserError => _e
-        publication.update!(errors_list: { '0' => { general: ['Invalid file'] } }, completed_at: DateTime.now)
+      rescue JSON::ParserError => e
+        publication.update!(errors_list: { '0' => { general: [e.message] } }, completed_at: DateTime.now)
       ensure
         publication.file.purge if publication.file.attached?
       end

@@ -2,7 +2,7 @@
 
 module HomebrewsV2
   class ListElementSerializer < ApplicationSerializer
-    attributes :id, :title, :description, :own, :books
+    attributes :id, :title, :description, :own, :books, :public
 
     def title
       translate(object.title)
