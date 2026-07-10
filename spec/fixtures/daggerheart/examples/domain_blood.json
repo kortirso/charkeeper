@@ -99,7 +99,7 @@
         "type": "spell",
         "recall": 2,
         "limit_refresh": "long_rest",
-        "level": 1
+        "limit": 1
       },
       {
         "id": "abef2fa2-b994-4e5d-aea8-63e7518b63df",
@@ -184,7 +184,7 @@
         "type": "spell",
         "recall": 2,
         "limit_refresh": "short_rest",
-        "level": 1
+        "limit": 1
       },
       {
         "title": {
@@ -238,7 +238,7 @@
         "type": "spell",
         "recall": 0,
         "limit_refresh": "short_rest",
-        "level": 1
+        "limit": 1
       },
       {
         "id": "d8354cd5-c4ec-497b-8ec7-2936b11dbeea",
@@ -302,7 +302,7 @@
         "type": "spell",
         "recall": 2,
         "limit_refresh": "long_rest",
-        "level": 1,
+        "limit": 1,
         "tokens": {
           "limit": "spellcast",
           "reset_at": "long",
@@ -354,7 +354,7 @@
         "type": "spell",
         "recall": 2,
         "limit_refresh": "short_rest",
-        "level": 1
+        "limit": 1
       },
       {
         "title": {
