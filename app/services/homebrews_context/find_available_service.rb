@@ -8,7 +8,7 @@ module HomebrewsContext
           races: races_with_features(user_id).to_h,
           communities: titles(user_id, ::Daggerheart::Homebrews::Community),
           transformations: titles(user_id, ::Daggerheart::Homebrews::Transformation),
-          domains: titles(user_id, ::Daggerheart::Homebrews::Domain),
+          domains: titles(user_id, ::Daggerheart::Homebrews::Domain).merge(domains_from_classes(user_id)),
           classes: daggerheart_classes(user_id),
           subclasses: daggerheart_subclasses(user_id)
         },
@@ -59,29 +59,33 @@ module HomebrewsContext
           end
     end
 
+    def domains_from_classes(...)
+      ::Daggerheart::Homebrews::Domain
+        .where(id: daggerheart_classes(...).values.flat_map { |item| item[:domains] }.uniq)
+        .each_with_object({}) { |item, acc| acc[item.id] = { name: item.title } }
+    end
+
     def daggerheart_classes(user_id)
-      relation = ::Daggerheart::Homebrews::Speciality
-      relation.where(user_id: user_id)
-        .or(
-          relation.where(
-            id: ::Daggerheart::Homebrews::Subclass.where(id: available_books_data(user_id)).pluck(:info).map { |info| info['class_id'] }
+      @daggerheart_classes ||=
+        ::Daggerheart::Homebrews::Speciality.where(user_id: user_id)
+          .or(
+            ::Daggerheart::Homebrews::Speciality.where(id: daggerheart_subclasses(user_id).keys)
           )
-        )
-        .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: item.title, domains: item.info.domains }
-        end
+          .each_with_object({}) do |item, acc|
+            acc[item.id] = { name: item.title, domains: item.info.domains }
+          end
     end
 
     def daggerheart_subclasses(user_id)
-      relation = ::Daggerheart::Homebrews::Subclass
-      relation.where(user_id: user_id)
-        .or(
-          relation.where(id: available_books_data(user_id))
-        )
-        .each_with_object({}) do |item, acc|
-          acc[item.info.class_id] ||= {}
-          acc[item.info.class_id][item.id] = { name: item.title, spellcast: item.info.spellcast }
-        end
+      @daggerheart_subclasses ||=
+        ::Daggerheart::Homebrews::Subclass.where(user_id: user_id)
+          .or(
+            ::Daggerheart::Homebrews::Subclass.where(id: available_books_data(user_id))
+          )
+          .each_with_object({}) do |item, acc|
+            acc[item.info.class_id] ||= {}
+            acc[item.info.class_id][item.id] = { name: item.title, spellcast: item.info.spellcast }
+          end
     end
 
     def available_books_data(user_id)

@@ -71,7 +71,6 @@ export const DaggerheartMechanics = () => {
   return (
     <SharedContent
       provider="daggerheart"
-      parentType="Homebrew"
       publicationType="mechanic"
       onFetchRequest={fetchList}
       onFetchHomebrew={fetchHomebrew}

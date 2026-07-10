@@ -59,18 +59,6 @@ module DaggerheartCharacter
       @evasion ||= data.evasion
     end
 
-    def transformations
-      user_homebrew.dig('daggerheart', 'transformations')
-    end
-
-    def homebrew_domains
-      user_homebrew.dig('daggerheart', 'domains')
-    end
-
-    def user_homebrew
-      @user_homebrew ||= __getobj__.user.user_homebrew&.data || {}
-    end
-
     def equiped_armor_info
       @equiped_armor_info ||=
         __getobj__

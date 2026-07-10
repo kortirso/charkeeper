@@ -42,6 +42,18 @@ module DaggerheartCharacter
       end
     end
 
+    def transformations
+      user_homebrew.dig('daggerheart', 'transformations')
+    end
+
+    def homebrew_domains
+      user_homebrew.dig('daggerheart', 'domains')
+    end
+
+    def user_homebrew
+      @user_homebrew ||= __getobj__.user.user_homebrew&.data || {}
+    end
+
     def markdown
       Charkeeper::Container.resolve('markdown')
     end

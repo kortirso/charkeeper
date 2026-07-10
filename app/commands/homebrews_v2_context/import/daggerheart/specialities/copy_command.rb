@@ -18,9 +18,11 @@ module HomebrewsV2Context
             input[:attributes] = input[:speciality].attributes.slice('title', 'description', 'public').symbolize_keys
             input[:attributes][:user] = input[:user]
             input[:attributes][:features] = features_payload(input)
-            input[:attributes][:domains] = input[:speciality].info.domains
-            input[:attributes][:evasion] = input[:speciality].info.evasion
-            input[:attributes][:health_max] = input[:speciality].info.health_max
+            input[:attributes][:info] = {
+              domains: input[:speciality].info.domains,
+              evasion: input[:speciality].info.evasion,
+              health_max: input[:speciality].info.health_max
+            }
           end
 
           def do_persist(input)
