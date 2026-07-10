@@ -81,7 +81,6 @@ export const DaggerheartDomainsV2 = () => {
   return (
     <SharedContent
       provider="daggerheart"
-      parentType="Homebrew"
       publicationType="domain"
       onFetchRequest={fetchList}
       onFetchHomebrew={fetchHomebrew}

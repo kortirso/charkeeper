@@ -275,9 +275,7 @@ export const SharedContent = (props) => {
       <div class="flex my-4">
         <div class="flex-1">
           <Button default classList="px-2 py-1" onClick={() => setCreateMode(true)}>{localize(TRANSLATION, locale()).add}</Button>
-          <Show when={props.onCopyRequest}>
-            <Button default active={!ownFilter()} classList="ml-4 px-2 py-1" onClick={() => setOwnFilter(!ownFilter())}>{localize(TRANSLATION, locale()).showPublic}</Button>
-          </Show>
+          <Button default active={!ownFilter()} classList="ml-4 px-2 py-1" onClick={() => setOwnFilter(!ownFilter())}>{localize(TRANSLATION, locale()).showPublic}</Button>
         </div>
         <div class="relative flex-1 flex justify-end">
           <Button default active={showPublications()} classList="px-2 py-1" onClick={() => setShowPublications(!showPublications())}>{localize(TRANSLATION, locale()).publications}</Button>
@@ -382,9 +380,11 @@ export const SharedContent = (props) => {
                         <Show
                           when={ownFilter()}
                           fallback={
-                            <Button default classList="px-2 py-1" onClick={(e) => copy(e, element.id)}>
-                              <Copy width="20" height="20" />
-                            </Button>
+                            <Show when={props.onCopyRequest}>
+                              <Button default classList="px-2 py-1" onClick={(e) => copy(e, element.id)}>
+                                <Copy width="20" height="20" />
+                              </Button>
+                            </Show>
                           }
                         >
                           <div class="flex items-center justify-end gap-1 text-neutral-700">

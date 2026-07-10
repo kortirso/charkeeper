@@ -18,9 +18,11 @@ module HomebrewsV2Context
             input[:attributes] = input[:subclass].attributes.slice('title', 'description', 'public').symbolize_keys
             input[:attributes][:user] = input[:user]
             input[:attributes][:features] = features_payload(input)
-            input[:attributes][:class_id] = input[:subclass].info.class_id
-            input[:attributes][:spellcast] = input[:subclass].info.spellcast
-            input[:attributes][:mechanics] = input[:subclass].info.mechanics
+            input[:attributes][:info] = {
+              class_id: input[:subclass].info.class_id,
+              spellcast: input[:subclass].info.spellcast,
+              mechanics: input[:subclass].info.mechanics
+            }
           end
 
           def do_persist(input)
