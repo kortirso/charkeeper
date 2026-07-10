@@ -7,14 +7,44 @@ module DaggerheartCharacter
       available_mechanics.include?('companion')
     end
 
-    def can_have_stances
-      available_mechanics.include?('stances')
-    end
-
     def can_have_beastform
       available_mechanics.include?('beastform')
     end
     # rubocop: enable Naming/PredicateMethod
+
+    def mechanic_items # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+      list = available_mechanics - %w[companion beastform]
+      return {} if list.blank?
+
+      mechanics = Daggerheart::Homebrews::Mechanic.where(id: list).includes(:items)
+
+      homebrew_subclasses.each_with_object({}) do |subclass, acc|
+        class_mech = subclass.info.mechanics.first
+        next if class_mech.nil?
+
+        mechanic = mechanics.find { |item| item.id == class_mech }
+        next if mechanic.nil?
+
+        acc[mechanic.id] = {
+          title: translate(mechanic.title),
+          description: markdown.call(value: translate(mechanic.description), version: '0.4'),
+          items: mechanic.items.hashable_pluck(:id, :title, :description, :info).filter_map do |item|
+            next if item[:info].tier > tier
+
+            {
+              id: item[:id],
+              title: translate(item[:title]),
+              description: markdown.call(value: translate(item[:description]), version: '0.4'),
+              tier: item[:info].tier
+            }
+          end.sort_by { |item| -item[:tier] }
+        }
+      end
+    end
+
+    def markdown
+      Charkeeper::Container.resolve('markdown')
+    end
 
     def modified_traits
       @modified_traits ||=
@@ -59,8 +89,7 @@ module DaggerheartCharacter
         feat_bonuses['evasion'].to_i +
         sum(static_item_bonuses.pluck('evasion')) +
         sum(dynamic_item_bonuses.pluck('evasion')) +
-        beastform_config['evasion'] +
-        stance_bonus
+        beastform_config['evasion']
     end
 
     def health_max # rubocop: disable Metrics/AbcSize
@@ -118,7 +147,9 @@ module DaggerheartCharacter
       @spellcast_traits ||=
         subclasses.filter_map do |key, value|
           default = Daggerheart::Character.subclass_info(key, value)
-          default ? default['spellcast'] : spellcast_for_homebrew_subclass(value)
+          next default['spellcast'] if default
+
+          homebrew_subclasses.find { |item| item.id == value }.info.spellcast
         end.uniq
     end
 
@@ -130,7 +161,9 @@ module DaggerheartCharacter
       @available_mechanics ||=
         subclasses.filter_map do |key, value|
           default = Daggerheart::Character.subclass_info(key, value)
-          default ? default['mechanics'] : mechanics_for_homebrew_subclass(value)
+          next default['mechanics'] if default
+
+          homebrew_subclasses.find { |item| item.id == value }.info.mechanics
         end.flatten.uniq
     end
 
@@ -175,7 +208,7 @@ module DaggerheartCharacter
         range: 'melee',
         trait: use_max_trait_for_attack ? max_trait : max_unarmed_trait,
         attack_bonus: calculate_attack_bonus(
-          (use_max_trait_for_attack ? max_trait_value : [modified_traits['str'], modified_traits['fin']].max) + attack_bonuses + stance_attack_bonus # rubocop: disable Layout/LineLength
+          (use_max_trait_for_attack ? max_trait_value : [modified_traits['str'], modified_traits['fin']].max) + attack_bonuses
         ),
         damage: "#{proficiency}d4",
         damage_bonus: calculate_damage_bonus(0, 'physical'),
@@ -194,7 +227,7 @@ module DaggerheartCharacter
         range: item[:items_info]['range'],
         trait: use_max_trait_for_attack ? max_trait : item[:items_info]['trait'],
         attack_bonus: calculate_attack_bonus(
-          (use_max_trait_for_attack ? max_trait_value : trait_bonus(item)) + attack_bonuses + stance_attack_bonus +
+          (use_max_trait_for_attack ? max_trait_value : trait_bonus(item)) + attack_bonuses +
                               item.dig(:items_info, 'bonuses', 'attack').to_i
         ),
         damage: item[:items_info]['damage']&.gsub('d', "#{proficiency}d"),
@@ -308,24 +341,6 @@ module DaggerheartCharacter
       __getobj__.companion.data.leveling['light'].to_i
     end
 
-    def stance_bonus
-      return 0 if stance.nil?
-
-      values = Daggerheart::Character.stances[stance]
-      return 0 unless values
-
-      values['evasion'].to_i
-    end
-
-    def stance_attack_bonus
-      return 0 if stance.nil?
-
-      values = Daggerheart::Character.stances[stance]
-      return 0 unless values
-
-      values['attack_bonus'].to_i
-    end
-
     def beastform_config
       @beastform_config ||= find_beastform_config
     end
@@ -368,14 +383,6 @@ module DaggerheartCharacter
       }
     end
 
-    def spellcast_for_homebrew_subclass(subclass)
-      homebrew_subclass(subclass).info.spellcast
-    end
-
-    def mechanics_for_homebrew_subclass(subclass)
-      homebrew_subclass(subclass).info.mechanics
-    end
-
     def level_thresholds_bonuses
       { 'major' => level, 'severe' => level }
     end
@@ -388,8 +395,8 @@ module DaggerheartCharacter
       @item_bonuses ||= [equiped_armor_info&.dig('bonuses')].compact + equiped_weapon_info.pluck('bonuses').compact
     end
 
-    def homebrew_subclass(subclass)
-      @homebrew_subclass ||= Daggerheart::Homebrews::Subclass.find(subclass)
+    def homebrew_subclasses
+      @homebrew_subclasses ||= Daggerheart::Homebrews::Subclass.where(id: subclasses.values)
     end
   end
 end

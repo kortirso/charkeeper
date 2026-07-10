@@ -60,7 +60,8 @@
       "animalCompanion": "Верный зверь",
       "rolls": "История бросков",
       "goals": "Цели",
-      "backstory": "Биография"
+      "backstory": "Биография",
+      "mechanic": "Механики"
     },
     "campaignsPage": {
       "title": "Кампании",

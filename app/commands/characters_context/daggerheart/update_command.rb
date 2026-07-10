@@ -61,8 +61,6 @@ module CharactersContext
           optional(:beast).maybe(:string)
           optional(:hybrid).maybe(:hash)
           optional(:transformation).maybe(:string)
-          optional(:selected_stances).maybe(:array).each(:string)
-          optional(:stance).maybe(:string)
           optional(:selected_features).hash
           optional(:guide_step).maybe(:integer)
           optional(:conditions).maybe(:array).each(:string)
@@ -73,6 +71,8 @@ module CharactersContext
           optional(:heritage_name).filled(:string, max_size?: 50)
           optional(:community).filled(:string)
           optional(:rally_dice).maybe(:integer)
+          optional(:available_mechanic_items).hash
+          optional(:selected_mechanic_items).hash
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)

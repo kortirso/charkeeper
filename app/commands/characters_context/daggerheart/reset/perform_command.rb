@@ -32,8 +32,8 @@ module CharactersContext
             'experience' => [],
             'beastform' => nil,
             'transformation' => nil,
-            'selected_stances' => [],
-            'stance' => nil,
+            'available_mechanic_items' => {},
+            'selected_mechanic_items' => {},
             'selected_features' => {},
             'conditions' => []
           }

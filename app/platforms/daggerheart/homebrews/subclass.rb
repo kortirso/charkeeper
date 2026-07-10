@@ -7,7 +7,7 @@ module Daggerheart
 
       attribute :class_id, :string
       attribute :spellcast, :string
-      attribute :mechanics, array: true, default: [] # beastform, companion, stances
+      attribute :mechanics, array: true, default: [] # beastform, companion
     end
 
     class Subclass < ::Homebrew
