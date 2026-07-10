@@ -74,6 +74,7 @@ export const Daggerheart = (props) => {
   const domainCardFilter = (item) => item.origin === 'domain_card' || item.origin === 'parent';
   const equipmentFilter = (item) => item.origin === 'equipment';
   const companionFilter = (item) => item.origin === 'companion';
+  const mechanicFilter = (item) => item.origin === 'mechanic';
 
   const featFilters = createMemo(() => {
     const result = [
@@ -85,6 +86,7 @@ export const Daggerheart = (props) => {
       { title: 'equipment', callback: equipmentFilter }
     ];
 
+    if (Object.keys(character().mechanic_items).length > 0) result.push({ title: 'mechanic', callback: mechanicFilter });
     if (character().beastform !== null) result.push({ title: 'beastform', callback: beastformFilter });
     if (character().transformation !== null) result.push({ title: 'transformation', callback: transformationFilter });
     if (character().can_have_companion) result.push({ title: 'companion', callback: companionFilter });
@@ -135,7 +137,7 @@ export const Daggerheart = (props) => {
                   <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
               </Show>
-              <Show when={character().can_have_stances}>
+              <Show when={Object.keys(character().mechanic_items).length > 0}>
                 <div class="mt-4">
                   <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
@@ -288,7 +290,7 @@ export const Daggerheart = (props) => {
             <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
           </div>
         </Show>
-        <Show when={character().can_have_stances}>
+        <Show when={Object.keys(character().mechanic_items).length > 0}>
           <div class="mt-4">
             <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
           </div>

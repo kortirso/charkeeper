@@ -5,23 +5,24 @@ module Daggerheart
     include Deps[cache: 'cache.avatars']
 
     attributes :proficiency, :features, :provider, :avatar, :id, :name, :level, :heritage, :classes, :traits, :created_at, :gold,
-               :spent_armor_slots, :health_marked, :health_max, :stress_marked, :hope_marked, :modified_traits, :money,
-               :damage_thresholds, :evasion, :base_armor_score, :armor_score, :stress_max, :hope_max, :armor_slots,
-               :leveling, :subclasses, :subclasses_mastery, :attacks, :experience, :heritage_name, :names, :community,
+               :spent_armor_slots, :health_marked, :health_max, :stress_marked, :hope_marked, :modified_traits, :money, :beast,
+               :damage_thresholds, :evasion, :base_armor_score, :armor_score, :stress_max, :hope_max, :armor_slots, :resources,
+               :leveling, :subclasses, :subclasses_mastery, :attacks, :experience, :heritage_name, :names, :community, :hybrid,
                :domains, :selected_domains, :domain_cards_max, :spellcast_traits, :beastform, :beastforms, :tier, :main_class,
-               :can_have_companion, :transformations, :homebrew_domains, :transformation, :can_have_stances, :selected_stances,
-               :stance, :selected_features, :guide_step, :conditions, :advantage_dice, :disadvantage_dice, :scars, :scarred_hope,
-               :can_have_beastform, :beast, :hybrid, :rally_dice, :resources, :spell_bonus
+               :can_have_companion, :transformations, :homebrew_domains, :transformation, :mechanic_items, :spell_bonus,
+               :selected_features, :guide_step, :conditions, :advantage_dice, :disadvantage_dice, :scars, :scarred_hope,
+               :can_have_beastform, :rally_dice, :available_mechanic_items, :selected_mechanic_items
 
     delegate :features, :id, :name, :level, :heritage, :main_class, :classes, :traits, :gold, :spent_armor_slots, :health_marked,
              :health_max, :stress_marked, :hope_marked, :stress_max, :hope_max, :modified_traits, :damage_thresholds, :evasion,
              :base_armor_score, :armor_score, :armor_slots, :leveling, :subclasses, :money, :scars, :scarred_hope,
-             :subclasses_mastery, :attacks, :experience, :domains, :selected_domains, :can_have_beastform,
-             :domain_cards_max, :spellcast_traits, :beastforms, :tier, :proficiency, :resources, :spell_bonus,
-             :can_have_companion, :transformations, :transformation, :can_have_stances, :selected_stances, :stance,
-             :homebrew_domains, :selected_features, :conditions, :advantage_dice, :disadvantage_dice, to: :decorator
+             :subclasses_mastery, :attacks, :experience, :domains, :selected_domains, :can_have_beastform, :disadvantage_dice,
+             :domain_cards_max, :spellcast_traits, :beastforms, :tier, :proficiency, :resources, :spell_bonus, :selected_features,
+             :can_have_companion, :transformations, :transformation, :advantage_dice, :conditions, :homebrew_domains,
+             :mechanic_items, to: :decorator
     delegate :created_at, :data, to: :object
-    delegate :guide_step, :heritage_name, :community, :beastform, :beast, :hybrid, :rally_dice, to: :data
+    delegate :guide_step, :heritage_name, :community, :beastform, :beast, :hybrid, :rally_dice, :available_mechanic_items,
+             :selected_mechanic_items, to: :data
 
     def names
       {

@@ -1,57 +1,60 @@
-import { createSignal, createMemo, Show } from 'solid-js';
+import { createEffect, createSignal, Show, For, batch } from 'solid-js';
 
 import { Select, ErrorWrapper, GuideWrapper } from '../../../../components';
-import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    noStance: 'No stance',
-    stances: 'Stances',
-    selectedStances: 'Available stances',
-    activeStance: 'Active stance'
+    available: 'Select available mechanics',
+    active: 'Active mechanics'
   },
   ru: {
-    noStance: 'Без стойки',
-    stances: 'Боевые стойки',
-    selectedStances: 'Доступные стойки',
-    activeStance: 'Активная стойка'
+    available: 'Выберите доступные механики',
+    active: 'Активные механики'
   },
   es: {
-    noStance: 'Sin postura',
-    stances: 'Posturas',
-    selectedStances: 'Posturas disponibles',
-    activeStance: 'Postura activa'
+    available: 'Select available mechanics',
+    active: 'Active mechanics'
   }
 }
 
 export const DaggerheartStances = (props) => {
   const character = () => props.character;
 
-  const [selectedStances, setSelectedStances] = createSignal(character().selected_stances);
+  const [lastActiveObjectId, setLastActiveObjectId] = createSignal(undefined);
+  const [availableMechanics, setAvailableMechanics] = createSignal(character().available_mechanic_items);
+  const [selectedMechanics, setSelectedMechanics] = createSignal(character().selected_mechanic_items);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
 
-  const availableStances = createMemo(() => {
-    const result = Object.entries(config.stances).filter(([, values]) => values.tier <= character().tier).map(([key, values]) => [key, localize(values.name, locale())])
-    return Object.fromEntries(result);
-  })
+  createEffect(() => {
+    if (lastActiveObjectId() === character().id) return;
 
-  const stancesSelect = createMemo(() => {
-    const result = Object.entries(config.stances).filter(([key,]) => selectedStances().includes(key)).map(([key, values]) => [key, localize(values.name, locale())]);
-    return Object.fromEntries([['null', localize(TRANSLATION, locale())['noStance']]].concat(result));
+    batch(() => {
+      setAvailableMechanics(character().available_mechanic_items);
+      setSelectedMechanics(character().selected_mechanic_items);
+      setLastActiveObjectId(character().id);
+    });
   });
 
-  const updateMultiFeatureValue = (value) => {
-    const currentValues = character().selected_stances;
+  const updateAvailableMechanics = (id, value) => {
+    const currentValues = availableMechanics()[id] || [];
     const newValue = currentValues.includes(value) ? currentValues.filter((item) => item !== value) : currentValues.concat([value]);
 
-    updateCharacter({ selected_stances: newValue }, true);
-    setSelectedStances(newValue);
+    setAvailableMechanics({ ...availableMechanics(), [id]: newValue });
+    updateCharacter({ available_mechanic_items: availableMechanics() }, true);
+  }
+
+  const updateSelectedMechanics = (id, value) => {
+    const currentValues = selectedMechanics()[id] || [];
+    const newValue = currentValues.includes(value) ? currentValues.filter((item) => item !== value) : currentValues.concat([value]);
+
+    setSelectedMechanics({ ...selectedMechanics(), [id]: newValue });
+    updateCharacter({ selected_mechanic_items: selectedMechanics() });
   }
 
   const updateCharacter = async (payload, onlyHead=false) => {
@@ -59,35 +62,64 @@ export const DaggerheartStances = (props) => {
       appState.accessToken, character().provider, character().id, { character: payload, only_head: onlyHead }
     );
 
-    if (!onlyHead) {
-      if (result.errors_list === undefined) {
-        props.onReplaceCharacter(result.character);
-      } else renderAlerts(result.errors_list);
-    }
+    if (result.errors_list === undefined) {
+      if (!onlyHead) props.onReplaceCharacter(result.character);
+    } else renderAlerts(result.errors_list);
+  }
+
+  const renderMechanic = (items, mechId) => {
+    const mech = items.find((item) => item.id === mechId);
+    return (
+      <div>
+        <p class="text-lg">{mech.title}</p>
+        <p
+          class="feat-markdown text-xs!"
+          innerHTML={mech.description} // eslint-disable-line solid/no-innerhtml
+        />
+      </div>
+    )
   }
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartStances' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable p-4">
-          <h2 class="text-lg mb-2 dark:text-snow">{localize(TRANSLATION, locale())['stances']}</h2>
-          <Select
-            multi
-            containerClassList="w-full"
-            labelText={localize(TRANSLATION, locale())['selectedStances']}
-            items={availableStances()}
-            selectedValues={selectedStances()}
-            onSelect={(value) => updateMultiFeatureValue(value)}
-          />
-          <Select
-            containerClassList="mt-2 w-full"
-            labelText={localize(TRANSLATION, locale())['activeStance']}
-            items={stancesSelect()}
-            selectedValue={character().stance}
-            onSelect={(value) => updateCharacter({ stance: value === 'null' ? null : value })}
-          />
-          <Show when={character().stance}>
-            <p class="mt-2 dark:text-snow">{localize(config.stances[character().stance].feature, locale())}</p>
+        <div class="blockable p-4 flex flex-col gap-4">
+          <Show when={lastActiveObjectId() === character().id}>
+            <For each={Object.entries(character().mechanic_items)}>
+              {([id, values]) =>
+                <div class="flex flex-col gap-2">
+                  <h2 class="text-lg">{values.title}</h2>
+                  <p
+                    class="feat-markdown text-xs!"
+                    innerHTML={values.description} // eslint-disable-line solid/no-innerhtml
+                  />
+                  <Select
+                    multi
+                    searchable
+                    containerClassList="w-full"
+                    labelText={localize(TRANSLATION, locale()).available}
+                    items={values.items.reduce((acc, item) => { acc[item.id] = `${item.title} T${item.tier}`; return acc; }, {})}
+                    selectedValues={availableMechanics()[id] || []}
+                    onSelect={(value) => updateAvailableMechanics(id, value)}
+                  />
+                  <Select
+                    multi
+                    containerClassList="w-full"
+                    labelText={localize(TRANSLATION, locale()).active}
+                    items={values.items.filter((item) => (availableMechanics()[id] || []).includes(item.id)).reduce((acc, item) => { acc[item.id] = `${item.title} T${item.tier}`; return acc; }, {})}
+                    selectedValues={selectedMechanics()[id] || []}
+                    onSelect={(value) => updateSelectedMechanics(id, value)}
+                  />
+                  <Show when={(selectedMechanics()[id] || []).length > 0}>
+                    <For each={selectedMechanics()[id]}>
+                      {(mechId) =>
+                        renderMechanic(values.items, mechId)
+                      }
+                    </For>
+                  </Show>
+                </div>
+              }
+            </For>
           </Show>
         </div>
       </GuideWrapper>
