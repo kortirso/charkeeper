@@ -2,36 +2,40 @@
   {
     "title": {
       "en": "Necromancy",
-      "ru": ""
+      "ru": "Некромант"
     },
     "description": {
-      "en": "",
-      "ru": ""
+      "en": "The Necromancy specialization centers on manipulating life, death, and spiritual energies.",
+      "ru": "Некромантия сосредоточена на управлении энергиями жизни, смерти и духовной энергией."
     },
     "public": true,
-    "class_id": "",
+    "class_id": "18829572-596a-441a-9c3e-f76df681d92d",
     "spellcast": "know",
     "features": [
       {
         "title": {
           "en": "Second Circle — Shambling Corpse",
-          "ru": ""
+          "ru": "Второй круг - Дрожащий труп"
         },
         "description": {
           "en": "You can summon Shambling Corpses using your Second Circle.",
-          "ru": ""
+          "ru": "Вы можете призвать Дрожащие трупы."
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "stress": 1 },
+        "tokens": {
+          "limit": "tier"
+        }
       },
       {
         "title": {
           "en": "Hunger of the Grave",
-          "ru": ""
+          "ru": "Могильный голод"
         },
         "description": {
           "en": "Make a **Spellcast Roll** a target within Far range. On a success, your Shambling Corpses move to attack the target, dealing 5 physical damage for each Shambling Corpse before returning to you. One Shambling Corpse then disappears.",
-          "ru": ""
+          "ru": "Совершите **бросок заклинания** против цели в пределах далёкой дистанции. При успехе - **Дрожащие трупы** двигаются к цели и наносят 5 физического урона за каждый труп. После этого 1 труп исчезает."
         },
         "kind": "static",
         "subclass_mastery": 1
@@ -39,11 +43,11 @@
       {
         "title": {
           "en": "Grim Harvest",
-          "ru": ""
+          "ru": "Мрачная жатва"
         },
         "description": {
           "en": "When an adversary within Far range marks its last Hit Point, you can summon one Shambling Corpse without marking a Stress.",
-          "ru": ""
+          "ru": "Когда противник в пределах далёкой дистанции отмечает последнюю Рану, вы можете призвать Дрожащий труп без трат Стресса."
         },
         "kind": "static",
         "subclass_mastery": 1
@@ -51,35 +55,43 @@
       {
         "title": {
           "en": "Third Circle — Ghosts",
-          "ru": ""
+          "ru": "Третий круг - Призраки"
         },
         "description": {
           "en": "You can summon Ghosts using your Third Circle.",
-          "ru": ""
+          "ru": "Вы можете призвать Призраков."
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "stress": 1 },
+        "tokens": {
+          "limit": "tier"
+        }
       },
       {
         "title": {
           "en": "Ghostly Protectors",
-          "ru": ""
+          "ru": "Призрачные защитники"
         },
         "description": {
           "en": "While you have any Ghosts summoned, your Evasion has a +1 bonus as they swirl around you in protection.",
-          "ru": ""
+          "ru": "Пока у вас есть призванные Призраки, вы получаете бонус +1 к Уклонению."
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "modifiers": {
+          "evasion": { "type": "add", "value": 1 }
+        },
+        "continious": true
       },
       {
         "title": {
           "en": "Spectral Terror",
-          "ru": ""
+          "ru": "Спектральный террор"
         },
         "description": {
           "en": "Make a **Spellcast Roll** against a target within Far range. On a success, one of your Ghosts flies to the target to scare it, causing it to mark a Stress. That Ghost then disappears.",
-          "ru": ""
+          "ru": "Совершите **бросок заклинания** против цели в пределах далёкой дистанции. При успехе - один из Призраков летит к цели и пугает её, вынуждая отметить Стресс. После этого этот призрак исчезает."
         },
         "kind": "static",
         "subclass_mastery": 2
@@ -87,23 +99,27 @@
       {
         "title": {
           "en": "Fourth Circle — Death Knight",
-          "ru": ""
+          "ru": "Четвёртый круг - Рыцарь смерти"
         },
         "description": {
           "en": "You can summon one Death Knight at a time using your Fourth Circle.",
-          "ru": ""
+          "ru": "Вы можете призвать Рыцаря смерти."
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "price": { "stress": 1 },
+        "tokens": {
+          "limit": "1"
+        }
       },
       {
         "title": {
           "en": "Deathly Warrior",
-          "ru": ""
+          "ru": "Смертоносный воин"
         },
         "description": {
-          "en": "When you succeed on an attack roll with Hope, you can instead succeed with Fear, causing your Death Knight to rush your target, add 2d12 to the attack’s damage, and then return to you.",
-          "ru": ""
+          "en": "When you succeed on an attack roll with Hope, you can instead succeed with Fear, causing your Death Knight to rush your target, add 2d12 to the attack's damage, and then return to you.",
+          "ru": "Когда ваш бросок атаки успешен с Надеждой, вместо этого вы можете преуспеть со Страхом, тогда ваш Рыцарь смерти бросается к цели, добавляет 2d12 урона к вашей атаке и возвращается к вам."
         },
         "kind": "static",
         "subclass_mastery": 3
@@ -111,11 +127,11 @@
       {
         "title": {
           "en": "Knightly Bulwark",
-          "ru": ""
+          "ru": "Рыцарский бастион"
         },
         "description": {
           "en": "When you take Severe damage, the Death Knight takes one of the Hit Points instead and then disappears.",
-          "ru": ""
+          "ru": "Когда вам наносят Тяжёлый урон, то Рыцарь смерти принимает на себя 1 Рану вместо вас и исчезает."
         },
         "kind": "static",
         "subclass_mastery": 3
@@ -125,36 +141,40 @@
   {
     "title": {
       "en": "Theurgy",
-      "ru": ""
+      "ru": "Теург"
     },
     "description": {
-      "en": "",
-      "ru": ""
+      "en": "This subclass focuses on summoning celestial entities, angels, and divine manifestations to aid you in combat and utility.",
+      "ru": "Этот подкласс специализируется на призывании небесных сущностей, ангелов и божественных проявлений, которые помогут вам в бою и в выполнении вспомогательных задач."
     },
     "public": true,
-    "class_id": "",
+    "class_id": "18829572-596a-441a-9c3e-f76df681d92d",
     "spellcast": "know",
     "features": [
       {
         "title": {
           "en": "Second Circle — Angel",
-          "ru": ""
+          "ru": "Второй круг - Ангел"
         },
         "description": {
           "en": "You can summon Angels using your Second Circle.",
-          "ru": ""
+          "ru": "Вы можете призвать Ангелов."
         },
         "kind": "static",
-        "subclass_mastery": 1
+        "subclass_mastery": 1,
+        "price": { "stress": 1 },
+        "tokens": {
+          "limit": "tier"
+        }
       },
       {
         "title": {
           "en": "Angelic Presence",
-          "ru": ""
+          "ru": "Ангельское присутствие"
         },
         "description": {
           "en": "While you have any Angels summoned, you have advantage on Presence rolls to influence others, as the angelic power around you inspires awe and fear.",
-          "ru": ""
+          "ru": "Пока у вас есть призванные Ангелы, вы получаете преимущество на броски Влияния, чтобы влиять на других."
         },
         "kind": "static",
         "subclass_mastery": 1
@@ -162,11 +182,11 @@
       {
         "title": {
           "en": "Hopeful Strike",
-          "ru": ""
+          "ru": "Обнадеживающий удар"
         },
         "description": {
           "en": "When you succeed with Hope on an attack roll, you can command one Angel to deal an extra 1d10 magic damage to the target. The Angel then disappears.",
-          "ru": ""
+          "ru": "Когда ваш бросок атаки успешен с Надеждой, вы можете приказать одному Ангелу нанести дополнительно 1d10 магического урона цели. После этого Ангел исчезает."
         },
         "kind": "static",
         "subclass_mastery": 1
@@ -174,23 +194,27 @@
       {
         "title": {
           "en": "Third Circle — Archangel",
-          "ru": ""
+          "ru": "Третий круг - Архангел"
         },
         "description": {
           "en": "You can summon Archangels using your Third Circle.",
-          "ru": ""
+          "ru": "Вы можете призывать Архангелов."
         },
         "kind": "static",
-        "subclass_mastery": 2
+        "subclass_mastery": 2,
+        "price": { "stress": 1 },
+        "tokens": {
+          "limit": "tier"
+        }
       },
       {
         "title": {
           "en": "Divine Commander",
-          "ru": ""
+          "ru": "Божественный Повелитель"
         },
         "description": {
-          "en": "While you have any Archangels summoned, the extra damage of your Hopeful Strike is 1d12 instead of 1d10.",
-          "ru": ""
+          "en": "While you have any Archangels summoned, the extra damage of your **Hopeful Strike** is 1d12 instead of 1d10.",
+          "ru": "Пока у вас есть призванные Архангелы, ваш **Обнадеживающий удар** наносит 1d12 урона вместо 1d10."
         },
         "kind": "static",
         "subclass_mastery": 2
@@ -198,11 +222,11 @@
       {
         "title": {
           "en": "Heavenly Aid",
-          "ru": ""
+          "ru": "Небесная помощь"
         },
         "description": {
           "en": "You can command an Archangel to do one of the following:\n\n- Fly you or an ally within Very Close range to a location within Far range.\n\n- Help an Ally within Close range without spending Hope.\n\nThe Archangel then disappears.",
-          "ru": ""
+          "ru": "Вы можете приказать Архангелу выполнить:\n\n- Помочь вам или вашему союзнику в пределах близкого расстояния переместиться летя на далёкое расстояние.\n\n- Или помочь союзнику в пределах средней дистанции без затрат Надежды.\n\nПосле этого Архангел исчезает."
         },
         "kind": "static",
         "subclass_mastery": 2
@@ -210,26 +234,33 @@
       {
         "title": {
           "en": "Fourth Circle — Divine Manifestation",
-          "ru": ""
+          "ru": "Четвёртый круг - Божественное проявление"
         },
         "description": {
           "en": "You can summon one Divine Manifestation at a time using your Fourth Circle.",
-          "ru": ""
+          "ru": "Вы можете призвать одно Божественное проявление."
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "price": { "stress": 1 },
+        "tokens": {
+          "limit": "1"
+        }
       },
       {
         "title": {
           "en": "Hallowed Hope",
-          "ru": ""
+          "ru": "Священная Надежда"
         },
         "description": {
           "en": "When you summon a Divine Manifestation, place three extra Hope dice on this card. When you make an action or a reaction roll, you can roll and expend one Hope die from this card, along with your normal Hope die, and use the Hope die with the highest result. When there are no dice left on this card, the Divine Manifestation disappears.",
-          "ru": ""
+          "ru": "Когда вы призываете Божественное проявление, поместите 3 жетона Надежды на эту карту. Когда вы выполняете бросок действия или реакции, вы можете использовать 1 жетон с этой карты и бросить дополнительную Кость Надежды, используйте наибольший результат. Когда не остаётся жетонов, Божественное проявление исчезает."
         },
         "kind": "static",
-        "subclass_mastery": 3
+        "subclass_mastery": 3,
+        "tokens": {
+          "limit": "3"
+        }
       }
     ]
   }

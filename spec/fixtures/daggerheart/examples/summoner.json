@@ -2,25 +2,25 @@
   {
     "title": {
       "en": "Summoner",
-      "ru": ""
+      "ru": "Призыватель"
     },
     "description": {
       "en": "As a summoner, you harness your occult training to call forth and command otherworldly entities that act on your behalf.",
-      "ru": ""
+      "ru": "Как призыватель, вы используете свои оккультные знания, чтобы вызывать и командовать потусторонними сущностями, которые действуют от вашего имени."
     },
     "public": true,
-    "domains": ["blood", "splendor"],
+    "domains": ["7e0a4346-059c-4e84-ae6b-ffb37ae924f6", "splendor"],
     "evasion": 10,
     "health_max": 6,
     "features": [
       {
         "title": {
           "en": "Aid of the Spirit",
-          "ru": ""
+          "ru": "Помощь духа"
         },
         "description": {
           "en": "**Spend 3 Hope** to conjure otherworldly aid. Distribute 2 Hope among one or more other PCs within Far range, and you clear a Stress.",
-          "ru": ""
+          "ru": "**Потратьте 3 Надежды**, чтобы призвать помощь из другого мира. Распределите 2 Надежды между одним или несколькими другими персонажами в пределах досягаемости, и вы очищаете Стресс."
         },
         "kind": "static",
         "price": { "hope": 3 }
@@ -28,24 +28,28 @@
       {
         "title": {
           "en": "Summon Entity",
-          "ru": ""
+          "ru": "Призвать сущность"
         },
         "description": {
           "en": "You can summon otherworldly Entities: Fate Spirits and other Entities from your subclass. Each Entity is associated with a summoning circle below. **Mark a Stress** to summon a number of your Entities equal to your tier, and add them to the appropriate circles. You can hold a total number of Entities equal to your level. Summoned Entities stay within Very Close range, can perform harmless tasks within that range, and cannot be targeted. If a task requires an action roll, make a Spellcast Roll to command the Entity.",
-          "ru": ""
+          "ru": "Вы можете призывать потусторонних существ: духов судьбы и других существ из вашего подкласса. Каждое существо связано с кругом призыва, расположенным ниже. **Отметьте Стресс**, чтобы призвать количество ваших существ, равное вашему рангу, и добавьте их в соответствующие круги. Вы можете содержать общее количество существ, равное вашему уровню. Призванные существа остаются в пределах близкого расстояния, могут выполнять безвредные действия в этом диапазоне и не могут быть целью. Если для выполнения действия требуется бросок действия, совершите бросок заклинания, чтобы отдать приказ существу."
         },
-        "kind": "text"
+        "kind": "static"
       },
       {
         "title": {
           "en": "First Circle — Fate Spirit",
-          "ru": ""
+          "ru": "Первый круг - Дух судьбы"
         },
         "description": {
           "en": "After an adversary within Very Close range makes a successful attack roll, you can command a Fate Spirit to force the adversary to reroll the attack. The spirit then disappears.",
-          "ru": ""
+          "ru": "Когда противник в пределах близкого расстояния проводит успешный бросок атаки, вы можете приказать **Духу судьбы** вынудить противника перебросить бросок атаки. После этого дух исчезает."
         },
-        "kind": "static"
+        "kind": "static",
+        "price": { "stress": 1 },
+        "tokens": {
+          "limit": "tier"
+        }
       }
     ]
   }
