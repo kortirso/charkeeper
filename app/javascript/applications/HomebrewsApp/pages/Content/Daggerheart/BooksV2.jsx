@@ -64,7 +64,7 @@ export const DaggerheartBooksV2 = () => {
                     {([className, subclasses]) =>
                       <p class="flex flex-wrap gap-2">{className}:
                         <For each={Object.entries(subclasses)}>
-                          {([id, value]) =>
+                          {([id, value], index) =>
                             <p class="flex items-center">
                               {value}
                               <Show when={props.editMode}>
@@ -72,7 +72,7 @@ export const DaggerheartBooksV2 = () => {
                                   <Close width="20" height="20" />
                                 </Button>
                               </Show>
-                              ,
+                              <Show when={index() < Object.keys(subclasses).length - 1}>,</Show>
                             </p>
                           }
                         </For>
@@ -88,7 +88,7 @@ export const DaggerheartBooksV2 = () => {
                 <p class="font-medium! mb-2">{localize(TRANSLATION, locale())[kind]}</p>
                 <div class="flex flex-wrap gap-2">
                   <For each={Object.entries(props.info.items[kind])}>
-                    {([id, value]) =>
+                    {([id, value], index) =>
                       <p class="flex items-center">
                         {value}
                         <Show when={props.editMode}>
@@ -96,7 +96,7 @@ export const DaggerheartBooksV2 = () => {
                             <Close width="20" height="20" />
                           </Button>
                         </Show>
-                        ,
+                        <Show when={index() < Object.keys(props.info.items[kind]).length - 1}>,</Show>
                       </p>
                     }
                   </For>
