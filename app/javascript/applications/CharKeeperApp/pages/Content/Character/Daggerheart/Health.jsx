@@ -91,12 +91,27 @@ export const DaggerheartHealth = (props) => {
           <div class="flex gap-4 mb-4">
             <div class="damage-caption">
               <p>{localize(TRANSLATION, locale()).minor}</p>
-              <p>1-{character().damage_thresholds.major - 1}</p>
+              <Show
+                when={character().damage_thresholds.major > 1}
+                fallback={<p>-</p>}
+              >
+                <Show
+                  when={character().damage_thresholds.major > 2}
+                  fallback={<p>1</p>}
+                >
+                  <p>1-{character().damage_thresholds.major - 1}</p>
+                </Show>
+              </Show>
               <p>{localize(TRANSLATION, locale()).minorDamage}</p>
             </div>
             <div class="damage-caption">
               <p>{localize(TRANSLATION, locale()).major}</p>
-              <p>{character().damage_thresholds.major}-{character().damage_thresholds.severe - 1}</p>
+              <Show
+                when={character().damage_thresholds.severe > character().damage_thresholds.major + 1}
+                fallback={<p>{character().damage_thresholds.major}</p>}
+              >
+                <p>{character().damage_thresholds.major}-{character().damage_thresholds.severe - 1}</p>
+              </Show>
               <p>{localize(TRANSLATION, locale()).majorDamage}</p>
             </div>
             <div class="damage-caption">
