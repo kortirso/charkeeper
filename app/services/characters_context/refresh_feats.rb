@@ -20,9 +20,11 @@ module CharactersContext
     end
 
     def remove_not_available_feats(character, existing_ids, available_feats)
-      Character::Feat
-        .joins(:feat)
-        .where.not(feats: { origin: exclude_origins_from_remove })
+      relation = Character::Feat.joins(:feat)
+      relation.where.not(feats: { origin: exclude_origins_from_remove })
+        .or(
+          relation.where(feats: { origin: exclude_origins_from_remove, origin_value: '' })
+        )
         .where(character_id: character.id, feat_id: (existing_ids - available_feats.pluck(:id))).destroy_all
     end
 
