@@ -32,6 +32,8 @@ module HomebrewsV2Context
               )
             )
 
+            input[:feat].character_feats.update_all(tokens: input[:feat].tokens.nil? ? nil : 0)
+
             { result: :ok }
           end
         end
