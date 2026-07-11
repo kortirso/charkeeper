@@ -44,11 +44,16 @@ module Homebrews
             .where(id: items['Homebrew'])
             .hashable_pluck(:id, :title, :info)
             .group_by { |item| item[:info].class_id }
-        classes = ::Daggerheart::Homebrews::Speciality.where(id: subclasses.keys).pluck(:id, :title).to_h
         subclasses
-          .transform_keys { |key| translate(classes[key]) }
-          .transform_values { |value| value.each_with_object({}) { |item, acc| acc[item[:id]] = translate(item[:title]) } }
+          .transform_keys do |key|
+            default = ::Daggerheart::Character.class_info(key)
+            next translate(default['name']) if default
+
+            translate(daggerheart_names.fetch_item(key: :classes, id: key)[:name])
+          end.transform_values { |value| value.each_with_object({}) { |item, acc| acc[item[:id]] = translate(item[:title]) } }
       end
+
+      def daggerheart_names = Charkeeper::Container.resolve('cache.daggerheart_names')
     end
   end
 end
