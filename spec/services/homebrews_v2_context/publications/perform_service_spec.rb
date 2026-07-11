@@ -124,6 +124,7 @@ describe HomebrewsV2Context::Publications::PerformService do
                id: 'b16b039c-75c8-45c0-ab6b-f39dc39fff21'
       }
       let!(:feat2) { create :daggerheart_feat, origin: 0, origin_value: 'd73d81a6-e3c3-40b0-8865-4af1c8370b36' }
+      let!(:character_feat) { create :character_feat, feat: feat1, tokens: 1 }
       let(:file_path) { Rails.root.join('spec/fixtures/daggerheart/ancestry_edit.json') }
       let(:file) { Rack::Test::UploadedFile.new(file_path, 'application/json') }
 
@@ -139,6 +140,7 @@ describe HomebrewsV2Context::Publications::PerformService do
         expect(feat1.reload.title['en']).to eq "Changed feature's title"
         expect(Feat.find_by(id: feat2.id)).to be_nil
         expect(Feat.where(origin_value: ancestry.id).count).to eq 2
+        expect(character_feat.reload.tokens).to be_nil
       end
     end
 

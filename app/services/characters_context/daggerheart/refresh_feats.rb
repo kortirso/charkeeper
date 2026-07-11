@@ -66,7 +66,8 @@ module CharactersContext
         relation =
           ::Daggerheart::Feat.where(
             origin_value: [
-              data.heritage, data.community, data.classes.keys, data.subclasses.values, character.id, data.transformation
+              data.heritage, data.community, data.classes.keys, data.subclasses.values, character.id, data.transformation,
+              data.selected_mechanic_items.values.flatten.compact
             ].flatten.compact.uniq
           ).or(
             ::Daggerheart::Feat.where(origin: 'ancestry', slug: data.heritage_features)
@@ -74,8 +75,6 @@ module CharactersContext
             ::Daggerheart::Feat.where(origin: 'ancestry', id: data.heritage_features)
           ).or(
             ::Daggerheart::Feat.where(origin: 'domain_card', slug: data.selected_features.values.flatten.compact)
-          ).or(
-            ::Daggerheart::Feat.where(origin: 'mechanic', slug: data.selected_mechanic_items.values.flatten.compact)
           ).or(
             ::Daggerheart::Feat.where(
               origin: 'parent',
