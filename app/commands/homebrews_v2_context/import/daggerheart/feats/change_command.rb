@@ -7,7 +7,7 @@ module HomebrewsV2Context
         class ChangeCommand < BaseCommand
           private
 
-          def do_prepare(input) # rubocop: disable Metrics/AbcSize
+          def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
             input[:info] = { hope_dice: input[:hope_dice], fear_dice: input[:fear_dice] }
             if input[:feat].origin == 'subclass' && input.key?(:subclass_mastery)
               input[:conditions] = { subclass_mastery: input[:subclass_mastery] }
@@ -22,16 +22,18 @@ module HomebrewsV2Context
             input[:description_eval_variables] = { limit: input[:limit].to_s } if input.key?(:limit)
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description].transform_values! { |value| sanitize(value) }
+
+            input[:attributes] = input.except(
+              :feat, :limit, :no_refresh, :subclass_mastery, :level, :attacks, :skip_contract_validation, :type, :recall,
+              :hope_dice, :fear_dice
+            )
+            input[:attributes][:modifiers] = {} unless input.key?(:modifiers)
+            input[:attributes][:tokens] = nil unless input.key?(:tokens)
+            input[:attributes][:continious] = false unless input.key?(:continious)
           end
 
           def do_persist(input)
-            input[:feat].update!(
-              input.except(
-                :feat, :limit, :no_refresh, :subclass_mastery, :level, :attacks, :skip_contract_validation, :type, :recall,
-                :hope_dice, :fear_dice
-              )
-            )
-
+            input[:feat].update!(input[:attributes])
             input[:feat].character_feats.update_all(tokens: input[:feat].tokens.nil? ? nil : 0)
 
             { result: :ok }
