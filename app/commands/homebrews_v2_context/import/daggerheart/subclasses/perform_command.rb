@@ -32,7 +32,7 @@ module HomebrewsV2Context
               end
               required(:class_id).filled(:string)
               optional(:spellcast).maybe(Spellcasts)
-              optional(:mechanics).maybe(:array, size?: 1).each(:string)
+              optional(:mechanics).maybe(:array, max_size?: 1).each(:string)
               optional(:public).filled(:bool)
               optional(:features).maybe(:array).each(:hash) do
                 optional(:id).filled(:string, :uuid_v4?)
