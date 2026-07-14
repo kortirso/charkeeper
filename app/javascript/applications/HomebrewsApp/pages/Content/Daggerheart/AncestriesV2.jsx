@@ -6,7 +6,7 @@ import { FeatureModifiers } from './FeatureModifiers';
 import { useAppState } from '../../../context';
 import { SharedContent } from '../../../pages';
 import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
-import { fetchAncestryRequest, removeAncestryRequest, copyAncestryRequest } from '../../../requests_v2/daggerheart/ancestries';
+import { fetchAncestryRequest, removeAncestryRequest } from '../../../requests_v2/daggerheart/ancestries';
 
 export const DaggerheartAncestriesV2 = () => {
   const [appState] = useAppState();
@@ -53,7 +53,6 @@ export const DaggerheartAncestriesV2 = () => {
       onBatchDestroy={batchDestroy}
       onShowRequest={fetchAncestryRequest}
       onRemoveRequest={removeAncestryRequest}
-      onCopyRequest={copyAncestryRequest}
       childrenComponent={ChildrenComponent}
     />
   );

@@ -13,18 +13,20 @@ module Daggerheart
     class Speciality < ::Homebrew
       attribute :info, Daggerheart::Homebrews::SpecialityData.to_type
 
-      def to_homebrew_json
+      def to_homebrew_json(with_id: true)
         [
           {
-            id: id,
+            id: with_id ? id : nil,
             title: title,
             description: description,
             public: attributes['public'],
             domains: info.domains,
             evasion: info.evasion,
             health_max: info.health_max,
-            features: Daggerheart::Feat.where(origin: 'class', origin_value: id).map(&:to_homebrew_json)
-          }
+            features: Daggerheart::Feat.where(origin: 'class', origin_value: id).map { |item|
+              item.to_homebrew_json(with_id: with_id)
+            }
+          }.compact
         ]
       end
     end

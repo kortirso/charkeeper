@@ -5,21 +5,21 @@ module HomebrewsV2
     include SerializeRelation
 
     before_action :find_homebrews, only: %i[index]
+    before_action :find_upvotes, only: %i[index]
     before_action :find_homebrew, only: %i[show]
     before_action :find_homebrews_for_batch_destroy, only: %i[batch_destroy]
 
     def index
-      serialize_relation(
+      serialize_relation_v2(
         @homebrews,
         ::HomebrewsV2::ListElementSerializer,
         :homebrews,
-        {},
-        { current_user_id: current_user.id }
+        context: { current_user_id: current_user.id, upvotes: @upvotes }
       )
     end
 
     def show
-      render json: { homebrews: @homebrew.to_homebrew_json }, status: status
+      render json: { homebrews: @homebrew.to_homebrew_json(with_id: @homebrew.user_id == current_user.id) }, status: status
     end
 
     def batch_destroy
@@ -37,8 +37,12 @@ module HomebrewsV2
           ).kept.order(created_at: :desc).includes(:homebrew_books)
     end
 
+    def find_upvotes
+      @upvotes = current_user.upvotes.where(upvoteable_id: @homebrews.select(:id)).pluck(:upvoteable_id)
+    end
+
     def find_homebrew
-      @homebrew = ::Homebrew.where(user_id: current_user.id, type: params[:type]).kept.find(params.expect(:id)) # rubocop: disable Rails/StrongParametersExpect
+      @homebrew = ::Homebrew.where(type: params[:type]).kept.find(params.expect(:id)) # rubocop: disable Rails/StrongParametersExpect
     end
 
     def find_homebrews_for_batch_destroy

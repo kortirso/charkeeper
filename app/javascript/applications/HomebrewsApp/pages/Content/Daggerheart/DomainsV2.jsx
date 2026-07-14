@@ -6,7 +6,7 @@ import { FeatureModifiers } from './FeatureModifiers';
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
 import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
-import { fetchDomainRequest, removeDomainRequest, copyDomainRequest } from '../../../requests_v2/daggerheart/domains';
+import { fetchDomainRequest, removeDomainRequest } from '../../../requests_v2/daggerheart/domains';
 import { localize } from '../../../helpers';
 
 const TRANSLATION = {
@@ -81,13 +81,13 @@ export const DaggerheartDomainsV2 = () => {
   return (
     <SharedContent
       provider="daggerheart"
+      parentType="Homebrew"
       publicationType="domain"
       onFetchRequest={fetchList}
       onFetchHomebrew={fetchHomebrew}
       onBatchDestroy={batchDestroy}
       onShowRequest={fetchDomainRequest}
       onRemoveRequest={removeDomainRequest}
-      onCopyRequest={copyDomainRequest}
       childrenComponent={ChildrenComponent}
     />
   );

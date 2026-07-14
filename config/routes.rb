@@ -316,6 +316,7 @@ Rails.application.routes.draw do
 
     namespace :users do
       resources :books, only: %i[update]
+      resources :upvotes, only: %i[update]
     end
   end
 

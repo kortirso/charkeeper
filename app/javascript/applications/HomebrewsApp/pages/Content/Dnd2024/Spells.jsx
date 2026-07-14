@@ -123,7 +123,7 @@ export const Dnd2024Spells = () => {
   return (
     <SharedContent
       provider="dnd2024"
-      parentType="Dnd2024::Feat"
+      parentType="Feat"
       publicationType="spell"
       onFetchRequest={fetchList}
       onShowRequest={fetchSpellRequest}

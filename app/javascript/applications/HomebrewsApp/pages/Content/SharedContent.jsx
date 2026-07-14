@@ -2,22 +2,22 @@ import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-
 
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Toggle, Button, Label, Select, createModal } from '../../components';
-import { Trash, Copy, Stroke, Edit } from '../../assets';
+import { Trash, Stroke, Edit, Like, Copy } from '../../assets';
 import { fetchPublicationsRequest, createPublicationRequest } from '../../requests_v2/publications';
 import { fetchBooksForItemsRequest } from '../../requests_v2/books';
 import { createBookItemRequest } from '../../requests_v2/bookItems';
+import { changeUserUpvote } from '../../requests_v2/upvotes';
 import { localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
     add: 'Create',
-    showPublic: 'Show public',
+    showPublic: 'Only public',
     avatarFile: 'Select file',
     success: 'Publication is started',
     submit: 'Submit',
     publications: 'Publications',
     noErrors: 'No errors',
-    copyCompleted: 'Copy is completed',
     fileExample: 'You can download file example, modify it with your data and use it for importing data to Charkeeper.',
     fileExampleDescription: 'Data example',
     cancel: 'Cancel',
@@ -35,13 +35,12 @@ const TRANSLATION = {
   },
   ru: {
     add: 'Добавить',
-    showPublic: 'Показать общедоступные',
+    showPublic: 'Только общедоступные',
     avatarFile: 'Выберите файл',
     success: 'Публикация началась',
     submit: 'Обработать файл',
     publications: 'Публикации',
     noErrors: 'Нет ошибок',
-    copyCompleted: 'Копирование завершено',
     fileExample: 'Вы можете скачать шаблон файла, изменить данные и использовать новый файл для импорта данных в Charkeeper.',
     fileExampleDescription: 'Пример файла',
     cancel: 'Отменить',
@@ -65,7 +64,6 @@ const TRANSLATION = {
     submit: 'Submit',
     publications: 'Publications',
     noErrors: 'No errors',
-    copyCompleted: 'Copy is completed',
     fileExample: 'You can download file example, modify it with your data and use it for importing data to Charkeeper.',
     fileExampleDescription: 'Data example',
     cancel: 'Cancel',
@@ -118,7 +116,7 @@ export const SharedContent = (props) => {
         batch(() => {
           setBooks(booksData.books);
           setPublications(publicationsData.publications);
-          setElements(elementsData.homebrews);
+          setElements(elementsData.homebrews.sort((a, b) => b.own - a.own || b.upvotes_count - a.upvotes_count));
         });
       }
     );
@@ -126,8 +124,9 @@ export const SharedContent = (props) => {
 
   const filtered = createMemo(() => {
     if (elements() === undefined) return [];
+    if (!ownFilter()) return elements().filter(({ own }) => !own);
 
-    return elements().filter(({ own }) => ownFilter() ? own : !own);
+    return elements();
   });
 
   const handleFileChange = (event) => {
@@ -187,10 +186,11 @@ export const SharedContent = (props) => {
   }
 
   const removeAllHomebrew = async () => {
-    const result = await props.onBatchDestroy(selectedIds());
+    const ownSelectedIds = elements().filter((item) => item.own && selectedIds().includes(item.id)).map(({ id }) => id);
+    const result = await props.onBatchDestroy(ownSelectedIds);
     if (result.errors_list === undefined) {
       batch(() => {
-        setElements(elements().filter((item) => !selectedIds().includes(item.id) ));
+        setElements(elements().filter((item) => !ownSelectedIds.includes(item.id) ));
         setSelectedIds([]);
       });
       closeModal();
@@ -215,18 +215,8 @@ export const SharedContent = (props) => {
   const removeHomebrew = async () => {
     const result = await props.onRemoveRequest(appState.accessToken, deletingHomebrew().id);
     if (result.errors_list === undefined) {
-      setElements(elements().filter((item) => item.id !== deletingHomebrew().id ));
+      setElements(elements().filter((item) => item.id !== deletingHomebrew().id));
       closeModal();
-    } else renderAlerts(result.errors_list);
-  }
-
-  const copy = async (e, id) => {
-    e.stopPropagation();
-
-    const result = await props.onCopyRequest(appState.accessToken, id);
-    if (result.errors_list === undefined) {
-      setElements([result.homebrew].concat(elements()));
-      renderNotice(localize(TRANSLATION, locale()).copyCompleted);
     } else renderAlerts(result.errors_list);
   }
 
@@ -270,12 +260,29 @@ export const SharedContent = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const like = async (e, element) => {
+    e.stopPropagation();
+
+    const result = await changeUserUpvote(appState.accessToken, element.id, props.parentType);
+    if (result.errors_list === undefined) {
+      setElements(
+        elements().map((item) => {
+          if (item.id !== element.id) return item;
+
+          return { ...item, upvotes_count: (item.upvoted ? item.upvotes_count - 1 : item.upvotes_count + 1), upvoted: !item.upvoted }
+        })
+      );
+    } else renderAlerts(result.errors_list);
+  }
+
   return (
     <Show when={elements() !== undefined} fallback={<></>}>
       <div class="flex my-4">
         <div class="flex-1">
           <Button default classList="px-2 py-1" onClick={() => setCreateMode(true)}>{localize(TRANSLATION, locale()).add}</Button>
-          <Button default active={!ownFilter()} classList="ml-4 px-2 py-1" onClick={() => setOwnFilter(!ownFilter())}>{localize(TRANSLATION, locale()).showPublic}</Button>
+          <Show when={props.parentType}>
+            <Button default active={!ownFilter()} classList="ml-4 px-2 py-1" onClick={() => setOwnFilter(!ownFilter())}>{localize(TRANSLATION, locale()).showPublic}</Button>
+          </Show>
         </div>
         <div class="relative flex-1 flex justify-end">
           <Button default active={showPublications()} classList="px-2 py-1" onClick={() => setShowPublications(!showPublications())}>{localize(TRANSLATION, locale()).publications}</Button>
@@ -335,7 +342,7 @@ export const SharedContent = (props) => {
             <div class="flex items-center">
               <Show when={props.parentType}>
                 <Select
-                  containerClassList="w-40"
+                  containerClassList="w-80"
                   labelText={localize(TRANSLATION, locale()).selectBook}
                   items={Object.fromEntries(books().map((item) => [item.id, item.title]))}
                   selectedValue={book()}
@@ -360,12 +367,14 @@ export const SharedContent = (props) => {
                   onParentClick={() => showInfo(element)}
                   isOpenByParent={openInfos()[element.id]}
                   title={
-                    <div class="flex items-center">
+                    <div class="flex">
                       <div class="flex-1 flex flex-col gap-2">
-                        <p class="text-xl font-medium!">{element.title}</p>
-                        <Show when={element.public}>
-                          <p class="text-sm">{localize(TRANSLATION, locale()).public}</p>
-                        </Show>
+                        <p class="text-xl font-medium!">
+                          {element.title}
+                          <Show when={element.public}>
+                            <span class="text-sm ml-4">{localize(TRANSLATION, locale()).public}</span>
+                          </Show>
+                        </p>
                         <Show when={element.description}>
                           <p
                             class="feat-markdown mt-1"
@@ -376,17 +385,8 @@ export const SharedContent = (props) => {
                           <p class="text-sm">{localize(TRANSLATION, locale()).inBooks}: {element.books.join(', ')}</p>
                         </Show>
                       </div>
-                      <div class="col-span-2 flex items-start justify-end gap-2">
-                        <Show
-                          when={ownFilter()}
-                          fallback={
-                            <Show when={props.onCopyRequest}>
-                              <Button default classList="px-2 py-1" onClick={(e) => copy(e, element.id)}>
-                                <Copy width="20" height="20" />
-                              </Button>
-                            </Show>
-                          }
-                        >
+                      <div class="flex flex-col items-end justify-between gap-2">
+                        <div class="flex gap-2">
                           <div class="flex items-center justify-end gap-1 text-neutral-700">
                             <Show when={props.onBatchDestroy || props.parentType}>
                               <Button
@@ -400,15 +400,36 @@ export const SharedContent = (props) => {
                               </Button>
                             </Show>
                             <Show when={props.onFetchHomebrew}>
-                              <Button default classList="px-2 py-1" onClick={(e) => edit(e, element.id)}>
-                                <Edit width="20" height="20" />
-                              </Button>
+                              <Show
+                                when={element.own}
+                                fallback={
+                                  <Button default classList="px-2 py-1" onClick={(e) => edit(e, element.id)}>
+                                    <Copy width="20" height="20" />
+                                  </Button>
+                                }
+                              >
+                                <Button default classList="px-2 py-1" onClick={(e) => edit(e, element.id)}>
+                                  <Edit width="20" height="20" />
+                                </Button>
+                              </Show>
                             </Show>
-                            <Show when={props.onRemoveRequest}>
+                            <Show when={props.onRemoveRequest && element.own}>
                               <Button default classList="px-2 py-1" onClick={(e) => remove(e, element)}>
                                 <Trash width="20" height="20" />
                               </Button>
                             </Show>
+                          </div>
+                        </div>
+                        <Show when={props.parentType}>
+                          <div class="flex items-center gap-2">
+                            <Button
+                              outlined
+                              classList={`${element.upvoted ? '' : 'opacity-25'}`}
+                              onClick={(e) => like(e, element)}
+                            >
+                              <Like width="24" height="24" />
+                            </Button>
+                            <span>{element.upvotes_count}</span>
                           </div>
                         </Show>
                       </div>

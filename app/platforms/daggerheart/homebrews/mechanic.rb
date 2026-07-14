@@ -5,15 +5,15 @@ module Daggerheart
     class Mechanic < ::Homebrew
       has_many :items, class_name: 'Daggerheart::Homebrews::MechanicItem', foreign_key: :homebrew_id, dependent: :destroy
 
-      def to_homebrew_json
+      def to_homebrew_json(with_id: true)
         [
           {
-            id: id,
+            id: with_id ? id : nil,
             title: title,
             description: description,
             public: attributes['public'],
-            items: items.flat_map(&:to_homebrew_json)
-          }
+            items: items.flat_map { |item| item.to_homebrew_json(with_id: with_id) }
+          }.compact
         ]
       end
     end

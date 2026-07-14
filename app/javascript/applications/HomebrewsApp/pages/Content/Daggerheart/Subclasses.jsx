@@ -7,7 +7,7 @@ import { FeatureModifiers } from './FeatureModifiers';
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
 import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
-import { fetchSubclassRequest, removeSubclassRequest, copySubclassRequest } from '../../../requests_v2/daggerheart/subclasses';
+import { fetchSubclassRequest, removeSubclassRequest } from '../../../requests_v2/daggerheart/subclasses';
 import { localize } from '../../../helpers';
 
 const TRANSLATION = {
@@ -112,7 +112,6 @@ export const DaggerheartSubclasses = () => {
       onBatchDestroy={batchDestroy}
       onShowRequest={fetchSubclassRequest}
       onRemoveRequest={removeSubclassRequest}
-      onCopyRequest={copySubclassRequest}
       childrenComponent={ChildrenComponent}
     />
   );

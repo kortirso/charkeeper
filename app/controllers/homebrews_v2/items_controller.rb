@@ -5,13 +5,15 @@ module HomebrewsV2
     include SerializeRelation
     include SerializeResource
 
+    before_action :find_items, only: %i[index]
+    before_action :find_upvotes, only: %i[index]
     before_action :find_item, only: %i[show]
     before_action :find_own_item, only: %i[destroy]
     before_action :find_another_item, only: %i[copy]
     before_action :find_items_for_batch_destroy, only: %i[batch_destroy]
 
     def index
-      serialize_relation(items, serializer, :homebrews, {}, { current_user_id: current_user.id })
+      serialize_relation(@items, serializer, :homebrews, {}, { current_user_id: current_user.id, upvotes: @upvotes })
     end
 
     def show
@@ -40,12 +42,17 @@ module HomebrewsV2
 
     private
 
-    def items
-      class_name.where(user_id: current_user.id).or(class_name.where(public: true))
-        .visible
-        .kept
-        .where(kind: params.expect(:type).split(','))
-        .includes(:homebrew_books)
+    def find_items
+      @items =
+        class_name.where(user_id: current_user.id).or(class_name.where(public: true))
+          .visible
+          .kept
+          .where(kind: params.expect(:type).split(','))
+          .includes(:homebrew_books)
+    end
+
+    def find_upvotes
+      @upvotes = current_user.upvotes.where(upvoteable_id: @items.select(:id)).pluck(:upvoteable_id)
     end
 
     def find_item

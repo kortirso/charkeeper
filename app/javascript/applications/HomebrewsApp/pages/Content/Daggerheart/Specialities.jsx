@@ -6,7 +6,7 @@ import { FeatureModifiers } from './FeatureModifiers';
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
 import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
-import { fetchSpecialityRequest, removeSpecialityRequest, copySpecialityRequest } from '../../../requests_v2/daggerheart/specialities';
+import { fetchSpecialityRequest, removeSpecialityRequest } from '../../../requests_v2/daggerheart/specialities';
 import { localize } from '../../../helpers';
 
 const TRANSLATION = {
@@ -77,7 +77,6 @@ export const DaggerheartSpecialities = () => {
       onBatchDestroy={batchDestroy}
       onShowRequest={fetchSpecialityRequest}
       onRemoveRequest={removeSpecialityRequest}
-      onCopyRequest={copySpecialityRequest}
       childrenComponent={ChildrenComponent}
     />
   );
