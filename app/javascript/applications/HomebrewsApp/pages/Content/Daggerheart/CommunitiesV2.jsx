@@ -6,9 +6,7 @@ import { FeatureModifiers } from './FeatureModifiers';
 import { useAppState } from '../../../context';
 import { SharedContent } from '../../../pages';
 import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
-import {
-  fetchCommunityRequest, removeCommunityRequest, copyCommunityRequest
-} from '../../../requests_v2/daggerheart/communities';
+import { fetchCommunityRequest, removeCommunityRequest } from '../../../requests_v2/daggerheart/communities';
 
 export const DaggerheartCommunitiesV2 = () => {
   const [appState] = useAppState();
@@ -55,7 +53,6 @@ export const DaggerheartCommunitiesV2 = () => {
       onBatchDestroy={batchDestroy}
       onShowRequest={fetchCommunityRequest}
       onRemoveRequest={removeCommunityRequest}
-      onCopyRequest={copyCommunityRequest}
       childrenComponent={ChildrenComponent}
     />
   );

@@ -5,3 +5,4 @@ export * from './Plus';
 export * from './Stroke';
 export * from './Trash';
 export * from './Close';
+export * from './Like';

@@ -2,6 +2,8 @@
 
 class Homebrew
   class Book < ApplicationRecord
+    include Upvoteable
+
     belongs_to :user, touch: :homebrew_updated_at
 
     has_many :items, class_name: 'Homebrew::Book::Item', foreign_key: :homebrew_book_id, dependent: :destroy

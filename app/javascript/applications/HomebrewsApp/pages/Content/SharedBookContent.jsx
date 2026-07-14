@@ -3,15 +3,17 @@ import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Toggle, Button, Checkbox, Input } from '../../components';
-import { Trash, Edit } from '../../assets';
+import { Trash, Edit, Like } from '../../assets';
 import { changeUserBook, createBookRequest, changeBookRequest } from '../../requests_v2/books';
 import { removeBookItemRequest } from '../../requests_v2/bookItems';
+import { changeUserUpvote } from '../../requests_v2/upvotes';
+
 import { localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
     add: 'Create',
-    showPublic: 'Show public',
+    showPublic: 'Only public',
     enabled: 'Enabled',
     disabled: 'Disabled',
     name: 'Book name',
@@ -21,7 +23,7 @@ const TRANSLATION = {
   },
   ru: {
     add: 'Добавить',
-    showPublic: 'Показать общедоступные',
+    showPublic: 'Только общедоступные',
     enabled: 'Подключено',
     disabled: 'Отключено',
     name: 'Название книги',
@@ -61,15 +63,16 @@ export const SharedBookContent = (props) => {
   createEffect(() => {
     Promise.all([props.onFetchRequest()]).then(
       ([elementsData]) => {
-        setElements(elementsData.homebrews);
+        setElements(elementsData.homebrews.sort((a, b) => b.own - a.own || b.upvotes_count - a.upvotes_count));
       }
     );
   });
 
   const filtered = createMemo(() => {
     if (elements() === undefined) return [];
+    if (!ownFilter()) return elements().filter(({ own }) => !own);
 
-    return elements().filter(({ own }) => ownFilter() ? own : !own);
+    return elements();
   });
 
   const showInfo = async (element) => {
@@ -159,6 +162,21 @@ export const SharedBookContent = (props) => {
     } else renderAlerts(removeResult.errors_list);
   }
 
+  const like = async (e, element) => {
+    e.stopPropagation();
+
+    const result = await changeUserUpvote(appState.accessToken, element.id, 'Homebrew::Book');
+    if (result.errors_list === undefined) {
+      setElements(
+        elements().map((item) => {
+          if (item.id !== element.id) return item;
+
+          return { ...item, upvotes_count: (item.upvoted ? item.upvotes_count - 1 : item.upvotes_count + 1), upvoted: !item.upvoted }
+        })
+      );
+    } else renderAlerts(result.errors_list);
+  }
+
   return (
     <Show when={elements() !== undefined} fallback={<></>}>
       <div class="flex my-4">
@@ -220,17 +238,29 @@ export const SharedBookContent = (props) => {
                           />
                         </Show>
                       </div>
-                      <div class="col-span-2 flex items-start justify-end gap-2">
-                        <Show when={ownFilter()}>
-                          <div class="flex items-center justify-end gap-1 text-neutral-700">
-                            <Button default classList="px-2 py-1" onClick={(e) => edit(e, element)}>
-                              <Edit width="20" height="20" />
-                            </Button>
-                            <Button default classList="px-2 py-1" onClick={(e) => remove(e, element.id)}>
-                              <Trash width="20" height="20" />
-                            </Button>
+                      <div class="flex flex-col items-end justify-between gap-2">
+                        <Show when={element.own}>
+                          <div class="flex gap-2">
+                            <div class="flex items-center justify-end gap-1 text-neutral-700">
+                              <Button default classList="px-2 py-1" onClick={(e) => edit(e, element.id)}>
+                                <Edit width="20" height="20" />
+                              </Button>
+                              <Button default classList="px-2 py-1" onClick={(e) => remove(e, element.id)}>
+                                <Trash width="20" height="20" />
+                              </Button>
+                            </div>
                           </div>
                         </Show>
+                        <div class="flex items-center gap-2">
+                          <Button
+                            outlined
+                            classList={`${element.upvoted ? '' : 'opacity-25'}`}
+                            onClick={(e) => like(e, element)}
+                          >
+                            <Like width="24" height="24" />
+                          </Button>
+                          <span>{element.upvotes_count}</span>
+                        </div>
                       </div>
                     </div>
                   }

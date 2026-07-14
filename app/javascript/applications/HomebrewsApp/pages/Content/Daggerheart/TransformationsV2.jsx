@@ -6,9 +6,7 @@ import { FeatureModifiers } from './FeatureModifiers';
 import { useAppState } from '../../../context';
 import { SharedContent } from '../../../pages';
 import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
-import {
-  fetchTransformationRequest, removeTransformationRequest, copyTransformationRequest
-} from '../../../requests_v2/daggerheart/transformations';
+import { fetchTransformationRequest, removeTransformationRequest } from '../../../requests_v2/daggerheart/transformations';
 
 export const DaggerheartTransformationsV2 = () => {
   const [appState] = useAppState();
@@ -55,7 +53,6 @@ export const DaggerheartTransformationsV2 = () => {
       onBatchDestroy={batchDestroy}
       onShowRequest={fetchTransformationRequest}
       onRemoveRequest={removeTransformationRequest}
-      onCopyRequest={copyTransformationRequest}
       childrenComponent={ChildrenComponent}
     />
   );

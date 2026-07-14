@@ -9,16 +9,18 @@ module HomebrewsV2
     include SerializeRelation
     include SerializeResource
 
+    before_action :find_books, only: %i[index]
+    before_action :find_upvotes, only: %i[index]
     before_action :find_book, only: %i[show]
     before_action :find_own_book, only: %i[update destroy]
 
     def index
       serialize_relation(
-        books,
+        @books,
         serializer,
         :homebrews,
         { except: %i[items] },
-        { enabled_books: current_user.books.ids, current_user_id: current_user.id }
+        { enabled_books: current_user.books.ids, current_user_id: current_user.id, upvotes: @upvotes }
       )
     end
 
@@ -55,11 +57,16 @@ module HomebrewsV2
       @book = ::Homebrew::Book.find(params.expect(:id))
     end
 
-    def books
-      Homebrew::Book.where(provider: provider, user_id: current_user.id)
-        .or(Homebrew::Book.where(provider: provider, shared: true))
-        .or(Homebrew::Book.where(provider: provider, public: true))
-        .includes(:items)
+    def find_books
+      @books =
+        Homebrew::Book.where(provider: provider, user_id: current_user.id)
+          .or(Homebrew::Book.where(provider: provider, shared: true))
+          .or(Homebrew::Book.where(provider: provider, public: true))
+          .includes(:items)
+    end
+
+    def find_upvotes
+      @upvotes = current_user.upvotes.where(upvoteable_type: 'Homebrew::Book').pluck(:upvoteable_id)
     end
 
     def books_for_items

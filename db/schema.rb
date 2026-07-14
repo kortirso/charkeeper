@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_09_135043) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_14_201102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -257,6 +257,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_135043) do
     t.jsonb "tokens", comment: "Настройки токенов для навыков"
     t.string "type", null: false
     t.datetime "updated_at", null: false
+    t.integer "upvotes_count", default: 0, null: false
     t.uuid "user_id"
     t.index ["origin"], name: "index_feats_on_origin"
     t.index ["origin_value"], name: "index_feats_on_origin_value", where: "(origin_value IS NOT NULL)"
@@ -371,6 +372,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_135043) do
     t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.boolean "shared"
     t.datetime "updated_at", null: false
+    t.integer "upvotes_count", default: 0, null: false
     t.uuid "user_id", null: false
     t.index ["shared"], name: "index_homebrew_books_on_shared", where: "(shared IS NOT NULL)"
     t.index ["user_id"], name: "index_homebrew_books_on_user_id"
@@ -424,6 +426,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_135043) do
     t.jsonb "title", default: {}, null: false
     t.string "type", null: false
     t.datetime "updated_at", null: false
+    t.integer "upvotes_count", default: 0, null: false
     t.uuid "user_id", null: false
     t.index ["discarded_at"], name: "index_homebrews_on_discarded_at"
     t.index ["homebrew_id"], name: "index_homebrews_on_homebrew_id", where: "(homebrew_id IS NOT NULL)"
@@ -459,6 +462,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_135043) do
     t.string "slug"
     t.string "type", null: false
     t.datetime "updated_at", null: false
+    t.integer "upvotes_count", default: 0, null: false
     t.uuid "user_id"
     t.index ["discarded_at"], name: "index_items_on_discarded_at"
     t.index ["itemable_id", "itemable_type"], name: "index_items_on_itemable_id_and_itemable_type", where: "((itemable_id IS NOT NULL) AND (itemable_type IS NOT NULL))"

@@ -3,7 +3,7 @@
 module Homebrews
   module Dnd
     class BookSerializer < ApplicationSerializer
-      attributes :id, :title, :provider, :items, :shared, :public, :enabled, :own
+      attributes :id, :title, :provider, :items, :shared, :public, :enabled, :own, :upvotes_count, :upvoted
 
       def title
         object.name
@@ -30,6 +30,13 @@ module Homebrews
         return false unless context[:current_user_id]
 
         object.user_id == context[:current_user_id]
+      end
+
+      def upvoted # rubocop: disable Naming/PredicateMethod
+        return false unless context
+        return false unless context[:upvotes]
+
+        context[:upvotes].include?(object.id)
       end
 
       def subclasses_info(object_items) # rubocop: disable Metrics/AbcSize

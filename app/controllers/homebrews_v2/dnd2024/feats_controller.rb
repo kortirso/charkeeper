@@ -14,10 +14,11 @@ module HomebrewsV2
         })
       end
 
-      def feats
-        class_name.where(user_id: current_user.id).or(class_name.where(public: true))
-          .where(origin: 'feat')
-          .includes(:homebrew_books)
+      def find_feats
+        @feats =
+          class_name.where(user_id: current_user.id).or(class_name.where(public: true))
+            .where(origin: 'feat')
+            .includes(:homebrew_books)
       end
 
       def order_options

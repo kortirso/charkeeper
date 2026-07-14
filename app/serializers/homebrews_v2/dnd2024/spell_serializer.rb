@@ -3,7 +3,7 @@
 module HomebrewsV2
   module Dnd2024
     class SpellSerializer < ApplicationSerializer
-      attributes :id, :title, :description, :own, :info, :origin_values, :books
+      attributes :id, :title, :description, :own, :info, :origin_values, :books, :upvotes_count, :upvoted
 
       def title
         "#{object.info['level']} #{translate(object.title)}"
@@ -18,6 +18,13 @@ module HomebrewsV2
         return false unless context[:current_user_id]
 
         object.user_id == context[:current_user_id]
+      end
+
+      def upvoted # rubocop: disable Naming/PredicateMethod
+        return false unless context
+        return false unless context[:upvotes]
+
+        context[:upvotes].include?(object.id)
       end
 
       def books

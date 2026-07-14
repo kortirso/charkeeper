@@ -19,7 +19,9 @@ describe HomebrewsV2::Daggerheart::ItemsController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['homebrews'].size).to eq 3
-        expect(response.parsed_body.dig('homebrews', 0).keys).to contain_exactly('id', 'title', 'description', 'own', 'books')
+        expect(response.parsed_body.dig('homebrews', 0).keys).to(
+          contain_exactly('id', 'title', 'description', 'own', 'books', 'upvoted', 'upvotes_count')
+        )
       end
     end
   end
