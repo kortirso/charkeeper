@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - homebrew upvotes
 
+### Fixed
+- updating hb mechanics for dh characters
+
 ## [0.4.39] - 2026-07-11
 
 ## [0.4.38] - 2026-07-05
