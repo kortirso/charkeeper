@@ -44,8 +44,11 @@
           "limit": "proficiency",
           /* optional, reset current tokens at, long/short/session */
           "reset_at": "long",
-          /* optional, zero/limit */
-          "reset": "limit"
+          /* optional, zero/limit/str/agi/fin/ins/pre/know/spellcast/level/tier/proficiency or number */
+          "reset": "limit",
+          /* optional, restore tokens on long rest */
+          /* zero/limit/str/agi/fin/ins/pre/know/spellcast/level/tier/proficiency or number */
+          "reset_at_long": "limit"
         }
       },
       {

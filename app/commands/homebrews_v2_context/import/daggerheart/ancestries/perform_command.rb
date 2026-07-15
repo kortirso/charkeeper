@@ -51,6 +51,7 @@ module HomebrewsV2Context
                   optional(:limit).filled(:string)
                   optional(:reset_at).filled(:string)
                   optional(:reset).filled(:string)
+                  optional(:reset_at_long).filled(:string)
                 end
                 optional(:price).hash do
                   optional(:stress).filled(:integer, gteq?: 1, lteq?: 10)

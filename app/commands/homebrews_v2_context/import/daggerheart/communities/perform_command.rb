@@ -55,6 +55,7 @@ module HomebrewsV2Context
                   optional(:limit).filled(:string)
                   optional(:reset_at).filled(:string)
                   optional(:reset).filled(:string)
+                  optional(:reset_at_long).filled(:string)
                 end
                 optional(:hope_dice).filled(Dices)
                 optional(:fear_dice).filled(Dices)
