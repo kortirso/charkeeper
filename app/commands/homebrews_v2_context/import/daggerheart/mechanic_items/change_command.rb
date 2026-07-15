@@ -18,11 +18,15 @@ module HomebrewsV2Context
                 .where(origin: 'mechanic', origin_value: input[:mechanic_item].id)
                 .group_by(&:id)
                 .transform_values(&:first)
+
+            input[:title].transform_values! { |value| sanitize(value) }
+            input[:description].transform_values! { |value| sanitize(value) }
+            input[:info] = input.slice(:tier)
           end
 
           def do_persist(input)
             ActiveRecord::Base.transaction do
-              input[:mechanic_item].update!(input.slice(:title, :description, :public))
+              input[:mechanic_item].update!(input.slice(:title, :description, :info))
 
               if input[:features]
                 change_features(input)
