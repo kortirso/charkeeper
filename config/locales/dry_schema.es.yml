@@ -7,10 +7,11 @@ es:
     errors:
       unexpected_key: Párametros desconocidos
       included_in?: Valor desconocido
-      max_size?: Valor muy largo
+      max_size?: Valor muy largo, limit is %{num}
       filled?: There is required field
-      gteq?: Too small value
-      lteq?: Too big value
+      gteq?: Too small value, minimum is %{num}
+      gt?: Value should be higher than %{num}
+      lteq?: Too big value, maximum is %{num}
       key?: Missing value
       size?: Size must be %{num}
       int?: Must be integer

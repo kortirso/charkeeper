@@ -10,6 +10,7 @@ en:
       max_size?: Too long value, limit is %{num}
       filled?: There is required field
       gteq?: Too small value, minimum is %{num}
+      gt?: Value should be higher than %{num}
       lteq?: Too big value, maximum is %{num}
       key?: Missing value
       size?: Size must be %{num}
