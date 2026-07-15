@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - homebrew upvotes
 
+### Modified
+- refreshing tokens for feats
+
 ### Fixed
 - updating hb mechanics for dh characters
 

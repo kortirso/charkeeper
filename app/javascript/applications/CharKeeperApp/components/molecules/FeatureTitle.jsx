@@ -22,6 +22,8 @@ const TRANSLATION = {
     mp: 'MP',
     hope: 'Hope',
     stress: 'Stress',
+    health: 'Health',
+    armor: 'Armor',
     spent: 'Resource is spent',
     a: 'A',
     r: 'R'
@@ -37,6 +39,8 @@ const TRANSLATION = {
     mp: 'ОМ',
     hope: 'Надежда',
     stress: 'Стресс',
+    health: 'Здоровье',
+    armor: 'Броня',
     spent: 'Ресурс потрачен',
     a: 'Д',
     r: 'Р'
@@ -52,6 +56,8 @@ const TRANSLATION = {
     mp: 'PM',
     hope: 'Esperanza',
     stress: 'Estrés',
+    health: 'Health',
+    armor: 'Armor',
     spent: 'Resource is spent',
     a: 'A',
     r: 'R'
@@ -74,7 +80,9 @@ export const FeatureTitle = (props) => {
   const daggerheartResource = () => {
     return {
       hope: { free: character().hope_marked, attribute: 'hope_marked', modifier: -1 },
-      stress: { free: character().stress_max - character().stress_marked, attribute: 'stress_marked', modifier: 1 }
+      stress: { free: character().stress_max - character().stress_marked, attribute: 'stress_marked', modifier: 1 },
+      health: { free: character().health_max - character().health_marked, attribute: 'health_marked', modifier: 1 },
+      armor: { free: character().armor_slots - character().spent_armor_slots, attribute: 'spent_armor_slots', modifier: 1 }
     }
   }
 
@@ -121,7 +129,7 @@ export const FeatureTitle = (props) => {
           {feature().title}
         </p>
         <div class="flex items-center gap-x-4">
-          <Show when={character().provider === 'daggerheart' && (feature().info.hope_dice || feature().info.fear_dice)}>
+          <Show when={character().provider === 'daggerheart'}>
             <Show when={feature().info.hope_dice}>
               <Dice width="24" height="24" textClassList="text-sm!" mode="hope" text={feature().info.hope_dice} />
             </Show>
@@ -153,13 +161,9 @@ export const FeatureTitle = (props) => {
                 classList={{ 'enough': enoughResources() }}
                 onClick={(e) => enoughResources() ? spendResources(e) : null}
               >
-                <For each={Object.entries(feature().price)}>
-                  {([slug, value]) =>
-                    <Show when={localize(TRANSLATION, locale())[slug]}>
-                      <p class="text-xs">{localize(TRANSLATION, locale())[slug]} {value}</p>
-                    </Show>
-                  }
-                </For>
+                <p class="text-xs">
+                  {Object.entries(feature().price).map(([slug, value]) => `${localize(TRANSLATION, locale())[slug]} ${value}`).join(', ')}
+                </p>
               </div>
             </Show>
           </Show>

@@ -10,6 +10,8 @@ module CharactersContext
         refresh_feats: 'services.characters_context.daggerheart.refresh_feats'
       ]
 
+      TOKEN_LIMITS = %w[spellcast level proficiency tier agi str fin ins pre know].freeze
+
       use_contract do
         config.messages.namespace = :daggerheart_rest
 
@@ -130,21 +132,39 @@ module CharactersContext
         end
       end
 
-      def refresh_feats_tokens(input) # rubocop: disable Metrics/AbcSize
+      def refresh_feats_tokens(input)
         input[:character].feats.where.not(tokens: nil).includes(:feat).find_each do |feature|
           settings = feature.feat.tokens
           next unless settings['reset_at']
           next if tokens_refresh(input).exclude?(settings['reset_at'])
 
-          case settings['reset']
-          when 'zero' then feature.update(tokens: 0)
-          when 'limit' then feature.update(tokens: find_max_value(input[:decorator], settings['limit'])) # TODO: вычислить лимит
-          else feature.update(tokens: feature.tokens + settings['reset'].to_i)
-          end
+          feature.update(tokens: [find_future_tokens(feature, input, settings), 0].max)
         end
       end
 
-      def find_max_value(decorator, limit)
+      def find_future_tokens(feature, input, settings)
+        if settings['reset_at'] == 'short' && input[:value] == 'long' && settings['reset_at_long']
+          settings['reset'] = settings['reset_at_long']
+        end
+
+        case settings['reset']
+        when 'zero' then 0
+        when 'limit' then find_dynamic_value(input[:decorator], settings['limit'])
+        when *TOKEN_LIMITS then add_tokens(feature, input[:decorator], settings)
+        else feature.tokens + settings['reset'].to_i
+        end
+      end
+
+      def add_tokens(feature, decorator, settings)
+        [
+          feature.tokens + find_dynamic_value(decorator, settings['reset']),
+          find_dynamic_value(decorator, settings['limit'])
+        ].min
+      end
+
+      def find_dynamic_value(decorator, limit)
+        return 1_000 if limit == 'none'
+
         if limit == 'spellcast'
           numbers = decorator.spellcast_traits.map { |trait| decorator.modified_traits[trait] + decorator.spell_bonus }
           return (numbers + [1]).max
