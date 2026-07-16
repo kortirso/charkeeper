@@ -13,7 +13,7 @@ module HomebrewsV2Context
 
           def do_persist(input)
             result = ActiveRecord::Base.transaction do
-              domain = ::Daggerheart::Homebrews::Domain.create!(input.slice(:user, :title, :description, :public))
+              domain = ::Daggerheart::Homebrews::Domain.create!(input.slice(:user, :title, :description, :public, :info))
               input[:features]&.each do |feature|
                 add_feat.call(
                   feature.except(:id).merge({

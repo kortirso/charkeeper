@@ -9,6 +9,9 @@
       "en": "Domain's description, **Markdown is available** for editing."
     },
     "public": true,
+    /* optional, extending for existing domain */
+    /* arcana, blade, bone, codex, grace, midnight, sage, splendor, valor, dread or ID of homebrew domain */
+    "domain_id": "arcana",
     "features": [
       {
         /* required, allowed locale keys - en, ru, es */
