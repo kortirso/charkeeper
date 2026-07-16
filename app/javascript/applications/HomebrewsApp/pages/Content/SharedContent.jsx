@@ -31,7 +31,8 @@ const TRANSLATION = {
     deleteAll: 'Delete selected',
     deletingAll: 'Deleting selected homebrews',
     inBooks: 'Included in books',
-    public: 'Public'
+    public: 'Public',
+    caption: 'Enable books that contain specific homebrews you need, and they will be available for your characters after that.'
   },
   ru: {
     add: 'Добавить',
@@ -54,7 +55,8 @@ const TRANSLATION = {
     deleteAll: 'Удалить выбранные',
     deletingAll: 'Удаление выбранных homebrews',
     inBooks: 'Добавлено в книги',
-    public: 'Общедоступное'
+    public: 'Общедоступное',
+    caption: 'Чтобы определённые homebrew были доступны вашим персонажам, то вам необходимо включить те книги, которые содержат интересующие вас homebrew.'
   },
   es: {
     add: 'Agregar',
@@ -77,7 +79,8 @@ const TRANSLATION = {
     deleteAll: 'Delete selected',
     deletingAll: 'Deleting selected homebrews',
     inBooks: 'Included in books',
-    public: 'Public'
+    public: 'Public',
+    caption: 'Enable books that contain specific homebrews you need, and they will be available for your characters after that.'
   }
 }
 
@@ -360,6 +363,7 @@ export const SharedContent = (props) => {
             </Show>
           </div>
           <div class="flex flex-col gap-2">
+            <p>{localize(TRANSLATION, locale()).caption}</p>
             <For each={filtered()}>
               {(element) =>
                 <Toggle
