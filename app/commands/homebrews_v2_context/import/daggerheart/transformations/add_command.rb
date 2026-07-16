@@ -15,7 +15,7 @@ module HomebrewsV2Context
             result = ActiveRecord::Base.transaction do
               transformation =
                 ::Daggerheart::Homebrews::Transformation.create!(input.slice(:user, :title, :description, :public))
-              input[:features]&.each do |feature|
+              input[:features]&.sort_by { |i| i[:position].to_i }&.each do |feature|
                 add_feat.call(
                   feature.except(:id).merge({
                     user: input[:user],

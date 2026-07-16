@@ -10,7 +10,7 @@ module Daggerheart
             title: title,
             description: description,
             public: attributes['public'],
-            features: Daggerheart::Feat.where(origin: 'ancestry', origin_value: id).map { |item|
+            features: Daggerheart::Feat.where(origin: 'ancestry', origin_value: id).order(created_at: :asc).map { |item|
               item.to_homebrew_json(with_id: with_id)
             }
           }.compact

@@ -12,7 +12,7 @@ module Daggerheart
             title: title,
             description: description,
             public: attributes['public'],
-            items: items.flat_map { |item| item.to_homebrew_json(with_id: with_id) }
+            items: items.order(created_at: :asc).flat_map { |item| item.to_homebrew_json(with_id: with_id) }
           }.compact
         ]
       end
