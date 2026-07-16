@@ -95,7 +95,7 @@ export const FeatureTitle = (props) => {
   const enoughResources = createMemo(() => {
     if (Object.keys(resources()).length === 0) return false;
 
-    return Object.entries(feature().price).filter(([slug, value]) => resources()[slug].free < value).length === 0;
+    return Object.entries(feature().price).filter(([slug, value]) => resources()[slug] ? resources()[slug].free < value : false).length === 0;
   });
 
   const spendResources = async (e) => {
@@ -162,7 +162,7 @@ export const FeatureTitle = (props) => {
                 onClick={(e) => enoughResources() ? spendResources(e) : null}
               >
                 <p class="text-xs">
-                  {Object.entries(feature().price).map(([slug, value]) => `${localize(TRANSLATION, locale())[slug]} ${value}`).join(', ')}
+                  {Object.entries(feature().price).map(([slug, value]) => localize(TRANSLATION, locale())[slug] ? `${localize(TRANSLATION, locale())[slug]} ${value}` : null).filter((item) => item).join(', ')}
                 </p>
               </div>
             </Show>
