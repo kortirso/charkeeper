@@ -15,7 +15,7 @@ module HomebrewsV2Context
           def do_persist(input)
             result = ActiveRecord::Base.transaction do
               ancestry = ::Daggerheart::Homebrews::Ancestry.create!(input.slice(:user, :title, :description, :public))
-              input[:features]&.each do |feature|
+              input[:features]&.sort_by { |i| i[:position].to_i }&.each do |feature|
                 add_feat.call(
                   feature.except(:id).merge({
                     user: input[:user],

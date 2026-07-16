@@ -9,7 +9,7 @@ module HomebrewsV2
         return [] unless context
         return [] unless context[:features]
 
-        relation = object.items
+        relation = object.items.order(created_at: :asc)
         Panko::ArraySerializer.new(
           relation,
           each_serializer: HomebrewsV2::Daggerheart::MechanicItemSerializer,
