@@ -31,6 +31,7 @@ module HomebrewsV2Context
                 optional(:es).maybe(:string, max_size?: 500)
               end
               optional(:public).filled(:bool)
+              optional(:domain_id).filled(:string)
               optional(:features).maybe(:array).each(:hash) do
                 optional(:id).filled(:string, :uuid_v4?)
                 required(:title).hash do
@@ -109,6 +110,7 @@ module HomebrewsV2Context
           def do_prepare(input)
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description].transform_values! { |value| sanitize(value) }
+            input[:info] = { domain_id: input[:domain_id] }.compact
           end
 
           def do_persist(input)

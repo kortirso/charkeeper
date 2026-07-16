@@ -2,15 +2,25 @@
 
 module Daggerheart
   class SpellSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id slug name level domain].freeze
+    ATTRIBUTES = %i[id slug title description origin_value conditions info].freeze
 
-    attributes :id, :slug, :name, :level, :domain
+    attributes(*ATTRIBUTES)
 
-    delegate :level, :domain, to: :data
-    delegate :data, to: :object
+    def origin_value
+      context[:extra_domains][object.origin_value] || object.origin_value
+    end
 
-    def name
-      translate(object.name)
+    def title
+      translate(object.title)
+    end
+
+    def description
+      result = Charkeeper::Container.resolve('markdown').call(
+        value: translate(object.description),
+        version: (context ? (context[:version] || nil) : nil),
+        initial_version: '0.3.20'
+      )
+      context && context[:gsub] ? result&.gsub(/{{[a-z]+}}/, 'x') : result
     end
   end
 end

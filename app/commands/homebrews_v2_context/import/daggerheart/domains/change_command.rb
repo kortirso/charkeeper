@@ -22,7 +22,7 @@ module HomebrewsV2Context
 
           def do_persist(input)
             ActiveRecord::Base.transaction do
-              input[:domain].update!(input.slice(:title, :description, :public))
+              input[:domain].update!(input.slice(:title, :description, :public, :info))
 
               if input[:features]
                 change_features(input)
