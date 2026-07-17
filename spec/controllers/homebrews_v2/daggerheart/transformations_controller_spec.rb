@@ -78,36 +78,4 @@ describe HomebrewsV2::Daggerheart::TransformationsController do
       end
     end
   end
-
-  describe 'POST#copy' do
-    context 'for logged users' do
-      context 'for unexisting homebrew' do
-        let(:request) { post :copy, params: { id: 'unexisting', charkeeper_access_token: access_token } }
-
-        it 'returns error' do
-          request
-
-          expect(response).to have_http_status :not_found
-        end
-      end
-
-      context 'for existing own homebrew' do
-        let(:request) { post :copy, params: { id: own_transformation.id, charkeeper_access_token: access_token } }
-
-        it 'returns error', :aggregate_failures do
-          expect { request }.not_to change(Daggerheart::Homebrews::Transformation, :count)
-          expect(response).to have_http_status :not_found
-        end
-      end
-
-      context 'for existing homebrew' do
-        let(:request) { post :copy, params: { id: transformation.id, charkeeper_access_token: access_token } }
-
-        it 'creates homebrew', :aggregate_failures do
-          expect { request }.to change(Daggerheart::Homebrews::Transformation, :count).by(1)
-          expect(response).to have_http_status :created
-        end
-      end
-    end
-  end
 end

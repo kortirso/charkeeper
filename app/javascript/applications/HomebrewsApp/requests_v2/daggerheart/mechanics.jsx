@@ -13,10 +13,3 @@ export const removeMechanicRequest = async (accessToken, id) => {
     options: options('DELETE', accessToken)
   });
 }
-
-export const copyMechanicRequest = async (accessToken, id) => {
-  return await apiRequest({
-    url: `/homebrews_v2/daggerheart/mechanics/${id}/copy.json`,
-    options: options('POST', accessToken)
-  });
-}

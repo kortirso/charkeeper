@@ -1,15 +1,10 @@
 # frozen_string_literal: true
 
-describe HomebrewsV2::Daggerheart::MechanicsController do
+describe HomebrewsV2::Dnd2024::RacesController do
   let!(:user_session) { create :user_session }
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
-  let!(:own_element) { create :homebrew, :daggerheart_mechanic, user: user_session.user }
-  let!(:element) { create :homebrew, :daggerheart_mechanic }
-
-  before do
-    create :homebrew, :daggerheart_mechanic_item, homebrew: own_element
-    create :homebrew, :daggerheart_mechanic_item, homebrew: element
-  end
+  let!(:own_element) { create :dnd2024_homebrews_race, user: user_session.user }
+  let!(:element) { create :dnd2024_homebrews_race }
 
   describe 'GET#show' do
     context 'for logged users' do
@@ -30,7 +25,9 @@ describe HomebrewsV2::Daggerheart::MechanicsController do
           request
 
           expect(response).to have_http_status :ok
-          expect(response.parsed_body['homebrew'].keys).to contain_exactly('id', 'items')
+          expect(response.parsed_body['homebrew'].keys).to(
+            contain_exactly('id', 'features', 'info')
+          )
         end
       end
     end
@@ -58,8 +55,23 @@ describe HomebrewsV2::Daggerheart::MechanicsController do
         end
       end
 
-      context 'for available homebrew' do
+      context 'for existing homebrew without using for character' do
         let(:request) { delete :destroy, params: { id: own_element.id, charkeeper_access_token: access_token } }
+
+        it 'destroys homebrew', :aggregate_failures do
+          expect { request }.to change(Homebrew, :count).by(-1)
+          expect(response).to have_http_status :ok
+        end
+      end
+
+      context 'for existing homebrew with using for character' do
+        let(:request) { delete :destroy, params: { id: own_element.id, charkeeper_access_token: access_token } }
+
+        before do
+          character = create :dnd2024_character
+          character.data['species'] = own_element.id
+          character.save
+        end
 
         it 'discards homebrew', :aggregate_failures do
           expect { request }.to change(Homebrew.kept, :count).by(-1)

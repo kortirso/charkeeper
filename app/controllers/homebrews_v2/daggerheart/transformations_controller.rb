@@ -9,12 +9,8 @@ module HomebrewsV2
 
       def class_name = ::Daggerheart::Homebrews::Transformation
       def serializer = ::HomebrewsV2::Daggerheart::TransformationSerializer
-
-      def copy_command
-        HomebrewsV2Context::Import::Daggerheart::Transformations::CopyCommand.new.call({
-          transformation: @element, user: current_user
-        })
-      end
+      def feat_class = ::Daggerheart::Feat
+      def character_class = ::Daggerheart::Character
 
       def find_existing_characters
         return unless characters_relation.exists?(["data ->> 'transformation' = ?", @element.id])

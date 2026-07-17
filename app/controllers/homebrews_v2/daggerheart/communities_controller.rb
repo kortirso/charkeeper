@@ -9,12 +9,8 @@ module HomebrewsV2
 
       def class_name = ::Daggerheart::Homebrews::Community
       def serializer = ::HomebrewsV2::Daggerheart::CommunitySerializer
-
-      def copy_command
-        HomebrewsV2Context::Import::Daggerheart::Communities::CopyCommand.new.call({
-          community: @element, user: current_user
-        })
-      end
+      def feat_class = ::Daggerheart::Feat
+      def character_class = ::Daggerheart::Character
 
       def find_existing_characters
         return unless characters_relation.exists?(["data ->> 'community' = ?", @element.id])

@@ -5,10 +5,9 @@ module HomebrewsV2
     include SerializeRelation
     include SerializeResource
 
-    before_action :find_feats, only: %i[index copy]
+    before_action :find_feats, only: %i[index]
     before_action :find_upvotes, only: %i[index]
     before_action :find_feat, only: %i[show]
-    before_action :find_another_feat, only: %i[copy]
     before_action :find_feats_for_batch_destroy, only: %i[batch_destroy]
 
     def index
@@ -24,16 +23,6 @@ module HomebrewsV2
 
     def show
       serialize_resource(@feat, serializer, :homebrew)
-    end
-
-    def copy
-      case copy_command
-      in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
-      in { result: result }
-        serialize_resource(
-          result, serializer, :homebrew, { only: %i[id title own] }, :created, { current_user_id: current_user.id }
-        )
-      end
     end
 
     def batch_destroy

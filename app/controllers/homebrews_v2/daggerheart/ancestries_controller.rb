@@ -9,12 +9,8 @@ module HomebrewsV2
 
       def class_name = ::Daggerheart::Homebrews::Ancestry
       def serializer = ::HomebrewsV2::Daggerheart::AncestrySerializer
-
-      def copy_command
-        HomebrewsV2Context::Import::Daggerheart::Ancestries::CopyCommand.new.call({
-          ancestry: @element, user: current_user
-        })
-      end
+      def feat_class = ::Daggerheart::Feat
+      def character_class = ::Daggerheart::Character
 
       def find_existing_characters
         return unless characters_relation.exists?(["data ->> 'heritage' = ?", @element.id])

@@ -92,7 +92,7 @@ module HomebrewsV2Context
           end
 
           def do_persist(input)
-            input[:features]&.sort_by { |i| i[:position].to_i }&.each do |feature|
+            input[:features]&.each do |feature|
               add_feat.call(
                 feature.merge({
                   user: input[:user], origin: 'character', origin_value: input[:character].id, no_refresh: true

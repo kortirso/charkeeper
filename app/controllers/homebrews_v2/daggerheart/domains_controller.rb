@@ -9,12 +9,8 @@ module HomebrewsV2
 
       def class_name = ::Daggerheart::Homebrews::Domain
       def serializer = ::HomebrewsV2::Daggerheart::DomainSerializer
-
-      def copy_command
-        HomebrewsV2Context::Import::Daggerheart::Domains::CopyCommand.new.call({
-          domain: @element, user: current_user
-        })
-      end
+      def feat_class = ::Daggerheart::Feat
+      def character_class = ::Daggerheart::Character
 
       def find_existing_characters
         @kept = true

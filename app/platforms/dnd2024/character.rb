@@ -163,6 +163,16 @@ module Dnd2024
       end
     end
 
+    def species_name
+      return '' unless data.species
+
+      default = ::Dnd2024::Character.species[data.species]
+      return translate(default['name']) if default
+
+      custom_name = dnd_names.fetch_item(key: :races, id: data.species)
+      custom_name ? translate(custom_name[:name]) : '-'
+    end
+
     def background_name
       return '' unless data.background
 

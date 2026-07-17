@@ -17,7 +17,8 @@ module Homebrews
           classes: subclasses_info(items),
           spells: transform(feats(items, 6).pluck(:id, :title)),
           feats: transform(feats(items, 4).pluck(:id, :title)),
-          backgrounds: titles(items, ::Dnd2024::Homebrews::Background, 'Homebrew')
+          backgrounds: titles(items, ::Dnd2024::Homebrews::Background, 'Homebrew'),
+          races: titles(items, ::Dnd2024::Homebrews::Race, 'Homebrew')
         }
       end
 

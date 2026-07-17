@@ -11,7 +11,21 @@ module Dnd2024
     end
 
     class Background < ::Homebrew
-      attribute :data, Dnd2024::Homebrews::BackgroundData.to_type
+      attribute :info, Dnd2024::Homebrews::BackgroundData.to_type
+
+      def to_homebrew_json(with_id: true)
+        [
+          {
+            id: with_id ? id : nil,
+            title: title,
+            description: description,
+            public: attributes['public'],
+            selected_feats: info.selected_feats,
+            selected_skills: info.selected_skills,
+            ability_boosts: info.ability_boosts
+          }.compact
+        ]
+      end
     end
   end
 end

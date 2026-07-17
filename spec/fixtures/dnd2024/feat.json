@@ -34,8 +34,8 @@
     /* or list of abilities, better is selected for bonuses */
     /* str/dex/con/int/wis/cha */
     "static_spells": {
-      "Blade Ward": "int",
-      "Разговор с животными": ["int", "wis", "cha"]
+      "Blade Ward": { "modifier": "int" },
+      "Разговор с животными": { "modifier": ["int", "wis", "cha"] }
     },
     /* optional, one of abilities should be 13+ */
     /* str/dex/con/int/wis/cha */

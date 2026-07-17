@@ -1,6 +1,6 @@
 import { useAppState } from '../../../context';
 import { SharedContent } from '../../../pages';
-import { fetchFeatsRequest, fetchFeatRequest, copyFeatRequest } from '../../../requests_v2/dnd2024/feats';
+import { fetchFeatsRequest, fetchFeatRequest } from '../../../requests_v2/dnd2024/feats';
 
 export const Dnd2024Feats = () => {
   const [appState] = useAppState();
@@ -24,7 +24,6 @@ export const Dnd2024Feats = () => {
       publicationType="feat"
       onFetchRequest={fetchList}
       onShowRequest={fetchFeatRequest}
-      onCopyRequest={copyFeatRequest}
       childrenComponent={ChildrenComponent}
     />
   );

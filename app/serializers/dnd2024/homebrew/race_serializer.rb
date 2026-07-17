@@ -3,7 +3,11 @@
 module Dnd2024
   module Homebrew
     class RaceSerializer < ApplicationSerializer
-      attributes :id, :name, :data
+      attributes :id, :name
+
+      def name
+        translate(object.title)
+      end
     end
   end
 end

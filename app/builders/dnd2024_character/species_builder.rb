@@ -9,7 +9,10 @@ module Dnd2024Character
     private
 
     def species_builder(species)
-      "Dnd2024Character::Species::#{species.camelize}Builder".constantize.new
+      default = ::Dnd2024::Character.species[species]
+      return "Dnd2024Character::Species::#{species.camelize}Builder".constantize.new if default
+
+      Dnd2024Character::Species::CustomBuilder.new
     rescue NameError => _e
       DummyBuilder.new
     end

@@ -13,10 +13,3 @@ export const fetchSpellRequest = async (accessToken, id) => {
     options: options('GET', accessToken)
   });
 }
-
-export const copySpellRequest = async (accessToken, id) => {
-  return await apiRequest({
-    url: `/homebrews_v2/dnd2024/spells/${id}/copy.json`,
-    options: options('POST', accessToken)
-  });
-}

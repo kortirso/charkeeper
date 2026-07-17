@@ -264,47 +264,28 @@ Rails.application.routes.draw do
 
     namespace :daggerheart do
       resources :characters, only: %i[index show]
-      resources :ancestries, only: %i[show destroy] do
-        post :copy, on: :member
-      end
-      resources :communities, only: %i[show destroy] do
-        post :copy, on: :member
-      end
-      resources :transformations, only: %i[show destroy] do
-        post :copy, on: :member
-      end
-      resources :specialities, only: %i[show destroy] do
-        post :copy, on: :member
-      end
-      resources :subclasses, only: %i[show destroy] do
-        post :copy, on: :member
-      end
-      resources :domains, only: %i[show destroy] do
-        post :copy, on: :member
-      end
-      resources :mechanics, only: %i[show destroy] do
-        post :copy, on: :member
-      end
+      resources :ancestries, only: %i[show destroy]
+      resources :communities, only: %i[show destroy]
+      resources :transformations, only: %i[show destroy]
+      resources :specialities, only: %i[show destroy]
+      resources :subclasses, only: %i[show destroy]
+      resources :domains, only: %i[show destroy]
+      resources :mechanics, only: %i[show destroy]
       resources :books, only: %i[index show create update destroy] do
         get :for_items, on: :collection
       end
       resources :items, only: %i[index show destroy] do
-        post :copy, on: :member
         post :batch_destroy, on: :collection
       end
     end
 
     namespace :dnd2024 do
-      resources :backgrounds, only: %i[show destroy] do
-        post :copy, on: :member
-      end
+      resources :races, only: %i[show destroy]
+      resources :backgrounds, only: %i[show destroy]
       resources :feats, only: %i[index show destroy] do
-        post :copy, on: :member
         post :batch_destroy, on: :collection
       end
-      resources :spells, only: %i[index show destroy] do
-        post :copy, on: :member
-      end
+      resources :spells, only: %i[index show destroy]
       resources :books, only: %i[index show create update destroy] do
         get :for_items, on: :collection
       end

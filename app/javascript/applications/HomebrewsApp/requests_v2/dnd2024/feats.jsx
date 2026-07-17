@@ -13,10 +13,3 @@ export const fetchFeatRequest = async (accessToken, id) => {
     options: options('GET', accessToken)
   });
 }
-
-export const copyFeatRequest = async (accessToken, id) => {
-  return await apiRequest({
-    url: `/homebrews_v2/dnd2024/feats/${id}/copy.json`,
-    options: options('POST', accessToken)
-  });
-}

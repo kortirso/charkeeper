@@ -13,10 +13,3 @@ export const removeTransformationRequest = async (accessToken, id) => {
     options: options('DELETE', accessToken)
   });
 }
-
-export const copyTransformationRequest = async (accessToken, id) => {
-  return await apiRequest({
-    url: `/homebrews_v2/daggerheart/transformations/${id}/copy.json`,
-    options: options('POST', accessToken)
-  });
-}

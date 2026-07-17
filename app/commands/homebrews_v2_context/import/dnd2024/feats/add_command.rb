@@ -7,7 +7,7 @@ module HomebrewsV2Context
         class AddCommand < BaseCommand
           # rubocop: disable Metrics/BlockLength
           use_contract do
-            Origins = Dry::Types['strict.string'].enum('feat', 'spell')
+            Origins = Dry::Types['strict.string'].enum('feat', 'spell', 'species')
             Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'one_at_short_rest')
 
@@ -44,7 +44,7 @@ module HomebrewsV2Context
           private
 
           def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
-            input[:slug] = SecureRandom.uuid
+            input[:slug] = SecureRandom.uuid unless input.key?(:id)
             input[:info] = {}
 
             if input.key?(:static_spells)

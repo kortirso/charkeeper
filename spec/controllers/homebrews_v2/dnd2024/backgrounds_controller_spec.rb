@@ -80,36 +80,4 @@ describe HomebrewsV2::Dnd2024::BackgroundsController do
       end
     end
   end
-
-  describe 'POST#copy' do
-    context 'for logged users' do
-      context 'for unexisting homebrew' do
-        let(:request) { post :copy, params: { id: 'unexisting', charkeeper_access_token: access_token } }
-
-        it 'returns error' do
-          request
-
-          expect(response).to have_http_status :not_found
-        end
-      end
-
-      context 'for existing own homebrew' do
-        let(:request) { post :copy, params: { id: own_element.id, charkeeper_access_token: access_token } }
-
-        it 'returns error', :aggregate_failures do
-          expect { request }.not_to change(Dnd2024::Homebrews::Background, :count)
-          expect(response).to have_http_status :not_found
-        end
-      end
-
-      context 'for existing homebrew' do
-        let(:request) { post :copy, params: { id: element.id, charkeeper_access_token: access_token } }
-
-        it 'creates homebrew', :aggregate_failures do
-          expect { request }.to change(Dnd2024::Homebrews::Background, :count).by(1)
-          expect(response).to have_http_status :created
-        end
-      end
-    end
-  end
 end

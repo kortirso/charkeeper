@@ -2,8 +2,8 @@ import config from '../../../../CharKeeperApp/data/dnd2024.json';
 
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
-import { fetchListRequest } from '../../../requests_v2/list';
-import { fetchBackgroundRequest, removeBackgroundRequest, copyBackgroundRequest } from '../../../requests_v2/dnd2024/backgrounds';
+import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
+import { fetchBackgroundRequest, removeBackgroundRequest } from '../../../requests_v2/dnd2024/backgrounds';
 import { localize } from '../../../helpers';
 
 const TRANSLATION = {
@@ -29,6 +29,8 @@ export const Dnd2024Backgrounds = () => {
   const [appState] = useAppState();
 
   const fetchList = async () => await fetchListRequest(appState.accessToken, 'Dnd2024::Homebrews::Background');
+  const fetchHomebrew = async (id) => await fetchHomebrewRequest(appState.accessToken, 'Dnd2024::Homebrews::Background', id);
+  const batchDestroy = async (ids) => await batchDestroyRequest(appState.accessToken, 'Dnd2024::Homebrews::Background', ids);
 
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-2">
@@ -44,9 +46,10 @@ export const Dnd2024Backgrounds = () => {
       parentType="Homebrew"
       publicationType="background"
       onFetchRequest={fetchList}
+      onFetchHomebrew={fetchHomebrew}
+      onBatchDestroy={batchDestroy}
       onShowRequest={fetchBackgroundRequest}
       onRemoveRequest={removeBackgroundRequest}
-      onCopyRequest={copyBackgroundRequest}
       childrenComponent={ChildrenComponent}
     />
   );

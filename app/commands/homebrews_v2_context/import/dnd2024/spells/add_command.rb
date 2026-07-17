@@ -15,6 +15,7 @@ module HomebrewsV2Context
 
             params do
               required(:user).filled(type?: ::User)
+              optional(:id).filled(:string, :uuid_v4?)
               required(:title).hash do
                 required(:en).filled(:string, max_size?: 50)
                 optional(:ru).maybe(:string, max_size?: 50)
@@ -46,8 +47,17 @@ module HomebrewsV2Context
 
           private
 
+          def validate_content(input)
+            return unless input.key?(:id)
+
+            input[:spell] = ::Dnd2024::Feat.find_by(user_id: input[:user].id, id: input[:id])
+            return if input[:spell]
+
+            ['Not found']
+          end
+
           def do_prepare(input)
-            input[:slug] = SecureRandom.uuid
+            input[:slug] = SecureRandom.uuid unless input.key?(:id)
             input[:origin] = 'spell'
             input[:kind] = 'static'
             input[:title].transform_values! { |value| sanitize(value) }
@@ -55,7 +65,13 @@ module HomebrewsV2Context
           end
 
           def do_persist(input)
-            result = ::Dnd2024::Feat.create!(input)
+            result =
+              if input[:spell]
+                input[:spell].update!(input.except(:id))
+                input[:spell].reload
+              else
+                ::Dnd2024::Feat.create!(input.except(:id))
+              end
 
             { result: result }
           end

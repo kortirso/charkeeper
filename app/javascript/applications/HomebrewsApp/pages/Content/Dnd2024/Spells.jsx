@@ -4,7 +4,7 @@ import config from '../../../../CharKeeperApp/data/dnd2024.json';
 
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';
-import { fetchSpellsRequest, fetchSpellRequest, copySpellRequest } from '../../../requests_v2/dnd2024/spells';
+import { fetchSpellsRequest, fetchSpellRequest } from '../../../requests_v2/dnd2024/spells';
 import { localize } from '../../../helpers';
 
 const TRANSLATION = {
@@ -127,7 +127,6 @@ export const Dnd2024Spells = () => {
       publicationType="spell"
       onFetchRequest={fetchList}
       onShowRequest={fetchSpellRequest}
-      onCopyRequest={copySpellRequest}
       childrenComponent={ChildrenComponent}
     />
   );

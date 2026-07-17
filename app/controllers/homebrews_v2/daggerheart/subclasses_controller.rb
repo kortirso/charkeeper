@@ -9,15 +9,11 @@ module HomebrewsV2
 
       def class_name = ::Daggerheart::Homebrews::Subclass
       def serializer = ::HomebrewsV2::Daggerheart::SubclassSerializer
-
-      def copy_command
-        HomebrewsV2Context::Import::Daggerheart::Subclasses::CopyCommand.new.call({
-          subclass: @element, user: current_user
-        })
-      end
+      def feat_class = ::Daggerheart::Feat
+      def character_class = ::Daggerheart::Character
 
       def find_existing_characters
-        subclasses = ::Daggerheart::Character.pluck(:data).pluck(:subclasses)
+        subclasses = character_class.pluck(:data).pluck(:subclasses)
         return if subclasses.flat_map(&:values).exclude?(@element.id)
 
         @kept = true

@@ -1,0 +1,73 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "title": {
+      "en": "Race's title"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Race's description, **Markdown is available** for editing."
+    },
+    "public": true,
+    /* optional, bludge/pierce/slash/acid/cold/fire/force/lighting/necrotic/poison/psychic/radiant/thunder */
+    "resistance": [],
+    /* optional, bludge/pierce/slash/acid/cold/fire/force/lighting/necrotic/poison/psychic/radiant/thunder */
+    "immunity": [],
+    /* optional, bludge/pierce/slash/acid/cold/fire/force/lighting/necrotic/poison/psychic/radiant/thunder */
+    "vulnerability": [],
+    /* required, small/medium/large */
+    "size": ["medium"],
+    /* optional, available keys - darkvision/truesight/blindsight/tremorsense */
+    "vision": {
+      "darkvision": 60
+    },
+    /* optional, default value is 30 */
+    "speed": 30,
+    /* optional, available keys - flight/swim/climb/burrow */
+    /* if value is 0 then special speed is equal to base speed */
+    "speeds": {
+      "swim": 15
+    },
+    "features": [
+      {
+        /* required, allowed locale keys - en, ru, es */
+        "title": {
+          "en": "Feature's title"
+        },
+        /* required, allowed locale keys - en, ru, es */
+        "description": {
+          "en": "Feature's description, **Markdown is available** for editing."
+        },
+        /* required, allowed values - static/text/update_result/hidden */
+        /* static - Simple rendering */
+        /* text - Like static + allow to add text value */
+        /* update_result - Like static + can be hidden by settings */
+        /* hidden - Always hidden */
+        "kind": "static",
+        /* optional */
+        "level": 1,
+        /* optional */
+        "limit": 1,
+        /* optional, allowed values - short_rest/long_rest/one_at_short_rest */
+        "limit_refresh": "short_rest",
+        /* optional */
+        /* available keys - str/dex/con/wis/int/cha spell_save_dc/spell_attack_bonus */
+        /* type - add/set/concat */
+        /* value - integer or formula */
+        "modifiers": {
+          "str": { "type": "add", "value": 1 }
+        },
+        /* optional, if feature can be enabled/disabled */
+        "continious": true,
+        /* optional, if feat gives innate spells */
+        /* value can be ability for spell */
+        /* or list of abilities, better is selected for bonuses */
+        /* str/dex/con/int/wis/cha */
+        "static_spells": {
+          "Blade Ward": { "modifier": "int" },
+          "Разговор с животными": { "modifier": ["int", "wis", "cha"] }
+        }
+      }
+    ]
+  }
+]

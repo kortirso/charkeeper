@@ -13,7 +13,7 @@ module HomebrewsContext
           subclasses: daggerheart_subclasses(user_id)
         },
         dnd2024: {
-          races: {},
+          races: dnd2024_races(user_id),
           subclasses: {},
           backgrounds: titles(user_id, ::Dnd2024::Homebrews::Background)
         }
@@ -40,6 +40,16 @@ module HomebrewsContext
           )
         ]
       end
+    end
+
+    def dnd2024_races(user_id)
+      ::Dnd2024::Homebrews::Race.where(user_id: user_id)
+        .or(
+          ::Dnd2024::Homebrews::Race.where(id: available_books_data(user_id))
+        )
+        .each_with_object({}) do |item, acc|
+          acc[item.id] = { name: item.title, sizes: item.info.size, legacies: [] }
+        end
     end
 
     def daggerheart_heritages(user_id)

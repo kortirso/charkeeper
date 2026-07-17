@@ -15,7 +15,8 @@ const TRANSLATION = {
     classes: 'Classes',
     feats: 'Feats',
     backgrounds: 'Backgrounds',
-    official: 'Approved'
+    official: 'Approved',
+    races: 'Species'
   },
   ru: {
     items: 'Предметы',
@@ -23,7 +24,8 @@ const TRANSLATION = {
     classes: 'Классы',
     feats: 'Черты',
     backgrounds: 'Предыстории',
-    official: 'Одобренная'
+    official: 'Одобренная',
+    races: 'Виды'
   },
   es: {
     items: 'Objetos',
@@ -31,7 +33,8 @@ const TRANSLATION = {
     classes: 'Clases',
     feats: 'Proesas',
     backgrounds: 'Trasfondos',
-    official: 'Aprobado'
+    official: 'Aprobado',
+    races: 'Species'
   }
 }
 
@@ -46,7 +49,7 @@ export const Dnd2024Books = () => {
       <Show when={props.info.shared}>
         <p class="font-medium!">{localize(TRANSLATION, locale()).official}</p>
       </Show>
-      <For each={['items', 'classes', 'backgrounds', 'feats', 'spells']}>
+      <For each={['items', 'races', 'classes', 'backgrounds', 'feats', 'spells']}>
         {(kind) =>
           <Show
             when={kind !== 'classes'}
@@ -82,7 +85,7 @@ export const Dnd2024Books = () => {
                 <p class="font-medium! mb-2">{localize(TRANSLATION, locale())[kind]}</p>
                 <div class="flex flex-wrap gap-2">
                   <For each={Object.entries(props.info.items[kind])}>
-                    {([id, value]) =>
+                    {([id, value], index) =>
                       <p class="flex items-center">
                         {value}
                         <Show when={props.editMode}>
@@ -90,7 +93,7 @@ export const Dnd2024Books = () => {
                             <Close width="20" height="20" />
                           </Button>
                         </Show>
-                        ,
+                        <Show when={index() < Object.keys(props.info.items[kind]).length - 1}>,</Show>
                       </p>
                     }
                   </For>

@@ -8,7 +8,6 @@ module CharactersContext
         add_talent: 'commands.characters_context.dnd2024.talents.add'
       ]
 
-      # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :dnd5_character
 
@@ -26,39 +25,7 @@ module CharactersContext
           optional(:background).filled(:string)
           optional(:skip_guide).filled(:bool)
         end
-
-        rule(:species, :user) do
-          next if values[:species].blank?
-          next if values[:species].in?(::Dnd2024::Character.species.keys)
-          next if values[:species].in?(::Dnd2024::Homebrew::Race.where(user_id: values[:user].id).ids)
-
-          key.failure(:included_in?)
-        end
-
-        rule(:species, :size) do
-          next if values[:species].nil?
-
-          species_sizes =
-            if values[:species].in?(::Dnd2024::Character.species.keys)
-              ::Dnd2024::Character.sizes_info(values[:species])
-            else
-              ::Dnd2024::Homebrew::Race.find_by(id: values[:species])&.data&.size
-            end
-          next if species_sizes&.include?(values[:size])
-
-          key(:size).failure(:invalid)
-        end
-
-        rule(:species, :legacy) do
-          next if values[:legacy].nil?
-
-          legacies = ::Dnd2024::Character.legacies_info(values[:species]).keys
-          next if legacies&.include?(values[:legacy])
-
-          key(:legacy).failure(:invalid)
-        end
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

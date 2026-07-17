@@ -8,12 +8,6 @@ module HomebrewsV2
       def serializer = ::HomebrewsV2::Dnd2024::SpellSerializer
       def class_name = ::Dnd2024::Feat
 
-      def copy_command
-        HomebrewsV2Context::Import::Dnd2024::Spells::CopyCommand.new.call({
-          spell: @feat, user: current_user
-        })
-      end
-
       def find_feats
         @feats =
           class_name.where(user_id: current_user.id).or(class_name.where(public: true))

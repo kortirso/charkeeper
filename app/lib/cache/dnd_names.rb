@@ -26,6 +26,7 @@ module Cache
 
     def load_initial_data
       {
+        races: ids_with_names(::Dnd2024::Homebrews::Race),
         subclasses: ids_with_names(::Dnd2024::Homebrew::Subclass),
         backgrounds: ids_with_names(::Dnd2024::Homebrews::Background)
       }

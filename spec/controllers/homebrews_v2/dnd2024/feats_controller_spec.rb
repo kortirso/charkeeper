@@ -40,19 +40,6 @@ describe HomebrewsV2::Dnd2024::FeatsController do
     end
   end
 
-  describe 'POST#copy' do
-    context 'for logged users' do
-      let!(:feat) { create :dnd2024_feat, public: true }
-      let(:request) { post :copy, params: { id: feat.id, charkeeper_access_token: access_token } }
-
-      it 'returns data', :aggregate_failures do
-        expect { request }.to change(Dnd2024::Feat, :count).by(1)
-        expect(response).to have_http_status :created
-        expect(response.parsed_body['homebrew'].keys).to contain_exactly('id', 'title', 'own')
-      end
-    end
-  end
-
   describe 'POST#batch_destroy' do
     context 'for logged users' do
       let(:request) {

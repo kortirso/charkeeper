@@ -16,10 +16,7 @@ module CharactersContext
       ].freeze
       WEAPON_CORE_SKILLS = %w[light martial].freeze
       ARMOR_PROFICIENCY = %w[light medium heavy shield].freeze
-      DAMAGE_TYPES = %w[
-        bludge pierce slash acid cold fire force lighting necrotic
-        poison psychic radiant thunder
-      ].freeze
+      DAMAGE_TYPES = %w[bludge pierce slash acid cold fire force lighting necrotic poison psychic radiant thunder].freeze
 
       # rubocop: disable Metrics/BlockLength
       use_contract do

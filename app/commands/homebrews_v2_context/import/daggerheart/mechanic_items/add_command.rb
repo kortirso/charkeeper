@@ -21,7 +21,7 @@ module HomebrewsV2Context
             result = ActiveRecord::Base.transaction do
               mechanic =
                 ::Daggerheart::Homebrews::MechanicItem.create!(input.slice(:user, :homebrew_id, :title, :description, :info))
-              input[:features]&.sort_by { |i| i[:position].to_i }&.each do |feature|
+              input[:features]&.each do |feature|
                 add_feat.call(
                   feature.except(:id).merge({
                     user: input[:user],

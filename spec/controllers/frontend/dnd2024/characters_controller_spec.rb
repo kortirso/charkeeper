@@ -23,7 +23,7 @@ describe Frontend::Dnd2024::CharactersController do
         let(:request) {
           post :create, params: {
             character: {
-              name: 'Грундар', species: 'argh', size: 'medium', main_class: 'monk', alignment: 'neutral'
+              name: 'Грундар', species: '', size: 'medium', main_class: 'monk', alignment: 'neutral'
             }, charkeeper_access_token: access_token
           }
         }

@@ -13,6 +13,7 @@ module HomebrewsV2Context
 
             params do
               required(:user).filled(type?: ::User)
+              optional(:id).filled(:string, :uuid_v4?)
               required(:title).hash do
                 required(:en).filled(:string, max_size?: 50)
                 optional(:ru).maybe(:string, max_size?: 50)
@@ -32,6 +33,15 @@ module HomebrewsV2Context
 
           private
 
+          def validate_content(input)
+            return unless input.key?(:id)
+
+            input[:background] = ::Dnd2024::Homebrews::Background.find_by(user_id: input[:user].id, id: input[:id])
+            return if input[:background]
+
+            ['Not found']
+          end
+
           def do_prepare(input)
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description].transform_values! { |value| sanitize(value) }
@@ -43,7 +53,13 @@ module HomebrewsV2Context
           end
 
           def do_persist(input)
-            result = ::Dnd2024::Homebrews::Background.create!(input.except(:selected_feat, :selected_skills, :ability_boosts))
+            result =
+              if input[:background]
+                input[:background].update!(input.slice(:title, :description, :public, :info))
+                input[:background].reload
+              else
+                ::Dnd2024::Homebrews::Background.create!(input.except(:id, :selected_feat, :selected_skills, :ability_boosts))
+              end
 
             cache.push_item(key: :backgrounds, item: result)
 

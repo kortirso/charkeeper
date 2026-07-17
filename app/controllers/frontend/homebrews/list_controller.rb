@@ -48,7 +48,7 @@ module Frontend
       def feats = ::Daggerheart::Feat.where(user_id: current_user.id).order(Arel.sql("title->>'en' ASC"))
       def items = ::Daggerheart::Item.where(user_id: current_user.id).order(Arel.sql("name->>'en' ASC"))
 
-      def dnd2024_races = ::Dnd2024::Homebrew::Race.where(user_id: current_user.id).order(name: :asc)
+      def dnd2024_races = ::Dnd2024::Homebrews::Race.where(user_id: current_user.id).order(Arel.sql("title->>'en' ASC"))
     end
   end
 end

@@ -7,9 +7,9 @@ module Dnd2024Character
         record = Dnd2024::Homebrews::Background.find_by(id: result[:background])
         return result unless record
 
-        result[:selected_feats] = record.data.selected_feats
-        result[:selected_skills] = record.data.selected_skills
-        result[:ability_boosts] = record.data.ability_boosts
+        result[:selected_feats] = record.info.selected_feats
+        result[:selected_skills] = record.info.selected_skills
+        result[:ability_boosts] = record.info.ability_boosts
 
         result
       end

@@ -13,10 +13,3 @@ export const removeDomainRequest = async (accessToken, id) => {
     options: options('DELETE', accessToken)
   });
 }
-
-export const copyDomainRequest = async (accessToken, id) => {
-  return await apiRequest({
-    url: `/homebrews_v2/daggerheart/domains/${id}/copy.json`,
-    options: options('POST', accessToken)
-  });
-}
