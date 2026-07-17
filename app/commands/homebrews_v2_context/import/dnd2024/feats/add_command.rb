@@ -7,7 +7,7 @@ module HomebrewsV2Context
         class AddCommand < BaseCommand
           # rubocop: disable Metrics/BlockLength
           use_contract do
-            Origins = Dry::Types['strict.string'].enum('feat', 'spell', 'species')
+            Origins = Dry::Types['strict.string'].enum('feat', 'spell', 'species', 'subclass')
             Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'one_at_short_rest')
 

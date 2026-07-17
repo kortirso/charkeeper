@@ -41,12 +41,18 @@ module Homebrews
       end
 
       def subclasses_info(object_items) # rubocop: disable Metrics/AbcSize
-        ::Dnd2024::Homebrew::Subclass
-          .where(id: object_items['Dnd2024::Homebrew::Subclass'].to_a + object_items['Homebrew::Subclass'].to_a)
-          .hashable_pluck(:id, :name, :class_name)
-          .group_by { |i| i[:class_name] }
-          .transform_keys { |key| Dnd2024::Character.class_info(key).dig('name', I18n.locale.to_s) }
-          .transform_values { |value| value.each_with_object({}) { |item, acc| acc[item[:id]] = translate(item[:name]) } }
+        subclasses =
+          ::Dnd2024::Homebrews::Subclass
+            .where(id: object_items['Homebrew'])
+            .hashable_pluck(:id, :title, :info)
+            .group_by { |item| item[:info].class_id }
+        subclasses
+          .transform_keys do |key|
+            default = ::Dnd2024::Character.class_info(key)
+            next translate(default['name']) if default
+
+            translate(dnd_names.fetch_item(key: :classes, id: key)[:name])
+          end.transform_values { |value| value.each_with_object({}) { |item, acc| acc[item[:id]] = translate(item[:title]) } }
       end
 
       def feats(object_items, origin)
@@ -60,6 +66,8 @@ module Homebrews
       def transform(values)
         values.to_h.transform_values { |item| translate(item) }
       end
+
+      def dnd_names = Charkeeper::Container.resolve('cache.dnd_names')
     end
   end
 end

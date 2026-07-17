@@ -32,6 +32,7 @@ module HomebrewsV2Context
         when 'background' then HomebrewsV2Context::Import::Dnd2024::Backgrounds::AddCommand.new
         when 'spell' then HomebrewsV2Context::Import::Dnd2024::Spells::AddCommand.new
         when 'race' then HomebrewsV2Context::Import::Dnd2024::Races::PerformCommand.new
+        when 'subclass' then HomebrewsV2Context::Import::Dnd2024::Subclasses::PerformCommand.new
         end
       end
 

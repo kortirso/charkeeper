@@ -70,7 +70,7 @@ module HomebrewsV2
     end
 
     def books_for_items
-      Homebrew::Book.where(provider: provider, user_id: current_user.id).where(shared: [nil, false])
+      Homebrew::Book.where(provider: provider, user_id: current_user.id)
     end
 
     def find_own_book

@@ -2,7 +2,7 @@
 
 module Cache
   class DndNames
-    CACHE_KEY = 'dnd_names/0.4.17/v2'
+    CACHE_KEY = 'dnd_names/0.4.39'
 
     def fetch_list
       Rails.cache.fetch(CACHE_KEY, expires_in: 1.day) { load_initial_data }
@@ -27,26 +27,19 @@ module Cache
     def load_initial_data
       {
         races: ids_with_names(::Dnd2024::Homebrews::Race),
-        subclasses: ids_with_names(::Dnd2024::Homebrew::Subclass),
+        subclasses: ids_with_names(::Dnd2024::Homebrews::Subclass),
         backgrounds: ids_with_names(::Dnd2024::Homebrews::Background)
       }
     end
 
     def ids_with_names(relation)
-      title_defined = relation.method_defined?(:title)
       relation.all.each_with_object({}) do |item, acc|
-        next acc[item.id] = { name: item.title } if title_defined
-        next acc[item.id] = { name: item.data.names } if item.data.attributes['names']
-
-        acc[item.id] = { name: { en: item.name, ru: item.name } }
+        acc[item.id] = { name: item.title }
       end
     end
 
     def new_item_value(item)
-      return { name: item.title } if item.attributes.key?('title')
-      return { name: item.data.names } if item.data.attributes['names']
-
-      { name: { en: item.name, ru: item.name } }
+      { name: item.title }
     end
   end
 end

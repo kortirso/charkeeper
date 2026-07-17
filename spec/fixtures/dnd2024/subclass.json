@@ -1,0 +1,57 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "title": {
+      "en": "Subclass's title"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Subclass's description, **Markdown is available** for editing."
+    },
+    "public": true,
+    /* required, parent class */
+    /* barbarian/bard/cleric/druid/fighter/monk/paladin/ranger/rogue/sorcerer/warlock/wizard/artificer or ID of homebrew class */
+    "class_id": "bard",
+    "features": [
+      {
+        /* required, allowed locale keys - en, ru, es */
+        "title": {
+          "en": "Feature's title"
+        },
+        /* required, allowed locale keys - en, ru, es */
+        "description": {
+          "en": "Feature's description, **Markdown is available** for editing."
+        },
+        /* required, allowed values - static/text/update_result/hidden */
+        /* static - Simple rendering */
+        /* text - Like static + allow to add text value */
+        /* update_result - Like static + can be hidden by settings */
+        /* hidden - Always hidden */
+        "kind": "static",
+        /* optional */
+        "level": 1,
+        /* optional */
+        "limit": 1,
+        /* optional, allowed values - short_rest/long_rest/one_at_short_rest */
+        "limit_refresh": "short_rest",
+        /* optional */
+        /* available keys - str/dex/con/wis/int/cha spell_save_dc/spell_attack_bonus */
+        /* type - add/set/concat */
+        /* value - integer or formula */
+        "modifiers": {
+          "str": { "type": "add", "value": 1 }
+        },
+        /* optional, if feature can be enabled/disabled */
+        "continious": true,
+        /* optional, if feat gives innate spells */
+        /* value can be ability for spell */
+        /* or list of abilities, better is selected for bonuses */
+        /* str/dex/con/int/wis/cha */
+        "static_spells": {
+          "Blade Ward": { "modifier": "int" },
+          "Разговор с животными": { "modifier": ["int", "wis", "cha"] }
+        }
+      }
+    ]
+  }
+]

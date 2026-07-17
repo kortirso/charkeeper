@@ -61,7 +61,7 @@ export const Dnd2024Books = () => {
                     {([className, subclasses]) =>
                       <p class="flex flex-wrap gap-2">{className}:
                         <For each={Object.entries(subclasses)}>
-                          {([id, value]) =>
+                          {([id, value], index) =>
                             <p class="flex items-center">
                               {value}
                               <Show when={props.editMode}>
@@ -69,7 +69,7 @@ export const Dnd2024Books = () => {
                                   <Close width="20" height="20" />
                                 </Button>
                               </Show>
-                              ,
+                              <Show when={index() < Object.keys(subclasses).length - 1}>,</Show>
                             </p>
                           }
                         </For>

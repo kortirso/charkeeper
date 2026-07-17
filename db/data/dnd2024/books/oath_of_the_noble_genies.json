@@ -126,7 +126,7 @@
     "limit_refresh": "long_rest",
     "continious": true,
     "modifiers": {
-      "speeds.fly": { "type": "set", "value": 60 }
+      "speeds.flight": { "type": "set", "value": 60 }
     }
   }
 ]

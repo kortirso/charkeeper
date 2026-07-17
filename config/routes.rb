@@ -282,6 +282,7 @@ Rails.application.routes.draw do
     namespace :dnd2024 do
       resources :races, only: %i[show destroy]
       resources :backgrounds, only: %i[show destroy]
+      resources :subclasses, only: %i[show destroy]
       resources :feats, only: %i[index show destroy] do
         post :batch_destroy, on: :collection
       end

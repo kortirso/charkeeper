@@ -3,7 +3,7 @@
 module HomebrewsV2
   module Dnd2024
     class FeatSerializer < ApplicationSerializer
-      attributes :id, :title, :description, :own, :books, :upvotes_count, :upvoted
+      attributes :id, :title, :description, :own, :books, :upvotes_count, :upvoted, :conditions, :modifiers, :info
 
       def title
         translate(object.title)
