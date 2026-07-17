@@ -30,17 +30,17 @@ module CharactersContext
           optional(:classes).hash
           optional(:subclasses).hash
           optional(:abilities).hash do
-            required(:str).filled(:integer)
-            required(:dex).filled(:integer)
-            required(:con).filled(:integer)
-            required(:int).filled(:integer)
-            required(:wis).filled(:integer)
-            required(:cha).filled(:integer)
+            required(:str).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:dex).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:con).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:int).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:wis).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:cha).filled(:integer, gteq?: 1, lteq?: 30)
           end
           optional(:health).hash do
-            required(:current).filled(:integer)
-            required(:max).filled(:integer)
-            required(:temp).filled(:integer)
+            required(:current).filled(:integer, gteq?: 0)
+            required(:max).filled(:integer, gteq?: 0)
+            required(:temp).filled(:integer, gteq?: 0)
           end
           optional(:death_saving_throws).hash do
             required(:success).filled(:integer)
@@ -90,40 +90,11 @@ module CharactersContext
           key.failure(:invalid_level) unless value.values.all? { |item| item.to_i.between?(1, 20) }
         end
 
-        # ключами должны быть class features, значениями - число использований
-        # rule(:energy) do
-        #   next if value.nil?
-
-        #   key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character::CLASSES) }
-        #   key.failure(:invalid_level) unless value.values.all? { |item| item.to_i.between?(1, 40) }
-        # end
-
         rule(:subclasses) do
           next if value.nil?
 
           # добавить проверку, что подкласс еще не установлен
           key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character.classes_info.keys) }
-        end
-
-        rule(:abilities) do
-          next if value.nil?
-          next if value.values.all? { |item| item.positive? && item <= 30 }
-
-          key.failure(:invalid_value)
-        end
-
-        rule(:coins) do
-          next if value.nil?
-          next if value.values.all? { |item| !item.negative? }
-
-          key.failure(:invalid_value)
-        end
-
-        rule(:health) do
-          next if value.nil?
-          next if value.values.all? { |item| !item.negative? }
-
-          key.failure(:invalid_value)
         end
       end
       # rubocop: enable Metrics/BlockLength

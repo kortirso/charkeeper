@@ -19,16 +19,16 @@ module CharactersContext
           required(:character).filled(type?: ::Pathfinder2::Character)
           optional(:level).filled(:integer)
           optional(:abilities).hash do
-            required(:str).filled(:integer)
-            required(:dex).filled(:integer)
-            required(:con).filled(:integer)
-            required(:int).filled(:integer)
-            required(:wis).filled(:integer)
-            required(:cha).filled(:integer)
+            required(:str).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:dex).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:con).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:int).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:wis).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:cha).filled(:integer, gteq?: 1, lteq?: 30)
           end
           optional(:health).hash do
-            optional(:current).filled(:integer)
-            optional(:temp).filled(:integer)
+            optional(:current).filled(:integer, gteq?: 0)
+            optional(:temp).filled(:integer, gteq?: 0)
           end
           optional(:dying_condition_value).filled(:integer)
           optional(:languages).maybe(:array).each(:string)
@@ -58,8 +58,8 @@ module CharactersContext
           optional(:selected_features).hash
           optional(:spent_spell_slots).hash
           optional(:spent_archetype_spell_slots).hash
-          optional(:experience).filled(:integer, gteq?: 0)
-          optional(:hero_points).filled(:integer, gteq?: 0)
+          optional(:experience).filled(:integer, gteq?: 0, lteq?: 10_000)
+          optional(:hero_points).filled(:integer, gteq?: 0, lteq?: 3)
           optional(:damage_reduction).maybe(:hash)
           # DEPRECATED
           optional(:lore_skills).hash do
@@ -75,27 +75,6 @@ module CharactersContext
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
-
-        rule(:abilities) do
-          next if value.nil?
-          next if value.values.all? { |item| item.positive? && item <= 30 }
-
-          key.failure(:invalid_value)
-        end
-
-        rule(:health) do
-          next if value.nil?
-          next if value.values.all? { |item| !item.negative? }
-
-          key.failure(:invalid_value)
-        end
-
-        rule(:coins) do
-          next if value.nil?
-          next if value.values.all? { |item| !item.negative? }
-
-          key.failure(:invalid_value)
-        end
       end
       # rubocop: enable Metrics/BlockLength
 

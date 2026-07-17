@@ -14,26 +14,19 @@ module CharactersContext
           required(:character).filled(type?: ::Fallout::Character)
           optional(:level).filled(:integer)
           optional(:abilities).hash do
-            required(:str).filled(:integer)
-            required(:per).filled(:integer)
-            required(:end).filled(:integer)
-            required(:cha).filled(:integer)
-            required(:int).filled(:integer)
-            required(:agi).filled(:integer)
-            required(:lck).filled(:integer)
+            required(:str).filled(:integer, gteq?: 4, lteq?: 10)
+            required(:per).filled(:integer, gteq?: 4, lteq?: 10)
+            required(:end).filled(:integer, gteq?: 4, lteq?: 10)
+            required(:cha).filled(:integer, gteq?: 4, lteq?: 10)
+            required(:int).filled(:integer, gteq?: 4, lteq?: 10)
+            required(:agi).filled(:integer, gteq?: 4, lteq?: 10)
+            required(:lck).filled(:integer, gteq?: 4, lteq?: 10)
           end
           optional(:skills).hash
           optional(:tag_skills).value(:array).each(:string)
           optional(:name).filled(:string, max_size?: 50)
           optional(:file)
           optional(:guide_step).maybe(:integer)
-        end
-
-        rule(:abilities) do
-          next if value.nil?
-          next if value.values.all? { |item| item.between?(4, 10) }
-
-          key.failure(:invalid_value)
         end
       end
 

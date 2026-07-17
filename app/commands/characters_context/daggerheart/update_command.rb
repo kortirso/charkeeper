@@ -27,12 +27,12 @@ module CharactersContext
           optional(:subclasses).hash
           optional(:subclasses_mastery).hash
           optional(:traits).hash do
-            required(:str).filled(:integer)
-            required(:agi).filled(:integer)
-            required(:fin).filled(:integer)
-            required(:ins).filled(:integer)
-            required(:pre).filled(:integer)
-            required(:know).filled(:integer)
+            required(:str).filled(:integer, gteq?: -5, lteq?: 5)
+            required(:agi).filled(:integer, gteq?: -5, lteq?: 5)
+            required(:fin).filled(:integer, gteq?: -5, lteq?: 5)
+            required(:ins).filled(:integer, gteq?: -5, lteq?: 5)
+            required(:pre).filled(:integer, gteq?: -5, lteq?: 5)
+            required(:know).filled(:integer, gteq?: -5, lteq?: 5)
           end
           optional(:spent_armor_slots).filled(:integer)
           optional(:health_marked).filled(:integer)
@@ -77,13 +77,6 @@ module CharactersContext
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
-
-        rule(:traits) do
-          next if value.nil?
-          next if value.values.all? { |item| item.between?(-5, 5) }
-
-          key.failure(:invalid_value)
-        end
       end
       # rubocop: enable Metrics/BlockLength
 
