@@ -7,6 +7,7 @@ module Web
     before_action :set_locale
 
     rescue_from ActionController::TooManyRequests, with: :too_many_requests
+    rescue_from I18n::InvalidLocale, with: :page_not_found
 
     private
 
