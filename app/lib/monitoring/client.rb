@@ -10,6 +10,7 @@ module Monitoring
   FrontendError = Class.new(StandardError)
   FeatVariableError = Class.new(StandardError)
   FormulaError = Class.new(StandardError)
+  TooManyRequestsError = Class.new(StandardError)
 
   class Client
     include Deps[provider: 'monitoring.providers.rails']
