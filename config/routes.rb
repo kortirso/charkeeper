@@ -335,6 +335,7 @@ Rails.application.routes.draw do
       get 'bot_commands', to: 'welcome#bot_commands'
       get 'tips', to: 'welcome#tips'
       get 'changelogs', to: 'welcome#changelogs'
+      get 'too_many_requests', to: 'welcome#too_many_requests'
     end
 
     root 'web/welcome#index'

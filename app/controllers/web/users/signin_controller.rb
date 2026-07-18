@@ -5,6 +5,9 @@ module Web
     class SigninController < Web::BaseController
       include AuthkeeperDeps[fetch_session: 'services.fetch_session']
 
+      rate_limit to: 3, within: 1.minute, by: -> { request.ip }, name: 'signin-new', only: :new
+      rate_limit to: 3, within: 1.minute, by: -> { request.ip }, name: 'signin-create', only: :create
+
       skip_before_action :authenticate, only: %i[new create]
       before_action :find_user, only: %i[create]
       before_action :authenticate_user, only: %i[create]

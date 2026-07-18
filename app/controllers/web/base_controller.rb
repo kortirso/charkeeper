@@ -6,6 +6,8 @@ module Web
     before_action :update_locale
     before_action :set_locale
 
+    rescue_from ActionController::TooManyRequests, with: :too_many_requests
+
     private
 
     def close_cookie_banner
@@ -49,6 +51,10 @@ module Web
       return 'charkeeper.org' if Rails.env.production?
 
       'charkeeper.ru' if Rails.env.ru_production?
+    end
+
+    def too_many_requests
+      redirect_to too_many_requests_path
     end
   end
 end

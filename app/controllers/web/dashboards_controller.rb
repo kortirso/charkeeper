@@ -4,6 +4,8 @@ module Web
   class DashboardsController < Web::BaseController
     include Authkeeper::ApplicationHelper
 
+    rate_limit to: 10, within: 1.minute, by: -> { request.ip }, name: 'dashboard', only: :show
+
     layout 'charkeeper_app'
 
     def show # rubocop: disable Metrics/AbcSize, Metrics/MethodLength

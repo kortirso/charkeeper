@@ -4,3 +4,4 @@ authentication: <%= Rails.application.credentials[:secret_key_skylight] %>
 ignored_endpoints:
   - ApplicationController#not_found
   - Webhooks::TelegramsController#create
+  - Web::WelcomeController#too_many_requests

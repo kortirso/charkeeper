@@ -90,6 +90,7 @@ es:
   change_locale: Cambiar locale
   close_cookie: Cerrar cookie
   validation_error: Error de validación
+  too_many_requests: Too many requests in 1 minute
   tips:
     title: Sugerencias
     description: CharKeeper es totalmente gratuito, pero si te gusta utilizar CharKeeper y deseas contribuir al desarrollo de la aplicación, puedes realizar una pequeña donación mediante alguna de las formas que se indican a continuación. Ahora solo se necesitan fondos para pagar el nombre de dominio y el alojamiento, pero hay planes para pagar el trabajo de los entusiastas que están llenando la aplicación con datos de varios sistemas de juegos de rol, y para lanzar CharKeeper en iOS (es necesario pagar una cuenta de desarrollador de Apple). Agradecería cualquier ayuda.

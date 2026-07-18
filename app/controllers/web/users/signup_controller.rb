@@ -8,6 +8,9 @@ module Web
         add_user: 'commands.auth_context.add_user'
       ]
 
+      rate_limit to: 3, within: 1.minute, by: -> { request.ip }, name: 'signup-new', only: :new
+      rate_limit to: 3, within: 1.minute, by: -> { request.ip }, name: 'signup-create', only: :create
+
       skip_before_action :authenticate
       before_action :monitoring_signup, only: %i[create]
       before_action :honeypot_check, only: %i[create]
