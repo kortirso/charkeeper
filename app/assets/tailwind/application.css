@@ -985,7 +985,7 @@ body.web {
 }
 
 .dice-portal {
-  @apply fixed bottom-0 right-0 pb-8 px-6 sm:pb-4 sm:pr-6 z-40 flex items-center justify-end sm:justify-center; 
+  @apply fixed bottom-0 right-0 pb-8 px-6 sm:pb-4 sm:pr-6 z-8 flex items-center justify-end sm:justify-center; 
 }
 
 .dice-tests-box {
