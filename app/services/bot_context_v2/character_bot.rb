@@ -64,8 +64,10 @@ module BotContextV2
       character.channels.uniq.each do |channel|
         case channel.provider
         when Channel::TELEGRAM then send_telegram_message(channel.external_id, formatted_result)
-        when Channel::OWLBEAR then send_owlbear_message(channel.campaign, formatted_result)
         end
+      end
+      character.campaigns.uniq.each do |campaign|
+        send_owlbear_message(campaign, formatted_result)
       end
     end
 
