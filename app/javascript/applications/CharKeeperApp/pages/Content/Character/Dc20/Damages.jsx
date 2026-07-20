@@ -138,7 +138,7 @@ export const Dc20Damages = (props) => {
     if (current.abs > 0 && current.multi > 0) return damageValue() / 2;
     if (current.abs < 0 && current.multi < 0) return damageValue() * 2;
 
-    let result = damageValue() + current.abs;
+    let result = damageValue() - current.abs;
     if (current.multi > 0) {
       result = Math.round(result / 2);
       if (current.abs === 0 && result === damageValue()) result -= 1;
