@@ -10,21 +10,27 @@ const TRANSLATION = {
     initiative: 'Initiative',
     precision: 'Precision defense',
     area: 'Area defense',
-    attack: 'Attack'
+    attack: 'Attack check',
+    spell_check: 'Spell check',
+    martial_check: 'Martial check'
   },
   ru: {
     combatMastery: 'Мастерство боя',
     initiative: 'Инициатива',
     precision: 'Точечная защита',
     area: 'Площадная защита',
-    attack: 'Атака'
+    attack: 'Тест атаки',
+    spell_check: 'Тест заклинания',
+    martial_check: 'Рукопашный тест'
   },
   es:{
     combatMastery: 'Maestría de combate',
     initiative: 'Iniciativa',
     precision: 'Defensa de precisión',
     area: 'Defensa de área',
-    attack: 'Ataque'
+    attack: 'Ataque',
+    spell_check: 'Spell check',
+    martial_check: 'Martial check'
   }
 }
 
@@ -56,11 +62,13 @@ export const Dc20CombatStatic = (props) => {
                 }
               </For>
             </div>
-            <div class="grid grid-cols-2 gap-2">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
               <For
                 each={[
                   { label: 'initiative', value: character().initiative },
-                  { label: 'attack', value: character().attack }
+                  { label: 'attack', value: character().attack },
+                  { label: 'spell_check', value: character().spell_check, slug: 'attack' },
+                  { label: 'martial_check', value: character().martial_check, slug: 'attack' }
                 ]}
               >
                 {(item) =>
@@ -70,7 +78,7 @@ export const Dc20CombatStatic = (props) => {
                       <p class="dc20-stat-value">
                         <Dice
                           text={modifier(item.value)}
-                          onClick={() => props.openD20Test(`/check ${item.label} self`, localize(TRANSLATION, locale())[item.label], item.value, 10)}
+                          onClick={() => props.openD20Test(`/check ${item.slug || item.label} self`, localize(TRANSLATION, locale())[item.label], item.value, 10)}
                         />
                       </p>
                     </div>

@@ -709,6 +709,16 @@ ru:
         weapon: Оружие
       focus:
         Long-Ranged: Если заклинание имеет дальность больше 1, то эта дальность увеличивается на 5 квадратов.
+        Channeling: You gain a +1 bonus to Spell Checks.
+        Close Quarters: Your Ranged Spell Attacks don’t have DisADV if you’re within the Melee Range of enemies.
+        Muffled: Your Verbal Components can only be heard within 5 Spaces of you.
+        Powerful: Your Spell Attacks deal +1 damage to all targets.
+        Protective: Your AD increases by 1.
+        Reach: Spells you cast with a Range of 1 have their range increase by 1 Space.
+        Reactive: When you are the Challenger or a Participant helping the Challenger in a Spell Duel, they gain ADV on their Check to stop the Spell.
+        Two-Handed: The Spell Focus requires 2 hands to benefit from its properties.
+        Vicious: You gain a +1 bonus to hit with Spell Attacks.
+        Warded: You have MDR.
       weapon:
         Axe: "Цель совершает повторяемый физический спас. Неудача: Цель начинает истекать кровью."
         Bow: "Цель совершает спас ловкости. Неудача: Цель замедляется до конца своего следующего хода."

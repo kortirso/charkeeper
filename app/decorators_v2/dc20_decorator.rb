@@ -97,6 +97,10 @@ class Dc20Decorator < ApplicationDecoratorV2
 
   def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
     @result['attack'] = modified_abilities['prime'] + combat_mastery
+    @result['spell_attack'] = modified_abilities['prime'] + combat_mastery
+    @result['spell_check'] = modified_abilities['prime'] + combat_mastery
+    @result['martial_check'] = modified_abilities['prime'] + combat_mastery
+    @result['attack'] = modified_abilities['prime'] + combat_mastery
     @result['attribute_saves'] = modified_abilities.transform_values { |item| item + combat_mastery }
     @result['physical_save'] = attribute_saves.slice('mig', 'agi').values.max
     @result['mental_save'] = attribute_saves.slice('cha', 'int').values.max
@@ -303,7 +307,16 @@ class Dc20Decorator < ApplicationDecoratorV2
   end
 
   def modifiers
-    character_modifiers + feature_modifiers
+    character_modifiers + feature_modifiers + active_items.pluck(:items_modifiers).compact_blank
+  end
+
+  def active_items
+    @character
+      .items
+      .where("states->>'hands' != ? OR states->>'equipment' != ?", '0', '0')
+      .joins(:item)
+      .where(items: { kind: 'focus' })
+      .hashable_pluck('items.kind', 'items.data', 'items.info', 'items.modifiers', :states, :modifiers)
   end
 
   def character_modifiers

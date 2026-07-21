@@ -1,0 +1,146 @@
+[
+  {
+    "slug": "totem",
+    "kind": "focus",
+    "name": { "en": "Totem", "ru": "Тотем" },
+    "info": {
+      "features": ["Protective"]
+    },
+    "modifiers": { "ad_base": { "type": "add", "value": 1 } }
+  },
+  {
+    "slug": "crystal",
+    "kind": "focus",
+    "name": { "en": "Crystal", "ru": "Кристалл" },
+    "info": {
+      "features": ["Vicious"]
+    },
+    "modifiers": { "spell_attack": { "type": "add", "value": 1 } }
+  },
+  {
+    "slug": "orb",
+    "kind": "focus",
+    "name": { "en": "Orb", "ru": "Сфера" },
+    "info": {
+      "features": ["Channeling"]
+    },
+    "modifiers": { "spell_check": { "type": "add", "value": 1 } }
+  },
+  {
+    "slug": "ceremonial_dagger",
+    "kind": "focus",
+    "name": { "en": "Ceremonial Dagger", "ru": "Церемониальный кинжал" },
+    "info": {
+      "features": ["Close Quarters"]
+    },
+    "modifiers": {}
+  },
+  {
+    "slug": "holy_medallion",
+    "kind": "focus",
+    "name": { "en": "Holy Medallion", "ru": "Святой медальон" },
+    "info": {
+      "features": ["Warded"]
+    },
+    "modifiers": {}
+  },
+  {
+    "slug": "relic",
+    "kind": "focus",
+    "name": { "en": "Relic", "ru": "Реликвия" },
+    "info": {
+      "features": ["Warded"]
+    },
+    "modifiers": {}
+  },
+  {
+    "slug": "wand",
+    "kind": "focus",
+    "name": { "en": "Wand", "ru": "Волшебная палочка" },
+    "info": {
+      "features": ["Long-Ranged"]
+    },
+    "modifiers": {}
+  },
+  {
+    "slug": "rod",
+    "kind": "focus",
+    "name": { "en": "Rod", "ru": "Жезл" },
+    "info": {
+      "features": ["Reach"]
+    },
+    "modifiers": {}
+  },
+  {
+    "slug": "poppet",
+    "kind": "focus",
+    "name": { "en": "Poppet", "ru": "Кукла" },
+    "info": {
+      "features": ["Muffled"]
+    },
+    "modifiers": {}
+  },
+  {
+    "slug": "ritual_bell",
+    "kind": "focus",
+    "name": { "en": "Ritual Bell", "ru": "Ритуальный колокольчик" },
+    "info": {
+      "features": ["Reactive"]
+    },
+    "modifiers": {}
+  },
+  {
+    "slug": "mage_staff",
+    "kind": "focus",
+    "name": { "en": "Mage Staff", "ru": "Магический посох" },
+    "info": {
+      "features": ["Powerful", "Two-Handed"]
+    },
+    "modifiers": {}
+  },
+  {
+    "slug": "twin_crystals",
+    "kind": "focus",
+    "name": { "en": "Twin Crystals", "ru": "Кристаллы-близнецы" },
+    "info": {
+      "features": ["Powerful", "Two-Handed"]
+    },
+    "modifiers": {}
+  },
+  {
+    "slug": "grimoire",
+    "kind": "focus",
+    "name": { "en": "Grimoire", "ru": "Гримуар" },
+    "info": {
+      "features": ["Channeling", "Vicious", "Two-Handed"]
+    },
+    "modifiers": { "spell_attack": { "type": "add", "value": 1 }, "spell_check": { "type": "add", "value": 1 } }
+  },
+  {
+    "slug": "tarot_deck",
+    "kind": "focus",
+    "name": { "en": "Tarot Deck", "ru": "Колода Таро" },
+    "info": {
+      "features": ["Channeling", "Vicious", "Two-Handed"]
+    },
+    "modifiers": { "spell_attack": { "type": "add", "value": 1 }, "spell_check": { "type": "add", "value": 1 } }
+  },
+  {
+    "slug": "censer",
+    "kind": "focus",
+    "name": { "en": "Censer", "ru": "Кадило" },
+    "info": {
+      "features": ["Protective", "Warded", "Two-Handed"]
+    },
+    "modifiers": { "ad_base": { "type": "add", "value": 1 } }
+  },
+  {
+    "slug": "magical_instrument",
+    "kind": "focus",
+    "name": { "en": "Magical Instrument", "ru": "Магический инструмент" },
+    "info": {
+      "features": ["Long-Ranged", "Reactive", "Two-Handed"]
+    },
+    "modifiers": { "ad_base": { "type": "add", "value": 1 } }
+  }
+]

@@ -34,7 +34,17 @@ const TRANSLATION = {
       mp: 'MP'
     },
     features: {
-      'Long-Ranged': 'Long-Ranged'
+      'Long-Ranged': 'Long-Ranged',
+      'Channeling': 'Channeling',
+      'Close Quarters': 'Close Quarters',
+      'Muffled': 'Muffled',
+      'Powerful': 'Powerful',
+      'Protective': 'Protective',
+      'Reach': 'Reach',
+      'Reactive': 'Reactive',
+      'Two-Handed': 'Two-Handed',
+      'Vicious': 'Vicious',
+      'Warded': 'Warded'
     },
     attack: 'Spell Check',
     repeatable: 'Repeatable'
@@ -60,7 +70,17 @@ const TRANSLATION = {
       mp: 'ОМ'
     },
     features: {
-      'Long-Ranged': 'Дальнобойное'
+      'Long-Ranged': 'Дальнобойное',
+      'Channeling': 'Направляющее',
+      'Close Quarters': 'Ближний бой',
+      'Muffled': 'Приглушенное',
+      'Powerful': 'Мощное',
+      'Protective': 'Защитное',
+      'Reach': 'Досягаемое',
+      'Reactive': 'Реактивное',
+      'Two-Handed': 'Двуручное',
+      'Vicious': 'Беспощадное',
+      'Warded': 'Ограждающее'
     },
     attack: 'Бонус атаки',
     repeatable: 'Многократное'
@@ -86,7 +106,17 @@ const TRANSLATION = {
       mp: 'PM'
     },
     features: {
-      'Long-Ranged': 'Largo Alcance'
+      'Long-Ranged': 'Long-Ranged',
+      'Channeling': 'Channeling',
+      'Close Quarters': 'Close Quarters',
+      'Muffled': 'Muffled',
+      'Powerful': 'Powerful',
+      'Protective': 'Protective',
+      'Reach': 'Reach',
+      'Reactive': 'Reactive',
+      'Two-Handed': 'Two-Handed',
+      'Vicious': 'Vicious',
+      'Warded': 'Warded'
     },
     attack: 'Tirada de Hechizo',
     repeatable: 'Repetible'
@@ -295,8 +325,8 @@ export const Dc20Spells = (props) => {
                     <Dice
                       width="36"
                       height="36"
-                      text={modifier(character().attack)}
-                      onClick={() => props.openD20Test('/check attack spell', null, character().attack, 10)}
+                      text={modifier(character().spell_attack)}
+                      onClick={() => props.openD20Test('/check attack spell', null, character().spell_attack, 10)}
                     />
                 }
               ]}

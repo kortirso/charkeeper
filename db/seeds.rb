@@ -281,6 +281,10 @@ weapons_file = File.read(Rails.root.join('db/data/dc20/weapons.json'))
 weapons = JSON.parse(weapons_file)
 Dc20::Item.upsert_all(weapons) if weapons.any?
 
+focus_file = File.read(Rails.root.join('db/data/dc20/focus.json'))
+focus = JSON.parse(focus_file)
+Dc20::Item.upsert_all(focus) if focus.any?
+
 armor_file = File.read(Rails.root.join('db/data/dc20/armor.json'))
 armor = JSON.parse(armor_file)
 Dc20::Item.upsert_all(armor) if armor.any?
