@@ -580,10 +580,10 @@ content = JSON.parse(file_content).map do |item|
   item
 end
 
-feats = Daggerheart::Feat.where(user_id: nil).map { _1.attributes.except('id', 'type', 'created_at', 'updated_at') }
-beautified_json_string = JSON.pretty_generate(content)
+feats = Dc20::Feat.where(user_id: nil).where(origin: [5, 6]).map { _1.attributes.except('id', 'type', 'created_at', 'updated_at', 'reset_on_rest', 'modifiers', 'public', 'tokens', 'upvotes_count', 'user_id', 'origin_values', 'exclude') }
+beautified_json_string = JSON.pretty_generate(feats)
 # # Write the beautified JSON string to a file
-File.open('db/data_prod/daggerheart/feats.json', 'w') do |file|
+File.open('db/data_prod/dc20/subclasses.json', 'w') do |file|
   file.write(beautified_json_string)
 end
 

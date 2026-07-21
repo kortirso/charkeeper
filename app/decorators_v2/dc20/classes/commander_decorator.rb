@@ -1,18 +1,17 @@
 # frozen_string_literal: true
 
-module Dc20Character
+module Dc20
   module Classes
-    class CommanderDecorator < ApplicationDecorator
-      def stamina_points
-        @stamina_points ||= __getobj__.stamina_points.merge('max' => class_stamina_points)
-      end
-
-      def maneuver_points
-        @maneuver_points ||= __getobj__.maneuver_points + class_maneuver_points
-      end
-
-      def max_health
-        @max_health ||= __getobj__.max_health + 6 + (2 * level) + modified_abilities['mig']
+    class CommanderDecorator < ApplicationDecoratorV2
+      def call(result:)
+        @result = result
+        @result['max_stamina_points'] = class_stamina_points
+        @result['max_mana_points'] = 0
+        @result['maneuver_points'] = class_maneuver_points
+        @result['max_health'] = 6 + (2 * level) + modified_abilities['mig']
+        @result['spells'] = 0
+        @result['spell_lists_amount'] = 0
+        @result
       end
 
       private

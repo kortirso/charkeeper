@@ -4,8 +4,6 @@ module Frontend
   module Characters
     class BonusesController < Frontend::BaseController
       include Deps[
-        add_dnd_bonus: 'commands.characters_context.dnd5.add_bonus',
-        add_daggerheart_bonus: 'commands.characters_context.daggerheart.add_bonus',
         feature_requirement: 'feature_requirement',
         add_dnd_bonus_v2: 'commands.characters_context.dnd2024.bonuses.add',
         add_dnd_bonus_v3: 'commands.characters_context.dnd2024.bonuses.add_v3',
@@ -75,15 +73,16 @@ module Frontend
         end
       end
 
-      def find_bonus_command # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
+      def find_bonus_command # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
         @bonus_command =
-          if feature_requirement.call(current: params[:version], initial: '0.4.16')
+          if feature_requirement.call(current: params[:version], initial: '0.5.1')
+            case params[:provider]
+            when 'dc20' then add_dc20_bonus
+            end
+          elsif feature_requirement.call(current: params[:version], initial: '0.4.16')
             case params[:provider]
             when 'dnd2024' then add_dnd_bonus_v3
-            when 'dnd5' then add_dnd_bonus_v2
-            when 'daggerheart' then add_daggerheart_bonus_v2
             when 'daggerheart_companion' then add_daggerheart_companion_bonus
-            when 'dc20' then add_dc20_bonus
             when 'pathfinder2' then add_pathfinder2_bonus
             when 'cosmere' then add_cosmere_bonus
             end
@@ -91,12 +90,6 @@ module Frontend
             case params[:provider]
             when 'dnd5' then add_dnd_bonus_v2
             when 'daggerheart' then add_daggerheart_bonus_v2
-            when 'dc20' then add_dc20_bonus
-            end
-          else
-            case params[:provider]
-            when 'dnd5' then add_dnd_bonus
-            when 'daggerheart' then add_daggerheart_bonus
             end
           end
       end

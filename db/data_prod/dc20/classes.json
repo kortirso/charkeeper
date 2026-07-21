@@ -1,0 +1,1124 @@
+[
+  {
+    "slug": "blink_blade",
+    "title": {
+      "en": "Blink Blade",
+      "ru": "Мерцающий клинок"
+    },
+    "description": {
+      "en": "Once per turn, when you make an Attack, you can choose to teleport to a Space you can see within 1 Space immediately before or after making the Attack (your choice).",
+      "ru": "Один раз за ход, когда вы совершаете атаку, вы можете телепортироваться в свободную соседнюю клетку, которую можете видеть, сразу до или после совершения атаки (на ваш выбор)."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "blink_blade"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "spellstrike",
+    "title": {
+      "en": "Spellstrike",
+      "ru": "Удар заклинанием"
+    },
+    "description": {
+      "en": "Once on each of your turns when you make a Martial Attack, you can also cast a Spell as part of the same Action, spending 1 AP less than normal.\n\n- **Converged Action:** When you do, the Spell can only target 1 creature who must be a target of the Attack, and the range of the Attack can't exceed the range of the Spell. The Spell uses the Attack Check as its Spell Check for any of its requirements, and any Saves you force the target to make are made against your Save DC.\n- **Harmonic StrikeThe Attack and Spell from a Spellstrike are treated as 1 Attack, and can benefit from Maneuvers and Spell Enhancements. The Spell doesn't require Somatic Components.",
+      "ru": "Один раз за каждый свой ход, когда вы совершаете бойцовскую атаку, вы можете наложить заклинание частью этого же действия. Стоимость этого заклинания уменьшается на 1 ОД (вплоть до 0 ОД).\n\n- **Сдвоенное действие:** Это заклинание может быть применено только к 1 цели атаки в вашей досягаемости. Заклинание использует проверку атаки вместо проверки заклинания для всех своих требований, и все наложенные им спасы совершаются против вашей СЛ спаса.\n- **Гармоничный удар:** Бойцовская атака и заклинание от удара заклинанием считаются одной атакой, и могут быть дополнены приёмами и улучшениями заклинания. Такое заклинание не требует соматического компонента."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "level": 2
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "natural_leader",
+    "title": {
+      "en": "Natural Leader",
+      "ru": "Прирождённый лидер"
+    },
+    "description": {
+      "en": "You have ADV on Checks made to convince creatures that you are an authority figure. Additionally, you have ADV on the first Charisma Check made to interact with non-hostile members of military groups.",
+      "ru": "Вы получаете преимуществом на проверки, направленные на внушение своего авторитета существам. Также вы получаете преимущество на первую проверку харизмы при взаимодействии с неагрессивными членами военных организаций."
+    },
+    "origin": "class_flavor",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "debilitating_strike",
+    "title": {
+      "en": "Debilitating Strike",
+      "ru": "Изнуряющий удар"
+    },
+    "description": {
+      "en": "When you make a Weapon Attack, you can spend **1 SP** to force the target to make a Physical Save against your Save DC. **Save Failure:** The target suffers 1 of the following effects of your choice for 1 Round: Deafened, Exposed, Hindered, or Slowed 2. A target can't be affected by the same option more than once at a time.",
+      "ru": "Когда вы совершаете атаку оружием, вы можете потратить **1 ОВ**, чтобы заставить цель совершить физический спас против вашей СЛ спасов. **Провал:** На 1 раунд цель подвергается одному из следующих состояний на ваш выбор: оглушён, раскрыт, скован или замедлен 2. На цель не могут одновременно действовать два одинаковых эффекта **Изнуряющего удара**."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "sp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "tundra",
+    "title": {
+      "en": "Tundra",
+      "ru": "Тундра"
+    },
+    "description": {
+      "en": "You gain Cold Resistance (Half) and Resistance to Exhaustion from cold temperatures.",
+      "ru": "Вы получаете сопротивление морозному урону (половина) и истощению от низких температур."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "tundra"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "damages": "damages.concat([['cold', 'resist', 'half']])"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "subterranean",
+    "title": {
+      "en": "Subterranean",
+      "ru": "Подземелье"
+    },
+    "description": {
+      "en": "You gain Darkvision 10 Spaces. If you already have Darkvision, its range is increased by 5 Spaces. Additionally, you also gain a Tremorsense of 3 Spaces. If you already have a Tremorsense, it increases by 2 Spaces.",
+      "ru": "Вы получаете тёмное зрение на 10 клеток или увеличиваете его на 5 клеток. Также вы получаете чувство вибрации на 3 клетки или увеличиваете его на 2 клетки."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "subterranean"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "urban",
+    "title": {
+      "en": "Urban",
+      "ru": "Город"
+    },
+    "description": {
+      "en": "You gain 2 Skill Points to use on up to 2 of the following Skills: Influence, Insight, Investigation, Intimidation, and Trickery.",
+      "ru": "Вы повышаете ступень в 2 навыках из перечисленных: анализ, влияние, история, проницательность или уловки."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "text",
+    "conditions": {
+      "selected_feature": "urban"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "roguish_finesse",
+    "title": {
+      "en": "Roguish Finesse",
+      "ru": "Точность плута"
+    },
+    "description": {
+      "en": "- **Cunning Action:** You gain movement equal to half your Speed when you take the Disengage, Feint, or Hide Actions. You can use this movement immediately before or after you take the Action.\n- **Skill Expertise:** Your Skill Mastery Limit increases by 1, up to Grandmaster (+10).\n- **Multi-Skilled:** You gain 1 Skill Point.",
+      "ru": "- **Хитрое действие:** Когда вы отступаете, подлавливаете или скрываетесь, вы получаете клетки движения в количестве, равном половине вашей скорости. Вы можете потратить их на передвижение сразу до или после совершения этого действия.\n- **Компетентность в навыке:** Вы получаете компетентность во всех навыках.\n- **Умелый:** Вы получаете +1 очко навыков."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "rage",
+    "title": {
+      "en": "Rage",
+      "ru": "Ярость"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 SP** to enter a **Rage** for 1 minute. For the duration, you're subjected to the following effects:\n\n- You deal +1 damage on Martial Attacks made using Unarmed Strikes or Melee Weapons.\n- You have ADV on Might Saves.\n- Your PD gain calculated penalty -5.\n- You gain Resistance (Half) to Elemental and Physical damage.\n**Ending Early:** Your Rage ends early if you fall Unconscious, die, or you choose to end it for free on your turn.",
+      "ru": "Во время боя вы можете потратить **1 ОД** и **1 ОВ**, чтобы войти в состояние **Ярости** на 1 минуту. В течение этого времени на вас действуют следующие эффекты:\n\n- Вы наносите +1 урона бойцовскими атаками, используя рукопашные атаки или атаки оружием.\n- Вы получаете преимущество на спасы мощи.\n- Вы получаете добавленный штраф -5 к ТЗ.\n- Вы получаете сопротивление (половина) к стихийному и физическому урону.\n**Окончание:** Ваша **Ярость** заканчивается, если вы вырубаетесь, умираете или решаете бесплатно окончить её во время своего хода."
+    },
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "damages": "damages.concat([['elemental', 'resist', 'half'], ['physical', 'resist', 'half']])",
+      "precision_defense": "precision_defense.transform_values { |value| value - 5 }"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "berserker",
+    "title": {
+      "en": "Berserker",
+      "ru": "Берсерк"
+    },
+    "description": {
+      "en": "When you make a Melee Martial Attack on your turn, you can move up to 2 Spaces immediately before making the Attack.",
+      "ru": "В свой ход сразу перед вашей ближней бойцовской атакой вы можете переместиться на 2 клетки."
+    },
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "jump": "[modified_abilities['agi'], modified_abilities['mig'], 1].max",
+      "speeds": "speeds.merge({ 'ground' => speeds['ground'] + 1 })",
+      "area_defense": "equiped_armor_info ? area_defense : area_defense.transform_values { |value| value + 2 }"
+    },
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "shattering_force",
+    "title": {
+      "en": "Shattering Force",
+      "ru": "Сокрушительная сила"
+    },
+    "description": {
+      "en": "When you Hit a structure or mundane object with a Melee Attack, it's considered a Critical Hit.",
+      "ru": "Если вы попадаете ближней атакой по строению или немагическому предмету, это считается Критическим Ударом."
+    },
+    "origin": "class_flavor",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "inspiring_presence",
+    "title": {
+      "en": "Inspiring Presence",
+      "ru": "Вдохновляющее присутствие"
+    },
+    "description": {
+      "en": "Whenever you spend SP while in Combat, you can restore an amount of HP equal to the SP spent. Choose any creatures within 5 Spaces that can see or hear you, and divide the HP among them.",
+      "ru": "Когда вы тратите ОВ во время Боя, вы можете восстановить ОЗ в количестве, равном потраченным ОВ. Выберите любое количество существ в пределах 5 Клеток, которые могут видеть или слышать вас, и распределите эти ОЗ между ними."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "spell_warder",
+    "title": {
+      "en": "Spell Warder",
+      "ru": "Оберег от заклинаний"
+    },
+    "description": {
+      "en": "When you deal Elemental or Mystical damage with an Attack, you gain Resistance (1) to that damage type until the start of your next turn. If you deal Elemental or Mystical damage again while this is already active, you can choose to keep the current Resistance or switch it out for the new one instead.",
+      "ru": "Когда ваша атака наносит стихийный или мистический урон, вы получаете сопротивление (1) к этому типу урона до начала вашего следующего Хода. Если вы снова наносите стихийный или мистический урон, вы можете сохранить текущее сопротивление или заменить его на новое."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "spell_warder"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "spellblade_disciplines",
+    "title": {
+      "en": "Spellblade Disciplines",
+      "ru": "Дисциплины Мага клинка"
+    },
+    "description": {
+      "en": "You learn 2 Spellblade Disciplines.",
+      "ru": "Вы изучаете 2 дисциплины Мага клинка."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "many_from_list",
+    "limit_refresh": null,
+    "options": {
+      "magus": {
+        "en": "Magus",
+        "ru": "Магус"
+      },
+      "acolyte": {
+        "en": "Acolyte",
+        "ru": "Аколит"
+      },
+      "warrior": {
+        "en": "Warrior",
+        "ru": "Воитель"
+      },
+      "blink_blade": {
+        "en": "Blink Blade",
+        "ru": "Мерцающий клинок"
+      },
+      "hex_warrior": {
+        "en": "Hex Warrior",
+        "ru": "Проклинающий"
+      },
+      "spell_warder": {
+        "en": "Spell Warder",
+        "ru": "Оберег от заклинаний"
+      },
+      "spell_breaker": {
+        "en": "Spell Breaker",
+        "ru": "Разрушитель заклинаний"
+      }
+    },
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "magus",
+    "title": {
+      "en": "Magus",
+      "ru": "Магус"
+    },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "hidden",
+    "conditions": {
+      "selected_feature": "magus"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "spells": "spells + 1",
+      "mana_points": "mana_points.merge({ 'max' => mana_points['max'] + 1 })"
+    },
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "warrior",
+    "title": {
+      "en": "Warrior",
+      "ru": "Воитель"
+    },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "hidden",
+    "conditions": {
+      "selected_feature": "warrior"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "maneuver_points": "maneuver_points + 1"
+    },
+    "continious": false,
+    "bonus_eval_variables": {
+      "combat_expertise": "combat_expertise.concat(['heavy_armor', 'heavy_shield']).uniq"
+    },
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "hex_warrior",
+    "title": {
+      "en": "Hex Warrior",
+      "ru": "Проклинающий"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 MP** to Curse a creature within 10 Spaces for 1 minute. You make a Spell Check against the target's Repeated Physical Save. Save Failure: The target is Dazed or Impaired (your choice) and takes 1 Umbral damage at the start of each of their turns. Additionally, they're prevented from regaining HP.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОМ**, чтобы проклясть существо в пределах 5 клеток на 1 минуту. Совершите проверку заклинания против повторяемого физического спаса цели. **Провал спаса:** Цель потрясена или ослаблена (на ваш выбор), получает 1 сумрачного урона в начале каждого своего хода и не может восстанавливать ОЗ."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "hex_warrior"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "mp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "spell_breaker",
+    "title": {
+      "en": "Spell Breaker",
+      "ru": "Разрушитель заклинаний"
+    },
+    "description": {
+      "en": "You can spend **2 AP** to initiate a Spell Duel against a Spell Attack using a Weapon instead of casting a Spell, provided the Initiator or a target of the Spell is within the range of your Weapon. When you do, you make an Attack Check and you can spend SP and MP (for a total up to your Mana Spend Limit) to gain a bonus on your Check equal to the SP and MP spent. You have ADV on your Check if you are within 1 Space of the Initiator.",
+      "ru": "Вы можете потратить **2 ОД** на то, чтобы начать дуэль заклинаний используя ваше оружие вместо заклинания. При этом инициатор или цель заклинания должны находиться в пределах досягаемости вашего оружия. Вы совершаете проверку атаки и можете потратить ОВ и ОМ (вплоть до вашего предела траты маны), чтобы получить бонус к вашей проверке, равный сумме потраченных ОВ и ОМ. Вы получаете преимущество на эту проверку, если находитесь в пределах 1 клетки от инициатора."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "spell_breaker"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 2
+    },
+    "info": {}
+  },
+  {
+    "slug": "spell_school_initiate",
+    "title": {
+      "en": "Spell School Initiate",
+      "ru": "Посвященный школы заклинаний"
+    },
+    "description": {
+      "en": "Choose a Spell School. You learn 2 Arcane Spells from this Spell School.\n\n- **Signature School:** When you cast a Spell from the chosen School, you can reduce its MP cost by 1. Its total MP cost before the reduction can't exceed your Mana Spend Limit. You can use this Feature once per Long Rest, but regain the ability to use it again when you roll for Initiative.",
+      "ru": "Выберите школу заклинаний. Вы изучаете 2 арканных заклинания этой школы.\n\n- **Фирменная школа:** Один раз после длинного отдыха или броска инициативы, когда вы накладываете заклинание из выбранной школы, вы можете снизить его стоимость на 1 ОМ. Общая стоимость в ОМ до снижения не может превышать ваш предел траты маны."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "many_from_list",
+    "limit_refresh": null,
+    "options": {
+      "elemental": {
+        "en": "Elemental",
+        "ru": "Элементализм"
+      },
+      "astromancy": {
+        "en": "Astromancy",
+        "ru": "Астромантия"
+      },
+      "divination": {
+        "en": "Divination",
+        "ru": "Прорицание"
+      },
+      "invocation": {
+        "en": "Invocation",
+        "ru": "Призыв"
+      },
+      "conjuration": {
+        "en": "Conjuration",
+        "ru": "Вызов"
+      },
+      "enchantment": {
+        "en": "Enchantment",
+        "ru": "Очарование"
+      },
+      "nullification": {
+        "en": "Nullification",
+        "ru": "Аннулирование"
+      },
+      "transmutation": {
+        "en": "Transmutation",
+        "ru": "Преобразование"
+      }
+    },
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "arcane_sigil",
+    "title": {
+      "en": "Arcane Sigil",
+      "ru": "Арканный символ"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 MP** to choose a Spell School or Spell Tag and create a 1 Space diameter Circle on a surface within a Space you're occupying. The Circle is your **Arcane Sigil** which lasts for 1 minute. You can't place more than 1 Arcane Sigil in the same Space.\n**Using a Sigil:** While within the area of your Arcane Sigil, creatures gain ADV on Checks they make to cast or produce the effects of Spells with the chosen Spell School or Spell Tag.\n**Moving a Sigil:** You can spend 1 AP to teleport one of your Arcane Sigils that's within 10 Spaces to a surface within a Space you're occupying, provided the Space doesn't already have an Arcane Sigil.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОМ**, чтобы создать на земле под собой **Арканный символ** диаметром в 1 Клетку, существующий 1 минуту. При создании выберите 1 школу заклинаний или 1 признак заклинания.\n\n- **Использование символа:** Пока существо находится в клетке с вашим символом, оно получает преимущество на проверки заклинаний, требующиеся для наложения заклинаний, относящихся к выбранной школе или имеющих выбранный признак.\n- **Перемещение символа:** Вы можете потратить 1 ОД, чтобы переместить один из ваших символов, находящийся в пределах 10 Клеток, в вашу клетку. В одной клетке может находиться только один символ."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "text",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "mp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "ritual_caster",
+    "title": {
+      "en": "Ritual Caster",
+      "ru": "Ритуалист"
+    },
+    "description": {
+      "en": "You learn 1 Ritual. Additionally, when you encounter a Ritual in a form you can study, you can learn it over the course of a Short Rest.",
+      "ru": "Вы изучаете 1 ритуал. Когда вы находите ритуальное арканное заклинание в форме, поддающейся изучению, вы можете изучить его за период короткого отдыха."
+    },
+    "origin": "class_flavor",
+    "origin_value": "wizard",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "cypher_speech",
+    "title": {
+      "en": "Cypher Speech",
+      "ru": "Зашифрованный язык"
+    },
+    "description": {
+      "en": "You become Fluent in a Mortal Language of your choice. Additionally, you understand how to speak in code with a specific demographic of your choice. Your coded messages can be concealed in normal conversation and written communications. This allows you to leave simple messages such as Safety, Threat, or Wealth, or mark the location of a cache, a secret passageway, a safehouse, or an area of danger.",
+      "ru": "Вы полностью владеете одним дополнительным смертным языком на ваш выбор. Кроме того, вы изучаете набор секретных кодовых слов, жаргонизмов, знаков и символов, который можете использовать для общения с определённой группой. Этот способ общения позволяет скрывать в обычной беседе и письмах секретные сообщения, такие как местоположение тайника, секретного прохода, безопасного укрытия или опасной зоны."
+    },
+    "origin": "class_flavor",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "favored terrain",
+    "title": {
+      "en": "Favored Terrain",
+      "ru": "Избранная местность"
+    },
+    "description": {
+      "en": "You are particularly familiar with two types of environments and are adept at the skills unique to the region. While you're in one of your Favored Terrains, you have ADV on Stealth and Survival Checks and can't be Surprised. Choose 2 types of Favored Terrain listed below.",
+      "ru": "Вы особенно хорошо знакомы с двумя типами местности и обладаете умениями, необходимыми для обитания в них. Пока вы находитесь в одной из ваших **Избранных местностей**, вы получаете преимущество на проверки скрытности и выживания, и вас нельзя застать врасплох. Выберите 2 типа **Избранной местности** из приведённых ниже:"
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "many_from_list",
+    "limit_refresh": null,
+    "options": {
+      "coast": {
+        "en": "Coast",
+        "ru": "Побережье"
+      },
+      "swamp": {
+        "en": "Swamp",
+        "ru": "Болота"
+      },
+      "urban": {
+        "en": "Urban",
+        "ru": "Город"
+      },
+      "desert": {
+        "en": "Desert",
+        "ru": "Пустыня"
+      },
+      "forest": {
+        "en": "Forest",
+        "ru": "Леса"
+      },
+      "jungle": {
+        "en": "Jungle",
+        "ru": "Джунгли"
+      },
+      "tundra": {
+        "en": "Tundra",
+        "ru": "Тундра"
+      },
+      "mountain": {
+        "en": "Mountain",
+        "ru": "Горы"
+      },
+      "grassland": {
+        "en": "Grassland",
+        "ru": "Луга"
+      },
+      "subterranean": {
+        "en": "Subterranean",
+        "ru": "Подземелье"
+      }
+    },
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "desert",
+    "title": {
+      "en": "Desert",
+      "ru": "Пустыня"
+    },
+    "description": {
+      "en": "You gain Fire Resistance (Half) and Resistance to Exhaustion from hot temperatures.",
+      "ru": "Вы получаете добавленное сопротивление огненному урону (половина) и истощению от высоких температур."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "desert"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "damages": "damages.concat([['fire', 'resist', 'half']])"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "forest",
+    "title": {
+      "en": "Forest",
+      "ru": "Леса"
+    },
+    "description": {
+      "en": "You gain 2 Skill Points to use on up to 2 of the following Skills: Animal, Awareness, Medicine, Survival, and Stealth.",
+      "ru": "Вы повышаете ступень в 2 навыках из перечисленных: бдительность, выживание, животные, природа или скрытность."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "text",
+    "conditions": {
+      "selected_feature": "forest"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "grassland",
+    "title": {
+      "en": "Grassland",
+      "ru": "Луга"
+    },
+    "description": {
+      "en": "Your Speed and Jump Distance gain calculated bonus +1.",
+      "ru": "Ваши скорость и дальность прыжка получают добавленный бонус +1."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "grassland"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "jump": "jump + 1",
+      "speeds": "speeds.merge({ 'ground' => speeds['ground'] + 1 })"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "jungle",
+    "title": {
+      "en": "Jungle",
+      "ru": "Джунгли"
+    },
+    "description": {
+      "en": "You ignore Difficult Terrain and gain Poisoned and Diseased Resistance.",
+      "ru": "Вы игнорируете труднопроходимую местность и получаете сопротивление отравлению и болезням."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "jungle"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "mountain",
+    "title": {
+      "en": "Mountain",
+      "ru": "Горы"
+    },
+    "description": {
+      "en": "You gain a Climb Speed equal to your Speed, Resistance to Exhaustion from high altitudes, and Resistance (Half) to damage from Falling.",
+      "ru": "Вы получаете добавленную скорость лазания, равную вашей скорости, сопротивление (половина) урону от падения и истощению от больших высот."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "mountain"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "speeds": "speeds.merge({ 'climb' => nil })"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "swamp",
+    "title": {
+      "en": "Swamp",
+      "ru": "Болота"
+    },
+    "description": {
+      "en": "You gain Poison Resistance (Half) and Poisoned Resistance, and Diseased Resistance.",
+      "ru": "Вы получаете сопротивление ядовитому урону (половина) и преимущество на спасы от ядов и болезней."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "swamp"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "damages": "damages.concat([['poison', 'resist', 'half']])"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "coast",
+    "title": {
+      "en": "Coast",
+      "ru": "Побережье"
+    },
+    "description": {
+      "en": "You gain a calculated Swim Speed equal to your Speed (your Weapon Attacks no longer have DisADV as a result of being underwater), you can hold your breath twice as long as normal, and you have ADV on Awareness Checks while underwater.",
+      "ru": "Вы получаете добавленную скорость плавания, равную вашей наземной скорости (ваши бойцовские атаки больше не получают помеху из-за нахождения под водой), ваш запас дыхания удваивается, и вы получаете преимущество на проверки бдительности, пока находитесь под водой."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "coast"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "breath": "breath * 2",
+      "speeds": "speeds.merge({ 'swim' => nil })"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "bound_weapon",
+    "title": {
+      "en": "Bound Weapon",
+      "ru": "Связанное оружие"
+    },
+    "description": {
+      "en": "During a Quick Rest, you can magically bond with 1 Weapon. Your Bound Weapon gains the following properties:\n\n- **Smite:** When you make a Martial Attack with the Weapon, you can spend 1 or more SP to deal +1 Bound Damage per SP spent. When you do, you also gain the benefits of 1 Martial Enhancement of your choice for free.\n- **Somatic Weapon:** You can use your Bound Weapon to perform the Somatic Components of a Spell.\n- **Illuminate:** You can cause the Weapon to emit a 5 Spaces of Dim or Bright Light (you choose the light's appearance). You can extinguish, produce, or adjust the level of this illumination at any time for free.\n- **Recall:** While the Weapon is within 20 Spaces and isn't being held or secured, you can call your Weapon back to you for free, causing it to fly to you. If you don't have a free hand when you call it, or you choose not to grab it, it falls in your Space at your feet.",
+      "ru": "Пока вы держите ваше **Связанное оружие** в руках, оно приобретает следующие свойства:\n\n- **Кара:** Когда вы совершаете бойцовскую атаку **Связанным оружием**, вы можете потратить 1 или более ОВ, чтобы нанести +1 связанного урона за каждое потраченное ОВ. Когда вы так делаете, вы получаете преимущества любого бойцовского улучшения на выбор.\n- **Соматическое оружие:** Вы можете использовать ваше **Связанное оружие** как соматический компонент для заклинаний.\n- **Свечение:** Вы можете заставить оружие излучать тусклый или яркий свет в радиусе 5 клеток (вы выбираете, как он выглядит). Вы можете создавать, изменять и погашать свечение бесплатно в любое время.\n- **Возврат:** Если ваше **Связанное оружие** находится в пределах 20 клеток от вас и его ничто и никто не удерживает, вы можете бесплатно возвратить его, заставив полететь к вам в руку. Если во время возврата ваши руки заняты или вы решите не брать **Связанное оружие** в руку, оно падает в вашей клетке у ваших ног."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "one_from_list",
+    "limit_refresh": null,
+    "options": {
+      "mystical_damage": {
+        "en": "Mystical Damage",
+        "ru": "Мистический урон"
+      },
+      "elemental_damage": {
+        "en": "Elemental Damage",
+        "ru": "Стихийный урон"
+      }
+    },
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "commanding_aura",
+    "title": {
+      "en": "Commanding Aura",
+      "ru": "Аура командования"
+    },
+    "description": {
+      "en": "You're surrounded by a 5 Space Aura. You can target any creature within your Aura to grant one of the following effects below, provided the target can see or hear you.\r\n\r\n- (1 AP) You take the Help Action to aid the target with an Attack. You can also do so as a Reaction whenever a valid target makes an Attack.\r\n- (1 AP) You grant creatures of your choice (including yourself) 1 Temp HP.\r\n- (1 AP) When a creature in your aura is targeted by an Attack, you can impose DisADV on the Attack as a Reaction.",
+      "ru": "Вы окружены аурой в 5 Клеток. Вы можете нацелиться на любое существо в вашей ауре, чтобы дать ему один из следующих эффектов, при условии, что цель может видеть или слышать вас.\r\n\r\n- (1 ОД) Вы помогаете цели с атакой. Вы также можете сделать это в качестве реакции, когда подходящая цель совершает атаку.\r\n- (1 ОД) Вы даёте всем выбранным вами существам (включая себя) 1 временный ОЗ.\r\n- (1 ОД) Когда существо в вашей ауре становится целью атаки, вы можете в качестве реакции наложить помеху на эту атаку."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": {},
+    "conditions": {
+      "level": 2
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": {},
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "sense_magic",
+    "title": {
+      "en": "Sense Magic",
+      "ru": "Ощутить магию"
+    },
+    "description": {
+      "en": "You can spend 1 minute focusing your mind to detect the following creature types within 20 Spaces: Aberration, Celestial, Elemental, Fey, Fiend, or Undead. Make a Spell Check against each creature's Mental Save. Check Success: You learn the target's creature type and know its location until the end of your next turn. Check Failure: You learn nothing and can't use this Feature against the target again until you complete a Long Rest.",
+      "ru": "Вы можете сосредоточиться на 1 минуту, чтобы попытаться обнаружить присутствие следующих типов существ в пределах 20 клеток: аберрации, небожители, элементали, феи, исчадия и нежить. Совершите проверку заклинания против ментального спаса каждого существа. **Успех проверки:** Вы узнаёте тип существа, являющегося целью, и ощущаете его местоположение до конца своего следующего хода. **Провал проверки:** Вы ничего не узнаёте об этой конкретной цели и не можете снова использовать эту черту против неё, пока не завершите длинный отдых."
+    },
+    "origin": "class_flavor",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "bestiary",
+    "title": {
+      "en": "Bestiary",
+      "ru": "Бестиарий"
+    },
+    "description": {
+      "en": "You have ADV on Checks made to learn or recall information about any creature recorded in your Bestiary.\n\n**Starting Entries:** Choose a Creature Type: Aberration, Beast, Celestial, Construct, Dragon, Elemental, Fey, Fiend, Giant, Humanoid, Monstrosity, Ooze, Plant, or Undead. Your Bestiary includes prerecorded notes about various creatures of the chosen type.\n**Making New Entries:** You can spend 10 minutes of Light Activity recording information into your Bestiary about a specific creature you have slain within the last 24 hours.",
+      "ru": "Вы получаете преимущество на проверки, совершенные для изучения или вспоминания информации о любом существе, записанном в вашем **Бестиарии**.\n\n**Начальные записи:** Выберите тип существ: Аберрация, Зверь, Небожитель, Конструкт, Дракон, Элементаль, Фея, Исчадие, Великан, Гуманоид, Чудовище, Слизь, Растение или Нежить. Ваш **Бестиарий** содержит записи о всех основных представителях этого типа.\n**Новые записи:** Вы можете потратить 10 минут лёгкой деятельности, чтобы записать в ваш **Бестиарий** информацию о конкретном существе, которое вы видели в течение последних 24 часов."
+    },
+    "origin": "class_flavor",
+    "origin_value": "hunter",
+    "kind": "text",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "cheap_shot",
+    "title": {
+      "en": "Cheap Shot",
+      "ru": "Коварный удар"
+    },
+    "description": {
+      "en": "You deal +1 damage on Martial Attacks against a creature that fulfills at least one of the following:\n\n- It's Flanked or Prone.\n- It has any Condition other than Invisibile.\n- You're Hidden from it.",
+      "ru": "Вы наносите +1 урона бойцовскими атаками по существу, если:\n\n- Оно окружено или повалено.\n- Оно подвергнуто хотя бы 1 состоянию кроме невидимости.\n- Вы для него скрыты."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": {
+      "level": 2
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "hunter_mark",
+    "title": {
+      "en": "Hunter's Mark",
+      "ru": "Метка охотника"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 SP** to focus on and mark a creature you can see within 15 Spaces as your quarry. Alternatively, you can mark a creature by studying its tracks for at least 1 minute. While a creature is marked, you gain the following benefits:\n\n- You have ADV on Awareness and Survival Checks made to find the target.\n- The first Martial Attack against your target on your turn has ADV and ignores PDR.\n- When you score a Heavy or Critical Hit against the target, you automatically grant a d8 Help Die to the next Attack made against the target before the start of your next turn.\nThe target is marked as long as it's on the same Plane of Existence as you, and vanishes early if you complete a Long Rest, fall Unconscious, or use this Feature again to mark another creature.\nWhen a marked creature dies you can spend **1 AP** or **1 SP** as a reaction to immediately Mark another target within range.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОВ**, чтобы сосредоточиться на существе которое вы видите в пределах 15 клеток, и отметить его как вашу добычу. В качестве альтернативы, вы можете отметить существо, изучая его следы 1 минуту. Пока существо отмечено, вы получаете следующие бонусы:\n\n- Вы получаете преимущество на проверки бдительности и выживания для поиска цели.\n- Один раз за ход вы получаете преимущество на первую бойцовскую атаку по вашей отмеченной цели, и эта атака игнорирует ФСУ.\n- Если вы наносите сильный или критический удар по цели, вы автоматически даёте кость помощи d8 на следующую атаку по этой цели до начала вашего следующего хода.\nЦель остаётся отмеченной, пока она находится на том же плане существования, что и вы, и исчезает преждевременно, если вы завершаете длинный отдых, становитесь вырублены или используете **Метку охотника**, чтобы отметить другое существо.\nКогда отмеченное существо погибает, то вы можете потратить **1 ОД** или **1 ОВ** как реакцию, чтобы мгновенно отметить другое существо в области действия."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "hunter_strike",
+    "title": {
+      "en": "Cheap Shot",
+      "ru": "Удар охотника"
+    },
+    "description": {
+      "en": "You can spend 1 SP as part of a Weapon Attack to add 1 of the unique Martial Enhancements listed below. You can only use 1 of these Enhancements per Attack. The damage increases by 1 for each SP spent beyond the first. If a Enhancement forces the target to make a Save, it does so against your Save DC.\n\n- Acid: The target takes 1 Corrosion damage and makes an Agility Save. Save Failure: The target becomes Hindered until the end of your next turn.\n- Fire: The target takes 1 Fire damage and makes a Might Save. Save Failure: The target begins Burning.\n- Piercing: The target takes 1 Piercing damage and makes a Might Save. Save Failure: The target begins Bleeding.\n- Snare: The target takes 1 Bludgeoning damage and makes an Agility Save. Save Failure: The target becomes Immobilized until the end of your next turn.\n- Toxin: The target takes 1 Poison damage and makes a Might Save. Save Failure: The target becomes Impaired until the end of your next turn.",
+      "ru": "Когда вы совершаете атаку оружием, вы можете потратить **1 ОВ**, чтобы добавить к ней 1 из нижеперечисленных эффектов. Вы можете использовать только 1 из этих эффектов за раз при каждой проверке атаки. Если эффект заставляет цель совершить спас, она совершает его против вашей СЛ.\n\n- **Шипы:** +1 колющего урона и физический спас от ранения.\n- **Силок:** +1 дробящего урона и физический спас от остановки.\n- **Кислота:** +1 разъедающего урона и спас ловкости от замедления до конца вашего следующего хода.\n- **Токсин:** +1 ядовитого урона и спас мощи от ослабления до конца вашего следующего хода.\n- **Горящее масло:** +1 огненного урона и физический спас от горения."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": {
+      "level": 2
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "sp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "battlecry",
+    "title": {
+      "en": "Battlecry",
+      "ru": "Боевой клич"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 SP** to release a shout of your choice listed below. Until the start of your next turn, you and creatures of your choice within 5 Spaces that can see or hear you are subjected to the effects of your shout. A creature can only benefit from the same type of shout once at a time.\n\n- **Fortitude Shout:** Each creature gains Resistance (1) against the next source of Physical or Elemental damage.\n- **Fury Shout:** Each creature deals +1 damage on their next Attack against 1 target.\n- **Urgent Shout:** Each creature gains +1 Speed until the start of your next turn.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОВ**, чтобы издать один из нижеперечисленных кличей. До начала вашего следующего хода на вас и всех выбранных вами существ в пределах 5 клеток, которые могут вас видеть или слышать, действует эффект выбранного клича. Если на существо действует два или больше одинаковых клича, оно получает бонусы только от одного из них.\n\n- **Клич стойкости:** Каждое существо получает сопротивление (1) к первому прошедшему по нему физическому или стихийному урону.\n- **Клич неистовства:** Каждое существо наносит +1 урона при следующей атаке.\n- **Клич спешки:** Каждое существо получает +1 к скорости до начала вашего следующего хода."
+    },
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": {
+      "level": 2
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "precision_defense": "precision_defense.transform_values { |value| value - 5 }"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "acolyte",
+    "title": {
+      "en": "Acolyte",
+      "ru": "Аколит"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 MP** to produce 1 of the following effects:\n\n- **Heal:** You gain a pool of healing that you can use to restore HP to any number of creatures within 5 Spaces of you, distributing the HP among them (minimum of 1 HP each). Make a DC 10 Spell Check. **Success:** You can restore up to 3 HP. **Success (each 5):** +1 HP. **Failure:** You only restore up to 2 HP.\n- **Cure:** You can attempt to remove 1 Poison or Disease from a creature of your choice within 1 Space of you. Make a Spell Check against the DC of the Poison or Disease. **Success:** The chosen Poison or Disease ends on the target.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОМ**, чтобы создать один из следующих эффектов:\n\n- **Исцеление:** Вы получаете запас целительных сил в форме ОЗ, который можете немедленно использовать для восстановления здоровья любому количеству существ в пределах 5 клеток, распределяя ОЗ между ними. Совершите проверку заклинания СЛ 10. **Успех:** Вы можете восстановить до 3 ОЗ. **Успех (каждые 5):** +1 ОЗ. **Провал:** Вы восстанавливаете только до 2 ОЗ.\n- **Излечение:** Вы можете попытаться излечить 1 яд или болезнь, действующие на выбранное существо в пределах 1 клетки от вас. Совершите проверку заклинания против СЛ яда или болезни. **Успех:** Цель избавляется от яда или болезни."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "acolyte"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "mp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "commander_call",
+    "title": {
+      "en": "Commander's Call",
+      "ru": "Приказ командира"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 SP** to command a willing creature that you can see within 5 Spaces that can also see or hear you. The chosen creature can immediately take 1 of the following Actions of your choice as a Reaction for free. You can only use each of the following commands once on each of your turns.\n\n- The creature makes an Attack with ADV. They can't spend any resources on this Attack.\n- The creature takes the Full Dodge Action.\n- The creature moves up to their Speed without provoking Opportunity Attacks.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОВ**, чтобы отдать приказ согласному существу, которое видите в пределах 5 Клеток и которое также может видеть или слышать вас. Выберите одно из нижеперечисленных действий. Выбранное существо может немедленно выполнить его в качестве реакции бесплатно. Вы можете использовать каждый из этих приказов только один раз за ваш ход.\n\n- Существо атакует с преимуществом. Оно не может тратить на эту атаку ресурсы.\n- Существо активно уклоняется.\n- Существо перемещается до своей скорости, не провоцируя атаки по возможности."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "prepared_spell",
+    "title": {
+      "en": "Prepared Spell",
+      "ru": "Подготовленное заклинание"
+    },
+    "description": {
+      "en": "When you complete a Long Rest, choose 1 Spell you know. The chosen Spell becomes your Prepared Spell until your next Long Rest.\n\n- **Mana Limit Break:** When you cast your Prepared Spell, you can increase your Mana Spend Limit by 1 for the casting. You can use this Feature once per Long Rest, but you regain the ability to use it when you roll for Initiative.\n- **Rehearsed Casting:** When creatures Challenge your Spell as part of a Spell Duel, they have DisADV on Checks made to stop your Spell.",
+      "ru": "Когда вы завершаете длинный отдых, выберите одно известное вам заклинание. Оно становится вашим **Подготовленным заклинанием** до следующего длинного отдыха.\n\n- **Прорыв предела маны:** Когда вы накладываете это заклинание, вы можете увеличить ваш предел траты маны на 1. Вы можете использовать эту черту один раз после длинного отдыха или броска инициативы.\n- **Отработанное наложение:** Когда противники используют дуэль заклинаний против вашего **Подготовленного заклинания**, они получают помеху на соответствующую проверку заклинаний."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "static",
+    "conditions": {
+      "level": 2
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  }
+]

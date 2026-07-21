@@ -116,7 +116,7 @@ describe Frontend::CharactersController do
       end
 
       context 'for dc20' do
-        let!(:character) { create :character, :dc20, user: user_session.user }
+        let!(:character) { create :dc20_character, user: user_session.user }
 
         it 'returns data' do
           get :show, params: { id: character.id, charkeeper_access_token: access_token }

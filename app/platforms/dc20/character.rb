@@ -67,14 +67,7 @@ module Dc20
     attribute :data, Dc20::CharacterData.to_type
 
     def decorator(simple: false, version: nil)
-      base_decorator = ::Dc20Character::BaseDecorator.new(self)
-      base_features_decorator = ::FeaturesBaseDecorator.new(base_decorator)
-      base_features_decorator.features unless simple
-      class_decorator = ::Dc20Character::ClassDecorateWrapper.new(base_features_decorator)
-      stats_decorator = ::Dc20Character::StatsDecorator.new(class_decorator)
-      features_decorator = ::FeaturesDecorator.new(stats_decorator, version: version)
-      features_decorator.features unless simple
-      ::Dc20Character::OverallDecorator.new(features_decorator)
+      Dc20Decorator.new.call(character: self, simple: simple, version: version)
     end
   end
 end

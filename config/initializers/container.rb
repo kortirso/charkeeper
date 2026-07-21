@@ -76,7 +76,6 @@ module Charkeeper
     register('commands.characters_context.dnd5.make_short_rest') { CharactersContext::Dnd5::MakeShortRestCommand.new }
     register('commands.characters_context.dnd5.make_long_rest') { CharactersContext::Dnd5::MakeLongRestCommand.new }
     register('commands.characters_context.dnd5.change_health') { CharactersContext::Dnd5::ChangeHealthCommand.new }
-    register('commands.characters_context.dnd5.add_bonus') { CharactersContext::Dnd5::AddBonusCommand.new }
 
     register('commands.notes_context.add') { NotesContext::AddCommand.new }
     register('commands.notes_context.change') { NotesContext::ChangeCommand.new }
@@ -143,7 +142,6 @@ module Charkeeper
     }
     register('commands.characters_context.daggerheart.create') { CharactersContext::Daggerheart::CreateCommand.new }
     register('commands.characters_context.daggerheart.update') { CharactersContext::Daggerheart::UpdateCommand.new }
-    register('commands.characters_context.daggerheart.add_bonus') { CharactersContext::Daggerheart::AddBonusCommand.new }
     register('commands.characters_context.daggerheart.add_spell') { CharactersContext::Daggerheart::AddSpellCommand.new }
     register('commands.characters_context.daggerheart.change_spell') { CharactersContext::Daggerheart::ChangeSpellCommand.new }
     register('commands.characters_context.daggerheart.change_energy') { CharactersContext::Daggerheart::ChangeEnergyCommand.new }
