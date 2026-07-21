@@ -103,7 +103,7 @@ export const DaggerheartCraft = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartCraft' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable py-4 px-2 md:px-4">
+        <div class="character-info-block">
           <Show
             when={tools().length > 0}
             fallback={<p>{localize(TRANSLATION, locale()).noTools}</p>}

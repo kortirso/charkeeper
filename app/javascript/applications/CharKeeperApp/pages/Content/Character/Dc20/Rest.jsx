@@ -83,7 +83,7 @@ export const Dc20Rest = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Rest' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable p-4">
+        <div class="character-info-block">
           <p class="mb-4">{localize(TRANSLATION, locale()).description}</p>
           <Select
             containerClassList="w-full mb-4"

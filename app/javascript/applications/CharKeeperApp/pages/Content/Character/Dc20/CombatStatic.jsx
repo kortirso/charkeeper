@@ -36,7 +36,7 @@ export const Dc20CombatStatic = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20CombatStatic' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable py-4">
+        <div class="character-info-block">
           <div class="grid grid-cols-1 gap-2">
             <div class="grid grid-cols-3 gap-2">
               <For

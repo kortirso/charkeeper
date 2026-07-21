@@ -248,7 +248,7 @@
     "info": {
       "price": 1
     },
-    "modifiers": { "ad_base": { "type": "add", "value": "if (equiped_armor_info, 0, 1)" } }
+    "modifiers": { "ad_base": { "type": "add", "value": "if (no_armor, 1, 0)" } }
   },
   {
     "slug": "natural_combatant",
@@ -311,7 +311,7 @@
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
-    "kind": "static",
+    "kind": "update_result",
     "description_eval_variables": {},
     "eval_variables": {},
     "price": {},
@@ -706,7 +706,7 @@
     },
     "origin": "ancestry",
     "origin_value": "gnome",
-    "kind": "update_result",
+    "kind": "hidden",
     "description_eval_variables": {},
     "eval_variables": {},
     "price": {},
@@ -747,7 +747,7 @@
     },
     "origin": "ancestry",
     "origin_value": "gnome",
-    "kind": "update_result",
+    "kind": "hidden",
     "description_eval_variables": {},
     "eval_variables": {},
     "price": {},
@@ -895,7 +895,7 @@
     },
     "origin": "ancestry",
     "origin_value": "orc",
-    "kind": "update_result",
+    "kind": "hidden",
     "description_eval_variables": {},
     "eval_variables": {},
     "price": {},
@@ -918,13 +918,12 @@
     "origin_value": "orc",
     "kind": "static",
     "limit_refresh": "combat",
-    "description_eval_variables": {
-      "limit": "1"
-    },
+    "description_eval_variables": {},
     "eval_variables": {},
     "price": {},
     "info": {
-      "price": 2
+      "price": 2,
+      "limit": 1
     }
   },
   {
@@ -1002,13 +1001,12 @@
     "origin_value": "orc",
     "kind": "static",
     "limit_refresh": "combat",
-    "description_eval_variables": {
-      "limit": "1"
-    },
+    "description_eval_variables": {},
     "eval_variables": {},
     "price": {},
     "info": {
-      "price": 2
+      "price": 2,
+      "limit": 1
     }
   },
   {
@@ -1025,13 +1023,12 @@
     "origin_value": "orc",
     "kind": "static",
     "limit_refresh": "combat",
-    "description_eval_variables": {
-      "limit": "1"
-    },
+    "description_eval_variables": {},
     "eval_variables": {},
     "price": {},
     "info": {
-      "price": 1
+      "price": 1,
+      "limit": 1
     }
   },
   {
@@ -1068,13 +1065,12 @@
     "origin_value": "orc",
     "kind": "static",
     "limit_refresh": "combat",
-    "description_eval_variables": {
-      "limit": "1"
-    },
+    "description_eval_variables": {},
     "eval_variables": {},
     "price": {},
     "info": {
-      "price": 1
+      "price": 1,
+      "limit": 1
     }
   },
   {
@@ -1286,13 +1282,12 @@
     "origin_value": "human",
     "kind": "static",
     "limit_refresh": "combat",
-    "description_eval_variables": {
-      "limit": "1"
-    },
+    "description_eval_variables": {},
     "eval_variables": {},
     "price": {},
     "info": {
-      "price": 1
+      "price": 1,
+      "limit": 1
     }
   },
   {
@@ -1475,7 +1470,7 @@
     "info": {
       "price": 1
     },
-    "modifiers": { "pd_base": { "type": "add", "value": "if (equiped_armor_info, 0, 1)" } }
+    "modifiers": { "pd_base": { "type": "add", "value": "if (no_armor, 1, 0)" } }
   },
   {
     "slug": "stubborn",
@@ -1511,13 +1506,12 @@
     "origin_value": "halfling",
     "kind": "static",
     "limit_refresh": "combat",
-    "description_eval_variables": {
-      "limit": "1"
-    },
+    "description_eval_variables": {},
     "eval_variables": {},
     "price": {},
     "info": {
-      "price": 1
+      "price": 1,
+      "limit": 1
     }
   }
 ]

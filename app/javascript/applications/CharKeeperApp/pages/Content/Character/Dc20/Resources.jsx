@@ -15,14 +15,14 @@ const TRANSLATION = {
     rest_points: 'Rest points',
     grit_points: 'Grit points',
     temp: {
-      health: 'Temp health points',
+      health: 'Temp HP',
     },
     healthy: 'Healthy',
     bloodied: 'Bloodied',
     wellBloodied: 'Well-Bloodied',
     door: "Death's Door",
     dead: 'Dead',
-    environment: 'Environment',
+    environment: 'Secondary',
     speedTitle: 'Speed',
     speeds: {
       ground: 'Ground',
@@ -32,7 +32,14 @@ const TRANSLATION = {
       glide: 'Glide'
     },
     jump: 'Jump distance',
-    breath: 'Breath duration'
+    breath: 'Breath duration',
+    vision: 'Senses',
+    visions: {
+      dark: 'Darkvision',
+      blind: 'Blindsight',
+      true: 'Truesight',
+      tremor: 'Tremorsense'
+    }
   },
   ru: {
     title: 'Ресурсы',
@@ -42,14 +49,14 @@ const TRANSLATION = {
     rest_points: 'Очки отдыха',
     grit_points: 'Очки решимости',
     temp: {
-      health: 'Временные очки здоровья',
+      health: 'Временные ОЗ',
     },
     healthy: 'Здоров',
     bloodied: 'Изранен',
     wellBloodied: 'Тяжело изранен',
     door: 'При смерти',
     dead: 'Мёртв',
-    environment: 'Обстановка',
+    environment: 'Вторичные',
     speedTitle: 'Скорость',
     speeds: {
       ground: 'Наземная',
@@ -59,7 +66,14 @@ const TRANSLATION = {
       glide: 'Планирование'
     },
     jump: 'Дальность прыжка',
-    breath: 'Запас дыхания'
+    breath: 'Запас дыхания',
+    vision: 'Чувства',
+    visions: {
+      dark: 'Тёмное зрение',
+      blind: 'Слепое зрение',
+      true: 'Истинное зрение',
+      tremor: 'Чувство вибрации'
+    }
   },
   es: {
     title: 'Recursos',
@@ -69,14 +83,14 @@ const TRANSLATION = {
     rest_points: 'Puntos de descanso',
     grit_points: 'Puntos de temple',
     temp: {
-      health: 'Puntos de salud temporales',
+      health: 'Temp HP',
     },
     healthy: 'Saludable',
     bloodied: 'Sangrando',
     wellBloodied: 'Desangrado',
     door: 'A punto de morir',
     dead: 'Muerto',
-    environment: 'Entorno',
+    environment: 'Secondary',
     speedTitle: 'Velocidad',
     speeds: {
       ground: 'Terrestre',
@@ -86,7 +100,14 @@ const TRANSLATION = {
       glide: 'Planeo'
     },
     jump: 'Distancia de salto',
-    breath: 'Duración de la respiración'
+    breath: 'Duración de la respiración',
+    vision: 'Senses',
+    visions: {
+      dark: 'Darkvision',
+      blind: 'Blindsight',
+      true: 'Truesight',
+      tremor: 'Tremorsense'
+    }
   }
 }
 
@@ -149,9 +170,14 @@ export const Dc20Resources = (props) => {
 
   const renderAttribute = (points, slug) => (
     <Show when={points.max !== 0} fallback={<></>}>
-      <div class="flex items-center mb-2">
-        <p class="text-sm/4 w-56">{localize(TRANSLATION, locale())[slug]}</p>
-        <div class="flex items-center">
+      <div class="flex items-center">
+        <p class="text-sm/4 flex-1">
+          {localize(TRANSLATION, locale())[slug]}
+          <Show when={slug === 'health'}>
+            <span class="text-sm"> ({healthStatus()})</span>
+          </Show>
+        </p>
+        <div class="flex items-center flex-1">
           <Button default size="small" onClick={() => updateResource(slug, -1)}>
             <Minus />
           </Button>
@@ -164,9 +190,9 @@ export const Dc20Resources = (props) => {
         </div>
       </div>
       <Show when={points.temp !== undefined}>
-        <div class="flex items-center mb-2">
-          <p class="text-sm/4 w-56">{localize(TRANSLATION, locale()).temp[slug]}</p>
-          <div class="flex items-center">
+        <div class="flex items-center">
+          <p class="text-sm/4 flex-1">{localize(TRANSLATION, locale()).temp[slug]}</p>
+          <div class="flex items-center flex-1">
             <div class="w-6" />
             <p class="w-32 text-center">
               {points.temp}
@@ -183,34 +209,42 @@ export const Dc20Resources = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Resources' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable p-4 mb-2 grid grid-cols-1 emd:grid-cols-3 gap-x-2 gap-y-4">
-          <div class="col-span-2">
-            <h2 class="text-lg font-normal! mb-2">{localize(TRANSLATION, locale())['title']}</h2>
-            <div class="flex mb-2">
-              <p class="w-56" />
-              <div class="flex">
-                <div class="w-6" />
-                <p class="w-32 text-center">{healthStatus()}</p>
-                <div class="w-6" />
-              </div>
-            </div>
+        <div class="character-info-block mb-4">
+          <div class="mb-4 flex flex-col gap-1">
+            <h2 class="text-lg font-normal!">{localize(TRANSLATION, locale()).title}</h2>
             {renderAttribute(character().health, 'health')}
             {renderAttribute(character().stamina_points, 'stamina_points')}
             {renderAttribute(character().mana_points, 'mana_points')}
             {renderAttribute(character().rest_points, 'rest_points')}
             {renderAttribute(character().grit_points, 'grit_points')}
           </div>
-          <div class="">
-            <h2 class="text-lg font-normal! mb-4">{localize(TRANSLATION, locale()).environment}</h2>
-            <h3 class="font-normal! mb-2">{localize(TRANSLATION, locale()).speedTitle}</h3>
-            <p class="text-sm mb-2">{localize(TRANSLATION, locale()).speeds.ground} - {character().speeds.ground}</p>
-            <For each={Object.entries(character().speeds).filter(([slug,]) => slug !== 'ground')}>
-              {([slug, value]) =>
-                <p class="text-sm mb-2">{localize(TRANSLATION, locale()).speeds[slug]} - {value}</p>
-              }
-            </For>
-            <p class="text-sm mt-4">{localize(TRANSLATION, locale()).jump} - {character().jump}</p>
-            <p class="text-sm mt-4">{localize(TRANSLATION, locale()).breath} - {character().breath}</p>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-2">
+            <div class="flex flex-col gap-1 md:gap-2">
+              <h3 class="font-normal!">{localize(TRANSLATION, locale()).speedTitle}</h3>
+              <p class="text-sm">{localize(TRANSLATION, locale()).speeds.ground} - {character().speeds.ground}</p>
+              <For each={Object.entries(character().speeds).filter(([slug,]) => slug !== 'ground')}>
+                {([slug, value]) =>
+                  <p class="text-sm">{localize(TRANSLATION, locale()).speeds[slug]} - {value}</p>
+                }
+              </For>
+            </div>
+            <div class="flex flex-col gap-1 md:gap-2">
+              <h3 class="font-normal!">{localize(TRANSLATION, locale()).environment}</h3>
+              <p class="text-sm">{localize(TRANSLATION, locale()).jump} - {character().jump}</p>
+              <p class="text-sm">{localize(TRANSLATION, locale()).breath} - {character().breath}</p>
+            </div>
+            <Show
+              when={Object.values(character().visions).filter((item) => item > 0).length > 0}
+            >
+              <div class="flex flex-col gap-1 md:gap-2">
+                <h3 class="font-normal!">{localize(TRANSLATION, locale()).vision}</h3>
+                <For each={Object.entries(character().visions).filter(([, value]) => value > 0)}>
+                  {([slug, value]) =>
+                    <p class="text-sm">{localize(TRANSLATION, locale()).visions[slug]} - {value}</p>
+                  }
+                </For>
+              </div>
+            </Show>
           </div>
         </div>
       </GuideWrapper>

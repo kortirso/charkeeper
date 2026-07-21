@@ -1,8 +1,11 @@
 import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, GuideWrapper, Input, Select, Button, Dice } from '../../../../components';
+import {
+  ErrorWrapper, Checkbox, Levelbox, EditWrapper, GuideWrapper, Input, Select, Button, Dice, IconButton
+} from '../../../../components';
 import config from '../../../../data/dc20.json';
+import { Star } from '../../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { modifier, translate, localize, performResponse } from '../../../../helpers';
@@ -143,7 +146,11 @@ export const Dc20Skills = (props) => {
             }
           </For>
         </Show>
-        <Checkbox filled classList="ml-2 rotate-45" checked={object.expertise} onToggle={() => toggleCallback(object.slug)} />
+        <IconButton classList="hover:bg-transparent!" onClick={() => toggleCallback(object.slug)}>
+          <Show when={object.expertise} fallback={<Star width="20" height="20" />}>
+            <Star filled width="20" height="20" />
+          </Show>
+        </IconButton>
       </div>
     );
   }

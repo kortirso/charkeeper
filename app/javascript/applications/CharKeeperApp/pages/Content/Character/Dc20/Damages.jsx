@@ -10,9 +10,6 @@ import { localize, performResponse } from '../../../../helpers';
 const TRANSLATION = {
   en: {
     title: 'Damage impact',
-    immune: 'Immunity',
-    vulner: 'Vulner',
-    resist: 'Resist',
     nothing: 'Character does not have any resistances or vulnerabilities',
     damageCalculator: 'Damage calculator',
     damageValue: 'Income damage',
@@ -32,9 +29,6 @@ const TRANSLATION = {
   },
   ru: {
     title: 'Воздействие урона',
-    immune: 'Иммунитет',
-    vulner: 'Уязвим',
-    resist: 'Сопр',
     nothing: 'У персонажа нет сопротивлений или уязвимостей',
     damageCalculator: 'Калькулятор урона',
     damageValue: 'Входящий урон',
@@ -54,9 +48,6 @@ const TRANSLATION = {
   },
   es: {
     title: 'Impacto de daño',
-    immune: 'Inmunidad',
-    vulner: 'Vulnerable',
-    resist: 'Resistencia',
     nothing: 'El personaje no tiene ninguna resistencia o vulnerabilidad',
     damageCalculator: 'Calculadora de daño',
     damageValue: 'Daño entrante',
@@ -155,16 +146,16 @@ export const Dc20Damages = (props) => {
   }
 
   const damageText = (values) => {
-    if (values.abs > 0 && values.multi > 0) return `${localize(TRANSLATION, locale()).resist} (${localize(TRANSLATION, locale()).half})`;
-    if (values.abs < 0 && values.multi < 0) return `${localize(TRANSLATION, locale()).vulner} (${localize(TRANSLATION, locale()).double})`;
+    if (values.abs > 0 && values.multi > 0) return `${localize(TRANSLATION, locale()).impacts.resist} (${localize(TRANSLATION, locale()).half})`;
+    if (values.abs < 0 && values.multi < 0) return `${localize(TRANSLATION, locale()).impacts.vulner} (${localize(TRANSLATION, locale()).double})`;
 
     const result = [];
     if (values.abs !== 0) {
-      const text = values.abs > 0 ? localize(TRANSLATION, locale()).resist : localize(TRANSLATION, locale()).vulner;
+      const text = values.abs > 0 ? localize(TRANSLATION, locale()).impacts.resist : localize(TRANSLATION, locale()).impacts.vulner;
       result.push(`${text} (${Math.abs(values.abs)})`)
     }
     if (values.multi !== 0) {
-      const text = values.multi > 0 ? localize(TRANSLATION, locale()).resist : localize(TRANSLATION, locale()).vulner;
+      const text = values.multi > 0 ? localize(TRANSLATION, locale()).impacts.resist : localize(TRANSLATION, locale()).impacts.vulner;
       result.push(`${text} (${values.multi > 0 ? localize(TRANSLATION, locale()).half : localize(TRANSLATION, locale()).double})`)
     }
     return result.join(' / ');
@@ -210,7 +201,7 @@ export const Dc20Damages = (props) => {
           onCancelEditing={cancelEditing}
           onSaveChanges={updateResistances}
         >
-          <div class="blockable p-4">
+          <div class="character-info-block">
             <p class="text-lg">{localize(TRANSLATION, locale()).title}</p>
             <Show
               when={!editMode()}
@@ -274,7 +265,7 @@ export const Dc20Damages = (props) => {
                 fallback={<p class="mt-2">{localize(TRANSLATION, locale()).nothing}</p>}
               >
                 <>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 text-sm mt-2">
+                  <div class="flex flex-col gap-1 text-sm mt-2">
                     <For each={Object.entries(config.damages)}>
                       {([slug, values]) =>
                         <Show when={character().damages[slug]}>
@@ -284,7 +275,7 @@ export const Dc20Damages = (props) => {
                               when={character().damages[slug].immune}
                               fallback={<span>{damageText(character().damages[slug])}</span>}
                             >
-                              <span>{localize(TRANSLATION, locale()).immune}</span>
+                              <span>{localize(TRANSLATION, locale()).impacts.immune}</span>
                             </Show>
                           </div>
                         </Show>

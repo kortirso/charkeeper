@@ -266,7 +266,7 @@ export const Dc20Leveling = (props) => {
         onReloadCharacter={props.onReloadCharacter}
         finishGuideStep={true}
       >
-        <div class="blockable p-4 mb-2">
+        <div class="character-info-block mb-2">
           <div class="flex items-center">
             <Button default classList="rounded mr-4" onClick={levelUp}><Upgrade width="24" height="24" /></Button>
             <p>

@@ -120,6 +120,7 @@ class Dc20Decorator < ApplicationDecoratorV2
     @result['size'] = 'medium'
     @result['features'] = apply_features
     @result['cantrips'] = 0
+    @result['visions'] = { 'dark' => 0, 'blind' => 0, 'true' => 0, 'tremor' => 0 }
   end
 
   def apply_general_modifiers
@@ -142,16 +143,12 @@ class Dc20Decorator < ApplicationDecoratorV2
         next if value['type'] != 'set'
 
         formula_result = formula.call(formula: value['value'], variables: formula_variables)
-        next unless formula_result
-
         if key.include?('.')
           primary, secondary = key.split('.')
           @set_bonuses[primary] ||= {}
-          @set_bonuses[primary][secondary] ||= 0
-          @set_bonuses[primary][secondary] = [formula_result, @set_bonuses[primary][secondary]].max
+          @set_bonuses[primary][secondary] = formula_result || value['value']
         else
-          @set_bonuses[key] ||= 0
-          @set_bonuses[key] = [formula_result, @set_bonuses[key]].max
+          @set_bonuses[key] = formula_result || value['value']
         end
       end
     end
@@ -323,10 +320,7 @@ class Dc20Decorator < ApplicationDecoratorV2
 
   def available_features
     @available_features ||=
-      @character
-        .feats.includes(:feat)
-        .order('feats.origin ASC, feats.created_at ASC')
-        .where(ready_to_use: [true, nil])
+      @character.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC').where(ready_to_use: [true, nil])
   end
 
   def base_formula_variables
@@ -339,9 +333,7 @@ class Dc20Decorator < ApplicationDecoratorV2
   end
 
   def formula_variables
-    @formula_variables ||=
-      base_formula_variables
-        .merge(modified_abilities)
+    @formula_variables ||= base_formula_variables.merge(modified_abilities)
   end
 
   # rubocop: disable Metrics/AbcSize, Layout/LineLength
@@ -404,10 +396,15 @@ class Dc20Decorator < ApplicationDecoratorV2
   # rubocop: enable Metrics/AbcSize, Layout/LineLength
 
   def apply_features
-    available_features.filter_map { |feature| feature_payload(feature).merge(used_count: feature.used_count) }
+    available_features.filter_map do |feature|
+      next if feature.feat.kind == 'hidden'
+
+      feature_payload(feature).merge(used_count: feature.used_count)
+    end
   end
 
   def feature_payload(feature) # rubocop: disable Metrics/AbcSize
+    limit = feature.feat.info['limit'] ? formula.call(formula: feature.feat.info['limit'], variables: formula_variables) : nil
     {
       id: feature.id,
       slug: feature.feat.slug || feature.id,
@@ -420,10 +417,12 @@ class Dc20Decorator < ApplicationDecoratorV2
       info: feature.feat.info,
       continious: feature.feat.continious,
       active: feature.active,
-      limit: feature.feat.description_eval_variables['limit']&.to_i,
+      limit: limit,
       limit_refresh: feature.feat.limit_refresh,
       value: feature.value,
-      selected_count: feature.selected_count
+      selected_count: feature.selected_count,
+      tokens: feature.tokens,
+      tokens_max: feature.tokens ? feature.feat.tokens['limit'] : nil
     }.compact
   end
 

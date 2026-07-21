@@ -5,7 +5,7 @@ export const IconButton = (props) => {
 
   return (
     <div
-      class={[props.classList, 'default-icon-button'].join(' ')}
+      class={['default-icon-button', props.classList].join(' ')}
       classList={{
         'w-6 h-6': props.size === undefined,
         'w-10 h-10': props.size === 'xl',

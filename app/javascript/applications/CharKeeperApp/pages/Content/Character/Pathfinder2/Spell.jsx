@@ -74,7 +74,7 @@ export const Pathfinder2Spell = (props) => {
             <div class="flex justify-between">
               <p class="flex gap-x-4">
                 <Show when={props.signature}>
-                  <IconButton onClick={(e) => props.onSignature(e, !props.value.signature)}>
+                  <IconButton classList="hover:bg-transparent!" onClick={(e) => props.onSignature(e, !props.value.signature)}>
                     <Show when={props.value.signature} fallback={<Star width="20" height="20" />}>
                       <Star filled width="20" height="20" />
                     </Show>

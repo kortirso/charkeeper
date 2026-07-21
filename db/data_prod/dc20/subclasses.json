@@ -39,13 +39,12 @@
       "selected_feature": "aberrant_tumor"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "damages": "damages.concat([['physical', 'resist', 1]])"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": { "damages": { "type": "concat", "value": ["physical", "resist", 1] } }
   },
   {
     "slug": "thousand_cuts",
@@ -229,14 +228,14 @@
     "conditions": {
       "level": 3
     },
-    "description_eval_variables": {
-      "limit": "modified_abilities['prime']"
-    },
+    "description_eval_variables": {},
     "eval_variables": {},
     "continious": false,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {
+      "limit": "prime"
+    }
   },
   {
     "slug": "elemental_infusion",
@@ -301,13 +300,12 @@
       "selected_feature": "basilisk_eye"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "damages": "damages.concat([['physical', 'resist', 1]])"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": { "damages": { "type": "concat", "value": ["physical", "resist", 1] } }
   },
   {
     "slug": "deathweed",
@@ -326,13 +324,12 @@
       "selected_feature": "deathweed"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "damages": "damages.concat([['umbral', 'resist', 'half']])"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": { "damages": { "type": "concat", "value": ["umbral", "resist", "half"] } }
   },
   {
     "slug": "plant_fibers",
@@ -374,13 +371,12 @@
       "selected_feature": "divine_water"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "damages": "damages.concat([['radiant', 'resist', 'half']])"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": { "damages": { "type": "concat", "value": ["radiant", "resist", "half"] } }
   },
   {
     "slug": "monster_hunter",
@@ -423,14 +419,14 @@
     "conditions": {
       "level": 3
     },
-    "description_eval_variables": {
-      "limit": "modified_abilities['prime']"
-    },
+    "description_eval_variables": {},
     "eval_variables": {},
     "continious": false,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {
+      "limit": "prime"
+    }
   },
   {
     "slug": "discerning_eye",
@@ -496,16 +492,14 @@
     "conditions": {
       "level": 3
     },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "eval_variables": {
-      "maneuver_points": "maneuver_points + 1"
-    },
+    "description_eval_variables": {},
+    "eval_variables": {},
     "continious": false,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {
+      "limit": 1
+    }
   },
   {
     "slug": "portal_sage",
@@ -664,13 +658,12 @@
       "level": 3
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "maneuver_points": "maneuver_points + 1"
-    },
+    "eval_variables": {},
     "continious": false,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": { "maneuver_points": { "type": "add", "value": 1 } }
   },
   {
     "slug": "renegade_duelist",

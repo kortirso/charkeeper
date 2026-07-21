@@ -14,7 +14,7 @@ import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    mana_spend_limit: 'Mana spend limit',
+    mana_spend_limit: 'Spend limit',
     spells: 'Spells',
     selectSpells: 'Select spells',
     back: 'Back',
@@ -40,7 +40,7 @@ const TRANSLATION = {
     repeatable: 'Repeatable'
   },
   ru: {
-    mana_spend_limit: 'Предел траты маны',
+    mana_spend_limit: 'Предел траты',
     spells: 'Заклинания',
     selectSpells: 'Выбрать заклинания',
     back: 'Назад',
@@ -66,7 +66,7 @@ const TRANSLATION = {
     repeatable: 'Многократное'
   },
   es: {
-    mana_spend_limit: 'Límite de gasto de maná',
+    mana_spend_limit: 'Límite de gasto',
     spells: 'Hechizos',
     selectSpells: 'Seleccionar hechizos',
     back: 'Atrás',

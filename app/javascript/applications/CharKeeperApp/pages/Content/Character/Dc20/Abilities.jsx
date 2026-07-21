@@ -106,7 +106,7 @@ export const Dc20Abilities = (props) => {
           onCancelEditing={cancelEditing}
           onSaveChanges={updateCharacter}
         >
-          <div class="blockable p-4">
+          <div class="character-info-block">
             <div class="grid grid-cols-2 emd:grid-cols-4 gap-x-2 gap-y-4">
               <For each={Object.entries(config.abilities).map(([key, values]) => [key, localize(values.name, locale())])}>
                 {([slug, ability]) =>
