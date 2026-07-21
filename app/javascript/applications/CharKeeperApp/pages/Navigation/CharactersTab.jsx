@@ -285,7 +285,7 @@ export const CharactersTab = () => {
               containerClassList="mb-2"
               classList="w-full"
               labelText={t('newCharacterPage.platform')}
-              items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'fate': 'Fate', 'fallout': 'Fallout 2D20', 'cosmere': 'Cosmere', 'cthulhu7': 'Call of Cthulhu 7', 'dc20': 'DC20 0.10' }}
+              items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'fate': 'Fate', 'fallout': 'Fallout 2D20', 'cosmere': 'Cosmere', 'cthulhu7': 'Call of Cthulhu 7', 'dc20': 'DC20 0.15' }}
               selectedValue={platform()}
               onSelect={(value) => setPlatform(value)}
               dataTestId="new-character-platform-select"

@@ -1,0 +1,698 @@
+[
+  {
+    "slug": "ooze_gel",
+    "title": {
+      "en": "Ooze Gel",
+      "ru": "Желе из слизи"
+    },
+    "description": {
+      "en": "**Hunter's Mark:** When you Heavy Hit your Marked Target, you cover it in slime. It's Hindered until it or a creature within 1 Space of it spends 1 AP to remove the slime.\n**Amorphous Body:** You can squeeze through gaps as small as 2 inches (5 cm) and walk normally on solid surfaces regardless of their orientation (such as upside down on the ceiling) without falling or needing to Climb.",
+      "ru": "**Метка охотника:** При нанесении сильного удара по вашей отмеченной цели вы сковываете её слизью до тех пор, пока она или существо в пределах 1 клетки от неё не уберёт слизь, потратив 1 ОД.\n**Аморфное тело:** Вы можете взбираться по сложным поверхностям (в том числе по потолку) без проверок и пролезать в щели шириной от 5 сантиметров (2 дюймов)."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "ooze_gel"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "aberrant_tumor",
+    "title": {
+      "en": "Aberrant Tumor",
+      "ru": "Нарост аберрации"
+    },
+    "description": {
+      "en": "**Hunter's Mark:** While within 20 Spaces of your Marked target, you have ADV when you use Analyze Creature on them and you have ADV on Mental Saves your Marked target forces you to make.\n**Unreadable:** You gain Psychic Resistance (1) and your thoughts can't be read by others unless you allow it.",
+      "ru": "**Метка охотника:** Пока вы в 20 клетках от вашей отмеченной цели, вы получаете преимущество на её опознание как существа и преимущество на ментальные спасы, спровоцированные ею.\n**Непостижимый:** Вы получаете добавленное сопротивление психическому урону (1), и ваши мысли нельзя прочесть без вашего позволения."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "aberrant_tumor"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "damages": "damages.concat([['physical', 'resist', 1]])"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "thousand_cuts",
+    "title": {
+      "en": "Thousand Cuts",
+      "ru": "Тысяча ран"
+    },
+    "description": {
+      "en": "When a creature fails its Save against your **Debilitating Strike**, it also begins Bleeding (even if it’s immune to the Condition). If a creature is affected by Bleeding from this Feature, the DC to end any Bleeding on it is equal to your Save DC and it can no longer be ended by regaining HP.",
+      "ru": "Когда существо проваливает спас от вашего **Изнуряющего удара**, оно также становится ранено (даже при иммунитете). Если существо ранено этой чертой, СЛ снятия пунктов ранения становится равна вашей СЛ спаса, а снять его исцелением невозможно."
+    },
+    "origin": "subclass",
+    "origin_value": "long_death",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "gallant_hero",
+    "title": {
+      "en": "Gallant Hero",
+      "ru": "Отважный лидер"
+    },
+    "description": {
+      "en": "Your presence is a symbol of hope and safety to those around you. You have ADV on Checks to convince creatures not to be afraid.",
+      "ru": "Ваше присутствие является символом надежды и безопасности для окружающих. Вы получаете преимущество на проверки, направленные на то, чтобы убедить существ преодолеть страх."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "crusader",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "hex_enhancements",
+    "title": {
+      "en": "Hex Enhancements",
+      "ru": "Ведьмовской сглаз"
+    },
+    "description": {
+      "en": "You can add the Spell Enhancements below to any Spell you cast, but you can only add 1 at a time. MP spent on these Spell Enhancements doesn't count against your Mana Spend Limit.\nWhen you use one of these Spell Enhancements, 1 creature of your choice that's targeted by the Spell must make a Repeated Charisma Save against your Check. If the Spell doesn't normally require a Check, you must make a Spell Check when using one of these Spell Enhancements. **Save Failure:** The target is subjected to the chosen Hex for 1 minute:\n\n- **Bewitching Hex: (1 MP)** The target becomes Charmed by you for the duration.\n- **Reaping Hex: (1 MP)** The target takes 1 True damage and you regain 1 HP. This effect repeats at the end of each of its turns for the duration.\n- **Vermin Hex: (1 MP)** The target can't speak and if its Size is Large or smaller its Size decreases by 1. Its Size decreases by 1 again at the end of each of its turns for the duration until it becomes Tiny.",
+      "ru": "Вы изучаете улучшения заклинания из списка ниже. Вы можете использовать только один сглаз за заклинание. Потраченные на сглаз ОМ не учитываются для предела траты маны. Даже если заклинание не требует проверки заклинания, при использовании сглаза вы совершаете проверку заклинания против повторяемого **спаса харизмы** одной из целей заклинаний. **Провал спаса:** Цель подвержена выбранному сглазу на 1 минуту.\n\n- **Приворот: (1 ОМ)** Цель очарована вами.\n- **Вытягивание жизни: (1 ОМ)** Цель получает 1 истинного урона и вы восстанавливаете 1 ОЗ. Эффект повторяется в конце каждого из ходов цели.\n- **Оборот: (1 ОМ)** Цель теряет способность говорить, и если цель большая или меньше, её размер уменьшается на 1. Её размер уменьшается вновь в конце каждого из ходов цели пока цель не станет крошечной."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "witch",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "curse_expert",
+    "title": {
+      "en": "Curse Expert",
+      "ru": "Знаток проклятий"
+    },
+    "description": {
+      "en": "You can spend 1 minute focusing your mind to detect the presence of Curses within 20 Spaces. You learn the location of any Cursed creature or Cursed object within range. If you spend 10 minutes in contact with a Cursed creature or object, you learn the nature of the Curse but not the knowledge of how to remove it.",
+      "ru": "Вы можете сосредоточиться на 1 минуту, чтобы определить местоположение всех проклятых существ и предметов в радиусе 20 Клеток. Также, вы можете потратить 10 минут, прикасаясь к проклятому существу или предмету, чтобы опознать природу проклятия (но не способ его снять)."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "witch",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "tall_tales",
+    "title": {
+      "en": "Tall Tales",
+      "ru": "Небылицы"
+    },
+    "description": {
+      "en": "You know how to play to a crowd. You can spend up to 5 minutes telling a story to a crowd of creatures (that are not immediately hostile to you) and keep their rapt attention the entire time. During this story, creatures within the crowd have DisADV on Awareness Checks.",
+      "ru": "Вы знаете, как завлечь публику. Вы можете потратить до 5 минут, рассказывая историю существам, которые не относятся к вам явно враждебно, чтобы завладеть их пристальным вниманием. При этом они получают помеху на проверки бдительности."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "swashbuckler",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "monstrous_concoctions",
+    "title": {
+      "en": "Monstrous Concoctions",
+      "ru": "Чудовищные снадобья"
+    },
+    "description": {
+      "en": "**Concoction:** You learn how to create 3 Concoctions of your choice from the list below. You can use the Object Action to create a Concoction you know. You can create a number of Concoctions per Long Rest equal to your Prime Modifier. A Concoction becomes inert when you complete a Long Rest.\n**Administering:** You can use the Object Action to fully drink a Concoction or administer it to a willing creature within 1 Space. The drinker becomes subjected to the Concoctions effects for 10 minutes or until they drink another Concoction.",
+      "ru": "**Рецепты снадобий:** Вы изучаете 3 рецепта снадобий из списка ниже. После длинного отдыха вы подготавливаете ингредиенты для склянок в количестве, равном вашему высшему модификатору. Ингредиенты в склянках нестабильны и становятся бесполезными после следующего длинного отдыха, когда вы подготавливаете новые.\n**Снадобья:** Вы можете применить склянку, чтобы приготовить снадобье на ваш выбор и немедленно его выпить, либо влить в рот существу в пределах 1 клетки от вас. Снадобье даёт указанные ниже бонусы и действует 10 минут. Одновременно на вас может действовать эффект только одного снадобья. При употреблении нового снадобья эффект старого заканчивается."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "many_from_list",
+    "limit_refresh": "long_rest",
+    "options": {
+      "ooze_gel": {
+        "name": {
+          "en": "Ooze Gel",
+          "ru": "Желе из слизи"
+        }
+      },
+      "deathweed": {
+        "name": {
+          "en": "Deathweed",
+          "ru": "Трупный мох"
+        }
+      },
+      "hydra_blood": {
+        "name": {
+          "en": "Hydra's Blood",
+          "ru": "Кровь гидры"
+        }
+      },
+      "basilisk_eye": {
+        "name": {
+          "en": "Basilisk Eye",
+          "ru": "Глаз василиска"
+        }
+      },
+      "divine_water": {
+        "name": {
+          "en": "Divine Water",
+          "ru": "Вода небес"
+        }
+      },
+      "plant_fibers": {
+        "name": {
+          "en": "Plant Fibers",
+          "ru": "Растительные волокна"
+        }
+      },
+      "aberrant_tumor": {
+        "name": {
+          "en": "Aberrant Tumor",
+          "ru": "Нарост аберрации"
+        }
+      },
+      "elemental_infusion": {
+        "name": {
+          "en": "Elemental Infusion",
+          "ru": "Настой стихии"
+        }
+      }
+    },
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {
+      "limit": "modified_abilities['prime']"
+    },
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "elemental_infusion",
+    "title": {
+      "en": "Elemental Infusion",
+      "ru": "Настой стихии"
+    },
+    "description": {
+      "en": "Choose an Elemental damage type when you make this Concoction.\n**Hunter's Mark:** Attacks you make against your Marked target deal +1 damage of the chosen Elemental Damage type.\n**Elemental Tolerance:** You gain Resistance (1) to the chosen Elemental Damage.",
+      "ru": "Выберите тип стихийного урона при приготовлении снадобья.\n**Метка охотника:** Атаки по вашей отмеченной цели наносят +1 выбранного стихийного урона.\n**Сопротивление стихии:** Вы получаете сопротивление (1) выбранному стихийному урону."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "elemental_infusion"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "hydra_blood",
+    "title": {
+      "en": "Hydra's Blood",
+      "ru": "Кровь гидры"
+    },
+    "description": {
+      "en": "**Hunter's Mark:** When you Heavy Hit your Marked target, you regain 1 HP.\n**Poisonous Blood:** You have Poisoned Resistance and when a creature within 1 Space of you deals damage to you with an Attack, they take 1 Poison damage.",
+      "ru": "**Метка охотника:** При нанесении сильного удара по вашей отмеченной цели вы восстанавливаете 1 ОЗ. \n**Ядовитая кровь:** Вы получаете сопротивление отравлению, а существа в пределах 1 клетки, наносящие вам урон атакой, получают 1 ядовитого урона."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "hydra_blood"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "basilisk_eye",
+    "title": {
+      "en": "Basilisk Eye",
+      "ru": "Глаз василиска"
+    },
+    "description": {
+      "en": "**Hunter's Mark:** You can sense the vibrations made by your Marked target, giving you Tremorsense 20 Spaces when locating them.\n**Stone Skin:** You gain Physical Resistance (1).",
+      "ru": "**Метка охотника:** Вы получаете чувство вибрации в 20 клеток для обнаружения вашей отмеченной цели.\n**Каменная кожа:** Вы получаете добавленное сопротивление физическому урону (1)."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "basilisk_eye"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "damages": "damages.concat([['physical', 'resist', 1]])"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "deathweed",
+    "title": {
+      "en": "Deathweed",
+      "ru": "Трупный мох"
+    },
+    "description": {
+      "en": "**Hunter's Mark:** When you score a Heavy Hit against a Marked target it bypasses their Physical Resistances and prevents them from regaining HP until the start of your next turn.\n**Death State:** You enter a state between life and death, granting you Umbral Resistance (Half), Doomed Immunity, and ADV on Death Saves.",
+      "ru": "**Метка охотника:** Ваши сильные удары по вашей отмеченной цели игнорируют сопротивление физическому урону и не позволяют цели восстанавливать ОЗ до начала вашего следующего хода.\n**Полусмерть:** Вы находитесь между жизнью и смертью, получая добавленное сопротивление сумрачному урону (половина), иммунитет от обречённости и преимущество на спасы от смерти."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "deathweed"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "damages": "damages.concat([['umbral', 'resist', 'half']])"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "plant_fibers",
+    "title": {
+      "en": "Plant Fibers",
+      "ru": "Растительные волокна"
+    },
+    "description": {
+      "en": "**Hunter's Mark:** If your Marked Target fails a Save you force it to make, they can't move until the end of your next turn.\n**Plant Stitching:** You gain Bleeding Immunity and gain 1 Temp HP at the end of each of your turns.",
+      "ru": "**Метка охотника:** Если ваша отмеченная цель проваливает вызванный вами спас, она становится остановлена до конца вашего следующего хода.\n**Зарастание ран:** Вы получаете иммунитет к ранению, а также получаете 1 временное ОЗ в конце каждого вашего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "plant_fibers"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "divine_water",
+    "title": {
+      "en": "Divine Water",
+      "ru": "Вода небес"
+    },
+    "description": {
+      "en": "**Hunter's Mark:** Once on each of your turns when you score a Heavy Hit against your Marked target, it also becomes Exposed on the next Attack against it before the end of your next turn.\n**Brilliant Essence:** You gain Radiant Resistance (Half) and radiate Bright Light in a 5 Space Radius.",
+      "ru": "**Метка охотника:** Один раз за ход, когда вы наносите сильный удар по вашей отмеченной цели, она становится раскрыта для первой атаки по ней до конца вашего следующего хода.\n**Сияющая сущность:** Вы получаете добавленное сопротивление сияющему урону (половину) и излучаете яркий свет в радиусе 5 клеток."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "divine_water"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "damages": "damages.concat([['radiant', 'resist', 'half']])"
+    },
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "monster_hunter",
+    "title": {
+      "en": "Monster Hunter",
+      "ru": "Охотник на монстров"
+    },
+    "description": {
+      "en": "You are a master at hunting monsters. If you have 3 entries of creatures with the same Creature Type in your Hunter's Bestiary, you can add the entire Creature Type as an entry.",
+      "ru": "Вы мастер в охоте на монстров. Если в вашем **Бестиарии** есть 3 существа одного типа, вы можете добавить в него весь тип существ."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "dynamic_traps",
+    "title": {
+      "en": "Dynamic Traps",
+      "ru": "Адаптивные ловушки"
+    },
+    "description": {
+      "en": "- **Creating Traps:** These Traps use your Save DC when they force a creature to make a Save or when a Check is made to interact with them.\n- **Setting a Trap:** You can spend **1 AP** to Set and Hide one of your Traps in a Space within 5 Spaces that doesn't already contain a Trap. The Trap is Hidden to creatures, and the DC to discover or disarm the Trap is equal to your Save DC. When you do, you can spend 1 SP to add the damage and effect of one of your Hunter's Strike options to the Trap. Once Set, your Traps are unstable and fall apart harmlessly after 1 hour.\n- **Triggering a Trap:** A Trap is Triggered when a creature other than you enters or leaves a Space occupied by the Trap. Alternatively, you can spend 1 AP to Trigger a Trap within 5 Spaces. When Triggered, the Trap makes an Attack for free against the AD of a creature in its Space using your Attack Check. This Attack ignores your Multiple Check Penalty and doesn't progress that penalty.\n- **Hit:** The Trap deals Bludgeoning, Piercing, or Slashing damage (your choice when you Set the Trap) equal to your Prime Modifier, plus the damage and effects of your Hunter's Strike (if used when you Set the Trap).n- **Recovering a Trap:** You can spend 1 AP while within 1 Space of one of your Set Traps to disarm and recover the use of the Trap. When you do, it loses any damage and effects of your Hunter's Mark (if applicable).",
+      "ru": "- **Создание ловушек:** Ловушки используют ваш СЛ спаса, когда вызывают спасы или противодействуют проверкам.\n- **Установка ловушки:** Вы можете потратить **1 ОД**, чтобы установить и спрятать ловушку в клетке, не содержащей других ловушек, в пределах 5 клеток от вас. Ловушка скрыта, и СЛ её обнаружения или обезвреживания равна вашей СЛ спаса. При этом вы можете потратить **1 ОВ**, чтобы добавить ловушке урон и эффект одного из ваших **Ударов охотника**. После установки ловушка становится нестабильной и самостоятельно обезвреживается через 1 час.\n- **Срабатывание ловушки:** Ловушка срабатывает, когда другое существо входит в клетку ловушки или покидает её. Также вы можете потратить **1 ОД**, чтобы активировать ловушку, находящуюся в пределах 5 клеток. При срабатывании ловушка совершает атаку по ПЗ цели в клетке, используя вашу проверку атаки. Эта атака игнорирует и не продвигает штраф повторных проверок.\n- **Попадание:** Ловушка наносит дробящий, колющий или рубящий урон (выбирается при установке), равный вашему высшему модификатору, плюс урон и эффект использованного **Удара охотника**.\n- **Разборка ловушки:** Находясь в пределах 1 клетки от своей ловушки, вы можете потратить **1 ОД**, чтобы обезвредить и восстановить её. При этом она теряет урон и эффекты **Удара охотника**."
+    },
+    "origin": "subclass",
+    "origin_value": "trapper",
+    "kind": "static",
+    "limit_refresh": "one_at_short_rest",
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {
+      "limit": "modified_abilities['prime']"
+    },
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "discerning_eye",
+    "title": {
+      "en": "Discerning Eye",
+      "ru": "Зоркий глаз"
+    },
+    "description": {
+      "en": "You have ADV on Awareness Checks to discover Hidden Traps and on Investigation Checks to discern how to disarm them.",
+      "ru": "Вы получаете преимущество на проверки бдительности для обнаружения скрытых ловушек и на проверки анализа для понимания, как их обезвредить."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "trapper",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "battlefield_tactician",
+    "title": {
+      "en": "Battlefield Tactician",
+      "ru": "Военный тактик"
+    },
+    "description": {
+      "en": "Through years of study and experience, you’ve mastered military history and strategy. You gain ADV on Checks related to analyzing fields of battle, understanding historical battles and military organizations, or deciphering complex tactical maneuvers.",
+      "ru": "Ваш боевой опыт и обучение сделали вас мастером военной истории и стратегии. Вы получаете преимущества на проверки, направленные на анализ ситуации на поле боя, разбор исторических битв, сбор информации о военных организациях и расшифровку сложных тактических приёмов."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "warlord",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "ancestral_knowledge",
+    "title": {
+      "en": "Ancestral Knowledge",
+      "ru": "Знания предков"
+    },
+    "description": {
+      "en": "You have ADV on Checks to recall information about the history of your Ancestries (such as Human, Dwarf, or Elf). Additionally, once per Long Rest when you make a Trade or Language Check, you can choose to gain ADV on the Check as a spirit lends you its experience.",
+      "ru": "Вы получаете преимущество на проверки, позволяющие узнать информацию об истории вашей родословной. Также, один раз после длинного отдыха, когда вы совершает проверку ремесла или языка, вы можете получить преимущество на эту проверку, так как дух делится с вами своей мудростью."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "spirit_guardian",
+    "kind": "static",
+    "limit_refresh": "long_rest",
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "eval_variables": {
+      "maneuver_points": "maneuver_points + 1"
+    },
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "portal_sage",
+    "title": {
+      "en": "Portal Sage",
+      "ru": "Знаток порталов"
+    },
+    "description": {
+      "en": "You have ADV on Checks to learn about the Astromancy Spell School (such as Teleportation magic or Portals). Additionally, if you spend 1 minute observing a portal or teleportation runes, you can make a DC 10 Spell Check to try to understand the inner mechanism of a Portal within 5 Spaces. **Success:** You learn where it leads to and for how long it has been open. **Success (5):** You learn how to activate and deactivate it (such as its passphrase, procedures, or any required special item).",
+      "ru": "Вы получаете преимущество на проверки, направленные на опознание заклинаний школы астромантии. Также, если вы в течение 1 минуты изучаете портал или телепортационные руны в пределах 5 клеток от вас, вы можете совершить проверку заклинания со СЛ 10 чтобы понять их внутреннее устройство. **Успех:** Вы понимаете, куда портал ведёт и как давно открыт. **Успех (5):** Вы понимаете, как его активировать и деактивировать (кодовое слово, особые действия или необходимые предметы)."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "portal_mage",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "hundred_ways_to_die",
+    "title": {
+      "en": "Hundred Ways to Die",
+      "ru": "Сто способов умереть"
+    },
+    "description": {
+      "en": "You are an expert at studying and identifying weaknesses in bodies and how best to kill creatures. You have ADV on any Check made to determine how something died or could die easier. This also extends to poisons, toxins, or identifying other materials used to kill.",
+      "ru": "Вы достигли мастерства в изучении и определении слабостей и уязвимостей существ. Вы получаете преимущество на проверки, направленные на определение причин смерти или поиск оптимальных способов убийства. Ваш опыт также включает знания о ядах, токсинах и прочих способах убийства."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "long_death",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "portal_magic",
+    "title": {
+      "en": "Portal Magic",
+      "ru": "Портальная магия"
+    },
+    "description": {
+      "en": "When you create an Arcane Sigil, you can spend 1 additional MP to create an identical Arcane Sigil on a surface within a Space you can see within 10 Spaces.\n\n- **Arcane Portal:** A portal connects the two Arcane Sigils. Creatures of your choice within 1 Space of either Arcane Sigil can spend 1 Space of movement to teleport to an unoccupied Space within 1 Space of the other Arcane Sigil.\n**Linked Magic:** While within 1 Space of a connected Arcane Sigil, you can make an Attack or cast a Spell as if you were standing in the Space of the other connected Arcane Sigil.\n**Teleportation Expert:** When you learn a new Spell, you can choose any Spell with the Teleportation Spell Tag.",
+      "ru": "Когда вы используете **Арканный символ**, вы можете потратить +1 ОМ, чтобы создать один идентичный **Арканный символ** в клетке, которую видите в пределах 10 Клеток, и связать его с этим символом.\n\n- **Арканный портал:** Находящиеся в пределах 1 клетки от любого символа существа на ваш выбор могут потратить 1 клетку движения, чтобы телепортироваться в незанятую клетку, соседнюю к клетке связанного символа.\n- **Магическая связь:** Пока вы находитесь в пределах 1 клетки от символа, вы можете атаковать и накладывать заклинания так, как если бы находились в клетке связанного символа.\n- **Эксперт телепортации:** При изучении нового заклинания вы можете выбирать его из заклинаний с признаком **Телепортация**."
+    },
+    "origin": "subclass",
+    "origin_value": "portal_mage",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "mp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "virtuous_vanguard",
+    "title": {
+      "en": "Virtuous Vanguard",
+      "ru": "Доблестный авангард"
+    },
+    "description": {
+      "en": "\n- **Aura of Courage:** While within your Commanding Aura, creatures of your choice have Resistance to Frightened and Intimidated.\n- **Protective Orders:** When a creature gains the benefits of your Commander's Call, they also gain Resistance (1) against the next damage they take before the start of your next turn.\n- **Restoring Rally:** When you grant a Bloodied creature Temp HP in Combat using Rally (Commanding Aura), they regain that amount of HP instead.",
+      "ru": "\n- **Аура доблести:** Пока существа на ваш выбор находятся в вашей **Ауре командования**, они получают сопротивление устрашению и запугиванию.\n- **Приказ к обороне:** Когда существо получает бонусы вашего **Приказа командира**, оно также получает сопротивление (1) первому типу урона, который получит до начала его следующего хода.\n- **Вдохновляющее сплочение:** Во время боя, если вы даёте израненному существу временные ОЗ, используя укрепление от **Ауры командования**, вы вместо этого восстанавливаете ему ОЗ в том же количестве."
+    },
+    "origin": "subclass",
+    "origin_value": "crusader",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "coven's_gift",
+    "title": {
+      "en": "Coven's Gift",
+      "ru": "Дар Ковена"
+    },
+    "description": {
+      "en": "You learn 1 Spell of your choice with the Curse Spell Tag. When you learn a new Spell, you can choose any Spell with the Curse Spell Tag. Spells with the Curse Spell Tag count as being part of your chosen Spell School for the purposes of your **Spell School Initiate** Feature.",
+      "ru": "Вы изучаете 1 заклинание с признаком **Проклятье**. Когда вы изучаете новое заклинание, вы можете выбрать его из заклинаний с признаком **Проклятье**. Эти заклинания считаются частью вашей **Фирменной школы** из **Посвящённого школы заклинаний**."
+    },
+    "origin": "subclass",
+    "origin_value": "witch",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "offensive_tactics",
+    "title": {
+      "en": "Offensive Tactics",
+      "ru": "Наступательные тактики"
+    },
+    "description": {
+      "en": "\n- **Morale Breaker:** Once per Combat when you use your Commander's Call, you can use the Intimidate Action for free against a creature of your choice within 10 Spaces.\n- **Battlefield Tactics:** Allies within your Commanding Aura deal +1 damage on their first Melee Attack on each of their turns against a creature they're Flanking.\nYou gain a new Commanding Aura option:\n\n- **Priority Target: (1 AP + 1 SP)** Choose a creature within 10 Spaces. Until the start of your next turn, each creature within your Aura has ADV on the first Attack it makes on each of its turns against the chosen creature.",
+      "ru": "\n- **Подавление:** Один раз за бой, при использовании **Приказа командира** вы можете бесплатно запугать существо в пределах 15 Клеток.\n- **Тактика боя:** Первая ближняя атака каждого союзника в вашей **Ауре командования** по окружённым им существам наносит +1 урона.\nВы получаете следующее использование **Ауры командования**:\n\n- **Приоритетная цель (1 ОД + 1 ОВ):** Выберите цель в пределах 15 клеток. До начала вашего следующего хода, каждое существо в вашей **Ауре командования** в свой ход получает преимущество на свою первую атаку по этой цели."
+    },
+    "origin": "subclass",
+    "origin_value": "warlord",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "ancestral_guardian",
+    "title": {
+      "en": "Ancestral Guardian",
+      "ru": "Родовой защитник"
+    },
+    "description": {
+      "en": "- **Bestowed Protection:** You learn 1 of the following Maneuvers: Brace, Parry, or Protect. If you already know all 3, then you can learn any Maneuver of your choice instead.\n- **Spiritual Aura:** While Raging, you gain Mystical Resistance (1) and a 5 Space Aura that grants the following benefits:\n\n- You can use the Shove Action on any creature within your Aura. When you do, the creature is pushed horizontally in a direction of your choice.\n- You can use the Brace, Parry, or Protect Maneuvers on any creature within your Aura, provided you know the Maneuver.",
+      "ru": "- **Наследственная защита:** Вы изучаете +1 приём из следующих: Парировать, Защитить или Поднять Щит. Если все они уже изучены, взамен вы можете изучить любой приём на ваш выбор.\n- **Аура духов:** Находясь в **Ярости**, вы получаете сопротивление мистическому урону (1) и ауру в 5 Клеток, дающую следующие бонусы:\n\n- Вы можете толкать существ в вашей ауре. При этом цель отталкивается горизонтально в направлении на ваш выбор.\n- Вы можете использовать изученные приёмы парировать, поднять щит и защитить на существ в вашей ауре. При этом поднять щит не требует от вас использования щита."
+    },
+    "origin": "subclass",
+    "origin_value": "spirit_guardian",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "maneuver_points": "maneuver_points + 1"
+    },
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "renegade_duelist",
+    "title": {
+      "en": "Renegade Duelist",
+      "ru": "Мятежный дуэлянт"
+    },
+    "description": {
+      "en": "- **Flourishes:** Your Cunning Action now also includes the Disarm and Dodge Actions.\n- **Taunting Shot:** Once per round, when you make an Attack against a creature that fulfills the criteria for Cheap Shot, you can forgo your Cheap Shot damage to force the target to make a Charisma Save instead. **Failure:** The target is Taunted by you until the end of your next turn.\n- **Riposte:** When a creature within your Melee Range misses you with an Attack, it provokes an Opportunity Attack from you.",
+      "ru": "- **Росчерк Клинка:** Вы также получаете бонусы **Хитрого действия** когда разоружаете или уклоняетесь.\n- **Провоцирующий удар:** Один раз за каждый свой ход, когда вы атакуете существо, вместо урона **Коварного удара** вы можете заставить цель совершить спас харизмы. **Провал:** Цель спровоцирована вами до конца вашего следующего хода.\n- **Ответный удар:** Когда существо в вашей досягаемости промахивается по вам атакой, вы можете совершить по нему атаку по возможности."
+    },
+    "origin": "subclass",
+    "origin_value": "swashbuckler",
+    "kind": "static",
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  }
+]

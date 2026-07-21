@@ -1,0 +1,613 @@
+[
+  {
+    "slug": "expanded_disciplines",
+    "title": {
+      "en": "Expanded Disciplines",
+      "ru": "Расширение дисциплин"
+    },
+    "description": {
+      "en": "You gain 2 additional Spellblade Disciplines. You can't choose the same option more than once.",
+      "ru": "Вы получаете +2 дисциплины Мага клинка"
+    },
+    "origin": "talent",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "spellblade_disciplines"
+      ]
+    }
+  },
+  {
+    "slug": "sling_blade",
+    "title": {
+      "en": "Sling-Blade",
+      "ru": "Хлестающий клинок"
+    },
+    "description": {
+      "en": "You are able to sling magic off your blade to extend the range of your Spells and Attacks in the following ways:\n\n- **Distant Strike:** The range of your Attacks with Melee Weapons is increased by 2.\n- **Extended Spellstrike:** When you use Spellstrike, the range of the Spell changes to match your Weapon's range.",
+      "ru": "Вы получаете следующие бонусы:\n\n- **Досягаемость:** Ваши ближние атаки любым оружием получают +2 клетки досягаемости.\n- **Дальний удар заклинанием:** Когда вы используете **Удар заклинанием**, дальность заклинания изменяется на досягаемость или дальность вашего оружия."
+    },
+    "origin": "talent",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "bound_weapon",
+        "spellstrike"
+      ]
+    }
+  },
+  {
+    "slug": "unfathomable_strength",
+    "title": {
+      "en": "Unfathomable Strength",
+      "ru": "Неизмеримая сила"
+    },
+    "description": {
+      "en": "- **Titan Grip:** While Raging, you can wield Two-Handed Weapons using only one hand.\n- **Titanic Leap:** Your Jump Distance gain situation bonus +1.",
+      "ru": "- **Титанический хват:** Находясь в **Ярости** вы можете использовать двуручное оружие одной рукой.\n- **Титанический прыжок:** Вы получаете ситуативный бонус +1 к дальности прыжка."
+    },
+    "origin": "talent",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "rage"
+      ]
+    }
+  },
+  {
+    "slug": "swift_berserker",
+    "title": {
+      "en": "Swift Berserker",
+      "ru": "Стремительный берсерк"
+    },
+    "description": {
+      "en": "- **Quick to Anger:** You can immediately enter a Rage for free upon rolling for Initiative.\n- **Unstoppable Charge:** The movement granted by your Charge ignores Difficult Terrain and doesn't provoke Opportunity Attacks.",
+      "ru": "- **Поспешный гнев:** Когда вы бросаете инициативу, вы можете немедленно впасть в **Ярость** в качестве реакции.\n- **Неудержимый натиск:** При использовании натиска вы игнорируете труднопроходимую местность и не провоцируете атаки по возможности."
+    },
+    "origin": "talent",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "rage",
+        "berserker"
+      ]
+    }
+  },
+  {
+    "slug": "seize_momentum",
+    "title": {
+      "en": "Seize Momentum",
+      "ru": "Быстрое реагирование"
+    },
+    "description": {
+      "en": "When an ally within your Commanding Aura scores a Heavy Hit, you can use your Commander's Call as a Reaction.",
+      "ru": "Когда союзник в вашей **Ауре командования** наносит тяжёлый удар, вы можете использовать **Приказ командира** в качестве реакции."
+    },
+    "origin": "talent",
+    "origin_value": "commander",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "commander_call",
+        "commanding_aura"
+      ]
+    }
+  },
+  {
+    "slug": "coordinated_command",
+    "title": {
+      "en": "Coordinated Command",
+      "ru": "Координирующий приказ"
+    },
+    "description": {
+      "en": "Once per Round, when you use your Commander's Call, you can spend 1 additional SP to target a second creature within range (including yourself), they also gain the benefits of the chosen command. You choose who acts first between the targeted creatures.",
+      "ru": "Один раз за ход, когда вы используете **Приказ командира**, вы можете дополнительно потратить 1 ОВ чтобы отдать этот же приказ второму существу в пределах дальности (включая себя). Вы выбираете, кто из них ходит первым."
+    },
+    "origin": "talent",
+    "origin_value": "commander",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "sp": 1
+    },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "commander_call"
+      ]
+    }
+  },
+  {
+    "slug": "expanded_spell_school",
+    "title": {
+      "en": "Expanded Spell School",
+      "ru": "Расширение школ заклинаний"
+    },
+    "description": {
+      "en": "Choose 1 additional Spell School. You can't choose the same School more than once. You learn 2 Arcane Spells from this Spell School, and you can use **Signature School** once per chosen Spell School.",
+      "ru": "Выберите 1 дополнительную школу заклинаний. Нельзя выбирать туже школу дважды. Вы изучаете 2 арканных заклинания из этой школы, вы можете использовать **Фирменную школу** один раз для каждой выбранной школы."
+    },
+    "origin": "talent",
+    "origin_value": "wizard",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "spell_school_initiate"
+      ]
+    }
+  },
+  {
+    "slug": "crowned_sigil",
+    "title": {
+      "en": "Crowned Sigil",
+      "ru": "Переносной символ"
+    },
+    "description": {
+      "en": "When you create an Arcane Sigil, you can bind it to a willing creature within 1 Space. While bound, the Arcane Sigil moves with the creature and grants it a +2 bonus to its AD. A creature can only be bound to one Arcane Sigil at a time. You can spend 1 AP to unbind the Arcane Sigil and place it on the ground within 1 Space of the creature.",
+      "ru": "Когда вы создаёте **Арканный символ**, вы можете привязать его к согласному существу в пределах 1 клетки. Привязанный **Арканный символ** перемещается вместе с целью и даёт +2 ПЗ. К существу может быть привязан только один **Арканный символ** одновременно. Вы можете потратить 1 ОД чтобы отвязать **Арканный символ** и разместить его на земле в пределах 1 Клетки."
+    },
+    "origin": "talent",
+    "origin_value": "wizard",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "arcane_sigil"
+      ]
+    }
+  },
+  {
+    "slug": "attribute_increase",
+    "title": {
+      "en": "Attribute Increase",
+      "ru": "Повышение атрибутов"
+    },
+    "description": {
+      "en": "You gain 2 Attribute Points to put into any Attribute of your choice.",
+      "ru": "Вы получаете 2 очка атрибутов, которые можете вложить в любой атрибут."
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "hidden",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "increase": {
+        "attribute_points": 2
+      },
+      "multiple": true
+    }
+  },
+  {
+    "slug": "skill_or_trade_increase",
+    "title": {
+      "en": "Skill Increase",
+      "ru": "Повышение навыков"
+    },
+    "description": {
+      "en": "You gain 4 Skill Points.",
+      "ru": "Вы получаете 4 очка навыков"
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "hidden",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "increase": {
+        "skill_points": 4
+      },
+      "multiple": true
+    }
+  },
+  {
+    "slug": "martial_expansion",
+    "title": {
+      "en": "Martial Expansion",
+      "ru": "Боевое посвящение"
+    },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "hidden",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "maneuver_points": "maneuver_points + 2"
+    },
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "rewrite": {
+        "combat_expertise": [
+          "weapon",
+          "light_armor",
+          "heavy_armor",
+          "light_shield",
+          "heavy_shield"
+        ]
+      },
+      "multiple": false
+    }
+  },
+  {
+    "slug": "spellcasting_expansion",
+    "title": {
+      "en": "Spellcasting Expansion",
+      "ru": "Магическое посвящение"
+    },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "hidden",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {
+      "spells": "spells + 3",
+      "spell_lists_amount": "spell_lists_amount + 1"
+    },
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false
+    }
+  },
+  {
+    "slug": "novice_multiclass",
+    "title": {
+      "en": "Novice Multiclass",
+      "ru": "Новичок мультикласса"
+    },
+    "description": {
+      "en": "You can choose a 1st Level Class Feature from any Class.",
+      "ru": "Вы получаете черту класса 1-го уровня из любого класса."
+    },
+    "origin": "talent",
+    "origin_value": "multiclass",
+    "kind": "hidden",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false
+    }
+  },
+  {
+    "slug": "unseen_ambusher",
+    "title": {
+      "en": "Unseen Ambusher",
+      "ru": "Незаметная засада"
+    },
+    "description": {
+      "en": "- **Skulker:** You have ADV on Stealth Checks made in Combat.\n- **Backstab:** Enemies you are Hidden from have DisADV on their Saves against your Debilitating Strikes.",
+      "ru": "- **Таящийся:** Вы получаете преимущество на проверки скрытности в бою.\n- **Удар в спину:** Враги, для которых вы скрыты, получают помеху на спас от вашего **Изнуряющего удара**."
+    },
+    "origin": "talent",
+    "origin_value": "rogue",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "debilitating_strike"
+      ]
+    }
+  },
+  {
+    "slug": "sinister_shot",
+    "title": {
+      "en": "Sinister Shot",
+      "ru": "Добивающий удар"
+    },
+    "description": {
+      "en": "Your Cheap Shot deals +1 damage for each additional Condition on the target. Multiple stacks of the same Condition count only once.",
+      "ru": "Ваш **Коварный удар** наносит +1 урона за каждое дополнительное состояние на цели. Складывающиеся состояния считаются за одно."
+    },
+    "origin": "talent",
+    "origin_value": "rogue",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "cheap_shot"
+      ]
+    }
+  },
+  {
+    "slug": "expanded_terrains",
+    "title": {
+      "en": "expanded terrains",
+      "ru": "Расширение местностей"
+    },
+    "description": {
+      "en": "You gain 2 additional Favored Terrains. You can't choose the same option more than once.",
+      "ru": "Вы получаете +2 **Избранных местности**. Вы не можете повторно выбрать уже полученные варианты."
+    },
+    "origin": "talent",
+    "origin_value": "hunter",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "favored_terrain"
+      ]
+    }
+  },
+  {
+    "slug": "pack_leader",
+    "title": {
+      "en": "Pack Leader",
+      "ru": "Вожак стаи"
+    },
+    "description": {
+      "en": "Creatures of your choice can add a d4 to the first Attack they make on each of their turns against your Marked target.",
+      "ru": "Существа на ваш выбор могут каждый свой ход добавлять d4 к своей первой атаке по вашей отмеченной цели."
+    },
+    "origin": "talent",
+    "origin_value": "hunter",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "hunter_mark"
+      ]
+    }
+  },
+  {
+    "slug": "big_game_hunter",
+    "title": {
+      "en": "Big Game Hunter",
+      "ru": "Охотник на крупную добычу"
+    },
+    "description": {
+      "en": "You gain additional benefits against Marked targets that are Large or larger:\n\n- Your Martial Attacks deal +1 damage against them.\n- You have ADV on Saves they force you to make.\n- You have ADV on Checks you make as part of the Analyze Creature Action.",
+      "ru": "Вы получаете следующие бонусы против отмеченных целей большого размера или крупнее:\n\n- Ваши бойцовские атаки по цели наносят +1 урона.\n- Вы получаете преимущество на спасы против способностей цели.\n- Вы получаете преимущество на проверки опознания существа против цели."
+    },
+    "origin": "talent",
+    "origin_value": "hunter",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "hunter_mark"
+      ]
+    }
+  },
+  {
+    "slug": "adaptive_bond",
+    "title": {
+      "en": "Adaptive Bond",
+      "ru": "Изменчивая связь"
+    },
+    "description": {
+      "en": "You gain the following benefits:\n\n- At the start of your turn, you can switch your Bound Damage type for free, or you can spend 1 AP do to so during your turn.\n- After you take Elemental or Mystical damage from an Attack, you can immediately change your Bound Damage type to a damage type dealt by the Attack for free.\n- You gain Resistance (1) to your Bound Damage",
+      "ru": "Вы получаете следующие бонусы:\n\n- В начале вашего хода вы можете бесплатно изменить тип вашего связанного урона. Также вы можете потратить 1 ОД чтобы сделать это в течение хода.\n- После получения стихийного или мистического урона от атаки, вы можете реакцией изменить тип вашего связанного урона на полученный от этой атаки.\n- Вы получаете сопротивление (1) вашему связанному урону."
+    },
+    "origin": "talent",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "bound_weapon"
+      ]
+    }
+  },
+  {
+    "slug": "overly_prepared_spellcaster",
+    "title": {
+      "en": "Overly Prepared Spellcaster",
+      "ru": "Сверхподготовленное заклинание"
+    },
+    "description": {
+      "en": "\n- You gain Dazed Resistance.\n- You can change your Prepared Spell when you complete a Quick or Short Rest.\n- When you declare a Spell Duel using your Prepared Spell, you gain ADV on your Spell Check.\n- You can use Signature School on your Prepared Spell, even if it's not from the chosen Spell School.\n- When you use Mana Limit Break, you have ADV on the Check made to cast the Spell.",
+      "ru": "\n- Вы получаете сопротивление потрясению.\n- Вы можете изменить ваше **Подготовленное заклинание** после быстрого или короткого отдыха.\n- Когда вы объявляете дуэль заклинаний **Подготовленным заклинанием**, вы получаете преимущество на вашу проверку заклинания.\n- Вы можете использовать **Фирменную школу** на ваше **Подготовленное заклинание**, даже если оно не из выбранной школы.\n- Когда вы используете предел траты маны, вы получаете преимущество для проверки заклинания."
+    },
+    "origin": "talent",
+    "origin_value": "wizard",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "prepared_spell",
+        "spell_school_initiate"
+      ]
+    }
+  }
+]

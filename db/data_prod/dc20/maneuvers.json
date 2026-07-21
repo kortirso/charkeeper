@@ -1,0 +1,1924 @@
+[
+  {
+    "slug": "slam",
+    "title": {
+      "en": "Slam",
+      "ru": "Slam"
+    },
+    "description": {
+      "en": "Make a Melee Martial Attack against the target's AD. **Hit:** The target takes 1 Bludgeoning damage.",
+      "ru": "Make a Melee Martial Attack against the target's AD. **Hit:** The target takes 1 Bludgeoning damage."
+    },
+    "origin": "maneuver",
+    "origin_value": "grapple",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "Melee",
+        "ru": "Melee"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Finishing Slam",
+            "ru": "Finishing Slam"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "You deal 2 additional damage. The Grapple ends.",
+            "ru": "You deal 2 additional damage. The Grapple ends."
+          }
+        },
+        {
+          "name": {
+            "en": "Stunned",
+            "ru": "Stunned"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The target makes a Physical Save. Save Failure: They are Stunned 1 for 1 Round. You can use this Enhancement a maximum of two times.",
+            "ru": "The target makes a Physical Save. Save Failure: They are Stunned 1 for 1 Round. You can use this Enhancement a maximum of two times."
+          }
+        },
+        {
+          "name": {
+            "en": "Wall Rake",
+            "ru": "Wall Rake"
+          },
+          "price": {
+            "sp": null
+          },
+          "description": {
+            "en": "You slam 1 Grappled creature into a wall within 1 Space and move up to X Spaces along the wall, ending your movement within 1 Space of the wall. The target makes a Repeated Might Save against your Save DC. Save Failure: They gain Bleeding X per Space moved.",
+            "ru": "You slam 1 Grappled creature into a wall within 1 Space and move up to X Spaces along the wall, ending your movement within 1 Space of the wall. The target makes a Repeated Might Save against your Save DC. Save Failure: They gain Bleeding X per Space moved."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "protect",
+    "title": {
+      "en": "Protect",
+      "ru": "Protect"
+    },
+    "description": {
+      "en": "You take damage for a nearby ally.\n\n**Trigger:** A target you can see within range is Hit by an Attack.\n\n**Reaction:** The damage of the Attack is shared between you and the target. The damage you take bypasses any Damage Reduction you have.",
+      "ru": "You take damage for a nearby ally.\n\n**Trigger:** A target you can see within range is Hit by an Attack.\n\n**Reaction:** The damage of the Attack is shared between you and the target. The damage you take bypasses any Damage Reduction you have."
+    },
+    "origin": "maneuver",
+    "origin_value": "defense",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "1 Space",
+        "ru": "1 Space"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Targets",
+            "ru": "Targets"
+          },
+          "price": {
+            "ap": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "You can target 1 additional creature within range that's also targeted by the same Attack.",
+            "ru": "You can target 1 additional creature within range that's also targeted by the same Attack."
+          }
+        },
+        {
+          "name": {
+            "en": "Taunt",
+            "ru": "Taunt"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The attacker makes a Charisma Save. Save Failure: They’re Taunted by you for 1 Round.",
+            "ru": "The attacker makes a Charisma Save. Save Failure: They’re Taunted by you for 1 Round."
+          }
+        },
+        {
+          "name": {
+            "en": "Heroic Protect",
+            "ru": "Heroic Protect"
+          },
+          "price": {
+            "sp": 2
+          },
+          "description": {
+            "en": "You become the target of the Attack taking all of the damage and effects instead of the target. If the Attack is accompanied by a Save (as with a Dynamic Attack Save), you make the Save instead of the target.",
+            "ru": "You become the target of the Attack taking all of the damage and effects instead of the target. If the Attack is accompanied by a Save (as with a Dynamic Attack Save), you make the Save instead of the target."
+          }
+        },
+        {
+          "name": {
+            "en": "Resistance",
+            "ru": "Resistance"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "You gain Resistance (Half) to any damage you take from using this Maneuver. The cost of this Enhancement increases by 1 SP if you use the Heroic Protect Enhancement.",
+            "ru": "You gain Resistance (Half) to any damage you take from using this Maneuver. The cost of this Enhancement increases by 1 SP if you use the Heroic Protect Enhancement."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "body_block",
+    "title": {
+      "en": "Body Block",
+      "ru": "Body Block"
+    },
+    "description": {
+      "en": "You reposition a grappled creature to shield yourself from damage.\n\n**Trigger:** A creature that's not Grappled by you Hits you with an Attack.\n\n**Reaction:** Make a Martial Check against the Grappled target's Might Save. **Check Success:** The damage from the Attack is shared by you and the Grappled creature, and you can move the Grappled creature to any Space adjacent to you immediately afterwards.",
+      "ru": "You reposition a grappled creature to shield yourself from damage.\n\n**Trigger:** A creature that's not Grappled by you Hits you with an Attack.\n\n**Reaction:** Make a Martial Check against the Grappled target's Might Save. **Check Success:** The damage from the Attack is shared by you and the Grappled creature, and you can move the Grappled creature to any Space adjacent to you immediately afterwards."
+    },
+    "origin": "maneuver",
+    "origin_value": "grapple",
+    "kind": "static",
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {
+      "range": {
+        "en": "Melee",
+        "ru": "Melee"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Switch",
+            "ru": "Switch"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "After you complete the Reaction, you switch places with the Grappled target. This movement doesn't provoke Opportunity Attacks against either you or the target.",
+            "ru": "After you complete the Reaction, you switch places with the Grappled target. This movement doesn't provoke Opportunity Attacks against either you or the target."
+          }
+        },
+        {
+          "name": {
+            "en": "Partial Block",
+            "ru": "Partial Block"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "Your portion of the shared damage is reduced to 0.",
+            "ru": "Your portion of the shared damage is reduced to 0."
+          }
+        },
+        {
+          "name": {
+            "en": "Full Block",
+            "ru": "Full Block"
+          },
+          "price": {
+            "sp": 2
+          },
+          "description": {
+            "en": "The Attack made against you is made against the Grappled creature instead. They take all of the damage and effects instead of you, and if the Attack is accompanied by a Save (as with a Dynamic Attack Save), they make the Save instead of the you. If they were also originally a target of the Attack, they resolve both separately.",
+            "ru": "The Attack made against you is made against the Grappled creature instead. They take all of the damage and effects instead of you, and if the Attack is accompanied by a Save (as with a Dynamic Attack Save), they make the Save instead of the you. If they were also originally a target of the Attack, they resolve both separately."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "recover",
+    "title": {
+      "en": "Recover",
+      "ru": "Recover"
+    },
+    "description": {
+      "en": "You take a moment to catch your breath and refocus.\n\nYou attempt to spend Rest Points to regain HP equal to the Rest Points spent. Make a **DC 15** Martial Check. **Failure:** You can spend 1 Rest Point. **Success:** You can spend up to 2 Rest Points. **Success (each 5):** You can spend 1 additional Rest Point.",
+      "ru": "You take a moment to catch your breath and refocus.\n\nYou attempt to spend Rest Points to regain HP equal to the Rest Points spent. Make a **DC 15** Martial Check. **Failure:** You can spend 1 Rest Point. **Success:** You can spend up to 2 Rest Points. **Success (each 5):** You can spend 1 additional Rest Point."
+    },
+    "origin": "maneuver",
+    "origin_value": "utility",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "Self",
+        "ru": "Self"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Increased Healing",
+            "ru": "Increased Healing"
+          },
+          "price": {
+            "ap": 1,
+            "sp": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "You can spend 1 additional Rest Point.",
+            "ru": "You can spend 1 additional Rest Point."
+          }
+        },
+        {
+          "name": {
+            "en": "Repeat Save",
+            "ru": "Repeat Save"
+          },
+          "price": {
+            "ap": 1,
+            "sp": 1
+          },
+          "description": {
+            "en": "You can repeat a Save against an effect you are subjected to.",
+            "ru": "You can repeat a Save against an effect you are subjected to."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "endure",
+    "title": {
+      "en": "Endure",
+      "ru": "Endure"
+    },
+    "description": {
+      "en": "You push through an attack.\n\n**Trigger:** A target you can see within range (including yourself) is Hit by an Attack.\n\n**Reaction:** The target takes **1** less damage from the Attack.",
+      "ru": "You push through an attack.\n\n**Trigger:** A target you can see within range (including yourself) is Hit by an Attack.\n\n**Reaction:** The target takes **1** less damage from the Attack."
+    },
+    "origin": "maneuver",
+    "origin_value": "defense",
+    "kind": "static",
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {
+      "range": {
+        "en": "Self (or 1 Space if wielding a Shield)",
+        "ru": "Self (or 1 Space if wielding a Shield)"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heroic Endure",
+            "ru": "Heroic Endure"
+          },
+          "price": {
+            "sp": null
+          },
+          "description": {
+            "en": "The target takes X less damage from the Attack.",
+            "ru": "The target takes X less damage from the Attack."
+          }
+        },
+        {
+          "name": {
+            "en": "Steadfast",
+            "ru": "Steadfast"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The target isn't Vulnerable to damage from the Attack.",
+            "ru": "The target isn't Vulnerable to damage from the Attack."
+          }
+        },
+        {
+          "name": {
+            "en": "Repel",
+            "ru": "Repel"
+          },
+          "price": {
+            "sp": null
+          },
+          "description": {
+            "en": "After the Attack, if the Attacker is within 1 Space of you or the target, they make a Might Save against your Save DC. Save Failure: They are pushed X Spaces away. Save Failure (each 5): +1 Space pushed.",
+            "ru": "After the Attack, if the Attacker is within 1 Space of you or the target, they make a Might Save against your Save DC. Save Failure: They are pushed X Spaces away. Save Failure (each 5): +1 Space pushed."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "heroic_extend_jump",
+    "title": {
+      "en": "Heroic Extend Jump",
+      "ru": "Heroic Extend Jump"
+    },
+    "description": {
+      "en": "When you take the **Extend Jump** Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you are considered to be performing a Maneuver.\n\n**Stamina Action:** You can now spend **1 SP** instead of **1 AP** to perform the **Extend Jump** Action.",
+      "ru": "When you take the **Extend Jump** Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you are considered to be performing a Maneuver.\n\n**Stamina Action:** You can now spend **1 SP** instead of **1 AP** to perform the **Extend Jump** Action."
+    },
+    "origin": "maneuver",
+    "origin_value": "utility",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "Self",
+        "ru": "Self"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Instant Jump",
+            "ru": "Instant Jump"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "If performing a Standing Jump, your Jump Distances is not halved.",
+            "ru": "If performing a Standing Jump, your Jump Distances is not halved."
+          }
+        },
+        {
+          "name": {
+            "en": "Increased Jump",
+            "ru": "Increased Jump"
+          },
+          "price": {
+            "sp": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "Your Jump Distance is increased by 2 for the Jump.",
+            "ru": "Your Jump Distance is increased by 2 for the Jump."
+          }
+        },
+        {
+          "name": {
+            "en": "Heroic Landing",
+            "ru": "Heroic Landing"
+          },
+          "price": {
+            "sp": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "You reduce any damage from falling by 2 for the Jump.",
+            "ru": "You reduce any damage from falling by 2 for the Jump."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "heroic_intimidate",
+    "title": {
+      "en": "Heroic Intimidate",
+      "ru": "Heroic Intimidate"
+    },
+    "description": {
+      "en": "You perform a powerful intimidate.\n\nWhen you take the Intimidate Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement, you are considered to be performing a Maneuver.\n\n*Intimidate (Action)*\n\nYou can spend **1 AP** to attempt to intimidate a creature that can see or hear you within 10 Spaces. Make an Intimidation Check contested by the target's Charisma Save. **Success:** The target is **Intimidated** by you for 1 Round.",
+      "ru": "You perform a powerful intimidate.\n\nWhen you take the Intimidate Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement, you are considered to be performing a Maneuver.\n\n*Intimidate (Action)*\n\nYou can spend **1 AP** to attempt to intimidate a creature that can see or hear you within 10 Spaces. Make an Intimidation Check contested by the target's Charisma Save. **Success:** The target is **Intimidated** by you for 1 Round."
+    },
+    "origin": "maneuver",
+    "origin_value": "utility",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "10 Spaces",
+        "ru": "10 Spaces"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Sustained",
+            "ru": "Sustained"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The duration increases to 1 minute but each creature makes a Repeated Save.",
+            "ru": "The duration increases to 1 minute but each creature makes a Repeated Save."
+          }
+        },
+        {
+          "name": {
+            "en": "Increased Range",
+            "ru": "Increased Range"
+          },
+          "price": {
+            "sp": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The range increases by 5 Spaces.",
+            "ru": "The range increases by 5 Spaces."
+          }
+        },
+        {
+          "name": {
+            "en": "Frightened",
+            "ru": "Frightened"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "Targets are Frightened instead.",
+            "ru": "Targets are Frightened instead."
+          }
+        },
+        {
+          "name": {
+            "en": "Mass Intimidate",
+            "ru": "Mass Intimidate"
+          },
+          "price": {
+            "ap": 1,
+            "sp": 1
+          },
+          "description": {
+            "en": "You instead target each creature of your choice within 5 Spaces that can see or hear you. When you choose this Enhancement, the cost of all other Enhancements (except Sustained) is doubled.",
+            "ru": "You instead target each creature of your choice within 5 Spaces that can see or hear you. When you choose this Enhancement, the cost of all other Enhancements (except Sustained) is doubled."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "heroic_pass_through",
+    "title": {
+      "en": "Heroic Pass Through",
+      "ru": "Heroic Pass Through"
+    },
+    "description": {
+      "en": "When you take the Pass Through Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you’re considered to be performing a Maneuver.\n\n**Stamina Action:** You can spend SP instead of AP to perform the Pass Through Action.",
+      "ru": "When you take the Pass Through Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you’re considered to be performing a Maneuver.\n\n**Stamina Action:** You can spend SP instead of AP to perform the Pass Through Action."
+    },
+    "origin": "maneuver",
+    "origin_value": "utility",
+    "kind": "static",
+    "price": {},
+    "info": {
+      "enhancements": [
+        {
+          "name": {
+            "en": "Brush Past",
+            "ru": "Brush Past"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The creature's Space isn't considered Difficult Terrain for this movement. You don't provoke an Opportunity Attack from them if you leave their reach as part of the same movement.",
+            "ru": "The creature's Space isn't considered Difficult Terrain for this movement. You don't provoke an Opportunity Attack from them if you leave their reach as part of the same movement."
+          }
+        },
+        {
+          "name": {
+            "en": "Let's Go",
+            "ru": "Let's Go"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "On a Success, you can pull a willing creature within 1 Space of you to an unoccupied Space within 1 Space of the creature you pass.",
+            "ru": "On a Success, you can pull a willing creature within 1 Space of you to an unoccupied Space within 1 Space of the creature you pass."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "line_run",
+    "title": {
+      "en": "Line Run",
+      "ru": "Line Run"
+    },
+    "description": {
+      "en": "You move in a Line up to your Speed and make a Martial Check. Each creature within the Line must make a Physical Save against your Martial Check when you attempt to move through its Space.\n\n**Contest Failure:** You’re unable to move through the creature’s Space, preventing you from moving any further.\n\n**Contest Success:** You can move through the creature’s Space and they are knocked *Prone*.",
+      "ru": "You move in a Line up to your Speed and make a Martial Check. Each creature within the Line must make a Physical Save against your Martial Check when you attempt to move through its Space.\n\n**Contest Failure:** You’re unable to move through the creature’s Space, preventing you from moving any further.\n\n**Contest Success:** You can move through the creature’s Space and they are knocked *Prone*."
+    },
+    "origin": "maneuver",
+    "origin_value": "utility",
+    "kind": "static",
+    "price": {
+      "ap": 2,
+      "sp": 1
+    },
+    "info": {
+      "range": {
+        "en": "Self",
+        "ru": "Self"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Brush Past",
+            "ru": "Brush Past"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The Space of every creature who fails the contest isn’t considered Difficult Terrain for this movement and you don’t provoke an Opportunity Attack from them.",
+            "ru": "The Space of every creature who fails the contest isn’t considered Difficult Terrain for this movement and you don’t provoke an Opportunity Attack from them."
+          }
+        },
+        {
+          "name": {
+            "en": "Distance",
+            "ru": "Distance"
+          },
+          "price": {
+            "sp": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "You can move up to an additional half your Speed.",
+            "ru": "You can move up to an additional half your Speed."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "parry",
+    "title": {
+      "en": "Parry",
+      "ru": "Parry"
+    },
+    "description": {
+      "en": "You deflect an attack.\n\n**Trigger:** A target you can see within range (including yourself) is targeted by an Attack against its PD.\n\n**Reaction:** You grant the target a **+5** bonus to its PD against this Attack.",
+      "ru": "You deflect an attack.\n\n**Trigger:** A target you can see within range (including yourself) is targeted by an Attack against its PD.\n\n**Reaction:** You grant the target a **+5** bonus to its PD against this Attack."
+    },
+    "origin": "maneuver",
+    "origin_value": "defense",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "Self (or 1 Space if wielding a Melee Weapon or Shield)",
+        "ru": "Self (or 1 Space if wielding a Melee Weapon or Shield)"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Alert",
+            "ru": "Alert"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The Attacker's next Attack this turn against the target has DisADV.",
+            "ru": "The Attacker's next Attack this turn against the target has DisADV."
+          }
+        },
+        {
+          "name": {
+            "en": "Disarm",
+            "ru": "Disarm"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "If the Attacker is within 1 Space of you or the target, they make a Physical Save. Save Failure: The target drops the Weapon used for the Attack to the ground once the Attack is resolved. Save Failure (5): You gain possession of the Weapon, provided you have a free hand to hold it.",
+            "ru": "If the Attacker is within 1 Space of you or the target, they make a Physical Save. Save Failure: The target drops the Weapon used for the Attack to the ground once the Attack is resolved. Save Failure (5): You gain possession of the Weapon, provided you have a free hand to hold it."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "pathcarver",
+    "title": {
+      "en": "Pathcarver",
+      "ru": "Pathcarver"
+    },
+    "description": {
+      "en": "You attack every creature in a line.\n\nMake an Area Martial Attack with a Melee Weapon or Unarmed Strike against the AD of every target in a 4 Space Line. **Hit:** The target takes the damage of your Weapon or Unarmed Strike.\n\nAfter Attacking, you can move to any Space within 1 Space of the area without provoking Opportunity Attacks from the targets and without spending your movement.\n\n**Reach Weapon:** If you have a Reach Weapon, you can extend the Point of Origin 1 Space away from you. When you do, the Line must extend in a direction away from you.",
+      "ru": "You attack every creature in a line.\n\nMake an Area Martial Attack with a Melee Weapon or Unarmed Strike against the AD of every target in a 4 Space Line. **Hit:** The target takes the damage of your Weapon or Unarmed Strike.\n\nAfter Attacking, you can move to any Space within 1 Space of the area without provoking Opportunity Attacks from the targets and without spending your movement.\n\n**Reach Weapon:** If you have a Reach Weapon, you can extend the Point of Origin 1 Space away from you. When you do, the Line must extend in a direction away from you."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": {
+      "ap": 2
+    },
+    "info": {
+      "range": {
+        "en": "4 Space Line (Self)",
+        "ru": "4 Space Line (Self)"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Damage",
+            "ru": "Damage"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The damage increases by 1.",
+            "ru": "The damage increases by 1."
+          }
+        },
+        {
+          "name": {
+            "en": "Increase Length",
+            "ru": "Increase Length"
+          },
+          "price": {
+            "sp": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The length of the Line increases by 2 Spaces.",
+            "ru": "The length of the Line increases by 2 Spaces."
+          }
+        },
+        {
+          "name": {
+            "en": "Carved Path",
+            "ru": "Carved Path"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "Each target makes a Might Save. Save Failure: The target is pushed 1 Space horizontally out of the area in a direction of your choice. The target is moved 1 additional Space each time you use this Enhancement.",
+            "ru": "Each target makes a Might Save. Save Failure: The target is pushed 1 Space horizontally out of the area in a direction of your choice. The target is moved 1 additional Space each time you use this Enhancement."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "scattershot",
+    "title": {
+      "en": "Scattershot",
+      "ru": "Scattershot"
+    },
+    "description": {
+      "en": "**Requirements:** Ranged Weapon.\n\nMake an Area Martial Attack against the AD of every target within a 3 Space Cone. **Hit:** The target takes the damage of your Weapon.",
+      "ru": "**Requirements:** Ranged Weapon.\n\nMake an Area Martial Attack against the AD of every target within a 3 Space Cone. **Hit:** The target takes the damage of your Weapon."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": {
+      "ap": 2
+    },
+    "info": {
+      "range": {
+        "en": "Self",
+        "ru": "Self"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Damage",
+            "ru": "Damage"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The damage increases by 1.",
+            "ru": "The damage increases by 1."
+          }
+        },
+        {
+          "name": {
+            "en": "Area",
+            "ru": "Area"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The length of the Cone increases by 1 Space.",
+            "ru": "The length of the Cone increases by 1 Space."
+          }
+        },
+        {
+          "name": {
+            "en": "Stagger",
+            "ru": "Stagger"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "Each creature makes a Might Save. Save Failure: The target is unable to take Reactions for 1 Round.",
+            "ru": "Each creature makes a Might Save. Save Failure: The target is unable to take Reactions for 1 Round."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "reposition",
+    "title": {
+      "en": "Reposition",
+      "ru": "Reposition"
+    },
+    "description": {
+      "en": "**Trigger:** A creature ends their turn.\n\n**Reaction:** You immediately move up to your Speed.",
+      "ru": "**Trigger:** A creature ends their turn.\n\n**Reaction:** You immediately move up to your Speed."
+    },
+    "origin": "maneuver",
+    "origin_value": "utility",
+    "kind": "static",
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {
+      "range": {
+        "en": "Self",
+        "ru": "Self"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Agile",
+            "ru": "Agile"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "You ignore Difficult Terrain during this movement.",
+            "ru": "You ignore Difficult Terrain during this movement."
+          }
+        },
+        {
+          "name": {
+            "en": "Disengage",
+            "ru": "Disengage"
+          },
+          "price": {
+            "ap": 1
+          },
+          "description": {
+            "en": "You gain the benefits of the Disengage Action for the Movement. When you use this Enhancement, you can spend 1 additional SP to gain the benefits of the Full Disengage Action instead.",
+            "ru": "You gain the benefits of the Disengage Action for the Movement. When you use this Enhancement, you can spend 1 additional SP to gain the benefits of the Full Disengage Action instead."
+          }
+        },
+        {
+          "name": {
+            "en": "Coordinated Movement",
+            "ru": "Coordinated Movement"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "A willing creature of your choice within 1 Space of your original position can move without spending its own movement, provided they’re able to move and they end their movement within 1 Space of your destination.",
+            "ru": "A willing creature of your choice within 1 Space of your original position can move without spending its own movement, provided they’re able to move and they end their movement within 1 Space of your destination."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "resolve",
+    "title": {
+      "en": "Resolve",
+      "ru": "Resolve"
+    },
+    "description": {
+      "en": "You take a moment to catch your breath and refocus.\n\nMake a **DC 15** Martial Check. **Failure:** You gain **2** Temp HP for 1 Round. **Success:** You gain **3** Temp HP for 1 Round. **Success (each 5):** **+1** Temp HP.",
+      "ru": "You take a moment to catch your breath and refocus.\n\nMake a **DC 15** Martial Check. **Failure:** You gain **2** Temp HP for 1 Round. **Success:** You gain **3** Temp HP for 1 Round. **Success (each 5):** **+1** Temp HP."
+    },
+    "origin": "maneuver",
+    "origin_value": "defense",
+    "kind": "static",
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {
+      "range": {
+        "en": "Self",
+        "ru": "Self"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Increased Temp HP",
+            "ru": "Increased Temp HP"
+          },
+          "price": {
+            "sp": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "You gain +2 Temp HP.",
+            "ru": "You gain +2 Temp HP."
+          }
+        },
+        {
+          "name": {
+            "en": "Physical Resolve",
+            "ru": "Physical Resolve"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "You gain ADV on Physical Saves for the duration.",
+            "ru": "You gain ADV on Physical Saves for the duration."
+          }
+        },
+        {
+          "name": {
+            "en": "Mental Resolve",
+            "ru": "Mental Resolve"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "You gain ADV on Mental Saves for the duration.",
+            "ru": "You gain ADV on Mental Saves for the duration."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "restrain",
+    "title": {
+      "en": "Restrain",
+      "ru": "Restrain"
+    },
+    "description": {
+      "en": "You restrain a grappled target.\n\nYou make a Martial Check against the target's Repeated Physical Save. **Contest Success:** The target is *Restrained* until the Grapple ends.",
+      "ru": "You restrain a grappled target.\n\nYou make a Martial Check against the target's Repeated Physical Save. **Contest Success:** The target is *Restrained* until the Grapple ends."
+    },
+    "origin": "maneuver",
+    "origin_value": "grapple",
+    "kind": "static",
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {
+      "range": {
+        "en": "Melee",
+        "ru": "Melee"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Prone",
+            "ru": "Prone"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The target also falls Prone (you don't fall Prone unless you choose to do so).",
+            "ru": "The target also falls Prone (you don't fall Prone unless you choose to do so)."
+          }
+        },
+        {
+          "name": {
+            "en": "Chokehold",
+            "ru": "Chokehold"
+          },
+          "price": {
+            "sp": 2
+          },
+          "description": {
+            "en": "The target also can't speak or breathe until they are no longer Restrained by you.",
+            "ru": "The target also can't speak or breathe until they are no longer Restrained by you."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "side_step",
+    "title": {
+      "en": "Side Step",
+      "ru": "Side Step"
+    },
+    "description": {
+      "en": "You avoid an enemy attack by quick repositioning.\n\n**Trigger:** You're targeted by an Attack.\n\n**Reaction:** You impose DisADV on the Attack against you. You can move 1 Space after the Attack, provided you stay within range of the Attack.",
+      "ru": "You avoid an enemy attack by quick repositioning.\n\n**Trigger:** You're targeted by an Attack.\n\n**Reaction:** You impose DisADV on the Attack against you. You can move 1 Space after the Attack, provided you stay within range of the Attack."
+    },
+    "origin": "maneuver",
+    "origin_value": "defense",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "Self",
+        "ru": "Self"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Evasion",
+            "ru": "Evasion"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "You gain ADV on any Saves imposed by the Attack.",
+            "ru": "You gain ADV on any Saves imposed by the Attack."
+          }
+        },
+        {
+          "name": {
+            "en": "Disengage",
+            "ru": "Disengage"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "Movement made as part of this Maneuver doesn't provoke Opportunity Attacks.",
+            "ru": "Movement made as part of this Maneuver doesn't provoke Opportunity Attacks."
+          }
+        },
+        {
+          "name": {
+            "en": "Slip Away",
+            "ru": "Slip Away"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "You can move up to your Speed instead of 1 Space and you no longer need to stay in range of the Attack.",
+            "ru": "You can move up to your Speed instead of 1 Space and you no longer need to stay in range of the Attack."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "sunder_strike",
+    "title": {
+      "en": "Sunder Strike",
+      "ru": "Sunder Strike"
+    },
+    "description": {
+      "en": "Make a Martial Attack against the PD of a target within range, and it makes a Physical Save against your Save DC. **Hit:** The target takes the damage of your Weapon or Unarmed Strike. **Save Failure:** The target gains Physical Vulnerability (1) for 1 Round.",
+      "ru": "Make a Martial Attack against the PD of a target within range, and it makes a Physical Save against your Save DC. **Hit:** The target takes the damage of your Weapon or Unarmed Strike. **Save Failure:** The target gains Physical Vulnerability (1) for 1 Round."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": {
+      "ap": 1,
+      "sp": 2
+    },
+    "info": {
+      "range": {
+        "en": "Weapon or Unarmed Strike",
+        "ru": "Weapon or Unarmed Strike"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Improved Vulnerability",
+            "ru": "Improved Vulnerability"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The Vulnerability increases by 1.",
+            "ru": "The Vulnerability increases by 1."
+          }
+        },
+        {
+          "name": {
+            "en": "Break DR",
+            "ru": "Break DR"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "On a failed Save, the target doesn't benefit from PDR for the duration.",
+            "ru": "On a failed Save, the target doesn't benefit from PDR for the duration."
+          }
+        },
+        {
+          "name": {
+            "en": "Break Resistance",
+            "ru": "Break Resistance"
+          },
+          "price": {
+            "sp": 2
+          },
+          "description": {
+            "en": "On a failed Save, the target doesn't benefit from Physical Resistance for the duration.",
+            "ru": "On a failed Save, the target doesn't benefit from Physical Resistance for the duration."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "throw_creature",
+    "title": {
+      "en": "Throw Creature",
+      "ru": "Throw Creature"
+    },
+    "description": {
+      "en": "When you throw a creature using the **Throwing** rules, you can add the following Maneuver Enhancements. When you do, you are considered to be performing a Maneuver.",
+      "ru": "When you throw a creature using the **Throwing** rules, you can add the following Maneuver Enhancements. When you do, you are considered to be performing a Maneuver."
+    },
+    "origin": "maneuver",
+    "origin_value": "grapple",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "Melee",
+        "ru": "Melee"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Increased Throw",
+            "ru": "Increased Throw"
+          },
+          "price": {
+            "sp": null
+          },
+          "description": {
+            "en": "The target is thrown X Spaces further.",
+            "ru": "The target is thrown X Spaces further."
+          }
+        },
+        {
+          "name": {
+            "en": "Skyward",
+            "ru": "Skyward"
+          },
+          "price": {
+            "sp": 2
+          },
+          "description": {
+            "en": "Your throw distance isn't halved for vertical throws.",
+            "ru": "Your throw distance isn't halved for vertical throws."
+          }
+        },
+        {
+          "name": {
+            "en": "Prone",
+            "ru": "Prone"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The target also falls Prone.",
+            "ru": "The target also falls Prone."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "savage_strike",
+    "title": {
+      "en": "Savage Strike",
+      "ru": "Savage Strike"
+    },
+    "description": {
+      "en": "You cause a creature to bleed with the ferocity and precision of your attack.\n\nMake a Martial Attack against the PD of a target within range, and it makes a Repeated Physical Save against your Save DC. **Hit:** The target takes the damage of your Weapon or Unarmed Strike. **Save Failure:** The target becomes **Impaired** for 1 minute or begins **Bleeding** (your choice).",
+      "ru": "You cause a creature to bleed with the ferocity and precision of your attack.\n\nMake a Martial Attack against the PD of a target within range, and it makes a Repeated Physical Save against your Save DC. **Hit:** The target takes the damage of your Weapon or Unarmed Strike. **Save Failure:** The target becomes **Impaired** for 1 minute or begins **Bleeding** (your choice)."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {
+      "range": {
+        "en": "Weapon or Unarmed Strike",
+        "ru": "Weapon or Unarmed Strike"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Improved Bleed",
+            "ru": "Improved Bleed"
+          },
+          "price": {
+            "sp": null
+          },
+          "description": {
+            "en": "On a failed Save, the target gains Bleeding X (by spent SP) for the duration.",
+            "ru": "On a failed Save, the target gains Bleeding X (by spent SP) for the duration."
+          }
+        },
+        {
+          "name": {
+            "en": "Improved Impaired",
+            "ru": "Improved Impaired"
+          },
+          "price": {
+            "sp": null
+          },
+          "description": {
+            "en": "On a failed Save, the target gains Impaired X (by spent SP) for the duration.",
+            "ru": "On a failed Save, the target gains Impaired X (by spent SP) for the duration."
+          }
+        },
+        {
+          "name": {
+            "en": "Weakened",
+            "ru": "Weakened"
+          },
+          "price": {
+            "sp": 2
+          },
+          "description": {
+            "en": "On a failed Save, the target is Weakened for the duration.",
+            "ru": "On a failed Save, the target is Weakened for the duration."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "heroic_taunt",
+    "title": {
+      "en": "Heroic Taunt",
+      "ru": "Heroic Taunt"
+    },
+    "description": {
+      "en": "You perform a powerful taunt.\n\nWhen you take the **Taunt** Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement, you are considered to be performing a Maneuver.\n\n*Taunt (Action)*\n\nYou can spend **1 AP** to attempt to taunt a creature that can see or hear you within 10 Spaces. Make an Influence Check contested by the target's Charisma Save. **Success:** The target is **Taunted** by you for 1 Round.",
+      "ru": "You perform a powerful taunt.\n\nWhen you take the **Taunt** Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement, you are considered to be performing a Maneuver.\n\n*Taunt (Action)*\n\nYou can spend **1 AP** to attempt to taunt a creature that can see or hear you within 10 Spaces. Make an Influence Check contested by the target's Charisma Save. **Success:** The target is **Taunted** by you for 1 Round."
+    },
+    "origin": "maneuver",
+    "origin_value": "utility",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "10 Spaces",
+        "ru": "10 Spaces"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Sustained",
+            "ru": "Sustained"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The duration increases to 1 minute but each creature makes a Repeated Save.",
+            "ru": "The duration increases to 1 minute but each creature makes a Repeated Save."
+          }
+        },
+        {
+          "name": {
+            "en": "Increased Range",
+            "ru": "Increased Range"
+          },
+          "price": {
+            "sp": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The range increases by 5 Spaces.",
+            "ru": "The range increases by 5 Spaces."
+          }
+        },
+        {
+          "name": {
+            "en": "Legendary Taunt",
+            "ru": "Legendary Taunt"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "Creatures other than you have Resistance (Half) to damage dealt by the Taunted targets, provided the target isn't also Taunted by those creatures.",
+            "ru": "Creatures other than you have Resistance (Half) to damage dealt by the Taunted targets, provided the target isn't also Taunted by those creatures."
+          }
+        },
+        {
+          "name": {
+            "en": "Mass Taunt",
+            "ru": "Mass Taunt"
+          },
+          "price": {
+            "ap": 1,
+            "sp": 1
+          },
+          "description": {
+            "en": "You instead target each creature of your choice within 5 Spaces that can see or hear you. When you choose this Enhancement, the cost of all other Enhancements (except Sustained) is doubled.",
+            "ru": "You instead target each creature of your choice within 5 Spaces that can see or hear you. When you choose this Enhancement, the cost of all other Enhancements (except Sustained) is doubled."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "brace",
+    "title": {
+      "en": "Brace",
+      "ru": "Brace"
+    },
+    "description": {
+      "en": "You stand firm against an attack.\n\n**Trigger:** A target you can see within range (including yourself) is targeted by an Attack against its AD.\n\n**Reaction:** You grant the target a **+5** bonus to its AD against this Attack.",
+      "ru": "You stand firm against an attack.\n\n**Trigger:** A target you can see within range (including yourself) is targeted by an Attack against its AD.\n\n**Reaction:** You grant the target a **+5** bonus to its AD against this Attack."
+    },
+    "origin": "maneuver",
+    "origin_value": "defense",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "Self (or 1 Space if wielding a Shield)",
+        "ru": "Self (or 1 Space if wielding a Shield)"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Targets",
+            "ru": "Targets"
+          },
+          "price": {
+            "ap": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "You can target 1 additional creature within range that's also targeted by the same Attack.",
+            "ru": "You can target 1 additional creature within range that's also targeted by the same Attack."
+          }
+        },
+        {
+          "name": {
+            "en": "Grapple",
+            "ru": "Grapple"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "If the Attacker is within 1 Space of you, they make a Physical Save. Save Failure: The Attacker becomes Grappled by you once the Attack is resolved.",
+            "ru": "If the Attacker is within 1 Space of you, they make a Physical Save. Save Failure: The Attacker becomes Grappled by you once the Attack is resolved."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "piercing_shot",
+    "title": {
+      "en": "Piercing Shot",
+      "ru": "Piercing Shot"
+    },
+    "description": {
+      "en": "You fire a powerful point-blank shot that pierces through creatures in a line.\n\nMake an Area Martial Attack against the AD of every target within a 4 Space Line that's Point of Origin is within Range. The Line must extend away from you. **Hit:** The target takes the damage of your Weapon.",
+      "ru": "You fire a powerful point-blank shot that pierces through creatures in a line.\n\nMake an Area Martial Attack against the AD of every target within a 4 Space Line that's Point of Origin is within Range. The Line must extend away from you. **Hit:** The target takes the damage of your Weapon."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": {
+      "ap": 2
+    },
+    "info": {
+      "range": {
+        "en": "Ranged Weapon or Weapon with the Toss or Thrown Property",
+        "ru": "Ranged Weapon or Weapon with the Toss or Thrown Property"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Damage",
+            "ru": "Damage"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The damage increases by 1.",
+            "ru": "The damage increases by 1."
+          }
+        },
+        {
+          "name": {
+            "en": "Area",
+            "ru": "Area"
+          },
+          "price": {
+            "sp": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The length of the Line increases by 4 Spaces.",
+            "ru": "The length of the Line increases by 4 Spaces."
+          }
+        },
+        {
+          "name": {
+            "en": "Penetrating Shot",
+            "ru": "Penetrating Shot"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The Attack ignores Cover but is blocked by 6 inches (15 cm) of wood or soft earth (dirt, mud, or sand), or 1 inch (25 mm) of metal or rock.",
+            "ru": "The Attack ignores Cover but is blocked by 6 inches (15 cm) of wood or soft earth (dirt, mud, or sand), or 1 inch (25 mm) of metal or rock."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "whirlwind",
+    "title": {
+      "en": "Whirlwind",
+      "ru": "Whirlwind"
+    },
+    "description": {
+      "en": "You attack in a circle around you, attacking everyone within range.\n\nMake an Area Martial Attack using a Melee Weapon or Unarmed Strike against the AD of every target within range. **Hit:** The target takes the damage of your Weapon or Unarmed Strike.\n\n**Reach Weapon:** If you have a Reach Weapon, you can choose to increase the Aura by 1 Space. When you do, you can't Attack targets within 1 Space of you.",
+      "ru": "You attack in a circle around you, attacking everyone within range.\n\nMake an Area Martial Attack using a Melee Weapon or Unarmed Strike against the AD of every target within range. **Hit:** The target takes the damage of your Weapon or Unarmed Strike.\n\n**Reach Weapon:** If you have a Reach Weapon, you can choose to increase the Aura by 1 Space. When you do, you can't Attack targets within 1 Space of you."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": {
+      "ap": 2
+    },
+    "info": {
+      "range": {
+        "en": "1 Space Aura",
+        "ru": "1 Space Aura"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Damage",
+            "ru": "Damage"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The damage increases by 1.",
+            "ru": "The damage increases by 1."
+          }
+        },
+        {
+          "name": {
+            "en": "Area",
+            "ru": "Area"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The Aura increases by 1 Space.",
+            "ru": "The Aura increases by 1 Space."
+          }
+        },
+        {
+          "name": {
+            "en": "Vortex",
+            "ru": "Vortex"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "Each target makes a Might Save. Save Failure: The target is pushed up to 1 Space horizontally in a direction of your choice. The target is moved 1 additional Space each time you use this Enhancement.",
+            "ru": "Each target makes a Might Save. Save Failure: The target is pushed up to 1 Space horizontally in a direction of your choice. The target is moved 1 additional Space each time you use this Enhancement."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "cleave",
+    "title": {
+      "en": "Cleave",
+      "ru": "Cleave"
+    },
+    "description": {
+      "en": "Make an Area Martial Attack against the AD of every target within range. **Hit:** The target takes the damage of your Weapon or Unarmed Strike.\n\n**Reach Weapon:** If you have a Reach Weapon, you can extend the Point of Origin 1 Space away from you. The Arc must still be facing away from you.",
+      "ru": "Make an Area Martial Attack against the AD of every target within range. **Hit:** The target takes the damage of your Weapon or Unarmed Strike.\n\n**Reach Weapon:** If you have a Reach Weapon, you can extend the Point of Origin 1 Space away from you. The Arc must still be facing away from you."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": {
+      "ap": 2
+    },
+    "info": {
+      "range": {
+        "en": "2 Space Arc (Self)",
+        "ru": "2 Space Arc (Self)"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Damage",
+            "ru": "Damage"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The damage increases by 1.",
+            "ru": "The damage increases by 1."
+          }
+        },
+        {
+          "name": {
+            "en": "Area",
+            "ru": "Area"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The Arc increases by 1 Space.",
+            "ru": "The Arc increases by 1 Space."
+          }
+        },
+        {
+          "name": {
+            "en": "Careful Cleave",
+            "ru": "Careful Cleave"
+          },
+          "price": {
+            "sp": null
+          },
+          "description": {
+            "en": "You can choose X targets in the area to avoid with the Attack.",
+            "ru": "You can choose X targets in the area to avoid with the Attack."
+          }
+        },
+        {
+          "name": {
+            "en": "Sweep",
+            "ru": "Sweep"
+          },
+          "price": {
+            "sp": 2
+          },
+          "description": {
+            "en": "Each target makes an Agility Save. Save Failure: The target is knocked Prone.",
+            "ru": "Each target makes an Agility Save. Save Failure: The target is knocked Prone."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "heroic_shove",
+    "title": {
+      "en": "Heroic Shove",
+      "ru": "Heroic Shove"
+    },
+    "description": {
+      "en": "You perform a powerful shove.\n\nWhen you take the Shove Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement, you are considered to be performing a Maneuver.\n\n*Shove (Action)*\n\nYou can spend **1 AP** to attempt to push a creature within 1 Space of you. Make an Athletics Check contested by the target's Martial Check. **Success:** You push the creature 1 Space away from you or to its left or right. **Success (each 5):** Push up to 1 additional Space.\n\n**Knock Prone:** After the result, you can choose to reduce the total distance the target is pushed by 1 Space to knock them Prone ****instead.",
+      "ru": "You perform a powerful shove.\n\nWhen you take the Shove Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement, you are considered to be performing a Maneuver.\n\n*Shove (Action)*\n\nYou can spend **1 AP** to attempt to push a creature within 1 Space of you. Make an Athletics Check contested by the target's Martial Check. **Success:** You push the creature 1 Space away from you or to its left or right. **Success (each 5):** Push up to 1 additional Space.\n\n**Knock Prone:** After the result, you can choose to reduce the total distance the target is pushed by 1 Space to knock them Prone ****instead."
+    },
+    "origin": "maneuver",
+    "origin_value": "utility",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "1 Space",
+        "ru": "1 Space"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Increased Push",
+            "ru": "Increased Push"
+          },
+          "price": {
+            "sp": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The distance pushed increases by 1 Space.",
+            "ru": "The distance pushed increases by 1 Space."
+          }
+        },
+        {
+          "name": {
+            "en": "Stand Up",
+            "ru": "Stand Up"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "If you are Prone, you can stand up before or after making the Check without spending movement.",
+            "ru": "If you are Prone, you can stand up before or after making the Check without spending movement."
+          }
+        },
+        {
+          "name": {
+            "en": "Mass Shove",
+            "ru": "Mass Shove"
+          },
+          "price": {
+            "ap": 1,
+            "sp": 1
+          },
+          "description": {
+            "en": "You instead target each creature of your choice within a 1 Space Aura. When you choose this Enhancement, the cost of all other Enhancements (except Stand Up) is doubled.",
+            "ru": "You instead target each creature of your choice within a 1 Space Aura. When you choose this Enhancement, the cost of all other Enhancements (except Stand Up) is doubled."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "heroic_bash",
+    "title": {
+      "en": "Heroic Bash",
+      "ru": "Heroic Bash"
+    },
+    "description": {
+      "en": "Make a Melee Martial Attack against the PD of a target within range, and it makes a Might Save against your Save DC. **Hit:** The target takes the damage of your Weapon or Unarmed Strike. **Save Failure:** The target is pushed 1 Space away from you. **Save Failure (each 5):** The target is pushed up to 1 additional Space.\n\n**Knock Prone:** After the result, you can choose to reduce the total distance a target is pushed by 1 Space to knock them **Prone** instead.\n\n**Airborne:** When you choose to push them upward into the air, the distance they are pushed is halved.",
+      "ru": "Make a Melee Martial Attack against the PD of a target within range, and it makes a Might Save against your Save DC. **Hit:** The target takes the damage of your Weapon or Unarmed Strike. **Save Failure:** The target is pushed 1 Space away from you. **Save Failure (each 5):** The target is pushed up to 1 additional Space.\n\n**Knock Prone:** After the result, you can choose to reduce the total distance a target is pushed by 1 Space to knock them **Prone** instead.\n\n**Airborne:** When you choose to push them upward into the air, the distance they are pushed is halved."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {
+      "range": {
+        "en": "Weapon or Unarmed Strike",
+        "ru": "Weapon or Unarmed Strike"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Increased Distance",
+            "ru": "Increased Distance"
+          },
+          "price": {
+            "sp": null
+          },
+          "description": {
+            "en": "The distance pushed increases by 1 Space.",
+            "ru": "The distance pushed increases by 1 Space."
+          }
+        },
+        {
+          "name": {
+            "en": "Bowling Ball",
+            "ru": "Bowling Ball"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "If the target collides with another creature as part of this movement, they both take Collision Damage as normal, and the creature it collides with must make a Might Save against your Save DC. Save Failure: The target is knocked Prone. Save Failure (each 5): The target is also pushed 1 Space away from you.",
+            "ru": "If the target collides with another creature as part of this movement, they both take Collision Damage as normal, and the creature it collides with must make a Might Save against your Save DC. Save Failure: The target is knocked Prone. Save Failure (each 5): The target is also pushed 1 Space away from you."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "meteor_strike",
+    "title": {
+      "en": "Meteor Strike",
+      "ru": "Meteor Strike"
+    },
+    "description": {
+      "en": "A mid air strike.\n\nYour Jump Distance increases by 2, you Jump up to your Jump Distance without spending movement (provided you can move), and make a Melee Martial Attack against a target within range at any point during your jump or where you land.\n\n**Reaction:** You can spend an additional **1 SP** to perform this Maneuver as a Reaction to a creature being forcibly moved into a Space within your Jump Distance that's at least 1 Space above the ground.",
+      "ru": "A mid air strike.\n\nYour Jump Distance increases by 2, you Jump up to your Jump Distance without spending movement (provided you can move), and make a Melee Martial Attack against a target within range at any point during your jump or where you land.\n\n**Reaction:** You can spend an additional **1 SP** to perform this Maneuver as a Reaction to a creature being forcibly moved into a Space within your Jump Distance that's at least 1 Space above the ground."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {
+      "range": {
+        "en": "Weapon or Unarmed Strike",
+        "ru": "Weapon or Unarmed Strike"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Slam Down",
+            "ru": "Slam Down"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "Requires Falling Strike. On a failed Save, the target doesn’t benefit from any ability that prevents it from falling as a result of being knocked Prone in midair until the end of the turn.",
+            "ru": "Requires Falling Strike. On a failed Save, the target doesn’t benefit from any ability that prevents it from falling as a result of being knocked Prone in midair until the end of the turn."
+          }
+        },
+        {
+          "name": {
+            "en": "Falling Strike",
+            "ru": "Falling Strike"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The creature makes a Physical Save against your Save DC. Save Failure: The creature falls Prone.",
+            "ru": "The creature makes a Physical Save against your Save DC. Save Failure: The creature falls Prone."
+          }
+        },
+        {
+          "name": {
+            "en": "Impact Crater",
+            "ru": "Impact Crater"
+          },
+          "price": {
+            "ap": 1,
+            "sp": 1
+          },
+          "description": {
+            "en": "All creatures within 1 Space of where you land must make a Physical Save against your Save DC. Save Failure: The creature falls Prone.",
+            "ru": "All creatures within 1 Space of where you land must make a Physical Save against your Save DC. Save Failure: The creature falls Prone."
+          }
+        },
+        {
+          "name": {
+            "en": "Larger Crater",
+            "ru": "Larger Crater"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "Requires Impact Crater. The size of the Aura increases by 1.",
+            "ru": "Requires Impact Crater. The size of the Aura increases by 1."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "swift_strike",
+    "title": {
+      "en": "Swift Strike",
+      "ru": "Swift Strike"
+    },
+    "description": {
+      "en": "You move around the area, attacking 1 creature you pass along the way.\n\nYou move a number of Spaces up to your Speed and make a Melee Martial Attack against the PD of 1 target within your Melee Range at any point during this movement. **Hit:** The target takes the damage of your Weapon or Unarmed Strike.",
+      "ru": "You move around the area, attacking 1 creature you pass along the way.\n\nYou move a number of Spaces up to your Speed and make a Melee Martial Attack against the PD of 1 target within your Melee Range at any point during this movement. **Hit:** The target takes the damage of your Weapon or Unarmed Strike."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {
+      "range": {
+        "en": "Weapon or Unarmed Strike",
+        "ru": "Weapon or Unarmed Strike"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Disengage",
+            "ru": "Disengage"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "This movement doesn't provoke Opportunity Attacks.",
+            "ru": "This movement doesn't provoke Opportunity Attacks."
+          }
+        },
+        {
+          "name": {
+            "en": "Subsequent Strike",
+            "ru": "Subsequent Strike"
+          },
+          "price": {
+            "ap": 1,
+            "sp": 1
+          },
+          "repeatable": true,
+          "description": {
+            "en": "You gain additional movement equal to half your Speed and you can target an additional creature using the same Attack Check.",
+            "ru": "You gain additional movement equal to half your Speed and you can target an additional creature using the same Attack Check."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "volley",
+    "title": {
+      "en": "Volley",
+      "ru": "Volley"
+    },
+    "description": {
+      "en": "You bombard an area with a series of projectiles.\n\nMake an Area Martial Attack against the AD of every target within a 3 Space Diameter Sphere that's Point of Origin is within Range. **Hit:** The target takes the damage of your Weapon.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you’re within the Melee Range of at least 1 enemy, unless that enemy is Incapacitated.",
+      "ru": "You bombard an area with a series of projectiles.\n\nMake an Area Martial Attack against the AD of every target within a 3 Space Diameter Sphere that's Point of Origin is within Range. **Hit:** The target takes the damage of your Weapon.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you’re within the Melee Range of at least 1 enemy, unless that enemy is Incapacitated."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": {
+      "ap": 2
+    },
+    "info": {
+      "range": {
+        "en": "Ranged Weapon",
+        "ru": "Ranged Weapon"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Damage",
+            "ru": "Damage"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The damage increases by 1.",
+            "ru": "The damage increases by 1."
+          }
+        },
+        {
+          "name": {
+            "en": "Area",
+            "ru": "Area"
+          },
+          "price": {
+            "sp": 2
+          },
+          "repeatable": true,
+          "description": {
+            "en": "The Diameter of the Sphere increases by 1 Space.",
+            "ru": "The Diameter of the Sphere increases by 1 Space."
+          }
+        },
+        {
+          "name": {
+            "en": "Rain of Fire",
+            "ru": "Rain of Fire"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "Targets within the area don't gain the benefits of 1/2 Cover against this Attack.",
+            "ru": "Targets within the area don't gain the benefits of 1/2 Cover against this Attack."
+          }
+        },
+        {
+          "name": {
+            "en": "Suppressive Fire",
+            "ru": "Suppressive Fire"
+          },
+          "price": {
+            "sp": 2
+          },
+          "description": {
+            "en": "Each creature makes a Charisma Save. Save Failure: The creature becomes Hindered until the end of their next turn.",
+            "ru": "Each creature makes a Charisma Save. Save Failure: The creature becomes Hindered until the end of their next turn."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "swap",
+    "title": {
+      "en": "Swap",
+      "ru": "Swap"
+    },
+    "description": {
+      "en": "You swap places with a nearby ally.\n\nYou swap Spaces with a willing creature within range. If you or the target creature provoke Opportunity Attacks as a result of swapping Spaces, those Attacks are all made against you.\n\n**Reaction:** You can spend an additional **1 SP** to perform this Maneuver as a Reaction in response to a creature within 1 Space being Attacked. When you do, you also impose DisADV on the Attack against them.",
+      "ru": "You swap places with a nearby ally.\n\nYou swap Spaces with a willing creature within range. If you or the target creature provoke Opportunity Attacks as a result of swapping Spaces, those Attacks are all made against you.\n\n**Reaction:** You can spend an additional **1 SP** to perform this Maneuver as a Reaction in response to a creature within 1 Space being Attacked. When you do, you also impose DisADV on the Attack against them."
+    },
+    "origin": "maneuver",
+    "origin_value": "defense",
+    "kind": "static",
+    "price": {
+      "ap": 1
+    },
+    "info": {
+      "range": {
+        "en": "1 Space",
+        "ru": "1 Space"
+      },
+      "enhancements": [
+        {
+          "name": {
+            "en": "Escape",
+            "ru": "Escape"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "The target can immediately move up to its Speed after swapping Spaces.",
+            "ru": "The target can immediately move up to its Speed after swapping Spaces."
+          }
+        },
+        {
+          "name": {
+            "en": "Seamless Swap",
+            "ru": "Seamless Swap"
+          },
+          "price": {
+            "sp": 1
+          },
+          "description": {
+            "en": "Swapping Spaces doesn't provoke any Opportunity Attacks.",
+            "ru": "Swapping Spaces doesn't provoke any Opportunity Attacks."
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,22 +1,17 @@
 # frozen_string_literal: true
 
-module Dc20Character
+module Dc20
   module Classes
-    class WizardDecorator < ApplicationDecorator
-      def mana_points
-        @mana_points ||= __getobj__.mana_points.merge('max' => mana_points_by_level)
-      end
-
-      def spells
-        @spells ||= __getobj__.spells + spells_by_level
-      end
-
-      def spell_lists_amount
-        1
-      end
-
-      def max_health
-        @max_health ||= __getobj__.max_health + 6 + level + modified_abilities['mig']
+    class WizardDecorator < ApplicationDecoratorV2
+      def call(result:)
+        @result = result
+        @result['max_stamina_points'] = 0
+        @result['max_mana_points'] = mana_points_by_level
+        @result['maneuver_points'] = 0
+        @result['max_health'] = 6 + level + modified_abilities['mig']
+        @result['spells'] = spells_by_level
+        @result['spell_lists_amount'] = 1
+        @result
       end
 
       private

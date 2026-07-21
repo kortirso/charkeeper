@@ -39,3 +39,12 @@ end
     item ? item.update!(data) : ::Cosmere::Item.create!(data)
   end
 end
+
+[
+  'ancestry.json', 'classes.json', 'subclasses.json', 'spells.json', 'maneuvers.json', 'talents.json'
+].each do |filename|
+  JSON.parse(File.read("db/data_prod/dc20/#{filename}")).each do |item|
+    feat = ::Dc20::Feat.find_by(slug: item['slug'])
+    feat ? feat.update!(item) : ::Dc20::Feat.create!(item)
+  end
+end

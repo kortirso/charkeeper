@@ -4,7 +4,7 @@ describe CharactersContext::Dc20::UpdateCommand do
   subject(:command_call) { instance.call(params) }
 
   let(:instance) { described_class.new }
-  let!(:character) { create :character, :dc20 }
+  let!(:character) { create :dc20_character }
   let(:valid_params) do
     {
       character: Dc20::Character.find(character.id), level: 2
