@@ -242,7 +242,7 @@ export const SharedBookContent = (props) => {
                         <Show when={element.own}>
                           <div class="flex gap-2">
                             <div class="flex items-center justify-end gap-1 text-neutral-700">
-                              <Button default classList="px-2 py-1" onClick={(e) => edit(e, element.id)}>
+                              <Button default classList="px-2 py-1" onClick={(e) => edit(e, element)}>
                                 <Edit width="20" height="20" />
                               </Button>
                               <Button default classList="px-2 py-1" onClick={(e) => remove(e, element.id)}>
