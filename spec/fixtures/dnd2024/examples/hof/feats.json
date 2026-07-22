@@ -1,0 +1,421 @@
+[
+  {
+    "title": {
+      "en": "Cold Caster",
+      "ru": "Холодный заклинатель"
+    },
+    "description": {
+      "en": "**Frostbite.** Once per turn when you hit a creature with an attack roll and deal Cold damage, you can temporarily negate the creature's defenses. The creature subtracts 1d4 from the next saving throw it makes before the end of your next turn.",
+      "ru": "**Обморожение.** Один раз за ход, когда вы попадаете по существу броском атаки и наносите урон Холодом, вы можете временно ослабить защиту существа. Существо вычитает 1d4 из следующего спасброска, который оно совершит до конца вашего следующего хода."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "static_spells": {
+      "Ray of frost": { "modifier": ["int", "wis", "cha"] }
+    },
+    "leveling_ability_boosts": ["int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Dragonscarred",
+      "ru": "Отмеченный драконом"
+    },
+    "description": {
+      "en": "**Damage Resistance.** When you gain this feat, choose Acid, Cold, Fire, Lightning, or Poison. You have Resistance to the chosen damage type.\n\n**Fearsome Power.** When you deal damage to a creature as part of the Attack or Magic action on your turn, you can use the Dragon's Terror benefit of the Cult of the Dragon Initiate feat as a Bonus Action this turn.",
+      "ru": "**Сопротивление урону.** Когда вы получаете эту черту, выберите: Кислота, Холод, Огонь, Электричество или Яд. Вы получаете Сопротивление выбранному типу урона.\n\n**Ужасающая мощь.** Когда вы наносите урон существу частью действия Атака или Магия в ваш ход, вы можете Бонусным действием использовать преимущество Драконий ужас черты Посвящённый Культа дракона в этот ход."
+    },
+    "kind": "",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["con", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Enclave Magic",
+      "ru": "Магия анклава"
+    },
+    "description": {
+      "en": "**Friend to Animals.** You have Advantage on ability checks when taking the Influence action with Beasts.\n\n**Two Hearts, One Mind.** You always have the Beast Sense spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. When you cast it without a spell slot using this feature, it doesn't require Concentration. You can also cast the spell using any spell slots you have of the appropriate level. The spell's spellcasting ability is the ability increased by this feat.",
+      "ru": "**Друг зверей.** Вы совершаете с Преимуществом проверки характеристик совершении действия Влияние в отношении Зверей.\n\n**Два сердца, один разум.** У вас всегда подготовлено заклинание Животные чувства. Вы можете сотворить его один раз без траты ячейки заклинаний, и вы восстанавливаете способность сотворять его таким образом после окончания Долгого отдыха. Когда вы сотворяете его с помощью этого преимущества, оно не требует Концентрации. Вы также можете сотворять его с тратой любых ячеек заклинаний подходящего уровня. Заклинательной характеристикой для этого заклинания является увеличенная этой чертой характеристика."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Fairy Trickster",
+      "ru": "Фейский проказник"
+    },
+    "description": {
+      "en": "**Faerie Trod Trotter.** When you take the Disengage action on your turn, Difficult Terrain doesn't cost you extra movement for the rest of that turn.\n\n**Flustering Strike.** When you hit a creature with an attack roll, you can attempt to fluster the target. The target must succeed on a Wisdom saving throw (DC 8 plus the ability modifier of the score increased by this feat and your Proficiency Bonus) or have Disadvantage on saving throws until the end of your next turn.\n\nYou can use this benefit a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.",
+      "ru": "**Ходьба по тропинкам фей.** Когда в свой ход вы совершаете действие Отход, до конца этого хода Труднопроходимая местность не замедляет ваше перемещение.\n\n**Сбивающий с толку удар.** Когда вы попадаете по существу броском атаки, вы можете попытаться сбить цель с толку. Цель должна преуспеть в спасброске Мудрости (Сл 8 + модификатор характеристики, увеличенной этой чертой, + ваш Бонус владения), иначе будет совершать с Помехой спасброски до конца вашего следующего хода.\n\nВы можете использовать это преимущество количество раз, равное вашему Бонусу владения, и восстанавливаете все потраченные использования после окончания Долгого отдыха."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["dex", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Genie Magic",
+      "ru": "Магия гения"
+    },
+    "description": {
+      "en": "**Wish Magic.** As a Magic action, you can cast a level 1 spell of your choice from the Sorcerer spell list that has a casting time of an action. Once you use this benefit, you can't do so again until you finish a Long Rest. The spell's spellcasting ability is the ability increased by this feat.\n\nWhen you reach level 11, the spell you cast with this feat is cast as though using a level 2 spell slot. When you reach level 17, the spell is cast as though using a level 3 spell slot.",
+      "ru": "**Магия желаний.** Действием Магия вы можете сотворить заклинание 1‐го уровня по вашему выбору из списка заклинаний Чародея со временем сотворения в 1 действие. Вы не можете использовать это преимущество повторно, пока не закончите Долгий отдых. Заклинательной характеристикой для этого заклинания является увеличенная этой чертой характеристика.\n\nКогда вы достигаете 11‐го уровня, вы сотворяете это заклинание так, как будто используете ячейку заклинаний 2‐го уровня. Когда вы достигаете 17‐го уровня, вы сотворяете это заклинание так, как будто используете ячейку заклинаний 3‐го уровня."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Harper Teamwork",
+      "ru": "Слаженность Арфистов"
+    },
+    "description": {
+      "en": "**Withering Wordplay.** When you take the Help action to assist an ally's attack roll against an enemy, that enemy also has Disadvantage on the first saving throw it makes before the start of your next turn.\n\n**Inspiring Willpower.** If you succeed on a saving throw to end the Frightened or Paralyzed condition on yourself, you can choose one ally you can see within 30 feet of yourself that has the same condition. That condition immediately ends for that ally.",
+      "ru": "**Иссушающая словесность.** Когда вы совершаете действие Помощь, чтобы помочь союзнику в броске атаки по врагу, этот враг также совершает с Помехой первый спасбросок до начала вашего следующего хода.\n\n**Вдохновляющая сила воли.** Если вы преуспеваете в спасброске, чтобы окончить на себе состояние Испуганный или Парализованный, вы можете выбрать одного союзника, которого вы можете видеть в пределах 30 футов и который имеет то же состояние. Это состояние немедленно заканчивается на этом союзнике."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["dex", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Lordly Resolve",
+      "ru": "Решительность Лордов"
+    },
+    "description": {
+      "en": "**Standard Bearer.** As a Bonus Action, choose up to three creatures within 60 feet of yourself that can see you. Each target can immediately take a Reaction to right itself and end the Prone condition, provided its Speed isn't 0.\n\nAdditionally, you bolster the targets' resolve, which lasts for 1 minute or until you have the Incapacitated condition. While bolstered, a target can't be possessed or gain the Charmed or Frightened condition; if a target is already possessed, Charmed, or Frightened, the target has Advantage on any new saving throw against the relevant effect.\n\nOnce you use this benefit, you can't do so again until you finish a Long Rest.",
+      "ru": "**Знаменосец.** Бонусным действием выберите не более трёх существ в пределах 60 футов, которые могут вас видеть. Каждая цель может сразу же Реакцией подняться и прекратить состояние Сбитый с ног, если её Скорость не равна 0.\n\nКроме того, вы укрепляете решимость целей, что длится 1 минуту или пока вы не станете Недееспособным. Пока решимость укреплена, цель не может быть одержима или стать Очарованной или Испуганной; если цель уже одержима, Очарована или Испугана, она совершает с Преимуществом новые спасброски от аналогичных эффектов.\n\nВы не можете использовать это преимущество повторно, пока не закончите Долгий отдых."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["str", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Mythal Touched",
+      "ru": "Затронутый мифалом"
+    },
+    "description": {
+      "en": "**Mythal Ward.** If a spell attack hits you or you fail a saving throw against a spell, you can take a Reaction to roll on the Mythal-Touched Magic table to create a magical effect. If an effect requires a saving throw, the DC equals 8 plus the modifier of the ability increased by this feat and your Proficiency Bonus.\n\nYou can use this benefit a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.\n\n- **1–2**. You and each creature within 15 feet of you make a Dexterity saving throw, taking Force damage equal to 1d8 times the level of the triggering spell on a failed save or half as much damage on a successful one.\n\n- **3–7**. You and the triggering spell's caster form a telepathic link for 1 hour.\n\n- **8–10**. Gravity is reversed in a 15-foot-radius, 60-foot-tall Cylinder centered on you for 1 minute, per the Reverse Gravity spell.\n\n- **11–13**. You and the triggering spell's caster each make a Constitution saving throw. On a failed save, the creature has the Stunned condition until the end of its next turn.\n\n- **14–17**. You gain a +2 bonus to AC for 1 minute, potentially turning the triggering spell into a miss if it was a spell attack.\n\n- **18–19**. Any flammable, nonmagical object within 10 feet of the triggering spell's caster that isn't being worn or carried by another creature bursts into flame, takes 1d4 Fire damage, and is burning.\n\n- **20**.  The triggering spell dissipates with no effect, and the action, Bonus Action, or Reaction used to cast it is wasted. If that spell was cast with a spell slot, the slot isn't expended.",
+      "ru": "**Мифальная защита.** Если по вам попадает атакой заклинание или вы проваливаете спасбросок от заклинания, вы можете Реакцией совершить бросок по таблице «Магия затронутого мифалом» и создать магический эффект. Если эффект требует спасброска, его Сл равна 8 + модификатор характеристики, увеличенной этой чертой + ваш Бонус владения.\n\nВы можете использовать это преимущество количество раз, равное вашему Бонусу владения, и восстанавливаете все потраченные использования после окончания Долгого отдыха.\n\n- **1–2**.Вы и каждое существо в пределах 15 футов совершаете спасбросок Ловкости, получая 1к8 × уровень спровоцировавшего заклинания урона Чистой силой при провале или половину этого урона при успехе.\n\n- **3–7**.Вы и создатель спровоцировавшего заклинания устанавливаете телепатическую связь на 1 час.\n\n- **8–10**.В Цилиндре радиусом 15 футов и высотой 60 футов с центром на вас на 1 минуту меняется гравитация, как при заклинании Изменение тяготения.\n\n- **11–13**.Вы и создатель спровоцировавшего заклинания совершаете спасбросок Телосложения. При провале существо становится Ошеломлённым до конца своего следующего хода.\n\n- **14–17**.Вы получаете бонус +2 к КЗ на 1 минуту, что может обратить спровоцировавшее заклинание в промах, если это была атака заклинанием.\n\n- **18–19**. Любой легковоспламеняющийся немагический объект в пределах 10 футов от создателя спровоцировавшего заклинания, который не несёт и не носит другое существо, вспыхивает пламенем, получает 1к4 урона Огнём и начинает гореть.\n\n- **20**.Спровоцировавшее заклинание рассеивается и не оказывает никакого эффекта, а действие, Бонусное действие или Реакция, использованные для его сотворения, тратятся впустую. Если это заклинание сотворялось с ячейкой заклинаний, ячейка не тратится."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Order's Resilience",
+      "ru": "Устойчивость Ордена"
+    },
+    "description": {
+      "en": "**Resurge.** When you have the Prone condition, you can right yourself with only 5 feet of movement.\n\n**Stronger Together.** If you are within 5 feet of an ally that doesn't have the Incapacitated condition, you and that ally have Advantage on Strength saving throws. You can't use this benefit while you have the Incapacitated condition.",
+      "ru": "Повторный всплеск. Когда вы Сбиты с ног, то можете встать, потратив только 5 футов перемещения.\n\n**Вместе — сильнее.** Если вы находитесь в пределах 5 футов от союзника, который не Недееспособен, вы и этот союзник совершаете с Преимуществом спасброски Силы. Вы не можете использовать это преимущество, если вы Недееспособны."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["str", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Purple Dragon Commandant",
+      "ru": "Комендант Пурпурного дракона"
+    },
+    "description": {
+      "en": "**Encourage Ally.** As a Bonus Action, you bolster one ally you can see within 30 feet. The ally gains Temporary Hit Points equal to 2d6 plus the modifier of the ability score increased by this feat. You can take this Bonus Action a number of times equal to your Proficiency Bonus, and you regain all uses when you finish a Long Rest.\n\n**Last Stand.** You have Advantage on attack rolls while Bloodied.",
+      "ru": "**Поощрение союзника.** Бонусным действием вы укрепляете одного союзника, которого можете видеть в пределах 30 футов. Союзник получает Временные хиты, равные 2d6 + модификатор значения характеристики, увеличенной этой чертой. Вы можете совершить это Бонусное действие количество раз, равное вашему Бонусу владения, и восстанавливаете все потраченные использования после окончания Долгого отдыха.\n\n**Последний рубеж.** Вы совершаете с Преимуществом броски атаки, пока вы Окровавлены."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["str", "dex"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Spellfire Adept",
+      "ru": "Адепт чаропламени"
+    },
+    "description": {
+      "en": "**Fueled Spellfire.** Once per turn, when a spell you cast deals Radiant damage, you can expend up to two Hit Point Dice, roll them, and add the total rolled to one damage roll of the spell.\n\n**Searing Spellfire.** When you make a damage roll that deals Radiant damage, it ignores Resistance to Radiant damage.",
+      "ru": "**Подпитываемое чаропламя.** Один раз за ход, когда сотворённое вами заклинание наносит урон Излучением, вы можете потратить не более двух Костей хитов, бросить их и прибавить выпавшее значение к одному броску урона этого заклинания.\n\n**Обжигающее чаропламя.** Когда вы совершаете бросок урона Излучением, этот урон игнорирует Сопротивление урону Излучением."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Street Justice",
+      "ru": "Уличное правосудие"
+    },
+    "description": {
+      "en": "**Headlock.** Your allies have Advantage on attack rolls against a creature Grappled by you.\n\n**Sturdy Knot.** When you use Chain, Manacles, or Rope to bind a creature, add your Proficiency Bonus to the DC to escape or burst the Chain, Manacles, or Rope.\n\n**Tough Talk.** A creature's Hostile attitude doesn't impose Disadvantage on your Charisma (Intimidation) checks to influence that creature.",
+      "ru": "**Плотный захват.** Ваши союзники совершают с Преимуществом броски атаки по Схваченной вами цели.\n\n**Крепкий узел.** Когда вы используете Цепь, Кандалы или Верёвку, чтобы связать существо, добавьте ваш Бонус владения к Сл высвобождения или разрыва Цепи, Кандалов или Верёвки.\n\n**Грозные разговоры.** Враждебное отношение существа не накладывает Помеху на ваши проверки Харизмы (Запугивание) при попытке повлиять на это существо."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["str", "dex"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Zhentarim Tactics",
+      "ru": "Тактика Жентарима"
+    },
+    "description": {
+      "en": "**Retaliate.** Immediately after a creature within 5 feet of you hits you with a melee attack, you can make an Opportunity Attack action against that creature.\n\n**Versatile Merc.** When you finish a Long Rest, choose a skill in which you have proficiency. You have Expertise in that skill until you finish your next Long Rest.",
+      "ru": "**Ответный удар.** Сразу после того как существо в пределах 5 футов попадает по вам рукопашной атакой, вы можете совершить Провоцированную атаку по этому существу.\n\n**Универсальный наёмник.** Когда вы завершаете Долгий отдых, выберите навык, которым вы владеете. Вы получаете Экспертность в этом навыке до завершения вашего следующего Долгого отдыха."
+    },
+    "kind": "static",
+    "level": 4,
+    "origin": "feat",
+    "origin_value": "general",
+    "leveling_ability_boosts": ["dex", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of Bloodshed",
+      "ru": "Дар кровопролития"
+    },
+    "description": {
+      "en": "**Killer's Fortune.** When an enemy you can see is reduced to 0 Hit Points, you gain Advantage on the next attack roll you make before the end of your next turn.\n\n**Power from Pain.** Once per turn, when you make an attack roll while Bloodied, you can deal extra damage to the target equal to your Proficiency Bonus. The extra damage's type is the same as the attack's type.",
+      "ru": "**Удача убийцы.** Когда Хиты врага, которого вы можете видеть, снижаются до 0, вы совершаете с Преимуществом следующий бросок атаки до конца вашего следующего хода.\n\n**Сила из боли.** Один раз за ход, когда вы совершаете бросок атаки будучи Окровавленным, вы можете нанести цели дополнительный урон, равный вашему Бонусу владения. Тип дополнительного урона совпадает с типом урона атаки."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["str", "dex", "con", "int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of Bountiful Health",
+      "ru": "Дар обильного здоровья"
+    },
+    "description": {
+      "en": "**Augmented Health.** When you gain Temporary Hit Points, increase the number of Temporary Hit Points you gain by 5.\n\n**Superior Recuperation.** When you spend one or more Hit Point Dice to regain Hit Points, you can instead use the highest number possible for each die.",
+      "ru": "**Усиленное здоровье.** Когда вы получаете Временные хиты, увеличивайте получаемое количество на 5.\n\n**Превосходное восстановление.** Когда вы тратите одну или несколько Костей хитов для восстановления Хитов, вы можете вместо этого использовать максимальное значение каждой из этих костей."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["str", "dex", "con", "int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of Communication",
+      "ru": "Дар общения"
+    },
+    "description": {
+      "en": "**Cunning Speaker.** You don't have Disadvantage on ability checks to influence Hostile creatures.\n\n**Gifted Interpreter.** You understand the literal meaning of any language you hear or see signed, and you can understand the literal meaning of any written language you see.\n\n**Mental Communication.** You gain telepathy with a range of 120 feet.",
+      "ru": "**Хитроумный оратор.** Вы совершаете проверки характеристик, позволяющие влиять на Враждебное существо, без Помехи.\n\n**Одарённый переводчик.** Вы понимаете дословный смысл любого языка, который слышите или видите жесты, а также понимаете дословный смысл любой надписи, которую видите.\n\n**Ментальная коммуникация.** Вы получаете Телепатию в пределах 120 футов."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of Desperate Resilience",
+      "ru": "Дар отчаянного сопротивления"
+    },
+    "description": {
+      "en": "**Defense of Body and Mind.** While you are **Bloodied**, you have Resistance to every damage type except Force.",
+      "ru": "**Защита тела и разума.** Пока вы **Окровавлены**, вы получаете Сопротивление всем типам урона, кроме урона Чистой силой."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["str", "con"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of Exquisite Radiance",
+      "ru": "Дар изысканного сияния"
+    },
+    "description": {
+      "en": "**Eternal Rest.** Creatures you reduce to 0 Hit Points can't become Undead.\n\n**Powerful Radiance.** When you make a damage roll that deals Radiant damage, you can instead use the highest number possible for each damage die. Once you use this benefit, you can't do so again until you finish a Long Rest.",
+      "ru": "**Вечный покой.** Существа, количество Хитов которых вы снизили до 0, не могут стать Нежитью.\n\n**Могучее сияние.** Когда вы совершаете бросок урона Излучением, вы можете вместо этого использовать максимальное значение каждой из этих костей. Вы не можете использовать это преимущество повторно, пока не закончите Долгий отдых."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["str", "dex", "con", "int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of Fluid Forms",
+      "ru": "Дар текучих форм"
+    },
+    "description": {
+      "en": "**Shapechanger.** You can take a Magic action to shape-shift into a Beast, Humanoid, or Monstrosity with a Challenge Rating no higher than 10. When you shape-shift, you gain a number of Temporary Hit Points equal to the Hit Points of the form. The shape-shifting effect lasts for 1 hour, and it ends early if you have no Temporary Hit Points left or if you take a Magic action to return to your true form. Once you use this benefit, you can't do so again until you finish a Long Rest.\n\n**Hardy Transformation.** When you gain Temporary Hit Points when you shape-shift, increase that number of Temporary Hit Points by 20.",
+      "ru": "**Перевёртыш.** Вы можете совершить действие Магия, чтобы превратиться в Зверя, Гуманоида или Монстра с Показателем опасности не выше 10. Когда вы превращаетесь, вы получаете количество Временных хитов, равное Хитам этого облика. Эффект превращения длится 1 час и заканчивается досрочно, если у вас не остаётся Временных хитов или если вы совершаете действие Магия, чтобы вернуться в истинный облик. Вы не можете использовать это преимущество повторно, пока не закончите Долгий отдых.\n\n**Жестокое превращение.** Когда вы получаете Временные хиты при превращении, увеличьте количество полученных Временных хитов на 20."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of Fortune's Favor",
+      "ru": "Дар милости судьбы"
+    },
+    "description": {
+      "en": "**Saving Throw Reroll.** When you fail a saving throw, you can reroll it and must use the new roll. Once you use this benefit, you can't do so again until the start of your next turn.",
+      "ru": "**Переброс спасброска.** Когда вы проваливаете спасбросок, вы можете перебросить его и должны использовать новый результат. Вы не можете воспользоваться этим преимуществом вновь до начала вашего следующего хода."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["str", "dex", "con", "int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of Poison Mastery",
+      "ru": "Дар искусства ядов"
+    },
+    "description": {
+      "en": "**Antitoxic.** You have Immunity to Poison damage and the Poisoned condition.\n\n**Perfect Poisoner.** Once per turn, when you roll dice to determine Poison damage a creature takes from your attack, spell, or feature, you can instead use the highest number possible for each die.",
+      "ru": "**Противоядие.** Вы получаете Иммунитет к урону Ядом и к состоянию Отравленный.\n\n**Идеальный отравитель.** Один раз за ход, когда вы бросаете кости, определяющие урон Ядом, который существо получает от вашей атаки, заклинания или умения, вы можете вместо этого использовать максимальное значение каждой из этих костей."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["str", "dex", "con", "int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of Revelry",
+      "ru": "Дар безудержного веселья"
+    },
+    "description": {
+      "en": "**Inspire Dance.** You always have the Otto's Irresistible Dance spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. When you cast the spell, it requires no spell components, and taking damage doesn't break your Concentration on it.\n\n**Sing Out.** While a creature that failed its saving throw against your Otto's Irresistible Dance has the Charmed condition from that spell, it can't cast spells with Verbal components, and it sings delightful nonsense if it can sing.",
+      "ru": "**Вдохновляющий танец.** У вас всегда подготовлено заклинание Неудержимая пляска Отто. Вы можете сотворить его один раз без траты ячейки заклинаний, и вы восстанавливаете способность сотворять его таким образом после окончания Долгого отдыха. Вы также можете сотворять его с тратой любых ячеек заклинаний подходящего уровня. Когда вы сотворяете это заклинание, оно не требует компонентов, а получение урона не прерывает вашу Концентрацию на нём.\n\n**Громко пой.** Пока существо, провалившее спасбросок против вашей Неудержимой пляски Отто, Очаровано этим заклинанием, оно не может сотворять заклинания с Вербальным компонентом и, если оно может петь, поёт восхитительную бессмыслицу."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of Terror",
+      "ru": "Дар ужаса"
+    },
+    "description": {
+      "en": "**Fearless.** You have Immunity to the Frightened condition.\n\n**Flee, Fools!** When a creature with the Frightened condition starts its turn within 60 feet of you, you can take a Reaction to stoke its terror, provided you can see the creature and it isn't behind Total Cover. If you do so, the creature must succeed on a Wisdom saving throw (DC 8 plus your Charisma modifier and your Proficiency Bonus) or spend its turn moving away from you by the fastest available means. Once you use this benefit, you can't use it again until you finish a Short or Long Rest.\n\n**Intimidating.** You gain Proficiency in the Intimidation skill if you don't already have it. You also gain Expertise in Intimidation.",
+      "ru": "**Бесстрашие.** Вы получаете иммунитет к состоянию Испуганный.\n\n**Бегите, глупцы!** Когда Испуганное существо начинает свой ход в пределах 60 футов, вы можете Реакцией разжечь его ужас, при условии, что вы можете видеть это существо и оно не находится за Полным укрытием. Если вы так делаете, существо должно преуспеть в спасброске Мудрости (Сл 8 + ваш модификатор Харизмы + ваш Бонус владения), иначе потратит своё перемещение, чтобы передвинуться от вас наиболее коротким путём. Вы не можете воспользоваться этим преимуществом вновь, пока не закончите Короткий или Долгий отдых.\n\n**Запугивание.** Вы получаете владение навыком Запугивание, если у вас его ещё нет. Вы также получаете Экспертность в Запугивании."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["str", "dex", "con", "int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of the Bright Sun",
+      "ru": "Дар яркого солнца"
+    },
+    "description": {
+      "en": "**Daylight Presence.** As a Bonus Action, you radiate a 30-foot Emanation of Bright Light that is sunlight. If any of the Emanation's area overlaps with an area of Darkness created by a spell, that spell is dispelled. The Emanation lasts until you dismiss it (no action required), die, or have the Incapacitated condition.\n\n**Fortifying Light.** When your Daylight Presence is active, at the start of each of your turns, you and allies you can see in your Daylight Presence gain 10 Temporary Hit Points.",
+      "ru": "**Присутствие дневного света.** Бонусным действием вы излучаете Яркий свет, являющийся дневным светом, Эманацией с радиусом 30 футов. Если любая часть Эманации перекрывается с областью Тьмы, созданной заклинанием, то это заклинание рассеивается. Эманация длится, пока вы не рассеете её (действие не требуется), не умрёте или не станете Недееспособным.\n\n**Укрепляющий свет.** Когда ваше Присутствие дневного света активно, в начале каждого вашего хода вы и ваши союзники, которых вы можете видеть в вашем Присутствии дневного света, получаете 10 Временных хитов."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["con", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of the Furious Storm",
+      "ru": "Дар яростной бури"
+    },
+    "description": {
+      "en": "**Eye of the Storm.** You have Resistance to Lightning and Thunder damage. While you are Bloodied, you have Immunity to Lightning and Thunder damage.\n\n**Storm's Strength.** Creatures have Disadvantage on saving throws against your spells that deal Lightning or Thunder damage.",
+      "ru": "**Глаз бури.** Вы имеете Сопротивление урону Звуком и Электричеством. Пока вы Окровавлены, вы получаете Иммунитет к урону Электричеством и Звуком.\n\n**Сила бури.** Существа совершают спасброски с Помехой от ваших заклинаний, наносящих урон Электричеством или Звуком."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["int", "wis", "cha"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Boon of the Soul Drinker",
+      "ru": "Дар поглотителя душ"
+    },
+    "description": {
+      "en": "**Grave Resistance.** You have Resistance to Cold damage and Necrotic damage.\n\n**Siphon Life.** When an enemy within 120 feet of you is reduced to 0 Hit Points, you can take a Reaction to regain 50 Hit Points. Once you use this benefit, you can't use it again until you finish a Short or Long Rest.",
+      "ru": "**Могильное сопротивление.** Вы получаете Сопротивление урону Холодом и Некротической энергией.\n\n**Выкачивание жизни.** Когда Хиты врага в пределах 120 футов снижаются до 0, вы можете Реакцией восстановить 50 хитов. Вы не можете воспользоваться этим преимуществом вновь, пока не закончите Короткий или Долгий отдых."
+    },
+    "kind": "static",
+    "level": 19,
+    "origin": "feat",
+    "origin_value": "epic",
+    "leveling_ability_boosts": ["str", "dex", "con", "int", "wis", "cha"],
+    "public": true
+  }
+]
