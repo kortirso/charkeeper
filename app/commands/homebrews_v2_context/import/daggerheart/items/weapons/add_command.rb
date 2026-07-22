@@ -17,7 +17,6 @@ module HomebrewsV2Context
               Ranges = Dry::Types['strict.string'].enum('melee', 'very close', 'close', 'far', 'very far')
               DamageTypes = Dry::Types['strict.string'].enum('physical', 'magic')
               BonusTypes = Dry::Types['strict.string'].enum('static', 'dynamic')
-              Damages = Dry::Types['strict.string'].enum('d4', 'd6', 'd8', 'd10', 'd12', 'd20')
 
               params do
                 required(:user).filled(type?: ::User)
@@ -41,10 +40,10 @@ module HomebrewsV2Context
                 required(:info).hash do
                   required(:burden).filled(:integer, gteq?: 1, lteq?: 2)
                   required(:tier).filled(:integer, gteq?: 1, lteq?: 4)
-                  required(:trait).filled(Traits)
+                  required(:trait).maybe(Traits)
                   required(:range).filled(Ranges)
                   required(:damage_type).filled(DamageTypes)
-                  required(:damage).filled(Damages)
+                  required(:damage).filled(:string)
                   required(:damage_bonus).filled(:integer, gteq?: 0, lteq?: 20)
                   optional(:features).maybe(:array).each(:hash) do
                     required(:en).filled(:string, max_size?: 250)
