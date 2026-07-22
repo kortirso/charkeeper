@@ -1,0 +1,947 @@
+[
+  {
+    "name": {
+      "en": "Mage Robes",
+      "ru": "Мантия Мага"
+    },
+    "description": {
+      "en": "Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+      "ru": "получите бонус к порогам урона, равный вашему атрибуту магии."
+    },
+    "public": true,
+    "info": {
+      "tier": 1,
+      "base_score": 2,
+      "bonuses": {
+        "thresholds": {
+          "major": 4,
+          "severe": 10
+        }
+      },
+      "features": [
+        {
+          "en": "**Enchanted:** Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+          "ru": "**Зачарованная:** получите бонус к порогам урона, равный вашему атрибуту магии."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Brigandine Armor",
+      "ru": "Бригантина"
+    },
+    "description": {
+      "en": "Mark a Stress to negate Minor damage.",
+      "ru": "отметьте Стресс, чтобы игнорировать незначительный урон."
+    },
+    "public": true,
+    "info": {
+      "tier": 1,
+      "base_score": 3,
+      "bonuses": {
+        "thresholds": {
+          "major": 6,
+          "severe": 12
+        }
+      },
+      "features": [
+        {
+          "en": "**Lined:** Mark a Stress to negate Minor damage.",
+          "ru": "**Проложенная:** отметьте Стресс, чтобы игнорировать незначительный урон."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Scale Mail Armor",
+      "ru": "Чешуйчатый Доспех"
+    },
+    "description": {
+      "en": "−1 to Finesse",
+      "ru": "−1 к Искусности."
+    },
+    "public": true,
+    "info": {
+      "tier": 1,
+      "base_score": 3,
+      "bonuses": {
+        "thresholds": {
+          "major": 7,
+          "severe": 14
+        }
+      },
+      "features": [
+        {
+          "en": "**Cumbersome:** −1 to Finesse",
+          "ru": "**Неудобный:** −1 к Искусности."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Banded Armor",
+      "ru": "Полосовой Доспех"
+    },
+    "description": {
+      "en": "−1 to Evasion; when you take Severe damage, you must mark a Stress.",
+      "ru": "−1 к Уклонению; при получении тяжёлого урона необходимо отметить Стресс."
+    },
+    "public": true,
+    "info": {
+      "tier": 1,
+      "base_score": 4,
+      "bonuses": {
+        "thresholds": {
+          "major": 8,
+          "severe": 16
+        }
+      },
+      "features": [
+        {
+          "en": "**Bulky:** −1 to Evasion; when you take Severe damage, you must mark a Stress.",
+          "ru": "**Массивный:** −1 к Уклонению; при получении тяжёлого урона необходимо отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Improved Mage Robes",
+      "ru": "Улучшенная Мантия Мага"
+    },
+    "description": {
+      "en": "Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+      "ru": "получите бонус к порогам урона, равный вашему атрибуту магии."
+    },
+    "public": true,
+    "info": {
+      "tier": 2,
+      "base_score": 3,
+      "bonuses": {
+        "thresholds": {
+          "major": 6,
+          "severe": 15
+        }
+      },
+      "features": [
+        {
+          "en": "**Enchanted:** Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+          "ru": "**Зачарованная:** получите бонус к порогам урона, равный вашему атрибуту магии."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Improved Brigandine Armor",
+      "ru": "Улучшенная Бригантина"
+    },
+    "description": {
+      "en": "Mark a Stress to negate Minor damage.",
+      "ru": "отметьте Стресс, чтобы игнорировать незначительный урон."
+    },
+    "public": true,
+    "info": {
+      "tier": 2,
+      "base_score": 4,
+      "bonuses": {
+        "thresholds": {
+          "major": 9,
+          "severe": 19
+        }
+      },
+      "features": [
+        {
+          "en": "**Lined:** Mark a Stress to negate Minor damage.",
+          "ru": "**Проложенная:** отметьте Стресс, чтобы игнорировать незначительный урон."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Improved Scale Mail Armor",
+      "ru": "Улучшенный Чешуйчатый Доспех"
+    },
+    "description": {
+      "en": "−1 to Finesse",
+      "ru": "−1 к Искусности."
+    },
+    "public": true,
+    "info": {
+      "tier": 2,
+      "base_score": 4,
+      "bonuses": {
+        "thresholds": {
+          "major": 11,
+          "severe": 23
+        }
+      },
+      "features": [
+        {
+          "en": "**Cumbersome:** −1 to Finesse",
+          "ru": "**Неудобный:** −1 к Искусности."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Improved Banded Armor",
+      "ru": "Улучшенный Полосовой Доспех"
+    },
+    "description": {
+      "en": "−1 to Evasion; when you take Severe damage, you must mark a Stress.",
+      "ru": "−1 к Уклонению; при получении тяжёлого урона необходимо отметить Стресс."
+    },
+    "public": true,
+    "info": {
+      "tier": 2,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 27
+        }
+      },
+      "features": [
+        {
+          "en": "**Bulky:** −1 to Evasion; when you take Severe damage, you must mark a Stress.",
+          "ru": "**Массивный:** −1 к Уклонению; при получении тяжёлого урона необходимо отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Enchanter's Robes",
+      "ru": "Мантия Чародея"
+    },
+    "description": {
+      "en": "Once per scene, you can recall a domain card from your vault without paying its Recall Cost.",
+      "ru": "один раз за сцену можно извлечь карту домена из хранилища без оплаты стоимости извлечения."
+    },
+    "public": true,
+    "info": {
+      "tier": 2,
+      "base_score": 4,
+      "bonuses": {
+        "thresholds": {
+          "major": 9,
+          "severe": 20
+        }
+      },
+      "features": [
+        {
+          "en": "**Mnemonic:** Once per scene, you can recall a domain card from your vault without paying its Recall Cost.",
+          "ru": "**Мнемоническая:** один раз за сцену можно извлечь карту домена из хранилища без оплаты стоимости извлечения."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Hawkguard's Mantle",
+      "ru": "Мантия Ястребиной Стражи"
+    },
+    "description": {
+      "en": "You can glide up to Far range and are immune to damage from falling.",
+      "ru": "можно планировать на Дальнюю дистанцию и иммунны к урону от падения."
+    },
+    "public": true,
+    "info": {
+      "tier": 2,
+      "base_score": 4,
+      "bonuses": {
+        "thresholds": {
+          "major": 9,
+          "severe": 20
+        }
+      },
+      "features": [
+        {
+          "en": "**Gliding:** You can glide up to Far range and are immune to damage from falling.",
+          "ru": "**Планирующая:** можно планировать на Дальнюю дистанцию и иммунны к урону от падения."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Spidersilk Tunic",
+      "ru": "Туника из Паучьего Шёлка"
+    },
+    "description": {
+      "en": "+1 Evasion; you can walk on walls as easily as on the ground.",
+      "ru": "+1 к Уклонению; можно ходить по стенам так же легко, как по земле."
+    },
+    "public": true,
+    "info": {
+      "tier": 2,
+      "base_score": 4,
+      "bonuses": {
+        "thresholds": {
+          "major": 9,
+          "severe": 20
+        }
+      },
+      "features": [
+        {
+          "en": "**Wall-Crawling:** +1 Evasion; you can walk on walls as easily as on the ground.",
+          "ru": "**Хождение по Стенам:** +1 к Уклонению; можно ходить по стенам так же легко, как по земле."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Stormthread Habit",
+      "ru": "Облачение из Штормнитей"
+    },
+    "description": {
+      "en": "Once per scene when you take magic damage, you can clear an Armor Slot.",
+      "ru": "один раз за сцену при получении магического урона можно снять Ячейку Брони."
+    },
+    "public": true,
+    "info": {
+      "tier": 2,
+      "base_score": 4,
+      "bonuses": {
+        "thresholds": {
+          "major": 9,
+          "severe": 20
+        }
+      },
+      "features": [
+        {
+          "en": "**Absorbing:** Once per scene when you take magic damage, you can clear an Armor Slot.",
+          "ru": "**Поглощающее:** один раз за сцену при получении магического урона можно снять Ячейку Брони."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Wyrdwood Splint Armor",
+      "ru": "Ламинарный Доспех из Вирдвуда"
+    },
+    "description": {
+      "en": "You can't be Restrained and can move up to Far range as part of an action roll.",
+      "ru": "нельзя стать *Схваченным*; в рамках броска действия можно переместиться на Дальнюю дистанцию."
+    },
+    "public": true,
+    "info": {
+      "tier": 2,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 10,
+          "severe": 21
+        }
+      },
+      "features": [
+        {
+          "en": "**Quick-Striding:** You can't be Restrained and can move up to Far range as part of an action roll.",
+          "ru": "**Быстроногое:** нельзя стать *Схваченным*; в рамках броска действия можно переместиться на Дальнюю дистанцию."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Trollhide Cuirass",
+      "ru": "Кираса из Троллевой Шкуры"
+    },
+    "description": {
+      "en": "When you take a rest, clear an Armor Slot.",
+      "ru": "во время отдыха снимите Ячейку Брони."
+    },
+    "public": true,
+    "info": {
+      "tier": 2,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 11,
+          "severe": 23
+        }
+      },
+      "features": [
+        {
+          "en": "**Self-Healing:** When you take a rest, clear an Armor Slot.",
+          "ru": "**Самовосстанавливающаяся:** во время отдыха снимите Ячейку Брони."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Gilded Sunplate",
+      "ru": "Золочёный Солнечный Нагрудник"
+    },
+    "description": {
+      "en": "Once per scene when you spend Hope, you can clear an Armor Slot.",
+      "ru": "один раз за сцену при трате Надежды можно снять Ячейку Брони."
+    },
+    "public": true,
+    "info": {
+      "tier": 2,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 12,
+          "severe": 26
+        }
+      },
+      "features": [
+        {
+          "en": "**Resplendent:** Once per scene when you spend Hope, you can clear an Armor Slot.",
+          "ru": "**Лучезарный:** один раз за сцену при трате Надежды можно снять Ячейку Брони."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Advanced Mage Robes",
+      "ru": "Продвинутая Мантия Мага"
+    },
+    "description": {
+      "en": "Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+      "ru": "получите бонус к порогам урона, равный вашему атрибуту магии."
+    },
+    "public": true,
+    "info": {
+      "tier": 3,
+      "base_score": 4,
+      "bonuses": {
+        "thresholds": {
+          "major": 8,
+          "severe": 22
+        }
+      },
+      "features": [
+        {
+          "en": "**Enchanted:** Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+          "ru": "**Зачарованная:** получите бонус к порогам урона, равный вашему атрибуту магии."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Advanced Brigandine Armor",
+      "ru": "Продвинутая Бригантина"
+    },
+    "description": {
+      "en": "Mark a Stress to negate Minor damage.",
+      "ru": "отметьте Стресс, чтобы игнорировать незначительный урон."
+    },
+    "public": true,
+    "info": {
+      "tier": 3,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 11,
+          "severe": 26
+        }
+      },
+      "features": [
+        {
+          "en": "**Lined:** Mark a Stress to negate Minor damage.",
+          "ru": "**Проложенная:** отметьте Стресс, чтобы игнорировать незначительный урон."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Advanced Scale Mail Armor",
+      "ru": "Продвинутый Чешуйчатый Доспех"
+    },
+    "description": {
+      "en": "−1 to Finesse",
+      "ru": "−1 к Искусности."
+    },
+    "public": true,
+    "info": {
+      "tier": 3,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 30
+        }
+      },
+      "features": [
+        {
+          "en": "**Cumbersome:** −1 to Finesse",
+          "ru": "**Неудобный:** −1 к Искусности."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Advanced Banded Armor",
+      "ru": "Продвинутый Полосовой Доспех"
+    },
+    "description": {
+      "en": "−1 to Evasion; when you take Severe damage, you must mark a Stress.",
+      "ru": "−1 к Уклонению; при получении тяжёлого урона необходимо отметить Стресс."
+    },
+    "public": true,
+    "info": {
+      "tier": 3,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 15,
+          "severe": 34
+        }
+      },
+      "features": [
+        {
+          "en": "**Bulky:** −1 to Evasion; when you take Severe damage, you must mark a Stress.",
+          "ru": "**Массивный:** −1 к Уклонению; при получении тяжёлого урона необходимо отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Granminster's Finery",
+      "ru": "Щегольской Наряд Гранминстера"
+    },
+    "description": {
+      "en": "Gain a bonus to your Armor Score equal to your Presence.",
+      "ru": "получите бонус к Броне, равный Влиянию."
+    },
+    "public": true,
+    "info": {
+      "tier": 3,
+      "base_score": 2,
+      "bonuses": {
+        "thresholds": {
+          "major": 11,
+          "severe": 27
+        }
+      },
+      "features": [
+        {
+          "en": "**Magnificent:** Gain a bonus to your Armor Score equal to your Presence.",
+          "ru": "**Великолепный:** получите бонус к Броне, равный Влиянию."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Astral Raiment",
+      "ru": "Астральное Облачение"
+    },
+    "description": {
+      "en": "Mark a Stress to gain advantage on a Spellcast roll.",
+      "ru": "отметьте Стресс, чтобы получить преимущество на бросок заклинания."
+    },
+    "public": true,
+    "info": {
+      "tier": 3,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 11,
+          "severe": 27
+        }
+      },
+      "features": [
+        {
+          "en": "**Stellar:** Mark a Stress to gain advantage on a Spellcast roll.",
+          "ru": "**Звёздное:** отметьте Стресс, чтобы получить преимущество на бросок заклинания."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Cloverweave Cloak",
+      "ru": "Плащ Клеверного Плетения"
+    },
+    "description": {
+      "en": "Once per scene, you can change a failure with Hope into a success with Fear.",
+      "ru": "один раз за сцену можно превратить провал с Надеждой в успех со Страхом."
+    },
+    "public": true,
+    "info": {
+      "tier": 3,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 11,
+          "severe": 27
+        }
+      },
+      "features": [
+        {
+          "en": "**Fortune-Favored:** Once per scene, you can change a failure with Hope into a success with Fear.",
+          "ru": "**Удачливый:** один раз за сцену можно превратить провал с Надеждой в успех со Страхом."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Skywarden's Lamellar",
+      "ru": "Ламинарный Доспех Небесного Стража"
+    },
+    "description": {
+      "en": "+2 to Evasion",
+      "ru": "+2 к Уклонению."
+    },
+    "public": true,
+    "info": {
+      "tier": 3,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 11,
+          "severe": 27
+        }
+      },
+      "features": [
+        {
+          "en": "**Vigilant:** +2 to Evasion",
+          "ru": "**Бдительный:** +2 к Уклонению."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Bloodstone Plate Armor",
+      "ru": "Латный Доспех с Кровяным Камнем"
+    },
+    "description": {
+      "en": "When you critically succeed on a weapon attack within Melee range, clear a Hit Point.",
+      "ru": "при критическом успехе на атаке Вплотную снимите Рану."
+    },
+    "public": true,
+    "info": {
+      "tier": 3,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 35
+        }
+      },
+      "features": [
+        {
+          "en": "**Bloodthirsty:** When you critically succeed on a weapon attack within Melee range, clear a Hit Point.",
+          "ru": "**Кровожадный:** при критическом успехе на атаке Вплотную снимите Рану."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Deep-Forged Coral Armor",
+      "ru": "Доспех из Глубинного Коралла"
+    },
+    "description": {
+      "en": "You can breathe underwater and gain advantage on Agility Rolls while submerged.",
+      "ru": "можно дышать под водой; преимущество на броски Проворности под водой."
+    },
+    "public": true,
+    "info": {
+      "tier": 3,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 35
+        }
+      },
+      "features": [
+        {
+          "en": "**Aquatic:** You can breathe underwater and gain advantage on Agility Rolls while submerged.",
+          "ru": "**Водный:** можно дышать под водой; преимущество на броски Проворности под водой."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Legendary Mage Robes",
+      "ru": "Легендарная Мантия Мага"
+    },
+    "description": {
+      "en": "Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+      "ru": "получите бонус к порогам урона, равный вашему атрибуту магии."
+    },
+    "public": true,
+    "info": {
+      "tier": 4,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 10,
+          "severe": 31
+        }
+      },
+      "features": [
+        {
+          "en": "**Enchanted:** Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+          "ru": "**Зачарованная:** получите бонус к порогам урона, равный вашему атрибуту магии."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Legendary Brigandine Armor",
+      "ru": "Легендарная Бригантина"
+    },
+    "description": {
+      "en": "Mark a Stress to negate Minor damage.",
+      "ru": "отметьте Стресс, чтобы игнорировать незначительный урон."
+    },
+    "public": true,
+    "info": {
+      "tier": 4,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 35
+        }
+      },
+      "features": [
+        {
+          "en": "**Lined:** Mark a Stress to negate Minor damage.",
+          "ru": "**Проложенная:** отметьте Стресс, чтобы игнорировать незначительный урон."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Legendary Scale Mail Armor",
+      "ru": "Легендарный Чешуйчатый Доспех"
+    },
+    "description": {
+      "en": "−1 to Finesse",
+      "ru": "−1 к Искусности."
+    },
+    "public": true,
+    "info": {
+      "tier": 4,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 15,
+          "severe": 39
+        }
+      },
+      "features": [
+        {
+          "en": "**Cumbersome:** −1 to Finesse",
+          "ru": "**Неудобный:** −1 к Искусности."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Legendary Banded Armor",
+      "ru": "Легендарный Полосовой Доспех"
+    },
+    "description": {
+      "en": "−1 to Evasion; when you take Severe damage, you must mark a Stress.",
+      "ru": "−1 к Уклонению; при получении тяжёлого урона необходимо отметить Стресс."
+    },
+    "public": true,
+    "info": {
+      "tier": 4,
+      "base_score": 7,
+      "bonuses": {
+        "thresholds": {
+          "major": 17,
+          "severe": 43
+        }
+      },
+      "features": [
+        {
+          "en": "**Bulky:** −1 to Evasion; when you take Severe damage, you must mark a Stress.",
+          "ru": "**Массивный:** −1 к Уклонению; при получении тяжёлого урона необходимо отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Darkweave Shroud",
+      "ru": "Тёмноплетёный Саван"
+    },
+    "description": {
+      "en": "Once per rest, mark a Stress to move up to Close range through solid objects.",
+      "ru": "один раз за отдых отметьте Стресс, чтобы переместиться на Среднюю дистанцию сквозь твёрдые объекты."
+    },
+    "public": true,
+    "info": {
+      "tier": 4,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 36
+        }
+      },
+      "features": [
+        {
+          "en": "**Ghostwalker:** Once per rest, mark a Stress to move up to Close range through solid objects.",
+          "ru": "**Духоход:** один раз за отдых отметьте Стресс, чтобы переместиться на Среднюю дистанцию сквозь твёрдые объекты."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Godbound Laminar",
+      "ru": "Ламинарный Доспех, Связанный Богом"
+    },
+    "description": {
+      "en": "When you mark an Armor Slot, gain a Hope.",
+      "ru": "при отметке Ячейки Брони получите Надежду."
+    },
+    "public": true,
+    "info": {
+      "tier": 4,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 36
+        }
+      },
+      "features": [
+        {
+          "en": "**Divine:** When you mark an Armor Slot, gain a Hope.",
+          "ru": "**Божественный:** при отметке Ячейки Брони получите Надежду."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Circle-Forged Dreadplate",
+      "ru": "Доспех Круговой Закалки"
+    },
+    "description": {
+      "en": "When you mark any number of Hit Points from an attack, roll a d4. On a result of 4, the attacker must mark an equal number of Stress.",
+      "ru": "при отметке Ран от атаки бросьте d4. При результате 4 атакующий должен отметить равное количество Стресса."
+    },
+    "public": true,
+    "info": {
+      "tier": 4,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 14,
+          "severe": 38
+        }
+      },
+      "features": [
+        {
+          "en": "**Accursed:** When you mark any number of Hit Points from an attack, roll a d4. On a result of 4, the attacker must mark an equal number of Stress.",
+          "ru": "**Проклятый:** при отметке Ран от атаки бросьте d4. При результате 4 атакующий должен отметить равное количество Стресса."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Rune-Forged Exosuit",
+      "ru": "Рунический Экзоскелет"
+    },
+    "description": {
+      "en": "The maximum number of domain cards in your loadout is reduced by one, but you gain a bonus to your damage thresholds equal to your tier.",
+      "ru": "максимум карт домена в снаряжении уменьшается на одну, но пороги урона получают бонус, равный тиру."
+    },
+    "public": true,
+    "info": {
+      "tier": 4,
+      "base_score": 7,
+      "bonuses": {
+        "thresholds": {
+          "major": 12,
+          "severe": 39
+        }
+      },
+      "features": [
+        {
+          "en": "**Attuned:** The maximum number of domain cards in your loadout is reduced by one, but you gain a bonus to your damage thresholds equal to your tier.",
+          "ru": "**Настроенный:** максимум карт домена в снаряжении уменьшается на одну, но пороги урона получают бонус, равный тиру."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Hallowed Heroplate",
+      "ru": "Освящённый Героический Нагрудник"
+    },
+    "description": {
+      "en": "Once per long rest, you can spend any number of Hope before you make the Risk It All death move. You gain a bonus to the result of your Hope Die equal to the number of Hope spent.",
+      "ru": "один раз за долгий отдых перед ходом «Ва-Банк» можно потратить любое количество Надежды. Кость Надежды получает бонус, равный количеству потраченной Надежды."
+    },
+    "public": true,
+    "info": {
+      "tier": 4,
+      "base_score": 7,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 35
+        }
+      },
+      "features": [
+        {
+          "en": "**Blessed:** Once per long rest, you can spend any number of Hope before you make the Risk It All death move. You gain a bonus to the result of your Hope Die equal to the number of Hope spent.",
+          "ru": "**Благословлённый:** один раз за долгий отдых перед ходом «Ва-Банк» можно потратить любое количество Надежды. Кость Надежды получает бонус, равный количеству потраченной Надежды."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Resonant Harness",
+      "ru": "Резонирующая Упряжь"
+    },
+    "description": {
+      "en": "When you would take Severe or greater damage, you can mark 2 Armor Slots to negate that damage. If you do, you gain a −5 penalty to your damage thresholds until you choose to repair your armor as a downtime move.",
+      "ru": "при получении тяжёлого или большего урона можно отметить 2 Ячейки Брони, чтобы игнорировать его. Если вы так делаете, пороги урона снижаются на 5 до ремонта доспеха ходом привала."
+    },
+    "public": true,
+    "info": {
+      "tier": 4,
+      "base_score": 7,
+      "bonuses": {
+        "thresholds": {
+          "major": 15,
+          "severe": 40
+        }
+      },
+      "features": [
+        {
+          "en": "**Vitreous:** When you would take Severe or greater damage, you can mark 2 Armor Slots to negate that damage. If you do, you gain a −5 penalty to your damage thresholds until you choose to repair your armor as a downtime move.",
+          "ru": "**Стеклянный:** при получении тяжёлого или большего урона можно отметить 2 Ячейки Брони, чтобы игнорировать его. Если вы так делаете, пороги урона снижаются на 5 до ремонта доспеха ходом привала."
+        }
+      ]
+    }
+  }
+]

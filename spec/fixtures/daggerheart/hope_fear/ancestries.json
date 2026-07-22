@@ -1,0 +1,245 @@
+[
+  {
+    "title": {
+      "en": "Aetheris",
+      "ru": "Эфирис"
+    },
+    "description": {
+      "en": "Winged humanoids descended from the angels of the Hallows Above, marked by sacred sigils and a hallowed aura. They live around 350 years and keep a youthful look into old age.",
+      "ru": "Крылатые гуманоиды, потомки ангелов Высших Чертогов, отмеченные священными знаками и освящённой аурой. Живут около 350 лет и сохраняют юношеский облик даже в старости."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Hallowed Aura",
+          "ru": "Освящённая аура"
+        },
+        "description": {
+          "en": "When an ally within Close range rolls with Fear, you can change it into a roll with Hope instead.",
+          "ru": "Когда союзник в пределах Средней дистанции бросает со Страхом, вы можете превратить это в бросок с Надеждой."
+        },
+        "kind": "static",
+        "limit": 1,
+        "limit_refresh": "long_rest"
+      },
+      {
+        "title": {
+          "en": "Celestial Wings",
+          "ru": "Небесные крылья"
+        },
+        "description": {
+          "en": "You have wings that allow you to fly. Once per scene while flying, you can spend a Hope instead of marking an Armor Slot.",
+          "ru": "У вас есть крылья, позволяющие летать. Один раз за сцену в полёте вы можете потратить Надежду вместо отметки Ячейки Брони."
+        },
+        "kind": "static"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Earthkin",
+      "ru": "Терран"
+    },
+    "description": {
+      "en": "Elemental kin whose bodies are made of flesh and earth—rock, crystal, clay, soil, or sand. They age slowly over roughly 300 years and crumble into earth when they die.",
+      "ru": "Стихийные родственники, чьи тела состоят из плоти и земли — камня, кристаллов, глины, почвы или песка. Стареют медленно на протяжении около 300 лет и рассыпаются в землю после смерти."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Stoneskin",
+          "ru": "Каменная шкура"
+        },
+        "description": {
+          "en": "Gain a permanent +1 bonus to your Armor Score and damage thresholds at character creation.",
+          "ru": "При создании персонажа получите постоянный бонус +1 к Броне и порогам урона."
+        },
+        "kind": "static",
+        "modifiers": {
+          "armor_score": {
+            "type": "add",
+            "value": 1
+          },
+          "major": {
+            "type": "add",
+            "value": 1
+          },
+          "severe": {
+            "type": "add",
+            "value": 1
+          }
+        }
+      },
+      {
+        "title": {
+          "en": "Immovable",
+          "ru": "Неподвижность"
+        },
+        "description": {
+          "en": "While you're touching the ground, you can't be lifted or moved against your will.",
+          "ru": "Пока вы стоите на земле, вас нельзя поднять или переместить против вашей воли."
+        },
+        "kind": "static"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Emberkin",
+      "ru": "Игнис"
+    },
+    "description": {
+      "en": "Elemental kin whose bodies are made of flesh and fire, with features that shift and flare with their emotions. They live around 250 years, then briefly blaze bright and burn to ash.",
+      "ru": "Стихийные родственники, чьи тела состоят из плоти и огня; их черты меняются и вспыхивают вместе с эмоциями. Живут около 250 лет, а умирая — ненадолго вспыхивают ярко и сгорают дотла."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Fireproof",
+          "ru": "Огнеупорность"
+        },
+        "description": {
+          "en": "You are immune to damage from magical or mundane flame.",
+          "ru": "Вы иммунны к урону от магического или обычного огня."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Ignition",
+          "ru": "Возгорание"
+        },
+        "description": {
+          "en": "**Mark a Stress** to wreathe your primary weapon in flame until the end of the scene. While the weapon is ablaze, it gives off a bright light, and you gain a 1d6 bonus to damage rolls with that weapon.",
+          "ru": "**Отметьте Стресс**, чтобы до конца сцены обернуть основное оружие пламенем. Пока оружие горит, оно испускает яркий свет, и вы получаете +1d6 к броскам урона этим оружием."
+        },
+        "kind": "static",
+        "price": {
+          "stress": 1
+        }
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Skykin",
+      "ru": "Аэрис"
+    },
+    "description": {
+      "en": "Elemental kin whose bodies are made of flesh and air, with iridescent skin, drifting hair, and clothes stirred by a constant breeze. They live around 300 years and dissolve into air when they die.",
+      "ru": "Стихийные родственники, чьи тела состоят из плоти и воздуха; переливающаяся кожа, парящие волосы и одежда, трепещущая на лёгком ветру. Живут около 300 лет и растворяются в воздухе после смерти."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Gale Force",
+          "ru": "Шквальный порыв"
+        },
+        "description": {
+          "en": "**Mark a Stress** to conjure a gust of wind that carries you or a Very Close ally up to Very Far range. Additionally, you can always control the speed at which you descend.",
+          "ru": "**Отметьте Стресс**, чтобы вызвать порыв ветра, уносящий вас или союзника в Ближней дистанции на расстояние до Очень дальней дистанции. Кроме того, вы всегда можете контролировать скорость падения."
+        },
+        "kind": "static",
+        "price": {
+          "stress": 1
+        }
+      },
+      {
+        "title": {
+          "en": "Eye of the Storm",
+          "ru": "Глаз бури"
+        },
+        "description": {
+          "en": "**Spend 2 Hope** to grant you or an ally within Melee range a +1 bonus to Evasion until you take Severe damage or you use this feature again.",
+          "ru": "**Потратьте 2 Надежды**, чтобы дать себе или союзнику Вплотную +1 к Уклонению до получения тяжёлого урона или повторного использования этого свойства."
+        },
+        "kind": "static",
+        "price": {
+          "hope": 2
+        }
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Tidekin",
+      "ru": "Акван"
+    },
+    "description": {
+      "en": "Elemental kin whose bodies are made of flesh and water, with finlike ears and webbed digits. Their watery features shift with emotion. They live around 300 years and flow away as water when they die.",
+      "ru": "Стихийные родственники, чьи тела состоят из плоти и воды; плавниковидные уши и перепонки между пальцами. Их водные черты меняются под воздействием эмоций. Живут около 300 лет и растворяются в воде после смерти."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Amphibious",
+          "ru": "Земноводность"
+        },
+        "description": {
+          "en": "You can breathe and move naturally underwater.",
+          "ru": "Вы можете дышать и свободно двигаться под водой."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Lifespring",
+          "ru": "Источник жизни"
+        },
+        "description": {
+          "en": "Once per rest when you have access to a small amount of water, you can **mark a Stress** to clear a Hit Point on yourself or an ally within Very Close range.",
+          "ru": "Один раз за отдых, когда у вас есть доступ к небольшому количеству воды, можно **отметить Стресс**, чтобы снять Рану у себя или у союзника в пределах Ближней дистанции."
+        },
+        "kind": "static",
+        "limit": 1,
+        "limit_refresh": "short_rest",
+        "price": {
+          "stress": 1
+        }
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Gnome",
+      "ru": "Гном"
+    },
+    "description": {
+      "en": "Small humanoids with conical heads, long arms, and the inherited ability to teleport short distances. They stand around 3 feet tall and live roughly 200 years.",
+      "ru": "Небольшие гуманоиды с конической головой, длинными руками и наследуемой способностью телепортироваться на короткие расстояния. Ростом около 90 см, живут примерно 200 лет."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Nimble Fingers",
+          "ru": "Ловкие пальцы"
+        },
+        "description": {
+          "en": "When you make a Finesse Roll, you can **spend 2 Hope** to reroll your Hope Die.",
+          "ru": "Когда вы совершаете бросок Искусности, можно **потратить 2 Надежды**, чтобы перебросить Кость Надежды."
+        },
+        "kind": "static",
+        "price": {
+          "hope": 2
+        }
+      },
+      {
+        "title": {
+          "en": "Flicker Step",
+          "ru": "Мерцающий шаг"
+        },
+        "description": {
+          "en": "Once per scene, you can teleport to another point you can see within Far range.",
+          "ru": "Один раз за сцену можно телепортироваться в любую видимую точку в пределах Дальней дистанции."
+        },
+        "kind": "static"
+      }
+    ]
+  }
+]

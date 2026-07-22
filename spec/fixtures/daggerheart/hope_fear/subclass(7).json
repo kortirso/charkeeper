@@ -1,0 +1,92 @@
+[
+  {
+    "id": "fd606fee-de49-4d9a-b543-7ef6c4fed4b9",
+    "title": {
+      "en": "Martial artist",
+      "ru": "Мастер боевых искусств"
+    },
+    "description": {
+      "en": "Focused on combat techniques, it uses a unique Focus system to shift between powerful martial stances.",
+      "ru": "Сосредоточившись на боевых приемах, Мастер боевых искусств использует уникальную систему Концентрации для переключения между мощными боевыми стойками."
+    },
+    "public": true,
+    "class_id": "8b6530fe-9c47-4c4c-b25f-46b905fcc854",
+    "mechanics": [
+      "b656c80a-91cb-422d-94eb-b0bf12a52dca"
+    ],
+    "features": [
+      {
+        "title": {
+          "en": "Martial Form",
+          "ru": "Боевая форма"
+        },
+        "description": {
+          "en": "You start with two martial stances from Tier 1. When you reach a new tier, take two additional stances at your tier or lower.",
+          "ru": "Вы начинаете с двух боевых стоек 1 Ранга. Когда вы достигаете нового ранга, вы можете взять две дополнительные стойки своего ранга или ниже."
+        },
+        "kind": "static",
+        "id": "ae305ecd-2649-47e5-ab01-2d7ae3b3d6e3",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Keen Defenses",
+          "ru": "Превосходная защита"
+        },
+        "description": {
+          "en": "When you are targeted by an attack, you can **spend a Focus** to give the attack roll disadvantage.",
+          "ru": "Когда вы становитесь целью атаки, вы можете **потратить Концентрацию**, чтобы дать помеху на бросок атаки противника."
+        },
+        "kind": "static",
+        "id": "58cd2166-14ba-4ba4-87a1-5de7c1b65382",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Spirit Blast",
+          "ru": "Духовный взрыв"
+        },
+        "description": {
+          "en": "**Spend a Focus** to make an Instinct Roll against an adversary within Close range. On a success, you deal d20+3 magic damage using your Proficiency and you can spend an additional Focus to make them temporarily *Vulnerable*.",
+          "ru": "**Потратьте Концентрацию**, чтобы совершить бросок инстинкта против противника в пределах средней дистанции. При успехе нанесите d20+3 магического урона, используя ваше мастерство, а также можете потратить дополнительную Концентрацию, чтобы сделать противника временно *Уязвимым*."
+        },
+        "kind": "static",
+        "id": "225f2b13-3ad6-4cf0-a52f-05119bea8ea2",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Focus",
+          "ru": "Концентрация"
+        },
+        "description": {
+          "en": "During a rest, roll a number of d6s equal to your Instinct and place a number of Focus tokens equal to the highest value rolled on this card.",
+          "ru": "Во время отдыха бросьте количество костей d6, равное вашему Инстинкту и поместите количество жетонов Концентрации, равное наибольшему выпавшему числу, на эту карту."
+        },
+        "kind": "static",
+        "tokens": {
+          "limit": "none",
+          "reset": "zero",
+          "reset_at": "short"
+        },
+        "id": "b509e389-289f-465f-9d1b-baaf2bdca29d",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Limit Breaker",
+          "ru": "Преодоление пределов"
+        },
+        "description": {
+          "en": "You can perform an unbelievable feat such as running across water, leaping between distant rooftops, or scaling the side of a building without needing to roll. When you do, gain a Hope and clear a Stress.",
+          "ru": "Вы можете совершить невообразимый подвиг, например, бежать по воде, прыгать между далекими крышами или лазать по стене здания, не совершая бросок. Когда вы это сделаете, получите Надежду и снимите Стресс."
+        },
+        "kind": "static",
+        "limit_refresh": "short_rest",
+        "id": "ef561a19-95f9-4d16-b6f4-a1dffe657904",
+        "limit": "1",
+        "subclass_mastery": 3
+      }
+    ]
+  }
+]

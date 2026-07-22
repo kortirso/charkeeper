@@ -1,0 +1,974 @@
+[
+  {
+    "name": {
+      "en": "Hatchet",
+      "ru": "Топорик"
+    },
+    "description": {
+      "en": "On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack.",
+      "ru": "при успешной атаке основным оружием Вплотную можно отметить Стресс, чтобы получить +1 к Мастерству для этой атаки."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 1,
+      "trait": "agi",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "features": [
+        {
+          "en": "**Follow-Up:** On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack.",
+          "ru": "**Добивающее:** при успешной атаке основным оружием Вплотную можно отметить Стресс, чтобы получить +1 к Мастерству для этой атаки."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Offhand Brass Knuckles",
+      "ru": "Кастет для Второй Руки"
+    },
+    "description": {
+      "en": "+2 to primary weapon damage to targets within Melee range",
+      "ru": "+2 к урону основного оружия по целям Вплотную."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "features": [
+        {
+          "en": "**Paired:** +2 to primary weapon damage to targets within Melee range",
+          "ru": "**Парное:** +2 к урону основного оружия по целям Вплотную."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Throwing Knives",
+      "ru": "Метательные Ножи"
+    },
+    "description": {
+      "en": "You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand.",
+      "ru": "можно метать на Среднюю дистанцию броском Искусности без необходимости подбирать."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 1,
+      "trait": "fin",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "features": [
+        {
+          "en": "**Stockpiled:** You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand.",
+          "ru": "**Запасное:** можно метать на Среднюю дистанцию броском Искусности без необходимости подбирать."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Fighting Cloak",
+      "ru": "Боевой Плащ"
+    },
+    "description": {
+      "en": "+2 to damage thresholds",
+      "ru": "+2 к порогам урона."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 1,
+      "trait": "pre",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d4",
+      "damage_bonus": 0,
+      "features": [
+        {
+          "en": "**Padded:** +2 to damage thresholds",
+          "ru": "**Подбитое:** +2 к порогам урона."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Rune Shield",
+      "ru": "Рунический Щит"
+    },
+    "description": {
+      "en": "+1 to Armor Score",
+      "ru": "+1 к Броне."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 1,
+      "trait": "know",
+      "range": "melee",
+      "damage_type": "magic",
+      "damage": "d4",
+      "damage_bonus": 0,
+      "features": [
+        {
+          "en": "**Protective:** +1 to Armor Score",
+          "ru": "**Защитное:** +1 к Броне."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Focus Runes",
+      "ru": "Руны Концентрации"
+    },
+    "description": {
+      "en": "+1 to primary weapon damage to targets within Very Close range",
+      "ru": "+1 к урону основного оружия по целям в пределах Ближней дистанции."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 1,
+      "trait": "ins",
+      "range": "very close",
+      "damage_type": "magic",
+      "damage": "d6",
+      "damage_bonus": 0,
+      "features": [
+        {
+          "en": "**Focused:** +1 to primary weapon damage to targets within Very Close range",
+          "ru": "**Сфокусированное:** +1 к урону основного оружия по целям в пределах Ближней дистанции."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Improved Hatchet",
+      "ru": "Улучшенный Топорик"
+    },
+    "description": {
+      "en": "On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack.",
+      "ru": "при успешной атаке основным оружием Вплотную можно отметить Стресс, чтобы получить +1 к Мастерству для этой атаки."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 2,
+      "trait": "agi",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 2,
+      "features": [
+        {
+          "en": "**Follow-Up:** On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack.",
+          "ru": "**Добивающее:** при успешной атаке основным оружием Вплотную можно отметить Стресс, чтобы получить +1 к Мастерству для этой атаки."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Improved Offhand Brass Knuckles",
+      "ru": "Улучшенный Кастет для Второй Руки"
+    },
+    "description": {
+      "en": "+3 to primary weapon damage to targets within Melee range",
+      "ru": "+3 к урону основного оружия Вплотную."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 2,
+      "features": [
+        {
+          "en": "**Paired:** +3 to primary weapon damage to targets within Melee range",
+          "ru": "**Парное:** +3 к урону основного оружия Вплотную."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Improved Throwing Knives",
+      "ru": "Улучшенные Метательные Ножи"
+    },
+    "description": {
+      "en": "You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand.",
+      "ru": "можно метать на Среднюю дистанцию броском Искусности без необходимости подбирать."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 2,
+      "trait": "fin",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 2,
+      "features": [
+        {
+          "en": "**Stockpiled:** You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand.",
+          "ru": "**Запасное:** можно метать на Среднюю дистанцию броском Искусности без необходимости подбирать."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Improved Fighting Cloak",
+      "ru": "Улучшенный Боевой Плащ"
+    },
+    "description": {
+      "en": "+3 to damage thresholds",
+      "ru": "+3 к порогам урона."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 2,
+      "trait": "pre",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d4",
+      "damage_bonus": 2,
+      "features": [
+        {
+          "en": "**Padded:** +3 to damage thresholds",
+          "ru": "**Подбитое:** +3 к порогам урона."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Improved Rune Shield",
+      "ru": "Улучшенный Рунический Щит"
+    },
+    "description": {
+      "en": "+2 to Armor Score",
+      "ru": "+2 к Броне."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 2,
+      "trait": "know",
+      "range": "melee",
+      "damage_type": "magic",
+      "damage": "d4",
+      "damage_bonus": 2,
+      "features": [
+        {
+          "en": "**Protective:** +2 to Armor Score",
+          "ru": "**Защитное:** +2 к Броне."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Improved Focus Runes",
+      "ru": "Улучшенные Руны Концентрации"
+    },
+    "description": {
+      "en": "+1 to primary weapon damage to targets within Very Close range",
+      "ru": "+1 к урону основного оружия по целям в пределах Ближней дистанции."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 2,
+      "trait": "ins",
+      "range": "very close",
+      "damage_type": "magic",
+      "damage": "d6",
+      "damage_bonus": 2,
+      "features": [
+        {
+          "en": "**Focused:** +1 to primary weapon damage to targets within Very Close range",
+          "ru": "**Сфокусированное:** +1 к урону основного оружия по целям в пределах Ближней дистанции."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Collapsible Baton",
+      "ru": "Складная Дубинка"
+    },
+    "description": {
+      "en": "When a target would mark any number of Hit Points from an attack with this weapon, they mark an equal number of Stress instead.",
+      "ru": "когда цель должна отметить Раны от атаки этим оружием, она отмечает вместо этого равное количество Стресса."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "features": [
+        {
+          "en": "**Nonlethal:** When a target would mark any number of Hit Points from an attack with this weapon, they mark an equal number of Stress instead.",
+          "ru": "**Несмертельное:** когда цель должна отметить Раны от атаки этим оружием, она отмечает вместо этого равное количество Стресса."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Eldritch Vambrace",
+      "ru": "Мистический Наруч"
+    },
+    "description": {
+      "en": "When you are attacked, you can mark an Armor Slot to gain a bonus to your Evasion equal to your Armor Score against the attack.",
+      "ru": "когда вас атакуют, можно отметить Ячейку Брони, чтобы получить бонус к Уклонению против этой атаки, равный Броне."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 2,
+      "trait": "ins",
+      "range": "melee",
+      "damage_type": "magic",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "features": [
+        {
+          "en": "**Deflecting:** When you are attacked, you can mark an Armor Slot to gain a bonus to your Evasion equal to your Armor Score against the attack.",
+          "ru": "**Отражающее:** когда вас атакуют, можно отметить Ячейку Брони, чтобы получить бонус к Уклонению против этой атаки, равный Броне."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Segmented Staff",
+      "ru": "Составной Посох"
+    },
+    "description": {
+      "en": "+1 to Armor Score; +1 to primary weapon damage within Melee range",
+      "ru": "+1 к Броне; +1 к урону основного оружия Вплотную."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 2,
+      "trait": "agi",
+      "range": "very close",
+      "damage_type": "physical",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "features": [
+        {
+          "en": "**Double Duty:** +1 to Armor Score; +1 to primary weapon damage within Melee range",
+          "ru": "**Двойная Польза:** +1 к Броне; +1 к урону основного оружия Вплотную."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Razor Wire",
+      "ru": "Режущая Проволока"
+    },
+    "description": {
+      "en": "On a successful attack with your primary weapon against a target within Very Close range, you can spend a Hope to make the target temporarily Vulnerable.",
+      "ru": "при успешной атаке основным оружием против цели в пределах Ближней дистанции можно потратить Надежду, чтобы та временно стала *Уязвимой*."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 2,
+      "trait": "fin",
+      "range": "very close",
+      "damage_type": "physical",
+      "damage": "d6",
+      "damage_bonus": 3,
+      "features": [
+        {
+          "en": "**Entangling:** On a successful attack with your primary weapon against a target within Very Close range, you can spend a Hope to make the target temporarily Vulnerable.",
+          "ru": "**Опутывающее:** при успешной атаке основным оружием против цели в пределах Ближней дистанции можно потратить Надежду, чтобы та временно стала *Уязвимой*."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Advanced Hatchet",
+      "ru": "Продвинутый Топорик"
+    },
+    "description": {
+      "en": "On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack.",
+      "ru": "при успешной атаке основным оружием Вплотную можно отметить Стресс, чтобы получить +1 к Мастерству для этой атаки."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 3,
+      "trait": "agi",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "features": [
+        {
+          "en": "**Follow-Up:** On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack.",
+          "ru": "**Добивающее:** при успешной атаке основным оружием Вплотную можно отметить Стресс, чтобы получить +1 к Мастерству для этой атаки."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Advanced Offhand Brass Knuckles",
+      "ru": "Продвинутый Кастет для Второй Руки"
+    },
+    "description": {
+      "en": "+4 to primary weapon damage to targets within Melee range",
+      "ru": "+4 к урону основного оружия Вплотную."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "features": [
+        {
+          "en": "**Paired:** +4 to primary weapon damage to targets within Melee range",
+          "ru": "**Парное:** +4 к урону основного оружия Вплотную."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Advanced Throwing Knives",
+      "ru": "Продвинутые Метательные Ножи"
+    },
+    "description": {
+      "en": "You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand.",
+      "ru": "можно метать на Среднюю дистанцию броском Искусности без необходимости подбирать."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 3,
+      "trait": "fin",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "features": [
+        {
+          "en": "**Stockpiled:** You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand.",
+          "ru": "**Запасное:** можно метать на Среднюю дистанцию броском Искусности без необходимости подбирать."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Advanced Fighting Cloak",
+      "ru": "Продвинутый Боевой Плащ"
+    },
+    "description": {
+      "en": "+4 to damage thresholds",
+      "ru": "+4 к порогам урона."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 3,
+      "trait": "pre",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d4",
+      "damage_bonus": 4,
+      "features": [
+        {
+          "en": "**Padded:** +4 to damage thresholds",
+          "ru": "**Подбитое:** +4 к порогам урона."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Advanced Rune Shield",
+      "ru": "Продвинутый Рунический Щит"
+    },
+    "description": {
+      "en": "+3 to Armor Score",
+      "ru": "+3 к Броне."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 3,
+      "trait": "know",
+      "range": "melee",
+      "damage_type": "magic",
+      "damage": "d4",
+      "damage_bonus": 4,
+      "features": [
+        {
+          "en": "**Protective:** +3 to Armor Score",
+          "ru": "**Защитное:** +3 к Броне."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Advanced Focus Runes",
+      "ru": "Продвинутые Руны Концентрации"
+    },
+    "description": {
+      "en": "+1 to primary weapon damage to targets within Very Close range",
+      "ru": "+1 к урону основного оружия по целям в пределах Ближней дистанции."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 3,
+      "trait": "ins",
+      "range": "very close",
+      "damage_type": "magic",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "features": [
+        {
+          "en": "**Focused:** +1 to primary weapon damage to targets within Very Close range",
+          "ru": "**Сфокусированное:** +1 к урону основного оружия по целям в пределах Ближней дистанции."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Tinker's Hammer",
+      "ru": "Молоток Механика"
+    },
+    "description": {
+      "en": "+1 to attack rolls made with your primary weapon",
+      "ru": "+1 к броскам атаки основным оружием."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "features": [
+        {
+          "en": "**Trusty:** +1 to attack rolls made with your primary weapon",
+          "ru": "**Надёжное:** +1 к броскам атаки основным оружием."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Vorpal Shard",
+      "ru": "Вострый Осколок"
+    },
+    "description": {
+      "en": "When you fail a weapon attack, you can spend a Hope to succeed on your next weapon attack.",
+      "ru": "при провале броска атаки оружием можно потратить Надежду, чтобы следующий бросок атаки оружием был автоматически успешен."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 3,
+      "trait": "know",
+      "range": "melee",
+      "damage_type": "magic",
+      "damage": "d4",
+      "damage_bonus": 0,
+      "features": [
+        {
+          "en": "**Targeted:** When you fail a weapon attack, you can spend a Hope to succeed on your next weapon attack.",
+          "ru": "**Направленное:** при провале броска атаки оружием можно потратить Надежду, чтобы следующий бросок атаки оружием был автоматически успешен."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Soul Chain",
+      "ru": "Цепь Душ"
+    },
+    "description": {
+      "en": "On a successful attack, you can spend a Hope to force the target to mark a Stress. If they do, you clear a Stress.",
+      "ru": "при успешной атаке можно потратить Надежду, чтобы цель отметила Стресс. Если она отмечает, вы снимаете Стресс."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 3,
+      "trait": "pre",
+      "range": "very close",
+      "damage_type": "magic",
+      "damage": "d6",
+      "damage_bonus": 5,
+      "features": [
+        {
+          "en": "**Draining:** On a successful attack, you can spend a Hope to force the target to mark a Stress. If they do, you clear a Stress.",
+          "ru": "**Истощающее:** при успешной атаке можно потратить Надежду, чтобы цель отметила Стресс. Если она отмечает, вы снимаете Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "War Dart",
+      "ru": "Боевой Дротик"
+    },
+    "description": {
+      "en": "This weapon can also be used with these statistics—Agility, Melee, d8+5.",
+      "ru": "альт. — Проворность, Вплотную, d8+5."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 3,
+      "trait": "agi",
+      "range": "far",
+      "damage_type": "physical",
+      "damage": "d6",
+      "damage_bonus": 5,
+      "features": [
+        {
+          "en": "**Versatile:** This weapon can also be used with these statistics—Agility, Melee, d8+5.",
+          "ru": "**Универсальное:** альт. — Проворность, Вплотную, d8+5."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Legendary Hatchet",
+      "ru": "Легендарный Топорик"
+    },
+    "description": {
+      "en": "On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack.",
+      "ru": "при успешной атаке основным оружием Вплотную можно отметить Стресс, чтобы получить +1 к Мастерству для этой атаки."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 4,
+      "trait": "agi",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "features": [
+        {
+          "en": "**Follow-Up:** On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack.",
+          "ru": "**Добивающее:** при успешной атаке основным оружием Вплотную можно отметить Стресс, чтобы получить +1 к Мастерству для этой атаки."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Legendary Offhand Brass Knuckles",
+      "ru": "Легендарный Кастет для Второй Руки"
+    },
+    "description": {
+      "en": "+5 to primary weapon damage to targets within Melee range",
+      "ru": "+5 к урону основного оружия Вплотную."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "features": [
+        {
+          "en": "**Paired:** +5 to primary weapon damage to targets within Melee range",
+          "ru": "**Парное:** +5 к урону основного оружия Вплотную."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Legendary Throwing Knives",
+      "ru": "Легендарные Метательные Ножи"
+    },
+    "description": {
+      "en": "You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand.",
+      "ru": "можно метать на Среднюю дистанцию броском Искусности без необходимости подбирать."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 4,
+      "trait": "fin",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "features": [
+        {
+          "en": "**Stockpiled:** You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand.",
+          "ru": "**Запасное:** можно метать на Среднюю дистанцию броском Искусности без необходимости подбирать."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Legendary Fighting Cloak",
+      "ru": "Легендарный Боевой Плащ"
+    },
+    "description": {
+      "en": "+5 to damage thresholds",
+      "ru": "+5 к порогам урона."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 4,
+      "trait": "pre",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d4",
+      "damage_bonus": 6,
+      "features": [
+        {
+          "en": "**Padded:** +5 to damage thresholds",
+          "ru": "**Подбитое:** +5 к порогам урона."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Legendary Rune Shield",
+      "ru": "Легендарный Рунический Щит"
+    },
+    "description": {
+      "en": "+4 to Armor Score",
+      "ru": "+4 к Броне."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 4,
+      "trait": "know",
+      "range": "melee",
+      "damage_type": "magic",
+      "damage": "d4",
+      "damage_bonus": 6,
+      "features": [
+        {
+          "en": "**Protective:** +4 to Armor Score",
+          "ru": "**Защитное:** +4 к Броне."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Legendary Focus Runes",
+      "ru": "Легендарные Руны Концентрации"
+    },
+    "description": {
+      "en": "+1 to primary weapon damage to targets within Very Close range",
+      "ru": "+1 к урону основного оружия по целям в пределах Ближней дистанции."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 4,
+      "trait": "ins",
+      "range": "very close",
+      "damage_type": "magic",
+      "damage": "d6",
+      "damage_bonus": 6,
+      "features": [
+        {
+          "en": "**Focused:** +1 to primary weapon damage to targets within Very Close range",
+          "ru": "**Сфокусированное:** +1 к урону основного оружия по целям в пределах Ближней дистанции."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Void Needle",
+      "ru": "Игла Пустоты"
+    },
+    "description": {
+      "en": "When you roll a weapon attack with Fear, you gain a Hope.",
+      "ru": "когда вы делаете бросок атаки оружием со Страхом, получите Надежду."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 4,
+      "trait": "fin",
+      "range": "melee",
+      "damage_type": "physical",
+      "damage": "d4",
+      "damage_bonus": 6,
+      "features": [
+        {
+          "en": "**Inverted:** When you roll a weapon attack with Fear, you gain a Hope.",
+          "ru": "**Инвертированное:** когда вы делаете бросок атаки оружием со Страхом, получите Надежду."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Echo Blade",
+      "ru": "Клинок Эха"
+    },
+    "description": {
+      "en": "When you succeed on an attack with your primary weapon, you can deal damage to another target within Melee range.",
+      "ru": "при успехе атаки основным оружием можно нанести урон ещё одной цели Вплотную."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 4,
+      "trait": "pre",
+      "range": "melee",
+      "damage_type": "magic",
+      "damage": "d4",
+      "damage_bonus": 6,
+      "features": [
+        {
+          "en": "**Doubled Up:** When you succeed on an attack with your primary weapon, you can deal damage to another target within Melee range.",
+          "ru": "**Удвоенное:** при успехе атаки основным оружием можно нанести урон ещё одной цели Вплотную."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Möbius Orb",
+      "ru": "Орб Мёбиуса"
+    },
+    "description": {
+      "en": "When you roll the maximum value on a damage die, roll an additional damage die and add the result to the total damage. This feature can trigger repeatedly.",
+      "ru": "когда кость урона выпадает с максимальным значением, бросьте дополнительную кость урона и добавьте результат. Это свойство может срабатывать несколько раз подряд."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 4,
+      "trait": "know",
+      "range": "melee",
+      "damage_type": "magic",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "features": [
+        {
+          "en": "**Recursive:** When you roll the maximum value on a damage die, roll an additional damage die and add the result to the total damage. This feature can trigger repeatedly.",
+          "ru": "**Рекурсивное:** когда кость урона выпадает с максимальным значением, бросьте дополнительную кость урона и добавьте результат. Это свойство может срабатывать несколько раз подряд."
+        }
+      ]
+    }
+  },
+  {
+    "name": {
+      "en": "Blackblood Tendril",
+      "ru": "Отросток Чёрной Крови"
+    },
+    "description": {
+      "en": "When a target marks any number of Hit Points from an attack you rolled with Fear, they mark an equal number of Stress.",
+      "ru": "когда цель отмечает Раны от вашей атаки, брошенной со Страхом, она отмечает равное количество Стресса."
+    },
+    "kind": "secondary weapon",
+    "public": true,
+    "info": {
+      "burden": 1,
+      "tier": 4,
+      "trait": "ins",
+      "range": "close",
+      "damage_type": "magic",
+      "damage": "d6",
+      "damage_bonus": 8,
+      "features": [
+        {
+          "en": "**Poisonous:** When a target marks any number of Hit Points from an attack you rolled with Fear, they mark an equal number of Stress.",
+          "ru": "**Ядовитое:** когда цель отмечает Раны от вашей атаки, брошенной со Страхом, она отмечает равное количество Стресса."
+        }
+      ]
+    }
+  }
+]

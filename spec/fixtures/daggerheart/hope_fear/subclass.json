@@ -1,0 +1,86 @@
+[
+  {
+    "title": {
+      "en": "Poisoners guild",
+      "ru": "Гильдия отравителей"
+    },
+    "description": {
+      "en": "Play the Poisoners Guild if you want to debilitate your targets with punishing afflictions.",
+      "ru": "Играйте за Гильдию отравителей, если хотите ослабить своих целей с помощью суровых негативных эффектов."
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "know",
+    "mechanics": [],
+    "features": [
+      {
+        "title": {
+          "en": "Adder's Blessing",
+          "ru": "Дар гадюки"
+        },
+        "description": {
+          "en": "You are immune to poisons and other toxins.",
+          "ru": "Вы невосприимчивы к ядам и токсинам."
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      },
+      {
+        "title": {
+          "en": "Twin Fang",
+          "ru": "Двойной клык"
+        },
+        "description": {
+          "en": "When you afflict a target with a known poison's effect, you can spend an additional token to inflict the effect of a second known poison.",
+          "ru": "Когда вы накладываете на цель эффект известного яда, вы можете потратить дополнительный жетон, чтобы наложить эффект второго известного яда."
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Poison Compendium",
+          "ru": "Сборник ядов"
+        },
+        "description": {
+          "en": "You also know these poisons:\n\n- Midnight Vine: The target has disadvantage on attack rollsuntil it marks a Stress to clear this condition.\n\n- Gorgon Root: The target becomes temporarily Restrained.",
+          "ru": "Вы также знаете следующие яды:\n\n- Полуночная лоза: Цель получает помеху при бросках атаки, пока не отметит стресс, чтобы снять это состояние.\n\n- Корень Горгоны: Цель временно сковывается."
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Venomancer",
+          "ru": "Веномант"
+        },
+        "description": {
+          "en": "You also know these poisons:\n\n- Blight Seed: The target gains a permanent -3 penalty to their damage thresholds. This can only affect them once.\n\n- Fear Leaf: The damage from this attack gains a bonus equal to the result of your Fear Die.\n\n- Corpse Thorn: The target gains disadvantage on reaction rolls until the end of the scene.",
+          "ru": "Вы также знаете следующие яды:\n\n- Семя Гнили: Цель получает постоянный штраф -3 к порогам урона. Это может подействовать на нее только один раз.\n\n- Лист Страха: урон от этой атаки получает бонус, равный результату вашей Кости Страха.\n\n- Трупный шип: Цель получает помеху при бросках реакции до конца сцены."
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      },
+      {
+        "title": {
+          "en": "Toxic Concoctions",
+          "ru": "Токсичные смеси"
+        },
+        "description": {
+          "en": "**Mark a Stress** to add 1d4+1 tokens to this card. On your next long rest, clear this card. You know these poisons:\n\n- Ghost Petal: The target becomes temporarily Vulnerable.\n\n- Grave Spore: The target must also mark a Stress.\n\n- Leech Weed: Gain a +1d6 damage bonus on this attack.\n\nWhen you make a successful weapon attack, you can spend a token from this card to afflict the target with a known poison's effect.",
+          "ru": "**Отметьте Стресс**, чтобы добавить 1d4+1 жетонов на эту карту. Во время следующего продолжительного отдыха, снимите все жетоны. Вы знаете следующие яды:\n\n- Лепесток призрака: Цель временно становится *уязвимой*.\n\n- Могильная Спора: Цель также должна отметить Стресс.\n\n- Плющ Пиявки: Добавьте +1d6 к урону для этой атаки.\n\nПри успешной атаке оружием вы можете потратить жетон, чтобы наложить на цель эффект известного яда."
+        },
+        "kind": "static",
+        "price": {
+          "stress": 1
+        },
+        "tokens": {
+          "limit": "none",
+          "reset": "zero",
+          "reset_at": "long"
+        },
+        "subclass_mastery": 1
+      }
+    ]
+  }
+]

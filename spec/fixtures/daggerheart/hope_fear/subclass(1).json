@@ -1,0 +1,83 @@
+[
+  {
+    "id": "22aaa01b-cb13-42c0-a9d1-cac4aebfe983",
+    "title": {
+      "en": "Pact of the Endless",
+      "ru": "Пакт вечности"
+    },
+    "description": {},
+    "public": false,
+    "class_id": "5c857b3e-64bf-428a-959c-5f8904711c1d",
+    "spellcast": "pre",
+    "mechanics": [],
+    "features": [
+      {
+        "title": {
+          "en": "Draining Invocation",
+          "ru": "Истощающее воззвание"
+        },
+        "description": {
+          "en": "When an adversary attacks you or an ally within Very Close range, you can spend a Favor to make them use a d12 instead of a d20 for the attack roll. Additionally, the adversary must mark a Stress, and you can clear a Stress.",
+          "ru": "Когда противник атакует вас или вашего союзника в пределах близкой дистанции, вы можете потратить Милость, чтобы его бросок атаки использовал кость d12 вместо d20. Кроме того, противник должен отметить Стресс, а вы можете очистить Стресс."
+        },
+        "kind": "static",
+        "id": "d74a2f13-699f-4a8a-8533-c70d46220f3b",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Dark Aegis",
+          "ru": "Тёмная Эгида"
+        },
+        "description": {
+          "en": "When you would mark any number of Hit Points, you can spend a Favor instead.",
+          "ru": "Когда вы отмечаете любое количество Ран, вы можете вместо этого потратить Милость."
+        },
+        "kind": "static",
+        "limit_refresh": "long_rest",
+        "id": "302c1241-5b0d-40f1-9ead-12da5a2496c9",
+        "limit": "1",
+        "subclass_mastery": 3
+      },
+      {
+        "title": {
+          "en": "Deadly Devotion",
+          "ru": "Роковая преданность"
+        },
+        "description": {
+          "en": "On a successful attack, you can spend a Favor to gain a +1 bonus to your Evasion until you mark a Hit Point or take a rest.",
+          "ru": "После успешной атаки вы можете потратить Милость, чтобы получить +1 к уклонению, до тех пор, пока не отметите Рану или до вашего следующего отдыха."
+        },
+        "kind": "static",
+        "id": "3e068d52-9bb1-41d3-b596-b8f72dc152b0",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Draining Bane",
+          "ru": "Истощающее Проклятье"
+        },
+        "description": {
+          "en": "When an adversary attacks you or an ally within Very Close range, you can spend 2 Favor to temporarily Drain them. When you do, they must mark a Stress and you can clear a Stress. A Drained creature uses a d12 instead of a d20 for attack rolls.",
+          "ru": "Когда противник атакует вас или вашего союзника в пределах близкой дистанции, вы можете потратить 2 Милости, чтобы сделать цель временно Истощенной. Когда вы это сделаете, они должны отметить Стресс, а вы можете очистить Стресс. Броски Атаки Истощенной цели используют d12 вместо d20."
+        },
+        "kind": "static",
+        "id": "78984dbd-1ffc-42e4-b28f-044f5c6cf895",
+        "subclass_mastery": 3
+      },
+      {
+        "title": {
+          "en": "Patron's Mantle",
+          "ru": "Мантия покровителя"
+        },
+        "description": {
+          "en": "Mark a Stress to cloak yourself in a terrifying aspect of your Patron that lasts until you take Severe damage or the scene ends:\n\n- When you would mark an Armor Slot, you can spend 2 Favor instead.\n\n- You gain a bonus equal to your tier on action rolls to intimidate a target.",
+          "ru": "**Отметьте Стресс**, чтобы облачиться в устрашающий аспект вашего покровителя, действующий до тех пор, пока вы не получите тяжёлый урон или до конца сцены. Пока вы облачены:\n\n- Когда вы отмечаете ячейку брони, вместо этого мы можете потратить 2 Милости.\n\n- Вы получаете бонус, равный вашему рангу, к броскам действий на запугивание цели."
+        },
+        "kind": "static",
+        "id": "a7ad814b-c020-4444-aedb-e7fe61452cab",
+        "subclass_mastery": 1
+      }
+    ]
+  }
+]

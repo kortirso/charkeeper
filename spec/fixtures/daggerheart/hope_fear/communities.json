@@ -1,0 +1,154 @@
+[
+  {
+    "title": {
+      "en": "Duneborne",
+      "ru": "Пустынное"
+    },
+    "description": {
+      "en": "You come from the shifting sands and arid heat of the desert.",
+      "ru": "Вы родом из зыбучих песков и засушливого зноя пустыни."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Oasis",
+          "ru": "Оазис"
+        },
+        "description": {
+          "en": "During a short rest, you or an ally can reroll a die used for a downtime move and take the higher result.",
+          "ru": "Во время короткого отдыха вы или союзник можете перебросить кость, использованную для хода привала, и взять больший результат."
+        },
+        "kind": "static"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Freeborne",
+      "ru": "Освобождённое"
+    },
+    "description": {
+      "en": "You come from a collective once held under tyranny and now liberated, united by the struggle to preserve their culture.",
+      "ru": "Вы выходец из коллектива, некогда жившего под тираническим гнётом, а ныне освобождённого, объединённого борьбой за сохранение своей культуры."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Unbound",
+          "ru": "Неукротимые"
+        },
+        "description": {
+          "en": "When you roll with Fear, you can change it into a roll with Hope instead.",
+          "ru": "Когда вы бросаете со Страхом, можно превратить это в бросок с Надеждой."
+        },
+        "kind": "static",
+        "limit": 1,
+        "limit_refresh": "session"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Frostborne",
+      "ru": "Морозное"
+    },
+    "description": {
+      "en": "You come from a place of snow and ice.",
+      "ru": "Вы родом из места снегов и льда."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Hardy",
+          "ru": "Закалённые"
+        },
+        "description": {
+          "en": "When you take a rest, you clear a Hit Point.",
+          "ru": "Во время отдыха снимите Рану."
+        },
+        "kind": "static"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Hearthborne",
+      "ru": "Сельское"
+    },
+    "description": {
+      "en": "You come from humble origins—a small village or quiet rural corner where families have time to build close bonds.",
+      "ru": "Вы родом из скромных краёв — небольшой деревни или тихого сельского уголка, где у семей есть время развивать тесные связи."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Close-Knit",
+          "ru": "Сплочённые"
+        },
+        "description": {
+          "en": "You can spend any number of Hope to grant an ally within Far range an equal number of Hope.",
+          "ru": "Можете потратить любое количество Надежды, чтобы дать союзнику в пределах Дальней дистанции равное количество Надежды."
+        },
+        "kind": "static",
+        "limit": 1,
+        "limit_refresh": "long_rest"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Reborne",
+      "ru": "Забытое"
+    },
+    "description": {
+      "en": "You were a member of a different community you no longer belong to.",
+      "ru": "Вы были членом другого сообщества, к которому больше не принадлежите."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Found Family",
+          "ru": "Обретённая семья"
+        },
+        "description": {
+          "en": "You can spend a Hope to use an ally's Experience as if it were your own. Describe how your time with that ally prepared you for this moment.\n\nWhen you join a new community or rediscover your old one, you can permanently trade this card for that one instead.",
+          "ru": "Один раз за отдых можно потратить Надежду, чтобы использовать Опыт союзника как свой. Опишите, как время, проведённое с этим союзником, подготовило вас к этому моменту.\n\nКогда вы вступаете в новое сообщество или обнаруживаете своё прежнее, вы можете навсегда обменять эту карту на карту нового сообщества."
+        },
+        "kind": "static",
+        "limit": 1,
+        "limit_refresh": "short_rest"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Warborne",
+      "ru": "Военное"
+    },
+    "description": {
+      "en": "You come from a place that is, or was, ravaged by war—civilians in a war zone, soldiers who served together, or citizens of long-warring nations.",
+      "ru": "Вы родом из места, опустошённого или опустошаемого войной — мирные жители в зоне боёв, служившие вместе солдаты или граждане десятилетиями воюющих наций."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Brave Face",
+          "ru": "Крепкий духом"
+        },
+        "description": {
+          "en": "When you would be forced to mark a Stress, you can spend a Hope instead.",
+          "ru": "Когда вас вынуждают отметить Стресс, можно потратить вместо этого Надежду."
+        },
+        "kind": "static",
+        "limit": 1,
+        "limit_refresh": "session"
+      }
+    ]
+  }
+]

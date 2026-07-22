@@ -1,0 +1,85 @@
+[
+  {
+    "id": "26762258-7b49-49a8-9f42-bf36cd5b3b41",
+    "title": {
+      "en": "Hedge",
+      "ru": "Ведунья"
+    },
+    "description": {},
+    "public": false,
+    "class_id": "3faa2e12-e72d-4afc-a0b7-54a9bb317b86",
+    "spellcast": "know",
+    "mechanics": [],
+    "features": [
+      {
+        "title": {
+          "en": "Enhanced Hex",
+          "ru": "Усиленный сглаз"
+        },
+        "description": {
+          "en": "Attacks you make against Hexed creatures gain a damage bonus equal to your Proficiency.",
+          "ru": "Атаки, которые вы совершаете против существ со сглазом, получают бонус к урону, равный вашему мастерству."
+        },
+        "kind": "static",
+        "id": "f26368e9-8c2a-4d09-9761-bcfdee4f821f",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Walk Between Worlds",
+          "ru": "Хождение между мирами"
+        },
+        "description": {
+          "en": "Make a Spellcast Roll (13) to step beyond the veil of death and converse with any nearby spirits. Place a number of tokens equal to your Spellcast trait on this card and remove one each time a spirit answers a question. You return to the mortal realm when the last token is removed.",
+          "ru": "Совершите бросок заклинания (13), чтобы переступить завесу смерти и поговорить с любыми духами поблизости. Положите на эту карту количество жетонов, равное вашей характеристике заклинателя, и снимайте по одному жетону каждый раз, когда дух отвечает на вопрос. Вы возвращаетесь в мир смертных, когда снимете последний жетон."
+        },
+        "kind": "text",
+        "id": "e016faa7-1ed6-4efd-b1e4-954acda2d39d",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Herbal Remedies",
+          "ru": "Лечебные травы"
+        },
+        "description": {
+          "en": "When you or an ally clear one or more Hit Points or Stress as the result of using a consumable, increase the number cleared by one.",
+          "ru": "Когда вы или ваш союзник очищаете одну или больше Ран или Стресса в результате использования расходника, увеличьте количество очищенных очков на одно."
+        },
+        "kind": "static",
+        "id": "70a01dc9-4202-4d1a-acc4-4fda8eccb308",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Circle of Power",
+          "ru": "Круг силы"
+        },
+        "description": {
+          "en": "Mark a circle on the ground around you up to Very Close range and place a number of tokens equal to your Spellcast Trait on this card. Each time you or any ally within the circle makes an action roll or is hit with an attack, remove a token. This spell lasts until the last token is removed or you step out of the circle. While within this circle, you and any allies:\n\n- Gain a +4 bonus to your damage thresholds.\n\n- Gain a +2 bonus to your attack rolls.\n\n- Gain a +1 bonus to your Evasion.",
+          "ru": "вы можете начертить круг на земле в пределах близкой дистанции и поместить на эту карту количество жетонов, равное вашей характеристике заклинателя. Каждый раз, когда вы или ваши союзники в круге совершают бросок действия или становятся целью успешной атаки, снимите один жетон. Заклинание действует, пока вы не потратите последний жетон или не покинете круг. Находясь внутри круга, вы и ваши союзники:\n\n- Получаете +4 к порогам урона.\n\n- Получаете +2 к броскам атак.\n\n- Получаете +1 к уклонению."
+        },
+        "kind": "text",
+        "limit_refresh": "short_rest",
+        "id": "fdaaaf15-78b4-44ca-bda1-86de0d6e453a",
+        "limit": "1",
+        "subclass_mastery": 3
+      },
+      {
+        "title": {
+          "en": "Tethered Talisman",
+          "ru": "Талисман связи"
+        },
+        "description": {
+          "en": "You can imbue a small item with your protective essence. When the person holding the talisman takes damage, you can expend its magic to reduce the number of Hit Points they mark by one. You can't create a new talisman until the old one has been used.",
+          "ru": "Вы можете зачаровать небольшой предмет вашей защитной эссенцией. Когда человек, держащий талисман, получает урон, вы можете потратить магию талисмана, чтобы уменьшить количество отмеченных Ран на одну. Вы не можете создать новый талисман, пока предыдущий не будет использован."
+        },
+        "kind": "text",
+        "limit_refresh": "short_rest",
+        "id": "0c310792-8b03-4d32-b1f0-9df6f29638ee",
+        "limit": "1",
+        "subclass_mastery": 1
+      }
+    ]
+  }
+]

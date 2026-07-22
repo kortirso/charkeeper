@@ -1,0 +1,59 @@
+[
+  {
+    "id": "5c857b3e-64bf-428a-959c-5f8904711c1d",
+    "title": {
+      "en": "Warlock",
+      "ru": "Колдун"
+    },
+    "description": {},
+    "public": false,
+    "domains": [
+      "grace",
+      "dread"
+    ],
+    "evasion": 11,
+    "health_max": 5,
+    "features": [
+      {
+        "title": {
+          "en": "Favor",
+          "ru": "Милость"
+        },
+        "description": {
+          "en": "Start with 3 Favor. During a rest, spend one of your downtime moves to tithe to your patron. When you do, gain Favor equal to your Presence. If you choose to forgo this offering, the GM instead gains a Fear.",
+          "ru": "Начните с 3 очками Милости. Во время отдыха, потратьте один из своих Ходов Отдыха в качестве дани вашему покровителю. Когда вы это сделаете, получите количество Милости, равное вашему Влиянию. Если вы решите воздержаться от этого подношения, Мастер получает Страх."
+        },
+        "kind": "static",
+        "id": "a3eec2bb-2517-43cf-992d-d81830e21cb7",
+        "limit": "0"
+      },
+      {
+        "title": {
+          "en": "Patron's Boon",
+          "ru": "Дар покровителя"
+        },
+        "description": {
+          "en": "**Spend 3 Hope** to call out to your patron for help, gaining 1d4 Favor.",
+          "ru": "**Потратьте 3 Надежды**, чтобы попросить вашего покровителя о помощи и получите 1d4 Милости."
+        },
+        "kind": "static",
+        "price": {
+          "hope": 3
+        },
+        "id": "e6c802d9-9ecc-4eaa-b4a0-064b7d2360b2"
+      },
+      {
+        "title": {
+          "en": "Warlock Patron",
+          "ru": "Покровитель чернокнижника"
+        },
+        "description": {
+          "en": "You have committed yourself to a patron in exchange for power.\n\nChoose their spheres of influence, at GM discretion, record them below, and set their values to +2. Anytime you increase your tier, these spheres of influence gain a permanent +1 bonus. Before making an action roll that relates to one of your patron's spheres of influence, you can spend a Favor to call on them and add its value to the roll.",
+          "ru": "Вы посвятили себя покровителю в обмен на силу.\n\nВыберите сферы его влияния, посоветовавшись с Мастером, запишите их ниже и выставите им значение +2. Каждый раз, когда вы повышаете свой ранг, эти сферы влияния также получают постоянный бонус +1. Перед тем, как совершить бросок действия, связанный с одной из сфер влияния вашего покровителя, вы можете потратить Милость, чтобы попросить его помощи и добавить его значение к броску."
+        },
+        "kind": "text",
+        "id": "ba5dba7e-0eb7-4a4a-9696-6448aa3388e2"
+      }
+    ]
+  }
+]

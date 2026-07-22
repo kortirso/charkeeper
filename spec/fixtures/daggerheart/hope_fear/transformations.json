@@ -1,0 +1,217 @@
+[
+  {
+    "title": {
+      "en": "Demigod",
+      "ru": "Полубог"
+    },
+    "description": {
+      "en": "Mortals with the blood of gods in their veins, gaining power from divine parentage, a great feat, or a god's gift. All possess a subtle luminosity; no two demigods look the same.",
+      "ru": "Смертные, в чьих жилах течёт кровь богов, обретающие силу благодаря божественному происхождению, великому подвигу или дару бога. Все обладают едва уловимым сиянием; двух одинаковых полубогов не существует."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Gifted",
+          "ru": "Одарённый"
+        },
+        "description": {
+          "en": "You gain a +1 bonus to action, reaction, and damage rolls.",
+          "ru": "Вы получаете бонус +1 к броскам действия, реакционным броскам и броскам урона."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Weight of Divinity",
+          "ru": "Бремя Божественности"
+        },
+        "description": {
+          "en": "When you fail a roll, you must **mark a Stress** or the GM gains a Fear.",
+          "ru": "Когда вы проваливаете бросок, вы должны **отметить Стресс**, иначе Мастер получает Страх."
+        },
+        "kind": "static"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Ghost",
+      "ru": "Призрак"
+    },
+    "description": {
+      "en": "Spirits of the once-living bound to the Mortal Realm, able to shift between physical and incorporeal states. When a ghost fulfills the purpose keeping it here, it passes through the veil of death.",
+      "ru": "Духи некогда живших, привязанные к Смертному Миру, способные переходить между телесным и бесплотным состоянием. Выполнив удерживающую его цель, призрак уходит за Завесу Смерти."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Unfinished Business",
+          "ru": "Незавершённые дела"
+        },
+        "description": {
+          "en": "Work with your GM to decide what purpose or desire keeps you bound to the Mortal Realm. When you fulfill it, you cross through the veil of death.",
+          "ru": "Вместе с Мастером решите, какая цель или желание удерживает вас в Смертном Мире. Когда вы её выполните, вы уйдёте за Завесу Смерти."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Ephemeral",
+          "ru": "Бесплотность"
+        },
+        "description": {
+          "en": "Your body wavers in and out of being corporeal. You are resistant to physical damage, take double magic damage, and can **mark 2 Stress** to momentarily pass through a solid object.",
+          "ru": "Ваше тело колеблется между телесным и бесплотным. Вы устойчивы к физическому урону, получаете двойной магический урон и можете **отметить 2 Стресса**, чтобы на мгновение пройти сквозь твёрдый объект."
+        },
+        "kind": "static"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Reanimated",
+      "ru": "Воскрешённый"
+    },
+    "description": {
+      "en": "Corpses brought back to life as undead, bound to their decaying bodies through spell, ritual, or arcane experiment. Many endure lingering agony from their death or a second life forced upon them.",
+      "ru": "Трупы, возвращённые к жизни как нежить, привязанные к своим разлагающимся телам заклинанием, ритуалом или арканным экспериментом. Многие испытывают затяжную агонию от своей гибели или навязанной второй жизни."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Corpse",
+          "ru": "Труп"
+        },
+        "description": {
+          "en": "During a rest, you can clear Hit Points only if you have access to remains from a recently deceased creature. Describe how you use these materials to maintain your body.",
+          "ru": "Во время отдыха вы можете снимать Раны только при наличии доступа к останкам недавно умершего существа. Опишите, как вы используете эти материалы, чтобы поддерживать своё тело."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Won't Stay Dead",
+          "ru": "Не сдастся смерти"
+        },
+        "description": {
+          "en": "When you choose the Risk It All death move and fail, you can permanently mark a Hit Point to succeed instead. When you do, you still use the Hope Die's value to clear Hit Points and Stress. When you permanently mark your last Hit Point, you pass through the veil of death.",
+          "ru": "Когда вы выбираете ход «Ва-Банк» и проваливаете его, можно навсегда отметить Рану, чтобы вместо этого преуспеть. Если вы так делаете, значение Кости Надежды всё равно используется для снятия Ран и Стресса. Когда вы навсегда отмечаете последнюю Рану, вы уходите за Завесу Смерти."
+        },
+        "kind": "static"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Shapeshifter",
+      "ru": "Перевёртыш"
+    },
+    "description": {
+      "en": "Creatures who can change their physical form into any ancestry. One trait never changes across their forms, and they can't copy a specific person—they become themselves in a new body.",
+      "ru": "Существа, способные менять физический облик на любую родословную. Одна черта не меняется ни в одной форме, и они не могут скопировать конкретного человека — они становятся собой, но в новом теле."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Change Shape",
+          "ru": "Смена облика"
+        },
+        "description": {
+          "en": "During a rest, you can use a downtime move to swap your current ancestry with another. When you do, describe how your appearance changes.",
+          "ru": "Во время отдыха можно использовать ход привала, чтобы заменить текущую родословную другой. Опишите, как меняется ваш облик."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Only Skin Deep",
+          "ru": "Только внешне"
+        },
+        "description": {
+          "en": "You gain the benefit of only one of your chosen ancestry's features, which you select when you choose the ancestry. You can use a downtime move to choose a different feature of the same ancestry.",
+          "ru": "Вы получаете пользу лишь от одного свойства выбранной родословной, которое определяете при выборе родословной. Можно использовать ход привала, чтобы выбрать другое свойство той же родословной."
+        },
+        "kind": "static"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Vampire",
+      "ru": "Вампир"
+    },
+    "description": {
+      "en": "Undead with sharp fangs who feed on the blood of the living. Vampires are made, not born, through a bite and exchange of blood, an occult ritual, or other mysterious means.",
+      "ru": "Нежить с острыми клыками, питающаяся кровью живых. Вампиров не рождают — их создают укусом и обменом крови, оккультным ритуалом или иными таинственными методами."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Fangs",
+          "ru": "Клыки"
+        },
+        "description": {
+          "en": "Make an attack using a trait of your choice to bite a target within Melee range. On a success, deal d6 physical damage using your Proficiency.",
+          "ru": "Совершите атаку, используя атрибут по вашему выбору, чтобы укусить цель Вплотную. При успехе нанесите d6 физического урона с использованием Мастерства."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Feed",
+          "ru": "Насыщение"
+        },
+        "description": {
+          "en": "On a successful **Fangs** attack against a creature that can bleed, you can mark a Stress to feed. Place a number of tokens on this card equal to the number of Hit Points the target marks. You can hold up to 6 tokens at a time. Before you make an action roll, you can spend a token to make your Fear Die a d20. When you take a long rest, remove a token. While there are no tokens on this card, you make action and reaction rolls with disadvantage.",
+          "ru": "При успешной атаке **Клыки** против существа, способного истекать кровью, можно отметить Стресс, чтобы насытиться. Поместите на эту карту количество жетонов, равное количеству Ран, отмеченных целью (не более 6). Перед броском действия можно потратить жетон, чтобы Кость Страха стала d20. При долгом отдыхе удаляется один жетон. Пока на карте нет жетонов, все броски действия и реакционные броски совершаются с помехой."
+        },
+        "kind": "static",
+        "tokens": {
+          "limit": "6",
+          "reset_at": "long",
+          "reset": "1"
+        }
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Werewolf",
+      "ru": "Оборотень"
+    },
+    "description": {
+      "en": "Creatures who transform into massive supernatural wolves—by birth, curse, or another werewolf's bite. In wolf form they wrestle with hunting instinct and rage, needing great discipline to spare their loved ones.",
+      "ru": "Существа, превращающиеся в огромных сверхъестественных волков — по рождению, из-за проклятия или укуса другого оборотня. В волчьей форме они борются с охотничьим инстинктом и яростью, и им нужна огромная самодисциплина, чтобы не навредить близким."
+    },
+    "public": true,
+    "features": [
+      {
+        "title": {
+          "en": "Wolf Form",
+          "ru": "Волчий облик"
+        },
+        "description": {
+          "en": "When you mark 1 or more Hit Points, you can mark a Stress to enter your **Wolf Form**. While in this form, you gain a 1d10 bonus to attack and damage rolls. When you gain a Hope while in **Wolf Form**, you must also mark a Stress. Your **Wolf Form** lasts until you go into your **Howling Rampage** or you take a rest.",
+          "ru": "Когда вы отмечаете 1 или более Ран, можно отметить Стресс, чтобы войти в **Волчий облик**. В этой форме вы получаете бонус +1d10 к броскам атаки и урона. Когда вы получаете Надежду, находясь в Волчьем Облике, вы также должны отметить Стресс. **Волчий облик** длится до **Воющей ярости** или до отдыха."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Howling Rampage",
+          "ru": "Воющая ярость"
+        },
+        "description": {
+          "en": "When you mark your last Stress while in **Wolf Form**, you go into a rampage. Roll a number of d20s equal to your tier and deal that much physical damage to all creatures within Very Close range. Then you drop out of **Wolf Form**.",
+          "ru": "Когда вы отмечаете последний Стресс в **Волчьем облике**, вас охватывает ярость. Бросьте количество d20, равное вашему тиру, и нанесите столько физического урона всем существам в пределах Ближней дистанции. После этого вы выходите из **Волчьего облика**."
+        },
+        "kind": "static"
+      }
+    ]
+  }
+]

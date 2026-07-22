@@ -2775,82 +2775,6 @@
     "tokens": null
   },
   {
-    "slug": "withering-affliction",
-    "title": {
-      "en": "Chains of Affliction",
-      "ru": "Оковы мучений"
-    },
-    "description": {
-      "en": "**Mark 2 Stress** to temporarily *Chain* a target within Close range. When a *Chained* creature deals damage, the target of their attack reduces the number of Hit Points they mark by one. You can't have more than one creature *Chained* at a time.",
-      "ru": "**Отметьте 2 Стресса**, чтобы временно *сковать* цель в пределах средней дистанции. Когда *скованное* существо наносит урон, цель его атаки уменьшает количество отмеченных ран на одну. Вы не можете иметь более одного *скованного* существа одновременно."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 4
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {
-      "stress": 2
-    },
-    "info": {
-      "type": "spell",
-      "recall": 2
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
-    "slug": "dread-touched",
-    "title": {
-      "en": "Dread-Touched",
-      "ru": "Затронутый Ужасом"
-    },
-    "description": {
-      "en": "When 4 or more of the domain cards in your loadout are from the Dread domain, gain the following benefits:\n\n- When you succeed with Fear, you can **mark 2 Stress** to keep the GM from gaining a Fear.\n\n- Once per rest, when making an action roll, you can add a +1 bonus to the roll for each Fear token the GM has stored.",
-      "ru": "Когда 4 или более карт домена в вашем инвентаре относятся к домену Ужаса, вы получаете следующие преимущества:\n\n- Когда вы преуспеваете со Страхом, вы можете **отметить 2 Стресса**, чтобы Мастер не получил Страх.\n\n- Один раз до следующего отдыха, при броске действия, вы можете добавить +1 к броску за каждый жетон Страха у Мастера."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": "short_rest",
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 7
-    },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": 2
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
     "slug": "natural_climber",
     "title": {
       "en": "Natural Climber",
@@ -6400,46 +6324,6 @@
     "tokens": null
   },
   {
-    "slug": "umbral_veil",
-    "title": {
-      "en": "Umbral Veil",
-      "ru": "Завеса теней"
-    },
-    "description": {
-      "en": "When you roll with Fear, you can **spend any number of Hope** to place an equal number of tokens on this card, encasing yourself in a shadowy energy. After an attack roll is made against you, you can spend any number of tokens to give the attack roll a -1 penalty per token.",
-      "ru": "При броске со Страхом, вы можете **потратить любое количество Надежды** и поместить на эту карту столько же жетонов, чтобы окружить себя теневой энергией. После того, как против вас был совершен бросок атаки, вы можете потратить любое количество жетонов, чтобы наложить на бросок атаки штраф -1, за каждый жетон."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": "short_rest",
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 1
-    },
-    "description_eval_variables": { "limit": "1" },
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": 1
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": {
-      "limit": "none",
-      "reset_at": "short",
-      "reset": "zero"
-    }
-  },
-  {
     "slug": "honed_expertise",
     "title": {
       "en": "Honed Expertise",
@@ -6819,44 +6703,6 @@
     },
     "info": {
       "type": "ability",
-      "recall": 1
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
-    "slug": "shared-trauma",
-    "title": {
-      "en": "Shared Trauma",
-      "ru": "Разделённая травма"
-    },
-    "description": {
-      "en": "Mark any number of Hit Points on a willing creature within Melee range to clear an equal number of Hit Points on another willing creature within Melee range. You can choose yourself in place of either creature.",
-      "ru": "Отметьте любое количество Ран у согласного существа, находящегося вплотную, чтобы очистить столько же Ран у другого согласного существа, находящегося вплотную. Вы можете выбрать себя вместо любого из этих существ."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": "short_rest",
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 3
-    },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
       "recall": 1
     },
     "reverse_refresh": false,
@@ -7263,44 +7109,6 @@
     "tokens": null
   },
   {
-    "slug": "spectral-mist",
-    "title": {
-      "en": "Spectral Mist",
-      "ru": "Призрачный туман"
-    },
-    "description": {
-      "en": "**Mark a Stress** to summon an eerie mist that turns you and any targets within Close range momentarily incorporeal. While a creature is incorporeal, they can move through solid objects and are immune to physical damage. A creature becomes corporeal again after they pass through a solid object or make an action roll. Otherwise, this effect drops at the end of the scene.",
-      "ru": "**Отметьте Стресс**, чтобы призвать жуткий туман, который делает вас и всех целей в пределах средней дистанции на мгновение нематериальными. Пока существо нематериально, оно может проходить сквозь твердые предметы и имеют иммунитет к физическому урону. Существо снова становится материальным после того, как пройдет сквозь твердый предмет или совершит бросок действия. Иначе этот эффект пропадает в конце сцены."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 5
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {
-      "stress": 1
-    },
-    "info": {
-      "type": "spell",
-      "recall": 0
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
     "slug": "know-thy-enemy",
     "title": {
       "en": "Know Thy Enemy",
@@ -7373,44 +7181,6 @@
       "type": "ability",
       "recall": 1,
       "hope_dice": "D20"
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
-    "slug": "dire-strike",
-    "title": {
-      "en": "Dire Strike",
-      "ru": "Роковой удар"
-    },
-    "description": {
-      "en": "After making a successful attack, you can **spend 2 Hope** to leach power from the target. For each Hit Point your target marked from this attack, the GM loses a Fear.",
-      "ru": "После совершения успешной атаки, вы можете **потратить 2 Надежды**, чтобы поглотить силу цели. За каждую Рану, отмеченной целью от этой атаки, Мастер теряет Страх."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 5
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {
-      "hope": 2
-    },
-    "info": {
-      "type": "spell",
-      "recall": 1
     },
     "reverse_refresh": false,
     "reset_on_rest": null,
@@ -7565,44 +7335,6 @@
     "info": {
       "type": "ability",
       "recall": 1
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
-    "slug": "wailing-leap",
-    "title": {
-      "en": "Jump Scare",
-      "ru": "Пугающий скачок"
-    },
-    "description": {
-      "en": "When you deal magic damage to a target, you can **mark a Stress** to immediately teleport into Melee range of them. When you do, they become *Vulnerable* until they mark one or more Hit Points.",
-      "ru": "Когда вы наносите магический урон цели, вы можете **отметить Стресс**, чтобы немедленно телепортироваться вплотную к ней. Когда вы это делаете, цель становится *язвимой*, пока не отметит одну или больше Ран."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 6
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {
-      "stress": 1
-    },
-    "info": {
-      "type": "spell",
-      "recall": 0
     },
     "reverse_refresh": false,
     "reset_on_rest": null,
@@ -8067,45 +7799,6 @@
     "tokens": null
   },
   {
-    "slug": "eldritch-flesh",
-    "title": {
-      "en": "Eldritch Flesh",
-      "ru": "Плоть Древнего"
-    },
-    "description": {
-      "en": "You embody the darkness you have dallied with. When this card is in your loadout:\n\n- Gain a +1 calculated bonus to your damage thresholds for each Stress you have marked.\n\n- When you roll with Fear, you can **spend 2 Hope** to clear an Armor Slot.",
-      "ru": "Вы воплощаете тьму, с которой прежде лишь игрались. Пока эта карта в вашем инвентаре:\n\n- Получите +1 добавленный бонус к вашим порогам урона за каждый отмеченный вами Стресс.\n\n- При бросках со Страхом, вы можете **потратить 2 Надежды**, чтобы очистить ячейку брони."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 8
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": true,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": "1"
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {
-      "major": { "type": "add", "value": "stress_marked" },
-      "severe": { "type": "add", "value": "stress_marked" }
-    },
-    "public": false,
-    "tokens": null
-  },
-  {
     "slug": "full-surge",
     "title": {
       "en": "Full Surge",
@@ -8224,44 +7917,6 @@
     "info": {
       "type": "grimoire",
       "recall": 4
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
-    "slug": "savor-the-anguish",
-    "title": {
-      "en": "Savor the Anguish",
-      "ru": "Наслаждение муками"
-    },
-    "description": {
-      "en": "When an adversary within Close range marks Stress or takes Severe damage, you can **spend a Hope** to clear a Stress or force the GM to lose a Fear.",
-      "ru": "Когда противних в пределах средней дистанции отмечает Стресс или получает тяжёлый урон, вы можете **потратить Надежду**, чтобы очистить Стресс или заставить Мастера потерять жетон Страха."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 9
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {
-      "hope": 1
-    },
-    "info": {
-      "type": "spell",
-      "recall": 0
     },
     "reverse_refresh": false,
     "reset_on_rest": null,
@@ -9269,80 +8924,6 @@
     "tokens": null
   },
   {
-    "slug": "summon-horror",
-    "title": {
-      "en": "Summon Horror",
-      "ru": "Призыв ужаса"
-    },
-    "description": {
-      "en": "Make a **Spellcast Roll** against a target within Far range. On a success, **spend a Hope** to call forth an otherworldly creature to attack them and deal d10 magic damage using your Proficiency. The target must succeed on a **Reaction Roll (12)** to steel themselves from the horror or mark 1d4 Stress.\n\nAfter making the attack, the creature dissipates.",
-      "ru": "Совершите **бросок заклинания** против цели в пределах далёкой дистанции. При успехе, **потратьте Надежду**, чтобы вызвать потустороннее существо, которое атакует цель и нанесет d10 магического урона, используя ваше мастерство. Цель также должна преуспеть в **Броске Реакции (12)**, чтобы противостоять этому ужасу, иначе она должна отметить 1d4 Стресса.\n\nПосле совершения атаки существо рассеивается."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 4
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {
-      "hope": 1
-    },
-    "info": {
-      "type": "spell",
-      "recall": 2
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
-    "slug": "damnation",
-    "title": {
-      "en": "Damnation",
-      "ru": "Ужасная кара"
-    },
-    "description": {
-      "en": "Make a **Spellcast Roll** against a target within Far range. On a success, **mark any number of Stress** to roll an equal number of d20s, dealing magic damage equal to the total result. If the target is defeated as a result of this attack, all adversaries within Far range of the target mark a Stress.",
-      "ru": "Совершите **бросок заклинания** против цели в пределах далёкой дистанции. При успехе **отметьте любое количество Стресса**, чтобы бросить столько же d20 и нанести магический урон, равный общему результату. Если цель была побеждена в результате этой атаки, то все противники в пределах далёкой дистанции отмечают Стресс."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 9
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": 2
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
     "slug": "splintering-strike",
     "title": {
       "en": "Splintering Strike",
@@ -9375,42 +8956,6 @@
     "info": {
       "type": "ability",
       "recall": 3
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
-    "slug": "terrify",
-    "title": {
-      "en": "Terrify",
-      "ru": "Вселить ужас"
-    },
-    "description": {
-      "en": "Make a **Spellcast Roll** against a target within Far range. On a success, the target **marks 1d4 Stress** and you can choose to make the target run one range away from you. On a success with Fear, the target becomes temporarily Vulnerable.",
-      "ru": "Совершите **бросок заклинания** против цели в пределах далёкой дистанции. При успехе цель **отмечает 1d4 Стресса**, и вы можете заставить ее убежать на одну ступень дистанции от вас. При успехе со Страхом, цель становится временно Уязвимой."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 3
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": 1
     },
     "reverse_refresh": false,
     "reset_on_rest": null,
@@ -12106,120 +11651,6 @@
     "tokens": null
   },
   {
-    "slug": "voice_of_dread",
-    "title": {
-      "en": "Voice of Dread",
-      "ru": "Глас ужаса"
-    },
-    "description": {
-      "en": "You can magically speak directly into the ears of a creature you can see. To torment them with your words, make a **Spellcast Roll** against them. On a success, they must mark a Stress and become temporarily Vulnerable.",
-      "ru": "Вы можете магическим образом говорить прямо в уши существа, которое вы видите. Чтобы истязать его своими словами, совершите **бросок заклинания** против него. При успехе оно должно отметить Стресс и становится временно *уязвимым*."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 1
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": 0
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
-    "slug": "blighting_strike",
-    "title": {
-      "en": "Blighting Strike",
-      "ru": "Увядающий удар"
-    },
-    "description": {
-      "en": "Make a **Spellcast Roll** against a target within Far range. On a success, the target takes d6+1 magic damage using your Proficiency and the next time the target deals damage to an ally, it is reduced by half. If you succeed with Fear, the target instead takes d10+1 magic damage using your Proficiency.",
-      "ru": "Совершите **бросок заклинания** против цели в пределах далёкой дистанции. При успехе цель получает d6+1 магического урона, используя ваше мастерство, и в следующий раз, когда цель наносит урон союзнику, он будет уменьшен наполовину. Если вы преуспеваете со Страхом, вместо этого цель получает d10+1 магического урона, используя ваше мастерство."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 1
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": 1
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
-    "slug": "dark-army",
-    "title": {
-      "en": "Dark Army",
-      "ru": "Армия тьмы"
-    },
-    "description": {
-      "en": "Make a **Spellcast Roll (14)**. Once per long rest, on a success you can summon a group of fiends that surround and move with you. Place 8 tokens on this card. When you deal damage to a target within Very Close range, you can spend a token to increase it by +1d8. Additionally, when you take damage, you can spend a token to reduce it by 1d8. Each time you spend a token, a fiend acts on your behalf, then disappears. Remove all tokens from this card on your next rest.",
-      "ru": "Совершите **бросок заклинания (14)**. Один раз до следующего продолжительного отдыха, при успехе вы можете призвать группу демонов, которые окружают вас и движутся вместе с вами. Положите 8 жетонов на эту карту. Когда вы наносите урон цели в пределах близкой дистанции, вы можете потратить жетон, чтобы увеличить его на +1d8. Кроме того, когда вы получаете урон, вы можете потратить жетон, чтобы уменьшить его на 1d8. Каждый раз, когда вы тратите жетон, демон действует в ваших интересах, после чего исчезает. Снимите все жетоны с этой карты во время вашего следующего отдыха."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": "long_rest",
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 8
-    },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": 2
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": {
-      "limit": "8",
-      "reset_at": "short",
-      "reset": "zero"
-    }
-  },
-  {
     "slug": "elemental_dominion_water",
     "title": {
       "en": "Water Elemental Dominion",
@@ -14029,42 +13460,6 @@
     "tokens": null
   },
   {
-    "slug": "hideous_retribution",
-    "title": {
-      "en": "Hideous Retribution",
-      "ru": "Безобразная кара"
-    },
-    "description": {
-      "en": "When an ally within Close range takes damage from a target you can see, you can make a Spellcast **Reaction Roll** against the target. On a success, **mark a Stress** to deal them d6 magic damage using your Proficiency.",
-      "ru": "Когда союзник в пределах средней дистанции получает урон от противника, которого вы видите, вы можете совершить **бросок реакции** против противника, используя вашу характеристику заклинателя. При успехе **отметьте Стресс**, чтобы нанести ему d6 магического урона, используя ваше мастерство."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 2
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": 2
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
     "slug": "body_basher",
     "title": {
       "en": "Body Basher",
@@ -14601,42 +13996,6 @@
     "tokens": null
   },
   {
-    "slug": "wall-of-hunger",
-    "title": {
-      "en": "Wall of Hunger",
-      "ru": "Стена ненасытности"
-    },
-    "description": {
-      "en": "Succeed a **Spellcast Roll (13)** to create a visible wall of writhing, necrotic energy in a line between two points within Far range that lasts until you mark a Hit Point or cast this spell again. Any creatures inside the wall when it appears or who try to pass through the wall must **mark 2 Stress**, then make a **Reaction Roll (16)**. On a failure, they are temporarily Restrained by the wall.",
-      "ru": "Совершите успешный **бросок заклинания (13)**, чтобы создать видимую стену из извивающейся некротической энергии линией между двумя точками в пределах далёкой дистанции. Она существует до тех пор, пока вы не отметите Рану или не используете это заклинание повторно. Любые существа, находящиеся внутри стены в момент ее появления или пытающиеся пройти через нее, должны **отметить 2 Стресса** и совершить **бросок реакции (16)**. При провале они временно Обездвижены стеной."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 7
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": 2
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
     "slug": "ground-pound",
     "title": {
       "en": "Ground Pound",
@@ -14984,80 +14343,6 @@
     "tokens": null
   },
   {
-    "slug": "invoke-torment",
-    "title": {
-      "en": "Invoke Torment",
-      "ru": "Призыв терзаний"
-    },
-    "description": {
-      "en": "Targets with all of their Stress marked take double damage from your attacks.\n\nAdditionally, when you defeat a creature with all of its Stress marked, you clear a Stress.",
-      "ru": "Существа, у которых отмечены все ячейки Стресса, получают двойной урон от ваших атак.\n\nКроме того, когда вы побеждаете существо, у которого отмечены все ячейки Стресса, вы очищаете Стресс."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 10
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": 2
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
-    "slug": "avatar-of-malice",
-    "title": {
-      "en": "Avatar of Terror",
-      "ru": "Аватар страха"
-    },
-    "description": {
-      "en": "**Mark a Stress** to transform into a creature fueled by fear. While in this form, your damage rolls gain a +1d6 bonus for each Fear the GM has. Additionally, gain a Hope when the GM uses a Fear feature on an adversary within Close range.\n\nYou must **spend a Hope** to make an action roll while in this form. Otherwise, you drop out of this form.",
-      "ru": "**Отметьте Стресс**, чтобы превратиться в существо, питающееся страхом. Находясь в этой форме, ваши броски урона получают +1d6, за каждый жетон Страха у Мастера. Кроме того, вы получаете Надежду, когда Мастер использует свойство страха противника в пределах средней дистанции.\n\nВы должны **потратить Надежду**, чтобы совершать броски действия в этой форме. В противном случае вы выходите из этой формы."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 10
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {
-      "stress": 1
-    },
-    "info": {
-      "type": "spell",
-      "recall": 1
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
     "slug": "specter-of-the-dark",
     "title": {
       "en": "Specter of the Dark",
@@ -15295,44 +14580,6 @@
       "reset_at": "long",
       "reset": "zero"
     }
-  },
-  {
-    "slug": "nether-flames",
-    "title": {
-      "en": "Darkfire",
-      "ru": "Тёмное пламя"
-    },
-    "description": {
-      "en": "Make a **Spellcast Roll** against all adversaries within Close range. You can **spend a Hope** for any you succeed against, and they must make a **Reaction Roll (14)**. On a failure, they take d8+6 magic damage using your Proficiency as they are engulfed in dark fire. On a success, they take half damage.",
-      "ru": "Совершите **бросок заклинания** против всех противников в пределах средней дистанции. Вы можете **потратить Надежду** для любых целей, против которых вы преуспели, и они должны совершить **бросок реакции (14)**. При провале, они получают d8+6 магического урона, используя ваше мастерство, будучи охваченными темным огнем. При успехе они получают половину урона."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": null,
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 6
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {
-      "hope": 1
-    },
-    "info": {
-      "type": "spell",
-      "recall": 2
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
   },
   {
     "slug": "fleeting_shadow",
@@ -15691,44 +14938,6 @@
     "info": {
       "type": "ability",
       "recall": 0
-    },
-    "reverse_refresh": false,
-    "reset_on_rest": null,
-    "modifiers": {},
-    "public": false,
-    "tokens": null
-  },
-  {
-    "slug": "siphon_essence",
-    "title": {
-      "en": "Siphon Essence",
-      "ru": "Вытягивание сущности"
-    },
-    "description": {
-      "en": "Make a **Spellcast Roll** against a target within Very Close range. On a success, once per long rest, the target takes d20 magic damage using your Proficiency. You clear a number of Hit Points equal to the number Hit Points the target marked from this attack. On a success with Fear, you gain a +1 bonus to your Proficiency for this attack.",
-      "ru": "Совершите **бросок заклинания** против цели в пределах близкой дистанции. При успехе, один раз до следующего продолжительного отдыха, цель получает d20 магического урона, используя ваше мастерство. Вы очищаете количество Ран, равное количеству Ран, отмеченных целью от этой атаки. При успехе со Страхом, вы получаете +1 к Мастерству для этой атаки."
-    },
-    "origin": "domain_card",
-    "origin_value": "dread",
-    "kind": "static",
-    "limit_refresh": "long_rest",
-    "exclude": [],
-    "options": {},
-    "conditions": {
-      "level": 2
-    },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "eval_variables": {},
-    "user_id": null,
-    "origin_values": null,
-    "continious": false,
-    "bonus_eval_variables": {},
-    "price": {},
-    "info": {
-      "type": "spell",
-      "recall": 1
     },
     "reverse_refresh": false,
     "reset_on_rest": null,

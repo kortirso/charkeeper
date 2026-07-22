@@ -1,0 +1,722 @@
+[
+  {
+    "name": {
+      "en": "Caltrops",
+      "ru": "Шипы"
+    },
+    "description": {
+      "en": "You can spread these caltrops in a Very Close area around you. A creature hastening through that area must mark a Stress.",
+      "ru": "Можно рассыпать в пределах Ближней дистанции. Любое существо, торопливо пробегающее через них, должно отметить Стресс."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Grapnel",
+      "ru": "Кошка-Якорь"
+    },
+    "description": {
+      "en": "You gain advantage on action rolls to climb sheer surfaces.",
+      "ru": "Дают преимущество на броски действия при карабканье по отвесным поверхностям."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Ball Bearings",
+      "ru": "Металлические Шарики"
+    },
+    "description": {
+      "en": "This pouch contains perfectly smooth metal spheres.",
+      "ru": "Мешочек идеально гладких металлических сфер."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Box of Dragon Dust",
+      "ru": "Коробочка Драконьего Пороха"
+    },
+    "description": {
+      "en": "This snuffbox is filled with combustible powder.",
+      "ru": "Табакерка, наполненная горючим порошком."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Nighthawker's Ring",
+      "ru": "Кольцо Ночного Охотника"
+    },
+    "description": {
+      "en": "Spend a Hope to activate the gemstone in this ring until the end of the scene. While active, the gemstone changes color to indicate the wearer's proximity to hidden treasure: warm colors for near, cool colors for far.",
+      "ru": "Потратьте Надежду, чтобы активировать самоцвет в этом кольце до конца сцены. Пока оно активно, самоцвет меняет цвет, указывая на близость скрытого сокровища: тёплые тона — рядом, холодные — далеко."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Elven Spyglass",
+      "ru": "Эльфийская Подзорная Труба"
+    },
+    "description": {
+      "en": "You can use this spyglass to magnify your vision a hundredfold.",
+      "ru": "Позволяет увеличить видение в сто раз."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Gourmet Granules",
+      "ru": "Гурманские Гранулы"
+    },
+    "description": {
+      "en": "This savory powder makes any food it's sprinkled on delicious and healthy, no matter how bland or rotten it is.",
+      "ru": "Эта пряная пыль делает любую еду вкусной и питательной, сколь бы пресной или гнилой она ни была."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Collapsible Pole",
+      "ru": "Складной Шест"
+    },
+    "description": {
+      "en": "You can break down this 18-foot pole into six interlinked 3-foot segments.",
+      "ru": "Шест длиной 5,5 м, складывающийся на шесть секций по ~1 м."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Blackwing Quill",
+      "ru": "Перо Чёрного Крыла"
+    },
+    "description": {
+      "en": "This writing quill never runs out of ink or needs to be sharpened.",
+      "ru": "Это писчее перо никогда не заканчивается и не требует заточки."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Silee's Folding Knife",
+      "ru": "Складной Нож Силли"
+    },
+    "description": {
+      "en": "This 3-inch blade has an edge that easily cuts through anything except the handle it's stored in.",
+      "ru": "Лезвие длиной ~8 см, режущее всё, кроме рукоятки, в которой оно хранится."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Windup Toy",
+      "ru": "Заводная Игрушка"
+    },
+    "description": {
+      "en": "This small mechanical device is shaped like a strixwolf pup and can be programmed to perform simple tricks.",
+      "ru": "Небольшое механическое устройство в форме щенка стриксволка; можно запрограммировать на простые трюки."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Loaded Dice",
+      "ru": "Шулерские Кости"
+    },
+    "description": {
+      "en": "You can choose what result this set of weighted dice rolls with a successful Finesse Roll (14). If you roll with Fear, anyone watching knows the dice are loaded.",
+      "ru": "Можно выбирать результат этих нечестных костей успешным броском Искусности (14). При провале наблюдатели замечают подделку."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Hollowbark Horn",
+      "ru": "Рог из Пустотелой Коры"
+    },
+    "description": {
+      "en": "You can blow this horn to summon a small woodland creature to perform a simple task.",
+      "ru": "При дутье в рог появляется небольшое лесное существо, способное выполнить простое поручение."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Self-Tying Rope",
+      "ru": "Самозавязывающаяся Верёвка"
+    },
+    "description": {
+      "en": "You can command this rope to tie or untie itself.",
+      "ru": "По команде завязывается и развязывается сама."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Thief's Compass",
+      "ru": "Воровской Компас"
+    },
+    "description": {
+      "en": "This compass points the way toward the nearest exit while indoors and the closest entrance while outdoors.",
+      "ru": "В помещении указывает на ближайший выход; на улице — на ближайший вход."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Traveler's Bell",
+      "ru": "Колокольчик Путника"
+    },
+    "description": {
+      "en": "Once per long rest, you can ring this bell to magically open the shortest safe path through rough terrain for 1 hour.",
+      "ru": "Один раз за долгий отдых можно позвонить, чтобы на 1 час магически открыть кратчайший безопасный путь через труднопроходимую местность."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Mandragorian Torch",
+      "ru": "Мандрагорский Факел"
+    },
+    "description": {
+      "en": "This torch gives off light only the bearer can see.",
+      "ru": "Этот факел даёт свет, видимый только тому, кто его несёт."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Boots of Supple Mystique",
+      "ru": "Сапоги Незримой Поступи"
+    },
+    "description": {
+      "en": "While wearing these boots, you don't leave tracks or footprints.",
+      "ru": "В этих сапогах вы не оставляете следов."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Zephyr's Jar",
+      "ru": "Кувшин Зефира"
+    },
+    "description": {
+      "en": "You can open this empty jar during inclement weather to capture the storm and leave behind clear skies. The storm remains inside until unleashed by reopening the jar.",
+      "ru": "Можно открыть во время непогоды, чтобы поймать бурю, оставив за собой ясное небо. Буря остаётся внутри до тех пор, пока кувшин не откроют снова."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Returning Ring",
+      "ru": "Кольцо Возврата"
+    },
+    "description": {
+      "en": "When you throw your primary weapon while wearing this ring, the weapon appears in your hand immediately after the attack.",
+      "ru": "Когда вы бросаете основное оружие, нося это кольцо, оружие мгновенно появляется в руке сразу после атаки."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Kingfisher's Net",
+      "ru": "Сеть Зимородка"
+    },
+    "description": {
+      "en": "Once per long rest, you can use this net to scoop one live fish out of any amount of water, no matter how unlikely it is for that water to have fish in it.",
+      "ru": "Один раз за долгий отдых можно выловить одну живую рыбу из любого количества воды, каким бы невероятным это ни казалось."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Titan's Girdle",
+      "ru": "Пояс Титана"
+    },
+    "description": {
+      "en": "Once per scene, you can activate this girdle to gain a +1 bonus to your Proficiency for your next attack.",
+      "ru": "Один раз за сцену можно активировать пояс, чтобы получить +1 к Мастерству для следующей атаки."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Iron Veil",
+      "ru": "Железное Покрывало"
+    },
+    "description": {
+      "en": "This chain-link head covering renders the wearer invisible to fey creatures.",
+      "ru": "Это кольчужное покрытие для головы делает носителя невидимым для фейских существ."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Furball Bag",
+      "ru": "Мешок Меховых Шаров"
+    },
+    "description": {
+      "en": "Once per rest, you can produce 2d20 harmless, cat-sized fur creatures of indeterminate origin and species from this bag.",
+      "ru": "Один раз за отдых можно достать 2d20 безвредных пушистых существ неопределённого происхождения размером с кошку."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Whisperstep Anklet",
+      "ru": "Браслет Беззвучного Шага"
+    },
+    "description": {
+      "en": "This anklet makes your steps silent as long as you don't move faster than walking speed.",
+      "ru": "Шаги становятся беззвучными, пока вы движетесь не быстрее обычной ходьбы."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Enchanter's Loupe",
+      "ru": "Лупа Чародея"
+    },
+    "description": {
+      "en": "You can use this loupe to see through illusions and enchantments.",
+      "ru": "Позволяет видеть сквозь иллюзии и чары."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Escher's Mirrorball",
+      "ru": "Зеркальный Шар Эшера"
+    },
+    "description": {
+      "en": "Once per long rest, you can command this fist-sized silver orb to capture an omnidirectional image of its surroundings on its surface. This image lasts until your next long rest.",
+      "ru": "Один раз за долгий отдых можно приказать этому серебряному шару размером с кулак захватить панорамный снимок окружения. Изображение хранится до следующего долгого отдыха."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Cheater's Coin",
+      "ru": "Монета Жулика"
+    },
+    "description": {
+      "en": "When you flip this coin, you can spend a Hope to determine which side it lands on.",
+      "ru": "При подбрасывании этой монеты можно потратить Надежду, чтобы выбрать, какой стороной она упадёт."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Gravewarden's Bell",
+      "ru": "Колокол Стража Могил"
+    },
+    "description": {
+      "en": "This bell rings when a ghost or undead creature moves within Far range of it.",
+      "ru": "Звенит, когда призрак или нежить приближается на Дальнюю дистанцию."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Reliquary of the Sightless Saint",
+      "ru": "Реликварий Незрячего Святого"
+    },
+    "description": {
+      "en": "You gain a +1 bonus to your Hope Die when you make the Risk It All death move.",
+      "ru": "Даёт +1 к Кости Надежды при ходе «Ва-Банк»."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Map of Revelation",
+      "ru": "Карта Откровения"
+    },
+    "description": {
+      "en": "You can attune this map to one creature at a time. The map always shows the attuned creature's location.",
+      "ru": "Можно настроить на одно существо. Карта всегда показывает его местонахождение."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Dagginae's Obsidian Slate",
+      "ru": "Обсидиановая Табличка Даггинэ"
+    },
+    "description": {
+      "en": "This wafer-thin sheet of volcanic glass is used by archivists to keep notes. Any information etched onto its surface disappears but can be recalled via a command you set.",
+      "ru": "Этот тонкий лист вулканического стекла используется для записей архивистами. Любая информация, нанесённая на поверхность, исчезает, но может быть вызвана заданной командой."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Gadiman's Backpack",
+      "ru": "Рюкзак Гадимана"
+    },
+    "description": {
+      "en": "Once per rest, you can spend a Hope to conjure a mundane item up to a cubic foot in size inside this satchel.",
+      "ru": "Один раз за отдых можно потратить Надежду, чтобы достать из этой суммы обычный предмет объёмом до 0,03 м³."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Eclipse Coin",
+      "ru": "Монета Затмения"
+    },
+    "description": {
+      "en": "Once per rest, flip a coin. On heads, you gain a +1 bonus to attack rolls until your next successful attack. On tails, you gain +1 to your Evasion until an attack fails against you.",
+      "ru": "Один раз за отдых подбросьте монету. Орёл — +1 к броскам атаки до следующего успеха; решка — +1 к Уклонению, пока очередная атака не провалится."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Sorcerer's Hat",
+      "ru": "Шляпа Колдуна"
+    },
+    "description": {
+      "en": "This conical blue hat is covered in silver stars. Once per rest, you can cast a spell from your vault with a Recall Cost equal to or less than your tier. This doesn't work for permanently vaulted cards.",
+      "ru": "Этот конический синий колпак покрыт серебряными звёздами. Один раз за отдых можно сыграть заклинание из хранилища со стоимостью извлечения ≤ тиру. Постоянно сохранённые карты не подходят."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Ghoulskin Gloves",
+      "ru": "Перчатки из Кожи Гуля"
+    },
+    "description": {
+      "en": "When you attack with a physical weapon while wearing these gloves, the damage is considered both physical and magic.",
+      "ru": "При атаке физическим оружием в этих перчатках урон считается одновременно физическим и магическим."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Gloves of Alacrity",
+      "ru": "Перчатки Расторопности"
+    },
+    "description": {
+      "en": "When you would mark a Stress to reload a weapon, you don't mark it.",
+      "ru": "Не нужно отмечать Стресс для перезарядки оружия."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Insomniac's Periapt",
+      "ru": "Амулет Бессонника"
+    },
+    "description": {
+      "en": "When you take a rest without clearing Hit Points or Stress, you gain a +2 bonus to attack and damage rolls until your next rest.",
+      "ru": "Когда вы отдыхаете, не снимая Раны или Стресс, получите +2 к броскам атаки и урона до следующего отдыха."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Wildrider's Saddle",
+      "ru": "Седло Вольного Наездника"
+    },
+    "description": {
+      "en": "This saddle grants any animal it's strapped onto the ability to understand their rider's commands.",
+      "ru": "Любое животное с этим седлом начинает понимать команды наездника."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Soul-Twin Circlets",
+      "ru": "Обручи Душ-Близнецов"
+    },
+    "description": {
+      "en": "Two creatures can wear this pair of circlets. You can spend a Hope to switch places with whoever is wearing the other circlet.",
+      "ru": "Два существа надевают эту пару обручей. Можно потратить Надежду, чтобы поменяться местами с носителем второго обруча."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Namer's Oracle",
+      "ru": "Оракул Именователя"
+    },
+    "description": {
+      "en": "Once per session, you can roll this set of runic dice to reveal the full name of the last person you touched.",
+      "ru": "Один раз за сессию можно бросить этот набор рунических костей, чтобы узнать полное имя последнего существа, которого вы коснулись."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Crucible Frames",
+      "ru": "Очки Тигля"
+    },
+    "description": {
+      "en": "These eyeglasses reveal weak points in objects and creatures. Three times per rest, you can spend a Hope to gain advantage on an attack roll.",
+      "ru": "Позволяют видеть слабые места в объектах и существах. Три раза за отдых можно потратить Надежду, чтобы получить преимущество на бросок атаки."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Two-Faced Aegis Brooch",
+      "ru": "Двуликая Брошь Эгиды"
+    },
+    "description": {
+      "en": "Once per rest, flip a coin. On heads, you become immune to the next physical damage you take. On tails, you become immune to the next magic damage you take.",
+      "ru": "Один раз за отдых подбросьте монету. Орёл — иммунитет к следующему физическому урону; решка — иммунитет к следующему магическому урону."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Knockback Bracelets",
+      "ru": "Браслеты Отбрасывания"
+    },
+    "description": {
+      "en": "On a successful weapon attack, you can knock your target back up to Close range from their location.",
+      "ru": "При успешной атаке оружием можно отбросить цель на расстояние до Средней дистанции."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Force Disc",
+      "ru": "Диск Силы"
+    },
+    "description": {
+      "en": "This shimmering two-dimensional disc of magical force has a 4-foot diameter and is magically tethered to a pebble. The disc always floats 3 feet north of, and at the same elevation as, the pebble. The pebble has a mass equal to one-hundredth of the total mass carried by the disc.",
+      "ru": "Двухмерный мерцающий диск магической силы диаметром ~1,2 м, привязанный к камушку. Диск всегда парит на 1 м к северу от камушка на той же высоте. Масса камушка составляет одну сотую от суммарной массы содержимого диска."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Molepaw Mittens",
+      "ru": "Рукавицы Кротовой Лапы"
+    },
+    "description": {
+      "en": "Spend a Hope to swim through earth as if it were water for the next 10 minutes.",
+      "ru": "Потратьте Надежду, чтобы на следующие 10 минут плыть сквозь землю, как сквозь воду."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Timekeeper's Pendant",
+      "ru": "Кулон Хранителя Времени"
+    },
+    "description": {
+      "en": "You can choose an additional downtime move each rest.",
+      "ru": "Можно выбрать дополнительный ход привала при каждом отдыхе."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Iron Dagger Pendant",
+      "ru": "Кулон Железного Кинжала"
+    },
+    "description": {
+      "en": "Once per long rest, you can spend a Hope to tell the pendant a creature's name. The pendant gently pulls you toward that creature's current location until your next long rest.",
+      "ru": "Один раз за долгий отдых можно потратить Надежду, чтобы назвать кулону имя существа. До следующего долгого отдыха кулон тянет вас к его местонахождению."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Collar of Ascendancy",
+      "ru": "Ошейник Превосходства"
+    },
+    "description": {
+      "en": "An animal who wears this collar gains the ability to speak and understand common speech.",
+      "ru": "Животное в этом ошейнике получает способность говорить и понимать общий язык."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Temporal Sanctuary",
+      "ru": "Временное Убежище"
+    },
+    "description": {
+      "en": "A PC who takes a rest in the temporal sanctuary can choose an additional downtime move.",
+      "ru": "ИП, отдыхающий во временном убежище, может выбрать дополнительный ход привала."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Hero's Helm",
+      "ru": "Шлем Героя"
+    },
+    "description": {
+      "en": "When you critically succeed on an attack, all allies within Close range gain a Hope.",
+      "ru": "При критическом успехе на атаке все союзники в пределах Средней дистанции получают Надежду."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Rings of Friendship",
+      "ru": "Кольца Дружбы"
+    },
+    "description": {
+      "en": "Two creatures can wear this pair of rings shaped like coiled snakes. You can spend the Hope of whoever is wearing the other ring (with their permission) as if it were your own.",
+      "ru": "Два существа надевают эту пару колец в форме свернувшихся змей. Можно тратить Надежду носителя второго кольца (с его согласия) как свою."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Rings of Camaraderie",
+      "ru": "Кольца Товарищества"
+    },
+    "description": {
+      "en": "Two creatures can wear this pair of wooden rings. You can mark the Stress of whoever is wearing the other ring (with their permission) as if it were your own.",
+      "ru": "Два существа надевают эту пару деревянных колец. Можно отмечать Стресс носителя второго кольца (с его согласия) как свой."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Rings of Alliance",
+      "ru": "Кольца Союза"
+    },
+    "description": {
+      "en": "Two creatures can wear this pair of rose gold rings. Once per session, you can initiate a Tag Team Roll with whoever is wearing the other ring without spending Hope or counting against your session limit for Tag Team Rolls.",
+      "ru": "Два существа надевают эту пару колец из розового золота. Один раз за сессию можно инициировать Совместный бросок с носителем второго кольца без траты Надежды и без учёта лимита Совместных бросков."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Phobophage's Circlet",
+      "ru": "Обруч Фобофага"
+    },
+    "description": {
+      "en": "When the GM spends a Fear, roll a d4. Once per scene on a result of 4, you clear a Stress.",
+      "ru": "Когда Мастер тратит Страх, бросьте d4. Один раз за сцену при результате 4 снимите Стресс."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Quillshawl",
+      "ru": "Иглошаль"
+    },
+    "description": {
+      "en": "If an adversary attacks you within Melee range, they must succeed on a Reaction Roll (12) or mark a Hit Point.",
+      "ru": "Если противник атакует вас Вплотную, он должен преуспеть в реакционном броске (12) или отметить Рану."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Warp Pendant",
+      "ru": "Кулон Искривления"
+    },
+    "description": {
+      "en": "Once per rest, mark a Stress to teleport to a location you can clearly see.",
+      "ru": "Один раз за отдых отметьте Стресс, чтобы телепортироваться в видимое место."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Portal Frames",
+      "ru": "Рамки Портала"
+    },
+    "description": {
+      "en": "This pair of small ornate frames, one red and one blue, are connected. Anything that passes into one exits from the other.",
+      "ru": "Пара маленьких резных рамок — красная и синяя — соединены между собой. Всё, что входит в одну, выходит из другой."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Communion Relic",
+      "ru": "Реликвия Единения"
+    },
+    "description": {
+      "en": "Once per rest, you can spend a Hope to use an ally's Experience as if it were your own. You can carry only one relic.",
+      "ru": "Один раз за отдых можно потратить Надежду, чтобы использовать Опыт союзника как свой. Можно нести только одну реликвию."
+    },
+    "kind": "item",
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Augur's Relic",
+      "ru": "Реликвия Гадателя"
+    },
+    "description": {
+      "en": "Once per long rest, you can activate your Hope feature without spending Hope. You can carry only one relic.",
+      "ru": "Один раз за долгий отдых можно активировать Свойство Надежды без траты Надежды. Можно нести только одну реликвию."
+    },
+    "kind": "item",
+    "public": true
+  }
+]

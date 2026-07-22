@@ -1,0 +1,662 @@
+[
+  {
+    "name": {
+      "en": "Warding Candle",
+      "ru": "Охранная Свеча"
+    },
+    "description": {
+      "en": "You can light this candle to fill an area within Close range with a halo of light. A creature outside the halo can't enter it if they have ill intent toward a creature within it. The candle burns for an hour.",
+      "ru": "Можно зажечь, чтобы заполнить область в пределах Средней дистанции ореолом света. Существо снаружи с дурными намерениями к тому, кто внутри, не может войти. Горит час."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Iridian Dust",
+      "ru": "Радужная Пыль"
+    },
+    "description": {
+      "en": "This multicolored powder sticks to everything and prevents creatures covered in it from becoming Hidden.",
+      "ru": "Этот разноцветный порошок прилипает ко всему и не позволяет существам, им покрытым, становиться *Скрытыми*."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Verglasian Seed",
+      "ru": "Семя Вергласа"
+    },
+    "description": {
+      "en": "You can use this ice shard to instantly freeze an area of water up to Close range.",
+      "ru": "Этот осколок льда мгновенно замораживает площадь воды до Средней дистанции."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Cupbearer's Bezoar",
+      "ru": "Безоар Виночерпия"
+    },
+    "description": {
+      "en": "You can swallow this bezoar to become immune to poisons until your next long rest.",
+      "ru": "Проглотите, чтобы стать иммунным к ядам до следующего долгого отдыха."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Mossmantle Potion",
+      "ru": "Зелье Мохового Плаща"
+    },
+    "description": {
+      "en": "You can drink this tea to perfectly blend into natural environments until your next rest.",
+      "ru": "Выпейте этот чай, чтобы идеально слиться с природной средой до следующего отдыха."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Lyrebird Lozenge",
+      "ru": "Леденец Лирохвоста"
+    },
+    "description": {
+      "en": "You can dissolve this lozenge in your mouth to perfectly mimic any voice you've heard until the end of the scene.",
+      "ru": "Рассосите, чтобы до конца сцены идеально имитировать любой голос, который вы слышали."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Vial of Featherfall",
+      "ru": "Флакон Мягкого Падения"
+    },
+    "description": {
+      "en": "You can drink this potion to ignore damage from falling for the next 10 minutes.",
+      "ru": "Выпейте, чтобы в течение 10 минут не получать урон от падения."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Chimeric Saliva",
+      "ru": "Химерическая Слюна"
+    },
+    "description": {
+      "en": "You can apply this saliva to a weapon that deals physical damage to change its damage type to magic until your next rest.",
+      "ru": "Нанесите на оружие, наносящее физический урон, чтобы изменить тип его урона на магический до следующего отдыха."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Packet of Space Dust",
+      "ru": "Пакетик Космической Пыли"
+    },
+    "description": {
+      "en": "This dust causes anything it covers to become lighter than air. One packet contains enough dust to cover the contents of a picnic basket, and the effects last for an hour.",
+      "ru": "Эта пыль делает всё, чем она покрыта, легче воздуха. Одного пакетика хватает на содержимое небольшой корзины, эффект длится час."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Pipeweed",
+      "ru": "Трубочный Табак"
+    },
+    "description": {
+      "en": "When you choose the Clear Stress downtime move during a short rest, you can smoke this non-intoxicating leaf to clear an additional Stress. Any other PCs who chose the Clear Stress downtime move also gain this benefit.",
+      "ru": "Когда во время короткого отдыха вы выбираете ход привала «Снять Стресс», можно выкурить этот лист, чтобы снять дополнительный Стресс. Другие ИП, выбравшие тот же ход, также получают эту пользу."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Deathseer's Powder",
+      "ru": "Порошок Видящего Смерть"
+    },
+    "description": {
+      "en": "You can sprinkle this powder over a recently deceased corpse to conjure a spectral reprise of their final minute of life.",
+      "ru": "Рассыпьте над недавно умершим трупом, чтобы вызвать призрачный повтор последней минуты его жизни."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Slayer's Salt",
+      "ru": "Соль Истребителя"
+    },
+    "description": {
+      "en": "You can spread this salt in a line along windowsills or thresholds to create a magical barrier that undead creatures can't cross until the line is broken.",
+      "ru": "Рассыпьте вдоль подоконников или порогов, создав магический барьер, через который нежить не может пройти, пока линия не прервана."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Yakamel Milk",
+      "ru": "Молоко Якамела"
+    },
+    "description": {
+      "en": "After consuming this milk, the next time you clear 1 or more Hit Points, you clear an additional Hit Point.",
+      "ru": "После употребления при следующем снятии одной или более Ран снимите дополнительную Рану."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Glowmoss Mushroom",
+      "ru": "Светомшистый Гриб"
+    },
+    "description": {
+      "en": "You can break this mushroom into pieces, causing it to glow bright blue until your next long rest.",
+      "ru": "Разломите, чтобы он светился ярко-синим цветом до следующего долгого отдыха."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Red Ooze Oil",
+      "ru": "Красное Масло Слизи"
+    },
+    "description": {
+      "en": "You can coat your weapon in this oil. The next successful attack you make with this weapon deals an extra 1d8 magic damage and temporarily Ignites the target. While Ignited, the target takes 1d4 magic damage when they take the spotlight.",
+      "ru": "Нанесите на оружие. Следующая успешная атака этим оружием наносит дополнительно 1d8 магического урона и временно *Воспламеняет* цель. Пока цель *Воспламенена*, она получает 1d4 магического урона каждый раз, когда получает активацию."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Instant Camp",
+      "ru": "Мгновенный Лагерь"
+    },
+    "description": {
+      "en": "You can unfold this small mechanical box into a camping tent large enough to safely house six people. The tent collapses at the end of your next long rest.",
+      "ru": "Разложите этот маленький механический ящик в походную палатку на шесть человек. Складывается по окончании следующего долгого отдыха."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Bundle of Spiderlegs",
+      "ru": "Связка Паучьих Лапок"
+    },
+    "description": {
+      "en": "You can eat these spiderlegs to walk on walls until your next rest.",
+      "ru": "Съешьте, чтобы до следующего отдыха ходить по стенам."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Ciscan Fog Bottle",
+      "ru": "Бутылка Тумана Цискан"
+    },
+    "description": {
+      "en": "You can break this jar to fill the area within Close range with magical mist. A creature who enters the mist clears a Stress and becomes Hidden.",
+      "ru": "Разбейте, чтобы заполнить область в пределах Средней дистанции магическим туманом. Существо, входящее в туман, снимает Стресс и становится *Скрытым*."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Snapthorn Seed",
+      "ru": "Семя Хватающего Шипа"
+    },
+    "description": {
+      "en": "You can throw this seed at a point you can see. It explodes into a tangle of binding vines that temporarily Restrains all creatures within Close range of that point.",
+      "ru": "Бросьте в видимую точку. Взрывается клубком сдерживающих лоз, временно делающих *Схваченными* всех существ в пределах Средней дистанции от точки падения."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Sprite Bottle",
+      "ru": "Бутылка Феи"
+    },
+    "description": {
+      "en": "When you mark your last Hit Point, this bottle shatters to release the Sprite inside. The Sprite clears all your Hit Points before fading from the Mortal Realm.",
+      "ru": "Когда вы должны отметить последнюю Рану, бутылка разбивается и выпускает заключённую в ней фею. Фея снимает все ваши Раны и исчезает из Смертного Мира."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Gravity Bomb",
+      "ru": "Гравитационная Бомба"
+    },
+    "description": {
+      "en": "You can throw this peach-sized mechanical orb at a point within Far range. It implodes and pulls all creatures and objects within Close range of that point into Melee range with it.",
+      "ru": "Бросьте этот орб размером с персик в точку в пределах Дальней дистанции. Он схлопывается и притягивает все существа и объекты в пределах Средней дистанции Вплотную к себе."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Gossip Flower",
+      "ru": "Цветок Сплетников"
+    },
+    "description": {
+      "en": "You can plant this seed in soil. It instantly grows into a small flower that records everything it hears for up to one week. When plucked, the flower recites what it recorded in real time, then withers.",
+      "ru": "Посадите в землю. Мгновенно вырастает в маленький цветок, записывающий всё услышанное до одной недели. При срывании он в реальном времени воспроизводит запись, затем вянет."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Displacement Token",
+      "ru": "Жетон Смещения"
+    },
+    "description": {
+      "en": "You can swallow this token to conjure two illusions of yourself that you can control. Each illusion lasts until it takes damage or until your next rest.",
+      "ru": "Проглотите, чтобы вызвать две иллюзии себя, которыми вы можете управлять. Каждая иллюзия длится до тех пор, пока не получит урон или до следующего отдыха."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Night Hag's Dust",
+      "ru": "Пыль Ночной Ведьмы"
+    },
+    "description": {
+      "en": "You can blow this dust in an adversary's face to prevent them from clearing Stress until your next long rest.",
+      "ru": "Выдохните эту пыль в лицо противнику, чтобы не позволить ему снимать Стресс до следующего долгого отдыха."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Self-Sewing Thread",
+      "ru": "Самошьющая Нить"
+    },
+    "description": {
+      "en": "You can use this thread to clear either a Hit Point or 2 Armor Slots.",
+      "ru": "Можно использовать, чтобы снять Рану или 2 Ячейки Брони."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Stonemason's Fortune",
+      "ru": "Удача Каменщика"
+    },
+    "description": {
+      "en": "When you throw this gray brick on the ground, it immediately grows into a 6-foot-tall, 10-foot-wide, and 2-foot-deep wall of solid stone.",
+      "ru": "Бросьте этот серый кирпич на землю — он мгновенно превращается в каменную стену высотой ~1,8 м, шириной ~3 м и толщиной ~60 см."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Mnemonic Potion",
+      "ru": "Мнемоническое Зелье"
+    },
+    "description": {
+      "en": "You can drink this potion to Utilize an Experience without spending a Hope.",
+      "ru": "Выпейте, чтобы использовать Опыт без траты Надежды."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Salamander Salve",
+      "ru": "Мазь Саламандры"
+    },
+    "description": {
+      "en": "You can apply this salve to your skin to make yourself immune to heat until your next rest.",
+      "ru": "Нанесите на кожу — до следующего отдыха вы иммунны к жару."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Green Ooze Oil",
+      "ru": "Зелёное Масло Слизи"
+    },
+    "description": {
+      "en": "You can coat your weapon in this oil. The next successful attack you make with this weapon deals an extra 1d8 magic damage and temporarily Corrodes the target. While Corroded, the target gains a −2 penalty to their damage thresholds.",
+      "ru": "Нанесите на оружие. Следующая успешная атака этим оружием наносит дополнительно 1d8 магического урона и временно *Разъедает* цель. Пока цель *Разъедена*, её пороги урона снижаются на 2."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Sunlight Orb",
+      "ru": "Орб Солнечного Света"
+    },
+    "description": {
+      "en": "You can shatter this orb to make the area within Very Far range appear as though it's sunlit daytime for the next 24 hours.",
+      "ru": "Разбейте, чтобы в течение следующих 24 часов область в пределах Очень дальней дистанции выглядела как при дневном солнечном свете."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Moonlight Orb",
+      "ru": "Орб Лунного Света"
+    },
+    "description": {
+      "en": "You can shatter this orb to make the area within Very Far range appear as though it's moonlit nighttime for the next 24 hours.",
+      "ru": "Разбейте, чтобы в течение следующих 24 часов область в пределах Очень дальней дистанции выглядела как при лунном свете."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Midas Flask",
+      "ru": "Фляга Мидаса"
+    },
+    "description": {
+      "en": "You can pour this small flask of alchemical liquid over a mundane item to instantly transmute it into a handful of gold.",
+      "ru": "Вылейте на обычный предмет, чтобы мгновенно превратить его в горсть золота."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Staff of Reversal",
+      "ru": "Посох Обращения"
+    },
+    "description": {
+      "en": "You can break this staff against the ground to reverse one magical transformation or effect within Far range.",
+      "ru": "Разбейте о землю, чтобы обратить одно магическое превращение или эффект в пределах Дальней дистанции."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Berserker's Brew",
+      "ru": "Варево Берсерка"
+    },
+    "description": {
+      "en": "When you drink this dram of liquid, you gain a bonus to your Strength and a penalty to your Finesse and Knowledge equal to your Instinct (minimum 1). This effect lasts until you make a death move or until your next rest.",
+      "ru": "Выпейте эту рюмку — получите бонус к Силе и штраф к Искусности и Знанию, равный Инстинкту (минимум 1). Эффект длится до хода «Ва-Банк» или до следующего отдыха."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Emberite Shard",
+      "ru": "Осколок Эмберита"
+    },
+    "description": {
+      "en": "Choose a point within Far range. All targets within Close range of that point must succeed on a Reaction Roll (16) or take 3d6 magic damage and become temporarily Ablaze. While Ablaze, a creature must roll a d4 whenever they make an action roll. On a result of 1, they mark a Hit Point. On a result of 4, they clear the Ablaze condition.",
+      "ru": "Выберите точку в пределах Дальней дистанции. Все цели в пределах Средней дистанции от неё должны преуспеть в реакционном броске (16) или получить 3d6 магического урона и временно стать *Горящими*. Пока существо *Горит*, при каждом броске действия оно бросает d4: при 1 отмечает Рану, при 4 снимает состояние *Горящего*."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Arcticite Shard",
+      "ru": "Осколок Арктицита"
+    },
+    "description": {
+      "en": "Choose a point within Far range. All targets within Close range of that point must succeed on a Reaction Roll (16) or take 3d6 magic damage and become temporarily Restrained by ice.",
+      "ru": "Выберите точку в пределах Дальней дистанции. Все цели в пределах Средней дистанции от неё должны преуспеть в реакционном броске (16) или получить 3d6 магического урона и временно стать *Схваченными* льдом."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Fulgurite Shard",
+      "ru": "Осколок Фульгурита"
+    },
+    "description": {
+      "en": "Choose a point within Far range. All targets within Close range of that point must succeed on a Reaction Roll (16) or take 3d6 magic damage and mark 1d4 Stress as lightning crackles through the area.",
+      "ru": "Выберите точку в пределах Дальней дистанции. Все цели в пределах Средней дистанции от неё должны преуспеть в реакционном броске (16) или получить 3d6 магического урона и отметить 1d4 Стресса от разряда молнии."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Demiurge's Draught",
+      "ru": "Напиток Демиурга"
+    },
+    "description": {
+      "en": "You can drink this draught to gain a +1 bonus to your Proficiency for your next successful attack roll.",
+      "ru": "Выпейте — получите +1 к Мастерству для следующего успешного броска атаки."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Cockerel Claw Tea",
+      "ru": "Чай из Когтя Петуха"
+    },
+    "description": {
+      "en": "You can drink this tea to refresh your features as if you had taken a long rest.",
+      "ru": "Выпейте, чтобы обновить возможности, как после долгого отдыха."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Potion of Vigilance",
+      "ru": "Зелье Бдительности"
+    },
+    "description": {
+      "en": "You can drink this potion to gain a +1 bonus to your Evasion until you mark a Hit Point.",
+      "ru": "Выпейте, чтобы получить +1 к Уклонению до отметки Раны."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Cacophonous Concoction",
+      "ru": "Какофоническое Зелье"
+    },
+    "description": {
+      "en": "When you drink this potion, anything you say or do in the next hour becomes impossible for a witness to recount. Any attempts they make to communicate what they saw, heard, or otherwise sensed comes out garbled or nonsensical.",
+      "ru": "Выпейте — в течение следующего часа всё, что вы говорите или делаете, невозможно будет связно пересказать свидетелям. Любые попытки передать увиденное или услышанное выходят бессмысленными."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Nightmare Mead",
+      "ru": "Кошмарная Медовуха"
+    },
+    "description": {
+      "en": "You can drink this potion to discover the deepest fear of the next person you make eye contact with. When you do, the GM gains a Fear.",
+      "ru": "Выпейте, чтобы узнать самый глубокий страх следующего человека, на которого вы посмотрите. Когда вы это делаете, Мастер получает Страх."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Stake of Abjuration",
+      "ru": "Кол Отречения"
+    },
+    "description": {
+      "en": "You can hammer this stake into the ground and make a proclamation. Until your next rest, a creature within Far range of the stake who transgresses that proclamation must mark a Stress. The stake lasts until your next rest, then it shatters.",
+      "ru": "Вбейте кол в землю и произнесите прокламацию. До следующего отдыха существо в пределах Дальней дистанции от кола, нарушившее прокламацию, должно отметить Стресс. После следующего отдыха кол рассыпается."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Psychopomp's Shroud",
+      "ru": "Саван Психопомпа"
+    },
+    "description": {
+      "en": "You can place this shroud over the corpse of a recently deceased creature. The creature's spirit enters the shroud and becomes your spectral assistant until the next sunrise, when they pass through the veil of death and take the shroud with them.",
+      "ru": "Накройте этим саваном труп недавно умершего существа. Его дух входит в саван и становится вашим призрачным помощником до следующего рассвета, после чего уходит за завесу смерти, забирая саван."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Phial of Deep Ink",
+      "ru": "Флакон Глубинных Чернил"
+    },
+    "description": {
+      "en": "You can drink this bottle of ink to transform into a cephalopod of roughly your size for the next hour. You gain rubbery skin, soft bones, the ability to breathe underwater, and new limbs until you have eight total.",
+      "ru": "Выпейте, чтобы на следующий час превратиться в головоногого примерно вашего размера. Вы получаете эластичную кожу, мягкие кости, способность дышать под водой и дополнительные конечности — всего восемь."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Mesmer's Tonic",
+      "ru": "Тоник Месмера"
+    },
+    "description": {
+      "en": "When you drink this tonic, the only thing you can hear until your next rest are the surface thoughts of creatures within Very Close range.",
+      "ru": "Выпейте — до следующего отдыха единственное, что вы слышите, — поверхностные мысли существ в пределах Ближней дистанции."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Invisibility Potion",
+      "ru": "Зелье Невидимости"
+    },
+    "description": {
+      "en": "You are Hidden until you deal damage to another creature or until your next rest.",
+      "ru": "Вы становитесь *Скрытым* до нанесения урона другому существу или до следующего отдыха."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Formoid Serum",
+      "ru": "Сыворотка Формы"
+    },
+    "description": {
+      "en": "You can drink this potion to become a swarm of 16 million ants until the end of the scene. You keep and have access to all equipment, loot, and features.",
+      "ru": "Выпейте, чтобы до конца сцены превратиться в рой из 16 миллионов муравьёв. Снаряжение, добыча и способности сохраняются."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Steelskin Salve",
+      "ru": "Мазь Стальной Кожи"
+    },
+    "description": {
+      "en": "You can apply this salve to your skin to gain a bonus to your damage thresholds equal to your tier until the end of the scene.",
+      "ru": "Нанесите на кожу — до конца сцены пороги урона получают бонус, равный тиру."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Godling's Pomelo",
+      "ru": "Помело Полубожества"
+    },
+    "description": {
+      "en": "You can eat this citrus fruit to clear all Hit Points and Stress.",
+      "ru": "Съешьте, чтобы снять все Раны и весь Стресс."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Snakeskin Spirit",
+      "ru": "Настойка Змеиной Кожи"
+    },
+    "description": {
+      "en": "You can drink this potion to slough off your outer layer of skin and heal a scar.",
+      "ru": "Выпейте, чтобы сбросить верхний слой кожи и исцелить шрам."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Magic-User's Malison",
+      "ru": "Проклятие Чародея"
+    },
+    "description": {
+      "en": "When you release this spellcaster's trapped soul, you can cast one spell from a card in your vault as if it were in your loadout. This doesn't work for permanently vaulted cards.",
+      "ru": "Выпустите заточённую душу заклинателя, чтобы сыграть одно заклинание из карты в хранилище, как если бы она была в снаряжении. Постоянно сохранённые карты не подходят."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Quintessential Severant",
+      "ru": "Квинтэссенциальный Разрыватель"
+    },
+    "description": {
+      "en": "You can use this magic blade to cut one magical or metaphysical bond, such as an enchantment, contract, magical tether, or divine oath. When you do, the blade shatters.",
+      "ru": "Используйте это магическое лезвие, чтобы разрезать одну магическую или метафизическую связь — чары, контракт, магическую привязь или клятву. Лезвие разрушается."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Mask of the Echoed Self",
+      "ru": "Маска Отражённого Я"
+    },
+    "description": {
+      "en": "You can wear this mask during your next level up to swap the values of any of your traits. When you do, the mask becomes your permanent face.",
+      "ru": "Наденьте во время следующего повышения уровня, чтобы поменять значения любых двух атрибутов. Маска становится вашим постоянным лицом."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Necroprancer's Bell",
+      "ru": "Колокол Некропрансера"
+    },
+    "description": {
+      "en": "You can break this rusted, clapperless bell against the ground to summon a skeletal steed that climbs out of the earth and serves you until the next sunrise.",
+      "ru": "Разбейте этот ржавый колокол без язычка о землю, чтобы вызвать из-под земли костяного коня, который служит вам до следующего рассвета."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Drakemantle",
+      "ru": "Мантия Дракона"
+    },
+    "description": {
+      "en": "You can use this enchanted ancient dragon hide to gain draconic characteristics until the end of the scene, when the hide falls away in tatters. Until then, you can fly and gain a +5 bonus to your damage thresholds and a +1 bonus to your Proficiency.",
+      "ru": "Используйте эту зачарованную древнюю шкуру, чтобы до конца сцены приобрести драконьи черты: полёт, +5 к порогам урона, +1 к Мастерству. После этого шкура рассыпается."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Gambler's Fallacy",
+      "ru": "Заблуждение Игрока"
+    },
+    "description": {
+      "en": "You can spend any number of handfuls of gold by placing them into this slotted ceramic jar shaped like a pig. When you throw the jar at a point within Far range, it explodes and deals 1d20 magic damage for each handful of gold spent to all creatures within Close range of that point. All gold within the jar is destroyed.",
+      "ru": "Положите любое количество горстей золота в эту щелевую керамическую копилку. Когда вы бросаете копилку в точку в пределах Дальней дистанции, она взрывается и наносит 1d20 магического урона за каждую горсть всем существам в пределах Средней дистанции. Золото уничтожается."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Lionheart Tonic",
+      "ru": "Тоник Львиного Сердца"
+    },
+    "description": {
+      "en": "You can drink this tonic to gain a +1 bonus to your Proficiency until you roll with Fear.",
+      "ru": "Выпейте — получите +1 к Мастерству до броска со Страхом."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Tears of the Undying Hero",
+      "ru": "Слёзы Бессмертного Героя"
+    },
+    "description": {
+      "en": "When you drink this potion, death can't touch you until your next long rest. When you would mark your last Hit Point, instead of making a death move, you make one final action roll before falling into a dreamless slumber until an ally chooses the Tend to Wounds downtime move to clear your Hit Points.",
+      "ru": "Выпейте — смерть не касается вас до следующего долгого отдыха. Когда вы должны отметить последнюю Рану, вместо хода «Ва-Банк» совершите одно финальное действие, после чего погружаетесь в беспробудный сон до тех пор, пока союзник не выберет ход привала «Уход за Ранами» для снятия ваших Ран."
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Featherstep Potion",
+      "ru": "Зелье Лёгкой Поступи"
+    },
+    "description": {
+      "en": "You can drink this potion to sprout small wings from your ankles that give you a bonus to your Evasion equal to your tier until your next rest.",
+      "ru": "Выпейте, чтобы из лодыжек выросли маленькие крылышки; до следующего отдыха бонус к Уклонению, равный тиру."
+    },
+    "public": true
+  }
+]

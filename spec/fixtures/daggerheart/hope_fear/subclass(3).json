@@ -1,0 +1,98 @@
+[
+  {
+    "title": {
+      "en": "Executioners guild",
+      "ru": "Гильдия палачей"
+    },
+    "description": {
+      "en": "Play the Executioners Guild if you want to strike down your targets with lethal precision.",
+      "ru": "Играйте за Гильдию палачей, если хотите поражать цели с убийственной точностью."
+    },
+    "public": true,
+    "class_id": "",
+    "spellcast": "agi",
+    "mechanics": [],
+    "features": [
+      {
+        "title": {
+          "en": "Ambush",
+          "ru": "Внезапная атака"
+        },
+        "description": {
+          "en": "Your **Marked for Death** feature uses d6s instead of d4s.",
+          "ru": "Ваше свойство **Метка Смерти** теперь использует d6 вместо d4."
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "First Strike",
+          "ru": "Первый удар"
+        },
+        "description": {
+          "en": "The first time in a scene you succeed on an attack roll, double the damage of the attack.",
+          "ru": "Первый раз в сцене, когда вы преуспеваете в броске атаки, удвойте урон для этой атаки."
+        },
+        "kind": "static",
+        "subclass_mastery": 1
+      },
+      {
+        "title": {
+          "en": "Death Strike",
+          "ru": "Смертельный удар"
+        },
+        "description": {
+          "en": "When you deal Severe damage to a creature, you can **mark a Stress** to make them mark an additional Hit Point.",
+          "ru": "Когда вы наносите тяжёлый урон существу, вы можете **отметить Стресс**, чтобы заставить его отметить дополнительную Рану."
+        },
+        "kind": "static",
+        "subclass_mastery": 2,
+        "price": {
+          "stress": 1
+        }
+      },
+      {
+        "title": {
+          "en": "Scorpion's Poise",
+          "ru": "Поза скорпиона"
+        },
+        "description": {
+          "en": "You gain a +2 bonus to your Evasion against any attacks made by the creature **Marked for Death**.",
+          "ru": "Вы получаете +2 к уклонению против любых атак, сделанных существом с **Меткой Смерти**."
+        },
+        "kind": "static",
+        "subclass_mastery": 2
+      },
+      {
+        "title": {
+          "en": "Backstab",
+          "ru": "Удар в спину"
+        },
+        "description": {
+          "en": "Your **Marked for Death** feature uses d8s instead of d6s.",
+          "ru": "Ваше свойство **Метка Смерти** теперь использует d8 вместо d6."
+        },
+        "kind": "static",
+        "subclass_mastery": 3
+      },
+      {
+        "title": {
+          "en": "True Strike",
+          "ru": "Верный удар"
+        },
+        "description": {
+          "en": "When you fail an attack roll, you can **spend a Hope** to make it a success instead.",
+          "ru": "Когда вы проваливаете бросок атаки, вы можете **потратить Надежду**, чтобы сделать ее успешной."
+        },
+        "kind": "static",
+        "limit_refresh": "long_rest",
+        "limit": "1",
+        "subclass_mastery": 3,
+        "price": {
+          "hope": 1
+        }
+      }
+    ]
+  }
+]
