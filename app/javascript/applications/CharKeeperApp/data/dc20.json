@@ -89,27 +89,6 @@
     "light_shield": { "name": { "en": "Light Shield", "ru": "Лёгкие щиты" } },
     "heavy_shield": { "name": { "en": "Heavy Shield", "ru": "Тяжёлые щиты" } }
   },
-  "skills": {
-    "acrobatics": { "name": { "en": "Acrobatics", "ru": "Акробатика" } },
-    "animal": { "name": { "en": "Animal", "ru": "Животные" } },
-    "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" } },
-    "awareness": { "name": { "en": "Awareness", "ru": "Бдительность" } },
-    "influence": { "name": { "en": "Influence", "ru": "Влияние" } },
-    "insight": { "name": { "en": "Insight", "ru": "Проницательность" } },
-    "intimidation": { "name": { "en": "Intimidation", "ru": "Запугивание" } },
-    "investigation": { "name": { "en": "Investigation", "ru": "Анализ" } },
-    "trickery": { "name": { "en": "Trickery", "ru": "Уловки" } },
-    "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },
-    "medicine": { "name": { "en": "Medicine", "ru": "Медицина" } },
-    "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
-  },
-  "trades": {
-    "arcana": { "name": { "en": "Arcana", "ru": "Магия" } },
-    "history": { "name": { "en": "History", "ru": "История" } },
-    "nature": { "name": { "en": "Nature", "ru": "Природа" } },
-    "occultism": { "name": { "en": "Occultism", "ru": "Оккультизм" } },
-    "religion": { "name": { "en": "Religion", "ru": "Религия" } }
-  },
   "damages": {
     "bludge": { "name": { "en": "Bludgeoning", "ru": "Дробящий" } },
     "pierce": { "name": { "en": "Piercing", "ru": "Колющий" } },

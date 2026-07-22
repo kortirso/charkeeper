@@ -1,0 +1,14 @@
+{
+  "acrobatics": { "name": { "en": "Acrobatics", "ru": "Акробатика" }, "ability": "agi" },
+  "animal": { "name": { "en": "Animal", "ru": "Животные" }, "ability": "cha" },
+  "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" }, "ability": "mig" },
+  "awareness": { "name": { "en": "Awareness", "ru": "Бдительность" }, "ability": "prime" },
+  "influence": { "name": { "en": "Influence", "ru": "Влияние" }, "ability": "cha" },
+  "insight": { "name": { "en": "Insight", "ru": "Проницательность" }, "ability": "cha" },
+  "intimidation": { "name": { "en": "Intimidation", "ru": "Запугивание" }, "ability": "mig" },
+  "investigation": { "name": { "en": "Investigation", "ru": "Анализ" }, "ability": "int" },
+  "trickery": { "name": { "en": "Trickery", "ru": "Уловки" }, "ability": "agi" },
+  "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" }, "ability": "agi" },
+  "medicine": { "name": { "en": "Medicine", "ru": "Медицина" }, "ability": "int" },
+  "survival": { "name": { "en": "Survival", "ru": "Выживание" }, "ability": "int" }
+}

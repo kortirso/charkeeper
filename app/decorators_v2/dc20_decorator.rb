@@ -187,35 +187,31 @@ class Dc20Decorator < ApplicationDecoratorV2
   end
 
   def generate_skills_payload
-    [
-      %w[acrobatics agi], %w[animal cha], %w[athletics mig], %w[awareness prime],
-      %w[influence cha], %w[insight cha], %w[intimidation mig], %w[investigation int],
-      %w[trickery agi], %w[stealth agi], %w[medicine int], %w[survival int]
-    ].map { |item| skill_payload(item[0], item[1]) }
+    Config.data('dc20', 'skills').map { |slug, values| skill_payload(slug, values) }
   end
 
-  def skill_payload(slug, ability)
+  def skill_payload(slug, values)
     level = skill_levels[slug].to_i
     {
       slug: slug,
-      ability: ability,
-      modifier: modified_abilities[ability] + (level * 2),
+      name: translate(values['name']),
+      ability: values['ability'],
+      modifier: modified_abilities[values['ability']] + (level * 2),
       level: level,
       expertise: skill_expertise.include?(slug)
     }
   end
 
   def generate_trades_payload
-    [
-      %w[arcana int], %w[history int], %w[nature int], %w[occultism int], %w[religion int]
-    ].map { |item| trade_payload(item[0], item[1]) } +
-    trade_knowledge.map { |item| trade_payload(item[0], item[1]) }
+    Config.data('dc20', 'trades').map { |slug, values| trade_payload(slug, values['name'], 'int') } +
+      trade_knowledge.map { |item| trade_payload(item[0], item[0], item[1]) }
   end
 
-  def trade_payload(slug, ability)
+  def trade_payload(slug, name, ability)
     level = trade_levels[slug].to_i
     {
       slug: slug,
+      name: name.is_a?(String) ? name : translate(name),
       ability: ability,
       modifier: modified_abilities[ability] + (level * 2),
       level: level,
