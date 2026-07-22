@@ -48,3 +48,12 @@ end
     feat ? feat.update!(item) : ::Dc20::Feat.create!(item)
   end
 end
+
+[
+  'domains/dread.json'
+].each do |filename|
+  JSON.parse(File.read("db/data_prod/daggerheart/#{filename}")).each do |item|
+    feat = ::Daggerheart::Feat.find_by(slug: item['slug'])
+    feat ? feat.update!(item) : ::Daggerheart::Feat.create!(item)
+  end
+end
