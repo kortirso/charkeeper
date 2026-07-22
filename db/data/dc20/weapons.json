@@ -10,7 +10,8 @@
       "styles": ["Axe"],
       "damage_types": ["s"],
       "features": ["Concealable", "Toss"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "sickle",
@@ -23,7 +24,8 @@
       "styles": ["Axe"],
       "damage_types": ["s"],
       "features": ["Concealable", "Toss"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "throwing_star",
@@ -36,7 +38,8 @@
       "styles": ["Axe"],
       "damage_types": ["s"],
       "features": ["Concealable", "Toss"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "short_sword",
@@ -48,7 +51,8 @@
       "styles": ["Sword"],
       "damage_types": ["s"],
       "features": ["Guard", "Impact"]
-    }
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 1 } }
   },
   {
     "slug": "javelin",
@@ -61,7 +65,8 @@
       "styles": ["Spear"],
       "damage_types": ["p"],
       "features": ["Thrown"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "light_hammer",
@@ -74,7 +79,8 @@
       "styles": ["Hammer"],
       "damage_types": ["b"],
       "features": ["Impact", "Toss"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "brass_knuckles",
@@ -86,7 +92,8 @@
       "styles": ["Fist"],
       "damage_types": ["b"],
       "features": ["Concealable", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "club",
@@ -99,7 +106,8 @@
       "styles": ["Hammer"],
       "damage_types": ["b"],
       "features": ["Concealable", "Toss"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "boomerang",
@@ -112,7 +120,8 @@
       "styles": ["Hammer"],
       "damage_types": ["b"],
       "features": ["Toss", "Returning"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "mining_pick",
@@ -125,7 +134,8 @@
       "styles": ["Pick"],
       "damage_types": ["p"],
       "features": ["Impact", "Toss"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "dart",
@@ -138,7 +148,8 @@
       "styles": ["Spear"],
       "damage_types": ["p"],
       "features": ["Concealable", "Toss"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "throwing_dagger",
@@ -151,7 +162,8 @@
       "styles": ["Sword"],
       "damage_types": ["s"],
       "features": ["Concealable", "Toss"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "rapier",
@@ -163,7 +175,8 @@
       "styles": ["Sword", "Spear"],
       "damage_types": ["s", "p"],
       "features": ["Guard", "Multi-Faceted"]
-    }
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 1 } }
   },
   {
     "slug": "chain_whip",
@@ -175,7 +188,8 @@
       "styles": ["Whip"],
       "damage_types": ["s"],
       "features": ["Reach", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "battleaxe",
@@ -187,7 +201,8 @@
       "styles": ["Axe"],
       "damage_types": ["s"],
       "features": ["Impact", "Versatile"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "long_spear",
@@ -199,7 +214,8 @@
       "styles": ["Spear"],
       "damage_types": ["p"],
       "features": ["Versatile", "Reach"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "bo_staff",
@@ -211,7 +227,8 @@
       "styles": ["Staff"],
       "damage_types": ["b"],
       "features": ["Versatile", "Guard"]
-    }
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 1 } }
   },
   {
     "slug": "longsword",
@@ -223,7 +240,8 @@
       "styles": ["Sword"],
       "damage_types": ["s"],
       "features": ["Versatile", "Guard"]
-    }
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 1 } }
   },
   {
     "slug": "flail",
@@ -235,7 +253,8 @@
       "styles": ["Hammer", "Whip"],
       "damage_types": ["b", "s"],
       "features": ["Versatile", "Multi-Faceted"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "morningstar",
@@ -247,7 +266,8 @@
       "styles": ["Hammer", "Pick"],
       "damage_types": ["b", "p"],
       "features": ["Versatile", "Multi-Faceted"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "warhammer",
@@ -259,7 +279,8 @@
       "styles": ["Hammer", "Pick"],
       "damage_types": ["b", "p"],
       "features": ["Versatile", "Multi-Faceted"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "pickaxe",
@@ -271,7 +292,8 @@
       "styles": ["Pick"],
       "damage_types": ["p"],
       "features": ["Versatile", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "spear",
@@ -284,7 +306,8 @@
       "styles": ["Spear"],
       "damage_types": ["p"],
       "features": ["Versatile", "Toss"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "bastard_sword",
@@ -296,7 +319,8 @@
       "styles": ["Sword"],
       "damage_types": ["s"],
       "features": ["Versatile", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "bull_whip",
@@ -308,7 +332,8 @@
       "styles": ["Whip"],
       "damage_types": ["s"],
       "features": ["Versatile", "Reach", "Unwieldy", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "war_flail",
@@ -320,7 +345,8 @@
       "styles": ["Hammer", "Whip"],
       "damage_types": ["b", "s"],
       "features": ["Two-Handed", "Multi-Faceted"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "halberd",
@@ -332,7 +358,8 @@
       "styles": ["Axe", "Pick"],
       "damage_types": ["s", "p"],
       "features": ["Two-Handed", "Reach", "Impact", "Multi-Faceted"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "scythe",
@@ -344,7 +371,8 @@
       "styles": ["Axe"],
       "damage_types": ["s"],
       "features": ["Two-Handed", "Reach"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "greataxe",
@@ -356,7 +384,8 @@
       "styles": ["Axe"],
       "damage_types": ["s"],
       "features": ["Two-Handed", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "meteor_hammer",
@@ -368,7 +397,8 @@
       "styles": ["Hammer", "Whip"],
       "damage_types": ["b", "s"],
       "features": ["Two-Handed", "Multi-Faceted", "Reach", "Unwieldy"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "greatmaul",
@@ -380,7 +410,8 @@
       "styles": ["Hammer"],
       "damage_types": ["b"],
       "features": ["Two-Handed", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "pike",
@@ -392,7 +423,8 @@
       "styles": ["Spear"],
       "damage_types": ["p"],
       "features": ["Two-Handed", "Reach", "Impact", "Unwieldy"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "quarterstaff",
@@ -404,7 +436,8 @@
       "styles": ["Staff"],
       "damage_types": ["b"],
       "features": ["Two-Handed", "Guard", "Reach", "Impact"]
-    }
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 1 } }
   },
   {
     "slug": "glaive",
@@ -416,7 +449,8 @@
       "styles": ["Sword"],
       "damage_types": ["s"],
       "features": ["Two-Handed", "Reach"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "greatsword",
@@ -428,7 +462,8 @@
       "styles": ["Sword"],
       "damage_types": ["s"],
       "features": ["Two-Handed", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "great_whip",
@@ -440,7 +475,8 @@
       "styles": ["Whip"],
       "damage_types": ["s"],
       "features": ["Two-Handed", "Reach", "Impact", "Unwieldy"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "sling",
@@ -453,7 +489,8 @@
       "styles": ["Sling"],
       "damage_types": ["b"],
       "features": ["Ammo", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "hand_crossbow",
@@ -466,7 +503,8 @@
       "styles": ["Crossbow"],
       "damage_types": ["p"],
       "features": ["Ammo", "Reload", "Deft", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "hand_stonebow",
@@ -479,7 +517,8 @@
       "styles": ["Crossbow", "Sling"],
       "damage_types": ["b", "p"],
       "features": ["Ammo", "Reload", "Deft", "Multi-Faceted"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "shortbow",
@@ -492,7 +531,8 @@
       "styles": ["Bow"],
       "damage_types": ["p"],
       "features": ["Two-Handed", "Ammo", "Silent", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "longbow",
@@ -505,7 +545,8 @@
       "styles": ["Bow"],
       "damage_types": ["p"],
       "features": ["Two-Handed", "Ammo", "Impact"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "greatbow",
@@ -518,7 +559,8 @@
       "styles": ["Bow"],
       "damage_types": ["p"],
       "features": ["Two-Handed", "Ammo", "Impact", "Heavy", "Cumbersome"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "blowgun",
@@ -531,7 +573,8 @@
       "styles": ["Crossbow"],
       "damage_types": ["p"],
       "features": ["Two-Handed", "Ammo", "Deft", "Silent"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "light_crossbow",
@@ -544,7 +587,8 @@
       "styles": ["Crossbow"],
       "damage_types": ["p"],
       "features": ["Two-Handed", "Ammo", "Reload", "Deft"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "heavy_crossbow",
@@ -557,7 +601,8 @@
       "styles": ["Crossbow"],
       "damage_types": ["p"],
       "features": ["Two-Handed", "Ammo", "Reload", "Deft", "Impact", "Cumbersome"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "stonebow",
@@ -570,7 +615,8 @@
       "styles": ["Crossbow", "Sling"],
       "damage_types": ["b", "p"],
       "features": ["Two-Handed", "Ammo", "Reload", "Deft", "Multi-Faceted", "Cumbersome"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "slingshot",
@@ -583,7 +629,8 @@
       "styles": ["Sling"],
       "damage_types": ["b"],
       "features": ["Two-Handed", "Ammo", "Impact", "Silent"]
-    }
+    },
+    "modifiers": {}
   },
   {
     "slug": "war_sling",
@@ -596,6 +643,7 @@
       "styles": ["Sling"],
       "damage_types": ["b"],
       "features": ["Two-Handed", "Ammo"]
-    }
+    },
+    "modifiers": {}
   }
 ]

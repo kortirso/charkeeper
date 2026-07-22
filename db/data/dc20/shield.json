@@ -5,12 +5,10 @@
     "name": { "en": "Buckler", "ru": "Баклер" },
     "info": {
       "type": "light_shield",
-      "pd": 1,
-      "ad": 0,
-      "speed": 0,
       "agi_check": false,
       "features": ["Grasp"]
-    }
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 1 } }
   },
   {
     "slug": "round_shield",
@@ -18,12 +16,10 @@
     "name": { "en": "Round Shield", "ru": "Круглый щит" },
     "info": {
       "type": "light_shield",
-      "pd": 0,
-      "ad": 1,
-      "speed": 0,
       "agi_check": false,
       "features": ["Toss"]
-    }
+    },
+    "modifiers": { "ad_base": { "type": "add", "value": 1 } }
   },
   {
     "slug": "heater_shield",
@@ -31,12 +27,10 @@
     "name": { "en": "Heater Shield", "ru": "Обитый щит" },
     "info": {
       "type": "light_shield",
-      "pd": 1,
-      "ad": 1,
-      "speed": 0,
       "agi_check": false,
       "features": []
-    }
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 1 }, "ad_base": { "type": "add", "value": 1 } }
   },
   {
     "slug": "kite_shield",
@@ -44,12 +38,10 @@
     "name": { "en": "Kite Shield", "ru": "Экю" },
     "info": {
       "type": "heavy_shield",
-      "pd": 1,
-      "ad": 2,
-      "speed": -1,
       "agi_check": true,
       "features": ["Mounted"]
-    }
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 1 }, "ad_base": { "type": "add", "value": 2 }, "speeds.ground": { "type": "add", "value": -1 } }
   },
   {
     "slug": "tower_shield",
@@ -57,11 +49,9 @@
     "name": { "en": "Tower Shield", "ru": "Башенный щит" },
     "info": {
       "type": "heavy_shield",
-      "pd": 2,
-      "ad": 2,
-      "speed": -1,
       "agi_check": true,
       "features": []
-    }
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 2 }, "ad_base": { "type": "add", "value": 2 }, "speeds.ground": { "type": "add", "value": -1 } }
   }
 ]

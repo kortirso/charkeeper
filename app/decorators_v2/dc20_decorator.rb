@@ -69,10 +69,11 @@ class Dc20Decorator < ApplicationDecoratorV2
     @result['breath'] = [modified_abilities['mig'], 1].max
   end
 
-  def calculate_secondary_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+  def calculate_secondary_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
     modifiers.each do |modifier|
       modifier.each do |key, value|
         next if BASE_MODIFIERS.include?(key)
+        next if SET_FIRST_MODIFIERS.include?(key)
         next if value['type'] != 'add'
 
         formula_result = formula.call(formula: value['value'], variables: formula_variables)
@@ -140,19 +141,30 @@ class Dc20Decorator < ApplicationDecoratorV2
     @result['speeds'] = speeds
   end
 
-  def calculate_set_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+  def calculate_set_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
     modifiers.each do |modifier|
       modifier.each do |key, value|
         next if SET_FIRST_MODIFIERS.exclude?(key)
-        next if value['type'] != 'set'
 
         formula_result = formula.call(formula: value['value'], variables: formula_variables)
-        if key.include?('.')
-          primary, secondary = key.split('.')
-          @set_bonuses[primary] ||= {}
-          @set_bonuses[primary][secondary] = formula_result || value['value']
-        else
-          @set_bonuses[key] = formula_result || value['value']
+        if value['type'] == 'set'
+          if key.include?('.')
+            primary, secondary = key.split('.')
+            @set_bonuses[primary] ||= {}
+            @set_bonuses[primary][secondary] = formula_result || value['value']
+          else
+            @set_bonuses[key] = formula_result || value['value']
+          end
+        elsif value['type'] == 'add'
+          if key.include?('.')
+            primary, secondary = key.split('.')
+            @bonuses[primary] ||= {}
+            @bonuses[primary][secondary] ||= 0
+            @bonuses[primary][secondary] += formula_result
+          else
+            @bonuses[key] ||= 0
+            @bonuses[key] += formula_result
+          end
         end
       end
     end
@@ -212,13 +224,11 @@ class Dc20Decorator < ApplicationDecoratorV2
   end
 
   def find_pd_base
-    8 + combat_mastery + modified_abilities['agi'] + modified_abilities['int'] + equiped_armor_info&.dig('pd').to_i +
-      equiped_shield_info&.dig('pd').to_i
+    8 + combat_mastery + modified_abilities['agi'] + modified_abilities['int']
   end
 
   def find_ad_base
-    8 + combat_mastery + modified_abilities['mig'] + modified_abilities['cha'] + equiped_armor_info&.dig('ad').to_i +
-      equiped_shield_info&.dig('ad').to_i
+    8 + combat_mastery + modified_abilities['mig'] + modified_abilities['cha']
   end
 
   def unarmed_attack
@@ -287,36 +297,29 @@ class Dc20Decorator < ApplicationDecoratorV2
   end
 
   def equiped_armor_info
-    @equiped_armor_info ||=
-      @character
-        .items
-        .where("states->>'hands' != ? OR states->>'equipment' != ?", '0', '0')
-        .joins(:item)
-        .where(items: { kind: 'armor' })
-        .pick('items.info')
+    active_items.find { |item| item[:items_kind] == 'armor' }
   end
 
   def equiped_shield_info
-    @equiped_shield_info ||=
+    @equiped_shield_info ||= active_items.find { |item| item[:items_kind] == 'shield' }&.dig(:items_info)
+  end
+
+  def modifiers
+    character_modifiers + feature_modifiers +
+      active_items_and_weapon_in_hands.pluck(:items_modifiers).compact_blank
+  end
+
+  def active_items_and_weapon_in_hands
+    active_items.select { |item| item[:items_kind] != 'weapon' || item[:states]['hands'].positive? }
+  end
+
+  def active_items
+    @active_items ||=
       @character
         .items
         .where("states->>'hands' != ? OR states->>'equipment' != ?", '0', '0')
         .joins(:item)
-        .where(items: { kind: 'shield' })
-        .pick('items.info')
-  end
-
-  def modifiers
-    character_modifiers + feature_modifiers + active_items.pluck(:items_modifiers).compact_blank
-  end
-
-  def active_items
-    @character
-      .items
-      .where("states->>'hands' != ? OR states->>'equipment' != ?", '0', '0')
-      .joins(:item)
-      .where(items: { kind: 'focus' })
-      .hashable_pluck('items.kind', 'items.data', 'items.info', 'items.modifiers', :states, :modifiers)
+        .hashable_pluck('items.kind', 'items.info', 'items.modifiers', :modifiers, :states)
   end
 
   def character_modifiers
@@ -341,7 +344,7 @@ class Dc20Decorator < ApplicationDecoratorV2
       {
         level: level,
         combat_mastery: combat_mastery,
-        no_armor: equiped_armor_info.blank?
+        no_armor: equiped_armor_info.nil?
       }
   end
 
@@ -350,7 +353,7 @@ class Dc20Decorator < ApplicationDecoratorV2
   end
 
   # rubocop: disable Metrics/AbcSize, Layout/LineLength
-  def calc_resistances # rubocop: disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  def calc_resistances
     bonus_resistances = []
     modifiers.each do |modifier|
       modifier.each do |key, value|
@@ -362,11 +365,7 @@ class Dc20Decorator < ApplicationDecoratorV2
     end
     stack_damages(
       transform_categories(
-        resistances + bonus_resistances +
-          [
-            equiped_armor_info.nil? || equiped_armor_info['pdr'].zero? ? nil : ['physical', 'resist', equiped_armor_info['pdr']],
-            equiped_armor_info.nil? || equiped_armor_info['edr'].zero? ? nil : ['elemental', 'resist', equiped_armor_info['edr']]
-          ].compact
+        resistances + bonus_resistances
       ).group_by { |item| item[0] }.transform_values { |value| value.map { |item| item[1..] } }
     )
   end

@@ -5,13 +5,9 @@
     "name": { "en": "Defensive light armor", "ru": "Стандартная лёгкая броня" },
     "info": {
       "type": "light_armor",
-      "pd": 1,
-      "ad": 1,
-      "speed": 0,
-      "agi_check": false,
-      "pdr": 0,
-      "edr": 0
-    }
+      "agi_check": false
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 1 }, "ad_base": { "type": "add", "value": 1 } }
   },
   {
     "slug": "deflecting_light",
@@ -19,13 +15,9 @@
     "name": { "en": "Deflecting light armor", "ru": "Укреплённая лёгкая броня" },
     "info": {
       "type": "light_armor",
-      "pd": 2,
-      "ad": 0,
-      "speed": 0,
-      "agi_check": false,
-      "pdr": 0,
-      "edr": 0
-    }
+      "agi_check": false
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 2 } }
   },
   {
     "slug": "fortified_light",
@@ -33,13 +25,9 @@
     "name": { "en": "Fortified light armor", "ru": "Полная лёгкая броня" },
     "info": {
       "type": "light_armor",
-      "pd": 0,
-      "ad": 2,
-      "speed": 0,
-      "agi_check": false,
-      "pdr": 0,
-      "edr": 0
-    }
+      "agi_check": false
+    },
+    "modifiers": { "ad_base": { "type": "add", "value": 2 } }
   },
   {
     "slug": "defensive_heavy",
@@ -47,13 +35,9 @@
     "name": { "en": "Defensive heavy armor", "ru": "Стандартная тяжёлая броня" },
     "info": {
       "type": "heavy_armor",
-      "pd": 1,
-      "ad": 1,
-      "speed": -1,
-      "agi_check": true,
-      "pdr": "half",
-      "edr": 0
-    }
+      "agi_check": true
+    },
+    "modifiers": { "damages": { "type": "concat", "value": ["physical", "resist", "half"] }, "pd_base": { "type": "add", "value": 1 }, "ad_base": { "type": "add", "value": 1 }, "speeds.ground": { "type": "add", "value": -1 } }
   },
   {
     "slug": "deflecting_heavy",
@@ -61,13 +45,9 @@
     "name": { "en": "Deflecting heavy armor", "ru": "Укреплённая тяжёлая броня" },
     "info": {
       "type": "heavy_armor",
-      "pd": 2,
-      "ad": 0,
-      "speed": -1,
-      "agi_check": true,
-      "pdr": "half",
-      "edr": 0
-    }
+      "agi_check": true
+    },
+    "modifiers": { "damages": { "type": "concat", "value": ["physical", "resist", "half"] }, "pd_base": { "type": "add", "value": 2 }, "speeds.ground": { "type": "add", "value": -1 } }
   },
   {
     "slug": "fortified_heavy",
@@ -75,13 +55,9 @@
     "name": { "en": "Fortified heavy armor", "ru": "Полная тяжёлая броня" },
     "info": {
       "type": "heavy_armor",
-      "pd": 0,
-      "ad": 2,
-      "speed": -1,
-      "agi_check": true,
-      "pdr": "half",
-      "edr": 0
-    }
+      "agi_check": true
+    },
+    "modifiers": { "damages": { "type": "concat", "value": ["physical", "resist", "half"] }, "ad_base": { "type": "add", "value": 2 }, "speeds.ground": { "type": "add", "value": -1 } }
   },
   {
     "slug": "highly_defensive",
@@ -89,12 +65,8 @@
     "name": { "en": "Highly Defensive armor", "ru": "Сверхзащищенная броня" },
     "info": {
       "type": "heavy_armor",
-      "pd": 2,
-      "ad": 2,
-      "speed": -1,
-      "agi_check": true,
-      "pdr": 0,
-      "edr": 0
-    }
+      "agi_check": true
+    },
+    "modifiers": { "pd_base": { "type": "add", "value": 2 }, "ad_base": { "type": "add", "value": 2 }, "speeds.ground": { "type": "add", "value": -1 } }
   }
 ]
