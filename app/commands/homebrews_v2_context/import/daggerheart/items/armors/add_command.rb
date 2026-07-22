@@ -35,7 +35,7 @@ module HomebrewsV2Context
                   required(:tier).filled(:integer, gteq?: 1, lteq?: 4)
                   required(:base_score).filled(:integer, gteq?: 1, lteq?: 12)
                   required(:bonuses).hash do
-                    required(:thresholds).maybe(:array).each(:hash) do
+                    required(:thresholds).hash do
                       required(:major).filled(:integer, gteq?: 1, lteq?: 100)
                       required(:severe).filled(:integer, gteq?: 1, lteq?: 100)
                     end
