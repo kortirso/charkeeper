@@ -40,3 +40,5 @@ dump.rdb
 /dist/*
 /storage
 /tmp/storage
+
+/spec/fixtures/daggerheart/hope_fear/*

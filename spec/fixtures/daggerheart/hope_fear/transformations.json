@@ -159,7 +159,30 @@
           "en": "Make an attack using a trait of your choice to bite a target within Melee range. On a success, deal d6 physical damage using your Proficiency.",
           "ru": "Совершите атаку, используя атрибут по вашему выбору, чтобы укусить цель Вплотную. При успехе нанесите d6 физического урона с использованием Мастерства."
         },
-        "kind": "static"
+        "kind": "static",
+        "attacks": [
+          {
+            "name": {
+              "en": "Fangs",
+              "ru": "Клыки"
+            },
+            "description": {
+              "en": "Fangs.",
+              "ru": "Клыки."
+            },
+            "kind": "primary weapon",
+            "info": {
+              "burden": 1,
+              "tier": 1,
+              "trait": null,
+              "range": "melee",
+              "damage_type": "physical",
+              "damage": "d6",
+              "damage_bonus": 0,
+              "features": []
+            }
+          }
+        ]
       },
       {
         "title": {
@@ -208,7 +231,7 @@
         },
         "description": {
           "en": "When you mark your last Stress while in **Wolf Form**, you go into a rampage. Roll a number of d20s equal to your tier and deal that much physical damage to all creatures within Very Close range. Then you drop out of **Wolf Form**.",
-          "ru": "Когда вы отмечаете последний Стресс в **Волчьем облике**, вас охватывает ярость. Бросьте количество d20, равное вашему тиру, и нанесите столько физического урона всем существам в пределах Ближней дистанции. После этого вы выходите из **Волчьего облика**."
+          "ru": "Когда вы отмечаете последний Стресс в **Волчьем облике**, вас охватывает ярость. Бросьте количество d20, равное вашему рангу, и нанесите столько физического урона всем существам в пределах Ближней дистанции. После этого вы выходите из **Волчьего облика**."
         },
         "kind": "static"
       }

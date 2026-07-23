@@ -6,7 +6,7 @@
     },
     "description": {
       "en": "Gain a bonus to your damage thresholds equal to your Spellcast trait.",
-      "ru": "получите бонус к порогам урона, равный вашему атрибуту магии."
+      "ru": "Получите бонус к порогам урона, равный вашему атрибуту магии."
     },
     "public": true,
     "info": {
@@ -33,7 +33,7 @@
     },
     "description": {
       "en": "Mark a Stress to negate Minor damage.",
-      "ru": "отметьте Стресс, чтобы игнорировать незначительный урон."
+      "ru": "Отметьте Стресс, чтобы игнорировать незначительный урон."
     },
     "public": true,
     "info": {

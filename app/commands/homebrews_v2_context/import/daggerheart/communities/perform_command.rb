@@ -74,7 +74,7 @@ module HomebrewsV2Context
                   required(:info).hash do
                     required(:burden).filled(:integer, gteq?: 1, lteq?: 2)
                     required(:tier).filled(:integer, gteq?: 1, lteq?: 4)
-                    required(:trait).filled(Traits)
+                    required(:trait).maybe(Traits)
                     required(:range).filled(Ranges)
                     required(:damage_type).filled(DamageTypes)
                     required(:damage).filled(Damages)
