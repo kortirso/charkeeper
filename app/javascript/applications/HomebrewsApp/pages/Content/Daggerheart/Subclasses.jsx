@@ -54,6 +54,7 @@ export const DaggerheartSubclasses = () => {
 
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-4">
+      <p>ID - {props.info.id}</p>
       <p>{localize(TRANSLATION, locale()).className} - {props.info.class_name}</p>
       <p>{localize(TRANSLATION, locale()).spellcast} - <Show when={props.info.info.spellcast} fallback={localize(TRANSLATION, locale()).none}>{localize(config.traits[props.info.info.spellcast].name, locale())}</Show></p>
       <p>{localize(TRANSLATION, locale()).mechanics} - <Show when={props.info.mechanic} fallback={localize(TRANSLATION, locale()).none}>{props.info.mechanic}</Show>

@@ -17,6 +17,7 @@ export const DaggerheartTransformationsV2 = () => {
 
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-4">
+      <p>ID - {props.info.id}</p>
       <For each={props.info.features}>
         {(feature) =>
           <div class="flex flex-col gap-1">
