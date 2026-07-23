@@ -2,7 +2,7 @@
 
 module Cache
   class DaggerheartNames
-    CACHE_KEY = 'daggerheart_names/0.4.34'
+    CACHE_KEY = 'daggerheart_names/0.5.1'
 
     def fetch_list
       Rails.cache.fetch(CACHE_KEY, expires_in: 1.day) { load_initial_data }
