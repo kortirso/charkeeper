@@ -28,6 +28,7 @@ module Frontend
       def books
         Homebrew::Book.where(user_id: current_user.id)
           .or(Homebrew::Book.where(shared: true))
+          .order(name: :asc)
       end
 
       def find_book
