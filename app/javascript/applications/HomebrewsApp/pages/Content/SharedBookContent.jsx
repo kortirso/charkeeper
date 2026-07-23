@@ -13,7 +13,9 @@ import { localize } from '../../helpers';
 const TRANSLATION = {
   en: {
     add: 'Create',
-    showPublic: 'Only public',
+    showPublic: 'Public',
+    showOwn: 'Personal',
+    showShared: 'Approved',
     enabled: 'Enabled',
     disabled: 'Disabled',
     name: 'Book name',
@@ -23,7 +25,9 @@ const TRANSLATION = {
   },
   ru: {
     add: 'Добавить',
-    showPublic: 'Только общедоступные',
+    showPublic: 'Общедоступные',
+    showOwn: 'Личные',
+    showShared: 'Одобренные',
     enabled: 'Подключено',
     disabled: 'Отключено',
     name: 'Название книги',
@@ -33,7 +37,9 @@ const TRANSLATION = {
   },
   es: {
     add: 'Agregar',
-    showPublic: 'Mostrar públicos',
+    showPublic: 'Público',
+    showOwn: 'Personal',
+    showShared: 'Approved',
     enabled: 'Habilitado',
     disabled: 'Deshabilitado',
     name: 'Nombre del libro',
@@ -50,8 +56,11 @@ export const SharedBookContent = (props) => {
   const [bookForm, setBookForm] = createStore({ name: '', public: false });
 
   const [createMode, setCreateMode] = createSignal(false);
-  const [ownFilter, setOwnFilter] = createSignal(true);
   const [editMode, setEditMode] = createSignal(false);
+
+  const [ownFilter, setOwnFilter] = createSignal(true);
+  const [publicFilter, setPublicFilter] = createSignal(true);
+  const [sharedFilter, setSharedFilter] = createSignal(true);
 
   const [infos, setInfos] = createSignal({});
   const [openInfos, setOpenInfos] = createSignal({});
@@ -70,9 +79,14 @@ export const SharedBookContent = (props) => {
 
   const filtered = createMemo(() => {
     if (elements() === undefined) return [];
-    if (!ownFilter()) return elements().filter(({ own }) => !own);
 
-    return elements();
+    return elements().filter((item) => {
+      if (!ownFilter() && item.own) return false;
+      if (!publicFilter() && item.public) return false;
+      if (!sharedFilter() && item.shared) return false;
+
+      return true;
+    });
   });
 
   const showInfo = async (element) => {
@@ -180,9 +194,13 @@ export const SharedBookContent = (props) => {
   return (
     <Show when={elements() !== undefined} fallback={<></>}>
       <div class="flex my-4">
-        <div class="flex-1">
+        <div class="flex-1 flex justify-between">
+          <div class="flex gap-4">
+            <Button default active={ownFilter()} classList="px-2 py-1" onClick={() => setOwnFilter(!ownFilter())}>{localize(TRANSLATION, locale()).showOwn}</Button>
+            <Button default active={publicFilter()} classList="px-2 py-1" onClick={() => setPublicFilter(!publicFilter())}>{localize(TRANSLATION, locale()).showPublic}</Button>
+            <Button default active={sharedFilter()} classList="px-2 py-1" onClick={() => setSharedFilter(!sharedFilter())}>{localize(TRANSLATION, locale()).showShared}</Button>
+          </div>
           <Button default classList="px-2 py-1" onClick={() => setCreateMode(true)}>{localize(TRANSLATION, locale()).add}</Button>
-          <Button default active={!ownFilter()} classList="ml-4 px-2 py-1" onClick={() => setOwnFilter(!ownFilter())}>{localize(TRANSLATION, locale()).showPublic}</Button>
         </div>
       </div>
       <Show
