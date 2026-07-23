@@ -19,7 +19,6 @@ module HomebrewsV2Context
             Traits = Dry::Types['strict.string'].enum('agi', 'str', 'fin', 'ins', 'pre', 'know')
             Ranges = Dry::Types['strict.string'].enum('melee', 'very close', 'close', 'far', 'very far')
             DamageTypes = Dry::Types['strict.string'].enum('physical', 'magic')
-            Damages = Dry::Types['strict.string'].enum('d4', 'd6', 'd8', 'd10', 'd12', 'd20')
             Types = Dry::Types['strict.string'].enum('spell', 'ability', 'grimoire')
 
             params do
@@ -69,7 +68,7 @@ module HomebrewsV2Context
                   required(:trait).maybe(Traits)
                   required(:range).filled(Ranges)
                   required(:damage_type).filled(DamageTypes)
-                  required(:damage).filled(Damages)
+                  required(:damage).filled(:string)
                   required(:damage_bonus).filled(:integer, gteq?: 0, lteq?: 20)
                   optional(:features).maybe(:array).each(:hash) do
                     required(:en).filled(:string, max_size?: 250)
