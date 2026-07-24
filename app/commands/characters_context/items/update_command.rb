@@ -10,7 +10,7 @@ module CharactersContext
           required(:character_item).filled(type?: ::Character::Item)
           optional(:notes).maybe(:string, max_size?: 500)
           optional(:states).hash
-          optional(:charges).filled(:integer, gteq?: 0)
+          optional(:charges).maybe(:integer, gteq?: 0)
         end
 
         rule(:character_item, :states) do
@@ -37,6 +37,7 @@ module CharactersContext
         if input.key?(:states)
           input[:states] = input[:character_item].states.stringify_keys.merge(input[:states].transform_values!(&:to_i))
           input[:state] = input[:states].slice('hands', 'equipment').values.sum.positive? ? 'hands' : 'backpack'
+          input[:charges] = nil if input[:states].values.sum != 1
         end
       end
 

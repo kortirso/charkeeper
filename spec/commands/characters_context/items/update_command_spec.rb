@@ -14,7 +14,8 @@ describe CharactersContext::Items::UpdateCommand do
            character: character,
            item: weapon2,
            state: 'backpack',
-           states: Character::Item.default_states.merge(backpack: 1)
+           states: Character::Item.default_states.merge(backpack: 1),
+           charges: 1
   }
   let!(:character_armor2) {
     create :character_item,
@@ -39,6 +40,31 @@ describe CharactersContext::Items::UpdateCommand do
 
         expect(character_weapon2.reload.state).to eq Character::Item::HANDS
         expect(character_weapon2.states).to eq({ 'hands' => 2, 'equipment' => 0, 'backpack' => 2, 'storage' => 0 })
+        expect(character_weapon2.charges).to be_nil
+      end
+    end
+
+    context 'when sends charges' do
+      let(:params) { { charges: 2, states: { hands: 1, backpack: 0, storage: nil }.stringify_keys } }
+
+      it 'updates weapon', :aggregate_failures do
+        command_call
+
+        expect(character_weapon2.reload.state).to eq Character::Item::HANDS
+        expect(character_weapon2.states).to eq({ 'hands' => 1, 'equipment' => 0, 'backpack' => 0, 'storage' => 0 })
+        expect(character_weapon2.charges).to eq 2
+      end
+    end
+
+    context 'when sends charges with many items' do
+      let(:params) { { charges: 2, states: { hands: 2, backpack: 0, storage: nil }.stringify_keys } }
+
+      it 'updates weapon with nullifying charges', :aggregate_failures do
+        command_call
+
+        expect(character_weapon2.reload.state).to eq Character::Item::HANDS
+        expect(character_weapon2.states).to eq({ 'hands' => 2, 'equipment' => 0, 'backpack' => 0, 'storage' => 0 })
+        expect(character_weapon2.charges).to be_nil
       end
     end
   end
