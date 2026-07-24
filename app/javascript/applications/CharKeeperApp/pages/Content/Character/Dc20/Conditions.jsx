@@ -140,7 +140,7 @@ export const Dc20Conditions = (props) => {
                 </Show>
               </div>
             </Show>
-            <Show when={conditions()}>
+            <Show when={conditions() && Object.keys(currentConditions()).length > 0}>
               <div class="dc20-conditions">
                 <For each={Object.entries(currentConditions())}>
                   {([slug, level]) =>

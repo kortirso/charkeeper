@@ -11,17 +11,23 @@ const TRANSLATION = {
   en: {
     attributePoints: 'Free attribute points',
     helpMessage: 'You start with a -2 in all of your Attributes. You then gain Attribute Points to increase whichever Attributes you want, up to the Attribute Limit (3).',
-    save: 'Save'
+    save: 'Save',
+    physical_save: 'Physical save',
+    mental_save: 'Mental save'
   },
   ru: {
     attributePoints: 'Очки атрибутов для распределения',
     helpMessage: 'Ваш персонаж начинает с -2 во всех атрибутах. Вы можете потратить Очки Атрибутов для увеличения любых атрибутов вплоть до максимума (3).',
-    save: 'Спас'
+    save: 'Спас',
+    physical_save: 'Физический спас',
+    mental_save: 'Ментальный спас'
   },
   es: {
     attributePoints: 'Puntos de atributo gratis',
     helpMessage: 'Comienzas con un -2 en todos tus Atributos. Luego ganas Puntos de Atributo para aumentar los Atributos que quieras, hasta el Límite de Atributo (3).',
-    save: 'Guardar'
+    save: 'Guardar',
+    physical_save: 'Physical save',
+    mental_save: 'Mental save'
   }
 }
 
@@ -107,7 +113,7 @@ export const Dc20Abilities = (props) => {
           onSaveChanges={updateCharacter}
         >
           <div class="character-info-block">
-            <div class="grid grid-cols-2 emd:grid-cols-4 gap-x-2 gap-y-4">
+            <div class="grid grid-cols-2 emd:grid-cols-4 gap-x-2 gap-y-4 mb-4">
               <For each={Object.entries(config.abilities).map(([key, values]) => [key, localize(values.name, locale())])}>
                 {([slug, ability]) =>
                   <div>
@@ -140,6 +146,23 @@ export const Dc20Abilities = (props) => {
                         <Button default size="small" onClick={() => increaseAbilityValue(slug)}><Plus /></Button>
                       </div>
                     </Show>
+                  </div>
+                }
+              </For>
+            </div>
+            <div class="grid grid-cols-2 gap-x-2">
+              <For each={['physical_save', 'mental_save']}>
+                {(slug) =>
+                  <div>
+                    <p class="dc20-ability-title">{localize(TRANSLATION, locale())[slug]}</p>
+                    <div class="dc20-ability">
+                      <p class="text-2xl font-normal!">
+                        <Dice
+                          text={modifier(character()[slug])}
+                          onClick={() => props.openD20Test(`/check attr ${slug}`, localize(TRANSLATION, locale())[slug], character()[slug], 10)}
+                        />
+                      </p>
+                    </div>
                   </div>
                 }
               </For>

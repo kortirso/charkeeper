@@ -7,6 +7,7 @@ import { modifier, localize } from '../../../../helpers';
 const TRANSLATION = {
   en: {
     combatMastery: 'Combat mastery',
+    saveDc: 'Save DC',
     initiative: 'Initiative',
     precision: 'Precision defense',
     area: 'Area defense',
@@ -15,7 +16,8 @@ const TRANSLATION = {
     martial_check: 'Martial check'
   },
   ru: {
-    combatMastery: 'Мастерство боя',
+    combatMastery: 'Мастерство',
+    saveDc: 'Сл спаса',
     initiative: 'Инициатива',
     precision: 'Точечная защита',
     area: 'Площадная защита',
@@ -24,7 +26,8 @@ const TRANSLATION = {
     martial_check: 'Рукопашный тест'
   },
   es:{
-    combatMastery: 'Maestría de combate',
+    combatMastery: 'Maestría',
+    saveDc: 'Save DC',
     initiative: 'Iniciativa',
     precision: 'Defensa de precisión',
     area: 'Defensa de área',
@@ -44,10 +47,11 @@ export const Dc20CombatStatic = (props) => {
       <GuideWrapper character={character()}>
         <div class="character-info-block">
           <div class="grid grid-cols-1 gap-2">
-            <div class="grid grid-cols-3 gap-2">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
               <For
                 each={[
                   { label: 'combatMastery', value: character().combat_mastery },
+                  { label: 'saveDc', value: character().save_dc },
                   { label: 'precision', value: character().precision_defense.default },
                   { label: 'area', value: character().area_defense.default },
                 ]}
