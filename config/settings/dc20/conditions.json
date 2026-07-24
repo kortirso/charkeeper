@@ -58,7 +58,8 @@
     "description": {
       "en": "- Your current and maximum HP is reduced by the value of X.\n- When an effect restores your HP, you regain X less HP than normal.",
       "ru": "- Ваши текущие ОЗ и максимум ОЗ снижаются на Х.\n- Вы восстанавливаете на Х меньше ОЗ из всех источников."
-    }
+    },
+    "modifiers": { "max_health": { "type": "add", "value": "-doomed" } }
   },
   "exhaustion": {
     "name": { "en": "Exhaustion", "ru": "Истощён" },
@@ -66,6 +67,18 @@
     "description": {
       "en": "- You gain a penalty equal to X on all Checks and Saves you make.\n- Your Speed and Save DC is reduced by X.",
       "ru": "- Вы получаете штраф, равный X, на все проверки и спасы.\n- Ваши скорость и СЛ спаса уменьшаются на X."
+    },
+    "modifiers": {
+      "save_dc": { "type": "add", "value": "-exhaustion" },
+      "attribute_saves.mig": { "type": "add", "value": "-exhaustion" },
+      "attribute_saves.agi": { "type": "add", "value": "-exhaustion" },
+      "attribute_saves.int": { "type": "add", "value": "-exhaustion" },
+      "attribute_saves.cha": { "type": "add", "value": "-exhaustion" },
+      "attack": { "type": "add", "value": "-exhaustion" },
+      "spell_attack": { "type": "add", "value": "-exhaustion" },
+      "spell_check": { "type": "add", "value": "-exhaustion" },
+      "martial_check": { "type": "add", "value": "-exhaustion" },
+      "speeds.ground": { "type": "add", "value": "-exhaustion" }
     }
   },
   "exposed": {

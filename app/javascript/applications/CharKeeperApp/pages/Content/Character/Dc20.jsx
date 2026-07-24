@@ -91,9 +91,6 @@ export const Dc20 = (props) => {
                 />
               </div>
               <div class="mt-4">
-                <Dc20CombatStatic character={character()} openD20Test={openD20Test} />
-              </div>
-              <div class="mt-4">
                 <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
               <div class="mt-4">
@@ -105,17 +102,12 @@ export const Dc20 = (props) => {
                   onNextGuideStepClick={() => setActiveMobileTab('equipment')}
                 />
               </div>
-              <div class="mt-4">
-                <Feats
-                  character={character()}
-                  filters={featFilters()}
-                  onReplaceCharacter={props.onReplaceCharacter}
-                  onReloadCharacter={props.onReloadCharacter}
-                />
-              </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
               <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <div class="mt-4">
+                <Dc20CombatStatic character={character()} openD20Test={openD20Test} />
+              </div>
               <div class="mt-4">
                 <Dc20Damages character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
@@ -124,6 +116,14 @@ export const Dc20 = (props) => {
                   character={character()}
                   openD20Test={openD20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
+              <div class="mt-4">
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
             </Match>

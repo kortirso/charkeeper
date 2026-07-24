@@ -101,10 +101,7 @@ class Dc20Decorator < ApplicationDecoratorV2
     @result['spell_attack'] = modified_abilities['prime'] + combat_mastery
     @result['spell_check'] = modified_abilities['prime'] + combat_mastery
     @result['martial_check'] = modified_abilities['prime'] + combat_mastery
-    @result['attack'] = modified_abilities['prime'] + combat_mastery
     @result['attribute_saves'] = modified_abilities.transform_values { |item| item + combat_mastery }
-    @result['physical_save'] = attribute_saves.slice('mig', 'agi').values.max
-    @result['mental_save'] = attribute_saves.slice('cha', 'int').values.max
     @result['pd_base'] = find_pd_base
     @result['ad_base'] = find_ad_base
     @result['grit_points'] = grit_points.merge('max' => modified_abilities['cha'] + 2)
@@ -135,9 +132,11 @@ class Dc20Decorator < ApplicationDecoratorV2
       ) { |_key, oldval, newval| newval + oldval }
   end
 
-  def calculate_final_abilities
+  def calculate_final_abilities # rubocop: disable Metrics/AbcSize
     @result['precision_defense'] = { default: pd_base, heavy: pd_base + 5, brutal: pd_base + 10 }
     @result['area_defense'] = { default: ad_base, heavy: ad_base + 5, brutal: ad_base + 10 }
+    @result['physical_save'] = attribute_saves.slice('mig', 'agi').values.max
+    @result['mental_save'] = attribute_saves.slice('cha', 'int').values.max
     @result['speeds'] = speeds
   end
 
@@ -301,8 +300,10 @@ class Dc20Decorator < ApplicationDecoratorV2
   end
 
   def modifiers
-    character_modifiers + feature_modifiers +
-      active_items_and_weapon_in_hands.pluck(:items_modifiers).compact_blank
+    @modifiers ||=
+      character_modifiers + feature_modifiers +
+        active_items_and_weapon_in_hands.pluck(:items_modifiers).compact_blank +
+        condition_modifiers
   end
 
   def active_items_and_weapon_in_hands
@@ -328,6 +329,19 @@ class Dc20Decorator < ApplicationDecoratorV2
       .select { |feat| !feat[:feats_continious] || feat[:active] }
       .pluck(:feats_modifiers)
       .compact_blank
+  end
+
+  def condition_modifiers
+    Config.data('dc20', 'conditions')
+      .slice(*conditions_v2.keys)
+      .values.filter_map { |value| value['modifiers'] }
+      .map do |value|
+        value.transform_values do |item|
+          item['value'] = formula.call(formula: item['value'], variables: conditions_v2)
+          item
+        end
+        value
+      end
   end
 
   def available_features
