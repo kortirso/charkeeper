@@ -51,6 +51,7 @@ module Daggerheart
     attribute :rally_dice, :integer
     attribute :available_mechanic_items, array: true, default: {} # { 'id1' => [], 'id2' => [] }
     attribute :selected_mechanic_items, array: true, default: {} # { 'id1' => [], 'id2' => [] }
+    attribute :spellcast_trait, :string
   end
 
   class Character < Character

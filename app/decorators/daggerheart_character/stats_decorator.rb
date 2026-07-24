@@ -156,13 +156,17 @@ module DaggerheartCharacter
     end
 
     def spellcast_traits
-      @spellcast_traits ||=
-        subclasses.filter_map do |key, value|
-          default = Daggerheart::Character.subclass_info(key, value)
-          next default['spellcast'] if default
+      return [spellcast_trait] if spellcast_trait
 
-          homebrew_subclasses.find { |item| item.id == value }.info.spellcast
-        end.uniq
+      traits_result = subclasses.filter_map do |key, value|
+        default = Daggerheart::Character.subclass_info(key, value)
+        next default['spellcast'] if default
+
+        homebrew_subclasses.find { |item| item.id == value }.info.spellcast
+      end.uniq
+      return traits_result if traits_result.size <= 1
+
+      [modified_traits.slice(traits_result).max_by { |_k, v| v }[0]]
     end
 
     def spell_bonus

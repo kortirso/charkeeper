@@ -6,7 +6,7 @@ module DaggerheartCharacter
     delegate :heritage, :main_class, :classes, :subclasses, :level, :spent_armor_slots, :health_marked, :stress_marked,
              :hope_marked, :traits, :money, :gold, :subclasses_mastery, :experiences, :community, :conditions, :scars,
              :leveling, :experience, :heritage_features, :domains, :beastform, :beast, :transformation,
-             :selected_features, to: :data
+             :selected_features, :spellcast_trait, to: :data
 
     BASE_BONUSES = %w[proficiency].freeze
 

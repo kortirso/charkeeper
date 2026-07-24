@@ -2,7 +2,9 @@ import { createSignal, createEffect, For, Show, createMemo, batch } from 'solid-
 import * as i18n from '@solid-primitives/i18n';
 
 import { DomainCardsTable } from './DomainCardsTable';
-import { createModal, StatsBlock, ErrorWrapper, Button, Toggle, TextArea, Checkbox, GuideWrapper, Dice } from '../../../../components';
+import {
+  createModal, StatsBlock, ErrorWrapper, Button, Toggle, TextArea, Checkbox, GuideWrapper, Dice, EditWrapper, Select
+} from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall } from '../../../../assets';
@@ -11,7 +13,8 @@ import { fetchCharacterSpellsRequest } from '../../../../requests/fetchCharacter
 import { createCharacterSpellRequest } from '../../../../requests/createCharacterSpellRequest';
 import { updateCharacterSpellRequest } from '../../../../requests/updateCharacterSpellRequest';
 import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
-import { modifier, localize } from '../../../../helpers';
+import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { modifier, localize, translate, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -21,7 +24,8 @@ const TRANSLATION = {
     spell: 'Spell',
     ability: 'Ability',
     grimoire: 'Grimoire',
-    level: 'Level'
+    level: 'Level',
+    selectTrait: 'Select custom spellcast trait'
   },
   ru: {
     loadoutLimit: 'Лимит инвентаря',
@@ -30,7 +34,8 @@ const TRANSLATION = {
     spell: 'Заклинание',
     ability: 'Способность',
     grimoire: 'Гримуар',
-    level: 'Уровень'
+    level: 'Уровень',
+    selectTrait: 'Выбрать альтернативную характеристику заклинателя.'
   },
   es:{
     loadoutLimit: 'Límite de equipamiento',
@@ -39,7 +44,8 @@ const TRANSLATION = {
     spell: 'Hechizo',
     ability: 'Habilidad',
     grimoire: 'Grimorio',
-    level: 'Nivel'
+    level: 'Nivel',
+    selectTrait: 'Select custom spellcast trait'
   }
 }
 
@@ -55,9 +61,12 @@ export const DaggerheartDomainCards = (props) => {
   const [changingSpell, setChangingSpell] = createSignal(null);
   const [availableDomainsFilter, setAvailableDomainsFilter] = createSignal(true);
 
+  const [editMode, setEditMode] = createSignal(false);
+  const [spellcastTrait, setSpellcastTrait] = createSignal(null);
+
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
-  const [{ renderNotice }] = useAppAlert();
+  const [{ renderNotice, renderAlerts }] = useAppAlert();
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -81,7 +90,10 @@ export const DaggerheartDomainCards = (props) => {
       }
     );
 
-    setLastActiveCharacterId(character().id);
+    batch(() => {
+      setLastActiveCharacterId(character().id);
+      setSpellcastTrait(character().spellcast_trait);
+    });
   });
 
   const currentLocale = createMemo(() => {
@@ -165,21 +177,36 @@ export const DaggerheartDomainCards = (props) => {
     }
   }
 
-  const renderSpellcastTraits = (spellcastTraits) => (
-    <For each={spellcastTraits}>
-      {(trait) =>
-        <p class="text-base dark:text-snow flex items-center">
-          <span class="text-sm mr-2 uppercase">{localize(traits()[trait].shortName, currentLocale())}</span>
-          <Dice
-            width="28"
-            height="28"
-            text={modifier(character().modified_traits[trait] + character().spell_bonus)}
-            onClick={() => props.openDualityTest(`/check attack ${trait}`, null, character().modified_traits[trait] + character().spell_bonus)}
-          />
-        </p>
-      }
-    </For>
-  );
+  const renderSpellcastTraits = (spellcastTraits) => {
+    const trait = spellcastTraits[0];
+    if (!trait) return;
+
+    return (
+      <p class="text-base dark:text-snow flex items-center">
+        <span class="text-sm mr-2 uppercase">{localize(traits()[trait].shortName, currentLocale())}</span>
+        <Dice
+          width="28"
+          height="28"
+          text={modifier(character().modified_traits[trait] + character().spell_bonus)}
+          onClick={() => props.openDualityTest(`/check attack ${trait}`, null, character().modified_traits[trait] + character().spell_bonus)}
+        />
+      </p>
+    );
+  };
+
+  const submit = async () => {
+    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: { spellcast_trait: spellcastTrait() } });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        batch(() => {
+          props.onReloadCharacter();
+          setEditMode(false)
+        });
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartDomainCards' }}>
@@ -239,12 +266,29 @@ export const DaggerheartDomainCards = (props) => {
           }
         >
           <Show when={characterSpells() !== undefined}>
-            <StatsBlock
-              items={[
-                { title: t('daggerheart.domainCards.limit'), value: character().domain_cards_max },
-                { title: t('daggerheart.domainCards.spellcastTraits'), value: renderSpellcastTraits(character().spellcast_traits) }
-              ]}
-            />
+            <EditWrapper position="right" editMode={editMode()} onSetEditMode={setEditMode} onCancelEditing={() => setEditMode(false)} onSaveChanges={submit}>
+              <Show
+                when={!editMode()}
+                fallback={
+                  <div class="blockable blockable-padding mb-2">
+                    <Select
+                      withNull
+                      labelText={localize(TRANSLATION, locale()).selectTrait}
+                      items={translate(config.traits, locale())}
+                      selectedValue={spellcastTrait()}
+                      onSelect={setSpellcastTrait}
+                    />
+                  </div>
+                }
+              >
+                <StatsBlock
+                  items={[
+                    { title: t('daggerheart.domainCards.limit'), value: character().domain_cards_max },
+                    { title: t('daggerheart.domainCards.spellcastTraits'), value: renderSpellcastTraits(character().spellcast_traits) }
+                  ]}
+                />
+              </Show>
+            </EditWrapper>
             <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
               {t('daggerheart.domainCards.select')}
             </Button>
