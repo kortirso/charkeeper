@@ -71,7 +71,7 @@ const TRANSLATION = {
   }
 }
 const SINGLE_ADVANTAGE_PROVIDERS = ['dnd', 'cosmere', 'pathfinder'];
-const D20_TESTS_PROVIDERS = ['dnd', 'cosmere', 'pathfinder'];
+const D20_TESTS_PROVIDERS = ['dnd', 'cosmere', 'pathfinder', 'dc20'];
 const DH_DICES_CACHE_NAME = 'DhDicesSettings';
 
 export const createRoll = () => {
@@ -124,6 +124,12 @@ export const createRoll = () => {
         setDices({ dices: dices, damageBonus: damageBonus, title: localize(TRANSLATION, locale()).damage, open: true });
         setD20TestResult(undefined);
         setDicesResult(undefined);
+      });
+    },
+    openDC20Test(command, title, bonus) {
+      batch(() => {
+        setD20Test({ command: command, title: title, bonus: bonus, maxAdv: 10, adv: 0, addBonus: 0 });
+        setD20TestResult(undefined);
       });
     },
     openCthulhuTest(command, title, dc) {

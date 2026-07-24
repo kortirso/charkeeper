@@ -31,7 +31,7 @@ export const Dc20 = (props) => {
   const size = createWindowSize();
   const character = () => props.character;
 
-  const { Roll, openD20Test } = createRoll();
+  const { Roll, openDC20Test } = createRoll();
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
@@ -85,7 +85,7 @@ export const Dc20 = (props) => {
               <div class="mt-4">
                 <Dc20Abilities
                   character={character()}
-                  openD20Test={openD20Test}
+                  openD20Test={openDC20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -96,7 +96,7 @@ export const Dc20 = (props) => {
               <div class="mt-4">
                 <Dc20Skills
                   character={character()}
-                  openD20Test={openD20Test}
+                  openD20Test={openDC20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                   onNextGuideStepClick={() => setActiveMobileTab('equipment')}
@@ -106,7 +106,7 @@ export const Dc20 = (props) => {
             <Match when={activeMobileTab() === 'combat'}>
               <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
-                <Dc20CombatStatic character={character()} openD20Test={openD20Test} />
+                <Dc20CombatStatic character={character()} openD20Test={openDC20Test} />
               </div>
               <div class="mt-4">
                 <Dc20Damages character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -114,7 +114,7 @@ export const Dc20 = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
-                  openD20Test={openD20Test}
+                  openD20Test={openDC20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
@@ -154,7 +154,7 @@ export const Dc20 = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'spells'}>
               <Dc20Spells
-                character={character()} openD20Test={openD20Test}
+                character={character()} openD20Test={openDC20Test}
               />
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
@@ -184,13 +184,13 @@ export const Dc20 = (props) => {
         <div class="mt-4">
           <Dc20Abilities
             character={character()}
-            openD20Test={openD20Test}
+            openD20Test={openDC20Test}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
           />
         </div>
         <div class="mt-4">
-          <Dc20CombatStatic character={character()} openD20Test={openD20Test} />
+          <Dc20CombatStatic character={character()} openD20Test={openDC20Test} />
         </div>
         <div class="mt-4">
           <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -198,7 +198,7 @@ export const Dc20 = (props) => {
         <div class="mt-4">
           <Dc20Skills
             character={character()}
-            openD20Test={openD20Test}
+            openD20Test={openDC20Test}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
             onNextGuideStepClick={() => setActiveTab('equipment')}
@@ -230,7 +230,7 @@ export const Dc20 = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
-                  openD20Test={openD20Test}
+                  openD20Test={openDC20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
@@ -270,7 +270,7 @@ export const Dc20 = (props) => {
             </Match>
             <Match when={activeTab() === 'spells'}>
               <Dc20Spells
-                character={character()} openD20Test={openD20Test}
+                character={character()} openD20Test={openDC20Test}
               />
             </Match>
             <Match when={activeTab() === 'rest'}>
