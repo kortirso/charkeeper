@@ -19,6 +19,8 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :daggerheart_character
 
+        Traits = Dry::Types['strict.string'].enum(*::Daggerheart::Character.traits.keys)
+
         params do
           required(:character).filled(type?: ::Daggerheart::Character)
           optional(:level).filled(:integer)
@@ -27,12 +29,12 @@ module CharactersContext
           optional(:subclasses).hash
           optional(:subclasses_mastery).hash
           optional(:traits).hash do
-            required(:str).filled(:integer, gteq?: -5, lteq?: 5)
-            required(:agi).filled(:integer, gteq?: -5, lteq?: 5)
-            required(:fin).filled(:integer, gteq?: -5, lteq?: 5)
-            required(:ins).filled(:integer, gteq?: -5, lteq?: 5)
-            required(:pre).filled(:integer, gteq?: -5, lteq?: 5)
-            required(:know).filled(:integer, gteq?: -5, lteq?: 5)
+            required(:str).filled(:integer, gteq?: -5, lteq?: 10)
+            required(:agi).filled(:integer, gteq?: -5, lteq?: 10)
+            required(:fin).filled(:integer, gteq?: -5, lteq?: 10)
+            required(:ins).filled(:integer, gteq?: -5, lteq?: 10)
+            required(:pre).filled(:integer, gteq?: -5, lteq?: 10)
+            required(:know).filled(:integer, gteq?: -5, lteq?: 10)
           end
           optional(:spent_armor_slots).filled(:integer)
           optional(:health_marked).filled(:integer)
@@ -74,6 +76,7 @@ module CharactersContext
           optional(:rally_dice).maybe(:integer)
           optional(:available_mechanic_items).hash
           optional(:selected_mechanic_items).hash
+          optional(:spellcast_trait).maybe(Traits)
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)

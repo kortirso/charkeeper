@@ -11,7 +11,7 @@ module Daggerheart
                :domains, :selected_domains, :domain_cards_max, :spellcast_traits, :beastform, :beastforms, :tier, :main_class,
                :can_have_companion, :transformations, :homebrew_domains, :transformation, :mechanic_items, :spell_bonus,
                :selected_features, :guide_step, :conditions, :advantage_dice, :disadvantage_dice, :scars, :scarred_hope,
-               :can_have_beastform, :rally_dice, :available_mechanic_items, :selected_mechanic_items
+               :can_have_beastform, :rally_dice, :available_mechanic_items, :selected_mechanic_items, :spellcast_trait
 
     delegate :features, :id, :name, :level, :heritage, :main_class, :classes, :traits, :gold, :spent_armor_slots, :health_marked,
              :health_max, :stress_marked, :hope_marked, :stress_max, :hope_max, :modified_traits, :damage_thresholds, :evasion,
@@ -22,7 +22,7 @@ module Daggerheart
              :mechanic_items, to: :decorator
     delegate :created_at, :data, to: :object
     delegate :guide_step, :heritage_name, :community, :beastform, :beast, :hybrid, :rally_dice, :available_mechanic_items,
-             :selected_mechanic_items, to: :data
+             :selected_mechanic_items, :spellcast_trait, to: :data
 
     def names
       {

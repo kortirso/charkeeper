@@ -10,7 +10,8 @@ module CampaignsContext
       'Dc20::Character' => 'dc20',
       'Fate::Character' => 'fate',
       'Fallout::Character' => 'fallout',
-      'Cosmere::Character' => 'cosmere'
+      'Cosmere::Character' => 'cosmere',
+      'Cthulhu::Character' => 'cthulhu7'
     }.freeze
 
     use_contract do
