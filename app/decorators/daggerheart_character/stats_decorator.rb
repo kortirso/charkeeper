@@ -166,7 +166,7 @@ module DaggerheartCharacter
       end.uniq
       return traits_result if traits_result.size <= 1
 
-      [modified_traits.slice(traits_result).max_by { |_k, v| v }[0]]
+      [modified_traits.slice(*traits_result).max_by { |_k, v| v }[0]]
     end
 
     def spell_bonus
