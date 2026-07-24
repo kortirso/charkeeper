@@ -13,7 +13,7 @@ import { clickOutside, copyToClipboard, localize } from '../../../helpers';
 
 const AVAILABLE_COPY = ['cthulhu7'];
 const AVAILABLE_JSON = ['daggerheart', 'pathfinder2'];
-const AVAILABLE_PDF = ['daggerheart', 'dnd5', 'dnd2024', 'pathfinder2'];
+const AVAILABLE_PDF = ['daggerheart', 'dnd5', 'dnd2024', 'pathfinder2', 'dc20'];
 const AVAILABLE_RESET = ['daggerheart'];
 const TRANSLATION = {
   en: {
