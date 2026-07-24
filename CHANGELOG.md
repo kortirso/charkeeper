@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - auto calculate condition penalties for dc20 characters
+- PDF for DC20 characters
 
 ## [0.5.1] - 2026-07-22
 

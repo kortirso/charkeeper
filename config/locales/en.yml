@@ -144,6 +144,21 @@ en:
       slots: SPELL SLOTS
       features: FEATURES
       uses_left: Uses left
+      dc20:
+        attacks: ATTACKS
+        skills: SKILLS
+        health: HEALTH
+        trades: TRADES
+        defenses: DEFENSES
+        checks: CHECKS
+        pd: PD
+        ad: AD
+        speed: Speed
+        save: Save DC
+        initiative: Initiative
+        attack: Attack
+        spell: Spell check
+        martial: Martial check
       equipments:
         hands: In hands
         equipment: On body

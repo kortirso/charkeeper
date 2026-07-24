@@ -78,7 +78,6 @@ module SheetsContext
           font_size 4
           fill_color '444444'
           text_box I18n.t('services.sheets_context.attack').upcase, at: [430, 545], width: 25, height: 10, align: :center
-          # text_box I18n.t('services.sheets_context.dist').upcase, at: [455, 545], width: 30, height: 10, align: :center
           text_box I18n.t('services.sheets_context.damage').upcase, at: [485, 545], width: 35, height: 10, align: :center
           text_box I18n.t('services.sheets_context.dist').upcase, at: [520, 545], width: 30, height: 10, align: :center
 

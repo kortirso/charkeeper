@@ -144,6 +144,21 @@ es:
       slots: RANURA DE HECHIZOS
       features: CARACTERÍSTICAS
       uses_left: Usos restantes
+      dc20:
+        attacks: ATTACKS
+        skills: SKILLS
+        health: HEALTH
+        trades: TRADES
+        defenses: DEFENSES
+        checks: CHECKS
+        pd: PD
+        ad: AD
+        speed: Speed
+        save: Save DC
+        initiative: Initiative
+        attack: Attack
+        spell: Spell check
+        martial: Martial check
       equipments:
         hands: En las manos
         equipment: En el cuerpo

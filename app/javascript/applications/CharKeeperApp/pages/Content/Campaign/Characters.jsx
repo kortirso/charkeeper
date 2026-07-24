@@ -5,7 +5,7 @@ import { ErrorWrapper, Button } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
 import { Minus } from '../../../assets';
 
-const AVAILABLE_PDF = ['daggerheart', 'dnd5', 'dnd2024', 'pathfinder2'];
+const AVAILABLE_PDF = ['daggerheart', 'dnd5', 'dnd2024', 'pathfinder2', 'dc20'];
 
 export const CampaignCharacters = (props) => {
   const campaign = () => props.campaign;

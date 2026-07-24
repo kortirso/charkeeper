@@ -56,12 +56,24 @@ module Dc20
       config['ancestries']
     end
 
+    def self.ancestry_info(race_value)
+      config.dig('ancestries', race_value)
+    end
+
     def self.classes_info
       config['classes']
     end
 
+    def self.class_info(class_value)
+      config.dig('classes', class_value)
+    end
+
     def self.combat_expertise
       config['combatExpertise']
+    end
+
+    def self.abilities
+      config['abilities']
     end
 
     attribute :data, Dc20::CharacterData.to_type

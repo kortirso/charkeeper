@@ -144,6 +144,21 @@ ru:
       slots: ЯЧЕЙКИ ЗАКЛИНАНИЙ
       features: СПОСОБНОСТИ
       uses_left: Осталось зарядов
+      dc20:
+        attacks: АТАКИ
+        skills: НАВЫКИ
+        health: ЗДОРОВЬЕ
+        trades: РЕМЁСЛА
+        defenses: ЗАЩИТА
+        checks: ПРОВЕРКИ
+        pd: ТЗ
+        ad: ПЗ
+        speed: Скорость
+        save: Сл спаса
+        initiative: Инициатива
+        attack: Атака
+        spell: Тест магии
+        martial: Тест бой
       equipments:
         hands: В руках
         equipment: На теле
