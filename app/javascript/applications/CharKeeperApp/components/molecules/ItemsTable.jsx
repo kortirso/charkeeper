@@ -16,17 +16,20 @@ const TRANSLATION = {
   en: {
     change: 'Edit',
     delete: 'Remove',
-    info: 'Info'
+    info: 'Info',
+    ammo: 'ammo'
   },
   ru: {
     change: 'Изменить',
     delete: 'Убрать',
-    info: 'Информация'
+    info: 'Информация',
+    ammo: 'снаряды'
   },
   es: {
     change: 'Editar',
     delete: 'Eliminar',
-    info: 'Información'
+    info: 'Información',
+    ammo: 'ammo'
   }
 }
 const ITEMS_INFO = ['daggerheart', 'dnd2024', 'dnd5'];
@@ -72,7 +75,7 @@ export const ItemsTable = (props) => {
                     <p class="equipment-item-name">
                       {item.name}
                       <Show when={item.states[props.state] > 1}><span> ({item.states[props.state]})</span></Show>
-                      <Show when={item.charges}><span> ({item.charges})</span></Show>
+                      <Show when={item.charges}><span> ({localize(TRANSLATION, locale()).ammo} - {item.charges})</span></Show>
                     </p>
                     <Show when={item.notes}>
                       <p class="equipment-item-notes">{item.notes}</p>

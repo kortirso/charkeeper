@@ -62,7 +62,8 @@ const TRANSLATION = {
     sendItem: 'Send item',
     campaign: 'Select campaign',
     charges: 'Charges',
-    chargesMax: 'Max'
+    chargesMax: 'Max',
+    chargesHelp: 'Charges/Ammo can be set only when item is 1. If set items amount more than 1 - charges will be reset.'
   },
   ru: {
     searchByName: 'Поиск по названию (от 3 символов)',
@@ -106,7 +107,8 @@ const TRANSLATION = {
     sendItem: 'Отправить',
     campaign: 'Выберите кампанию',
     charges: 'Заряды',
-    chargesMax: 'Макс'
+    chargesMax: 'Макс',
+    chargesHelp: 'Заряды/Снаряды можно указать только для 1 предмета, если изменить кол-во предметов на более, чем 1, то заряды сбросятся.'
   },
   es: {
     searchByName: 'Buscar por nombre (desde 3 caracteres)',
@@ -150,7 +152,8 @@ const TRANSLATION = {
     sendItem: 'Send item',
     campaign: 'Select campaign',
     charges: 'Charges',
-    chargesMax: 'Max'
+    chargesMax: 'Max',
+    chargesHelp: 'Charges/Ammo can be set only when item is 1. If set items amount more than 1 - charges will be reset.'
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
@@ -359,13 +362,14 @@ export const Equipment = (props) => {
 
   // submits
   const updateItem = () => {
-    if (Object.values(changingItem().states).reduce((acc, item) => acc + item, 0) === 0) {
+    const amount = Object.values(changingItem().states).reduce((acc, item) => acc + item, 0)
+    if (amount === 0) {
       return removeCharacterItem(changingItem());
     }
 
     updateCharacterItem(
       changingItem(),
-      { character_item: { states: changingItem().states, notes: changingItem().notes, charges: changingItem().charges } }
+      { character_item: { states: changingItem().states, notes: changingItem().notes, charges: (amount === 1 ? changingItem().charges : null) } }
     );
   }
 
@@ -384,7 +388,7 @@ export const Equipment = (props) => {
         reloadCharacterItems();
         renderNotice(t('alerts.itemIsAdded'));
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateCharacterItem = async (item, payload) => {
@@ -402,7 +406,7 @@ export const Equipment = (props) => {
         setCharacterItems(newValue);
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeCharacterItem = async (item, state) => {
@@ -423,7 +427,7 @@ export const Equipment = (props) => {
         closeModal();
         setChangingItem(null);
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   // rendering
@@ -652,6 +656,17 @@ export const Equipment = (props) => {
                 }
               </For>
             </div>
+            <div>
+              <Input
+                numeric
+                disabled={Object.values(changingItem().states).reduce((acc, item) => acc + item, 0) !== 1}
+                containerClassList="mb-1"
+                labelText={localize(TRANSLATION, locale()).charges}
+                value={changingItem().charges || 0}
+                onInput={(value) => setChangingItem({ ...changingItem(), charges: value })}
+              />
+              <p class="text-xs mb-2">{localize(TRANSLATION, locale()).chargesHelp}</p>
+            </div>
           </Show>
           <TextArea
             rows="2"
@@ -687,18 +702,8 @@ export const Equipment = (props) => {
             selectedValue={itemReceiver()}
             onSelect={setItemReceiver}
           />
-          <Input
-            containerClassList="mb-4"
-            labelText={localize(TRANSLATION, locale()).sendAmount}
-            value={amount()}
-            onInput={setAmount}
-          />
-          <Button
-            default
-            textable
-            disabled={!itemReceiver() || !amount() || !(parseInt(amount()) > 0)}
-            onClick={finishSendingItem}
-          >
+          <Input containerClassList="mb-4" labelText={localize(TRANSLATION, locale()).sendAmount} value={amount()} onInput={setAmount} />
+          <Button default textable disabled={!itemReceiver() || !amount() || !(parseInt(amount()) > 0)} onClick={finishSendingItem}>
             {localize(TRANSLATION, locale()).sendItem}
           </Button>
         </Show>

@@ -21,12 +21,14 @@ export const Input = (props) => {
             type="text"
             class="default-input"
             classList={{
-              'h-8! text-sm': props.size === 'small'
+              'h-8! text-sm': props.size === 'small',
+              'opacity-50': props.disabled
             }}
             placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
             onKeyDown={handleKeyDown}
             value={props.value}
+            disabled={props.disabled}
             dataTestId={props.dataTestId}
           />
         }
@@ -38,12 +40,14 @@ export const Input = (props) => {
             inputmode="numeric"
             class="default-input"
             classList={{
-              'h-8! text-sm': props.size === 'small'
+              'h-8! text-sm': props.size === 'small',
+              'opacity-50': props.disabled
             }}
             placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
             onKeyDown={handleKeyDown}
             value={props.value}
+            disabled={props.disabled}
             dataTestId={props.dataTestId}
           />
         </Match>
@@ -52,12 +56,14 @@ export const Input = (props) => {
             type="password"
             class="default-input"
             classList={{
-              'h-8! text-sm': props.size === 'small'
+              'h-8! text-sm': props.size === 'small',
+              'opacity-50': props.disabled
             }}
             placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
             onKeyDown={handleKeyDown}
             value={props.value}
+            disabled={props.disabled}
             dataTestId={props.dataTestId}
           />
         </Match>
