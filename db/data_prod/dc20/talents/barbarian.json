@@ -31,36 +31,5 @@
     "modifiers": {
       "jump": { "type": "add", "value": 1 }
     }
-  },
-  {
-    "slug": "swift_berserker",
-    "title": {
-      "en": "Swift Berserker",
-      "ru": "Стремительный берсерк"
-    },
-    "description": {
-      "en": "- **Quick to Anger:** You can immediately enter a Rage for free upon rolling for Initiative.\n- **Unstoppable Charge:** The movement granted by your Charge ignores Difficult Terrain and doesn't provoke Opportunity Attacks.",
-      "ru": "- **Поспешный гнев:** Когда вы бросаете инициативу, вы можете немедленно впасть в **Ярость** в качестве реакции.\n- **Неудержимый натиск:** При использовании натиска вы игнорируете труднопроходимую местность и не провоцируете атаки по возможности."
-    },
-    "origin": "talent",
-    "origin_value": "barbarian",
-    "kind": "static",
-    "limit_refresh": null,
-    "options": null,
-    "conditions": {
-      "level": 3
-    },
-    "description_eval_variables": {},
-    "eval_variables": {},
-    "continious": false,
-    "bonus_eval_variables": null,
-    "price": {},
-    "info": {
-      "multiple": false,
-      "required_features": [
-        "rage",
-        "berserker"
-      ]
-    }
   }
 ]

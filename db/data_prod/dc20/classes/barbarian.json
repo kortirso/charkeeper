@@ -1,5 +1,30 @@
 [
   {
+    "slug": "barbarian_stamina_regen",
+    "title": {
+      "en": "Stamina Regen",
+      "ru": "Восстановление выносливости"
+    },
+    "description": {
+      "en": "Once per round, you can regain up to half your maximum SP when:\n\n- You score a Heavy or Critical Hit against a creature.\n\n- A Heavy or Critical Hit is scored against you.",
+      "ru": "Один раз за раунд вы можете восстановить половину ОВ, если:\n\n- Вы нанесли тяжёлый или критический удар существу.\n\n- Тяжёлый или критический удар был нанесён вам."
+    },
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": {
+      "level": 1,
+      "main_class": "barbarian"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {},
+    "modifiers": {}
+  },
+  {
     "slug": "rage",
     "title": {
       "en": "Rage",
@@ -36,8 +61,8 @@
       "ru": "Берсерк"
     },
     "description": {
-      "en": "When you make a Melee Martial Attack on your turn, you can move up to 2 Spaces immediately before making the Attack.",
-      "ru": "В свой ход сразу перед вашей ближней бойцовской атакой вы можете переместиться на 2 клетки."
+      "en": "When you make a Melee Martial Attack on your turn, you can move up to {{amount|2}} Spaces immediately before making the Attack.",
+      "ru": "В свой ход сразу перед вашей ближней бойцовской атакой вы можете переместиться на {{amount|2}} клетки."
     },
     "origin": "class",
     "origin_value": "barbarian",
@@ -45,7 +70,9 @@
     "conditions": {
       "level": 1
     },
-    "description_eval_variables": {},
+    "description_eval_variables": {
+      "amount": "if (level > 4, 3, 2)"
+    },
     "eval_variables": {},
     "continious": false,
     "bonus_eval_variables": null,
@@ -87,7 +114,7 @@
       "ru": "Боевой клич"
     },
     "description": {
-      "en": "You can spend **1 AP** and **1 SP** to release a shout of your choice listed below. Until the start of your next turn, you and creatures of your choice within 5 Spaces that can see or hear you are subjected to the effects of your shout. A creature can only benefit from the same type of shout once at a time.\n\n- **Fortitude Shout:** Each creature gains Resistance (1) against the next source of Physical or Elemental damage.\n- **Fury Shout:** Each creature deals +1 damage on their next Attack against 1 target.\n- **Urgent Shout:** Each creature gains +1 Speed until the start of your next turn.",
+      "en": "You can spend **1 AP** and **1 SP** to release a shout of your choice listed below. Until the start of your next turn, you and creatures of your choice within 5 Spaces that can see or hear you are subjected to the effects of your shout. A creature can only benefit from the same type of shout once at a time.\n\n- **Fortitude Shout:** Each creature gains Re  sistance (1) against the next source of Physical or Elemental damage.\n- **Fury Shout:** Each creature deals +1 damage on their next Attack against 1 target.\n- **Urgent Shout:** Each creature gains +1 Speed until the start of your next turn.",
       "ru": "Вы можете потратить **1 ОД** и **1 ОВ**, чтобы издать один из нижеперечисленных кличей. До начала вашего следующего хода на вас и всех выбранных вами существ в пределах 5 клеток, которые могут вас видеть или слышать, действует эффект выбранного клича. Если на существо действует два или больше одинаковых клича, оно получает бонусы только от одного из них.\n\n- **Клич стойкости:** Каждое существо получает сопротивление (1) к первому прошедшему по нему физическому или стихийному урону.\n- **Клич неистовства:** Каждое существо наносит +1 урона при следующей атаке.\n- **Клич спешки:** Каждое существо получает +1 к скорости до начала вашего следующего хода."
     },
     "origin": "class",
@@ -105,8 +132,62 @@
       "sp": 1
     },
     "info": {},
+    "modifiers": {}
+  },
+  {
+    "slug": "expert_rage",
+    "title": {
+      "en": "Rage",
+      "ru": "Ярость"
+    },
+    "description": {
+      "en": "You can immediately enter a Rage for 1 minute for free as a Reaction upon rolling for Initiative. For the duration, you're subjected to the following effects:\n\n- You deal +1 damage on Martial Attacks made using Unarmed Strikes or Melee Weapons.\n- You have ADV on Might Saves.\n- Your PD gain calculated penalty -5.\n- You gain Resistance (Half) to Elemental and Physical damage.\n**Ending Early:** Your Rage ends early if you fall Unconscious, die, or you choose to end it for free on your turn.",
+      "ru": "Вы можете войти в состояние **Ярости** на 1 минуту в качестве реакции при проверке инициативы. В течение этого времени на вас действуют следующие эффекты:\n\n- Вы наносите +1 урона бойцовскими атаками, используя рукопашные атаки или атаки оружием.\n- Вы получаете преимущество на спасы мощи.\n- Вы получаете добавленный штраф -5 к ТЗ.\n- Вы получаете сопротивление (половина) к стихийному и физическому урону.\n**Окончание:** Ваша **Ярость** заканчивается, если вы вырубаетесь, умираете или решаете бесплатно окончить её во время своего хода."
+    },
+    "exclude": ["rage"],
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": {
+      "level": 5
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {},
     "modifiers": {
+      "damages": { "type": "concat", "value": [["elemental", "resist", "half"], ["physical", "resist", "half"]] },
       "pd_base": { "type": "add", "value": -5 }
     }
+  },
+  {
+    "slug": "expert_battlecry",
+    "title": {
+      "en": "Battlecry",
+      "ru": "Боевой клич"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 SP** to release a shout of your choice listed below. Until the start of your next turn, you and creatures of your choice within 10 Spaces that can see or hear you are subjected to the effects of your shout. A creature can only benefit from the same type of shout once at a time.\n\n- **Fortitude Shout:** Each creature gains Re  sistance (1 or Half - price 1 SP) against the next source of Physical or Elemental damage.\n- **Fury Shout:** Each creature deals +1 (or +2 - price 3 SP) damage on their next Attack against 1 target.\n- **Urgent Shout:** Each creature gains +1 (or +2 for each SP - price up to 2 SP) Speed until the start of your next turn.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОВ**, чтобы издать один из нижеперечисленных кличей. До начала вашего следующего хода на вас и всех выбранных вами существ в пределах 10 клеток, которые могут вас видеть или слышать, действует эффект выбранного клича. Если на существо действует два или больше одинаковых клича, оно получает бонусы только от одного из них.\n\n- **Клич стойкости:** Каждое существо получает сопротивление (1 или Половина - цена 1 ОВ) к первому прошедшему по нему физическому или стихийному урону.\n- **Клич неистовства:** Каждое существо наносит +1 (или +2 - цена 3 ОВ) урона при следующей атаке.\n- **Клич спешки:** Каждое существо получает +1 (или +2 за каждое ОВ - цена до 2 ОВ) к скорости до начала вашего следующего хода."
+    },
+    "exclude": ["battlecry"],
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": {
+      "level": 5
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {},
+    "modifiers": {}
   }
 ]

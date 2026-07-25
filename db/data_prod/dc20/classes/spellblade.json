@@ -1,5 +1,30 @@
 [
   {
+    "slug": "spellblade_stamina_regen",
+    "title": {
+      "en": "Stamina Regen",
+      "ru": "Восстановление выносливости"
+    },
+    "description": {
+      "en": "Once per round, you can regain up to half your maximum SP when you Hit with a Spell Attack or succeed on a Spell Check.",
+      "ru": "Один раз за раунд вы можете восстановить половину ОВ, если вы попадаете атакой заклинанием или преуспеваете в проверке заклинания."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "level": 1,
+      "main_class": "spellblade"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {},
+    "modifiers": {}
+  },
+  {
     "slug": "blink_blade",
     "title": {
       "en": "Blink Blade",
@@ -308,6 +333,198 @@
       "ap": 1,
       "mp": 1
     },
+    "info": {}
+  },
+  {
+    "slug": "expert_bound_weapon",
+    "title": {
+      "en": "Bound Weapon",
+      "ru": "Связанное оружие"
+    },
+    "description": {
+      "en": "During a Quick Rest, you can magically bond with 1 Weapon. Your Bound Weapon gains the following properties:\n\n- **Smite:** When you make a Martial Attack with the Weapon, you can spend 1 or more SP to deal +1 Bound Damage per SP spent. When you do, you also gain the benefits of 1 Martial Enhancement of your choice for free.\n\n- **Somatic Weapon:** You can use your Bound Weapon to perform the Somatic Components of a Spell.\n\n- **Illuminate:** You can cause the Weapon to emit a 5 Spaces of Dim or Bright Light (you choose the light's appearance). You can extinguish, produce, or adjust the level of this illumination at any time for free.\n\n- **Recall:** While the Weapon is within 20 Spaces and isn't being held or secured, you can call your Weapon back to you for free, causing it to fly to you. If you don't have a free hand when you call it, or you choose not to grab it, it falls in your Space at your feet.\n\n- **Bound Damage:** Your Bound Damage now ignores Resistance to its damage type.",
+      "ru": "Пока вы держите ваше **Связанное оружие** в руках, оно приобретает следующие свойства:\n\n- **Кара:** Когда вы совершаете бойцовскую атаку **Связанным оружием**, вы можете потратить 1 или более ОВ, чтобы нанести +1 связанного урона за каждое потраченное ОВ. Когда вы так делаете, вы получаете преимущества любого бойцовского улучшения на выбор.\n\n- **Соматическое оружие:** Вы можете использовать ваше **Связанное оружие** как соматический компонент для заклинаний.\n\n- **Свечение:** Вы можете заставить оружие излучать тусклый или яркий свет в радиусе 5 клеток (вы выбираете, как он выглядит). Вы можете создавать, изменять и погашать свечение бесплатно в любое время.\n\n- **Возврат:** Если ваше **Связанное оружие** находится в пределах 20 клеток от вас и его ничто и никто не удерживает, вы можете бесплатно возвратить его, заставив полететь к вам в руку. Если во время возврата ваши руки заняты или вы решите не брать **Связанное оружие** в руку, оно падает в вашей клетке у ваших ног.\n\n- **Связанный урон:** Ваше оружие игнорирует сопротивление к выбранному типу урона."
+    },
+    "exclude": ["bound_weapon"],
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "one_from_list",
+    "limit_refresh": null,
+    "options": {
+      "mystical_damage": {
+        "en": "Mystical Damage",
+        "ru": "Мистический урон"
+      },
+      "elemental_damage": {
+        "en": "Elemental Damage",
+        "ru": "Стихийный урон"
+      }
+    },
+    "conditions": {
+      "level": 5
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "expert_spellstrike",
+    "title": {
+      "en": "Spellstrike",
+      "ru": "Удар заклинанием"
+    },
+    "description": {
+      "en": "Once on each of your turns when you make a Martial Attack, you can also cast a Spell as part of the same Action, spending 1 AP less than normal.\n\n- **Converged Action:** When you do, the Spell can target multiple creatures or an Area, provided at least one of the Spell targets is also a target of the Martial Attack, and the range of the Attack can't exceed the range of the Spell. The Spell uses the Attack Check as its Spell Check for any of its requirements, and any Saves you force the target to make are made against your Save DC.\n- **Harmonic StrikeThe Attack and Spell from a Spellstrike are treated as 1 Attack, and can benefit from Maneuvers and Spell Enhancements. The Spell doesn't require Somatic Components.",
+      "ru": "Один раз за каждый свой ход, когда вы совершаете бойцовскую атаку, вы можете наложить заклинание частью этого же действия. Стоимость этого заклинания уменьшается на 1 ОД (вплоть до 0 ОД).\n\n- **Сдвоенное действие:** Это заклинание может быть применено к нескольким целям или области, при условии, что хотя бы одна из целей заклинания также является целью атаки в вашей досягаемости. Заклинание использует проверку атаки вместо проверки заклинания для всех своих требований, и все наложенные им спасы совершаются против вашей СЛ спаса.\n- **Гармоничный удар:** Бойцовская атака и заклинание от удара заклинанием считаются одной атакой, и могут быть дополнены приёмами и улучшениями заклинания. Такое заклинание не требует соматического компонента."
+    },
+    "exclude": ["spellstrike"],
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "level": 2
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "spellblade_disciplines",
+    "title": {
+      "en": "Spellblade Disciplines",
+      "ru": "Дисциплины Мага клинка"
+    },
+    "description": {
+      "en": "You learn 3 Spellblade Disciplines.",
+      "ru": "Вы изучаете 3 дисциплины Мага клинка."
+    },
+    "exclude": ["spellblade_disciplines"],
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "many_from_list",
+    "limit_refresh": null,
+    "options": {
+      "magus": {
+        "en": "Magus",
+        "ru": "Магус"
+      },
+      "expert_acolyte": {
+        "en": "Acolyte",
+        "ru": "Аколит"
+      },
+      "warrior": {
+        "en": "Warrior",
+        "ru": "Воитель"
+      },
+      "blink_blade": {
+        "en": "Blink Blade",
+        "ru": "Мерцающий клинок"
+      },
+      "expert_hex_warrior": {
+        "en": "Hex Warrior",
+        "ru": "Проклинающий"
+      },
+      "expert_spell_warder": {
+        "en": "Spell Warder",
+        "ru": "Оберег от заклинаний"
+      },
+      "spell_breaker": {
+        "en": "Spell Breaker",
+        "ru": "Разрушитель заклинаний"
+      }
+    },
+    "conditions": {
+      "level": 5
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "expert_acolyte",
+    "title": {
+      "en": "Acolyte",
+      "ru": "Аколит"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 MP** to produce 1 of the following effects:\n\n- **Heal:** You gain a pool of healing that you can use to restore HP to any number of creatures within 5 Spaces of you, distributing the HP among them (minimum of 1 HP each). Make a DC 10 Spell Check. **Success:** You can restore up to 3 HP (+2 for each MP spent more). **Success (each 5):** +1 HP. **Failure:** You only restore up to 2 HP.\n- **Cure:** You can attempt to remove 1 Poison or Disease from a creature of your choice within 1 Space of you. Make a Spell Check against the DC of the Poison or Disease. **Success:** The chosen Poison or Disease ends on the target.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОМ**, чтобы создать один из следующих эффектов:\n\n- **Исцеление:** Вы получаете запас целительных сил в форме ОЗ, который можете немедленно использовать для восстановления здоровья любому количеству существ в пределах 5 клеток, распределяя ОЗ между ними. Совершите проверку заклинания СЛ 10. **Успех:** Вы можете восстановить до 3 ОЗ (+2 за дополнительное ОМ). **Успех (каждые 5):** +1 ОЗ. **Провал:** Вы восстанавливаете только до 2 ОЗ.\n- **Излечение:** Вы можете попытаться излечить 1 яд или болезнь, действующие на выбранное существо в пределах 1 клетки от вас. Совершите проверку заклинания против СЛ яда или болезни. **Успех:** Цель избавляется от яда или болезни."
+    },
+    "exclude": ["acolyte"],
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "expert_acolyte"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "mp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "expert_hex_warrior",
+    "title": {
+      "en": "Hex Warrior",
+      "ru": "Проклинающий"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 MP** to Curse a creature within 10 Spaces for 1 minute. You make a Spell Check against the target's Repeated Physical Save. Save Failure: The target is Dazed or Impaired (your choice) and takes 1 (+1 for each MP spent more) Umbral damage at the start of each of their turns. Additionally, they're prevented from regaining HP.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОМ**, чтобы проклясть существо в пределах 5 клеток на 1 минуту. Совершите проверку заклинания против повторяемого физического спаса цели. **Провал спаса:** Цель потрясена или ослаблена (на ваш выбор), получает 1 (+1 за каждое дополнительное ОМ) сумрачного урона в начале каждого своего хода и не может восстанавливать ОЗ."
+    },
+    "exclude": ["hex_warrior"],
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "expert_hex_warrior"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "mp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "expert_spell_warder",
+    "title": {
+      "en": "Spell Warder",
+      "ru": "Оберег от заклинаний"
+    },
+    "description": {
+      "en": "When you deal Elemental or Mystical damage with an Attack, you gain Resistance (1) (Half for MP spent more) to that damage type until the start of your next turn. If you deal Elemental or Mystical damage again while this is already active, you can choose to keep the current Resistance or switch it out for the new one instead.",
+      "ru": "Когда ваша атака наносит стихийный или мистический урон, вы получаете сопротивление (1) (Половина за дополнительное ОМ) к этому типу урона до начала вашего следующего Хода. Если вы снова наносите стихийный или мистический урон, вы можете сохранить текущее сопротивление или заменить его на новое."
+    },
+    "exclude": ["spell_warder"],
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": {
+      "selected_feature": "expert_spell_warder"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
     "info": {}
   }
 ]

@@ -6,8 +6,8 @@
       "ru": "Посвященный школы заклинаний"
     },
     "description": {
-      "en": "Choose a Spell School. You learn 2 Arcane Spells from this Spell School.\n\n- **Signature School:** When you cast a Spell from the chosen School, you can reduce its MP cost by 1. Its total MP cost before the reduction can't exceed your Mana Spend Limit. You can use this Feature once per Long Rest, but regain the ability to use it again when you roll for Initiative.",
-      "ru": "Выберите школу заклинаний. Вы изучаете 2 арканных заклинания этой школы.\n\n- **Фирменная школа:** Один раз после длинного отдыха или броска инициативы, когда вы накладываете заклинание из выбранной школы, вы можете снизить его стоимость на 1 ОМ. Общая стоимость в ОМ до снижения не может превышать ваш предел траты маны."
+      "en": "Choose a Spell School. You learn {{spells|2}} Arcane Spells from this Spell School.\n\n- **Signature School:** When you cast a Spell from the chosen School, you can reduce its MP cost by {{reduce|1}}. Its total MP cost before the reduction can't exceed your Mana Spend Limit. You can use this Feature once per Long Rest, but regain the ability to use it again when you roll for Initiative.",
+      "ru": "Выберите школу заклинаний. Вы изучаете {{spells|2}} арканных заклинания этой школы.\n\n- **Фирменная школа:** Один раз после длинного отдыха или броска инициативы, когда вы накладываете заклинание из выбранной школы, вы можете снизить его стоимость на {{reduce|1}} ОМ. Общая стоимость в ОМ до снижения не может превышать ваш предел траты маны."
     },
     "origin": "class",
     "origin_value": "wizard",
@@ -50,7 +50,10 @@
     "conditions": {
       "level": 1
     },
-    "description_eval_variables": {},
+    "description_eval_variables": {
+      "spells": "if (level > 4, 3, 2)",
+      "reduce": "if (level > 4, 2, 1)"
+    },
     "eval_variables": {},
     "continious": false,
     "bonus_eval_variables": null,
@@ -64,8 +67,8 @@
       "ru": "Арканный символ"
     },
     "description": {
-      "en": "You can spend **1 AP** and **1 MP** to choose a Spell School or Spell Tag and create a 1 Space diameter Circle on a surface within a Space you're occupying. The Circle is your **Arcane Sigil** which lasts for 1 minute. You can't place more than 1 Arcane Sigil in the same Space.\n**Using a Sigil:** While within the area of your Arcane Sigil, creatures gain ADV on Checks they make to cast or produce the effects of Spells with the chosen Spell School or Spell Tag.\n**Moving a Sigil:** You can spend 1 AP to teleport one of your Arcane Sigils that's within 10 Spaces to a surface within a Space you're occupying, provided the Space doesn't already have an Arcane Sigil.",
-      "ru": "Вы можете потратить **1 ОД** и **1 ОМ**, чтобы создать на земле под собой **Арканный символ** диаметром в 1 Клетку, существующий 1 минуту. При создании выберите 1 школу заклинаний или 1 признак заклинания.\n\n- **Использование символа:** Пока существо находится в клетке с вашим символом, оно получает преимущество на проверки заклинаний, требующиеся для наложения заклинаний, относящихся к выбранной школе или имеющих выбранный признак.\n- **Перемещение символа:** Вы можете потратить 1 ОД, чтобы переместить один из ваших символов, находящийся в пределах 10 Клеток, в вашу клетку. В одной клетке может находиться только один символ."
+      "en": "You can spend **1 AP** and **1 MP** to choose a Spell School or Spell Tag and create a 1 Space diameter Circle on a surface within a Space you're occupying. The Circle is your **Arcane Sigil** which lasts for 1 minute. You can't place more than 1 Arcane Sigil in the same Space.\n\n- **Using a Sigil:** While within the area of your Arcane Sigil, creatures gain ADV on Checks they make to cast or produce the effects of Spells with the chosen Spell School or Spell Tag.\n\n- **Moving a Sigil:** You can spend 1 AP to teleport one of your Arcane Sigils that's within 10 Spaces to a surface within a Space you're occupying, provided the Space doesn't already have an Arcane Sigil.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОМ**, чтобы создать на земле под собой **Арканный символ** диаметром в 1 Клетку, существующий 1 минуту. При создании выберите 1 школу заклинаний или 1 признак заклинания.\n\n- **Использование символа:** Пока существо находится в клетке с вашим символом, оно получает преимущество на проверки заклинаний, требующиеся для наложения заклинаний, относящихся к выбранной школе или имеющих выбранный признак.\n\n- **Перемещение символа:** Вы можете потратить 1 ОД, чтобы переместить один из ваших символов, находящийся в пределах 10 Клеток, в вашу клетку. В одной клетке может находиться только один символ."
     },
     "origin": "class",
     "origin_value": "wizard",
@@ -113,20 +116,49 @@
       "ru": "Подготовленное заклинание"
     },
     "description": {
-      "en": "When you complete a Long Rest, choose 1 Spell you know. The chosen Spell becomes your Prepared Spell until your next Long Rest.\n\n- **Mana Limit Break:** When you cast your Prepared Spell, you can increase your Mana Spend Limit by 1 for the casting. You can use this Feature once per Long Rest, but you regain the ability to use it when you roll for Initiative.\n- **Rehearsed Casting:** When creatures Challenge your Spell as part of a Spell Duel, they have DisADV on Checks made to stop your Spell.",
-      "ru": "Когда вы завершаете длинный отдых, выберите одно известное вам заклинание. Оно становится вашим **Подготовленным заклинанием** до следующего длинного отдыха.\n\n- **Прорыв предела маны:** Когда вы накладываете это заклинание, вы можете увеличить ваш предел траты маны на 1. Вы можете использовать эту черту один раз после длинного отдыха или броска инициативы.\n- **Отработанное наложение:** Когда противники используют дуэль заклинаний против вашего **Подготовленного заклинания**, они получают помеху на соответствующую проверку заклинаний."
+      "en": "When you complete a Long Rest, choose Spells you know - {{amount|1}}. The chosen Spell becomes your Prepared Spell until your next Long Rest.\n\n- **Mana Limit Break:** When you cast your Prepared Spell, you can increase your Mana Spend Limit by 1 for the casting. You can use this Feature once per Long Rest, but you regain the ability to use it when you roll for Initiative.\n- **Rehearsed Casting:** When creatures Challenge your Spell as part of a Spell Duel, they have DisADV on Checks made to stop your Spell.",
+      "ru": "Когда вы завершаете длинный отдых, выберите известные вам заклинания - {{amount|1}}. Оно становится вашим **Подготовленным заклинанием** до следующего длинного отдыха.\n\n- **Прорыв предела маны:** Когда вы накладываете это заклинание, вы можете увеличить ваш предел траты маны на 1. Вы можете использовать эту черту один раз после длинного отдыха или броска инициативы.\n- **Отработанное наложение:** Когда противники используют дуэль заклинаний против вашего **Подготовленного заклинания**, они получают помеху на соответствующую проверку заклинаний."
     },
     "origin": "class",
     "origin_value": "wizard",
-    "kind": "static",
+    "kind": "text",
     "conditions": {
       "level": 2
+    },
+    "description_eval_variables": {
+      "amount": "if (level > 4, 2, 1)"
+    },
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "expert_arcane_sigil",
+    "title": {
+      "en": "Arcane Sigil",
+      "ru": "Арканный символ"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 MP** to choose a Spell School or Spell Tag (+1 per MP) and create a 1 (+1 per MP) Space diameter Circle on a surface within a Space you're occupying. The Circle is your **Arcane Sigil** which lasts for 1 minute. You can't place more than 1 Arcane Sigil in the same Space.\n\n- **Using a Sigil:** While within the area of your Arcane Sigil, creatures gain ADV on Checks they make to cast or produce the effects of Spells with the chosen Spell School or Spell Tag.\n\n- **Moving a Sigil:** You can spend 1 AP to teleport one of your Arcane Sigils that's within 10 Spaces to a surface within a Space you're occupying, provided the Space doesn't already have an Arcane Sigil.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОМ**, чтобы создать на земле под собой **Арканный символ** диаметром в 1 (+1 за дополнительное ОМ) Клетку, существующий 1 минуту. При создании выберите 1 школу заклинаний или 1 признак заклинания (+1 за дополнительное ОМ).\n\n- **Использование символа:** Пока существо находится в клетке с вашим символом, оно получает преимущество на проверки заклинаний, требующиеся для наложения заклинаний, относящихся к выбранной школе или имеющих выбранный признак.\n\n- **Перемещение символа:** Вы можете потратить 1 ОД, чтобы переместить один из ваших символов, находящийся в пределах 10 Клеток, в вашу клетку. В одной клетке может находиться только один символ."
+    },
+    "exclude": ["arcane_sigil"],
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "text",
+    "conditions": {
+      "level": 5
     },
     "description_eval_variables": {},
     "eval_variables": {},
     "continious": false,
     "bonus_eval_variables": null,
-    "price": {},
+    "price": {
+      "ap": 1,
+      "mp": 1
+    },
     "info": {}
   }
 ]

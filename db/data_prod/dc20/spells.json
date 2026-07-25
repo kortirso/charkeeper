@@ -6765,8 +6765,8 @@
             "mp": 2
           },
           "description": {
-            "en": "Each target makes a Physical save. Save Failure: They’re Weakened for 1 Round.",
-            "ru": "Each target makes a Physical save. Save Failure: They’re Weakened for 1 Round."
+            "en": "Each target makes a Physical save. Save Failure: They're Weakened for 1 Round.",
+            "ru": "Each target makes a Physical save. Save Failure: They're Weakened for 1 Round."
           }
         },
         {
@@ -6864,8 +6864,8 @@
             "mp": 1
           },
           "description": {
-            "en": "Each target makes a Physical save. Save Failure: They’re Weakened for 1 Round.",
-            "ru": "Each target makes a Physical save. Save Failure: They’re Weakened for 1 Round."
+            "en": "Each target makes a Physical save. Save Failure: They're Weakened for 1 Round.",
+            "ru": "Each target makes a Physical save. Save Failure: They're Weakened for 1 Round."
           }
         },
         {
@@ -8524,8 +8524,8 @@
       "ru": "Banish"
     },
     "description": {
-      "en": "You attempt to sever a target’s link to this plane. Make a Spell Check against the Repeated Charisma Save of a target within range. Check Success: The target is banished to a harmless demiplane for the duration. If the target is native to another plane, it is sent back to its home plane instead. While banished, the target is Incapacitated and cannot affect or be affected by anything on the plane it is banished from.\nWhen the Spell ends, the creature reappears in the Space it left, or the nearest unoccupied Space. If it was banished to its home plane for 1 minute, the effect becomes permanent (GMs discretion).",
-      "ru": "You attempt to sever a target’s link to this plane. Make a Spell Check against the Repeated Charisma Save of a target within range. Check Success: The target is banished to a harmless demiplane for the duration. If the target is native to another plane, it is sent back to its home plane instead. While banished, the target is Incapacitated and cannot affect or be affected by anything on the plane it is banished from.\nWhen the Spell ends, the creature reappears in the Space it left, or the nearest unoccupied Space. If it was banished to its home plane for 1 minute, the effect becomes permanent (GMs discretion)."
+      "en": "You attempt to sever a target's link to this plane. Make a Spell Check against the Repeated Charisma Save of a target within range. Check Success: The target is banished to a harmless demiplane for the duration. If the target is native to another plane, it is sent back to its home plane instead. While banished, the target is Incapacitated and cannot affect or be affected by anything on the plane it is banished from.\nWhen the Spell ends, the creature reappears in the Space it left, or the nearest unoccupied Space. If it was banished to its home plane for 1 minute, the effect becomes permanent (GMs discretion).",
+      "ru": "You attempt to sever a target's link to this plane. Make a Spell Check against the Repeated Charisma Save of a target within range. Check Success: The target is banished to a harmless demiplane for the duration. If the target is native to another plane, it is sent back to its home plane instead. While banished, the target is Incapacitated and cannot affect or be affected by anything on the plane it is banished from.\nWhen the Spell ends, the creature reappears in the Space it left, or the nearest unoccupied Space. If it was banished to its home plane for 1 minute, the effect becomes permanent (GMs discretion)."
     },
     "origin": "spell",
     "origin_value": "arcane,divine",
@@ -8569,8 +8569,8 @@
             "mp": 1
           },
           "description": {
-            "en": "If the effect of the Spell becomes permanent, you can create a temporary seal preventing the creature from returning. The creature can’t return to the plane it was banished from for 24 hours.",
-            "ru": "If the effect of the Spell becomes permanent, you can create a temporary seal preventing the creature from returning. The creature can’t return to the plane it was banished from for 24 hours."
+            "en": "If the effect of the Spell becomes permanent, you can create a temporary seal preventing the creature from returning. The creature can't return to the plane it was banished from for 24 hours.",
+            "ru": "If the effect of the Spell becomes permanent, you can create a temporary seal preventing the creature from returning. The creature can't return to the plane it was banished from for 24 hours."
           }
         },
         {
@@ -10919,8 +10919,8 @@
       "ru": "Sorcery"
     },
     "description": {
-      "en": "You manifest a minor wonder (Divine), a sign of supernatural power (Primal), or arcane prowess (Arcane) depending on which Spell List you have access to. When you gain this Spell, choose from the following types of energy: Fire, Water, Lightning, Earth, Holy, Unholy, or Arcane (which manifests as energy of a specific color). This chosen type will be the form this Spell’s energy takes.\nYou create one of the following magical effects of your chosen energy type within range and can dismiss it by spending 1 AP:\n\n- Your voice booms up to 3 times louder than normal.\n- You summon harmless magic of your chosen energy type to swirl around you in a visual display.\n- Your eyes glow with your chosen energy type.",
-      "ru": "You manifest a minor wonder (Divine), a sign of supernatural power (Primal), or arcane prowess (Arcane) depending on which Spell List you have access to. When you gain this Spell, choose from the following types of energy: Fire, Water, Lightning, Earth, Holy, Unholy, or Arcane (which manifests as energy of a specific color). This chosen type will be the form this Spell’s energy takes.\nYou create one of the following magical effects of your chosen energy type within range and can dismiss it by spending 1 AP:\n\n- Your voice booms up to 3 times louder than normal.\n- You summon harmless magic of your chosen energy type to swirl around you in a visual display.\n- Your eyes glow with your chosen energy type."
+      "en": "You manifest a minor wonder (Divine), a sign of supernatural power (Primal), or arcane prowess (Arcane) depending on which Spell List you have access to. When you gain this Spell, choose from the following types of energy: Fire, Water, Lightning, Earth, Holy, Unholy, or Arcane (which manifests as energy of a specific color). This chosen type will be the form this Spell's energy takes.\nYou create one of the following magical effects of your chosen energy type within range and can dismiss it by spending 1 AP:\n\n- Your voice booms up to 3 times louder than normal.\n- You summon harmless magic of your chosen energy type to swirl around you in a visual display.\n- Your eyes glow with your chosen energy type.",
+      "ru": "You manifest a minor wonder (Divine), a sign of supernatural power (Primal), or arcane prowess (Arcane) depending on which Spell List you have access to. When you gain this Spell, choose from the following types of energy: Fire, Water, Lightning, Earth, Holy, Unholy, or Arcane (which manifests as energy of a specific color). This chosen type will be the form this Spell's energy takes.\nYou create one of the following magical effects of your chosen energy type within range and can dismiss it by spending 1 AP:\n\n- Your voice booms up to 3 times louder than normal.\n- You summon harmless magic of your chosen energy type to swirl around you in a visual display.\n- Your eyes glow with your chosen energy type."
     },
     "origin": "spell",
     "origin_value": "arcane,primal,divine",

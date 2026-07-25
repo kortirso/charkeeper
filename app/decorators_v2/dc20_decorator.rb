@@ -400,10 +400,22 @@ class Dc20Decorator < ApplicationDecoratorV2
     }.compact
   end
 
-  def update_feature_description(feature)
+  def update_feature_description(feature) # rubocop: disable Metrics/AbcSize
     description = translate(feature.feat.description)
     return if description.blank?
 
-    markdown.call(value: description, version: @version)
+    result = markdown.call(value: description, version: @version)
+    result.scan(/\{\{([^}]+)\}\}/).flatten.each do |value|
+      variable, default = value.split('|')
+
+      formula_value = feature.feat.description_eval_variables[variable]
+      next result.gsub!("{{#{value}}}", default) unless formula_value
+
+      formula_result = formula.call(formula: formula_value, variables: formula_variables)
+      next result.gsub!("{{#{value}}}", default) unless formula_result
+
+      result.gsub!("{{#{value}}}", formula_result.to_s)
+    end
+    result
   end
 end

@@ -109,8 +109,8 @@
             "sp": 1
           },
           "description": {
-            "en": "The attacker makes a Charisma Save. Save Failure: They’re Taunted by you for 1 Round.",
-            "ru": "The attacker makes a Charisma Save. Save Failure: They’re Taunted by you for 1 Round."
+            "en": "The attacker makes a Charisma Save. Save Failure: They're Taunted by you for 1 Round.",
+            "ru": "The attacker makes a Charisma Save. Save Failure: They're Taunted by you for 1 Round."
           }
         },
         {
@@ -478,8 +478,8 @@
       "ru": "Heroic Pass Through"
     },
     "description": {
-      "en": "When you take the Pass Through Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you’re considered to be performing a Maneuver.\n\n**Stamina Action:** You can spend SP instead of AP to perform the Pass Through Action.",
-      "ru": "When you take the Pass Through Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you’re considered to be performing a Maneuver.\n\n**Stamina Action:** You can spend SP instead of AP to perform the Pass Through Action."
+      "en": "When you take the Pass Through Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you're considered to be performing a Maneuver.\n\n**Stamina Action:** You can spend SP instead of AP to perform the Pass Through Action.",
+      "ru": "When you take the Pass Through Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you're considered to be performing a Maneuver.\n\n**Stamina Action:** You can spend SP instead of AP to perform the Pass Through Action."
     },
     "origin": "maneuver",
     "origin_value": "utility",
@@ -523,8 +523,8 @@
       "ru": "Line Run"
     },
     "description": {
-      "en": "You move in a Line up to your Speed and make a Martial Check. Each creature within the Line must make a Physical Save against your Martial Check when you attempt to move through its Space.\n\n**Contest Failure:** You’re unable to move through the creature’s Space, preventing you from moving any further.\n\n**Contest Success:** You can move through the creature’s Space and they are knocked *Prone*.",
-      "ru": "You move in a Line up to your Speed and make a Martial Check. Each creature within the Line must make a Physical Save against your Martial Check when you attempt to move through its Space.\n\n**Contest Failure:** You’re unable to move through the creature’s Space, preventing you from moving any further.\n\n**Contest Success:** You can move through the creature’s Space and they are knocked *Prone*."
+      "en": "You move in a Line up to your Speed and make a Martial Check. Each creature within the Line must make a Physical Save against your Martial Check when you attempt to move through its Space.\n\n**Contest Failure:** You're unable to move through the creature's Space, preventing you from moving any further.\n\n**Contest Success:** You can move through the creature's Space and they are knocked *Prone*.",
+      "ru": "You move in a Line up to your Speed and make a Martial Check. Each creature within the Line must make a Physical Save against your Martial Check when you attempt to move through its Space.\n\n**Contest Failure:** You're unable to move through the creature's Space, preventing you from moving any further.\n\n**Contest Success:** You can move through the creature's Space and they are knocked *Prone*."
     },
     "origin": "maneuver",
     "origin_value": "utility",
@@ -548,8 +548,8 @@
             "sp": 1
           },
           "description": {
-            "en": "The Space of every creature who fails the contest isn’t considered Difficult Terrain for this movement and you don’t provoke an Opportunity Attack from them.",
-            "ru": "The Space of every creature who fails the contest isn’t considered Difficult Terrain for this movement and you don’t provoke an Opportunity Attack from them."
+            "en": "The Space of every creature who fails the contest isn't considered Difficult Terrain for this movement and you don't provoke an Opportunity Attack from them.",
+            "ru": "The Space of every creature who fails the contest isn't considered Difficult Terrain for this movement and you don't provoke an Opportunity Attack from them."
           }
         },
         {
@@ -812,8 +812,8 @@
           },
           "repeatable": true,
           "description": {
-            "en": "A willing creature of your choice within 1 Space of your original position can move without spending its own movement, provided they’re able to move and they end their movement within 1 Space of your destination.",
-            "ru": "A willing creature of your choice within 1 Space of your original position can move without spending its own movement, provided they’re able to move and they end their movement within 1 Space of your destination."
+            "en": "A willing creature of your choice within 1 Space of your original position can move without spending its own movement, provided they're able to move and they end their movement within 1 Space of your destination.",
+            "ru": "A willing creature of your choice within 1 Space of your original position can move without spending its own movement, provided they're able to move and they end their movement within 1 Space of your destination."
           }
         }
       ]
@@ -1689,8 +1689,8 @@
             "sp": 1
           },
           "description": {
-            "en": "Requires Falling Strike. On a failed Save, the target doesn’t benefit from any ability that prevents it from falling as a result of being knocked Prone in midair until the end of the turn.",
-            "ru": "Requires Falling Strike. On a failed Save, the target doesn’t benefit from any ability that prevents it from falling as a result of being knocked Prone in midair until the end of the turn."
+            "en": "Requires Falling Strike. On a failed Save, the target doesn't benefit from any ability that prevents it from falling as a result of being knocked Prone in midair until the end of the turn.",
+            "ru": "Requires Falling Strike. On a failed Save, the target doesn't benefit from any ability that prevents it from falling as a result of being knocked Prone in midair until the end of the turn."
           }
         },
         {
@@ -1798,8 +1798,8 @@
       "ru": "Volley"
     },
     "description": {
-      "en": "You bombard an area with a series of projectiles.\n\nMake an Area Martial Attack against the AD of every target within a 3 Space Diameter Sphere that's Point of Origin is within Range. **Hit:** The target takes the damage of your Weapon.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you’re within the Melee Range of at least 1 enemy, unless that enemy is Incapacitated.",
-      "ru": "You bombard an area with a series of projectiles.\n\nMake an Area Martial Attack against the AD of every target within a 3 Space Diameter Sphere that's Point of Origin is within Range. **Hit:** The target takes the damage of your Weapon.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you’re within the Melee Range of at least 1 enemy, unless that enemy is Incapacitated."
+      "en": "You bombard an area with a series of projectiles.\n\nMake an Area Martial Attack against the AD of every target within a 3 Space Diameter Sphere that's Point of Origin is within Range. **Hit:** The target takes the damage of your Weapon.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is Incapacitated.",
+      "ru": "You bombard an area with a series of projectiles.\n\nMake an Area Martial Attack against the AD of every target within a 3 Space Diameter Sphere that's Point of Origin is within Range. **Hit:** The target takes the damage of your Weapon.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is Incapacitated."
     },
     "origin": "maneuver",
     "origin_value": "attack",
