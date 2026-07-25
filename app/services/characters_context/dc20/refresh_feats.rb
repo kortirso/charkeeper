@@ -26,6 +26,7 @@ module CharactersContext
         conditions = item.conditions
         return unless match_by_level?(conditions['level'], character)
         return unless match_by_selected_feats?(conditions['selected_feature'], selected_feats)
+        return unless match_by_main_class?(conditions['main_class'], character)
 
         item
       end
@@ -42,6 +43,12 @@ module CharactersContext
         return false if ([condition] - selected_feats).any?
 
         true
+      end
+
+      def match_by_main_class?(condition, character)
+        return true unless condition
+
+        character.data.main_class == condition
       end
 
       def find_selected_feats(character)

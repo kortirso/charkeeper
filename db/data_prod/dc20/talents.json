@@ -1,5 +1,35 @@
 [
   {
+    "slug": "ancestry_increase",
+    "title": {
+      "en": "Ancestry Increase",
+      "ru": "Повышение атрибутов"
+    },
+    "description": {
+      "en": "You gain 4 Ancestry Points.",
+      "ru": "Вы получаете 4 очка родословной."
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "hidden",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "increase": {
+        "ancestry_points": 4
+      },
+      "multiple": true
+    }
+  },
+  {
     "slug": "attribute_increase",
     "title": {
       "en": "Attribute Increase",
@@ -122,6 +152,11 @@
     "bonus_eval_variables": null,
     "price": {},
     "info": {
+      "rewrite": {
+        "combat_expertise": [
+          "focuses"
+        ]
+      },
       "multiple": false
     },
     "modifiers": {

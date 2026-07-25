@@ -1,5 +1,30 @@
 [
   {
+    "slug": "rogue_stamina_regen",
+    "title": {
+      "en": "Stamina Regen",
+      "ru": "Восстановление выносливости"
+    },
+    "description": {
+      "en": "Once per round, you can regain up to half your maximum SP when:\n\n- You Hit a *Flanked* or *Prone* target.\n\n- You Hit a target affected by at least 1 Condition.\n\n- You Hit a target you’re Hidden from.\n\n- You gain the benefits of your Cunning Action.",
+      "ru": "Один раз за раунд вы можете восстановить половину ОВ, если:\n\n- Вы попадаете по цели, которая *Окружена* или *Повалена*.\n\n- Вы попадаете по цели, на которую воздействует хотя бы 1 состояние.\n\n- Вы попадаете по цели, от которой вы спрятаны.\n\n- Вы получаете эффекты от вашего **Хитрого действия**."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": {
+      "level": 1,
+      "main_class": "rogue"
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {},
+    "modifiers": {}
+  },
+  {
     "slug": "debilitating_strike",
     "title": {
       "en": "Debilitating Strike",
@@ -77,14 +102,65 @@
       "ru": "Коварный удар"
     },
     "description": {
-      "en": "You deal +1 damage on Martial Attacks against a creature that fulfills at least one of the following:\n\n- It's Flanked or Prone.\n- It has any Condition other than Invisibile.\n- You're Hidden from it.",
-      "ru": "Вы наносите +1 урона бойцовскими атаками по существу, если:\n\n- Оно окружено или повалено.\n- Оно подвергнуто хотя бы 1 состоянию кроме невидимости.\n- Вы для него скрыты."
+      "en": "You deal +{{amount|1}} damage on Martial Attacks against a creature that fulfills at least one of the following:\n\n- It's Flanked or Prone.\n- It has any Condition other than Invisible.\n- You're Hidden from it.",
+      "ru": "Вы наносите +{{amount|1}} урона бойцовскими атаками по существу, если:\n\n- Оно окружено или повалено.\n- Оно подвергнуто хотя бы 1 состоянию кроме невидимости.\n- Вы для него скрыты."
     },
     "origin": "class",
     "origin_value": "rogue",
     "kind": "static",
     "conditions": {
       "level": 2
+    },
+    "description_eval_variables": {
+      "amount": "if (level > 4, 2, 1)"
+    },
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "expert_debilitating_strike",
+    "title": {
+      "en": "Debilitating Strike",
+      "ru": "Изнуряющий удар"
+    },
+    "description": {
+      "en": "When you make a Weapon Attack, you can spend **1 SP** to force the target to make a Physical Save against your Save DC. **Save Failure:** The target suffers 1 of the following effects of your choice for 1 Round: Deafened, Exposed, Hindered, or Slowed 2. A target can't be affected by the same option more than once at a time.\n\nYou can spend SP to choose an additional condition per SP spent",
+      "ru": "Когда вы совершаете атаку оружием, вы можете потратить **1 ОВ**, чтобы заставить цель совершить физический спас против вашей СЛ спасов. **Провал:** На 1 раунд цель подвергается одному из следующих состояний на ваш выбор: оглушён, раскрыт, скован или замедлен 2. На цель не могут одновременно действовать два одинаковых эффекта **Изнуряющего удара**.\n\nВы можете потратить больше ОВ и выбрать дополнительное состояние за каждое потраченное ОВ."
+    },
+    "exclude": ["debilitating_strike"],
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": {
+      "level": 5
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "sp": 1
+    },
+    "info": {}
+  },
+  {
+    "slug": "expert_roguish_finesse",
+    "title": {
+      "en": "Expert Roguish Finesse",
+      "ru": "Экспертная точность плута"
+    },
+    "description": {
+      "en": "You gain 1 Skill Point.",
+      "ru": "Вы получаете +1 очко навыков."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": {
+      "level": 5
     },
     "description_eval_variables": {},
     "eval_variables": {},

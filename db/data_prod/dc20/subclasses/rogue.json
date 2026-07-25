@@ -6,7 +6,7 @@
       "ru": "Тысяча ран"
     },
     "description": {
-      "en": "When a creature fails its Save against your **Debilitating Strike**, it also begins Bleeding (even if it’s immune to the Condition). If a creature is affected by Bleeding from this Feature, the DC to end any Bleeding on it is equal to your Save DC and it can no longer be ended by regaining HP.",
+      "en": "When a creature fails its Save against your **Debilitating Strike**, it also begins Bleeding (even if it's immune to the Condition). If a creature is affected by Bleeding from this Feature, the DC to end any Bleeding on it is equal to your Save DC and it can no longer be ended by regaining HP.",
       "ru": "Когда существо проваливает спас от вашего **Изнуряющего удара**, оно также становится ранено (даже при иммунитете). Если существо ранено этой чертой, СЛ снятия пунктов ранения становится равна вашей СЛ спаса, а снять его исцелением невозможно."
     },
     "origin": "subclass",
