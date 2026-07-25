@@ -1,6 +1,18 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
+import {
+  Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills, Pathfinder2Companion,
+  Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2ArchetypeSpells, Pathfinder2Rest, Pathfinder2Bonuses, Pathfinder2Info,
+  Pathfinder2Damages
+} from '../../../pages';
+import {
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createRoll, Combat, Feats
+} from '../../../components';
+import config from '../../../data/pathfinder2.json';
+import { useAppLocale } from '../../../context';
+import { translate, localize } from '../../../helpers';
+
 const TRANSLATION = {
   en: {
     simpleM: 'Simple melee weapon',
@@ -39,18 +51,6 @@ const TRANSLATION = {
     shields: 'Escudos'
   }
 }
-
-import {
-  Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills, Pathfinder2Companion,
-  Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2ArchetypeSpells, Pathfinder2Rest, Pathfinder2Bonuses, Pathfinder2Info,
-  Pathfinder2Damages
-} from '../../../pages';
-import {
-  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createRoll, Combat, Feats
-} from '../../../components';
-import config from '../../../data/pathfinder2.json';
-import { useAppLocale } from '../../../context';
-import { translate, localize } from '../../../helpers';
 
 export const Pathfinder2 = (props) => {
   const size = createWindowSize();

@@ -1,0 +1,266 @@
+[
+  {
+    "slug": "monk_stamina_regen",
+    "title": {
+      "en": "Stamina Regen",
+      "ru": "Восстановление выносливости"
+    },
+    "description": {
+      "en": "Once per round, you can regain up to half your maximum SP when you succeed on an Athletics Check, Acrobatics Check, or Hit on a Martial Attack.",
+      "ru": "Один раз за раунд вы можете восстановить половину ОВ, когда вы успешно выполняете проверку Атлетики, Акробатики или наносите удар в ближнем бою."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": {
+      "level": 1,
+      "main_class": "monk"
+    }
+  },
+  {
+    "slug": "monk_training",
+    "title": {
+      "en": "Monk Training",
+      "ru": "Обучение монаха"
+    },
+    "description": {
+      "en": "- **Iron Palm**: Your limbs are considered Natural Weapons, choose weapon styles - {{amount|1}}.\n\n- **Patient Defense**: While you aren't wearing Armor, you gain +2 PD.\n\n- **Step of the Wind**: You can move a number of Spaces up to your Speed along vertical surfaces and across liquids without falling during your move.",
+      "ru": "- **Железная ладонь**: Ваши конечности считаются природным оружием, выберите стиль оружия - {{amount|1}}.\n\n- **Непоколебимая защита**: Без брони вы получаете +2 ТЗ.\n\n- **Шаг ветра**: Вы можете передвигаться по вертикальным поверхностям и поверх жидкости на расстояние, равное вашей Скорости, не падая во время перемещения."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "many_from_list",
+    "options": {
+      "axe": { "en": "Axe", "ru": "Топор" },
+      "fist": { "en": "Fist", "ru": "Кулак" },
+      "hammer": { "en": "Hammer", "ru": "Молот" },
+      "pick": { "en": "Pick", "ru": "Кирка" },
+      "spear": { "en": "Spear", "ru": "Копьё" },
+      "staff": { "en": "Staff", "ru": "Посох" },
+      "sword": { "en": "Sword", "ru": "Меч" },
+      "whip": { "en": "Whip", "ru": "Хлыст" }
+    },
+    "conditions": { "level": 1 },
+    "modifiers": {
+      "pd_base": { "type": "add", "value": "if (no_armor, 2, 0)" },
+      "speeds.ground": { "type": "add", "value": "if (level > 4, 2, 1)" },
+      "jump": { "type": "set", "value": "MAX(agi, mig, 1) + if (level > 4, 2, 1)" }
+    },
+    "description_eval_variables": {
+      "amount": "if (level > 4, 2, 1)"
+    }
+  },
+  {
+    "slug": "monk_stance",
+    "title": {
+      "en": "Monk Stance",
+      "ru": "Стойки монаха"
+    },
+    "description": {
+      "en": "You learn {{amount|2}} Monk Stances from the list below.\n\n**Entering & Exiting**: At the start of each of your turns during Combat, you can freely enter or shift into one of your Monk Stances. You can also spend **1 AP** or **1 SP** on your turn to enter or shift into one of your Monk Stances. You can exit a Monk Stance at anytime. You can only be in 1 Monk Stance at a time.",
+      "ru": "Вы изучаете {{amount|2}} Стойки монаха из списка ниже.\n\n**Вход и Выход**: В бою в начале каждого своего хода вы можете бесплатно принять или сменить вашу стойку. Также вы можете сменить стойку, потратив **1 ОВ** или **1 ОД** во время своего хода. Вы можете бесплатно выйти из стойки в любой момент. Вы можете стоять только в одной стойке одновременно."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "many_from_list",
+    "conditions": { "level": 1 },
+    "description_eval_variables": {
+      "amount": "if (level > 4, 3, 2)"
+    },
+    "options": {
+      "bear_stance": { "en": "Bear Stance", "ru": "Стойка медведя" },
+      "bull_stance": { "en": "Bull Stance", "ru": "Стойка быка" },
+      "cobra_stance": { "en": "Cobra Stance", "ru": "Стойка кобры" },
+      "gazelle_stance": { "en": "Gazelle Stance", "ru": "Стойка газели" },
+      "mantis_stance": { "en": "Mantis Stance", "ru": "Стойка богомола" },
+      "mongoose_stance": { "en": "Mongoose Stance", "ru": "Стойка мангуста" },
+      "scorpion_stance": { "en": "Scorpion Stance", "ru": "Стойка скорпиона" },
+      "turtle_stance": { "en": "Turtle Stance", "ru": "Стойка черепахи" },
+      "wolf_stance": { "en": "Wolf Stance", "ru": "Стойка волка" }
+    }
+  },
+  {
+    "slug": "bear_stance",
+    "title": {
+      "en": "Bear Stance",
+      "ru": "Стойка медведя"
+    },
+    "description": {
+      "en": "- You deal +1 damage on Heavy Hits (or higher) and Critical Hits on Martial Attacks made using Unarmed Strikes or Melee Weapons.\n\n- When you Miss using a Melee Martial Attack, you gain ADV on the next Melee Martial Attack you make before the end of your turn. You can only gain this benefit once on each of your turns.",
+      "ru": "- Ваши ближние бойцовские атаки наносят +1 урона при сильных, жестоких или критических Ударах.\n\n- Один раз за каждый свой ход, когда вы промахиваетесь ближней бойцовской атакой, вы получаете преимущество на следующую ближнюю бойцовскую атаку, которую совершаете до конца вашего хода."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "selected_feature": "bear_stance" },
+    "continious": true
+  },
+  {
+    "slug": "bull_stance",
+    "title": {
+      "en": "Bull Stance",
+      "ru": "Стойка быка"
+    },
+    "description": {
+      "en": "- When you Succeed on a Physical Check to push a target, it also takes 1 Bludgeoning damage.\n\n- When you push a target, it's pushed 1 additional Space. Additionally, you can choose to move in a straight line with the target an amount of Spaces equal to how far they're pushed. This movement doesn't provoke Opportunity Attacks or require spending your movement.",
+      "ru": "- Вы наносите 1 дробящего урона, когда успешно выполняете физическую проверку, чтобы оттолкнуть или отбросить цель.\n\n- Если вы толкаете или отбрасываете цель, она перемещается на 1 дополнительную Клетку. При этом вы можете бесплатно переместиться по прямой линии вслед за целью на то же расстояние. Это перемещение не провоцирует Атак по возможности."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "selected_feature": "bull_stance" },
+    "continious": true
+  },
+  {
+    "slug": "cobra_stance",
+    "title": {
+      "en": "Cobra Stance",
+      "ru": "Стойка кобры"
+    },
+    "description": {
+      "en": "- You deal +1 damage on Martial Attacks made using Unarmed Strikes or Melee Weapons against creatures that have damaged you since the start of your last turn.\n\n- When a creature within your Melee Range misses you with a Melee Attack, you can spend 1 AP as a Reaction to make a Melee Martial Attack against it.",
+      "ru": "- Ваши ближние бойцовские атаки наносят +1 урона существам, которые нанесли вам урон с начала вашего последнего хода.\n\n- Когда существо в вашей досягаемости промахивается по вам бойцовской атакой, вы можете потратить 1 ОД в качестве реакции, чтобы совершить по нему ближнюю бойцовскую атаку."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "selected_feature": "cobra_stance" },
+    "continious": true
+  },
+  {
+    "slug": "gazelle_stance",
+    "title": {
+      "en": "Gazelle Stance",
+      "ru": "Стойка газели"
+    },
+    "description": {
+      "en": "- Your Speed and Jump Distance increase by 1.\n\n- You ignore Difficult Terrain.\n\n- You gain ADV on Acrobatics Checks and Agility Saves.",
+      "ru": "- +1 к скорости и дальности прыжка.\n\n- Вы игнорируете труднопроходимую местность.\n\n- Преимущество на спасы ловкости и проверки акробатики."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "selected_feature": "gazelle_stance" },
+    "continious": true,
+    "modifiers": {
+      "speeds.ground": { "type": "add", "value": 1 },
+      "jump": { "type": "add", "value": 1 }
+    }
+  },
+  {
+    "slug": "mantis_stance",
+    "title": {
+      "en": "Mantis Stance",
+      "ru": "Стойка богомола"
+    },
+    "description": {
+      "en": "- You have ADV on Checks and Saves made to initiate, maintain, or escape Grapples.\n\n- When you start your turn with at least 1 creature Grappled, you gain +1 AP to use on a Grapple Maneuver against a creature you have Grappled.",
+      "ru": "- Вы получаете преимущество на все рукопашные проверки и спасы для начала, поддержания или выхода из захвата.\n\n- Если в начале вашего хода у вас в захвате есть существо, вы получаете +1 ОД, которое можете использовать только на приём захвата против этого существа."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "selected_feature": "mantis_stance" },
+    "continious": true
+  },
+  {
+    "slug": "mongoose_stance",
+    "title": {
+      "en": "Mongoose Stance",
+      "ru": "Стойка мангуста"
+    },
+    "description": {
+      "en": "- Your Melee Martial Attacks deal +1 damage while you're Flanked.\n\n- When you make a Melee Martial Attack, you choose a second target within your Melee Range. You make a single Attack Check against both targets.",
+      "ru": "- Ваши ближние бойцовские атаки наносят +1 урона когда вы Окружены.\n\n- Когда вы совершаете ближнюю бойцовскую атаку по цели, вы можете бесплатно совершить ещё одну ближнюю бойцовскую Атаку по другой цели в вашей досягаемости, используя тот же результат атаки."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "selected_feature": "mongoose_stance" },
+    "continious": true
+  },
+  {
+    "slug": "scorpion_stance",
+    "title": {
+      "en": "Scorpion Stance",
+      "ru": "Стойка скорпиона"
+    },
+    "description": {
+      "en": "- Creatures provoke Opportunity Attacks from you when they enter your Melee Range.\n\n- When you make a Melee Martial Attack, you can spend 1 AP to deal +1 damage and force the target to make a Physical Save against your Save DC. **Save Failure**: The target is *Impaired* on the next Physical Check it makes before the end of your next turn.",
+      "ru": "- Когда существо входит в вашу досягаемость, вы можете совершить Атаку по возможности против него ближней бойцовской атакой.\n\n- Когда вы совершаете ближнюю бойцовскую атаку, вы можете потратить 1 ОД, чтобы нанести +1 урона и заставить цель совершить физический спас против вашей СЛ. **Провал**: Цель *Ослаблена* на следующую физическую проверку, которую она совершит до конца вашего следующего хода."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "selected_feature": "scorpion_stance" },
+    "continious": true
+  },
+  {
+    "slug": "turtle_stance",
+    "title": {
+      "en": "Turtle Stance",
+      "ru": "Стойка черепахи"
+    },
+    "description": {
+      "en": "- Your Speed becomes 1 (unless it's already lower).\n\n- You gain PDR, EDR, and MDR.\n\n- You have ADV on Might Saves and Saves against being moved or knocked Prone.",
+      "ru": "- Ваша скорость снижается до 1.\n\n- Вы получаете ФСУ, ССУ и МСУ.\n\n- Вы получаете преимущество на спасы мощи и спасы от принудительного перемещения и поваленности."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "selected_feature": "turtle_stance" },
+    "continious": true,
+    "modifiers": {
+      "damages": { "type": "concat", "value": [["elemental", "resist", "half"], ["physical", "resist", "half"], ["mystical", "resist", "half"]] },
+      "speeds.ground": { "type": "hard_set", "value": 1 }
+    }
+  },
+  {
+    "slug": "wolf_stance",
+    "title": {
+      "en": "Wolf Stance",
+      "ru": "Стойка волка"
+    },
+    "description": {
+      "en": "- After you make an Attack with an Unarmed Strike or a Melee Weapon, you can immediately move up to 1 Space without spending movement.\n\n- You have ADV on Opportunity Attacks, and creatures have DisADV on Opportunity Attacks made against you.",
+      "ru": "- После совершения ближней бойцовской атаки, вы можете немедленно бесплатно переместиться на 1 Клетку.\n\n- Вы получаете преимущество на Атаки по возможности, а другие существа получают помеху на Атаки по возможности против вас."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "selected_feature": "wolf_stance" },
+    "continious": true
+  },
+  {
+    "slug": "meditation",
+    "title": {
+      "en": "Meditation",
+      "ru": "Медитация"
+    },
+    "description": {
+      "en": "You can enter a state of meditation during a Short Rest (1 hour) or longer. Choose 1 Charisma or Intelligence Skill. When you complete the Rest, your Skill Mastery level increases by 1 (up to your Skill Mastery Cap) for the chosen Skill until you complete another Short or longer Rest. While meditating, you remain alert to danger.",
+      "ru": "Вы можете войти в состояние медитации во время короткого (1 час) или более длительного отдыха. Выберите 1 навык харизмы или интеллекта. Когда вы завершаете отдых, мастерство для этого навыка увеличивается на 1 до тех пор, пока вы не завершите другой короткий или более длительный отдых. Во время медитации вы не теряете бдительности."
+    },
+    "origin": "class_flavor",
+    "origin_value": "monk",
+    "kind": "text",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "spiritual_balance",
+    "title": {
+      "en": "Spiritual Balance",
+      "ru": "Духовное равновесие"
+    },
+    "description": {
+      "en": "You have a number of Ki Points.\n\n**Regaining Ki**: When you spend a Stamina Point on your turn, you regain a Ki Point (half of maximum from 5 level).\n\n**Deflect Attack**: When a creature misses you with a Ranged Martial Attack that targets your PD, you can spend 1 or more Ki Points and use a free hand to redirect the Attack at a different creature you can see within 5 Spaces. Make an Attack Check against the new target's PD. Hit: The new target takes an amount of damage equal to the Ki Points spent. The damage type is the same as the triggering Attack.\n\n**Slow Fall**: When you take damage from falling, you can spend 1 or more Ki Points to reduce the damage by an amount equal to the Ki Points spent.\n\n**Uncanny Dodge**: When a creature makes an Attack against you, you can spend 1 Ki Point to impose DisADV on the attack.",
+      "ru": "Вы получаете Очки Ци.\n\n**Восстановление Ци**: Когда вы тратите ОВ во время вашего хода, вы восстанавливаете Очко Ци.\n\n**Отражение атаки**: Когда существо промахивается по вам дальней атакой по ТЗ, использующей физический снаряд, вы можете поймать этот снаряд свободной рукой, потратить Очки Ци и немедленно перенаправить эту атаку в другое существо, которое вы видите в пределах 5 Клеток. Совершите проверку атаки против ТЗ новой цели. Попадание: цель получает урон, равный кол-ву потраченных очков Ци.\n\n**Медленное падение**: Вы снижаете урон от падения на величину потраченных очков Ци.\n\n**Невероятное уклонение**: Когда по вам совершается атака, вы можете потратить Очко Ци и наложить помеху на эту атаку."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "info": { "limit": "max_stamina_points + if (level > 4, 1, 0)" },
+    "limit_refresh": "combat"
+  }
+]

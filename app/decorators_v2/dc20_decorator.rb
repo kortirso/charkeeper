@@ -9,6 +9,7 @@ class Dc20Decorator < ApplicationDecoratorV2
     @result = character.data.attributes
     @bonuses = {}
     @set_bonuses = {}
+    @hard_set_bonuses = {}
 
     generate_basis_abilities
     return self if simple
@@ -88,6 +89,14 @@ class Dc20Decorator < ApplicationDecoratorV2
           else
             @set_bonuses[key] = formula_result || value['value']
           end
+        elsif value['type'] == 'hard_set'
+          if key.include?('.')
+            primary, secondary = key.split('.')
+            @hard_set_bonuses[primary] ||= {}
+            @hard_set_bonuses[primary][secondary] = formula_result || value['value']
+          else
+            @hard_set_bonuses[key] = formula_result || value['value']
+          end
         elsif value['type'] == 'add' && formula_result
           if key.include?('.')
             primary, secondary = key.split('.')
@@ -115,16 +124,17 @@ class Dc20Decorator < ApplicationDecoratorV2
   def apply_modifiers
     @result =
       @result
-        .deep_merge(@set_bonuses) { |_key, oldval, newval| [oldval, newval].compact.max }
+        .deep_merge(@set_bonuses) { |_key, _oldval, newval| newval }
         .deep_merge(@bonuses.except(*BASE_MODIFIERS)) { |_key, oldval, newval| oldval.nil? ? nil : (newval + oldval) }
+        .deep_merge(@hard_set_bonuses) { |_key, _oldval, newval| newval }
   end
 
   def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
     @result['grit_points'] = grit_points.merge('max' => max_grit_points)
     @result['rest_points'] = rest_points.merge('max' => max_health)
-    @result['stamina_points'] = stamina_points.merge('max' => max_stamina_points + paths['martial'])
+    @result['stamina_points'] = stamina_points.merge('max' => max_stamina_points)
     @result['mana_points'] = mana_points.merge('max' => max_mana_points + (paths['spellcaster'] * 3))
-    @result['maneuver_points'] = maneuver_points + paths['martial']
+    @result['maneuver_points'] = maneuver_points
     @result['spells'] = spells + paths['spellcaster']
     @result['health'] = health.merge(
       'death_threshold' => 0 - modified_abilities['prime'] - combat_mastery,
@@ -133,7 +143,8 @@ class Dc20Decorator < ApplicationDecoratorV2
       'well_bloodied' => max_health / 4
     )
     @result['damages'] = calc_resistances
-    @result['attacks'] = [unarmed_attack, shield_attack].compact + character_weapons.map { |item| calculate_attack(item) }
+    @result['attacks'] =
+      [unarmed_attack, shield_attack, class_attacks].flatten.compact + character_weapons.map { |item| calculate_attack(item) }
     @result['features'] = apply_features
     @result['cantrips'] = 0
     @result['precision_defense'] = { default: pd_base, heavy: pd_base + 5, brutal: pd_base + 10 }
@@ -307,6 +318,10 @@ class Dc20Decorator < ApplicationDecoratorV2
       end
   end
 
+  def available_features_slugs
+    @available_features_slugs ||= available_features.pluck('feats.slug')
+  end
+
   def available_features
     @available_features ||=
       @character.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC').where(ready_to_use: [true, nil])
@@ -323,6 +338,10 @@ class Dc20Decorator < ApplicationDecoratorV2
 
   def formula_variables
     @formula_variables ||= base_formula_variables.merge(modified_abilities)
+  end
+
+  def final_formula_variables
+    @final_formula_variables ||= formula_variables.merge({ max_stamina_points: max_stamina_points })
   end
 
   # rubocop: disable Metrics/AbcSize, Layout/LineLength
@@ -380,7 +399,8 @@ class Dc20Decorator < ApplicationDecoratorV2
   end
 
   def feature_payload(feature) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
-    limit = feature.feat.info['limit'] ? formula.call(formula: feature.feat.info['limit'], variables: formula_variables) : nil
+    limit =
+      feature.feat.info['limit'] ? formula.call(formula: feature.feat.info['limit'], variables: final_formula_variables) : nil
     {
       id: feature.id,
       slug: feature.feat.slug || feature.id,
@@ -420,5 +440,28 @@ class Dc20Decorator < ApplicationDecoratorV2
       result.gsub!("{{#{value}}}", formula_result.to_s)
     end
     result
+  end
+
+  def class_attacks
+    values = []
+    values << iron_palm_attack if available_features_slugs.include?('monk_training')
+    values
+  end
+
+  def iron_palm_attack
+    tags = { 'b' => I18n.t('tags.dc20.weapon.title.b'), 'Fist' => I18n.t('tags.dc20.weapon.title.Fist') }
+    keys = selected_features['monk_training']
+    keys&.each { |key| tags[key.capitalize] = I18n.t("tags.dc20.weapon.title.#{key.capitalize}") }
+    {
+      name: translate({ en: 'Iron Palm', ru: 'Железная ладонь' }),
+      attack_bonus: attack,
+      damage: 2,
+      damage_types: ['b'],
+      features: [],
+      features_text: [],
+      notes: [],
+      ready_to_use: true,
+      tags: tags
+    }
   end
 end

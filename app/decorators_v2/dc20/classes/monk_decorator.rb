@@ -3,11 +3,11 @@
 module Dc20
   module Classes
     class MonkDecorator < ApplicationDecoratorV2
-      def call(result:)
+      def call(result:) # rubocop: disable Metrics/AbcSize
         @result = result
-        @result['max_stamina_points'] = class_stamina_points
+        @result['max_stamina_points'] = class_stamina_points + paths['martial']
         @result['max_mana_points'] = 0
-        @result['maneuver_points'] = class_maneuver_points
+        @result['maneuver_points'] = class_maneuver_points + paths['martial']
         @result['max_health'] = 6 + (2 * level) + modified_abilities['mig']
         @result['spells'] = 0
         @result['spell_lists_amount'] = 0

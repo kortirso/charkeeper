@@ -42,7 +42,7 @@ end
 
 [
   'classes/barbarian.json', 'classes/commander.json', 'classes/hunter.json', 'classes/rogue.json', 'classes/spellblade.json', 
-  'classes/wizard.json',
+  'classes/wizard.json', 'classes/monk.json',
   'subclasses/barbarian.json', 'subclasses/commander.json', 'subclasses/hunter.json', 'subclasses/rogue.json',
   'subclasses/wizard.json',
   'talents/barbarian.json', 'talents/commander.json', 'talents/hunter.json', 'talents/rogue.json', 'talents/spellblade.json', 

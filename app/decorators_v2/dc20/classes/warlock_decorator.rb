@@ -3,11 +3,11 @@
 module Dc20
   module Classes
     class WarlockDecorator < ApplicationDecoratorV2
-      def call(result:)
+      def call(result:) # rubocop: disable Metrics/AbcSize
         @result = result
-        @result['max_stamina_points'] = 0
+        @result['max_stamina_points'] = paths['martial']
         @result['max_mana_points'] = mana_points_by_level
-        @result['maneuver_points'] = 0
+        @result['maneuver_points'] = paths['martial']
         @result['max_health'] = 6 + level + ((level + 1) / 2) + modified_abilities['mig']
         @result['spells'] = spells_by_level
         @result['spell_lists_amount'] = 0

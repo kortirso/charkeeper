@@ -5,9 +5,9 @@ module Dc20
     class SpellbladeDecorator < ApplicationDecoratorV2
       def call(result:) # rubocop: disable Metrics/AbcSize
         @result = result
-        @result['max_stamina_points'] = ((level + 3) / 4)
+        @result['max_stamina_points'] = ((level + 3) / 4) + paths['martial']
         @result['max_mana_points'] = mana_points_by_level
-        @result['maneuver_points'] = class_maneuver_points
+        @result['maneuver_points'] = class_maneuver_points + paths['martial']
         @result['max_health'] = 6 + level + ((level + 1) / 2) + modified_abilities['mig']
         @result['spells'] = ((level + 3) / 4) + 1
         @result['spell_lists_amount'] = 0
