@@ -47,7 +47,7 @@ end
   'subclasses/wizard.json',
   'talents/barbarian.json', 'talents/commander.json', 'talents/hunter.json', 'talents/rogue.json', 'talents/spellblade.json', 
   'talents/wizard.json',
-  'ancestry.json', 'spells.json', 'maneuvers.json', 'talents.json'
+  'ancestry.json', 'ancestry_2.json', 'spells.json', 'maneuvers.json', 'talents.json'
 ].each do |filename|
   JSON.parse(File.read("db/data_prod/dc20/#{filename}")).each do |item|
     feat = ::Dc20::Feat.find_by(slug: item['slug'])

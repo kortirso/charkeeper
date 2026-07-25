@@ -13,7 +13,6 @@ const TRANSLATION = {
     ancestry: 'Ancestry',
     pointsLeft: 'Points left',
     class: 'Class',
-    manyAncestriesAlert: 'Maximum 2 ancestries',
     minorTraitsAlert: 'Maximum 1 minor trait',
     negativeTraitsAlert: 'Maximum 2 negative traits',
     skipGuide: 'Skip new character guide'
@@ -23,7 +22,6 @@ const TRANSLATION = {
     ancestry: 'Родословная',
     pointsLeft: 'Очков осталось',
     class: 'Класс',
-    manyAncestriesAlert: 'Максимум только 2 родословные',
     minorTraitsAlert: 'Максимум 1 малая черта',
     negativeTraitsAlert: 'Максимум 2 отрицательные черты',
     skipGuide: 'Пропустить настройку нового персонажа'
@@ -33,7 +31,6 @@ const TRANSLATION = {
     ancestry: 'Ancestría',
     pointsLeft: 'Puntos restantes',
     class: 'Clase',
-    manyAncestriesAlert: 'Máximo 2 ancestrias',
     minorTraitsAlert: 'Máximo 1 rasgo menor',
     negativeTraitsAlert: 'Máximo 2 rasgos negativos',
     skipGuide: 'Omitir guía de personaje nuevo'
@@ -57,7 +54,6 @@ export const Dc20CharacterForm = (props) => {
   }
 
   const saveCharacter = async () => {
-    if (Object.keys(characterDc20Form.ancestry_feats).length > 2) return renderAlert(localize(TRANSLATION, locale()).manyAncestriesAlert);
     if (validations.negativeTraits > 2) return renderAlert(localize(TRANSLATION, locale()).negativeTraitsAlert);
     if (validations.minorTraits > 1) return renderAlert(localize(TRANSLATION, locale()).minorTraitsAlert);
 

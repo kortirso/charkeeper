@@ -12,7 +12,6 @@ const TRANSLATION = {
     saveButton: 'Save',
     ancestries: 'Ancestries',
     ancestryPoints: 'Points',
-    manyAncestriesAlert: 'Maximum 2 ancestries',
     minorTraitsAlert: 'Maximum 1 minor trait',
     negativeTraitsAlert: 'Maximum 2 negative traits',
     showDescription: 'Show description'
@@ -21,7 +20,6 @@ const TRANSLATION = {
     saveButton: 'Сохранить',
     ancestries: 'Родословные',
     ancestryPoints: 'Очков',
-    manyAncestriesAlert: 'Максимум только 2 родословные',
     minorTraitsAlert: 'Максимум 1 малая черта',
     negativeTraitsAlert: 'Максимум 2 отрицательные черты',
     showDescription: 'Показывать описание'
@@ -30,7 +28,6 @@ const TRANSLATION = {
     saveButton: 'Guardar',
     ancestries: 'Ancestrías',
     ancestryPoints: 'Puntos',
-    manyAncestriesAlert: 'Máximo 2 ancestrías',
     minorTraitsAlert: 'Máximo 1 rasgo menor',
     negativeTraitsAlert: 'Máximo 2 rasgos negativos',
     showDescription: 'Mostrar descripción'
@@ -128,7 +125,6 @@ export const Dc20Ancestries = (props) => {
   }
 
   const saveAncestry = async () => {
-    if (Object.keys(ancestriesForm().ancestry_feats).length > 2) return renderAlert(localize(TRANSLATION, locale()).manyAncestriesAlert);
     if (validations().negativeTraits > 2) return renderAlert(localize(TRANSLATION, locale()).negativeTraitsAlert);
     if (validations().minorTraits > 1) return renderAlert(localize(TRANSLATION, locale()).minorTraitsAlert);
 
@@ -158,32 +154,30 @@ export const Dc20Ancestries = (props) => {
             />
             <For each={Object.entries(config.ancestries).filter(([ancestry]) => availableAncestries().includes(ancestry))}>
               {([ancestry, values]) =>
-                <Show when={Object.keys(ancestriesForm().ancestry_feats).length < 2 || ancestriesForm().ancestry_feats[ancestry]}>
-                  <Toggle
-                    innerClassList="p-2!"
-                    title={<p>{localize(values.name, locale())}{ancestriesForm().ancestry_feats[ancestry] ? ` (${ancestriesForm().ancestry_feats[ancestry].length})` : ''}</p>}
-                  >
-                    <For each={ancestries().filter((item) => item.origin_value === ancestry).sort((a, b) => a.price < b.price)}>
-                      {(item) =>
-                        <div class="ancestry-item">
-                          <Checkbox
-                            labelText={`${item.title} (${item.price})`}
-                            labelPosition="right"
-                            labelClassList="ml-2"
-                            checked={ancestriesForm().ancestry_feats[ancestry]?.includes(item.slug)}
-                            onToggle={() => selectDc20Ancestry(ancestry, item.slug, item.price)}
+                <Toggle
+                  innerClassList="p-2!"
+                  title={<p>{localize(values.name, locale())}{ancestriesForm().ancestry_feats[ancestry] ? ` (${ancestriesForm().ancestry_feats[ancestry].length})` : ''}</p>}
+                >
+                  <For each={ancestries().filter((item) => item.origin_value === ancestry).sort((a, b) => a.price < b.price)}>
+                    {(item) =>
+                      <div class="ancestry-item">
+                        <Checkbox
+                          labelText={`${item.title} (${item.price})`}
+                          labelPosition="right"
+                          labelClassList="ml-2"
+                          checked={ancestriesForm().ancestry_feats[ancestry]?.includes(item.slug)}
+                          onToggle={() => selectDc20Ancestry(ancestry, item.slug, item.price)}
+                        />
+                        <Show when={showDescription()}>
+                          <p
+                            class="feat-markdown text-xs! mt-1"
+                            innerHTML={item.description} // eslint-disable-line solid/no-innerhtml
                           />
-                          <Show when={showDescription()}>
-                            <p
-                              class="feat-markdown text-xs! mt-1"
-                              innerHTML={item.description} // eslint-disable-line solid/no-innerhtml
-                            />
-                          </Show>
-                        </div>
-                      }
-                    </For>
-                  </Toggle>
-                </Show>
+                        </Show>
+                      </div>
+                    }
+                  </For>
+                </Toggle>
               }
             </For>
             <Show when={character()}>

@@ -6,7 +6,7 @@
       "ru": "Восстановление выносливости"
     },
     "description": {
-      "en": "Once per round, you can regain up to half your maximum SP when:\n\n- You Hit a *Flanked* or *Prone* target.\n\n- You Hit a target affected by at least 1 Condition.\n\n- You Hit a target you’re Hidden from.\n\n- You gain the benefits of your Cunning Action.",
+      "en": "Once per round, you can regain up to half your maximum SP when:\n\n- You Hit a *Flanked* or *Prone* target.\n\n- You Hit a target affected by at least 1 Condition.\n\n- You Hit a target you're Hidden from.\n\n- You gain the benefits of your Cunning Action.",
       "ru": "Один раз за раунд вы можете восстановить половину ОВ, если:\n\n- Вы попадаете по цели, которая *Окружена* или *Повалена*.\n\n- Вы попадаете по цели, на которую воздействует хотя бы 1 состояние.\n\n- Вы попадаете по цели, от которой вы спрятаны.\n\n- Вы получаете эффекты от вашего **Хитрого действия**."
     },
     "origin": "class",
