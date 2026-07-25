@@ -21,7 +21,29 @@
     "barbarian": {
       "name": { "en": "Barbarian", "ru": "Варвар" },
       "subclasses": {
-        "spirit_guardian": { "name": { "en": "Spirit Guardian", "ru": "Духовный защитник" } }
+        "spirit_guardian": { "name": { "en": "Spirit Guardian", "ru": "Духовный защитник" } },
+        "elemental_fury": { "name": { "en": "Elemental Fury", "ru": "" } }
+      }
+    },
+    "bard": {
+      "name": { "en": "Bard", "ru": "Бард" },
+      "subclasses": {
+        "eloquence": { "name": { "en": "Eloquence", "ru": "Оратор" } },
+        "jester": { "name": { "en": "Jester", "ru": "Шут" } }
+      }
+    },
+    "champion": {
+      "name": { "en": "Champion", "ru": "Чемпион" },
+      "subclasses": {
+        "hero": { "name": { "en": "Hero", "ru": "Герой" } },
+        "sentinel": { "name": { "en": "Sentinel", "ru": "Страж" } }
+      }
+    },
+    "cleric": {
+      "name": { "en": "Cleric", "ru": "Жрец" },
+      "subclasses": {
+        "inquisitor": { "name": { "en": "Inquisitor", "ru": "Инквизитор" } },
+        "priest": { "name": { "en": "Priest", "ru": "Священник" } }
       }
     },
     "commander": {
@@ -31,18 +53,25 @@
         "warlord": { "name": { "en": "Warlord", "ru": "Военачальник" } }
       }
     },
-    "spellblade": {
-      "name": { "en": "Spellblade", "ru": "Маг клинка" },
+    "druid": {
+      "name": { "en": "Druid", "ru": "Друид" },
       "subclasses": {
-        "paladin": { "name": { "en": "Paladin", "ru": "Паладин" } },
-        "rune_knight": { "name": { "en": "Rune Knight", "ru": "Рунический рыцарь" } }
+        "phoenix": { "name": { "en": "Phoenix", "ru": "Феникс" } },
+        "rampant_growth": { "name": { "en": "Rampant Growth", "ru": "Буйный рост" } }
       }
     },
-    "wizard": {
-      "name": { "en": "Wizard", "ru": "Волшебник" },
+    "hunter": {
+      "name": { "en": "Hunter", "ru": "Охотник" },
       "subclasses": {
-        "portal_mage": { "name": { "en": "Portal Mage", "ru": "Порталист" } },
-        "witch": { "name": { "en": "Witch", "ru": "Ведьма" } }
+        "monster_slayer": { "name": { "en": "Monster Slayer", "ru": "Охотник на монстров" } },
+        "trapper": { "name": { "en": "Trapper", "ru": "Траппер" } }
+      }
+    },
+    "monk": {
+      "name": { "en": "Monk", "ru": "Монах" },
+      "subclasses": {
+        "astral_self": { "name": { "en": "Astral Self", "ru": "Астральная сущность" } },
+        "shifting_tide": { "name": { "en": "Shifting Tide", "ru": "Изменчивый поток" } }
       }
     },
     "rogue": {
@@ -52,13 +81,34 @@
         "swashbuckler": { "name": { "en": "Swashbuckler", "ru": "Дуэлянт" } }
       }
     },
-    "hunter": {
-      "name": { "en": "Hunter", "ru": "Охотник" },
+    "sorcerer": {
+      "name": { "en": "Sorcerer", "ru": "Чародей" },
       "subclasses": {
-        "monster_slayer": { "name": { "en": "Monster Slayer", "ru": "Охотник на монстров" } },
-        "trapper": { "name": { "en": "Trapper", "ru": "Траппер" } }
+        "angelic": { "name": { "en": "Angelic", "ru": "Ангельский" } },
+        "draconic": { "name": { "en": "Draconic", "ru": "Драконий" } }
       }
-    }
+    },
+    "spellblade": {
+      "name": { "en": "Spellblade", "ru": "Маг клинка" },
+      "subclasses": {
+        "paladin": { "name": { "en": "Paladin", "ru": "Паладин" } },
+        "rune_knight": { "name": { "en": "Rune Knight", "ru": "Рунический рыцарь" } }
+      }
+    },
+    "warlock": {
+      "name": { "en": "Warlock", "ru": "Колдун" },
+      "subclasses": {
+        "eldritch": { "name": { "en": "Eldritch", "ru": "Искажённый" } },
+        "fey": { "name": { "en": "Fey", "ru": "Фея" } }
+      }
+    },
+    "wizard": {
+      "name": { "en": "Wizard", "ru": "Волшебник" },
+      "subclasses": {
+        "portal_mage": { "name": { "en": "Portal Mage", "ru": "Порталист" } },
+        "witch": { "name": { "en": "Witch", "ru": "Ведьма" } }
+      }
+    }    
   },
   "spell_lists": {
     "arcane": { "name": { "en": "Arcane", "ru": "Арканный" } },

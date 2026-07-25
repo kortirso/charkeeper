@@ -146,9 +146,10 @@ export const DaggerheartCharacterForm = (props) => {
         when={customHeritage()}
         fallback={
           <Select
+            searchable
             containerClassList="mb-2"
             labelText={t('newCharacterPage.daggerheart.ancestry')}
-            items={translate(daggerheartHeritages(), currentLocale())}
+            items={translate(daggerheartHeritages(), currentLocale(), true)}
             selectedValue={characterDaggerheartForm.heritage}
             onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage: value })}
             dataTestId="character-ancestry-select"
@@ -177,17 +178,19 @@ export const DaggerheartCharacterForm = (props) => {
         />
       </Show>
       <Select
+        searchable
         containerClassList="mb-2"
         labelText={t('newCharacterPage.daggerheart.community')}
-        items={translate(daggerheartCommunities(), currentLocale())}
+        items={translate(daggerheartCommunities(), currentLocale(), true)}
         selectedValue={characterDaggerheartForm.community}
         onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, community: value })}
         dataTestId="character-community-select"
       />
       <Select
+        searchable
         containerClassList="mb-2"
         labelText={t('newCharacterPage.daggerheart.mainClass')}
-        items={translate(daggerheartClasses(), currentLocale())}
+        items={translate(daggerheartClasses(), currentLocale(), true)}
         selectedValue={characterDaggerheartForm.main_class}
         onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, main_class: value, subclass: undefined })}
         dataTestId="character-class-select"
@@ -196,7 +199,7 @@ export const DaggerheartCharacterForm = (props) => {
         <Select
           containerClassList="mb-2"
           labelText={t('newCharacterPage.daggerheart.subclass')}
-          items={translate(daggerheartSubclasses(), currentLocale())}
+          items={translate(daggerheartSubclasses(), currentLocale(), true)}
           selectedValue={characterDaggerheartForm.subclass}
           onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, subclass: value })}
           dataTestId="character-subclass-select"

@@ -97,7 +97,7 @@ export const Dnd2024CharacterForm = (props) => {
         />
         <Select
           labelText={t('newCharacterPage.dnd2024.species')}
-          items={translate(props.dnd2024Races(), locale())}
+          items={translate(props.dnd2024Races(), locale(), true)}
           selectedValue={characterDnd2024Form.species}
           onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: props.dnd2024Races()[value].sizes[0], legacy: undefined })}
         />
@@ -118,14 +118,16 @@ export const Dnd2024CharacterForm = (props) => {
           />
         </Show>
         <Select
+          searchable
           labelText={t('newCharacterPage.pathfinder2.background')}
-          items={translate(dndBackgrounds(), locale())}
+          items={translate(dndBackgrounds(), locale(), true)}
           selectedValue={characterDnd2024Form.background}
           onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, background: value })}
         />
         <Select
+          searchable
           labelText={t('newCharacterPage.dnd2024.mainClass')}
-          items={translate(config.classes, locale())}
+          items={translate(config.classes, locale(), true)}
           selectedValue={characterDnd2024Form.main_class}
           onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, main_class: value })}
         />

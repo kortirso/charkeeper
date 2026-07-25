@@ -71,14 +71,14 @@ export const Dc20CharacterForm = (props) => {
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <Input
         containerClassList="mb-2"
-        labelText={localize(TRANSLATION, locale())['name']}
+        labelText={localize(TRANSLATION, locale()).name}
         value={characterDc20Form.name}
         onInput={(value) => setCharacterDc20Form({ ...characterDc20Form, name: value })}
       />
       <Select
         containerClassList="mb-4"
-        labelText={localize(TRANSLATION, locale())['class']}
-        items={translate(config.classes, locale())}
+        labelText={localize(TRANSLATION, locale()).class}
+        items={translate(config.classes, locale(), true)}
         selectedValue={characterDc20Form.main_class}
         onSelect={(value) => setCharacterDc20Form({ ...characterDc20Form, main_class: value })}
       />

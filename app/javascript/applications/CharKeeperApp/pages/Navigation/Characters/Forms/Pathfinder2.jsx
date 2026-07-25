@@ -54,9 +54,10 @@ export const Pathfinder2CharacterForm = (props) => {
         onInput={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, name: value })}
       />
       <Select
+        searchable
         containerClassList="mb-2"
         labelText={t('newCharacterPage.pathfinder2.race')}
-        items={translate(pathfinder2Config.races, locale())}
+        items={translate(pathfinder2Config.races, locale(), true)}
         selectedValue={characterPathfinder2Form.race}
         onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, race: value, subrace: undefined })}
       />
@@ -70,16 +71,18 @@ export const Pathfinder2CharacterForm = (props) => {
         />
       </Show>
       <Select
+        searchable
         containerClassList="mb-2"
         labelText={t('newCharacterPage.pathfinder2.background')}
-        items={translate(pathfinder2Config.backgrounds, locale())}
+        items={translate(pathfinder2Config.backgrounds, locale(), true)}
         selectedValue={characterPathfinder2Form.background}
         onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, background: value })}
       />
       <Select
+        searchable
         containerClassList="mb-2"
         labelText={t('newCharacterPage.pathfinder2.mainClass')}
-        items={translate(pathfinder2Config.classes, locale())}
+        items={translate(pathfinder2Config.classes, locale(), true)}
         selectedValue={characterPathfinder2Form.main_class}
         onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_class: value, main_ability: pathfinder2Config.classes[value].main_ability_options[0], subclass: undefined })}
       />
