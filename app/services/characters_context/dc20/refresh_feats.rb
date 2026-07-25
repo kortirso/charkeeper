@@ -57,9 +57,10 @@ module CharactersContext
 
       def feats(character)
         data = character.data
-        ::Dc20::Feat
-          .where(origin_value: [data.main_class, data.subclass, character.id].flatten.compact.uniq)
-          .where.not(origin: exclude_origins_from_remove)
+        ::Dc20::Feat.where(origin_value: [data.main_class, data.subclass, character.id].flatten.compact.uniq)
+          .or(
+            ::Dc20::Feat.where(origin: 'base_ancestry', origin_value: data.ancestries)
+          ).where.not(origin: exclude_origins_from_remove)
       end
     end
   end

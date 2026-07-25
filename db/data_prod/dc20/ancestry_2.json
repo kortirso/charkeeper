@@ -1,5 +1,55 @@
 [
   {
+    "slug": "draconic_origin",
+    "title": {
+      "en": "Draconic Origin",
+      "ru": "Драконье происхождение"
+    },
+    "description": {
+      "en": "Choose a Draconic Origin.",
+      "ru": "Выберите драконье происхождение."
+    },
+    "origin": "base_ancestry",
+    "origin_value": "dragonborn",
+    "kind": "one_from_list",
+    "options": {
+      "cold": {
+        "en": "Cold",
+        "ru": "Морозный"
+      },
+      "corrosion": {
+        "en": "Corrosion",
+        "ru": "Кислотный"
+      },
+      "fire": {
+        "en": "Fire",
+        "ru": "Огненный"
+      },
+      "lightning": {
+        "en": "Lightning",
+        "ru": "Электрический"
+      },
+      "poison": {
+        "en": "Poison",
+        "ru": "Ядовитый"
+      },
+      "psychic": {
+        "en": "Psychic",
+        "ru": "Психический"
+      },
+      "radiant": {
+        "en": "Radiant",
+        "ru": "Сияющий"
+      },
+      "umbral": {
+        "en": "Umbral",
+        "ru": "Сумрачный"
+      }
+    },
+    "price": {},
+    "info": {}
+  },
+  {
     "slug": "darkvision",
     "title": {
       "en": "Darkvision",
@@ -11,11 +61,12 @@
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
-    "kind": "static",
+    "kind": "update_result",
     "price": {},
     "info": {
       "price": 1
-    }
+    },
+    "modifiers": { "visions.dark": { "type": "set", "value": 10 } }
   },
   {
     "slug": "draconic_resistance",
@@ -52,8 +103,10 @@
       "ap": 2
     },
     "info": {
-      "price": 2
-    }
+      "price": 2,
+      "limit": 1
+    },
+    "limit_refresh": "long_rest"
   },
   {
     "slug": "reptilian_superiority",
@@ -63,7 +116,7 @@
     },
     "description": {
       "en": "You have ADV on Intimidation Checks against reptilian creatures of Medium Size and smaller (not including other Dragonborn).",
-      "ru": "Вы получаете ПРЕИМ на Проверки Запугивания против рептилий Среднего или меньшего размера (кроме других Драконорождённых)."
+      "ru": "Вы получаете преимущество на Проверки Запугивания против рептилий Среднего или меньшего размера (кроме других Драконорождённых)."
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
@@ -74,7 +127,7 @@
     }
   },
   {
-    "slug": "mana_increase",
+    "slug": "dragonborn_mana_increase",
     "title": {
       "en": "Mana Increase",
       "ru": "Увеличение запаса маны"
@@ -85,14 +138,15 @@
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
-    "kind": "static",
+    "kind": "hidden",
     "price": {},
     "info": {
       "price": 1
-    }
+    },
+    "modifiers": { "max_mana_points": { "type": "add", "value": 1 } }
   },
   {
-    "slug": "thick_skinned",
+    "slug": "dragonborn_thick_skinned",
     "title": {
       "en": "Thick-Skinned",
       "ru": "Толстокожий"
@@ -103,11 +157,12 @@
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
-    "kind": "static",
+    "kind": "update_result",
     "price": {},
     "info": {
       "price": 1
-    }
+    },
+    "modifiers": { "ad_base": { "type": "add", "value": "if (no_armor, 1, 0)" } }
   },
   {
     "slug": "second_breath",
@@ -116,8 +171,8 @@
       "ru": "Второй вдох"
     },
     "description": {
-      "en": "(requires Draconic Breath Weapon) You can now use your Draconic Breath Weapon twice per Combat. Additionally, whenever you use your Draconic Breath Weapon, you can spend 2 uses to increase the damage by 2 if it's an Area, or by 4 if it's Focused.",
-      "ru": "(требуется Драконье дыхание) Вы можете использовать Драконье дыхание дважды за бой. Также, вы можете потратить сразу 2 использования, чтобы увеличить Урон Точечного дыхания на 4 или по Площади — на 2."
+      "en": "You can now use your **Draconic Breath Weapon** (if you have it) twice per Combat. Additionally, whenever you use your Draconic Breath Weapon, you can spend 2 uses to increase the damage by 2 if it's an Area, or by 4 if it's Focused.",
+      "ru": "Вы можете использовать **Драконье дыхание** (если оно конечно у вас есть) дважды за бой. Также, вы можете потратить сразу 2 использования, чтобы увеличить Урон Точечного дыхания на 4 или по Площади — на 2."
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
@@ -134,8 +189,8 @@
       "ru": "Мощный выдох"
     },
     "description": {
-      "en": "(requires Draconic Breath Weapon) When you use your Draconic Breath Weapon, you can force all targets to make a Physical Save. **Save Failure:** The target is pushed 1 Space away +1 additional Space for every 5 it fails its Save by.",
-      "ru": " (требуется Драконье Дыхание) Когда вы используете Драконье дыхание, вы можете заставить все цели совершить Физический спас. **Провал:** Цель отталкивается на 1 Клетку. **Провал (каждые 5):** + 1 дополнительная Клетка."
+      "en": "When you use your **Draconic Breath Weapon** (if you have it), you can force all targets to make a Physical Save. **Save Failure:** The target is pushed 1 Space away +1 additional Space for every 5 it fails its Save by.",
+      "ru": "Когда вы используете **Драконье дыхание** (если оно конечно у вас есть), вы можете заставить все цели совершить Физический спас. **Провал:** Цель отталкивается на 1 Клетку. **Провал (каждые 5):** + 1 дополнительная Клетка."
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
@@ -152,8 +207,8 @@
       "ru": "Драконье начало"
     },
     "description": {
-      "en": "When you take damage of the same type as your Draconic damage, your next Draconic Breath Weapon deals +1 bonus damage.",
-      "ru": "Когда вы получаете урон такого же типа, что и ваш Драконий урон, ваше следующее Драконье дыхание наносит +1 урона."
+      "en": "When you take damage of the same type as your Draconic damage, your next **Draconic Breath Weapon** deals +1 bonus damage.",
+      "ru": "Когда вы получаете урон такого же типа, что и ваш Драконий урон, ваше следующее **Драконье дыхание** наносит +1 урона."
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
@@ -170,16 +225,18 @@
       "ru": "Последний вздох"
     },
     "description": {
-      "en": "(requires Draconic Breath Weapon) Once per Combat when you enter Death's Door, you regain a use of your Draconic Breath Weapon and can immediately use it as a Reaction for free (0 AP).",
-      "ru": "(требуется Драконье дыхание) Один раз за бой, когда вы получаете эффект *При смерти*, вы восстанавливаете 1 использование Драконьего дыхания и можете немедленно использовать его в качестве Реакции бесплатно (0 ОД)."
+      "en": "When you enter Death's Door, you regain a use of your **Draconic Breath Weapon** (if you have it) and can immediately use it as a Reaction for free (0 AP).",
+      "ru": "Когда вы получаете эффект *При смерти*, вы восстанавливаете 1 использование **Драконьего дыхания** (если оно конечно у вас есть) и можете немедленно использовать его в качестве Реакции бесплатно (0 ОД)."
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
     "kind": "static",
     "price": {},
     "info": {
-      "price": 1
-    }
+      "price": 1,
+      "limit": 1
+    },
+    "limit_refresh": "combat"
   },
   {
     "slug": "draconic_ward",
@@ -188,16 +245,18 @@
       "ru": "Драконий щит"
     },
     "description": {
-      "en": "Once per Combat when you enter Death's Door, you gain 2 Temp HP. Whenever you're Hit by a Melee Attack while you have this Temp HP, your Attacker takes 1 Draconic damage.",
-      "ru": "Один раз за бой, когда вы получаете эффект *При смерти*, вы получаете 2 Врем ОЗ. Когда по вам попадают Ближней атакой, пока у вас есть эти временные ОЗ, атакующий получает 1 Драконьего урона."
+      "en": "When you enter Death's Door, you gain 2 Temp HP. Whenever you're Hit by a Melee Attack while you have this Temp HP, your Attacker takes 1 Draconic damage.",
+      "ru": "Когда вы получаете эффект *При смерти*, вы получаете 2 Врем ОЗ. Когда по вам попадают Ближней атакой, пока у вас есть эти временные ОЗ, атакующий получает 1 Драконьего урона."
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
     "kind": "static",
     "price": {},
     "info": {
-      "price": 1
-    }
+      "price": 1,
+      "limit": 1
+    },
+    "limit_refresh": "combat"
   },
   {
     "slug": "draconic_protection",
@@ -206,16 +265,18 @@
       "ru": "Драконий защитник"
     },
     "description": {
-      "en": "Once per Combat, when an ally within 20 Spaces is on Death’s Door, you begin to surge with an ancient power. While they remain on Death's Door their PD and AD increases by 5 until Combat ends.",
-      "ru": "Один раз за бой, когда вы оказываетесь в пределах 20 Клеток от союзника При смерти, вы можете укрыть его древней силой. До конца боя, пока этот союзник находится При смерти, он получает +5 ТЗ и ПЗ."
+      "en": "When an ally within 20 Spaces is on Death's Door, you begin to surge with an ancient power. While they remain on Death's Door their PD and AD increases by 5 until Combat ends.",
+      "ru": "Когда вы оказываетесь в пределах 20 Клеток от союзника При смерти, вы можете укрыть его древней силой. До конца боя, пока этот союзник находится При смерти, он получает +5 ТЗ и ПЗ."
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
     "kind": "static",
     "price": {},
     "info": {
-      "price": 1
-    }
+      "price": 1,
+      "limit": 1
+    },
+    "limit_refresh": "combat"
   },
   {
     "slug": "glide_speed",
@@ -233,7 +294,8 @@
     "price": {},
     "info": {
       "price": 2
-    }
+    },
+    "modifiers": { "speeds.glide": { "type": "set", "value": 0 } }
   },
   {
     "slug": "guardian_bond",
@@ -242,19 +304,21 @@
       "ru": "Узы защитника"
     },
     "description": {
-      "en": "Once per Combat when an ally enters Death's Door within 20 Spaces of you, you take an amount of True damage equal to your Prime Modifier.",
-      "ru": "Один раз за бой, когда вы оказываетесь в пределах 20 Клеток от союзника При смерти, вы получаете Истинный урон, равный вашему Высшему модификатору."
+      "en": "When an ally enters Death's Door within 20 Spaces of you, you take an amount of True damage equal to your Prime Modifier.",
+      "ru": "Когда вы оказываетесь в пределах 20 Клеток от союзника При смерти, вы получаете Истинный урон, равный вашему Высшему модификатору."
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
     "kind": "static",
     "price": {},
     "info": {
-      "price": -1
-    }
+      "price": -1,
+      "limit": 1
+    },
+    "limit_refresh": "combat"
   },
   {
-    "slug": "tough",
+    "slug": "giantborn_tough",
     "title": {
       "en": "Tough",
       "ru": "Крепкий"
@@ -265,11 +329,12 @@
     },
     "origin": "ancestry",
     "origin_value": "giantborn",
-    "kind": "static",
+    "kind": "update_result",
     "price": {},
     "info": {
       "price": 1
-    }
+    },
+    "modifiers": { "max_health": { "type": "add", "value": 1 } }
   },
   {
     "slug": "powerful_build",
@@ -296,8 +361,8 @@
       "ru": "Неостановимый"
     },
     "description": {
-      "en": "You have ADV on Saves against being **Slowed** or **Stunned**.",
-      "ru": "Вы получаете ПРЕИМ на Спасы от **Замедления** или **Ошеломления**."
+      "en": "You have ADV on Saves against being *Slowed* or *Stunned*.",
+      "ru": "Вы получаете преимущество на Спасы от *Замедления* или *Ошеломления*."
     },
     "origin": "ancestry",
     "origin_value": "giantborn",
@@ -332,8 +397,8 @@
       "ru": "Неудержимый"
     },
     "description": {
-      "en": "You're immune to being **Slowed 2** (or higher).",
-      "ru": "Вы получаете иммунитет к **Замедлению 2** или выше."
+      "en": "You're immune to being *Slowed 2* (or higher).",
+      "ru": "Вы получаете иммунитет к *Замедлению 2* или выше."
     },
     "origin": "ancestry",
     "origin_value": "giantborn",
@@ -350,8 +415,8 @@
       "ru": "Великанья стойкость"
     },
     "description": {
-      "en": "(requires Giant's Resolve) You also gain the benefits of your Giant's Resolve Trait while **Well-Bloodied.**",
-      "ru": "(требуется Великанье упорство) Вы также получаете бонусы Черты *Великанье упорство*, когда вы **Тяжело изранены.**"
+      "en": "You also gain the benefits of your **Giant's Resolve** (if you have it) while *Well-Bloodied*.",
+      "ru": "Вы также получаете бонусы Черты **Великанье упорство** (если оно конечно у вас есть), когда вы *Тяжело изранены*."
     },
     "origin": "ancestry",
     "origin_value": "giantborn",
@@ -368,16 +433,18 @@
       "ru": "Могучее тело"
     },
     "description": {
-      "en": "Once per Combat when you take damage from an Attack, you can reduce the damage taken by an amount equal to your Might or Agility (your choice).",
-      "ru": "Один раз за бой, когда вы получаете урон от Атаки, вы можете уменьшить его на величину, равную вашей Мощи или Ловкости (на ваш выбор)."
+      "en": "When you take damage from an Attack, you can reduce the damage taken by an amount equal to your Might or Agility (your choice).",
+      "ru": "Когда вы получаете урон от Атаки, вы можете уменьшить его на величину, равную вашей Мощи или Ловкости (на ваш выбор)."
     },
     "origin": "ancestry",
     "origin_value": "giantborn",
     "kind": "static",
     "price": {},
     "info": {
-      "price": 2
-    }
+      "price": 2,
+      "limit": 1
+    },
+    "limit_refresh": "combat"
   },
   {
     "slug": "mighty_hurl",
@@ -405,7 +472,7 @@
     },
     "description": {
       "en": "You have ADV on Checks made to throw creatures. Additionally, you don't have DisADV as a result of making an Attack with a Weapon with the Toss or Thrown Property at Long Range",
-      "ru": "Вы получаете ПРЕИМ на Проверки, совершённые для броска существ. Также вы не получаете ПОМ при Атаке метательным или Баллистическим Оружием на Предельную дальность."
+      "ru": "Вы получаете преимущество на Проверки, совершённые для броска существ. Также вы не получаете помеху при Атаке метательным или Баллистическим Оружием на Предельную дальность."
     },
     "origin": "ancestry",
     "origin_value": "giantborn",
@@ -431,6 +498,9 @@
     "price": {},
     "info": {
       "price": 1
+    },
+    "modifiers": {
+      "jump": { "type": "set", "value": "MAX(agi, mig, 1)" }
     }
   },
   {
@@ -440,16 +510,18 @@
       "ru": "Громила"
     },
     "description": {
-      "en": "Once per Combat, you can take the Shove or Grapple Action as a Minor Action.",
-      "ru": "Один раз за бой вы можете Толкнуть или Захватить, используя Малое Действие."
+      "en": "You can take the Shove or Grapple Action as a Minor Action.",
+      "ru": "Вы можете Толкнуть или Захватить, используя Малое Действие."
     },
     "origin": "ancestry",
     "origin_value": "giantborn",
     "kind": "static",
     "price": {},
     "info": {
-      "price": 1
-    }
+      "price": 1,
+      "limit": 1
+    },
+    "limit_refresh": "combat"
   },
   {
     "slug": "heavy_riser",
@@ -458,8 +530,8 @@
       "ru": "Тяжёлый подъем"
     },
     "description": {
-      "en": "You have to spend 4 Spaces of movement to stand up from **Prone**.",
-      "ru": "Чтобы встать из **Поваленности**, вам нужно потратить 4 Клетки движения (вместо 2)."
+      "en": "You have to spend 4 Spaces of movement to stand up from *Prone*.",
+      "ru": "Чтобы встать из *Поваленности*, вам нужно потратить 4 Клетки движения (вместо 2)."
     },
     "origin": "ancestry",
     "origin_value": "giantborn",
@@ -477,7 +549,7 @@
     },
     "description": {
       "en": "You have DisADV on Agility Checks.",
-      "ru": "Вы получаете ПОМ на Проверки ловкости."
+      "ru": "Вы получаете помеху на Проверки ловкости."
     },
     "origin": "ancestry",
     "origin_value": "giantborn",
@@ -488,7 +560,7 @@
     }
   },
   {
-    "slug": "intelligence_attribute_decrease",
+    "slug": "giantborn_intelligence_attribute_decrease",
     "title": {
       "en": "Intelligence Attribute Decrease",
       "ru": "Снижение атрибута интеллекта"
@@ -499,11 +571,12 @@
     },
     "origin": "ancestry",
     "origin_value": "giantborn",
-    "kind": "static",
+    "kind": "update_result",
     "price": {},
     "info": {
       "price": -1
-    }
+    },
+    "modifiers": { "int": { "type": "add", "value": -1 } }
   },
   {
     "slug": "fallen",
@@ -535,11 +608,12 @@
     },
     "origin": "ancestry",
     "origin_value": "angelborn",
-    "kind": "static",
+    "kind": "hidden",
     "price": {},
     "info": {
       "price": 1
-    }
+    },
+    "modifiers": { "damages": { "type": "concat", "value": ["radiant", "resist", "half"] } }
   },
   {
     "slug": "celestial_magic",
@@ -553,11 +627,13 @@
     },
     "origin": "ancestry",
     "origin_value": "angelborn",
-    "kind": "static",
+    "kind": "text",
     "price": {},
     "info": {
-      "price": 2
-    }
+      "price": 2,
+      "limit": 1
+    },
+    "limit_refresh": "long_rest"
   },
   {
     "slug": "healing_touch",
@@ -566,8 +642,8 @@
       "ru": "Исцеляющее касание"
     },
     "description": {
-      "en": "Once per Combat, you can spend 1 AP to touch a creature and Heal it. Make a DC 10 Spell Check. **Success:** You can restore up to 2 HP to the target. Success (each 5): +1 HP. **Failure:** You only restore 1 HP.",
-      "ru": "Один раз за бой вы можете потратить 1 ОД, чтобы коснуться существа и исцелить его. Совершите Проверку заклинания СЛ 10. **Успех:** Цель восстанавливает 2 ОЗ. **Успех (каждые 5):** +1 ОЗ. **Провал:** Цель восстанавливаете только 1 ОЗ."
+      "en": "You can spend 1 AP to touch a creature and Heal it. Make a DC 10 Spell Check. **Success:** You can restore up to 2 HP to the target. Success (each 5): +1 HP. **Failure:** You only restore 1 HP.",
+      "ru": "Вы можете потратить 1 ОД, чтобы коснуться существа и исцелить его. Совершите Проверку заклинания СЛ 10. **Успех:** Цель восстанавливает 2 ОЗ. **Успех (каждые 5):** +1 ОЗ. **Провал:** Цель восстанавливаете только 1 ОЗ."
     },
     "origin": "ancestry",
     "origin_value": "angelborn",
@@ -576,8 +652,10 @@
       "ap": 1
     },
     "info": {
-      "price": 2
-    }
+      "price": 2,
+      "limit": 1
+    },
+    "limit_refresh": "combat"
   },
   {
     "slug": "divine_glow",
@@ -598,7 +676,7 @@
     }
   },
   {
-    "slug": "mana_increase",
+    "slug": "angelborn_mana_increase",
     "title": {
       "en": "Mana Increase",
       "ru": "Увеличение запаса маны"
@@ -609,11 +687,12 @@
     },
     "origin": "ancestry",
     "origin_value": "angelborn",
-    "kind": "static",
+    "kind": "hidden",
     "price": {},
     "info": {
       "price": 1
-    }
+    },
+    "modifiers": { "max_mana_points": { "type": "add", "value": 1 } }
   },
   {
     "slug": "celestial_clarity",
@@ -622,8 +701,8 @@
       "ru": "Небесная ясность"
     },
     "description": {
-      "en": "You have ADV on Saves against being **Blinded** or **Deafened**.",
-      "ru": "Вы получаете ПРЕИМ на Спасы от **Ослепления** и **Оглушения**."
+      "en": "You have ADV on Saves against being *Blinded* or *Deafened*.",
+      "ru": "Вы получаете преимущество на Спасы от *Ослепления* и *Оглушения*."
     },
     "origin": "ancestry",
     "origin_value": "angelborn",
@@ -640,16 +719,18 @@
       "ru": "Ангельская интуиция"
     },
     "description": {
-      "en": "Once per Long Rest you can grant yourself ADV on an Insight Check to see if someone is lying.",
-      "ru": "Один раз после Долгого отдыха вы можете получить ПРЕИМ на Проверку проницательности, чтобы определить, лжет ли кто-то."
+      "en": "You can grant yourself ADV on an Insight Check to see if someone is lying.",
+      "ru": "Вы можете получить преимущество на Проверку проницательности, чтобы определить, лжет ли кто-то."
     },
     "origin": "ancestry",
     "origin_value": "angelborn",
     "kind": "static",
     "price": {},
     "info": {
-      "price": 1
-    }
+      "price": 1,
+      "limit": 1
+    },
+    "limit_refresh": "long_rest"
   },
   {
     "slug": "gift_of_angels",
@@ -658,8 +739,8 @@
       "ru": "Ангельский дар"
     },
     "description": {
-      "en": "Once per Combat you can spend 1 AP and 1 MP and touch a creature to heal them over time. The creature recovers 1 HP at the start of each of their turns for 1 minute (5 Rounds).",
-      "ru": "Один раз за бой вы можете потратить 1 ОД и 1 ОМ, чтобы коснуться существа и поддержать в нём жизнь. Существо восстанавливает 1 ОЗ в начале каждого своего Хода в течение 1 минуты (5 раундов)."
+      "en": "You can spend 1 AP and 1 MP and touch a creature to heal them over time. The creature recovers 1 HP at the start of each of their turns for 1 minute (5 Rounds).",
+      "ru": "Вы можете потратить 1 ОД и 1 ОМ, чтобы коснуться существа и поддержать в нём жизнь. Существо восстанавливает 1 ОЗ в начале каждого своего Хода в течение 1 минуты (5 раундов)."
     },
     "origin": "ancestry",
     "origin_value": "angelborn",
@@ -669,8 +750,10 @@
       "mp": 1
     },
     "info": {
-      "price": 2
-    }
+      "price": 2,
+      "limit": 1
+    },
+    "limit_refresh": "combat"
   },
   {
     "slug": "blinding_light",
@@ -679,25 +762,27 @@
       "ru": "Ослепляющий свет"
     },
     "description": {
-      "en": "Once per Combat, you can spend 1 AP to choose a creature within 5 Spaces and make a Spell Check contested by its Physical Save. **Success**: The target is **Blinded** until the end of your next turn.",
-      "ru": "Один раз за бой вы можете потратить 1 ОД, чтобы выбрать существо в пределах 5 Клеток и совершить Проверку заклинания против его Физического Спаса. **Успех**: Цель **Ослеплена** до конца вашего следующего Хода."
+      "en": "You can spend 1 AP to choose a creature within 5 Spaces and make a Spell Check contested by its Physical Save. **Success**: The target is *Blinded* until the end of your next turn.",
+      "ru": "Вы можете потратить 1 ОД, чтобы выбрать существо в пределах 5 Клеток и совершить Проверку заклинания против его Физического Спаса. **Успех**: Цель *Ослеплена* до конца вашего следующего Хода."
     },
     "origin": "ancestry",
     "origin_value": "angelborn",
     "kind": "static",
     "price": {},
     "info": {
-      "price": 1
-    }
+      "price": 1,
+      "limit": 1
+    },
+    "limit_refresh": "combat"
   },
   {
-    "slug": "glide_speed",
+    "slug": "angelborn_glide_speed",
     "title": {
       "en": "Glide Speed",
       "ru": "Скорость планирования"
     },
     "description": {
-      "en": "You have a set of wings that you can use to horizontally glide and slow your descent. Provided you aren’t **Incapacitated**, you gain the following benefits while in the air:\n\n- **Controlled Falling:** You suffer no damage from Controlled Falling.\n\n- **Altitude Drop:** If you end your turn midair, you Controlled Fall 4 Spaces.**Glide Speed:** You can use your movement to glide horizontally.",
+      "en": "You have a set of wings that you can use to horizontally glide and slow your descent. Provided you aren't **Incapacitated**, you gain the following benefits while in the air:\n\n- **Controlled Falling:** You suffer no damage from Controlled Falling.\n\n- **Altitude Drop:** If you end your turn midair, you Controlled Fall 4 Spaces.**Glide Speed:** You can use your movement to glide horizontally.",
       "ru": "У вас есть крылья, которые позволяют вам планировать вдоль земли и замедлять падение. Пока вы находитесь в воздухе и не **Шокированы**, вы получаете следующие бонусы:\n\n- **Контролируемое Падение:** Вы не получаете урон при Контролируемом падении.\n\n- **Снижение высоты:** Если вы заканчиваете Ход в воздухе, вы Контролируемо падаете на 4 Клетки.**Скорость планирования:** Вы можете использовать своё Движение для горизонтального планирования."
     },
     "origin": "ancestry",
@@ -706,7 +791,8 @@
     "price": {},
     "info": {
       "price": 2
-    }
+    },
+    "modifiers": { "speeds.glide": { "type": "set", "value": 0 } }
   },
   {
     "slug": "pacifist",
@@ -738,11 +824,50 @@
     },
     "origin": "ancestry",
     "origin_value": "angelborn",
-    "kind": "static",
+    "kind": "hidden",
     "price": {},
     "info": {
       "price": -1
-    }
+    },
+    "modifiers": { "damages": { "type": "concat", "value": ["umbral", "vulner", 1] } }
+  },
+  {
+    "slug": "fiendborn_origin",
+    "title": {
+      "en": "Fiendish Origin",
+      "ru": "Демоническое происхождение"
+    },
+    "description": {
+      "en": "Choose a Fiendish Origin.",
+      "ru": "Выберите демоническое происхождение."
+    },
+    "origin": "base_ancestry",
+    "origin_value": "fiendborn",
+    "kind": "one_from_list",
+    "options": {
+      "cold": {
+        "en": "Cold",
+        "ru": "Морозный"
+      },
+      "corrosion": {
+        "en": "Corrosion",
+        "ru": "Кислотный"
+      },
+      "fire": {
+        "en": "Fire",
+        "ru": "Огненный"
+      },
+      "poison": {
+        "en": "Poison",
+        "ru": "Ядовитый"
+      },
+      "umbral": {
+        "en": "Umbral",
+        "ru": "Сумрачный"
+      }
+    },
+    "price": {},
+    "info": {}
   },
   {
     "slug": "redeemed",
@@ -787,7 +912,7 @@
       "ru": "Демоническая магия"
     },
     "description": {
-      "en": "You learn 1 Spell of your choice from the Arcane Spell List from the Elemental or Enchantment Spell Schools. If the Spell deals damage, it must be the same damage type as your Fiendish damage. Once per Long Rest, you can cast the chosen Spell spending 1 less MP than normal (minimum of 0 MP). The Spell's total MP cost (before all reductions) still can’t exceed your Mana Spend Limit.",
+      "en": "You learn 1 Spell of your choice from the Arcane Spell List from the Elemental or Enchantment Spell Schools. If the Spell deals damage, it must be the same damage type as your Fiendish damage. Once per Long Rest, you can cast the chosen Spell spending 1 less MP than normal (minimum of 0 MP). The Spell's total MP cost (before all reductions) still can't exceed your Mana Spend Limit.",
       "ru": "Вы изучаете одно Заклинание на выбор из Арканного Списка заклинаний, либо из Школ разрушения или Очарования. Если Заклинание наносит урон, он должен совпадать с вашим Демоническим уроном. Один раз после Долгого отдыха вы можете наложить выбранное Заклинание, потратив на 1 ОМ меньше обычного (минимум 0 ОМ). Общая стоимость в ОМ Заклинания (до всех снижений) всё ещё не может превышать ваш Предел траты маны."
     },
     "origin": "ancestry",
@@ -795,11 +920,13 @@
     "kind": "static",
     "price": {},
     "info": {
-      "price": 2
-    }
+      "price": 2,
+      "limit": 1
+    },
+    "limit_refresh": "long_rest"
   },
   {
-    "slug": "darkvision",
+    "slug": "fiendborn_darkvision",
     "title": {
       "en": "Darkvision",
       "ru": "Тёмное зрение"
@@ -810,11 +937,12 @@
     },
     "origin": "ancestry",
     "origin_value": "fiendborn",
-    "kind": "static",
+    "kind": "update_result",
     "price": {},
     "info": {
       "price": 1
-    }
+    },
+    "modifiers": { "visions.dark": { "type": "set", "value": 10 } }
   },
   {
     "slug": "light_bane",
@@ -837,7 +965,7 @@
     }
   },
   {
-    "slug": "mana_increase",
+    "slug": "fiendborn_mana_increase",
     "title": {
       "en": "Mana Increase",
       "ru": "Увеличение Запаса маны"
@@ -848,11 +976,12 @@
     },
     "origin": "ancestry",
     "origin_value": "fiendborn",
-    "kind": "static",
+    "kind": "hidden",
     "price": {},
     "info": {
       "price": 1
-    }
+    },
+    "modifiers": { "max_mana_points": { "type": "add", "value": 1 } }
   },
   {
     "slug": "silver_tongued",
@@ -861,16 +990,18 @@
       "ru": "Лукавый"
     },
     "description": {
-      "en": "Once per Long Rest you can grant yourself ADV on an Influence Check when trying to deceive someone.",
-      "ru": "Один раз после Долгого отдыха вы можете получить ПРЕИМ на Проверку влияния, совершённую чтобы кого-то обмануть."
+      "en": "You can grant yourself ADV on an Influence Check when trying to deceive someone.",
+      "ru": "Вы можете получить преимущество на Проверку влияния, совершённую чтобы кого-то обмануть."
     },
     "origin": "ancestry",
     "origin_value": "fiendborn",
     "kind": "static",
     "price": {},
     "info": {
-      "price": 1
-    }
+      "price": 1,
+      "limit": 1
+    },
+    "limit_refresh": "long_rest"
   },
   {
     "slug": "fiendish_aura",
@@ -879,7 +1010,7 @@
       "ru": "Демоническая аура"
     },
     "description": {
-      "en": "You learn the *Sorcery* Cantrip, but you must choose the type of energy that’s the same as your Fiendish Origin.",
+      "en": "You learn the *Sorcery* Cantrip, but you must choose the type of energy that's the same as your Fiendish Origin.",
       "ru": "Вы изучаете Заговор *Чародейство*, но выбранный тип энергии должен соответствовать вашему Демоническому происхождению."
     },
     "origin": "ancestry",
@@ -897,8 +1028,8 @@
       "ru": "Высшее тёмное зрение"
     },
     "description": {
-      "en": "(requires Darkvision) Your Darkvision increases to 20 Spaces.",
-      "ru": "(требуется Тёмное зрение) Радиус вашего Тёмного зрения увеличивается до 20 Клеток."
+      "en": "Your Darkvision (if you have it) increases to 20 Spaces.",
+      "ru": "Радиус вашего Тёмного зрения (если оно конечно у вас есть) увеличивается до 20 Клеток."
     },
     "origin": "ancestry",
     "origin_value": "fiendborn",
@@ -915,8 +1046,8 @@
       "ru": "Инфернальная смелость"
     },
     "description": {
-      "en": "You have ADV on Saves against being Intimidated.",
-      "ru": "Вы получаете ПРЕИМ на Спасы от **Запугивания**."
+      "en": "You have ADV on Saves against being *Intimidated*.",
+      "ru": "Вы получаете преимущество на Спасы от *Запугивания*."
     },
     "origin": "ancestry",
     "origin_value": "fiendborn",
@@ -933,16 +1064,18 @@
       "ru": "Пугающий"
     },
     "description": {
-      "en": "Once per Combat you can take the Intimidate Action as a Minor Action.",
-      "ru": "Один раз за бой вы можете Запугать существо, используя Малое действие."
+      "en": "You can take the Intimidate Action as a Minor Action.",
+      "ru": "Вы можете Запугать существо, используя Малое действие."
     },
     "origin": "ancestry",
     "origin_value": "fiendborn",
     "kind": "static",
     "price": {},
     "info": {
-      "price": 1
-    }
+      "price": 1,
+      "limit": 1
+    },
+    "limit_refresh": "combat"
   },
   {
     "slug": "charming_gaze",
@@ -951,8 +1084,8 @@
       "ru": "Чарующий взгляд"
     },
     "description": {
-      "en": "You can spend 1 AP to gaze upon a creature you can see within 10 Spaces that can also see you. Make a Spell Check contested by the target's Repeated Charisma Save. **Success:** The creature becomes **Charmed** by you for 1 minute. You can use this ability once per Long Rest, and when you roll for Initiative, or meet some other unique criteria at the GM's discretion, this ability recharges.",
-      "ru": "Один раз после Долгого отдыха, Броска инициативы или иного условия на усмотрение Мастера вы можете потратить 1 ОД, чтобы направить пристальный взгляд на существо в пределах 10 Клеток, которое может вас видеть. Совершите Проверку Заклинания против Повторяемого спаса Харизмы цели. **Провал Спаса:** Существо становится **Очарованным** вами на 1 минуту."
+      "en": "You can spend 1 AP to gaze upon a creature you can see within 10 Spaces that can also see you. Make a Spell Check contested by the target's Repeated Charisma Save. **Success:** The creature becomes *Charmed* by you for 1 minute. You can use this ability once per Long Rest, and when you roll for Initiative, or meet some other unique criteria at the GM's discretion, this ability recharges.",
+      "ru": "Один раз после Долгого отдыха, Броска инициативы или иного условия на усмотрение Мастера вы можете потратить 1 ОД, чтобы направить пристальный взгляд на существо в пределах 10 Клеток, которое может вас видеть. Совершите Проверку Заклинания против Повторяемого спаса Харизмы цели. **Провал Спаса:** Существо становится *Очарованным* вами на 1 минуту."
     },
     "origin": "ancestry",
     "origin_value": "fiendborn",
@@ -961,17 +1094,19 @@
       "ap": 1
     },
     "info": {
-      "price": 1
-    }
+      "price": 1,
+      "limit": 1
+    },
+    "limit_refresh": "long_rest"
   },
   {
-    "slug": "glide_speed",
+    "slug": "fiendborn_glide_speed",
     "title": {
       "en": "Glide Speed",
       "ru": "Скорость планирования"
     },
     "description": {
-      "en": "You have a set of wings that you can use to horizontally glide and slow your descent. Provided you aren’t **Incapacitated**, you gain the following benefits while in the air:\n\n- **Controlled Falling:** You suffer no damage from Controlled Falling.\n\n- **Altitude Drop:** If you end your turn midair, you Controlled Fall 4 Spaces.\n\n- **Glide Speed:** You can use your movement to glide horizontally.",
+      "en": "You have a set of wings that you can use to horizontally glide and slow your descent. Provided you aren't **Incapacitated**, you gain the following benefits while in the air:\n\n- **Controlled Falling:** You suffer no damage from Controlled Falling.\n\n- **Altitude Drop:** If you end your turn midair, you Controlled Fall 4 Spaces.\n\n- **Glide Speed:** You can use your movement to glide horizontally.",
       "ru": "У вас есть крылья, которые позволяют вам планировать вдоль земли и замедлять падение. Пока вы находитесь в воздухе и не **Шокированы**, вы получаете следующие бонусы:\n\n- **Контролируемое падение:** Вы не получаете урон при Контролируемом Падении.\n\n- **Снижение высоты:** Если вы заканчиваете Ход в воздухе, вы Контролируемо падаете на 4 Клетки.\n\n- **Скорость планирования:** Вы можете использовать своё Движение для горизонтального планирования."
     },
     "origin": "ancestry",
@@ -980,7 +1115,8 @@
     "price": {},
     "info": {
       "price": 2
-    }
+    },
+    "modifiers": { "speeds.glide": { "type": "set", "value": 0 } }
   },
   {
     "slug": "radiant_weakness",
@@ -994,11 +1130,12 @@
     },
     "origin": "ancestry",
     "origin_value": "fiendborn",
-    "kind": "static",
+    "kind": "hidden",
     "price": {},
     "info": {
       "price": -1
-    }
+    },
+    "modifiers": { "damages": { "type": "concat", "value": ["radiant", "vulner", 1] } }
   },
   {
     "slug": "divine_dampening",

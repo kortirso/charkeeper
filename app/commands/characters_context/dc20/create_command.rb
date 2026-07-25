@@ -4,7 +4,8 @@ module CharactersContext
   module Dc20
     class CreateCommand < BaseCommand
       include Deps[
-        add_feat: 'commands.characters_context.dc20.feats.add'
+        add_feat: 'commands.characters_context.dc20.feats.add',
+        refresh_feats: 'services.characters_context.dc20.refresh_feats'
       ]
 
       use_contract do
@@ -29,7 +30,9 @@ module CharactersContext
 
       def do_persist(input)
         character = ::Dc20::Character.create!(input.slice(:user, :name, :data))
+
         attach_feats(character, input[:ancestry_feats].values.flatten)
+        refresh_feats.call(character: character)
 
         { result: character }
       end

@@ -15,11 +15,19 @@ module Dc20
     end
 
     def description
-      Charkeeper::Container.resolve('markdown').call(
+      result = Charkeeper::Container.resolve('markdown').call(
         value: translate(object.description),
         version: (context ? (context[:version] || nil) : nil),
         initial_version: '0.3.20'
       )
+      return unless result
+
+      result.scan(/\{\{([^}]+)\}\}/).flatten.each do |value|
+        _variable, default = value.split('|')
+
+        result.gsub!("{{#{value}}}", default || '')
+      end
+      result
     end
   end
 end
