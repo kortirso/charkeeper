@@ -17,11 +17,11 @@ module Dc20
       private
 
       def mana_points_by_level
-        return 18 if level >= 10
-        return 16 if level >= 9
-        return 13 if level >= 7
-        return 11 if level >= 5
-        return 8 if level >= 3
+        return 21 if level >= 10
+        return 18 if level >= 9
+        return 15 if level >= 7
+        return 12 if level >= 5
+        return 9 if level >= 3
 
         6
       end

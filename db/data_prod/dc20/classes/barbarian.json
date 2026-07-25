@@ -1,0 +1,112 @@
+[
+  {
+    "slug": "rage",
+    "title": {
+      "en": "Rage",
+      "ru": "Ярость"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 SP** to enter a **Rage** for 1 minute. For the duration, you're subjected to the following effects:\n\n- You deal +1 damage on Martial Attacks made using Unarmed Strikes or Melee Weapons.\n- You have ADV on Might Saves.\n- Your PD gain calculated penalty -5.\n- You gain Resistance (Half) to Elemental and Physical damage.\n**Ending Early:** Your Rage ends early if you fall Unconscious, die, or you choose to end it for free on your turn.",
+      "ru": "Во время боя вы можете потратить **1 ОД** и **1 ОВ**, чтобы войти в состояние **Ярости** на 1 минуту. В течение этого времени на вас действуют следующие эффекты:\n\n- Вы наносите +1 урона бойцовскими атаками, используя рукопашные атаки или атаки оружием.\n- Вы получаете преимущество на спасы мощи.\n- Вы получаете добавленный штраф -5 к ТЗ.\n- Вы получаете сопротивление (половина) к стихийному и физическому урону.\n**Окончание:** Ваша **Ярость** заканчивается, если вы вырубаетесь, умираете или решаете бесплатно окончить её во время своего хода."
+    },
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {},
+    "modifiers": {
+      "damages": { "type": "concat", "value": [["elemental", "resist", "half"], ["physical", "resist", "half"]] },
+      "pd_base": { "type": "add", "value": -5 }
+    }
+  },
+  {
+    "slug": "berserker",
+    "title": {
+      "en": "Berserker",
+      "ru": "Берсерк"
+    },
+    "description": {
+      "en": "When you make a Melee Martial Attack on your turn, you can move up to 2 Spaces immediately before making the Attack.",
+      "ru": "В свой ход сразу перед вашей ближней бойцовской атакой вы можете переместиться на 2 клетки."
+    },
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {},
+    "modifiers": {
+      "jump": { "type": "set", "value": "MAX(agi, mig, 1)" },
+      "speeds.ground": { "type": "add", "value": 1 },
+      "ad_base": { "type": "add", "value": "if (no_armor, 2, 0)" }
+    }
+  },
+  {
+    "slug": "shattering_force",
+    "title": {
+      "en": "Shattering Force",
+      "ru": "Сокрушительная сила"
+    },
+    "description": {
+      "en": "When you Hit a structure or mundane object with a Melee Attack, it's considered a Critical Hit.",
+      "ru": "Если вы попадаете ближней атакой по строению или немагическому предмету, это считается Критическим Ударом."
+    },
+    "origin": "class_flavor",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": {
+      "level": 1
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "battlecry",
+    "title": {
+      "en": "Battlecry",
+      "ru": "Боевой клич"
+    },
+    "description": {
+      "en": "You can spend **1 AP** and **1 SP** to release a shout of your choice listed below. Until the start of your next turn, you and creatures of your choice within 5 Spaces that can see or hear you are subjected to the effects of your shout. A creature can only benefit from the same type of shout once at a time.\n\n- **Fortitude Shout:** Each creature gains Resistance (1) against the next source of Physical or Elemental damage.\n- **Fury Shout:** Each creature deals +1 damage on their next Attack against 1 target.\n- **Urgent Shout:** Each creature gains +1 Speed until the start of your next turn.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОВ**, чтобы издать один из нижеперечисленных кличей. До начала вашего следующего хода на вас и всех выбранных вами существ в пределах 5 клеток, которые могут вас видеть или слышать, действует эффект выбранного клича. Если на существо действует два или больше одинаковых клича, оно получает бонусы только от одного из них.\n\n- **Клич стойкости:** Каждое существо получает сопротивление (1) к первому прошедшему по нему физическому или стихийному урону.\n- **Клич неистовства:** Каждое существо наносит +1 урона при следующей атаке.\n- **Клич спешки:** Каждое существо получает +1 к скорости до начала вашего следующего хода."
+    },
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": {
+      "level": 2
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": true,
+    "bonus_eval_variables": null,
+    "price": {
+      "ap": 1,
+      "sp": 1
+    },
+    "info": {},
+    "modifiers": {
+      "pd_base": { "type": "add", "value": -5 }
+    }
+  }
+]

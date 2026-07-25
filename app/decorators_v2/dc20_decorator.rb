@@ -2,9 +2,6 @@
 
 class Dc20Decorator < ApplicationDecoratorV2
   BASE_MODIFIERS = %w[mig agi int cha].freeze
-  CLASS_MODIFIERS = %w[max_stamina_points max_mana_points maneuver_points max_health spells].freeze
-  SET_FIRST_MODIFIERS = ['speeds.ground', 'speeds.swim', 'speeds.climb', 'speeds.flight', 'speeds.glide', 'size'].freeze
-  SET_FIRST_MODIFIERS_KEYS = %w[speeds size].freeze
 
   def call(character:, simple: false, version: nil)
     @character = character
@@ -21,16 +18,9 @@ class Dc20Decorator < ApplicationDecoratorV2
 
     @result = Dc20::ClassDecorator.new.call(result: @result)
 
-    calculate_secondary_modifiers
-    apply_class_modifiers
+    calculate_modifiers
+    apply_modifiers
     calculate_secondary_abilities
-
-    apply_general_modifiers
-    calculate_final_abilities
-
-    calculate_set_modifiers
-    apply_set_modifiers
-    calculate_set_abilities
 
     self
   end
@@ -74,39 +64,60 @@ class Dc20Decorator < ApplicationDecoratorV2
     @result['attribute_saves'] = modified_abilities.transform_values { |item| item + combat_mastery }
     @result['pd_base'] = find_pd_base
     @result['ad_base'] = find_ad_base
-    @result['grit_points'] = grit_points.merge('max' => modified_abilities['cha'] + 2)
     @result['visions'] = { 'dark' => 0, 'blind' => 0, 'true' => 0, 'tremor' => 0 }
     @result['size'] = 'medium'
+    @result['max_grit_points'] = modified_abilities['cha'] + 2
+    @result['damages'] = []
   end
 
-  def calculate_secondary_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+  def calculate_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
+    # rubocop: disable Metrics/BlockLength
     modifiers.each do |modifier|
       modifier.each do |key, value|
         next if BASE_MODIFIERS.include?(key)
-        next if SET_FIRST_MODIFIERS.include?(key)
-        next if value['type'] != 'add'
 
         formula_result = formula.call(formula: value['value'], variables: formula_variables)
-        next unless formula_result
-
-        if key.include?('.')
-          primary, secondary = key.split('.')
-          @bonuses[primary] ||= {}
-          @bonuses[primary][secondary] ||= 0
-          @bonuses[primary][secondary] += formula_result
-        else
-          @bonuses[key] ||= 0
-          @bonuses[key] += formula_result
+        if value['type'] == 'set'
+          if key.include?('.')
+            primary, secondary = key.split('.')
+            @set_bonuses[primary] ||= {}
+            @set_bonuses[primary][secondary] = formula_result || value['value']
+          else
+            @set_bonuses[key] = formula_result || value['value']
+          end
+        elsif value['type'] == 'add' && formula_result
+          if key.include?('.')
+            primary, secondary = key.split('.')
+            @bonuses[primary] ||= {}
+            @bonuses[primary][secondary] ||= 0
+            @bonuses[primary][secondary] += formula_result
+          else
+            @bonuses[key] ||= 0
+            @bonuses[key] += formula_result
+          end
+        elsif value['type'] == 'concat'
+          @result[key] ||= []
+          if value['value'][0].is_a?(Array)
+            @result[key].push(*value['value'])
+          else
+            @result[key] << value['value']
+          end
+          @result[key] = @result[key].uniq
         end
       end
     end
+    # rubocop: enable Metrics/BlockLength
   end
 
-  def apply_class_modifiers
-    @result = @result.merge(@bonuses.slice(*CLASS_MODIFIERS)) { |_key, oldval, newval| newval + oldval }
+  def apply_modifiers
+    @result =
+      @result
+        .deep_merge(@set_bonuses) { |_key, oldval, newval| [oldval, newval].compact.max }
+        .deep_merge(@bonuses.except(*BASE_MODIFIERS)) { |_key, oldval, newval| oldval.nil? ? nil : (newval + oldval) }
   end
 
   def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    @result['grit_points'] = grit_points.merge('max' => max_grit_points)
     @result['rest_points'] = rest_points.merge('max' => max_health)
     @result['stamina_points'] = stamina_points.merge('max' => max_stamina_points + paths['martial'])
     @result['mana_points'] = mana_points.merge('max' => max_mana_points + (paths['spellcaster'] * 3))
@@ -118,65 +129,14 @@ class Dc20Decorator < ApplicationDecoratorV2
       'bloodied' => max_health / 2,
       'well_bloodied' => max_health / 4
     )
-
     @result['damages'] = calc_resistances
     @result['attacks'] = [unarmed_attack, shield_attack].compact + character_weapons.map { |item| calculate_attack(item) }
     @result['features'] = apply_features
     @result['cantrips'] = 0
-  end
-
-  def apply_general_modifiers
-    @result =
-      @result.deep_merge(
-        @bonuses.except(*(BASE_MODIFIERS + CLASS_MODIFIERS + SET_FIRST_MODIFIERS))
-      ) { |_key, oldval, newval| newval + oldval }
-  end
-
-  def calculate_final_abilities # rubocop: disable Metrics/AbcSize
     @result['precision_defense'] = { default: pd_base, heavy: pd_base + 5, brutal: pd_base + 10 }
     @result['area_defense'] = { default: ad_base, heavy: ad_base + 5, brutal: ad_base + 10 }
     @result['physical_save'] = attribute_saves.slice('mig', 'agi').values.max
     @result['mental_save'] = attribute_saves.slice('cha', 'int').values.max
-    @result['speeds'] = speeds
-  end
-
-  def calculate_set_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
-    modifiers.each do |modifier|
-      modifier.each do |key, value|
-        next if SET_FIRST_MODIFIERS.exclude?(key)
-
-        formula_result = formula.call(formula: value['value'], variables: formula_variables)
-        if value['type'] == 'set'
-          if key.include?('.')
-            primary, secondary = key.split('.')
-            @set_bonuses[primary] ||= {}
-            @set_bonuses[primary][secondary] = formula_result || value['value']
-          else
-            @set_bonuses[key] = formula_result || value['value']
-          end
-        elsif value['type'] == 'add'
-          if key.include?('.')
-            primary, secondary = key.split('.')
-            @bonuses[primary] ||= {}
-            @bonuses[primary][secondary] ||= 0
-            @bonuses[primary][secondary] += formula_result
-          else
-            @bonuses[key] ||= 0
-            @bonuses[key] += formula_result
-          end
-        end
-      end
-    end
-  end
-
-  def apply_set_modifiers
-    @result =
-      @result
-        .deep_merge(@set_bonuses.slice(*SET_FIRST_MODIFIERS_KEYS)) { |_key, oldval, newval| [oldval, newval].compact.max }
-        .deep_merge(@bonuses.slice(*SET_FIRST_MODIFIERS_KEYS)) { |_key, oldval, newval| oldval.nil? ? nil : (newval + oldval) }
-  end
-
-  def calculate_set_abilities
     @result['speeds'] = speeds.transform_values { |item| item&.zero? ? speeds['ground'] : item }.compact
   end
 
@@ -364,18 +324,9 @@ class Dc20Decorator < ApplicationDecoratorV2
 
   # rubocop: disable Metrics/AbcSize, Layout/LineLength
   def calc_resistances
-    bonus_resistances = []
-    modifiers.each do |modifier|
-      modifier.each do |key, value|
-        next if key != 'damages'
-        next if value['type'] != 'concat'
-
-        bonus_resistances << value['value']
-      end
-    end
     stack_damages(
       transform_categories(
-        resistances + bonus_resistances
+        resistances + damages
       ).group_by { |item| item[0] }.transform_values { |value| value.map { |item| item[1..] } }
     )
   end
@@ -425,7 +376,7 @@ class Dc20Decorator < ApplicationDecoratorV2
     end
   end
 
-  def feature_payload(feature) # rubocop: disable Metrics/AbcSize
+  def feature_payload(feature) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
     limit = feature.feat.info['limit'] ? formula.call(formula: feature.feat.info['limit'], variables: formula_variables) : nil
     {
       id: feature.id,
@@ -444,7 +395,8 @@ class Dc20Decorator < ApplicationDecoratorV2
       value: feature.value,
       selected_count: feature.selected_count,
       tokens: feature.tokens,
-      tokens_max: feature.tokens ? feature.feat.tokens['limit'] : nil
+      tokens_max: feature.tokens ? feature.feat.tokens['limit'] : nil,
+      options: feature.feat.options
     }.compact
   end
 

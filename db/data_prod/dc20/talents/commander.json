@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "seize_momentum",
+    "title": {
+      "en": "Seize Momentum",
+      "ru": "Быстрое реагирование"
+    },
+    "description": {
+      "en": "When an ally within your Commanding Aura scores a Heavy Hit, you can use your Commander's Call as a Reaction.",
+      "ru": "Когда союзник в вашей **Ауре командования** наносит тяжёлый удар, вы можете использовать **Приказ командира** в качестве реакции."
+    },
+    "origin": "talent",
+    "origin_value": "commander",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "commander_call",
+        "commanding_aura"
+      ]
+    }
+  },
+  {
+    "slug": "coordinated_command",
+    "title": {
+      "en": "Coordinated Command",
+      "ru": "Координирующий приказ"
+    },
+    "description": {
+      "en": "Once per Round, when you use your Commander's Call, you can spend 1 additional SP to target a second creature within range (including yourself), they also gain the benefits of the chosen command. You choose who acts first between the targeted creatures.",
+      "ru": "Один раз за ход, когда вы используете **Приказ командира**, вы можете дополнительно потратить 1 ОВ чтобы отдать этот же приказ второму существу в пределах дальности (включая себя). Вы выбираете, кто из них ходит первым."
+    },
+    "origin": "talent",
+    "origin_value": "commander",
+    "kind": "static",
+    "limit_refresh": null,
+    "options": null,
+    "conditions": {
+      "level": 3
+    },
+    "description_eval_variables": {},
+    "eval_variables": {},
+    "continious": false,
+    "bonus_eval_variables": null,
+    "price": {
+      "sp": 1
+    },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "commander_call"
+      ]
+    }
+  }
+]
