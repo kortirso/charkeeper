@@ -47,7 +47,7 @@ class Dc20Decorator < ApplicationDecoratorV2
     end
   end
 
-  def calculate_primary_abilities # rubocop: disable Metrics/AbcSize
+  def calculate_primary_abilities # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
     @result['modified_abilities'] = find_modified_abilities
     @result['skills'] = generate_skills_payload
     @result['trades'] = generate_trades_payload
@@ -68,6 +68,9 @@ class Dc20Decorator < ApplicationDecoratorV2
     @result['size'] = 'medium'
     @result['max_grit_points'] = modified_abilities['cha'] + 2
     @result['damages'] = []
+    @result['combat_expertise'] << 'weapon' if paths['martial'].positive?
+    @result['combat_expertise'] << 'focuses' if paths['spellcaster'].positive?
+    @result['combat_expertise'] = @result['combat_expertise'].uniq
   end
 
   def calculate_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength

@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dc20Abilities, Dc20Skills, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest,
-  Dc20BonusesV2, Dc20Damages, Dc20Conditions, Dc20Info
+  Dc20BonusesV2, Dc20Damages, Dc20Conditions, Dc20Info, Dc20Trainings
 } from '../../../pages';
 import {
   CharacterNavigation, Notes, Avatar, ContentWrapper, createRoll, Equipment, Combat, Feats
@@ -63,7 +63,7 @@ export const Dc20 = (props) => {
   const characterTabs = createMemo(() => {
     const result = ['combat', 'equipment'];
     if (character().mana_points.max > 0) result.push('spells');
-    return result.concat(['classLevels', 'rest', 'bonuses', 'notes', 'avatar']);
+    return result.concat(['classLevels', 'professions', 'rest', 'bonuses', 'notes', 'avatar']);
   });
 
   const mobileView = createMemo(() => {
@@ -152,10 +152,11 @@ export const Dc20 = (props) => {
                 helpMessage={localize(TRANSLATION, locale())['levelingHelpMessage']}
               />
             </Match>
+            <Match when={activeMobileTab() === 'professions'}>
+              <Dc20Trainings character={character()} />
+            </Match>
             <Match when={activeMobileTab() === 'spells'}>
-              <Dc20Spells
-                character={character()} openD20Test={openDC20Test}
-              />
+              <Dc20Spells character={character()} openD20Test={openDC20Test} />
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
               <Dc20Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -268,10 +269,11 @@ export const Dc20 = (props) => {
                 helpMessage={localize(TRANSLATION, locale())['levelingHelpMessage']}
               />
             </Match>
+            <Match when={activeTab() === 'professions'}>
+              <Dc20Trainings character={character()} />
+            </Match>
             <Match when={activeTab() === 'spells'}>
-              <Dc20Spells
-                character={character()} openD20Test={openDC20Test}
-              />
+              <Dc20Spells character={character()} openD20Test={openDC20Test} />
             </Match>
             <Match when={activeTab() === 'rest'}>
               <Dc20Rest character={character()} onReloadCharacter={props.onReloadCharacter} />

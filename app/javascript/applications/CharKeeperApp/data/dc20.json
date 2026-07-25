@@ -82,12 +82,12 @@
     "cha": { "name": { "en": "Charisma", "ru": "Харизма" } }
   },
   "combatExpertise": {
-    "focuses": { "name": { "en": "Spell Focuses", "ru": "Фокусировка" } },
     "weapon": { "name": { "en": "Weapon", "ru": "Оружие" } },
     "light_armor": { "name": { "en": "Light Armor", "ru": "Лёгкая броня" } },
     "heavy_armor": { "name": { "en": "Heavy Armor", "ru": "Тяжёлая броня" } },
     "light_shield": { "name": { "en": "Light Shield", "ru": "Лёгкие щиты" } },
-    "heavy_shield": { "name": { "en": "Heavy Shield", "ru": "Тяжёлые щиты" } }
+    "heavy_shield": { "name": { "en": "Heavy Shield", "ru": "Тяжёлые щиты" } },
+    "focuses": { "name": { "en": "Spell Focuses", "ru": "Фокусировка" } }
   },
   "damages": {
     "bludge": { "name": { "en": "Bludgeoning", "ru": "Дробящий" } },
