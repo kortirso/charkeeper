@@ -67,8 +67,8 @@
       "ru": "Неизмеримая сила"
     },
     "description": {
-      "en": "- **Titan Grip:** While Raging, you can wield Two-Handed Weapons using only one hand.\n- **Titanic Leap:** Your Jump Distance gain situation bonus +1.",
-      "ru": "- **Титанический хват:** Находясь в **Ярости** вы можете использовать двуручное оружие одной рукой.\n- **Титанический прыжок:** Вы получаете ситуативный бонус +1 к дальности прыжка."
+      "en": "- **Titan Grip:** While Raging, you can wield Two-Handed Weapons using only one hand.\n- **Titanic Leap:** Your Jump Distance gain bonus +1.",
+      "ru": "- **Титанический хват:** Находясь в **Ярости** вы можете использовать двуручное оружие одной рукой.\n- **Титанический прыжок:** Вы получаете бонус +1 к дальности прыжка."
     },
     "origin": "talent",
     "origin_value": "barbarian",
@@ -88,6 +88,9 @@
       "required_features": [
         "rage"
       ]
+    },
+    "modifiers": {
+      "jump": { "type": "add", "value": 1 }
     }
   },
   {
@@ -323,9 +326,7 @@
       "level": 1
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "maneuver_points": "maneuver_points + 2"
-    },
+    "eval_variables": {},
     "continious": false,
     "bonus_eval_variables": null,
     "price": {},
@@ -340,6 +341,9 @@
         ]
       },
       "multiple": false
+    },
+    "modifiers": {
+      "maneuver_points": { "type": "add", "value": 2 }
     }
   },
   {
@@ -361,15 +365,16 @@
       "level": 1
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "spells": "spells + 3",
-      "spell_lists_amount": "spell_lists_amount + 1"
-    },
+    "eval_variables": {},
     "continious": false,
     "bonus_eval_variables": null,
     "price": {},
     "info": {
       "multiple": false
+    },
+    "modifiers": {
+      "spells": { "type": "add", "value": 3 },
+      "spell_lists_amount": { "type": "add", "value": 1 }
     }
   },
   {

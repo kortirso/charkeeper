@@ -110,13 +110,12 @@
       "selected_feature": "tundra"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "damages": "damages.concat([['cold', 'resist', 'half']])"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": { "damages": { "type": "concat", "value": ["cold", "resist", "half"] } }
   },
   {
     "slug": "subterranean",
@@ -204,17 +203,18 @@
       "level": 1
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "damages": "damages.concat([['elemental', 'resist', 'half'], ['physical', 'resist', 'half']])",
-      "precision_defense": "precision_defense.transform_values { |value| value - 5 }"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {
       "ap": 1,
       "sp": 1
     },
-    "info": {}
+    "info": {},
+    "modifiers": {
+      "damages": { "type": "concat", "value": [["elemental", "resist", "half"], ["physical", "resist", "half"]] },
+      "pd_base": { "type": "add", "value": -5 }
+    }
   },
   {
     "slug": "berserker",
@@ -233,15 +233,16 @@
       "level": 1
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "jump": "[modified_abilities['agi'], modified_abilities['mig'], 1].max",
-      "speeds": "speeds.merge({ 'ground' => speeds['ground'] + 1 })",
-      "area_defense": "equiped_armor_info ? area_defense : area_defense.transform_values { |value| value + 2 }"
-    },
+    "eval_variables": {},
     "continious": false,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": {
+      "jump": { "type": "set", "value": "MAX(agi, mig, 1)" },
+      "speeds.ground": { "type": "add", "value": 1 },
+      "ad_base": { "type": "add", "value": "if (no_armor, 2, 0)" }
+    }
   },
   {
     "slug": "shattering_force",
@@ -383,14 +384,15 @@
       "selected_feature": "magus"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "spells": "spells + 1",
-      "mana_points": "mana_points.merge({ 'max' => mana_points['max'] + 1 })"
-    },
+    "eval_variables": {},
     "continious": false,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": {
+      "spells": { "type": "add", "value": 1 },
+      "max_mana_points": { "type": "add", "value": 1 }
+    }
   },
   {
     "slug": "warrior",
@@ -409,15 +411,15 @@
       "selected_feature": "warrior"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "maneuver_points": "maneuver_points + 1"
-    },
+    "eval_variables": {},
     "continious": false,
-    "bonus_eval_variables": {
-      "combat_expertise": "combat_expertise.concat(['heavy_armor', 'heavy_shield']).uniq"
-    },
+    "bonus_eval_variables": {},
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": {
+      "maneuver_points": { "type": "add", "value": 1 },
+      "combat_expertise": { "type": "concat", "value": ["heavy_armor", "heavy_shield"] }
+    }
   },
   {
     "slug": "hex_warrior",
@@ -683,13 +685,12 @@
       "selected_feature": "desert"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "damages": "damages.concat([['fire', 'resist', 'half']])"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": { "damages": { "type": "concat", "value": ["fire", "resist", "half"] } }
   },
   {
     "slug": "forest",
@@ -726,19 +727,20 @@
     },
     "origin": "class",
     "origin_value": "hunter",
-    "kind": "static",
+    "kind": "update_result",
     "conditions": {
       "selected_feature": "grassland"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "jump": "jump + 1",
-      "speeds": "speeds.merge({ 'ground' => speeds['ground'] + 1 })"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": {
+      "jump": { "type": "add", "value": 1 },
+      "speeds.ground": { "type": "add", "value": 1 }
+    }
   },
   {
     "slug": "jungle",
@@ -780,13 +782,15 @@
       "selected_feature": "mountain"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "speeds": "speeds.merge({ 'climb' => nil })"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": {
+      "damages": { "type": "concat", "value": ["fire", "resist", "half"] },
+      "speeds.climb": { "type": "set", "value": 0 }
+    }
   },
   {
     "slug": "swamp",
@@ -805,13 +809,14 @@
       "selected_feature": "swamp"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "damages": "damages.concat([['poison', 'resist', 'half']])"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": {
+      "damages": { "type": "concat", "value": ["poison", "resist", "half"] }
+    }
   },
   {
     "slug": "coast",
@@ -830,14 +835,15 @@
       "selected_feature": "coast"
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "breath": "breath * 2",
-      "speeds": "speeds.merge({ 'swim' => nil })"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {},
+    "modifiers": {
+      "breath": { "type": "add", "value": "breath" },
+      "speeds.swim": { "type": "set", "value": 0 }
+    }
   },
   {
     "slug": "bound_weapon",
@@ -880,8 +886,8 @@
       "ru": "Аура командования"
     },
     "description": {
-      "en": "You're surrounded by a 5 Space Aura. You can target any creature within your Aura to grant one of the following effects below, provided the target can see or hear you.\r\n\r\n- (1 AP) You take the Help Action to aid the target with an Attack. You can also do so as a Reaction whenever a valid target makes an Attack.\r\n- (1 AP) You grant creatures of your choice (including yourself) 1 Temp HP.\r\n- (1 AP) When a creature in your aura is targeted by an Attack, you can impose DisADV on the Attack as a Reaction.",
-      "ru": "Вы окружены аурой в 5 Клеток. Вы можете нацелиться на любое существо в вашей ауре, чтобы дать ему один из следующих эффектов, при условии, что цель может видеть или слышать вас.\r\n\r\n- (1 ОД) Вы помогаете цели с атакой. Вы также можете сделать это в качестве реакции, когда подходящая цель совершает атаку.\r\n- (1 ОД) Вы даёте всем выбранным вами существам (включая себя) 1 временный ОЗ.\r\n- (1 ОД) Когда существо в вашей ауре становится целью атаки, вы можете в качестве реакции наложить помеху на эту атаку."
+      "en": "You're surrounded by a 5 Space Aura. You can target any creature within your Aura to grant one of the following effects below, provided the target can see or hear you.\n\n- (1 AP) You take the Help Action to aid the target with an Attack. You can also do so as a Reaction whenever a valid target makes an Attack.\n\n- (1 AP) You grant creatures of your choice (including yourself) 1 Temp HP.\n\n- (1 AP) When a creature in your aura is targeted by an Attack, you can impose DisADV on the Attack as a Reaction.",
+      "ru": "Вы окружены аурой в 5 Клеток. Вы можете нацелиться на любое существо в вашей ауре, чтобы дать ему один из следующих эффектов, при условии, что цель может видеть или слышать вас.\n\n- (1 ОД) Вы помогаете цели с атакой. Вы также можете сделать это в качестве реакции, когда подходящая цель совершает атаку.\n\n- (1 ОД) Вы даёте всем выбранным вами существам (включая себя) 1 временный ОЗ.\n\n- (1 ОД) Когда существо в вашей ауре становится целью атаки, вы можете в качестве реакции наложить помеху на эту атаку."
     },
     "origin": "class",
     "origin_value": "commander",
@@ -1035,16 +1041,17 @@
       "level": 2
     },
     "description_eval_variables": {},
-    "eval_variables": {
-      "precision_defense": "precision_defense.transform_values { |value| value - 5 }"
-    },
+    "eval_variables": {},
     "continious": true,
     "bonus_eval_variables": null,
     "price": {
       "ap": 1,
       "sp": 1
     },
-    "info": {}
+    "info": {},
+    "modifiers": {
+      "pd_base": { "type": "add", "value": -5 }
+    }
   },
   {
     "slug": "acolyte",

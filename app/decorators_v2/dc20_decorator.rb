@@ -67,6 +67,16 @@ class Dc20Decorator < ApplicationDecoratorV2
     @result['initiative'] = modified_abilities['agi'] + combat_mastery
     @result['jump'] = [modified_abilities['agi'], 1].max
     @result['breath'] = [modified_abilities['mig'], 1].max
+    @result['attack'] = modified_abilities['prime'] + combat_mastery
+    @result['spell_attack'] = modified_abilities['prime'] + combat_mastery
+    @result['spell_check'] = modified_abilities['prime'] + combat_mastery
+    @result['martial_check'] = modified_abilities['prime'] + combat_mastery
+    @result['attribute_saves'] = modified_abilities.transform_values { |item| item + combat_mastery }
+    @result['pd_base'] = find_pd_base
+    @result['ad_base'] = find_ad_base
+    @result['grit_points'] = grit_points.merge('max' => modified_abilities['cha'] + 2)
+    @result['visions'] = { 'dark' => 0, 'blind' => 0, 'true' => 0, 'tremor' => 0 }
+    @result['size'] = 'medium'
   end
 
   def calculate_secondary_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
@@ -97,14 +107,6 @@ class Dc20Decorator < ApplicationDecoratorV2
   end
 
   def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
-    @result['attack'] = modified_abilities['prime'] + combat_mastery
-    @result['spell_attack'] = modified_abilities['prime'] + combat_mastery
-    @result['spell_check'] = modified_abilities['prime'] + combat_mastery
-    @result['martial_check'] = modified_abilities['prime'] + combat_mastery
-    @result['attribute_saves'] = modified_abilities.transform_values { |item| item + combat_mastery }
-    @result['pd_base'] = find_pd_base
-    @result['ad_base'] = find_ad_base
-    @result['grit_points'] = grit_points.merge('max' => modified_abilities['cha'] + 2)
     @result['rest_points'] = rest_points.merge('max' => max_health)
     @result['stamina_points'] = stamina_points.merge('max' => max_stamina_points + paths['martial'])
     @result['mana_points'] = mana_points.merge('max' => max_mana_points + (paths['spellcaster'] * 3))
@@ -119,10 +121,8 @@ class Dc20Decorator < ApplicationDecoratorV2
 
     @result['damages'] = calc_resistances
     @result['attacks'] = [unarmed_attack, shield_attack].compact + character_weapons.map { |item| calculate_attack(item) }
-    @result['size'] = 'medium'
     @result['features'] = apply_features
     @result['cantrips'] = 0
-    @result['visions'] = { 'dark' => 0, 'blind' => 0, 'true' => 0, 'tremor' => 0 }
   end
 
   def apply_general_modifiers
