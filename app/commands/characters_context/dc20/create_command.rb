@@ -43,7 +43,7 @@ module CharactersContext
       end
 
       def attach_feats(character, feat_slugs)
-        feats_relation(character, feat_slugs).map do |feat|
+        feats_relation(character, feat_slugs).each do |feat|
           add_feat.call({ character: character, feat: feat })
         end
       end
@@ -51,7 +51,6 @@ module CharactersContext
       def feats_relation(character, feat_slugs)
         ::Dc20::Feat.where(origin: 0, slug: feat_slugs)
           .or(::Dc20::Feat.where(origin: [1, 2], origin_value: character.data.main_class).where("conditions ->> 'level' = '1'"))
-          .or(::Dc20::Feat.where(origin: 3, slug: character.data.maneuvers))
       end
     end
   end

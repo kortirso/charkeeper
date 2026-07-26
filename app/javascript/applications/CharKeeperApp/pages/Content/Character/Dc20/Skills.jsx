@@ -85,25 +85,24 @@ export const Dc20Skills = (props) => {
   const [locale] = useAppLocale();
 
   createEffect(() => {
-    if (lastActiveCharacterId() === character().id && character().guide_step !== 1) {
-      setEditSkillsMode(character().guide_step === 2);
-      return;
-    }
+    if (lastActiveCharacterId() !== character().id || (!editSkillsMode() && skillPoints.skillPoints !== character().skill_points) || (!editTradesMode() && skillPoints.tradePoints !== character().trade_points)) {
 
-    batch(() => {
-      setSkillsData(character().skills);
-      setTradesData(character().trades);
-      setLanguagesData(character().language_levels);
-      setTradeKnowledge(character().trade_knowledge);
-      setLastActiveCharacterId(character().id);
-      setSkillPoints({
-        skillPoints: character().skill_points,
-        skillExpertisePoints: character().skill_expertise_points,
-        tradePoints: character().trade_points,
-        tradeExpertisePoints: character().trade_expertise_points,
-        languagePoints: character().language_points
+      batch(() => {
+        setSkillsData(character().skills);
+        setTradesData(character().trades);
+        setLanguagesData(character().language_levels);
+        setTradeKnowledge(character().trade_knowledge);
+        setSkillPoints({
+          skillPoints: character().skill_points,
+          skillExpertisePoints: character().skill_expertise_points,
+          tradePoints: character().trade_points,
+          tradeExpertisePoints: character().trade_expertise_points,
+          languagePoints: character().language_points
+        });
       });
-    });
+
+      setLastActiveCharacterId(character().id);
+    }
   });
 
   const maxSkillLevel = createMemo(() => Math.floor(character().level / 5) + 1);
@@ -371,8 +370,8 @@ export const Dc20Skills = (props) => {
                 <Show when={skillPoints.skillPoints > 0 || skillPoints.skillExpertisePoints > 0}>
                   <div class="dc20-skill-converter">
                     <div>
-                      <p>{localize(TRANSLATION, locale()).skillPoints} {skillPoints.skillPoints}</p>
-                      <p>{localize(TRANSLATION, locale()).expertisePoints} {skillPoints.skillExpertisePoints}</p>
+                      <p>{localize(TRANSLATION, locale()).skillPoints} {editSkillsMode() ? skillPoints.skillPoints : character().skill_points}</p>
+                      <p>{localize(TRANSLATION, locale()).expertisePoints} {editSkillsMode() ? skillPoints.skillExpertisePoints : character().skill_expertise_points}</p>
                     </div>
                     <Show when={skillPoints.skillPoints > 0}>
                       <Button default classList="rounded py-1 px-2" onClick={convertSkillPoint}>
@@ -438,8 +437,8 @@ export const Dc20Skills = (props) => {
                 <Show when={skillPoints.tradePoints > 0 || skillPoints.tradeExpertisePoints > 0}>
                   <div class="dc20-skill-converter">
                     <div>
-                      <p>{localize(TRANSLATION, locale()).tradePoints} {skillPoints.tradePoints}</p>
-                      <p>{localize(TRANSLATION, locale()).expertisePoints} {skillPoints.tradeExpertisePoints}</p>
+                      <p>{localize(TRANSLATION, locale()).tradePoints} {editTradesMode() ? skillPoints.tradePoints : character().trade_points}</p>
+                      <p>{localize(TRANSLATION, locale()).expertisePoints} {editTradesMode() ? skillPoints.tradeExpertisePoints : character().trade_expertise_points}</p>
                     </div>
                     <Show when={skillPoints.tradePoints > 0}>
                       <Button default classList="rounded py-1 px-2" onClick={convertTradePoint}>

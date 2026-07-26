@@ -87,7 +87,7 @@
     },
     "description": {
       "en": "- You deal +1 damage on Heavy Hits (or higher) and Critical Hits on Martial Attacks made using Unarmed Strikes or Melee Weapons.\n\n- When you Miss using a Melee Martial Attack, you gain ADV on the next Melee Martial Attack you make before the end of your turn. You can only gain this benefit once on each of your turns.",
-      "ru": "- Ваши ближние бойцовские атаки наносят +1 урона при сильных, жестоких или критических Ударах.\n\n- Один раз за каждый свой ход, когда вы промахиваетесь ближней бойцовской атакой, вы получаете преимущество на следующую ближнюю бойцовскую атаку, которую совершаете до конца вашего хода."
+      "ru": "- Ваши ближние бойцовские атаки наносят +1 урона при сильных, жестоких или критических ударах.\n\n- Один раз за каждый свой ход, когда вы промахиваетесь ближней бойцовской атакой, вы получаете преимущество на следующую ближнюю бойцовскую атаку, которую совершаете до конца вашего хода."
     },
     "origin": "class",
     "origin_value": "monk",

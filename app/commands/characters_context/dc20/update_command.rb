@@ -29,6 +29,7 @@ module CharactersContext
         9 => {},
         10 => { 'attribute_points' => 1, 'skill_points' => 2, 'trade_points' => 1 }
       }.freeze
+      NEW_CLASS_FEATURES_LEVELS = [2, 3, 5].freeze
 
       # rubocop: disable Metrics/BlockLength
       use_contract do
@@ -113,11 +114,7 @@ module CharactersContext
         end
         if input.key?(:abilities)
           input[:attribute_points] = 0
-          if data.guide_step == 1
-            input[:skill_points] = 5 + input[:abilities][:int]
-            input[:trade_points] = 3
-            input[:language_points] = 2
-          end
+          input[:skill_points] = data.skill_points + input[:abilities][:int] if data.guide_step == 1
         end
 
         if input.key?(:skill_levels)
@@ -161,6 +158,7 @@ module CharactersContext
         input[:character].save!
 
         refresh_points(input[:character]) if input.key?(:level)
+        attach_feats(input[:character], input[:level]) if input[:level].in?(NEW_CLASS_FEATURES_LEVELS)
 
         refresh_ancestry_feats(input) if input.key?(:ancestry_feats)
         refresh_maneuver_feats(input[:character]) if input.key?(:maneuvers)
@@ -169,6 +167,16 @@ module CharactersContext
         upload_avatar(input)
 
         { result: input[:character] }
+      end
+
+      def attach_feats(character, level)
+        feats_relation(character, level).map do |feat|
+          add_feat.call({ character: character, feat: feat })
+        end
+      end
+
+      def feats_relation(character, level)
+        ::Dc20::Feat.where(origin: [1, 2], origin_value: character.data.main_class).where("conditions ->> 'level' = '#{level}'")
       end
 
       def refresh_points(character)

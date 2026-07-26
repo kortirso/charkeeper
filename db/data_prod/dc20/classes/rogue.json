@@ -158,7 +158,7 @@
     },
     "origin": "class",
     "origin_value": "rogue",
-    "kind": "static",
+    "kind": "update_result",
     "conditions": {
       "level": 5
     },
@@ -167,6 +167,10 @@
     "continious": false,
     "bonus_eval_variables": null,
     "price": {},
-    "info": {}
+    "info": {
+      "increase": {
+        "skill_points": 1
+      }
+    }
   }
 ]

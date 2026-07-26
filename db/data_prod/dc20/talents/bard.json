@@ -21,6 +21,9 @@
       "increase": {
         "skill_points": 2
       }
+    },
+    "modifiers": {
+      "spells": { "type": "add", "value": 2 }
     }
   },
   {

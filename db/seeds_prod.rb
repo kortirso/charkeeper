@@ -41,10 +41,10 @@ end
 end
 
 [
-  'classes/barbarian.json', 'classes/commander.json', 'classes/hunter.json', 'classes/rogue.json', 'classes/spellblade.json', 
-  'classes/wizard.json', 'classes/monk.json',
-  'subclasses/barbarian.json', 'subclasses/commander.json', 'subclasses/hunter.json', 'subclasses/rogue.json',
-  'subclasses/wizard.json', 'subclasses/monk.json',
+  'classes/barbarian.json', 'classes/bard.json', 'classes/commander.json', 'classes/hunter.json', 'classes/rogue.json',
+  'classes/spellblade.json',  'classes/wizard.json', 'classes/monk.json',
+  'subclasses/barbarian.json', 'subclasses/bard.json', 'subclasses/commander.json', 'subclasses/hunter.json',
+  'subclasses/rogue.json', 'subclasses/wizard.json', 'subclasses/monk.json',
   'talents/barbarian.json', 'talents/bard.json', 'talents/champion.json', 'talents/cleric.json', 'talents/commander.json',
   'talents/druid.json', 'talents/hunter.json', 'talents/monk.json', 'talents/rogue.json', 'talents/sorcerer.json',
   'talents/spellblade.json', 'talents/warlock.json', 'talents/wizard.json',
