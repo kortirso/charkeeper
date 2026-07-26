@@ -1,0 +1,67 @@
+[
+  {
+    "slug": "expanded_meta_magic",
+    "title": {
+      "en": "Expanded Meta Magic",
+      "ru": "Расширение метамагии"
+    },
+    "description": {
+      "en": "- Your maximum MP increases by 2.\n\n- You gain 2 additional Meta Magic Spell Enhancement. You can't choose the same option more than once.",
+      "ru": "- Ваш максимум ОМ увеличивается на +2.\n\n- Вы получаете +2 У лучшения Метамагии. Вы не можете повторно выбрать уже полученные варианты."
+    },
+    "origin": "talent",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "meta_magic"
+      ]
+    },
+    "modifiers": { "max_mana_points": { "type": "add", "value": 2 } }
+  },
+  {
+    "slug": "greater_innate_power",
+    "title": {
+      "en": "Greater Innate Power",
+      "ru": "Великая врождённая сила"
+    },
+    "description": {
+      "en": "- Your MP maximum increases by 1.\n\n- You gain the benefit of an additional 1 point Focus Property of your choice. You can change either or both Properties whenever you finish a Short or Long Rest.\n\n- You gain another Sorcerous Origin of your choice.",
+      "ru": "- Ваш максимум ОМ увеличивается на +1.\n\n- You gain the benefit of an additional 1 point Focus Property of your choice. You can change either or both Properties whenever you finish a Short or Long Rest.\n\n- Вы получаете дополнительное Чародейское происхождение на ваш выбор."
+    },
+    "origin": "talent",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "innate_power"
+      ]
+    },
+    "modifiers": { "max_mana_points": { "type": "add", "value": 1 } }
+  },
+  {
+    "slug": "font_of_magic",
+    "title": {
+      "en": "Font of Magic",
+      "ru": "Источник магии"
+    },
+    "description": {
+      "en": "- You can spend 2 Rest Points in place of 1 MP on Meta Magic.\n\n- You regain 2 Rest Points when you roll for Initiative.",
+      "ru": "- При использовании Метамагии вы можете потратить 2 Очка Отдыха вместо 1 ОМ.\n\n- Вы восстанавливаете 2 Очка Отдыха при броске Инициативы."
+    },
+    "origin": "talent",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "meta_magic"
+      ]
+    }
+  }
+]

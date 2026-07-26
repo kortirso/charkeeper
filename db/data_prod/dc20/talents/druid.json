@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "wild_form_expansion",
+    "title": {
+      "en": "Wild Form Expansion",
+      "ru": "Расширение дикой формы"
+    },
+    "description": {
+      "en": "- At the start of each of your turns, you can transform into your True Form or a Wild Form you have access to without spending AP.\n\n- When you use **Wild Form**, you get 2 additional Trait Points to spend. You can use this Feature once per Long Rest, and regain the ability to use it again when you roll for Initiative.",
+      "ru": "- В начале каждого вашего хода вы можете принять истинную или дикую форму, доступную вам, не тратя ОД.\n\n- Когда вы используете **Дикую форму**, вы получаете +2 очка формы."
+    },
+    "origin": "talent",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "wild_form"
+      ]
+    }
+  },
+  {
+    "slug": "nature_vortex",
+    "title": {
+      "en": "Nature's Vortex",
+      "ru": "Вихрь природы"
+    },
+    "description": {
+      "en": "- Creatures of your choice are immune to your **Nature's Torrent**.\n\n- When you use **Nature's Torrent**, you can choose to increase its Diameter by 1 Space and impose DisADV on Ranged Attacks made against creatures within the area.\n\n- You can **spend 2 AP** on your turn to use **Nature's Torrent** without requiring a creature to take Elemental damage. When you do, the Torrent is instead an Aura centered on you and you choose its Elemental damage type.",
+      "ru": "- Существа на ваш выбор становятся не подвержены эффектам **Водовороту природы**.\n\n- Когда вы используете **Водоворот природы**, вы можете увеличить его радиус на 1 и дать помеху на дальние атаки по целям в области действия.\n\n- В свой ход вы можете **потратить 2 ОД** чтобы использовать **Водоворот природы** в качестве действия, а не реакции. Если вы так делаете, Водоворот становится вашей аурой (передвигается вместе с вами), и вы выбираете его тип стихийного урона."
+    },
+    "origin": "talent",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "nature_torrent"
+      ]
+    }
+  }
+]

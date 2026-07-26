@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "expanded_order",
+    "title": {
+      "en": "Expanded Order",
+      "ru": "Расширение ордена"
+    },
+    "description": {
+      "en": "You gain 2 additional Divine Domains. You can't choose the same option more than once.",
+      "ru": "Вы получаете +2 божественных домена. Вы не можете выбрать один и тот же вариант дважды, если не указано иное."
+    },
+    "origin": "talent",
+    "origin_value": "cleric",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": true,
+      "required_features": [
+        "cleric_order"
+      ]
+    }
+  },
+  {
+    "slug": "bountiful_blessings",
+    "title": {
+      "en": "Bountiful Blessings",
+      "ru": "Щедрое благословение"
+    },
+    "description": {
+      "en": "When Combat starts, you immediately gain a Blessing of your choice for free. Additionally, you can have 2 Blessings at the same time, but you can't apply both to the same creature at once.",
+      "ru": "В начале боя вы немедленно получаете одно благословение на ваш выбор бесплатно. Также, у вас может быть 2 благословения одновременно, но вы не может применить оба сразу к одному и тому же существу."
+    },
+    "origin": "talent",
+    "origin_value": "cleric",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "divine_blessing"
+      ]
+    }
+  },
+  {
+    "slug": "divine_cleanse",
+    "title": {
+      "en": "Divine Cleanse",
+      "ru": "Божественное очищение"
+    },
+    "description": {
+      "en": "**Saving Grace**: When a creature you can see within 10 Spaces fails a Save, you can **spend 1 AP** as Reaction to make a Spell Check against the effect's Save DC or the opposing creature's Check. **Success**: The creature Succeeds their Save instead.\n\n**Cleansing Intervention**: When a creature benefits from your **Lesser Divine Intervention**, they're cured of 1 of the following afflictions of their choice: Curse, Disease, Poison, Blinded, or Deafened. The Spell Check you made must be higher than the DC of the effect (if there is one) to cure the ailment.",
+      "ru": "**Спасительная милость**: Когда существо, которые вы видите в 10 Клетках, проваливает спас, вы можете потратить 1 ОД в качестве реакции, чтобы совершить проверку заклинания против противодействующей СЛ спаса или проверки. **Успех**: Существо преуспевает в спасе.\n\n**Очищающее вмешательство**: При применении **Малого божественного вмешательства** вы можете совершить проверку заклинания против СЛ одного недуга из списка, чтобы исцелить его: Проклятие, Болезнь, Слепота, Глухота или Отравление. Результат проверки должен быть больше, чем СЛ эффекта."
+    },
+    "origin": "talent",
+    "origin_value": "cleric",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "channel_divinity"
+      ]
+    }
+  }
+]

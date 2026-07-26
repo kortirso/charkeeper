@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "expanded_boon",
+    "title": {
+      "en": "Expanded Boon",
+      "ru": "Расширение даров"
+    },
+    "description": {
+      "en": "You gain 1 additional Pact Boon. You can't choose the same option more than once.",
+      "ru": "Вы получаете +1 Дар Договора. Вы не можете повторно выбрать уже полученные варианты."
+    },
+    "origin": "talent",
+    "origin_value": "warlock",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "pact_boon"
+      ]
+    }
+  },
+  {
+    "slug": "pact_bane",
+    "title": {
+      "en": "Pact Bane",
+      "ru": "Договор порчи"
+    },
+    "description": {
+      "en": "You learn the Bane Spell or a different Spell of your choice from your Spell List if you already know it. Creatures that are subjected to Bane suffer the following effects based on your chosen **Pact Boon**.\n\n- **Pact Weapon & Spell**: When you Hit the creature with your Pact Weapon or Pact Spell, it takes +1 True damage.\n\n- **Pact Armor**: When the creature Misses you with an Attack, it becomes Stunned 1 until the end of their next turn, provided it's within 10 Spaces and you're wearing your Pact Armor.\n\n- **Pact Familiar**: The creature is considered Flanked while within 1 Space of your Pact Familiar.",
+      "ru": "Вы изучаете заклинание Порча. Если оно уже изучено, взамен вы можете изучить любое заклинание из вашего списка заклинаний. Существа под вашей порчей подвержены следующим эффектам, зависящим от вашего **Дара договора**.\n\n- **Оружие и заговор договора**: Когда вы попадаете по существу вашим оружием или заговором договора, оно получает +1 истинного урона.\n\n- **Броня договора**: Если при ношении брони договора и цель промахивается по вам, находясь в пределах 10 Клеток, она становится ошеломлена 1 до конца своего следующего хода.\n\n- **Фамильяр договора**: Если ваш Фамильяр договора находится в 1 Клетке от цели, то она считается Окружённой."
+    },
+    "origin": "talent",
+    "origin_value": "warlock",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "pact_boon"
+      ]
+    }
+  },
+  {
+    "slug": "warlock_subcontract",
+    "title": {
+      "en": "Warlock Subcontract",
+      "ru": "Вассал колдуна"
+    },
+    "description": {
+      "en": "You can spend 1 minute to create a Warlock Subcontract with a willing creature within 1 Space, provided it doesn't share your HP (such as a Familiar). While within 20 Spaces of each other, you gain the following benefits:\n\n- **Shared Telepathy**: You can speak Telepathically with each other.\n\n- **Extended Bargain**: They can use Hasty Bargain. When they do, you gain 1 Temp HP.\n\n- **Willing Sacrifice**: You can spend their HP on your Warlock Features and Talents, provided they are willing.\n\nVoid Contract: This benefit lasts until you end it for free or use this Feature again.",
+      "ru": "Вы можете потратить 1 минуту, чтобы заключить с согласным существом малый контракт и сделать его вашим Вассалом, только если оно не делит с вами ОЗ (как Фамильяр). Пока вы находитесь в пределах 20 Клеток друг от друга, вы получаете следующие бонусы:\n\n- **Парная телепатия**: Вы можете телепатически общаться друг с другом.\n\n- **Расширенная сделка**: Ваш Вассал может использовать Поспешную Сделку. При этом вы получаете 1 Врем ОЗ.\n\n- **Добровольная жертва**: Вы можете тратить ОЗ вашего Вассала на Черты и Таланты Колдуна, если он на это согласен.\n\n**Расторжение Контракта**: Существо перестаёт быть вашим Вассалом, если вы расторгаете контракт бесплатно, или если вашим Вассалом становится другое существо."
+    },
+    "origin": "talent",
+    "origin_value": "warlock",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "warlock_contract"
+      ]
+    }
+  }
+]

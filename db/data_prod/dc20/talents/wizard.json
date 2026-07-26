@@ -23,7 +23,7 @@
     "bonus_eval_variables": null,
     "price": {},
     "info": {
-      "multiple": false,
+      "multiple": true,
       "required_features": [
         "spell_school_initiate"
       ]

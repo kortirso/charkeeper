@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "expanded_repertoire",
+    "title": {
+      "en": "Expanded Repertoire",
+      "ru": "Расширение репертуара"
+    },
+    "description": {
+      "en": "- You gain 2 Skill Point.\n\n- You learn 2 Spells of your choice from any Spell List.\n\n- You gain another manner of **Magical Expression**, allowing you to choose to gain the benefits of either the Auditory or Visual manner each time you cast a Spell.",
+      "ru": "- Вы получаете +2 очка навыков.\n\n- Вы изучаете +2 заклинания из любого списка заклинаний.\n\n- Вы получаете дополнительное **Выражение магии**, что позволяет вам выбирать визуальное или аудио выражение при каждом наложении заклинаний."
+    },
+    "origin": "talent",
+    "origin_value": "bard",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "remarkable_repertoire"
+      ],
+      "increase": {
+        "skill_points": 2
+      }
+    }
+  },
+  {
+    "slug": "helping_hands",
+    "title": {
+      "en": "Helping Hands",
+      "ru": "Руки помощи"
+    },
+    "description": {
+      "en": "Once per Round, when you take the Help Action, you can grant a bonus d8 **Help Die** to a different creature within range (including yourself) that they can apply to the same type of Check.",
+      "ru": "Один раз за ход, когда вы помогаете кому-либо, вы можете дать дополнительную **Кость помощи** d8 другому существу в пределах дальности (включая вас) на тот же самый тип проверки."
+    },
+    "origin": "talent",
+    "origin_value": "bard",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "font_of_inspiration"
+      ]
+    }
+  }
+]
