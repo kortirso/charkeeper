@@ -1,5 +1,23 @@
 [
   {
+    "slug": "wizard_stamina_regen",
+    "title": {
+      "en": "Stamina Regen",
+      "ru": "Восстановление выносливости"
+    },
+    "description": {
+      "en": "Once per round, you can regain up to half your maximum SP when you use a Spell Enhancement",
+      "ru": "Один раз за раунд вы можете восстановить половину ОВ, когда вы используете улучшение заклинания."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "static",
+    "conditions": {
+      "level": 1,
+      "main_class": "wizard"
+    }
+  },
+  {
     "slug": "spell_school_initiate",
     "title": {
       "en": "Spell School Initiate",

@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "expanded_stances",
+    "title": {
+      "en": "Expanded Stances",
+      "ru": "Расширение стоек"
+    },
+    "description": {
+      "en": "- You learn 2 additional **Monk Stances**. You can't choose the same option more than once.\n\n- Once on each of your turns, you can enter a **Monk Stance** without spending SP.",
+      "ru": "- Вы получаете +2 стойки монаха.\n\n- Один раз за ход вы можете войти в стойку монаха, не тратя ОВ."
+    },
+    "origin": "talent",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "price": {},
+    "info": {
+      "required_features": [
+        "monk_stance"
+      ]
+    }
+  },
+  {
+    "slug": "internal_damage",
+    "title": {
+      "en": "Internal Damage",
+      "ru": "Внутренние повреждения"
+    },
+    "description": {
+      "en": "When you make an Unarmed Strike, you can spend SP to cause the target to make a Repeated Physical Save. **Failure**: They become *Impaired* for 1 minute. While *Impaired* this way they take True damage at the start of each of their turns equal to the SP spent.",
+      "ru": "Когда вы совершаете безоружный удар, вы можете потратить любое количество ОВ чтобы заставить цель совершить повторяемый физический спас. **Провал**: Цель *Ослаблена* на 1 минуту. При этом в начале каждого своего хода она получает истинный урон, равный количеству потраченных вами ОВ."
+    },
+    "origin": "talent",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": []
+    }
+  },
+  {
+    "slug": "steel_fist",
+    "title": {
+      "en": "Steel Fist",
+      "ru": "Стальной кулак"
+    },
+    "description": {
+      "en": "- **Impact**: Your Unarmed Strikes gain the Impact Property.\n\n- **Flurry of Blows**: Once on each of your turns, when you make a Melee Martial Attack, you can **spend 1 SP** to immediately make an Unarmed Strike against a creature within range. This Unarmed Strike isn't subjected to the Multiple Check Penalty and doesn't advance that penalty.",
+      "ru": "- **Пробивное**: Ваши безоружные удары получают свойство *Пробивное*.\n\n- **Шквал ударов**: Один раз за ход, когда вы совершаете ближнюю бойцовскую атаку, вы можете потратить 1 ОВ чтобы немедленно совершить безоружный удар по существу в досягаемости. Этот безоружный удар не подвержен штрафу повторных проверок и не увеличивает его."
+    },
+    "origin": "talent",
+    "origin_value": "monk",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "price": {},
+    "info": {
+      "multiple": false,
+      "required_features": [
+        "monk_training"
+      ]
+    }
+  }
+]

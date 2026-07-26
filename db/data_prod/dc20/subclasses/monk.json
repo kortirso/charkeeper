@@ -1,0 +1,75 @@
+[
+  {
+    "slug": "astral_awakening",
+    "title": {
+      "en": "Astral Awakening",
+      "ru": "Астральное воплощение"
+    },
+    "description": {
+      "en": "**Astral Damage**: When you gain this feature, choose a Mystical damage type. This damage type is your Astral Damage.\n\nDuring Combat, you can **spend 1 AP and 1 SP** to manifest a portion of your astral self for 1 minute. For the duration, you gain the following benefits:\n\n- **Astral Arms**: You manifest 2 astral arms that can only be used to make Unarmed Strikes. They can't otherwise interact with creatures or objects. Attacks made using these Astral Arms have the Reach property, deal **Astral Damage** instead of the normal damage type, and can target PD or AD (choose for each Attack).\n\n- **Astral Deflection**: You can now use **Deflect Attack** on Ranged Attacks that miss any target within 2 Spaces.\n\nThe effect ends early if you fall *Unconscious*, die, or choose to end it for free.",
+      "ru": "**Астральный урон**: При получении этой черты выберите один из мистических типов урона в качестве своего типа астрального Урона.\n\nВ бою вы можете **потратить 1 ОД и 1 ОВ**, чтобы проявить ваше **Астральное воплощение** на 1 минуту, получая следующие бонусы:\n\n- **Астральные руки**: Вы воплощаете 2 астральные руки, которые можете использовать только для безоружных ударов. Они не могут никак иначе взаимодействовать с другими существами и предметами. Эти руки считаются длинными, наносят ваш тип **Астрального урона** и могут совершать атаки по ТЗ или ПЗ (на ваш выбор для каждой атаки).\n\n- **Астральное отражение**: Вы можете использовать **Отражение атаки** на дальние атаки, которые промахнулись по любой цели в пределах 2 Клеток от вас.\n\nВаше **Астральное воплощение** пропадает, если вы *Вырубаетесь*, умираете или решаете бесплатно развеять его во время своего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "astral_self",
+    "kind": "one_from_list",
+    "options": {
+      "psychic": { "en": "Psychic", "ru": "Психический" },
+      "radiant": { "en": "Radiant", "ru": "Сияющий" },
+      "umbral": { "en": "Umbral", "ru": "Сумрачный" }
+    },
+    "conditions": { "level": 3 },
+    "price": { "ap": 1, "sp": 1 },
+    "info": {}
+  },
+  {
+    "slug": "astral_watch",
+    "title": {
+      "en": "Astral Watch",
+      "ru": "Астральный дозор"
+    },
+    "description": {
+      "en": "While *Unconscious*, your astral self remains aware of your surroundings. You can hold conversations with nearby creatures as if you were awake. While sleeping normally, you can choose to wake yourself up at any time.",
+      "ru": "Пока вы *Вырублены*, ваше **Астральное воплощение** осознаёт своё окружение. Вы можете поддерживать беседы с окружающими существами так же, как если бы бодрствовали. Когда вы спите обычным сном, вы можете проснуться в любой момент."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "astral_self",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "ebb_and_flow",
+    "title": {
+      "en": "Ebb and Flow",
+      "ru": "Прилив и отлив"
+    },
+    "description": {
+      "en": "- **Ebb**: When you enter a new **Monk Stance**, you gain 2 Spaces of movement.\n\n- **Flow**: When you use your **Uncanny Dodge** against a Melee Attack, you can spend 1 AP to make an Opportunity Attack against the Attacker, provided they're within range.\n\n- **Changing Tides**: You can use your **Deflect Attack** on Melee Martial Attacks from Large or smaller creatures. When you do, you can redirect the Attack to another target within 1 Space of you.",
+      "ru": "- **Прилив**: Когда вы входите в новую **Стойку монаха**, вы получаете 2 Клетки движения.\n\n- **Отлив**: Когда вы используете **Невероятное уклонение** от ближней атаки, вы можете **потратить 1 ОД**, чтобы совершить атаку по возможности против атакующего.\n\n- **Изменчивые течения**: Вы можете использовать **Отражение атаки** на ближние бойцовские атаки от существ большого и меньшего размера. При этом вы можете перенаправить атаку в другую цель в пределах 1 Клетки от вас."
+    },
+    "origin": "subclass",
+    "origin_value": "shifting_tide",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "price": {},
+    "info": {}
+  },
+  {
+    "slug": "fluid_movement",
+    "title": {
+      "en": "Fluid Movement",
+      "ru": "Плавные движения"
+    },
+    "description": {
+      "en": "You can move through Spaces as if you were one size Smaller.",
+      "ru": "Вы считаетесь на один размер меньше при передвижении."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "shifting_tide",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "price": {},
+    "info": {}
+  }
+]

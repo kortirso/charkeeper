@@ -44,9 +44,9 @@ end
   'classes/barbarian.json', 'classes/commander.json', 'classes/hunter.json', 'classes/rogue.json', 'classes/spellblade.json', 
   'classes/wizard.json', 'classes/monk.json',
   'subclasses/barbarian.json', 'subclasses/commander.json', 'subclasses/hunter.json', 'subclasses/rogue.json',
-  'subclasses/wizard.json',
+  'subclasses/wizard.json', 'subclasses/monk.json',
   'talents/barbarian.json', 'talents/commander.json', 'talents/hunter.json', 'talents/rogue.json', 'talents/spellblade.json', 
-  'talents/wizard.json',
+  'talents/wizard.json', 'talents/monk.json',
   'ancestry.json', 'ancestry_2.json', 'spells.json', 'maneuvers.json', 'talents.json'
 ].each do |filename|
   JSON.parse(File.read("db/data_prod/dc20/#{filename}")).each do |item|
