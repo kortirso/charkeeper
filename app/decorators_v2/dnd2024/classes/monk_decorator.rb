@@ -44,6 +44,7 @@ module Dnd2024
         key_ability_bonus = [modifiers['str'], modifiers['dex']].max
 
         @result['attacks'].each do |attack|
+          next unless attack[:type]
           next if NOT_MONK_WEAPON_TYPES.include?(attack[:type])
           next if attack[:kind] == 'martial' && attack[:caption].exclude?('light')
 
