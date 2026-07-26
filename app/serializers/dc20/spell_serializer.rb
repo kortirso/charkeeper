@@ -2,7 +2,7 @@
 
 module Dc20
   class SpellSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id slug title description origin_value origin_values price info school].freeze
+    ATTRIBUTES = %i[id slug title description origin_value origin_values base_origin_values price info school].freeze
 
     attributes(*ATTRIBUTES)
 
@@ -24,6 +24,10 @@ module Dc20
 
     def school
       object.info['school']
+    end
+
+    def base_origin_values
+      object.origin_values
     end
 
     def origin_values

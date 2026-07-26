@@ -27,12 +27,12 @@ module Dc20
     attribute :conditions_v2, array: true, default: {}
     attribute :paths, array: true, default: { 'martial' => 0, 'spellcaster' => 0 }
     attribute :maneuvers, array: true, default: []
-    attribute :path, array: true, default: []
-    attribute :spell_list, array: true, default: [] # доступные списки заклинаний
     attribute :selected_talents, array: true, default: {}
     attribute :selected_additional_talents, array: true, default: 0
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     attribute :resistances, array: true, default: []
+    attribute :spell_class, :string
+    attribute :spell_filter, array: true, default: { 'source' => nil, 'schools' => [] }
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :ancestry_points, :integer, default: 0

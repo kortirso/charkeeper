@@ -3,14 +3,18 @@
 module Dc20
   module Classes
     class BardDecorator < ApplicationDecoratorV2
-      def call(result:)
+      def call(result:) # rubocop: disable Metrics/AbcSize
         @result = result
         @result['max_stamina_points'] = paths['martial']
         @result['max_mana_points'] = mana_points_by_level
         @result['maneuver_points'] = paths['martial']
         @result['max_health'] = 6 + level + modified_abilities['mig']
         @result['spells'] = spells_by_level
-        @result['spell_lists_amount'] = 0
+        @result['spell_list'] = []
+
+        @result['spell_class'] = 'bard'
+        @result['spell_filter'] = spell_filter.slice('schools').merge('tags' => %w[embolden enfeeble healing illusion sound])
+
         @result
       end
 

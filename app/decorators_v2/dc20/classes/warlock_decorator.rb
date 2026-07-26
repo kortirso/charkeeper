@@ -10,7 +10,11 @@ module Dc20
         @result['maneuver_points'] = paths['martial']
         @result['max_health'] = 6 + level + ((level + 1) / 2) + modified_abilities['mig']
         @result['spells'] = spells_by_level
-        @result['spell_lists_amount'] = 0
+        @result['spell_list'] = []
+
+        @result['spell_class'] = 'warlock'
+        @result['spell_filter'] = spell_filter.slice('schools')
+
         @result
       end
 

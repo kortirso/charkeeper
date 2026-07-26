@@ -8,8 +8,6 @@ module Dc20Character
       def call(result:)
         result[:combat_expertise] = COMBAT_EXPERTISE
         result[:health] = { current: 7, temp: 0 }
-        result[:spell_list] = ['primal']
-        result[:path] = ['spellcaster']
 
         result
       end

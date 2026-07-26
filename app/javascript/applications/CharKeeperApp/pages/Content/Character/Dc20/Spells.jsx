@@ -1,7 +1,9 @@
-import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, Switch, Match, batch } from 'solid-js';
 
 import config from '../../../../data/dc20.json';
-import { ErrorWrapper, GuideWrapper, Toggle, Button, Checkbox, createModal, StatsBlock, Dice } from '../../../../components';
+import {
+  ErrorWrapper, GuideWrapper, Toggle, Button, Checkbox, createModal, StatsBlock, Dice, Select
+} from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall, Minus } from '../../../../assets';
 import { fetchSpellsRequest } from '../../../../requests/fetchSpellsRequest';
@@ -10,7 +12,8 @@ import { createCharacterSpellRequest } from '../../../../requests/createCharacte
 import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
 import { fetchCharacterItemsRequest } from '../../../../requests/fetchCharacterItemsRequest';
 import { fetchTagInfoRequest } from '../../../../requests/fetchTagInfoRequest';
-import { modifier, localize } from '../../../../helpers';
+import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { modifier, localize, translate } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -83,7 +86,22 @@ const TRANSLATION = {
       'Warded': 'Ограждающее'
     },
     attack: 'Бонус атаки',
-    repeatable: 'Многократное'
+    repeatable: 'Многократное',
+    selectSpellclass: 'Выберите заклинательный класс',
+    spellclasses: {
+      bard: 'Бард',
+      cleric: 'Жрец',
+      druid: 'Друид',
+      sorcerer: 'Чародей',
+      spellblade: 'Маг клинка',
+      warlock: 'Колдун',
+      wizard: 'Волшебник'
+    },
+    saveButton: 'Сохранить',
+    selectBard: 'Выберите 1 школу для барда',
+    selectSpellblade: 'Выберите 2 школы для мага клинка',
+    selectWarlock: 'Выберите 3 школы для колдуна',
+    selectSorcerer: 'Выберите список для чародея'
   },
   es: {
     mana_spend_limit: 'Límite de gasto',
@@ -136,6 +154,10 @@ export const Dc20Spells = (props) => {
   const [characterItems, setCharacterItems] = createSignal(undefined);
   const [tagInfo, setTagInfo] = createSignal([]);
 
+  const [spellclass, setSpellclass] = createSignal(undefined);
+  const [spellschools, setSpellschools] = createSignal([]);
+  const [source, setSource] = createSignal([]);
+
   const { Modal, openModal } = createModal();
   const [appState] = useAppState();
   const [{ renderNotice }] = useAppAlert();
@@ -162,13 +184,26 @@ export const Dc20Spells = (props) => {
   });
 
   const renderingLists = createMemo(() => {
-    if (availableListFilter()) {
-      if (character().spell_list.length > 0) {
-        return Object.keys(spellLists()).filter((item) => character().spell_list.includes(item));
-      }
+    if (availableListFilter() && character().spell_filter.source) {
+      return Object.keys(config.spell_lists).filter((item) => character().spell_filter.source === item);
     }
 
-    return Object.keys(spellLists());
+    return Object.keys(config.spell_lists);
+  });
+
+  const filteredSpells = createMemo(() => {
+    if (!spells()) return [];
+    if (!availableListFilter()) return spells().sort((a, b) => a.title.localeCompare(b.title));
+
+    const checkSchools = character().spell_filter.schools && character().spell_filter.schools.length > 0;
+    const checkSource = character().spell_filter.source;
+
+    return spells().filter((item) => {
+      if (checkSchools && !character().spell_filter.schools.includes(item.school)) return false;
+      if (checkSource && !item.base_origin_values.includes(checkSource)) return false;
+
+      return true;
+    }).sort((a, b) => a.title.localeCompare(b.title));
   });
 
   const learnedSpellIds = createMemo(() => {
@@ -245,6 +280,17 @@ export const Dc20Spells = (props) => {
     if (result.errors_list === undefined) setCharacterSpells(characterSpells().filter((item) => item.spell_id !== spellId));
   }
 
+  const setMultiSchools = (value) => {
+    const newValue = spellschools().includes(value) ? spellschools().filter((item) => item !== value) : spellschools().concat([value]);
+    setSpellschools(newValue);
+  }
+
+  const updateCharacter = async (payload) => {
+    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload, only_head: true });
+
+    if (result.errors_list === undefined) props.onReplaceCharacter(payload);
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Spells' }}>
       <GuideWrapper character={character()}>
@@ -265,7 +311,7 @@ export const Dc20Spells = (props) => {
                 {(list) =>
                   <Toggle title={localize(spellLists()[list].name, locale())}>
                     <div>
-                      <For each={spells().filter((spell) => spell.origin_value.includes(list)).sort((a, b) => a.title.localeCompare(b.title))}>
+                      <For each={filteredSpells().filter((spell) => spell.origin_value.includes(list))}>
                         {(spell) =>
                           <div
                             class="even:bg-stone-100 dark:even:bg-dusty p-1"
@@ -352,6 +398,94 @@ export const Dc20Spells = (props) => {
                 </For>
               </div>
             </Show>
+            <Switch
+              fallback={
+                <Button default textable classList="mt-2" onClick={() => setSpellsSelectingMode(true)}>
+                  <span>{localize(TRANSLATION, locale()).selectSpells}</span>
+                  <Show when={character().spell_class !== character().main_class}>
+                    <span class="ml-2">({localize(config.classes[character().spell_class].name, locale())})</span>
+                  </Show>
+                </Button>
+              }
+            >
+              <Match when={!character().spell_class}>
+                <div class="character-info-block mb-2">
+                  <Select
+                    labelText={localize(TRANSLATION, locale()).selectSpellclass}
+                    items={localize(TRANSLATION, locale()).spellclasses}
+                    selectedValue={spellclass()}
+                    onSelect={setSpellclass}
+                  />
+                  <Show when={spellclass()}>
+                    <Button default textable size="small" classList="inline-block mt-2" onClick={() => updateCharacter({ spell_class: spellclass(), spell_filter: { source: null, schools: [] } })}>
+                      {localize(TRANSLATION, locale()).saveButton}
+                    </Button>
+                  </Show>
+                </div>
+              </Match>
+              <Match when={character().spell_class === 'bard' && character().spell_filter.schools && character().spell_filter.schools.length !== 1}>
+                <div class="character-info-block mb-2">
+                  <Select
+                    labelText={localize(TRANSLATION, locale()).selectBard}
+                    items={translate(config.schools, locale())}
+                    selectedValue={spellschools()[0]}
+                    onSelect={(value) => setSpellschools([value])}
+                  />
+                  <Show when={spellschools().length === 1}>
+                    <Button default textable size="small" classList="inline-block mt-2" onClick={() => updateCharacter({ spell_filter: { schools: spellschools() } })}>
+                      {localize(TRANSLATION, locale()).saveButton}
+                    </Button>
+                  </Show>
+                </div>
+              </Match>
+              <Match when={character().spell_class === 'spellblade' && character().spell_filter.schools && character().spell_filter.schools.length !== 2}>
+                <div class="character-info-block mb-2">
+                  <Select
+                    multi
+                    labelText={localize(TRANSLATION, locale()).selectSpellblade}
+                    items={translate(config.schools, locale())}
+                    selectedValues={spellschools()}
+                    onSelect={setMultiSchools}
+                  />
+                  <Show when={spellschools().length === 2}>
+                    <Button default textable size="small" classList="inline-block mt-2" onClick={() => updateCharacter({ spell_filter: { schools: spellschools() } })}>
+                      {localize(TRANSLATION, locale()).saveButton}
+                    </Button>
+                  </Show>
+                </div>
+              </Match>
+              <Match when={character().spell_class === 'warlock' && character().spell_filter.schools && character().spell_filter.schools.length !== 3}>
+                <div class="character-info-block mb-2">
+                  <Select
+                    multi
+                    labelText={localize(TRANSLATION, locale()).selectWarlock}
+                    items={translate(config.schools, locale())}
+                    selectedValues={spellschools()}
+                    onSelect={setMultiSchools}
+                  />
+                  <Show when={spellschools().length === 3}>
+                    <Button default textable size="small" classList="inline-block mt-2" onClick={() => updateCharacter({ spell_filter: { schools: spellschools() } })}>
+                      {localize(TRANSLATION, locale()).saveButton}
+                    </Button>
+                  </Show>
+                </div>
+              </Match>
+              <Match when={character().spell_class === 'sorcerer' && !character().spell_filter.source}>
+                <div class="character-info-block mb-2">
+                  <Select
+                    labelText={localize(TRANSLATION, locale()).selectSorcerer}
+                    items={translate(config.spell_lists, locale())}
+                    selectedValue={source()}
+                    onSelect={setSource}
+                  />
+                  <Show when={source()}>
+                    <Button default textable size="small" classList="inline-block mt-2" onClick={() => updateCharacter({ spell_filter: { source: source() } })}>
+                      {localize(TRANSLATION, locale()).saveButton}
+                    </Button>
+                  </Show>
+                </div>
+              </Match>
+            </Switch>
             <Show when={learnedSpellIds().length > 0}>
               <div class="mt-2">
                 <For each={learnedSpells().sort((a, b) => a.title.localeCompare(b.title))}>
@@ -405,9 +539,6 @@ export const Dc20Spells = (props) => {
                 </For>
               </div>
             </Show>
-            <Button default textable classList="mt-2" onClick={() => setSpellsSelectingMode(true)}>
-              {localize(TRANSLATION, locale()).selectSpells}
-            </Button>
           </Show>
         </Show>
         <Modal classList="md:max-w-md!">

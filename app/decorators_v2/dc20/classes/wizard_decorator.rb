@@ -3,14 +3,18 @@
 module Dc20
   module Classes
     class WizardDecorator < ApplicationDecoratorV2
-      def call(result:)
+      def call(result:) # rubocop: disable Metrics/AbcSize
         @result = result
         @result['max_stamina_points'] = paths['martial']
         @result['max_mana_points'] = mana_points_by_level
         @result['maneuver_points'] = paths['martial']
         @result['max_health'] = 6 + level + modified_abilities['mig']
         @result['spells'] = spells_by_level
-        @result['spell_lists_amount'] = 1
+        @result['spell_list'] = ['arcane']
+
+        @result['spell_class'] = 'wizard'
+        @result['spell_filter'] = { 'source' => 'arcane' }
+
         @result
       end
 
