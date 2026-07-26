@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### Added
+- filtering for spell classes for DC20 characters
+
 ## [0.5.2] - 2026-07-24
 ### Added
 - auto calculate condition penalties for dc20 characters

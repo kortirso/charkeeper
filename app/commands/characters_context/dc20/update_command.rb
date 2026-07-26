@@ -88,6 +88,11 @@ module CharactersContext
           optional(:ancestry_feats).hash
           optional(:ancestry_points).filled(:integer)
           optional(:resistances).filled(:array)
+          optional(:spell_class).filled(:string)
+          optional(:spell_filter).hash do
+            optional(:source).maybe(:string)
+            optional(:schools).maybe(:array).each(:string)
+          end
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
