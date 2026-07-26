@@ -7,7 +7,7 @@
     },
     "description": {
       "en": "When you use a **Tactical Die**, you gain the following benefit:\n\n- **Assault**: The Attack deals +1 damage.\n\n- **Deflect**: If the Attack Misses, the Attacker takes 1 damage of a Physical damage type of your choice.",
-      "ru": "Когда вы используете **Тактическую кость**, вы получаете следующие бонусы:\n\n- **Нападение**: Ваша Атака наносит +1 урона.\n\n- **Отражение**: Если атака по вам промахнулась, атакующий получает 1 урона физического типа на ваш выбор."
+      "ru": "Когда вы используете **Тактическую кость**, вы получаете следующие бонусы:\n\n- **Нападение**: Ваша атака наносит +1 урона.\n\n- **Отражение**: Если атака по вам промахнулась, атакующий получает 1 урона физического типа на ваш выбор."
     },
     "origin": "talent",
     "origin_value": "champion",

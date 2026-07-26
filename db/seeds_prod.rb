@@ -42,11 +42,12 @@ end
 
 [
   'classes/barbarian.json', 'classes/bard.json', 'classes/commander.json', 'classes/hunter.json', 'classes/rogue.json',
-  'classes/spellblade.json',  'classes/wizard.json', 'classes/monk.json',
+  'classes/spellblade.json', 'classes/wizard.json', 'classes/monk.json', 'classes/champion.json',
   'subclasses/barbarian.json', 'subclasses/bard.json', 'subclasses/commander.json', 'subclasses/hunter.json',
-  'subclasses/rogue.json', 'subclasses/wizard.json', 'subclasses/monk.json',
+  'subclasses/rogue.json', 'subclasses/wizard.json', 'subclasses/monk.json', 'subclasses/champion.json',
   'talents/barbarian.json', 'talents/bard.json', 'talents/champion.json', 'talents/cleric.json', 'talents/commander.json',
   'talents/druid.json', 'talents/hunter.json', 'talents/monk.json', 'talents/rogue.json', 'talents/sorcerer.json',
+  'talents/champion.json',
   'talents/spellblade.json', 'talents/warlock.json', 'talents/wizard.json',
   'ancestry.json', 'ancestry_2.json', 'spells.json', 'maneuvers.json', 'talents.json'
 ].each do |filename|

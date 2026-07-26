@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "champion_stamina_regen",
+    "title": {
+      "en": "Stamina Regen",
+      "ru": "Восстановление выносливости"
+    },
+    "description": {
+      "en": "Once per round, you can regain up to half your maximum SP when you perform a Maneuver.",
+      "ru": "Один раз за раунд вы можете восстановить половину ОВ, если вы выполняете приём."
+    },
+    "origin": "class",
+    "origin_value": "champion",
+    "kind": "static",
+    "conditions": { "level": 1, "main_class": "champion" }
+  },
+  {
+    "slug": "master-at-arms",
+    "title": {
+      "en": "Master-at-Arms",
+      "ru": "Мастер вооружений"
+    },
+    "description": {
+      "en": "**Weapon Master**: At the start of each of your turns, you can freely swap any Weapon you're currently wielding in each hand for any other Weapon without provoking Opportunity Attacks.\n\n**Maneuver Master**: You learn 1 Maneuver of your choice. Once per Round when you perform a Maneuver, you can reduce its SP cost by 1.",
+      "ru": "**Мастер Оружия**: В начале каждого вашего хода вы можете бесплатно сменить оружие в каждой руке. Это не провоцирует атак по возможности.\n\n**Мастер приёмов**: Вы изучаете 1 приём. Один раз за раунд, когда вы выполняете приём, вы можете снизить его стоимость на 1 ОВ."
+    },
+    "origin": "class",
+    "origin_value": "champion",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "modifiers": {
+      "maneuver_points": { "type": "add", "value": 1 }
+    }
+  },
+  {
+    "slug": "fighting_spirit",
+    "title": {
+      "en": "Fighting Spirit",
+      "ru": "Боевой дух"
+    },
+    "description": {
+      "en": "**Combat Readiness**: At the start of your first turn in Combat, you gain one of the following benefits:\n\n- **Fortify**: You gain the benefits of the Dodge Action and ADV on the next Save you make until the end of Combat.\n\n- **Advance**: You gain the benefits of the Move Action and ADV on the next Martial Attack or Physical Check you make until the end of Combat.\n\n**Second Wind**: Once per Combat when you start your turn Bloodied, you can regain {{restore|2}} HP and {{restore|2}} SP.",
+      "ru": "**Боевая готовность**: В начале вашего первого хода в бою вы получаете один из следующих бонусов:\n\n- **Оборона**: Вы получаете эффект уклонения и преимущество на следующий спас до конца боя.\n\n- **Наступление**: Вы получаете эффект движения и преимущество на следующую физическую проверку до конца боя.\n\n**Второе дыхание**: Один раз за бой, когда вы начинаете ход израненным, вы можете восстановить {{restore|2}} ОЗ и {{restore|2}} ОВ."
+    },
+    "origin": "class",
+    "origin_value": "champion",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "limit_refresh": "combat",
+    "info": { "limit": 1 },
+    "description_eval_variables": { "restore": "if (level > 4, 4, 2)" }
+  },
+  {
+    "slug": "Know Your Enemy",
+    "title": {
+      "en": "Know Your Enemy",
+      "ru": "Знай своего врага"
+    },
+    "description": {
+      "en": "You can spend 1 minute observing or interacting with a creature out of Combat (or spend 1 AP in Combat) to learn information about its physical capabilities compared to your own. Choose one of the following stats of the creature to assess: Might, Agility, PD, AD, and HP. Make a DC 10 Knowledge or Insight Check (your choice). **Success**: You learn if the chosen stat is higher, lower, or the same as yours.",
+      "ru": "Вы можете потратить 1 минуту на наблюдение или взаимодействие с существом вне боя (либо потратить 1 ОД в бою), чтобы сравнить его физические параметры с вашими. Выберите один из следующих параметров существа: Мощь, Ловкость, ТЗ, ПЗ или ОЗ. Совершите проверку знаний или проницательности (на ваш выбор) СЛ 10. **Успех**: Вы узнаете, выше, ниже или равна ли выбранная характеристика вашей."
+    },
+    "origin": "class_flavor",
+    "origin_value": "champion",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "adaptive_tactics",
+    "title": {
+      "en": "Adaptive Tactics",
+      "ru": "Адаптивные тактики"
+    },
+    "description": {
+      "en": "When you roll for Initiative, and at the end of each of your turns, you gain a d{{dice|8}} **Tactical Die** if you don't already have one. You can spend a Tactical Die to gain one of the following Tactics:\n\n- **Assault**: When you make a Martial Attack, you can add the die to the Attack's result.\n\n- **Deflect**: When you are Attacked, you can subtract the die from the Attack's result.",
+      "ru": "В начале боя и в конце каждого своего хода вы получаете **Тактическую кость** d{{dice|8}} (у вас может быть не больше одной одновременно). Вы можете использовать её для одной из следующих тактик:\n\n- **Нападение**: Когда вы совершаете бойцовскую атаку, вы можете добавить Тактическую кость к атаке.\n\n- **Отражение**: Когда вас атакуют, вы можете вычесть Тактическую кость из атаки."
+    },
+    "origin": "class",
+    "origin_value": "champion",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "description_eval_variables": { "dice": "if (level > 4, 10, 8)" }
+  },
+  {
+    "slug": "expert_master-at-arms",
+    "title": {
+      "en": "Expert-at-Arms",
+      "ru": "Эксперт вооружений"
+    },
+    "description": {
+      "en": "You learn 2 additional Maneuvers of your choice.",
+      "ru": "Вы изучаете 2 приёма."
+    },
+    "origin": "class",
+    "origin_value": "champion",
+    "kind": "update_result",
+    "conditions": { "level": 5 },
+    "modifiers": {
+      "maneuver_points": { "type": "add", "value": 2 }
+    }
+  }
+]

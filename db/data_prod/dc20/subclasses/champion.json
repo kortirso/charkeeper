@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "hero resolve",
+    "title": {
+      "en": "Hero's Resolve",
+      "ru": "Героическое упорство"
+    },
+    "description": {
+      "en": "**Adrenaline Boost**: When you use your **Second Wind**, you gain a +5 bonus to Martial Attacks and Martial Checks you make until the end of your turn.\n\n**Cut Through**: Your Martial Attacks that score Heavy Hits ignore the target's Physical Resistances.\n\n**Unyielding Spirit**: While *Bloodied*, you gain 1 Temp HP at the start of each of your turns.",
+      "ru": "**Прилив адреналина**: При использовании **Второго дыхания** вы получаете бонус +5 ко всем проверкам атаки до конца вашего хода.\n\n**Прорезание**: Ваши бойцовские атаки игнорируют физические сопротивления цели при сильных ударах.\n\n**Несгибаемый дух**: Пока вы *Изранены*, вы получаете 1 Врем ОЗ в начале каждого вашего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "hero",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "adventuring hero",
+    "title": {
+      "en": "Adventuring Hero",
+      "ru": "Странствующий герой"
+    },
+    "description": {
+      "en": "You ignore the penalties of Forced March and being Encumbered (but not Heavily Encumbered).",
+      "ru": "Вы не подвержены штрафам форсированного марша и нагруженности (но не перегруженности)."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "hero",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "stalwart protector",
+    "title": {
+      "en": "Stalwart Protector",
+      "ru": "Стойкий заступник"
+    },
+    "description": {
+      "en": "**Steadfast Defender**: You can use your **Deflect Tactic** against any Attack that targets a creature within your Melee Range.\n\n**Defensive Bash**: When you use a Defensive Maneuver as a Reaction to an Attack from a creature within 1 Space of you, the attacker must make a Physical Save against your Attack Check. **Save Failure**: The target is pushed 1 Space away or *Taunted* by you until the end of its next turn (your choice).\n\n**Not on my Watch**: Creatures *Taunted* by you deal 1 less damage to targets within 1 Space of you.",
+      "ru": "**Стойкая защита**: Вы можете использовать адаптивную тактику отражения против атак по целям в вашей досягаемости.\n\n**Защитный толчок**: Когда вы используете приём защиты в качестве реакции на атаку по существу в пределах 1 Клетки, совершите проверку атаки против физического спаса атакующего. **Провал спаса**: Атакующего отталкивает на 1 Клетку или спровоцирована вами до конца его следующего хода (на ваш выбор).\n\n**Не в мою смену**: Спровоцированные вами существа наносят на -1 урона меньше по существам в пределах 1 Клетки от вас."
+    },
+    "origin": "subclass",
+    "origin_value": "sentinel",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "vigilant watcher",
+    "title": {
+      "en": "Vigilant Watcher",
+      "ru": "Дозорный"
+    },
+    "description": {
+      "en": "During a Long Rest, if you spend both 4 hour periods doing Light Activity, you have ADV on the Might Save you make to avoid gaining Exhaustion. Additionally, the Save DC doesn't increase on a Failure.",
+      "ru": "Если во время долгого отдыха вы проводите оба 4-часовых периода за лёгкой активностью и должны совершить спас мощи от истощения, вы получаете преимущество на этот спас. Также, СЛ спаса от истощения не увеличивается на провале."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "sentinel",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  }
+]
