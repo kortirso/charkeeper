@@ -21,6 +21,7 @@ class Item < ApplicationRecord
   scope :dc20, -> { where(type: 'Dc20::Item') }
   scope :fallout, -> { where(type: 'Fallout::Item') }
   scope :cosmere, -> { where(type: 'Cosmere::Item') }
+  scope :nimble, -> { where(type: 'Nimble::Item') }
 
   scope :visible, -> { where(itemable: nil) }
 end

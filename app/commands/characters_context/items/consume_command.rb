@@ -5,6 +5,8 @@ module CharactersContext
     class ConsumeCommand < BaseCommand
       include Deps[formula: 'formula']
 
+      DND_CONSUMERS = ['Dnd2024::Character', 'Dnd5::Character', 'Nimble::Character'].freeze
+
       use_contract do
         params do
           required(:character).filled(type?: ::Character)
@@ -15,7 +17,7 @@ module CharactersContext
 
       private
 
-      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/MethodLength
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
         input[:attributes] = {}
         input[:result] = []
 
@@ -24,7 +26,7 @@ module CharactersContext
 
           if input[:character].is_a?(::Daggerheart::Character)
             input[:attributes][consume['attribute']] = [input[:character].data.attributes[consume['attribute']] + result, 0].max
-          elsif input[:character].is_a?(::Dnd2024::Character) || input[:character].is_a?(::Dnd5::Character)
+          elsif DND_CONSUMERS.include?(input[:character].class.name)
             input[:attributes][consume['attribute']] ||= input[:character].data[consume['attribute']]
             input[:attributes][consume['attribute']]['current'] =
               [input[:character].data.attributes[consume['attribute']]['current'] + result, 0].max

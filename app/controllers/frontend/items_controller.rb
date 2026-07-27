@@ -38,7 +38,8 @@ module Frontend
       when 'dc20' then ::Item.dc20.order(kind: :asc)
       when 'fallout' then ::Item.fallout.order(kind: :asc)
       when 'cosmere' then ::Item.cosmere
-      when 'cthulhu7', 'nimble' then ::Item.none
+      when 'nimble' then ::Item.nimble
+      when 'cthulhu7' then ::Item.none
       else raise(ActiveRecord::RecordNotFound)
       end
     end

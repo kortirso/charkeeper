@@ -100,6 +100,7 @@ module Frontend
         when 'dc20' then ::Item.dc20
         when 'fallout' then ::Item.fallout
         when 'cosmere' then ::Item.cosmere
+        when 'nimble' then ::Item.nimble
         else []
         end
       end
