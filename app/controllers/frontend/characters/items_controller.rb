@@ -87,6 +87,7 @@ module Frontend
         when 'fallout' then authorized_scope(Character.all).fallout
         when 'cosmere' then authorized_scope(Character.all).cosmere
         when 'cthulhu7' then authorized_scope(Character.all).cthulhu7
+        when 'nimble' then authorized_scope(Character.all).nimble
         else Character.none
         end
       end

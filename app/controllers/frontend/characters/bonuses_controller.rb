@@ -12,7 +12,8 @@ module Frontend
         change_command: 'commands.bonuses_context.change',
         add_dc20_bonus: 'commands.characters_context.dc20.bonuses.add',
         add_pathfinder2_bonus: 'commands.characters_context.pathfinder2.bonuses.add',
-        add_cosmere_bonus: 'commands.characters_context.cosmere.bonuses.add'
+        add_cosmere_bonus: 'commands.characters_context.cosmere.bonuses.add',
+        add_nimble_bonus: 'commands.characters_context.nimble.bonuses.add'
       ]
       include SerializeRelation
       include SerializeResource
@@ -69,6 +70,7 @@ module Frontend
           ::Daggerheart::Character::Companion.joins(:character).where(characters: { user_id: current_user.id })
         when 'dc20' then authorized_scope(Character.all).dc20
         when 'cosmere' then authorized_scope(Character.all).cosmere
+        when 'nimble' then authorized_scope(Character.all).nimble
         else Character.none
         end
       end
@@ -77,6 +79,7 @@ module Frontend
         @bonus_command =
           if feature_requirement.call(current: params[:version], initial: '0.5.1')
             case params[:provider]
+            when 'nimble' then add_nimble_bonus
             when 'dc20' then add_dc20_bonus
             end
           elsif feature_requirement.call(current: params[:version], initial: '0.4.16')

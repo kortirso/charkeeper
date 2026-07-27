@@ -1,0 +1,25 @@
+{
+  "sizes": {
+    "small": { "name": { "en": "Small", "ru": "Маленький" } },
+    "medium": { "name": { "en": "Medium", "ru": "Средний" } },
+    "large": { "name": { "en": "Large", "ru": "Большой" } }
+  },
+  "ancestries": {
+    "human": { "name": { "en": "Human", "ru": "Человек" } }
+  },
+  "classes": {
+    "berserker": {
+      "name": { "en": "Berserker", "ru": "Берсерк" },
+      "subclasses": {
+        "mountainheart": { "name": { "en": "Path of The Mountainheart", "ru": "Путь стойкости" } },
+        "red_mist": { "name": { "en": "Path of The Red Mist", "ru": "Путь слепой ярости" } }
+      }
+    }
+  },
+  "abilities": {
+    "str": { "name": { "en": "Strength", "ru": "Сила" } },
+    "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" } },
+    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
+    "wil": { "name": { "en": "Will", "ru": "Воля" } }
+  }
+}

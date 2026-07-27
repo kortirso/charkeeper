@@ -13,7 +13,7 @@ module Cosmere
     delegate :skills, :defense, :focus_max, :investiture_max, :load, :movement, :recovery_die, :senses_range,
              :deflect, :tier, :attacks, :talent_points, :features, :health_max, :modified_abilities, :singer_forms,
              to: :decorator
-    delegate :id, :data, to: :object
+    delegate :data, to: :object
     delegate :attribute_points, :skill_points, :health, :focus, :investiture, :level, :guide_step, :additional_skills, :ancestry,
              :cultures, :expertises, :custom_expertises, :abilities, :purpose, :obstacle, :goals, :connections, :singer_form,
              to: :data

@@ -1,0 +1,12 @@
+{
+  "arcana": { "name": { "en": "Arcana", "ru": "Магия" }, "ability": "int" },
+  "examination": { "name": { "en": "Examination", "ru": "Анализ" }, "ability": "int" },
+  "finesse": { "name": { "en": "Finesse", "ru": "Искусность" }, "ability": "dex" },
+  "influence": { "name": { "en": "Influence", "ru": "Влияние" }, "ability": "wil" },
+  "insight": { "name": { "en": "Insight", "ru": "Проницательность" }, "ability": "wil" },
+  "lore": { "name": { "en": "Lore", "ru": "Знания" }, "ability": "int" },
+  "might": { "name": { "en": "Might", "ru": "Мощь" }, "ability": "str" },
+  "naturecraft": { "name": { "en": "Naturecraft", "ru": "Выживание" }, "ability": "wil" },
+  "perception": { "name": { "en": "Perception", "ru": "Внимательность" }, "ability": "wil" },
+  "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" }, "ability": "dex" }
+}

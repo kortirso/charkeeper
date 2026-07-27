@@ -10,6 +10,7 @@ module Frontend
     FATE_SERIALIZE_FIELDS = %i[id name provider avatar].freeze
     FALLOUT_SERIALIZE_FIELDS = %i[id name origin level provider avatar].freeze
     COSMERE_SERIALIZE_FIELDS = %i[id name level provider avatar].freeze
+    NIMBLE_SERIALIZE_FIELDS = %i[id name level main_class ancestry provider avatar].freeze
 
     before_action :find_character, only: %i[show destroy]
     before_action :set_current_provider, only: %i[show]
@@ -68,6 +69,7 @@ module Frontend
       when 'Fate::Character', 'Cthulhu7::Character' then FATE_SERIALIZE_FIELDS
       when 'Fallout::Character' then FALLOUT_SERIALIZE_FIELDS
       when 'Cosmere::Character' then COSMERE_SERIALIZE_FIELDS
+      when 'Nimble::Character' then NIMBLE_SERIALIZE_FIELDS
       end
     end
   end

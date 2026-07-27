@@ -217,6 +217,10 @@ Rails.application.routes.draw do
       resources :spells, only: %i[index]
     end
 
+    namespace :nimble do
+      resources :characters, only: %i[create update]
+    end
+
     scope ':provider' do
       namespace :tags do
         scope ':type' do

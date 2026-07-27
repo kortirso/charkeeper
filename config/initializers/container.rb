@@ -48,6 +48,9 @@ module Charkeeper
     register('commands.characters_context.items.consume') { CharactersContext::Items::ConsumeCommand.new }
     register('commands.characters_context.change_feat') { CharactersContext::ChangeFeatCommand.new }
 
+    register('commands.characters_context.nimble.create') { CharactersContext::Nimble::CreateCommand.new }
+    register('commands.characters_context.nimble.update') { CharactersContext::Nimble::UpdateCommand.new }
+
     register('commands.characters_context.cthulhu7.create') { CharactersContext::Cthulhu7::CreateCommand.new }
     register('commands.characters_context.cthulhu7.update') { CharactersContext::Cthulhu7::UpdateCommand.new }
     register('commands.characters_context.cthulhu7.copy') { CharactersContext::Cthulhu7::CopyCommand.new }
@@ -98,6 +101,7 @@ module Charkeeper
       CharactersContext::Daggerheart::Bonuses::AddCompanionCommand.new
     }
     register('commands.characters_context.dc20.bonuses.add') { CharactersContext::Dc20::Bonuses::AddCommand.new }
+    register('commands.characters_context.nimble.bonuses.add') { CharactersContext::Nimble::Bonuses::AddCommand.new }
 
     register('commands.characters_context.pathfinder2.create') { CharactersContext::Pathfinder2::CreateCommand.new }
     register('commands.characters_context.pathfinder2.update') { CharactersContext::Pathfinder2::UpdateCommand.new }

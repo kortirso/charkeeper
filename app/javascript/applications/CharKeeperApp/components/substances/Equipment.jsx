@@ -479,6 +479,7 @@ export const Equipment = (props) => {
       <GuideWrapper
         character={character()}
         guideStep={props.guideStep}
+        finishGuideStep={props.finishGuideStep}
         helpMessage={props.helpMessage}
         onReloadCharacter={props.onReloadCharacter}
         onNextClick={props.onNextGuideStepClick}
