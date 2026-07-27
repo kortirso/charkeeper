@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "adventurer_garb",
+    "kind": "armor",
+    "name": {
+      "en": "Adventurer's Garb",
+      "ru": "Одежда приключенца"
+    },
+    "data": {
+      "price": 10
+    },
+    "info": {
+      "ac": "2 + dex",
+      "armor_skill": "cloth",
+      "str_req": -1
+    }
+  },
+  {
+    "slug": "cheap_hides",
+    "kind": "armor",
+    "name": {
+      "en": "Cheap Hides",
+      "ru": "Дешёвые шкуры"
+    },
+    "data": {
+      "price": 5
+    },
+    "info": {
+      "ac": "3 + dex",
+      "armor_skill": "leather",
+      "str_req": -1
+    }
+  },
+  {
+    "slug": "rusty_mail",
+    "kind": "armor",
+    "name": {
+      "en": "Rusty Mail",
+      "ru": "Ржавая кольчуга"
+    },
+    "data": {
+      "price": 15
+    },
+    "info": {
+      "ac": "6 + MIN(dex, 2)",
+      "armor_skill": "mail",
+      "str_req": -1
+    }
+  },
+  {
+    "slug": "rusty_plate",
+    "kind": "armor",
+    "name": {
+      "en": "Rusty Plate",
+      "ru": "Ржавые латы"
+    },
+    "data": {
+      "price": 25
+    },
+    "info": {
+      "ac": 10,
+      "armor_skill": "plate",
+      "str_req": 2
+    }
+  },
+  {
+    "slug": "wooden_buckler",
+    "kind": "shield",
+    "name": {
+      "en": "Wooden Buckler",
+      "ru": "Деревянный баклер"
+    },
+    "data": {
+      "price": 5
+    },
+    "info": {
+      "ac": 2,
+      "armor_skill": "shield",
+      "str_req": -1
+    }
+  }
+]

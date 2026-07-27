@@ -1,0 +1,61 @@
+[
+  {
+    "slug": "club",
+    "kind": "weapon",
+    "name": {
+      "en": "Club",
+      "ru": "Дубинка"
+    },
+    "data": {
+      "price": 2
+    },
+    "info": {
+      "weapon_skill": "str",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "dagger",
+    "kind": "weapon",
+    "name": {
+      "en": "Dagger",
+      "ru": "Кинжал"
+    },
+    "data": {
+      "price": 3
+    },
+    "info": {
+      "weapon_skill": "dex",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": ["light", "thrown"],
+      "range": 4
+    }
+  },
+  {
+    "slug": "shortbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Shortbow",
+      "ru": "Короткий лук"
+    },
+    "data": {
+      "price": 25
+    },
+    "info": {
+      "weapon_skill": "dex",
+      "type": "range",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [],
+      "range": 12
+    }
+  }
+]

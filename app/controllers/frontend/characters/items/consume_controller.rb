@@ -35,6 +35,7 @@ module Frontend
           when 'pathfinder2' then authorized_scope(Character.all).pathfinder2
           when 'daggerheart' then authorized_scope(Character.all).daggerheart
           when 'dc20' then authorized_scope(Character.all).dc20
+          when 'nimble' then authorized_scope(Character.all).nimble
           else Character.none
           end
         end

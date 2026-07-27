@@ -65,3 +65,10 @@ end
     feat ? feat.update!(item) : ::Daggerheart::Feat.create!(item)
   end
 end
+
+['weapons.json', 'armor.json', 'items.json', 'consumables.json'].each do |filename|
+  JSON.parse(File.read("db/data_prod/nimble/#{filename}")).each do |data|
+    item = ::Nimble::Item.find_by(slug: data['slug'])
+    item ? item.update!(data) : ::Nimble::Item.create!(data)
+  end
+end

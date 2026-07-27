@@ -1,0 +1,15 @@
+[
+  {
+    "slug": "healing_potion",
+    "kind": "consumables",
+    "name": { "en": "Healing Potion", "ru": "Зелье лечения" },
+    "description": {
+      "en": "Heal 2d4+4 HP.",
+      "ru": "Лечит 2d4+4 ОЗ."
+    },
+    "data": { "price": 50 },
+    "info": {
+      "consume": [{ "formula": "2 * d(4) + 4", "attribute": "health" }]
+    }
+  }
+]
