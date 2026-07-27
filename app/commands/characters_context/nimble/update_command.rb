@@ -28,6 +28,8 @@ module CharactersContext
           optional(:guide_step).maybe(:integer)
           optional(:skill_levels).hash
           optional(:skill_points).maybe(:integer)
+          optional(:hit_die_spent).maybe(:integer)
+          optional(:wounds_spent).maybe(:integer)
         end
       end
 

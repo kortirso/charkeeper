@@ -14,10 +14,10 @@ class NimbleDecorator < ApplicationDecoratorV2
     return self if simple
 
     calculate_primary_modifiers
-    calculate_primary_abilities
 
     @result = Nimble::ClassDecorator.new.call(result: @result)
 
+    calculate_primary_abilities
     calculate_modifiers
     apply_modifiers
     calculate_secondary_abilities
@@ -42,11 +42,16 @@ class NimbleDecorator < ApplicationDecoratorV2
     end
   end
 
-  def calculate_primary_abilities
+  def calculate_primary_abilities # rubocop: disable Metrics/AbcSize
     @result['modified_abilities'] = find_modified_abilities
     @result['skills'] = generate_skills_payload
-    @result['initiative'] = modified_abilities['dex']
+    @result['key'] = modified_abilities.slice(*keys).values.max
     @result['size'] = 'medium'
+    @result['wounds_max'] = 6
+    @result['hit_die_max'] = level
+    @result['speed'] = 6
+    @result['initiative'] = modified_abilities['dex']
+    @result['armor'] = calculate_armor
   end
 
   def calculate_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
@@ -106,6 +111,8 @@ class NimbleDecorator < ApplicationDecoratorV2
 
   def calculate_secondary_abilities
     @result['features'] = apply_features
+    @result['save_dc'] = 10 + key
+    @result['inventory'] = 10 + modified_abilities['str']
   end
 
   def find_modified_abilities
@@ -127,9 +134,24 @@ class NimbleDecorator < ApplicationDecoratorV2
     }
   end
 
+  def calculate_armor
+    shield_bonus = equiped_shield_info&.dig('ac').to_i
+    return modified_abilities['dex'] + shield_bonus if equiped_armor_info.nil?
+
+    formula.call(formula: equiped_armor_info.dig(:items_info, 'ac'), variables: formula_variables).to_i + shield_bonus
+  end
+
+  def equiped_armor_info
+    active_items.find { |item| item[:items_kind] == 'armor' }
+  end
+
+  def equiped_shield_info
+    @equiped_shield_info ||= active_items.find { |item| item[:items_kind] == 'shield' }&.dig(:items_info)
+  end
+
   def modifiers
     @modifiers ||=
-      character_modifiers + feature_modifiers
+      character_modifiers + feature_modifiers + active_items_and_weapon_in_hands.pluck(:items_modifiers).compact_blank
   end
 
   def character_modifiers
@@ -144,6 +166,19 @@ class NimbleDecorator < ApplicationDecoratorV2
       .compact_blank
   end
 
+  def active_items_and_weapon_in_hands
+    active_items.select { |item| item[:items_kind] != 'weapon' || item[:states]['hands'].positive? }
+  end
+
+  def active_items
+    @active_items ||=
+      @character
+        .items
+        .where("states->>'hands' != ? OR states->>'equipment' != ?", '0', '0')
+        .joins(:item)
+        .hashable_pluck('items.kind', 'items.info', 'items.modifiers', :modifiers, :states)
+  end
+
   def available_features
     @available_features ||=
       @character.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC').where(ready_to_use: [true, nil])
@@ -152,7 +187,9 @@ class NimbleDecorator < ApplicationDecoratorV2
   def base_formula_variables
     @base_formula_variables ||=
       {
-        level: level
+        level: level,
+        no_armor: equiped_armor_info.nil?
+
       }
   end
 

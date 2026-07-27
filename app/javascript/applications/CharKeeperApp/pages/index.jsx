@@ -140,6 +140,7 @@ export * from './Content/Character/Nimble/Abilities';
 export * from './Content/Character/Nimble/Skills';
 export * from './Content/Character/Nimble/Bonuses';
 export * from './Content/Character/Nimble/Info';
+export * from './Content/Character/Nimble/Health';
 
 export * from './Navigation/Characters/ListItem';
 export * from './Navigation/Characters/CharacterForm';

@@ -11,6 +11,8 @@ module Nimble
     attribute :abilities, array: true, default: { 'str' => 2, 'dex' => 2, 'int' => 0, 'wil' => -1 }
     attribute :health, array: true, default: { 'current' => 1, 'temp' => 0, 'max' => 1 }
     attribute :skill_levels, array: true, default: {} # { 'medicine' => 1 } владение навыками
+    attribute :hit_die_spent, :integer, default: 0
+    attribute :wounds_spent, :integer, default: 0
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :skill_points, :integer, default: 4

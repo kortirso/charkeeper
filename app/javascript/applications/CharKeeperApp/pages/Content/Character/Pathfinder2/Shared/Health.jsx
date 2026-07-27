@@ -52,11 +52,11 @@ export const Pathfinder2SharedHealth = (props) => {
     >
       <div class="flex items-center pt-0 p-4">
         <Button default textable classList="flex-1" onClick={() => props.onChangeHealth(-1, damageHealValue())}>
-          {localize(TRANSLATION, locale()).damage}
+          <span>{localize(TRANSLATION, locale()).damage}</span>
         </Button>
         <Input numeric containerClassList="w-20 mx-4" value={damageHealValue()} onInput={setDamageHealValue} />
         <Button default textable classList="flex-1" onClick={() => props.onChangeHealth(1, damageHealValue())}>
-          {localize(TRANSLATION, locale()).heal}
+          <span>{localize(TRANSLATION, locale()).heal}</span>
         </Button>
       </div>
       <Show when={props.children}>{props.children}</Show>

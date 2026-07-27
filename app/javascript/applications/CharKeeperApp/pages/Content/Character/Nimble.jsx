@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo
+  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth
 } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment } from '../../../components';
 import { useAppLocale } from '../../../context';
@@ -61,7 +61,7 @@ export const Nimble = (props) => {
   const character = () => props.character;
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
-  const [activeTab, setActiveTab] = createSignal('equipment');
+  const [activeTab, setActiveTab] = createSignal('combat');
 
   const [locale] = useAppLocale();
 
@@ -78,7 +78,7 @@ export const Nimble = (props) => {
   const consumablesFilter = (item) => item.kind === 'consumables';
 
   const characterTabs = createMemo(() => {
-    const result = ['equipment'];
+    const result = ['combat', 'equipment'];
     return result.concat(['bonuses', 'notes', 'avatar']);
   });
 
@@ -113,6 +113,9 @@ export const Nimble = (props) => {
                   onNextGuideStepClick={() => setActiveMobileTab('equipment')}
                 />
               </div>
+            </Match>
+            <Match when={activeMobileTab() === 'combat'}>
+              <NimbleHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
@@ -192,6 +195,9 @@ export const Nimble = (props) => {
         />
         <div class="p-2 pb-16 flex-1">
           <Switch>
+            <Match when={activeTab() === 'combat'}>
+              <NimbleHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+            </Match>
             <Match when={activeTab() === 'equipment'}>
               <Equipment
                 character={character()}

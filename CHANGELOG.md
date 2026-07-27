@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - filtering for spell classes for DC20 characters
 - Nimble support
 - items for nimble characters
+- static and health info for nimble characters
 
 ## [0.5.2] - 2026-07-24
 ### Added
