@@ -206,15 +206,15 @@ export const SharedBonusesV2 = (props) => {
                 </Show>
               </div>
               <div class="flex justify-end mt-4">
-                <Button outlined textable size="small" classList="mr-4" onClick={cancelBonus}>{localize(TRANSLATION, locale()).cancel}</Button>
-                <Button default textable size="small" onClick={saveBonus}>{localize(TRANSLATION, locale()).save}</Button>
+                <Button outlined textable size="small" classList="mr-4" onClick={cancelBonus}><span>{localize(TRANSLATION, locale()).cancel}</span></Button>
+                <Button default textable size="small" onClick={saveBonus}><span>{localize(TRANSLATION, locale()).save}</span></Button>
               </div>
             </div>
           </>
         }
       >
         <Button default textable classList="w-full uppercase" onClick={() => setCreateMode(true)}>
-          {localize(TRANSLATION, locale()).newBonus}
+          <span>{localize(TRANSLATION, locale()).newBonus}</span>
         </Button>
         <Show when={bonuses() !== undefined}>
           <For each={bonuses()}>

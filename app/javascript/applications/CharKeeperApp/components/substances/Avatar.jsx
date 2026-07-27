@@ -163,7 +163,7 @@ export const Avatar = (props) => {
           onSelect={setCommunity}
         />
       </Show>
-      <Button default classList="mt-4" onClick={() => loading() ? null : updateCharacter()}>{loading() ? t('saving') : t('save')}</Button>
+      <Button default classList="mt-4" onClick={() => loading() ? null : updateCharacter()}><span>{loading() ? t('saving') : t('save')}</span></Button>
     </div>
   );
 }

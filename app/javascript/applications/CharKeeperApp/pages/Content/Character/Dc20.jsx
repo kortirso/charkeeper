@@ -156,7 +156,12 @@ export const Dc20 = (props) => {
               <Dc20Trainings character={character()} />
             </Match>
             <Match when={activeMobileTab() === 'spells'}>
-              <Dc20Spells character={character()} openD20Test={openDC20Test} onReplaceCharacter={props.onReplaceCharacter} />
+              <Dc20Spells
+                character={character()}
+                openD20Test={openDC20Test}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+              />
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
               <Dc20Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -273,7 +278,12 @@ export const Dc20 = (props) => {
               <Dc20Trainings character={character()} />
             </Match>
             <Match when={activeTab() === 'spells'}>
-              <Dc20Spells character={character()} openD20Test={openDC20Test} onReplaceCharacter={props.onReplaceCharacter} />
+              <Dc20Spells
+                character={character()}
+                openD20Test={openDC20Test}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+              />
             </Match>
             <Match when={activeTab() === 'rest'}>
               <Dc20Rest character={character()} onReloadCharacter={props.onReloadCharacter} />

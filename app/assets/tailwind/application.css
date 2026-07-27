@@ -1027,3 +1027,23 @@ body.web {
 .companion-stat-title {
   @apply text-sm uppercase text-center mb-4;
 }
+
+.dc20-spell {
+  @apply even:bg-stone-100 dark:even:bg-dusty p-1;
+}
+
+.dc20-spell-title {
+  @apply flex items-center justify-between mb-1;
+}
+
+.dc20-spell-tags {
+  @apply flex gap-2 flex-wrap mb-2;
+}
+
+.dc20-spell-action {
+  @apply flex flex-row justify-end;
+}
+
+.dc20-focus-features {
+  @apply flex flex-wrap gap-x-2 gap-y-1 mt-1;
+}

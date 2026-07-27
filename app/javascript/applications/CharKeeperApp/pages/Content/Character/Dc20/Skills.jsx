@@ -85,7 +85,7 @@ export const Dc20Skills = (props) => {
   const [locale] = useAppLocale();
 
   createEffect(() => {
-    if (lastActiveCharacterId() !== character().id || (!editSkillsMode() && skillPoints.skillPoints !== character().skill_points) || (!editTradesMode() && skillPoints.tradePoints !== character().trade_points)) {
+    if (lastActiveCharacterId() !== character().id || (!editSkillsMode() && skillPoints.skillPoints !== character().skill_points) || (!editTradesMode() && skillPoints.tradePoints !== character().trade_points) || (!editLanguagesMode() && skillPoints.languagePoints !== character().language_points)) {
 
       batch(() => {
         setSkillsData(character().skills);
@@ -516,7 +516,7 @@ export const Dc20Skills = (props) => {
               <div class="dc20-skill-box">
                 <p class="dc20-skill-box-title">{localize(TRANSLATION, locale()).languages}</p>
                 <Show when={skillPoints.languagePoints > 0}>
-                  <p class="text-sm mb-2">{localize(TRANSLATION, locale()).langPoints} {skillPoints.languagePoints}</p>
+                  <p class="text-sm mb-2">{localize(TRANSLATION, locale()).langPoints} {editLanguagesMode() ? skillPoints.languagePoints : character().language_points}</p>
                 </Show>
                 <For each={Object.entries(editLanguagesMode() ? languagesData() : character().language_levels)}>
                   {([name, level]) =>

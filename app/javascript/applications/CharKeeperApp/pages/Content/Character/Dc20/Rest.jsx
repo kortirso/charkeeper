@@ -101,7 +101,7 @@ export const Dc20Rest = (props) => {
               onSelect={setSpendRestPoints}
             />
           </Show>
-          <Button default textable onClick={restCharacter}>{localize(TRANSLATION, locale()).rest}</Button>
+          <Button default textable onClick={restCharacter}><span>{localize(TRANSLATION, locale()).rest}</span></Button>
         </div>
       </GuideWrapper>
     </ErrorWrapper>

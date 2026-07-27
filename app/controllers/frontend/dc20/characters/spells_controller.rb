@@ -39,6 +39,14 @@ module Frontend
           only_head_response
         end
 
+        def clear
+          @character.feats.includes(:feat).where(feats: { origin: 7 }).destroy_all
+          @character.data.spell_class = nil
+          @character.data.spell_filter = { 'source' => nil, 'schools' => [] }
+          @character.save
+          only_head_response
+        end
+
         private
 
         def find_character

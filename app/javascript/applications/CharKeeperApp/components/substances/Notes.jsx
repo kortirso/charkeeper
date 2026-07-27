@@ -147,16 +147,16 @@ export const Notes = (props) => {
               <p class="text-sm mt-1">{localize(TRANSLATION, locale()).textHelp}</p>
             </div>
             <div class="flex justify-end mt-4">
-              <Button outlined textable size="small" classList="mr-4" onClick={cancelNote}>{t('cancel')}</Button>
+              <Button outlined textable size="small" classList="mr-4" onClick={cancelNote}><span>{t('cancel')}</span></Button>
               <Button default textable size="small" onClick={() => noteForm.id === undefined ? createNote() : updateNote()}>
-                {t('save')}
+                <span>{t('save')}</span>
               </Button>
             </div>
           </div>
         }
       >
         <Button default textable classList="mb-2 w-full uppercase" onClick={addNote}>
-          {localize(TRANSLATION, locale()).newNote}
+          <span>{localize(TRANSLATION, locale()).newNote}</span>
         </Button>
         <Show when={notes() !== undefined}>
           <For each={notes()}>
