@@ -148,7 +148,6 @@ export const Dc20 = (props) => {
                 character={character()}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
-                currentGuideStep={character().guide_step}
                 helpMessage={localize(TRANSLATION, locale())['levelingHelpMessage']}
               />
             </Match>

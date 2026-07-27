@@ -40,10 +40,10 @@ module CharactersContext
           optional(:subclass).filled(:string)
           optional(:level).filled(:integer)
           optional(:abilities).hash do
-            required(:mig).filled(:integer)
-            required(:agi).filled(:integer)
-            required(:int).filled(:integer)
-            required(:cha).filled(:integer)
+            required(:mig).filled(:integer, gteq?: -2, lteq?: 7)
+            required(:agi).filled(:integer, gteq?: -2, lteq?: 7)
+            required(:int).filled(:integer, gteq?: -2, lteq?: 7)
+            required(:cha).filled(:integer, gteq?: -2, lteq?: 7)
           end
           optional(:health).hash do
             required(:current).filled(:integer)
@@ -96,13 +96,6 @@ module CharactersContext
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
-
-        rule(:abilities) do
-          next if value.nil?
-          next if value.values.all? { |item| item.between?(-2, 7) }
-
-          key.failure(:invalid_value)
-        end
       end
       # rubocop: enable Metrics/BlockLength
 

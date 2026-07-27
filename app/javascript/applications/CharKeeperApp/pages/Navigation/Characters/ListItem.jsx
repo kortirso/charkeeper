@@ -8,6 +8,7 @@ import dnd2024Config from '../../../data/dnd2024.json';
 import dnd5Config from '../../../data/dnd5.json';
 import dc20Config from '../../../data/dc20.json';
 import falloutConfig from '../../../data/fallout.json';
+import nimbleConfig from '../../../data/nimble.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { clickOutside, copyToClipboard, localize } from '../../../helpers';
 
@@ -102,6 +103,9 @@ export const CharactersListItem = (props) => {
     if (character().provider === 'dc20') {
       return `${t('charactersPage.level')} ${character().level} | ${character().ancestries.map((item) => localize(dc20Config.ancestries[item].name, locale())).join(' * ')}`;
     }
+    if (character().provider === 'nimble') {
+      return `${t('charactersPage.level')} ${character().level} | ${localize(nimbleConfig.ancestries[character().ancestry].name, locale())}`;
+    }
   });
 
   const secondText = createMemo(() => {
@@ -119,6 +123,9 @@ export const CharactersListItem = (props) => {
     }
     if (character().provider === 'dc20') {
       return localize(dc20Config.classes[character().main_class].name, locale());
+    }
+    if (character().provider === 'nimble') {
+      return localize(nimbleConfig.classes[character().main_class].name, locale());
     }
   });
 

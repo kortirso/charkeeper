@@ -108,7 +108,7 @@
         "portal_mage": { "name": { "en": "Portal Mage", "ru": "Порталист" } },
         "witch": { "name": { "en": "Witch", "ru": "Ведьма" } }
       }
-    }    
+    }
   },
   "spell_lists": {
     "arcane": { "name": { "en": "Arcane", "ru": "Арканный" } },
