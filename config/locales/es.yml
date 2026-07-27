@@ -310,10 +310,11 @@ es:
         switch_ru: Cambiar a RU
         switch_eu: Cambiar a EU
         ttrpgs: Soporte para varios juegos de rol de mesa
-        ttrpgs_desc: "CharKeeper es compatible actualmente con varios sistemas de juego de mesa: D&D 2014 y 2024, Daggerheart, Pathfinder 2, Fate, DC20, Cosmere RPG y Fallout 2d20. Puedes guardar los datos de tu personaje sin limitaciones."
+        ttrpgs_desc: "CharKeeper es compatible actualmente con varios sistemas de juego de mesa: D&D 2014 y 2024, Daggerheart, Pathfinder 2, Fate, DC20, Cosmere RPG, Nimble, Call of Cthulhu y Fallout 2d20. Puedes guardar los datos de tu personaje sin limitaciones."
         ttrpgs_desc2: 'Data for Pathfinder 2 is provided by <a href="https://pf2.ru/" target="_blank" rel="noopener noreferrer" class="underline">Pathfinder 2E</a>.'
         ttrpgs_desc3: This is unofficial fan content, created and shared for non-commercial use.
         ttrpgs_desc4: "Cosmere RPG note: It has not been reviewed by Dragonsteel Entertainment, LLC or Brotherwise Games, LLC."
+        ttrpgs_desc5: "Nimble: Charkeeper is an independent product published under the Nimble 3rd Party Creator License. Nimble © Nimble Co. This app is free to use for anyone who already owns the content, is trying the system out, or cannot afford to buy it right now. If you enjoy Nimble and are able, please support the game by purchasing the official content at nimbleRPG.com."
         extensión: Extensiones para navegador
         descripción de la extensión: CharKeeper permite importar personajes de D&D Beyond mediante extensiones específicas para navegador. Simplemente instala la extensión, visita la página del personaje y descarga el archivo del personaje a través de la extensión.
         extensión para: Extensión para
