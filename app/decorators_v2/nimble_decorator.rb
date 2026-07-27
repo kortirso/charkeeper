@@ -113,6 +113,34 @@ class NimbleDecorator < ApplicationDecoratorV2
     @result['features'] = apply_features
     @result['save_dc'] = 10 + key
     @result['inventory'] = 10 + modified_abilities['str']
+    @result['attacks'] = [unarmed_attack] + character_weapons.map { |item| calculate_attack(item) }
+  end
+
+  def unarmed_attack
+    {
+      name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
+      attack: '1d4',
+      damage: 1 + modified_abilities['str'],
+      damage_types: ['b'],
+      ready_to_use: true
+    }
+  end
+
+  def calculate_attack(item) # rubocop: disable Metrics/AbcSize
+    damage_bonus =
+      if modified_abilities[item.dig(:items_info, 'weapon_skill')].positive?
+        "+#{modified_abilities[item.dig(:items_info, 'weapon_skill')]}"
+      elsif modified_abilities[item.dig(:items_info, 'weapon_skill')].negative?
+        modified_abilities[item.dig(:items_info, 'weapon_skill')]
+      end
+    {
+      name: translate(item[:items_name]),
+      range: item.dig(:items_info, 'range'),
+      damage: "#{item.dig(:items_info, 'damage')}#{damage_bonus || ''}",
+      damage_type: item.dig(:items_info, 'damage_type'),
+      notes: item[:notes] || [],
+      ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true
+    }.compact
   end
 
   def find_modified_abilities
@@ -147,6 +175,14 @@ class NimbleDecorator < ApplicationDecoratorV2
 
   def equiped_shield_info
     @equiped_shield_info ||= active_items.find { |item| item[:items_kind] == 'shield' }&.dig(:items_info)
+  end
+
+  def character_weapons
+    @character
+      .items
+      .joins(:item)
+      .where(items: { kind: 'weapon' })
+      .hashable_pluck('items.slug', 'items.name', 'items.info', :notes, :state)
   end
 
   def modifiers

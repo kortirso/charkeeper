@@ -9,7 +9,6 @@ module Nimble
         @result['hit_die'] = 12
         @result['saves'] = %w[str int]
         @result['armors'] = []
-        @result['weapons'] = %w[melee-str range-str]
         @result
       end
     end

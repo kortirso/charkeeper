@@ -5,6 +5,7 @@ module NimbleCharacter
     class BerserkerBuilder
       def call(result:)
         result[:health] = { 'current' => 20, 'temp' => 0, 'max' => 20 }
+        result[:weapons] = %w[melee-str range-str]
 
         result
       end

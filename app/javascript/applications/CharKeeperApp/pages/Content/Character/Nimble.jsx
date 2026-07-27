@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -116,6 +116,12 @@ export const Nimble = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
               <NimbleHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <div class="mt-4">
+                <Combat
+                  character={character()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
@@ -197,6 +203,12 @@ export const Nimble = (props) => {
           <Switch>
             <Match when={activeTab() === 'combat'}>
               <NimbleHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <div class="mt-4">
+                <Combat
+                  character={character()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
             </Match>
             <Match when={activeTab() === 'equipment'}>
               <Equipment

@@ -194,6 +194,7 @@ export const Combat = (props) => {
 
     if (provider === 'daggerheart') distance = [DH_SQUARE_DISTANCES[attack.range] * 5];
     if (provider === 'pathfinder2') distance = [distance];
+    if (provider === 'nimble') distance = [distance * 5];
     if (provider === 'dnd5' || provider === 'dnd2024' || provider === 'dc20' || provider === 'cosmere') distance = distance.toString().includes('/') ? distance.split('/').map((item) => parseInt(item)) : [distance];
 
     const result = distance.map((item) => {
@@ -282,6 +283,19 @@ export const Combat = (props) => {
                           <p>{attack.damage}{attack.damage_bonus ? `${attack.damage_bonus > 0 ? '+' : ''}${attack.damage_bonus}` : ''}</p>
                           <p class="text-sm">{attack.distance}</p>
                           <p class="text-xs">{localize(TRANSLATION, locale()).attacks} {attack.attacks}</p>
+                        </>
+                      </Match>
+                      <Match when={character().provider === 'nimble'}>
+                        <>
+                          <div class="weapon-damage">
+                            <Dice
+                              width="28"
+                              height="28"
+                              text={attack.attack || attack.damage}
+                              onClick={() => null}
+                            />
+                          </div>
+                          <p class="text-sm">{renderAttackDistance(attack)}</p>
                         </>
                       </Match>
                     </Switch>
