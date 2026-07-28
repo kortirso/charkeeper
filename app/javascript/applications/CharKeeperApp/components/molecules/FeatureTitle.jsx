@@ -7,7 +7,8 @@ import { PlusSmall, Minus, Campfire, LongCampfire, Moon, Picnic, Combat, Ability
 import { localize, performResponse } from '../../helpers';
 
 const FEATURE_ICONS = {
-  'one_at_short_rest': Picnic, 'short_rest': Campfire, 'long_rest': LongCampfire, 'session': Moon, 'combat': Combat
+  'one_at_short_rest': Picnic, 'short_rest': Campfire, 'long_rest': LongCampfire, 'session': Moon, 'combat': Combat,
+  'combat_rest': Combat, 'field_rest': Campfire, 'long_field_rest': LongCampfire, 'safe_rest': Moon
 }
 const TYPE_ICONS = { 'ability': Ability, 'spell': Spell, 'grimoire': Grimoire }
 const TRANSLATION = {

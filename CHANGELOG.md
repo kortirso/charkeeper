@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - static and health info for nimble characters
 - attacks for nimble characters
 - feats for nimble characters
+- leveling for nimble characters
 
 ## [0.5.2] - 2026-07-24
 ### Added

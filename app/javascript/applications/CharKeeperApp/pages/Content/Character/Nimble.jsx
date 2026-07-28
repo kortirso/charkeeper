@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth
+  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling
 } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, Feats } from '../../../components';
 import { useAppLocale } from '../../../context';
@@ -65,6 +65,8 @@ export const Nimble = (props) => {
 
   const [locale] = useAppLocale();
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const meleeStrFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'str' && item.info.type === 'melee';
   const meleeDexFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'dex' && item.info.type === 'melee';
   const rangeStrFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'str' && item.info.type === 'range';
@@ -91,7 +93,7 @@ export const Nimble = (props) => {
   });
 
   const characterTabs = createMemo(() => {
-    const result = ['combat', 'equipment'];
+    const result = ['combat', 'equipment', 'classLevels'];
     return result.concat(['bonuses', 'notes', 'avatar']);
   });
 
@@ -105,7 +107,7 @@ export const Nimble = (props) => {
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
           currentGuideStep={character().guide_step}
-          markedTabs={{ '3': 'equipment' }}
+          markedTabs={{ '3': 'equipment', '4': 'classLevels' }}
         />
         <div class="p-2 pb-16 flex-1 overflow-y-auto">
           <Switch>
@@ -148,24 +150,31 @@ export const Nimble = (props) => {
               <Equipment
                 character={character()}
                 itemFilters={[
-                  { title: localize(TRANSLATION, locale()).meleeStrFilter, callback: meleeStrFilter },
-                  { title: localize(TRANSLATION, locale()).meleeDexFilter, callback: meleeDexFilter },
-                  { title: localize(TRANSLATION, locale()).rangeStrFilter, callback: rangeStrFilter },
-                  { title: localize(TRANSLATION, locale()).rangeDexFilter, callback: rangeDexFilter },
-                  { title: localize(TRANSLATION, locale()).clothFilter, callback: clothFilter },
-                  { title: localize(TRANSLATION, locale()).leatherFilter, callback: leatherFilter },
-                  { title: localize(TRANSLATION, locale()).mailFilter, callback: mailFilter },
-                  { title: localize(TRANSLATION, locale()).plateFilter, callback: plateFilter },
-                  { title: localize(TRANSLATION, locale()).shieldFilter, callback: shieldFilter },
-                  { title: localize(TRANSLATION, locale()).itemsFilter, callback: itemsFilter },
-                  { title: localize(TRANSLATION, locale()).consumablesFilter, callback: consumablesFilter }
+                  { title: i18n().meleeStrFilter, callback: meleeStrFilter },
+                  { title: i18n().meleeDexFilter, callback: meleeDexFilter },
+                  { title: i18n().rangeStrFilter, callback: rangeStrFilter },
+                  { title: i18n().rangeDexFilter, callback: rangeDexFilter },
+                  { title: i18n().clothFilter, callback: clothFilter },
+                  { title: i18n().leatherFilter, callback: leatherFilter },
+                  { title: i18n().mailFilter, callback: mailFilter },
+                  { title: i18n().plateFilter, callback: plateFilter },
+                  { title: i18n().shieldFilter, callback: shieldFilter },
+                  { title: i18n().itemsFilter, callback: itemsFilter },
+                  { title: i18n().consumablesFilter, callback: consumablesFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
-                finishGuideStep={true}
-                helpMessage={localize(TRANSLATION, locale())['equipmentHelpMessage']}
+                helpMessage={i18n().equipmentHelpMessage}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
+              />
+            </Match>
+            <Match when={activeMobileTab() === 'classLevels'}>
+              <NimbleLeveling
+                character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+                helpMessage={i18n().levelingHelpMessage}
               />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
@@ -218,7 +227,7 @@ export const Nimble = (props) => {
           activeTab={activeTab()}
           setActiveTab={setActiveTab}
           currentGuideStep={character().guide_step}
-          markedTabs={{ '3': 'equipment' }}
+          markedTabs={{ '3': 'equipment', '4': 'classLevels' }}
         />
         <div class="p-2 pb-16 flex-1">
           <Switch>
@@ -243,24 +252,32 @@ export const Nimble = (props) => {
               <Equipment
                 character={character()}
                 itemFilters={[
-                  { title: localize(TRANSLATION, locale()).meleeStrFilter, callback: meleeStrFilter },
-                  { title: localize(TRANSLATION, locale()).meleeDexFilter, callback: meleeDexFilter },
-                  { title: localize(TRANSLATION, locale()).rangeStrFilter, callback: rangeStrFilter },
-                  { title: localize(TRANSLATION, locale()).rangeDexFilter, callback: rangeDexFilter },
-                  { title: localize(TRANSLATION, locale()).clothFilter, callback: clothFilter },
-                  { title: localize(TRANSLATION, locale()).leatherFilter, callback: leatherFilter },
-                  { title: localize(TRANSLATION, locale()).mailFilter, callback: mailFilter },
-                  { title: localize(TRANSLATION, locale()).plateFilter, callback: plateFilter },
-                  { title: localize(TRANSLATION, locale()).shieldFilter, callback: shieldFilter },
-                  { title: localize(TRANSLATION, locale()).itemsFilter, callback: itemsFilter },
-                  { title: localize(TRANSLATION, locale()).consumablesFilter, callback: consumablesFilter }
+                  { title: i18n().meleeStrFilter, callback: meleeStrFilter },
+                  { title: i18n().meleeDexFilter, callback: meleeDexFilter },
+                  { title: i18n().rangeStrFilter, callback: rangeStrFilter },
+                  { title: i18n().rangeDexFilter, callback: rangeDexFilter },
+                  { title: i18n().clothFilter, callback: clothFilter },
+                  { title: i18n().leatherFilter, callback: leatherFilter },
+                  { title: i18n().mailFilter, callback: mailFilter },
+                  { title: i18n().plateFilter, callback: plateFilter },
+                  { title: i18n().shieldFilter, callback: shieldFilter },
+                  { title: i18n().itemsFilter, callback: itemsFilter },
+                  { title: i18n().consumablesFilter, callback: consumablesFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
                 finishGuideStep={true}
-                helpMessage={localize(TRANSLATION, locale())['equipmentHelpMessage']}
+                helpMessage={i18n().equipmentHelpMessage}
                 onNextGuideStepClick={() => setActiveTab('classLevels')}
+              />
+            </Match>
+            <Match when={activeTab() === 'classLevels'}>
+              <NimbleLeveling
+                character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+                helpMessage={i18n().levelingHelpMessage}
               />
             </Match>
             <Match when={activeTab() === 'bonuses'}>

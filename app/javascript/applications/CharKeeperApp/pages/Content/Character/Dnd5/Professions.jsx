@@ -109,7 +109,7 @@ export const Dnd5Professions = (props) => {
             </For>
           </Toggle>
         </Show>
-        <Languages character={character()} defaults={config.languages} />
+        <Languages character={character()} defaults={config.languages} onReplaceCharacter={props.onReplaceCharacter} />
         <Show when={character().provider === 'dnd2024'}>
           <Toggle title={localize(TRANSLATION, locale())['weaponMastery']}>
             <For each={Object.entries(config.weaponMasteries)}>
