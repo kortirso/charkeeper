@@ -16,6 +16,54 @@
     }
   },
   {
+    "slug": "minor_enchantment",
+    "kind": "armor",
+    "name": {
+      "en": "Minor Enchantment",
+      "ru": "Малое зачарование"
+    },
+    "data": {
+      "price": 100
+    },
+    "info": {
+      "ac": "3 + dex",
+      "armor_skill": "cloth",
+      "str_req": -1
+    }
+  },
+  {
+    "slug": "major_enchantment",
+    "kind": "armor",
+    "name": {
+      "en": "Major Enchantment",
+      "ru": "Сильное зачарование"
+    },
+    "data": {
+      "price": 1000
+    },
+    "info": {
+      "ac": "4 + dex",
+      "armor_skill": "cloth",
+      "str_req": -1
+    }
+  },
+  {
+    "slug": "Epic Enchantment",
+    "kind": "armor",
+    "name": {
+      "en": "Epic Enchantment",
+      "ru": "Эпическое зачарование"
+    },
+    "data": {
+      "price": 10000
+    },
+    "info": {
+      "ac": "5 + dex",
+      "armor_skill": "cloth",
+      "str_req": -1
+    }
+  },
+  {
     "slug": "cheap_hides",
     "kind": "armor",
     "name": {
@@ -29,6 +77,54 @@
       "ac": "3 + dex",
       "armor_skill": "leather",
       "str_req": -1
+    }
+  },
+  {
+    "slug": "ox_hide",
+    "kind": "armor",
+    "name": {
+      "en": "Ox Hide",
+      "ru": "Бычья шкура"
+    },
+    "data": {
+      "price": 45
+    },
+    "info": {
+      "ac": "4 + dex",
+      "armor_skill": "leather",
+      "str_req": -1
+    }
+  },
+  {
+    "slug": "hard_leather",
+    "kind": "armor",
+    "name": {
+      "en": "Hard Leather",
+      "ru": "Толстая кожа"
+    },
+    "data": {
+      "price": 300
+    },
+    "info": {
+      "ac": "5 + dex",
+      "armor_skill": "leather",
+      "str_req": 1
+    }
+  },
+  {
+    "slug": "Wyrmhide",
+    "kind": "armor",
+    "name": {
+      "en": "Wyrmhide",
+      "ru": "Драконья кожа"
+    },
+    "data": {
+      "price": 2000
+    },
+    "info": {
+      "ac": "6 + dex",
+      "armor_skill": "leather",
+      "str_req": 1
     }
   },
   {
@@ -48,6 +144,54 @@
     }
   },
   {
+    "slug": "chain_shirt",
+    "kind": "armor",
+    "name": {
+      "en": "Chain Shirt",
+      "ru": "Кольчужная рубаха"
+    },
+    "data": {
+      "price": 60
+    },
+    "info": {
+      "ac": "9 + MIN(dex, 2)",
+      "armor_skill": "mail",
+      "str_req": 2
+    }
+  },
+  {
+    "slug": "scale_mail",
+    "kind": "armor",
+    "name": {
+      "en": "Scale Mail",
+      "ru": "Чешуйчатый доспех"
+    },
+    "data": {
+      "price": 700
+    },
+    "info": {
+      "ac": "12 + MIN(dex, 2)",
+      "armor_skill": "mail",
+      "str_req": 3
+    }
+  },
+  {
+    "slug": "dragonscale",
+    "kind": "armor",
+    "name": {
+      "en": "Dragonscale",
+      "ru": "Доспех из драконей чешуи"
+    },
+    "data": {
+      "price": 3000
+    },
+    "info": {
+      "ac": "15 + MIN(dex, 2)",
+      "armor_skill": "mail",
+      "str_req": 4
+    }
+  },
+  {
     "slug": "rusty_plate",
     "kind": "armor",
     "name": {
@@ -64,6 +208,54 @@
     }
   },
   {
+    "slug": "half_plate",
+    "kind": "armor",
+    "name": {
+      "en": "Half Plate",
+      "ru": "Полулаты"
+    },
+    "data": {
+      "price": 200
+    },
+    "info": {
+      "ac": 14,
+      "armor_skill": "plate",
+      "str_req": 3
+    }
+  },
+  {
+    "slug": "full_plate",
+    "kind": "armor",
+    "name": {
+      "en": "Full Plate",
+      "ru": "Латы"
+    },
+    "data": {
+      "price": 2000
+    },
+    "info": {
+      "ac": 18,
+      "armor_skill": "plate",
+      "str_req": 4
+    }
+  },
+  {
+    "slug": "mithril_plate",
+    "kind": "armor",
+    "name": {
+      "en": "Mithril Plate",
+      "ru": "Мифриловые латы"
+    },
+    "data": {
+      "price": 5000
+    },
+    "info": {
+      "ac": 22,
+      "armor_skill": "plate",
+      "str_req": 5
+    }
+  },
+  {
     "slug": "wooden_buckler",
     "kind": "shield",
     "name": {
@@ -77,6 +269,54 @@
       "ac": 2,
       "armor_skill": "shield",
       "str_req": -1
+    }
+  },
+  {
+    "slug": "iron_shield",
+    "kind": "shield",
+    "name": {
+      "en": "Iron Shield",
+      "ru": "Железный щит"
+    },
+    "data": {
+      "price": 80
+    },
+    "info": {
+      "ac": 4,
+      "armor_skill": "shield",
+      "str_req": 2
+    }
+  },
+  {
+    "slug": "tower_shield",
+    "kind": "shield",
+    "name": {
+      "en": "Tower Shield",
+      "ru": "Башенный щит"
+    },
+    "data": {
+      "price": 1500
+    },
+    "info": {
+      "ac": 6,
+      "armor_skill": "shield",
+      "str_req": 3
+    }
+  },
+  {
+    "slug": "dragon_shield",
+    "kind": "shield",
+    "name": {
+      "en": "Dragon Shield",
+      "ru": "Драконий щит"
+    },
+    "data": {
+      "price": 9000
+    },
+    "info": {
+      "ac": 8,
+      "armor_skill": "shield",
+      "str_req": 3
     }
   }
 ]

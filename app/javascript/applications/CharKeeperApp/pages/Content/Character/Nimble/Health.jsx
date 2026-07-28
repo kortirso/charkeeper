@@ -1,8 +1,9 @@
 import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 
 import { Pathfinder2SharedHealth } from '../../../../pages';
-import { StatsBlock, ErrorWrapper, GuideWrapper, Dice, Checkbox, EditWrapper, Input } from '../../../../components';
+import { StatsBlock, ErrorWrapper, GuideWrapper, Dice, Checkbox, EditWrapper, Input, Button } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
+import { Minus, Plus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { modifier, localize, performResponse } from '../../../../helpers';
 
@@ -12,14 +13,16 @@ const TRANSLATION = {
     initiative: 'Initiative',
     speed: 'Speed',
     wounds: 'Wounds',
-    changeMaxHp: 'Change max HP'
+    changeMaxHp: 'Change max HP',
+    hitDices: 'Hit Dices'
   },
   ru: {
     armor: 'Броня',
     initiative: 'Инициатива',
     speed: 'Скорость',
     wounds: 'Раны',
-    changeMaxHp: 'Изменить максимальное здоровье'
+    changeMaxHp: 'Изменить максимальное здоровье',
+    hitDices: 'Кости хитов'
   }
 }
 
@@ -116,7 +119,7 @@ export const NimbleHealth = (props) => {
                   width="36"
                   height="36"
                   text={modifier(character().initiative)}
-                  onClick={() => props.openD20Test('/check initiative self', i18n().initiative, character().initiative, 10)}
+                  onClick={() => props.openD20Test('/check initiative self', i18n().initiative, character().initiative)}
                 />
             },
             { title: i18n().speed, value: character().speed }
@@ -144,8 +147,8 @@ export const NimbleHealth = (props) => {
               onChangeHealth={changeHealth}
               onChangeTempHealth={changeTempHealth}
             >
-              <div class="flex items-center pt-0 p-4">
-                <p class="mr-2">{i18n().wounds}</p>
+              <div class="flex items-center gap-2 pt-0 p-4">
+                <p>{i18n().wounds}</p>
                 <div class="flex">
                   <For each={[...Array(character().wounds_spent)]}>
                     {() =>
@@ -157,6 +160,14 @@ export const NimbleHealth = (props) => {
                       <Checkbox classList="mr-1" onToggle={gainDying} />
                     }
                   </For>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 pt-0 p-4">
+                <p>{i18n().hitDices} (d{character().hit_die})</p>
+                <div class="flex gap-2">
+                  <Button default size="small" disabled={character().hit_die_spent === character().hit_die_max} onClick={() => replaceCharacter({ hit_die_spent: character().hit_die_spent + 1 })}><Minus /></Button>
+                  {character().hit_die_max - character().hit_die_spent} / {character().hit_die_max}
+                  <Button default size="small" disabled={character().hit_die_spent === 0} onClick={() => replaceCharacter({ hit_die_spent: character().hit_die_spent - 1 })} ><Plus /></Button>
                 </div>
               </div>
             </Pathfinder2SharedHealth>

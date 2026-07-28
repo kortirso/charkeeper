@@ -406,7 +406,7 @@ export const Dc20Spells = (props) => {
                       width="36"
                       height="36"
                       text={modifier(character().spell_attack)}
-                      onClick={() => props.openD20Test('/check attack spell', null, character().spell_attack, 10)}
+                      onClick={() => props.openD20Test('/check attack spell', null, character().spell_attack)}
                     />
                 }
               ]}

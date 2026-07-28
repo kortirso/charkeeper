@@ -133,9 +133,9 @@ export const createRoll = () => {
         setDicesResult(undefined);
       });
     },
-    openDC20Test(command, title, bonus) {
+    openDC20Test(command, title, bonus, adv = 0) {
       batch(() => {
-        setD20Test({ command: command, title: title, bonus: bonus, maxAdv: 10, adv: 0, addBonus: 0 });
+        setD20Test({ command: command, title: title, bonus: bonus, maxAdv: 10, adv: adv, addBonus: 0 });
         setD20TestResult(undefined);
       });
     },
@@ -167,13 +167,13 @@ export const createRoll = () => {
         setPlotResult(undefined);
       });
     },
-    openNimbleAttack(command, title, dices, bonus, damage) {
+    openNimbleAttack(command, title, dices, bonus, damage, crit) {
       const splitted_dice = dices.split('d');
       const diceAmount = parseInt(splitted_dice[0]);
       const diceSize = splitted_dice[1];
 
       batch(() => {
-        setNimbleTest({ command: command, title: title, diceAmount: diceAmount, diceSize: diceSize, bonus: bonus, maxAdv: 10, adv: 0, addBonus: 0, damage: damage });
+        setNimbleTest({ command: command, title: title, diceAmount: diceAmount, diceSize: diceSize, bonus: bonus, maxAdv: 10, adv: 0, addBonus: 0, damage: damage, crit: crit });
         setNimbleTestResult(undefined);
       });
     },
@@ -363,6 +363,7 @@ export const createRoll = () => {
         if (nimbleTest.bonus + nimbleTest.addBonus > 0) options.push(`--bonus ${nimbleTest.bonus + nimbleTest.addBonus}`);
         if (nimbleTest.bonus + nimbleTest.addBonus < 0) options.push(`--penalty ${Math.abs(nimbleTest.bonus + nimbleTest.addBonus)}`);
         if (nimbleTest.damage) options.push(`--damage ${nimbleTest.damage}`);
+        if (nimbleTest.crit) options.push(`--crit ${nimbleTest.crit}`);
 
         return options.length > 0 ? `${nimbleTest.command} ${nimbleTest.diceAmount}d${nimbleTest.diceSize} ${options.join(' ')}` : nimbleTest.command;
       }

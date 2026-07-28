@@ -69,6 +69,7 @@ export const Nimble = (props) => {
 
   const i18n = createMemo(() => localize(TRANSLATION, locale()));
 
+  const sortCallback = (a, b) => a.data.price > b.data.price;
   const meleeStrFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'str' && item.info.type === 'melee';
   const meleeDexFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'dex' && item.info.type === 'melee';
   const rangeStrFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'str' && item.info.type === 'range';
@@ -150,6 +151,7 @@ export const Nimble = (props) => {
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
                 character={character()}
+                sortCallback={sortCallback}
                 itemFilters={[
                   { title: i18n().meleeStrFilter, callback: meleeStrFilter },
                   { title: i18n().meleeDexFilter, callback: meleeDexFilter },

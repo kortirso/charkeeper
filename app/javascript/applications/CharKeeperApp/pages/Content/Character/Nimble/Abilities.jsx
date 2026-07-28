@@ -73,6 +73,13 @@ export const NimbleAbilities = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const saveAdv = (slug) => {
+    if (character().saves[0] === slug) return 1;
+    if (character().saves[1] === slug) return -1;
+
+    return 0;
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'NimbleAbilities' }}>
       <GuideWrapper
@@ -102,7 +109,7 @@ export const NimbleAbilities = (props) => {
                               height="64"
                               text={modifier(character().modified_abilities[slug])}
                               textClassList="text-4xl"
-                              onClick={() => props.openD20Test(`/check save ${slug}`, ability, character().modified_abilities[slug], 10)}
+                              onClick={() => props.openD20Test(`/check save ${slug}`, ability, character().modified_abilities[slug], saveAdv(slug))}
                             />
                           </div>
                         </Show>

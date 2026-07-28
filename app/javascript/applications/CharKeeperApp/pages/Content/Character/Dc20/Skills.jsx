@@ -401,7 +401,7 @@ export const Dc20Skills = (props) => {
                                   width="28"
                                   height="28"
                                   text={modifier(skill.modifier)}
-                                  onClick={() => props.openD20Test(`/check skill "${skill.slug}"`, skill.name, skill.modifier, 10)}
+                                  onClick={() => props.openD20Test(`/check skill "${skill.slug}"`, skill.name, skill.modifier)}
                                 />
                               </div>
                             }
@@ -468,7 +468,7 @@ export const Dc20Skills = (props) => {
                                   width="28"
                                   height="28"
                                   text={modifier(trade.modifier)}
-                                  onClick={() => props.openD20Test(`/check skill "${trade.slug}"`, null, trade.modifier, 10)}
+                                  onClick={() => props.openD20Test(`/check skill "${trade.slug}"`, null, trade.modifier)}
                                 />
                               </div>
                             }
@@ -533,7 +533,7 @@ export const Dc20Skills = (props) => {
                                   width="28"
                                   height="28"
                                   text={modifier(Math.max(...[character().modified_abilities.int, character().modified_abilities.cha]))}
-                                  onClick={() => props.openD20Test(`/check language "${name}"`, name, Math.max(...[character().modified_abilities.int, character().modified_abilities.cha]), 10)}
+                                  onClick={() => props.openD20Test(`/check language "${name}"`, name, Math.max(...[character().modified_abilities.int, character().modified_abilities.cha]))}
                                 />
                               </Show>
                               <Show when={level === 2}>{localize(TRANSLATION, locale()).fluent}</Show>

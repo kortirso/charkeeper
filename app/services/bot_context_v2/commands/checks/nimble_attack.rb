@@ -27,7 +27,7 @@ module BotContextV2
           return { status: 'success', total: values[:damage] } if values[:damage]
 
           secondary_rolls = (0...(amount - 1)).map { find_primary_roll(dice_size, values[:adv]) }
-          crit_rolls = primary_roll == dice_size ? find_crit_roll(dice_size, 0, []) : []
+          crit_rolls = values[:crit] && primary_roll == dice_size ? find_crit_roll(dice_size, 0, []) : []
 
           {
             status: 'success',

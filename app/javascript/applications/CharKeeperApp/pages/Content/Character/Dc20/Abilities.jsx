@@ -127,12 +127,12 @@ export const Dc20Abilities = (props) => {
                               height="64"
                               text={modifier(character().modified_abilities[slug])}
                               textClassList="text-4xl"
-                              onClick={() => props.openD20Test(`/check attr ${slug}`, ability, character().modified_abilities[slug], 10)}
+                              onClick={() => props.openD20Test(`/check attr ${slug}`, ability, character().modified_abilities[slug])}
                             />
                             <div class="dc20-ability-savebox">
                               <Dice
                                 text={modifier(character().attribute_saves[slug])}
-                                onClick={() => props.openD20Test(`/check save ${slug}`, null, character().attribute_saves[slug], 10)}
+                                onClick={() => props.openD20Test(`/check save ${slug}`, null, character().attribute_saves[slug])}
                               />
                               <p class="text-xs text-center">{localize(TRANSLATION, locale()).save}</p>
                             </div>
@@ -159,7 +159,7 @@ export const Dc20Abilities = (props) => {
                       <p class="text-2xl font-normal!">
                         <Dice
                           text={modifier(character()[slug])}
-                          onClick={() => props.openD20Test(`/check attr ${slug}`, localize(TRANSLATION, locale())[slug], character()[slug], 10)}
+                          onClick={() => props.openD20Test(`/check attr ${slug}`, localize(TRANSLATION, locale())[slug], character()[slug])}
                         />
                       </p>
                     </div>

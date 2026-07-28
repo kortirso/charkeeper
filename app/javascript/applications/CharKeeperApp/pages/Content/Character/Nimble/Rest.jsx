@@ -18,7 +18,7 @@ const TRANSLATION = {
     description: 'This happens during Exploration but are specific moments when PCs stop to rest and recover their resources.',
     complete: 'Rest is completed',
     rest: 'Make rest',
-    makeRolls: 'Roll recovery die',
+    makeRolls: 'Auto dice roll',
     lastRecovery: 'Last recovery die roll'
   },
   ru: {
@@ -33,7 +33,7 @@ const TRANSLATION = {
     description: 'Это происходит во время исследования, но это определенные моменты, когда персонажи останавливаются, чтобы отдохнуть и восстановить свои ресурсы.',
     complete: 'Отдых завершён',
     rest: 'Провести отдых',
-    makeRolls: 'Использовать кость восстановления',
+    makeRolls: 'Бросить кости',
     lastRecovery: 'Последнее использование кости восстановления'
   },
   es: {
@@ -48,7 +48,7 @@ const TRANSLATION = {
     description: 'Esto sucede durante la Exploración pero son momentos específicos cuando los jugadores se detienen a descansar y recuperar sus recursos.',
     complete: 'El descanso fue completado',
     rest: 'Tomar descanso',
-    makeRolls: 'Roll recovery die',
+    makeRolls: 'Auto dice roll',
     lastRecovery: 'Last recovery die roll'
   }
 }

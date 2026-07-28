@@ -19,6 +19,7 @@ module BotContextV2
             act.on('--id [TEXT]', String) { |text| result[:id] = text }
             act.on('--dc [TEXT]', Integer) { |text| result[:dc] = text }
             act.on('--damage [TEXT]', Integer) { |text| result[:damage] = text }
+            act.on('--crit [TEXT]') { |text| result[:crit] = text == 'true' }
           end
           parser.parse! arguments
           result

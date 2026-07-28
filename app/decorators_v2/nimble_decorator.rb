@@ -137,7 +137,8 @@ class NimbleDecorator < ApplicationDecoratorV2
       damage_bonus: modified_abilities[item.dig(:items_info, 'weapon_skill')],
       damage_type: item.dig(:items_info, 'damage_type'),
       notes: item[:notes] || [],
-      ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true
+      ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true,
+      critable: weapons.include?("#{item.dig(:items_info, 'type')}-#{item.dig(:items_info, 'weapon_skill')}")
     }.compact
   end
 

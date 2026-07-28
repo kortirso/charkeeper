@@ -124,7 +124,7 @@ export const NimbleSkills = (props) => {
                             width="28"
                             height="28"
                             text={modifier(skill.modifier)}
-                            onClick={() => props.openD20Test(`/check skill ${slug}`, skill.name, skill.modifier, 10)}
+                            onClick={() => props.openD20Test(`/check skill ${slug}`, skill.name, skill.modifier)}
                           />
                         </div>
                       }

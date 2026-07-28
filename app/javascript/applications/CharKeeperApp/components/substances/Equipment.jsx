@@ -203,15 +203,17 @@ export const Equipment = (props) => {
     const promises = [fetchCharacterItems(), fetchItems(false)];
     if (HOMEBREWED_PROVIDERS.includes(character().provider)) promises.push(fetchItems(true));
 
+    const sortCallback = (a, b) => a.name > b.name;
+
     Promise.all(promises).then(
       ([characterItemsData, itemsData, homebrewItemsData]) => {
         batch(() => {
           setCharacterItems(characterItemsData.items);
           setCharacterCampaigns(characterItemsData.character_campaigns);
           if (homebrewItemsData) {
-            setItems(itemsData.items.concat(homebrewItemsData.items).sort((a, b) => a.name > b.name));
+            setItems(itemsData.items.concat(homebrewItemsData.items).sort(props.sortCallback || sortCallback));
           } else {
-            setItems(itemsData.items.sort((a, b) => a.name > b.name));
+            setItems(itemsData.items.sort(props.sortCallback || sortCallback));
           }
         });
       }
