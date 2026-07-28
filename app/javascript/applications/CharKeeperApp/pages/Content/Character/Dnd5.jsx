@@ -241,6 +241,7 @@ export const Dnd5 = (props) => {
             <Match when={activeMobileTab() === 'professions'}>
               <Dnd5Professions
                 character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
                 onRefreshCharacter={refreshCharacter}
                 onReloadCharacter={updateCharacter}
               />
@@ -405,6 +406,7 @@ export const Dnd5 = (props) => {
             <Match when={activeTab() === 'professions'}>
               <Dnd5Professions
                 character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
                 onRefreshCharacter={refreshCharacter}
                 onReloadCharacter={updateCharacter}
               />

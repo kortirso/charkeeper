@@ -57,6 +57,7 @@ export const Languages = (props) => {
     );
     if (result.errors_list === undefined) {
       batch(() => {
+        if (props.onReplaceCharacter) props.onReplaceCharacter({ languages: newValue });
         setLanguages(newValue);
         setLanguage('');
       });
@@ -94,7 +95,6 @@ export const Languages = (props) => {
         </For>
         <div class="flex items-center gap-x-2 mt-2">
           <Input
-            containerClassList=""
             value={language()}
             onInput={setLanguage}
           />

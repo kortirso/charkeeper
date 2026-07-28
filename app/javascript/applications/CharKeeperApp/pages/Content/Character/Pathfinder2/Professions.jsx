@@ -46,7 +46,7 @@ export const Pathfinder2Professions = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Professions' }}>
-      <Languages character={character()} defaults={config.languages} />
+      <Languages character={character()} defaults={config.languages} onReplaceCharacter={props.onReplaceCharacter} />
       <Toggle title={t('professionsPage.weaponCoreSkill')}>
         <div class="flex">
           <div class="flex-1">

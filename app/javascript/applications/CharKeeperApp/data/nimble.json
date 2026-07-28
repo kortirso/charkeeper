@@ -21,5 +21,17 @@
     "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" } },
     "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
     "wil": { "name": { "en": "Will", "ru": "Воля" } }
+  },
+  "languages": {
+    "common": { "name": { "en": "Common", "ru": "Общий", "es": "Común" } },
+    "dwarvish": { "name": { "en": "Dwarvish", "ru": "Дварфский", "es": "Enano" } },
+    "elvish": { "name": { "en": "Elvish", "ru": "Эльфийский", "es": "Élfico" } },
+    "goblin": { "name": { "en": "Goblin", "ru": "Гоблинский", "es": "Goblin" } },
+    "infernal": { "name": { "en": "Infernal", "ru": "Инфернальный", "es": "Infernal" } },
+    "draconic": { "name": { "en": "Draconic", "ru": "Драконий", "es": "Draconico" } },
+    "thieves_cunt": { "name": { "en": "Thieves' Cunt", "ru": "Воровской жаргон" } },
+    "celestial": { "name": { "en": "Celestial", "ru": "Небесный" } },
+    "primordial": { "name": { "en": "Primordial", "ru": "Изначальный" } },
+    "deep_speak": { "name": { "en": "Deep Speak", "ru": "Глубинный" } }
   }
 }

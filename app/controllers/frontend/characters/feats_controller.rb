@@ -31,13 +31,14 @@ module Frontend
         params.require(:character_feat).permit!.to_h
       end
 
-      def characters_relation
+      def characters_relation # rubocop: disable Metrics/AbcSize
         case params[:provider]
         when 'dnd5', 'dnd2024' then authorized_scope(Character.all).dnd
         when 'pathfinder2' then authorized_scope(Character.all).pathfinder2
         when 'daggerheart' then authorized_scope(Character.all).daggerheart
         when 'dc20' then authorized_scope(Character.all).dc20
         when 'cosmere' then authorized_scope(Character.all).cosmere
+        when 'nimble' then authorized_scope(Character.all).nimble
         else Character.none
         end
       end
