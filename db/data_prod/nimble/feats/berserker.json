@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "rage",
+    "title": {
+      "en": "Rage",
+      "ru": "Ярость"
+    },
+    "description": {
+      "en": "Once per turn roll a **Fury Die** (1d{{dice|4}}).\n\n- Add it to every STR attack you make (dice part of damage).\n\n- When you are attacked, you may expend 1 or more **Fury Die** to reduce the damage taken by {{reduce|STR+DEX}} for each die spent.\n\nIf you are already at your max, roll as normal and decide which ones to keep.",
+      "ru": "Один раз за ход вы можете бросить **Куб ярости** (1d{{dice|4}}).\n\n- Добавляйте сумму кубов к каждой своей STR атаке (это урон от куба).\n\n- Когда вы атакованы, вы можете потратить 1 или более **Кубов ярости**, чтобы снизить урон от атаки на {{reduce|STR+DEX}} за каждый использованный куб.\n\n Если кол-во кубов максимально, то можете бросить еще 1 и заменить один из предыдущих."
+    },
+    "origin": "class",
+    "origin_value": "berserker",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "description_eval_variables": {
+      "dice": "if (level >= 17, 12, if (level >= 13, 10, if (level >= 9, 8, if (level >= 6, 6, 4))))",
+      "reduce": "str + dex"
+    },
+    "dices": {
+      "value": "if (level >= 17, 12, if (level >= 13, 10, if (level >= 9, 8, if (level >= 6, 6, 4))))",
+      "limit": "key"
+    }
+  },
+  {
+    "slug": "intensifying_fury",
+    "title": {
+      "en": "Intensifying Fury",
+      "ru": "Усиливающаяся ярость"
+    },
+    "description": {
+      "en": "If you are Raging at the beginning of your turn, roll 1 **Fury Die** for free.",
+      "ru": "Если в начале своего хода вы находитесь в состоянии ярости, бросьте 1 **Куб ярости** бесплатно."
+    },
+    "origin": "class",
+    "origin_value": "berserker",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "one_with_the_ancients",
+    "title": {
+      "en": "One with the Ancients",
+      "ru": "Единение с Древними"
+    },
+    "description": {
+      "en": "When faced with a decision about which direction or course of action to take, you can call upon your ancestors to guide you toward the most dangerous or challenging path.",
+      "ru": "Столкнувшись с необходимостью выбора направления или образа действий, вы можете обратиться к своим предкам за помощью в выборе наиболее опасного или сложного пути."
+    },
+    "origin": "class",
+    "origin_value": "berserker",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
+  }
+]

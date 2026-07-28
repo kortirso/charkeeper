@@ -19,6 +19,7 @@ module CharactersContext
         optional(:active).filled(:bool)
         optional(:used_count).filled(:integer)
         optional(:tokens).filled(:integer)
+        optional(:dices).hash
         optional(:value)
       end
     end
@@ -43,7 +44,7 @@ module CharactersContext
 
       if input[:key]
         data = input[:character_feat].character.data
-        refresh_character(input).call(
+        refresh_character(input)&.call(
           :character => input[:character_feat].character.class.find(input[:character_feat].character_id),
           input[:key] => (data[input[:key]] || {}).merge(input[input[:key]])
         )

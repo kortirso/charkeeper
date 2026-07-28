@@ -1,3 +1,4 @@
+import { createMemo } from 'solid-js';
 import { createStore, reconcile } from 'solid-js/store';
 
 import { CharacterForm } from '../../../../pages';
@@ -6,7 +7,7 @@ import config from '../../../../data/nimble.json';
 import { useAppLocale } from '../../../../context';
 import { translate, localize } from '../../../../helpers';
 
-const DEFAULT_FORM = { name: '', ancestry: undefined, main_class: undefined, skip_guide: false };
+const DEFAULT_FORM = { name: '', size: 'medium', ancestry: undefined, main_class: undefined, skip_guide: false };
 const TRANSLATION = {
   en: {
     name: 'Name',
@@ -33,8 +34,14 @@ export const NimbleForm = (props) => {
 
   const [locale] = useAppLocale();
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const saveCharacter = async () => {
-    const result = await props.onCreateCharacter(form);
+    if (form.name.length === 0) return;
+    if (!form.ancestry) return;
+    if (!form.main_class) return;
+
+    const result = await props.onCreateCharacter({ ...form, size: config.ancestries[form.ancestry].size });
 
     if (result === null) setForm(reconcile(DEFAULT_FORM));
   }
@@ -43,26 +50,26 @@ export const NimbleForm = (props) => {
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <div class="flex flex-col gap-2">
         <Input
-          labelText={localize(TRANSLATION, locale()).name}
+          labelText={i18n().name}
           value={form.name}
           onInput={(value) => setForm({ ...form, name: value })}
         />
         <Select
           searchable
-          labelText={localize(TRANSLATION, locale()).race}
+          labelText={i18n().race}
           items={translate(config.ancestries, locale(), true)}
           selectedValue={form.ancestry}
           onSelect={(value) => setForm({ ...form, ancestry: value })}
         />
         <Select
           searchable
-          labelText={localize(TRANSLATION, locale()).mainClass}
+          labelText={i18n().mainClass}
           items={translate(config.classes, locale(), true)}
           selectedValue={form.main_class}
           onSelect={(value) => setForm({ ...form, main_class: value })}
         />
         <Checkbox
-          labelText={localize(TRANSLATION, locale()).skipGuide}
+          labelText={i18n().skipGuide}
           labelPosition="right"
           labelClassList="ml-2"
           checked={form.skip_guide}

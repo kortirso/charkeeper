@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "Tenacious",
+    "title": {
+      "en": "Tenacious",
+      "ru": "Упорный"
+    },
+    "description": {
+      "en": "+1 to all skills and Initiative.",
+      "ru": "+1 ко всем навыкам и инициативе."
+    },
+    "origin": "ancestry",
+    "origin_value": "human",
+    "kind": "update_result",
+    "modifiers": { "initiative": { "type": "add", "value": 1 }, "skills": { "type": "add", "value": 1 } }
+  }
+]
