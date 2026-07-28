@@ -34,6 +34,12 @@ export const Select = (props) => {
     return [['null', localize(TRANSLATION, locale()).clear]].concat(Object.entries(props.items));
   });
 
+  const closeByChevron = (e) => {
+    e.stopPropagation();
+
+    setIsOpen(!isOpen());
+  }
+
   const onSelect = (value) => {
     const newValue = value === 'null' ? null : value;
     props.onSelect(newValue);
@@ -76,7 +82,9 @@ export const Select = (props) => {
               value={search()}
             />
           </Show>
-          <Chevron rotated={isOpen()} />
+          <div onClick={closeByChevron}>
+            <Chevron rotated={isOpen()} />
+          </div>
         </div>
         <Show when={isOpen()}>
           <ul

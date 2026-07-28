@@ -2,7 +2,7 @@
 
 class NimbleDecorator < ApplicationDecoratorV2
   BASE_MODIFIERS = %w[str dex int wil].freeze
-  SKIP_MODIFIERS = %w[skills].freeze
+  SKIP_MODIFIERS = %w[skills skills.stealth].freeze
 
   def call(character:, simple: false, version: nil)
     @character = character
@@ -152,7 +152,7 @@ class NimbleDecorator < ApplicationDecoratorV2
 
   def skill_payload(slug, values)
     skill_level = skill_levels[slug].to_i
-    modifier = modified_abilities[values['ability']] + skill_level + @bonuses['skills'].to_i
+    modifier = modified_abilities[values['ability']] + skill_level + @bonuses['skills'].to_i + @bonuses["skills.#{slug}"].to_i
     {
       slug: slug,
       name: translate(values['name']),
