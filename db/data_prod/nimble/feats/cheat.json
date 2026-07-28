@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "sneak_attack",
+    "title": {
+      "en": "Sneak Attack",
+      "ru": "Скрытая атака"
+    },
+    "description": {
+      "en": "Once per turn, when you crit, deal +{{amount|1}}d{{dice|6}} damage.",
+      "ru": "Один раз за ход, когда вы наносите критический удар, нанесите +{{amount|1}}d{{dice|6}} урона."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "description_eval_variables": {
+      "dice": "if (level >= 15, 20, if (level >= 11, 12, if (level >= 9, 10, if (level >= 3, 8, 6))))",
+      "amount": "if (level >= 17, 3, if (level >= 9, 2, 1))"
+    }
+  },
+  {
+    "slug": "vicious_opportunist",
+    "title": {
+      "en": "Vicious Opportunist",
+      "ru": "Злобный оппортунист"
+    },
+    "description": {
+      "en": "Once per turn, when you hit a *Distracted* target with a melee attack, you may change the **Primary Die** to whatever you like.",
+      "ru": "Один раз за ход при попадании в цель, которая *Отвлечена*, рукопашной атакой вы можете изменить **Основной куб** на любой по своему усмотрению."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "cheat",
+    "title": {
+      "en": "Cheat",
+      "ru": "Жулик"
+    },
+    "description": {
+      "en": "- Once per turn, you may either Move or Hide for free.\n\n- Once per day, you may change any skill check to 10+INT.\n\n- If you roll less than 10 on Initiative, you may change it to 10 instead.\n\n- You may gain advantage on skill checks while playing any games.",
+      "ru": "- Один раз за ход вы можете бесплатно переместиться или спрятаться.\n\n- Один раз в день вы можете изменить любую проверку навыка на 10+INT.\n\n- Если вы выбросили меньше 10 для инициативы, вы можете изменить ее на 10.\n\n- Вы можете получить преимущество при проверках навыков во время любой игры."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
+  }
+]

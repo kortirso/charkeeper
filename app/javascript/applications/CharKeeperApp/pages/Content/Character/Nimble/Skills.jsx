@@ -1,6 +1,6 @@
 import { createEffect, createSignal, For, Show, batch } from 'solid-js';
 
-import { ErrorWrapper, Levelbox, EditWrapper, Button, Dice } from '../../../../components';
+import { ErrorWrapper, Levelbox, EditWrapper, Button, Dice, GuideWrapper } from '../../../../components';
 import config from '../../../../data/nimble.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
@@ -9,14 +9,17 @@ import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
+    helpMessage: 'Fill data about skills of your character.',
     skills: 'Skills',
     skillBoosts: 'You have skill points to spend'
   },
   ru: {
+    helpMessage: 'Заполните данные по навыкам вашего персонажа.',
     skills: 'Навыки',
     skillBoosts: 'У вас есть очки навыков для распределения'
   },
   es: {
+    helpMessage: 'Complete los datos sobre las habilidades de tu personaje.',
     skills: 'Habilidades',
     skillBoosts: 'Tienes puntos de habilidad para gastar'
   }
@@ -89,78 +92,86 @@ export const NimbleSkills = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'NimbleSkills' }}>
-      <EditWrapper
-        editMode={editMode()}
-        onSetEditMode={setEditMode}
-        onCancelEditing={cancelEditing}
-        onSaveChanges={updateCharacter}
+      <GuideWrapper
+        character={character()}
+        guideStep={2}
+        helpMessage={localize(TRANSLATION, locale()).helpMessage}
+        onReloadCharacter={props.onReloadCharacter}
+        onNextClick={props.onNextGuideStepClick}
       >
-        <div class="blockable p-4 pb-8">
-          <p class="text-lg">{localize(TRANSLATION, locale()).skills}</p>
-          <Show when={character().skill_points !== 0}>
-            <div class="mt-2">
-              <div class="warning mb-4">
-                <p class="text-sm text-black!">
-                  {localize(TRANSLATION, locale()).skillBoosts} - {skillPoints()}
-                </p>
+        <EditWrapper
+          editMode={editMode()}
+          onSetEditMode={setEditMode}
+          onCancelEditing={cancelEditing}
+          onSaveChanges={updateCharacter}
+        >
+          <div class="blockable p-4 pb-8">
+            <p class="text-lg">{localize(TRANSLATION, locale()).skills}</p>
+            <Show when={character().skill_points !== 0}>
+              <div class="mt-2">
+                <div class="warning mb-4">
+                  <p class="text-sm text-black!">
+                    {localize(TRANSLATION, locale()).skillBoosts} - {skillPoints()}
+                  </p>
+                </div>
               </div>
-            </div>
-          </Show>
-          <div class="fallout-skills">
-            <For each={Object.keys(config.abilities)}>
-              {(slug) =>
-                <Show
-                  when={editMode()}
-                  fallback={
-                    <For each={character().skills.filter((item) => item.ability === slug)}>
+            </Show>
+            <div class="fallout-skills">
+              <For each={Object.keys(config.abilities)}>
+                {(slug) =>
+                  <Show
+                    when={editMode()}
+                    fallback={
+                      <For each={character().skills.filter((item) => item.ability === slug)}>
+                        {(skill) =>
+                          <div class="fallout-skill">
+                            <Levelbox classList="mr-2" value={skill.level} />
+                            <p class="uppercase mr-4">{skill.ability}</p>
+                            <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>
+                              {skill.name}
+                            </p>
+                            <Dice
+                              width="28"
+                              height="28"
+                              text={modifier(skill.modifier)}
+                              onClick={() => props.openD20Test(`/check skill ${slug}`, skill.name, skill.modifier)}
+                            />
+                          </div>
+                        }
+                      </For>
+                    }
+                  >
+                    <For each={skillsData().filter((item) => item.ability === slug)}>
                       {(skill) =>
                         <div class="fallout-skill">
-                          <Levelbox classList="mr-2" value={skill.level} />
-                          <p class="uppercase mr-4">{skill.ability}</p>
                           <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>
                             {skill.name}
                           </p>
-                          <Dice
-                            width="28"
-                            height="28"
-                            text={modifier(skill.modifier)}
-                            onClick={() => props.openD20Test(`/check skill ${slug}`, skill.name, skill.modifier)}
-                          />
+                          <div class="fallout-skill-actions">
+                            <Button
+                              default
+                              size="small"
+                              disabled={skill.level === 0}
+                              onClick={() => updateSkill(skill.slug, -1)}
+                            ><Minus /></Button>
+                            <p>{skill.level}</p>
+                            <Button
+                              default
+                              size="small"
+                              disabled={skill.level >= 10}
+                              onClick={() => updateSkill(skill.slug, 1)}
+                            ><Plus /></Button>
+                          </div>
                         </div>
                       }
                     </For>
-                  }
-                >
-                  <For each={skillsData().filter((item) => item.ability === slug)}>
-                    {(skill) =>
-                      <div class="fallout-skill">
-                        <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>
-                          {skill.name}
-                        </p>
-                        <div class="fallout-skill-actions">
-                          <Button
-                            default
-                            size="small"
-                            disabled={skill.level === 0}
-                            onClick={() => updateSkill(skill.slug, -1)}
-                          ><Minus /></Button>
-                          <p>{skill.level}</p>
-                          <Button
-                            default
-                            size="small"
-                            disabled={skill.level >= 10}
-                            onClick={() => updateSkill(skill.slug, 1)}
-                          ><Plus /></Button>
-                        </div>
-                      </div>
-                    }
-                  </For>
-                </Show>
-              }
-            </For>
+                  </Show>
+                }
+              </For>
+            </div>
           </div>
-        </div>
-      </EditWrapper>
+        </EditWrapper>
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }

@@ -9,13 +9,13 @@ import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    helpMessage: 'You start with a -2 in all of your Attributes. You then gain Attribute Points to increase whichever Attributes you want, up to the Attribute Limit (3).'
+    helpMessage: 'You start with a +2/+2/0/-1 or +2/+2/+1/0 or +3/+1/-1/-1 in all of your Attributes'
   },
   ru: {
-    helpMessage: 'Ваш персонаж начинает с -2 во всех атрибутах. Вы можете потратить Очки Атрибутов для увеличения любых атрибутов вплоть до максимума (3).'
+    helpMessage: 'Ваш персонаж начинает с +2/+2/0/-1 or +2/+2/+1/0 or +3/+1/-1/-1 во всех атрибутах.'
   },
   es: {
-    helpMessage: 'Comienzas con un -2 en todos tus Atributos. Luego ganas Puntos de Atributo para aumentar los Atributos que quieras, hasta el Límite de Atributo (3).',
+    helpMessage: 'Comienzas con un +2/+2/0/-1 or +2/+2/+1/0 or +3/+1/-1/-1 en todos tus Atributos.',
   }
 }
 

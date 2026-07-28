@@ -18,6 +18,13 @@
         "mountainheart": { "name": { "en": "Path of The Mountainheart", "ru": "Путь стойкости" } },
         "red_mist": { "name": { "en": "Path of The Red Mist", "ru": "Путь слепой ярости" } }
       }
+    },
+    "cheat": {
+      "name": { "en": "cheat", "ru": "Жулик" },
+      "subclasses": {
+        "silent_blade": { "name": { "en": "Tools of the Silent Blade", "ru": "Инструменты бесшумного клинка" } },
+        "scoundrel": { "name": { "en": "Tools of the Scoundrel", "ru": "Инструменты подлеца" } }
+      }
     }
   },
   "abilities": {
