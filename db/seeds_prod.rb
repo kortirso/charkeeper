@@ -72,3 +72,12 @@ end
     item ? item.update!(data) : ::Nimble::Item.create!(data)
   end
 end
+
+[
+  'feats/ancestries.json', 'feats/berserker.json'
+].each do |filename|
+  JSON.parse(File.read("db/data_prod/nimble/#{filename}")).each do |item|
+    feat = ::Nimble::Feat.find_by(slug: item['slug'])
+    feat ? feat.update!(item) : ::Nimble::Feat.create!(item)
+  end
+end

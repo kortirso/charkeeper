@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, Feats } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -77,6 +77,19 @@ export const Nimble = (props) => {
   const itemsFilter = (item) => item.kind === 'item';
   const consumablesFilter = (item) => item.kind === 'consumables';
 
+  const ancestryFilter = (item) => item.origin === 'ancestry';
+  const classFilter = (item) => item.origin === 'class';
+  const subclassFilter = (item) => item.origin === 'subclass';
+
+  const featFilters = createMemo(() => {
+    const result = [
+      { title: 'ancestry', callback: ancestryFilter },
+      { title: 'class', callback: classFilter },
+      { title: 'subclass', callback: subclassFilter }
+    ];
+    return result;
+  });
+
   const characterTabs = createMemo(() => {
     const result = ['combat', 'equipment'];
     return result.concat(['bonuses', 'notes', 'avatar']);
@@ -120,6 +133,14 @@ export const Nimble = (props) => {
                 <Combat
                   character={character()}
                   onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
+              <div class="mt-4">
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
             </Match>
@@ -207,6 +228,14 @@ export const Nimble = (props) => {
                 <Combat
                   character={character()}
                   onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
+              <div class="mt-4">
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
             </Match>

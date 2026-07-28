@@ -2,6 +2,7 @@
 
 class NimbleDecorator < ApplicationDecoratorV2
   BASE_MODIFIERS = %w[str dex int wil].freeze
+  SKIP_MODIFIERS = %w[skills].freeze
 
   def call(character:, simple: false, version: nil)
     @character = character
@@ -42,11 +43,9 @@ class NimbleDecorator < ApplicationDecoratorV2
     end
   end
 
-  def calculate_primary_abilities # rubocop: disable Metrics/AbcSize
+  def calculate_primary_abilities
     @result['modified_abilities'] = find_modified_abilities
-    @result['skills'] = generate_skills_payload
     @result['key'] = modified_abilities.slice(*keys).values.max
-    @result['size'] = 'medium'
     @result['wounds_max'] = 6
     @result['hit_die_max'] = level
     @result['speed'] = 6
@@ -105,15 +104,18 @@ class NimbleDecorator < ApplicationDecoratorV2
     @result =
       @result
         .deep_merge(@set_bonuses) { |_key, _oldval, newval| newval }
-        .deep_merge(@bonuses.except(*BASE_MODIFIERS)) { |_key, oldval, newval| oldval.nil? ? nil : (newval + oldval) }
+        .deep_merge(
+          @bonuses.except(*(BASE_MODIFIERS + SKIP_MODIFIERS))
+        ) { |_key, oldval, newval| oldval.nil? ? nil : (newval + oldval) }
         .deep_merge(@hard_set_bonuses) { |_key, _oldval, newval| newval }
   end
 
   def calculate_secondary_abilities
-    @result['features'] = apply_features
+    @result['skills'] = generate_skills_payload
     @result['save_dc'] = 10 + key
     @result['inventory'] = 10 + modified_abilities['str']
     @result['attacks'] = [unarmed_attack] + character_weapons.map { |item| calculate_attack(item) }
+    @result['features'] = apply_features
   end
 
   def unarmed_attack
@@ -153,11 +155,12 @@ class NimbleDecorator < ApplicationDecoratorV2
 
   def skill_payload(slug, values)
     skill_level = skill_levels[slug].to_i
+    modifier = modified_abilities[values['ability']] + skill_level + @bonuses['skills'].to_i
     {
       slug: slug,
       name: translate(values['name']),
       ability: values['ability'],
-      modifier: modified_abilities[values['ability']] + skill_level,
+      modifier: modifier,
       level: skill_level
     }
   end
@@ -225,12 +228,15 @@ class NimbleDecorator < ApplicationDecoratorV2
       {
         level: level,
         no_armor: equiped_armor_info.nil?
-
       }
   end
 
   def formula_variables
     @formula_variables ||= base_formula_variables.merge(modified_abilities)
+  end
+
+  def final_formula_variables
+    @final_formula_variables ||= formula_variables.merge({ key: key })
   end
 
   def apply_features
@@ -262,7 +268,11 @@ class NimbleDecorator < ApplicationDecoratorV2
       selected_count: feature.selected_count,
       tokens: feature.tokens,
       tokens_max: feature.tokens ? feature.feat.tokens['limit'] : nil,
-      options: feature.feat.options
+      options: feature.feat.options,
+      dice_settings: feature.feat.dices&.transform_values { |value|
+        formula.call(formula: value, variables: final_formula_variables)
+      },
+      dices: feature.dices
     }.compact
   end
 

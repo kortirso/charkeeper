@@ -50,6 +50,7 @@ module Charkeeper
 
     register('commands.characters_context.nimble.create') { CharactersContext::Nimble::CreateCommand.new }
     register('commands.characters_context.nimble.update') { CharactersContext::Nimble::UpdateCommand.new }
+    register('commands.characters_context.nimble.feats.add') { CharactersContext::Nimble::Feats::AddCommand.new }
 
     register('commands.characters_context.cthulhu7.create') { CharactersContext::Cthulhu7::CreateCommand.new }
     register('commands.characters_context.cthulhu7.update') { CharactersContext::Cthulhu7::UpdateCommand.new }

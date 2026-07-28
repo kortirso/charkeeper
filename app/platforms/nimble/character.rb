@@ -5,6 +5,7 @@ module Nimble
     include StoreModel::Model
 
     attribute :level, :integer, default: 1
+    attribute :size, :string
     attribute :ancestry, :string
     attribute :main_class, :string
     attribute :subclass, :string
@@ -23,6 +24,10 @@ module Nimble
   class Character < Character
     def self.config
       PlatformConfig.data('nimble')
+    end
+
+    def self.sizes
+      config['sizes']
     end
 
     def self.ancestries

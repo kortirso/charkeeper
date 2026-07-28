@@ -5,7 +5,7 @@
     "large": { "name": { "en": "Large", "ru": "Большой" } }
   },
   "ancestries": {
-    "human": { "name": { "en": "Human", "ru": "Человек" } }
+    "human": { "name": { "en": "Human", "ru": "Человек" }, "size": "medium" }
   },
   "classes": {
     "berserker": {

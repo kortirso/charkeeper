@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_21_182709) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_28_060335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -136,6 +136,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_21_182709) do
     t.boolean "active", default: false, comment: "Включен ли эффект навыка"
     t.uuid "character_id", null: false
     t.datetime "created_at", null: false
+    t.jsonb "dices", comment: "Текущие значения дайсов"
     t.uuid "feat_id", null: false
     t.string "kind", default: "default", null: false
     t.integer "limit_refresh", limit: 2, comment: "Событие для обновления лимита"
@@ -239,6 +240,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_21_182709) do
     t.datetime "created_at", null: false
     t.jsonb "description", default: {}, null: false
     t.jsonb "description_eval_variables", default: {}, null: false, comment: "Вычисляемые переменные для описания"
+    t.jsonb "dices", comment: "Настройки дайсов"
     t.jsonb "eval_variables", default: {}, null: false, comment: "Вычисляемые переменные"
     t.string "exclude", comment: "Заменяемые навыки", array: true
     t.jsonb "info", default: {}, null: false
