@@ -7,6 +7,7 @@ module BotContextV2
       duality_roll_command: 'services.bot_context_v2.commands.rolls.duality',
       fate_roll_command: 'services.bot_context_v2.commands.rolls.fate',
       cosmere_roll_command: 'services.bot_context_v2.commands.rolls.cosmere',
+      nimble_attack_command: 'services.bot_context_v2.commands.rolls.nimble_attack',
       check_command: 'services.bot_context_v2.commands.check'
     ]
 
@@ -16,6 +17,7 @@ module BotContextV2
       when '/dualityRoll' then duality_roll_command.call(arguments: arguments)
       when '/fateRoll' then fate_roll_command.call(arguments: arguments)
       when '/plotRoll' then cosmere_roll_command.call(arguments: arguments)
+      when '/nimbleAttack' then nimble_attack_command.call(arguments: arguments)
       when '/check' then check_command.call(arguments: arguments, character: character)
       end
     end

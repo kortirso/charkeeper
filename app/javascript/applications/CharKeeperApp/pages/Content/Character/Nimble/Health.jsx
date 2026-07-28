@@ -116,7 +116,7 @@ export const NimbleHealth = (props) => {
                   width="36"
                   height="36"
                   text={modifier(character().initiative)}
-                  onClick={() => null}
+                  onClick={() => props.openD20Test('/check initiative self', i18n().initiative, character().initiative, 10)}
                 />
             },
             { title: i18n().speed, value: character().speed }
