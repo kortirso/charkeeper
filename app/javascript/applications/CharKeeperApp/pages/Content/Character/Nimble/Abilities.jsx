@@ -102,7 +102,7 @@ export const NimbleAbilities = (props) => {
                               height="64"
                               text={modifier(character().modified_abilities[slug])}
                               textClassList="text-4xl"
-                              onClick={() => null}
+                              onClick={() => props.openD20Test(`/check save ${slug}`, ability, character().modified_abilities[slug], 10)}
                             />
                           </div>
                         </Show>

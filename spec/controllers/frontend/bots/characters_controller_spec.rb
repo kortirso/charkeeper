@@ -139,6 +139,50 @@ describe Frontend::Bots::CharactersController do
           end
         end
 
+        context 'for /nimbleRoll' do
+          before { character.update(type: 'Nimble::Character') }
+
+          context 'for invalid command' do
+            let(:values) { ['/nimbleROll 1'] }
+
+            it 'returns errors messages', :aggregate_failures do
+              request
+
+              expect(response.parsed_body.dig(:result, 0, :errors)).to eq(['Invalid command'])
+              expect(response).to have_http_status :ok
+            end
+          end
+
+          context 'for valid params' do
+            let(:values) { ['/nimbleAttack 2d6 --adv 1 --bonus 1'] }
+
+            it 'returns result', :aggregate_failures do
+              request
+
+              expect(response.parsed_body[:errors]).to be_nil
+              expect(response).to have_http_status :ok
+            end
+          end
+
+          context 'for valid params with damage option' do
+            let(:values) { ['/nimbleAttack 1d4 --adv 1 --damage 3'] }
+
+            it 'returns result', :aggregate_failures do
+              request
+
+              expect(response.parsed_body[:errors]).to be_nil
+              expect(response).to have_http_status :ok
+
+              values = response.parsed_body.dig('result', 0, 'result')
+              if values['status'] == 'success'
+                expect(values['total']).to eq 3
+              else
+                expect(values['total']).to be_nil
+              end
+            end
+          end
+        end
+
         context 'for dnd checks' do
           %w[save attr skill attack initiative].each do |attr|
             let(:values) { ["/check #{attr} athletics --bonus 1"] }

@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, Feats } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, Feats, createRoll } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -59,6 +59,8 @@ const TRANSLATION = {
 export const Nimble = (props) => {
   const size = createWindowSize();
   const character = () => props.character;
+
+  const { Roll, openDC20Test, openNimbleAttack } = createRoll();
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
@@ -116,6 +118,7 @@ export const Nimble = (props) => {
               <div class="mt-4">
                 <NimbleAbilities
                   character={character()}
+                  openD20Test={openDC20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -123,6 +126,7 @@ export const Nimble = (props) => {
               <div class="mt-4">
                 <NimbleSkills
                   character={character()}
+                  openD20Test={openDC20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                   onNextGuideStepClick={() => setActiveMobileTab('equipment')}
@@ -130,12 +134,9 @@ export const Nimble = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
-              <NimbleHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <NimbleHealth character={character()} openD20Test={openDC20Test} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
-                <Combat
-                  character={character()}
-                  onReplaceCharacter={props.onReplaceCharacter}
-                />
+                <Combat character={character()} openD20Test={openNimbleAttack} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
                 <Feats
@@ -201,6 +202,7 @@ export const Nimble = (props) => {
         <div class="mt-4">
           <NimbleAbilities
             character={character()}
+            openD20Test={openDC20Test}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
           />
@@ -208,6 +210,7 @@ export const Nimble = (props) => {
         <div class="mt-4">
           <NimbleSkills
             character={character()}
+            openD20Test={openDC20Test}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
             onNextGuideStepClick={() => setActiveTab('equipment')}
@@ -232,12 +235,9 @@ export const Nimble = (props) => {
         <div class="p-2 pb-16 flex-1">
           <Switch>
             <Match when={activeTab() === 'combat'}>
-              <NimbleHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <NimbleHealth character={character()} openD20Test={openDC20Test} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
-                <Combat
-                  character={character()}
-                  onReplaceCharacter={props.onReplaceCharacter}
-                />
+                <Combat character={character()} openD20Test={openNimbleAttack} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
                 <Feats
@@ -267,7 +267,6 @@ export const Nimble = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
-                finishGuideStep={true}
                 helpMessage={i18n().equipmentHelpMessage}
                 onNextGuideStepClick={() => setActiveTab('classLevels')}
               />
@@ -298,6 +297,7 @@ export const Nimble = (props) => {
   return (
     <>
       <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+      <Roll provider="nimble" characterId={character().id} />
     </>
   );
 }
