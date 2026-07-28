@@ -1,17 +1,20 @@
-import { createSignal, batch, Show } from 'solid-js';
+import { createSignal, createMemo, batch, Show } from 'solid-js';
 
 import { Button, ErrorWrapper, GuideWrapper, Select, Checkbox } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { createCharacterRestRequest } from '../../../../requests/createCharacterRestRequest';
-import { localize, performResponse } from '../../../../helpers';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
     values: {
-      short: 'Short',
-      long: 'Long'
+      combat_rest: 'After Combat',
+      field_rest: 'Field',
+      long_field_rest: 'Long field',
+      safe_rest: 'Safe'
     },
     valueLabel: 'Select type of rest',
+    pointsLabel: 'Spend Rest Poinst',
     description: 'This happens during Exploration but are specific moments when PCs stop to rest and recover their resources.',
     complete: 'Rest is completed',
     rest: 'Make rest',
@@ -20,10 +23,13 @@ const TRANSLATION = {
   },
   ru: {
     values: {
-      short: 'Короткий',
-      long: 'Длинный'
+      combat_rest: 'После сражения',
+      field_rest: 'Отдых в поле',
+      long_field_rest: 'Длинный отдых в поле',
+      safe_rest: 'Безопасный'
     },
     valueLabel: 'Выберите тип отдыха',
+    pointsLabel: 'Потратить очки отдыха',
     description: 'Это происходит во время исследования, но это определенные моменты, когда персонажи останавливаются, чтобы отдохнуть и восстановить свои ресурсы.',
     complete: 'Отдых завершён',
     rest: 'Провести отдых',
@@ -32,10 +38,13 @@ const TRANSLATION = {
   },
   es: {
     values: {
-      short: 'Corto',
-      complete_long: 'Largo'
+      combat_rest: 'After Combat',
+      field_rest: 'Field',
+      long_field_rest: 'Long field',
+      safe_rest: 'Safe'
     },
     valueLabel: 'Seleccionar tipo de descanso',
+    pointsLabel: 'Gastar Puntos de Descanso',
     description: 'Esto sucede durante la Exploración pero son momentos específicos cuando los jugadores se detienen a descansar y recuperar sus recursos.',
     complete: 'El descanso fue completado',
     rest: 'Tomar descanso',
@@ -44,10 +53,11 @@ const TRANSLATION = {
   }
 }
 
-export const CosmereRest = (props) => {
+export const NimbleRest = (props) => {
   const character = () => props.character;
 
   const [value, setValue] = createSignal(null);
+  const [spendRestPoints, setSpendRestPoints] = createSignal(0);
   const [makeRolls, setMakeRolls] = createSignal(false);
   const [recovery, setRecovery] = createSignal(null);
 
@@ -55,56 +65,61 @@ export const CosmereRest = (props) => {
   const [{ renderNotice, renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
 
-  const restCharacter = async () => {
-    if (!value()) return;
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
 
+  const restCharacter = async () => {
     const result = await createCharacterRestRequest(
       appState.accessToken,
       character().provider,
       character().id,
-      { rest: { value: value(), make_rolls: makeRolls(), recovery_die: character().recovery_die, health_max: character().health_max, focus_max: character().focus_max } }
+      { character:
+        { value: value(), hit_die_spend: parseInt(spendRestPoints()), hit_die: character().hit_die, make_rolls: makeRolls() }
+      }
     );
-    performResponse(
-      result,
-      function() { // eslint-disable-line solid/reactivity
-        batch(() => {
-          props.onReplaceCharacter(result.character);
-          setRecovery(result.recovery);
-          setValue(null);
-          setMakeRolls(false);
-          renderNotice(localize(TRANSLATION, locale()).complete);
-        });
-      },
-      function() { renderAlerts(result.errors_list) }
-    );
+    if (result.errors_list === undefined) {
+      batch(() => {
+        props.onReplaceCharacter(result.character);
+        setRecovery(result.recovery);
+        setValue(null);
+        setSpendRestPoints(0);
+        renderNotice(localize(TRANSLATION, locale()).complete);
+      });
+    } else renderAlerts(result.errors_list);
   }
 
   return (
-    <ErrorWrapper payload={{ character_id: character().id, key: 'CosmereRest' }}>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'NimbleRest' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable p-4">
-          <p>{localize(TRANSLATION, locale()).description}</p>
+        <div class="character-info-block">
+          <p class="mb-4">{i18n().description}</p>
           <Select
-            containerClassList="w-full mt-4"
-            labelText={localize(TRANSLATION, locale()).valueLabel}
-            items={localize(TRANSLATION, locale()).values}
+            containerClassList="w-full mb-4"
+            labelText={i18n().valueLabel}
+            items={i18n().values}
             selectedValue={value()}
             onSelect={setValue}
           />
-          <Show when={value() === 'short'}>
+          <Show when={recovery()}>
+            <p class="text-sm mb-4">{localize(TRANSLATION, locale()).lastRecovery} - {recovery()}</p>
+          </Show>
+          <Show when={['field_rest', 'long_field_rest'].includes(value())}>
+            <Select
+              containerClassList="w-full mb-4"
+              labelText={i18n().pointsLabel}
+              items={Array.from([...Array(character().hit_die_max - character().hit_die_spent).keys()], (x) => x + 1).reduce((acc, item) => { acc[item] = item; return acc; }, {})}
+              selectedValue={spendRestPoints()}
+              onSelect={setSpendRestPoints}
+            />
             <Checkbox
-              classList="mt-4"
-              labelText={`${localize(TRANSLATION, locale()).makeRolls} 1d${character().recovery_die}`}
+              classList="mb-4"
+              labelText={`${localize(TRANSLATION, locale()).makeRolls} 1d${character().hit_die}`}
               labelPosition="right"
               labelClassList="ml-2"
               checked={makeRolls()}
               onToggle={() => setMakeRolls(!makeRolls())}
             />
           </Show>
-          <Show when={recovery()}>
-            <p class="text-sm mt-4">{localize(TRANSLATION, locale()).lastRecovery} - {recovery()}</p>
-          </Show>
-          <Button default textable classList="mt-4" onClick={restCharacter}>{localize(TRANSLATION, locale()).rest}</Button>
+          <Button default textable onClick={restCharacter}><span>{i18n().rest}</span></Button>
         </div>
       </GuideWrapper>
     </ErrorWrapper>

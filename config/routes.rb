@@ -218,7 +218,9 @@ Rails.application.routes.draw do
     end
 
     namespace :nimble do
-      resources :characters, only: %i[create update]
+      resources :characters, only: %i[create update] do
+        resources :rest, only: %i[create], module: 'characters'
+      end
     end
 
     scope ':provider' do
