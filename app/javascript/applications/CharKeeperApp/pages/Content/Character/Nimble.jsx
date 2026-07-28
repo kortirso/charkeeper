@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling
+  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling, NimbleRest
 } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, Feats, createRoll } from '../../../components';
 import { useAppLocale } from '../../../context';
@@ -95,7 +95,7 @@ export const Nimble = (props) => {
   });
 
   const characterTabs = createMemo(() => {
-    const result = ['combat', 'equipment', 'classLevels'];
+    const result = ['combat', 'equipment', 'classLevels', 'rest'];
     return result.concat(['bonuses', 'notes', 'avatar']);
   });
 
@@ -177,6 +177,9 @@ export const Nimble = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 helpMessage={i18n().levelingHelpMessage}
               />
+            </Match>
+            <Match when={activeMobileTab() === 'rest'}>
+              <NimbleRest character={character()} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
               <NimbleBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -278,6 +281,9 @@ export const Nimble = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 helpMessage={i18n().levelingHelpMessage}
               />
+            </Match>
+            <Match when={activeTab() === 'rest'}>
+              <NimbleRest character={character()} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
             <Match when={activeTab() === 'bonuses'}>
               <NimbleBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
