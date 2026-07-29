@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "iron_defense",
+    "title": {
+      "en": "Iron Defense",
+      "ru": "Железная защита"
+    },
+    "description": {
+      "en": "Your armor equals {{armor|DEX+STR}} as long as you are unarmored.",
+      "ru": "Пока вы не носите доспех, ваша броня равна {{armor|DEX+STR}}."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "description_eval_variables": {
+      "armor": "dex + str"
+    },
+    "modifiers": { "armor": { "type": "add", "value": "if (no_armor, str, 0)" } }
+  },
+  {
+    "slug": "swift_fists",
+    "title": {
+      "en": "Swift Fists",
+      "ru": "Быстрые кулаки"
+    },
+    "description": {
+      "en": "Your unarmed strikes are not subject to disadvantage imposed by Rushed Attacks, and their damage is 1d4+STR.",
+      "ru": "Ваши безоружные удары не подвержены штрафу, налагаемому быстрыми атаками, и их урон составляет 1d4+STR."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "swift_feet",
+    "title": {
+      "en": "Swift Feet",
+      "ru": "Быстрые ноги"
+    },
+    "description": {
+      "en": "While unarmored, gain +2 Speed and +{{level|LVL}} Initiative.",
+      "ru": "Пока вы не носите доспех, вы получаете +2 к скорости и +{{level|LVL}} к инициативе."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "level": "level"
+    },
+    "modifiers": {
+      "speed": { "type": "add", "value": "if (no_armor, 2, 0)" },
+      "initiative": { "type": "add", "value": "if (no_armor, level, 0)" }
+    }
+  }
+]

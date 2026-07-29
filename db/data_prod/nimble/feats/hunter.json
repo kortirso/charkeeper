@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "hunter_mark",
+    "title": {
+      "en": "Hunter's Mark",
+      "ru": "Метка охотника"
+    },
+    "description": {
+      "en": "A creature you can see is marked as your quarry (1 action) for 1 day. It can't be hidden from you, and your attacks against it gain your choice of advantage or +{{level|LVL}} damage.",
+      "ru": "Существо, которое вы видите, отмечается вашей добычей (1 действие) на 1 день. Оно не может спрятаться от вас, ваши атаки против него получают преимущество или +{{level|LVL}} урона."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "description_eval_variables": {
+      "level": "level"
+    }
+  },
+  {
+    "slug": "forager",
+    "title": {
+      "en": "Forager",
+      "ru": "Добытчик"
+    },
+    "description": {
+      "en": "Gain advantage on skill checks to find food and water in the wild.",
+      "ru": "Вы получаете преимущество на проверки навыков для поиска пищи и воды в дикой местности."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  }
+]

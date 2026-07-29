@@ -25,6 +25,27 @@
         "silent_blade": { "name": { "en": "Tools of the Silent Blade", "ru": "Инструменты бесшумного клинка" } },
         "scoundrel": { "name": { "en": "Tools of the Scoundrel", "ru": "Инструменты подлеца" } }
       }
+    },
+    "commander": {
+      "name": { "en": "Commander", "ru": "Командир" },
+      "subclasses": {
+        "bulwark": { "name": { "en": "Champion of the Bulwark", "ru": "Чемпион защиты" } },
+        "vanguard": { "name": { "en": "Champion of the Vanguard", "ru": "Чемпион авангарда" } }
+      }
+    },
+    "hunter": {
+      "name": { "en": "Hunter", "ru": "Охотник" },
+      "subclasses": {
+        "shadowpath": { "name": { "en": "Keeper of the Shadowpath", "ru": "Хранитель теневого пути" } },
+        "wild_heart": { "name": { "en": "Keeper of the Wild Heart", "ru": "Хранитель дикого сердца" } }
+      }
+    },
+    "zephyr": {
+      "name": { "en": "Zephyr", "ru": "Зефир" },
+      "subclasses": {
+        "pain": { "name": { "en": "Way of Pain", "ru": "Путь боли" } },
+        "flame": { "name": { "en": "Way of Flame", "ru": "Путь пламени" } }
+      }
     }
   },
   "abilities": {
