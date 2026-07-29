@@ -3,11 +3,12 @@ import * as i18n from '@solid-primitives/i18n';
 import { Key } from '@solid-primitives/keyed';
 
 import {
-  Toggle, Button, Select, ErrorWrapper, FeatureTitle, TextArea, CharacterNavigation, Checkbox, GuideWrapper
+  Toggle, Button, Select, ErrorWrapper, FeatureTitle, TextArea, CharacterNavigation, Checkbox, GuideWrapper, Dice
 } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
-import { Edit, PlusSmall, Minus } from '../../assets';
+import { Edit, PlusSmall, Minus, Close } from '../../assets';
 import { updateCharacterFeatRequest } from '../../requests/updateCharacterFeatRequest';
+import { createCharacterBotRequest } from '../../requests/createCharacterBotRequest';
 import { readFromCache, writeToCache, localize, translate } from '../../helpers';
 
 const FEATURES_FILTER_NAME = 'FeaturesFiltersStatus';
@@ -30,7 +31,8 @@ const TRANSLATION = {
       'ap/sp': 'AP/SP'
     },
     here: 'here',
-    tokens: 'Tokens'
+    tokens: 'Tokens',
+    reserve: 'Reserve'
   },
   ru: {
     activeFeat: 'Активен',
@@ -49,7 +51,8 @@ const TRANSLATION = {
       'ap/sp': 'ОД/ОВ'
     },
     here: 'тут',
-    tokens: 'Жетоны'
+    tokens: 'Жетоны',
+    reserve: 'Резерв'
   },
   es: {
     activeFeat: 'Activo',
@@ -68,7 +71,8 @@ const TRANSLATION = {
       'ap/sp': 'PA/PE'
     },
     here: 'aquí',
-    tokens: 'Tokens'
+    tokens: 'Tokens',
+    reserve: 'Reserve'
   }
 }
 
@@ -154,13 +158,13 @@ export const Feats = (props) => {
     refreshFeatures(feature.id, { value: featValues()[feature.slug] });
   }
 
-  const refreshFeatures = async (featureId, payload) => {
+  const refreshFeatures = async (featureId, payload, reload = true) => {
     const result = await updateCharacterFeatRequest(
       appState.accessToken, character().provider, character().id, featureId, { character_feat: payload }
     );
 
     if (result.errors_list === undefined) {
-      props.onReloadCharacter();
+      if (reload) props.onReloadCharacter();
     } else renderAlerts(result.errors_list);
   }
 
@@ -234,6 +238,45 @@ export const Feats = (props) => {
     )
   }
 
+  const roll = async (feature) => {
+    const result = await createCharacterBotRequest(appState.accessToken, character().id, { values: [`/roll d${feature.dice_settings.value}`] });
+
+    if (result.errors_list === undefined) {
+      const dices = feature.dices;
+      dices.push(result.result[0].result.total);
+
+      refreshFeatures(feature.id, { dices: dices }, false);
+      const payload = character().features.map((item) => {
+        if (item.id !== feature.id) return item;
+
+        return { ...item, dices: dices };
+      });
+      props.onReplaceCharacter({ features: payload });
+    } else renderAlerts(result.errors_list);
+  }
+
+  const removeRoll = (feature, index) => {
+    feature.dices.splice(index, 1);
+    refreshFeatures(feature.id, { dices: feature.dices }, false);
+    const payload = character().features.map((item) => {
+      if (item.id !== feature.id) return item;
+
+      return { ...item, dices: feature.dices };
+    });
+    props.onReplaceCharacter({ features: payload });
+  }
+
+  const reroll = async (feature, index) => {
+    const result = await createCharacterBotRequest(appState.accessToken, character().id, { values: [`/roll d${feature.dice_settings.value}`] });
+
+    if (result.errors_list === undefined) {
+      const dices = feature.dices;
+      const newRollResults = [...dices.slice(0, index), result.result[0].result.total, ...dices.slice(index + 1)];
+
+      refreshFeatures(feature.id, { dices: newRollResults });
+    } else renderAlerts(result.errors_list);
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Feats' }}>
       <GuideWrapper character={character()}>
@@ -282,10 +325,7 @@ export const Feats = (props) => {
             <Show when={activeFilter() === 'personal'}>
               <p class="dark:text-snow mb-2 text-sm">{localize(TRANSLATION, locale()).personalFeats} <a href={host()} class='underline' target='_blank' rel='noopener noreferrer'>{localize(TRANSLATION, locale()).here}</a></p>
             </Show>
-            <Key
-              each={filteredFeatures()}
-              by={item => item.id}
-            >
+            <Key each={filteredFeatures()} by={item => item.id}>
               {(feature) =>
                 <Toggle
                   containerClassList={feature().kind === 'update_result' ? 'opacity-50' : ''}
@@ -360,19 +400,48 @@ export const Feats = (props) => {
                           />
                         </Show>
                       </Match>
-                      <Match when={feature().continious}>
-                        <div class="flex justify-end">
-                          <Checkbox
-                            filled
-                            labelText={localize(TRANSLATION, locale())['activeFeat']}
-                            labelPosition="right"
-                            labelClassList="ml-2"
-                            checked={feature().active}
-                            onToggle={() => refreshFeatures(feature().id, { active: !feature().active }, false)}
-                          />
-                        </div>
-                      </Match>
                     </Switch>
+                    <Show when={feature().dice_settings}>
+                      <div class="flex items-center gap-4">
+                        <For each={[...Array(feature().dice_settings.limit + 1)]}>
+                          {(value, index) =>
+                            <Show when={index() !== feature().dice_settings.limit || feature().dices.length >= feature().dice_settings.limit}>
+                              <div class="relative">
+                                <Dice
+                                  hidden={feature().dices[index()] === undefined}
+                                  width={index() !== feature().dice_settings.limit ? '50' : '40'}
+                                  height={index() !== feature().dice_settings.limit ? '50' : '40'}
+                                  type={`D${feature().dice_settings.value}`}
+                                  text={feature().dices[index()] || `D${feature().dice_settings.value}`}
+                                  textClassList="text-xl"
+                                  onClick={() => feature().dices[index()] ? reroll(feature(), index()) : roll(feature())}
+                                />
+                                <Show when={index() === feature().dice_settings.limit}>
+                                  <p class="text-xs">{localize(TRANSLATION, locale()).reserve}</p>
+                                </Show>
+                                <Show when={feature().dices[index()]}>
+                                  <Button default classList="absolute top-0 right-0 w-4! h-4! min-h-4! min-w-4!" onClick={() => removeRoll(feature(), index())}>
+                                    <Close width="16" height="16" />
+                                  </Button>
+                                </Show>
+                              </div>
+                            </Show>
+                          }
+                        </For>
+                      </div>
+                    </Show>
+                    <Show when={feature().continious}>
+                      <div class="flex justify-end">
+                        <Checkbox
+                          filled
+                          labelText={localize(TRANSLATION, locale())['activeFeat']}
+                          labelPosition="right"
+                          labelClassList="ml-2"
+                          checked={feature().active}
+                          onToggle={() => refreshFeatures(feature().id, { active: !feature().active }, false)}
+                        />
+                      </div>
+                    </Show>
                     <Show when={feature().info.enhancements && feature().info.enhancements.length > 0}>
                       <div class="flex flex-col gap-1">
                         <For each={feature().info.enhancements}>

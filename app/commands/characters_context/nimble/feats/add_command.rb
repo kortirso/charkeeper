@@ -17,7 +17,7 @@ module CharactersContext
           return { result: :ok } if ::Character::Feat.exists?(input)
 
           ActiveRecord::Base.transaction do
-            ::Character::Feat.create!(input.merge(ready_to_use: true, dices: (input[:feat].dices ? {} : nil)))
+            ::Character::Feat.create!(input.merge(ready_to_use: true, dices: (input[:feat].dices ? [] : nil)))
 
             input[:feat].info['increase']&.each { |key, value| input[:character].data[key] += value }
             input[:character].save!

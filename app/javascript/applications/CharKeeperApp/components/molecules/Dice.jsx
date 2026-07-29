@@ -8,7 +8,7 @@ export const Dice = (props) => {
   return (
     <div
       class="relative"
-      classList={{ 'cursor-pointer': props.onClick }}
+      classList={{ 'cursor-pointer': props.onClick, 'opacity-50': props.hidden }}
       onClick={props.onClick ? props.onClick : null} // eslint-disable-line solid/reactivity
     >
       <Component mode={props.mode} width={props.width || 40} height={props.height || 40} />
