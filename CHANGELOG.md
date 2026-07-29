@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - leveling for nimble characters
 - rolls for nimble characters
 - rest options for nimble characters
+- rendering features with dices
 
 ## [0.5.2] - 2026-07-24
 ### Added

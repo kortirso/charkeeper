@@ -57,7 +57,7 @@
     "origin": "ancestry",
     "origin_value": "halfling",
     "kind": "update_result",
-    "modifiers": { "skills.stealth": { "type": "add", "value": 1 } },
+    "modifiers": { "skills-stealth": { "type": "add", "value": 1 } },
     "limit_refresh": "safe_rest",
     "info": { "limit": 1 }
   },

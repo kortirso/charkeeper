@@ -19,7 +19,7 @@ module CharactersContext
         optional(:active).filled(:bool)
         optional(:used_count).filled(:integer)
         optional(:tokens).filled(:integer)
-        optional(:dices).hash
+        optional(:dices).maybe(:array).each(:integer)
         optional(:value)
       end
     end

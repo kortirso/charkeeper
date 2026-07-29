@@ -6,13 +6,13 @@ module Nimble
 
     attributes :provider, :id, :name, :created_at, :updated_at, :avatar, :level, :guide_step, :ancestry, :main_class, :skills,
                :skill_points, :modified_abilities, :initiative, :size, :abilities, :armor, :speed, :health, :wounds_max,
-               :wounds_spent, :languages, :attacks, :features, :hit_die_max, :hit_die_spent, :hit_die, :saves
+               :wounds_spent, :languages, :attacks, :features, :hit_die_max, :hit_die_spent, :hit_die, :saves, :subclass
 
     delegate :skills, :modified_abilities, :initiative, :armor, :speed, :wounds_max, :attacks, :features, :hit_die_max,
              :hit_die_spent, :hit_die, :saves, to: :decorator
     delegate :data, to: :object
     delegate :level, :guide_step, :ancestry, :main_class, :skill_points, :abilities, :health, :wounds_spent, :languages, :size,
-             to: :data
+             :subclass, to: :data
 
     def provider
       'nimble'
