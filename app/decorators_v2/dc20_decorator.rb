@@ -115,6 +115,10 @@ class Dc20Decorator < ApplicationDecoratorV2
             @result[key] << value['value']
           end
           @result[key] = @result[key].uniq
+        elsif value['type'] == 'flat_concat'
+          @result[key] ||= []
+          @result[key] << value['value']
+          @result[key] = @result[key].flatten.uniq
         end
       end
     end

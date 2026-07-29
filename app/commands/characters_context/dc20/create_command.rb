@@ -50,7 +50,9 @@ module CharactersContext
 
       def feats_relation(character, feat_slugs)
         ::Dc20::Feat.where(origin: 0, slug: feat_slugs)
-          .or(::Dc20::Feat.where(origin: [1, 2], origin_value: character.data.main_class).where("conditions ->> 'level' = '1'"))
+          .or(
+            ::Dc20::Feat.where(origin: [1, 2, 9], origin_value: character.data.main_class).where("conditions ->> 'level' = '1'")
+          )
       end
     end
   end

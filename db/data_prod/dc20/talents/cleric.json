@@ -6,8 +6,8 @@
       "ru": "Расширение ордена"
     },
     "description": {
-      "en": "You gain 2 additional Divine Domains. You can't choose the same option more than once.",
-      "ru": "Вы получаете +2 божественных домена. Вы не можете выбрать один и тот же вариант дважды, если не указано иное."
+      "en": "You gain 2 additional **Divine Domains**. You can't choose the same option more than once.",
+      "ru": "Вы получаете +2 **Божественных домена**. Вы не можете выбрать один и тот же вариант дважды, если не указано иное."
     },
     "origin": "talent",
     "origin_value": "cleric",

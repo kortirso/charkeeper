@@ -198,7 +198,7 @@
     "info": {},
     "modifiers": {
       "maneuver_points": { "type": "add", "value": 1 },
-      "combat_expertise": { "type": "concat", "value": ["heavy_armor", "heavy_shield"] }
+      "combat_expertise": { "type": "flat_concat", "value": ["heavy_armor", "heavy_shield"] }
     }
   },
   {

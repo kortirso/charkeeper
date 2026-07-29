@@ -46,7 +46,7 @@ export const Dc20 = (props) => {
   const focusFilter = (item) => item.kind.includes('focus');
 
   const ancestryFilter = (item) => item.origin === 'ancestry' || item.origin === 'base_ancestry';
-  const classFilter = (item) => item.origin === 'class' || item.origin === 'class_flavor' || item.origin === 'talent';
+  const classFilter = (item) => item.origin === 'class' || item.origin === 'class_additional' || item.origin === 'class_flavor' || item.origin === 'talent';
   const subclassFilter = (item) => item.origin === 'subclass' || item.origin === 'subclass_flavor';
   const maneuverFilter = (item) => item.origin === 'maneuver';
 

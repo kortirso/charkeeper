@@ -3,7 +3,11 @@
 module CharactersContext
   module Dc20
     class RefreshFeats < CharactersContext::RefreshFeats
-      REQUIRED_ATTRIBUTES = %i[id slug conditions origin origin_value limit_refresh exclude tokens].freeze
+      include Deps[
+        add_feat: 'commands.characters_context.dc20.feats.add'
+      ]
+
+      REQUIRED_ATTRIBUTES = %i[id slug conditions origin origin_value limit_refresh exclude tokens info].freeze
 
       private
 
@@ -61,6 +65,14 @@ module CharactersContext
           .or(
             ::Dc20::Feat.where(origin: 'base_ancestry', origin_value: data.ancestries)
           ).where.not(origin: exclude_origins_from_remove)
+      end
+
+      def add_new_available_feats(character, available_feats, existing_ids)
+        available_feats.each do |item|
+          next if item.id.in?(existing_ids)
+
+          add_feat.call({ character: character, feat: item, with_subfeats: true })
+        end
       end
     end
   end

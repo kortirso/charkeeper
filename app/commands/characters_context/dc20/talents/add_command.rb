@@ -36,7 +36,7 @@ module CharactersContext
             input[:character].save!
           end
 
-          add_feat.call({ character: input[:character], feat: input[:feat] }) if input.key?(:feat)
+          add_feat.call({ character: input[:character], feat: input[:feat], with_subfeats: true }) if input.key?(:feat)
 
           { result: :ok }
         end

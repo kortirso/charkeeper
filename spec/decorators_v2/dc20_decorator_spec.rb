@@ -15,7 +15,8 @@ describe Dc20Decorator do
              'int' => { 'type' => 'add', 'value' => 2 },
              'initiative' => { 'type' => 'add', 'value' => 2 },
              'visions.dark' => { 'type' => 'set', 'value' => 10 },
-             'damages' => { 'type' => 'concat', 'value' => ['cold', 'resist', 1] }
+             'damages' => { 'type' => 'concat', 'value' => ['cold', 'resist', 1] },
+             'combat_expertise' => { 'type' => 'flat_concat', 'value' => %w[heavy_armor heavy_shield] }
            }
 
     torch = create :item,
@@ -43,5 +44,6 @@ describe Dc20Decorator do
     expect(result.damages['bludge']).to eq({ abs: 0, multi: 1 })
     expect(result.damages['cold']).to eq({ abs: 1, multi: 1 })
     expect(result.damages['poison']).to eq({ abs: 0, multi: 1 })
+    expect(result.combat_expertise).to eq %w[heavy_armor heavy_shield]
   end
 end

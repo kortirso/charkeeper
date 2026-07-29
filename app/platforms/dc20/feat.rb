@@ -11,6 +11,7 @@ module Dc20
     SUBCLASS_FLAVOR_ORIGIN = 'subclass_flavor'
     SPELL_ORIGIN = 'spell'
     BASE_ANCESTRY_ORIGIN = 'base_ancestry'
+    CLASS_ADDITIONAL_ORIGIN = 'class_additional'
 
     STATIC = 'static' # рендерится текст
     UPDATE_RESULT = 'update_result' # рендерится, но затемняется
@@ -35,7 +36,8 @@ module Dc20
       SUBCLASS_ORIGIN => 5,
       SUBCLASS_FLAVOR_ORIGIN => 6,
       SPELL_ORIGIN => 7,
-      BASE_ANCESTRY_ORIGIN => 8
+      BASE_ANCESTRY_ORIGIN => 8,
+      CLASS_ADDITIONAL_ORIGIN => 9
     }
     enum :kind, { STATIC => 0, UPDATE_RESULT => 1, HIDDEN => 2, ONE_FROM_LIST => 3, MANY_FROM_LIST => 4, TEXT => 5 }
     enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, COMBAT => 2, ONE_AT_SHORT_REST => 3 }
