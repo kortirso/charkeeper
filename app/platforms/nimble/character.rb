@@ -52,8 +52,8 @@ module Nimble
 
     attribute :data, Nimble::CharacterData.to_type
 
-    def decorator(simple: false, version: nil)
-      NimbleDecorator.new.call(character: self, simple: simple, version: version)
+    def decorator(simple: false, version: nil, skip: [])
+      NimbleDecorator.new.call(character: self, simple: simple, version: version, skip: skip)
     end
   end
 end

@@ -179,7 +179,7 @@ module CharactersContext
       def tokens_refresh(input)
         case input[:value]
         when 'long' then %w[short long]
-        else input[:value]
+        else [input[:value]]
         end
       end
 

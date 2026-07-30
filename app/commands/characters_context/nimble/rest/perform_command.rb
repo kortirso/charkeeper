@@ -10,6 +10,7 @@ module CharactersContext
         ]
 
         RESTORE_REST_POINTS = %w[safe_rest].freeze
+        TOKEN_LIMITS = %w[level str dex int wil].freeze
 
         use_contract do
           Rests = Dry::Types['strict.string'].enum('combat_rest', 'field_rest', 'long_field_rest', 'safe_rest')
@@ -30,6 +31,7 @@ module CharactersContext
 
         def do_prepare(input) # rubocop: disable Metrics/AbcSize
           input[:data] = { health: {} }
+          input[:decorator] = input[:character].decorator(skip: %i[features attacks skills])
           return if input[:value] == 'combat_rest'
 
           data = input[:character].data
@@ -55,14 +57,15 @@ module CharactersContext
         end
 
         def do_persist(input)
-          update_refresh(input)
+          refresh_feats(input)
+          refresh_feats_tokens(input)
 
           character_update.call(input[:data].compact_blank.merge({ character: input[:character] }))
 
           { result: input[:character], recovery: input[:recovery] }
         end
 
-        def update_refresh(input)
+        def refresh_feats(input)
           input[:character].feats.where(limit_refresh: limit_refresh(input)).update_all(used_count: 0)
         end
 
@@ -70,6 +73,52 @@ module CharactersContext
           case input[:value]
           when 'combat_rest' then 0
           else []
+          end
+        end
+
+        def refresh_feats_tokens(input)
+          input[:character].feats.where.not(tokens: nil).includes(:feat).find_each do |feature|
+            settings = feature.feat.tokens
+            next unless settings['reset_at']
+            next if tokens_refresh(input).exclude?(settings['reset_at'])
+
+            feature.update(tokens: [find_future_tokens(feature, input, settings), 0].max)
+          end
+        end
+
+        def find_future_tokens(feature, input, settings)
+          if input[:value] == 'safe_rest' && settings['reset_at_long']
+            settings['reset'] = settings['reset_at_long']
+          end
+
+          case settings['reset']
+          when 'zero' then 0
+          when 'limit' then find_dynamic_value(input[:decorator], settings['limit'])
+          when *TOKEN_LIMITS then add_tokens(feature, input[:decorator], settings)
+          else feature.tokens + settings['reset'].to_i
+          end
+        end
+
+        def add_tokens(feature, decorator, settings)
+          [
+            feature.tokens + find_dynamic_value(decorator, settings['reset']),
+            find_dynamic_value(decorator, settings['limit'])
+          ].min
+        end
+
+        def find_dynamic_value(decorator, limit)
+          return 1_000 if limit == 'none'
+          return decorator.level if limit == 'level'
+
+          decorator.modified_abilities[limit]
+        end
+
+        def tokens_refresh(input)
+          case input[:value]
+          when 'safe_rest' then %w[combat_rest field_rest long_field_rest safe_rest]
+          when 'long_field_rest' then %w[combat_rest field_rest long_field_rest]
+          when 'field_rest' then %w[combat_rest field_rest]
+          else [input[:value]]
           end
         end
       end

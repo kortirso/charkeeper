@@ -56,9 +56,7 @@ module CharactersContext
       end
 
       def refresh_feats(input)
-        feats_relation(input).each do |feat|
-          add_feat.call({ character: input[:character], feat: feat })
-        end
+        feats_relation(input).each { |feat| add_feat.call({ character: input[:character], feat: feat }) }
       end
 
       def feats_relation(input)

@@ -4,7 +4,7 @@ class NimbleDecorator < ApplicationDecoratorV2
   BASE_MODIFIERS = %w[str dex int wil].freeze
   SKIP_MODIFIERS = %w[skills skills-stealth].freeze
 
-  def call(character:, simple: false, version: nil)
+  def call(character:, simple: false, version: nil, skip: [])
     @character = character
     @version = version
     @result = character.data.attributes
@@ -21,7 +21,7 @@ class NimbleDecorator < ApplicationDecoratorV2
     calculate_primary_abilities
     calculate_modifiers
     apply_modifiers
-    calculate_secondary_abilities
+    calculate_secondary_abilities(skip)
 
     self
   end
@@ -110,12 +110,13 @@ class NimbleDecorator < ApplicationDecoratorV2
         .deep_merge(@hard_set_bonuses) { |_key, _oldval, newval| newval }
   end
 
-  def calculate_secondary_abilities
-    @result['skills'] = generate_skills_payload
+  def calculate_secondary_abilities(skip) # rubocop: disable Metrics/AbcSize
+    @result['skills'] = skip.include?(:skills) ? [] : generate_skills_payload
     @result['save_dc'] = 10 + key
     @result['inventory'] = 10 + modified_abilities['str']
-    @result['attacks'] = [unarmed_attack] + character_weapons.map { |item| calculate_attack(item) }
-    @result['features'] = apply_features
+    @result['attacks'] =
+      skip.include?(:attacks) ? [] : ([unarmed_attack] + character_weapons.map { |item| calculate_attack(item) })
+    @result['features'] = skip.include?(:features) ? [] : apply_features
   end
 
   def unarmed_attack
@@ -233,7 +234,7 @@ class NimbleDecorator < ApplicationDecoratorV2
   end
 
   def final_formula_variables
-    @final_formula_variables ||= formula_variables.merge({ key: key })
+    @final_formula_variables ||= formula_variables.merge({ key: key, wounds_spent: wounds_spent })
   end
 
   def apply_features
@@ -247,6 +248,8 @@ class NimbleDecorator < ApplicationDecoratorV2
   def feature_payload(feature) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
     limit =
       feature.feat.info['limit'] ? formula.call(formula: feature.feat.info['limit'], variables: final_formula_variables) : nil
+    tokens_max =
+      feature.tokens ? formula.call(formula: feature.feat.tokens['limit'], variables: final_formula_variables) : nil
     {
       id: feature.id,
       slug: feature.feat.slug || feature.id,
@@ -264,7 +267,7 @@ class NimbleDecorator < ApplicationDecoratorV2
       value: feature.value,
       selected_count: feature.selected_count,
       tokens: feature.tokens,
-      tokens_max: feature.tokens ? feature.feat.tokens['limit'] : nil,
+      tokens_max: tokens_max,
       options: feature.feat.options,
       dice_settings: feature.feat.dices&.transform_values { |value|
         formula.call(formula: value, variables: final_formula_variables)

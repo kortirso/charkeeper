@@ -26,7 +26,7 @@
     },
     "description": {
       "en": "Your unarmed strikes are not subject to disadvantage imposed by Rushed Attacks, and their damage is 1d4+STR.",
-      "ru": "Ваши безоружные удары не подвержены штрафу, налагаемому быстрыми атаками, и их урон составляет 1d4+STR."
+      "ru": "Ваши безоружные удары не подвержены помехе, налагаемой быстрыми атаками, и их урон составляет 1d4+STR."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -53,6 +53,74 @@
     "modifiers": {
       "speed": { "type": "add", "value": "if (no_armor, 2, 0)" },
       "initiative": { "type": "add", "value": "if (no_armor, level, 0)" }
+    }
+  },
+  {
+    "slug": "burst_of_speed",
+    "title": {
+      "en": "Burst of Speed",
+      "ru": "Всплеск скорости"
+    },
+    "description": {
+      "en": "When you roll Initiative, gain DEX tokens to use during that encounter. Once per turn, you may spend 1 token to use any of the following maneuvers for free:\n\n- **Slipstream**. Defend, and the attack missed.\n\n- **Whirling Defense**. Defend and apply your armor to every attack this round.\n\n- **Swiftstrike**. Attack on your turn, and ignore disadvantage from Rushed Attacks.\n\n- **Windstep**. Move on your turn, ignoring difficult terrain.",
+      "ru": "При определении инициативы вы получаете DEX токенов на текущее сражение. Один раз за ход вы можете потратить 1 токен, чтобы использовать специальный приём без затрат очков действий:\n\n- **Скольжение**. Защита, атака промахивается.\n\n- **Вращающаяся защита**. Защита, добавьте значение брони к каждой атаке в течение этого раунда.\n\n- **Быстрый удар**. Атака на вашем ходу, игнорируйте помеху, налагаемую быстрыми атаками.\n\n- **Шаг ветра**. Движение на вашем ходу, игнорируйте труднопроходимую местность."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "tokens": {
+      "limit": "dex",
+      "reset": "limit",
+      "reset_at": "combat_rest"
+    }
+  },
+  {
+    "slug": "kinetic_momentum",
+    "title": {
+      "en": "Kinetic Momentum",
+      "ru": "Кинетический момент"
+    },
+    "description": {
+      "en": "Whenever you gain a Wound, gain a tonen for **Burst of Speed**.",
+      "ru": "Когда вы получаете рану, вы получаете токен для **Всплеска скорости**."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "bring_the_pain",
+    "title": {
+      "en": "Bring the Pain",
+      "ru": "Где боль"
+    },
+    "description": {
+      "en": "Once per round, you may turn any melee attack against you info a crit. Whenever you are crit, reduce the damage by half. The attacker takes the same amount of damage you took (ignoring armor). You may suffer 1 Wound to double the damage the enemy takes.",
+      "ru": "Один раз за раунд при рукопашной атаке против вас вы можете изменить её на крит. Когда вас критуют, уменьшите кол-во урона в 2 раза. Атакующий получает такое же кол-во урона (игнорируйте броню). Вы можете получить 1 рану, чтобы удвоить урон, который получает нападающий."
+    },
+    "origin": "subclass",
+    "origin_value": "pain",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "exploding_soul",
+    "title": {
+      "en": "Exploding Soul",
+      "ru": "Взрывная душа"
+    },
+    "description": {
+      "en": "Once per round on your turn, you may suffer a Wound. Whenever you gain a Wound, deal {{damage|STR+Wounds}} damage to any creatures you choose within 2 spaces (ignoring armor) and give them the *Smoldering* condition.",
+      "ru": "Один раз за раунд во время вашего хода вы можете получить рану. Когда вы получаете рану, вы можете нанести {{damage|STR+Wounds}} урона любым существам в пределах 2 квадратов (игнорируйте броню), и они получают состояние *Тлеющий*."
+    },
+    "origin": "subclass",
+    "origin_value": "flame",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "description_eval_variables": {
+      "damage": "str + wounds_spent"
     }
   }
 ]

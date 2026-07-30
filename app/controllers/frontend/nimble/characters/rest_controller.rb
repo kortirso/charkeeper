@@ -15,7 +15,7 @@ module Frontend
           in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           in { result: result, recovery: recovery }
             render json: {
-              character: ::Nimble::CharacterSerializer.new.serialize(result),
+              character: ::Nimble::CharacterSerializer.new(context: { version: params[:version] }).serialize(result),
               recovery: recovery
             }, status: :ok
           end
