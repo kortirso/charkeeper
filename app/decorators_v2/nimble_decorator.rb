@@ -43,7 +43,7 @@ class NimbleDecorator < ApplicationDecoratorV2
     end
   end
 
-  def calculate_primary_abilities
+  def calculate_primary_abilities # rubocop: disable Metrics/AbcSize
     @result['modified_abilities'] = find_modified_abilities
     @result['key'] = modified_abilities.slice(*keys).values.max
     @result['wounds_max'] = 6
@@ -51,6 +51,7 @@ class NimbleDecorator < ApplicationDecoratorV2
     @result['speed'] = 6
     @result['initiative'] = modified_abilities['dex']
     @result['armor'] = calculate_armor
+    @result['shield'] = calculate_shield
   end
 
   def calculate_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
@@ -164,10 +165,13 @@ class NimbleDecorator < ApplicationDecoratorV2
   end
 
   def calculate_armor
-    shield_bonus = equiped_shield_info&.dig('ac').to_i
-    return modified_abilities['dex'] + shield_bonus if equiped_armor_info.nil?
+    return modified_abilities['dex'] if equiped_armor_info.nil?
 
-    formula.call(formula: equiped_armor_info.dig(:items_info, 'ac'), variables: formula_variables).to_i + shield_bonus
+    formula.call(formula: equiped_armor_info.dig(:items_info, 'ac'), variables: formula_variables).to_i
+  end
+
+  def calculate_shield
+    equiped_shield_info&.dig('ac').to_i
   end
 
   def equiped_armor_info

@@ -17,6 +17,7 @@ module Nimble
     attribute :languages, array: true, default: []
     attribute :weapons, array: true, default: []
     attribute :conditions, array: true, default: []
+    attribute :separate_shield, :boolean, default: false
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :skill_points, :integer, default: 4
