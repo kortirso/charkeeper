@@ -1,5 +1,18 @@
 es:
   changelogs:
+    '5003':
+      nimble:
+        title1: Core integration
+        desc1: Nimble compatible characters support was added
+      dc20:
+        title1: 0.10.5 support
+        desc1: total rebuilding DC20 characters management for better support 0.10.5 rules
+      daggerheart:
+        title1: Homebrew Vault
+        desc1: creating and using any kinds of homebrews
+      cthulhu:
+        title1: Core integration
+        desc1: Call of Cthulhu compatible characters support was added
     '4031':
       cosmere:
         title1: Easy character creation
