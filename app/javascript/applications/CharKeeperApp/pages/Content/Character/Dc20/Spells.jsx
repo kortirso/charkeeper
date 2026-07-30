@@ -2,7 +2,7 @@ import { createSignal, createEffect, createMemo, For, Show, Switch, Match, batch
 
 import config from '../../../../data/dc20.json';
 import {
-  ErrorWrapper, GuideWrapper, Toggle, Button, Checkbox, createModal, StatsBlock, Dice, Select
+  ErrorWrapper, GuideWrapper, Toggle, Button, Checkbox, createModal, StatsBlock, Dice, Select, Input
 } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall, Minus } from '../../../../assets';
@@ -18,6 +18,8 @@ import { modifier, localize, translate } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
+    searchByName: 'Search by name (from 3 characters)',
+    clearSearch: 'Clear',
     mana_spend_limit: 'Spend limit',
     spells: 'Spells',
     selectSpells: 'Select spells',
@@ -71,6 +73,8 @@ const TRANSLATION = {
     clear: 'Clear'
   },
   ru: {
+    searchByName: 'Поиск по названию (от 3 символов)',
+    clearSearch: 'Очистить',
     mana_spend_limit: 'Предел траты',
     spells: 'Заклинания',
     selectSpells: 'Выбрать заклинания',
@@ -124,6 +128,8 @@ const TRANSLATION = {
     clear: 'Сбросить'
   },
   es: {
+    searchByName: 'Buscar por nombre (desde 3 caracteres)',
+    clearSearch: 'Limpiar',
     mana_spend_limit: 'Límite de gasto',
     spells: 'Hechizos',
     selectSpells: 'Seleccionar hechizos',
@@ -194,6 +200,7 @@ export const Dc20Spells = (props) => {
   const [spellclass, setSpellclass] = createSignal(undefined);
   const [spellschools, setSpellschools] = createSignal([]);
   const [source, setSource] = createSignal([]);
+  const [filterByName, setFilterByName] = createSignal('');
 
   const { Modal, openModal } = createModal();
   const [appState] = useAppState();
@@ -221,6 +228,7 @@ export const Dc20Spells = (props) => {
   });
 
   const renderingLists = createMemo(() => {
+    if (filterByName().length >= 3) return Object.keys(config.spell_lists);
     if (availableListFilter() && character().spell_filter.source) {
       return Object.keys(config.spell_lists).filter((item) => character().spell_filter.source === item);
     }
@@ -230,6 +238,15 @@ export const Dc20Spells = (props) => {
 
   const filteredSpells = createMemo(() => {
     if (!spells()) return [];
+    if (filterByName().length >= 3) {
+      const searchPattern = filterByName().toLowerCase();
+      return spells().filter((item) => {
+        if (item.title.toLowerCase().includes(searchPattern)) return true;
+        if (item.origin_values.find((value) => value.toLowerCase().includes(searchPattern))) return true;
+
+        return false;
+      }).sort((a, b) => a.title.localeCompare(b.title));
+    }
     if (!availableListFilter()) return spells().sort((a, b) => a.title.localeCompare(b.title));
 
     const checkSchools = character().spell_filter.schools && character().spell_filter.schools.length > 0;
@@ -343,15 +360,28 @@ export const Dc20Spells = (props) => {
           when={!spellsSelectingMode()}
           fallback={
             <>
-              <div class="flex justify-between items-center mb-2">
-                <Checkbox
-                  labelText={localize(TRANSLATION, locale()).onlyAvailableSpells}
-                  labelPosition="right"
-                  labelClassList="ml-2"
-                  checked={availableListFilter()}
-                  onToggle={() => setAvailableListFilter(!availableListFilter())}
+              <div class="mb-2 flex">
+                <Input
+                  containerClassList="mr-2 flex-1"
+                  placeholder={localize(TRANSLATION, locale()).searchByName}
+                  value={filterByName()}
+                  onInput={setFilterByName}
                 />
+                <Button default size="small" classList="px-2" onClick={() => setFilterByName('')}>
+                  <span>{localize(TRANSLATION, locale()).clearSearch}</span>
+                </Button>
               </div>
+              <Show when={filterByName().length < 3}>
+                <div class="flex justify-between items-center mb-2">
+                  <Checkbox
+                    labelText={localize(TRANSLATION, locale()).onlyAvailableSpells}
+                    labelPosition="right"
+                    labelClassList="ml-2"
+                    checked={availableListFilter()}
+                    onToggle={() => setAvailableListFilter(!availableListFilter())}
+                  />
+                </div>
+              </Show>
               <For each={renderingLists()}>
                 {(list) =>
                   <Toggle title={localize(spellLists()[list].name, locale())}>

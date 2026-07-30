@@ -52,7 +52,7 @@
     "slug": "sorcerer_unstable_magic",
     "title": { "en": "Unstable Magic", "ru": "Нестабильная магия" },
     "description": {
-      "en": "When you Critically Succeed or Fail on a Spell Attack or Spell Check, roll on the Wild Magic Table. If it’s a Critical Success you roll with ADV, if it’s a Critical Failure you roll with DisADV. The effect lasts until the end of your next turn, unless stated otherwise. When you roll on the Wild Magic Table in this way, you gain ADV on the next Spell Attack or Spell Check you make before the end of your next turn.",
+      "en": "When you Critically Succeed or Fail on a Spell Attack or Spell Check, roll on the Wild Magic Table. If it's a Critical Success you roll with ADV, if it's a Critical Failure you roll with DisADV. The effect lasts until the end of your next turn, unless stated otherwise. When you roll on the Wild Magic Table in this way, you gain ADV on the next Spell Attack or Spell Check you make before the end of your next turn.",
       "ru": "Когда вы получаете критический успех или критический провал при проверке заклинания, совершите бросок по Таблице Дикой Магии. Если это критический успех, бросок совершается с преимуществом, если критический провал — с помехой. Эффект длится до конца вашего следующего хода, если не указано иное. Когда это происходит, вы получаете преимущество на следующую проверку заклинания, которую совершите до конца вашего следующего хода."
     },
     "origin": "class",
@@ -67,7 +67,7 @@
       "ru": "Перегрузка магии"
     },
     "description": {
-      "en": "You can **spend 1 AP + 1 MP** in Combat to channel raw magical energy for 1 minute, or until you become *Incapacitated*, die, or choose to end it early at any time for free. For the duration, your magic is overloaded and you’re subjected to the following effects:\n\n- You gain +5 to all Spell Attacks and Spell Checks you make.\n\n- You must immediately make an Attribute Save (your choice) against your Save DC upon using this Feature (no need at 5th level), and again at the start of each of your turns. **Failure**: You gain Exhaustion. You lose any Exhaustion gained in this way when you complete a Short Rest.",
+      "en": "You can **spend 1 AP + 1 MP** in Combat to channel raw magical energy for 1 minute, or until you become *Incapacitated*, die, or choose to end it early at any time for free. For the duration, your magic is overloaded and you're subjected to the following effects:\n\n- You gain +5 to all Spell Attacks and Spell Checks you make.\n\n- You must immediately make an Attribute Save (your choice) against your Save DC upon using this Feature (no need at 5th level), and again at the start of each of your turns. **Failure**: You gain Exhaustion. You lose any Exhaustion gained in this way when you complete a Short Rest.",
       "ru": "В бою вы можете **потратить 1 ОД + 1 ОМ**, чтобы выпустить бурлящую в вас необузданную магию. В течение 1 минуты, либо пока вы не станете *Шокированы*, не умрёте или не решите бесплатно окончить эффект, ваша магия перегружена, и вы подвергаетесь следующим эффектам:\n\n- Вы получаете +5 ко всем проверкам и атакам заклинаниями.\n\n- Сразу при использовании **Перегрузки магии** (с 5 уровня - не надо) и в начале каждого своего хода, пока Перегрузка активна, вы должны совершать Спас атрибута (на ваш выбор) против вашей СЛ. **Провал:** Вы получаете истощение. Вы избавляетесь от всего истощения, вызванного **Перегрузкой магии**, когда завершаете короткий отдых."
     },
     "origin": "class",
@@ -103,7 +103,7 @@
       "ru": "Метамагия"
     },
     "description": {
-      "en": "You gain unique Spell Enhancements from the list below - {{amount|2}}. You can only use {{meta|1}} of these Spell Enhancements per Spell you cast. MP spent on these Spell Enhancements don’t count against your Mana Spend Limit.\n\nOnce per Long Rest, you can use 1 of these unique Spell Enhancements without spending MP. You regain the ability to do so again when you roll for Initiative.",
+      "en": "You gain unique Spell Enhancements from the list below - {{amount|2}}. You can only use {{meta|1}} of these Spell Enhancements per Spell you cast. MP spent on these Spell Enhancements don't count against your Mana Spend Limit.\n\nOnce per Long Rest, you can use 1 of these unique Spell Enhancements without spending MP. You regain the ability to do so again when you roll for Initiative.",
       "ru": "Вы получаете уникальные улучшения заклинаний из списка ниже - {{amount|2}}. Вы можете использовать улучшения на накладываемое заклинание - {{meta|1}}. Потраченные на Метамагию ОМ не учитываются для предела траты маны.\n\nОдин раз после долгого отдыха или броска инициативы вы можете использовать одно из этих улучшений без затрат ОМ."
     },
     "origin": "class",
@@ -129,7 +129,7 @@
     "slug": "sorcerer_careful_spell",
     "title": { "en": "Careful Spell", "ru": "Осторожное заклинание" },
     "description": {
-      "en": "1 MP. When you Cast a Spell that targets an area (such as a Line, Cone, or Sphere), you can choose to exclude creatures of your choice from the Spell’s damage and effects.",
+      "en": "1 MP. When you Cast a Spell that targets an area (such as a Line, Cone, or Sphere), you can choose to exclude creatures of your choice from the Spell's damage and effects.",
       "ru": "1 ОМ. Когда вы накладываете заклинание по области, вы можете выбрать часть существ от урона и эффектов заклинания."
     },
     "origin": "class",

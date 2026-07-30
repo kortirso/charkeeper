@@ -24,7 +24,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "transmutation",
       "duration": "1,m",
       "sustained": true,
@@ -79,8 +79,8 @@
             "mp": null
           },
           "description": {
-            "en": "You target X additional creatures of your choice within 5 Spaces that you can see. When you choose this Enhancement, the cost of all other Enhancements (except Range and Effortless) is doubled. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "You target X additional creatures of your choice within 5 Spaces that you can see. When you choose this Enhancement, the cost of all other Enhancements (except Range and Effortless) is doubled. The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "You target X additional creatures of your choice within 5 Spaces that you can see. When you choose this Enhancement, the cost of all other Enhancements (except Range and Effortless) is doubled. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "You target X additional creatures of your choice within 5 Spaces that you can see. When you choose this Enhancement, the cost of all other Enhancements (except Range and Effortless) is doubled. The AP cost of this Enhancement can't be paid for with MP."
           }
         },
         {
@@ -119,8 +119,8 @@
       "ru": "Air Slash"
     },
     "description": {
-      "en": "You conjure a slash of high velocity wind that flies towards a target of your choice. Make a Ranged Spell Attack against the PD of a target within range. **Hit:** The target takes 1 Slashing damage.\n\n**Wind**\nUnsecured mundane objects in the target's space are knocked over or blown away, especially light ones (papers, tools, empty crates). Can slam doors, scatter sand/dust and disperse smoke.",
-      "ru": "You conjure a slash of high velocity wind that flies towards a target of your choice. Make a Ranged Spell Attack against the PD of a target within range. **Hit:** The target takes 1 Slashing damage.\n\n**Wind**\nUnsecured mundane objects in the target's space are knocked over or blown away, especially light ones (papers, tools, empty crates). Can slam doors, scatter sand/dust and disperse smoke."
+      "en": "You conjure a slash of high velocity wind that flies towards a target of your choice. Make a Ranged Spell Attack against the PD of a target within range. **Hit:** The target takes 1 Slashing damage.\n\n**Wind**. Unsecured mundane objects in the target's space are knocked over or blown away, especially light ones (papers, tools, empty crates). Can slam doors, scatter sand/dust and disperse smoke.",
+      "ru": "You conjure a slash of high velocity wind that flies towards a target of your choice. Make a Ranged Spell Attack against the PD of a target within range. **Hit:** The target takes 1 Slashing damage.\n\n**Wind**. Unsecured mundane objects in the target's space are knocked over or blown away, especially light ones (papers, tools, empty crates). Can slam doors, scatter sand/dust and disperse smoke."
     },
     "origin": "spell",
     "origin_value": "primal",
@@ -425,8 +425,8 @@
             "mp": null
           },
           "description": {
-            "en": "Choose X additional targets within range using the same Spell Attack for all targets. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "Choose X additional targets within range using the same Spell Attack for all targets.The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "Choose X additional targets within range using the same Spell Attack for all targets. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "Choose X additional targets within range using the same Spell Attack for all targets.The AP cost of this Enhancement can't be paid for with MP."
           }
         },
         {
@@ -469,7 +469,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "astromancy",
       "duration": "instant",
       "enhancements": [
@@ -535,14 +535,14 @@
       "ru": "Bind"
     },
     "description": {
-      "en": "You bind a creature within range. Make a Spell Check contested by the target’s Agility Save. **Check Success:** The target is **Immobilized** for the duration. Once on each of their turns, the target can spend 1 AP to attempt the Save again, ending the Spell on a success.",
-      "ru": "You bind a creature within range. Make a Spell Check contested by the target’s Agility Save. **Check Success:** The target is **Immobilized** for the duration. Once on each of their turns, the target can spend 1 AP to attempt the Save again, ending the Spell on a success."
+      "en": "You bind a creature within range. Make a Spell Check contested by the target's Agility Save. **Check Success:** The target is **Immobilized** for the duration. Once on each of their turns, the target can spend 1 AP to attempt the Save again, ending the Spell on a success.",
+      "ru": "You bind a creature within range. Make a Spell Check contested by the target's Agility Save. **Check Success:** The target is **Immobilized** for the duration. Once on each of their turns, the target can spend 1 AP to attempt the Save again, ending the Spell on a success."
     },
     "origin": "spell",
     "origin_value": "arcane,divine,primal",
     "kind": "static",
     "origin_values": [
-      "bludgeoning"
+      "bludgeoning",
       "immobilized",
       "restrained"
     ],
@@ -605,8 +605,8 @@
       "ru": "Blight Bomb"
     },
     "description": {
-      "en": "You produce an explosion of Poisonous gas in a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. Hit: The target takes 1 Poison damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated.**\n\n**Noxious**\n\nPlant life in the area that are not being worn or held wilts or dies, grass blackens, and flowers or vines shrivel where the Spell touches.",
-      "ru": "You produce an explosion of Poisonous gas in a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. Hit: The target takes 1 Poison damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated.**\n\n**Noxious**\n\nPlant life in the area that are not being worn or held wilts or dies, grass blackens, and flowers or vines shrivel where the Spell touches."
+      "en": "You produce an explosion of Poisonous gas in a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. Hit: The target takes 1 Poison damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated.**\n\n**Noxious**. Plant life in the area that are not being worn or held wilts or dies, grass blackens, and flowers or vines shrivel where the Spell touches.",
+      "ru": "You produce an explosion of Poisonous gas in a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. Hit: The target takes 1 Poison damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated.**\n\n**Noxious**. Plant life in the area that are not being worn or held wilts or dies, grass blackens, and flowers or vines shrivel where the Spell touches."
     },
     "origin": "spell",
     "origin_value": "arcane,primal",
@@ -729,7 +729,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "transmutation",
       "duration": "instant",
       "enhancements": [
@@ -796,8 +796,8 @@
       "ru": "Charm"
     },
     "description": {
-      "en": "Choose a creature that can see or hear you within range. Make a Spell Check against the target's Charisma Save. The Save is Repeated if the target is hostile. **Check Success:** The target is **Charmed** by you for the duration or until it takes damage or makes a Save. When the Condition ends, the creature realizes that you used magic to influence its mood and may become hostile toward you (if they weren’t already).",
-      "ru": "Choose a creature that can see or hear you within range. Make a Spell Check against the target's Charisma Save. The Save is Repeated if the target is hostile. **Check Success:** The target is **Charmed** by you for the duration or until it takes damage or makes a Save. When the Condition ends, the creature realizes that you used magic to influence its mood and may become hostile toward you (if they weren’t already)."
+      "en": "Choose a creature that can see or hear you within range. Make a Spell Check against the target's Charisma Save. The Save is Repeated if the target is hostile. **Check Success:** The target is **Charmed** by you for the duration or until it takes damage or makes a Save. When the Condition ends, the creature realizes that you used magic to influence its mood and may become hostile toward you (if they weren't already).",
+      "ru": "Choose a creature that can see or hear you within range. Make a Spell Check against the target's Charisma Save. The Save is Repeated if the target is hostile. **Check Success:** The target is **Charmed** by you for the duration or until it takes damage or makes a Save. When the Condition ends, the creature realizes that you used magic to influence its mood and may become hostile toward you (if they weren't already)."
     },
     "origin": "spell",
     "origin_value": "arcane,divine",
@@ -867,8 +867,8 @@
             "mp": 1
           },
           "description": {
-            "en": "You instead target each creature of your choice within range that can see or hear you. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The Action Point cost of this Enhancement can’t be paid for with MP.",
-            "ru": "You instead target each creature of your choice within range that can see or hear you. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The Action Point cost of this Enhancement can’t be paid for with MP."
+            "en": "You instead target each creature of your choice within range that can see or hear you. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The Action Point cost of this Enhancement can't be paid for with MP.",
+            "ru": "You instead target each creature of your choice within range that can see or hear you. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The Action Point cost of this Enhancement can't be paid for with MP."
           }
         }
       ]
@@ -922,8 +922,8 @@
             "mp": null
           },
           "description": {
-            "en": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can't be paid for with MP."
           }
         },
         {
@@ -1075,7 +1075,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -1334,7 +1334,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -1712,7 +1712,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "conjuration",
       "duration": "10,m",
       "enhancements": [
@@ -2122,8 +2122,8 @@
           },
           "sustained": true,
           "description": {
-            "en": "When a creature enters a Space within the area that hasn’t been cleared for the first time on a turn, it makes an Agility Save against your Save DC. **Save Failure:** The target becomes **Immobilized** for the duration or until its Space is cleared of the effect. The target can also spend 1 AP to repeat its Save, ending the Condition on itself on a Success.",
-            "ru": "When a creature enters a Space within the area that hasn’t been cleared for the first time on a turn, it makes an Agility Save against your Save DC. **Save Failure:** The target becomes **Immobilized** for the duration or until its Space is cleared of the effect. The target can also spend 1 AP to repeat its Save, ending the Condition on itself on a Success."
+            "en": "When a creature enters a Space within the area that hasn't been cleared for the first time on a turn, it makes an Agility Save against your Save DC. Save Failure: The target becomes Immobilized for the duration or until its Space is cleared of the effect. The target can also spend 1 AP to repeat its Save, ending the Condition on itself on a Success.",
+            "ru": "When a creature enters a Space within the area that hasn't been cleared for the first time on a turn, it makes an Agility Save against your Save DC. Save Failure: The target becomes Immobilized for the duration or until its Space is cleared of the effect. The target can also spend 1 AP to repeat its Save, ending the Condition on itself on a Success."
           }
         },
         {
@@ -2135,8 +2135,8 @@
             "mp": 2
           },
           "description": {
-            "en": "Creatures **Immobilized** by the Spell are also **Restrained.**",
-            "ru": "Creatures **Immobilized** by the Spell are also **Restrained.**"
+            "en": "Creatures Immobilized by the Spell are also Restrained.",
+            "ru": "Creatures Immobilized by the Spell are also Restrained."
           }
         },
         {
@@ -2148,8 +2148,8 @@
             "mp": null
           },
           "description": {
-            "en": "Creatures take X Piercing damage when they enter a Space within the area that hasn't been cleared. They also take this damage each time they fail a Save (including any subsequent Saves) to resist being **Immobilized** by the Spell.",
-            "ru": "Creatures take X Piercing damage when they enter a Space within the area that hasn't been cleared. They also take this damage each time they fail a Save (including any subsequent Saves) to resist being **Immobilized** by the Spell."
+            "en": "Creatures take X Piercing damage when they enter a Space within the area that hasn't been cleared. They also take this damage each time they fail a Save (including any subsequent Saves) to resist being Immobilized by the Spell.",
+            "ru": "Creatures take X Piercing damage when they enter a Space within the area that hasn't been cleared. They also take this damage each time they fail a Save (including any subsequent Saves) to resist being Immobilized by the Spell."
           }
         }
       ]
@@ -2442,8 +2442,8 @@
             "mp": null
           },
           "description": {
-            "en": "Choose X additional targets within range using the same Spell Attack for all targets. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "Choose X additional targets within range using the same Spell Attack for all targets.The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "Choose X additional targets within range using the same Spell Attack for all targets. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "Choose X additional targets within range using the same Spell Attack for all targets.The AP cost of this Enhancement can't be paid for with MP."
           }
         }
       ]
@@ -2473,7 +2473,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "transmutation",
       "duration": "1,m",
       "sustained": true,
@@ -2583,7 +2583,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -2658,7 +2658,7 @@
     "origin_values": [
       "cold",
       "enfeeble",
-      "immobilized"
+      "immobilized",
       "slowed",
       "stunned"
     ],
@@ -2939,8 +2939,8 @@
       "ru": "Gust"
     },
     "description": {
-      "en": "You produce a gust of wind that targets a Medium Size or smaller creature or object within range. The Spell has no effect on secured or worn objects.\n\n- **Creature or Held Object:** If you target a creature or an object held by a creature, make a Spell Check contested by the creature’s Might Save. **Save Failure:** The target is pushed horizontally 1 Space in a direction of your choice. **Failure (each 5):** The target is pushed 1 additional Space. If the target is a creature, you can choose to reduce the total distance the target is pushed by 1 Space to knock them **Prone** instead.\n\n- **Loose Object:** If the target is a loose object, make a **DC 15** Spell Check. **Check Failure:** The target is pushed horizontally 1 Space in a direction of your choice. **Check Success:** The target is pushed 2 Spaces in a direction of your choice. **Success (each 5):** The target is pushed 1 additional Space.\n\n**Smaller Target:** The target is pushed up to 2 Spaces additional Spaces for each Size smaller it is than the maximum Size you can target.",
-      "ru": "You produce a gust of wind that targets a Medium Size or smaller creature or object within range. The Spell has no effect on secured or worn objects.\n\n- **Creature or Held Object:** If you target a creature or an object held by a creature, make a Spell Check contested by the creature’s Might Save. **Save Failure:** The target is pushed horizontally 1 Space in a direction of your choice. **Failure (each 5):** The target is pushed 1 additional Space. If the target is a creature, you can choose to reduce the total distance the target is pushed by 1 Space to knock them **Prone** instead.\n\n- **Loose Object:** If the target is a loose object, make a **DC 15** Spell Check. **Check Failure:** The target is pushed horizontally 1 Space in a direction of your choice. **Check Success:** The target is pushed 2 Spaces in a direction of your choice. **Success (each 5):** The target is pushed 1 additional Space.\n\n**Smaller Target:** The target is pushed up to 2 Spaces additional Spaces for each Size smaller it is than the maximum Size you can target."
+      "en": "You produce a gust of wind that targets a Medium Size or smaller creature or object within range. The Spell has no effect on secured or worn objects.\n\n- **Creature or Held Object:** If you target a creature or an object held by a creature, make a Spell Check contested by the creature's Might Save. **Save Failure:** The target is pushed horizontally 1 Space in a direction of your choice. **Failure (each 5):** The target is pushed 1 additional Space. If the target is a creature, you can choose to reduce the total distance the target is pushed by 1 Space to knock them **Prone** instead.\n\n- **Loose Object:** If the target is a loose object, make a **DC 15** Spell Check. **Check Failure:** The target is pushed horizontally 1 Space in a direction of your choice. **Check Success:** The target is pushed 2 Spaces in a direction of your choice. **Success (each 5):** The target is pushed 1 additional Space.\n\n**Smaller Target:** The target is pushed up to 2 Spaces additional Spaces for each Size smaller it is than the maximum Size you can target.",
+      "ru": "You produce a gust of wind that targets a Medium Size or smaller creature or object within range. The Spell has no effect on secured or worn objects.\n\n- **Creature or Held Object:** If you target a creature or an object held by a creature, make a Spell Check contested by the creature's Might Save. **Save Failure:** The target is pushed horizontally 1 Space in a direction of your choice. **Failure (each 5):** The target is pushed 1 additional Space. If the target is a creature, you can choose to reduce the total distance the target is pushed by 1 Space to knock them **Prone** instead.\n\n- **Loose Object:** If the target is a loose object, make a **DC 15** Spell Check. **Check Failure:** The target is pushed horizontally 1 Space in a direction of your choice. **Check Success:** The target is pushed 2 Spaces in a direction of your choice. **Success (each 5):** The target is pushed 1 additional Space.\n\n**Smaller Target:** The target is pushed up to 2 Spaces additional Spaces for each Size smaller it is than the maximum Size you can target."
     },
     "origin": "spell",
     "origin_value": "primal",
@@ -3008,8 +3008,8 @@
             "mp": null
           },
           "description": {
-            "en": "You can target X additional creatures or objects within range. When you choose this Enhancement, the cost of all other Enhancements is doubled. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "You can target X additional creatures or objects within range. When you choose this Enhancement, the cost of all other Enhancements is doubled. The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "You can target X additional creatures or objects within range. When you choose this Enhancement, the cost of all other Enhancements is doubled. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "You can target X additional creatures or objects within range. When you choose this Enhancement, the cost of all other Enhancements is doubled. The AP cost of this Enhancement can't be paid for with MP."
           }
         }
       ]
@@ -3040,7 +3040,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "transmutation",
       "duration": "1,m",
       "sustained": true,
@@ -3306,8 +3306,8 @@
             "mp": null
           },
           "description": {
-            "en": "You can target X additional creatures within range. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "You can target X additional creatures within range. The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "You can target X additional creatures within range. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "You can target X additional creatures within range. The AP cost of this Enhancement can't be paid for with MP."
           }
         },
         {
@@ -3499,7 +3499,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -3582,7 +3582,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "transmutation",
       "duration": "1,m",
       "sustained": true,
@@ -3691,7 +3691,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -4107,7 +4107,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "enchantment",
       "duration": "instant",
       "enhancements": [
@@ -4358,7 +4358,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "transmutation",
       "duration": "1,m",
       "sustained": true,
@@ -4800,8 +4800,8 @@
       "ru": "Shatter Reality"
     },
     "description": {
-      "en": "You violently distort the perception of reality in a 3 Space Sphere within range. Make an Area Spell Attack against the AD of every creature in the area. Hit: The target takes 1 Psychic damage.\n\n88Close Quarters Penalty:88 You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Untraceable:** Damage from this Spell leaves no visible trace on any affected creatures or the surrounding environment.",
-      "ru": "You violently distort the perception of reality in a 3 Space Sphere within range. Make an Area Spell Attack against the AD of every creature in the area. Hit: The target takes 1 Psychic damage.\n\n88Close Quarters Penalty:88 You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Untraceable:** Damage from this Spell leaves no visible trace on any affected creatures or the surrounding environment."
+      "en": "You violently distort the perception of reality in a 3 Space Sphere within range. Make an Area Spell Attack against the AD of every creature in the area. Hit: The target takes 1 Psychic damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Untraceable:** Damage from this Spell leaves no visible trace on any affected creatures or the surrounding environment.",
+      "ru": "You violently distort the perception of reality in a 3 Space Sphere within range. Make an Area Spell Attack against the AD of every creature in the area. Hit: The target takes 1 Psychic damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Untraceable:** Damage from this Spell leaves no visible trace on any affected creatures or the surrounding environment."
     },
     "origin": "spell",
     "origin_value": "arcane,divine",
@@ -4882,8 +4882,8 @@
             "mp": 2
           },
           "description": {
-            "en": "Each target makes a Repeated Charisma Save against your Save DC. Save Failure: The target rolls a d4 to determine the Distortion Effect that alters its body or perception for 1 minute.\nD4 Distortion Effect\n    1   It sees body twist. It's Immobilized.\n    2   Its senses collapse inward. It's Blinded.\n    3   Its mind fractures. It's Stunned and can't take Reactions.\n    4   It becomes confused. At the start of each of its turns, it must spend 1 AP to move up to its Speed in a random direction.",
-            "ru": "Each target makes a Repeated Charisma Save against your Save DC. Save Failure: The target rolls a d4 to determine the Distortion Effect that alters its body or perception for 1 minute.\nD4 Distortion Effect\n    1   It sees body twist. It's Immobilized.\n    2   Its senses collapse inward. It's Blinded.\n    3   Its mind fractures. It's Stunned and can't take Reactions.\n    4   It becomes confused. At the start of each of its turns, it must spend 1 AP to move up to its Speed in a random direction."
+            "en": "Each target makes a Repeated Charisma Save against your Save DC. Save Failure: The target rolls a d4 to determine the Distortion Effect that alters its body or perception for 1 minute. 1 - It sees body twist. It's Immobilized. 2 - Its senses collapse inward. It's Blinded. 3 - Its mind fractures. It's Stunned and can't take Reactions. 4 - It becomes confused. At the start of each of its turns, it must spend 1 AP to move up to its Speed in a random direction.",
+            "ru": "Each target makes a Repeated Charisma Save against your Save DC. Save Failure: The target rolls a d4 to determine the Distortion Effect that alters its body or perception for 1 minute. 1 - It sees body twist. It's Immobilized. 2 - Its senses collapse inward. It's Blinded. 3 - Its mind fractures. It's Stunned and can't take Reactions. 4 - It becomes confused. At the start of each of its turns, it must spend 1 AP to move up to its Speed in a random direction."
           }
         }
       ]
@@ -4943,8 +4943,8 @@
             "mp": null
           },
           "description": {
-            "en": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can't be paid for with MP."
           }
         },
         {
@@ -4969,8 +4969,8 @@
             "mp": 1
           },
           "description": {
-            "en": "On a failed Save, the target is **Impaired** and **Dazed** for the duration.",
-            "ru": "On a failed Save, the target is **Impaired** and **Dazed** for the duration."
+            "en": "On a failed Save, the target is Impaired and Dazed for the duration.",
+            "ru": "On a failed Save, the target is Impaired and Dazed for the duration."
           }
         },
         {
@@ -4982,8 +4982,8 @@
             "mp": 1
           },
           "description": {
-            "en": "On a failed Save, for the duration, the target is **Slowed** and you gain half the target's Speed.",
-            "ru": "On a failed Save, for the duration, the target is **Slowed** and you gain half the target's Speed."
+            "en": "On a failed Save, for the duration, the target is Slowed and you gain half the target's Speed.",
+            "ru": "On a failed Save, for the duration, the target is Slowed and you gain half the target's Speed."
           }
         },
         {
@@ -4996,8 +4996,8 @@
           },
           "sustained": true,
           "description": {
-            "en": "The creature is **Paralyzed**.",
-            "ru": "The creature is **Paralyzed**."
+            "en": "The creature is Paralyzed.",
+            "ru": "The creature is Paralyzed."
           }
         }
       ]
@@ -5111,7 +5111,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -5512,8 +5512,8 @@
             "mp": 1
           },
           "description": {
-            "en": "The Spell no longer fails if the target is **Immobilized**.",
-            "ru": "The Spell no longer fails if the target is **Immobilized**."
+            "en": "The Spell no longer fails if the target is Immobilized.",
+            "ru": "The Spell no longer fails if the target is Immobilized."
           }
         },
         {
@@ -5539,8 +5539,8 @@
             "mp": 2
           },
           "description": {
-            "en": "Choose a second target within range (you can choose yourself). If the Spell Succeeds on both targets, they swap location provided they are within 3 Spaces of each other. The distance is increased by 3 Spaces for each time you use the **Distance** Enhancement. If the Spell only Succeeds on only 1 target, you can teleport that target as normal.",
-            "ru": "Choose a second target within range (you can choose yourself). If the Spell Succeeds on both targets, they swap location provided they are within 3 Spaces of each other. The distance is increased by 3 Spaces for each time you use the **Distance** Enhancement. If the Spell only Succeeds on only 1 target, you can teleport that target as normal."
+            "en": "Choose a second target within range (you can choose yourself). If the Spell Succeeds on both targets, they swap location provided they are within 3 Spaces of each other. The distance is increased by 3 Spaces for each time you use the Distance Enhancement. If the Spell only Succeeds on only 1 target, you can teleport that target as normal.",
+            "ru": "Choose a second target within range (you can choose yourself). If the Spell Succeeds on both targets, they swap location provided they are within 3 Spaces of each other. The distance is increased by 3 Spaces for each time you use the Distance Enhancement. If the Spell only Succeeds on only 1 target, you can teleport that target as normal."
           }
         }
       ]
@@ -5569,7 +5569,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "nullification",
       "duration": "instant",
       "enhancements": [
@@ -5656,7 +5656,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "transmutation",
       "duration": "1,m",
       "sustained": true,
@@ -5767,7 +5767,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "nullification",
       "duration": "instant",
       "enhancements": [
@@ -5863,8 +5863,8 @@
             "mp": 1
           },
           "description": {
-            "en": "While Taunted by this Spell, the target can’t willingly move away from you.",
-            "ru": "While Taunted by this Spell, the target can’t willingly move away from you."
+            "en": "While Taunted by this Spell, the target can't willingly move away from you.",
+            "ru": "While Taunted by this Spell, the target can't willingly move away from you."
           }
         },
         {
@@ -5961,8 +5961,8 @@
             "mp": null
           },
           "description": {
-            "en": "The projectile detonates on impact. Compare the Spell Attack to the AD of each targets in a 2 Space Cone behind the original target. Hit: They take X Bludgeoning damage. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "The projectile detonates on impact. Compare the Spell Attack to the AD of each targets in a 2 Space Cone behind the original target. Hit: They take X Bludgeoning damage. The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "The projectile detonates on impact. Compare the Spell Attack to the AD of each targets in a 2 Space Cone behind the original target. Hit: They take X Bludgeoning damage. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "The projectile detonates on impact. Compare the Spell Attack to the AD of each targets in a 2 Space Cone behind the original target. Hit: They take X Bludgeoning damage. The AP cost of this Enhancement can't be paid for with MP."
           }
         }
       ]
@@ -6045,7 +6045,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -6125,8 +6125,8 @@
       "ru": "Wind Burst"
     },
     "description": {
-      "en": "You produce a vortex of high velocity wind that envelops a 3 Space diameter Sphere area within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Slashing damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you’re within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated.**\n**Wind:** Unsecured mundane objects in the area are knocked over or blown away, especially light ones (papers, tools, empty crates). Can slam doors, scatter sand/dust and disperse smoke.",
-      "ru": "You produce a vortex of high velocity wind that envelops a 3 Space diameter Sphere area within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Slashing damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you’re within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated.**\n**Wind:** Unsecured mundane objects in the area are knocked over or blown away, especially light ones (papers, tools, empty crates). Can slam doors, scatter sand/dust and disperse smoke."
+      "en": "You produce a vortex of high velocity wind that envelops a 3 Space diameter Sphere area within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Slashing damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated.**\n**Wind:** Unsecured mundane objects in the area are knocked over or blown away, especially light ones (papers, tools, empty crates). Can slam doors, scatter sand/dust and disperse smoke.",
+      "ru": "You produce a vortex of high velocity wind that envelops a 3 Space diameter Sphere area within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Slashing damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated.**\n**Wind:** Unsecured mundane objects in the area are knocked over or blown away, especially light ones (papers, tools, empty crates). Can slam doors, scatter sand/dust and disperse smoke."
     },
     "origin": "spell",
     "origin_value": "primal",
@@ -6221,8 +6221,8 @@
       "ru": "Нечестивая аура"
     },
     "description": {
-      "en": "Umbral energy surrounds you in a 1 Space Aura for the duration. When you cast the Spell, make a Spell Check against the Repeated Charisma Save of each target within the area. **Check Success:** The target is Doomed for the duration.\n\n**Doomed Area:** When a creature enters the area for the first time on its turn or starts its turn there, it makes a Repeated Charisma Save against your Save DC. **Save Failure:** The target is Doomed for the duration.\n\n**Obscure**\n\nMundane lights produced by tiny or smaller sources stop working while within the Aura.",
-      "ru": "Umbral energy surrounds you in a 1 Space Aura for the duration. When you cast the Spell, make a Spell Check against the Repeated Charisma Save of each target within the area. **Check Success:** The target is Doomed for the duration.\n\n**Doomed Area:** When a creature enters the area for the first time on its turn or starts its turn there, it makes a Repeated Charisma Save against your Save DC. **Save Failure:** The target is Doomed for the duration.\n\n**Obscure**\n\nMundane lights produced by tiny or smaller sources stop working while within the Aura."
+      "en": "Umbral energy surrounds you in a 1 Space Aura for the duration. When you cast the Spell, make a Spell Check against the Repeated Charisma Save of each target within the area. **Check Success:** The target is Doomed for the duration.\n\n**Doomed Area:** When a creature enters the area for the first time on its turn or starts its turn there, it makes a Repeated Charisma Save against your Save DC. **Save Failure:** The target is Doomed for the duration.\n\n**Obscure**. Mundane lights produced by tiny or smaller sources stop working while within the Aura.",
+      "ru": "Umbral energy surrounds you in a 1 Space Aura for the duration. When you cast the Spell, make a Spell Check against the Repeated Charisma Save of each target within the area. **Check Success:** The target is Doomed for the duration.\n\n**Doomed Area:** When a creature enters the area for the first time on its turn or starts its turn there, it makes a Repeated Charisma Save against your Save DC. **Save Failure:** The target is Doomed for the duration.\n\n**Obscure**. Mundane lights produced by tiny or smaller sources stop working while within the Aura."
     },
     "origin": "spell",
     "origin_value": "divine",
@@ -6238,7 +6238,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "conjuration",
       "duration": "1,m",
       "enhancements": [
@@ -6366,8 +6366,8 @@
             "mp": null
           },
           "description": {
-            "en": "You can target X additional creatures within range. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "You can target X additional creatures within range. The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "You can target X additional creatures within range. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "You can target X additional creatures within range. The AP cost of this Enhancement can't be paid for with MP."
           }
         },
         {
@@ -6380,7 +6380,7 @@
           },
           "description": {
             "en": "The target isn't effected by Altitude Drop and instead hovers in place when not moving, even while Unconscious or Prone.",
-            "ru": "The target isn’t effected by Altitude Drop and instead hovers in place when not moving, even while Unconscious or Prone."
+            "ru": "The target isn't effected by Altitude Drop and instead hovers in place when not moving, even while Unconscious or Prone."
           }
         },
         {
@@ -6392,8 +6392,8 @@
             "mp": 2
           },
           "description": {
-            "en": "The target isn’t effected by Altitude Drop and gains a Fly Speed equal to its Speed for the duration.",
-            "ru": "The target isn’t effected by Altitude Drop and gains a Fly Speed equal to its Speed for the duration."
+            "en": "The target isn't effected by Altitude Drop and gains a Fly Speed equal to its Speed for the duration.",
+            "ru": "The target isn't effected by Altitude Drop and gains a Fly Speed equal to its Speed for the duration."
           }
         }
       ]
@@ -6406,8 +6406,8 @@
       "ru": "Disintegrating Beam"
     },
     "description": {
-      "en": "You create an 8 Space Line of pure destructive energy. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 2 True Damage. The additional damage from Critical Hits and Heavy Hits or higher is doubled.\n\n**Annihilating**\n\nThe Spell deals double damage to objects. Creatures and objects killed or destroyed by this Spell are reduced to a pile of ash.",
-      "ru": "You create an 8 Space Line of pure destructive energy. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 2 True Damage. The additional damage from Critical Hits and Heavy Hits or higher is doubled.\n\n**Annihilating**\n\nThe Spell deals double damage to objects. Creatures and objects killed or destroyed by this Spell are reduced to a pile of ash."
+      "en": "You create an 8 Space Line of pure destructive energy. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 2 True Damage. The additional damage from Critical Hits and Heavy Hits or higher is doubled.\n\n**Annihilating**. The Spell deals double damage to objects. Creatures and objects killed or destroyed by this Spell are reduced to a pile of ash.",
+      "ru": "You create an 8 Space Line of pure destructive energy. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 2 True Damage. The additional damage from Critical Hits and Heavy Hits or higher is doubled.\n\n**Annihilating**. The Spell deals double damage to objects. Creatures and objects killed or destroyed by this Spell are reduced to a pile of ash."
     },
     "origin": "spell",
     "origin_value": "arcane",
@@ -6423,7 +6423,7 @@
       "mp": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "nullification",
       "duration": "instant",
       "enhancements": [
@@ -6590,7 +6590,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -6742,7 +6742,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "enchantment",
       "duration": "instant",
       "enhancements": [
@@ -6838,7 +6838,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -6921,7 +6921,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "astromancy",
       "duration": "instant",
       "enhancements": [
@@ -6948,8 +6948,8 @@
             "mp": 1
           },
           "description": {
-            "en": "The Spell no longer fails if you are **Immobilized**.",
-            "ru": "The Spell no longer fails if you are **Immobilized**."
+            "en": "The Spell no longer fails if you are Immobilized.",
+            "ru": "The Spell no longer fails if you are Immobilized."
           }
         },
         {
@@ -6962,8 +6962,8 @@
             "mp": null
           },
           "description": {
-            "en": "X willing creatures (that aren't **Immobilized**) within 2 Spaces of you are also teleported, appearing in an unoccupied space within 2 Spaces of where you appear after teleporting. If used with Unbound, you can teleport other **Immobilized** creatures. The AP cost of this Enhancement can't be paid for with MP.",
-            "ru": "X willing creatures (that aren't **Immobilized**) within 2 Spaces of you are also teleported, appearing in an unoccupied space within 2 Spaces of where you appear after teleporting. If used with Unbound, you can teleport other **Immobilized** creatures. The AP cost of this Enhancement can't be paid for with MP."
+            "en": "X willing creatures (that aren't Immobilized) within 2 Spaces of you are also teleported, appearing in an unoccupied space within 2 Spaces of where you appear after teleporting. If used with Unbound, you can teleport other Immobilized creatures. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "X willing creatures (that aren't Immobilized) within 2 Spaces of you are also teleported, appearing in an unoccupied space within 2 Spaces of where you appear after teleporting. If used with Unbound, you can teleport other Immobilized creatures. The AP cost of this Enhancement can't be paid for with MP."
           }
         },
         {
@@ -6976,8 +6976,8 @@
           },
           "repeatable": true,
           "description": {
-            "en": "Creatures within 1 Spaces of you before you teleport make an Intelligence Save against your Save DC. **Save Failure:** The target is Slowed for 1 Round.",
-            "ru": "Creatures within 1 Spaces of you before you teleport make an Intelligence Save against your Save DC. **Save Failure:** The target is Slowed for 1 Round."
+            "en": "Creatures within 1 Spaces of you before you teleport make an Intelligence Save against your Save DC. Save Failure: The target is Slowed for 1 Round.",
+            "ru": "Creatures within 1 Spaces of you before you teleport make an Intelligence Save against your Save DC. Save Failure: The target is Slowed for 1 Round."
           }
         },
         {
@@ -6989,8 +6989,8 @@
             "mp": null
           },
           "description": {
-            "en": "After you teleport, creatures within 1 Space of you make a Might Save against your Save DC. **Save Failure:** The target is pushed X Spaces away from you.",
-            "ru": "After you teleport, creatures within 1 Space of you make a Might Save against your Save DC. **Save Failure:** The target is pushed X Spaces away from you."
+            "en": "After you teleport, creatures within 1 Space of you make a Might Save against your Save DC. Save Failure: The target is pushed X Spaces away from you.",
+            "ru": "After you teleport, creatures within 1 Space of you make a Might Save against your Save DC. Save Failure: The target is pushed X Spaces away from you."
           }
         }
       ]
@@ -7020,7 +7020,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "transmutation",
       "duration": "1,m",
       "sustained": true,
@@ -7088,8 +7088,8 @@
             "mp": 1
           },
           "description": {
-            "en": "For the duration, 1 target of an Attack affected by this Spell makes a Physical Save against your Save DC. Save Failure: The target sheds Dim Light in a 1 Space Aura and can’t benefit from 1/2 Cover or being Invisible.",
-            "ru": "For the duration, 1 target of an Attack affected by this Spell makes a Physical Save against your Save DC. Save Failure: The target sheds Dim Light in a 1 Space Aura and can’t benefit from 1/2 Cover or being Invisible."
+            "en": "For the duration, 1 target of an Attack affected by this Spell makes a Physical Save against your Save DC. Save Failure: The target sheds Dim Light in a 1 Space Aura and can't benefit from 1/2 Cover or being Invisible.",
+            "ru": "For the duration, 1 target of an Attack affected by this Spell makes a Physical Save against your Save DC. Save Failure: The target sheds Dim Light in a 1 Space Aura and can't benefit from 1/2 Cover or being Invisible."
           }
         },
         {
@@ -7115,8 +7115,8 @@
       "ru": "Bane"
     },
     "description": {
-      "en": "You attempt to impose 1 of the Curses below on a creature of your choice within range. Make a Spell Check against the target’s Repeated Charisma Save. Save Failure: The target is Cursed for the duration. The Curse can be removed by any effect that ends a Basic Curse.\n\n**Curses**\n\n- **Attacks:** The target subtracts a d6 from its Attack Checks for the duration.\n\n- **Saves:** The target subtracts a d6 from its Saves (except against this Spell) for the duration.",
-      "ru": "You attempt to impose 1 of the Curses below on a creature of your choice within range. Make a Spell Check against the target’s Repeated Charisma Save. Save Failure: The target is Cursed for the duration. The Curse can be removed by any effect that ends a Basic Curse.\n\n**Curses**\n\n- **Attacks:** The target subtracts a d6 from its Attack Checks for the duration.\n\n- **Saves:** The target subtracts a d6 from its Saves (except against this Spell) for the duration."
+      "en": "You attempt to impose 1 of the Curses below on a creature of your choice within range. Make a Spell Check against the target's Repeated Charisma Save. Save Failure: The target is Cursed for the duration. The Curse can be removed by any effect that ends a Basic Curse.\n\n**Curses**\n\n- **Attacks:** The target subtracts a d6 from its Attack Checks for the duration.\n\n- **Saves:** The target subtracts a d6 from its Saves (except against this Spell) for the duration.",
+      "ru": "You attempt to impose 1 of the Curses below on a creature of your choice within range. Make a Spell Check against the target's Repeated Charisma Save. Save Failure: The target is Cursed for the duration. The Curse can be removed by any effect that ends a Basic Curse.\n\n**Curses**\n\n- **Attacks:** The target subtracts a d6 from its Attack Checks for the duration.\n\n- **Saves:** The target subtracts a d6 from its Saves (except against this Spell) for the duration."
     },
     "origin": "spell",
     "origin_value": "divine",
@@ -7326,8 +7326,8 @@
           },
           "repeatable": true,
           "description": {
-            "en": "The size of the Forcefield increases:\n\n- **Dome:** The diameter of the Dome increases by 1 Space.\n\n- **Wall:** The length of the Wall increases by 5 Spaces or the height of the Wall increases by 2 Spaces.",
-            "ru": "The size of the Forcefield increases:\n\n- **Dome:** The diameter of the Dome increases by 1 Space.\n\n- **Wall:** The length of the Wall increases by 5 Spaces or the height of the Wall increases by 2 Spaces."
+            "en": "The size of the Forcefield increases. Dome, The diameter of the Dome increases by 1 Space. Wall, The length of the Wall increases by 5 Spaces or the height of the Wall increases by 2 Spaces.",
+            "ru": "The size of the Forcefield increases. Dome, The diameter of the Dome increases by 1 Space. Wall, The length of the Wall increases by 5 Spaces or the height of the Wall increases by 2 Spaces."
           }
         },
         {
@@ -7678,7 +7678,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "1,h",
       "enhancements": [
@@ -7746,8 +7746,8 @@
       "ru": "Command"
     },
     "description": {
-      "en": "You speak a command to a creature within range that can hear you. Make a Spell Check against the target’s Charisma Save. **Save Failure:** The target immediately takes a **1 AP** Action of your choice for free and loses **1 AP** if they have any available. If the Action targets a creature or object, you choose the target.\n\nThe creature can’t willingly fail their Check or spend their own resources (AP, SP, or MP) to modify the Action it takes. The Spell has no effect if the target is unable to perform the Action (such as commanding an **Immobilized** creature to move), or if the Action is directly harmful to itself (such as Attacking itself or moving for the purpose of provoking Opportunity Attacks).",
-      "ru": "You speak a command to a creature within range that can hear you. Make a Spell Check against the target’s Charisma Save. **Save Failure:** The target immediately takes a **1 AP** Action of your choice for free and loses **1 AP** if they have any available. If the Action targets a creature or object, you choose the target.\n\nThe creature can’t willingly fail their Check or spend their own resources (AP, SP, or MP) to modify the Action it takes. The Spell has no effect if the target is unable to perform the Action (such as commanding an **Immobilized** creature to move), or if the Action is directly harmful to itself (such as Attacking itself or moving for the purpose of provoking Opportunity Attacks)."
+      "en": "You speak a command to a creature within range that can hear you. Make a Spell Check against the target's Charisma Save. **Save Failure:** The target immediately takes a **1 AP** Action of your choice for free and loses **1 AP** if they have any available. If the Action targets a creature or object, you choose the target.\n\nThe creature can't willingly fail their Check or spend their own resources (AP, SP, or MP) to modify the Action it takes. The Spell has no effect if the target is unable to perform the Action (such as commanding an **Immobilized** creature to move), or if the Action is directly harmful to itself (such as Attacking itself or moving for the purpose of provoking Opportunity Attacks).",
+      "ru": "You speak a command to a creature within range that can hear you. Make a Spell Check against the target's Charisma Save. **Save Failure:** The target immediately takes a **1 AP** Action of your choice for free and loses **1 AP** if they have any available. If the Action targets a creature or object, you choose the target.\n\nThe creature can't willingly fail their Check or spend their own resources (AP, SP, or MP) to modify the Action it takes. The Spell has no effect if the target is unable to perform the Action (such as commanding an **Immobilized** creature to move), or if the Action is directly harmful to itself (such as Attacking itself or moving for the purpose of provoking Opportunity Attacks)."
     },
     "origin": "spell",
     "origin_value": "arcane,divine",
@@ -7845,8 +7845,8 @@
       "ru": "Wall of Water"
     },
     "description": {
-      "en": "You create a 5 Space long, 2 Space high Wall of water within range for the duration. Open mundane flames in the area are extinguished (such as torches, candles, or small campfires). Creatures in the area are subjected to the **Underwater Combat** rules (DisADV on Martial Attacks and Slowed without Swim Speed, gain Fire Resistance, subject to Hold Breath and Suffocation). Attacks that deal Physical or Elemental damage have DisADV if made against targets within the area or on the other side of the Wall.\n\n**Spell End:** When the Spell ends, it creates a Tidal Wave on both sides of the Wall that crashes upon on every Space within a number of Spaces equal to its height in both directions.\n\n- **Objects:** Medium Size or smaller objects in the area that aren’t held or carried are pushed away from the Wall's area to the farthest Spaces of the Tidal Wave's area.\n\n- **Creatures:** Medium Size or smaller creatures in the area must make a Might Save against your Save DC. **Save Failure:** They are pushed a number of Spaces away from the Wall's area equal to half the Wall's height. **Failure (Each 5):** They are pushed 1 additional Space.\n\n**Extinguish** Open flames in the area are extinguished, including torches, candles, or small campfires, unless magical or protected.",
-      "ru": "You create a 5 Space long, 2 Space high Wall of water within range for the duration. Open mundane flames in the area are extinguished (such as torches, candles, or small campfires). Creatures in the area are subjected to the **Underwater Combat** rules (DisADV on Martial Attacks and Slowed without Swim Speed, gain Fire Resistance, subject to Hold Breath and Suffocation). Attacks that deal Physical or Elemental damage have DisADV if made against targets within the area or on the other side of the Wall.\n\n**Spell End:** When the Spell ends, it creates a Tidal Wave on both sides of the Wall that crashes upon on every Space within a number of Spaces equal to its height in both directions.\n\n- **Objects:** Medium Size or smaller objects in the area that aren’t held or carried are pushed away from the Wall's area to the farthest Spaces of the Tidal Wave's area.\n\n- **Creatures:** Medium Size or smaller creatures in the area must make a Might Save against your Save DC. **Save Failure:** They are pushed a number of Spaces away from the Wall's area equal to half the Wall's height. **Failure (Each 5):** They are pushed 1 additional Space.\n\n**Extinguish** Open flames in the area are extinguished, including torches, candles, or small campfires, unless magical or protected."
+      "en": "You create a 5 Space long, 2 Space high Wall of water within range for the duration. Open mundane flames in the area are extinguished (such as torches, candles, or small campfires). Creatures in the area are subjected to the **Underwater Combat** rules (DisADV on Martial Attacks and Slowed without Swim Speed, gain Fire Resistance, subject to Hold Breath and Suffocation). Attacks that deal Physical or Elemental damage have DisADV if made against targets within the area or on the other side of the Wall.\n\n**Spell End:** When the Spell ends, it creates a Tidal Wave on both sides of the Wall that crashes upon on every Space within a number of Spaces equal to its height in both directions.\n\n- **Objects:** Medium Size or smaller objects in the area that aren't held or carried are pushed away from the Wall's area to the farthest Spaces of the Tidal Wave's area.\n\n- **Creatures:** Medium Size or smaller creatures in the area must make a Might Save against your Save DC. **Save Failure:** They are pushed a number of Spaces away from the Wall's area equal to half the Wall's height. **Failure (Each 5):** They are pushed 1 additional Space.\n\n**Extinguish** Open flames in the area are extinguished, including torches, candles, or small campfires, unless magical or protected.",
+      "ru": "You create a 5 Space long, 2 Space high Wall of water within range for the duration. Open mundane flames in the area are extinguished (such as torches, candles, or small campfires). Creatures in the area are subjected to the **Underwater Combat** rules (DisADV on Martial Attacks and Slowed without Swim Speed, gain Fire Resistance, subject to Hold Breath and Suffocation). Attacks that deal Physical or Elemental damage have DisADV if made against targets within the area or on the other side of the Wall.\n\n**Spell End:** When the Spell ends, it creates a Tidal Wave on both sides of the Wall that crashes upon on every Space within a number of Spaces equal to its height in both directions.\n\n- **Objects:** Medium Size or smaller objects in the area that aren't held or carried are pushed away from the Wall's area to the farthest Spaces of the Tidal Wave's area.\n\n- **Creatures:** Medium Size or smaller creatures in the area must make a Might Save against your Save DC. **Save Failure:** They are pushed a number of Spaces away from the Wall's area equal to half the Wall's height. **Failure (Each 5):** They are pushed 1 additional Space.\n\n**Extinguish** Open flames in the area are extinguished, including torches, candles, or small campfires, unless magical or protected."
     },
     "origin": "spell",
     "origin_value": "primal",
@@ -7943,8 +7943,8 @@
       "ru": "Acid Stream"
     },
     "description": {
-      "en": "You produce a stream of acid that project in a 8 Space Line. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Corrosion damage.\n\n**Acidic**\nMundane materials in the area (wood, leather, rope, non-magical metals) that are not being worn or held partially erode or decay, weakening structures and gear.",
-      "ru": "You produce a stream of acid that project in a 8 Space Line. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Corrosion damage.\n\n**Acidic**\nMundane materials in the area (wood, leather, rope, non-magical metals) that are not being worn or held partially erode or decay, weakening structures and gear."
+      "en": "You produce a stream of acid that project in a 8 Space Line. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Corrosion damage.\n\n**Acidic**. Mundane materials in the area (wood, leather, rope, non-magical metals) that are not being worn or held partially erode or decay, weakening structures and gear.",
+      "ru": "You produce a stream of acid that project in a 8 Space Line. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Corrosion damage.\n\n**Acidic**. Mundane materials in the area (wood, leather, rope, non-magical metals) that are not being worn or held partially erode or decay, weakening structures and gear."
     },
     "origin": "spell",
     "origin_value": "arcane,primal",
@@ -7958,7 +7958,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -8038,8 +8038,8 @@
       "ru": "Eruption"
     },
     "description": {
-      "en": "You create a 3 Space diameter Sphere of erupting earth within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Bludgeoning damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you’re within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Quake:** The ground rumbles and quakes, causing all unsecured small objects to fall and leaving visible cracks and marks across surfaces.",
-      "ru": "You create a 3 Space diameter Sphere of erupting earth within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Bludgeoning damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you’re within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Quake:** The ground rumbles and quakes, causing all unsecured small objects to fall and leaving visible cracks and marks across surfaces."
+      "en": "You create a 3 Space diameter Sphere of erupting earth within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Bludgeoning damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Quake:** The ground rumbles and quakes, causing all unsecured small objects to fall and leaving visible cracks and marks across surfaces.",
+      "ru": "You create a 3 Space diameter Sphere of erupting earth within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Bludgeoning damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Quake:** The ground rumbles and quakes, causing all unsecured small objects to fall and leaving visible cracks and marks across surfaces."
     },
     "origin": "spell",
     "origin_value": "primal",
@@ -8386,7 +8386,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "nullification",
       "duration": "1,m",
       "sustained": true,
@@ -8483,7 +8483,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "invocation",
       "duration": "instant",
       "enhancements": [
@@ -8631,8 +8631,8 @@
             "mp": 1
           },
           "description": {
-            "en": "Each target makes an Agility Save. Save Failure: The target can't take Reactions for 1 round. If used with Storm Cloud, the cost of the enhancement becomes 2 MP and the target can’t take Reactions for 1 Round whenever they fail a Save against Storm Cloud.",
-            "ru": "Each target makes an Agility Save. Save Failure: The target can't take Reactions for 1 round. If used with Storm Cloud, the cost of the enhancement becomes 2 MP and the target can’t take Reactions for 1 Round whenever they fail a Save against Storm Cloud."
+            "en": "Each target makes an Agility Save. Save Failure: The target can't take Reactions for 1 round. If used with Storm Cloud, the cost of the enhancement becomes 2 MP and the target can't take Reactions for 1 Round whenever they fail a Save against Storm Cloud.",
+            "ru": "Each target makes an Agility Save. Save Failure: The target can't take Reactions for 1 round. If used with Storm Cloud, the cost of the enhancement becomes 2 MP and the target can't take Reactions for 1 Round whenever they fail a Save against Storm Cloud."
           }
         },
         {
@@ -9074,8 +9074,8 @@
       "ru": "Telekinesis"
     },
     "description": {
-      "en": "You manipulate a Small or smaller target within range with telekinetic force for the duration. Targets affected by this Spell do not fall as a result of gravity. If you end your turn outside the Spell’s range from the target, the Spell ends.\n\n**Creature:** If you target a creature, make a Spell Check contested by their Repeated Might Save. **Check Success:** The creature is **Immobilized** and you can use the Telekinetic Action on it for the duration.\n\n**Object:** When you cast the Spell, you can use **Telekinetic Action** on the object immediately for free. If the object is being held or carried by a creature, you must first succeed a Spell Check contested by the creature’s Might Save or the Spell fails. A creature holding the object can spend 1 AP to make an Athletics Check against your Save DC. **Check Success:** The Spell ends early on the object.\n\n**Telekinetic Action**\n\nWhen you Sustain this Spell or by spending 1 AP, you can move or throw the target up to 2 Spaces (+2 Spaces for each Size smaller it is than the maximum Size you can target). The total distance moved or thrown is halved if moved or thrown vertically upward.\n\n- **Throw Creature:** If the target is a creature, you must first succeed a Spell Check contested by the creature’s Might Save or the throw fails. When you throw the creature at a target, you compare your Spell Check against the target’s PD. **Hit:** The thrown creature and the target share the Collision damage (each take half). **Miss:** The thrown creature continues traveling to your maximum throwing distance.\n\n- **Throw Object:** When you throw an object at a target it’s considered a Ranged Spell Attack with an **Improvised Weapon** against the target’s PD. **Hit:** The target takes a 1 damage of a type determined by the GM. **Miss:** The thrown object continues traveling up to your maximum throwing distance.",
-      "ru": "You manipulate a Small or smaller target within range with telekinetic force for the duration. Targets affected by this Spell do not fall as a result of gravity. If you end your turn outside the Spell’s range from the target, the Spell ends.\n\n**Creature:** If you target a creature, make a Spell Check contested by their Repeated Might Save. **Check Success:** The creature is **Immobilized** and you can use the Telekinetic Action on it for the duration.\n\n**Object:** When you cast the Spell, you can use **Telekinetic Action** on the object immediately for free. If the object is being held or carried by a creature, you must first succeed a Spell Check contested by the creature’s Might Save or the Spell fails. A creature holding the object can spend 1 AP to make an Athletics Check against your Save DC. **Check Success:** The Spell ends early on the object.\n\n**Telekinetic Action**\n\nWhen you Sustain this Spell or by spending 1 AP, you can move or throw the target up to 2 Spaces (+2 Spaces for each Size smaller it is than the maximum Size you can target). The total distance moved or thrown is halved if moved or thrown vertically upward.\n\n- **Throw Creature:** If the target is a creature, you must first succeed a Spell Check contested by the creature’s Might Save or the throw fails. When you throw the creature at a target, you compare your Spell Check against the target’s PD. **Hit:** The thrown creature and the target share the Collision damage (each take half). **Miss:** The thrown creature continues traveling to your maximum throwing distance.\n\n- **Throw Object:** When you throw an object at a target it’s considered a Ranged Spell Attack with an **Improvised Weapon** against the target’s PD. **Hit:** The target takes a 1 damage of a type determined by the GM. **Miss:** The thrown object continues traveling up to your maximum throwing distance."
+      "en": "You manipulate a Small or smaller target within range with telekinetic force for the duration. Targets affected by this Spell do not fall as a result of gravity. If you end your turn outside the Spell's range from the target, the Spell ends.\n\n**Creature:** If you target a creature, make a Spell Check contested by their Repeated Might Save. **Check Success:** The creature is **Immobilized** and you can use the Telekinetic Action on it for the duration.\n\n**Object:** When you cast the Spell, you can use **Telekinetic Action** on the object immediately for free. If the object is being held or carried by a creature, you must first succeed a Spell Check contested by the creature's Might Save or the Spell fails. A creature holding the object can spend 1 AP to make an Athletics Check against your Save DC. **Check Success:** The Spell ends early on the object.\n\n**Telekinetic Action**\n\nWhen you Sustain this Spell or by spending 1 AP, you can move or throw the target up to 2 Spaces (+2 Spaces for each Size smaller it is than the maximum Size you can target). The total distance moved or thrown is halved if moved or thrown vertically upward.\n\n- **Throw Creature:** If the target is a creature, you must first succeed a Spell Check contested by the creature's Might Save or the throw fails. When you throw the creature at a target, you compare your Spell Check against the target's PD. **Hit:** The thrown creature and the target share the Collision damage (each take half). **Miss:** The thrown creature continues traveling to your maximum throwing distance.\n\n- **Throw Object:** When you throw an object at a target it's considered a Ranged Spell Attack with an **Improvised Weapon** against the target's PD. **Hit:** The target takes a 1 damage of a type determined by the GM. **Miss:** The thrown object continues traveling up to your maximum throwing distance.",
+      "ru": "You manipulate a Small or smaller target within range with telekinetic force for the duration. Targets affected by this Spell do not fall as a result of gravity. If you end your turn outside the Spell's range from the target, the Spell ends.\n\n**Creature:** If you target a creature, make a Spell Check contested by their Repeated Might Save. **Check Success:** The creature is **Immobilized** and you can use the Telekinetic Action on it for the duration.\n\n**Object:** When you cast the Spell, you can use **Telekinetic Action** on the object immediately for free. If the object is being held or carried by a creature, you must first succeed a Spell Check contested by the creature's Might Save or the Spell fails. A creature holding the object can spend 1 AP to make an Athletics Check against your Save DC. **Check Success:** The Spell ends early on the object.\n\n**Telekinetic Action**\n\nWhen you Sustain this Spell or by spending 1 AP, you can move or throw the target up to 2 Spaces (+2 Spaces for each Size smaller it is than the maximum Size you can target). The total distance moved or thrown is halved if moved or thrown vertically upward.\n\n- **Throw Creature:** If the target is a creature, you must first succeed a Spell Check contested by the creature's Might Save or the throw fails. When you throw the creature at a target, you compare your Spell Check against the target's PD. **Hit:** The thrown creature and the target share the Collision damage (each take half). **Miss:** The thrown creature continues traveling to your maximum throwing distance.\n\n- **Throw Object:** When you throw an object at a target it's considered a Ranged Spell Attack with an **Improvised Weapon** against the target's PD. **Hit:** The target takes a 1 damage of a type determined by the GM. **Miss:** The thrown object continues traveling up to your maximum throwing distance."
     },
     "origin": "spell",
     "origin_value": "arcane",
@@ -9132,8 +9132,8 @@
             "mp": 2
           },
           "description": {
-            "en": "Targets **Immobilized** by this Spell are also **Restrained**.",
-            "ru": "Targets **Immobilized** by this Spell are also **Restrained**."
+            "en": "Targets Immobilized by this Spell are also Restrained.",
+            "ru": "Targets Immobilized by this Spell are also Restrained."
           }
         }
       ]
@@ -9226,8 +9226,8 @@
             "ap": 1
           },
           "description": {
-            "en": "When you cast the Spell, you can attach the Chaos Bomb to an object or creature within range. If the target isn't willing, make a Spell Check against the target's Agility Save. **Check Success:** The Bomb is magically attached to the target. A creature can spend 1 AP to make a Trickery Check against your Save DC to remove it from a target within 1 Space (including themselves). **Success:** The Bomb is magically attached to the creature that removed it. **Success (5):** The Bomb stops magically sticking to objects or creatures.",
-            "ru": "When you cast the Spell, you can attach the Chaos Bomb to an object or creature within range. If the target isn't willing, make a Spell Check against the target's Agility Save. **Check Success:** The Bomb is magically attached to the target. A creature can spend 1 AP to make a Trickery Check against your Save DC to remove it from a target within 1 Space (including themselves). **Success:** The Bomb is magically attached to the creature that removed it. **Success (5):** The Bomb stops magically sticking to objects or creatures."
+            "en": "When you cast the Spell, you can attach the Chaos Bomb to an object or creature within range. If the target isn't willing, make a Spell Check against the target's Agility Save. Check Success: The Bomb is magically attached to the target. A creature can spend 1 AP to make a Trickery Check against your Save DC to remove it from a target within 1 Space (including themselves). Success: The Bomb is magically attached to the creature that removed it. Success (5): The Bomb stops magically sticking to objects or creatures.",
+            "ru": "When you cast the Spell, you can attach the Chaos Bomb to an object or creature within range. If the target isn't willing, make a Spell Check against the target's Agility Save. Check Success: The Bomb is magically attached to the target. A creature can spend 1 AP to make a Trickery Check against your Save DC to remove it from a target within 1 Space (including themselves). Success: The Bomb is magically attached to the creature that removed it. Success (5): The Bomb stops magically sticking to objects or creatures."
           }
         }
       ]
@@ -9240,8 +9240,8 @@
       "ru": "Toxic Burst"
     },
     "description": {
-      "en": "You emit toxic air that envelops a 1 Space Aura. Make an Area Spell Attack against the AD of each target in the area. **Hit:** They take 1 Poison damage.\n**Noxious:** Plant life in the area that are not being worn or held wilts or dies, grass blackens, and flowers or vines shrivel where the Spell touches.",
-      "ru": "You emit toxic air that envelops a 1 Space Aura. Make an Area Spell Attack against the AD of each target in the area. **Hit:** They take 1 Poison damage.\n**Noxious:** Plant life in the area that are not being worn or held wilts or dies, grass blackens, and flowers or vines shrivel where the Spell touches."
+      "en": "You emit toxic air that envelops a 1 Space Aura. Make an Area Spell Attack against the AD of each target in the area. **Hit:** They take 1 Poison damage.\n\n**Noxious**. Plant life in the area that are not being worn or held wilts or dies, grass blackens, and flowers or vines shrivel where the Spell touches.",
+      "ru": "You emit toxic air that envelops a 1 Space Aura. Make an Area Spell Attack against the AD of each target in the area. **Hit:** They take 1 Poison damage.\n\n**Noxious**. Plant life in the area that are not being worn or held wilts or dies, grass blackens, and flowers or vines shrivel where the Spell touches."
     },
     "origin": "spell",
     "origin_value": "arcane,primal",
@@ -9255,7 +9255,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -9321,8 +9321,8 @@
       "ru": "Sphere of Death"
     },
     "description": {
-      "en": "You produce a burst of shadow magic that envelops a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Umbral damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you’re within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Obscure:** The Light level in the target's Space decreases by 1 until the end of the turn.",
-      "ru": "You produce a burst of shadow magic that envelops a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Umbral damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you’re within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Obscure:** The Light level in the target's Space decreases by 1 until the end of the turn."
+      "en": "You produce a burst of shadow magic that envelops a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Umbral damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Obscure:** The Light level in the target's Space decreases by 1 until the end of the turn.",
+      "ru": "You produce a burst of shadow magic that envelops a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Umbral damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n**Obscure:** The Light level in the target's Space decreases by 1 until the end of the turn."
     },
     "origin": "spell",
     "origin_value": "arcane,divine",
@@ -9533,7 +9533,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "transmutation",
       "duration": "1,m",
       "sustained": true,
@@ -9614,8 +9614,8 @@
             "mp": 1
           },
           "description": {
-            "en": "For the duration, 1 target of an Attack affected by this Spell makes a Might Save against your Save DC. Save Failure: The target can’t take Reactions for 1 round.",
-            "ru": "For the duration, 1 target of an Attack affected by this Spell makes a Might Save against your Save DC. Save Failure: The target can’t take Reactions for 1 round."
+            "en": "For the duration, 1 target of an Attack affected by this Spell makes a Might Save against your Save DC. Save Failure: The target can't take Reactions for 1 round.",
+            "ru": "For the duration, 1 target of an Attack affected by this Spell makes a Might Save against your Save DC. Save Failure: The target can't take Reactions for 1 round."
           }
         }
       ]
@@ -9752,7 +9752,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -9972,8 +9972,8 @@
             "mp": null
           },
           "description": {
-            "en": "You increase the number of targets by X. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "You increase the number of targets by X. The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "You increase the number of targets by X. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "You increase the number of targets by X. The AP cost of this Enhancement can't be paid for with MP."
           }
         },
         {
@@ -10407,7 +10407,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "invocation",
       "duration": "1,m",
       "sustained": true,
@@ -10534,8 +10534,8 @@
           },
           "repeatable": true,
           "description": {
-            "en": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can't be paid for with MP."
           }
         },
         {
@@ -10796,8 +10796,8 @@
       "ru": "Sorcery"
     },
     "description": {
-      "en": "You manifest a minor wonder (Divine), a sign of supernatural power (Primal), or arcane prowess (Arcane) depending on which Spell List you have access to. When you gain this Spell, choose from the following types of energy: Fire, Water, Lightning, Earth, Holy, Unholy, or Arcane (which manifests as energy of a specific color). This chosen type will be the form this Spell's energy takes.\nYou create one of the following magical effects of your chosen energy type within range and can dismiss it by spending 1 AP:\n\n- Your voice booms up to 3 times louder than normal.\n- You summon harmless magic of your chosen energy type to swirl around you in a visual display.\n- Your eyes glow with your chosen energy type.",
-      "ru": "You manifest a minor wonder (Divine), a sign of supernatural power (Primal), or arcane prowess (Arcane) depending on which Spell List you have access to. When you gain this Spell, choose from the following types of energy: Fire, Water, Lightning, Earth, Holy, Unholy, or Arcane (which manifests as energy of a specific color). This chosen type will be the form this Spell's energy takes.\nYou create one of the following magical effects of your chosen energy type within range and can dismiss it by spending 1 AP:\n\n- Your voice booms up to 3 times louder than normal.\n- You summon harmless magic of your chosen energy type to swirl around you in a visual display.\n- Your eyes glow with your chosen energy type."
+      "en": "You manifest a minor wonder (Divine), a sign of supernatural power (Primal), or arcane prowess (Arcane) depending on which Spell List you have access to. When you gain this Spell, choose from the following types of energy: Fire, Water, Lightning, Earth, Holy, Unholy, or Arcane (which manifests as energy of a specific color). This chosen type will be the form this Spell's energy takes.\n\nYou create one of the following magical effects of your chosen energy type within range and can dismiss it by spending 1 AP:\n\n- Your voice booms up to 3 times louder than normal.\n\n- You summon harmless magic of your chosen energy type to swirl around you in a visual display.\n\n- Your eyes glow with your chosen energy type.",
+      "ru": "You manifest a minor wonder (Divine), a sign of supernatural power (Primal), or arcane prowess (Arcane) depending on which Spell List you have access to. When you gain this Spell, choose from the following types of energy: Fire, Water, Lightning, Earth, Holy, Unholy, or Arcane (which manifests as energy of a specific color). This chosen type will be the form this Spell's energy takes.\n\nYou create one of the following magical effects of your chosen energy type within range and can dismiss it by spending 1 AP:\n\n- Your voice booms up to 3 times louder than normal.\n\n- You summon harmless magic of your chosen energy type to swirl around you in a visual display.\n\n- Your eyes glow with your chosen energy type."
     },
     "origin": "spell",
     "origin_value": "arcane,primal,divine",
@@ -10848,7 +10848,7 @@
       "ap": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "elemental",
       "duration": "instant",
       "enhancements": [
@@ -10972,8 +10972,8 @@
             "mp": null
           },
           "description": {
-            "en": "You can target X additional creatures within range. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "You can target X additional creatures within range. The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "You can target X additional creatures within range. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "You can target X additional creatures within range. The AP cost of this Enhancement can't be paid for with MP."
           }
         },
         {
@@ -11001,7 +11001,7 @@
           "description": {
             "en": "The target's Speed increases by 2.",
             "ru": "The target's Speed increases by 2."
-          },
+          }
         }
       ]
     }
@@ -11100,8 +11100,8 @@
       "ru": "Increase Gravity"
     },
     "description": {
-      "en": "You increase gravity in a 6 Space tall, 3 Space diameter Cylinder within range. Creatures and objects that fall to the ground within the area take +2 falling damage.\n\n**Spell Cast:** When you cast the Spell, make a Spell Check against the Might Save of every creature within the area. **Save Failure:** The creature falls Prone.\n\n**Heightened Gravity:**\n\n- **Creatures:** Creatures that start their turn within the area, or enter the area for the first time on their turn, must make a Repeated Might Save against your Save DC. Save Failure: The creature is Slowed and Hindered while in the area for the duration.\n\n- **Objects:** Objects in the area that aren’t being worn, held, or carried require a successful Athletics Check against your Save DC to be picked up or moved.",
-      "ru": "You increase gravity in a 6 Space tall, 3 Space diameter Cylinder within range. Creatures and objects that fall to the ground within the area take +2 falling damage.\n\n**Spell Cast:** When you cast the Spell, make a Spell Check against the Might Save of every creature within the area. **Save Failure:** The creature falls Prone.\n\n**Heightened Gravity:**\n\n- **Creatures:** Creatures that start their turn within the area, or enter the area for the first time on their turn, must make a Repeated Might Save against your Save DC. Save Failure: The creature is Slowed and Hindered while in the area for the duration.\n\n- **Objects:** Objects in the area that aren’t being worn, held, or carried require a successful Athletics Check against your Save DC to be picked up or moved."
+      "en": "You increase gravity in a 6 Space tall, 3 Space diameter Cylinder within range. Creatures and objects that fall to the ground within the area take +2 falling damage.\n\n**Spell Cast:** When you cast the Spell, make a Spell Check against the Might Save of every creature within the area. **Save Failure:** The creature falls Prone.\n\n**Heightened Gravity:**\n\n- **Creatures:** Creatures that start their turn within the area, or enter the area for the first time on their turn, must make a Repeated Might Save against your Save DC. Save Failure: The creature is Slowed and Hindered while in the area for the duration.\n\n- **Objects:** Objects in the area that aren't being worn, held, or carried require a successful Athletics Check against your Save DC to be picked up or moved.",
+      "ru": "You increase gravity in a 6 Space tall, 3 Space diameter Cylinder within range. Creatures and objects that fall to the ground within the area take +2 falling damage.\n\n**Spell Cast:** When you cast the Spell, make a Spell Check against the Might Save of every creature within the area. **Save Failure:** The creature falls Prone.\n\n**Heightened Gravity:**\n\n- **Creatures:** Creatures that start their turn within the area, or enter the area for the first time on their turn, must make a Repeated Might Save against your Save DC. Save Failure: The creature is Slowed and Hindered while in the area for the duration.\n\n- **Objects:** Objects in the area that aren't being worn, held, or carried require a successful Athletics Check against your Save DC to be picked up or moved."
     },
     "origin": "spell",
     "origin_value": "arcane",
@@ -11188,8 +11188,8 @@
       "ru": "Time Stop"
     },
     "description": {
-      "en": "Time stops for all effects, objects, and creatures (except you). For the duration, you ignore the **Multiple Check Penalty**, and creatures whose time has stopped are considered **Paralyzed**. The Spell ends early after you target a creature with a harmful effect.",
-      "ru": "Time stops for all effects, objects, and creatures (except you). For the duration, you ignore the **Multiple Check Penalty**, and creatures whose time has stopped are considered **Paralyzed**. The Spell ends early after you target a creature with a harmful effect."
+      "en": "Time stops for all effects, objects, and creatures (except you). For the duration, you ignore the **Multiple Check Penalty**, and creatures whose time has stopped are considered *Paralyzed*. The Spell ends early after you target a creature with a harmful effect.",
+      "ru": "Time stops for all effects, objects, and creatures (except you). For the duration, you ignore the **Multiple Check Penalty**, and creatures whose time has stopped are considered *Paralyzed*. The Spell ends early after you target a creature with a harmful effect."
     },
     "origin": "spell",
     "origin_value": "arcane",
@@ -11203,7 +11203,7 @@
       "mp": 2
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "astromancy",
       "duration": "1,r",
       "enhancements": [
@@ -11230,8 +11230,8 @@
             "mp": 3
           },
           "description": {
-            "en": " The Spell no longer ends early if you target a creature with a harmful effect.",
-            "ru": " The Spell no longer ends early if you target a creature with a harmful effect."
+            "en": "The Spell no longer ends early if you target a creature with a harmful effect.",
+            "ru": "The Spell no longer ends early if you target a creature with a harmful effect."
           }
         },
         {
@@ -11244,8 +11244,8 @@
           },
           "repeatable": true,
           "description": {
-            "en": "Choose 1 creature other than you within 10 Spaces. Time doesn't stop for the target and before the Spell ends, they can spend 1 AP (provided they have AP to spend) and ignore the **Multiple Check Penalty**. You can use this Enhancement on the same creature multiple times, allowing them to spend 1 additional AP each time.",
-            "ru": "Choose 1 creature other than you within 10 Spaces. Time doesn't stop for the target and before the Spell ends, they can spend 1 AP (provided they have AP to spend) and ignore the **Multiple Check Penalty**. You can use this Enhancement on the same creature multiple times, allowing them to spend 1 additional AP each time."
+            "en": "Choose 1 creature other than you within 10 Spaces. Time doesn't stop for the target and before the Spell ends, they can spend 1 AP (provided they have AP to spend) and ignore the Multiple Check Penalty. You can use this Enhancement on the same creature multiple times, allowing them to spend 1 additional AP each time.",
+            "ru": "Choose 1 creature other than you within 10 Spaces. Time doesn't stop for the target and before the Spell ends, they can spend 1 AP (provided they have AP to spend) and ignore the Multiple Check Penalty. You can use this Enhancement on the same creature multiple times, allowing them to spend 1 additional AP each time."
           }
         }
       ]
@@ -11429,8 +11429,8 @@
             "mp": 1
           },
           "description": {
-            "en": "When you **Command** the Weapon, you can instead make a Area Spell Attack against the AD of each target within a 1 Space Arc of the Weapon. **Hit:** The target takes 1 damage of the chosen type.",
-            "ru": "When you **Command** the Weapon, you can instead make a Area Spell Attack against the AD of each target within a 1 Space Arc of the Weapon. **Hit:** The target takes 1 damage of the chosen type.."
+            "en": "When you Command the Weapon, you can instead make a Area Spell Attack against the AD of each target within a 1 Space Arc of the Weapon. Hit: The target takes 1 damage of the chosen type.",
+            "ru": "When you Command the Weapon, you can instead make a Area Spell Attack against the AD of each target within a 1 Space Arc of the Weapon. Hit: The target takes 1 damage of the chosen type.."
           }
         }
       ]
@@ -11443,8 +11443,8 @@
       "ru": "Elemental Weapon"
     },
     "description": {
-      "en": "You summon a Tiny spectral Weapon that deals an Elemental Damage Type (Cold, Corrosion, Fire, Lightning or Poison) of your choice. The Weapon disappears when the Spell ends.\n\n**Command:** Once per Round, when you cast the Spell, Sustain it, or by spending 1 AP on your turn, you can move the Weapon up to 5 Spaces and choose to make a Melee Spell Attack against the PD of a target within 1 Space of the Weapon. **Hit:** The target takes 2 damage of the chosen Damage Type.\n\n**Tethered:** The Weapon is **Tethered** to you a distance equal to the Spell’s range. If you move farther than the **Tethered** distance from the Weapon, you drag the Weapon with you.",
-      "ru": "You summon a Tiny spectral Weapon that deals an Elemental Damage Type (Cold, Corrosion, Fire, Lightning or Poison) of your choice. The Weapon disappears when the Spell ends.\n\n**Command:** Once per Round, when you cast the Spell, Sustain it, or by spending 1 AP on your turn, you can move the Weapon up to 5 Spaces and choose to make a Melee Spell Attack against the PD of a target within 1 Space of the Weapon. **Hit:** The target takes 2 damage of the chosen Damage Type.\n\n**Tethered:** The Weapon is **Tethered** to you a distance equal to the Spell’s range. If you move farther than the **Tethered** distance from the Weapon, you drag the Weapon with you."
+      "en": "You summon a Tiny spectral Weapon that deals an Elemental Damage Type (Cold, Corrosion, Fire, Lightning or Poison) of your choice. The Weapon disappears when the Spell ends.\n\n**Command:** Once per Round, when you cast the Spell, Sustain it, or by spending 1 AP on your turn, you can move the Weapon up to 5 Spaces and choose to make a Melee Spell Attack against the PD of a target within 1 Space of the Weapon. **Hit:** The target takes 2 damage of the chosen Damage Type.\n\n**Tethered:** The Weapon is **Tethered** to you a distance equal to the Spell's range. If you move farther than the **Tethered** distance from the Weapon, you drag the Weapon with you.",
+      "ru": "You summon a Tiny spectral Weapon that deals an Elemental Damage Type (Cold, Corrosion, Fire, Lightning or Poison) of your choice. The Weapon disappears when the Spell ends.\n\n**Command:** Once per Round, when you cast the Spell, Sustain it, or by spending 1 AP on your turn, you can move the Weapon up to 5 Spaces and choose to make a Melee Spell Attack against the PD of a target within 1 Space of the Weapon. **Hit:** The target takes 2 damage of the chosen Damage Type.\n\n**Tethered:** The Weapon is **Tethered** to you a distance equal to the Spell's range. If you move farther than the **Tethered** distance from the Weapon, you drag the Weapon with you."
     },
     "origin": "spell",
     "origin_value": "primal",
@@ -11504,8 +11504,8 @@
             "mp": 1
           },
           "description": {
-            "en": "You no longer need to Sustain the Spell and can **Command** the Weapon for free on your tun. You still can only **Command** the Weapon once per Round.",
-            "ru": "You no longer need to Sustain the Spell and can **Command** the Weapon for free on your tun. You still can only **Command** the Weapon once per Round."
+            "en": "You no longer need to Sustain the Spell and can **Command** the Weapon for free on your tun. You still can only Command the Weapon once per Round.",
+            "ru": "You no longer need to Sustain the Spell and can **Command** the Weapon for free on your tun. You still can only Command the Weapon once per Round."
           }
         },
         {
@@ -11530,8 +11530,8 @@
             "mp": null
           },
           "description": {
-            "en": "Creatures attacked by the Weapon must make a Repeated Physical Save. **Save Failure:** At the start of each of their turns, they take X damage of the chosen Damage Type for 1 minute.",
-            "ru": "Creatures attacked by the Weapon must make a Repeated Physical Save. **Save Failure:** At the start of each of their turns, they take X damage of the chosen Damage Type for 1 minute."
+            "en": "Creatures attacked by the Weapon must make a Repeated Physical Save. Save Failure: At the start of each of their turns, they take X damage of the chosen Damage Type for 1 minute.",
+            "ru": "Creatures attacked by the Weapon must make a Repeated Physical Save. Save Failure: At the start of each of their turns, they take X damage of the chosen Damage Type for 1 minute."
           }
         }
       ]
@@ -11544,8 +11544,8 @@
       "ru": "Illusory Duplicate"
     },
     "description": {
-      "en": "You create an illusory duplicate of yourself in an unoccupied Space within range.\n\n**Second Self:** The duplicate mimics your posture and gestures. When you spend movement to move, you can cause the duplicate to move instead of you or with you. If the duplicate moves with you, it moves in a similar manner the same number of Spaces in a direction of your choice. If you end your turn farther than the Spell’s range from a duplicate, it disappears.\n\n**Shared Senses:** You can use a Minor Action to see and hear as if standing in the Space occupied by the duplicate. When you do you are **Blinded** and **Deafened** using your own senses. You can use a Minor Action to end the effect.\n\n**False Threat:** The duplicate is intangible, causing creatures and objects to pass through it. The duplicate counts as a creature for the purposes of **Flanking** against any creature that can’t discern the duplicate as an illusion.\n\n**Discerning the Illusion:** A creature that attempts to physically interact with the duplicate automatically learns that it’s an illusion. Otherwise, a creature can make an Investigation Check against your Save DC to attempt to discern if the duplicate is an illusion. **Success:** The creature discerns its an illusion.",
-      "ru": "You create an illusory duplicate of yourself in an unoccupied Space within range.\n\n**Second Self:** The duplicate mimics your posture and gestures. When you spend movement to move, you can cause the duplicate to move instead of you or with you. If the duplicate moves with you, it moves in a similar manner the same number of Spaces in a direction of your choice. If you end your turn farther than the Spell’s range from a duplicate, it disappears.\n\n**Shared Senses:** You can use a Minor Action to see and hear as if standing in the Space occupied by the duplicate. When you do you are **Blinded** and **Deafened** using your own senses. You can use a Minor Action to end the effect.\n\n**False Threat:** The duplicate is intangible, causing creatures and objects to pass through it. The duplicate counts as a creature for the purposes of **Flanking** against any creature that can’t discern the duplicate as an illusion.\n\n**Discerning the Illusion:** A creature that attempts to physically interact with the duplicate automatically learns that it’s an illusion. Otherwise, a creature can make an Investigation Check against your Save DC to attempt to discern if the duplicate is an illusion. **Success:** The creature discerns its an illusion."
+      "en": "You create an illusory duplicate of yourself in an unoccupied Space within range.\n\n**Second Self:** The duplicate mimics your posture and gestures. When you spend movement to move, you can cause the duplicate to move instead of you or with you. If the duplicate moves with you, it moves in a similar manner the same number of Spaces in a direction of your choice. If you end your turn farther than the Spell's range from a duplicate, it disappears.\n\n**Shared Senses:** You can use a Minor Action to see and hear as if standing in the Space occupied by the duplicate. When you do you are **Blinded** and **Deafened** using your own senses. You can use a Minor Action to end the effect.\n\n**False Threat:** The duplicate is intangible, causing creatures and objects to pass through it. The duplicate counts as a creature for the purposes of **Flanking** against any creature that can't discern the duplicate as an illusion.\n\n**Discerning the Illusion:** A creature that attempts to physically interact with the duplicate automatically learns that it's an illusion. Otherwise, a creature can make an Investigation Check against your Save DC to attempt to discern if the duplicate is an illusion. **Success:** The creature discerns its an illusion.",
+      "ru": "You create an illusory duplicate of yourself in an unoccupied Space within range.\n\n**Second Self:** The duplicate mimics your posture and gestures. When you spend movement to move, you can cause the duplicate to move instead of you or with you. If the duplicate moves with you, it moves in a similar manner the same number of Spaces in a direction of your choice. If you end your turn farther than the Spell's range from a duplicate, it disappears.\n\n**Shared Senses:** You can use a Minor Action to see and hear as if standing in the Space occupied by the duplicate. When you do you are **Blinded** and **Deafened** using your own senses. You can use a Minor Action to end the effect.\n\n**False Threat:** The duplicate is intangible, causing creatures and objects to pass through it. The duplicate counts as a creature for the purposes of **Flanking** against any creature that can't discern the duplicate as an illusion.\n\n**Discerning the Illusion:** A creature that attempts to physically interact with the duplicate automatically learns that it's an illusion. Otherwise, a creature can make an Investigation Check against your Save DC to attempt to discern if the duplicate is an illusion. **Success:** The creature discerns its an illusion."
     },
     "origin": "spell",
     "origin_value": "arcane",
@@ -11628,8 +11628,8 @@
             "mp": 3
           },
           "description": {
-            "en": "You can now spend **1 AP** on your turn to swap places with a duplicate that’s within the Spell's range. This swap is only noticeable by a creature that has discerned the duplicate to be an illusion.",
-            "ru": "You can now spend **1 AP** on your turn to swap places with a duplicate that’s within the Spell's range. This swap is only noticeable by a creature that has discerned the duplicate to be an illusion."
+            "en": "You can now spend 1 AP on your turn to swap places with a duplicate that's within the Spell's range. This swap is only noticeable by a creature that has discerned the duplicate to be an illusion.",
+            "ru": "You can now spend 1 AP on your turn to swap places with a duplicate that's within the Spell's range. This swap is only noticeable by a creature that has discerned the duplicate to be an illusion."
           }
         }
       ]
@@ -11642,8 +11642,8 @@
       "ru": "Illusory Writing"
     },
     "description": {
-      "en": "You inscribe text, sigils, or symbols upon a surface, infusing them with illusion magic. When cast, you write a sentence of up to 20 words that appears mundane or magical (your choice)on a surface or willing creature within range. While touching it, you can spend **1 AP** to dismiss or rewrite the text.\n\n**Hidden Script:** When you cast the Spell, you can choose to obfuscate the writing to all creatures except those you designate at the time of casting. All other creature see the writing as gibberish. A creature that can’t read the text can spend **1 AP** to make an Investigation Check against your Save DC. **Success:** The creature can read the writing provided they understand the language its written in. **Failure:** The creature can’t attempt this Check again for 24 hours.",
-      "ru": "You inscribe text, sigils, or symbols upon a surface, infusing them with illusion magic. When cast, you write a sentence of up to 20 words that appears mundane or magical (your choice)on a surface or willing creature within range. While touching it, you can spend **1 AP** to dismiss or rewrite the text.\n\n**Hidden Script:** When you cast the Spell, you can choose to obfuscate the writing to all creatures except those you designate at the time of casting. All other creature see the writing as gibberish. A creature that can’t read the text can spend **1 AP** to make an Investigation Check against your Save DC. **Success:** The creature can read the writing provided they understand the language its written in. **Failure:** The creature can’t attempt this Check again for 24 hours."
+      "en": "You inscribe text, sigils, or symbols upon a surface, infusing them with illusion magic. When cast, you write a sentence of up to 20 words that appears mundane or magical (your choice)on a surface or willing creature within range. While touching it, you can spend **1 AP** to dismiss or rewrite the text.\n\n**Hidden Script:** When you cast the Spell, you can choose to obfuscate the writing to all creatures except those you designate at the time of casting. All other creature see the writing as gibberish. A creature that can't read the text can spend **1 AP** to make an Investigation Check against your Save DC. **Success:** The creature can read the writing provided they understand the language its written in. **Failure:** The creature can't attempt this Check again for 24 hours.",
+      "ru": "You inscribe text, sigils, or symbols upon a surface, infusing them with illusion magic. When cast, you write a sentence of up to 20 words that appears mundane or magical (your choice)on a surface or willing creature within range. While touching it, you can spend **1 AP** to dismiss or rewrite the text.\n\n**Hidden Script:** When you cast the Spell, you can choose to obfuscate the writing to all creatures except those you designate at the time of casting. All other creature see the writing as gibberish. A creature that can't read the text can spend **1 AP** to make an Investigation Check against your Save DC. **Success:** The creature can read the writing provided they understand the language its written in. **Failure:** The creature can't attempt this Check again for 24 hours."
     },
     "origin": "spell",
     "origin_value": "arcane",
@@ -11724,8 +11724,8 @@
             "mp": 1
           },
           "description": {
-            "en": "The script activates or becomes visible when a chosen word or condition is met (for example: *When someone opens this door,* or *When the moon is full*).",
-            "ru": "The script activates or becomes visible when a chosen word or condition is met (for example: *When someone opens this door,* or *When the moon is full*)."
+            "en": "The script activates or becomes visible when a chosen word or condition is met.",
+            "ru": "The script activates or becomes visible when a chosen word or condition is met."
           }
         },
         {
@@ -11737,8 +11737,8 @@
             "mp": 3
           },
           "description": {
-            "en": "You can instead inscribe the message across the sky in massive, glowing letters visible for miles. The range becomes Sight. This Enhancement can't be used with the **Extended Script** Enhancement.",
-            "ru": "You can instead inscribe the message across the sky in massive, glowing letters visible for miles. The range becomes Sight. This Enhancement can't be used with the **Extended Script** Enhancement."
+            "en": "You can instead inscribe the message across the sky in massive, glowing letters visible for miles. The range becomes Sight. This Enhancement can't be used with the Extended Script Enhancement.",
+            "ru": "You can instead inscribe the message across the sky in massive, glowing letters visible for miles. The range becomes Sight. This Enhancement can't be used with the Extended Script Enhancement."
           }
         }
       ]
@@ -11810,8 +11810,8 @@
             "mp": 1
           },
           "description": {
-            "en": "You no longer need to Sustain the Spell and can **Command** the Weapon for free on your tun. You still can only **Command** the Weapon once per Round.",
-            "ru": "You no longer need to Sustain the Spell and can **Command** the Weapon for free on your tun. You still can only **Command** the Weapon once per Round."
+            "en": "You no longer need to Sustain the Spell and can **Command** the Weapon for free on your tun. You still can only Command the Weapon once per Round.",
+            "ru": "You no longer need to Sustain the Spell and can **Command** the Weapon for free on your tun. You still can only Command the Weapon once per Round."
           }
         },
         {
@@ -11823,8 +11823,8 @@
             "mp": 1
           },
           "description": {
-            "en": "Creatures Hit by the Weapon have Vulnerability to an effect based on the chosen Damage Type for 1 Round: Radiant (**Blinded**), Psychic (**Dazed**), or Umbral (**Doomed**).",
-            "ru": "Creatures Hit by the Weapon have Vulnerability to an effect based on the chosen Damage Type for 1 Round: Radiant (**Blinded**), Psychic (**Dazed**), or Umbral (**Doomed**)."
+            "en": "Creatures Hit by the Weapon have Vulnerability to an effect based on the chosen Damage Type for 1 Round: Radiant (Blinded), Psychic (Dazed), or Umbral (Doomed).",
+            "ru": "Creatures Hit by the Weapon have Vulnerability to an effect based on the chosen Damage Type for 1 Round: Radiant (Blinded), Psychic (Dazed), or Umbral (Doomed)."
           }
         },
         {
@@ -11836,8 +11836,8 @@
             "mp": 1
           },
           "description": {
-            "en": "Creatures attacked by the Weapon must make a Mental Save. **Save Failure:** The target subtracts a d4 from their Checks for 1 Round.",
-            "ru": "Creatures attacked by the Weapon must make a Mental Save. **Save Failure:** The target subtracts a d4 from their Checks for 1 Round."
+            "en": "Creatures attacked by the Weapon must make a Mental Save. Save Failure: The target subtracts a d4 from their Checks for 1 Round.",
+            "ru": "Creatures attacked by the Weapon must make a Mental Save. Save Failure: The target subtracts a d4 from their Checks for 1 Round."
           }
         }
       ]
@@ -11924,7 +11924,7 @@
             "en": "The target must make a Might Save. Save Failure: They becomes Tethered to you a distance equal to the Spell's range. While Tethered in this way, you can spend 1 AP to take the Pursuit or Pull Actions against the target. Once on each of their turns, the target can spend 1 AP to attempt the Save again, ending the Condition on a success.",
             "ru": "The target must make a Might Save. Save Failure: They becomes Tethered to you a distance equal to the Spell's range. While Tethered in this way, you can spend 1 AP to take the Pursuit or Pull Actions against the target. Once on each of their turns, the target can spend 1 AP to attempt the Save again, ending the Condition on a success."
           }
-        }
+        },
         {
           "name": {
             "en": "Restrain",
@@ -11948,8 +11948,8 @@
       "ru": "Summon Beast"
     },
     "description": {
-      "en": "You summon a Small or Medium sized Beast within range for the duration. The creature uses the **Summoned Beast** stat block.\n\n**Spell End:** The Spell ends early if all summoned creatures are reduced to **0 HP**. When a creature summoned by this Spell is reduced to **0 HP**, its body disappears.\n\n **Recasting the Spell:** When you cast this Spell again and choose to summon a creature, you can choose a creature you previously summoned or a new one.",
-      "ru": "You summon a Small or Medium sized Beast within range for the duration. The creature uses the **Summoned Beast** stat block.\n\n**Spell End:** The Spell ends early if all summoned creatures are reduced to **0 HP**. When a creature summoned by this Spell is reduced to **0 HP**, its body disappears.\n\n **Recasting the Spell:** When you cast this Spell again and choose to summon a creature, you can choose a creature you previously summoned or a new one."
+      "en": "You summon a Small or Medium sized Beast within range for the duration. The creature uses the **Summoned Beast** stat block.\n\n**Spell End:** The Spell ends early if all summoned creatures are reduced to **0 HP**. When a creature summoned by this Spell is reduced to **0 HP**, its body disappears.\n\n**Recasting the Spell:** When you cast this Spell again and choose to summon a creature, you can choose a creature you previously summoned or a new one.",
+      "ru": "You summon a Small or Medium sized Beast within range for the duration. The creature uses the **Summoned Beast** stat block.\n\n**Spell End:** The Spell ends early if all summoned creatures are reduced to **0 HP**. When a creature summoned by this Spell is reduced to **0 HP**, its body disappears.\n\n**Recasting the Spell:** When you cast this Spell again and choose to summon a creature, you can choose a creature you previously summoned or a new one."
     },
     "origin": "spell",
     "origin_value": "primal",
@@ -12315,7 +12315,7 @@
       "elemental",
       "fire",
       "lightning",
-      "piercing"
+      "piercing",
       "slashing",
       "summoning"
     ],
@@ -12834,11 +12834,11 @@
     "slug": "danger_sense",
     "title": {
       "en": "Danger Sense",
-      "ru": "anger Sense"
+      "ru": "Danger Sense"
     },
     "description": {
-      "en": "You grant a creature within range supernatural foresight for the duration. Make a DC 15 Spell Check. **Failure:** The target can’t be **Surprised**. **Success:** The target also has ADV on Initiative Checks. **Success (5):** The target also adds a d8 to Initiative Checks.",
-      "ru": "You grant a creature within range supernatural foresight for the duration. Make a DC 15 Spell Check. **Failure:** The target can’t be **Surprised**. **Success:** The target also has ADV on Initiative Checks. **Success (5):** The target also adds a d8 to Initiative Checks."
+      "en": "You grant a creature within range supernatural foresight for the duration. Make a DC 15 Spell Check. **Failure:** The target can't be **Surprised**. **Success:** The target also has ADV on Initiative Checks. **Success (5):** The target also adds a d8 to Initiative Checks.",
+      "ru": "You grant a creature within range supernatural foresight for the duration. Make a DC 15 Spell Check. **Failure:** The target can't be **Surprised**. **Success:** The target also has ADV on Initiative Checks. **Success (5):** The target also adds a d8 to Initiative Checks."
     },
     "origin": "spell",
     "origin_value": "arcane,primal",
@@ -12898,8 +12898,8 @@
             "mp": null
           },
           "description": {
-            "en": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can’t be paid for with MP.",
-            "ru": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can’t be paid for with MP."
+            "en": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can't be paid for with MP.",
+            "ru": "You can target X additional creatures within range. When you choose this Enhancement, the cost of all other Enhancements (except Range) is doubled. The AP cost of this Enhancement can't be paid for with MP."
           }
         },
         {
@@ -12941,7 +12941,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "divination",
       "duration": "1,m",
       "enhancements": [
@@ -13093,8 +13093,8 @@
       "ru": "Locate Target"
     },
     "description": {
-      "en": "Describe or name a location, object, or creature and make a Spell Check against the DC listed in the table below. **Failure:** You learn if the target is within range but can't name the same target with this Spell until you complete a Long Rest. **Success:** You learn if the target is within range and the direction of the target if it’s within range. If the target is a creature, you also learn if it’s alive. **Success (10):** You also learn the distance to the target if it’s within range.",
-      "ru": "Describe or name a location, object, or creature and make a Spell Check against the DC listed in the table below. **Failure:** You learn if the target is within range but can't name the same target with this Spell until you complete a Long Rest. **Success:** You learn if the target is within range and the direction of the target if it’s within range. If the target is a creature, you also learn if it’s alive. **Success (10):** You also learn the distance to the target if it’s within range."
+      "en": "Describe or name a location, object, or creature and make a Spell Check against the DC listed in the table below. **Failure:** You learn if the target is within range but can't name the same target with this Spell until you complete a Long Rest. **Success:** You learn if the target is within range and the direction of the target if it's within range. If the target is a creature, you also learn if it's alive. **Success (10):** You also learn the distance to the target if it's within range.",
+      "ru": "Describe or name a location, object, or creature and make a Spell Check against the DC listed in the table below. **Failure:** You learn if the target is within range but can't name the same target with this Spell until you complete a Long Rest. **Success:** You learn if the target is within range and the direction of the target if it's within range. If the target is a creature, you also learn if it's alive. **Success (10):** You also learn the distance to the target if it's within range."
     },
     "origin": "spell",
     "origin_value": "arcane,divine",
@@ -13235,7 +13235,7 @@
     },
     "description": {
       "en": "You attempt to turn a creature of your choice within range into a lightning rod. Make a Spell Check against the target's Repeated Agility Save. **Save Failure:** The target is unable to take Reactions and you are able to use **Shock** against the target for the duration. The Spell ends early if you end your turn beyond the Spell's range from the target or behind Full Cover from the target.\n\n**Shock:** Once on each of your turns, when you Sustained this Spell or by spending **1 AP**, you can deal **1** Lightning damage to the target, provided it's not behind Full Cover. When you use **Shock**, you can spend 1 or more MP to increase the damage by 1 per MP spent.",
-      "ru": ""
+      "ru": "You attempt to turn a creature of your choice within range into a lightning rod. Make a Spell Check against the target's Repeated Agility Save. **Save Failure:** The target is unable to take Reactions and you are able to use **Shock** against the target for the duration. The Spell ends early if you end your turn beyond the Spell's range from the target or behind Full Cover from the target.\n\n**Shock:** Once on each of your turns, when you Sustained this Spell or by spending **1 AP**, you can deal **1** Lightning damage to the target, provided it's not behind Full Cover. When you use **Shock**, you can spend 1 or more MP to increase the damage by 1 per MP spent."
     },
     "origin": "spell",
     "origin_value": "arcane,primal",
@@ -13304,8 +13304,8 @@
       "ru": "Mold Earth"
     },
     "description": {
-      "en": "You manipulate a up to a 4 Space Zone of mundane earth (including dirt, mud, and stone) of your choice within range, provided it’s not being carried or supporting a Small or larger creature or object.\n\nChoose 1 of the following options when casting the Spell:\n\n- **Move:** You move the area up to 2 Spaces. Any creatures or objects on the earth move with the dirt, unless you (or the creature) choose otherwise. If they remain in the same Space and there’s no ground to support them, they begin a Controlled Fall.\n\n- **Reshape:** You cause shapes, earthen colors, or both to appear on or in the earth (such as words, images, or patterns).\n\n- **Difficult Terrain:** You can cause Spaces of your choice within the area to become Difficult Terrain. A creature can spend 1 AP to clear 1 Space of Difficult Terrain created in this way. If the ground is already Difficult Terrain as a result of loose earth, you can cause it to become normal terrain instead.",
-      "ru": "You manipulate a up to a 4 Space Zone of mundane earth (including dirt, mud, and stone) of your choice within range, provided it’s not being carried or supporting a Small or larger creature or object.\n\nChoose 1 of the following options when casting the Spell:\n\n- **Move:** You move the area up to 2 Spaces. Any creatures or objects on the earth move with the dirt, unless you (or the creature) choose otherwise. If they remain in the same Space and there’s no ground to support them, they begin a Controlled Fall.\n\n- **Reshape:** You cause shapes, earthen colors, or both to appear on or in the earth (such as words, images, or patterns).\n\n- **Difficult Terrain:** You can cause Spaces of your choice within the area to become Difficult Terrain. A creature can spend 1 AP to clear 1 Space of Difficult Terrain created in this way. If the ground is already Difficult Terrain as a result of loose earth, you can cause it to become normal terrain instead."
+      "en": "You manipulate a up to a 4 Space Zone of mundane earth (including dirt, mud, and stone) of your choice within range, provided it's not being carried or supporting a Small or larger creature or object.\n\nChoose 1 of the following options when casting the Spell:\n\n- **Move:** You move the area up to 2 Spaces. Any creatures or objects on the earth move with the dirt, unless you (or the creature) choose otherwise. If they remain in the same Space and there's no ground to support them, they begin a Controlled Fall.\n\n- **Reshape:** You cause shapes, earthen colors, or both to appear on or in the earth (such as words, images, or patterns).\n\n- **Difficult Terrain:** You can cause Spaces of your choice within the area to become Difficult Terrain. A creature can spend 1 AP to clear 1 Space of Difficult Terrain created in this way. If the ground is already Difficult Terrain as a result of loose earth, you can cause it to become normal terrain instead.",
+      "ru": "You manipulate a up to a 4 Space Zone of mundane earth (including dirt, mud, and stone) of your choice within range, provided it's not being carried or supporting a Small or larger creature or object.\n\nChoose 1 of the following options when casting the Spell:\n\n- **Move:** You move the area up to 2 Spaces. Any creatures or objects on the earth move with the dirt, unless you (or the creature) choose otherwise. If they remain in the same Space and there's no ground to support them, they begin a Controlled Fall.\n\n- **Reshape:** You cause shapes, earthen colors, or both to appear on or in the earth (such as words, images, or patterns).\n\n- **Difficult Terrain:** You can cause Spaces of your choice within the area to become Difficult Terrain. A creature can spend 1 AP to clear 1 Space of Difficult Terrain created in this way. If the ground is already Difficult Terrain as a result of loose earth, you can cause it to become normal terrain instead."
     },
     "origin": "spell",
     "origin_value": "arcane,primal",
@@ -13413,8 +13413,8 @@
       "ru": "Spike Cluster"
     },
     "description": {
-      "en": "You produce an explosion of spikes or thorns that envelops a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes **1** Piercing damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n\n **Natural Destruction** This Spell leaves debris imbedded in objects in the area.",
-      "ru": "You produce an explosion of spikes or thorns that envelops a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes **1** Piercing damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n\n **Natural Destruction** This Spell leaves debris imbedded in objects in the area."
+      "en": "You produce an explosion of spikes or thorns that envelops a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes **1** Piercing damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n\n**Natural Destruction** This Spell leaves debris imbedded in objects in the area.",
+      "ru": "You produce an explosion of spikes or thorns that envelops a 3 Space diameter Sphere within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes **1** Piercing damage.\n\n**Close Quarters Penalty:** You have DisADV on the Attack if you're within the Melee Range of at least 1 enemy, unless that enemy is **Incapacitated**.\n\n**Natural Destruction** This Spell leaves debris imbedded in objects in the area."
     },
     "origin": "spell",
     "origin_value": "primal",
@@ -13510,8 +13510,8 @@
       "ru": "Wall of Earth"
     },
     "description": {
-      "en": "You create a 5 Space long, 2 Space high Wall of earth within range. Medium Size or smaller creatures and objects within the area are pushed to nearest unoccupied Space of their choice on either side of the Wall (you choose for each object). Large Size or larger creatures or objects prevent the Wall from forming in their Space.\n\nThe Wall is a solid surface that provides Full Cover. Each Space within the Wall has **1 HP**, an AD and PD equal to your Save DC, Slashing Resistance (Half), and Poison and Psychic Immunity. Each Space of the Wall can be broken if it is reduced to **0 HP**. When a Space of Wall is broken, all Spaces above that Space are also broken, and the Space becomes Difficult Terrain until a creature spends **1 AP** to clear it.\n\n**Wall Slam:** When you cast the Spell, or by spending **1 AP**, you can cause the Wall to move 2 Spaces horizontally in a direction of your choice in either of its facing directions. Make a Spell Check against the Might Save of each creature within the area the Wall moves. **Save Failure:** They're pushed with the Wall in the direction it moves. **Save Success:** They aren’t moved and they prevent any Spaces of the Wall that make contact with them from moving past their Space. After moving the Wall in this way, it breaks, and each Space it moved through becomes Difficult Terrain until a creature spends **1 AP** to clear it.\n\n**Spell Ends:** When the Spell ends, the Wall remains but you can no longer use **Wall Slam.**",
-      "ru": "You create a 5 Space long, 2 Space high Wall of earth within range. Medium Size or smaller creatures and objects within the area are pushed to nearest unoccupied Space of their choice on either side of the Wall (you choose for each object). Large Size or larger creatures or objects prevent the Wall from forming in their Space.\n\nThe Wall is a solid surface that provides Full Cover. Each Space within the Wall has **1 HP**, an AD and PD equal to your Save DC, Slashing Resistance (Half), and Poison and Psychic Immunity. Each Space of the Wall can be broken if it is reduced to **0 HP**. When a Space of Wall is broken, all Spaces above that Space are also broken, and the Space becomes Difficult Terrain until a creature spends **1 AP** to clear it.\n\n**Wall Slam:** When you cast the Spell, or by spending **1 AP**, you can cause the Wall to move 2 Spaces horizontally in a direction of your choice in either of its facing directions. Make a Spell Check against the Might Save of each creature within the area the Wall moves. **Save Failure:** They're pushed with the Wall in the direction it moves. **Save Success:** They aren’t moved and they prevent any Spaces of the Wall that make contact with them from moving past their Space. After moving the Wall in this way, it breaks, and each Space it moved through becomes Difficult Terrain until a creature spends **1 AP** to clear it.\n\n**Spell Ends:** When the Spell ends, the Wall remains but you can no longer use **Wall Slam.**"
+      "en": "You create a 5 Space long, 2 Space high Wall of earth within range. Medium Size or smaller creatures and objects within the area are pushed to nearest unoccupied Space of their choice on either side of the Wall (you choose for each object). Large Size or larger creatures or objects prevent the Wall from forming in their Space.\n\nThe Wall is a solid surface that provides Full Cover. Each Space within the Wall has **1 HP**, an AD and PD equal to your Save DC, Slashing Resistance (Half), and Poison and Psychic Immunity. Each Space of the Wall can be broken if it is reduced to **0 HP**. When a Space of Wall is broken, all Spaces above that Space are also broken, and the Space becomes Difficult Terrain until a creature spends **1 AP** to clear it.\n\n**Wall Slam:** When you cast the Spell, or by spending **1 AP**, you can cause the Wall to move 2 Spaces horizontally in a direction of your choice in either of its facing directions. Make a Spell Check against the Might Save of each creature within the area the Wall moves. **Save Failure:** They're pushed with the Wall in the direction it moves. **Save Success:** They aren't moved and they prevent any Spaces of the Wall that make contact with them from moving past their Space. After moving the Wall in this way, it breaks, and each Space it moved through becomes Difficult Terrain until a creature spends **1 AP** to clear it.\n\n**Spell Ends:** When the Spell ends, the Wall remains but you can no longer use **Wall Slam.**",
+      "ru": "You create a 5 Space long, 2 Space high Wall of earth within range. Medium Size or smaller creatures and objects within the area are pushed to nearest unoccupied Space of their choice on either side of the Wall (you choose for each object). Large Size or larger creatures or objects prevent the Wall from forming in their Space.\n\nThe Wall is a solid surface that provides Full Cover. Each Space within the Wall has **1 HP**, an AD and PD equal to your Save DC, Slashing Resistance (Half), and Poison and Psychic Immunity. Each Space of the Wall can be broken if it is reduced to **0 HP**. When a Space of Wall is broken, all Spaces above that Space are also broken, and the Space becomes Difficult Terrain until a creature spends **1 AP** to clear it.\n\n**Wall Slam:** When you cast the Spell, or by spending **1 AP**, you can cause the Wall to move 2 Spaces horizontally in a direction of your choice in either of its facing directions. Make a Spell Check against the Might Save of each creature within the area the Wall moves. **Save Failure:** They're pushed with the Wall in the direction it moves. **Save Success:** They aren't moved and they prevent any Spaces of the Wall that make contact with them from moving past their Space. After moving the Wall in this way, it breaks, and each Space it moved through becomes Difficult Terrain until a creature spends **1 AP** to clear it.\n\n**Spell Ends:** When the Spell ends, the Wall remains but you can no longer use **Wall Slam.**"
     },
     "origin": "spell",
     "origin_value": "primal",
@@ -13681,7 +13681,7 @@
       "mp": 1
     },
     "info": {
-      "range": 0,
+      "range": "self",
       "school": "invocation",
       "duration": "instant",
       "enhancements": [
@@ -13749,8 +13749,8 @@
       "ru": "Illuminate"
     },
     "description": {
-      "en": "You attempt to illuminate every creature within a 3 Space diameter Sphere within range. Make a Spell Check contested by the Repeated Charisma Save of each creature in the area. **Save Failure:** For the duration, the creature emits a 1 Space radius of Dim Light and can’t benefit from being Concealed (such as being **Invisible**).",
-      "ru": "You attempt to illuminate every creature within a 3 Space diameter Sphere within range. Make a Spell Check contested by the Repeated Charisma Save of each creature in the area. **Save Failure:** For the duration, the creature emits a 1 Space radius of Dim Light and can’t benefit from being Concealed (such as being **Invisible**)."
+      "en": "You attempt to illuminate every creature within a 3 Space diameter Sphere within range. Make a Spell Check contested by the Repeated Charisma Save of each creature in the area. **Save Failure:** For the duration, the creature emits a 1 Space radius of Dim Light and can't benefit from being Concealed (such as being **Invisible**).",
+      "ru": "You attempt to illuminate every creature within a 3 Space diameter Sphere within range. Make a Spell Check contested by the Repeated Charisma Save of each creature in the area. **Save Failure:** For the duration, the creature emits a 1 Space radius of Dim Light and can't benefit from being Concealed (such as being **Invisible**)."
     },
     "origin": "spell",
     "origin_value": "divine,primal",
@@ -13916,8 +13916,8 @@
       "ru": "Sunburst"
     },
     "description": {
-      "en": "You produce a flash of brilliant radiance in a 6 Space tall, 3 Space diameter Cylinder within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Radiant damage.\n\n**Illuminate**\n\nThe Light level of the area increases by 1 until the end of the turn.",
-      "ru": "You produce a flash of brilliant radiance in a 6 Space tall, 3 Space diameter Cylinder within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Radiant damage.\n\n**Illuminate**\n\nThe Light level of the area increases by 1 until the end of the turn."
+      "en": "You produce a flash of brilliant radiance in a 6 Space tall, 3 Space diameter Cylinder within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Radiant damage.\n\n**Illuminate**. The Light level of the area increases by 1 until the end of the turn.",
+      "ru": "You produce a flash of brilliant radiance in a 6 Space tall, 3 Space diameter Cylinder within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Radiant damage.\n\n**Illuminate**. The Light level of the area increases by 1 until the end of the turn."
     },
     "origin": "spell",
     "origin_value": "divine,primal",
@@ -14040,16 +14040,15 @@
       "ru": "Dispel Magic"
     },
     "description": {
-      "en": "You attempt to permanently dispel an MP Effect within range or temporarily dispel a Magic Item within range (Artifacts are immune to this Spell).\n\n**MP Effect:** Make a Spell Check against the Save DC of the creature that produced the MP Effect. Your Check gains a bonus equal to twice the MP you spent on this Spell, and the Save DC gains a bonus equal to twice the MP the creature spent to produce the MP Effect. **Check Success:** The MP Effect ends.\n\n**Magic Item:** Make a Spell Check against the Save DC of the creature that created the Magic Item. Your Check gains a bonus equal to twice the MP you spent on this Spell, and the Save DC gains a bonus equal to twice the item’s Magic Power. **Check Success:** The Magic Item becomes mundane for 24 hours.",
-      "ru": "You attempt to permanently dispel an MP Effect within range or temporarily dispel a Magic Item within range (Artifacts are immune to this Spell).\n\n**MP Effect:** Make a Spell Check against the Save DC of the creature that produced the MP Effect. Your Check gains a bonus equal to twice the MP you spent on this Spell, and the Save DC gains a bonus equal to twice the MP the creature spent to produce the MP Effect. **Check Success:** The MP Effect ends.\n\n**Magic Item:** Make a Spell Check against the Save DC of the creature that created the Magic Item. Your Check gains a bonus equal to twice the MP you spent on this Spell, and the Save DC gains a bonus equal to twice the item’s Magic Power. **Check Success:** The Magic Item becomes mundane for 24 hours."
+      "en": "You attempt to permanently dispel an MP Effect within range or temporarily dispel a Magic Item within range (Artifacts are immune to this Spell).\n\n**MP Effect:** Make a Spell Check against the Save DC of the creature that produced the MP Effect. Your Check gains a bonus equal to twice the MP you spent on this Spell, and the Save DC gains a bonus equal to twice the MP the creature spent to produce the MP Effect. **Check Success:** The MP Effect ends.\n\n**Magic Item:** Make a Spell Check against the Save DC of the creature that created the Magic Item. Your Check gains a bonus equal to twice the MP you spent on this Spell, and the Save DC gains a bonus equal to twice the item's Magic Power. **Check Success:** The Magic Item becomes mundane for 24 hours.",
+      "ru": "You attempt to permanently dispel an MP Effect within range or temporarily dispel a Magic Item within range (Artifacts are immune to this Spell).\n\n**MP Effect:** Make a Spell Check against the Save DC of the creature that produced the MP Effect. Your Check gains a bonus equal to twice the MP you spent on this Spell, and the Save DC gains a bonus equal to twice the MP the creature spent to produce the MP Effect. **Check Success:** The MP Effect ends.\n\n**Magic Item:** Make a Spell Check against the Save DC of the creature that created the Magic Item. Your Check gains a bonus equal to twice the MP you spent on this Spell, and the Save DC gains a bonus equal to twice the item's Magic Power. **Check Success:** The Magic Item becomes mundane for 24 hours."
     },
     "origin": "spell",
     "origin_value": "arcane",
     "kind": "static",
     "origin_values": [
       "antimagic",
-      "cleansing",
-      ""
+      "cleansing"
     ],
     "price": {
       "ap": 1,
@@ -14083,8 +14082,8 @@
       "ru": "Enfeeble"
     },
     "description": {
-      "en": "You attempt to Curse the Physical or Mental (your choice) Checks and Saves of a creature of your choice within range for the duration. Make a Spell Check against the target’s Repeated Charisma Save. **Save Failure:** The target is Cursed for the duration. While Cursed in this way, the target subtracts a **d6** from Checks and Saves (except against this Spell) of the chosen category. The Curse can be removed by any effect that ends a Basic Curse.",
-      "ru": "You attempt to Curse the Physical or Mental (your choice) Checks and Saves of a creature of your choice within range for the duration. Make a Spell Check against the target’s Repeated Charisma Save. **Save Failure:** The target is Cursed for the duration. While Cursed in this way, the target subtracts a **d6** from Checks and Saves (except against this Spell) of the chosen category. The Curse can be removed by any effect that ends a Basic Curse."
+      "en": "You attempt to Curse the Physical or Mental (your choice) Checks and Saves of a creature of your choice within range for the duration. Make a Spell Check against the target's Repeated Charisma Save. **Save Failure:** The target is Cursed for the duration. While Cursed in this way, the target subtracts a **d6** from Checks and Saves (except against this Spell) of the chosen category. The Curse can be removed by any effect that ends a Basic Curse.",
+      "ru": "You attempt to Curse the Physical or Mental (your choice) Checks and Saves of a creature of your choice within range for the duration. Make a Spell Check against the target's Repeated Charisma Save. **Save Failure:** The target is Cursed for the duration. While Cursed in this way, the target subtracts a **d6** from Checks and Saves (except against this Spell) of the chosen category. The Curse can be removed by any effect that ends a Basic Curse."
     },
     "origin": "spell",
     "origin_value": "divine,primal",
@@ -14453,5 +14452,5 @@
         }
       ]
     }
-  },
+  }
 ]
