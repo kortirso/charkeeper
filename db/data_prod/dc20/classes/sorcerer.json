@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "innate_power",
+    "title": {
+      "en": "Innate Power",
+      "ru": "Врождённая сила"
+    },
+    "description": {
+      "en": "Choose a Sorcerous Origin.\n\n- Your Maximum MP increases by 1.\n\n- You gain the benefit of Focus Properties of your choice - {{amount|1}}. You can change them when you complete a Long Rest.",
+      "ru": "Выберите происхождение чар.\n\n- Ваш максимум ОМ увеличивается на 1.\n\n- Вы получаете преимущества использования фокусов по вашему выбору - {{amount|1}}. Вы можете поменять их после длинного отдыха."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "one_from_list",
+    "options": {
+      "sorcerer_intuitive_magic": { "en": "Intuitive Magic", "ru": "Интуитивная магия" },
+      "sorcerer_resilient_magic": { "en": "Resilient Magic", "ru": "Устойчивая магия" },
+      "sorcerer_unstable_magic": { "en": "Unstable Magic", "ru": "Нестабильная магия" }
+    },
+    "conditions": { "level": 1 },
+    "description_eval_variables": { "amount": "if (level > 4, 2, 1)" },
+    "modifiers": { "max_mana_points": { "type": "add", "value": "if (level > 4, 2, 1)" } }
+  },
+  {
+    "slug": "sorcerer_intuitive_magic",
+    "title": { "en": "Intuitive Magic", "ru": "Интуитивная магия" },
+    "description": {
+      "en": "You learn 2 Spells of your choice from your Spell List.",
+      "ru": "Вы дополнительно изучаете 2 заклинания из вашего списка заклинаний."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "update_result",
+    "conditions": { "selected_feature": "sorcerer_intuitive_magic" },
+    "modifiers": {
+      "spells": { "type": "add", "value": 2 }
+    }
+  },
+  {
+    "slug": "sorcerer_resilient_magic",
+    "title": { "en": "Resilient Magic", "ru": "Устойчивая магия" },
+    "description": {
+      "en": "You gain *Dazed* Resistance.",
+      "ru": "Вы получаете сопротивление *Потрясению*."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "selected_feature": "sorcerer_resilient_magic" }
+  },
+  {
+    "slug": "sorcerer_unstable_magic",
+    "title": { "en": "Unstable Magic", "ru": "Нестабильная магия" },
+    "description": {
+      "en": "When you Critically Succeed or Fail on a Spell Attack or Spell Check, roll on the Wild Magic Table. If it’s a Critical Success you roll with ADV, if it’s a Critical Failure you roll with DisADV. The effect lasts until the end of your next turn, unless stated otherwise. When you roll on the Wild Magic Table in this way, you gain ADV on the next Spell Attack or Spell Check you make before the end of your next turn.",
+      "ru": "Когда вы получаете критический успех или критический провал при проверке заклинания, совершите бросок по Таблице Дикой Магии. Если это критический успех, бросок совершается с преимуществом, если критический провал — с помехой. Эффект длится до конца вашего следующего хода, если не указано иное. Когда это происходит, вы получаете преимущество на следующую проверку заклинания, которую совершите до конца вашего следующего хода."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "selected_feature": "sorcerer_unstable_magic" }
+  },
+  {
+    "slug": "overload_magic",
+    "title": {
+      "en": "Overload Magic",
+      "ru": "Перегрузка магии"
+    },
+    "description": {
+      "en": "You can **spend 1 AP + 1 MP** in Combat to channel raw magical energy for 1 minute, or until you become *Incapacitated*, die, or choose to end it early at any time for free. For the duration, your magic is overloaded and you’re subjected to the following effects:\n\n- You gain +5 to all Spell Attacks and Spell Checks you make.\n\n- You must immediately make an Attribute Save (your choice) against your Save DC upon using this Feature (no need at 5th level), and again at the start of each of your turns. **Failure**: You gain Exhaustion. You lose any Exhaustion gained in this way when you complete a Short Rest.",
+      "ru": "В бою вы можете **потратить 1 ОД + 1 ОМ**, чтобы выпустить бурлящую в вас необузданную магию. В течение 1 минуты, либо пока вы не станете *Шокированы*, не умрёте или не решите бесплатно окончить эффект, ваша магия перегружена, и вы подвергаетесь следующим эффектам:\n\n- Вы получаете +5 ко всем проверкам и атакам заклинаниями.\n\n- Сразу при использовании **Перегрузки магии** (с 5 уровня - не надо) и в начале каждого своего хода, пока Перегрузка активна, вы должны совершать Спас атрибута (на ваш выбор) против вашей СЛ. **Провал:** Вы получаете истощение. Вы избавляетесь от всего истощения, вызванного **Перегрузкой магии**, когда завершаете короткий отдых."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": true,
+    "modifiers": { "spell_attack": { "type": "add", "value": 5 }, "spell_check": { "type": "add", "value": 5 } },
+    "price": { "ap": 1, "mp": 1 }
+  },
+  {
+    "slug": "sorcery",
+    "title": {
+      "en": "Sorcery",
+      "ru": "Чародейство"
+    },
+    "description": {
+      "en": "You learn the Sorcery Spell.",
+      "ru": "Вы изучаете заклинание Чародейство."
+    },
+    "origin": "class_flavor",
+    "origin_value": "sorcerer",
+    "kind": "update_result",
+    "conditions": { "level": 1 },
+    "modifiers": {
+      "spells": { "type": "add", "value": 1 }
+    }
+  },
+  {
+    "slug": "meta_magic",
+    "title": {
+      "en": "Meta Magic",
+      "ru": "Метамагия"
+    },
+    "description": {
+      "en": "You gain unique Spell Enhancements from the list below - {{amount|2}}. You can only use {{meta|1}} of these Spell Enhancements per Spell you cast. MP spent on these Spell Enhancements don’t count against your Mana Spend Limit.\n\nOnce per Long Rest, you can use 1 of these unique Spell Enhancements without spending MP. You regain the ability to do so again when you roll for Initiative.",
+      "ru": "Вы получаете уникальные улучшения заклинаний из списка ниже - {{amount|2}}. Вы можете использовать улучшения на накладываемое заклинание - {{meta|1}}. Потраченные на Метамагию ОМ не учитываются для предела траты маны.\n\nОдин раз после долгого отдыха или броска инициативы вы можете использовать одно из этих улучшений без затрат ОМ."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "many_from_list",
+    "options": {
+      "sorcerer_careful_spell": { "en": "Careful Spell", "ru": "Осторожное заклинание" },
+      "sorcerer_distant_spell": { "en": "Distant Spell", "ru": "Дальнее заклинание" },
+      "sorcerer_quickened_spell": { "en": "Quickened Spell", "ru": "Ускоренное заклинание" },
+      "sorcerer_subtle_spell": { "en": "Subtle Spell", "ru": "Незаметное заклинание" },
+      "sorcerer_transmuted_spell": { "en": "Transmuted Spell", "ru": "Преобразованное заклинание" },
+      "sorcerer_vicious_spell": { "en": "Vicious Spell", "ru": "Непреодолимое заклинание" }
+    },
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "amount": "if (level > 4, 3, 2)",
+      "meta": "if (level > 4, 2, 1)"
+    },
+    "info": { "limit": 1 },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "sorcerer_careful_spell",
+    "title": { "en": "Careful Spell", "ru": "Осторожное заклинание" },
+    "description": {
+      "en": "1 MP. When you Cast a Spell that targets an area (such as a Line, Cone, or Sphere), you can choose to exclude creatures of your choice from the Spell’s damage and effects.",
+      "ru": "1 ОМ. Когда вы накладываете заклинание по области, вы можете выбрать часть существ от урона и эффектов заклинания."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "selected_feature": "sorcerer_careful_spell" }
+  },
+  {
+    "slug": "sorcerer_distant_spell",
+    "title": { "en": "Distant Spell", "ru": "Дальнее заклинание" },
+    "description": {
+      "en": "1 MP. When you cast a Spell, you can increase its range by 2 Spaces if it has a range of 1 Space or by 10 Spaces if its range is greater than 1 Space.",
+      "ru": "1 ОМ. При использовании заклинания вы можете увеличить его дальность на 2 Клетки, если его дальность 1 Клетка, или на 10 клеток, если его дальность больше 1 Клетки."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "selected_feature": "sorcerer_distant_spell" }
+  },
+  {
+    "slug": "sorcerer_quickened_spell",
+    "title": { "en": "Quickened Spell", "ru": "Ускоренное заклинание" },
+    "description": {
+      "en": "1 MP. You can reduce the AP cost of a Spell by 1 (minimum of 1 AP).",
+      "ru": "1 ОМ. Вы можете снизить стоимость заклинания на 1 ОД (но не ниже 1 ОД)."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "selected_feature": "sorcerer_quickened_spell" }
+  },
+  {
+    "slug": "sorcerer_subtle_spell",
+    "title": { "en": "Subtle Spell", "ru": "Незаметное заклинание" },
+    "description": {
+      "en": "1 MP. You can cast the Spell without requiring any Somatic and Verbal Components.",
+      "ru": "1 ОМ. Вы можете наложить заклинание без нужды в соматических или вербальных компонентах."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "selected_feature": "sorcerer_subtle_spell" }
+  },
+  {
+    "slug": "sorcerer_transmuted_spell",
+    "title": { "en": "Transmuted Spell", "ru": "Преобразованное заклинание" },
+    "description": {
+      "en": "1 MP. When you cast a Spell that deals damage, you can change its damage type to any other damage type of your choice (except True damage).",
+      "ru": "1 ОМ. Когда вы накладываете заклинание, вы можете поменять его тип урона на другой (кроме истинного урона)."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "selected_feature": "sorcerer_transmuted_spell" }
+  },
+  {
+    "slug": "sorcerer_vicious_spell",
+    "title": { "en": "Vicious Spell", "ru": "Непреодолимое заклинание" },
+    "description": {
+      "en": "1 MP. When you cast a Spell that forces a creature to make a Save to resist its effects, 1 target of your choice has DisADV on its first Save against the Spell.",
+      "ru": "1 ОМ. Когда вы накладываете заклинание, которое заставляет существ пройти спас против его эффектов, 1 цель на ваш выбор получает помеху на первый спас против этого заклинания."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "conditions": { "selected_feature": "sorcerer_vicious_spell" }
+  }
+]

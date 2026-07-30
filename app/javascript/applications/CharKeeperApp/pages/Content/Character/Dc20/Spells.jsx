@@ -234,12 +234,14 @@ export const Dc20Spells = (props) => {
 
     const checkSchools = character().spell_filter.schools && character().spell_filter.schools.length > 0;
     const checkSource = character().spell_filter.source;
+    const checkTags = character().spell_filter.tags && character().spell_filter.tags.length > 0 && (new Set(character().spell_filter.tags));
 
     return spells().filter((item) => {
-      if (checkSchools && !character().spell_filter.schools.includes(item.school)) return false;
-      if (checkSource && !item.base_origin_values.includes(checkSource)) return false;
+      if (checkSchools && character().spell_filter.schools.includes(item.school)) return true;
+      if (checkSource && item.origin_value.includes(checkSource)) return true;
+      if (checkTags && [...checkTags.intersection(new Set(item.base_origin_values))].length > 0) return true;
 
-      return true;
+      return false;
     }).sort((a, b) => a.title.localeCompare(b.title));
   });
 
@@ -364,7 +366,7 @@ export const Dc20Spells = (props) => {
                             <div class="dc20-spell-tags">
                               <For each={spell.origin_values}>
                                 {(tag) =>
-                                  <span class="text-sm tag">{tag}</span>
+                                  <span class="text-sm! tag">{tag}</span>
                                 }
                               </For>
                             </div>
@@ -539,22 +541,22 @@ export const Dc20Spells = (props) => {
                         <div class="flex gap-2 flex-wrap mb-1">
                           <For each={spell.origin_values}>
                             {(tag) =>
-                              <span class="text-sm tag cursor-default!">{tag}</span>
+                              <span class="text-sm! tag cursor-default!">{tag}</span>
                             }
                           </For>
                         </div>
                         <Show when={spell.price}>
-                          <p class="text-sm mt-1">{localize(TRANSLATION, locale()).price}: {renderSpellPrice(spell)}</p>
+                          <p class="text-xs mt-1">{localize(TRANSLATION, locale()).price}: {renderSpellPrice(spell)}</p>
                         </Show>
                         <Show when={spell.info.range}>
-                          <p class="text-sm mt-1">{localize(TRANSLATION, locale()).range}: {renderSpellRange(spell.info.range)}</p>
+                          <p class="text-xs mt-1">{localize(TRANSLATION, locale()).range}: {renderSpellRange(spell.info.range)}</p>
                         </Show>
                         <Show when={spell.info.duration}>
-                          <p class="text-sm mt-1">{renderSpellDuration(spell.info.duration)}</p>
+                          <p class="text-xs mt-1">{renderSpellDuration(spell.info.duration)}</p>
                         </Show>
                       </div>
                       <p
-                        class="feat-markdown text-xs mt-4"
+                        class="feat-markdown text-sm! mt-4"
                         innerHTML={spell.description} // eslint-disable-line solid/no-innerhtml
                       />
                       <Show when={spell.info.enhancements.length > 0}>
@@ -562,7 +564,7 @@ export const Dc20Spells = (props) => {
                           <p class="font-normal!">{localize(TRANSLATION, locale()).enhancements}</p>
                           <For each={spell.info.enhancements}>
                             {(enhancement) =>
-                              <p class="feat-markdown text-sm mt-1">
+                              <p class="feat-markdown text-xs! mt-1">
                                 <span class="font-medium!">{localize(enhancement.name, locale())}</span>
                                 : ({renderSpellPrice(enhancement)}) {localize(enhancement.description, locale())}
                               </p>

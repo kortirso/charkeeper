@@ -57,7 +57,7 @@
     },
     "description": {
       "en": "You have Darkvision 10 Spaces.",
-      "ru": "Вы получаете Тёмное Зрение на 10 Клеток."
+      "ru": "Вы получаете тёмное зрение на 10 Клеток."
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
@@ -75,8 +75,8 @@
       "ru": "Драконье сопротивление"
     },
     "description": {
-      "en": "You gain Resistance (Half) to your Draconic damage type.",
-      "ru": "Вы получаете Сопротивление (Половина) к вашему Драконьему урону."
+      "en": "You gain Resistance (Half) to your **Draconic damage** type.",
+      "ru": "Вы получаете сопротивление (половина) к вашему **Драконьему урону**."
     },
     "origin": "ancestry",
     "origin_value": "dragonborn",
