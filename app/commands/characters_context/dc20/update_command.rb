@@ -169,7 +169,7 @@ module CharactersContext
 
       def attach_feats(character, level)
         feats_relation(character, level).map do |feat|
-          add_feat.call({ character: character, feat: feat })
+          add_feat.call({ character: character, feat: feat, with_subfeats: true })
         end
       end
 

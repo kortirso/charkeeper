@@ -44,14 +44,15 @@ module CharactersContext
 
       def attach_feats(character, feat_slugs)
         feats_relation(character, feat_slugs).each do |feat|
-          add_feat.call({ character: character, feat: feat })
+          add_feat.call({ character: character, feat: feat, with_subfeats: true })
         end
       end
 
+      # при создании присвоить выбранные расовые, классовые и class_flavor навыки 1 уровня, с любыми поднавыками
       def feats_relation(character, feat_slugs)
         ::Dc20::Feat.where(origin: 0, slug: feat_slugs)
           .or(
-            ::Dc20::Feat.where(origin: [1, 2, 9], origin_value: character.data.main_class).where("conditions ->> 'level' = '1'")
+            ::Dc20::Feat.where(origin: [1, 2], origin_value: character.data.main_class).where("conditions ->> 'level' = '1'")
           )
       end
     end

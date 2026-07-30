@@ -36,6 +36,7 @@ module CharactersContext
               end
             end
 
+            # если добавляется классовый навык - то увеличить счетчик классовых навыков
             if input[:feat].origin == 'class' && input[:feat].origin_value
               input[:character].data['classes'][input[:feat].origin_value] ||= 0
               input[:character].data['classes'][input[:feat].origin_value] += 1
@@ -44,12 +45,14 @@ module CharactersContext
             input[:character].save!
           end
 
+          # если есть 2 навыка класса, то class_flavor назначается автоматически
           if input[:character].data['classes'][input[:feat].origin_value] == 2
             Charkeeper::Container.resolve('commands.characters_context.dc20.feats.add').call({
               character: input[:character],
               feat: ::Dc20::Feat.where(origin: 2).find_by(origin_value: input[:feat].origin_value)
             })
           end
+          # если есть автовыбираемые навыки, то они тоже добавляются
           input[:with_subfeats] && input[:feat].info['feats']&.each do |value|
             Charkeeper::Container.resolve('commands.characters_context.dc20.feats.add').call({
               character: input[:character],
