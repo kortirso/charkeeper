@@ -663,16 +663,20 @@ es:
         aberration: Aberration
         ailment: Ailment
         air: Air
+        antimagic: Antimagic
+        beast: Beast
         bleeding: Bleeding
         blinded: Blinded
         blood: Blood
         bludgeoning: Bludgeoning
         burning: Burning
+        celestial: Celestial
         chaos: Chaos
         charmed: Charmed
         cleansing: Cleansing
         cold: Cold
         communication: Communication
+        construct: Construct
         corrosion: Corrosion
         curse: Curse
         dazed: Dazed
@@ -681,12 +685,15 @@ es:
         disoriented: Disoriented
         doomed: Doomed
         earth: Earth
+        elemental: Elemental
         embolden: Embolden
         emotion: Emotion
         emotions: Emotions
         enfeeble: Enfeeble
         exhaustion: Exhaustion
         exposed: Exposed
+        fey: Fey
+        fiend: Fiend
         fire: Fire
         frightened: Frightened
         gravity: Gravity
@@ -698,6 +705,7 @@ es:
         incapacitated: Incapacitated
         intimidated: Intimidated
         invisible: Invisible
+        knowledge: Knowledge
         light: Light
         lightning: Lightning
         madness: Madness
@@ -706,11 +714,14 @@ es:
         paralyzed: Paralyzed
         piercing: Piercing
         planes: Planes
+        plant: Plant
         plants: Plants
         poison: Poison
+        prone: Prone
         psychic: Psychic
         radiant: Radiant
         restrained: Restrained
+        resurrection: Resurrection
         scent: Scent
         sense: Sense
         shadow: Shadow
@@ -721,6 +732,7 @@ es:
         strike: Strike
         stunned: Stunned
         summoning: Summoning
+        surprised: Surprised
         taunted: Taunted
         teleportation: Teleportation
         terrified: Terrified

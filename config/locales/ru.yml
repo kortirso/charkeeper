@@ -663,16 +663,20 @@ ru:
         aberration: Аберрация
         ailment: Болезнь
         air: Воздух
+        antimagic: Антимагия
+        beast: Зверь
         bleeding: Ранение
         blinded: Ослепление
         blood: Кровь
         bludgeoning: Дробящий урон
         burning: Горение
+        celestial: Небесный
         chaos: Хаос
         charmed: Очарование
         cleansing: Очищение
         cold: Морозный урон
         communication: Общение
+        construct: Конструкция
         corrosion: Кислотный урон
         curse: Проклятье
         dazed: Потрясение
@@ -681,12 +685,15 @@ ru:
         disoriented: Дезориентация
         doomed: Обречение
         earth: Земля
+        elemental: Элементальный
         embolden: Воодушевление
         emotion: Эмоция
         emotions: Эмоции
         enfeeble: Ослабление
         exhaustion: Истощение
         exposed: Раскрытие
+        fey: Фея
+        fiend: Демон
         fire: Огненный урон
         frightened: Устрашение
         gravity: Гравитация
@@ -698,6 +705,7 @@ ru:
         incapacitated: Шокирование
         intimidated: Запугивание
         invisible: Невидимость
+        knowledge: Знание
         light: Свет
         lightning: Электрический урон
         madness: Безумие
@@ -706,11 +714,14 @@ ru:
         paralyzed: Парализовывание
         piercing: Колющий урон
         planes: Планы
+        plant: Растение
         plants: Растения
         poison: Урон ядом
+        prone: Ничком
         psychic: Психический урон
         radiant: Сияющий урон
         restrained: Обездвиживание
+        resurrection: Воскрешение
         scent: Запах
         sense: Чувство
         shadow: Тень
@@ -721,6 +732,7 @@ ru:
         strike: Удар
         stunned: Ошеломление
         summoning: Призыв
+        surprised: Удивление
         taunted: Провоцирование
         teleportation: Телепортация
         terrified: Устрашение
