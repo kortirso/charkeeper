@@ -32,6 +32,7 @@ module CharactersContext
           optional(:hit_die_spent).maybe(:integer)
           optional(:wounds_spent).maybe(:integer)
           optional(:languages).value(:array).each(:string)
+          optional(:conditions).value(:array).each(:string)
         end
       end
 

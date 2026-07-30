@@ -9,8 +9,6 @@ module CharactersContext
       ]
 
       use_contract do
-        config.messages.namespace = :dc20_character
-
         Classes = Dry::Types['strict.string'].enum(*::Dc20::Character.classes_info.keys)
 
         params do

@@ -1,0 +1,100 @@
+{
+  "blinded": {
+    "name": { "en": "Blinded", "ru": "Ослеплён" },
+    "description": {
+      "en": "Can't see. Attacks against you have advantage, and your attacks have disadvantage.",
+      "ru": "Не можете видеть. Атаки против вас имеют преимущество, а ваши атаки — помеху."
+    }
+  },
+  "charmed": {
+    "name": { "en": "Charmed", "ru": "Очарован" },
+    "description": {
+      "en": "Sees the charmer as an ally. Charmer has advantage on social interaction with you.",
+      "ru": "Видите очаровывателя как союзника. Очаровыватель имеет примущество при социальном взаимодействии с вами."
+    }
+  },
+  "dazed": {
+    "name": { "en": "Dazed", "ru": "Потрясён" },
+    "description": {
+      "en": "Lose 1 action.",
+      "ru": "Теряете 1 действие."
+    }
+  },
+  "frightened": {
+    "name": { "en": "Frightened", "ru": "Устрашён" },
+    "description": {
+      "en": "Disadvantage on rolls when source of fear is nearby, speed halved when moving closer to it.",
+      "ru": "Помеха на броски, когда источник страха рядом; скорость снижается в 2 раза, если двигаться в сторону страха."
+    }
+  },
+  "grappled": {
+    "name": { "en": "Grappled/Restrained", "ru": "Схвачен/Обездвижен" },
+    "description": {
+      "en": "Cannot move. Attacks against you have advantage.",
+      "ru": "Не можете двигаться. Атаки против вас имеют преимущество."
+    }
+  },
+  "hampered": {
+    "name": { "en": "Hampered", "ru": "В затруднении" },
+    "description": {
+      "en": "Any creature with their actions or movement reduced.",
+      "ru": "Любое существо, чьи действия или передвижения ограничены."
+    }
+  },
+  "incapacitated": {
+    "name": { "en": "Incapacitated", "ru": "Шокирован" },
+    "description": {
+      "en": "Can't do anything. Attacks against you have advantage, and melee attacks that hit, crit.",
+      "ru": "Не можете ничего сделать. Атаки против вас имеют преимущество, любое попадание становится критическим."
+    }
+  },
+  "invisible": {
+    "name": { "en": "Invisible", "ru": "Невидим" },
+    "description": {
+      "en": "Cannot be seen. Your attacks have advantage, and attacks against you have disadvantage",
+      "ru": "Не можете быть увиденным. Ваши атаки имеют преимущество, атаки противника против вас - помеху."
+    }
+  },
+  "petrified": {
+    "name": { "en": "Petrified", "ru": "Окаменевший" },
+    "description": {
+      "en": "Incapacitated. You have all benefits and drawbacks of being a rock.",
+      "ru": "Вы шокированы. Вы получаете все преимущества и недостатки от того, что вы теперь камень."
+    }
+  },
+  "poisoned": {
+    "name": { "en": "Poisoned", "ru": "Отравлен" },
+    "description": {
+      "en": "Disadvantage on rolls.",
+      "ru": "Вы получаете помеху на броски."
+    }
+  },
+  "prone": {
+    "name": { "en": "Prone", "ru": "Лежащий ничком" },
+    "description": {
+      "en": "Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage, ranged - disadvantage. Spend 3 spaces of your speed to stand up.",
+      "ru": "Движение стоит в 2 раза больше; вы получаете помеху на атаки. Рукопашные атаки против вас имеют преимущество, дистанционные - помеху. Потратьте 3 квадрата вашей скорости, чтобы встать."
+    }
+  },
+  "riding": {
+    "name": { "en": "Riding", "ru": "Езда верхом" },
+    "description": {
+      "en": "You move with the creature you are riding. Any attacks that miss you, strike them.",
+      "ru": "Вы двигаетесь вместе с существом, на котором вы скачете. Атаки, которые промахиваются по вам - попадают по скакуну."
+    }
+  },
+  "slowed": {
+    "name": { "en": "Slowed", "ru": "Замедлен" },
+    "description": {
+      "en": "Speed halved during your next turn.",
+      "ru": "Ваша скорость снижается в 2 раза на вашем следующем ходу."
+    }
+  },
+  "taunted": {
+    "name": { "en": "Taunted", "ru": "Спровоцирован" },
+    "description": {
+      "en": "Disadvantage on attacks except againts the most recent taunter.",
+      "ru": "Вы получаете помеху на атаки против всех противников, кроме текущего провокатора."
+    }
+  }
+}

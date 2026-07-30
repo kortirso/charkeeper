@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling, NimbleRest
+  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling, NimbleRest, Dc20Conditions
 } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, Feats, createRoll } from '../../../components';
 import { useAppLocale } from '../../../context';
@@ -125,6 +125,9 @@ export const Nimble = (props) => {
                 />
               </div>
               <div class="mt-4">
+                <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
+              </div>
+              <div class="mt-4">
                 <NimbleSkills
                   character={character()}
                   openD20Test={openDC20Test}
@@ -211,6 +214,9 @@ export const Nimble = (props) => {
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
           />
+        </div>
+        <div class="mt-4">
+          <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
         </div>
         <div class="mt-4">
           <NimbleSkills

@@ -16,6 +16,7 @@ module Nimble
     attribute :wounds_spent, :integer, default: 0
     attribute :languages, array: true, default: []
     attribute :weapons, array: true, default: []
+    attribute :conditions, array: true, default: []
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :skill_points, :integer, default: 4

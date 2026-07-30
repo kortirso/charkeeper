@@ -221,6 +221,9 @@ Rails.application.routes.draw do
     end
 
     namespace :nimble do
+      namespace :config do
+        resources :conditions, only: %i[index]
+      end
       resources :characters, only: %i[create update] do
         resources :rest, only: %i[create], module: 'characters'
       end
