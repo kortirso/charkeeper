@@ -37,7 +37,7 @@ export const Dc20Conditions = (props) => {
   createEffect(() => {
     if (lastCharacterId() === character().id) return;
 
-    const fetchConditions = async () => await fetchProviderConfigRequest(appState.accessToken, 'dc20', 'conditions');
+    const fetchConditions = async () => await fetchProviderConfigRequest(appState.accessToken, character().provider, 'conditions');
 
     Promise.all([fetchConditions()]).then(
       ([conditionsData]) => {
@@ -49,7 +49,7 @@ export const Dc20Conditions = (props) => {
 
     batch(() => {
       setLastCharacterId(character().id);
-      setCurrentConditions(character().conditions_v2)
+      setCurrentConditions(character().conditions_v2 || character().conditions)
     });
   });
 
