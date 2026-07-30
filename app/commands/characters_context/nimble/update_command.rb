@@ -8,6 +8,7 @@ module CharactersContext
         add_feat: 'commands.characters_context.nimble.feats.add'
       ]
 
+      # rubocop: disable Metrics/BlockLength
       use_contract do
         params do
           required(:character).filled(type?: ::Nimble::Character)
@@ -33,8 +34,10 @@ module CharactersContext
           optional(:wounds_spent).maybe(:integer)
           optional(:languages).value(:array).each(:string)
           optional(:conditions).value(:array).each(:string)
+          optional(:separate_shield).filled(:bool)
         end
       end
+      # rubocop: enable Metrics/BlockLength
 
       private
 

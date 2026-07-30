@@ -9,12 +9,15 @@ import { modifier, localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    armor: 'Armor',
+    armor: 'Armor value',
     initiative: 'Initiative',
     speed: 'Speed',
     wounds: 'Wounds',
     changeMaxHp: 'Change max HP',
-    hitDices: 'Hit Dices'
+    hitDices: 'Hit Dices',
+    armorValue: 'Armor',
+    shieldValue: 'Shield',
+    separateShield: 'Separate shield damage reduce'
   },
   ru: {
     armor: 'Броня',
@@ -22,7 +25,10 @@ const TRANSLATION = {
     speed: 'Скорость',
     wounds: 'Раны',
     changeMaxHp: 'Изменить максимальное здоровье',
-    hitDices: 'Кости хитов'
+    hitDices: 'Кости хитов',
+    armorValue: 'Доспех',
+    shieldValue: 'Щит',
+    separateShield: 'Щит блокирует урон отдельно'
   }
 }
 
@@ -31,7 +37,9 @@ export const NimbleHealth = (props) => {
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
+  const [shieldEditMode, setShieldEditMode] = createSignal(false);
   const [maxHp, setMaxHp] = createSignal(0);
+  const [separateShield, setSeparateShield] = createSignal(false);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -40,8 +48,11 @@ export const NimbleHealth = (props) => {
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
-    setMaxHp(character().health.max);
-    setLastActiveCharacterId(character().id);
+    batch(() => {
+      setMaxHp(character().health.max);
+      setSeparateShield(character().separate_shield);
+      setLastActiveCharacterId(character().id);
+    });
   });
 
   const i18n = createMemo(() => localize(TRANSLATION, locale()));
@@ -50,6 +61,13 @@ export const NimbleHealth = (props) => {
     batch(() => {
       setMaxHp(character().health.max);
       setEditMode(false);
+    });
+  }
+
+  const cancelShieldEditing = () => {
+    batch(() => {
+      setSeparateShield(character().separate_shield);
+      setShieldEditMode(false);
     });
   }
 
@@ -93,6 +111,11 @@ export const NimbleHealth = (props) => {
     replaceCharacter({ health: { ...character().health, max: maxHp() } });
   }
 
+  const saveShield = () => {
+    setShieldEditMode(false);
+    replaceCharacter({ separate_shield: separateShield() });
+  }
+
   const replaceCharacter = async (payload) => {
     const result = await updateCharacterRequest(
       appState.accessToken, character().provider, character().id, { character: payload, only_head: true }
@@ -106,25 +129,61 @@ export const NimbleHealth = (props) => {
     );
   }
 
+  const renderSeparateArmor = () => (
+    <div class="flex gap-4">
+      <div>
+        <p class="text-center">{character().armor}</p>
+        <p class="text-xs">{i18n().armorValue}</p>
+      </div>
+      <div>
+        <p class="text-center">{character().shield}</p>
+        <p class="text-xs">{i18n().shieldValue}</p>
+      </div>
+    </div>
+  )
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'NimbleHealth' }}>
       <GuideWrapper character={character()}>
-        <StatsBlock
-          items={[
-            { title: i18n().armor, value: character().armor },
-            {
-              title: i18n().initiative,
-              value: 
-                <Dice
-                  width="36"
-                  height="36"
-                  text={modifier(character().initiative)}
-                  onClick={() => props.openD20Test('/check initiative self', i18n().initiative, character().initiative)}
+        <EditWrapper
+          position="right"
+          editMode={shieldEditMode()}
+          onSetEditMode={setShieldEditMode}
+          onCancelEditing={cancelShieldEditing}
+          onSaveChanges={saveShield}
+        >
+          <Show
+            when={!shieldEditMode()}
+            fallback={
+              <div class="character-info-block mb-2">
+                <Checkbox
+                  labelText={i18n().separateShield}
+                  labelPosition="right"
+                  labelClassList="ml-2"
+                  checked={separateShield()}
+                  onToggle={() => setSeparateShield(!separateShield())}
                 />
-            },
-            { title: i18n().speed, value: character().speed }
-          ]}
-        />
+              </div>
+            }
+          >
+            <StatsBlock
+              items={[
+                { title: i18n().armor, value: character().separate_shield ? renderSeparateArmor() : (character().armor + character().shield) },
+                {
+                  title: i18n().initiative,
+                  value: 
+                    <Dice
+                      width="36"
+                      height="36"
+                      text={modifier(character().initiative)}
+                      onClick={() => props.openD20Test('/check initiative self', i18n().initiative, character().initiative)}
+                    />
+                },
+                { title: i18n().speed, value: character().speed }
+              ]}
+            />
+          </Show>
+        </EditWrapper>
         <EditWrapper
           position="right"
           editMode={editMode()}
