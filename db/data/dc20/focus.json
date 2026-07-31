@@ -140,7 +140,6 @@
     "name": { "en": "Magical Instrument", "ru": "Магический инструмент" },
     "info": {
       "features": ["Long-Ranged", "Reactive", "Two-Handed"]
-    },
-    "modifiers": { "ad_base": { "type": "add", "value": 1 } }
+    }
   }
 ]
