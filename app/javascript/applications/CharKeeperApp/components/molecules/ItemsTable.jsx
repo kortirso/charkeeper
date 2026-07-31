@@ -33,6 +33,7 @@ const TRANSLATION = {
   }
 }
 const ITEMS_INFO = ['daggerheart', 'dnd2024', 'dnd5'];
+const BONUS_UPGRADE_PROVIDERS = ['dc20', 'dnd2024', 'pathfinder2', 'nimble'];
 
 export const ItemsTable = (props) => {
   const size = createWindowSize();
@@ -160,8 +161,9 @@ export const ItemsTable = (props) => {
                 completeUpgrade={completeUpgrade}
               />
             </Match>
-            <Match when={props.provider === 'dnd2024'}>
+            <Match when={BONUS_UPGRADE_PROVIDERS.includes(props.provider)}>
               <Dnd2024ItemUpgrade
+                provider={props.provider}
                 characterId={props.characterId}
                 item={upgradingItem.item}
                 state={upgradingItem.state}

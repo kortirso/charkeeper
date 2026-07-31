@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 module CharactersContext
-  module Dnd2024
+  module Items
     module Upgrade
       class PerformCommand < BaseCommand
         include Deps[add_character_item: 'commands.characters_context.items.add']
 
         use_contract do
-          config.messages.namespace = :dnd2024_item_upgrade
-
           params do
-            required(:character).filled(type?: ::Dnd2024::Character)
+            required(:character).filled(
+              type_included_in?: [::Dnd2024::Character, ::Pathfinder2::Character, ::Nimble::Character, ::Dc20::Character]
+            )
             required(:character_item).filled(type?: ::Character::Item)
             required(:character_bonus).filled(type?: ::Character::Bonus)
             required(:name).filled(:string, max_size?: 50)

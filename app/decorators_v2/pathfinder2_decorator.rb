@@ -322,7 +322,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
 
     {
       slug: item[:items_slug],
-      name: translate(item[:items_name]),
+      name: item[:name] || translate(item[:items_name]),
       attack_bonus: key_ability_bonus + proficiency_attack_bonus + attack_bonus,
       damage: item[:items_info]['damage'],
       notes: item[:notes],
@@ -331,7 +331,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
           [key, I18n.t("tags.pathfinder2.weapon.title.#{key}", value: value)]
         end
       ),
-      ready_to_use: item[:states] ? item[:states]['hands'].positive? : true
+      ready_to_use: item.dig(:states, 'hands').to_i.positive?
     }.compact
   end
 

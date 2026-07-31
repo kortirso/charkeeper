@@ -161,9 +161,7 @@ module Charkeeper
     register('commands.characters_context.dnd2024.homebrew.add_item') {
       CharactersContext::Dnd2024::Homebrew::AddItemCommand.new
     }
-    register('commands.characters_context.dnd2024.upgrade.perform') {
-      CharactersContext::Dnd2024::Upgrade::PerformCommand.new
-    }
+    register('commands.characters_context.items.upgrade.perform') { CharactersContext::Items::Upgrade::PerformCommand.new }
 
     register('commands.characters_context.daggerheart.projects.add') { CharactersContext::Daggerheart::Projects::AddCommand.new }
     register('commands.characters_context.daggerheart.projects.change') {
