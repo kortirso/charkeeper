@@ -29,7 +29,7 @@ module CharactersContext
         def lock_key(input) = "character_update_#{input[:character].id}"
         def lock_time = 0
 
-        def do_prepare(input) # rubocop: disable Metrics/AbcSize
+        def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
           input[:data] = { health: {} }
           input[:decorator] = input[:character].decorator(skip: %i[features attacks skills])
           return if input[:value] == 'combat_rest'
@@ -38,13 +38,19 @@ module CharactersContext
 
           case input[:value]
           when 'field_rest'
-            input[:recovery] = roll.call(dice: "#{input[:hit_die_spend]}d#{input[:hit_die]}") if input[:make_rolls]
+            if input[:make_rolls]
+              input[:recovery] = roll.call(dice: "#{input[:hit_die_spend]}d#{input[:hit_die]}")
+              input[:recovery] += input[:decorator].modified_abilities['str'] * input[:hit_die_spend]
+            end
             input[:data][:hit_die_spent] = data.hit_die_spent + input[:hit_die_spend]
 
             current = [data.health['current'] + input[:recovery], data.health['max']].min
             input[:data][:health] = { current: current, temp: data.health['temp'], max: data.health['max'] }
           when 'long_field_rest'
-            input[:recovery] = input[:hit_die_spend] * input[:hit_die] if input[:make_rolls]
+            if input[:make_rolls]
+              input[:recovery] = input[:hit_die_spend] * input[:hit_die]
+              input[:recovery] += input[:decorator].modified_abilities['str'] * input[:hit_die_spend]
+            end
             input[:data][:hit_die_spent] = data.hit_die_spent + input[:hit_die_spend]
 
             current = [data.health['current'] + input[:recovery], data.health['max']].min

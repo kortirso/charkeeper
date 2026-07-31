@@ -13,7 +13,7 @@ module CharactersContext
         params do
           required(:character).filled(type?: ::Nimble::Character)
           optional(:subclass).filled(:string)
-          optional(:level).filled(:integer)
+          optional(:level).filled(:integer, gteq?: 1, lteq?: 20)
           optional(:abilities).hash do
             required(:str).filled(:integer, gteq?: -1, lteq?: 7)
             required(:dex).filled(:integer, gteq?: -1, lteq?: 7)
@@ -44,8 +44,20 @@ module CharactersContext
       def lock_key(input) = "character_update_#{input[:character].id}"
       def lock_time = 0
 
-      def do_prepare(input)
-        input[:skill_points] = input[:character].data.skill_points + 1 if input.key?(:level)
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize
+        if input.key?(:level)
+          input[:skill_points] = input[:character].data.skill_points + 1
+
+          if input[:level] < 20
+            input[:key_points] = input[:character].data.key_points + 1 if (input[:level] % 4).zero?
+            input[:secondary_points] = input[:character].data.secondary_points + 1 if ((input[:level] - 1) % 4).zero?
+          end
+        end
+
+        if input.key?(:abilities)
+          input[:key_points] = 0
+          input[:secondary_points] = 0
+        end
       end
 
       def do_persist(input)
@@ -54,6 +66,7 @@ module CharactersContext
         input[:character].save!
 
         refresh_feats(input) if input.key?(:level)
+        refresh_subclass_feats(input) if input.key?(:subclass)
         upload_avatar(input)
 
         { result: input[:character] }
@@ -74,6 +87,15 @@ module CharactersContext
             )
         end
         result
+      end
+
+      def refresh_subclass_feats(input)
+        subclass_feats_relation(input).each { |feat| add_feat.call({ character: input[:character], feat: feat }) }
+      end
+
+      def subclass_feats_relation(input)
+        data = input[:character].data
+        ::Nimble::Feat.where(origin: 2, origin_value: data.subclass).where("conditions ->> 'level' <= '#{data.level}'")
       end
 
       def upload_avatar(input)

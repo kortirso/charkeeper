@@ -26,7 +26,7 @@
     },
     "description": {
       "en": "Once per turn, when you hit a *Distracted* target with a melee attack, you may change the **Primary Die** to whatever you like.",
-      "ru": "Один раз за ход при попадании в цель, которая *Отвлечена*, рукопашной атакой вы можете изменить **Основной куб** на любой по своему усмотрению."
+      "ru": "Один раз за ход при попадании атакой ближнего боя в цель, которая *Отвлечена*, вы можете изменить **Основной куб** на любой по своему усмотрению."
     },
     "origin": "class",
     "origin_value": "cheat",

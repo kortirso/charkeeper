@@ -21,6 +21,8 @@ module Nimble
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :skill_points, :integer, default: 4
+    attribute :key_points, :integer, default: 0
+    attribute :secondary_points, :integer, default: 0
   end
 
   class Character < Character

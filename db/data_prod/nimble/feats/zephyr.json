@@ -14,9 +14,9 @@
     "kind": "static",
     "conditions": { "level": 1 },
     "description_eval_variables": {
-      "armor": "dex + str"
+      "armor": "if (level >= 13, 2 * str + 2 * dex, str + dex)"
     },
-    "modifiers": { "armor": { "type": "add", "value": "if (no_armor, str, 0)" } }
+    "modifiers": { "armor": { "type": "add", "value": "if (no_armor, if (level >= 13, 2 * str + dex, str), 0)" } }
   },
   {
     "slug": "swift_fists",
@@ -40,18 +40,19 @@
       "ru": "Быстрые ноги"
     },
     "description": {
-      "en": "While unarmored, gain +2 Speed and +{{level|LVL}} Initiative.",
-      "ru": "Пока вы не носите доспех, вы получаете +2 к скорости и +{{level|LVL}} к инициативе."
+      "en": "While unarmored, gain +{{speed|2}} Speed and +{{level|LVL}} Initiative.",
+      "ru": "Пока вы не носите доспех, вы получаете +{{speed|2}} к скорости и +{{level|LVL}} к инициативе."
     },
     "origin": "class",
     "origin_value": "zephyr",
     "kind": "static",
     "conditions": { "level": 2 },
     "description_eval_variables": {
+      "speed": "if (level >= 9, 4, 2)",
       "level": "level"
     },
     "modifiers": {
-      "speed": { "type": "add", "value": "if (no_armor, 2, 0)" },
+      "speed": { "type": "add", "value": "if (no_armor, if (level >= 9, 4, 2), 0)" },
       "initiative": { "type": "add", "value": "if (no_armor, level, 0)" }
     }
   },
@@ -91,6 +92,119 @@
     "conditions": { "level": 3 }
   },
   {
+    "slug": "ethereal_projection",
+    "title": {
+      "en": "Ethereal Projection",
+      "ru": "Эфирная проекция"
+    },
+    "description": {
+      "en": "By meditating for at least 10 minutes, you can project an ethereal version of yourself up to 30 ft. away, passing through solid objects or barriers. You see through your projection's eyes, and it is visible to other creatures as a translucent version of yourself. It cannot interact physically with the environment but can move freely within the distance limit and lasts for up to 10 minutes.",
+      "ru": "Медитируя не менее 10 минут, вы можете спроецировать свою эфемерную версию на расстояние до 30 футов, проходящую сквозь твердые объекты или преграды. Вы видите глазами своей проекции, и она видна другим существам как полупрозрачная версия вас самих. Она не может физически взаимодействовать с окружающей средой, но может свободно перемещаться в пределах установленного расстояния и существует до 10 минут."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "unyielding_resolve",
+    "title": {
+      "en": "Unyielding Resolve",
+      "ru": "Непоколебимая решимость"
+    },
+    "description": {
+      "en": "Ignore the first Wounds you would suffer each encounter - {{amount|1}}.",
+      "ru": "Игнорируйте первые раны, которые вы получаете в бою - {{amount|1}}."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "limit_refresh": "combat_rest",
+    "info": { "limit": "if (level >= 17, 3, if (level >= 10, 2, 1))" },
+    "description_eval_variables": {
+      "amount": "if (level >= 17, 3, if (level >= 10, 2, 1))"
+    }
+  },
+  {
+    "slug": "martial_master",
+    "title": {
+      "en": "Martial Master",
+      "ru": "Рукопашный мастер"
+    },
+    "description": {
+      "en": "Choose Martial Arts abilities - {{amount|1}}.",
+      "ru": "Выберите способности рукопашного боя - {{amount|1}}."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "many_from_list",
+    "options": {
+      "airshift": { "en": "Airshift", "ru": "Воздушное движение" },
+      "blur": { "en": "Blur", "ru": "Размытие" },
+      "bodily_discipline": { "en": "Bodily Discipline", "ru": "Телесная дисциплина" },
+      "enduring_soul": { "en": "Enduring Soul", "ru": "Непреходящая душа" },
+      "i_jump_on_his_back": { "en": "I Jump On His Back", "ru": "Я запрыгиваю ему на спину" },
+      "kinetic_barrage": { "en": "Kinetic Barrage", "ru": "Кинетическое заграждение" },
+      "mighty_soul": { "en": "Mighty Soul", "ru": "Могучая душа" },
+      "quickstrike": { "en": "Quickstrike", "ru": "Быстрый удар" },
+      "use_momentum": { "en": "Use Momentum", "ru": "Использование момента" },
+      "vital_rejuvenation": { "en": "Vital Rejuvenation", "ru": "Омоложение жизни" },
+      "windstrider": { "en": "Windstrider", "ru": "Ветроход" }
+    },
+    "conditions": { "level": 4 },
+    "description_eval_variables": {
+      "amount": "if (level >= 18, 8, ROUND((level - 2) / 2))"
+    }
+  },
+  {
+    "slug": "reverberating_strikes",
+    "title": {
+      "en": "Reverberating Strikes",
+      "ru": "Резонансный удар"
+    },
+    "description": {
+      "en": "You learn to focus your energy and transfer it as an additional concussive force into your foes. Add LVL bludgeoning damage to all of your melee attacks.",
+      "ru": "Вы научитесь концентрировать свою энергию и передавать её в виде дополнительной ударной силы по своим врагам. Добавьте дробящий урон LVL ко всем своим атакам ближнего боя."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "infuse_strength",
+    "title": {
+      "en": "Infuse Strength",
+      "ru": "Наполнение силой"
+    },
+    "description": {
+      "en": "Action: Make an unarmed strike against an ally and infuse them with a portion of your own strength instead of harming them. Expend any number of Hit Dice and heal them as you would heal yourself during a Field Rest.",
+      "ru": "Действие: Нанесите безоружный удар по союзнику и вместо нанесения ему урона наделите его частью своей собственной силы. Потратьте любое количество Костей здоровья и исцелите его так же, как вы исцеляли бы себя во время полевого отдыха."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "level": 6 }
+  },
+  {
+    "slug": "windborne",
+    "title": {
+      "en": "Windborne",
+      "ru": "Несущий ветер"
+    },
+    "description": {
+      "en": "+1 to any 2 of your stats. +1 **Burst of Speed**. Permanently gain 1 action (except dying).",
+      "ru": "+1 к двум любым характиристикам. +1 к токенам для **Всплеска скорости**. Постоянно имеете 1 действие (кроме умирания)."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  },
+  {
     "slug": "bring_the_pain",
     "title": {
       "en": "Bring the Pain",
@@ -98,7 +212,7 @@
     },
     "description": {
       "en": "Once per round, you may turn any melee attack against you info a crit. Whenever you are crit, reduce the damage by half. The attacker takes the same amount of damage you took (ignoring armor). You may suffer 1 Wound to double the damage the enemy takes.",
-      "ru": "Один раз за раунд при рукопашной атаке против вас вы можете изменить её на крит. Когда вас критуют, уменьшите кол-во урона в 2 раза. Атакующий получает такое же кол-во урона (игнорируйте броню). Вы можете получить 1 рану, чтобы удвоить урон, который получает нападающий."
+      "ru": "Один раз за раунд при атаке ближнего боя против вас вы можете изменить её на крит. Когда вас критуют, уменьшите кол-во урона в 2 раза. Атакующий получает такое же кол-во урона (игнорируйте броню). Вы можете получить 1 рану, чтобы удвоить урон, который получает нападающий."
     },
     "origin": "subclass",
     "origin_value": "pain",

@@ -1,4 +1,4 @@
-import { createEffect, createSignal, For, Show, batch } from 'solid-js';
+import { createEffect, createSignal, createMemo, For, Show, batch } from 'solid-js';
 
 import { ErrorWrapper, Button, EditWrapper, GuideWrapper, Dice } from '../../../../components';
 import config from '../../../../data/nimble.json';
@@ -9,13 +9,19 @@ import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    helpMessage: 'You start with a +2/+2/0/-1 or +2/+2/+1/0 or +3/+1/-1/-1 in all of your Attributes'
+    helpMessage: 'You start with a +2/+2/0/-1 or +2/+2/+1/0 or +3/+1/-1/-1 in all of your Attributes',
+    attributePoints: 'Spend attribute points for key abilities',
+    secondaryPoints: 'Spend attribute points for secondary abilities'
   },
   ru: {
-    helpMessage: 'Ваш персонаж начинает с +2/+2/0/-1 or +2/+2/+1/0 or +3/+1/-1/-1 во всех атрибутах.'
+    helpMessage: 'Ваш персонаж начинает с +2/+2/0/-1 or +2/+2/+1/0 or +3/+1/-1/-1 во всех атрибутах.',
+    attributePoints: 'Потратьте очки атрибутов на основные характеристики',
+    secondaryPoints: 'Потратьте очки атрибутов на второстепенные характеристики'
   },
   es: {
     helpMessage: 'Comienzas con un +2/+2/0/-1 or +2/+2/+1/0 or +3/+1/-1/-1 en todos tus Atributos.',
+    attributePoints: 'Spend attribute points for key abilities',
+    secondaryPoints: 'Spend attribute points for secondary abilities'
   }
 }
 
@@ -40,6 +46,8 @@ export const NimbleAbilities = (props) => {
 
     setLastActiveCharacterId(character().id);
   });
+
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
 
   const decreaseAbilityValue = (slug) => {
     if (abilitiesData()[slug] === -1) return;
@@ -85,7 +93,7 @@ export const NimbleAbilities = (props) => {
       <GuideWrapper
         character={character()}
         guideStep={1}
-        helpMessage={localize(TRANSLATION, locale()).helpMessage}
+        helpMessage={i18n().helpMessage}
         onReloadCharacter={props.onReloadCharacter}
       >
         <EditWrapper
@@ -95,6 +103,16 @@ export const NimbleAbilities = (props) => {
           onSaveChanges={updateCharacter}
         >
           <div class="character-info-block">
+            <Show when={character().key_points > 0}>
+              <div class="warning">
+                <p class="text-sm text-black!">{i18n().attributePoints} ({Object.entries(config.abilities).filter(([key,]) => character().keys.includes(key)).map(([, values]) => localize(values.name, locale())).join('/')}) - {character().key_points}</p>
+              </div>
+            </Show>
+            <Show when={character().secondary_points > 0}>
+              <div class="warning">
+                <p class="text-sm text-black!">{i18n().secondaryPoints} ({Object.entries(config.abilities).filter(([key,]) => !character().keys.includes(key)).map(([, values]) => localize(values.name, locale())).join('/')}) - {character().secondary_points}</p>
+              </div>
+            </Show>
             <div class="grid grid-cols-2 emd:grid-cols-4 gap-x-2 gap-y-4">
               <For each={Object.entries(config.abilities).map(([key, values]) => [key, localize(values.name, locale())])}>
                 {([slug, ability]) =>

@@ -24,8 +24,8 @@ const TRANSLATION = {
   ru: {
     values: {
       combat_rest: 'После сражения',
-      field_rest: 'Отдых в поле',
-      long_field_rest: 'Длинный отдых в поле',
+      field_rest: 'Полевой отдых',
+      long_field_rest: 'Длинный полевой отдых',
       safe_rest: 'Безопасный'
     },
     valueLabel: 'Выберите тип отдыха',
