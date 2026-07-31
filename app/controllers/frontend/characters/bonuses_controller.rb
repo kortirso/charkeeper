@@ -23,6 +23,10 @@ module Frontend
       before_action :find_bonus_command, only: %i[create]
       before_action :validate_create_command, only: %i[create]
 
+      CONDITION_V3 = %w[nimble dc20].freeze
+      CONDITION_V2 = %w[dnd2024 daggerheart_companion pathfinder2 cosmere].freeze
+      CONDITION_V1 = %w[dnd5 daggerheart].freeze
+
       def index
         serialize_relation(bonuses, ::Characters::BonusSerializer, :bonuses)
       end
@@ -77,24 +81,36 @@ module Frontend
 
       def find_bonus_command # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
         @bonus_command =
-          if feature_requirement.call(current: params[:version], initial: '0.5.1')
+          if condition_v3
             case params[:provider]
             when 'nimble' then add_nimble_bonus
             when 'dc20' then add_dc20_bonus
             end
-          elsif feature_requirement.call(current: params[:version], initial: '0.4.16')
+          elsif condition_v2
             case params[:provider]
             when 'dnd2024' then add_dnd_bonus_v3
             when 'daggerheart_companion' then add_daggerheart_companion_bonus
             when 'pathfinder2' then add_pathfinder2_bonus
             when 'cosmere' then add_cosmere_bonus
             end
-          elsif feature_requirement.call(current: params[:version], initial: '0.3.23')
+          elsif condition_v1
             case params[:provider]
             when 'dnd5' then add_dnd_bonus_v2
             when 'daggerheart' then add_daggerheart_bonus_v2
             end
           end
+      end
+
+      def condition_v3
+        feature_requirement.call(current: params[:version], initial: '0.5.1') && CONDITION_V3.include?(params[:provider])
+      end
+
+      def condition_v2
+        feature_requirement.call(current: params[:version], initial: '0.4.16') && CONDITION_V2.include?(params[:provider])
+      end
+
+      def condition_v1
+        feature_requirement.call(current: params[:version], initial: '0.3.23') && CONDITION_V1.include?(params[:provider])
       end
 
       def validate_create_command

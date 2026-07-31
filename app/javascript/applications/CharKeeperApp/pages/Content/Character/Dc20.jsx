@@ -130,6 +130,7 @@ export const Dc20 = (props) => {
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
                 character={character()}
+                upgrades={['weapon', 'armor', 'shield', 'focus']}
                 itemFilters={[
                   { title: t('equipment.weaponsList'), callback: weaponFilter },
                   { title: t('equipment.armorList'), callback: armorFilter },
@@ -251,6 +252,7 @@ export const Dc20 = (props) => {
             <Match when={activeTab() === 'equipment'}>
               <Equipment
                 character={character()}
+                upgrades={['weapon', 'armor', 'shield', 'focus']}
                 itemFilters={[
                   { title: t('equipment.weaponsList'), callback: weaponFilter },
                   { title: t('equipment.armorList'), callback: armorFilter },

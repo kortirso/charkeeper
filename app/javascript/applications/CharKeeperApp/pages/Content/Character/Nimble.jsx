@@ -155,6 +155,7 @@ export const Nimble = (props) => {
               <Equipment
                 character={character()}
                 sortCallback={sortCallback}
+                upgrades={['weapon', 'armor', 'shield', 'item']}
                 itemFilters={[
                   { title: i18n().meleeStrFilter, callback: meleeStrFilter },
                   { title: i18n().meleeDexFilter, callback: meleeDexFilter },
@@ -262,6 +263,8 @@ export const Nimble = (props) => {
             <Match when={activeTab() === 'equipment'}>
               <Equipment
                 character={character()}
+                sortCallback={sortCallback}
+                upgrades={['weapon', 'armor', 'shield', 'item']}
                 itemFilters={[
                   { title: i18n().meleeStrFilter, callback: meleeStrFilter },
                   { title: i18n().meleeDexFilter, callback: meleeDexFilter },

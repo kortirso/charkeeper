@@ -183,6 +183,7 @@ export const Pathfinder2 = (props) => {
                 withWeight
                 withPrice
                 character={character()}
+                upgrades={['weapon', 'armor', 'shield']}
                 itemFilters={[
                   { title: localize(TRANSLATION, locale()).simpleM, callback: simpleMFilter },
                   { title: localize(TRANSLATION, locale()).martialM, callback: martialMFilter },
@@ -331,6 +332,7 @@ export const Pathfinder2 = (props) => {
                 withWeight
                 withPrice
                 character={character()}
+                upgrades={['weapon', 'armor', 'shield']}
                 itemFilters={[
                   { title: localize(TRANSLATION, locale()).simpleM, callback: simpleMFilter },
                   { title: localize(TRANSLATION, locale()).martialM, callback: martialMFilter },

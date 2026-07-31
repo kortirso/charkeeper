@@ -242,14 +242,14 @@ class Dc20Decorator < ApplicationDecoratorV2
 
   def calculate_attack(item) # rubocop: disable Metrics/AbcSize
     result = {
-      name: translate(item[:items_name]),
+      name: item[:name] || translate(item[:items_name]),
       attack_bonus: attack,
       distance: item.dig(:items_info, 'distance'),
       damage: item.dig(:items_info, 'damage'),
       damage_types: item.dig(:items_info, 'damage_types'),
       features: item.dig(:items_info, 'features'),
       notes: item[:notes] || [],
-      ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true,
+      ready_to_use: item.dig(:states, 'hands').to_i.positive?,
       tags: item.dig(:items_info, 'damage_types').index_with { |type| I18n.t("tags.dc20.weapon.title.#{type}") }
     }
 
@@ -266,7 +266,7 @@ class Dc20Decorator < ApplicationDecoratorV2
       .items
       .joins(:item)
       .where(items: { kind: 'weapon' })
-      .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.info', :notes, :state)
+      .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.info', :notes, :states, :name)
   end
 
   def equiped_armor_info
@@ -281,6 +281,7 @@ class Dc20Decorator < ApplicationDecoratorV2
     @modifiers ||=
       character_modifiers + feature_modifiers +
         active_items_and_weapon_in_hands.pluck(:items_modifiers).compact_blank +
+        active_items_and_weapon_in_hands.pluck(:modifiers).compact_blank +
         condition_modifiers
   end
 

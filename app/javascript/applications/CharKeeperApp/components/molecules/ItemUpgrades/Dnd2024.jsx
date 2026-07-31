@@ -44,7 +44,7 @@ export const Dnd2024ItemUpgrade = (props) => {
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
 
-  const fetchBonuses = async () => await fetchCharacterBonusesRequest(appState.accessToken, 'dnd2024', props.characterId);
+  const fetchBonuses = async () => await fetchCharacterBonusesRequest(appState.accessToken, props.provider, props.characterId);
 
   createEffect(() => {
     if (lastActiveCharacterId() === props.characterId) return;
@@ -62,7 +62,7 @@ export const Dnd2024ItemUpgrade = (props) => {
     if (!bonusId()) return;
 
     const result = await createUpgradeRequest(
-      appState.accessToken, 'dnd2024', props.characterId, item().id, {
+      appState.accessToken, props.provider, props.characterId, item().id, {
         upgrade: { state: state(), name: name(), bonus_id: bonusId() }
       }
     )

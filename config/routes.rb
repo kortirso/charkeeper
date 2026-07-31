@@ -164,6 +164,9 @@ Rails.application.routes.draw do
           resource :animals, only: %i[show create update destroy] do
             post :upgrade, on: :collection
           end
+          resources :items, only: %i[] do
+            resources :upgrade, only: %i[create], module: :items
+          end
         end
       end
       resources :spells, only: %i[index show]
@@ -211,6 +214,9 @@ Rails.application.routes.draw do
           namespace :talents do
             resources :features, only: %i[index]
           end
+          resources :items, only: %i[] do
+            resources :upgrade, only: %i[create], module: :items
+          end
         end
         resources :talents, only: %i[index create], module: 'characters'
         resources :rest, only: %i[create], module: 'characters'
@@ -225,7 +231,12 @@ Rails.application.routes.draw do
         resources :conditions, only: %i[index]
       end
       resources :characters, only: %i[create update] do
-        resources :rest, only: %i[create], module: 'characters'
+        scope module: :characters do
+          resources :rest, only: %i[create]
+          resources :items, only: %i[] do
+            resources :upgrade, only: %i[create], module: :items
+          end
+        end
       end
     end
 

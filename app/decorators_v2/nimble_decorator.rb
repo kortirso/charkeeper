@@ -133,13 +133,13 @@ class NimbleDecorator < ApplicationDecoratorV2
 
   def calculate_attack(item)
     {
-      name: translate(item[:items_name]),
+      name: item[:name] || translate(item[:items_name]),
       range: item.dig(:items_info, 'range'),
       damage: item.dig(:items_info, 'damage'),
       damage_bonus: modified_abilities[item.dig(:items_info, 'weapon_skill')],
       damage_type: item.dig(:items_info, 'damage_type'),
       notes: item[:notes] || [],
-      ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true,
+      ready_to_use: item.dig(:states, 'hands').to_i.positive?,
       critable: weapons.include?("#{item.dig(:items_info, 'type')}-#{item.dig(:items_info, 'weapon_skill')}")
     }.compact
   end
@@ -187,12 +187,14 @@ class NimbleDecorator < ApplicationDecoratorV2
       .items
       .joins(:item)
       .where(items: { kind: 'weapon' })
-      .hashable_pluck('items.slug', 'items.name', 'items.info', :notes, :state)
+      .hashable_pluck('items.slug', 'items.name', 'items.info', :notes, :states, :name)
   end
 
   def modifiers
     @modifiers ||=
-      character_modifiers + feature_modifiers + active_items_and_weapon_in_hands.pluck(:items_modifiers).compact_blank
+      character_modifiers + feature_modifiers +
+        active_items_and_weapon_in_hands.pluck(:items_modifiers).compact_blank +
+        active_items_and_weapon_in_hands.pluck(:modifiers).compact_blank
   end
 
   def character_modifiers
