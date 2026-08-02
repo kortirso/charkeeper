@@ -491,6 +491,8 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.2)
     simplecov_json_formatter (0.1.4)
+    skylight (7.1.1)
+      activesupport (>= 7.2.0)
     solid_errors (0.7.0)
       actionpack (>= 7.0)
       actionview (>= 7.0)
@@ -626,6 +628,7 @@ DEPENDENCIES
   securerandom (= 0.3.2)
   shoulda-matchers (~> 8.0)
   simplecov
+  skylight
   solid_errors
   sprockets-rails
   store_model
