@@ -264,13 +264,17 @@ en:
         level: "%{value} level"
     bot_context:
       representers:
+        with_adv: with advantage
+        with_adv_number: with advantage %{value}
+        with_dis: with disadvantage
+        with_dis_number: with disadvantage %{value}
         cosmere:
           light_complication: Complication +2
           heavy_complication: Complication +4
           opportunity: Opportunity
           blank: Blank
         check:
-          result: Roll result - %{result}
+          result: "Roll result - "
           dnd:
             crit_success: Critical success
             crit_failure: Critical failure
@@ -297,6 +301,7 @@ en:
           rolls: makes dice rolls
           total: Result
           nothing: No result
+          miss: Miss
         campaign:
           create:
             result: "Campaign \"%{name}\" is created"

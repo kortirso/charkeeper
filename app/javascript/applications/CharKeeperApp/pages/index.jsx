@@ -34,6 +34,7 @@ export * from './Content/Character/Cosmere/Leveling';
 export * from './Content/Character/Cosmere/Bonuses';
 export * from './Content/Character/Cosmere/Goals';
 export * from './Content/Character/Cosmere/SingerForm';
+export * from './Content/Character/Cosmere/Equipment';
 
 export * from './Content/Character/Dnd5';
 export * from './Content/Character/Dnd5/Abilities';
@@ -51,6 +52,7 @@ export * from './Content/Character/Dnd5/Craft';
 export * from './Content/Character/Dnd5/Bonuses';
 export * from './Content/Character/Dnd5/Exhaustion';
 export * from './Content/Character/Dnd5/Info';
+export * from './Content/Character/Dnd5/Equipment';
 
 export * from './Content/Character/Dnd2024/Spells';
 export * from './Content/Character/Dnd2024/Spells/CastTime';
@@ -80,6 +82,7 @@ export * from './Content/Character/Pathfinder2/Info';
 export * from './Content/Character/Pathfinder2/Damages';
 export * from './Content/Character/Pathfinder2/Shared/Health';
 export * from './Content/Character/Pathfinder2/Shared/Senses';
+export * from './Content/Character/Pathfinder2/Equipment';
 
 export * from './Content/Character/Daggerheart';
 export * from './Content/Character/Daggerheart/Traits';
@@ -100,6 +103,7 @@ export * from './Content/Character/Daggerheart/Craft';
 export * from './Content/Character/Daggerheart/Scars';
 export * from './Content/Character/Daggerheart/Info';
 export * from './Content/Character/Daggerheart/LootTable';
+export * from './Content/Character/Daggerheart/Equipment';
 
 export * from './Content/Character/Dc20';
 export * from './Content/Character/Dc20/Abilities';
@@ -143,6 +147,7 @@ export * from './Content/Character/Nimble/Info';
 export * from './Content/Character/Nimble/Health';
 export * from './Content/Character/Nimble/Leveling';
 export * from './Content/Character/Nimble/Rest';
+export * from './Content/Character/Nimble/Equipment';
 
 export * from './Navigation/Characters/ListItem';
 export * from './Navigation/Characters/CharacterForm';

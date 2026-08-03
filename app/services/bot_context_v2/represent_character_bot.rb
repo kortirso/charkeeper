@@ -16,7 +16,7 @@ module BotContextV2
         ).read
       ).result(b_clone)
 
-      { result: text_response }
+      { result: text_response.gsub("\n\n", "\n") }
     end
   end
 end

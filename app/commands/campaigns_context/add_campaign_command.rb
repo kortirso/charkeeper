@@ -6,7 +6,7 @@ module CampaignsContext
       config.messages.namespace = :campaign
 
       Providers = Dry::Types['strict.string'].enum(
-        'dnd5', 'dnd2024', 'daggerheart', 'pathfinder2', 'dc20', 'fate', 'fallout', 'cosmere', 'cthulhu7'
+        'dnd5', 'dnd2024', 'daggerheart', 'pathfinder2', 'dc20', 'fate', 'fallout', 'cosmere', 'cthulhu7', 'nimble'
       )
 
       params do

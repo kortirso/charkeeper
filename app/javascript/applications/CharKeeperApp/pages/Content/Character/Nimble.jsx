@@ -2,57 +2,25 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling, NimbleRest, Dc20Conditions
+  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling, NimbleRest, Dc20Conditions,
+  NimbleEquipment
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, Feats, createRoll } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, Feats, createRoll } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
     equipmentHelpMessage: 'Here you can select equipment for your character.',
-    levelingHelpMessage: 'In the future on this tab you can level up your character.',
-    meleeStrFilter: 'Melee STR weapons',
-    meleeDexFilter: 'Melee DEX weapons',
-    rangeStrFilter: 'Range STR weapons',
-    rangeDexFilter: 'Range DEX weapons',
-    clothFilter: 'Cloth armor',
-    leatherFilter: 'Leather armor',
-    mailFilter: 'Mail armor',
-    plateFilter: 'Plate armor',
-    shieldFilter: 'Shields',
-    itemsFilter: 'Items',
-    consumablesFilter: 'Consumables'
+    levelingHelpMessage: 'In the future on this tab you can level up your character.'
   },
   ru: {
     equipmentHelpMessage: 'На этой вкладке вы можете выбрать снаряжение для вашего персонажа.',
-    levelingHelpMessage: 'В будущем на этой вкладке вы сможете указывать уровень вашего персонажа.',
-    meleeStrFilter: 'Ближнее STR оружие',
-    meleeDexFilter: 'Ближнее DEX оружие',
-    rangeStrFilter: 'Дистанционное STR оружие',
-    rangeDexFilter: 'Дистанционное DEX оружие',
-    clothFilter: 'Тканевые доспехи',
-    leatherFilter: 'Кожаные доспехи',
-    mailFilter: 'Кольчуги',
-    plateFilter: 'Латы',
-    shieldFilter: 'Щиты',
-    itemsFilter: 'Предметы',
-    consumablesFilter: 'Зелья'
+    levelingHelpMessage: 'В будущем на этой вкладке вы сможете указывать уровень вашего персонажа.'
   },
   es: {
     equipmentHelpMessage: 'Aquí puedes seleccionar el equipo para tu personaje.',
-    levelingHelpMessage: 'En el futuro en esta pestaña podrás subir de nivel a tu personaje.',
-    meleeStrFilter: 'Melee STR weapons',
-    meleeDexFilter: 'Melee DEX weapons',
-    rangeStrFilter: 'Range STR weapons',
-    rangeDexFilter: 'Range DEX weapons',
-    clothFilter: 'Cloth armor',
-    leatherFilter: 'Leather armor',
-    mailFilter: 'Mail armor',
-    plateFilter: 'Plate armor',
-    shieldFilter: 'Shields',
-    itemsFilter: 'Items',
-    consumablesFilter: 'Consumables'
+    levelingHelpMessage: 'En el futuro en esta pestaña podrás subir de nivel a tu personaje.'
   }
 }
 
@@ -68,19 +36,6 @@ export const Nimble = (props) => {
   const [locale] = useAppLocale();
 
   const i18n = createMemo(() => localize(TRANSLATION, locale()));
-
-  const sortCallback = (a, b) => a.data.price > b.data.price;
-  const meleeStrFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'str' && item.info.type === 'melee';
-  const meleeDexFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'dex' && item.info.type === 'melee';
-  const rangeStrFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'str' && item.info.type === 'range';
-  const rangeDexFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'dex' && item.info.type === 'range';
-  const clothFilter = (item) => item.kind === 'armor' && item.info.armor_skill === 'cloth';
-  const leatherFilter = (item) => item.kind === 'armor' && item.info.armor_skill === 'leather';
-  const mailFilter = (item) => item.kind === 'armor' && item.info.armor_skill === 'mail';
-  const plateFilter = (item) => item.kind === 'armor' && item.info.armor_skill === 'plate';
-  const shieldFilter = (item) => item.kind === 'shield';
-  const itemsFilter = (item) => item.kind === 'item';
-  const consumablesFilter = (item) => item.kind === 'consumables';
 
   const ancestryFilter = (item) => item.origin === 'ancestry';
   const classFilter = (item) => item.origin === 'class';
@@ -152,23 +107,9 @@ export const Nimble = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
-              <Equipment
+              <NimbleEquipment
                 character={character()}
-                sortCallback={sortCallback}
                 upgrades={['weapon', 'armor', 'shield', 'item']}
-                itemFilters={[
-                  { title: i18n().meleeStrFilter, callback: meleeStrFilter },
-                  { title: i18n().meleeDexFilter, callback: meleeDexFilter },
-                  { title: i18n().rangeStrFilter, callback: rangeStrFilter },
-                  { title: i18n().rangeDexFilter, callback: rangeDexFilter },
-                  { title: i18n().clothFilter, callback: clothFilter },
-                  { title: i18n().leatherFilter, callback: leatherFilter },
-                  { title: i18n().mailFilter, callback: mailFilter },
-                  { title: i18n().plateFilter, callback: plateFilter },
-                  { title: i18n().shieldFilter, callback: shieldFilter },
-                  { title: i18n().itemsFilter, callback: itemsFilter },
-                  { title: i18n().consumablesFilter, callback: consumablesFilter }
-                ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
@@ -261,28 +202,14 @@ export const Nimble = (props) => {
               </div>
             </Match>
             <Match when={activeTab() === 'equipment'}>
-              <Equipment
+              <NimbleEquipment
                 character={character()}
-                sortCallback={sortCallback}
                 upgrades={['weapon', 'armor', 'shield', 'item']}
-                itemFilters={[
-                  { title: i18n().meleeStrFilter, callback: meleeStrFilter },
-                  { title: i18n().meleeDexFilter, callback: meleeDexFilter },
-                  { title: i18n().rangeStrFilter, callback: rangeStrFilter },
-                  { title: i18n().rangeDexFilter, callback: rangeDexFilter },
-                  { title: i18n().clothFilter, callback: clothFilter },
-                  { title: i18n().leatherFilter, callback: leatherFilter },
-                  { title: i18n().mailFilter, callback: mailFilter },
-                  { title: i18n().plateFilter, callback: plateFilter },
-                  { title: i18n().shieldFilter, callback: shieldFilter },
-                  { title: i18n().itemsFilter, callback: itemsFilter },
-                  { title: i18n().consumablesFilter, callback: consumablesFilter }
-                ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
                 helpMessage={i18n().equipmentHelpMessage}
-                onNextGuideStepClick={() => setActiveTab('classLevels')}
+                onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
               />
             </Match>
             <Match when={activeTab() === 'classLevels'}>

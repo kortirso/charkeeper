@@ -9,7 +9,6 @@ module BotContextV2
 
     ALLOWED_COMMANDS = %w[/check /roll /dualityRoll /fateRoll /plotRoll /nimbleAttack].freeze
     PROVIDER_BASED_COMMANDS = %w[/check].freeze
-    SKIP_SENDING_PROVIDERS = ['Nimble::Character'].freeze
 
     def call(messages:, character:)
       messages.map do |message|
@@ -49,8 +48,6 @@ module BotContextV2
     # rubocop: enable Style/RedundantRegexpArgument
 
     def send_message_to_channels(command, command_result, character)
-      return if SKIP_SENDING_PROVIDERS.include?(character.class.name)
-
       command_result[:character] = character
       formatted_result =
         represent_character_command.call(
@@ -88,6 +85,7 @@ module BotContextV2
       when 'Fate::Character' then 'fate'
       when 'Fallout::Character' then 'fallout'
       when 'Cthulhu7::Character' then 'cthulhu7'
+      when 'Nimble::Character' then 'nimble'
       end
     end
 

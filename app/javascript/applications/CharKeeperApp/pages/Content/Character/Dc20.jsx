@@ -1,14 +1,11 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dc20Abilities, Dc20Skills, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest,
-  Dc20BonusesV2, Dc20Damages, Dc20Conditions, Dc20Info, Dc20Trainings
+  Dc20BonusesV2, Dc20Damages, Dc20Conditions, Dc20Info, Dc20Trainings, Dc20Equipment
 } from '../../../pages';
-import {
-  CharacterNavigation, Notes, Avatar, ContentWrapper, createRoll, Equipment, Combat, Feats
-} from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, createRoll, Combat, Feats } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -36,14 +33,7 @@ export const Dc20 = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const [locale, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
-
-  const weaponFilter = (item) => item.kind.includes('weapon');
-  const armorFilter = (item) => item.kind.includes('armor');
-  const shieldFilter = (item) => item.kind.includes('shield');
-  const focusFilter = (item) => item.kind.includes('focus');
+  const [locale] = useAppLocale();
 
   const ancestryFilter = (item) => item.origin === 'ancestry' || item.origin === 'base_ancestry';
   const classFilter = (item) => item.origin === 'class' || item.origin === 'class_additional' || item.origin === 'class_flavor' || item.origin === 'talent';
@@ -128,19 +118,13 @@ export const Dc20 = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
-              <Equipment
+              <Dc20Equipment
                 character={character()}
                 upgrades={['weapon', 'armor', 'shield', 'focus']}
-                itemFilters={[
-                  { title: t('equipment.weaponsList'), callback: weaponFilter },
-                  { title: t('equipment.armorList'), callback: armorFilter },
-                  { title: t('equipment.shieldList'), callback: shieldFilter },
-                  { title: t('equipment.focusList'), callback: focusFilter }
-                ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
-                helpMessage={localize(TRANSLATION, locale())['equipmentHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale()).equipmentHelpMessage}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
               />
             </Match>
@@ -250,20 +234,14 @@ export const Dc20 = (props) => {
               </div>
             </Match>
             <Match when={activeTab() === 'equipment'}>
-              <Equipment
+              <Dc20Equipment
                 character={character()}
                 upgrades={['weapon', 'armor', 'shield', 'focus']}
-                itemFilters={[
-                  { title: t('equipment.weaponsList'), callback: weaponFilter },
-                  { title: t('equipment.armorList'), callback: armorFilter },
-                  { title: t('equipment.shieldList'), callback: shieldFilter },
-                  { title: t('equipment.focusList'), callback: focusFilter }
-                ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
-                helpMessage={localize(TRANSLATION, locale())['equipmentHelpMessage']}
-                onNextGuideStepClick={() => setActiveTab('classLevels')}
+                helpMessage={localize(TRANSLATION, locale()).equipmentHelpMessage}
+                onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
               />
             </Match>
             <Match when={activeTab() === 'classLevels'}>

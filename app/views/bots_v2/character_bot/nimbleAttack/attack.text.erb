@@ -1,0 +1,2 @@
+<b><%= character.name %></b> <%= I18n.t('services.bot_context.representers.roll.result') %>: <%= result[:rolls]&.map { |item| "[#{item}]" }&.join(' + ') %><%= result[:bonus].to_i.zero? ? '' : (result[:bonus].to_i.positive? ? " +#{result[:bonus]}" : " #{result[:bonus]}") %>
+<%= I18n.t('services.bot_context.representers.roll.total') %>: <%= result[:status] == 'miss' ? I18n.t('services.bot_context.representers.roll.miss') : result[:total] %>

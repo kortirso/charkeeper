@@ -209,7 +209,7 @@ describe Frontend::Bots::CharactersController do
               request
 
               expect(response.parsed_body.dig(:result, 0, :result).keys).to(
-                contain_exactly('rolls', 'total', 'status')
+                contain_exactly('rolls', 'total', 'status', 'advantage', 'bonus')
               )
               expect(response.parsed_body[:errors]).to be_nil
               expect(response).to have_http_status :ok
