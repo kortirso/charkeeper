@@ -1,13 +1,12 @@
 import { createSignal, createMemo, Switch, Match, Show } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, Dnd5Skills,
+  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, Dnd5Skills, Dnd5Equipment,
   Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses, Dnd2024Spells, Dnd5Info, Dnd2024Bonuses
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createRoll, Conditions, Combat, Gold
+  CharacterNavigation, Notes, Avatar, ContentWrapper, Feats, createRoll, Conditions, Combat, Gold
 } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
@@ -15,15 +14,12 @@ import { localize } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
-    equipmentHelpMessage: 'Here you can select equipment for your character.',
     levelingHelpMessage: 'In the future on this tab you can level up your character.'
   },
   ru: {
-    equipmentHelpMessage: 'На этой вкладке вы можете выбрать снаряжение для вашего персонажа.',
     levelingHelpMessage: 'В будущем на этой вкладке вы сможете указывать уровень вашего персонажа.'
   },
   es: {
-    equipmentHelpMessage: 'Aquí puedes seleccionar el equipo para tu personaje.',
     levelingHelpMessage: 'En el futuro en esta pestaña podrás subir de nivel a tu personaje.'
   }
 }
@@ -38,9 +34,7 @@ export const Dnd5 = (props) => {
 
   const { Roll, openD20Test, openD20Attack } = createRoll();
   const [appState] = useAppState();
-  const [locale, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
+  const [locale] = useAppLocale();
 
   // only sends request
   const refreshCharacter = async (payload) => {
@@ -56,15 +50,6 @@ export const Dnd5 = (props) => {
     if (result.errors_list === undefined) await props.onReloadCharacter();
     return result;
   }
-
-  const itemFilter = (item) => item.kind === 'item';
-  const weaponFilter = (item) => item.kind.includes('weapon');
-  const armorFilter = (item) => item.kind.includes('armor') || item.kind.includes('shield');
-  const ammoFilter = (item) => item.kind === 'ammo';
-  const focusFilter = (item) => item.kind === 'focus';
-  const toolsFilter = (item) => item.kind === 'tools';
-  const musicFilter = (item) => item.kind === 'music';
-  const potionFilter = (item) => item.kind === 'potion';
 
   const raceFilter = (item) => item.origin === 'race';
   const subraceFilter = (item) => item.origin === 'subrace';
@@ -187,29 +172,18 @@ export const Dnd5 = (props) => {
               </Show>
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
-              <Equipment
+              <Dnd5Equipment
                 withWeight
                 withPrice
                 upgrades={character().provider === 'dnd2024' ? ['weapon', 'armor', 'shield', 'item'] : null}
                 character={character()}
-                itemFilters={[
-                  { title: t('equipment.itemsList'), callback: itemFilter },
-                  { title: t('equipment.weaponsList'), callback: weaponFilter },
-                  { title: t('equipment.armorList'), callback: armorFilter },
-                  { title: t('equipment.consumables'), callback: potionFilter},
-                  { title: t('equipment.ammoList'), callback: ammoFilter },
-                  { title: t('equipment.focusList'), callback: focusFilter },
-                  { title: t('equipment.toolsList'), callback: toolsFilter },
-                  { title: t('equipment.musicList'), callback: musicFilter}
-                ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
-                helpMessage={localize(TRANSLATION, locale())['equipmentHelpMessage']}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </Equipment>
+              </Dnd5Equipment>
             </Match>
             <Match when={activeMobileTab() === 'spells'}>
               <Show
@@ -344,29 +318,18 @@ export const Dnd5 = (props) => {
               <Dnd5Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'equipment'}>
-              <Equipment
+              <Dnd5Equipment
                 withWeight
                 withPrice
                 upgrades={character().provider === 'dnd2024' ? ['weapon', 'armor', 'shield', 'item'] : null}
                 character={character()}
-                itemFilters={[
-                  { title: t('equipment.itemsList'), callback: itemFilter },
-                  { title: t('equipment.weaponsList'), callback: weaponFilter },
-                  { title: t('equipment.armorList'), callback: armorFilter },
-                  { title: t('equipment.consumables'), callback: potionFilter},
-                  { title: t('equipment.ammoList'), callback: ammoFilter },
-                  { title: t('equipment.focusList'), callback: focusFilter },
-                  { title: t('equipment.toolsList'), callback: toolsFilter },
-                  { title: t('equipment.musicList'), callback: musicFilter}
-                ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
-                helpMessage={localize(TRANSLATION, locale())['equipmentHelpMessage']}
-                onNextGuideStepClick={() => setActiveTab('classLevels')}
+                onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </Equipment>
+              </Dnd5Equipment>
             </Match>
             <Match when={activeTab() === 'spells'}>
               <Show

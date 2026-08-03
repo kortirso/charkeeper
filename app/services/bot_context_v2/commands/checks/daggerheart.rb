@@ -29,7 +29,9 @@ module BotContextV2
           {
             rolls: [values.dig(0, :rolls, 0), values.dig(1, :rolls, 0), values&.dig(2, :rolls, 0)].compact,
             total: values[3],
-            status: status(values.dig(0, :total), values.dig(1, :total))
+            status: status(values.dig(0, :total), values.dig(1, :total)),
+            advantage: values[4],
+            bonus: values[5]
           }
         end
 
@@ -47,7 +49,7 @@ module BotContextV2
             (values[:adv].to_i.positive? ? adv_check&.dig(:total).to_i : (adv_check&.dig(:total).to_i * -1)) +
             values[:bonus].to_i
 
-          [hope_check, fear_check, adv_check, total]
+          [hope_check, fear_check, adv_check, total, values[:adv].to_i, values[:bonus].to_i]
         end
 
         def status(hope_value, fear_value)

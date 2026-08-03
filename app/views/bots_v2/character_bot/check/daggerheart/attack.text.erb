@@ -1,2 +1,8 @@
-<b><%= character.name %></b> <%= I18n.t('services.bot_context.representers.check.daggerheart.attack', target: target) %>
-<%= I18n.t('services.bot_context.representers.check.result', result: daggerheart_roll_result_message(result)) %>
+<b><%= character.name %></b> <%= I18n.t('services.bot_context.representers.check.daggerheart.attack', target: target) %><%= result[:advantage].zero? ? '' : (result[:advantage].positive? ? ", #{I18n.t('services.bot_context.representers.with_adv')}" : ", #{I18n.t('services.bot_context.representers.with_dis')}") %>: <span style="color: #C28D23"><%= result.dig(:rolls, 0, 0) %> (<%= result.dig(:rolls, 0, 1) %>)</span>, <span style="color: #2362C2"><%= result.dig(:rolls, 1, 0) %> (<%= result.dig(:rolls, 1, 1) %>)</span><%= result[:advantage].zero? ? '' : ", #{result.dig(:rolls, 2, 0)} (#{result.dig(:rolls, 2, 1)})" %><%= result[:bonus].to_i.zero? ? '' : (result[:bonus].to_i.positive? ? ", +#{result[:bonus]}" : ", #{result[:bonus]}") %>
+<% if result[:status] == :with_hope %>
+  <%= I18n.t('services.bot_context.representers.check.result') %><span style="color: #C28D23"><%= daggerheart_roll_result_message(result) %></span>
+<% elsif result[:status] == :with_fear %>
+  <%= I18n.t('services.bot_context.representers.check.result') %><span style="color: #2362C2"><%= daggerheart_roll_result_message(result) %></span>
+<% else %>
+  <%= I18n.t('services.bot_context.representers.check.result') %><span style="color: #16A34A"><%= daggerheart_roll_result_message(result) %></span>
+<% end %>

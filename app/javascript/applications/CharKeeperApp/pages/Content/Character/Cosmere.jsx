@@ -3,20 +3,15 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   CosmereAbilities, CosmereSkills, CosmereDefenses, CosmereHealth, CosmereInfo, CosmereRest, CosmereLeveling, CosmereBonuses,
-  CosmereGoals, CosmereSingerForm
+  CosmereGoals, CosmereSingerForm, CosmereEquipment
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, Equipment, Combat, createRoll, Feats } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, createRoll, Feats } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 import config from '../../../data/cosmere.json';
 
 const TRANSLATION = {
   en: {
-    lightWeapon: 'Light weapons',
-    heavyWeapon: 'Heavy weapons',
-    armor: 'Armor',
-    items: 'Items',
-    fabrials: 'Fabrials',
     heroicFilters: {
       agent: 'Agent',
       envoy: 'Envoy',
@@ -40,11 +35,6 @@ const TRANSLATION = {
     }
   },
   ru: {
-    lightWeapon: 'Лёгкое оружие',
-    heavyWeapon: 'Тяжёлое оружие',
-    armor: 'Доспехи',
-    items: 'Предметы',
-    fabrials: 'Фабриали',
     heroicFilters: {
       agent: 'Агент',
       envoy: 'Посланник',
@@ -68,11 +58,6 @@ const TRANSLATION = {
     }
   },
   es: {
-    lightWeapon: 'Light weapons',
-    heavyWeapon: 'Heavy weapons',
-    armor: 'Armor',
-    items: 'Items',
-    fabrials: 'Fabrials',
     heroicFilters: {
       agent: 'Agent',
       envoy: 'Envoy',
@@ -106,12 +91,6 @@ export const Cosmere = (props) => {
 
   const { Roll, openCosmereTest, openD20Attack } = createRoll();
   const [locale] = useAppLocale();
-
-  const lightWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'light_weaponry';
-  const heavyWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'heavy_weaponry';
-  const armorFilter = (item) => item.kind === 'armor';
-  const itemFilter = (item) => item.kind === 'item';
-  const fabrialFilter = (item) => item.kind === 'fabrial';
 
   const heroicFilters = createMemo(() => {
     return Object.keys(config.paths).reduce((acc, element) => {
@@ -217,15 +196,8 @@ export const Cosmere = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
-              <Equipment
+              <CosmereEquipment
                 character={character()}
-                itemFilters={[
-                  { title: localize(TRANSLATION, locale()).lightWeapon, callback: lightWeaponFilter },
-                  { title: localize(TRANSLATION, locale()).heavyWeapon, callback: heavyWeaponFilter },
-                  { title: localize(TRANSLATION, locale()).armor, callback: armorFilter },
-                  { title: localize(TRANSLATION, locale()).items, callback: itemFilter },
-                  { title: localize(TRANSLATION, locale()).fabrials, callback: fabrialFilter }
-                ]}
                 onReloadCharacter={props.onReloadCharacter}
               />
             </Match>
@@ -322,15 +294,8 @@ export const Cosmere = (props) => {
               </div>
             </Match>
             <Match when={activeTab() === 'equipment'}>
-              <Equipment
+              <CosmereEquipment
                 character={character()}
-                itemFilters={[
-                  { title: localize(TRANSLATION, locale()).lightWeapon, callback: lightWeaponFilter },
-                  { title: localize(TRANSLATION, locale()).heavyWeapon, callback: heavyWeaponFilter },
-                  { title: localize(TRANSLATION, locale()).armor, callback: armorFilter },
-                  { title: localize(TRANSLATION, locale()).items, callback: itemFilter },
-                  { title: localize(TRANSLATION, locale()).fabrials, callback: fabrialFilter }
-                ]}
                 onReloadCharacter={props.onReloadCharacter}
               />
             </Match>

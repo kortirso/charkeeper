@@ -264,13 +264,17 @@ ru:
         level: "%{value} уровень"
     bot_context:
       representers:
+        with_adv: с преимуществом
+        with_adv_number: с преимуществом %{value}
+        with_dis: с помехой
+        with_dis_number: с помехой %{value}
         cosmere:
           light_complication: Осложнение +2
           heavy_complication: Осложнение +4
           opportunity: Возможность
           blank: Пусто
         check:
-          result: Результат броска - %{result}
+          result: "Результат броска - "
           dnd:
             crit_success: Критический успех
             crit_failure: Критическая неудача
@@ -297,6 +301,7 @@ ru:
           rolls: делает броски
           total: Результат
           nothing: Нет результата
+          miss: Промах
         campaign:
           create:
             result: "Кампания \"%{name}\" создана"

@@ -264,13 +264,17 @@ es:
         level: "%{value} nivel"
     bot_context:
       representers:
+        with_adv: with advantage
+        with_adv_number: with advantage %{value}
+        with_dis: with disadvantage
+        with_dis_number: with disadvantage %{value}
         cosmere:
           light_complication: Complication +2
           heavy_complication: Complication +4
           opportunity: Opportunity
           blank: Blank
         check:
-          result: Resultado de tirada - %{result}
+          result: "Resultado de tirada - "
           dnd:
             crit_success: Éxito crítico
             crit_failure: Fallo crítico
@@ -297,6 +301,7 @@ es:
           rolls: hace tiradas de dados
           total: Tiradas de dados
           nothing: No hay resultado
+          miss: Miss
         campaign:
           create:
             result: "La campaña \"%{name}\" fue creada"

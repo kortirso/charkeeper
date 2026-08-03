@@ -4,53 +4,14 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills, Pathfinder2Companion,
   Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2ArchetypeSpells, Pathfinder2Rest, Pathfinder2Bonuses, Pathfinder2Info,
-  Pathfinder2Damages
+  Pathfinder2Damages, Pathfinder2Equipment
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createRoll, Combat, Feats
+  CharacterNavigation, Notes, Avatar, ContentWrapper, Conditions, Gold, createRoll, Combat, Feats
 } from '../../../components';
 import config from '../../../data/pathfinder2.json';
 import { useAppLocale } from '../../../context';
-import { translate, localize } from '../../../helpers';
-
-const TRANSLATION = {
-  en: {
-    simpleM: 'Simple melee weapon',
-    martialM: 'Martial melee weapon',
-    advancedM: 'Advanced melee weapon',
-    simpleR: 'Simple range weapon',
-    martialR: 'Martial range weapon',
-    unarmored: 'Clothes',
-    lightArmor: 'Light armor',
-    mediumArmor: 'Medium armor',
-    heavyArmor: 'Heavy armor',
-    shields: 'Shields'
-  },
-  ru: {
-    simpleM: 'Простое оружие ближнего боя',
-    martialM: 'Особое оружие ближнего боя',
-    advancedM: 'Экзотическое оружие ближнего боя',
-    simpleR: 'Простое дистанционное оружие ',
-    martialR: 'Особое дистанционное оружие',
-    unarmored: 'Одежда',
-    lightArmor: 'Лёгкая броня',
-    mediumArmor: 'Средняя броня',
-    heavyArmor: 'Тяжёлая броня',
-    shields: 'Щиты'
-  },
-  es: {
-    simpleM: 'Arma cuerpo a cuerpo simple',
-    martialM: 'Arma cuerpo a cuerpo marcial',
-    advancedM: 'Arma cuerpo a cuerpo avanzada',
-    simpleR: 'Arma a distancia simple',
-    martialR: 'Arma a distancia marcial',
-    unarmored: 'Ropa',
-    lightArmor: 'Armadura ligera',
-    mediumArmor: 'Armadura media',
-    heavyArmor: 'Armadura pesada',
-    shields: 'Escudos'
-  }
-}
+import { translate } from '../../../helpers';
 
 export const Pathfinder2 = (props) => {
   const size = createWindowSize();
@@ -61,17 +22,6 @@ export const Pathfinder2 = (props) => {
 
   const { Roll, openD20Test, openD20Attack } = createRoll();
   const [locale] = useAppLocale();
-
-  const simpleMFilter = (item) => item.kind === 'weapon' && item.info.type === 'melee' && item.info.weapon_skill === 'simple';
-  const martialMFilter = (item) => item.kind === 'weapon' && item.info.type === 'melee' && item.info.weapon_skill === 'martial';
-  const advancedMFilter = (item) => item.kind === 'weapon' && item.info.type === 'melee' && item.info.weapon_skill === 'advanced';
-  const simpleRFilter = (item) => item.kind === 'weapon' && item.info.type === 'range' && item.info.weapon_skill === 'simple';
-  const martialRFilter = (item) => item.kind === 'weapon' && item.info.type === 'range' && item.info.weapon_skill === 'martial';
-  const unarmoredFilter = (item) => item.kind === 'armor' && item.info.armor_skill === 'unarmored';
-  const lightFilter = (item) => item.kind === 'armor' && item.info.armor_skill === 'light';
-  const mediumFilter = (item) => item.kind === 'armor' && item.info.armor_skill === 'medium';
-  const heavyFilter = (item) => item.kind === 'armor' && item.info.armor_skill === 'heavy';
-  const shieldFilter = (item) => item.kind === 'shield';
 
   const ancestryFilter = (item) => item.origin === 'ancestry' || item.origin === 'static_race' || item.origin === 'static_subrace';
   const classFilter = (item) => item.origin === 'class' || item.origin === 'static_class' || item.origin === 'static_subclass';
@@ -179,28 +129,16 @@ export const Pathfinder2 = (props) => {
               />
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
-              <Equipment
+              <Pathfinder2Equipment
                 withWeight
                 withPrice
                 character={character()}
                 upgrades={['weapon', 'armor', 'shield']}
-                itemFilters={[
-                  { title: localize(TRANSLATION, locale()).simpleM, callback: simpleMFilter },
-                  { title: localize(TRANSLATION, locale()).martialM, callback: martialMFilter },
-                  { title: localize(TRANSLATION, locale()).advancedM, callback: advancedMFilter },
-                  { title: localize(TRANSLATION, locale()).simpleR, callback: simpleRFilter },
-                  { title: localize(TRANSLATION, locale()).martialR, callback: martialRFilter },
-                  { title: localize(TRANSLATION, locale()).unarmored, callback: unarmoredFilter },
-                  { title: localize(TRANSLATION, locale()).lightArmor, callback: lightFilter },
-                  { title: localize(TRANSLATION, locale()).mediumArmor, callback: mediumFilter },
-                  { title: localize(TRANSLATION, locale()).heavyArmor, callback: heavyFilter },
-                  { title: localize(TRANSLATION, locale()).shields, callback: shieldFilter }
-                ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </Equipment>
+              </Pathfinder2Equipment>
             </Match>
             <Match when={activeMobileTab() === 'classLevels'}>
               <Pathfinder2Leveling
@@ -328,28 +266,16 @@ export const Pathfinder2 = (props) => {
               />
             </Match>
             <Match when={activeTab() === 'equipment'}>
-              <Equipment
+              <Pathfinder2Equipment
                 withWeight
                 withPrice
                 character={character()}
                 upgrades={['weapon', 'armor', 'shield']}
-                itemFilters={[
-                  { title: localize(TRANSLATION, locale()).simpleM, callback: simpleMFilter },
-                  { title: localize(TRANSLATION, locale()).martialM, callback: martialMFilter },
-                  { title: localize(TRANSLATION, locale()).advancedM, callback: advancedMFilter },
-                  { title: localize(TRANSLATION, locale()).simpleR, callback: simpleRFilter },
-                  { title: localize(TRANSLATION, locale()).martialR, callback: martialRFilter },
-                  { title: localize(TRANSLATION, locale()).unarmored, callback: unarmoredFilter },
-                  { title: localize(TRANSLATION, locale()).lightArmor, callback: lightFilter },
-                  { title: localize(TRANSLATION, locale()).mediumArmor, callback: mediumFilter },
-                  { title: localize(TRANSLATION, locale()).heavyArmor, callback: heavyFilter },
-                  { title: localize(TRANSLATION, locale()).shields, callback: shieldFilter }
-                ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </Equipment>
+              </Pathfinder2Equipment>
             </Match>
             <Match when={activeTab() === 'classLevels'}>
               <Pathfinder2Leveling
