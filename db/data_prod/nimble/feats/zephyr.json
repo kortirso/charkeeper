@@ -182,7 +182,7 @@
     },
     "description": {
       "en": "When you Defend, you may first move up to half yourspeed away, taking no damage if you are now out of range or have Full Cover.",
-      "ru": "При защите вы можете сначала отойти на расстояние, равное половине вашей скорости, не получая урона, если вы теперь находитесь вне зоны досягаемости или полностью укрылись."
+      "ru": "При защите вы можете сначала отойти на расстояние, равное половине вашей скорости, и не получить урона, если вы теперь находитесь вне зоны досягаемости или полностью укрылись."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -199,7 +199,7 @@
     },
     "description": {
       "en": "You may spend 1 action to end any non-Wound condition on yourself.",
-      "ru": "Вы можете потратить 1 действие, чтобы снять с себя любое состояние, не являющееся ранением."
+      "ru": "Вы можете потратить 1 действие, чтобы снять с себя любое состояние, не являющееся раной."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -228,8 +228,8 @@
       "ru": "Я запрыгиваю ему на спину"
     },
     "description": {
-      "en": "While moving with your Windstep, if you move into the space of a creature your size or larger, you may jump onto its back.\n\nWhile on a creature this way, gain advantage on melee attacks against it, and any damage you avoid is dealt to it instead.",
-      "ru": "Во время движения с помощью способности *Ветровый шаг*, если вы окажетесь в пространстве существа вашего размера или больше, вы можете запрыгнуть ему на спину.\n\nНаходясь таким образом на существе, вы получаете преимущество при рукопашных атаках против него, а любой урон, которого вы избегаете, наносится ему вместо этого."
+      "en": "While moving with your **Windstep**, if you move into the space of a creature your size or larger, you may jump onto its back.\n\nWhile on a creature this way, gain advantage on melee attacks against it, and any damage you avoid is dealt to it instead.",
+      "ru": "Во время движения с помощью способности **Ветровый шаг**, если вы окажетесь в пространстве существа вашего размера или больше, вы можете запрыгнуть ему на спину.\n\nНаходясь таким образом на существе, вы получаете преимущество при рукопашных атаках против него, а любой урон, которого вы избегаете, наносится ему вместо этого."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -243,7 +243,7 @@
       "ru": "Кинетическое заграждение"
     },
     "description": {
-      "en": "Whenever you miss an attack, gain a cumulative +STR bonus to all damage you do for the rest of this encounter a disciplined martial artist does not miss on purpose).",
+      "en": "Whenever you miss an attack, gain a cumulative +STR bonus to all damage you do for the rest of this encounter (a disciplined martial artist does not miss on purpose).",
       "ru": "Каждый раз, когда вы промахиваетесь при атаке, вы получаете суммарный бонус +СИЛА ко всему наносимому вами урону до конца этого боя (если только дисциплинированный мастер боевых искусств не промахнется намеренно)."
     },
     "origin": "class",
@@ -289,7 +289,7 @@
     },
     "description": {
       "en": "Whenever you avoid all of the damage of a melee attack whether it misses or you Defend, you may swap places with the attacker and then choose another target that is now within the attack's reach, and they are hit instead.",
-      "ru": "Всякий раз, когда вы избегаете урона от рукопашной атаки, независимо от того, промахнулись вы или защитились, вы можете поменяться местами с атакующим и выбрать другую цель, которая теперь находится в пределах досягаемости атаки, и тогда удар будет нанесен по ней."
+      "ru": "Всякий раз, когда вы избегаете урона от рукопашной атаки, независимо от того, промахнулась ли атака или вы защитились, вы можете поменяться местами с атакующим и выбрать другую цель, которая теперь находится в пределах досягаемости атаки, и тогда удар будет нанесен по ней."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -304,7 +304,7 @@
     },
     "description": {
       "en": "When you receive healing for the first time on a turn, you may heal another target within 6 spaces HP equal to your STR.",
-      "ru": "При первом получении лечения за ход вы можете исцелить другую цель в пределах 6 клеток, увеличив её HP до значения, равного вашей силе."
+      "ru": "При первом получении лечения за ход вы можете исцелить другую цель в пределах 6 квадратов, увеличив её здоровье на значение, равное вашей силе."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -326,11 +326,6 @@
     "kind": "static",
     "conditions": { "selected_feature": "windstrider" }
   },
-
-
-
-
-
   {
     "slug": "reverberating_strikes",
     "title": {
@@ -339,7 +334,7 @@
     },
     "description": {
       "en": "You learn to focus your energy and transfer it as an additional concussive force into your foes. Add LVL bludgeoning damage to all of your melee attacks.",
-      "ru": "Вы научитесь концентрировать свою энергию и передавать её в виде дополнительной ударной силы по своим врагам. Добавьте дробящий урон LVL ко всем своим атакам ближнего боя."
+      "ru": "Вы научитесь концентрировать свою энергию и передавать её в виде дополнительной ударной силы по своим врагам. Добавьте дробящий урон LVL ко всем своим рукопашным атакам."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -353,8 +348,8 @@
       "ru": "Наполнение силой"
     },
     "description": {
-      "en": "Action: Make an unarmed strike against an ally and infuse them with a portion of your own strength instead of harming them. Expend any number of Hit Dice and heal them as you would heal yourself during a Field Rest.",
-      "ru": "Действие: Нанесите безоружный удар по союзнику и вместо нанесения ему урона наделите его частью своей собственной силы. Потратьте любое количество Костей здоровья и исцелите его так же, как вы исцеляли бы себя во время полевого отдыха."
+      "en": "Action: Make an unarmed strike against an ally and infuse them with a portion of your own strength instead of harming them. Expend any number of **Hit Dice** and heal them as you would heal yourself during a Field Rest.",
+      "ru": "Действие: Нанесите безоружный удар по союзнику и вместо нанесения ему урона наделите его частью своей собственной силы. Потратьте любое количество **Костей здоровья** и исцелите его так же, как вы исцеляли бы себя во время полевого отдыха."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -384,7 +379,7 @@
     },
     "description": {
       "en": "Once per round, you may turn any melee attack against you info a crit. Whenever you are crit, reduce the damage by half. The attacker takes the same amount of damage you took (ignoring armor). You may suffer 1 Wound to double the damage the enemy takes.",
-      "ru": "Один раз за раунд при атаке ближнего боя против вас вы можете изменить её на крит. Когда вас критуют, уменьшите кол-во урона в 2 раза. Атакующий получает такое же кол-во урона (игнорируйте броню). Вы можете получить 1 рану, чтобы удвоить урон, который получает нападающий."
+      "ru": "Один раз за раунд при рукопашной атаке против вас вы можете изменить её на крит. Когда вас критуют, уменьшите кол-во урона в 2 раза. Атакующий получает такое же кол-во урона (игнорируйте броню). Вы можете получить 1 рану, чтобы удвоить урон, который получает нападающий."
     },
     "origin": "subclass",
     "origin_value": "pain",
@@ -488,7 +483,7 @@
     "origin": "subclass",
     "origin_value": "pain",
     "kind": "static",
-    "conditions": { "level": 7 },
+    "conditions": { "level": 7 }
   },
   {
     "slug": "pain_sharpens_the_mind",
@@ -497,8 +492,8 @@
       "ru": "Боль обостряет ум."
     },
     "description": {
-      "en": "While you are **Bloodied**, gain advantage on the first attack you make each turn, and on all saves.",
-      "ru": "Пока вы находитесь в состоянии **Окровавлен**, вы получаете преимущество на первую атаку, которую совершаете каждый ход, и на все спасброски."
+      "en": "While you are *Bloodied*, gain advantage on the first attack you make each turn, and on all saves.",
+      "ru": "Пока вы находитесь в состоянии *Окровавлен*, вы получаете преимущество на первую атаку, которую совершаете каждый ход, и на все спасброски."
     },
     "origin": "subclass",
     "origin_value": "pain",

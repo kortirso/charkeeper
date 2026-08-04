@@ -75,7 +75,8 @@ end
 end
 
 [
-  'feats/ancestries.json', 'feats/berserker.json', 'feats/cheat.json', 'feats/hunter.json', 'feats/zephyr.json'
+  'feats/ancestries.json',
+  'feats/berserker.json', 'feats/cheat.json', 'feats/commander.json', 'feats/hunter.json', 'feats/zephyr.json'
 ].each do |filename|
   JSON.parse(File.read("db/data_prod/nimble/#{filename}")).each do |item|
     feat = ::Nimble::Feat.find_by(slug: item['slug'])

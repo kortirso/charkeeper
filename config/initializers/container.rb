@@ -215,6 +215,7 @@ module Charkeeper
       WebhooksContext::Telegram::HandleChatMemberWebhookService.new
     }
 
+    register('services.characters_context.nimble.refresh_feats') { CharactersContext::Nimble::RefreshFeats.new }
     register('services.characters_context.pathfinder2.refresh_feats') { CharactersContext::Pathfinder2::RefreshFeats.new }
     register('services.characters_context.daggerheart.refresh_feats') { CharactersContext::Daggerheart::RefreshFeats.new }
     register('services.characters_context.dnd5.refresh_feats') { CharactersContext::Dnd5::RefreshFeats.new }

@@ -29,8 +29,8 @@
       "ru": "Усиливающаяся ярость"
     },
     "description": {
-      "en": "If you are Raging at the beginning of your turn, roll 1 **Fury Die** for free.",
-      "ru": "Если в начале своего хода вы находитесь в состоянии ярости, бросьте 1 **Куб ярости** бесплатно."
+      "en": "If you are *Raging* at the beginning of your turn, roll 1 **Fury Die** for free.",
+      "ru": "Если в начале своего хода вы находитесь в состоянии *Ярости*, бросьте 1 **Куб ярости** бесплатно."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -61,8 +61,8 @@
       "ru": "Жажда крови"
     },
     "description": {
-      "en": "Expend 1 or more Fury Dice on your turn, move DEX spaces per die spent for free.",
-      "ru": "В свой ход потратьте 1 или более кубов ярости, перемещаясь на клетки ЛОВКОСТИ за каждый потраченный куб бесплатно."
+      "en": "Expend 1 or more **Fury Dice** on your turn, move DEX spaces per die spent for free.",
+      "ru": "В свой ход потратьте 1 или более **Кубов ярости** и переместитесь на DEX квадратов за каждый потраченный куб бесплатно."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -77,7 +77,7 @@
     },
     "description": {
       "en": "While Dying, you Rage automatically for free at the beginning of your turn, have a max of 2 actions instead of 1, and ignore the STR saves to make attacks.",
-      "ru": "Во время смерти вы автоматически бесплатно впадаете в ярость в начале своего хода, совершаете максимум 2 действия вместо 1 и игнорируете спасброски Силы при совершении атак."
+      "ru": "Находясь в состоянии *Умирающий*, вы автоматически бесплатно впадаете в состояние *Ярость* в начале своего хода, совершаете максимум 2 действия вместо 1 и игнорируете спасброски силы при совершении атак."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -88,24 +88,24 @@
     "slug": "savage_arsenal",
     "title": {
       "en": "Savage Arsenal",
-      "ru": "Дикий Арсенал"
+      "ru": "Дикий арсенал"
     },
     "description": {
-      "en": "Choose 1 ability from the Savage Arsenal- {{amount|1}}.",
-      "ru": "Выберите 1 способность из арсенала - {{amount|1}}."
+      "en": "Choose abilities from the **Savage Arsenal**- {{amount|1}}.",
+      "ru": "Выберите способности из **Дикого арсенала** - {{amount|1}}."
     },
     "origin": "class",
     "origin_value": "berserker",
     "kind": "many_from_list",
     "options": {
       "death_blow": { "en": "Death Blow", "ru": "Смертельный удар" },
-      "deathless_rage": { "en": "Deathless Rage", "ru": "Бессмертная Ярость" },
+      "deathless_rage": { "en": "Deathless Rage", "ru": "Бессмертная ярость" },
       "eager_for_battle": { "en": "Eager for Battle", "ru": "Жаждущий битвы" },
       "into_the_fray": { "en": "Into the Fray", "ru": "В гущу событий" },
       "mighty_endurance": { "en": "Mighty Endurance", "ru": "Могучая выносливость" },
       "more_blood": { "en": "MORE BLOOD!", "ru": "ЕЩЕ БОЛЬШЕ КРОВИ!" },
-      "rampage": { "en": "Rampage", "ru": "Ярость" },
-      "swift_fury": { "en": "Swift Fury", "ru": "Быстрая Ярость" },
+      "rampage": { "en": "Rampage", "ru": "Буйство" },
+      "swift_fury": { "en": "Swift Fury", "ru": "Быстрая ярость" },
       "thunderous_steps": { "en": "Thunderous Steps", "ru": "Грохочущие ступени" },
       "unstoppable_force": { "en": "Unstoppable Force", "ru": "Непреодолимая сила" },
       "whirlwind": { "en": "Whirlwind", "ru": "Вихрь" },
@@ -123,8 +123,8 @@
       "ru": "Смертельный удар"
     },
     "description": {
-      "en": "After you deal damage from a crit, you may expend any number of Fury Dice. Sum the dice and deal double that amount of damage.",
-      "ru": "После нанесения критического урона вы можете потратить любое количество кубов ярости. Сумма выпавших значений удваивает полученный урон."
+      "en": "After you deal damage from a crit, you may expend any number of **Fury Dice**. Sum the dice and deal double that amount of damage.",
+      "ru": "После нанесения критического урона вы можете потратить любое количество **Кубов ярости**. Вы наносите в 2 раза больше урона, чем сумма на кубах."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -135,7 +135,7 @@
     "slug": "deathless_rage",
     "title": {
       "en": "Deathless Rage",
-      "ru": "Бессмертная Ярость"
+      "ru": "Бессмертная ярость"
     },
     "description": {
       "en": "Once per turn, while *Dying*, you may suffer 1 Wound to gain 1 action.",
@@ -154,7 +154,7 @@
     },
     "description": {
       "en": "Gain advantage on Initiative. Move {{move|2*DEX}} spaces for free on your first turn each encounter.",
-      "ru": "Получите преимущество в инициативе. В каждом первом ходу в ходе столкновения вы бесплатно перемещаетесь на {{move|2*DEX}} клетки."
+      "ru": "Получите преимущество в инициативе. В каждом первом ходу в ходе столкновения вы бесплатно перемещаетесь на несколько квадратов - {{move|2*DEX}}."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -172,7 +172,7 @@
     },
     "description": {
       "en": "Action: Leap up to {{move|2*DEX}} spaces toward an enemy. If you land adjacent to at least 2 enemies, make an attack against 1 of them for free.",
-      "ru": "Действие: Совершите прыжок на расстояние до {{move|2*DEX}} клеток в сторону врага. Если вы приземлитесь рядом как минимум с двумя врагами, совершите бесплатную атаку по одному из них."
+      "ru": "Действие: Совершите прыжок на расстояние до нескольких квадратов в сторону врага - {{move|2*DEX}}. Если вы приземлитесь рядом как минимум с двумя врагами, совершите бесплатную атаку по одному из них."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -194,8 +194,9 @@
     },
     "origin": "class",
     "origin_value": "berserker",
-    "kind": "static",
-    "conditions": { "selected_feature": "mighty_endurance" }
+    "kind": "update_result",
+    "conditions": { "selected_feature": "mighty_endurance" },
+    "modifiers": { "wounds_max": { "type": "add", "value": 4 } }
   },
   {
     "slug": "more_blood",
@@ -204,8 +205,8 @@
       "ru": "ЕЩЕ БОЛЬШЕ КРОВИ!"
     },
     "description": {
-      "en": "Whenever an enemy crits you, gain 1 Fury Die.",
-      "ru": "Каждый раз, когда враг наносит критический урон, вы получаете 1 куб ярости."
+      "en": "Whenever an enemy crits you, gain 1 **Fury Die**.",
+      "ru": "Каждый раз, когда враг наносит критический урон, вы получаете 1 **Куб ярости**."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -216,7 +217,7 @@
     "slug": "rampage",
     "title": {
       "en": "Rampage",
-      "ru": "Ярость"
+      "ru": "Буйство"
     },
     "description": {
       "en": "Once per turn, after you land a hit, you may treat your next attack this turn as if you rolled that same amount instead of rolling again.",
@@ -231,11 +232,11 @@
     "slug": "swift_fury",
     "title": {
       "en": "Swift Fury",
-      "ru": "Быстрая Ярость"
+      "ru": "Быстрая ярость"
     },
     "description": {
-      "en": "Whenever you gain one or more Fury Dice, move up to DEX spaces for free, ignoring difficult terrain.",
-      "ru": "Каждый раз, когда вы получаете один или несколько кубов ярости, перемещайтесь бесплатно на клетки ловкости, игнорируя сложный рельеф."
+      "en": "Whenever you gain one or more **Fury Dice**, move up to DEX spaces for free, ignoring difficult terrain.",
+      "ru": "Каждый раз, когда вы получаете один или несколько **Кубов ярости**, вы можете переместиться на DEX квадратов, игнорируя сложный рельеф."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -249,8 +250,8 @@
       "ru": "Грохочущие ступени"
     },
     "description": {
-      "en": "After moving at least 4 spaces while Raging, you may deal STR Bludgeoning damage to all adjacent creatures where you stop.",
-      "ru": "Переместившись как минимум на 4 клетки в состоянии ярости, вы можете нанести дробящий урон силой всем соседним существам в точке вашего остановки."
+      "en": "After moving at least 4 spaces while *Raging*, you may deal STR Bludgeoning damage to all adjacent creatures where you stop.",
+      "ru": "Переместившись как минимум на 4 квадрата в состоянии *Ярости*, вы можете нанести STR дробящий урон всем соседним существам в точке вашего остановки."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -265,7 +266,7 @@
     },
     "description": {
       "en": "While *Dying* and *Raging*, taking damage causes 1 Wound (instead of 2) and critical hits inflict 2 Wounds (instead of 3).",
-      "ru": "В состоянии *Умирание* и *Ярость* получение урона наносит 1 рану (вместо 2), а критические попадания — 2 раны (вместо 3)."
+      "ru": "В состоянии *Умирающий* и *Ярость* получение урона наносит 1 рану (вместо 2), а критические попадания — 2 раны (вместо 3)."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -280,7 +281,7 @@
     },
     "description": {
       "en": "2 actions: Attack ALL targets within your melee weapon's reach.",
-      "ru": "2 действия: Атакуйте ВСЕ цели в пределах досягаемости вашего оружия ближнего боя."
+      "ru": "2 действия: Атакуйте ВСЕ цели в пределах досягаемости вашего рукопашного оружия."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -294,8 +295,8 @@
       "ru": "Ты следующий!"
     },
     "description": {
-      "en": "Action: While Raging, you can make a Might skill check to demoralize an enemy within Reach 12 (DC: their current HP). On a success, they immediately flee the battle.",
-      "ru": "Действие: Находясь в состоянии ярости, вы можете совершить проверку навыка «Мощь», чтобы деморализовать врага в пределах досягаемости 12 (сложность: его текущее количество HP). В случае успеха враг немедленно покидает поле боя."
+      "en": "Action: While *Raging*, you can make a Might skill check to demoralize an enemy within Reach 12 (DC: their current HP). On a success, they immediately flee the battle.",
+      "ru": "Действие: Находясь в состоянии *Ярости*, вы можете совершить проверку навыка мощь, чтобы деморализовать врага в пределах досягаемости 12 квадратов (УС: его текущее количество HP). В случае успеха враг немедленно покидает поле боя."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -309,8 +310,8 @@
       "ru": "ГЛУБОКАЯ ЯРОСТЬ"
     },
     "description": {
-      "en": "Dropping to O HP does not cause your Rage to end.",
-      "ru": "Падение уровня здоровья до нуля не приводит к прекращению ярости."
+      "en": "Dropping to O HP does not cause your *Rage* to end.",
+      "ru": "Падение уровня здоровья до нуля не приводит к прекращению *Ярости*."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -324,13 +325,13 @@
       "ru": "БЕЗГРАНИЧНАЯ ЯРОСТЬ"
     },
     "description": {
-      "en": "+1 to any 2 of your stats. Anytime you roll less than 6 on a Fury Die, change it to 6 instead.",
-      "ru": "+1 к любым двум вашим характеристикам. Всякий раз, когда на кубе Ярости выпадает меньше 6, измените значение на 6."
+      "en": "+1 to any 2 of your stats. Anytime you roll less than 6 on a **Fury Die**, change it to 6 instead.",
+      "ru": "+1 к любым двум вашим характеристикам. Всякий раз, когда на **Кубе ярости** выпадает меньше 6, измените значение на 6."
     },
     "origin": "class",
     "origin_value": "berserker",
     "kind": "static",
-    "conditions": { "level": 20 },
+    "conditions": { "level": 20 }
   },
   {
     "slug": "stone_resilience",
@@ -339,8 +340,8 @@
       "ru": "Каменная стойкость"
     },
     "description": {
-      "en": "Whenever you expend Fury Dice to reduce incoming damage, add the value of the die to the amount reduced.",
-      "ru": "Каждый раз, когда вы используете кубы ярости для уменьшения входящего урона, добавьте значение выпавшего куба к уменьшенной величине."
+      "en": "Whenever you expend **Fury Dice** to reduce incoming damage, add the value of the die to the amount reduced.",
+      "ru": "Каждый раз, когда вы используете **Кубы ярости** для уменьшения входящего урона, добавьте значение выпавшего куба к уменьшенной величине."
     },
     "origin": "subclass",
     "origin_value": "mountainheart",
@@ -354,8 +355,8 @@
       "ru": "Непреклонная стойкость"
     },
     "description": {
-      "en": "Whenever you expend your Hit Dice to recover HP, for every 10 HP you would recover, you may heal 1 Wound instead.",
-      "ru": "Каждый раз, когда вы тратите свои кости здоровья на восстановление HP, за каждые 10 HP, которые вы должны были бы восстановить, вы можете вместо этого залечить 1 рану."
+      "en": "Whenever you expend your **Hit Dice** to recover HP, for every 10 HP you would recover, you may heal 1 Wound instead.",
+      "ru": "Каждый раз, когда вы тратите свои **Кости здоровья** на восстановление HP, за каждые 10 HP, которые вы должны были бы восстановить, вы можете вместо этого залечить 1 рану."
     },
     "origin": "subclass",
     "origin_value": "mountainheart",
@@ -369,8 +370,8 @@
       "ru": "Несокрушимый"
     },
     "description": {
-      "en": "While Raging, if you would suffer your last Wound or other negative condition of your choice, you don't.",
-      "ru": "В состоянии ярости, если бы вы хотели получить последнюю рану или другое негативное состояние по своему выбору, этого бы не произошло."
+      "en": "While *Raging*, if you would suffer your last Wound or other negative condition of your choice, you don't.",
+      "ru": "В состоянии *Ярости*, если бы вы хотели получить последнюю рану или другое негативное состояние по своему выбору, этого бы не произошло."
     },
     "origin": "subclass",
     "origin_value": "mountainheart",
@@ -386,8 +387,8 @@
       "ru": "Ярость Титана"
     },
     "description": {
-      "en": "After you miss an attack or are crit by an enemy, Rage for free.",
-      "ru": "После промаха или критического удара противника, используйте режим ярости бесплатно."
+      "en": "After you miss an attack or are crit by an enemy, *Rage* for free.",
+      "ru": "После промаха или критического удара противника, вы получаете состояние *Ярость* бесплатно."
     },
     "origin": "subclass",
     "origin_value": "mountainheart",
@@ -402,7 +403,7 @@
     },
     "description": {
       "en": "While Dying, if an attack against you would be a crit, the attack is rerolled instead (when-crit abilities, such as Titan's Fury, still trigger).",
-      "ru": "Во время смерти, если атака по вам должна была бы быть критической, бросок куба перебрасывается (при этом способности, срабатывающие при критическом попадании, такие как Ярость Титана, всё ещё активируются)."
+      "ru": "Находясь в состоянии *Умирающий*, если атака по вам должна была бы быть критической, бросок куба перебрасывается (при этом способности, срабатывающие при критическом попадании всё ещё активируются)."
     },
     "origin": "subclass",
     "origin_value": "mountainheart",
@@ -416,8 +417,8 @@
       "ru": "Кровавое безумие"
     },
     "description": {
-      "en": "Once per turn, while Raging, whenever you crit or kill an enemy, change 1 Fury Die to the maximum.",
-      "ru": "Один раз за ход, находясь в состоянии ярости, всякий раз, когда вы наносите критический удар или убиваете врага, измените значение 1 куба ярости на максимальное."
+      "en": "Once per turn, while *Raging*, whenever you crit or kill an enemy, change 1 **Fury Die** to the maximum.",
+      "ru": "Один раз за ход, находясь в состоянии *Ярости*, всякий раз, когда вы наносите критический удар или убиваете врага, измените значение 1 **Куба ярости** на максимальное."
     },
     "origin": "subclass",
     "origin_value": "red_mist",
@@ -431,8 +432,8 @@
       "ru": "Осознание дикости"
     },
     "description": {
-      "en": "Advantage on *Perception* checks to notice or track down blood.\n\nBlindsight 2 while Raging: you ignore the Blinded condition and can see through darkness and Invisibility within that Range.",
-      "ru": "Преимущество при проверках *Восприятия* для обнаружения или отслеживания крови.\n\nСлепота 2 в состоянии ярости: вы игнорируете состояние ослепления и можете видеть сквозь темноту и невидимость в пределах этого радиуса."
+      "en": "Advantage on perception checks to notice or track down blood.\n\nBlindsight 2 while Raging: you ignore the Blinded condition and can see through darkness and Invisibility within that Range.",
+      "ru": "Преимущество при проверках навыка восприятие для обнаружения или отслеживания крови.\n\nСлепое зрение 2 в состоянии ярости: вы игнорируете состояние слепоты и можете видеть сквозь темноту и невидимость в пределах этого радиуса."
     },
     "origin": "subclass",
     "origin_value": "red_mist",
@@ -446,8 +447,8 @@
       "ru": "Неудержимая жестокость"
     },
     "description": {
-      "en": "While Raging, you may gain 1 Wound to reroll any attack or save.",
-      "ru": "В состоянии ярости вы можете получить 1 рану, чтобы перебросить любой бросок атаки или спасброска."
+      "en": "While *Raging*, you may gain 1 Wound to reroll any attack or save.",
+      "ru": "В состоянии *Ярости* вы можете получить 1 рану, чтобы перебросить любой бросок атаки или спасброска."
     },
     "origin": "subclass",
     "origin_value": "red_mist",
@@ -461,8 +462,8 @@
       "ru": "Оппортунистическое безумие"
     },
     "description": {
-      "en": "While Raging, you can make opportunity attacks without disad-vantage, and you may make them whenever an enemy enters your melee weapon's reach.",
-      "ru": "В состоянии ярости вы можете совершать атаки по возможности без каких-либо недостатков, и вы можете совершать их всякий раз, когда противник попадает в зону досягаемости вашего оружия ближнего боя."
+      "en": "While *Raging*, you can make opportunity attacks without disadvantage, and you may make them whenever an enemy enters your melee weapon's reach.",
+      "ru": "В состоянии *Ярости* вы можете совершать атаки при возможности без каких-либо помех, и вы можете совершать их всякий раз, когда противник попадает в зону досягаемости вашего рукопашного оружия."
     },
     "origin": "subclass",
     "origin_value": "red_mist",
@@ -476,12 +477,12 @@
       "ru": "Нападение"
     },
     "description": {
-      "en": "Once per round, while Raging, gain +2 speed. You may move for free.",
-      "ru": "Один раз за раунд, находясь в состоянии ярости, получайте +2 к скорости. Вы можете перемещаться бесплатно."
+      "en": "Once per round, while *Raging*, gain +2 speed. You may move for free.",
+      "ru": "Один раз за раунд, находясь в состоянии *Ярости*, получайте +2 к скорости. Вы можете перемещаться бесплатно."
     },
     "origin": "subclass",
     "origin_value": "red_mist",
     "kind": "static",
     "conditions": { "level": 15 }
-  },
+  }
 ]

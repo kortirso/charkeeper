@@ -40,13 +40,13 @@
     },
     "description": {
       "en": "Choose {{amount|2}} **Thrill of the Hunt** abilities.\n\nGain a charge to use these abilities during that encounter whenever:\n\n- Your quarry dies.\n\n- You hit your quarry in melee or crit your quarry at range.",
-      "ru": "Выберите {{amount|2}} способности **Охотничий азарт**.\n\nПолучите заряд для использования этих способностей во время этого боя всякий раз, когда:\n\n- Ваша добыча погибает.\n\n- Вы наносите удар своей добыче в ближнем бою или критический удар по ней на расстоянии."
+      "ru": "Выберите несколько способностей **Охотничий азарт** - {{amount|2}}.\n\nПолучите заряд для использования этих способностей во время этого боя всякий раз, когда:\n\n- Ваша добыча погибает.\n\n- Вы наносите удар своей добыче в ближнем бою или критический удар по ней на расстоянии."
     },
     "origin": "class",
     "origin_value": "hunter",
     "kind": "many_from_list",
     "options": {
-      "addling_arrow": { "en": "Addling Arrow", "ru": "Одурманивающая Стрела" },
+      "addling_arrow": { "en": "Addling Arrow", "ru": "Одурманивающая стрела" },
       "come_get_some": { "en": "Come Get Some!", "ru": "Приходите и попробуйте!" },
       "decoy": { "en": "Decoy", "ru": "Приманка" },
       "fleet_feet": { "en": "Fleet Feet", "ru": "Быстрые ноги" },
@@ -70,7 +70,7 @@
     "slug": "addling_arrow",
     "title": {
       "en": "Addling Arrow",
-      "ru": "Одурманивающая Стрела"
+      "ru": "Одурманивающая стрела"
     },
     "description": {
       "en": "Action: Attack with a ranged weapon. The next attack the target makes must be against the closest other creature, chosen at random.",
@@ -88,8 +88,8 @@
       "ru": "Приходите и попробуйте!"
     },
     "description": {
-      "en": "Action: Attack a target. It is Taunted by you until the end of their next turn.",
-      "ru": "Действие: Атакуйте цель. Вы будете провоцировать её до конца её следующего хода."
+      "en": "Action: Attack a target. It is *Taunted* by you until the end of their next turn.",
+      "ru": "Действие: Атакуйте цель. Она *спровоцирована* до конца её следующего хода."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -119,7 +119,7 @@
     },
     "description": {
       "en": "Move up to your speed for free, ignoring difficult terrain.",
-      "ru": "Набирайте скорость, соответствующую вашему уровню, бесплатно, игнорируя сложный рельеф."
+      "ru": "Вы двигаетесь с вашей скоростью бесплатно, игнорируя сложный рельеф."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -130,11 +130,11 @@
     "slug": "grease_trap",
     "title": {
       "en": "Grease Trap",
-      "ru": "Жироуловитель"
+      "ru": "Скользкая ловушка"
     },
     "description": {
-      "en": "Reaction (when an enemy moves adjacent to you or an ally within 6 spaces): Target falls Prone, is vulnerable to the next fire damage it takes, and is treated as if it is Smoldering.",
-      "ru": "Реакция (когда враг перемещается в пределах 6 клеток от вас или союзника): Цель падает ничком, становится уязвимой для следующего получаемого ею урона от огня и рассматривается как тлеющая."
+      "en": "Reaction (when an enemy moves adjacent to you or an ally within 6 spaces): Target falls *Prone*, is vulnerable to the next fire damage it takes, and is treated as if it is *Smoldering*.",
+      "ru": "Реакция (когда враг перемещается в пределах 6 квадратов от вас или союзника): Цель *падает ничком*, становится уязвимой для следующего получаемого ею урона от огня и рассматривается как *Тлеющая*."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -162,11 +162,11 @@
     "slug": "heavy_shot",
     "title": {
       "en": "Heavy Shot",
-      "ru": "Тяжелый выстрел"
+      "ru": "Тяжёлый выстрел"
     },
     "description": {
       "en": "Half range. Action: Attack with a ranged weapon and push your target: 4 spaces for a small creature, 2 for a medium creature, 1 for a large creature.",
-      "ru": "Половина дальности. Действие: Атакуйте дальнобойным оружием и оттолкните цель на 4 клетки для маленького существа, на 2 для среднего существа, на 1 для большого существа."
+      "ru": "Половина дальности. Действие: Атакуйте дальнобойным оружием и оттолкните цель на 4 квадрата для маленького существа, на 2 для среднего существа, на 1 для большого существа."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -213,8 +213,8 @@
       "ru": "Прижимающий выстрел"
     },
     "description": {
-      "en": "Spend 3 actions shooting your quarry. They are Restrained until they can escape (DC {{dc|10+WIL}}).",
-      "ru": "Потратьте 3 действия на стрельбу по своей добыче. Она будет обездвижена, пока не сможет сбежать (УС {{dc|10+WIL}})"
+      "en": "Spend 3 actions shooting your quarry. They are *Restrained* until they can escape (DC {{dc|10+WIL}}).",
+      "ru": "Потратьте 3 действия на стрельбу по своей добыче. Она будет *обездвижена*, пока не сможет сбежать (УС {{dc|10+WIL}})"
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -232,7 +232,7 @@
     },
     "description": {
       "en": "Reaction (when an enemy moves adjacent to you or an ally within 6 spaces): Move them back 1 space, they are Restrained until they can escape (DC {{dc|10+WIL}}).",
-      "ru": "Реакция (когда враг перемещается в пределах 6 клеток от вас или вашего союзника): Отведите его на 1 клетку назад, он будет обездвижен до тех пор, пока не сможет сбежать (УС {{dc|10+WIL}})."
+      "ru": "Реакция (когда враг перемещается в пределах 6 квадратов от вас или вашего союзника): Отведите его на 1 квадрат назад, он будет обездвижен до тех пор, пока не сможет сбежать (УС {{dc|10+WIL}})."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -252,7 +252,7 @@
     },
     "description": {
       "en": "Action: If you have not moved this turn and your quarry is 4 or more spaces away, attack them for double damage.",
-      "ru": "Действие: Если вы не двигались в этом ходу, а ваша цель находится на расстоянии 4 или более клеток, атакуйте её, нанеся двойной урон."
+      "ru": "Действие: Если вы не двигались в этом ходу, а ваша цель находится на расстоянии 4 или более квадратов, атакуйте её, нанеся двойной урон."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -327,12 +327,13 @@
     },
     "description": {
       "en": "+2 speed; gain a climbing speed.",
-      "ru": "+2 к скорости; увеличение скорости подъема."
+      "ru": "+2 к скорости; вы получаете скорость лазания."
     },
     "origin": "class",
     "origin_value": "hunter",
     "kind": "static",
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "modifiers": { "speed": { "type": "add", "value": 2 } }
   },
   {
     "slug": "hunter_resolve",
@@ -356,8 +357,8 @@
       "ru": "Финальный захват"
     },
     "description": {
-      "en": "Action: Spend 1 **Thrill of the Hunt** charge to make a melee attack against your Bloodied quarry. Turn it into a crit and double the damage of your **Hunter's Mark**. If they survive, they crit you back.",
-      "ru": "Действие: Потратьте 1 заряд **Охотничьего азарта**, чтобы совершить рукопашную атаку по вашей окровавленной жертве. Превратите её в критическую атаку и удвойте урон от вашей **Метки охотника**. Если жертва выживет, она нанесёт вам ответный критический удар."
+      "en": "Action: Spend 1 **Thrill of the Hunt** charge to make a melee attack against your *Bloodied* quarry. Turn it into a crit and double the damage of your **Hunter's Mark**. If they survive, they crit you back.",
+      "ru": "Действие: Потратьте 1 заряд **Охотничьего азарта**, чтобы совершить рукопашную атаку по вашей *окровавленной* жертве. Превратите её в критическую атаку и удвойте урон от вашей **Метки охотника**. Если жертва выживет, она нанесёт вам ответный критический удар."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -387,7 +388,7 @@
     },
     "description": {
       "en": "Whenever you see one or more allies make an opportunity attack, you may also make a ranged opportunity attack against the same target.",
-      "ru": "Каждый раз, когда вы видите, что один или несколько союзников совершают атаку по возможности, вы также можете совершить атаку дальнего боя по возможности против той же цели."
+      "ru": "Каждый раз, когда вы видите, что один или несколько союзников совершают атаку при возможности, вы также можете совершить атаку дальнего боя по возможности против той же цели."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -395,14 +396,14 @@
     "conditions": { "level": 9 }
   },
   {
-    "slug": "Veteran Stalker.",
+    "slug": "veteran_stalker",
     "title": {
-      "en": "Veteran Stalker.",
-      "ru": "Ветеран-сталкер."
+      "en": "Veteran Stalker",
+      "ru": "Ветеран-сталкер"
     },
     "description": {
       "en": "Gain a **Thrill of the Hunt** charge whenever you are first Bloodied in an encounter and for every Wound you gain.",
-      "ru": "Получайте заряд **Охотничьего азарта** каждый раз, когда получаете ранение в бою, и за каждое полученное ранение."
+      "ru": "Получайте заряд **Охотничьего азарта** каждый раз, когда вы первый раз становитесь *Окровавленным* в бою, и за каждую полученную рану."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -410,19 +411,20 @@
     "conditions": { "level": 10 }
   },
   {
-    "slug": "Keen Eye, Steady Hand",
+    "slug": "keen_eye_steady_hand",
     "title": {
       "en": "Keen Eye, Steady Hand",
       "ru": "Острый глаз, твердая рука"
     },
     "description": {
       "en": "Add WIL to your ranged weapon damage.",
-      "ru": "Добавьте силу воли к урону от вашего дальнобойного оружия."
+      "ru": "Добавьте WIL к урону от вашего дальнобойного оружия."
     },
     "origin": "class",
     "origin_value": "hunter",
-    "kind": "static",
-    "conditions": { "level": 10 }
+    "kind": "update_result",
+    "conditions": { "level": 10 },
+    "modifiers": { "str-range": { "type": "add", "value": "wil" }, "dex-range": { "type": "add", "value": "wil" } }
   },
   {
     "slug": "keen_sight",
@@ -432,7 +434,7 @@
     },
     "description": {
       "en": "Advantage on Perception checks.",
-      "ru": "Преимущество при проверках Восприятия."
+      "ru": "Преимущество при проверках навыка восприятие."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -554,7 +556,7 @@
     },
     "description": {
       "en": "Whenever you mark a creature, you may also mark another creature within 6 spaces of them for free.",
-      "ru": "Каждый раз, когда вы отмечаете существо, вы также можете бесплатно отметить другое существо, находящееся в пределах 6 клеток от него."
+      "ru": "Каждый раз, когда вы отмечаете существо, вы также можете бесплатно отметить другое существо, находящееся в пределах 6 квадратов от него."
     },
     "origin": "subclass",
     "origin_value": "shadowpath",
@@ -589,13 +591,14 @@
     "origin": "subclass",
     "origin_value": "wild_heart",
     "kind": "static",
-    "conditions": { "level": 3 }
+    "conditions": { "level": 3 },
+    "modifiers": { "hit_die": { "type": "set", "value": 10 } }
   },
   {
     "slug": "i_have_high_ground",
     "title": {
       "en": "I Have the High Ground",
-      "ru": "У меня преимущество высоты."
+      "ru": "У меня преимущество высоты"
     },
     "description": {
       "en": "When you roll Initiative or gain one or more **Thrill of the Hunt** charges, move up to half your speed for free, ignoring difficult terrain.",
@@ -614,7 +617,7 @@
     },
     "description": {
       "en": "Whenever you Safe Rest in a location near where plants or fungi can grow, you may spend a day collecting healing herbs to craft a number of Healing Salves equal to your WIL.",
-      "ru": "Каждый раз, когда вы отдыхаете в безопасном месте, где могут расти растения или грибы, вы можете провести день, собирая целебные травы, чтобы изготовить количество целебных мазей, равное вашему показателю силы воли."
+      "ru": "Каждый раз, когда вы отдыхаете в безопасном месте, где могут расти растения или грибы, вы можете провести день, собирая целебные травы, чтобы изготовить количество целебных мазей, равное вашему WIL."
     },
     "origin": "subclass",
     "origin_value": "wild_heart",
@@ -628,15 +631,18 @@
       "ru": "Лечебная мазь"
     },
     "description": {
-      "en": "Action: Heal yourself or an adjacent creature WIL d6 HP. Only you or another experienced Herbalist may administer these.",
-      "ru": "Действие: Исцелите себя или находящееся рядом существо d6 HP. Только вы или другой опытный травник можете применять эти способности."
+      "en": "Action: Heal yourself or an adjacent creature {{amount|WIL }}d6 HP. Only you or another experienced Herbalist may administer these.",
+      "ru": "Действие: Исцелите себя или находящееся рядом существо на {{amount|WIL }}d6 HP. Только вы или другой опытный травник можете применять эти способности."
     },
     "origin": "subclass",
     "origin_value": "wild_heart",
     "kind": "static",
     "conditions": { "level": 7 },    
     "limit_refresh": "safe_rest",
-    "info": { "limit": 1 }
+    "info": { "limit": 1 },
+    "description_eval_variables": {
+      "amount": "wil"
+    }
   },
   {
     "slug": "ha_over_here",
@@ -660,12 +666,16 @@
       "ru": "Непревзойденный выживальщик"
     },
     "description": {
-      "en": "Gain +WIL armor. When you attack with a ranged weapon, you may first move half your speed for free.",
-      "ru": "Получите бонус к броне +WIL. При атаке дальнобойным оружием вы можете сначала бесплатно переместиться на расстояние, равное половине вашей скорости."
+      "en": "Gain +{{amount|WIL}} armor. When you attack with a ranged weapon, you may first move half your speed for free.",
+      "ru": "Получите бонус +{{amount|WIL}} к броне. При атаке дальнобойным оружием вы можете сначала бесплатно переместиться на расстояние, равное половине вашей скорости."
     },
     "origin": "subclass",
     "origin_value": "wild_heart",
     "kind": "static",
-    "conditions": { "level": 15 }
+    "conditions": { "level": 15 },
+    "description_eval_variables": {
+      "amount": "wil"
+    },
+    "modifiers": { "armor": { "type": "add", "value": "wil" } }
   }
 ]

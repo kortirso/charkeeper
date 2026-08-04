@@ -26,7 +26,7 @@
     },
     "description": {
       "en": "Once per turn, when you hit a *Distracted* target with a melee attack, you may change the **Primary Die** to whatever you like.",
-      "ru": "Один раз за ход при попадании атакой ближнего боя в цель, которая *Отвлечена*, вы можете изменить **Основной куб** на любой по своему усмотрению."
+      "ru": "Один раз за ход при попадании рукопашной атакой в цель, которая *Отвлечена*, вы можете изменить **Основной куб** на любой по своему усмотрению."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -49,7 +49,7 @@
     "conditions": { "level": 2 },
     "limit_refresh": "safe_rest",
     "info": { "limit": 1 }
-  }
+  },
   {
     "slug": "thieves_cant",
     "title": {
@@ -72,14 +72,14 @@
       "ru": "Коварная способность"
     },
     "description": {
-      "en": "Choose an Underhanded Ability - {{amount|1}}.",
-      "ru": "Выберите одну из нечестных способностей - {{amount|1}}."
+      "en": "Choose an **Underhanded Ability** - {{amount|1}}.",
+      "ru": "Выберите несколько **Коварных способностей** - {{amount|1}}."
     },
     "origin": "class",
     "origin_value": "cheat",
     "kind": "many_from_list",
     "options": {
-      "creative_accounting": { "en": "Creative Accounting", "ru": "Креативный бухгалтерский учет" },
+      "creative_accounting": { "en": "Creative Accounting", "ru": "Креативный подсчёт" },
       "exploit_weakness": { "en": "Exploit Weakness", "ru": "Использовать слабости" },
       "feinting_attack": { "en": "Feinting Attack", "ru": "Обманный удар" },
       "how_you_get_here": { "en": "How'd YOU get here?!", "ru": "Как ТЫ сюда попал?!" },
@@ -99,7 +99,7 @@
     "slug": "creative_accounting",
     "title": {
       "en": "Creative Accounting",
-      "ru": "Креативный бухгалтерский учет"
+      "ru": "Креативный подсчёт"
     },
     "description": {
       "en": "Gain up to INT actions now. The next time you would gain actions, subtract the number gain. You cannot use this 2 turns in a row.",
@@ -118,7 +118,7 @@
     },
     "description": {
       "en": "Action: Make a contested INT check against an enemy. If you win, you can use **Vicious Opportunist** against them, even if they are not Distracted. This lasts for 1 minute or until you use this ability against another target.",
-      "ru": "Действие: Совершите проверку Интеллекта против противника. Если вы выиграете, вы можете использовать **Злобный оппортунист** против него, даже если он не отвлечен. Это длится 1 минуту или до тех пор, пока вы не используете эту способность против другой цели."
+      "ru": "Действие: Совершите проверку интеллекта против противника. Если вы выиграете, вы можете использовать **Злобный оппортунист** против него, даже если он не отвлечен. Это длится 1 минуту или до тех пор, пока вы не используете эту способность против другой цели."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -133,7 +133,7 @@
     },
     "description": {
       "en": "If you miss for the 2nd time in a single round, you may change the primary die roll to any result instead.",
-      "ru": "Если вы промахнетесь второй раз за раунд, вы можете изменить результат основного броска куба на любой другой."
+      "ru": "Если вы промахнетесь второй раз за раунд, вы можете изменить результат **Основного куба** на любой другой."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -147,8 +147,8 @@
       "ru": "Как ТЫ сюда попал?!"
     },
     "description": {
-      "en": "2 actions: **Teleport** up to 4 spaces away, adjacent to a Distracted target, and make a melee attack against them. If you crit, you may **teleport** again.",
-      "ru": "2 действия: **Телепортируйтесь** на расстояние до 4 клеток, рядом с отвлеченной целью, и совершите рукопашную атаку по ней. Если вы нанесете критический удар, вы можете **телепортироваться** снова."
+      "en": "2 actions: Teleport up to 4 spaces away, adjacent to a Distracted target, and make a melee attack against them. If you crit, you may teleport again.",
+      "ru": "2 действия: Телепортируйтесь на расстояние до 4 квадратов, рядом с отвлеченной целью, и совершите рукопашную атаку по ней. Если вы нанесете критический удар, вы можете телепортироваться снова."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -163,7 +163,7 @@
     },
     "description": {
       "en": "When an ally within 4 spaces is crit, you may turn invisible until the end of your next turn and then move up to half your speed for free.",
-      "ru": "Когда союзник в пределах 4 клеток получает критический удар, вы можете стать невидимым до конца своего следующего хода, а затем бесплатно переместиться на расстояние, равное половине вашей скорости."
+      "ru": "Когда союзник в пределах 4 квадратов получает критический удар, вы можете стать невидимым до конца своего следующего хода, а затем бесплатно переместиться на расстояние, равное половине вашей скорости."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -177,13 +177,17 @@
       "ru": "Введение в заблуждение"
     },
     "description": {
-      "en": "Gain INT armor. Whenever you Defend, you may halve the damage instead.",
-      "ru": "Вы получаете броню INT. При каждом применении защиты можете уменьшить получаемый урон вдвое."
+      "en": "Gain +{{dice|INT}} armor. Whenever you Defend, you may halve the damage instead.",
+      "ru": "Вы получаете бонус +{{dice|INT}} к броне. При каждом применении защиты можете уменьшить получаемый урон вдвое вместо обычного уменьшения."
     },
     "origin": "class",
     "origin_value": "cheat",
     "kind": "static",
-    "conditions": { "selected_feature": "misdirection" }
+    "conditions": { "selected_feature": "misdirection" },
+    "modifiers": { "armor": { "type": "add", "value": "int" } },
+    "description_eval_variables": {
+      "armor": "int"
+    }
   },
   {
     "slug": "steal_tempo",
@@ -208,7 +212,7 @@
     },
     "description": {
       "en": "Action: When you crit an enemy with medium armor, sunder their armor. Until the start of your next turn, ALL melee attacks against that target ignore its armor.",
-      "ru": "Действие: При критическом попадании по противнику со средней броней, пробьёте его броню. До начала вашего следующего хода ВСЕ рукопашные атаки по этой цели игнорируют её броню."
+      "ru": "Действие: При критическом попадании по противнику со средней бронёй, вы раскалываете её. До начала вашего следующего хода ВСЕ рукопашные атаки по этой цели игнорируют её броню."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -219,11 +223,11 @@
     "slug": "sunder_armor_heavy",
     "title": {
       "en": "Sunder Armor (Heavy)",
-      "ru": "Раскол брони (тяжелый)"
+      "ru": "Раскол брони (тяжёлый)"
     },
     "description": {
       "en": "Req. **Sunder Armor (Medium)**. Your **Sunder Armor** ability now also applies to enemies wearing heavy armor.",
-      "ru": "Требуется способность **Раскол брон (средний)**. Теперь ваша способность **Раскол брони** применяется и к врагам в тяжелой броне."
+      "ru": "Требуется способность **Раскол брони (средний)**. Теперь ваша способность **Раскол брони** применяется и к врагам в тяжёлой броне."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -246,20 +250,14 @@
     "conditions": { "selected_feature": "trickshot" }
   },
   {
-    "origin": "class",
-    "origin_value": "cheat",
-    "kind": "static",
-    "conditions": { "level": 4 }
-  },
-  {
     "slug": "twist_the_blade",
     "title": {
       "en": "Twist the Blade",
       "ru": "Повернуть клинок"
     },
     "description": {
-      "en": "Action: Change one of your Sneak Attack dice to whatever you like.",
-      "ru": "Действие: Измените значение одного из ваших кубов скрытой атаки на любое другое по вашему желанию."
+      "en": "Action: Change one of your **Sneak Attack** dice to whatever you like.",
+      "ru": "Действие: Измените значение одного из ваших кубов **Скрытой атаки** на любое другое по вашему желанию."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -307,8 +305,8 @@
       "ru": "Всё было не так!"
     },
     "description": {
-      "en": "Action: After a Distracted enemy attacks you you may change the Primary Die roll to whatever you like (changing the die to the minimum value counts as a miss).",
-      "ru": "Действие: После того, как отвлеченный враг атакует вас, вы можете изменить результат броска основного куба на любой желаемый (изменение результата на минимальное значение считается промахом)."
+      "en": "Action: After a *Distracted* enemy attacks you you may change the **Primary Die** roll to whatever you like (changing the die to the minimum value counts as a miss).",
+      "ru": "Действие: После того, как *отвлеченный* враг атакует вас, вы можете изменить результат броска **Основного куба** на любой желаемый (изменение результата на минимальное значение считается промахом)."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -324,9 +322,13 @@
       "ru": "Высшая казнь"
     },
     "description": {
-      "en": " + 1 to any 2 of your stats. When you attack with a blade, you do not require targets to be Distracted to trigger **Vicious Opportunist**.",
-      "ru": "+1 к любым двум вашим характеристикам. При атаке клинком вам не требуется, чтобы цель была отвлечена для активации способности **Злобный оппортунист**."
-    }
+      "en": "+1 to any 2 of your stats. When you attack with a blade, you do not require targets to be *Distracted* to trigger **Vicious Opportunist**.",
+      "ru": "+1 к любым двум вашим характеристикам. При атаке клинком вам не требуется, чтобы цель была *отвлечена* для активации способности **Злобный оппортунист**."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "level": 20 }
   },
   {
     "slug": "amidst_all_this_commotion",
@@ -335,8 +337,8 @@
       "ru": "Среди всей этой суматохи..."
     },
     "description": {
-      "en": "If a creature dies while you Sneak Attack them, you may turn Invisible until you attack again or until the beginning of your next turn.",
-      "ru": "Если существо погибает во время вашей скрытой атаки, вы можете стать невидимым до следующей атаки или до начала вашего следующего хода."
+      "en": "If a creature dies while you **Sneak Attack** them, you may turn Invisible until you attack again or until the beginning of your next turn.",
+      "ru": "Если существо погибает во время вашей **Скрытой атаки**, вы можете стать невидимым до следующей атаки или до начала вашего следующего хода."
     },
     "origin": "subclass",
     "origin_value": "silent_blade",
@@ -351,7 +353,7 @@
     },
     "description": {
       "en": "Advantage on Stealth checks when you are at full health.",
-      "ru": "Преимущество при проверках Скрытности, когда у вас полное здоровье."
+      "ru": "Вы получаете преимущество при проверках скрытности, когда у вас полное здоровье."
     },
     "origin": "subclass",
     "origin_value": "silent_blade",
@@ -365,8 +367,8 @@
       "ru": "Хитрый удар"
     },
     "description": {
-      "en": "When you land a Sneak Attack, you may force the target to make a STR save (DC {{dc|10+INT}}). On a failure, instead of rolling your Sneak Attack dice, they deal the maximum amount of damage (if your target saves, regain 1 use).",
-      "ru": "При нанесении скрытой атаки вы можете заставить цель совершить спасбросок Силы (УС {{dc|10+INT}}). В случае неудачи, вместо броска кубов скрытой атаки, цель наносит максимальный урон (если цель успешно совершит спасбросок, вы получите 1 единицу использования)."
+      "en": "When you land a **neak Attack**, you may force the target to make a STR save (DC {{dc|10+INT}}). On a failure, instead of rolling your Sneak Attack dice, they deal the maximum amount of damage (if your target saves, regain 1 use).",
+      "ru": "При нанесении **Скрытой атаки** вы можете заставить цель совершить спасбросок силы (УС {{dc|10+INT}}). В случае неудачи, вместо броска кубов скрытой атаки, цель наносит максимальный урон (если цель успешно совершит спасбросок, вы восстанавливаете 1 единицу использования)."
     },
     "origin": "subclass",
     "origin_value": "silent_blade",
@@ -382,11 +384,11 @@
     "slug": "professional_skulker",
     "title": {
       "en": "Professional Skulker",
-      "ru": "Профессиональный Скрытник"
+      "ru": "Профессиональный скрытник"
     },
     "description": {
       "en": "Gain a climbing speed and advantage on Stealth checks (replaces **Leave No Trace**).",
-      "ru": "Получите дополнительную скорость подъема и преимущество при проверках Скрытности (заменяет навык **Не оставляй следов**)."
+      "ru": "Получите скорость лазанья и преимущество при проверках скрытности (заменяет **Не оставляй следов**)."
     },
     "origin": "subclass",
     "origin_value": "silent_blade",
@@ -415,8 +417,8 @@
       "ru": "Удар ниже пояса"
     },
     "description": {
-      "en": "When you Sneak Attack, you may spend 2 additional actions to Incapacitate your target for their next turn on a failed STR save (DC {{dc|10+INT}}). Save or fail, they are Taunted by you until you drop to O HP.",
-      "ru": "При использовании скрытой атаки вы можете потратить 2 дополнительных действия, чтобы обездвижить цель на следующий ход при неудачном спасброске Силы (УС {{dc|10+INT}}). Независимо от результата спасброска, цель будет провоцирована вами до тех пор, пока ваше здоровье не упадет до 0 HP."
+      "en": "When you **Sneak Attack**, you may spend 2 additional actions to Incapacitate your target for their next turn on a failed STR save (DC {{dc|10+INT}}). Save or fail, they are *Taunted* by you until you drop to O HP.",
+      "ru": "При использовании **Скрытой атаки** вы можете потратить 2 дополнительных действия, чтобы обездвижить цель на следующий ход при неудачном спасброске силы (УС {{dc|10+INT}}). Независимо от результата спасброска, цель будет *спровоцирована* вами до тех пор, пока ваше здоровье не упадет до 0 HP."
     },
     "origin": "subclass",
     "origin_value": "scoundrel",
@@ -448,15 +450,15 @@
       "ru": "Карманный песок"
     },
     "description": {
-      "en": "When you Defend against a melee attack, Blind the attacker until the start of their next turn and force them to reroll the attack (Blinded creatures attack with disadvantage).",
-      "ru": "При защите от рукопашной атаки ослепите атакующего до начала его следующего хода и заставьте его перебросить кубы атаки (ослепленные существа атакуют с помехой)."
+      "en": "When you Defend against a melee attack, *Blind* the attacker until the start of their next turn and force them to reroll the attack (Blinded creatures attack with disadvantage).",
+      "ru": "При защите от рукопашной атаки *ослепите* атакующего до начала его следующего хода и заставьте его перебросить кубы атаки (ослепленные существа атакуют с помехой)."
     },
     "origin": "subclass",
     "origin_value": "scoundrel",
     "kind": "static",
     "conditions": { "level": 7 },
     "limit_refresh": "combat_rest",
-    "info": { "limit": 2 },
+    "info": { "limit": 2 }
   },
   {
     "slug": "escape_plan",
@@ -466,7 +468,7 @@
     },
     "description": {
       "en": "When you would drop to O HP or gain a Wound, you don't. Instead, you turn Invisible for 1 minute or until you attack.",
-      "ru": "Когда ваше здоровье падает до 0 или вы получаете ранение, этого не происходит. Вместо этого вы становитесь невидимым на 1 минуту или до тех пор, пока не совершите атаку."
+      "ru": "Когда ваше здоровье падает до 0 или вы получаете рану, этого не происходит. Вместо этого вы становитесь невидимым на 1 минуту или до тех пор, пока не совершите атаку."
     },
     "origin": "subclass",
     "origin_value": "scoundrel",
@@ -481,11 +483,13 @@
     },
     "description": {
       "en": "Attacks you make this round don't miss, you crit on 1 less than normally needed, and you gain LVL temp HP.",
-      "ru": "Ваши атаки в этом раунде не промахиваются, вы наносите критический удар на 1 меньше, чем обычно требуется, и получаете временное здоровье уровня LVL."
+      "ru": "Ваши атаки в этом раунде не промахиваются, вы наносите критический удар на 1 меньше, чем обычно требуется, и получаете LVL временного здоровья."
     },
     "origin": "subclass",
     "origin_value": "scoundrel",
     "kind": "static",
-    "conditions": { "level": 15 }
-  },
+    "conditions": { "level": 15 },
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 }
+  }
 ]

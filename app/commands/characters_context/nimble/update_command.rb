@@ -5,7 +5,8 @@ module CharactersContext
     class UpdateCommand < BaseCommand
       include Deps[
         cache: 'cache.avatars',
-        add_feat: 'commands.characters_context.nimble.feats.add'
+        add_feat: 'commands.characters_context.nimble.feats.add',
+        refresh_feats: 'services.characters_context.nimble.refresh_feats'
       ]
 
       # rubocop: disable Metrics/BlockLength
@@ -35,6 +36,7 @@ module CharactersContext
           optional(:languages).value(:array).each(:string)
           optional(:conditions).value(:array).each(:string)
           optional(:separate_shield).filled(:bool)
+          optional(:selected_features).hash
         end
       end
       # rubocop: enable Metrics/BlockLength
@@ -60,19 +62,20 @@ module CharactersContext
         end
       end
 
-      def do_persist(input)
+      def do_persist(input) # rubocop: disable Metrics/AbcSize
         input[:character].data = input[:character].data.attributes.merge(input.except(:character, :file, :name).stringify_keys)
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
-        refresh_feats(input) if input.key?(:level)
-        refresh_subclass_feats(input) if input.key?(:subclass)
+        add_feats(input) if input.key?(:level)
+        add_subclass_feats(input) if input.key?(:subclass)
+        refresh_feats.call(character: input[:character]) if input.key?(:selected_features)
         upload_avatar(input)
 
         { result: input[:character] }
       end
 
-      def refresh_feats(input)
+      def add_feats(input)
         feats_relation(input).each { |feat| add_feat.call({ character: input[:character], feat: feat }) }
       end
 
@@ -89,13 +92,13 @@ module CharactersContext
         result
       end
 
-      def refresh_subclass_feats(input)
+      def add_subclass_feats(input)
         subclass_feats_relation(input).each { |feat| add_feat.call({ character: input[:character], feat: feat }) }
       end
 
       def subclass_feats_relation(input)
         data = input[:character].data
-        ::Nimble::Feat.where(origin: 2, origin_value: data.subclass).where("conditions ->> 'level' <= '#{data.level}'")
+        ::Nimble::Feat.where(origin: 2, origin_value: data.subclass).where("conditions ->> 'level' = '#{data.level}'")
       end
 
       def upload_avatar(input)

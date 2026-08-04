@@ -121,22 +121,37 @@ class NimbleDecorator < ApplicationDecoratorV2
   end
 
   def unarmed_attack
+    return zephyr_unarmed_attack if main_class == 'zephyr'
+
     {
       name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
       attack: '1d4',
       damage: 1 + modified_abilities['str'],
       damage_bonus: 0,
       damage_types: ['b'],
-      ready_to_use: true
+      ready_to_use: true,
+      critable: false
     }
   end
 
-  def calculate_attack(item)
+  def zephyr_unarmed_attack
+    {
+      name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
+      damage: '1d4',
+      damage_bonus: modified_abilities['str'],
+      damage_types: ['b'],
+      ready_to_use: true,
+      critable: true
+    }
+  end
+
+  def calculate_attack(item) # rubocop: disable Metrics/AbcSize
     {
       name: item[:name] || translate(item[:items_name]),
       range: item.dig(:items_info, 'range'),
       damage: item.dig(:items_info, 'damage'),
-      damage_bonus: modified_abilities[item.dig(:items_info, 'weapon_skill')],
+      damage_bonus: modified_abilities[item.dig(:items_info, 'weapon_skill')] +
+        @bonuses["#{item.dig(:items_info, 'weapon_skill')}-#{item.dig(:items_info, 'type')}"].to_i,
       damage_type: item.dig(:items_info, 'damage_type'),
       notes: item[:notes] || [],
       ready_to_use: item.dig(:states, 'hands').to_i.positive?,
@@ -240,7 +255,13 @@ class NimbleDecorator < ApplicationDecoratorV2
   end
 
   def final_formula_variables
-    @final_formula_variables ||= formula_variables.merge({ key: key, wounds_spent: wounds_spent })
+    @final_formula_variables ||=
+      formula_variables.merge({
+        key: key,
+        wounds_spent: wounds_spent,
+        combat_tactic: combat_tactic.to_i,
+        combat_dice: combat_dice.to_i
+      })
   end
 
   def apply_features
@@ -273,7 +294,7 @@ class NimbleDecorator < ApplicationDecoratorV2
       value: feature.value,
       selected_count: feature.selected_count,
       tokens: feature.tokens,
-      tokens_max: tokens_max,
+      tokens_max: feature.tokens ? (tokens_max || 'none') : nil,
       options: feature.feat.options,
       dice_settings: feature.feat.dices&.transform_values { |value|
         formula.call(formula: value, variables: final_formula_variables)
@@ -293,7 +314,7 @@ class NimbleDecorator < ApplicationDecoratorV2
       formula_value = feature.feat.description_eval_variables[variable]
       next result.gsub!("{{#{value}}}", default) unless formula_value
 
-      formula_result = formula.call(formula: formula_value, variables: formula_variables)
+      formula_result = formula.call(formula: formula_value, variables: final_formula_variables)
       next result.gsub!("{{#{value}}}", default) unless formula_result
 
       result.gsub!("{{#{value}}}", formula_result.to_s)

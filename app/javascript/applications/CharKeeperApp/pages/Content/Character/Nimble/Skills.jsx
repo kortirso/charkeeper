@@ -1,6 +1,6 @@
 import { createEffect, createSignal, For, Show, batch } from 'solid-js';
 
-import { ErrorWrapper, Levelbox, EditWrapper, Button, Dice, GuideWrapper } from '../../../../components';
+import { ErrorWrapper, EditWrapper, Button, Dice, GuideWrapper } from '../../../../components';
 import config from '../../../../data/nimble.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
@@ -125,7 +125,6 @@ export const NimbleSkills = (props) => {
                       <For each={character().skills.filter((item) => item.ability === slug)}>
                         {(skill) =>
                           <div class="fallout-skill">
-                            <Levelbox classList="mr-2" value={skill.level} />
                             <p class="uppercase mr-4">{skill.ability}</p>
                             <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>
                               {skill.name}

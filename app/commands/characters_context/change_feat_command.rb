@@ -8,8 +8,13 @@ module CharactersContext
       character_daggerheart_update: 'commands.characters_context.daggerheart.update',
       character_dc20_update: 'commands.characters_context.dc20.update',
       character_pathfinder2_update: 'commands.characters_context.pathfinder2.update',
+      character_nimble_update: 'commands.characters_context.nimble.update',
       refresh_daggerheart_feats: 'services.characters_context.daggerheart.refresh_feats'
     ]
+
+    SELECTED_FEATURES_CLASSES = [
+      'Dnd2024::Character', 'Daggerheart::Character', 'Dc20::Character', 'Pathfinder2::Character', 'Nimble::Character'
+    ].freeze
 
     use_contract do
       config.messages.namespace = :character_feat
@@ -32,7 +37,7 @@ module CharactersContext
       input[:key] =
         case input[:character_feat].character.type
         when 'Dnd5::Character' then :selected_feats
-        when 'Dnd2024::Character', 'Daggerheart::Character', 'Dc20::Character', 'Pathfinder2::Character' then :selected_features
+        when *SELECTED_FEATURES_CLASSES then :selected_features
         end
       return if input[:key].nil?
 
@@ -64,6 +69,7 @@ module CharactersContext
       when 'Daggerheart::Character' then character_daggerheart_update
       when 'Dc20::Character' then character_dc20_update
       when 'Pathfinder2::Character' then character_pathfinder2_update
+      when 'Nimble::Character' then character_nimble_update
       end
     end
 
