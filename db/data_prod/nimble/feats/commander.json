@@ -1,0 +1,506 @@
+[
+  {
+    "slug": "coordinated_strike",
+    "title": {
+      "en": "Coordinated Strike",
+      "ru": "Скоординированный удар"
+    },
+    "description": {
+      "en": "Ones per round. Free action: you and an ally within 6 spaces both immediately make a weapon attack or cast a cantrip for free.",
+      "ru": "Один раз за раунд. Свободное действие: вы и ваш союзник в пределах 6 клеток немедленно совершаете бесплатную атаку оружием или применяете заклинание нулевого уровня."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "limit_refresh": "safe_rest",
+    "info": { "limit": "if (level >= 17, int + 3, if (level >= 13, int + 2, if (level >= 9, int + 1, int)))" }
+  },
+  {
+    "slug": "commander_orders",
+    "title": {
+      "en": "Commander's Orders",
+      "ru": "Приказы командира"
+    },
+    "description": {
+      "en": "Choose {{amount|2}} **Commander's Orders**.",
+      "ru": "Выберите {{amount|2}} **Приказа командира**."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "many_from_list",
+    "options": {
+      "face_me": { "en": "Face Me!", "ru": "Посмотри мне в лицо!" },
+      "hold_the_line": { "en": "Hold the Line!", "ru": "Держать строй!" },
+      "i_can_do_this_all_day": { "en": "I Can Do This ALL DAY!", "ru": "Я могу делать это весь день!" },
+      "move_it": { "en": "Move it! Move it! ", "ru": "Двигайся! Двигайся!" },
+      "reposition": { "en": "Reposition!", "ru": "Переместитесь!" },
+      "": { "en": "", "ru": "" }
+    },
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "amount": "if (level >= 2, 3, 1)"
+    }
+  },
+  {
+    "slug": "face_me",
+    "title": {
+      "en": "Face Me!",
+      "ru": "Посмотри мне в лицо!"
+    },
+    "description": {
+      "en": "Reaction (after an ally is crit within 12 spaces): Taunt that enemy until you drop to 0 HP.",
+      "ru": "Реакция (после критического удара по союзнику в пределах 12 клеток): Провоцируйте этого врага, пока ваше здоровье не упадет до 0."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "face_me" }
+  },
+  {
+    "slug": "hold_the_line",
+    "title": {
+      "en": "Hold the Line!",
+      "ru": "Держать строй!"
+    },
+    "description": {
+      "en": "Reaction (when an ally drops to 0 HP): Command them to continue the fight! Set their HP to 3x your LVL.",
+      "ru": "Реакция (когда у союзника остается 0 HP): Прикажите ему продолжить бой! Установите его HP равным 3-кратному вашему уровню."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "hold_the_line" },
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "i_can_do_this_all_day",
+    "title": {
+      "en": "I Can Do This ALL DAY!",
+      "ru": "Я могу делать это весь день!"
+    },
+    "description": {
+      "en": "Reaction (when you would drop to 0 HP): You may expend any number of Hit Dice and set your HP to the sum rolled instead (do not add your STR).",
+      "ru": "Реакция (когда ваши очки здоровья упадут до 0): Вы можете потратить любое количество костей здоровья и установить свои очки здоровья равными выпавшей сумме (не добавляйте свою силу)."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "i_can_do_this_all_day" },
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "move_it",
+    "title": {
+      "en": "Move it! Move it! ",
+      "ru": "Двигайся! Двигайся!"
+    },
+    "description": {
+      "en": "When you roll Initiative you may give yourself and an ally advantage on the roll and +3 speed for 1 round.",
+      "ru": "При броске Инициативы вы можете дать себе и союзнику преимущество при броске, а также +3 к скорости на 1 раунд."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "move_it" }
+  },
+  {
+    "slug": "reposition",
+    "title": {
+      "en": "Reposition!",
+      "ru": "Переместитесь!"
+    },
+    "description": {
+      "en": "Action/Reaction (on an ally's turn): Command 1 ally to move up to their speed (or 2 allies up to half their speed) for free.",
+      "ru": "Действие/Реакция (в ход союзника): Прикажите 1 союзнику переместиться на расстояние, равное его скорости (или 2 союзникам на расстояние, равное половине их скорости), бесплатно."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "reposition" }
+  },
+  {
+    "slug": "field_medic",
+    "title": {
+      "en": "Field Medic",
+      "ru": "Полевой медик"
+    },
+    "description": {
+      "en": "Roll 1 additional die for any health potion you administer. Whenever you or an ally spends any number of Hit Dice to recover HP, if you spent at least ten minutes examining their wounds, they can add your Examination bonus to the HP recovered.",
+      "ru": "При использовании любого зелья здоровья бросьте 1 дополнительный куб. Каждый раз, когда вы или ваш союзник тратите любое количество кубов здоровья на восстановление HP, если вы потратили не менее десяти минут на осмотр их ран, они могут добавить ваш бонус к осмотру к восстановленному HP."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "fit_for_any_battlefield",
+    "title": {
+      "en": "Fit for Any Battlefield",
+      "ru": "Подходит для любого поля боя"
+    },
+    "description": {
+      "en": "Choose a Combat Tactic - {{amount|1}}. When you roll Initiative, gain STR Combat Dice, each a d6. Once per attack you may expend a Combat Die to perform a special maneuver. Combat Dice are lost when combat ends.",
+      "ru": "Выберите боевую тактику - {{amount|1}}. При броске Инициативы вы получаете боевые кубы Силы, каждый размером d6. Один раз за атаку вы можете потратить боевой куб для выполнения особого приема. Боевые кубы теряются по окончании боя."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "kind": "many_from_list",
+    "options": {
+      "commanding_presence": { "en": "Commanding Presence", "ru": "Властное присутствие" },
+      "heavy_strike": { "en": "Heavy Strike", "ru": "Тяжелый удар" },
+      "inerrant_strike": { "en": "Inerrant Strike", "ru": "Безошибочный удар" },
+      "lunging_strike": { "en": "Lunging Strike", "ru": "Выпад" },
+      "sweeping_strike": { "en": "Sweeping Strike", "ru": "Массированная забастовка" }
+    },
+    "description_eval_variables": {
+      "amount": "if (level >= 2, 3, 1)"
+    }
+  },
+  {
+    "slug": "commanding_presence",
+    "title": {
+      "en": "Commanding Presence",
+      "ru": "Властное присутствие"
+    },
+    "description": {
+      "en": "Action: Shout a command up to 2 words long at an enemy. On a failed WIL save (DC {{dc|10+STR}}), they must spend their entire next turn obeying it to the best of their ability, provided it is not obviously harmful to themselves. They then become immune to this effect for 1 day.",
+      "ru": "Действие: Выкрикните команду длиной до 2 слов в адрес врага. При неудачной проверке Воли (УС {{dc|10+STR}}) враг должен потратить весь свой следующий ход на то, чтобы выполнить команду наилучшим образом, при условии, что она не представляет для него очевидной опасности. После этого он становится невосприимчив к этому эффекту на 1 день."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "commanding_presence" },
+    "description_eval_variables": {
+      "dc": "10 + str"}
+  },
+  {
+    "slug": "heavy_strike",
+    "title": {
+      "en": "Heavy Strike",
+      "ru": "Тяжелый удар"
+    },
+    "description": {
+      "en": "When you hit, push a Medium creature STR spaces and deal extra damage equal to a roll of your Combat Die. A Small creature is pushed twice as far; Large, pushed half as far (round down).",
+      "ru": "При попадании существо среднего размера (STR) отталкивается на несколько клеток и наносит дополнительный урон, равный результату броска вашей боевой кости. Существо маленького размера отталкивается вдвое дальше; существо большого размера — вдвое дальше (округляется в меньшую сторону)."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "heavy_strike" }
+  },
+  {
+    "slug": "inerrant_strike",
+    "title": {
+      "en": "Inerrant Strike",
+      "ru": "Безошибочный удар"
+    },
+    "description": {
+      "en": "Reroll a missed attack, add 1 to the Primary Die, and deal extra damage equal to a roll of your Combat Die.",
+      "ru": "Перебросьте куб при промахе, добавьте 1 к основному кубу и нанесите дополнительный урон, равный результату броска вашего боевого куба."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "inerrant_strike" }
+  },
+  {
+    "slug": "lunging_strike",
+    "title": {
+      "en": "Lunging Strike",
+      "ru": "Выпад"
+    },
+    "description": {
+      "en": "Gain +1 Reach on an attack and deal extra damage equal to 2x a roll of your **Combat Die**.",
+      "ru": "Получите +1 к дальности атаки и нанесите дополнительный урон, равный удвоенному значению вашего **Боевого куба**."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "lunging_strike" }
+  },
+  {
+    "slug": "sweeping_strike",
+    "title": {
+      "en": "Sweeping Strike",
+      "ru": "Массированная забастовка"
+    },
+    "description": {
+      "en": "2 actions: Select any contiguous area within your weapon's Reach and damage ALL targets there. This attack does not miss on a 1.",
+      "ru": "Достигает цели. Эта атака не промахивается при выпадении единицы."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "sweeping_strike" }
+  },
+  {
+    "slug": "master_commander",
+    "title": {
+      "en": "Master Commander",
+      "ru": "Мастер-командир"
+    },
+    "description": {
+      "en": "When you roll Initiative, regain 1 spent use of Coordinated Strike (it is lost if not spent during that encounter). Attacks made from your Coordinated Strikes also now ignore disadvantage.",
+      "ru": "При броске Инициативы восстановите 1 потраченное использование Скоординированного Удара (оно теряется, если не было потрачено в ходе этого боя). Атаки, совершаемые с помощью Скоординированных Ударов, теперь также игнорируют помехи."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "combat_tactics",
+    "title": {
+      "en": "Combat Tactics",
+      "ru": "Боевая тактика"
+    },
+    "description": {
+      "en": "Your Combat Dice are now d8s.",
+      "ru": "Теперь ваши боевые кубы — это d8."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "Weapon Mastery",
+    "title": {
+      "en": "Weapon Mastery",
+      "ru": "Мастерство владения оружием"
+    },
+    "description": {
+      "en": "You may sheathe a weapon and draw a different one 2 x/round for free.\n\nChoose a weapon type to specialize in - {{amount|1}}.",
+      "ru": "Вы можете убрать одно оружие и достать другое 2 раза за раунд бесплатно.\n\nВыберите типы оружия, на котором будете специализироваться - {{amount|1}}."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "kind": "many_from_list",
+    "options": {
+      "slashing": { "en": "Slashing", "ru": "Резаный" },
+      "bludgeoning": { "en": "Bludgeoning", "ru": "Удары кулаком" },
+      "piercing": { "en": "Piercing", "ru": "Пронзительный" }
+    },
+    "description_eval_variables": {
+      "amount": "if (level >= 2, 3, 1)"
+    }
+  },
+  {
+    "slug": "slashing",
+    "title": {
+      "en": "Slashing",
+      "ru": "Резаный"
+    },
+    "description": {
+      "en": "Your attacks with Slashing weapons cannot miss unarmored enemies.",
+      "ru": "Ваши атаки рубящим оружием не могут промахнуться по незащищенным противникам."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "slashing" }
+  },
+  {
+    "slug": "bludgeoning",
+    "title": {
+      "en": "Bludgeoning",
+      "ru": "Удары кулаком"
+    },
+    "description": {
+      "en": "When your primary die rolls a 7 or higher with a bludgeoning weapon, ignore Heavy Armor.",
+      "ru": "Если при использовании дробящего оружия ваш основной куб выпадает на 7 или больше, игнорируйте тяжелую броню."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "bludgeoning" }
+  },
+  {
+    "slug": "piercing",
+    "title": {
+      "en": "Piercing",
+      "ru": "Пронзительный"
+    },
+    "description": {
+      "en": "Your attacks with piercing weapons ignore Medium Armor.",
+      "ru": "Ваши атаки колющим оружием игнорируются. Средняя броня."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "selected_feature": "piercing" }
+  },
+  {
+    "slug": "unparalleledt_actics",
+    "title": {
+      "en": "Unparalleled Tactics",
+      "ru": "Непревзойденная тактика"
+    },
+    "description": {
+      "en": "The first time each encounter you use **Coordinated Strike**, an ally who can hear you also gains 1 action to use on their next turn.",
+      "ru": "При первом применении **Скоординированного удара** в каждом бою союзник, который вас слышит, также получает 1 действие, которое он может использовать в свой следующий ход."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "captain_of_legions",
+    "title": {
+      "en": "Captain of Legions",
+      "ru": "Капитан легионов"
+    },
+    "description": {
+      "en": "+1 to any 2 of your stats. The first time each encounter you use **Coordinated Strike**, EVERY ally within 12 spaces gains + 1 action (replaces **Unparalleled Tactics**).",
+      "ru": "+1 к любым двум вашим характеристикам. При первом использовании **Скоординированного удара** в каждом бою КАЖДЫЙ союзник в радиусе 12 клеток получает +1 действие (заменяет **Непревзойденную тактику**)."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  },
+  {
+    "slug": "armor_master",
+    "title": {
+      "en": "Armor Master",
+      "ru": "Мастер доспехов"
+    },
+    "description": {
+      "en": "You are proficient with plate armor.",
+      "ru": "Вы владеете навыками ношения пластинчатых доспехов."
+    },
+    "origin": "subclass",
+    "origin_value": "bulwark",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "Shield Expert",
+    "title": {
+      "en": "Shield Expert",
+      "ru": "Эксперт по щитам"
+    },
+    "description": {
+      "en": "While wearing a shield, you may Defend 2x each round. The first time each round you block all of the damage from an attack, you may make an opportunity attack against the attacker for free.",
+      "ru": "Находясь под защитой, вы можете защищаться 2 раза за раунд. В первый раз за раунд, когда вы блокируете весь урон от атаки, вы можете бесплатно совершить дополнительную атаку против нападающего."
+    },
+    "origin": "subclass",
+    "origin_value": "bulwark",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "juggernaut",
+    "title": {
+      "en": "Juggernaut",
+      "ru": "Джаггернаут"
+    },
+    "description": {
+      "en": "When you use **Coordinated Strike**, you deal extra damage equal to your armor, and you can add 1 to your primary die.",
+      "ru": "При использовании **Скоординированного удара** вы наносите дополнительный урон, равный вашей броне, и можете добавить 1 к своему основному кубу."
+    },
+    "origin": "subclass",
+    "origin_value": "bulwark",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "taunting_strike",
+    "title": {
+      "en": "Taunting Strike",
+      "ru": "Насмешливый удар"
+    },
+    "description": {
+      "en": "Ones per turn, you may Taunt a creature you hit until the end of their next turn.",
+      "ru": "Один раз за ход вы можете спровоцировать существо, которое вы поразили, до конца его следующего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "bulwark",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "shield_wall",
+    "title": {
+      "en": "Shield Wall",
+      "ru": "Стена щитов"
+    },
+    "description": {
+      "en": "Allies within 2 spaces gain ALL the benefits of the shield you have equipped.",
+      "ru": "Союзники, находящиеся в пределах 2 клеток, получают ВСЕ преимущества экипированного вами щита."
+    },
+    "origin": "subclass",
+    "origin_value": "bulwark",
+    "kind": "static",
+    "conditions": { "level": 15 }
+  },
+  {
+    "slug": "advance",
+    "title": {
+      "en": "Advance!",
+      "ru": "Продвигать!"
+    },
+    "description": {
+      "en": "Ones per round, after you move toward an enemy, gain advantage on the first melee attack you make against it. When you use your Coordinated Strike, you and all allies within 12 spaces can first move up to half their speed for free.",
+      "ru": "Один раз за раунд, после приближения к врагу, вы получаете преимущество при первой рукопашной атаке по нему. При использовании скоординированного удара вы и все союзники в радиусе 12 клеток можете сначала бесплатно переместиться на расстояние, равное половине их скорости."
+    },
+    "origin": "subclass",
+    "origin_value": "vanguard",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "experienced_commander",
+    "title": {
+      "en": "Experienced Commander",
+      "ru": "Опытный командир"
+    },
+    "description": {
+      "en": "Your Coordinated Strike may target 1 additional ally. Gain +1 use of **Coordinated Strike**/Safe Rest.",
+      "ru": "Ваш **Скоординированный удар** может быть нацелен на 1 дополнительного союзника. Получите +1 использование **Скоординированного удара**/безопасного отдыха."
+    },
+    "origin": "subclass",
+    "origin_value": "vanguard",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "survey_the_battlefield",
+    "title": {
+      "en": "Survey the Battlefield",
+      "ru": "Осмотрите поле боя"
+    },
+    "description": {
+      "en": "When you roll Initiative, regain 1 use of **Coordinated Strike**. +1 max Combat Dice.",
+      "ru": "При броске Инициативы восстановите 1 использование **Скоординированного удара**. +1 к максимальному количеству боевых кубов."
+    },
+    "origin": "subclass",
+    "origin_value": "vanguard",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "as_one",
+    "title": {
+      "en": "As One!",
+      "ru": "Как единое целое!"
+    },
+    "description": {
+      "en": "Attacks made with your **Coordinated Strike** also grant advantage and ignore all disadvantage. Your chosen allies gain 1 additional action to use on their next turn.",
+      "ru": "Атаки, совершаемые с помощью вашего **Скоординированного удара**, также дают преимущество и игнорируют все недостатки. Ваши выбранные союзники получают 1 дополнительное действие, которое они могут использовать в свой следующий ход."
+    },
+    "origin": "subclass",
+    "origin_value": "vanguard",
+    "kind": "static",
+    "conditions": { "level": 15 }
+  }
+]

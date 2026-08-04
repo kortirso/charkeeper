@@ -160,6 +160,178 @@
     }
   },
   {
+    "slug": "airshift",
+    "title": {
+      "en": "Airshift",
+      "ru": "Воздушное движение"
+    },
+    "description": {
+      "en": "You cannot be Grappled while conscious. While moving, you may travel across all terrain as normal ground, ignoring all ill effects (e.g., walls/ceilings, water, treetops, lava, spikes, clouds).",
+      "ru": "Вас нельзя схватить, если вы находитесь в сознании. Во время движения вы можете перемещаться по любой местности как по обычной земле, игнорируя все негативные воздействия (например, стены/потолки, вода, верхушки деревьев, лава, шипы, облака)."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "selected_feature": "airshift" }
+  },
+  {
+    "slug": "blur",
+    "title": {
+      "en": "Blur",
+      "ru": "Размытие"
+    },
+    "description": {
+      "en": "When you Defend, you may first move up to half yourspeed away, taking no damage if you are now out of range or have Full Cover.",
+      "ru": "При защите вы можете сначала отойти на расстояние, равное половине вашей скорости, не получая урона, если вы теперь находитесь вне зоны досягаемости или полностью укрылись."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "selected_feature": "blur" },
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "bodily_discipline",
+    "title": {
+      "en": "Bodily Discipline",
+      "ru": "Телесная дисциплина"
+    },
+    "description": {
+      "en": "You may spend 1 action to end any non-Wound condition on yourself.",
+      "ru": "Вы можете потратить 1 действие, чтобы снять с себя любое состояние, не являющееся ранением."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "selected_feature": "bodily_discipline" }
+  },
+  {
+    "slug": "enduring_soul",
+    "title": {
+      "en": "Enduring Soul",
+      "ru": "Непреходящая душа"
+    },
+    "description": {
+      "en": "Each time you roll Initiative, gain Hit Dice equal to the actions you get on your first turn.\n\nThese Hit Dice expire at the end of combat if unused.",
+      "ru": "Каждый раз, когда вы бросаете куб инициативы, вы получаете количество костей здоровья, равное количеству действий, которые вы совершаете в свой первый ход.\n\nЭти кости здоровья исчезают в конце боя, если не используются."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "selected_feature": "enduring_soul" }
+  },
+  {
+    "slug": "i_jump_on_his_back",
+    "title": {
+      "en": "I Jump On His Back",
+      "ru": "Я запрыгиваю ему на спину"
+    },
+    "description": {
+      "en": "While moving with your Windstep, if you move into the space of a creature your size or larger, you may jump onto its back.\n\nWhile on a creature this way, gain advantage on melee attacks against it, and any damage you avoid is dealt to it instead.",
+      "ru": "Во время движения с помощью способности *Ветровый шаг*, если вы окажетесь в пространстве существа вашего размера или больше, вы можете запрыгнуть ему на спину.\n\nНаходясь таким образом на существе, вы получаете преимущество при рукопашных атаках против него, а любой урон, которого вы избегаете, наносится ему вместо этого."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "selected_feature": "i_jump_on_his_back" }
+  },
+  {
+    "slug": "kinetic_barrage",
+    "title": {
+      "en": "Kinetic Barrage",
+      "ru": "Кинетическое заграждение"
+    },
+    "description": {
+      "en": "Whenever you miss an attack, gain a cumulative +STR bonus to all damage you do for the rest of this encounter a disciplined martial artist does not miss on purpose).",
+      "ru": "Каждый раз, когда вы промахиваетесь при атаке, вы получаете суммарный бонус +СИЛА ко всему наносимому вами урону до конца этого боя (если только дисциплинированный мастер боевых искусств не промахнется намеренно)."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "selected_feature": "kinetic_barrage" }
+  },
+  {
+    "slug": "mighty_soul",
+    "title": {
+      "en": "Mighty Soul",
+      "ru": "Могучая душа"
+    },
+    "description": {
+      "en": "You cannot be moved against your will. Whenever you would fail a saving throw, you may gain a Wound in order to add your STR to the result you rolled. You may repeat this any number of times.",
+      "ru": "Вас нельзя переместить против вашей воли. Всякий раз, когда вы проваливаете спасбросок, вы можете получить ранение, чтобы добавить свою СИЛ к результату, который вы выпали. Повторять это можно сколько угодно раз."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "selected_feature": "mighty_soul" }
+  },
+  {
+    "slug": "quickstrike",
+    "title": {
+      "en": "Quickstrike",
+      "ru": "Быстрый удар"
+    },
+    "description": {
+      "en": "When you **Interpose**, you may first make an unarmed strike against the enemy for free.",
+      "ru": "При использовании способности **Вмешательство** вы можете первым бесплатно нанести безоружный удар по противнику."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "selected_feature": "quickstrike" }
+  },
+  {
+    "slug": "use_momentum",
+    "title": {
+      "en": "Use Momentum",
+      "ru": "Использование момента"
+    },
+    "description": {
+      "en": "Whenever you avoid all of the damage of a melee attack whether it misses or you Defend, you may swap places with the attacker and then choose another target that is now within the attack's reach, and they are hit instead.",
+      "ru": "Всякий раз, когда вы избегаете урона от рукопашной атаки, независимо от того, промахнулись вы или защитились, вы можете поменяться местами с атакующим и выбрать другую цель, которая теперь находится в пределах досягаемости атаки, и тогда удар будет нанесен по ней."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "selected_feature": "use_momentum" }
+  },
+  {
+    "slug": "vital_rejuvenation",
+    "title": {
+      "en": "Vital Rejuvenation",
+      "ru": "Омоложение жизни"
+    },
+    "description": {
+      "en": "When you receive healing for the first time on a turn, you may heal another target within 6 spaces HP equal to your STR.",
+      "ru": "При первом получении лечения за ход вы можете исцелить другую цель в пределах 6 клеток, увеличив её HP до значения, равного вашей силе."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "selected_feature": "vital_rejuvenation" }
+  },
+  {
+    "slug": "windstrider",
+    "title": {
+      "en": "Windstrider",
+      "ru": "Ветроход"
+    },
+    "description": {
+      "en": "If you move through the space of a willing creature while using **Windstep**, they can move with you and choose any space adjacent to your path of movement to end in.",
+      "ru": "Если вы перемещаетесь в пространстве существа, которое вас поддерживает, используя заклинание **Шаг ветра**, оно может двигаться вместе с вами и выбрать любое место, прилегающее к вашей траектории движения, чтобы завершить свой путь."
+    },
+    "origin": "class",
+    "origin_value": "zephyr",
+    "kind": "static",
+    "conditions": { "selected_feature": "windstrider" }
+  },
+
+
+
+
+
+  {
     "slug": "reverberating_strikes",
     "title": {
       "en": "Reverberating Strikes",
@@ -236,5 +408,116 @@
     "description_eval_variables": {
       "damage": "str + wounds_spent"
     }
+  },
+  {
+    "slug": "blazing_speed",
+    "title": {
+      "en": "Blazing Speed",
+      "ru": "Невероятная скорость"
+    },
+    "description": {
+      "en": "Gain +2 speed while using **Windstep**. After you cease movement with **Windstep**, enemies you passed through take {{damage|STR+DEX}} fire damage. You may have *Smoldering* enemies take double, ending the condition.",
+      "ru": "При использовании **Шага ветра** вы получаете +2 к скорости. После прекращения движения с помощью **Шага ветра** враги, через которых вы прошли, получают урон от огня, равный {{damage|STR+DEX}}. Вы можете удвоить урон от огня для врагов, находящихся в состоянии *Тлеющий*, что снимает эффект."
+    },
+    "origin": "subclass",
+    "origin_value": "flame",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "description_eval_variables": {
+      "damage": "str + dex"
+    }
+  },
+  {
+    "slug": "chain_reaction",
+    "title": {
+      "en": "Chain Reaction",
+      "ru": "Цепная реакция"
+    },
+    "description": {
+      "en": "Once per turn, when you crit, deal fire damage equal to your {{damage|STR+Wounds}} to creatures of your choice within 2 spaces of your target. Repeat any number of times, targeting creatures not yet damaged by this effect within 2 spaces of any already damaged.",
+      "ru": "Один раз за ход, при критическом попадании, нанесите огненный урон, равный {{damage|STR+Wounds}}, существам по вашему выбору в пределах 2 клеток от вашей цели. Повторите любое количество раз, выбирая в качестве цели существ, еще не получивших урона от этого эффекта, в пределах 2 клеток от любых существ, уже получивших урон."
+    },
+    "origin": "subclass",
+    "origin_value": "flame",
+    "kind": "static",
+    "conditions": { "level": 11 },
+    "description_eval_variables": {
+      "damage": "str + wounds_spent"
+    }
+  },
+  {
+    "slug": "burning_soul",
+    "title": {
+      "en": "Burning Soul",
+      "ru": "Пылающая Душа"
+    },
+    "description": {
+      "en": "Double any fire damage you deal.",
+      "ru": "Удваивайте любой наносимый вами огненный урон."
+    },
+    "origin": "subclass",
+    "origin_value": "flame",
+    "kind": "static",
+    "conditions": { "level": 15 }
+  },
+  {
+    "slug": "bring_the_pain",
+    "title": {
+      "en": "Bring the Pain",
+      "ru": "Принеси боль"
+    },
+    "description": {
+      "en": "Once per round, you may turn any melee attack against you into a crit. Whenever you are crit, reduce the damage by half. The attacker takes the same amount of damage you took ignoring armor). You may suffer 1 Wound to double the damage the enemy takes.",
+      "ru": "Один раз за раунд вы можете превратить любую рукопашную атаку против вас в критическое попадание. При каждом критическом попадании уменьшите урон вдвое. Атакующий получает тот же урон, что и вы (без учета брони). Вы можете получить 1 рану, что вдвое превышает урон, получаемый противником."
+    },
+    "origin": "subclass",
+    "origin_value": "pain",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "share_my_pain",
+    "title": {
+      "en": "Share My Pain",
+      "ru": "Разделите мою боль"
+    },
+    "description": {
+      "en": "Your **Swiftstrike** can also target a 2nd creature within Reach 2.",
+      "ru": "Ваш **Быстрый удар** также может нацелиться на второе существо в пределах досягаемости 2."
+    },
+    "origin": "subclass",
+    "origin_value": "pain",
+    "kind": "static",
+    "conditions": { "level": 7 },
+  },
+  {
+    "slug": "pain_sharpens_the_mind",
+    "title": {
+      "en": "Pain Sharpens the Mind",
+      "ru": "Боль обостряет ум."
+    },
+    "description": {
+      "en": "While you are **Bloodied**, gain advantage on the first attack you make each turn, and on all saves.",
+      "ru": "Пока вы находитесь в состоянии **Окровавлен**, вы получаете преимущество на первую атаку, которую совершаете каждый ход, и на все спасброски."
+    },
+    "origin": "subclass",
+    "origin_value": "pain",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "echoed_agony",
+    "title": {
+      "en": "Echoed Agony",
+      "ru": "Эхо агонии"
+    },
+    "description": {
+      "en": "Your **Swiftstrike** can also target a 3rd creature within Reach 4.",
+      "ru": "Ваш **Быстрый удар** также может нацелиться на третье существо в пределах досягаемости 4."
+    },
+    "origin": "subclass",
+    "origin_value": "pain",
+    "kind": "static",
+    "conditions": { "level": 15 }
   }
 ]
