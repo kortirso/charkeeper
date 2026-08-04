@@ -26,7 +26,7 @@
     },
     "description": {
       "en": "Once per turn, when you hit a *Distracted* target with a melee attack, you may change the **Primary Die** to whatever you like.",
-      "ru": "Один раз за ход при попадании атакой ближнего боя в цель, которая *Отвлечена*, вы можете изменить **Основной куб** на любой по своему усмотрению."
+      "ru": "Один раз за ход при попадании рукопашной атакой в цель, которая *Отвлечена*, вы можете изменить **Основной куб** на любой по своему усмотрению."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -48,6 +48,448 @@
     "kind": "static",
     "conditions": { "level": 2 },
     "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "thieves_cant",
+    "title": {
+      "en": "Thieves' Cant",
+      "ru": "Воровской жаргон"
+    },
+    "description": {
+      "en": "You learn the secret language of rogues and scoundrels.",
+      "ru": "Вы познаете тайный язык мошенников и негодяев."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "level":3  }
+  },
+  {
+    "slug": "Underhanded Ability",
+    "title": {
+      "en": "Underhanded Ability",
+      "ru": "Коварная способность"
+    },
+    "description": {
+      "en": "Choose an **Underhanded Ability** - {{amount|1}}.",
+      "ru": "Выберите несколько **Коварных способностей** - {{amount|1}}."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "many_from_list",
+    "options": {
+      "creative_accounting": { "en": "Creative Accounting", "ru": "Креативный подсчёт" },
+      "exploit_weakness": { "en": "Exploit Weakness", "ru": "Использовать слабости" },
+      "feinting_attack": { "en": "Feinting Attack", "ru": "Обманный удар" },
+      "how_you_get_here": { "en": "How'd YOU get here?!", "ru": "Как ТЫ сюда попал?!" },
+      "i_am_outta_here": { "en": "I'm Outta Here! ", "ru": "Я ухожу!" },
+      "misdirection": { "en": "Misdirection", "ru": "Введение в заблуждение" },
+      "steal_tempo": { "en": "Steal Tempo", "ru": "Укради темп" },
+      "sunder_armor_medium": { "en": "Sunder Armor (Medium)", "ru": "Раскол брони (средний)" },
+      "sunder_armor_heavy": { "en": "Sunder Armor (Heavy)", "ru": "Раскол брони (тяжелый)" },
+      "trickshot": { "en": "Trickshot", "ru": "Трюковый выстрел" }
+    },
+    "conditions": { "level": 4 },
+    "description_eval_variables": {
+      "amount": "if (level >= 18, 8, ROUND((level - 2) / 2))"
+    }
+  },
+  {
+    "slug": "creative_accounting",
+    "title": {
+      "en": "Creative Accounting",
+      "ru": "Креативный подсчёт"
+    },
+    "description": {
+      "en": "Gain up to INT actions now. The next time you would gain actions, subtract the number gain. You cannot use this 2 turns in a row.",
+      "ru": "Возьмите до INT действий сейчас. В следующий раз, когда вы получите действия, вычтите взятое число. Вы не можете использовать это 2 хода подряд."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "selected_feature": "creative_accounting" }
+  },
+  {
+    "slug": "exploit_weakness",
+    "title": {
+      "en": "Exploit Weakness",
+      "ru": "Использовать слабости"
+    },
+    "description": {
+      "en": "Action: Make a contested INT check against an enemy. If you win, you can use **Vicious Opportunist** against them, even if they are not Distracted. This lasts for 1 minute or until you use this ability against another target.",
+      "ru": "Действие: Совершите проверку интеллекта против противника. Если вы выиграете, вы можете использовать **Злобный оппортунист** против него, даже если он не отвлечен. Это длится 1 минуту или до тех пор, пока вы не используете эту способность против другой цели."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "selected_feature": "exploit_weakness" }
+  },
+  {
+    "slug": "feinting_attack",
+    "title": {
+      "en": "Feinting Attack",
+      "ru": "Обманный удар"
+    },
+    "description": {
+      "en": "If you miss for the 2nd time in a single round, you may change the primary die roll to any result instead.",
+      "ru": "Если вы промахнетесь второй раз за раунд, вы можете изменить результат **Основного куба** на любой другой."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "selected_feature": "feinting_attack" }
+  },
+  {
+    "slug": "how_you_get_here",
+    "title": {
+      "en": "How'd YOU get here?!",
+      "ru": "Как ТЫ сюда попал?!"
+    },
+    "description": {
+      "en": "2 actions: Teleport up to 4 spaces away, adjacent to a Distracted target, and make a melee attack against them. If you crit, you may teleport again.",
+      "ru": "2 действия: Телепортируйтесь на расстояние до 4 квадратов, рядом с отвлеченной целью, и совершите рукопашную атаку по ней. Если вы нанесете критический удар, вы можете телепортироваться снова."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "selected_feature": "how_you_get_here" }
+  },
+  {
+    "slug": "i_am_outta_here",
+    "title": {
+      "en": "I'm Outta Here! ",
+      "ru": "Я ухожу!"
+    },
+    "description": {
+      "en": "When an ally within 4 spaces is crit, you may turn invisible until the end of your next turn and then move up to half your speed for free.",
+      "ru": "Когда союзник в пределах 4 квадратов получает критический удар, вы можете стать невидимым до конца своего следующего хода, а затем бесплатно переместиться на расстояние, равное половине вашей скорости."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "selected_feature": "i_am_outta_here" }
+  },
+  {
+    "slug": "misdirection",
+    "title": {
+      "en": "Misdirection",
+      "ru": "Введение в заблуждение"
+    },
+    "description": {
+      "en": "Gain +{{dice|INT}} armor. Whenever you Defend, you may halve the damage instead.",
+      "ru": "Вы получаете бонус +{{dice|INT}} к броне. При каждом применении защиты можете уменьшить получаемый урон вдвое вместо обычного уменьшения."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "selected_feature": "misdirection" },
+    "modifiers": { "armor": { "type": "add", "value": "int" } },
+    "description_eval_variables": {
+      "armor": "int"
+    }
+  },
+  {
+    "slug": "steal_tempo",
+    "title": {
+      "en": "Steal Tempo",
+      "ru": "Укради темп"
+    },
+    "description": {
+      "en": "When you land a critical hit for the second time on a turn, your target loses 1 action and you gain 1 action.",
+      "ru": "Если вы наносите критический удар второй раз за ход, ваша цель теряет 1 действие, а вы получаете 1 действие."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "selected_feature": "steal_tempo" }
+  },
+  {
+    "slug": "sunder_armor_medium",
+    "title": {
+      "en": "Sunder Armor (Medium)",
+      "ru": "Раскол брони (средний)"
+    },
+    "description": {
+      "en": "Action: When you crit an enemy with medium armor, sunder their armor. Until the start of your next turn, ALL melee attacks against that target ignore its armor.",
+      "ru": "Действие: При критическом попадании по противнику со средней бронёй, вы раскалываете её. До начала вашего следующего хода ВСЕ рукопашные атаки по этой цели игнорируют её броню."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "selected_feature": "sunder_armor_medium" }
+  },
+  {
+    "slug": "sunder_armor_heavy",
+    "title": {
+      "en": "Sunder Armor (Heavy)",
+      "ru": "Раскол брони (тяжёлый)"
+    },
+    "description": {
+      "en": "Req. **Sunder Armor (Medium)**. Your **Sunder Armor** ability now also applies to enemies wearing heavy armor.",
+      "ru": "Требуется способность **Раскол брони (средний)**. Теперь ваша способность **Раскол брони** применяется и к врагам в тяжёлой броне."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "selected_feature": "sunder_armor_heavy" }
+  },
+  {
+    "slug": "trickshot",
+    "title": {
+      "en": "Trickshot",
+      "ru": "Трюковый выстрел"
+    },
+    "description": {
+      "en": "When you throw a dagger, it returns back to your hand at the end of your turn. On a hit, it ricochets to another creature within 2 spaces, dealing half as much damage to them.",
+      "ru": "Когда вы бросаете кинжал, он возвращается в вашу руку в конце вашего хода. При попадании он рикошетит к другому существу в пределах 2 клеток, нанося ему половину урона."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "selected_feature": "trickshot" }
+  },
+  {
+    "slug": "twist_the_blade",
+    "title": {
+      "en": "Twist the Blade",
+      "ru": "Повернуть клинок"
+    },
+    "description": {
+      "en": "Action: Change one of your **Sneak Attack** dice to whatever you like.",
+      "ru": "Действие: Измените значение одного из ваших кубов **Скрытой атаки** на любое другое по вашему желанию."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "quick_read_assess",
+    "title": {
+      "en": "Quick Read (Assess)",
+      "ru": "Быстрое чтение (Оценка)"
+    },
+    "description": {
+      "en": "Gain advantage on an Assess check.",
+      "ru": "Получите преимущество при проверке оценки."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "quick_read_examination",
+    "title": {
+      "en": "Quick Read (Examination)",
+      "ru": "Быстрое чтение (Экзамен)"
+    },
+    "description": {
+      "en": "Gain advantage on an Examination check.",
+      "ru": "Получите преимущество при прохождении экзаменационной проверки."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "that_not_what_happened",
+    "title": {
+      "en": "THAT'S Not What Happened!",
+      "ru": "Всё было не так!"
+    },
+    "description": {
+      "en": "Action: After a *Distracted* enemy attacks you you may change the **Primary Die** roll to whatever you like (changing the die to the minimum value counts as a miss).",
+      "ru": "Действие: После того, как *отвлеченный* враг атакует вас, вы можете изменить результат броска **Основного куба** на любой желаемый (изменение результата на минимальное значение считается промахом)."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "supreme_execution",
+    "title": {
+      "en": "Supreme Execution",
+      "ru": "Высшая казнь"
+    },
+    "description": {
+      "en": "+1 to any 2 of your stats. When you attack with a blade, you do not require targets to be *Distracted* to trigger **Vicious Opportunist**.",
+      "ru": "+1 к любым двум вашим характеристикам. При атаке клинком вам не требуется, чтобы цель была *отвлечена* для активации способности **Злобный оппортунист**."
+    },
+    "origin": "class",
+    "origin_value": "cheat",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  },
+  {
+    "slug": "amidst_all_this_commotion",
+    "title": {
+      "en": "Amidst All This Commotion...",
+      "ru": "Среди всей этой суматохи..."
+    },
+    "description": {
+      "en": "If a creature dies while you **Sneak Attack** them, you may turn Invisible until you attack again or until the beginning of your next turn.",
+      "ru": "Если существо погибает во время вашей **Скрытой атаки**, вы можете стать невидимым до следующей атаки или до начала вашего следующего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "silent_blade",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "leave_no_trace",
+    "title": {
+      "en": "Leave No Trace",
+      "ru": "Не оставляй следов"
+    },
+    "description": {
+      "en": "Advantage on Stealth checks when you are at full health.",
+      "ru": "Вы получаете преимущество при проверках скрытности, когда у вас полное здоровье."
+    },
+    "origin": "subclass",
+    "origin_value": "silent_blade",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "cunning_strike",
+    "title": {
+      "en": "Cunning Strike",
+      "ru": "Хитрый удар"
+    },
+    "description": {
+      "en": "When you land a **neak Attack**, you may force the target to make a STR save (DC {{dc|10+INT}}). On a failure, instead of rolling your Sneak Attack dice, they deal the maximum amount of damage (if your target saves, regain 1 use).",
+      "ru": "При нанесении **Скрытой атаки** вы можете заставить цель совершить спасбросок силы (УС {{dc|10+INT}}). В случае неудачи, вместо броска кубов скрытой атаки, цель наносит максимальный урон (если цель успешно совершит спасбросок, вы восстанавливаете 1 единицу использования)."
+    },
+    "origin": "subclass",
+    "origin_value": "silent_blade",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 2 },
+    "description_eval_variables": {
+      "dc": "10 + int"
+    }
+  },
+  {
+    "slug": "professional_skulker",
+    "title": {
+      "en": "Professional Skulker",
+      "ru": "Профессиональный скрытник"
+    },
+    "description": {
+      "en": "Gain a climbing speed and advantage on Stealth checks (replaces **Leave No Trace**).",
+      "ru": "Получите скорость лазанья и преимущество при проверках скрытности (заменяет **Не оставляй следов**)."
+    },
+    "origin": "subclass",
+    "origin_value": "silent_blade",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "kill",
+    "title": {
+      "en": "KILL",
+      "ru": "УБИЙСТВО"
+    },
+    "description": {
+      "en": "When you crit an enemy with fewer max HP than you, it dies.",
+      "ru": "Если вы нанесете критический удар врагу, у которого меньше максимального количества HP, чем у вас, он погибнет."
+    },
+    "origin": "subclass",
+    "origin_value": "silent_blade",
+    "kind": "static",
+    "conditions": { "level": 15 }
+  },
+  {
+    "slug": "low_blow",
+    "title": {
+      "en": "Low Blow",
+      "ru": "Удар ниже пояса"
+    },
+    "description": {
+      "en": "When you **Sneak Attack**, you may spend 2 additional actions to Incapacitate your target for their next turn on a failed STR save (DC {{dc|10+INT}}). Save or fail, they are *Taunted* by you until you drop to O HP.",
+      "ru": "При использовании **Скрытой атаки** вы можете потратить 2 дополнительных действия, чтобы обездвижить цель на следующий ход при неудачном спасброске силы (УС {{dc|10+INT}}). Независимо от результата спасброска, цель будет *спровоцирована* вами до тех пор, пока ваше здоровье не упадет до 0 HP."
+    },
+    "origin": "subclass",
+    "origin_value": "scoundrel",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "description_eval_variables": {
+      "dc": "10 + int"
+    }
+  },
+  {
+    "slug": "sweet_talk",
+    "title": {
+      "en": "Sweet Talk",
+      "ru": "Сладкие разговоры"
+    },
+    "description": {
+      "en": "You may gain advantage on all Influence checks with NPCs you've just met for the first time. This lasts until you fail an Influence check with them or until you meet a 2nd time. You have disadvantage on Influence checks with them after you use this ability (until you get back on their good side).",
+      "ru": "Вы можете получить преимущество при всех проверках влияния с NPC, с которыми только что познакомились впервые. Это преимущество действует до тех пор, пока вы не провалите проверку влияния с ними или пока не встретитесь с ними во второй раз. После использования этой способности вы будете получать помеху при проверках влияния с ними (пока не вернетесь к ним на сторону)."
+    },
+    "origin": "subclass",
+    "origin_value": "scoundrel",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "pocket_sand",
+    "title": {
+      "en": "Pocket Sand",
+      "ru": "Карманный песок"
+    },
+    "description": {
+      "en": "When you Defend against a melee attack, *Blind* the attacker until the start of their next turn and force them to reroll the attack (Blinded creatures attack with disadvantage).",
+      "ru": "При защите от рукопашной атаки *ослепите* атакующего до начала его следующего хода и заставьте его перебросить кубы атаки (ослепленные существа атакуют с помехой)."
+    },
+    "origin": "subclass",
+    "origin_value": "scoundrel",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 2 }
+  },
+  {
+    "slug": "escape_plan",
+    "title": {
+      "en": "Escape Plan",
+      "ru": "План побега"
+    },
+    "description": {
+      "en": "When you would drop to O HP or gain a Wound, you don't. Instead, you turn Invisible for 1 minute or until you attack.",
+      "ru": "Когда ваше здоровье падает до 0 или вы получаете рану, этого не происходит. Вместо этого вы становитесь невидимым на 1 минуту или до тех пор, пока не совершите атаку."
+    },
+    "origin": "subclass",
+    "origin_value": "scoundrel",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "heads_win_tails_lose",
+    "title": {
+      "en": "Heads I Win, Tails You Lose",
+      "ru": "Орёл — я выигрываю, решка — ты проигрываешь"
+    },
+    "description": {
+      "en": "Attacks you make this round don't miss, you crit on 1 less than normally needed, and you gain LVL temp HP.",
+      "ru": "Ваши атаки в этом раунде не промахиваются, вы наносите критический удар на 1 меньше, чем обычно требуется, и получаете LVL временного здоровья."
+    },
+    "origin": "subclass",
+    "origin_value": "scoundrel",
+    "kind": "static",
+    "conditions": { "level": 15 },
+    "limit_refresh": "combat_rest",
     "info": { "limit": 1 }
   }
 ]
