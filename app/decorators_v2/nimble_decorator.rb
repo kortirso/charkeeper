@@ -15,7 +15,7 @@ class NimbleDecorator < ApplicationDecoratorV2
     return self if simple
 
     calculate_primary_modifiers
-
+    @result['modified_abilities'] = find_modified_abilities
     @result = Nimble::ClassDecorator.new.call(result: @result)
 
     calculate_primary_abilities
@@ -43,8 +43,7 @@ class NimbleDecorator < ApplicationDecoratorV2
     end
   end
 
-  def calculate_primary_abilities # rubocop: disable Metrics/AbcSize
-    @result['modified_abilities'] = find_modified_abilities
+  def calculate_primary_abilities
     @result['key'] = modified_abilities.slice(*keys).values.max
     @result['wounds_max'] = 6
     @result['hit_die_max'] = level
@@ -118,6 +117,7 @@ class NimbleDecorator < ApplicationDecoratorV2
     @result['attacks'] =
       skip.include?(:attacks) ? [] : ([unarmed_attack] + character_weapons.map { |item| calculate_attack(item) })
     @result['features'] = skip.include?(:features) ? [] : apply_features
+    @result['spells'] = skip.include?(:spells) ? [] : apply_spells
   end
 
   def unarmed_attack
@@ -282,7 +282,7 @@ class NimbleDecorator < ApplicationDecoratorV2
       slug: feature.feat.slug || feature.id,
       kind: feature.feat.kind,
       title: translate(feature.feat.title),
-      description: update_feature_description(feature),
+      description: update_feature_description(feature.feat),
       origin: feature.feat.origin,
       origin_value: feature.feat.origin_value,
       price: feature.feat.price,
@@ -303,15 +303,42 @@ class NimbleDecorator < ApplicationDecoratorV2
     }.compact
   end
 
-  def update_feature_description(feature) # rubocop: disable Metrics/AbcSize
-    description = translate(feature.feat.description)
+  def apply_spells
+    return [] unless schools
+    return [] if schools.empty?
+
+    ::Nimble::Feat.where(origin: 3, origin_value: schools).filter_map do |spell|
+      next if spell.info['level'] > spell_level
+
+      feature_spell_payload(spell)
+    end.sort_by { |spell| spell.dig(:info, 'level') }
+  end
+
+  def feature_spell_payload(spell) # rubocop: disable Metrics/AbcSize
+    {
+      id: spell.id,
+      slug: spell.slug,
+      title: translate(spell.title),
+      description: update_feature_description(spell),
+      origin_value: spell.origin_value,
+      info: spell.info.except('range', 'damage', 'damage_bonus'),
+      range: formula.call(formula: spell.info['range'], variables: final_formula_variables) || spell.info['range'].to_i,
+      damage: formula.call(formula: spell.info['damage'], variables: final_formula_variables) || spell.info['damage'],
+      damage_bonus: formula.call(
+        formula: spell.info['damage_bonus'], variables: final_formula_variables
+      ) || spell.info['damage_bonus'].to_i
+    }.compact
+  end
+
+  def update_feature_description(feat)
+    description = translate(feat.description)
     return if description.blank?
 
     result = markdown.call(value: description, version: @version)
     result.scan(/\{\{([^}]+)\}\}/).flatten.each do |value|
       variable, default = value.split('|')
 
-      formula_value = feature.feat.description_eval_variables[variable]
+      formula_value = feat.description_eval_variables[variable]
       next result.gsub!("{{#{value}}}", default) unless formula_value
 
       formula_result = formula.call(formula: formula_value, variables: final_formula_variables)

@@ -65,5 +65,13 @@
     "celestial": { "name": { "en": "Celestial", "ru": "Небесный" } },
     "primordial": { "name": { "en": "Primordial", "ru": "Изначальный" } },
     "deep_speak": { "name": { "en": "Deep Speak", "ru": "Глубинный" } }
+  },
+  "schools": {
+    "fire": { "name": { "en": "Fire", "ru": "Огонь" } },
+    "ice": { "name": { "en": "Ice", "ru": "Лёд" } },
+    "lightning": { "name": { "en": "Lightning", "ru": "Электричество" } },
+    "radiant": { "name": { "en": "Radiant", "ru": "Излучение" } },
+    "necrotic": { "name": { "en": "Necrotic", "ru": "Некротическая" } },
+    "wind": { "name": { "en": "Wind", "ru": "Воздух" } }
   }
 }

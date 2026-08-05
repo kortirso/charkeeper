@@ -149,6 +149,7 @@ export * from './Content/Character/Nimble/Health';
 export * from './Content/Character/Nimble/Leveling';
 export * from './Content/Character/Nimble/Rest';
 export * from './Content/Character/Nimble/Equipment';
+export * from './Content/Character/Nimble/Spells';
 
 export * from './Navigation/Characters/ListItem';
 export * from './Navigation/Characters/CharacterForm';

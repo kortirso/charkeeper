@@ -11,7 +11,7 @@ module Nimble
         @result['armors'] = %w[clothes]
 
         @result['schools'] = %w[fire ice lightning]
-        @result['mana_max'] = level >= 2 ? ((int * 3) + level) : 0
+        @result['mana_max'] = level >= 2 ? ((modified_abilities['int'] * 3) + level) : 0
         @result['spell_level'] = level / 2
 
         @result

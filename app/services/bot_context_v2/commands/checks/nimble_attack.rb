@@ -31,9 +31,9 @@ module BotContextV2
 
           {
             status: 'success',
-            total: primary_roll + secondary_rolls.sum + crit_rolls.sum + values[:bonus],
+            total: primary_roll + secondary_rolls.sum + crit_rolls.sum + values[:bonus].to_i,
             rolls: [primary_roll] + secondary_rolls + crit_rolls,
-            bonus: values[:bonus]
+            bonus: values[:bonus].to_i
           }
         end
 

@@ -238,6 +238,7 @@ Rails.application.routes.draw do
           end
         end
       end
+      resources :spells, only: %i[index]
     end
 
     scope ':provider' do

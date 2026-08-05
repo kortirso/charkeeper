@@ -3,7 +3,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling, NimbleRest, Dc20Conditions,
-  NimbleEquipment
+  NimbleEquipment, NimbleSpells
 } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, Feats, createRoll } from '../../../components';
 import { useAppLocale } from '../../../context';
@@ -51,8 +51,9 @@ export const Nimble = (props) => {
   });
 
   const characterTabs = createMemo(() => {
-    const result = ['combat', 'equipment', 'classLevels', 'rest'];
-    return result.concat(['bonuses', 'notes', 'avatar']);
+    const result = ['combat', 'equipment'];
+    if (character().schools && character().schools.length > 0) result.push('spells');
+    return result.concat(['classLevels', 'rest', 'bonuses', 'notes', 'avatar']);
   });
 
   const mobileView = createMemo(() => {
@@ -115,6 +116,14 @@ export const Nimble = (props) => {
                 guideStep={3}
                 helpMessage={i18n().equipmentHelpMessage}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
+              />
+            </Match>
+            <Match when={activeMobileTab() === 'spells'}>
+              <NimbleSpells
+                character={character()}
+                openNimbleAttack={openNimbleAttack}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
               />
             </Match>
             <Match when={activeMobileTab() === 'classLevels'}>
@@ -210,6 +219,14 @@ export const Nimble = (props) => {
                 guideStep={3}
                 helpMessage={i18n().equipmentHelpMessage}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
+              />
+            </Match>
+            <Match when={activeTab() === 'spells'}>
+              <NimbleSpells
+                character={character()}
+                openNimbleAttack={openNimbleAttack}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
               />
             </Match>
             <Match when={activeTab() === 'classLevels'}>
