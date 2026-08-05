@@ -1,0 +1,188 @@
+[
+  {
+    "slug": "warlock_stamina_regen",
+    "title": {
+      "en": "Stamina Regen",
+      "ru": "Восстановление выносливости"
+    },
+    "description": {
+      "en": "Once per round, you can regain up to half your maximum SP when you use a Spell Enhancement",
+      "ru": "Один раз за раунд вы можете восстановить половину ОВ, когда вы используете улучшение заклинания."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "static",
+    "conditions": {
+      "level": 1,
+      "main_class": "warlock"
+    }
+  },
+  {
+    "slug": "warlock_contract",
+    "title": {
+      "en": "Warlock Contract",
+      "ru": "Контракт чернокнижника"
+    },
+    "description": {
+      "en": "You have a binding agreement with your patron that allows you to make sacrifices in exchange for boons.",
+      "ru": "У вас заключено юридически обязывающее соглашение с вашим покровителем, позволяющее вам приносить жертвы в обмен на благословения."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "info": {
+      "feats": ["hasty_bargain", "desperate_bargain"]
+    }
+  },
+  {
+    "slug": "hasty_bargain",
+    "title": {
+      "en": "Hasty Bargain",
+      "ru": "Поспешная сделка"
+    },
+    "description": {
+      "en": "Once per turn when you make a Check, you can **spend 1 HP** to gain ADV on the Check.",
+      "ru": "Один раз за ход при выполнении проверки вы можете **потратить 1 ОЗ**, чтобы получить преимущество к проверке."
+    },
+    "origin": "class_additional",
+    "origin_value": "warlock"
+  },
+  {
+    "slug": "desperate_bargain",
+    "title": {
+      "en": "Desperate Bargain",
+      "ru": "Отчаянная сделка"
+    },
+    "description": {
+      "en": "You can **spend 1 AP** to regain an amount of HP equal to your Prime Modifier. When you do, you become Exposed until the end of your next turn.",
+      "ru": "Вы можете **потратить 1 ОД**, чтобы восстановить количество ОЗ, равное вашему основному модификатору. При этом вы становитесь уязвимы до конца вашего следующего хода."
+    },
+    "origin": "class_additional",
+    "origin_value": "warlock",
+    "price": {
+      "ap": 1
+    },
+    "limit_refresh": "combat",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "pact_boon",
+    "title": {
+      "en": "Pact Boon",
+      "ru": "Дар договора"
+    },
+    "description": {
+      "en": "You gain a **Pact Boon** from your Patron. Choose 1 of the following options: Weapon, Armor, Spell, or Familiar.",
+      "ru": "Вы получаете **Дар Договора** от своего Покровителя. Выберите 1 из следующих вариантов: Оружие, Броня, Заклинание или Фамильяр."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "one_from_list",
+    "options": {
+      "pact_weapon": { "en": "Pact Weapon", "ru": "Договорное оружие" },
+      "pact_armor": { "en": "Pact Armor", "ru": "Договорная броня" },
+      "pact_spell": { "en": "Pact Spell", "ru": "Договорное заклинание" },
+      "pact_familiar": { "en": "Pact Familiar", "ru": "Договорной фамильяр" }
+    },
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "pact_weapon",
+    "title": {
+      "en": "Pact Weapon",
+      "ru": "Договорное оружие"
+    },
+    "description": {
+      "en": "You can choose a Weapon in your possession and bond with it, making it your Pact Weapon. You can only have 1 Pact Weapon at a time. If the Weapon has the Ammo property, it manifests its own Ammo when you load it, which immediately vanishes once the Attack is resolved. You gain the following benefits while wielding the Weapon:\n\n- **Weapon Training:** You're considered to have Combat Training with your Pact Weapon.\n\n- **Maneuvers:** You learn 2 Attack Maneuvers of your choice.\n\n- **Spell Focus:** Your Pact Weapon also counts as a Spell Focus with a 1 point Focus Property. If the Weapon has the Two-Handed Weapon Property, it instead has two 1 point Focus Properties or a 2 point Focus Property (your choice). You can change the chosen Focus Properties when you complete a Quick Rest.\n\n**Pocket Dimension:** Using a Minor Action, you can dismiss the Weapon into a pocket dimension, summon it from that pocket dimension, or summon it from anywhere on the same plane of existence. If you don't have a free hand when you summon it, or you choose not to grab it, it appears in your Space at your feet.\n\n**New Pact Weapon:** Over the course of a Quick Rest, you can touch a Weapon in your possession, bond with it, and make it your new Pact Weapon, ending your bond with your previous Pact Weapon.",
+      "ru": "Вы можете выбрать имеющееся у вас Оружие и связаться с ним, превратив его в Ваше **Договорное оружие**. Одновременно у вас может быть только 1 **Договорное оружие**. Если Оружие обладает свойством **Боеприпасы**, оно генерирует собственные боеприпасы при зарядке, которые немедленно исчезают после завершения атаки. При использовании Оружия вы получаете следующие преимущества:\n\n- **Обучение владению оружием:** Считается, что вы прошли боевую подготовку с вашим Договорным Оружием.\n\n- **Маневры:** Вы изучаете 2 атакующих маневра на ваш выбор.\n\n- **Фокус заклинаний:** Ваше Договорное Оружие также считается Фокусом заклинаний со свойством **Фокус** в 1 единицу. Если Оружие обладает свойством **Двуручное оружие**, оно вместо этого имеет два свойства **Фокус** по 1 единице или одно свойство **Фокус** в 2 единицы (на ваш выбор). Вы можете изменить выбранные свойства фокуса после завершения быстрого отдыха.\n\n**Карманное измерение:** Используя малое действие, вы можете переместить Оружие в карманное измерение, призвать его из этого карманного измерения или призвать его из любой точки той же плоскости существования. Если у вас нет свободной руки, когда вы призываете его, или вы решите не брать его, оно появится в вашем пространстве у ваших ног.\n\n**Новое договорное оружие:** В течение быстрого отдыха вы можете прикоснуться к находящемуся у вас Оружию, установить с ним связь и сделать его своим новым договорным оружием, разорвав связь с вашим предыдущим договорным оружием."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "static",
+    "conditions": { "selected_feature": "pact_weapon" }
+  },
+  {
+    "slug": "pact_armor",
+    "title": {
+      "en": "Pact Armor",
+      "ru": "Договорная броня"
+    },
+    "description": {
+      "en": "You can choose an Armor in your possession and bond with it, making it your Pact Armor. You can only have 1 Pact Armor at a time. You gain the following benefits while wearing the Armor :\n\n- **Armor Training:** You're considered to have Training with your Pact Armor.\n\n- **Maneuvers:** You learn 2 Defensive Maneuvers of your choice.\n\n- **Mystical Armor:** You gain +1 AD and MDR.\n\n**Pocket Dimension:** Using a Minor Action, you can dismiss the Armor into a pocket dimension, summon it from that pocket dimension, or summon it from anywhere on the same plane of existence. If you aren't able to wear the Armor when you summon it, or you choose not to wear it, it appears in your Space at your feet.\n\n**New Pact Armor:** Over the course of a Quick Rest, you can touch an Armor in your possession, bond with it, and make it your new Pact Armor, ending your bond with your previous Pact Armor.",
+      "ru": "Вы можете выбрать имеющуюся у вас броню и связать её с собой, превратив в свою Договорную броню. Одновременно у вас может быть только одна Договорная броня. Ношение брони приносит следующие преимущества:\n\n- **Обучение броне:** Считается, что вы прошли обучение работе с вашей Договорной броней.\n\n- **Маневры:** Вы изучаете 2 защитных маневра на ваш выбор.\n\n- **Мистическая броня:** Вы получаете +1 к урону и снижению урона.\n\n**Карманное измерение:** Используя малое действие, вы можете переместить броню в карманное измерение, призвать её из этого карманного измерения или призвать её из любой точки той же плоскости существования. Если вы не можете надеть доспехи, когда призываете их, или решаете не надевать их, они появляются в вашем пространстве у ваших ног.\n\n**Новые доспехи Договора:** Во время быстрого отдыха вы можете коснуться имеющихся у вас доспехов, установить с ними связь и сделать их своими новыми доспехами Договора, разорвав связь с предыдущими доспехами Договора."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "static",
+    "conditions": { "selected_feature": "pact_armor" }
+  },
+  {
+    "slug": "pact_spell",
+    "title": {
+      "en": "Pact Spell",
+      "ru": "Договорное заклинание"
+    },
+    "description": {
+      "en": "Choose a Spells you know that becomes your **Pact Spell** - {{amount|1}}. When you cast your **Pact Spell**, you gain the following benefits:\n\n- **Death's Toll:** If the Spell deals damage, it deals an extra +1 damage to Bloodied targets.\n\n- **Range Increase:** If the Spell's range is 1, it increases by 1 Space, otherwise it increases by 5 Spaces.\n\n- **Patron's Favor:** Once per Round, you can grant yourself ADV on any Check you make to cast your Pact Spell.\n\n**Choosing a New Pact Spell:** When you complete a Long Rest, you can choose a different Spell you know. When you do, the new Spell becomes your new Pact Spell. You can only have 1 Pact Spell at a time.",
+      "ru": "Выберите известные вам заклинания, которые становятся вашим **Договорными заклинаниеми** - {{amount|1}}. При применении **Договорного заклинания** вы получаете следующие преимущества:\n\n- **Смертельный удар:** Если заклинание наносит урон, оно наносит дополнительный +1 урон окровавленным целям.\n\n- **Увеличение дальности:** Если дальность заклинания равна 1, она увеличивается на 1 клетку, в противном случае — на 5 клеток.\n\n- **Благосклонность покровителя:** Один раз за раунд вы можете повысить свои характеристики преимущества при любой проверке, которую вы совершаете для применения **Договорного заклинания**.\n\n**Выбор нового Договорного заклинания:** После длительного отдыха вы можете выбрать другое известное вам заклинание. В этом случае новое заклинание становится вашим новым **Договорным заклинанием**. Вы можете иметь только одно **Договорное заклинание**."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "text",
+    "conditions": { "selected_feature": "pact_spell" },
+    "description_eval_variables": {
+      "amount": "if (level > 4, 2, 1)"
+    }
+  },
+  {
+    "slug": "pact_familiar",
+    "title": {
+      "en": "Pact Familiar",
+      "ru": "Договорной фамильяр"
+    },
+    "description": {
+      "en": "You learn the **Call Familiar** Spell. When you cast the Spell, your Familiar gains {{amount|3}} additional Familiar Traits of your choice for free.",
+      "ru": "Вы изучаете заклинание **Призыв фамильяра**. При применении заклинания ваш фамильяр бесплатно получает несколько дополнительных свойства фамильяра на ваш выбор - {{amount|3}}."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "static",
+    "conditions": { "selected_feature": "pact_familiar" },
+    "description_eval_variables": {
+      "amount": "if (level > 4, 6, 3)"
+    }
+  },
+  {
+    "slug": "beseech_patron",
+    "title": {
+      "en": "Beseech Patron",
+      "ru": "Просить покровителя"
+    },
+    "description": {
+      "en": "During a Long Rest, while sleeping or meditating, you can access an Inner Sanctum within your mind. Its appearance is influenced by your psyche and is subject to change. While inside your Inner Sanctum, you can attempt to contact your Patron.\n\nIf they choose to respond, they enter your mind and you might possibly be able to see or hear them. While connected to your Patron in this way, you're aware of your surroundings but you can't take actions or move. Your Patron chooses when to end the connection, or you can make a Mental Save against your own Save DC to force the connection to end.\n\nYour Inner Sanctum can look different depending on your Patron. It could be in a foggy blackness, wreathed in flames, or emitting a blinding light. Your Patron has full control over your dream state and can shape the environment, create landscapes, objects, creatures, and images.",
+      "ru": "Во время длительного отдыха, сна или медитации, вы можете получить доступ к Внутреннему Святилищу в своем сознании. Его внешний вид зависит от вашей психики и может меняться. Находясь внутри своего Внутреннего Святилища, вы можете попытаться связаться со своим Покровителем.\n\nЕсли он решит ответить, он войдет в ваше сознание, и вы, возможно, сможете его увидеть или услышать. Находясь в такой связи с Покровителем, вы осознаете окружающую обстановку, но не можете совершать действия или двигаться. Ваш Покровитель выбирает, когда разорвать связь, или вы можете совершить спасбросок ментальной силы против своей собственной сложности, чтобы принудительно разорвать связь.\n\nВаше Внутреннее Святилище может выглядеть по-разному в зависимости от вашего Покровителя. Оно может быть окутано туманной тьмой, окутано пламенем или излучать ослепительный свет. Ваш Покровитель полностью контролирует ваше состояние сна и может формировать окружающую среду, создавать ландшафты, объекты, существ и изображения."
+    },
+    "origin": "class_flavor",
+    "origin_value": "warlock",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "life_tap",
+    "title": {
+      "en": "Life Tap",
+      "ru": "Жизнеотвод"
+    },
+    "description": {
+      "en": "When you produce an MP Effect, you can spend HP in place of MP. The total amount of HP and MP spent can't exceed your Mana Spend Limit. You can use this Feature once per Long Rest, and regain the ability to use it again when you roll for Initiative.",
+      "ru": "При использовании эффекта, задействующего ОМ, вы можете потратить ОЗ вместо ОМ. Общее количество потраченных ОЗ и ОМ не может превышать ваш предел траты маны. Вы можете использовать эту способность один раз за длительный отдых и восстановить возможность её использования при броске кубика на инициативу."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "static",
+    "conditions": {
+      "level": 2
+    }
+  }
+]
