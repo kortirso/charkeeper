@@ -116,6 +116,8 @@ module CharactersContext
 
       def refresh_resources(input) # rubocop: disable Metrics/AbcSize
         input[:character].resources.includes(:custom_resource).find_each do |resource|
+          next unless resource.custom_resource
+
           max_value = resource.custom_resource.max_value
           reset_direction = resource.custom_resource.reset_direction
           change = resource.custom_resource.resets[input[:value]]
