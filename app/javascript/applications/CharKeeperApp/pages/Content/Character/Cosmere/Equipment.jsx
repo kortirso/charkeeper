@@ -2,7 +2,7 @@ import { createMemo } from 'solid-js';
 
 import { Equipment } from '../../../../components';
 import { useAppLocale } from '../../../../context';
-import { localize } from '../../../helpers';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {

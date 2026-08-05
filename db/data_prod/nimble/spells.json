@@ -1,5 +1,22 @@
 [
   {
+    "slug": "fire_step",
+    "title": { "en": "Fire Step", "ru": "" },
+    "description": {
+      "en": "Teleport to a fire source you can see.",
+      "ru": ""
+    },
+    "origin": "spell",
+    "origin_value": "fire",
+    "kind": "static",
+    "info": {
+      "level": 0,
+      "time": "1,m",
+      "target": "self",
+      "utility": true
+    }
+  },
+  {
     "slug": "flame_dart",
     "title": { "en": "Flame Dart", "ru": "" },
     "description": {

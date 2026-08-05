@@ -7,13 +7,14 @@ module Nimble
     attributes :provider, :id, :name, :created_at, :updated_at, :avatar, :level, :guide_step, :ancestry, :main_class, :skills,
                :skill_points, :modified_abilities, :initiative, :size, :abilities, :armor, :speed, :health, :wounds_max,
                :wounds_spent, :languages, :attacks, :features, :hit_die_max, :hit_die_spent, :hit_die, :saves, :subclass,
-               :conditions, :separate_shield, :shield, :key_points, :secondary_points, :keys
+               :conditions, :separate_shield, :shield, :key_points, :secondary_points, :keys, :schools, :mana_max, :mana_spent,
+               :spell_level
 
     delegate :skills, :modified_abilities, :initiative, :armor, :shield, :speed, :wounds_max, :attacks, :features, :hit_die_max,
-             :hit_die_spent, :hit_die, :saves, :keys, to: :decorator
+             :hit_die_spent, :hit_die, :saves, :keys, :schools, :mana_max, :spell_level, to: :decorator
     delegate :data, to: :object
     delegate :level, :guide_step, :ancestry, :main_class, :skill_points, :abilities, :health, :wounds_spent, :languages, :size,
-             :subclass, :conditions, :separate_shield, :key_points, :secondary_points, to: :data
+             :subclass, :conditions, :separate_shield, :key_points, :secondary_points, :mana_spent, to: :data
 
     def provider
       'nimble'

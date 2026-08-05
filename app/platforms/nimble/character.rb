@@ -14,6 +14,7 @@ module Nimble
     attribute :skill_levels, array: true, default: {} # { 'medicine' => 1 } владение навыками
     attribute :hit_die_spent, :integer, default: 0
     attribute :wounds_spent, :integer, default: 0
+    attribute :mana_spent, :integer, default: 0
     attribute :languages, array: true, default: []
     attribute :weapons, array: true, default: []
     attribute :conditions, array: true, default: []
