@@ -13,6 +13,7 @@ module Nimble
         @result['schools'] = %w[fire ice lightning]
         @result['mana_max'] = level >= 2 ? ((modified_abilities['int'] * 3) + level) : 0
         @result['spell_level'] = level / 2
+        @result['utility_spells_limit'] = %w[fire ice lightning].index_with(0)
 
         @result
       end
