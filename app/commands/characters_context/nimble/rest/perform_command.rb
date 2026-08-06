@@ -58,6 +58,7 @@ module CharactersContext
           when 'safe_rest'
             input[:data][:health] = { current: data.health['max'], temp: data.health['temp'], max: data.health['max'] }
             input[:data][:wounds_spent] = [data.wounds_spent - 1, 0].max
+            input[:data][:mana_spent] = 0
             input[:data][:hit_die_spent] = 0
           end
         end

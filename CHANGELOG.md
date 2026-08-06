@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - campaigns for nimble characters
+- spells management for nimble characters
 
 ### Modified
 - rendering dice roll results for dh characters

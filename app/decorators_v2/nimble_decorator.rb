@@ -307,11 +307,17 @@ class NimbleDecorator < ApplicationDecoratorV2
     return [] unless schools
     return [] if schools.empty?
 
-    ::Nimble::Feat.where(origin: 3, origin_value: schools).filter_map do |spell|
+    spells_relation.filter_map do |spell|
       next if spell.info['level'] > spell_level
 
       feature_spell_payload(spell)
     end.sort_by { |spell| spell.dig(:info, 'level') }
+  end
+
+  def spells_relation
+    ::Nimble::Feat.where(origin: 3, origin_value: schools)
+      .or(::Nimble::Feat.where(origin: [3, 4], slug: learned_spells.values.flatten))
+      .or(::Nimble::Feat.where(origin: 3, origin_values: [main_class]))
   end
 
   def feature_spell_payload(spell) # rubocop: disable Metrics/AbcSize

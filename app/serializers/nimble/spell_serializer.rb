@@ -2,7 +2,7 @@
 
 module Nimble
   class SpellSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id slug title description origin_value origin_values info].freeze
+    ATTRIBUTES = %i[id slug title description origin origin_value info].freeze
 
     attributes(*ATTRIBUTES)
 

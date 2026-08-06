@@ -46,6 +46,48 @@
         "pain": { "name": { "en": "Way of Pain", "ru": "Путь боли" } },
         "flame": { "name": { "en": "Way of Flame", "ru": "Путь пламени" } }
       }
+    },
+    "mage": {
+      "name": { "en": "Mage", "ru": "Маг" },
+      "subclasses": {
+        "control": { "name": { "en": "Invoker of Control", "ru": "Приносящий порядок" } },
+        "chaos": { "name": { "en": "Invoker of Chaos", "ru": "Приносящий хаос" } }
+      }
+    },
+    "oathsworn": {
+      "name": { "en": "Oathsworn", "ru": "Присягнувший" },
+      "subclasses": {
+        "vengeance": { "name": { "en": "Oath of Vengeance", "ru": "Клятва мести" } },
+        "refuge": { "name": { "en": "Oath of Refuge", "ru": "Клятва убежища" } }
+      }
+    },
+    "shadowmancer": {
+      "name": { "en": "Shadowmancer", "ru": "Повелитель теней" },
+      "subclasses": {
+        "red_dragon": { "name": { "en": "Pact of the Red Dragon", "ru": "Договор красного дракона" } },
+        "abyssal_depths": { "name": { "en": "Pact of the Abyssal Depths", "ru": "Договор бездны" } }
+      }
+    },
+    "shepherd": {
+      "name": { "en": "Shepherd", "ru": "Пастырь" },
+      "subclasses": {
+        "mercy": { "name": { "en": "Luminary of Mercy", "ru": "Светило милосердия" } },
+        "malice": { "name": { "en": "Luminary of Malice", "ru": "Светило злобы" } }
+      }
+    },
+    "songweaver": {
+      "name": { "en": "Songweaver", "ru": "Песнотворец" },
+      "subclasses": {
+        "snark": { "name": { "en": "Herald of Snark", "ru": "Вестник насмешки" } },
+        "courage": { "name": { "en": "Herald of Courage", "ru": "Вестник храбрости" } }
+      }
+    },
+    "stormshifter": {
+      "name": { "en": "Stormshifter", "ru": "Бурооборотень" },
+      "subclasses": {
+        "sky_storm": { "name": { "en": "Circle of Sky & Storm", "ru": "Круг неба и бури" } },
+        "fang_claw": { "name": { "en": "Circle of Fang & Claw", "ru": "Круг клыка и когтя" } }
+      }
     }
   },
   "abilities": {

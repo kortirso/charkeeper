@@ -20,6 +20,7 @@ module Nimble
     attribute :conditions, array: true, default: []
     attribute :separate_shield, :boolean, default: false
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
+    attribute :learned_spells, array: true, default: {} # { 'fire' => [] }
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :skill_points, :integer, default: 4

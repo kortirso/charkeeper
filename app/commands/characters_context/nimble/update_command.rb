@@ -33,10 +33,12 @@ module CharactersContext
           optional(:skill_points).maybe(:integer)
           optional(:hit_die_spent).maybe(:integer)
           optional(:wounds_spent).maybe(:integer)
+          optional(:mana_spent).maybe(:integer)
           optional(:languages).value(:array).each(:string)
           optional(:conditions).value(:array).each(:string)
           optional(:separate_shield).filled(:bool)
           optional(:selected_features).hash
+          optional(:learned_spells).hash
         end
       end
       # rubocop: enable Metrics/BlockLength
