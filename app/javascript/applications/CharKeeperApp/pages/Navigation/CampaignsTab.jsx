@@ -180,7 +180,7 @@ export const CampaignsTab = () => {
                 containerClassList="mb-2"
                 classList="w-full"
                 labelText={t('pages.campaignsPage.provider')}
-                items={{ 'dnd2024': 'D&D 2024', 'dnd5': 'D&D 5', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'cosmere': 'Cosmere', 'dc20': 'DC20 0.15', 'nimble': 'Nimble', 'fate': 'Fate', 'cthulhu7': 'Call of Cthulhu 7', 'fallout': 'Fallout 2D20' }}
+                items={{ 'dnd2024': 'D&D 2024', 'dnd5': 'D&D 5', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'cosmere': 'Cosmere', 'dc20': 'DC20 0.10.5', 'nimble': 'Nimble', 'fate': 'Fate', 'cthulhu7': 'Call of Cthulhu 7', 'fallout': 'Fallout 2D20' }}
                 selectedValue={campaignForm.provider}
                 onSelect={(value) => setCampaignForm({ ...campaignForm, provider: value })}
               />
