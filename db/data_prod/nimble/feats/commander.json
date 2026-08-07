@@ -6,8 +6,8 @@
       "ru": "Приказ: координированный удар"
     },
     "description": {
-      "en": "Ones per round. Free action: you and an ally within 6 spaces both immediately make a weapon attack or cast a cantrip for free.",
-      "ru": "Один раз за раунд. Свободное действие: вы и ваш союзник в пределах 6 квадратов немедленно совершаете бесплатную атаку оружием или применяете заговор."
+      "en": "Ones per round. **Free action**: you and an ally within 6 spaces both immediately make a weapon attack or cast a cantrip for free.",
+      "ru": "Один раз за раунд. **Свободное действие**: вы и ваш союзник в пределах 6 квадратов немедленно совершаете бесплатную атаку оружием или применяете заговор."
     },
     "origin": "class",
     "origin_value": "commander",
@@ -45,8 +45,8 @@
       "ru": "Приказ: Посмотри мне в лицо!"
     },
     "description": {
-      "en": "Reaction (after an ally is crit within 12 spaces): *Taunt* that enemy until you drop to 0 HP.",
-      "ru": "Реакция (после критического удара по союзнику в пределах 12 квадратов): Вы *провоцируете* этого врага, пока ваше здоровье не упадет до 0."
+      "en": "**Reaction** (after an ally is crit within 12 spaces): *Taunt* that enemy until you drop to 0 HP.",
+      "ru": "**Реакция** (после критического удара по союзнику в пределах 12 квадратов): Вы *провоцируете* этого врага, пока ваше здоровье не упадет до 0."
     },
     "origin": "class",
     "origin_value": "commander",
@@ -60,8 +60,8 @@
       "ru": "Приказ: Держать строй!"
     },
     "description": {
-      "en": "Reaction (when an ally drops to 0 HP): Command them to continue the fight! Set their HP to {{amount|3x your LVL}}.",
-      "ru": "Реакция (когда у союзника остается 0 HP): Прикажите ему продолжить бой! Установите его HP равным {{amount|3-кратному вашему уровню}}."
+      "en": "**Reaction** (when an ally drops to 0 HP): Command them to continue the fight! Set their HP to {{amount|3x your LVL}}.",
+      "ru": "**Реакция** (когда у союзника остается 0 ОЗ): Прикажите ему продолжить бой! Установите его ОЗ равным {{amount|3-кратному вашему уровню}}."
     },
     "origin": "class",
     "origin_value": "commander",
@@ -80,8 +80,8 @@
       "ru": "Приказ: Я могу делать это весь день!"
     },
     "description": {
-      "en": "Reaction (when you would drop to 0 HP): You may expend any number of **Hit Dice** and set your HP to the sum rolled instead (do not add your STR).",
-      "ru": "Реакция (когда ваши очки здоровья упадут до 0): Вы можете потратить любое количество **Костей здоровья** и установить свои очки здоровья равными выпавшей сумме (не добавляйте свою силу)."
+      "en": "**Reaction** (when you would drop to 0 HP): You may expend any number of **Hit Dice** and set your HP to the sum rolled instead (do not add your STR).",
+      "ru": "**Реакция** (когда ваши очки здоровья упадут до 0): Вы можете потратить любое количество **Костей здоровья** и установить свои очки здоровья равными выпавшей сумме (не добавляйте свою силу)."
     },
     "origin": "class",
     "origin_value": "commander",
@@ -112,8 +112,8 @@
       "ru": "Приказ: Переместитесь!"
     },
     "description": {
-      "en": "Action/Reaction (on an ally's turn): Command 1 ally to move up to their speed (or 2 allies up to half their speed) for free.",
-      "ru": "Действие/Реакция (в ход союзника): Прикажите 1 союзнику переместиться на расстояние, равное его скорости (или 2 союзникам на расстояние, равное половине их скорости), бесплатно."
+      "en": "**Action/Reaction** (on an ally's turn): Command 1 ally to move up to their speed (or 2 allies up to half their speed) for free.",
+      "ru": "**Действие/Реакция** (в ход союзника): Прикажите 1 союзнику переместиться на расстояние, равное его скорости (или 2 союзникам на расстояние, равное половине их скорости), бесплатно."
     },
     "origin": "class",
     "origin_value": "commander",
@@ -128,7 +128,7 @@
     },
     "description": {
       "en": "Roll 1 additional die for any health potion you administer. Whenever you or an ally spends any number of Hit Dice to recover HP, if you spent at least ten minutes examining their wounds, they can add your Examination bonus to the HP recovered.",
-      "ru": "При использовании любого зелья здоровья бросьте 1 дополнительный куб. Каждый раз, когда вы или ваш союзник тратите любое количество кубов здоровья на восстановление HP, если вы потратили не менее десяти минут на осмотр их ран, они могут добавить ваш бонус к осмотру к восстановленному HP."
+      "ru": "При использовании любого зелья здоровья бросьте 1 дополнительный куб. Каждый раз, когда вы или ваш союзник тратите любое количество кубов здоровья на восстановление ОЗ, если вы потратили не менее десяти минут на осмотр их ран, они могут добавить ваш бонус к осмотру к восстановленному ОЗ."
     },
     "origin": "class",
     "origin_value": "commander",
@@ -375,8 +375,8 @@
       "ru": "Тактика: Властное присутствие"
     },
     "description": {
-      "en": "Action: Shout a command up to 2 words long at an enemy. On a failed WIL save (DC {{dc|10+STR}}), they must spend their entire next turn obeying it to the best of their ability, provided it is not obviously harmful to themselves. They then become immune to this effect for 1 day.",
-      "ru": "Действие: Выкрикните команду длиной до 2 слов в адрес врага. При неудачной проверке воли (УС {{dc|10+STR}}) враг должен потратить весь свой следующий ход на то, чтобы выполнить команду наилучшим образом, при условии, что она не представляет для него очевидной опасности. После этого он становится невосприимчив к этому эффекту на 1 день."
+      "en": "**Action**: Shout a command up to 2 words long at an enemy. On a failed WIL save (DC {{dc|10+STR}}), they must spend their entire next turn obeying it to the best of their ability, provided it is not obviously harmful to themselves. They then become immune to this effect for 1 day.",
+      "ru": "**Действие**: Выкрикните команду длиной до 2 слов в адрес врага. При неудачной проверке воли (УС {{dc|10+STR}}) враг должен потратить весь свой следующий ход на то, чтобы выполнить команду наилучшим образом, при условии, что она не представляет для него очевидной опасности. После этого он становится невосприимчив к этому эффекту на 1 день."
     },
     "origin": "class",
     "origin_value": "commander",
@@ -438,8 +438,8 @@
       "ru": "Тактика: Размашистый удар"
     },
     "description": {
-      "en": "2 actions: Select any contiguous area within your weapon's Reach and damage ALL targets there. This attack does not miss on a 1.",
-      "ru": "2 действия: Выберите любую смежную область в пределах досягаемости вашего оружия и нанесите урон ВСЕМ целям в этой области. Эта атака не промахивается при выпадении единицы."
+      "en": "**2 actions**: Select any contiguous area within your weapon's Reach and damage ALL targets there. This attack does not miss on a 1.",
+      "ru": "**2 действия**: Выберите любую смежную область в пределах досягаемости вашего оружия и нанесите урон ВСЕМ целям в этой области. Эта атака не промахивается при выпадении единицы."
     },
     "origin": "class",
     "origin_value": "commander",

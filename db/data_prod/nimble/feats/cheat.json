@@ -26,7 +26,7 @@
     },
     "description": {
       "en": "Once per turn, when you hit a *Distracted* target with a melee attack, you may change the **Primary Die** to whatever you like.",
-      "ru": "Один раз за ход при попадании рукопашной атакой в цель, которая *Отвлечена*, вы можете изменить **Основной куб** на любой по своему усмотрению."
+      "ru": "Один раз за ход при попадании рукопашной атакой в цель, которая *отвлечена*, вы можете изменить **Основной куб** на любой по своему усмотрению."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -117,8 +117,8 @@
       "ru": "Использовать слабости"
     },
     "description": {
-      "en": "Action: Make a contested INT check against an enemy. If you win, you can use **Vicious Opportunist** against them, even if they are not Distracted. This lasts for 1 minute or until you use this ability against another target.",
-      "ru": "Действие: Совершите проверку интеллекта против противника. Если вы выиграете, вы можете использовать **Злобный оппортунист** против него, даже если он не отвлечен. Это длится 1 минуту или до тех пор, пока вы не используете эту способность против другой цели."
+      "en": "**Action**: Make a contested INT check against an enemy. If you win, you can use **Vicious Opportunist** against them, even if they are not Distracted. This lasts for 1 minute or until you use this ability against another target.",
+      "ru": "**Действие**: Совершите проверку интеллекта против противника. Если вы выиграете, вы можете использовать **Злобный оппортунист** против него, даже если он не отвлечен. Это длится 1 минуту или до тех пор, пока вы не используете эту способность против другой цели."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -147,8 +147,8 @@
       "ru": "Как ТЫ сюда попал?!"
     },
     "description": {
-      "en": "2 actions: Teleport up to 4 spaces away, adjacent to a Distracted target, and make a melee attack against them. If you crit, you may teleport again.",
-      "ru": "2 действия: Телепортируйтесь на расстояние до 4 квадратов, рядом с отвлеченной целью, и совершите рукопашную атаку по ней. Если вы нанесете критический удар, вы можете телепортироваться снова."
+      "en": "**2 actions**: Teleport up to 4 spaces away, adjacent to a Distracted target, and make a melee attack against them. If you crit, you may teleport again.",
+      "ru": "**2 действия**: Телепортируйтесь на расстояние до 4 квадратов, рядом с отвлеченной целью, и совершите рукопашную атаку по ней. Если вы нанесете критический удар, вы можете телепортироваться снова."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -211,8 +211,8 @@
       "ru": "Раскол брони (средний)"
     },
     "description": {
-      "en": "Action: When you crit an enemy with medium armor, sunder their armor. Until the start of your next turn, ALL melee attacks against that target ignore its armor.",
-      "ru": "Действие: При критическом попадании по противнику со средней бронёй, вы раскалываете её. До начала вашего следующего хода ВСЕ рукопашные атаки по этой цели игнорируют её броню."
+      "en": "**Action**: When you crit an enemy with medium armor, sunder their armor. Until the start of your next turn, ALL melee attacks against that target ignore its armor.",
+      "ru": "**Действие**: При критическом попадании по противнику со средней бронёй, вы раскалываете её. До начала вашего следующего хода ВСЕ рукопашные атаки по этой цели игнорируют её броню."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -256,8 +256,8 @@
       "ru": "Повернуть клинок"
     },
     "description": {
-      "en": "Action: Change one of your **Sneak Attack** dice to whatever you like.",
-      "ru": "Действие: Измените значение одного из ваших кубов **Скрытой атаки** на любое другое по вашему желанию."
+      "en": "**Action**: Change one of your **Sneak Attack** dice to whatever you like.",
+      "ru": "**Действие**: Измените значение одного из ваших кубов **Скрытой атаки** на любое другое по вашему желанию."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -305,8 +305,8 @@
       "ru": "Всё было не так!"
     },
     "description": {
-      "en": "Action: After a *Distracted* enemy attacks you you may change the **Primary Die** roll to whatever you like (changing the die to the minimum value counts as a miss).",
-      "ru": "Действие: После того, как *отвлеченный* враг атакует вас, вы можете изменить результат броска **Основного куба** на любой желаемый (изменение результата на минимальное значение считается промахом)."
+      "en": "**Action**: After a *Distracted* enemy attacks you you may change the **Primary Die** roll to whatever you like (changing the die to the minimum value counts as a miss).",
+      "ru": "**Действие**: После того, как *отвлеченный* враг атакует вас, вы можете изменить результат броска **Основного куба** на любой желаемый (изменение результата на минимальное значение считается промахом)."
     },
     "origin": "class",
     "origin_value": "cheat",
@@ -403,7 +403,7 @@
     },
     "description": {
       "en": "When you crit an enemy with fewer max HP than you, it dies.",
-      "ru": "Если вы нанесете критический удар врагу, у которого меньше максимального количества HP, чем у вас, он погибнет."
+      "ru": "Если вы нанесете критический удар врагу, у которого меньше максимального количества ОЗ, чем у вас, он погибнет."
     },
     "origin": "subclass",
     "origin_value": "silent_blade",
@@ -418,7 +418,7 @@
     },
     "description": {
       "en": "When you **Sneak Attack**, you may spend 2 additional actions to Incapacitate your target for their next turn on a failed STR save (DC {{dc|10+INT}}). Save or fail, they are *Taunted* by you until you drop to O HP.",
-      "ru": "При использовании **Скрытой атаки** вы можете потратить 2 дополнительных действия, чтобы обездвижить цель на следующий ход при неудачном спасброске силы (УС {{dc|10+INT}}). Независимо от результата спасброска, цель будет *спровоцирована* вами до тех пор, пока ваше здоровье не упадет до 0 HP."
+      "ru": "При использовании **Скрытой атаки** вы можете потратить 2 дополнительных действия, чтобы обездвижить цель на следующий ход при неудачном спасброске силы (УС {{dc|10+INT}}). Независимо от результата спасброска, цель будет *спровоцирована* вами до тех пор, пока ваше здоровье не упадет до 0 ОЗ."
     },
     "origin": "subclass",
     "origin_value": "scoundrel",

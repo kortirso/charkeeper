@@ -73,8 +73,8 @@
       "ru": "Одурманивающая стрела"
     },
     "description": {
-      "en": "Action: Attack with a ranged weapon. The next attack the target makes must be against the closest other creature, chosen at random.",
-      "ru": "Действие: Атака дальнобойным оружием. Следующая атака цели должна быть совершена по ближайшему другому существу, выбранному случайным образом."
+      "en": "**Action**: Attack with a ranged weapon. The next attack the target makes must be against the closest other creature, chosen at random.",
+      "ru": "**Действие**: Атака дальнобойным оружием. Следующая атака цели должна быть совершена по ближайшему другому существу, выбранному случайным образом."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -88,8 +88,8 @@
       "ru": "Приходите и попробуйте!"
     },
     "description": {
-      "en": "Action: Attack a target. It is *Taunted* by you until the end of their next turn.",
-      "ru": "Действие: Атакуйте цель. Она *спровоцирована* до конца её следующего хода."
+      "en": "**Action**: Attack a target. It is *Taunted* by you until the end of their next turn.",
+      "ru": "**Действие**: Атакуйте цель. Она *спровоцирована* до конца её следующего хода."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -103,8 +103,8 @@
       "ru": "Приманка"
     },
     "description": {
-      "en": "When you Defend: The attack misses instead, and you can move up to half your speed away (where you really were all along!).",
-      "ru": "При защите: атака промахивается, и вы можете отступить на расстояние до половины своей скорости (туда, где вы на самом деле находились всё это время!)."
+      "en": "When you *Defend*: The attack misses instead, and you can move up to half your speed away (where you really were all along!).",
+      "ru": "При *защите*: атака промахивается, и вы можете отступить на расстояние до половины своей скорости (туда, где вы на самом деле находились всё это время!)."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -133,8 +133,8 @@
       "ru": "Скользкая ловушка"
     },
     "description": {
-      "en": "Reaction (when an enemy moves adjacent to you or an ally within 6 spaces): Target falls *Prone*, is vulnerable to the next fire damage it takes, and is treated as if it is *Smoldering*.",
-      "ru": "Реакция (когда враг перемещается в пределах 6 квадратов от вас или союзника): Цель *падает ничком*, становится уязвимой для следующего получаемого ею урона от огня и рассматривается как *Тлеющая*."
+      "en": "**Reaction** (when an enemy moves adjacent to you or an ally within 6 spaces): Target falls *Prone*, is vulnerable to the next fire damage it takes, and is treated as if it is *Smoldering*.",
+      "ru": "**Реакция** (когда враг перемещается в пределах 6 квадратов от вас или союзника): Цель *падает ничком*, становится уязвимой для следующего получаемого ею урона от огня и рассматривается как *тлеющая*."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -150,8 +150,8 @@
       "ru": "Град стрел"
     },
     "description": {
-      "en": "Half range. 2 actions: Shoot all creatures within a 3x3 area. Their speed is halved until the end of their next turn.",
-      "ru": "Половина дальности. 2 действия: Расстреляйте всех существ в области 3x3. Их скорость уменьшается вдвое до конца их следующего хода."
+      "en": "Half range. **2 actions**: Shoot all creatures within a 3x3 area. Their speed is halved until the end of their next turn.",
+      "ru": "Половина дальности. **2 действия**: Расстреляйте всех существ в области 3x3. Их скорость уменьшается вдвое до конца их следующего хода."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -165,8 +165,8 @@
       "ru": "Тяжёлый выстрел"
     },
     "description": {
-      "en": "Half range. Action: Attack with a ranged weapon and push your target: 4 spaces for a small creature, 2 for a medium creature, 1 for a large creature.",
-      "ru": "Половина дальности. Действие: Атакуйте дальнобойным оружием и оттолкните цель на 4 квадрата для маленького существа, на 2 для среднего существа, на 1 для большого существа."
+      "en": "Half range. **Action**: Attack with a ranged weapon and push your target: 4 spaces for a small creature, 2 for a medium creature, 1 for a large creature.",
+      "ru": "Половина дальности. **Действие**: Атакуйте дальнобойным оружием и оттолкните цель на 4 квадрата для маленького существа, на 2 для среднего существа, на 1 для большого существа."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -180,8 +180,8 @@
       "ru": "Зажигательный выстрел"
     },
     "description": {
-      "en": "Half range. Action: Attack with a ranged weapon, add {{dices|WIL }}d8 fire damage.",
-      "ru": "Половина дальности. Действие: Атака дальнобойным оружием, добавьте {{dices|WIL }}d8 урона огнем."
+      "en": "Half range. **Action**: Attack with a ranged weapon, add {{dices|WIL }}d8 fire damage.",
+      "ru": "Половина дальности. **Действие**: Атака дальнобойным оружием, добавьте {{dices|WIL }}d8 урона огнем."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -198,8 +198,8 @@
       "ru": "Многозарядный выстрел"
     },
     "description": {
-      "en": "Half range. Action: Attack your quarry with a ranged weapon and load an extra projectile. Select a 2nd target within 2 spaces of them to take the same amount of damage.",
-      "ru": "Половина дальности. Действие: Атакуйте свою цель дальнобойным оружием и зарядите дополнительный снаряд. Выберите вторую цель в пределах 2 клеток от первой, чтобы она получила такое же количество урона."
+      "en": "Half range. **Action**: Attack your quarry with a ranged weapon and load an extra projectile. Select a 2nd target within 2 spaces of them to take the same amount of damage.",
+      "ru": "Половина дальности. **Действие**: Атакуйте свою цель дальнобойным оружием и зарядите дополнительный снаряд. Выберите вторую цель в пределах 2 клеток от первой, чтобы она получила такое же количество урона."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -231,8 +231,8 @@
       "ru": "Петля-ловушка"
     },
     "description": {
-      "en": "Reaction (when an enemy moves adjacent to you or an ally within 6 spaces): Move them back 1 space, they are Restrained until they can escape (DC {{dc|10+WIL}}).",
-      "ru": "Реакция (когда враг перемещается в пределах 6 квадратов от вас или вашего союзника): Отведите его на 1 квадрат назад, он будет обездвижен до тех пор, пока не сможет сбежать (УС {{dc|10+WIL}})."
+      "en": "**Reaction** (when an enemy moves adjacent to you or an ally within 6 spaces): Move them back 1 space, they are Restrained until they can escape (DC {{dc|10+WIL}}).",
+      "ru": "**Реакция** (когда враг перемещается в пределах 6 квадратов от вас или вашего союзника): Отведите его на 1 квадрат назад, он будет обездвижен до тех пор, пока не сможет сбежать (УС {{dc|10+WIL}})."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -251,8 +251,8 @@
       "ru": "Меткий стрелок"
     },
     "description": {
-      "en": "Action: If you have not moved this turn and your quarry is 4 or more spaces away, attack them for double damage.",
-      "ru": "Действие: Если вы не двигались в этом ходу, а ваша цель находится на расстоянии 4 или более квадратов, атакуйте её, нанеся двойной урон."
+      "en": "**Action**: If you have not moved this turn and your quarry is 4 or more spaces away, attack them for double damage.",
+      "ru": "**Действие**: Если вы не двигались в этом ходу, а ваша цель находится на расстоянии 4 или более квадратов, атакуйте её, нанеся двойной урон."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -266,8 +266,8 @@
       "ru": "Важный выстрел"
     },
     "description": {
-      "en": "Half Range. Action: If your quarry is *Hampered*, your Ranged attacks ignore their armor. If they are unarmored, double your **Hunter's Mark** bonus damage.",
-      "ru": "Половина дальности. Действие: Если ваша цель находится в состоянии *Затруднено*, ваши атаки дальнего боя игнорируют её броню. Если они без доспехов, удвойте бонусный урон от **Метки охотника**."
+      "en": "Half Range. **Action**: If your quarry is *Hampered*, your Ranged attacks ignore their armor. If they are unarmored, double your **Hunter's Mark** bonus damage.",
+      "ru": "Половина дальности. **Действие**: Если ваша цель находится в состоянии *затруднено*, ваши атаки дальнего боя игнорируют её броню. Если они без доспехов, удвойте бонусный урон от **Метки охотника**."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -296,8 +296,8 @@
       "ru": "Бросок и удар"
     },
     "description": {
-      "en": "Action: If you have no **Thrill of the Hunt** charges, move up to your speed toward your quarry. If you end adjacent to them, make a melee attack against them for free.",
-      "ru": "Действие: Если у вас нет зарядов **Охотничьего азарта**, переместитесь на расстояние, равное вашей скорости, к вашей добыче. Если вы окажетесь рядом с ней, совершите бесплатную рукопашную атаку."
+      "en": "**Action**: If you have no **Thrill of the Hunt** charges, move up to your speed toward your quarry. If you end adjacent to them, make a melee attack against them for free.",
+      "ru": "**Действие**: Если у вас нет зарядов **Охотничьего азарта**, переместитесь на расстояние, равное вашей скорости, к вашей добыче. Если вы окажетесь рядом с ней, совершите бесплатную рукопашную атаку."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -357,8 +357,8 @@
       "ru": "Финальный захват"
     },
     "description": {
-      "en": "Action: Spend 1 **Thrill of the Hunt** charge to make a melee attack against your *Bloodied* quarry. Turn it into a crit and double the damage of your **Hunter's Mark**. If they survive, they crit you back.",
-      "ru": "Действие: Потратьте 1 заряд **Охотничьего азарта**, чтобы совершить рукопашную атаку по вашей *окровавленной* жертве. Превратите её в критическую атаку и удвойте урон от вашей **Метки охотника**. Если жертва выживет, она нанесёт вам ответный критический удар."
+      "en": "**Action**: Spend 1 **Thrill of the Hunt** charge to make a melee attack against your *Bloodied* quarry. Turn it into a crit and double the damage of your **Hunter's Mark**. If they survive, they crit you back.",
+      "ru": "**Действие**: Потратьте 1 заряд **Охотничьего азарта**, чтобы совершить рукопашную атаку по вашей *окровавленной* жертве. Превратите её в критическую атаку и удвойте урон от вашей **Метки охотника**. Если жертва выживет, она нанесёт вам ответный критический удар."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -403,7 +403,7 @@
     },
     "description": {
       "en": "Gain a **Thrill of the Hunt** charge whenever you are first Bloodied in an encounter and for every Wound you gain.",
-      "ru": "Получайте заряд **Охотничьего азарта** каждый раз, когда вы первый раз становитесь *Окровавленным* в бою, и за каждую полученную рану."
+      "ru": "Получайте заряд **Охотничьего азарта** каждый раз, когда вы первый раз становитесь *окровавленным* в бою, и за каждую полученную рану."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -449,7 +449,7 @@
     },
     "description": {
       "en": "You can Defend against your quarry for free.",
-      "ru": "Вы можете защититься от своей жертвы бесплатно."
+      "ru": "Вы можете *защититься* от своей жертвы бесплатно."
     },
     "origin": "class",
     "origin_value": "hunter",
@@ -631,8 +631,8 @@
       "ru": "Лечебная мазь"
     },
     "description": {
-      "en": "Action: Heal yourself or an adjacent creature {{amount|WIL }}d6 HP. Only you or another experienced Herbalist may administer these.",
-      "ru": "Действие: Исцелите себя или находящееся рядом существо на {{amount|WIL }}d6 HP. Только вы или другой опытный травник можете применять эти способности."
+      "en": "**Action**: Heal yourself or an adjacent creature {{amount|WIL }}d6 HP. Only you or another experienced Herbalist may administer these.",
+      "ru": "**Действие**: Исцелите себя или находящееся рядом существо на {{amount|WIL }}d6 ОЗ. Только вы или другой опытный травник можете применять эти способности."
     },
     "origin": "subclass",
     "origin_value": "wild_heart",

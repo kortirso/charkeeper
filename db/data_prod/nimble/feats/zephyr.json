@@ -26,7 +26,7 @@
     },
     "description": {
       "en": "Your unarmed strikes are not subject to disadvantage imposed by Rushed Attacks, and their damage is 1d4+STR.",
-      "ru": "Ваши безоружные удары не подвержены помехе, налагаемой быстрыми атаками, и их урон составляет 1d4+STR."
+      "ru": "Ваши безоружные удары не подвержены помехе, налагаемой *быстрыми атаками*, и их урон составляет 1d4+STR."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -273,8 +273,8 @@
       "ru": "Быстрый удар"
     },
     "description": {
-      "en": "When you **Interpose**, you may first make an unarmed strike against the enemy for free.",
-      "ru": "При использовании способности **Вмешательство** вы можете первым бесплатно нанести безоружный удар по противнику."
+      "en": "When you *Interpose*, you may first make an unarmed strike against the enemy for free.",
+      "ru": "При использовании способности *вмешательство* вы можете первым бесплатно нанести безоружный удар по противнику."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -333,13 +333,14 @@
       "ru": "Резонансный удар"
     },
     "description": {
-      "en": "You learn to focus your energy and transfer it as an additional concussive force into your foes. Add LVL bludgeoning damage to all of your melee attacks.",
-      "ru": "Вы научитесь концентрировать свою энергию и передавать её в виде дополнительной ударной силы по своим врагам. Добавьте дробящий урон LVL ко всем своим рукопашным атакам."
+      "en": "You gain LVL bludgeoning damage to all of your melee attacks.",
+      "ru": "Вы получаете бонус LVL дробящего урона ко всем своим рукопашным атакам."
     },
     "origin": "class",
     "origin_value": "zephyr",
     "kind": "static",
-    "conditions": { "level": 5 }
+    "conditions": { "level": 5 },
+    "modifiers": { "str-melee": { "type": "add", "value": "level" }, "dex-melee": { "type": "add", "value": "level" } }
   },
   {
     "slug": "infuse_strength",
@@ -348,8 +349,8 @@
       "ru": "Наполнение силой"
     },
     "description": {
-      "en": "Action: Make an unarmed strike against an ally and infuse them with a portion of your own strength instead of harming them. Expend any number of **Hit Dice** and heal them as you would heal yourself during a Field Rest.",
-      "ru": "Действие: Нанесите безоружный удар по союзнику и вместо нанесения ему урона наделите его частью своей собственной силы. Потратьте любое количество **Костей здоровья** и исцелите его так же, как вы исцеляли бы себя во время полевого отдыха."
+      "en": "**Action**: Make an unarmed strike against an ally and infuse them with a portion of your own strength instead of harming them. Expend any number of **Hit Dice** and heal them as you would heal yourself during a Field Rest.",
+      "ru": "**Действие**: Нанесите безоружный удар по союзнику и вместо нанесения ему урона наделите его частью своей собственной силы. Потратьте любое количество **Костей здоровья** и исцелите его так же, как вы исцеляли бы себя во время полевого отдыха."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -493,7 +494,7 @@
     },
     "description": {
       "en": "While you are *Bloodied*, gain advantage on the first attack you make each turn, and on all saves.",
-      "ru": "Пока вы находитесь в состоянии *Окровавлен*, вы получаете преимущество на первую атаку, которую совершаете каждый ход, и на все спасброски."
+      "ru": "Пока вы находитесь в состоянии *окровавлен*, вы получаете преимущество на первую атаку, которую совершаете каждый ход, и на все спасброски."
     },
     "origin": "subclass",
     "origin_value": "pain",

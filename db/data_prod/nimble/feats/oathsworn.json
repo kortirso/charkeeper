@@ -1,0 +1,434 @@
+[
+  {
+    "slug": "radiant_judgment",
+    "title": {
+      "en": "Radiant Judgment",
+      "ru": "Сияющяя кара"
+    },
+    "description": {
+      "en": "Whenever an enemy attacks you, if you have no **Judgment Dice**, roll your **Judgment dice** ({{amount|2}}d{{dice|6}}). On your next melee attack this encounter, if you hit, deal that much additional radiant damage. The dice are expended whether you hit or miss.",
+      "ru": "Каждый раз, когда враг атакует вас, если у вас нет **Кубов кары**, бросьте свои **Кубы кары** ({{amount|2}}d{{dice|6}}). При вашей следующей рукопашной атаке в этом бою, если вы попадете, нанесите столько же дополнительного урона излучением. Кубы расходуются независимо от того, попали вы или промахнулись."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "description_eval_variables": {
+      "dice": "if (level >= 10, 20, if (level >= 8, 12, if (level >= 5, 10, if (level >= 3, 8, 6))))",
+      "amount": "if (level >= 14, 3, 2)"
+    },
+    "dices": {
+      "value": "if (level >= 10, 20, if (level >= 8, 12, if (level >= 5, 10, if (level >= 3, 8, 6))))",
+      "limit": "if (level >= 14, 3, 2)"
+    }
+  },
+  {
+    "slug": "lay_on_hands",
+    "title": {
+      "en": "Lay on Hands",
+      "ru": "Возложение рук"
+    },
+    "description": {
+      "en": "Gain a magical pool of healing power equal to {{amount|5 × LVL}}. **Action**: Touch a target and spend any amount of remaining healing power to restore that many HP.",
+      "ru": "Получите магический запас исцеляющей силы, равный {{amount|5 × LVL}}. **Действие**: Коснитесь цели и потратьте любое количество оставшейся исцеляющей силы, чтобы восстановить столько же очков здоровья."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",    
+    "limit_refresh": "safe_rest",
+    "info": { "limit": "5 * level" },
+    "conditions": { "level": 1 },
+    "description_eval_variables": {
+      "amount": "5 * level"
+    }
+  },
+  {
+    "slug": "zealot",
+    "title": {
+      "en": "Zealot",
+      "ru": "Фанатик"
+    },
+    "description": {
+      "en": "Whenever you attack with a melee weapon, you may spend mana (up to your highest unlocked spell tier) to choose one for each mana spent:\n\n- **Condemning Strike** (+5 radiant damage)\n\n- **Blessed Aim** (decrease target's armor by 1 step).",
+      "ru": "При каждой атаке оружием ближнего боя вы можете потратить ОМ (в пределах вашего наивысшего разблокированного уровня заклинаний), чтобы выбрать одно за каждую потраченную ману:\n\n- **Осудительный удар** (+5 урона излучением)\n\n- **Благословенная меткость** (снижает броню цели на 1 ступень)."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "paragon_of_virtue",
+    "title": {
+      "en": "Paragon of Virtue",
+      "ru": "Образец добродетели"
+    },
+    "description": {
+      "en": "Advantage on Influence checks to convince someone when you are forthrightly telling the truth, disadvantage when misleading.",
+      "ru": "При проверках навыка влияния вы получаете преимущество при убеждении собеседника, если вы говорите правду, помеху – если вводите в заблуждение."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "sacred_decree",
+    "title": {
+      "en": "Sacred Decree",
+      "ru": "Священный указ"
+    },
+    "description": {
+      "en": "Learn Sacred Decrees - {{amount|1}}.",
+      "ru": "Изучите несколько священных указов - {{amount|1}}."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "many_from_list",
+    "options": {
+      "blinding_aura": { "en": "Blinding Aura", "ru": "Ослепляющая аура" },
+      "explosive_judgment": { "en": "Explosive Judgment", "ru": "Взрывное решение" },
+      "radiant_aura": { "en": "Radiant Aura", "ru": "Сияющая аура" },
+      "shining_mandate": { "en": "Shining Mandate", "ru": "Сияющий мандат" },
+      "unstoppable_protector": { "en": "Unstoppable Protector", "ru": "Неудержимый защитник" },
+      "courage": { "en": "Courage!", "ru": "Храбрость!" },
+      "improved_aura": { "en": "Improved Aura", "ru": "Улучшенная аура" },
+      "reliable_justice": { "en": "Reliable Justice", "ru": "Надежное правосудие" },
+      "stand_fast_friends": { "en": "Stand Fast, Friends!", "ru": "Держитесь крепче, друзья!" },
+      "well_armored": { "en": "Well Armored", "ru": "Хорошо бронированный" }
+    },
+    "conditions": { "level": 3 },
+    "description_eval_variables": {
+      "amount": "if (level >= 16, 6, if (level >= 14, 5, if (level >= 12, 4, if (level >= 9, 3, if (level >= 6, 2, 1)))))"
+    }
+  },
+  {
+    "slug": "blinding_aura",
+    "title": {
+      "en": "Blinding Aura",
+      "ru": "Ослепляющая аура"
+    },
+    "description": {
+      "en": "**Action**: Enemies in your aura are Blinded until the end of their next turn.",
+      "ru": "**Действие**: Враги в вашей ауре *ослепляются* до конца своего следующего хода."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",    
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 },
+    "conditions": { "selected_feature": "blinding_aura" }
+  },
+  {
+    "slug": "explosive_judgment",
+    "title": {
+      "en": "Explosive Judgment",
+      "ru": "Взрывное решение"
+    },
+    "description": {
+      "en": "**2 actions**: Expend your **Judgment Dice**, deal that much radiant damage to all enemies in your aura.",
+      "ru": "**2 действия**: Потратьте свои **Кубы кары**, нанесите столько же урона излучением всем врагам в вашей ауре."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 },
+    "conditions": { "selected_feature": "explosive_judgment" }
+  },
+  {
+    "slug": "radiant_aura",
+    "title": {
+      "en": "Radiant Aura",
+      "ru": "Сияющая аура"
+    },
+    "description": {
+      "en": "**Action**: End any single harmful condition or effect on yourself or another willing creature within your aura.",
+      "ru": "**Действие**: Прекратите любое вредное воздействие на себя или другое согласное существо, в пределах вашей ауры."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "selected_feature": "radiant_aura" },    
+    "limit_refresh": "safe_rest",
+    "info": { "limit": "wil" }
+  },
+  {
+    "slug": "shining_mandate",
+    "title": {
+      "en": "Shining Mandate",
+      "ru": "Сияющий мандат"
+    },
+    "description": {
+      "en": "The first time each round you are attacked while you already have **Judgment Dice**, select an ally within your aura to roll one and apply it to their next attack. You have advantage on skill checks to see through illusions.",
+      "ru": "В первый раз за каждый раунд, когда на вас нападают, если у вас уже есть **Кубы кары**, выберите союзника в пределах вашей ауры, бросьте один из них и примените результат к его следующей атаке. Вы получаете преимущество при проверках навыков, чтобы видеть сквозь иллюзии."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "selected_feature": "shining_mandate" }
+  },
+  {
+    "slug": "unstoppable_protector",
+    "title": {
+      "en": "Unstoppable Protector",
+      "ru": "Неудержимый защитник"
+    },
+    "description": {
+      "en": "Gain +1 speed. You may Interpose even if you are restrained, stunned, or otherwise incapacitated. If you Interpose for a non-combatant NPC, you may Interpose again this round.",
+      "ru": "Получите +1 к скорости. Вы можете *вмешаться*, даже если вы обездвижены, оглушены или иным образом недееспособны. Если вы *вмешаетесь* за не участвующего в бою NPC, вы можете *вмешаться* еще раз в этом раунде."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "selected_feature": "unstoppable_protector" },
+    "modifiers": { "speed": { "type": "add", "value": 1 } }
+  },
+  {
+    "slug": "courage",
+    "title": {
+      "en": "Courage!",
+      "ru": "Храбрость!"
+    },
+    "description": {
+      "en": "When you or an ally in your aura would drop to 0 HP, set their HP to 1 instead.",
+      "ru": "Когда ваше здоровье или здоровье союзника в вашей ауре должно упасть до 0, установите вместо этого его здоровье на 1."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 },
+    "conditions": { "selected_feature": "courage" }
+  },
+  {
+    "slug": "improved_aura",
+    "title": {
+      "en": "Improved Aura",
+      "ru": "Улучшенная аура"
+    },
+    "description": {
+      "en": "+2 aura Reach.",
+      "ru": "+2 к дальности действия ауры."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "selected_feature": "improved_aura" }
+  },
+  {
+    "slug": "reliable_justice",
+    "title": {
+      "en": "Reliable Justice",
+      "ru": "Надежное правосудие"
+    },
+    "description": {
+      "en": "Whenever you roll **Judgment Dice**, roll with advantage.",
+      "ru": "При каждом броске **Кубов кары** бросайте с преимуществом."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "selected_feature": "reliable_justice" }
+  },
+  {
+    "slug": "stand_fast_friends",
+    "title": {
+      "en": "Stand Fast, Friends!",
+      "ru": "Держитесь крепче, друзья!"
+    },
+    "description": {
+      "en": "When you roll Initiative, grant allies temp HP equal to your {{amount|STR+WIL}}. You and allies within your aura have advantage against fear and effects that would move or knock Prone.",
+      "ru": "При броске инициативы, предоставьте союзникам временное количество ОЗ, равное {{amount|STR+WIL}}. Вы и союзники в пределах вашей ауры получаете преимущество против страха и эффектов, которые могут сдвинуть вас с места или опрокинуть."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "selected_feature": "stand_fast_friends" },
+    "description_eval_variables": {
+      "amount": "str + wil"
+    }
+  },
+  {
+    "slug": "well_armored",
+    "title": {
+      "en": "Well Armored",
+      "ru": "Хорошо бронированный"
+    },
+    "description": {
+      "en": "Whenever you Interpose, gain temp HP equal to your STR.",
+      "ru": "Каждый раз, когда вы *вмешиваетесь*, вы получаете временное количество ОЗ, равное вашей Силе."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "selected_feature": "well_armored" }
+  },
+  {
+    "slug": "my_life_for_my_friends",
+    "title": {
+      "en": "My Life, for My Friends",
+      "ru": "Моя жизнь ради моих друзей"
+    },
+    "description": {
+      "en": "You can Interpose for free.",
+      "ru": "Вы можете *вмешаться* бесплатно."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "level": 4 }
+  },
+  {
+    "slug": "unending_judgment",
+    "title": {
+      "en": "Unending Judgment",
+      "ru": "Бесконечный суд"
+    },
+    "description": {
+      "en": "While you have no **Judgment Dice**, gain +5 damage to melee attacks.",
+      "ru": "Пока у вас нет **Кубов кары**, вы получаете +5 к урону от атак ближнего боя."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "glorious_paragon",
+    "title": {
+      "en": "Glorious Paragon",
+      "ru": "Славный образец"
+    },
+    "description": {
+      "en": "+1 to any 2 of your stats. Defend for free whenever you Interpose.",
+      "ru": "+1 к любым двум вашим характеристикам. *Защищайтесь* бесплатно каждый раз, когда *вмешиваетесь*."
+    },
+    "origin": "class",
+    "origin_value": "oathsworn",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  },
+  {
+    "slug": "aura_of_zeal",
+    "title": {
+      "en": "Aura of Zeal",
+      "ru": "Аура рвения"
+    },
+    "description": {
+      "en": "Whenever you roll Judgment Dice, roll 1 more. Gain an aura with a Reach of 4. Your **Radiant Judgment** also triggers when an ally within your aura is attacked while you have no Judgment Dice.",
+      "ru": "Каждый раз, когда вы бросаете **Кубы кары**, бросайте ещё 1. Получите ауру с радиусом действия 4. Ваша **Сияющая кара** также срабатывает, когда союзник в пределах вашей ауры подвергается атаке, пока у вас нет **Кубов кары**."
+    },
+    "origin": "subclass",
+    "origin_value": "vengeance",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "avenger",
+    "title": {
+      "en": "Avenger",
+      "ru": "Мститель"
+    },
+    "description": {
+      "en": "Whenever you or an ally within your aura gain any Wounds, change up to that many **Judgment Dice** to their max. Then, move up to half your speed for free.",
+      "ru": "Каждый раз, когда вы или ваш союзник в пределах вашей ауры получаете какие-либо раны, замените до такого количества **Кубов кары** на максимальное значение. Затем бесплатно переместитесь на расстояние, равное половине вашей скорости."
+    },
+    "origin": "subclass",
+    "origin_value": "vengeance",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "unerring_judgment",
+    "title": {
+      "en": "Unerring Judgment",
+      "ru": "Безошибочное суждение"
+    },
+    "description": {
+      "en": "Increase your **Primary die** rolls on melee attacks by 1 whenever you have **Judgment Dice**.",
+      "ru": "Добавьте 1 к броскам **Основного куба** при рукопашных атаках всякий раз, когда у вас есть **Кубы кары**."
+    },
+    "origin": "subclass",
+    "origin_value": "vengeance",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "maximum_judgment",
+    "title": {
+      "en": "Maximum Judgment",
+      "ru": "Максимальный приговор"
+    },
+    "description": {
+      "en": "Whenever you are attacked, set a **Judgment Die** to its max.",
+      "ru": "При каждом нападении на вас установите значение **Куба кары** на максимальное."
+    },
+    "origin": "subclass",
+    "origin_value": "vengeance",
+    "kind": "static",
+    "conditions": { "level": 15 }
+  },
+  {
+    "slug": "aura_of_refuge",
+    "title": {
+      "en": "Aura of Refuge",
+      "ru": "Аура убежища"
+    },
+    "description": {
+      "en": "Your shields gain +WIL armor and count as your spellcasting focus. Gain an aura with a Reach of 4; you can Interpose for an ally anywhere within your aura.",
+      "ru": "Ваши щиты получают бонус к броне +WIL и считаются вашим фокусом. Вы получаете ауру с радиусом действия 4; вы можете *вмешаться* за союзника в любой точке своей ауры."
+    },
+    "origin": "subclass",
+    "origin_value": "refuge",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "modifiers": { "shield": { "type": "add", "value": "wil" } }
+  },
+  {
+    "slug": "face_me_foul_creature",
+    "title": {
+      "en": "Face Me, Foul Creature!",
+      "ru": "Встреться со мной, мерзкое создание!"
+    },
+    "description": {
+      "en": "When you *Interpose*, the attacking enemy is also Taunted by you until the end of their next turn.",
+      "ru": "При использовании способности *вмешательство*, атакующий противник также подвергается *провокации* до конца своего следующего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "refuge",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "glorious_reprieve",
+    "title": {
+      "en": "Glorious Reprieve",
+      "ru": "Славное помилование"
+    },
+    "description": {
+      "en": "You and allies in your aura cannot drop below 1 HP. Whenever this triggers, they gain 1 Wound instead.",
+      "ru": "У вас и ваших союзников в ауре не может остаться меньше 1 ОЗ. При каждом срабатывании этого эффекта они получают 1 рану."
+    },
+    "origin": "subclass",
+    "origin_value": "refuge",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "divine_grace",
+    "title": {
+      "en": "Divine Grace",
+      "ru": "Божественная благодать"
+    },
+    "description": {
+      "en": "You are resistant to all damage while *Interposing*.",
+      "ru": "Когда вы *вмешиваетесь*, вы получаете сопротивление ко всему урону на это время."
+    },
+    "origin": "subclass",
+    "origin_value": "refuge",
+    "kind": "static",
+    "conditions": { "level": 15 }
+  }
+]
+

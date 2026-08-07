@@ -77,7 +77,7 @@
     },
     "description": {
       "en": "While Dying, you Rage automatically for free at the beginning of your turn, have a max of 2 actions instead of 1, and ignore the STR saves to make attacks.",
-      "ru": "Находясь в состоянии *Умирающий*, вы автоматически бесплатно впадаете в состояние *Ярость* в начале своего хода, совершаете максимум 2 действия вместо 1 и игнорируете спасброски силы при совершении атак."
+      "ru": "Находясь в состоянии *умирающий*, вы автоматически бесплатно впадаете в состояние *Ярость* в начале своего хода, совершаете максимум 2 действия вместо 1 и игнорируете спасброски силы при совершении атак."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -139,7 +139,7 @@
     },
     "description": {
       "en": "Once per turn, while *Dying*, you may suffer 1 Wound to gain 1 action.",
-      "ru": "Один раз за ход, находясь в состоянии *Умирающий*, вы можете получить 1 рану, чтобы получить 1 действие."
+      "ru": "Один раз за ход, находясь в состоянии *умирающий*, вы можете получить 1 рану, чтобы получить 1 действие."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -171,8 +171,8 @@
       "ru": "В гущу событий"
     },
     "description": {
-      "en": "Action: Leap up to {{move|2*DEX}} spaces toward an enemy. If you land adjacent to at least 2 enemies, make an attack against 1 of them for free.",
-      "ru": "Действие: Совершите прыжок на расстояние до нескольких квадратов в сторону врага - {{move|2*DEX}}. Если вы приземлитесь рядом как минимум с двумя врагами, совершите бесплатную атаку по одному из них."
+      "en": "**Action**: Leap up to {{move|2*DEX}} spaces toward an enemy. If you land adjacent to at least 2 enemies, make an attack against 1 of them for free.",
+      "ru": "**Действие**: Совершите прыжок на расстояние до нескольких квадратов в сторону врага - {{move|2*DEX}}. Если вы приземлитесь рядом как минимум с двумя врагами, совершите бесплатную атаку по одному из них."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -266,7 +266,7 @@
     },
     "description": {
       "en": "While *Dying* and *Raging*, taking damage causes 1 Wound (instead of 2) and critical hits inflict 2 Wounds (instead of 3).",
-      "ru": "В состоянии *Умирающий* и *Ярость* получение урона наносит 1 рану (вместо 2), а критические попадания — 2 раны (вместо 3)."
+      "ru": "В состоянии *умирающий* и *Ярость* получение урона наносит 1 рану (вместо 2), а критические попадания — 2 раны (вместо 3)."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -280,8 +280,8 @@
       "ru": "Вихрь"
     },
     "description": {
-      "en": "2 actions: Attack ALL targets within your melee weapon's reach.",
-      "ru": "2 действия: Атакуйте ВСЕ цели в пределах досягаемости вашего рукопашного оружия."
+      "en": "**2 actions**: Attack ALL targets within your melee weapon's reach.",
+      "ru": "**2 действия**: Атакуйте ВСЕ цели в пределах досягаемости вашего рукопашного оружия."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -295,8 +295,8 @@
       "ru": "Ты следующий!"
     },
     "description": {
-      "en": "Action: While *Raging*, you can make a Might skill check to demoralize an enemy within Reach 12 (DC: their current HP). On a success, they immediately flee the battle.",
-      "ru": "Действие: Находясь в состоянии *Ярости*, вы можете совершить проверку навыка мощь, чтобы деморализовать врага в пределах досягаемости 12 квадратов (УС: его текущее количество HP). В случае успеха враг немедленно покидает поле боя."
+      "en": "**Action**: While *Raging*, you can make a Might skill check to demoralize an enemy within Reach 12 (DC: their current HP). On a success, they immediately flee the battle.",
+      "ru": "**Действие**: Находясь в состоянии *Ярости*, вы можете совершить проверку навыка мощь, чтобы деморализовать врага в пределах досягаемости 12 квадратов (УС: его текущее количество ОЗ). В случае успеха враг немедленно покидает поле боя."
     },
     "origin": "class",
     "origin_value": "berserker",
@@ -356,7 +356,7 @@
     },
     "description": {
       "en": "Whenever you expend your **Hit Dice** to recover HP, for every 10 HP you would recover, you may heal 1 Wound instead.",
-      "ru": "Каждый раз, когда вы тратите свои **Кости здоровья** на восстановление HP, за каждые 10 HP, которые вы должны были бы восстановить, вы можете вместо этого залечить 1 рану."
+      "ru": "Каждый раз, когда вы тратите свои **Кости здоровья** на восстановление ОЗ, за каждые 10 ОЗ, которые вы должны были бы восстановить, вы можете вместо этого залечить 1 рану."
     },
     "origin": "subclass",
     "origin_value": "mountainheart",
@@ -403,7 +403,7 @@
     },
     "description": {
       "en": "While Dying, if an attack against you would be a crit, the attack is rerolled instead (when-crit abilities, such as Titan's Fury, still trigger).",
-      "ru": "Находясь в состоянии *Умирающий*, если атака по вам должна была бы быть критической, бросок куба перебрасывается (при этом способности, срабатывающие при критическом попадании всё ещё активируются)."
+      "ru": "Находясь в состоянии *умирающий*, если атака по вам должна была бы быть критической, бросок куба перебрасывается (при этом способности, срабатывающие при критическом попадании всё ещё активируются)."
     },
     "origin": "subclass",
     "origin_value": "mountainheart",

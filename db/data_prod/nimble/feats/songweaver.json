@@ -1,0 +1,402 @@
+[
+  {
+    "slug": "songweaver_inspiration",
+    "title": {
+      "en": "Songweaver's Inspiration",
+      "ru": "Бардовское вдохновение"
+    },
+    "description": {
+      "en": "Free Reaction: Allow an ally to reroll a single die related to an attack or save (must keep either result).",
+      "ru": "Бесплатная реакция: Позволяет союзнику перебросить один куб, связанный с атакой или спасброском (при этом должен сохраниться любой из результатов)."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",    
+    "limit_refresh": "safe_rest",
+    "info": { "limit": "2 * wil" },
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "jack_of_all_trades",
+    "title": {
+      "en": "Jack of All Trades",
+      "ru": "Мастер на все руки"
+    },
+    "description": {
+      "en": "When you Safe Rest, you may move a skill point as if you just leveled up.",
+      "ru": "Во время Безопасного отдыха вы можете переместить очко навыка так же, как если бы вы только что повысили уровень."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "song_of_rest",
+    "title": {
+      "en": "Song of Rest",
+      "ru": "Песнь покоя"
+    },
+    "description": {
+      "en": "Once per day whenever you Field Rest, you may play a song and allow anyone who spends Hit Dice to heal additional HP equal to your WIL.",
+      "ru": "Один раз в день во время полевого отдыха вы можете сыграть песню и позволить любому, кто потратит кости здоровья, восстановить дополнительное количество ОЗ, равное вашей силе воли."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "quick_wit",
+    "title": {
+      "en": "Quick Wit",
+      "ru": "Остроумие"
+    },
+    "description": {
+      "en": "When you roll Initiative, you may regain 2 spent uses of your **Songweaver's Inspiration** (these expire at the end of combat if left unused).",
+      "ru": "При броске куба на инициативу вы можете восстановить 2 потраченных использования **Бардовского вдохновения** (они исчезают в конце боя, если остаются неиспользованными)."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "windbag",
+    "title": {
+      "en": "Windbag",
+      "ru": "Болтун"
+    },
+    "description": {
+      "en": "Choose 1 Utility Spell from each spell school you know.",
+      "ru": "Выберите по одному вспомогательному заклинанию из каждой известной вам школы заклинаний."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "lyrical_weaponry",
+    "title": {
+      "en": "Lyrical Weaponry",
+      "ru": "Лирическое оружие"
+    },
+    "description": {
+      "en": "Choose 1 ability from the **Lyrical Weaponry** list.",
+      "ru": "Выберите 1 способность из списка **Лирическое оружие**."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "many_from_list",
+    "options": {
+      "heroic_ballad": { "en": "Heroic Ballad", "ru": "Героическая баллада" },
+      "not_my_beautiful_face": { "en": "Not My Beautiful Faaace!", "ru": "Не моё прекрасное лицо!" },
+      "song_of_domination": { "en": "Song of Domination", "ru": "Песнь Господства" },
+      "inspiring_anthem": { "en": "Inspiring Anthem", "ru": "Вдохновляющий гимн" },
+      "rhapsody_of_normal": { "en": "Rhapsody of the Normal", "ru": "Рапсодия нормальности" }
+    },
+    "conditions": { "level": 4 }
+  },
+  {
+    "slug": "heroic_ballad",
+    "title": {
+      "en": "Heroic Ballad",
+      "ru": "Героическая баллада"
+    },
+    "description": {
+      "en": "+2 max **Songweaver's Inspiration** charges. When used to reroll an ally's attack, your Songweaver's Inspiration also grants them +WIL damage on the attack.",
+      "ru": "+2 максимальных заряда **Бардовского вдохновения**. При использовании для переброса броска атаки союзника, **Бардовское вдохновение** также увеличивает его урон от атаки (+WIL)."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "conditions": { "selected_feature": "heroic_ballad" }
+  },
+  {
+    "slug": "not_my_beautiful_face",
+    "title": {
+      "en": "Not My Beautiful Faaace!",
+      "ru": "Не моё прекрасное лицо!"
+    },
+    "description": {
+      "en": "When you Defend, force the attacker to choose another target within range on a failed WIL save (if there is none, the attack fails). If they fail by 5 or more, they attack themselves instead.",
+      "ru": "При защите заставьте атакующего выбрать другую цель в пределах досягаемости при неудачной проверке Воли (если такой цели нет, атака проваливается). Если он провалит проверку на 5 или более пунктов, он атакует себя сам."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 },
+    "conditions": { "selected_feature": "not_my_beautiful_face" }
+  },
+  {
+    "slug": "song_of_domination",
+    "title": {
+      "en": "Song of Domination",
+      "ru": "Песнь Господства"
+    },
+    "description": {
+      "en": "2 actions: Play a bewitching tune, and all enemies within 6 spaces who hear it must make a WIL save. If they fail, you move them up to 6 spaces in any direction, and they cannot move on their next turn.",
+      "ru": "2 действия: Сыграйте чарующую мелодию, и все враги в радиусе 6 клеток, услышавшие её, должны совершить спасбросок Воли. Если они провалят его, вы переместите их на расстояние до 6 клеток в любом направлении, и они не смогут двигаться в свой следующий ход."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 },
+    "conditions": { "selected_feature": "song_of_domination" }
+  },
+  {
+    "slug": "inspiring_anthem",
+    "title": {
+      "en": "Inspiring Anthem",
+      "ru": "Вдохновляющий гимн"
+    },
+    "description": {
+      "en": "Action: Grant all friendly Dying creatures who can hear you 1 HP and 1 action.",
+      "ru": "Действие: Дайте всем дружественным умирающим существам, которые вас слышат, 1 ОЗ и 1 действие."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 },
+    "conditions": { "selected_feature": "inspiring_anthem" }
+  },
+  {
+    "slug": "rhapsody_of_normal",
+    "title": {
+      "en": "Rhapsody of the Normal",
+      "ru": "Рапсодия нормальности"
+    },
+    "description": {
+      "en": "When you roll 4 or more on your **Vicious Mockery**, you may spend a **Songweaver's Inspiration** charge to temporarily suppress any special abilities they have until the end of their next turn.",
+      "ru": "Когда вы выбрасываете 4 или больше на своем **Злобном высмеивании**, вы можете потратить заряд **Бардовского вдохновения**, чтобы временно подавить любые особые способности противника до конца его следующего хода."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "conditions": { "selected_feature": "rhapsody_of_normal" }
+  },
+  {
+    "slug": "a_people_person",
+    "title": {
+      "en": "A People Person",
+      "ru": "Человек, любящий людей"
+    },
+    "description": {
+      "en": "You've met many people in your travels; some have even agreed to come to your aid should you need it. Choose 2 friends you know: you can temporarily summon them via song (1/Safe Rest each).",
+      "ru": "В своих путешествиях вы встретили много людей; некоторые даже согласились прийти вам на помощь, если она понадобится. Выберите двух знакомых вам друзей: вы можете временно призвать их с помощью песни (1/Безопасный отдых для каждого)."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "many_from_list",
+    "options": {
+      "stompy": { "en": "Stompy", "ru": "Топтун" },
+      "mal_malevolent_imp": { "en": "Mal, the Malevolent Imp", "ru": "Мэл, злобный чертёнок" },
+      "gran_gran": { "en": "Gran Gran (NOT a hag)", "ru": "Бабушка (НЕ старуха)" },
+      "linos_everfriendly": { "en": "Linos, the Everfriendly", "ru": "Линос, вечно дружелюбный" }
+    },
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "stompy",
+    "title": {
+      "en": "Stompy",
+      "ru": "Топтун"
+    },
+    "description": {
+      "en": "3 actions: Summon a huge hill giant for 1 round. As he enters the battlefield adjacent to you, use Stompy's Stomp: Make a DC 10 Influence check. On a success, he moves 6 spaces in a direction you choose; on a failure, he moves towards YOU instead (*YOU NOT FRIEND!*). He deals everything in his path damage equal to LVL+Influence check. ANY creature within 6 spaces of Stompy can use this ability once instead of an attack.",
+      "ru": "3 действия: Призовите огромного горного великана на 1 раунд. Когда он выйдет на поле боя рядом с вами, используйте **Топот Топтуна**: совершите проверку влияния со сложностью 10. В случае успеха он переместится на 6 клеток в выбранном вами направлении; в случае неудачи он переместится к ВАМ (*ТЫ НЕ ДРУГ!*). Он нанесет всему на своем пути урон, равный уровню + проверка влияния. ЛЮБОЕ существо в пределах 6 клеток от Топ-топа может использовать эту способность один раз вместо атаки."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "conditions": { "selected_feature": "stompy" },
+  },
+  {
+    "slug": "mal_malevolent_imp",
+    "title": {
+      "en": "Mal, the Malevolent Imp",
+      "ru": "Мэл, злобный чертёнок"
+    },
+    "description": {
+      "en": "Summon a tiny fiend for 1 night. He can find out dangerous information you have no right to know! Or *take care* of a problem with only the slightest chance of things going wrong. Make an Influence check to convince him to help you (advantage it you ask him to do something he would find mischievous orfun; with disadvantage if it is something he would find good or menial).",
+      "ru": "Призовите крошечного демона на одну ночь. Он сможет узнать опасную информацию, которую вы не имеете права знать! Или *решить* проблему с минимальной вероятностью того, что что-то пойдет не так. Сделайте проверку влияния, чтобы убедить его помочь вам (преимущество в том, что вы попросите его сделать что-то, что он сочтет озорным или забавным; недостаток – если это что-то, что он сочтет хорошим или незначительным)."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "conditions": { "selected_feature": "mal_malevolent_imp" },
+  },
+  {
+    "slug": "gran_gran",
+    "title": {
+      "en": "Gran Gran (NOT a hag)",
+      "ru": "Бабушка (НЕ старуха)"
+    },
+    "description": {
+      "en": "When resting, you may summon her for 1 hour to soothe your wounds (and hassle you for not eating enough. She bakes and hands out pastries equal to your WIL+ INT. Eating one recovers one mana, Hit Die, or Wound. Eat them while they're warm! They expire in 10 minutes.",
+      "ru": "Во время отдыха вы можете призвать её на 1 час, чтобы она залечила ваши раны (и подшутила над вами за то, что вы недостаточно едите). Она печёт и раздаёт пирожные, количество которых равно вашему показателю WIL+ INT. Съев одно пирожное, вы восстановите одну ману, одну кость здоровья или одну рану. Ешьте их, пока они тёплые! Срок их годности — 10 минут."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "conditions": { "selected_feature": "gran_gran" },
+  },
+  {
+    "slug": "linos_everfriendly",
+    "title": {
+      "en": "Linos, the Everfriendly",
+      "ru": "Линос, вечно дружелюбный"
+    },
+    "description": {
+      "en": "Summon a legendary flying (but friendly) creature to take you and your party wherever you need to go. He may request a very large amount of food as payment.",
+      "ru": "Призовите легендарное летающее (но дружелюбное) существо, которое доставит вас и вашу группу куда угодно. В качестве платы оно может потребовать очень большое количество еды."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "conditions": { "selected_feature": "linos_everfriendly" },
+  },
+  {
+    "slug": "i_so_famous",
+    "title": {
+      "en": "I'm So Famous!",
+      "ru": "Я так знаменит!"
+    },
+    "description": {
+      "en": "+1 to any 2 of your stats. Your **Songweaver's Inspiration** cannot fail (your target succeeds).",
+      "ru": "+1 к любым двум вашим характеристикам. Ваше **Бардовское вдохновение** не может провалиться (ваша цель преуспевает)."
+    },
+    "origin": "class",
+    "origin_value": "songweaver",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  },
+  {
+    "slug": "opportunistic_snark",
+    "title": {
+      "en": "Opportunistic Snark",
+      "ru": "Оппортунистический сарказм"
+    },
+    "description": {
+      "en": "Reaction (when an enemy within Range 12 misses an attack): You may cast **Vicious Mockery** at them; it deals double damage when cast this way.",
+      "ru": "Реакция (когда противник в радиусе 12 промахивается): Вы можете применить против него заклинание **Злая насмешка**; при таком применении урон удваивается."
+    },
+    "origin": "subclass",
+    "origin_value": "snark",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "fight_picker",
+    "title": {
+      "en": "Fight Picker",
+      "ru": "Выбор боя"
+    },
+    "description": {
+      "en": "Once per turn when an enemy is damaged by your **Vicious Mockery**, you may have one of your allies Taunt them until the end of the enemy's turn instead.",
+      "ru": "Один раз за ход, когда враг получает урон от вашей **Злобной насмешки**, вы можете заставить одного из ваших союзников провоцировать его до конца хода врага."
+    },
+    "origin": "subclass",
+    "origin_value": "snark",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "chord_of_chaos",
+    "title": {
+      "en": "Chord of Chaos",
+      "ru": "Аккорд хаоса"
+    },
+    "description": {
+      "en": "Action: You may move ALL creatures within hearing of your song up to 3 spaces as long as they do not move into an obviously dangerous place.",
+      "ru": "Действие: Вы можете переместить ВСЕХ существ в пределах слышимости вашей песни на расстояние до 3 клеток, при условии, что они не переместятся в явно опасное место."
+    },
+    "origin": "subclass",
+    "origin_value": "snark",
+    "kind": "static",
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 },
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "words_like_swords",
+    "title": {
+      "en": "Words Like Swords",
+      "ru": "Слова как мечи"
+    },
+    "description": {
+      "en": "Your Vicious Mockery damage becomes 1d6+INT+ WIL.",
+      "ru": "Урон от вашей злобной насмешки становится равным 1d6+INT+ WIL."
+    },
+    "origin": "subclass",
+    "origin_value": "snark",
+    "kind": "static",
+    "conditions": { "level": 15 }
+  },
+  {
+    "slug": "inspiring_presence",
+    "title": {
+      "en": "Inspiring Presence",
+      "ru": "Вдохновляющее присутствие"
+    },
+    "description": {
+      "en": "Whenever you use Songweaver's Inspiration, your allies within 12 spaces who can hear you gain WIL temp HP.",
+      "ru": "Каждый раз, когда вы используете «Бардовское вдохновение», ваши союзники в радиусе 12 клеток, которые вас слышат, получают временные ОЗ WIL."
+    },
+    "origin": "subclass",
+    "origin_value": "courage",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "unfailing_courage",
+    "title": {
+      "en": "Unfailing Courage",
+      "ru": "Непоколебимая храбрость"
+    },
+    "description": {
+      "en": "Your presence inspires others to feats of heroism and courage heard of only in legend. Your **Songweaver's Inspiration** allows your target to roll with advantage.",
+      "ru": "Ваше присутствие вдохновляет других на героические и отважные подвиги, о которых можно услышать только в легендах. **Бардовское вдохновение** позволяет вашей цели совершать броски с преимуществом."
+    },
+    "origin": "subclass",
+    "origin_value": "courage",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "fire_in_my_bones",
+    "title": {
+      "en": "Fire in my Bones",
+      "ru": "Огонь в моих костях"
+    },
+    "description": {
+      "en": "Your Songweaver's Inspiration also grants your target 1 additional action.",
+      "ru": "**Бардовское вдохновение** также предоставляет вашей цели 1 дополнительное действие."
+    },
+    "origin": "subclass",
+    "origin_value": "courage",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "chorus_of_champions",
+    "title": {
+      "en": "Chorus of Champions",
+      "ru": "Хор чемпионов"
+    },
+    "description": {
+      "en": "Free Reaction: Give all party members 1 action.",
+      "ru": "Свободная реакция: Дайте всем членам группы по 1 действию."
+    },
+    "origin": "subclass",
+    "origin_value": "courage",
+    "kind": "static",
+    "limit_refresh": "combat_rest",
+    "info": { "limit": 1 },
+    "conditions": { "level": 15 }
+  }
+]
