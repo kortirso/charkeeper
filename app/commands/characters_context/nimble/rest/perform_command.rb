@@ -44,7 +44,7 @@ module CharactersContext
             end
             input[:data][:hit_die_spent] = data.hit_die_spent + input[:hit_die_spend]
 
-            current = [data.health['current'] + input[:recovery], data.health['max']].min
+            current = [data.health['current'] + input[:recovery].to_i, data.health['max']].min
             input[:data][:health] = { current: current, temp: data.health['temp'], max: data.health['max'] }
           when 'long_field_rest'
             if input[:make_rolls]
@@ -53,7 +53,7 @@ module CharactersContext
             end
             input[:data][:hit_die_spent] = data.hit_die_spent + input[:hit_die_spend]
 
-            current = [data.health['current'] + input[:recovery], data.health['max']].min
+            current = [data.health['current'] + input[:recovery].to_i, data.health['max']].min
             input[:data][:health] = { current: current, temp: data.health['temp'], max: data.health['max'] }
           when 'safe_rest'
             input[:data][:health] = { current: data.health['max'], temp: data.health['temp'], max: data.health['max'] }
