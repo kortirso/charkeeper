@@ -126,7 +126,7 @@ class NimbleDecorator < ApplicationDecoratorV2
     {
       name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
       attack: '1d4',
-      damage: 1 + modified_abilities['str'],
+      damage: 1 + modified_abilities['str'] + @bonuses['str-melee'].to_i,
       damage_bonus: 0,
       damage_types: ['b'],
       ready_to_use: true,
@@ -138,7 +138,7 @@ class NimbleDecorator < ApplicationDecoratorV2
     {
       name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
       damage: '1d4',
-      damage_bonus: modified_abilities['str'],
+      damage_bonus: modified_abilities['str'] + @bonuses['str-melee'].to_i,
       damage_types: ['b'],
       ready_to_use: true,
       critable: true

@@ -1,0 +1,559 @@
+[
+  {
+    "slug": "pilfered_power",
+    "title": {
+      "en": "Pilfered Power",
+      "ru": "Украденная сила"
+    },
+    "description": {
+      "en": "You may steal power from your patron to cast tiered spells, always at the highest tier you have unlocked. You can do this DEX times before your patron takes notice. Each time you exceed this limit, your patron damages you for half your max HP. Resets on Safe Rest.",
+      "ru": "Вы можете красть силу у своего покровителя, чтобы применять заклинания разных уровней, всегда на самом высоком уровне, который вы разблокировали. Вы можете делать это раз на DEX, прежде чем ваш покровитель это заметит. Каждый раз, когда вы превышаете этот лимит, ваш покровитель наносит вам урон, равный половине вашего максимального ОЗ. Сбрасывается при безопасном отдыхе."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "the_pact_is_sealed",
+    "title": {
+      "en": "The Pact Is Sealed",
+      "ru": "Сделка заключена"
+    },
+    "description": {
+      "en": "Choose Lesser Invocations - {{amount|1}}.",
+      "ru": "Выберите несколько Малых воззваний - {{amount|1}}."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "many_from_list",
+    "options": {
+      "abhorrent_speech": { "en": "Abhorrent Speech", "ru": "Отвратительная речь" },
+      "blood_sight": { "en": "Blood Sight", "ru": "Кровавое зрение" },
+      "eldritch_sense": { "en": "Eldritch Sense", "ru": "Чудотворное чувство" },
+      "knowledge_from_beyond": { "en": "Knowledge from Beyond", "ru": "Знания извне" },
+      "voice_of_the_dark": { "en": "Voice of the Dark", "ru": "Голос тьмы" },
+      "beguiling_influence": { "en": "Beguiling Influence", "ru": "Обворожительное влияние" },
+      "devoted_acolyte": { "en": "Devoted Acolyte", "ru": "Преданный послушник" },
+      "gaze_of_two_minds": { "en": "Gaze of Two Minds", "ru": "Взгляд двух умов" },
+      "my_favored_pet": { "en": "My Favored Pet", "ru": "Мой любимый питомец" },
+      "whispers_of_the_grave": { "en": "Whispers of the Grave", "ru": "Шепот могилы" }
+    },
+    "conditions": { "level": 3 },
+    "description_eval_variables": {
+      "amount": "if (level >= 11, 3, if (level >= 8, 2, 1))"
+    }
+  },
+  {
+    "slug": "abhorrent_speech",
+    "title": {
+      "en": "Abhorrent Speech",
+      "ru": "Отвратительная речь"
+    },
+    "description": {
+      "en": "You can communicate with horrible creatures (aberrations, undead, etc.).",
+      "ru": "Вы можете общаться с ужасными существами (аберрациями, нежитью и т. д.)."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "abhorrent_speech" }
+  },
+  {
+    "slug": "blood_sight",
+    "title": {
+      "en": "Blood Sight",
+      "ru": "Кровавое зрение"
+    },
+    "description": {
+      "en": "You may reroll an **Examination** check. Additionally, you can detect traces of blood on a surface, even after it has been cleaned.",
+      "ru": "Вы можете перебросить проверку навыка анализ. Кроме того, вы можете обнаружить следы крови на поверхности, даже после того, как она была очищена."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "blood_sight" },
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "eldritch_sense",
+    "title": {
+      "en": "Eldritch Sense",
+      "ru": "Чудотворное чувство"
+    },
+    "description": {
+      "en": "You can sense the presence of any shapechanger or creature concealed by magic while within 6 spaces of them.",
+      "ru": "Вы можете почувствовать присутствие любого оборотня или существа, скрытого магией, находясь в пределах 6 клеток от него."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "eldritch_sense" }
+  },
+  {
+    "slug": "knowledge_from_beyond",
+    "title": {
+      "en": "Knowledge from Beyond",
+      "ru": "Знания извне"
+    },
+    "description": {
+      "en": "Whenever you fail an Insight or Arcana check, you may suffer 1 Wound to succeed instead.",
+      "ru": "При каждой неудачной проверке навыка проницательности или магии вы можете получить 1 рану, чтобы вместо этого добиться успеха."
+    },
+    "origin": "class",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "selected_feature": "knowledge_from_beyond" }
+  },
+  {
+    "slug": "voice_of_the_dark",
+    "title": {
+      "en": "Voice of the Dark",
+      "ru": "Голос тьмы"
+    },
+    "description": {
+      "en": "You can communicate telepathically with a humanoid within 6 spaces.",
+      "ru": "Вы можете общаться телепатически с гуманоидом в пределах 6 квадратов."
+    },
+    "origin": "class",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "selected_feature": "voice_of_the_dark" }
+  },
+  {
+    "slug": "beguiling_influence",
+    "title": {
+      "en": "Beguiling Influence",
+      "ru": "Обворожительное влияние"
+    },
+    "description": {
+      "en": "You may reroll an Influence check.",
+      "ru": "Вы можете перебросить проверку навыка влияния."
+    },
+    "origin": "class",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "selected_feature": "beguiling_influence" },
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "devoted_acolyte",
+    "title": {
+      "en": "Devoted Acolyte",
+      "ru": "Преданный послушник"
+    },
+    "description": {
+      "en": "Learn 2 of the following languages: Celestial, Draconic, Deep Speak, Infernal, or Primordial. Advantage on Lore checks related to those 2 languages.",
+      "ru": "Изучите 2 из следующих языков: Небесный, Драконий, Глубинный, Инфернальный или Изначальный. Вы получаете преимущество при проверках знаний, связанных с этими двумя языками."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "devoted_acolyte" }
+  },
+  {
+    "slug": "gaze_of_two_minds",
+    "title": {
+      "en": "Gaze of Two Minds",
+      "ru": "Взгляд двух умов"
+    },
+    "description": {
+      "en": "Touch a willing creature and perceive through its senses instead of your own for as long as you hold concentration.",
+      "ru": "Прикоснитесь к согласному существу и воспринимайте его чувствами, а не своими, пока вы удерживаете концентрацию."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "gaze_of_two_minds" }
+  },
+  {
+    "slug": "my_favored_pet",
+    "title": {
+      "en": "My Favored Pet",
+      "ru": "Мой любимый питомец"
+    },
+    "description": {
+      "en": "One shadow minion can begrudgingly tolerate you outside of combat. It can (very creepily) do any menial task a below average commoner could.",
+      "ru": "Один теневой прислужник может неохотно терпеть вас вне боя. Он (что весьма жутко) может выполнять любую рутинную работу, с которой справился бы обычный человек ниже среднего уровня."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "my_favored_pet" }
+  },
+  {
+    "slug": "whispers_of_the_grave",
+    "title": {
+      "en": "Whispers of the Grave",
+      "ru": "Шепот могилы"
+    },
+    "description": {
+      "en": "You can ask a dead creature 3 yes/no questions. It can never be questioned this way again.",
+      "ru": "Вы можете задать мертвому существу 3 вопроса с ответами *да* или *нет*."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "whispers_of_the_grave" },
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
+  },
+  {
+    "slug": "gift_from_master",
+    "title": {
+      "en": "A Gift from the Master",
+      "ru": "Дар от Учителя"
+    },
+    "description": {
+      "en": "Choose Greater Invocations - {{amount|1}}.",
+      "ru": "Выберите несколько Могущественных воззваний - {{amount|1}}."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "many_from_list",
+    "options": {
+      "armor_of_shadows": { "en": "Armor of Shadows", "ru": "Броня теней" },
+      "hungering_shadows": { "en": "Hungering Shadows", "ru": "Голодные тени" },
+      "repelling_blast": { "en": "Repelling Blast", "ru": "Отталкивающий взрыв" },
+      "shadow_spear": { "en": "Shadow Spear", "ru": "Теневое копье" },
+      "shadow_warp": { "en": "Shadow Warp", "ru": "Теневое искажение" },
+      "vengeful_blast": { "en": "Vengeful Blast", "ru": "Мстительный взрыв" },
+      "fiendish_boon": { "en": "Fiendish Boon", "ru": "Дьявольское благословение" },
+      "one_with_shadows": { "en": "One with Shadows", "ru": "Тот, кто с тенями" },
+      "shadow_magus": { "en": "Shadow Magus", "ru": "Теневой маг" },
+      "shadow_rush": { "en": "Shadow Rush", "ru": "Теневой натиск" },
+      "swarming_shadows": { "en": "Swarming Shadows", "ru": "Рой теней" },
+    },
+    "conditions": { "level": 4 },
+    "description_eval_variables": {
+      "amount": "if (level >= 18, 5, if (level >= 14, 4, if (level >= 9, 3, if (level >= 6, 2, 1))))"
+    }
+  },
+  {
+    "slug": "armor_of_shadows",
+    "title": {
+      "en": "Armor of Shadows",
+      "ru": "Броня теней"
+    },
+    "description": {
+      "en": "Reduce all damage you receive by an amount equal to the number of minions you have.",
+      "ru": "Уменьшите весь получаемый вами урон на величину, равную количеству ваших прислужников."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "armor_of_shadows" }
+  },
+  {
+    "slug": "hungering_shadows",
+    "title": {
+      "en": "Hungering Shadows",
+      "ru": "Голодные тени"
+    },
+    "description": {
+      "en": "Whenever one of your shadows would crit, the next tiered spell you cast this encounter does not cost a use of **Pilfered Power**.",
+      "ru": "Всякий раз, когда одна из ваших теней наносит критический удар, следующее заклинание, которое вы используете в этом бою, не требует использования **Украденной силы**."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "hungering_shadows" }
+  },
+  {
+    "slug": "repelling_blast",
+    "title": {
+      "en": "Repelling Blast",
+      "ru": "Отталкивающий взрыв"
+    },
+    "description": {
+      "en": "When you hit a Medium or smaller creature with **Shadow Blast**, you can push the creature up to 2 spaces away from yourself.",
+      "ru": "При попадании заклинанием **Теневой взрыв** по существу среднего или меньшего размера вы можете оттолкнуть его на расстояние до 2 клеток от себя."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "repelling_blast" }
+  },
+  {
+    "slug": "shadow_spear",
+    "title": {
+      "en": "Shadow Spear",
+      "ru": "Теневое копье"
+    },
+    "description": {
+      "en": "Your **Shadow Blast** can target creatures twice as far away, it ignores cover, and you may attack Prone targets with advantage with it.",
+      "ru": "Ваш **Теневой взрыв** может поражать существ в два раза дальше, игнорирует укрытия, и вы можете атаковать лежащие цели с преимуществом."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "shadow_spear" }
+  },
+  {
+    "slug": "shadow_warp",
+    "title": {
+      "en": "Shadow Warp",
+      "ru": "Теневое искажение"
+    },
+    "description": {
+      "en": "**Action**: Switch places with a creature within 12 spaces that has been dealt necrotic damage this turn.",
+      "ru": "**Действие**: Поменяйтесь местами с существом, находящимся в пределах 12 квадратов, которому в этом ходу был нанесен некротический урон."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "shadow_warp" }
+  },
+  {
+    "slug": "vengeful_blast",
+    "title": {
+      "en": "Vengeful Blast",
+      "ru": "Мстительный взрыв"
+    },
+    "description": {
+      "en": "Whenever a minion dies, you may cast **Shadow Blast** as a reaction (even if you already cast it this turn).",
+      "ru": "Каждый раз, когда умирает прислужник, вы можете разыграть **Теневой взрыв** в качестве реакции (даже если вы уже разыграли его в этом ходу)."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "vengeful_blast" }
+  },
+  {
+    "slug": "fiendish_boon",
+    "title": {
+      "en": "Fiendish Boon",
+      "ru": "Дьявольское благословение"
+    },
+    "description": {
+      "en": "Increase your DEX or INT by 1. You have 1 fewer maximum Hit Dice.",
+      "ru": "Увеличьте свой показатель Ловкости или Интеллекта на 1. У вас будет на 1 меньше максимального количества костей здоровья."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "update_result",
+    "conditions": { "selected_feature": "fiendish_boon" },
+    "modifiers": { "hit_die_max": { "type": "add", "value": -1 } }
+  },
+  {
+    "slug": "one_with_shadows",
+    "title": {
+      "en": "One with Shadows",
+      "ru": "Тот, кто с тенями"
+    },
+    "description": {
+      "en": "**Action**: When you are in an area of dim light or darkness, you may become Invisible until you move or attack.",
+      "ru": "**Действие**: Находясь в зоне слабого освещения или темноты, вы можете стать невидимым, пока не совершите движение или атаку."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "one_with_shadows" }
+  },
+  {
+    "slug": "shadow_magus",
+    "title": {
+      "en": "Shadow Magus",
+      "ru": "Теневой маг"
+    },
+    "description": {
+      "en": "Your minions gain +4 Reach and deal d10 damage instead.",
+      "ru": "Ваши прислужники получают +4 к дальности атаки и вместо этого наносят d10 урона."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "shadow_magus" }
+  },
+  {
+    "slug": "shadow_rush",
+    "title": {
+      "en": "Shadow Rush",
+      "ru": "Теневой натиск"
+    },
+    "description": {
+      "en": "When your shadow minions attack, instead of rolling damage, you may have any of them deal the max amount, then die.",
+      "ru": "Когда ваши теневые прислужники атакуют, вместо броска кубов урона, вы можете заставить любого из них нанести максимальное количество урона, после чего он погибнет."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "shadow_rush" }
+  },
+  {
+    "slug": "swarming_shadows",
+    "title": {
+      "en": "Swarming Shadows",
+      "ru": "Рой теней"
+    },
+    "description": {
+      "en": "Whenever one of your shadows would crit, summon another shadow minion adjacent to the target.",
+      "ru": "Всякий раз, когда одна из ваших теней наносит критический удар, призовите еще одного теневого прислужника рядом с целью."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "selected_feature": "swarming_shadows" }
+  },
+  {
+    "slug": "dire_shadows",
+    "title": {
+      "en": "Dire Shadows",
+      "ru": "Ужасные тени"
+    },
+    "description": {
+      "en": "Attacks against your shadow minions are made with disadvantage. They take no damage from successful saves.",
+      "ru": "Атаки на ваших теневых прислужников совершаются с помехой. При успешных спасбросках они не получают урона."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "level": 17 }
+  },
+  {
+    "slug": "eldritch_usurper",
+    "title": {
+      "en": "Eldritch Usurper",
+      "ru": "Узурпатор из потустороннего мира"
+    },
+    "description": {
+      "en": "+1 to any 2 of your stats. Whenever you summon a single shadow minion, summon 2 instead. They die only when they receive 12 or more damage at one time.",
+      "ru": "+1 к любым двум вашим характеристикам. Каждый раз, когда вы призываете одного теневого прислужника, вместо него призываете двух. Они погибают только тогда, когда получают 12 или более урона за один раз."
+    },
+    "origin": "class",
+    "origin_value": "shadowmancer",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  },
+  {
+    "slug": "master_of_nightfrost",
+    "title": {
+      "en": "Master of Nightfrost",
+      "ru": "Мастер Ночного мороза"
+    },
+    "description": {
+      "en": "Your Patron grants you knowledge of Ice spells. Gain the ability to breathe underwater. Your shadow minions become beings of nightfrost. Your shadow blast and minions can deal cold or necrotic damage, and whenever they would crit, you gain INT+LVL temp HP.",
+      "ru": "Ваш покровитель дарует вам знание ледяных заклинаний. Вы обретаете способность дышать под водой. Ваши теневые прислужники превращаются в существ из ночного мороза. Ваш теневой взрыв и ваши прислужники могут наносить урон холодом или некротической энергией, и всякий раз, когда они наносят критический удар, вы получаете временные очки здоровья, равные INT+LVL."
+    },
+    "origin": "subclass",
+    "origin_value": "abyssal_depths",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "modifiers": { "schools": { "type": "concat", "value": "ice" } }
+  },
+  {
+    "slug": "shadowfrost",
+    "title": {
+      "en": "Shadowfrost",
+      "ru": "Теневой мороз"
+    },
+    "description": {
+      "en": "Your **Shadow Blast** also Slows. You can cast **Cryosleep** or **Rimeblades** without Pilfering Power by expending 10 temp HP. Choose 1 Ice Utility Spell.",
+      "ru": "Ваш **Теневой Взрыв** также замедляет. Вы можете использовать **Криосон** или **Инейные Клинки**, не тратя **Украденную силу**, потратив 10 временных ОЗ. Выберите 1 вспомогательное заклинание школы льда."
+    },
+    "origin": "subclass",
+    "origin_value": "abyssal_depths",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "modifiers": { "utility_spells_limit.ice": { "type": "add", "value": 1 } }
+  },
+  {
+    "slug": "glacial_resilience",
+    "title": {
+      "en": "Glacial Resilience",
+      "ru": "Устойчивость ледников"
+    },
+    "description": {
+      "en": "**Reaction** (whenever you are attacked or would gain a condition), gain {{value|10 × LVL}} temp HP and end ALL negative conditions on yourself. At the end of your next turn, any remaining temp HP are lost.",
+      "ru": "**Реакция** (при каждом нападении или появлении негативного эффекта): получите {{value|10 × LVL}} временных ОЗ и снимите ВСЕ негативные эффекты с себя. В конце вашего следующего хода оставшиеся временные ОЗ будут потеряны."
+    },
+    "origin": "subclass",
+    "origin_value": "abyssal_depths",
+    "kind": "static",    
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 },
+    "conditions": { "level": 11 },
+    "description_eval_variables": {
+      "value": "10 * level"
+    }
+  },
+  {
+    "slug": "cryomancer_reprisal",
+    "title": {
+      "en": "Cryomancer's Reprisal",
+      "ru": "Возмездие криоманта"
+    },
+    "description": {
+      "en": "Pay half your max HP to cast ANY Ice spell. After casting an Ice spell in this way, you gain an invisible aura: the next creature that hits you with a melee attack this encounter takes cold damage equal to half the HP you spent on this casting.",
+      "ru": "Чтобы применить ЛЮБОЕ ледяное заклинание, потратьте половину своего максимального запаса здоровья. После применения ледяного заклинания таким образом вы получаете невидимую ауру: следующее существо, которое ударит вас в ближнем бою в этом сражении, получит урон от холода, равный половине здоровья, потраченного на это заклинание."
+    },
+    "origin": "subclass",
+    "origin_value": "abyssal_depths",
+    "kind": "static",
+    "conditions": { "level": 15 }
+  },
+  {
+    "slug": "Draconic Crimson Rite",
+    "title": {
+      "en": "Draconic Crimson Rite",
+      "ru": "Драконический Багровый Ритуал"
+    },
+    "description": {
+      "en": "Your Patron grants you knowledge of Fire spells. Your shadow minions become flaming dragon wyrmling shadows. Your **Shadow Blast** and minions can deal fire or necrotic damage and inflict **Smoldering** whenever they would crit.",
+      "ru": "Ваш покровитель дарует вам знание огненных заклинаний. Ваши теневые прислужники превращаются в пылающих драконьих детенышей-теней. Ваш **Теневой взрыв** и ваши прислужники могут наносить огненный или некротический урон и вызывать эффект *тления* всякий раз, когда наносят критический удар."
+    },
+    "origin": "subclass",
+    "origin_value": "red_dragon",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "modifiers": { "schools": { "type": "concat", "value": "fire" } }
+  },
+  {
+    "slug": "we_all_burn",
+    "title": {
+      "en": "We'll ALL Burn!",
+      "ru": "Мы ВСЕ сгорим!"
+    },
+    "description": {
+      "en": "You may cast **Pyroclasm** without **Pilfering Power** by including yourself in the damage. You have advantage on the save. Choose 1 Fire Utility Spell.",
+      "ru": "Вы можете применить **Пироклазм**, не используя **Украденную силу**, если при этом сами попадете под действие урона. Вы получаете преимущество при спасброске. Выберите 1 вспомогательное заклинание школы огня."
+    },
+    "origin": "subclass",
+    "origin_value": "red_dragon",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "modifiers": { "utility_spells_limit.fire": { "type": "add", "value": 1 } }
+  },
+  {
+    "slug": "heart_of_burning_fire",
+    "title": {
+      "en": "Heart of Burning Fire",
+      "ru": "Сердце пылающего огня"
+    },
+    "description": {
+      "en": "Regain 1 use of **Pilfered Power** each time you roll Initiative. This expires at the end of combat if unused.",
+      "ru": "Восстанавливайте 1 использование **Украденной силы** каждый раз, когда бросаете куб на инициативу. Если не использовано, эффект исчезает в конце боя."
+    },
+    "origin": "subclass",
+    "origin_value": "red_dragon",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "enveloped_by_master",
+    "title": {
+      "en": "Enveloped by the Master",
+      "ru": "Окруженный Мастером"
+    },
+    "description": {
+      "en": "Gain 1d4 Wounds to cast **Dragonform**.",
+      "ru": "Получите 1d4 раны, чтобы применить заклинание **Драконья форма**."
+    },
+    "origin": "subclass",
+    "origin_value": "red_dragon",
+    "kind": "static",
+    "conditions": { "level": 15 }
+  }
+]
