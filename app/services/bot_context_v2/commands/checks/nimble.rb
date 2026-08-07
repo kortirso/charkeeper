@@ -11,7 +11,7 @@ module BotContextV2
           target = arguments.shift
           result =
             case type
-            when 'save', 'skill', 'initiative' then attr_check(arguments)
+            when 'attr', 'save', 'skill', 'initiative' then attr_check(arguments)
             end
 
           {

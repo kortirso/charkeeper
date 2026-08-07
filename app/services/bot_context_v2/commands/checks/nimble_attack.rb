@@ -6,6 +6,8 @@ module BotContextV2
       class NimbleAttack
         include Deps[roll_command: 'services.bot_context_v2.commands.rolls.default']
 
+        SPECIAL_DICES = [44, 66, 88].freeze
+
         def call(arguments: [])
           {
             type: 'attack',
@@ -17,17 +19,19 @@ module BotContextV2
 
         private
 
-        def rolls(arguments) # rubocop: disable Metrics/AbcSize
+        def rolls(arguments) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
           target = arguments.shift
           values = BotContextV2::Commands::Parsers::MakeCheck.new.call(arguments: arguments) # { adv: 1, bonus: 1 }
           amount, dice_size = target.split('d').map(&:to_i)
+          return make_special_roll(dice_size.to_s[0], values) if SPECIAL_DICES.include?(dice_size)
 
           primary_roll = find_primary_roll(dice_size, values[:adv])
-          return { status: 'miss', rolls: [1] } if primary_roll == 1
+          return { status: 'miss', rolls: [1] } if values[:miss] && primary_roll == 1
           return { status: 'success', total: values[:damage] } if values[:damage]
 
           secondary_rolls = (0...(amount - 1)).map { find_primary_roll(dice_size, values[:adv]) }
-          crit_rolls = values[:crit] && primary_roll == dice_size ? find_crit_roll(dice_size, 0, []) : []
+          crit_value = dice_size - values[:critbonus].to_i
+          crit_rolls = values[:crit] && primary_roll >= crit_value ? find_crit_roll(dice_size, 0, [], crit_value) : []
 
           {
             status: 'success',
@@ -37,12 +41,23 @@ module BotContextV2
           }
         end
 
-        def find_crit_roll(dice_size, adv, acc)
+        def make_special_roll(dice_size, values) # rubocop: disable Metrics/AbcSize
+          totals = (0...(2 + values[:adv].to_i.abs)).map { roll_command.call(arguments: ["d#{dice_size}"]).dig(:result, :total) }
+          results = values[:adv].to_i.positive? ? totals.max(2).shuffle : totals.min(2).shuffle
+          {
+            status: 'success',
+            total: (results[0] * 10) + results[1] + values[:bonus].to_i,
+            rolls: [(results[0] * 10) + results[1]],
+            bonus: values[:bonus].to_i
+          }
+        end
+
+        def find_crit_roll(dice_size, adv, acc, crit_value)
           primary_roll = find_primary_roll(dice_size, adv)
           acc << primary_roll
-          return acc if primary_roll != dice_size
+          return acc if primary_roll < crit_value
 
-          find_crit_roll(dice_size, adv, acc)
+          find_crit_roll(dice_size, adv, acc, crit_value)
         end
 
         def find_primary_roll(dice_size, adv)

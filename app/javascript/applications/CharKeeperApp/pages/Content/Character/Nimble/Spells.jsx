@@ -118,7 +118,7 @@ export const NimbleSpells = (props) => {
                 <div class="flex items-center gap-4">
                   <Button default size="small" disabled={character().mana_max === character().mana_spent} onClick={() => changeMana(1)}><Minus /></Button>
                   {character().mana_max - character().mana_spent} / {character().mana_max}
-                  <Button default size="small" disabled={character().mana_spent === 0} onClick={() => changeMana(-1)} ><Plus /></Button>
+                  <Button default size="small" disabled={character().mana_spent === 0} onClick={() => changeMana(-1)}><Plus /></Button>
                 </div>
             }
           ]}
