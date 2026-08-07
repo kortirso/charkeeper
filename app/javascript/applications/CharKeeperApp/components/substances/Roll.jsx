@@ -2,10 +2,10 @@ import { Portal } from 'solid-js/web';
 import { createEffect, createSignal, createMemo, Show, Switch, Match, For, batch } from 'solid-js';
 import { createStore, reconcile } from 'solid-js/store';
 
-import { ErrorWrapper, Dice, DualityDice, Button } from '../../components';
+import { ErrorWrapper, Dice, DualityDice, Button, Checkbox } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { clickOutside, modifier, localize, readFromCache, writeToCache } from '../../helpers';
-import { Close, Edit } from '../../assets';
+import { Close, Edit, Minus, Plus } from '../../assets';
 import { createCharacterBotRequest } from '../../requests/createCharacterBotRequest';
 
 const TRANSLATION = {
@@ -28,7 +28,12 @@ const TRANSLATION = {
       regular_success: 'Success',
       failure: 'Failure'
     },
-    miss: 'Miss'
+    miss: 'Miss',
+    nimbleCritable: 'Can crit',
+    nimbleMissable: 'Can miss',
+    bonus: 'Bonus',
+    critbonus: 'Crit bonus',
+    diceAmount: 'Dice amount'
   },
   ru: {
     advantage: 'Преимущество',
@@ -49,7 +54,12 @@ const TRANSLATION = {
       regular_success: 'Успех',
       failure: 'Провал'
     },
-    miss: 'Промах'
+    miss: 'Промах',
+    nimbleCritable: 'Может критовать',
+    nimbleMissable: 'Может промахнуться',
+    bonus: 'Бонус',
+    critbonus: 'Бонус крита',
+    diceAmount: 'Кол-во кубов'
   },
   es: {
     advantage: 'Ventaja',
@@ -70,11 +80,16 @@ const TRANSLATION = {
       regular_success: 'Success',
       failure: 'Failure'
     },
-    miss: 'Miss'
+    miss: 'Miss',
+    nimbleCritable: 'Can crit',
+    nimbleMissable: 'Can miss',
+    bonus: 'Bonus',
+    critbonus: 'Crit bonus',
+    diceAmount: 'Dice amount'
   }
 }
 const SINGLE_ADVANTAGE_PROVIDERS = ['dnd', 'cosmere', 'pathfinder'];
-const D20_TESTS_PROVIDERS = ['dnd', 'cosmere', 'pathfinder', 'dc20'];
+const D20_TESTS_PROVIDERS = ['dnd', 'cosmere', 'pathfinder', 'dc20', 'nimble'];
 const DH_DICES_CACHE_NAME = 'DhDicesSettings';
 
 export const createRoll = () => {
@@ -108,6 +123,8 @@ export const createRoll = () => {
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const readDhDicesSettings = async () => {
     const cacheValue = await readFromCache(DH_DICES_CACHE_NAME);
     const settings = cacheValue === null || cacheValue === undefined ? { hopeDice: 'D12', fearDice: 'D12' } : JSON.parse(cacheValue);
@@ -128,7 +145,7 @@ export const createRoll = () => {
     openD20Attack(command, title, bonus, dices, damageBonus, maxAdv = 1) {
       batch(() => {
         setD20Test({ command: command, title: title, bonus: bonus, maxAdv: maxAdv, adv: 0, addBonus: 0 });
-        setDices({ dices: dices, damageBonus: damageBonus, title: localize(TRANSLATION, locale()).damage, open: true });
+        setDices({ dices: dices, damageBonus: damageBonus, title: i18n().damage, open: true });
         setD20TestResult(undefined);
         setDicesResult(undefined);
       });
@@ -154,7 +171,7 @@ export const createRoll = () => {
     openDualityAttack(command, title, bonus, dices, damageBonus) {
       batch(() => {
         setDualityTest({ command: command, title: title, bonus: bonus, maxAdv: 1, adv: 0, addBonus: 0 });
-        setDices({ dices: dices, damageBonus: damageBonus, title: localize(TRANSLATION, locale()).damage, open: true });
+        setDices({ dices: dices, damageBonus: damageBonus, title: i18n().damage, open: true });
         setDualityTestResult(undefined);
         setDicesResult(undefined);
       });
@@ -173,13 +190,13 @@ export const createRoll = () => {
       const diceSize = splitted_dice[1];
 
       batch(() => {
-        setNimbleTest({ command: command, title: title, diceAmount: diceAmount, diceSize: diceSize, bonus: bonus, maxAdv: 10, adv: 0, addBonus: 0, damage: damage, crit: crit });
+        setNimbleTest({ command: command, title: title, diceAmount: diceAmount, diceSize: diceSize, bonus: bonus, maxAdv: 10, adv: 0, addBonus: 0, damage: damage, crit: crit, miss: true, critBonus: 0 });
         setNimbleTestResult(undefined);
       });
     },
     openDices(dices, damageBonus) {
       batch(() => {
-        setDices({ dices: dices, damageBonus: damageBonus, title: localize(TRANSLATION, locale()).damage, open: true });
+        setDices({ dices: dices, damageBonus: damageBonus, title: i18n().damage, open: true });
         setDicesResult(undefined);
       });
     },
@@ -220,6 +237,32 @@ export const createRoll = () => {
         batch(() => {
           setCthulhuTest(reconcile({}));
           setCthulhuTestResult(undefined);
+        });
+      }
+
+      const openNimbleTest = () => {
+        batch(() => {
+          setNimbleTest({ command: '/nimbleAttack', title: null, diceAmount: 1, diceSize: null, bonus: 0, maxAdv: 10, adv: 0, addBonus: 0, crit: true, miss: true, critBonus: 0 });
+          setNimbleTestResult(undefined);
+        });
+      }
+
+      const setNimbleDice = (item) => {
+        const diceSize = item.split('D')[1];
+        batch(() => {
+          if (diceSize !== nimbleTest.diceSize || ['D44', 'D66', 'D88'].includes(item)) {
+            setNimbleTest({ ...nimbleTest, diceSize: item.split('D')[1], diceAmount: 1 });
+          } else {
+            setNimbleTest({ ...nimbleTest, diceAmount: nimbleTest.diceAmount + 1 });
+          }
+          setNimbleTestResult(undefined);
+        });
+      }
+
+      const closeNimbleTest = () => {
+        batch(() => {
+          setNimbleTest(reconcile({}));
+          setNimbleTestResult(undefined);
         });
       }
 
@@ -297,7 +340,7 @@ export const createRoll = () => {
         if (d20Test.command) rolls.push(generateD20Test());
         if (dualityTest.command) rolls.push(generateDualityTest());
         if (cthulhuTest.command) rolls.push(generateCthulhuTest());
-        if (nimbleTest.command) rolls.push(generateNimbleTest());
+        if (nimbleTest.command && nimbleTest.diceSize) rolls.push(generateNimbleTest());
         if (plotDices() > 0) rolls.push(generatePlotTest())
         if (dices.dices) rolls.push(generateDiceRoll());
 
@@ -317,7 +360,7 @@ export const createRoll = () => {
               setCthulhuTestResult(result.result[resultsIndex].result);
               resultsIndex += 1;
             }
-            if (nimbleTest.command) {
+            if (nimbleTest.command && nimbleTest.diceSize) {
               setNimbleTestResult(result.result[resultsIndex].result);
               resultsIndex += 1;
             }
@@ -357,13 +400,13 @@ export const createRoll = () => {
       }
 
       const generateNimbleTest = () => {
-        const options = [];
+        const options = [`--crit ${nimbleTest.crit}`, `--miss ${nimbleTest.miss}`];
         if (nimbleTest.adv > 0) options.push(`--adv ${nimbleTest.adv}`);
         if (nimbleTest.adv < 0) options.push(`--dis ${Math.abs(nimbleTest.adv)}`);
         if (nimbleTest.bonus + nimbleTest.addBonus > 0) options.push(`--bonus ${nimbleTest.bonus + nimbleTest.addBonus}`);
         if (nimbleTest.bonus + nimbleTest.addBonus < 0) options.push(`--penalty ${Math.abs(nimbleTest.bonus + nimbleTest.addBonus)}`);
         if (nimbleTest.damage) options.push(`--damage ${nimbleTest.damage}`);
-        if (nimbleTest.crit) options.push(`--crit ${nimbleTest.crit}`);
+        if (nimbleTest.critBonus > 0) options.push(`--critbonus ${nimbleTest.critBonus}`);
 
         return options.length > 0 ? `${nimbleTest.command} ${nimbleTest.diceAmount}d${nimbleTest.diceSize} ${options.join(' ')}` : nimbleTest.command;
       }
@@ -407,12 +450,12 @@ export const createRoll = () => {
             setDualityTest({ ...dualityTest, adv: dualityTest.adv + advantageModifier });
             setDualityTestResult(undefined);
           });
-        } else if (props.provider === 'dc20') {
+        } else if (props.provider === 'dc20' || (props.provider === 'nimble' && !nimbleTest.command)) {
           batch(() => {
             setD20Test({ ...d20Test, adv: d20Test.adv + advantageModifier });
             setD20TestResult(undefined);
           });
-        } else if (props.provider === 'nimble') {
+        } else if (props.provider === 'nimble' && nimbleTest.command) {
           batch(() => {
             setNimbleTest({ ...nimbleTest, adv: nimbleTest.adv + advantageModifier });
             setNimbleTestResult(undefined);
@@ -594,8 +637,8 @@ export const createRoll = () => {
                             <p class="font-medium! text-xl">{d20TestResult().total}</p>
                             <span class={`roll-result ${d20TestResult().status}`}>
                               <Switch>
-                                <Match when={d20TestResult().status === 'crit_success'}>{localize(TRANSLATION, locale()).crit}</Match>
-                                <Match when={d20TestResult().status === 'crit_failure'}>{localize(TRANSLATION, locale()).critFailure}</Match>
+                                <Match when={d20TestResult().status === 'crit_success'}>{i18n().crit}</Match>
+                                <Match when={d20TestResult().status === 'crit_failure'}>{i18n().critFailure}</Match>
                               </Switch>
                             </span>
                           </div>
@@ -606,11 +649,11 @@ export const createRoll = () => {
                           <p
                             class="mb-1 dice-button"
                             onClick={() => d20Test.adv >= d20Test.maxAdv ? null : updateAdvantage(1)}
-                          >{localize(TRANSLATION, locale()).advantage}</p>
+                          >{i18n().advantage}</p>
                           <p
                             class="dice-button"
                             onClick={() => d20Test.adv <= -d20Test.maxAdv ? null : updateAdvantage(-1)}
-                          >{localize(TRANSLATION, locale()).disadvantage}</p>
+                          >{i18n().disadvantage}</p>
                         </div>
                         <div class="flex-1">
                           <p class="total-advantage">{d20Test.addBonus}</p>
@@ -661,7 +704,7 @@ export const createRoll = () => {
                           <div class="roll-results">
                             <p class="font-medium! text-xl">{cthulhuTestResult().total}</p>
                             <span class={`roll-result ${cthulhuTestResult().status}`}>
-                              {localize(TRANSLATION, locale()).cthulhuStatuses[cthulhuTestResult().status]}
+                              {i18n().cthulhuStatuses[cthulhuTestResult().status]}
                             </span>
                           </div>
                         </Show>
@@ -671,11 +714,11 @@ export const createRoll = () => {
                           <p
                             class="mb-1 dice-button"
                             onClick={() => cthulhuTest.adv >= cthulhuTest.maxAdv ? null : updateAdvantage(1)}
-                          >{localize(TRANSLATION, locale()).advantage}</p>
+                          >{i18n().advantage}</p>
                           <p
                             class="dice-button"
                             onClick={() => cthulhuTest.adv <= -cthulhuTest.maxAdv ? null : updateAdvantage(-1)}
-                          >{localize(TRANSLATION, locale()).disadvantage}</p>
+                          >{i18n().disadvantage}</p>
                         </div>
                       </div>
                     </div>
@@ -726,9 +769,9 @@ export const createRoll = () => {
                             <p class="font-medium! text-xl">{dualityTestResult().total}</p>
                             <span class={`roll-result ${dualityTestResult().status}`}>
                               <Switch>
-                                <Match when={dualityTestResult().status === 'crit_success'}>{localize(TRANSLATION, locale()).crit}</Match>
-                                <Match when={dualityTestResult().status === 'with_hope'}>{localize(TRANSLATION, locale()).hope}</Match>
-                                <Match when={dualityTestResult().status === 'with_fear'}>{localize(TRANSLATION, locale()).fear}</Match>
+                                <Match when={dualityTestResult().status === 'crit_success'}>{i18n().crit}</Match>
+                                <Match when={dualityTestResult().status === 'with_hope'}>{i18n().hope}</Match>
+                                <Match when={dualityTestResult().status === 'with_fear'}>{i18n().fear}</Match>
                               </Switch>
                             </span>
                           </div>
@@ -739,11 +782,11 @@ export const createRoll = () => {
                           <p
                             class="mb-1 dice-button"
                             onClick={() => dualityTest.adv >= dualityTest.maxAdv ? null : updateAdvantage(1)}
-                          >{localize(TRANSLATION, locale()).advantage}</p>
+                          >{i18n().advantage}</p>
                           <p
                             class="dice-button"
                             onClick={() => dualityTest.adv <= -dualityTest.maxAdv ? null : updateAdvantage(-1)}
-                          >{localize(TRANSLATION, locale()).disadvantage}</p>
+                          >{i18n().disadvantage}</p>
                         </div>
                         <div class="flex-1">
                           <p class="total-advantage">{dualityTest.addBonus}</p>
@@ -772,15 +815,14 @@ export const createRoll = () => {
                             </div>
                           }
                         >
-                          <For each={Array.from([...Array(Math.abs(nimbleTest.diceAmount)).keys()])}>
-                            {() =>
-                              <Dice type={`D${nimbleTest.diceSize}`} text={`D${nimbleTest.diceSize}`} />
-                            }
-                          </For>
+                          <p>{nimbleTest.diceAmount}x</p>
+                          <Show when={nimbleTest.diceSize}>
+                            <Dice type={`D${nimbleTest.diceSize}`} text={`D${nimbleTest.diceSize}`} />
+                          </Show>
                         </Show>
                         <Show when={nimbleTestResult() === undefined && nimbleTest.adv !== 0}>
                           <div class="ml-2 text-sm">
-                            <Dice type={`D${nimbleTest.diceSize}`} text={nimbleTest.adv > 0 ? `Adv${nimbleTest.adv}` : `Dis${nimbleTest.adv}`} />
+                            <Dice type={`D${nimbleTest.diceSize}`} text={nimbleTest.adv > 0 ? `Adv${nimbleTest.adv}` : `Dis${Math.abs(nimbleTest.adv)}`} />
                           </div>
                         </Show>
                         <Show when={nimbleTest.bonus + nimbleTest.addBonus !== 0}>
@@ -790,36 +832,49 @@ export const createRoll = () => {
                           <div class="roll-results">
                             <p class="font-medium! text-xl">{nimbleTestResult().total}</p>
                             <Show when={nimbleTestResult().status === 'miss'}>
-                              <span class="roll-result miss">{localize(TRANSLATION, locale()).miss}</span>
+                              <span class="roll-result miss">{i18n().miss}</span>
                             </Show>
                           </div>
                         </Show>
                       </div>
-                      <div class="flex gap-x-4">
-                        <div class="flex-1">
-                          <p
-                            class="mb-1 dice-button"
-                            onClick={() => nimbleTest.adv >= nimbleTest.maxAdv ? null : updateAdvantage(1)}
-                          >{localize(TRANSLATION, locale()).advantage}</p>
-                          <p
-                            class="dice-button"
-                            onClick={() => nimbleTest.adv <= -nimbleTest.maxAdv ? null : updateAdvantage(-1)}
-                          >{localize(TRANSLATION, locale()).disadvantage}</p>
-                        </div>
-                        <div class="flex-1">
-                          <p class="total-advantage">{nimbleTest.addBonus}</p>
-                          <div class="flex gap-x-2">
-                            <p class="dice-button flex-1" onClick={() => setNimbleTest({ ...nimbleTest, addBonus: nimbleTest.addBonus - 1 })}>-</p>
-                            <p class="dice-button flex-1" onClick={() => setNimbleTest({ ...nimbleTest, addBonus: nimbleTest.addBonus + 1 })}>+</p>
-                          </div>
-                        </div>
+                      <div class="flex gap-2">
+                        <p class="dice-button flex-1" onClick={() => nimbleTest.adv <= -nimbleTest.maxAdv ? null : updateAdvantage(-1)}>{i18n().disadvantage}</p>
+                        <p class="dice-button flex-1" onClick={() => nimbleTest.adv >= nimbleTest.maxAdv ? null : updateAdvantage(1)}>{i18n().advantage}</p>
+                      </div>
+                      <div class="flex items-center gap-4">
+                        <p>{i18n().bonus}</p>
+                        <Button default size="small" onClick={() => setNimbleTest({ ...nimbleTest, addBonus: nimbleTest.addBonus - 1 })}><Minus /></Button>
+                        {nimbleTest.addBonus}
+                        <Button default size="small" onClick={() => setNimbleTest({ ...nimbleTest, addBonus: nimbleTest.addBonus + 1 })}><Plus /></Button>
+                      </div>
+                      <div class="flex items-center gap-4">
+                        <p>{i18n().critbonus}</p>
+                        <Button default size="small" disable={nimbleTest.critBonus === 0} onClick={() => setNimbleTest({ ...nimbleTest, critBonus: nimbleTest.critBonus - 1 })}><Minus /></Button>
+                        {nimbleTest.critBonus}
+                        <Button default size="small" onClick={() => setNimbleTest({ ...nimbleTest, critBonus: nimbleTest.critBonus + 1 })}><Plus /></Button>
+                      </div>
+                      <div class="flex flex-col gap-2">
+                        <Checkbox
+                          labelText={i18n().nimbleCritable}
+                          labelPosition="right"
+                          labelClassList="ml-2"
+                          checked={nimbleTest.crit}
+                          onToggle={() => setNimbleTest({ ...nimbleTest, crit: !nimbleTest.crit })}
+                        />
+                        <Checkbox
+                          labelText={i18n().nimbleMissable}
+                          labelPosition="right"
+                          labelClassList="ml-2"
+                          checked={nimbleTest.miss}
+                          onToggle={() => setNimbleTest({ ...nimbleTest, miss: !nimbleTest.miss })}
+                        />
                       </div>
                     </div>
                   </Show>
                   {/* Блок для бросков костей истории */}
                   <Show when={plotDices() > 0}>
                     <div class="blockable dice-test">
-                      <p>{localize(TRANSLATION, locale()).plotDice}</p>
+                      <p>{i18n().plotDice}</p>
                       <div class="dice-list">
                         <Show
                           when={plotResult() === undefined}
@@ -877,7 +932,7 @@ export const createRoll = () => {
                   {/* Кнопка бросков */}
                   <Show when={open()}>
                     <Button withSuspense default textable classList="flex-1" onClick={performRoll}>
-                      {localize(TRANSLATION, locale()).roll}
+                      {i18n().roll}
                     </Button>
                   </Show>
                   <div class="dice-opens">
@@ -908,10 +963,15 @@ export const createRoll = () => {
                         />
                       </div>
                     </Show>
+                    <Show when={props.provider === 'nimble' && !open()}>
+                      <div class="blockable dice-opens-list" classList={{ 'w-auto': open() }}>
+                        <Dice type="D20" text="Nmbl" onClick={() => nimbleTest.command ? closeNimbleTest() : openNimbleTest()} />
+                      </div>
+                    </Show>
                   </div>
                 </div>
                 {/* Выбор кубиков */}
-                <Show when={!open() || dices.open}>
+                <Show when={props.provider !== 'nimble' && (!open() || dices.open)}>
                   <div class="blockable ml-2 p-2 flex flex-col gap-2" classList={{ 'w-auto': open() }}>
                     <Show when={open()}>
                       <For each={['D4', 'D6', 'D8', 'D10', 'D12', 'D20', 'D100']}>
@@ -924,6 +984,17 @@ export const createRoll = () => {
                       onClick={() => open() ? close() : openRolls()}
                       text={open() ? <Close /> : 'Dx'}
                     />
+                  </div>
+                </Show>
+                {/* Выбор кубиков Nimble */}
+                <Show when={props.provider === 'nimble' && nimbleTest.command}>
+                  <div class="blockable ml-2 p-2 flex flex-col gap-2" classList={{ 'w-auto': open() }}>
+                    <For each={['D4', 'D6', 'D8', 'D10', 'D12', 'D20', 'D44', 'D66', 'D88']}>
+                      {(item) =>
+                        <Dice type={item} onClick={() => setNimbleDice(item)} text={item} />
+                      }
+                    </For>
+                    <Dice onClick={() => close()} text={<Close />} />
                   </div>
                 </Show>
               </div>

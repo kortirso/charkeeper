@@ -20,6 +20,8 @@ module BotContextV2
             act.on('--dc [TEXT]', Integer) { |text| result[:dc] = text }
             act.on('--damage [TEXT]', Integer) { |text| result[:damage] = text }
             act.on('--crit [TEXT]') { |text| result[:crit] = text == 'true' }
+            act.on('--miss [TEXT]') { |text| result[:miss] = text == 'true' }
+            act.on('--critbonus [TEXT]', Integer) { |text=0| result[:critbonus] = text.to_i }
           end
           parser.parse! arguments
           result

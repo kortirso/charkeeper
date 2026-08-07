@@ -1,6 +1,6 @@
 import { D4, D6, D8, D10, D12, D20 } from '../../assets';
 
-const TYPES = { 'D4': D4, 'D6': D6, 'D8': D8, 'D10': D10, 'D12': D12, 'D20': D20 };
+const TYPES = { 'D4': D4, 'D6': D6, 'D8': D8, 'D10': D10, 'D12': D12, 'D20': D20, 'D44': D4, 'D66': D6, 'D88': D8 };
 
 export const Dice = (props) => {
   const Component = TYPES[props.type] || D20; // eslint-disable-line solid/reactivity
