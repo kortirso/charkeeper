@@ -315,7 +315,7 @@ class NimbleDecorator < ApplicationDecoratorV2
   end
 
   def spells_relation
-    ::Nimble::Feat.where(origin: 3, origin_value: schools)
+    ::Nimble::Feat.where(origin: 3, origin_value: schools, origin_values: nil)
       .or(::Nimble::Feat.where(origin: [3, 4], slug: learned_spells.values.flatten))
       .or(::Nimble::Feat.where(origin: 3, origin_values: [main_class]))
   end

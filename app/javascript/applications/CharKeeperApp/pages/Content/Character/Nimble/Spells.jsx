@@ -15,7 +15,8 @@ const TRANSLATION = {
     target: 'Target',
     targets: {
       self: 'Self',
-      single: 'Single'
+      single: 'Single',
+      aoe: 'AoE'
     },
     selectSpells: 'Battle',
     selectUtilitySpells: 'Utility',
@@ -30,7 +31,8 @@ const TRANSLATION = {
     target: 'Цели',
     targets: {
       self: 'На себя',
-      single: 'Одиночная'
+      single: 'Одиночная',
+      aoe: 'Область'
     },
     selectSpells: 'Боевые',
     selectUtilitySpells: 'Вспомогательные',

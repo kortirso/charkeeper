@@ -20,7 +20,7 @@ module Nimble
     LONG_FIELD_REST = 'long_field_rest'
     SAFE_REST = 'safe_rest'
 
-    SELECTABLE_ORIGINS = [3].freeze
+    SELECTABLE_ORIGINS = [3, 4].freeze
 
     enum :origin, {
       ANCESTRY_ORIGIN => 0,
