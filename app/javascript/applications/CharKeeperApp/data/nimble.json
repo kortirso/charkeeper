@@ -20,7 +20,7 @@
       }
     },
     "cheat": {
-      "name": { "en": "Cheat", "ru": "Жулик" },
+      "name": { "en": "Cheat", "ru": "Подлец" },
       "subclasses": {
         "silent_blade": { "name": { "en": "Tools of the Silent Blade", "ru": "Инструменты бесшумного клинка" } },
         "scoundrel": { "name": { "en": "Tools of the Scoundrel", "ru": "Инструменты подлеца" } }
@@ -55,14 +55,14 @@
       }
     },
     "oathsworn": {
-      "name": { "en": "Oathsworn", "ru": "Присягнувший" },
+      "name": { "en": "Oathsworn", "ru": "Поборник" },
       "subclasses": {
         "vengeance": { "name": { "en": "Oath of Vengeance", "ru": "Клятва мести" } },
         "refuge": { "name": { "en": "Oath of Refuge", "ru": "Клятва убежища" } }
       }
     },
     "shadowmancer": {
-      "name": { "en": "Shadowmancer", "ru": "Повелитель теней" },
+      "name": { "en": "Shadowmancer", "ru": "Тенемант" },
       "subclasses": {
         "red_dragon": { "name": { "en": "Pact of the Red Dragon", "ru": "Договор красного дракона" } },
         "abyssal_depths": { "name": { "en": "Pact of the Abyssal Depths", "ru": "Договор бездны" } }
@@ -76,14 +76,14 @@
       }
     },
     "songweaver": {
-      "name": { "en": "Songweaver", "ru": "Песнотворец" },
+      "name": { "en": "Songweaver", "ru": "Менестрель" },
       "subclasses": {
         "snark": { "name": { "en": "Herald of Snark", "ru": "Вестник насмешки" } },
         "courage": { "name": { "en": "Herald of Courage", "ru": "Вестник храбрости" } }
       }
     },
     "stormshifter": {
-      "name": { "en": "Stormshifter", "ru": "Буреоборотень" },
+      "name": { "en": "Stormshifter", "ru": "Буревестник" },
       "subclasses": {
         "sky_storm": { "name": { "en": "Circle of Sky & Storm", "ru": "Круг неба и бури" } },
         "fang_claw": { "name": { "en": "Circle of Fang & Claw", "ru": "Круг клыка и когтя" } }
