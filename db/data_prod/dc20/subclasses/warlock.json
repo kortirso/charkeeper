@@ -1,0 +1,63 @@
+[
+  {
+    "slug": "otherwordly_gift",
+    "title": {
+      "en": "Otherwordly Gift",
+      "ru": "Неземной дар"
+    },
+    "description": {
+      "en": "Your patron grants you the following benefits:\n\n**Psychic Spellcasting:** You learn 1 Spell of your choice with the Psychic Spell Tag. When you learn a new Spell, you can choose any Spell that has the Psychic Spell Tag.\n\n**Forbidden Knowledge:** When you complete a Short or Long Rest, you temporarily learn any Spell of your choice. When you cast that Spell, its MP cost is reduced by 2 (minimum of 0). Its total MP cost before the reduction can't exceed your Mana Spend Limit. You forget the Spell immediately after you cast it or complete a Short or Long Rest.\n\nYou gain the following **Warlock Contract** option:\n\n- **Eldritch Bargain:** When you make an Attack against a creature, you can spend 1 HP to target its PD or AD (your choice).",
+      "ru": "Ваш покровитель дарует вам следующие преимущества:\n\n**Психическое колдовство:** Вы изучаете 1 заклинание по вашему выбору с меткой **Психическое**. При изучении нового заклинания вы можете выбрать любое заклинание с меткой **Психическое**.\n\n**Запретное знание:** После короткого или длительного отдыха вы временно изучаете любое заклинание по вашему выбору. При применении этого заклинания его стоимость ОМ снижается на 2 (минимум 0). Общая стоимость ОМ до снижения не может превышать ваш лимит расходования маны. Вы забываете заклинание сразу после его применения или завершения короткого или длительного отдыха.\n\nВы получаете следующую опцию **Контракта чернокнижника**:\n\n- **Сделка Древнего:** При атаке по существу вы можете **потратить 1 ОЗ**, чтобы выбрать его ТЗ или ПЗ (на ваш выбор)."
+    },
+    "origin": "subclass",
+    "origin_value": "eldritch",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "modifiers": { "spells": { "type": "add", "value": 1 } }
+  },
+  {
+    "slug": "alien_comprehension",
+    "title": {
+      "en": "Alien Comprehension",
+      "ru": "Понимание иных"
+    },
+    "description": {
+      "en": "You become Fluent in Deep Speech, and you understand the writings and ramblings of lunatics.",
+      "ru": "Вы становитесь свободно владеющим Глубинной речью и понимаете тексты и бредни сумасшедших."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "eldritch",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "fey_aspect",
+    "title": {
+      "en": "Fey Aspect",
+      "ru": "Аспект феи"
+    },
+    "description": {
+      "en": "Choose 1 of the following Conditions: Charmed or Intimidated. The chosen Condition becomes your **Fey Aspect** Condition. You gain the following Benefits:\n\n**Can't Trick a Trickster:** You have Resistance to your Fey Aspect Condition.\n\n**Fey Step:** When you're Hit by an Attack, you can spend 1 AP as a Reaction to teleport up to 3 Spaces to an unoccupied Space you can see. When you do, you become Invisible until the start of your next turn. You can use this Feature once per Long Rest, and regain the ability to use it again when you roll for Initiative.\n\nYou gain the following **Warlock Contract** option:\n\n- **Beguiling Bargain:** Once per Round, when you target a creature with an Attack or Spell, you can spend 1 HP to force the target to make a Charisma Save against your Save DC. **Save Failure:** The target becomes subjected to your Fey Aspect Condition until the end of your next turn.",
+      "ru": "Выберите одно из следующих состояний: Очарование или Запугивание. Выбранное состояние становится вашим состоянием **Аспекта Феи**. Вы получаете следующие преимущества:\n\n**Нельзя обмануть обманщика:** Вы получаете сопротивление к вашему состоянию Аспекта Феи.\n\n**Шаг Феи:** Когда вас поражает атака, вы можете потратить 1 ОД в качестве реакции, чтобы телепортироваться на 3 клетки в свободное место, которое вы видите. При этом вы становитесь невидимым до начала вашего следующего хода. Вы можете использовать эту способность один раз за длительный отдых и восстановить возможность использовать ее снова при броске на инициативу.\n\nВы получаете следующую опцию **Контракта Колдуна**:\n\n- **Очаровывающая сделка:** Один раз за раунд, когда вы выбираете существо в качестве цели для атаки или заклинания, вы можете потратить 1 ОЗ, чтобы заставить цель совершить спасбросок Харизмы против вашей сложности спасброска. **Провал при спасброске:** Цель становится подвержена вашему состоянию **Фейский облик** до конца вашего следующего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "fey",
+    "kind": "text",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "dream_walker",
+    "title": {
+      "en": "Dream Walker",
+      "ru": "Сновидец"
+    },
+    "description": {
+      "en": "While sleeping, you are lucid and can manipulate what appears in your dreams. Additionally, while you're in contact with a sleeping creature you can make a Spell Check against the target's Intelligence Save. **Success:** You can witness their dream. You choose if the creature notices that you're watching their dream or not. **Failure:** You can't use this Feature again on that creature until it wakes up.",
+      "ru": "Во время сна вы находитесь в ясном сознании и можете управлять тем, что появляется в ваших снах. Кроме того, находясь в контакте со спящим существом, вы можете совершить проверку заклинаний против спасброска Интеллекта цели. **Успех:** Вы можете стать свидетелем его сна. Вы сами решаете, заметит ли существо, что вы наблюдаете за его сном, или нет. **Неудача:** Вы не можете использовать эту способность снова на этом существе, пока оно не проснется."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "fey",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  }
+]
