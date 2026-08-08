@@ -6,7 +6,7 @@
   "insight": { "name": { "en": "Insight", "ru": "Проницательность" }, "ability": "wil" },
   "lore": { "name": { "en": "Lore", "ru": "Знания" }, "ability": "int" },
   "might": { "name": { "en": "Might", "ru": "Мощь" }, "ability": "str" },
-  "naturecraft": { "name": { "en": "Naturecraft", "ru": "Выживание" }, "ability": "wil" },
+  "naturecraft": { "name": { "en": "Naturecraft", "ru": "Природа" }, "ability": "wil" },
   "perception": { "name": { "en": "Perception", "ru": "Внимательность" }, "ability": "wil" },
   "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" }, "ability": "dex" }
 }

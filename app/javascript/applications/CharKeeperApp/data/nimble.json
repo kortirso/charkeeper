@@ -15,12 +15,12 @@
     "berserker": {
       "name": { "en": "Berserker", "ru": "Берсерк" },
       "subclasses": {
-        "mountainheart": { "name": { "en": "Path of The Mountainheart", "ru": "Путь стойкости" } },
-        "red_mist": { "name": { "en": "Path of The Red Mist", "ru": "Путь слепой ярости" } }
+        "mountainheart": { "name": { "en": "Path of The Mountainheart", "ru": "Путь горного сердца" } },
+        "red_mist": { "name": { "en": "Path of The Red Mist", "ru": "Путь пылающей ярости" } }
       }
     },
     "cheat": {
-      "name": { "en": "cheat", "ru": "Жулик" },
+      "name": { "en": "Cheat", "ru": "Жулик" },
       "subclasses": {
         "silent_blade": { "name": { "en": "Tools of the Silent Blade", "ru": "Инструменты бесшумного клинка" } },
         "scoundrel": { "name": { "en": "Tools of the Scoundrel", "ru": "Инструменты подлеца" } }
@@ -112,8 +112,8 @@
     "fire": { "name": { "en": "Fire", "ru": "Огонь" } },
     "ice": { "name": { "en": "Ice", "ru": "Лёд" } },
     "lightning": { "name": { "en": "Lightning", "ru": "Электричество" } },
-    "radiant": { "name": { "en": "Radiant", "ru": "Излучение" } },
-    "necrotic": { "name": { "en": "Necrotic", "ru": "Некротическая" } },
+    "radiant": { "name": { "en": "Radiant", "ru": "Свет" } },
+    "necrotic": { "name": { "en": "Necrotic", "ru": "Некромантия" } },
     "wind": { "name": { "en": "Wind", "ru": "Ветер" } }
   }
 }
