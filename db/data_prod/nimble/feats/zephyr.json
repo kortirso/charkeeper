@@ -181,8 +181,8 @@
       "ru": "Размытие"
     },
     "description": {
-      "en": "When you Defend, you may first move up to half yourspeed away, taking no damage if you are now out of range or have Full Cover.",
-      "ru": "При защите вы можете сначала отойти на расстояние, равное половине вашей скорости, и не получить урона, если вы теперь находитесь вне зоны досягаемости или полностью укрылись."
+      "en": "When you *Defend*, you may first move up to half yourspeed away, taking no damage if you are now out of range or have Full Cover.",
+      "ru": "При *защите* вы можете сначала отойти на расстояние, равное половине вашей скорости, и не получить урона, если вы теперь находитесь вне зоны досягаемости или полностью укрылись."
     },
     "origin": "class",
     "origin_value": "zephyr",
@@ -214,7 +214,7 @@
     },
     "description": {
       "en": "Each time you roll Initiative, gain Hit Dice equal to the actions you get on your first turn.\n\nThese Hit Dice expire at the end of combat if unused.",
-      "ru": "Каждый раз, когда вы бросаете куб инициативы, вы получаете количество костей здоровья, равное количеству действий, которые вы совершаете в свой первый ход.\n\nЭти кости здоровья исчезают в конце боя, если не используются."
+      "ru": "Каждый раз, когда вы бросаете инициативу, вы получаете количество костей здоровья, равное количеству действий, которые вы совершаете в свой первый ход.\n\nЭти кости здоровья исчезают в конце боя, если не используются."
     },
     "origin": "class",
     "origin_value": "zephyr",

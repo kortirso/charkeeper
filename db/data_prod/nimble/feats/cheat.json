@@ -353,7 +353,7 @@
     },
     "description": {
       "en": "Advantage on Stealth checks when you are at full health.",
-      "ru": "Вы получаете преимущество при проверках скрытности, когда у вас полное здоровье."
+      "ru": "Вы получаете преимущество при проверках Скрытности, когда у вас полное здоровье."
     },
     "origin": "subclass",
     "origin_value": "silent_blade",
@@ -387,13 +387,14 @@
       "ru": "Профессиональный скрытник"
     },
     "description": {
-      "en": "Gain a climbing speed and advantage on Stealth checks (replaces **Leave No Trace**).",
-      "ru": "Получите скорость лазанья и преимущество при проверках скрытности (заменяет **Не оставляй следов**)."
+      "en": "Gain a climbing speed and advantage on Stealth checks.",
+      "ru": "Получите скорость лазанья и преимущество при проверках Скрытности."
     },
     "origin": "subclass",
     "origin_value": "silent_blade",
     "kind": "static",
-    "conditions": { "level": 11 }
+    "conditions": { "level": 11 },
+    "exclude": ["leave_no_trace"]
   },
   {
     "slug": "kill",
@@ -450,8 +451,8 @@
       "ru": "Карманный песок"
     },
     "description": {
-      "en": "When you Defend against a melee attack, *Blind* the attacker until the start of their next turn and force them to reroll the attack (Blinded creatures attack with disadvantage).",
-      "ru": "При защите от рукопашной атаки *ослепите* атакующего до начала его следующего хода и заставьте его перебросить кубы атаки (ослепленные существа атакуют с помехой)."
+      "en": "When you *Defend* against a melee attack, *Blind* the attacker until the start of their next turn and force them to reroll the attack (Blinded creatures attack with disadvantage).",
+      "ru": "При *защите* от рукопашной атаки *ослепите* атакующего до начала его следующего хода и заставьте его перебросить кубы атаки (ослепленные существа атакуют с помехой)."
     },
     "origin": "subclass",
     "origin_value": "scoundrel",

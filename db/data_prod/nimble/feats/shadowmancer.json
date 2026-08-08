@@ -224,7 +224,7 @@
       "one_with_shadows": { "en": "One with Shadows", "ru": "Тот, кто с тенями" },
       "shadow_magus": { "en": "Shadow Magus", "ru": "Теневой маг" },
       "shadow_rush": { "en": "Shadow Rush", "ru": "Теневой натиск" },
-      "swarming_shadows": { "en": "Swarming Shadows", "ru": "Рой теней" },
+      "swarming_shadows": { "en": "Swarming Shadows", "ru": "Рой теней" }
     },
     "conditions": { "level": 4 },
     "description_eval_variables": {

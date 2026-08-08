@@ -65,7 +65,7 @@
     },
     "description": {
       "en": "Advantage on Influence checks to convince someone when you are forthrightly telling the truth, disadvantage when misleading.",
-      "ru": "При проверках навыка влияния вы получаете преимущество при убеждении собеседника, если вы говорите правду, помеху – если вводите в заблуждение."
+      "ru": "При проверках Влияния вы получаете преимущество при убеждении собеседника, если вы говорите правду, помеху – если вводите в заблуждение."
     },
     "origin": "class",
     "origin_value": "oathsworn",

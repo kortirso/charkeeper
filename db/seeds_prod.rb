@@ -77,7 +77,8 @@ end
 [
   'feats/ancestries.json',
   'feats/berserker.json', 'feats/cheat.json', 'feats/commander.json', 'feats/hunter.json', 'feats/zephyr.json',
-  'feats/mage.json',
+  'feats/mage.json', 'feats/oathsworn.json', 'feats/shadowmancer.json', 'feats/shepherd.json', 'feats/songweaver.json',
+  'feats/stormshifter.json',
   'spells.json'
 ].each do |filename|
   JSON.parse(File.read("db/data_prod/nimble/#{filename}")).each do |item|

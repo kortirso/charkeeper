@@ -3,7 +3,7 @@
     "slug": "searing_light",
     "title": {
       "en": "Searing Light",
-      "ru": "Обжигающий свет"
+      "ru": "Пылающий свет"
     },
     "description": {
       "en": "**Action**: Heal or Inflict grievous injuries: Heal {{amount|WIL }}d8 HP to a Dying creature within Reach 6, OR Inflict {{amount|WIL }}d8 radiant damage to an undead or *Bloodied* enemy within Reach 6.",
@@ -23,11 +23,11 @@
     "slug": "sacred_grace",
     "title": {
       "en": "Sacred Grace",
-      "ru": "Святая благодать"
+      "ru": "Священная благодать"
     },
     "description": {
-      "en": "Choose 2 Sacred Graces.",
-      "ru": "Выберите 2 Священные благодати."
+      "en": "Choose Sacred Graces - {{amount|2}}.",
+      "ru": "Выберите несколько Священных благодатей - {{amount|2}}."
     },
     "origin": "class",
     "origin_value": "shepherd",
@@ -42,7 +42,10 @@
       "light_bearer": { "en": "Light Bearer", "ru": "Носитель света" },
       "vengeful_spirit": { "en": "Vengeful Spirit", "ru": "Мстительный дух" }
     },
-    "conditions": { "level": 5 }
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "amount": "if (level >= 13, 4, if (level >= 9, 3, 2))"
+    }
   },
   {
     "slug": "assist_me_my_friend",
@@ -81,13 +84,15 @@
       "ru": "Осветить душу"
     },
     "description": {
-      "en": "Action: A creature within 6 spaces begins to glow with radiant light. For 1 Round, attacks against them are made with your choice of advantage or disadvantage. You may do this WIL times per Safe Rest.",
-      "ru": "Действие: Существо в пределах 6 клеток начинает светиться лучистым светом. В течение 1 раунда атаки по нему совершаются с преимуществом или недостатком на ваш выбор. Вы можете совершать это WIL раз за каждый безопасный отдых."
+      "en": "**Action**: A creature within 6 spaces begins to glow with radiant light. For 1 Round, attacks against them are made with your choice of advantage or disadvantage.",
+      "ru": "**Действие**: Существо в пределах 6 квадратов начинает светиться лучистым светом. В течение 1 раунда атаки по нему совершаются с преимуществом или помехой на ваш выбор."
     },
     "origin": "class",
     "origin_value": "shepherd",
     "kind": "static",
-    "conditions": { "selected_feature": "illuminate_soul" }
+    "conditions": { "selected_feature": "illuminate_soul" },
+    "limit_refresh": "safe_rest",
+    "info": { "limit": "wil" }
   },
   {
     "slug": "not_beyond_my_reach",
@@ -156,8 +161,8 @@
       "ru": "Мстительный дух"
     },
     "description": {
-      "en": "Action: Your **Lifebinding Spirit** sacrifices itself to transform into a swirling vortex of radiant light that damages all enemies within 3 spaces of you, ignoring armor and cover. This lasts for a number of rounds equal to the healing charges left on the **Lifebinding Spirit**.",
-      "ru": "Действие: Ваш **Жизнетворный дух** приносит себя в жертву, превращаясь в вихрь сияющего света, который наносит урон всем врагам в радиусе 3 клеток от вас, игнорируя броню и укрытия. Эффект длится количество раундов, равное количеству оставшихся зарядов исцеления у **Жизнетворного духа**"
+      "en": "**Action**: Your **Lifebinding Spirit** sacrifices itself to transform into a swirling vortex of radiant light that damages all enemies within 3 spaces of you, ignoring armor and cover. This lasts for a number of rounds equal to the healing charges left on the **Lifebinding Spirit**.",
+      "ru": "**Действие**: Ваш **Жизнетворный дух** приносит себя в жертву, превращаясь в вихрь сияющего света, который наносит урон всем врагам в радиусе 3 клеток от вас, игнорируя броню и укрытия. Эффект длится количество раундов, равное количеству оставшихся зарядов исцеления у **Жизнетворного духа**."
     },
     "origin": "class",
     "origin_value": "shepherd",
@@ -172,7 +177,7 @@
     },
     "description": {
       "en": "Once per round whenever you roll a 6 or higher on one or more healing die, the target may recover one Wound.",
-      "ru": "Один раз за раунд, когда вы выбрасываете 6 или больше на одном или нескольких кубах исцеления, цель может восстановить одно ранение."
+      "ru": "Один раз за раунд, когда вы выбрасываете 6 или больше на одном или нескольких кубах исцеления, цель может восстановить одну рану."
     },
     "origin": "class",
     "origin_value": "shepherd",
@@ -217,7 +222,7 @@
     },
     "description": {
       "en": "When an effect caused by you heals a Dying creature, they are healed for twice as much. Once per round your **Lifebinding Spirit** can act for free while you are Dying.",
-      "ru": "Когда эффект, вызванный вами, исцеляет умирающее существо, оно исцеляется на двойную величину. Один раз за раунд ваш **Жизнетворный дух** может действовать бесплатно, пока вы умираете."
+      "ru": "Когда эффект, вызванный вами, исцеляет умирающее существо, оно исцеляется на двойную величину. Один раз за раунд ваш **Жизнетворный дух** может действовать бесплатно, если вы *умираете*."
     },
     "origin": "subclass",
     "origin_value": "mercy",
@@ -232,7 +237,7 @@
     },
     "description": {
       "en": "When an effect caused by you would heal HP, you may expend 1 use of **Searing Light** to heal (or damage, ignoring armor) another target within 6 spaces of yourself for the same amount.",
-      "ru": "Когда эффект, вызванный вами, должен восстанавливать очки здоровья, вы можете потратить 1 использование **Пылающего света**, чтобы исцелить (или нанести урон, игнорируя броню) другой цели в пределах 6 клеток от вас на ту же сумму."
+      "ru": "Когда эффект, вызванный вами, должен восстанавливать очки здоровья, вы можете потратить 1 использование **Пылающего света**, чтобы исцелить (или нанести урон, игнорируя броню) другой цели в пределах 6 квадратов от вас на ту же сумму."
     },
     "origin": "subclass",
     "origin_value": "mercy",
@@ -264,7 +269,7 @@
     },
     "description": {
       "en": "Your **Conduit of Light** may target 1 additional creature. Regain 1 charge of **Searing Light** when you roll Initiative (this expires if unspent at the end of combat).",
-      "ru": "Ваш **Проводник Света** может выбрать целью еще одно существо. Восстановите 1 заряд **Пылающего Света** при броске Инициативы (он исчезает, если не был потрачен в конце боя)."
+      "ru": "Ваш **Проводник света** может выбрать целью еще одно существо. Восстановите 1 заряд **Пылающего света** при броске инициативы (он исчезает, если не был потрачен в конце боя)."
     },
     "origin": "subclass",
     "origin_value": "mercy",
@@ -294,7 +299,7 @@
     },
     "description": {
       "en": "When you use **Searing Light** to harm an enemy, make a 2nd enemy within range take the same amount of damage (ignoring armor).",
-      "ru": "При использовании заклинания **Пылающий свет** для нанесения урона врагу, второй враг в пределах досягаемости получит такое же количество урона (без учета брони)."
+      "ru": "При использовании **Пылающего света** для нанесения урона врагу, второй враг в пределах досягаемости получит такое же количество урона (игнорируя броню)."
     },
     "origin": "subclass",
     "origin_value": "malice",
@@ -308,8 +313,8 @@
       "ru": "Благословение странника"
     },
     "description": {
-      "en": "Reaction (when you would drop to 0 HP): Drop to 1 HP instead and force an enemy within 6 spaces to make a STR save. On a failure, they become *Bloodied*, or if they are already *Bloodied*, they drop to 0 HP.",
-      "ru": "Реакция (когда ваше здоровье падает до 0): Вместо этого ваше здоровье падает до 1, и противник в радиусе 6 клеток должен совершить спасбросок Силы. В случае неудачи он получает эффект *Кровавый*, или, если он уже получил эффект *Кровавый*, его здоровье падает до 0."
+      "en": "**Reaction** (when you would drop to 0 HP): Drop to 1 HP instead and force an enemy within 6 spaces to make a STR save. On a failure, they become *Bloodied*, or if they are already *Bloodied*, they drop to 0 HP.",
+      "ru": "**Реакция** (когда ваше здоровье падает до 0): Вместо этого ваше здоровье падает до 1, и противник в радиусе 6 клеток должен совершить спасбросок Силы. В случае неудачи он получает эффект *окровавленный*, или, если он уже получил эффект *окровавленный*, его здоровье падает до 0."
     },
     "origin": "subclass",
     "origin_value": "malice",
@@ -325,8 +330,8 @@
       "ru": "Прикосновение Повелителя смерти"
     },
     "description": {
-      "en": "Your first melee attack each round against a Bloodied creature is an automatic critical hit. Your **Lifebinding Spirit** deals additional damage equal to your STR.",
-      "ru": "Ваша первая рукопашная атака в каждом раунде против окровавленного существа является автоматическим критическим ударом. Ваш **Жизнетворный дух** наносит дополнительный урон, равный вашей силе."
+      "en": "Your first melee attack each round against a *Bloodied* creature is an automatic critical hit. Your **Lifebinding Spirit** deals additional damage equal to your STR.",
+      "ru": "Ваша первая рукопашная атака в каждом раунде против *окровавленного* существа является автоматическим критическим ударом. Ваш **Жизнетворный дух** наносит дополнительный урон, равный вашей силе."
     },
     "origin": "subclass",
     "origin_value": "malice",
@@ -341,7 +346,7 @@
     },
     "description": {
       "en": "Your **Veilwalker's Blessing** ability recharges when you roll Initiative. This charge is lost if unspent at the end of combat.",
-      "ru": "Ваша способность **Благословение Завесы** перезаряжается, когда вы бросаете Инициативу. Этот заряд теряется, если не был израсходован в конце боя."
+      "ru": "Ваша способность **Благословение странника** перезаряжается, когда вы бросаете инициативу. Этот заряд теряется, если не был израсходован в конце боя."
     },
     "origin": "subclass",
     "origin_value": "malice",

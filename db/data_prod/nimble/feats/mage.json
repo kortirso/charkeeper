@@ -1,13 +1,81 @@
 [
   {
+    "slug": "talented_researcher",
+    "title": {
+      "en": "Talented Researcher",
+      "ru": "Талантливый исследователь"
+    },
+    "description": {
+      "en": "Gain advantage on Arcana or Lore checks when you have access to a large amount of books and time to study them.",
+      "ru": "Вы получаете преимущество на проверки навыков Магия и Знания, когда у вас есть доступ к большому кол-ву книг и времени, чтобы изучить их."
+    },
+    "origin": "class",
+    "origin_value": "mage",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "elemental_mastery",
+    "title": {
+      "en": "Elemental Mastery",
+      "ru": "Элементальное мастерство"
+    },
+    "description": {
+      "en": "Learn the utility spells from some schools you know - {{amount|1}}.",
+      "ru": "Выберите школы, в которых вы знаете вспомогательные заклинания - {{amount|1}}."
+    },
+    "origin": "class",
+    "origin_value": "mage",
+    "kind": "many_from_list",
+    "options": {
+      "mastery_fire": { "en": "Fire", "ru": "Огонь" },
+      "mastery_ice": { "en": "Ice", "ru": "Лёд" },
+      "mastery_lightning": { "en": "Lightning", "ru": "Электричество" }
+    },
+    "conditions": { "level": 3 },
+    "description_eval_variables": {
+      "amount": "if (level >= 14, 3, if (level >= 6, 2, 1))"
+    }
+  },
+  {
+    "slug": "mastery_fire",
+    "title": {},
+    "description": {},
+    "origin": "class",
+    "origin_value": "mage",
+    "kind": "hidden",
+    "conditions": { "selected_feature": "mastery_fire" },
+    "modifiers": { "utility_spells_limit.fire": { "type": "add", "value": 3 } }
+  },
+  {
+    "slug": "mastery_ice",
+    "title": {},
+    "description": {},
+    "origin": "class",
+    "origin_value": "mage",
+    "kind": "hidden",
+    "conditions": { "selected_feature": "mastery_ice" },
+    "modifiers": { "utility_spells_limit.ice": { "type": "add", "value": 3 } }
+  },
+  {
+    "slug": "mastery_lightning",
+    "title": {},
+    "description": {},
+    "origin": "class",
+    "origin_value": "mage",
+    "kind": "hidden",
+    "conditions": { "selected_feature": "mastery_lightning" },
+    "modifiers": { "utility_spells_limit.lightning": { "type": "add", "value": 3 } }
+  },
+  {
     "slug": "spellshaper",
     "title": {
       "en": "Spellshaper",
-      "ru": "Заклинатель"
+      "ru": "Форма заклинания"
     },
     "description": {
-      "en": "You gain the ability to enhance your spells with powerful effects by spending additional mana. Choose 2 Spellshaper abilities.",
-      "ru": "Вы получаете возможность усиливать свои заклинания мощными эффектами, потратив дополнительную ману. Выберите 2 способности Заклинателя."
+      "en": "Choose Spellshaper abilities - {{amount|1}}.",
+      "ru": "Выберите несколько форм заклинаний - {{amount|1}}."
     },
     "origin": "class",
     "origin_value": "mage",
@@ -22,7 +90,10 @@
       "methodical_spellweaver": { "en": "Methodical Spellweaver", "ru": "Методичный заклинатель" },
       "stretch_time": { "en": "Stretch Time", "ru": "Растянуть время" }
     },
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "description_eval_variables": {
+      "amount": "if (level >= 13, 4, if (level >= 9, 3, 2))"
+    }
   },
   {
     "slug": "dimensional_compression",
@@ -92,7 +163,7 @@
     },
     "description": {
       "en": "Spend 2 × mana, min. 1 mana. When you cast a tiered, single-target spell, you may cast a copy of that spell on a 2nd target for free.",
-      "ru": "Потратьте 2 × маны, минимум 1 ману. Когда вы разыгрываете многоуровневое заклинание, направленное на одну цель, вы можете бесплатно разыграть копию этого заклинания на вторую цель."
+      "ru": "Потратьте 2 × маны, минимум 1 ману. Когда вы разыгрываете заклинание, направленное на одну цель, вы можете бесплатно разыграть копию этого заклинания на вторую цель."
     },
     "origin": "class",
     "origin_value": "mage",
@@ -107,7 +178,7 @@
     },
     "description": {
       "en": "Spend 1 mana. Change the damage type of a spell to: Fire, Ice, Lightning, Necrotic, or Radiant.",
-      "ru": "Потратьте 1 ману. Измените тип урона заклинания на: Огонь, Лед, Молния, Некротический или Сияющий."
+      "ru": "Потратьте 1 ману. Измените тип урона заклинания на: Огонь, Лед, Молния, Некротический урон или Излучение."
     },
     "origin": "class",
     "origin_value": "mage",
@@ -137,7 +208,7 @@
     },
     "description": {
       "en": "Spend 2 mana. Reduce the action cost of a spell by 1 (min 1).",
-      "ru": "Потратьте 2 маны. Уменьшите стоимость действия заклинания на 1 (минимум 1)."
+      "ru": "Потратьте 2 маны. Уменьшите стоимость заклинания в ОД на 1 (минимум 1)."
     },
     "origin": "class",
     "origin_value": "mage",
@@ -151,13 +222,16 @@
       "ru": "Стихийный Всплеск"
     },
     "description": {
-      "en": "When you roll Initiative, regain WIL mana (this expires at the end of combat if unused).",
-      "ru": "При броске куба на инициативу восстановите ману WIL (она исчезает в конце боя, если не использована)."
+      "en": "When you roll Initiative, regain {{amount|WIL}} (17 level - 2d4+{{amount|WIL}}, 10 level - 1d4+{{amount|WIL}}) mana (this expires at the end of combat if unused).",
+      "ru": "При броске на инициативу восстановите {{amount|WIL}} (17 уровень - 2d4+{{amount|WIL}}, 10 уровень - 1d4+{{amount|WIL}}) ОМ (она исчезает в конце боя, если не использована)."
     },
     "origin": "class",
     "origin_value": "mage",
     "kind": "static",
-    "conditions": { "level": 5 }
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "amount": "wil"
+    }
   },
   {
     "slug": "Archmage",
@@ -184,27 +258,12 @@
     "origin_value": "mage",
     "kind": "many_from_list",
     "options": {
-      "magic_is_dangerous": { "en": "Magic is Dangerous", "ru": "Магия опасна" },
       "i_insist": { "en": "I Insist", "ru": "Я настаиваю" },
       "elemental_affliction": { "en": "Elemental Affliction", "ru": "Стихийное бедствие" },
       "no": { "en": "No", "ru": "Нет" },
       "lose_control": { "en": "Lose Control", "ru": "Потерять контроль" }
-    }
-  },
-  {
-    "slug": "magic_is_dangerous",
-    "title": {
-      "en": "Magic is Dangerous",
-      "ru": "Магия опасна"
     },
-    "description": {
-      "en": "You can stitch its fraying edges together to your own benefit... for a time.",
-      "ru": "Вы можете сшить его потрепанные края вместе себе на пользу... на некоторое время."
-    },
-    "origin": "class",
-    "origin_value": "mage",
-    "kind": "static",
-    "conditions": { "selected_feature": "magic_is_dangerous" }
+    "conditions": { "level": 3 }
   },
   {
     "slug": "i_insist",
@@ -214,7 +273,7 @@
     },
     "description": {
       "en": "Cast a cantrip for free, ignoring all disadvantage; it cannot miss.",
-      "ru": "Примените заговор бесплатно, игнорируя все недостатки; оно не может промахнуться."
+      "ru": "Примените заговор бесплатно, игнорируя все помехи; оно не может промахнуться."
     },
     "origin": "class",
     "origin_value": "mage",
@@ -229,7 +288,7 @@
     },
     "description": {
       "en": "A creature of your choice within 12 spaces gains the *Charged*, *Smoldering*, or *Slowed* condition.",
-      "ru": "Любое существо по вашему выбору, находящееся в пределах 12 клеток, получает состояние *Заряженное*, *Тлеющее* или *Замедленное*."
+      "ru": "Любое существо по вашему выбору, находящееся в пределах 12 квадратов, получает состояние *Заряженное*, *Тлеющее* или *Замедленное*."
     },
     "origin": "class",
     "origin_value": "mage",
@@ -274,7 +333,7 @@
     },
     "description": {
       "en": "Whenever you miss with a spell or an effect you cause is saved against, you MUST Demand Control.",
-      "ru": "Всякий раз, когда вы промахиваетесь заклинанием или если эффект, который вы вызываете, успешно преодолевается, вы ОБЯЗАТЕЛЬНО должны потребовать порядка."
+      "ru": "Всякий раз, когда вы промахиваетесь заклинанием или если эффект, который вы вызываете, успешно преодолевается, вы ОБЯЗАТЕЛЬНО должны *установить порядок*."
     },
     "origin": "subclass",
     "origin_value": "control",
@@ -289,7 +348,7 @@
     },
     "description": {
       "en": "Once per round, on your turn, you may Demand Control: Choose 1 option from the Control Table which you haven't chosen yet; resets when you roll Initiative, or when you have chosen all options once.",
-      "ru": "Один раз за раунд, в свой ход, вы можете потребовать порядка: выберите 1 вариант из таблицы порядка, который вы еще не выбрали; сбрасывается при броске инициативы или когда вы выбрали все варианты по одному разу."
+      "ru": "Один раз за раунд, в свой ход, вы можете *установить порядок*: выберите 1 вариант из таблицы порядка, который вы еще не выбрали; сбрасывается при броске инициативы или когда вы выбрали все варианты по одному разу."
     },
     "origin": "subclass",
     "origin_value": "control",
@@ -304,7 +363,7 @@
     },
     "description": {
       "en": "Learn 1 cantrip and 1 tiered spell from the Necrotic school.",
-      "ru": "Изучите 1 заговор и 1 заклинание более высокого уровня из школы Некротики."
+      "ru": "Изучите 1 заговор и 1 заклинание из школы некромантии."
     },
     "origin": "subclass",
     "origin_value": "control",
@@ -319,7 +378,7 @@
     },
     "description": {
       "en": "Ignore all disadvantage and other negative effects on your next action this turn, then Demand Control.",
-      "ru": "Игнорируйте все недостатки и другие негативные последствия вашего следующего действия в этом ходу, затем потребуйте порядка."
+      "ru": "Игнорируйте все помехи и другие негативные последствия вашего следующего действия в этом ходу, затем *установите порядок*."
     },
     "origin": "subclass",
     "origin_value": "control",
@@ -353,7 +412,7 @@
     },
     "description": {
       "en": "Whenever you Demand Control, you may choose to trigger the selected option twice. You may Demand Control as a Reaction.",
-      "ru": "При требовании порядка вы можете активировать выбранную опцию дважды. Запрос управления также может быть реакцией."
+      "ru": "При *устанавливании порядка* вы можете активировать выбранную опцию дважды. *Установление порядка* также может быть реакцией."
     },
     "origin": "subclass",
     "origin_value": "control",
@@ -367,8 +426,8 @@
       "ru": "Сила хаоса"
     },
     "description": {
-      "en": "Whenever you cast a spell, you can choose to spend 1 less mana. Whenever you do this and whenever you crit, **Invoke Chaos**: Roll on the Chaos Table.",
-      "ru": "Каждый раз, когда вы разыгрываете заклинание, вы можете выбрать потратить на 1 меньше маны. Каждый раз, когда вы это делаете и каждый раз, когда вы наносите критический удар, **Призыв Хаоса**: Бросьте куб по Таблице Хаоса."
+      "en": "Whenever you cast a spell, you can choose to spend 1 less mana. Whenever you do this and whenever you crit, *Invoke Chaos*.",
+      "ru": "Каждый раз, когда вы разыгрываете заклинание, вы можете выбрать потратить на 1 меньше маны. Каждый раз, когда вы это делаете и каждый раз, когда вы наносите критический удар, *вызывается хаос*."
     },
     "origin": "subclass",
     "origin_value": "chaos",
@@ -382,8 +441,8 @@
       "ru": "Плеть хаоса"
     },
     "description": {
-      "en": "Reaction (when an enemy moves adjacent to you): They are pushed back 2 spaces, and on a failed WIL save, knocked Prone as well. **Invoke Chaos**.",
-      "ru": "Реакция (когда враг перемещается вплотную к вам): его отбрасывает на 2 клетки назад, и при неудачном броске на спасбросок Воли он также падает ничком. **Призыв Хаоса**."
+      "en": "*Reaction* (when an enemy moves adjacent to you): They are pushed back 2 spaces, and on a failed WIL save, knocked Prone as well, *Invoke Chaos*.",
+      "ru": "*Реакция* (когда враг перемещается вплотную к вам): его отбрасывает на 2 клетки назад, и при неудачном броске на спасбросок Воли он также падает ничком, *вызывается хаос*."
     },
     "origin": "subclass",
     "origin_value": "chaos",
@@ -400,7 +459,7 @@
     },
     "description": {
       "en": "Learn 1 cantrip and 1 tiered spell from the Wind school.",
-      "ru": "Изучите 1 заговор и 1 заклинание более высокого уровня из школы Ветра."
+      "ru": "Изучите 1 заговор и 1 заклинание из школы ветра."
     },
     "origin": "subclass",
     "origin_value": "chaos",
@@ -414,8 +473,8 @@
       "ru": "Процветай в хаосе"
     },
     "description": {
-      "en": "Whenever you Invoke Chaos, you may roll twice and cause both effects. 1 Safe Rest. You may choose which roll to use instead.",
-      "ru": "Каждый раз, когда вы вызываете Хаос, вы можете совершить два броска куба и вызвать оба эффекта. 1 Безопасный отдых. Вы можете выбрать, какой бросок использовать вместо этого."
+      "en": "Whenever you Invoke Chaos, you may roll twice and cause both effects. Once per day you may choose which roll to use instead.",
+      "ru": "Каждый раз, когда вы *вызываете хаос*, вы можете совершить два броска куба и вызвать оба эффекта. Один раз в день вы можете выбрать, какой бросок использовать вместо этого."
     },
     "origin": "subclass",
     "origin_value": "chaos",
@@ -432,7 +491,7 @@
     },
     "description": {
       "en": "Whenever you **Invoke Chaos**, roll with advantage.",
-      "ru": "При каждом применении заклинания **Призыв хаоса** используйте преимущество при броске куба."
+      "ru": "При каждом *вызове хаоса* используйте преимущество при броске куба."
     },
     "origin": "subclass",
     "origin_value": "chaos",

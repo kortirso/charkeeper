@@ -83,7 +83,7 @@
       }
     },
     "stormshifter": {
-      "name": { "en": "Stormshifter", "ru": "Бурооборотень" },
+      "name": { "en": "Stormshifter", "ru": "Буреоборотень" },
       "subclasses": {
         "sky_storm": { "name": { "en": "Circle of Sky & Storm", "ru": "Круг неба и бури" } },
         "fang_claw": { "name": { "en": "Circle of Fang & Claw", "ru": "Круг клыка и когтя" } }
@@ -114,6 +114,6 @@
     "lightning": { "name": { "en": "Lightning", "ru": "Электричество" } },
     "radiant": { "name": { "en": "Radiant", "ru": "Излучение" } },
     "necrotic": { "name": { "en": "Necrotic", "ru": "Некротическая" } },
-    "wind": { "name": { "en": "Wind", "ru": "Воздух" } }
+    "wind": { "name": { "en": "Wind", "ru": "Ветер" } }
   }
 }

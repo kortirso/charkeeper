@@ -1,33 +1,20 @@
 [
   {
-    "slug": "master_of_storms",
-    "title": {
-      "en": "Master of Storms",
-      "ru": "Мастер бурь"
-    },
-    "description": {
-      "en": "You know cantrips from the Lightning and Wind schools.",
-      "ru": "Вы знаете заклинания из школ Молнии и Ветра."
-    },
-    "origin": "class",
-    "origin_value": "stormshifter",
-    "kind": "static",
-    "conditions": { "level": 1 }
-  },
-  {
     "slug": "beastshift",
     "title": {
       "en": "Beastshift",
       "ru": "Превращение в зверя"
     },
     "description": {
-      "en": "Action: You can transform into a harmless beast (squirrel, pigeon, etc.). While transformed, you can speak with animals. This form lasts until you drop to 0 HP, cast a spell, or if you end it on your turn for free. You have DEX Beastshift charges; they reset on a Safe Rest.",
-      "ru": "Действие: Вы можете превратиться в безобидное животное (белку, голубя и т. д.). В трансформированном состоянии вы можете разговаривать с животными. Эта форма сохраняется до тех пор, пока ваши ОЗ не упадут до 0, вы не произнесете заклинание или не прервете ее в свой ход бесплатно. У вас есть заряды превращения в животное, зависящие от ловкости; они восстанавливаются при безопасном отдыхе."
+      "en": "**Action**: You can transform into a harmless beast. While transformed, you can speak with animals. This form lasts until you drop to 0 HP, cast a spell, or if you end it on your turn for free.",
+      "ru": "**Действие**: Вы можете превратиться в безобидное животное. В трансформированном состоянии вы можете разговаривать с животными. Эта форма сохраняется до тех пор, пока ваши ОЗ не упадут до 0, вы не произнесете заклинание или не прервете ее в свой ход бесплатно."
     },
     "origin": "class",
     "origin_value": "stormshifter",
     "kind": "static",
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },    
+    "limit_refresh": "safe_rest",
+    "info": { "limit": "dex" }
   },
   {
     "slug": "direbeast_form",
@@ -41,7 +28,7 @@
     },
     "origin": "class",
     "origin_value": "stormshifter",
-    "kind": "many_from_list",
+    "kind": "one_from_list",
     "options": {
       "fearsome_beast": { "en": "Fearsome Beast", "ru": "Грозный зверь" },
       "beast_of_nightmares": { "en": "Beast of Nightmares", "ru": "Зверь из кошмаров" },
@@ -56,13 +43,17 @@
       "ru": "Грозный зверь"
     },
     "description": {
-      "en": "**Large.** Transform into any Large beast. Gain DEX+LVL temp HP (until Beastshift ends), the **Gore attack**, and **Fearsome**.\n\n**Gore:** Action: 1d6+LVL damage, on hit: Gain LVL temp HP.\n\n**Fearsome:** Whenever you Interpose or Defend, you may spend 1 mana to force them to reroll the attack.",
-      "ru": "**Большой.** Превратитесь в любое крупное чудовище. Получите временные очки здоровья (DEX+LVL) (пока не закончится превращение в зверя), атаку **Кровавую атаку** и **Устрашающий**.\n\n**Кровь:** Действие: 1d6+LVL урона, при попадании: получите временные очки здоровья уровня LVL.\n\n**Устрашающий:** Каждый раз, когда вы вмешиваетесь или защищаетесь, вы можете потратить 1 ману, чтобы заставить противника перебросить куб атаки."
+      "en": "**Large.** Transform into any Large beast. Gain {{hp|DEX+LVL}} temp HP (until Beastshift ends), the **Gore attack**, and **Fearsome**.\n\n**Gore:** Action: 1d6+{{level|LVL}} damage, on hit: Gain {{level|LVL}} temp HP.\n\n**Fearsome:** Whenever you Interpose or Defend, you may spend 1 mana to force them to reroll the attack.",
+      "ru": "**Большой.** Превратитесь в любое крупное чудовище. Получите временные ОЗ {{hp|DEX+LVL}} (пока не закончится превращение в зверя), атаку **Пронзание** и **Устрашающий**.\n\n**Пронзание:** Действие: 1d6+{{level|LVL}} урона, при попадании: получите временные ОЗ {{level|LVL}}.\n\n**Устрашающий:** Каждый раз, когда вы вмешиваетесь или защищаетесь, вы можете потратить 1 ману, чтобы заставить противника перебросить атаку."
     },
     "origin": "class",
     "origin_value": "stormshifter",
     "kind": "static",
-    "conditions": { "selected_feature": "fearsome_beast" }
+    "conditions": { "selected_feature": "fearsome_beast" },
+    "description_eval_variables": {
+      "hp": "dex + level",
+      "level": "level"
+    }
   },
   {
     "slug": "beast_of_nightmares",
@@ -71,13 +62,17 @@
       "ru": "Зверь из кошмаров"
     },
     "description": {
-      "en": "**Tiny.** Transform into any Tiny beast or insect.\n\n**Sting:** Once per round. Action: Reach 0. 1d4 piercing + 3×LVL acid damage (ignoring armor), on crit: 4×LVL damage.\n\n**Silent But Deadly:** Speed 2. You cannot Defend or Interpose. Attackers cannot target you until you become conspicuous.",
-      "ru": "**Крошечный.** Превратитесь в любое крошечное существо или насекомое.\n\n**Укус:** Один раз за раунд. Действие: Дальность 0. 1d4 колющего урона + 3×Урон кислотой (игнорируя броню), при критическом попадании: 4×Урон.\n\n**Тихий, но смертоносный:** Скорость 2. Вы не можете защищаться или вмешиваться. Нападающие не могут атаковать вас, пока вы не станете заметны."
+      "en": "**Tiny.** Transform into any Tiny beast or insect.\n\n**Sting:** Once per round. Action: Reach 0. 1d4 piercing + {{acid|3×LVL}} acid damage (ignoring armor), on crit: {{acidcrit|4×LVL}} damage.\n\n**Silent But Deadly:** Speed 2. You cannot *Defend* or *Interpose*. Attackers cannot target you until you become conspicuous.",
+      "ru": "**Крошечный.** Превратитесь в любое крошечное существо или насекомое.\n\n**Укус:** Один раз за раунд. Действие: Дальность 0. 1d4 колющего урона + урон кислотой {{acid|3×LVL}} (игнорируя броню), при критическом попадании: {{acidcrit|4×LVL}}.\n\n**Тихий, но смертоносный:** Скорость 2. Вы не можете *защищаться* или *вмешиваться*. Нападающие не могут атаковать вас, пока вы не станете заметны."
     },
     "origin": "class",
     "origin_value": "stormshifter",
     "kind": "static",
-    "conditions": { "selected_feature": "beast_of_nightmares" }
+    "conditions": { "selected_feature": "beast_of_nightmares" },
+    "description_eval_variables": {
+      "acid": "3 * level",
+      "acidcrit": "4 * level"
+    }
   },
   {
     "slug": "beast_of_pack",
@@ -86,38 +81,28 @@
       "ru": "Зверь стаи"
     },
     "description": {
-      "en": "**Medium.**Transform into a Medium beast. Gain +DEX speed, Supercharge, and the **Thunderfang** attack.\n\n**Thunderfang:** Action: 1d4+LVL piercing damage. Cumulative +1d4 lightning damage on crit or kill.\n\n**Supercharge:** Spend up to WIL mana for +1d8 lightning damage per mana spent on next **Thunderfang** (you take this damage on a miss).",
-      "ru": "**Средний.** Превратитесь в зверя среднего размера. Получите +DEX к скорости, Суперзаряд и атаку **Громовой Клык**.\n\n**Громовой Клык:** Действие: 1d4+LVL колющего урона. Накопительный +1d4 урона молнией при критическом попадании или убийстве.\n\n**Суперзаряд:** Потратьте до WIL маны на +1d8 урона молнией за каждую потраченную ману на следующий **Громовой Клык** (вы получаете этот урон при промахе)."
+      "en": "**Medium.**Transform into a Medium beast. Gain +{{dex|DEX}} speed, **Supercharge**, and the **Thunderfang** attack.\n\n**Thunderfang:** Action: 1d4+{{level|LVL}} piercing damage. Cumulative +1d4 lightning damage on crit or kill.\n\n**Supercharge:** Spend up to WIL mana for +1d8 lightning damage per mana spent on next **Thunderfang** (you take this damage on a miss).",
+      "ru": "**Средний.** Превратитесь в зверя среднего размера. Вы получаете +{{dex|DEX}} к скорости, **Сверхзаряд** и атаку **Громовой клык**.\n\n**Громовой клык:** Действие: 1d4+{{level|LVL}} колющего урона. Накопительный урон молнией +1d4 при критическом попадании или убийстве.\n\n**Сверхзаряд:** Потратьте до WIL маны на +1d8 урона молнией за каждую потраченную ману на следующий **Громовой клык** (вы получаете этот урон при промахе)."
     },
     "origin": "class",
     "origin_value": "stormshifter",
     "kind": "static",
-    "conditions": { "selected_feature": "beast_of_pack" }
-  },
-  {
-    "slug": "stormcaller",
-    "title": {
-      "en": "Stormcaller",
-      "ru": "Штормовой призыватель"
-    },
-    "description": {
-      "en": "Learn a Utility Spell from each spell school you know.",
-      "ru": "Изучите по одному вспомогательному заклинанию из каждой известной вам школы заклинаний."
-    },
-    "origin": "class",
-    "origin_value": "stormshifter",
-    "kind": "static",
-    "conditions": { "level": 4 }
+    "conditions": { "selected_feature": "beast_of_pack" },
+    "modifiers": { "speed": { "type": "add", "value": "dex" } },
+    "description_eval_variables": {
+      "level": "level",
+      "dex": "dex"
+    }
   },
   {
     "slug": "chimeric_boon",
     "title": {
       "en": "Chimeric Boon",
-      "ru": "Химерные дары"
+      "ru": "Дары химеры"
     },
     "description": {
-      "en": "Choose 2 **Chimeric Boons**. Whenever you shapeshift into a Direbeast form, you may modify it with 1 Chimeric Boons you know.",
-      "ru": "Выберите 2 **Химерных дара**. Каждый раз, когда вы превращаетесь в свирепого зверя, вы можете изменить его с помощью 1 известного вам **Химерного дара**."
+      "en": "Choose **Chimeric Boons** - {{amount|2}}. Whenever you shapeshift into a Direbeast form, you may modify it with 1 Chimeric Boons you know.",
+      "ru": "Выберите несколько **Даров химеры** - {{amount|2}}. Каждый раз, когда вы превращаетесь в свирепого зверя, вы можете изменить его с помощью 1 известного вам **Дара химеры**."
     },
     "origin": "class",
     "origin_value": "stormshifter",
@@ -133,7 +118,10 @@
       "leader_of_pack": { "en": "Leader of the Pack", "ru": "" },
       "prehensile_tail": { "en": "Prehensile Tail", "ru": "Цепкий хвост" }
     },
-    "conditions": { "level": 6 }
+    "conditions": { "level": 6 },
+    "description_eval_variables": {
+      "amount": "if (level >= 12, 4, if (level >= 9, 3, 2))"
+    }
   },
   {
     "slug": "beast_of_sea",
@@ -163,7 +151,9 @@
     "origin": "class",
     "origin_value": "stormshifter",
     "kind": "static",
-    "conditions": { "selected_feature": "fleet_footed" }
+    "conditions": { "selected_feature": "fleet_footed" },
+    "modifiers": { "speed": { "type": "add", "value": 2 } },
+    "continious": true
   },
   {
     "slug": "keen_senses",
@@ -172,8 +162,8 @@
       "ru": "Острые чувства"
     },
     "description": {
-      "en": "Advantage on Perception and Assess checks. Unaffected by **Blinded**.",
-      "ru": "Преимущество при проверках Восприятия и Оценки. Не подвержен влиянию **Ослепления**."
+      "en": "Advantage on Perception and Assess checks. Unaffected by *Blinded*.",
+      "ru": "Преимущество при проверках Восприятия и Оценки. Не подвержен влиянию *Ослепления*."
     },
     "origin": "class",
     "origin_value": "stormshifter",
@@ -188,7 +178,7 @@
     },
     "description": {
       "en": "Whenever you shift between this form and your normal form (and vice versa), you may teleport up to 6 spaces away to a place you can see.",
-      "ru": "При каждом переходе между этой формой и вашей обычной формой (и наоборот) вы можете телепортироваться на расстояние до 6 клеток в место, которое видите."
+      "ru": "При каждом переходе между этой формой и вашей обычной формой (и наоборот) вы можете телепортироваться на расстояние до 6 квадратов в место, которое видите."
     },
     "origin": "class",
     "origin_value": "stormshifter",
@@ -203,7 +193,7 @@
     },
     "description": {
       "en": "Gain a flying speed. Forced movement moves you twice as far while flying.",
-      "ru": "Увеличьте скорость полета. Принудительное движение позволяет вам пролететь вдвое большее расстояние."
+      "ru": "Вы получаете скорость полета. Принудительное движение позволяет вам пролететь вдвое большее расстояние."
     },
     "origin": "class",
     "origin_value": "stormshifter",
@@ -233,12 +223,13 @@
     },
     "description": {
       "en": "+2 armor. Can burrow through dirt and unworked rock at half speed (leaving a tunnel behind). Advantage against the *Prone* condition.",
-      "ru": "+2 к броне. Может прорываться сквозь землю и необработанные камни на половинной скорости (оставляя за собой туннель). Преимущество против состояния *Лежащий*."
+      "ru": "+2 к броне. Может прорываться сквозь землю и необработанные камни на половинной скорости (оставляя за собой туннель). Преимущество против состояния *Лежащий ничком*."
     },
     "origin": "class",
     "origin_value": "stormshifter",
     "kind": "static",
-    "conditions": { "selected_feature": "earthwalker" }
+    "conditions": { "selected_feature": "earthwalker" },
+    "modifiers": { "armor": { "type": "add", "value": 2 } }
   },
   {
     "slug": "leader_of_pack",
@@ -248,7 +239,7 @@
     },
     "description": {
       "en": "Advantage against fear and charm effects for yourself and allies within 6 spaces.",
-      "ru": "Преимущество против эффектов страха и очарования для себя и союзников в радиусе 6 клеток."
+      "ru": "Преимущество против эффектов страха и очарования для себя и союзников в радиусе 6 квадратов."
     },
     "origin": "class",
     "origin_value": "stormshifter",
@@ -292,13 +283,15 @@
       "ru": "Бурерожденный"
     },
     "description": {
-      "en": "Gain resistance to lightning damage. Once per day you may gain advantage on a **Naturecraft** check or **Concentration** check.",
-      "ru": "Получите сопротивление урону от молнии. Один раз в день вы можете получить преимущество при проверке навыка **Природоведение** или проверке навыка **Концентрация**."
+      "en": "Gain resistance to lightning damage. Once per day you may gain advantage on a Naturecraft check or Concentration check.",
+      "ru": "Вы получаете сопротивление электрическому урону. Один раз в день вы можете получить преимущество при проверке Выживания или проверке концентрации."
     },
     "origin": "class",
     "origin_value": "stormshifter",
     "kind": "static",
-    "conditions": { "level": 8 }
+    "conditions": { "level": 8 },    
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
   },
   {
     "slug": "archdruid",
@@ -322,13 +315,15 @@
       "ru": "В гармонии с природой"
     },
     "description": {
-      "en": "Once per day add LVL to any skill check related to nature or weather.",
-      "ru": "Раз в день добавляйте уровень к любой проверке навыка, связанной с природой или погодой."
+      "en": "You can add LVL to any skill check related to nature or weather.",
+      "ru": "Вы можете добавить свой уровень к любой проверке навыка, связанной с природой или погодой."
     },
     "origin": "subclass",
     "origin_value": "sky_and_storm",
     "kind": "static",
-    "conditions": { "level": 3 }
+    "conditions": { "level": 3 },    
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
   },
   {
     "slug": "creature_of_fey",
@@ -353,12 +348,37 @@
     },
     "description": {
       "en": "Choose the Ice or Radiant school to learn.",
-      "ru": "Выберите школу Льда или Сияния для обучения."
+      "ru": "Выберите школу льда или излучения для обучения."
     },
     "origin": "subclass",
     "origin_value": "sky_and_storm",
     "kind": "static",
-    "conditions": { "level": 3 }
+    "conditions": { "level": 3 },
+    "kind": "one_from_list",
+    "options": {
+      "deepening_study_ice": { "en": "Ice", "ru": "Лёд" },
+      "deepening_study_radiant": { "en": "Radiant", "ru": "Излучение" }
+    }
+  },
+  {
+    "slug": "deepening_study_ice",
+    "title": {},
+    "description": {},
+    "origin": "subclass",
+    "origin_value": "sky_and_storm",
+    "kind": "hidden",
+    "conditions": { "selected_feature": "deepening_study_ice" },
+    "modifiers": { "schools": { "type": "concat", "value": "ice" }, "utility_spells_limit.ice": { "type": "add", "value": "if (level >= 7, 2, if (level >= 4, 1, 0))" } }
+  },
+  {
+    "slug": "deepening_study_radiant",
+    "title": {},
+    "description": {},
+    "origin": "subclass",
+    "origin_value": "sky_and_storm",
+    "kind": "hidden",
+    "conditions": { "selected_feature": "deepening_study_radiant" },
+    "modifiers": { "schools": { "type": "concat", "value": "radiant" }, "utility_spells_limit.radiant": { "type": "add", "value": "if (level >= 7, 2, if (level >= 4, 1, 0))" } }
   },
   {
     "slug": "raging_tempest",
@@ -368,7 +388,7 @@
     },
     "description": {
       "en": "Whenever you crit with a tiered spell, you may cast a cantrip for free from a school you know and haven't cast any spells from this turn (at the same level of dis/advantage).",
-      "ru": "Каждый раз, когда вы наносите критический удар заклинанием определенного уровня, вы можете бесплатно сотворить заговор из школы заклинаний, которые вы знаете и которые вы еще не сотворили ни одного заклинания в этом ходу (с тем же уровнем штрафа/преимущества)."
+      "ru": "Каждый раз, когда вы наносите критический удар заклинанием, вы можете бесплатно сотворить заговор из школы заклинаний, которые вы знаете и которые вы еще не сотворили ни одного заклинания в этом ходу (с тем же уровнем помехи/преимущества)."
     },
     "origin": "subclass",
     "origin_value": "sky_and_storm",
@@ -382,13 +402,16 @@
       "ru": "Первородная сила"
     },
     "description": {
-      "en": "Spending 2+ mana on a spell grants an additional effect:\n\n- **Ice.** Gain WIL temp HP.\n\n- **Lightning.** Deal additional damage equal to your WIL.\n\n- **Radiant.** You may heal a creature within 6 spaces WIL HP.\n\n- **Wind.** Gain a flying speed this turn. Move up to 6 spaces for free.",
-      "ru": "Потратив 2+ маны на заклинание, вы получаете дополнительный эффект:\n\n- **Лёд.** Получите временные очки здоровья WIL.\n\n- **Молния.** Нанесите дополнительный урон, равный вашей силе WIL.\n\n- **Сияние.** Вы можете исцелить существо в пределах 6 клеток, получившее WIL HP.\n\n- **Ветер.** Получите скорость полёта в этом ходу. Перемещайтесь на расстояние до 6 клеток бесплатно."
+      "en": "Spending 2+ mana on a spell grants an additional effect:\n\n- **Ice.** Gain {{amount|WIL}} temp HP.\n\n- **Lightning.** Deal additional damage equal to {{amount|WIL}}.\n\n- **Radiant.** You may heal a creature within 6 spaces {{amount|WIL}} HP.\n\n- **Wind.** Gain a flying speed this turn. Move up to 6 spaces for free.",
+      "ru": "Потратив 2+ маны на заклинание, вы получаете дополнительный эффект:\n\n- **Лёд.** Получите временные ОЗ {{amount|WIL}}.\n\n- **Молния.** Нанесите дополнительный урон, равный {{amount|WIL}}.\n\n- **Сияние.** Вы можете исцелить существо в пределах 6 квадратов на {{amount|WIL}} ОЗ.\n\n- **Ветер.** Получите скорость полёта в этом ходу. Перемещайтесь на расстояние до 6 квадратов бесплатно."
     },
     "origin": "subclass",
     "origin_value": "sky_and_storm",
     "kind": "static",
-    "conditions": { "level": 11 }
+    "conditions": { "level": 11 },
+    "description_eval_variables": {
+      "amount": "wil"
+    }
   },
   {
     "slug": "master_of_storm",
@@ -397,13 +420,15 @@
       "ru": "Мастер Бури"
     },
     "description": {
-      "en": "You can concentrate on 1 lightning spell and 1 wind spell at the same time. (1/Safe Rest) You can cast Ride the Lightning for 0 mana.",
-      "ru": "Вы можете одновременно сосредоточиться на одном заклинании молнии и одном заклинании ветра. (1/Безопасный отдых) Вы можете разыграть «Оседлать молнию» за 0 маны."
+      "en": "You can concentrate on 1 lightning spell and 1 wind spell at the same time. Once per day you can cast **Ride the Lightning** for 0 mana.",
+      "ru": "Вы можете одновременно сосредоточиться на одном заклинании школы электричества и одном заклинании ветра. Один раз в день вы можете сотворить заклинание **Оседлать молнию** за 0 маны."
     },
     "origin": "subclass",
     "origin_value": "sky_and_storm",
     "kind": "static",
-    "conditions": { "level": 15 }
+    "conditions": { "level": 15 },
+    "limit_refresh": "safe_rest",
+    "info": { "limit": 1 }
   },
   {
     "slug": "friend_of_beasts",
@@ -428,7 +453,7 @@
     },
     "description": {
       "en": "When you roll Initiative, you may Beastshift or move for free. While transformed, you may shift between different Direbeast forms for free (and as a reaction by spending 1 mana); however, Beastshifting for free does not grant any temp HP.",
-      "ru": "При броске Инициативы вы можете бесплатно превратиться в зверя или переместиться. Находясь в трансформированном состоянии, вы можете бесплатно переключаться между различными формами лютозверя (и в качестве реакции тратить 1 ману); однако бесплатное превращение в зверя не дает временных очков здоровья."
+      "ru": "При броске инициативы вы можете бесплатно превратиться в зверя или переместиться. Находясь в трансформированном состоянии, вы можете бесплатно переключаться между различными формами лютозверя (и в качестве реакции тратить 1 ману); однако бесплатное превращение в зверя не дает временных очков здоровья."
     },
     "origin": "subclass",
     "origin_value": "fang_and_claw",
@@ -442,8 +467,8 @@
       "ru": "Защитник, рожденный ветром"
     },
     "description": {
-      "en": "Reaction: when an enemy attacks, spend 2 mana to shift into a **Fearsome Beast**. Then you may Interpose from up to 12 spaces away and Defend for free (if you have not yet done so this round).",
-      "ru": "Реакция: когда противник атакует, потратьте 2 маны, чтобы превратиться в **Грозного Зверя**. Затем вы можете вмешаться с расстояния до 12 клеток и защититься бесплатно (если вы еще этого не сделали в этом раунде)."
+      "en": "**Reaction**: when an enemy attacks, spend 2 mana to shift into a **Fearsome Beast**. Then you may *Interpose* from up to 12 spaces away and *Defend* for free (if you have not yet done so this round).",
+      "ru": "**Реакция**: когда противник атакует, потратьте 2 маны, чтобы превратиться в **Грозного Зверя**. Затем вы можете *вмешаться* с расстояния до 12 квадратов и *защититься* бесплатно (если вы еще этого не сделали в этом раунде)."
     },
     "origin": "subclass",
     "origin_value": "fang_and_claw",
@@ -459,15 +484,18 @@
       "ru": "Штормовой след"
     },
     "description": {
-      "en": "Action: Spend 3 mana to shift into a **Beast of the Pack**, then teleport in a straight line up to 12 spaces away, unerringly dealing WIL d8 lightning damage to any creatures you choose adjacent to your path.",
-      "ru": "Действие: Потратьте 3 маны, чтобы превратиться в **Зверя стаи**, затем телепортируйтесь по прямой линии на расстояние до 12 клеток, безошибочно нанося WIL d8 урона молнией любым существам, которые вы выберете и которые находятся рядом с вашим путем."
+      "en": "**Action**: Spend 3 mana to shift into a **Beast of the Pack**, then teleport in a straight line up to 12 spaces away, unerringly dealing {{amount|WIL }}d8 lightning damage to any creatures you choose adjacent to your path.",
+      "ru": "**Действие**: Потратьте 3 маны, чтобы превратиться в **Зверя стаи**, затем телепортируйтесь по прямой линии на расстояние до 12 квадратов, безошибочно нанося {{amount|WIL }}d8 электрического урона любым существам, которые вы выберете и которые находятся рядом с вашим путем."
     },
     "origin": "subclass",
     "origin_value": "fang_and_claw",
     "kind": "static",
     "limit_refresh": "combat_rest",
     "info": { "limit": 1 },
-    "conditions": { "level": 7 }
+    "conditions": { "level": 7 },
+    "description_eval_variables": {
+      "amount": "wil"
+    }
   },
   {
     "slug": "unleash_the_beast",
@@ -494,7 +522,7 @@
     },
     "description": {
       "en": "Your shapeshift forms can have 2 **Chimeric Boons** at a time.",
-      "ru": "Ваши формы превращения могут обладать одновременно двумя **Химерными дарами**."
+      "ru": "Ваши формы превращения могут обладать одновременно двумя **Дарами химеры**."
     },
     "origin": "subclass",
     "origin_value": "fang_and_claw",
@@ -508,8 +536,8 @@
       "ru": "Ядовитый взгляд"
     },
     "description": {
-      "en": "Action: Spend 2 mana to shift into a **Beast of Nightmares**. Then entice a creature within 12 spaces to move 2×WIL spaces closer to you on a failed WIL save (they roll with disadvantage and must repeat until they save or can move no further). If they end up in the same space as you, you may Sting them for free.",
-      "ru": "Действие: Потратьте 2 маны, чтобы превратиться в **Зверя из кошмаров**. Затем заманите существо в пределах 12 клеток, чтобы оно переместилось на 2×WIL клетки ближе к вам при неудачном броске WIL (они бросают с помехой и должны повторять это действие, пока не совершат бросок или не смогут двигаться дальше). Если они окажутся на той же клетке, что и вы, вы можете ужалить их бесплатно."
+      "en": "**Action**: Spend 2 mana to shift into a **Beast of Nightmares**. Then entice a creature within 12 spaces to move 2×WIL spaces closer to you on a failed WIL save (they roll with disadvantage and must repeat until they save or can move no further). If they end up in the same space as you, you may Sting them for free.",
+      "ru": "**Действие**: Потратьте 2 маны, чтобы превратиться в **Зверя из кошмаров**. Затем заманите существо в пределах 12 квадратов, чтобы оно переместилось на 2×WIL клетки ближе к вам при неудачном броске WIL (они бросают с помехой и должны повторять это действие, пока не совершат бросок или не смогут двигаться дальше). Если они окажутся на той же клетке, что и вы, вы можете ужалить их бесплатно."
     },
     "origin": "subclass",
     "origin_value": "fang_and_claw",
@@ -526,7 +554,7 @@
     },
     "description": {
       "en": "You can Beastshift 2 additional times per Safe Rest. Choose 2 additional **Chimeric Boons**. Your **Direbeast forms** can have 3 at a time.",
-      "ru": "Вы можете превратиться в зверя ещё 2 раза за каждый безопасный отдых. Выберите 2 дополнительных **Химерных дара**. Ваши **Формы лютозверя** могут иметь 3 дара одновременно."
+      "ru": "Вы можете превратиться в зверя ещё 2 раза за каждый безопасный отдых. Выберите 2 дополнительных **Дара химеры**. Ваши **Формы лютозверя** могут иметь 3 дара одновременно."
     },
     "origin": "subclass",
     "origin_value": "fang_and_claw",
