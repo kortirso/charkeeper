@@ -1,11 +1,11 @@
-import { createSignal, createEffect, Show, For, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
-import { Button, ErrorWrapper, Toggle, Checkbox } from '../../../../components';
+import { Button, ErrorWrapper, Toggle, Checkbox, Select } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { fetchDc20AncestriesRequest } from '../../../../requests/fetchDc20AncestriesRequest';
 import { fetchDc20CharacterAncestriesRequest } from '../../../../requests/fetchDc20CharacterAncestriesRequest';
-import { localize } from '../../../../helpers';
+import { localize, translate } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -14,7 +14,8 @@ const TRANSLATION = {
     ancestryPoints: 'Points',
     minorTraitsAlert: 'Maximum 1 minor trait',
     negativeTraitsAlert: 'Maximum 2 negative traits',
-    showDescription: 'Show description'
+    showDescription: 'Show description',
+    defaultRace: 'Use default races'
   },
   ru: {
     saveButton: 'Сохранить',
@@ -22,7 +23,8 @@ const TRANSLATION = {
     ancestryPoints: 'Очков',
     minorTraitsAlert: 'Максимум 1 малая черта',
     negativeTraitsAlert: 'Максимум 2 отрицательные черты',
-    showDescription: 'Показывать описание'
+    showDescription: 'Показывать описание',
+    defaultRace: 'Стандартные расы'
   },
   es: {
     saveButton: 'Guardar',
@@ -30,7 +32,8 @@ const TRANSLATION = {
     ancestryPoints: 'Puntos',
     minorTraitsAlert: 'Máximo 1 rasgo menor',
     negativeTraitsAlert: 'Máximo 2 rasgos negativos',
-    showDescription: 'Mostrar descripción'
+    showDescription: 'Mostrar descripción',
+    defaultRace: 'Use default races'
   }
 }
 
@@ -40,8 +43,9 @@ export const Dc20Ancestries = (props) => {
   const [ancestries, setAncestries] = createSignal(undefined);
   const [availableAncestries, setAvailableAncestries] = createSignal([]);
   const [showDescription, setShowDescription] = createSignal(false);
+  const [defaultRace, setDefaultRace] = createSignal(true);
 
-  const [ancestriesForm, setAncestriesForm] = createSignal({ ancestry_feats: {}, ancestry_points: 5 });
+  const [ancestriesForm, setAncestriesForm] = createSignal({ ancestry_feats: {}, ancestry_points: 5, default_ancestry: null });
   const [validations, setValidations] = createSignal({ negativeTraits: 0, minorTraits: 0 });
 
   const [appState] = useAppState();
@@ -89,6 +93,8 @@ export const Dc20Ancestries = (props) => {
     }
   });
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const selectDc20Ancestry = (ancestry, slug, featPoints) => {
     let newValue;
     let newTraitsValue;
@@ -124,69 +130,97 @@ export const Dc20Ancestries = (props) => {
     if (props.forNewCharacter) props.onUpdateForm(ancestriesForm(), validations());
   }
 
+  const selectAncestry = (ancestry) => {
+    setAncestriesForm({ ...ancestriesForm(), default_ancestry: ancestry });
+    props.onUpdateForm(ancestriesForm(), validations());
+  }
+
   const saveAncestry = async () => {
-    if (validations().negativeTraits > 2) return renderAlert(localize(TRANSLATION, locale()).negativeTraitsAlert);
-    if (validations().minorTraits > 1) return renderAlert(localize(TRANSLATION, locale()).minorTraitsAlert);
+    if (validations().negativeTraits > 2) return renderAlert(i18n().negativeTraitsAlert);
+    if (validations().minorTraits > 1) return renderAlert(i18n().minorTraitsAlert);
 
     props.onSave(ancestriesForm());
   }
 
   return (
-    <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Ancestries' }}>
+    <ErrorWrapper payload={{ character_id: character()?.id, key: 'Dc20Ancestries' }}>
       <Show when={ancestries()}>
-        <Toggle
-          innerClassList="p-2!"
-          title={
-            <div class="flex justify-between">
-              <p>{localize(TRANSLATION, locale()).ancestries}</p>
-              <p>{localize(TRANSLATION, locale()).ancestryPoints} - {ancestriesForm().ancestry_points}</p>
-            </div>
+        <Show when={props.forNewCharacter}>
+          <Checkbox
+            labelText={i18n().defaultRace}
+            labelPosition="right"
+            labelClassList="ml-2"
+            checked={defaultRace()}
+            classList="mb-2"
+            onToggle={() => setDefaultRace(!defaultRace())}
+          />
+        </Show>
+        <Show
+          when={props.character || (props.forNewCharacter && !defaultRace())}
+          fallback={
+            <Select
+              containerClassList="mb-4"
+              labelText={i18n().defaultRace}
+              items={translate(Object.fromEntries(Object.entries(config.ancestries).filter(([, values]) => values.default !== false)), locale(), true)}
+              selectedValue={ancestriesForm().default_ancestry}
+              onSelect={selectAncestry}
+            />
           }
         >
-          <>
-            <Checkbox
-              labelText={localize(TRANSLATION, locale()).showDescription}
-              labelPosition="right"
-              labelClassList="ml-2"
-              checked={showDescription()}
-              classList="mb-2"
-              onToggle={() => setShowDescription(!showDescription())}
-            />
-            <For each={Object.entries(config.ancestries).filter(([ancestry]) => availableAncestries().includes(ancestry))}>
-              {([ancestry, values]) =>
-                <Toggle
-                  innerClassList="p-2!"
-                  title={<p>{localize(values.name, locale())}{ancestriesForm().ancestry_feats[ancestry] ? ` (${ancestriesForm().ancestry_feats[ancestry].length})` : ''}</p>}
-                >
-                  <For each={ancestries().filter((item) => item.origin_value === ancestry).sort((a, b) => a.price < b.price)}>
-                    {(item) =>
-                      <div class="ancestry-item">
-                        <Checkbox
-                          labelText={`${item.title} (${item.price})`}
-                          labelPosition="right"
-                          labelClassList="ml-2"
-                          checked={ancestriesForm().ancestry_feats[ancestry]?.includes(item.slug)}
-                          onToggle={() => selectDc20Ancestry(ancestry, item.slug, item.price)}
-                        />
-                        <Show when={showDescription()}>
-                          <p
-                            class="feat-markdown text-xs! mt-1"
-                            innerHTML={item.description} // eslint-disable-line solid/no-innerhtml
+          <Toggle
+            innerClassList="p-2!"
+            title={
+              <div class="flex justify-between">
+                <p>{i18n().ancestries}</p>
+                <p>{i18n().ancestryPoints} - {ancestriesForm().ancestry_points}</p>
+              </div>
+            }
+          >
+            <>
+              <Checkbox
+                labelText={i18n().showDescription}
+                labelPosition="right"
+                labelClassList="ml-2"
+                checked={showDescription()}
+                classList="mb-2"
+                onToggle={() => setShowDescription(!showDescription())}
+              />
+              <For each={Object.entries(config.ancestries).filter(([ancestry]) => availableAncestries().includes(ancestry))}>
+                {([ancestry, values]) =>
+                  <Toggle
+                    innerClassList="p-2!"
+                    title={<p>{localize(values.name, locale())}{ancestriesForm().ancestry_feats[ancestry] ? ` (${ancestriesForm().ancestry_feats[ancestry].length})` : ''}</p>}
+                  >
+                    <For each={ancestries().filter((item) => item.origin_value === ancestry).sort((a, b) => a.price < b.price)}>
+                      {(item) =>
+                        <div class="ancestry-item">
+                          <Checkbox
+                            labelText={`${item.title} (${item.price})`}
+                            labelPosition="right"
+                            labelClassList="ml-2"
+                            checked={ancestriesForm().ancestry_feats[ancestry]?.includes(item.slug)}
+                            onToggle={() => selectDc20Ancestry(ancestry, item.slug, item.price)}
                           />
-                        </Show>
-                      </div>
-                    }
-                  </For>
-                </Toggle>
-              }
-            </For>
-            <Show when={character()}>
-              <Button default textable size="small" classList="inline-block mt-2" onClick={saveAncestry}>
-                {localize(TRANSLATION, locale()).saveButton}
-              </Button>
-            </Show>
-          </>
-        </Toggle>
+                          <Show when={showDescription()}>
+                            <p
+                              class="feat-markdown text-xs! mt-1"
+                              innerHTML={item.description} // eslint-disable-line solid/no-innerhtml
+                            />
+                          </Show>
+                        </div>
+                      }
+                    </For>
+                  </Toggle>
+                }
+              </For>
+              <Show when={character()}>
+                <Button default textable size="small" classList="inline-block mt-2" onClick={saveAncestry}>
+                  {i18n().saveButton}
+                </Button>
+              </Show>
+            </>
+          </Toggle>
+        </Show>
       </Show>
     </ErrorWrapper>
   );

@@ -1,5 +1,5 @@
 import { batch } from 'solid-js';
-import { createStore } from 'solid-js/store';
+import { createStore, reconcile } from 'solid-js/store';
 
 import { CharacterForm, Dc20Ancestries } from '../../../../pages';
 import { Select, Input, Checkbox } from '../../../../components';
@@ -37,7 +37,9 @@ const TRANSLATION = {
   }
 }
 
-const DC20_DEFAULT_FORM = { name: '', main_class: undefined, ancestry_feats: {}, ancestryPoints: 5, skip_guide: false };
+const DC20_DEFAULT_FORM = {
+  name: '', main_class: undefined, ancestry_feats: {}, ancestryPoints: 5, skip_guide: false, default_ancestry: null
+};
 
 export const Dc20CharacterForm = (props) => {
   const [characterDc20Form, setCharacterDc20Form] = createStore(DC20_DEFAULT_FORM);
@@ -61,7 +63,7 @@ export const Dc20CharacterForm = (props) => {
 
     if (result === null) {
       batch(() => {
-        setCharacterDc20Form({ name: '', main_class: undefined, ancestryPoints: 5, ancestry_feats: {}, skip_guide: true });
+        setCharacterDc20Form(reconcile(DC20_DEFAULT_FORM));
         setValidations({ negativeTraits: 0, minorTraits: 0 });
       });
     }
