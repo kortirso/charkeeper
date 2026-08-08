@@ -15,7 +15,7 @@
     "giantborn": { "name": { "en": "Giantborn", "ru": "Великанорожденный" } },
     "angelborn": { "name": { "en": "Angelborn", "ru": "Ангелорожденный" } },
     "fiendborn": { "name": { "en": "Fiendborn", "ru": "Демонорожденный" } },
-    "beastborn": { "name": { "en": "Beastborn", "ru": "Зверорожденный" } }
+    "beastborn": { "name": { "en": "Beastborn", "ru": "Зверорожденный" }, "default": false }
   },
   "classes": {
     "barbarian": {
