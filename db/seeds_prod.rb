@@ -1,3 +1,7 @@
+require 'net/http'
+require 'json'
+require 'uri'
+
 [
   'feats01.json', 'feats02.json', 'feats03.json', 'feats04.json', 'feats05.json', 'feats06.json', 'feats07.json',
   'feats08.json', 'feats09.json', 'feats10.json', 'feats10+.json',
@@ -52,7 +56,8 @@ end
   'talents/spellblade.json', 'talents/warlock.json', 'talents/wizard.json',
   'ancestry.json', 'ancestry_2.json', 'spells.json', 'maneuvers.json', 'talents.json'
 ].each do |filename|
-  JSON.parse(File.read("db/data_prod/dc20/#{filename}")).each do |item|
+  response = Net::HTTP.get(URI("https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/dc20/#{filename}"))
+  JSON.parse(response).each do |item|
     feat = ::Dc20::Feat.find_by(slug: item['slug'])
     feat ? feat.update!(item) : ::Dc20::Feat.create!(item)
   end
@@ -68,7 +73,8 @@ end
 end
 
 ['weapons.json', 'armor.json', 'items.json', 'consumables.json'].each do |filename|
-  JSON.parse(File.read("db/data_prod/nimble/#{filename}")).each do |data|
+  response = Net::HTTP.get(URI("https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/nimble/#{filename}"))
+  JSON.parse(response).each do |data|
     item = ::Nimble::Item.find_by(slug: data['slug'])
     item ? item.update!(data) : ::Nimble::Item.create!(data)
   end
@@ -81,7 +87,8 @@ end
   'feats/stormshifter.json',
   'spells.json'
 ].each do |filename|
-  JSON.parse(File.read("db/data_prod/nimble/#{filename}")).each do |item|
+  response = Net::HTTP.get(URI("https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/nimble/#{filename}"))
+  JSON.parse(response).each do |item|
     feat = ::Nimble::Feat.find_by(slug: item['slug'])
     feat ? feat.update!(item) : ::Nimble::Feat.create!(item)
   end
