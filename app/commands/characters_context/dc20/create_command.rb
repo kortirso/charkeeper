@@ -39,7 +39,10 @@ module CharactersContext
 
       def do_prepare(input)
         input[:ancestry_feats] = ANCESTRY_FEATS.slice(input[:default_ancestry]) if input[:default_ancestry]
-        input[:data] = build_fresh_character(input.slice(:main_class, :ancestry_feats, :skip_guide).symbolize_keys)
+        input[:ancestry_features] = input[:ancestry_feats].values.flatten.tally
+
+        input[:data] =
+          build_fresh_character(input.slice(:main_class, :ancestry_feats, :ancestry_features, :skip_guide).symbolize_keys)
       end
 
       def do_persist(input)

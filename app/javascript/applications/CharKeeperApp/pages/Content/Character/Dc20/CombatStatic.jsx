@@ -19,8 +19,8 @@ const TRANSLATION = {
     combatMastery: 'Мастерство',
     saveDc: 'Сл спаса',
     initiative: 'Инициатива',
-    precision: 'Точечная защита',
-    area: 'Площадная защита',
+    precision: 'Точечная защ',
+    area: 'Площадная защ',
     attack: 'Тест атаки',
     spell_check: 'Тест заклинания',
     martial_check: 'Рукопашный тест'

@@ -128,6 +128,9 @@ export const FeatureTitle = (props) => {
             <span class="mr-2"><InfoComponent /></span>
           </Show>
           {feature().title}
+          <Show when={feature().amount && feature().amount > 1}>
+            <span class="ml-2">({feature().amount})</span>
+          </Show>
         </p>
         <div class="flex items-center gap-x-4">
           <Show when={character().provider === 'daggerheart'}>

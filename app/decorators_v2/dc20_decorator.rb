@@ -248,13 +248,13 @@ class Dc20Decorator < ApplicationDecoratorV2
       damage: item.dig(:items_info, 'damage'),
       damage_types: item.dig(:items_info, 'damage_types'),
       features: item.dig(:items_info, 'features'),
+      features_text: [],
       notes: item[:notes] || [],
       ready_to_use: item.dig(:states, 'hands').to_i.positive?,
       tags: item.dig(:items_info, 'damage_types').index_with { |type| I18n.t("tags.dc20.weapon.title.#{type}") }
     }
 
     result[:features] += item.dig(:items_info, 'styles') if combat_expertise.include?('weapon')
-    result[:features_text] = result[:features].map { |feature| I18n.t("tags.dc20.weapon.#{feature}") }
     result[:tags] =
       result[:tags].merge(result[:features].index_with { |feature| I18n.t("tags.dc20.weapon.title.#{feature}") })
 
@@ -424,7 +424,8 @@ class Dc20Decorator < ApplicationDecoratorV2
       selected_count: feature.selected_count,
       tokens: feature.tokens,
       tokens_max: feature.tokens ? feature.feat.tokens['limit'] : nil,
-      options: feature.feat.options
+      options: feature.feat.options,
+      amount: ancestry_features[feature.feat.slug].to_i
     }.compact
   end
 
@@ -450,6 +451,7 @@ class Dc20Decorator < ApplicationDecoratorV2
   def class_attacks
     values = []
     values << iron_palm_attack if available_features_slugs.include?('monk_training')
+    values << natural_weapon_attack if available_features_slugs.include?('natural_weapon')
     values
   end
 
@@ -468,5 +470,38 @@ class Dc20Decorator < ApplicationDecoratorV2
       ready_to_use: true,
       tags: tags
     }
+  end
+
+  def natural_weapon_attack # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    return unless selected_features['natural_weapon']
+
+    type = selected_features['natural_weapon'].split('_')[-1][0]
+    tags = { type => I18n.t("tags.dc20.weapon.title.#{type}") }
+    tags['Reach'] = I18n.t('tags.dc20.weapon.title.Reach') if available_features_slugs.include?('extended_natural_weapon')
+    if available_features_slugs.include?('retractable_natural_weapon')
+      tags['Concealable'] = I18n.t('tags.dc20.weapon.title.Concealable')
+    end
+    distance = available_features_slugs.include?('natural_projectile') ? 10 : nil
+    if selected_features['natural_weapon_style']
+      style = selected_features['natural_weapon_style'].split('_')[-1].capitalize
+      tags[style] = I18n.t("tags.dc20.weapon.title.#{style}")
+    end
+
+    features_text = ::Dc20::Feat.where(slug: (%w[rend venomous_natural_weapon] & available_features_slugs)).map do |feat|
+      markdown.call(value: translate(feat.description), version: @version)
+    end
+
+    {
+      name: translate({ en: 'Natural Weapon', ru: 'Природное оружие' }),
+      attack_bonus: attack,
+      damage: 1,
+      damage_types: [type],
+      distance: distance,
+      features: [],
+      features_text: features_text,
+      notes: [],
+      ready_to_use: true,
+      tags: tags
+    }.compact
   end
 end
