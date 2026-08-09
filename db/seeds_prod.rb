@@ -54,7 +54,7 @@ end
   'talents/druid.json', 'talents/hunter.json', 'talents/monk.json', 'talents/rogue.json', 'talents/sorcerer.json',
   'talents/champion.json',
   'talents/spellblade.json', 'talents/warlock.json', 'talents/wizard.json',
-  'ancestry.json', 'ancestry_2.json', 'spells.json', 'maneuvers.json', 'talents.json'
+  'ancestry.json', 'ancestry_2.json', 'ancestry_3.json', 'spells.json', 'maneuvers.json', 'talents.json'
 ].each do |filename|
   response = Net::HTTP.get(URI("https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/dc20/#{filename}"))
   JSON.parse(response).each do |item|

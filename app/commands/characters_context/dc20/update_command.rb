@@ -109,6 +109,7 @@ module CharactersContext
 
         if input.key?(:ancestry_feats)
           input[:ancestries] = input[:ancestry_feats].keys
+          input[:ancestry_features] = input[:ancestry_feats].values.flatten.tally
         end
         if input.key?(:abilities)
           input[:attribute_points] = 0

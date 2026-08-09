@@ -127,6 +127,8 @@ export const Combat = (props) => {
     readDistanceSettings();
   });
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const currentLocale = createMemo(() => {
     const providerLocale = appState.providerLocales[character().provider];
     if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
@@ -136,13 +138,13 @@ export const Combat = (props) => {
   const distanceOptions = createMemo(() => {
     const result = {}
 
-    if (character().provider === 'daggerheart') result.narrative = localize(TRANSLATION, locale()).narrative;
+    if (character().provider === 'daggerheart') result.narrative = i18n().narrative;
 
     return {
       ...result,
-      'showSquares': localize(TRANSLATION, locale()).showSquares,
-      'imperial': localize(TRANSLATION, locale()).imperial,
-      'metric': localize(TRANSLATION, locale()).metric
+      'showSquares': i18n().showSquares,
+      'imperial': i18n().imperial,
+      'metric': i18n().metric
     };
   });
 
@@ -185,17 +187,19 @@ export const Combat = (props) => {
     const provider = character().provider;
     if (provider === 'daggerheart') {
       if (settings()[provider] === 'narrative' || settings()[provider] === undefined) {
-        return localize(TRANSLATION, locale()).daggerheart[attack.range];
+        return i18n().daggerheart[attack.range];
       }
     }
 
     let distance = attack.distance || attack.range;
     if (!distance) return '';
 
+    // перевод в футы
     if (provider === 'daggerheart') distance = [DH_SQUARE_DISTANCES[attack.range] * 5];
     if (provider === 'pathfinder2') distance = [distance];
     if (provider === 'nimble') distance = [distance * 5];
-    if (provider === 'dnd5' || provider === 'dnd2024' || provider === 'dc20' || provider === 'cosmere') distance = distance.toString().includes('/') ? distance.split('/').map((item) => parseInt(item)) : [distance];
+    if (provider === 'dnd5' || provider === 'dnd2024' || provider === 'cosmere') distance = distance.toString().includes('/') ? distance.split('/').map((item) => parseInt(item)) : [distance];
+    if (provider === 'dc20') distance = distance.toString().includes('/') ? distance.split('/').map((item) => parseInt(item) * 5) : [parseInt(distance) * 5];
 
     const result = distance.map((item) => {
       if (settings()[provider] === 'imperial') return item;
@@ -204,10 +208,10 @@ export const Combat = (props) => {
       return item / 5;
     }).join('/');
 
-    if (settings()[provider] === 'imperial') return `${result} ${localize(TRANSLATION, locale()).feet}`;
-    if (settings()[provider] === 'metric') return `${result} ${localize(TRANSLATION, locale()).meters}`;
+    if (settings()[provider] === 'imperial') return `${result} ${i18n().feet}`;
+    if (settings()[provider] === 'metric') return `${result} ${i18n().meters}`;
 
-    return `${result} ${localize(TRANSLATION, locale()).squares}`;
+    return `${result} ${i18n().squares}`;
   }
 
   const renderFalloutAttackDice = (attack) => {
@@ -228,7 +232,7 @@ export const Combat = (props) => {
     if (!attack.distance) return '';
 
     return (
-      <p class="text-sm">{localize(TRANSLATION, locale()).fallout[attack.distance]}</p>
+      <p class="text-sm">{i18n().fallout[attack.distance]}</p>
     );
   }
 
@@ -282,7 +286,7 @@ export const Combat = (props) => {
                           </div>
                           <p>{attack.damage}{attack.damage_bonus ? `${attack.damage_bonus > 0 ? '+' : ''}${attack.damage_bonus}` : ''}</p>
                           <p class="text-sm">{attack.distance}</p>
-                          <p class="text-xs">{localize(TRANSLATION, locale()).attacks} {attack.attacks}</p>
+                          <p class="text-xs">{i18n().attacks} {attack.attacks}</p>
                         </>
                       </Match>
                       <Match when={character().provider === 'nimble'}>
@@ -310,6 +314,16 @@ export const Combat = (props) => {
                     </For>
                   </div>
                 </Show>
+                <Show when={attack.features_text && attack.features_text.length > 0}>
+                  <For each={attack.features_text}>
+                    {(features_text) =>
+                      <p
+                        class="feat-markdown text-xs! mt-1"
+                        innerHTML={features_text} // eslint-disable-line solid/no-innerhtml
+                      />
+                    }
+                  </For>
+                </Show>
                 <Show when={(attack.tags === undefined || character().provider === 'daggerheart') && attack.features && attack.features.length > 0}>
                   <p class="weapon-features">
                     {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => localize(item, locale())).join(', ')}
@@ -334,15 +348,15 @@ export const Combat = (props) => {
             <div class="p-4 pb-0">
               <Select
                 containerClassList="weapon-settings-select"
-                labelText={localize(TRANSLATION, locale()).settings}
+                labelText={i18n().settings}
                 items={distanceOptions()}
                 selectedValue={settings()[character().provider]}
                 onSelect={updateSettings}
               />
             </div>
           </Show>
-          {renderAttacksBox(localize(TRANSLATION, locale()).primary, character().attacks.filter((item) => item.ready_to_use))}
-          {renderAttacksBox(localize(TRANSLATION, locale()).additional, character().attacks.filter((item) => !item.ready_to_use))}
+          {renderAttacksBox(i18n().primary, character().attacks.filter((item) => item.ready_to_use))}
+          {renderAttacksBox(i18n().additional, character().attacks.filter((item) => !item.ready_to_use))}
           <Show when={character().provider !== 'cthulhu7'}>
             <Button default classList="weapon-settings min-w-6 min-h-6" onClick={() => setShowSettings(!showSettings())}><Edit /></Button>
           </Show>

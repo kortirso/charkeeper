@@ -2,6 +2,7 @@ import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-
 
 import { Button, ErrorWrapper, Toggle, Checkbox, Select } from '../../../../components';
 import config from '../../../../data/dc20.json';
+import { Plus, Minus } from '../../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { fetchDc20AncestriesRequest } from '../../../../requests/fetchDc20AncestriesRequest';
 import { fetchDc20CharacterAncestriesRequest } from '../../../../requests/fetchDc20CharacterAncestriesRequest';
@@ -15,7 +16,16 @@ const TRANSLATION = {
     minorTraitsAlert: 'Maximum 1 minor trait',
     negativeTraitsAlert: 'Maximum 2 negative traits',
     showDescription: 'Show description',
-    defaultRace: 'Use default races'
+    defaultRace: 'Use default races',
+    groups: {
+      'Senses': 'Senses',
+      'Mobility': 'Mobility',
+      'Jumping': 'Jumping',
+      'Flying': 'Flying',
+      'Body': 'Body',
+      'Natural Weapon': 'Natural Weapon',
+      'Miscellaneous': 'Miscellaneous'
+    }
   },
   ru: {
     saveButton: 'Сохранить',
@@ -24,7 +34,16 @@ const TRANSLATION = {
     minorTraitsAlert: 'Максимум 1 малая черта',
     negativeTraitsAlert: 'Максимум 2 отрицательные черты',
     showDescription: 'Показывать описание',
-    defaultRace: 'Стандартные расы'
+    defaultRace: 'Стандартные расы',
+    groups: {
+      'Senses': 'Чувства',
+      'Mobility': 'Подвижность',
+      'Jumping': 'Прыгучесть',
+      'Flying': 'Полёт',
+      'Body': 'Тело',
+      'Natural Weapon': 'Оружие',
+      'Miscellaneous': 'Разное'
+    }
   },
   es: {
     saveButton: 'Guardar',
@@ -33,7 +52,16 @@ const TRANSLATION = {
     minorTraitsAlert: 'Máximo 1 rasgo menor',
     negativeTraitsAlert: 'Máximo 2 rasgos negativos',
     showDescription: 'Mostrar descripción',
-    defaultRace: 'Use default races'
+    defaultRace: 'Use default races',
+    groups: {
+      'Senses': 'Senses',
+      'Mobility': 'Mobility',
+      'Jumping': 'Jumping',
+      'Flying': 'Flying',
+      'Body': 'Body',
+      'Natural Weapon': 'Natural Weapon',
+      'Miscellaneous': 'Miscellaneous'
+    }
   }
 }
 
@@ -130,6 +158,28 @@ export const Dc20Ancestries = (props) => {
     if (props.forNewCharacter) props.onUpdateForm(ancestriesForm(), validations());
   }
 
+  const changeMultiple = (ancestry, slug, featPoints, coef) => {
+    let newValue;
+    const current = ancestriesForm().ancestry_feats[ancestry] || [];
+
+    if (coef === -1) {
+      if (current.includes(slug)) {
+        const index = current.indexOf(slug);
+        current.splice(index, 1);
+        newValue = { ...ancestriesForm().ancestry_feats, [ancestry]: current };
+      } else {
+        newValue = { ...ancestriesForm().ancestry_feats, [ancestry]: current };
+      }
+    } else {
+      current.push(slug);
+      newValue = { ...ancestriesForm().ancestry_feats, [ancestry]: current };
+    }
+
+    setAncestriesForm({ ...ancestriesForm(), ancestry_points: ancestriesForm().ancestry_points - featPoints, ancestry_feats: newValue });
+
+    if (props.forNewCharacter) props.onUpdateForm(ancestriesForm(), validations());
+  }
+
   const selectAncestry = (ancestry) => {
     setAncestriesForm({ ...ancestriesForm(), default_ancestry: ancestry });
     props.onUpdateForm(ancestriesForm(), validations());
@@ -141,6 +191,40 @@ export const Dc20Ancestries = (props) => {
 
     props.onSave(ancestriesForm());
   }
+
+  const renderFeature = (ancestry, item) => (
+    <div class="ancestry-item">
+      <Show
+        when={item.info.multiple}
+        fallback={
+          <Checkbox
+            labelText={`${item.title} (${item.price})`}
+            labelPosition="right"
+            labelClassList="ml-2"
+            checked={ancestriesForm().ancestry_feats[ancestry]?.includes(item.slug)}
+            onToggle={() => selectDc20Ancestry(ancestry, item.slug, item.price)}
+          />
+        }
+      >
+        <div class="flex items-center gap-2">
+          <Button default size="small" classList="opacity-75" disable={[undefined, 0].includes(ancestriesForm().ancestry_feats[ancestry]?.filter((el) => el === item.slug)?.length)} onClick={() => changeMultiple(ancestry, item.slug, item.price * -1, -1)}>
+            <Minus />
+          </Button>
+          <p class="text-center">{ancestriesForm().ancestry_feats[ancestry]?.filter((el) => el === item.slug)?.length || 0}</p>
+          <Button default size="small" classList="opacity-75" onClick={() => changeMultiple(ancestry, item.slug, item.price * 1, 1)}>
+            <Plus />
+          </Button>
+          <p class="text-sm ">{item.title} ({item.price})</p>
+        </div>
+      </Show>
+      <Show when={showDescription()}>
+        <p
+          class="feat-markdown text-xs! mt-1"
+          innerHTML={item.description} // eslint-disable-line solid/no-innerhtml
+        />
+      </Show>
+    </div>
+  )
 
   return (
     <ErrorWrapper payload={{ character_id: character()?.id, key: 'Dc20Ancestries' }}>
@@ -191,25 +275,33 @@ export const Dc20Ancestries = (props) => {
                     innerClassList="p-2!"
                     title={<p>{localize(values.name, locale())}{ancestriesForm().ancestry_feats[ancestry] ? ` (${ancestriesForm().ancestry_feats[ancestry].length})` : ''}</p>}
                   >
-                    <For each={ancestries().filter((item) => item.origin_value === ancestry).sort((a, b) => a.price < b.price)}>
-                      {(item) =>
-                        <div class="ancestry-item">
-                          <Checkbox
-                            labelText={`${item.title} (${item.price})`}
-                            labelPosition="right"
-                            labelClassList="ml-2"
-                            checked={ancestriesForm().ancestry_feats[ancestry]?.includes(item.slug)}
-                            onToggle={() => selectDc20Ancestry(ancestry, item.slug, item.price)}
-                          />
-                          <Show when={showDescription()}>
-                            <p
-                              class="feat-markdown text-xs! mt-1"
-                              innerHTML={item.description} // eslint-disable-line solid/no-innerhtml
-                            />
-                          </Show>
+                    <Show
+                      when={values.default !== false}
+                      fallback={
+                        <div class="flex flex-col gap-2">
+                          <For each={Object.entries(i18n().groups)}>
+                            {/* Зверорожденные */}
+                            {([group, name]) =>
+                              <div>
+                                <p class="mb-2">{name}</p>
+                                <For each={ancestries().filter((item) => item.origin_value === ancestry && item.info.group === group).sort((a, b) => a.price < b.price)}>
+                                  {(item) =>
+                                    renderFeature(ancestry, item)
+                                  }
+                                </For>
+                              </div>
+                            }
+                          </For>
                         </div>
                       }
-                    </For>
+                    >
+                      {/* обычные расы с одноразовым селектом */}
+                      <For each={ancestries().filter((item) => item.origin_value === ancestry).sort((a, b) => a.price < b.price)}>
+                        {(item) =>
+                          renderFeature(ancestry, item)
+                        }
+                      </For>
+                    </Show>
                   </Toggle>
                 }
               </For>

@@ -9,6 +9,7 @@ module Dc20
     attribute :main_class, :string
     attribute :subclass, :string
     attribute :ancestries, array: true
+    attribute :ancestry_features, array: true, default: {} # { 'fighting_style' => 2 }
     attribute :classes, array: true
     attribute :abilities, array: true, default: { 'mig' => -2, 'agi' => -2, 'int' => -2, 'cha' => -2 }
     attribute :health, array: true, default: { 'current' => 1, 'temp' => 0 }

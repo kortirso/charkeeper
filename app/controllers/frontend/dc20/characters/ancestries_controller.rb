@@ -17,10 +17,12 @@ module Frontend
         end
 
         def ancestries
+          ancestry_features = @character.data.ancestry_features
           @character
             .feats.joins(:feat).where(feats: { origin: 0 })
             .pluck('feats.origin_value', 'feats.slug')
-            .group_by { |item| item[0] }.transform_values { |value| value.map { |item| item[1] } }
+            .group_by { |item| item[0] }
+            .transform_values { |value| value.flat_map { |item| [item[1]] * (ancestry_features[item[1]] || 1) } }
         end
       end
     end

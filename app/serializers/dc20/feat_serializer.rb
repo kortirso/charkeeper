@@ -2,7 +2,7 @@
 
 module Dc20
   class FeatSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id slug title description origin_value price].freeze
+    ATTRIBUTES = %i[id slug title description origin_value price info].freeze
 
     attributes(*ATTRIBUTES)
 
