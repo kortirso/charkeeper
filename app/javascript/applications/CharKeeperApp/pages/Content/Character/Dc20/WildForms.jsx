@@ -128,6 +128,14 @@ export const Dc20WildForms = (props) => {
 
   const i18n = createMemo(() => localize(TRANSLATION, locale()));
 
+  const refreshCharacter = () => {
+    const current = wildForms().reduce((acc, element) => {
+      acc[element.id] = element.name;
+      return acc;
+    }, {})
+    props.onReplaceCharacter({ wild_forms: current });
+  }
+
   const createWildForm = async () => {
     const result = await createWildFormRequest(appState.accessToken, character().id, { wild_form: form });
     performResponse(
@@ -138,6 +146,7 @@ export const Dc20WildForms = (props) => {
           setWildFormsData({ ...wildFormsData(), [result.wild_form.id]: {} })
           setCreateMode(false);
         });
+        refreshCharacter();
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -156,11 +165,14 @@ export const Dc20WildForms = (props) => {
 
   const removeWildForm = async (event, id) => {
     event.stopPropagation();
+    if (character().wild_form === id) return;
+
     const result = await removeWildFormRequest(appState.accessToken, character().id, id);
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
         setWildForms(wildForms().filter((item) => item.id !== id));
+        refreshCharacter();
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -256,7 +268,9 @@ export const Dc20WildForms = (props) => {
                 <Toggle title={
                   <div class="flex items-center">
                     <p class="flex-1">{wildForm.name}</p>
-                    <IconButton onClick={(e) => removeWildForm(e, wildForm.id)}><Close /></IconButton>
+                    <Show when={wildForm.id !== character().wild_form}>
+                      <IconButton onClick={(e) => removeWildForm(e, wildForm.id)}><Close /></IconButton>
+                    </Show>
                   </div>
                 }>
                   <div class="flex flex-col gap-2">

@@ -573,14 +573,19 @@ class Dc20Decorator < ApplicationDecoratorV2
     }
   end
 
-  def natural_weapon_attack # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+  def natural_weapon_attack # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
     natural_weapon = wild_form ? current_wild_form.data.ancestry_features['natural_weapon'] : selected_features['natural_weapon']
     return unless natural_weapon
 
     current_selected_features = wild_form ? wild_form_selected_features : selected_features
     current_feature_slugs = wild_form ? wild_form_selected_features.keys : available_features_slugs
 
-    type = current_selected_features['natural_weapon'].split('_')[-1][0]
+    type =
+      if current_selected_features['natural_weapon']
+        current_selected_features['natural_weapon'].split('_')[-1][0]
+      else
+        'p'
+      end
     tags = { type => I18n.t("tags.dc20.weapon.title.#{type}") }
     tags['Reach'] = I18n.t('tags.dc20.weapon.title.Reach') if current_feature_slugs.include?('extended_natural_weapon')
     if current_feature_slugs.include?('retractable_natural_weapon')

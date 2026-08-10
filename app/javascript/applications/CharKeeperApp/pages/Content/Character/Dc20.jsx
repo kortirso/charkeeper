@@ -136,7 +136,7 @@ export const Dc20 = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'wildForms'}>
               <Dc20WildForms
-                character={character()}
+                character={character()} onReplaceCharacter={props.onReplaceCharacter}
               />
             </Match>
             <Match when={activeMobileTab() === 'classLevels'}>
@@ -262,7 +262,7 @@ export const Dc20 = (props) => {
             </Match>
             <Match when={activeTab() === 'wildForms'}>
               <Dc20WildForms
-                character={character()}
+                character={character()} onReplaceCharacter={props.onReplaceCharacter}
               />
             </Match>
             <Match when={activeTab() === 'classLevels'}>
