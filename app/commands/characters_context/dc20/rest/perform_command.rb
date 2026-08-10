@@ -4,8 +4,13 @@ module CharactersContext
   module Dc20
     module Rest
       class PerformCommand < BaseCommand
+        include Deps[
+          update_wild_form: 'commands.characters_context.dc20.wild_forms.update'
+        ]
+
         NO_FEAT_REFRESH = %w[quick].freeze
         RESTORE_REST_POINTS = %w[half_long complete_long full].freeze
+        RESTORE_WILD_FORMS = %w[complete_long full].freeze
 
         use_contract do
           config.messages.namespace = :dc20_rest
@@ -27,9 +32,20 @@ module CharactersContext
         def lock_key(input) = "character_update_#{input[:character].id}"
         def lock_time = 0
 
-        def do_prepare(input) # rubocop: disable Metrics/AbcSize
+        def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
           return if input[:options].nil?
           return if input[:value] == 'combat'
+
+          if RESTORE_WILD_FORMS.include?(input[:value])
+            input[:character].children.each do |wild_form|
+              health = wild_form.data.health
+              update_wild_form.call(
+                wild_form: wild_form, health: wild_form.data.health.merge(
+                  'current' => health['max'] || 3, 'temp' => health['temp'], 'max' => health['max']
+                )
+              )
+            end
+          end
 
           data = input[:character].data
           spend_rest_points =

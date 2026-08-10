@@ -208,6 +208,7 @@ Rails.application.routes.draw do
       resources :characters, only: %i[create update] do
         scope module: :characters do
           resources :ancestries, only: %i[index]
+          resources :wild_forms, only: %i[index create update destroy]
           resources :spells, only: %i[index create update destroy] do
             post :clear, on: :collection
           end
@@ -224,6 +225,7 @@ Rails.application.routes.draw do
       resources :maneuvers, only: %i[index]
       resources :ancestries, only: %i[index]
       resources :spells, only: %i[index]
+      resources :wild_forms, only: %i[index]
     end
 
     namespace :nimble do

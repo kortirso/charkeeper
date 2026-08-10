@@ -1,5 +1,6 @@
 {
   "sizes": {
+    "tiny": { "name": { "en": "Tiny", "ru": "Крошечный" } },
     "small": { "name": { "en": "Small", "ru": "Маленький" } },
     "medium": { "name": { "en": "Medium", "ru": "Средний" } },
     "large": { "name": { "en": "Large", "ru": "Большой" } }
@@ -22,7 +23,7 @@
       "name": { "en": "Barbarian", "ru": "Варвар" },
       "subclasses": {
         "spirit_guardian": { "name": { "en": "Spirit Guardian", "ru": "Духовный защитник" } },
-        "elemental_fury": { "name": { "en": "Elemental Fury", "ru": "" } }
+        "elemental_fury": { "name": { "en": "Elemental Fury", "ru": "Чистая ярость" } }
       }
     },
     "bard": {

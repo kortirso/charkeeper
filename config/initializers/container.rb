@@ -64,6 +64,9 @@ module Charkeeper
     register('commands.characters_context.cosmere.rest.perform') { CharactersContext::Cosmere::Rest::PerformCommand.new }
     register('commands.characters_context.cosmere.feats.add') { CharactersContext::Cosmere::Feats::AddCommand.new }
 
+    register('commands.characters_context.dc20.wild_forms.create') { CharactersContext::Dc20::WildForms::CreateCommand.new }
+    register('commands.characters_context.dc20.wild_forms.update') { CharactersContext::Dc20::WildForms::UpdateCommand.new }
+
     register('commands.characters_context.dc20.create') { CharactersContext::Dc20::CreateCommand.new }
     register('commands.characters_context.dc20.update') { CharactersContext::Dc20::UpdateCommand.new }
 

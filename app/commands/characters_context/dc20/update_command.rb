@@ -8,7 +8,8 @@ module CharactersContext
         attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file',
         refresh_feats: 'services.characters_context.dc20.refresh_feats',
         cache: 'cache.avatars',
-        add_feat: 'commands.characters_context.dc20.feats.add'
+        add_feat: 'commands.characters_context.dc20.feats.add',
+        update_wild_form: 'commands.characters_context.dc20.wild_forms.update'
       ]
 
       LEVELING = {
@@ -48,6 +49,7 @@ module CharactersContext
           optional(:health).hash do
             required(:current).filled(:integer)
             required(:temp).filled(:integer)
+            optional(:max).filled(:integer)
           end
           optional(:combat_expertise).value(:array).each(included_in?: ::Dc20::Character.combat_expertise.keys)
           optional(:name).filled(:string, max_size?: 50)
@@ -93,6 +95,7 @@ module CharactersContext
             optional(:source).maybe(:string)
             optional(:schools).maybe(:array).each(:string)
           end
+          optional(:wild_form).maybe(:string)
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
@@ -149,6 +152,12 @@ module CharactersContext
       end
 
       def do_persist(input) # rubocop: disable Metrics/AbcSize
+        if input.key?(:health) && input[:character].data.wild_form
+          return update_wild_form.call(
+            input.slice(:health).merge({ wild_form: ::Dc20::WildForm.find(input[:character].data.wild_form) })
+          )
+        end
+
         input[:character].data =
           input[:character].data.attributes.merge(
             input.except(:character, :avatar_file, :avatar_url, :file, :name, :ancestry_feats).stringify_keys

@@ -43,6 +43,7 @@
       "class": "Class",
       "subclass": "Subclass",
       "beastform": "Beastform",
+      "wildForms": "Wild Form",
       "race": "Race",
       "subrace": "Subrace",
       "species": "Species",

@@ -293,7 +293,6 @@ export const Pathfinder2Companion = (props) => {
       }
       return acc;
     }, []);
-    console.log(dices)
     props.openD20Attack(`/check attack "${attack.name}"`, attack.name, attack.attack_bonus, dices, attack.damage_bonus)
   }
 
