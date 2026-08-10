@@ -47,14 +47,14 @@ end
 [
   'classes/barbarian.json', 'classes/bard.json', 'classes/commander.json', 'classes/hunter.json', 'classes/rogue.json',
   'classes/spellblade.json', 'classes/wizard.json', 'classes/monk.json', 'classes/champion.json', 'classes/cleric.json',
-  'classes/sorcerer.json',
+  'classes/sorcerer.json', 'classes/druid.json',
   'subclasses/barbarian.json', 'subclasses/bard.json', 'subclasses/commander.json', 'subclasses/hunter.json',
   'subclasses/rogue.json', 'subclasses/wizard.json', 'subclasses/monk.json', 'subclasses/champion.json',
   'talents/barbarian.json', 'talents/bard.json', 'talents/champion.json', 'talents/cleric.json', 'talents/commander.json',
   'talents/druid.json', 'talents/hunter.json', 'talents/monk.json', 'talents/rogue.json', 'talents/sorcerer.json',
   'talents/champion.json',
   'talents/spellblade.json', 'talents/warlock.json', 'talents/wizard.json',
-  'ancestry.json', 'ancestry_2.json', 'ancestry_3.json', 'spells.json', 'maneuvers.json', 'talents.json'
+  'ancestry.json', 'ancestry_2.json', 'ancestry_3.json', 'spells.json', 'maneuvers.json', 'talents.json', 'wild_forms.json'
 ].each do |filename|
   response = Net::HTTP.get(URI("https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/dc20/#{filename}"))
   JSON.parse(response).each do |item|

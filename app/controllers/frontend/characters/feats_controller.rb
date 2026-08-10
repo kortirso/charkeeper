@@ -24,7 +24,11 @@ module Frontend
       end
 
       def find_character_feat
-        @character_feat = @character.feats.find(params.expect(:id))
+        relation = ::Character::Feat.joins(:character)
+        @character_feat =
+          relation.where(character_id: @character.id).or(
+            relation.where(characters: { parent_id: @character.id })
+          ).find(params.expect(:id))
       end
 
       def update_params

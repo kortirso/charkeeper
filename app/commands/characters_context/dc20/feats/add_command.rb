@@ -6,7 +6,7 @@ module CharactersContext
       class AddCommand < BaseCommand
         use_contract do
           params do
-            required(:character).filled(type?: ::Dc20::Character)
+            required(:character).filled(type_included_in?: [::Dc20::Character, ::Dc20::WildForm])
             required(:feat).filled(type?: ::Dc20::Feat)
             optional(:with_subfeats).filled(:bool)
           end
@@ -46,7 +46,7 @@ module CharactersContext
           end
 
           # если есть 2 навыка класса, то class_flavor назначается автоматически
-          if input[:character].data['classes'][input[:feat].origin_value] == 2
+          if input[:character].data['classes'] && input[:character].data['classes'][input[:feat].origin_value] == 2
             Charkeeper::Container.resolve('commands.characters_context.dc20.feats.add').call({
               character: input[:character],
               feat: ::Dc20::Feat.where(origin: 2).find_by(origin_value: input[:feat].origin_value)

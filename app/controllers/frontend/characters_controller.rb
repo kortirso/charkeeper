@@ -34,7 +34,7 @@ module Frontend
     private
 
     def characters
-      current_user.characters.group_by(&:type).map do |character_type, characters|
+      current_user.characters.parents.group_by(&:type).map do |character_type, characters|
         set_current_provider(character_type)
         set_locale
         Panko::ArraySerializer.new(

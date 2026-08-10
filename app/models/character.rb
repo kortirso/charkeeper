@@ -5,6 +5,9 @@ class Character < ApplicationRecord
   has_one_attached :temp_avatar
 
   belongs_to :user
+  belongs_to :parent, class_name: 'Character', optional: true, inverse_of: :children
+
+  has_many :children, class_name: 'Character', foreign_key: :parent_id, inverse_of: :parent, dependent: :destroy
 
   has_many :spells, class_name: '::Character::Spell', dependent: :destroy
   has_many :items, class_name: '::Character::Item', dependent: :destroy
@@ -21,12 +24,15 @@ class Character < ApplicationRecord
   has_many :campaigns, through: :campaign_characters
   has_many :channels, through: :campaigns
 
+  scope :parents, -> { where(parent_id: nil) }
+
   scope :dnd, -> { where(type: %w[Dnd5::Character Dnd2024::Character]) }
   scope :dnd5, -> { where(type: 'Dnd5::Character') }
   scope :dnd2024, -> { where(type: 'Dnd2024::Character') }
   scope :pathfinder2, -> { where(type: 'Pathfinder2::Character') }
   scope :daggerheart, -> { where(type: 'Daggerheart::Character') }
   scope :dc20, -> { where(type: 'Dc20::Character') }
+  scope :dc20_with_wild_form, -> { where(type: ['Dc20::Character', 'Dc20::WildForm']) }
   scope :fate, -> { where(type: 'Fate::Character') }
   scope :fallout, -> { where(type: 'Fallout::Character') }
   scope :cosmere, -> { where(type: 'Cosmere::Character') }

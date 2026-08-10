@@ -140,7 +140,7 @@ export const Dc20Resources = (props) => {
     if (totalHealth === character().health.death_threshold && value === -1) return;
     if (character().health.current === character().health.max && value === 1) return;
 
-    let payload = { current: character().health.current, temp: character().health.temp };
+    let payload = { current: character().health.current, temp: character().health.temp, max: character().health.max };
     if (value === 1) payload = { ...payload, current: payload.current + 1 }
     else {
       if (payload.temp > 0) payload = { ...payload, temp: payload.temp - 1 };

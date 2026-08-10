@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_28_060335) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_09_123428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -130,6 +130,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_28_060335) do
     t.string "name", null: false
     t.string "type", null: false
     t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_character_companions_on_type"
   end
 
   create_table "character_feats", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Навыки персонажа", force: :cascade do |t|
@@ -200,9 +201,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_28_060335) do
     t.jsonb "data", default: {}, null: false, comment: "Свойства персонажа"
     t.datetime "equipment_updated_at"
     t.string "name", null: false
+    t.uuid "parent_id"
     t.string "type", null: false, comment: "Система, для которой создан персонаж"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
+    t.index ["parent_id"], name: "index_characters_on_parent_id", where: "(parent_id IS NOT NULL)"
+    t.index ["type"], name: "index_characters_on_type"
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 

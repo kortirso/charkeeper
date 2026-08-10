@@ -34,6 +34,7 @@ module Dc20
     attribute :resistances, array: true, default: []
     attribute :spell_class, :string
     attribute :spell_filter, array: true, default: { 'source' => nil, 'schools' => [] }
+    attribute :wild_form, :string
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :ancestry_points, :integer, default: 0

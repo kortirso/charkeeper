@@ -8,6 +8,7 @@ class Dc20Decorator < ApplicationDecoratorV2
     @version = version
     @result = character.data.attributes
     @bonuses = {}
+    @wild_bonuses = {}
     @set_bonuses = {}
     @hard_set_bonuses = {}
 
@@ -19,6 +20,7 @@ class Dc20Decorator < ApplicationDecoratorV2
 
     @result = Dc20::ClassDecorator.new.call(result: @result)
 
+    calculate_wild_form
     calculate_modifiers
     apply_modifiers
     calculate_secondary_abilities
@@ -33,7 +35,7 @@ class Dc20Decorator < ApplicationDecoratorV2
     @result['combat_mastery'] = (level / 2.0).round
   end
 
-  def calculate_primary_modifiers
+  def calculate_primary_modifiers # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     modifiers.each do |modifier|
       modifier.each do |key, value|
         next if BASE_MODIFIERS.exclude?(key)
@@ -44,6 +46,20 @@ class Dc20Decorator < ApplicationDecoratorV2
 
         @bonuses[key] ||= 0
         @bonuses[key] += formula_result
+      end
+    end
+    return unless wild_form
+
+    wild_modifiers.each do |modifier|
+      modifier.each do |key, value|
+        next if BASE_MODIFIERS.exclude?(key)
+        next if value['type'] != 'add'
+
+        formula_result = formula.call(formula: value['value'], variables: base_formula_variables)
+        next unless formula_result
+
+        @wild_bonuses[key] ||= 0
+        @wild_bonuses[key] += formula_result
       end
     end
   end
@@ -74,9 +90,19 @@ class Dc20Decorator < ApplicationDecoratorV2
     @result['combat_expertise'] = @result['combat_expertise'].uniq
   end
 
+  def calculate_wild_form
+    return unless wild_form
+
+    @result['max_mana_points'] = 0
+    @result['max_stamina_points'] = 0
+    @result['max_health'] = 3
+    @result['speeds'] = { 'ground' => 5 }
+    @result['health'] = current_wild_form.data.health
+  end
+
   def calculate_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
     # rubocop: disable Metrics/BlockLength
-    modifiers.each do |modifier|
+    (modifiers + (wild_form ? wild_modifiers : [])).each do |modifier|
       modifier.each do |key, value|
         next if BASE_MODIFIERS.include?(key)
 
@@ -147,8 +173,7 @@ class Dc20Decorator < ApplicationDecoratorV2
       'well_bloodied' => max_health / 4
     )
     @result['damages'] = calc_resistances
-    @result['attacks'] =
-      [unarmed_attack, shield_attack, class_attacks].flatten.compact + character_weapons.map { |item| calculate_attack(item) }
+    @result['attacks'] = calc_attacks
     @result['features'] = apply_features
     @result['cantrips'] = 0
     @result['precision_defense'] = { default: pd_base, heavy: pd_base + 5, brutal: pd_base + 10 }
@@ -156,11 +181,39 @@ class Dc20Decorator < ApplicationDecoratorV2
     @result['physical_save'] = attribute_saves.slice('mig', 'agi').values.max
     @result['mental_save'] = attribute_saves.slice('cha', 'int').values.max
     @result['speeds'] = speeds.transform_values { |item| item&.zero? ? speeds['ground'] : item }.compact
+    @result['wild_form_available'] = available_features_slugs.include?('wild_form')
+    @result['wild_forms'] = find_wild_forms
+  end
+
+  def calc_attacks
+    return [natural_weapon_attack].compact if wild_form
+
+    [unarmed_attack, shield_attack, class_attacks].flatten.compact + character_weapons.map { |item| calculate_attack(item) }
   end
 
   def find_modified_abilities
-    values = abilities.merge(@bonuses.slice(*BASE_MODIFIERS)) { |_key, oldval, newval| newval + oldval }
-    values.merge('prime' => values.values.max)
+    values = abilities.merge(@bonuses.slice(*BASE_MODIFIERS)) { |_key, oldval, newval| [newval + oldval, ability_limit].min }
+    values['prime'] = values.values.max
+    return values unless wild_form
+
+    values
+      .merge({ 'mig' => 1, 'agi' => 1 })
+      .merge(@wild_bonuses.slice(*BASE_MODIFIERS)) { |_key, oldval, newval| [newval + oldval, ability_limit].min }
+  end
+
+  def ability_limit
+    return 7 if level >= 20
+    return 6 if level >= 15
+    return 5 if level >= 10
+    return 4 if level >= 5
+
+    3
+  end
+
+  def find_wild_forms
+    return [] unless wild_form_available
+
+    ::Dc20::WildForm.where(parent_id: @character.id).pluck(:id, :name).to_h
   end
 
   def generate_skills_payload
@@ -197,10 +250,14 @@ class Dc20Decorator < ApplicationDecoratorV2
   end
 
   def find_pd_base
+    return 8 + combat_mastery + modified_abilities['prime'] if wild_form
+
     8 + combat_mastery + modified_abilities['agi'] + modified_abilities['int']
   end
 
   def find_ad_base
+    return 8 + combat_mastery + modified_abilities['prime'] if wild_form
+
     8 + combat_mastery + modified_abilities['mig'] + modified_abilities['cha']
   end
 
@@ -277,16 +334,35 @@ class Dc20Decorator < ApplicationDecoratorV2
     @equiped_shield_info ||= active_items.find { |item| item[:items_kind] == 'shield' }&.dig(:items_info)
   end
 
-  def modifiers
+  def modifiers # rubocop: disable Metrics/AbcSize
     @modifiers ||=
-      character_modifiers + feature_modifiers +
-        active_items_and_weapon_in_hands.pluck(:items_modifiers).compact_blank +
-        active_items_and_weapon_in_hands.pluck(:modifiers).compact_blank +
-        condition_modifiers
+      if wild_form
+        character_modifiers + druid_feature_modifiers + condition_modifiers +
+          active_items_except_weapon.pluck(:items_modifiers).compact_blank +
+          active_items_except_weapon.pluck(:modifiers).compact_blank
+      else
+        character_modifiers + feature_modifiers + condition_modifiers +
+          active_items_and_weapon_in_hands.pluck(:items_modifiers).compact_blank +
+          active_items_and_weapon_in_hands.pluck(:modifiers).compact_blank
+      end
+  end
+
+  def wild_modifiers
+    @wild_modifiers ||=
+      current_wild_form.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC')
+        .hashable_pluck(:active, 'feats.continious', 'feats.modifiers', 'feats.slug')
+        .select { |feat| !feat[:feats_continious] || feat[:active] }
+        .each_with_object([]) do |item, acc|
+          current_wild_form.data.ancestry_features[item[:feats_slug]].times { acc << item[:feats_modifiers] }
+        end
   end
 
   def active_items_and_weapon_in_hands
     active_items.select { |item| item[:items_kind] != 'weapon' || item[:states]['hands'].positive? }
+  end
+
+  def active_items_except_weapon
+    active_items.select { |item| item[:items_kind] == 'item' }
   end
 
   def active_items
@@ -310,6 +386,22 @@ class Dc20Decorator < ApplicationDecoratorV2
       .compact_blank
   end
 
+  def druid_feature_modifiers
+    druid_available_features
+      .hashable_pluck(:active, 'feats.continious', 'feats.modifiers')
+      .select { |feat| !feat[:feats_continious] || feat[:active] }
+      .pluck(:feats_modifiers)
+      .compact_blank
+  end
+
+  def druid_available_features
+    @character.feats
+      .includes(:feat)
+      .order('feats.origin ASC, feats.created_at ASC')
+      .where(feats: { origin_value: %w[druid phoenix rampant_growth] })
+      .where(ready_to_use: [true, nil])
+  end
+
   def condition_modifiers
     Config.data('dc20', 'conditions')
       .slice(*conditions_v2.keys)
@@ -323,13 +415,22 @@ class Dc20Decorator < ApplicationDecoratorV2
       end
   end
 
+  def available_features
+    @available_features ||=
+      if wild_form
+        relation = druid_available_features
+        relation.or(current_wild_form.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC'))
+      else
+        @character.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC').where(ready_to_use: [true, nil])
+      end
+  end
+
   def available_features_slugs
     @available_features_slugs ||= available_features.pluck('feats.slug')
   end
 
-  def available_features
-    @available_features ||=
-      @character.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC').where(ready_to_use: [true, nil])
+  def current_wild_form
+    @current_wild_form ||= ::Dc20::WildForm.find_by(id: wild_form, parent_id: @character.id) # rubocop: disable Rails/FindByOrAssignmentMemoization
   end
 
   def base_formula_variables
@@ -425,7 +526,7 @@ class Dc20Decorator < ApplicationDecoratorV2
       tokens: feature.tokens,
       tokens_max: feature.tokens ? feature.feat.tokens['limit'] : nil,
       options: feature.feat.options,
-      amount: ancestry_features[feature.feat.slug].to_i
+      amount: (wild_form ? current_wild_form.data.ancestry_features : ancestry_features)[feature.feat.slug].to_i
     }.compact
   end
 
@@ -472,22 +573,26 @@ class Dc20Decorator < ApplicationDecoratorV2
     }
   end
 
-  def natural_weapon_attack # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
-    return unless selected_features['natural_weapon']
+  def natural_weapon_attack # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+    natural_weapon = wild_form ? current_wild_form.data.ancestry_features['natural_weapon'] : selected_features['natural_weapon']
+    return unless natural_weapon
 
-    type = selected_features['natural_weapon'].split('_')[-1][0]
+    current_selected_features = wild_form ? wild_form_selected_features : selected_features
+    current_feature_slugs = wild_form ? wild_form_selected_features.keys : available_features_slugs
+
+    type = current_selected_features['natural_weapon'].split('_')[-1][0]
     tags = { type => I18n.t("tags.dc20.weapon.title.#{type}") }
-    tags['Reach'] = I18n.t('tags.dc20.weapon.title.Reach') if available_features_slugs.include?('extended_natural_weapon')
-    if available_features_slugs.include?('retractable_natural_weapon')
+    tags['Reach'] = I18n.t('tags.dc20.weapon.title.Reach') if current_feature_slugs.include?('extended_natural_weapon')
+    if current_feature_slugs.include?('retractable_natural_weapon')
       tags['Concealable'] = I18n.t('tags.dc20.weapon.title.Concealable')
     end
-    distance = available_features_slugs.include?('natural_projectile') ? 10 : nil
-    if selected_features['natural_weapon_style']
-      style = selected_features['natural_weapon_style'].split('_')[-1].capitalize
+    distance = current_feature_slugs.include?('natural_projectile') ? 10 : nil
+    if current_selected_features['natural_weapon_style']
+      style = current_selected_features['natural_weapon_style'].split('_')[-1].capitalize
       tags[style] = I18n.t("tags.dc20.weapon.title.#{style}")
     end
 
-    features_text = ::Dc20::Feat.where(slug: (%w[rend venomous_natural_weapon] & available_features_slugs)).map do |feat|
+    features_text = ::Dc20::Feat.where(slug: (%w[rend venomous_natural_weapon] & current_feature_slugs)).map do |feat|
       markdown.call(value: translate(feat.description), version: @version)
     end
 
@@ -503,5 +608,10 @@ class Dc20Decorator < ApplicationDecoratorV2
       ready_to_use: true,
       tags: tags
     }.compact
+  end
+
+  def wild_form_selected_features
+    @wild_form_selected_features ||=
+      current_wild_form.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC').pluck('feats.slug', :value).to_h
   end
 end
