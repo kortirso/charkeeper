@@ -1,4 +1,4 @@
-import { createMemo } from 'solid-js';
+import { createSignal, createMemo, Show } from 'solid-js';
 import { createStore, reconcile } from 'solid-js/store';
 
 import { CharacterForm } from '../../../../pages';
@@ -13,35 +13,53 @@ const TRANSLATION = {
     name: 'Name',
     race: 'Ancestry',
     mainClass: 'Class',
-    skipGuide: 'Skip new character guide'
+    skipGuide: 'Skip new character guide',
+    options: 'There are books available in Homebrews/Modules section for additional options for character creation.',
+    showHomebrew: 'Allow to select homebrews',
+    size: 'Size'
   },
   ru: {
     name: 'Имя',
     race: 'Раса',
     mainClass: 'Класс',
-    skipGuide: 'Пропустить настройку нового персонажа'
+    skipGuide: 'Пропустить настройку нового персонажа',
+    options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.',
+    showHomebrew: 'Выбирать из homebrew',
+    size: 'Размер'
   },
   es: {
     name: 'Nombre',
     race: 'Raza',
     mainClass: 'Clase',
-    skipGuide: 'Omitir guía de personaje nuevo'
+    skipGuide: 'Omitir guía de personaje nuevo',
+    options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
+    showHomebrew: 'Allow to select homebrews',
+    size: 'Size'
   }
 }
 
 export const NimbleForm = (props) => {
+  console.log(props.homebrews())
   const [form, setForm] = createStore(DEFAULT_FORM);
+  const [showHomebrew, setShowHomebrew] = createSignal(true);
 
   const [locale] = useAppLocale();
 
   const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
+  const ancestries = createMemo(() => {
+    if (props.homebrews() === undefined) return {};
+    if (!showHomebrew()) return config.ancestries;
+
+    return { ...config.ancestries, ...props.homebrews().nimble.races };
+  });
 
   const saveCharacter = async () => {
     if (form.name.length === 0) return;
     if (!form.ancestry) return;
     if (!form.main_class) return;
 
-    const result = await props.onCreateCharacter({ ...form, size: config.ancestries[form.ancestry].size });
+    const result = await props.onCreateCharacter(form);
 
     if (result === null) setForm(reconcile(DEFAULT_FORM));
   }
@@ -49,18 +67,30 @@ export const NimbleForm = (props) => {
   return (
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <div class="flex flex-col gap-2">
-        <Input
-          labelText={i18n().name}
-          value={form.name}
-          onInput={(value) => setForm({ ...form, name: value })}
+        <p class="dark:text-snow text-sm">{i18n().options}</p>
+        <Checkbox
+          labelText={i18n().showHomebrew}
+          labelPosition="right"
+          labelClassList="ml-2"
+          checked={showHomebrew()}
+          onToggle={() => setShowHomebrew(!showHomebrew())}
         />
+        <Input labelText={i18n().name} value={form.name} onInput={(value) => setForm({ ...form, name: value })} />
         <Select
           searchable
           labelText={i18n().race}
-          items={translate(config.ancestries, locale(), true)}
+          items={translate(ancestries(), locale(), true)}
           selectedValue={form.ancestry}
-          onSelect={(value) => setForm({ ...form, ancestry: value })}
+          onSelect={(value) => setForm({ ...form, ancestry: value, size: ancestries()[value].size[0] })}
         />
+        <Show when={form.ancestry && ancestries()[form.ancestry].size.length > 1}>
+          <Select
+            labelText={i18n().size}
+            items={ancestries()[form.ancestry].size.reduce((acc, item) => { acc[item] = localize(config.sizes[item].name, locale()); return acc; }, {})}
+            selectedValue={form.size}
+            onSelect={(value) => setForm({ ...form, size: value })}
+          />
+        </Show>
         <Select
           searchable
           labelText={i18n().mainClass}

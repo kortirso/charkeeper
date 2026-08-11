@@ -9,17 +9,17 @@ import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    helpMessage: 'You start with a +2/+2/0/-1 or +2/+2/+1/0 or +3/+1/-1/-1 in all of your Attributes',
+    helpMessage: 'You start with a +2/+2/0/-1 or +2/+1/+1/0 or +3/+1/-1/-1 in all of your Attributes',
     attributePoints: 'Spend attribute points for key abilities',
     secondaryPoints: 'Spend attribute points for secondary abilities'
   },
   ru: {
-    helpMessage: 'Ваш персонаж начинает с +2/+2/0/-1 or +2/+2/+1/0 or +3/+1/-1/-1 во всех атрибутах.',
+    helpMessage: 'Ваш персонаж начинает с +2/+2/0/-1 или +2/+1/+1/0 или +3/+1/-1/-1 во всех атрибутах.',
     attributePoints: 'Потратьте очки атрибутов на основные характеристики',
     secondaryPoints: 'Потратьте очки атрибутов на второстепенные характеристики'
   },
   es: {
-    helpMessage: 'Comienzas con un +2/+2/0/-1 or +2/+2/+1/0 or +3/+1/-1/-1 en todos tus Atributos.',
+    helpMessage: 'Comienzas con un +2/+2/0/-1 or +2/+1/+1/0 or +3/+1/-1/-1 en todos tus Atributos.',
     attributePoints: 'Spend attribute points for key abilities',
     secondaryPoints: 'Spend attribute points for secondary abilities'
   }

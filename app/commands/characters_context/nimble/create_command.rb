@@ -8,7 +8,6 @@ module CharactersContext
       ]
 
       use_contract do
-        Ancestries = Dry::Types['strict.string'].enum(*::Nimble::Character.ancestries.keys)
         Classes = Dry::Types['strict.string'].enum(*::Nimble::Character.classes_info.keys)
         Sizes = Dry::Types['strict.string'].enum(*::Nimble::Character.sizes.keys)
 
@@ -16,7 +15,7 @@ module CharactersContext
           required(:user).filled(type?: User)
           required(:name).filled(:string, max_size?: 50)
           required(:main_class).filled(Classes)
-          required(:ancestry).filled(Ancestries)
+          required(:ancestry).filled(:string)
           required(:size).filled(Sizes)
           optional(:skip_guide).filled(:bool)
         end

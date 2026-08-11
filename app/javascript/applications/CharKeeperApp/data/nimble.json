@@ -5,11 +5,11 @@
     "large": { "name": { "en": "Large", "ru": "Большой" } }
   },
   "ancestries": {
-    "human": { "name": { "en": "Human", "ru": "Человек" }, "size": "medium" },
-    "dwarf": { "name": { "en": "Dwarf", "ru": "Дварф" }, "size": "medium" },
-    "elf": { "name": { "en": "Elf", "ru": "Эльф" }, "size": "medium" },
-    "halfling": { "name": { "en": "Halfling", "ru": "Полурослик" }, "size": "small" },
-    "gnome": { "name": { "en": "Gnome", "ru": "Гном" }, "size": "small" }
+    "human": { "name": { "en": "Human", "ru": "Человек" }, "size": ["medium"] },
+    "dwarf": { "name": { "en": "Dwarf", "ru": "Дварф" }, "size": ["medium"] },
+    "elf": { "name": { "en": "Elf", "ru": "Эльф" }, "size": ["medium"] },
+    "halfling": { "name": { "en": "Halfling", "ru": "Полурослик" }, "size": ["small"] },
+    "gnome": { "name": { "en": "Gnome", "ru": "Гном" }, "size": ["small"] }
   },
   "classes": {
     "berserker": {

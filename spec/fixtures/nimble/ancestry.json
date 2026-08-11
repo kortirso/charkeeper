@@ -1,0 +1,59 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "title": {
+      "en": "Ancestry's title"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Ancestry's description, **Markdown is available** for editing."
+    },
+    "public": true,
+    "sizes": ["small", "medium"],
+    "features": [
+      {
+        /* required, allowed locale keys - en, ru, es */
+        "title": {
+          "en": "Feature's title"
+        },
+        /* required, allowed locale keys - en, ru, es */
+        "description": {
+          "en": "Feature's description, **Markdown is available** for editing."
+        },
+        /* required, allowed values - static/text/update_result/hidden */
+        /* static - Simple rendering */
+        /* text - Like static + allow to add text value */
+        /* update_result - Like static + can be hidden by settings */
+        /* hidden - Always hidden */
+        "kind": "static",
+        /* optional */
+        "limit": 1,
+        /* optional, allowed values - short_rest/long_rest/session */
+        "limit_refresh": "short_rest",
+        /* optional */
+        /* available keys - str/agi/fin/ins/pre/know/health/stress/hope/evasion/armor_score/major/severe/attack/damage/spell_bonus,proficiency */
+        /* type - add */
+        /* value - integer or formula */
+        /* formulas - "level", "tier", "proficiency", "tier * 2", "level + 2" */
+        "modifiers": {
+          "str": { "type": "add", "value": 1 },
+          "evasion": { "type": "add", "value": "tier" }
+        },
+        /* optional, if feature can be enabled/disabled */
+        "continious": true,
+        /* optional, counting tokens */
+        "tokens": {
+          /* optional, none/str/agi/fin/ins/pre/know/spellcast/level/tier/proficiency or number */
+          "limit": "proficiency",
+          /* optional, reset current tokens at, long/short/session */
+          "reset_at": "long",
+          /* optional, zero/limit/str/agi/fin/ins/pre/know/spellcast/level/tier/proficiency or number */
+          "reset": "limit",
+          /* optional, restore tokens on long rest */
+          /* zero/limit/str/agi/fin/ins/pre/know/spellcast/level/tier/proficiency or number */
+          "reset_at_long": "limit"
+        }
+      }
+    ]
+  }
+]

@@ -18,6 +18,7 @@ module Charkeeper
     register('cache.avatars') { Cache::Avatars.new }
     register('cache.daggerheart_names') { Cache::DaggerheartNames.new }
     register('cache.dnd_names') { Cache::DndNames.new }
+    register('cache.nimble_names') { Cache::NimbleNames.new }
     register('feature_requirement') { FeatureRequirement.new }
     register('markdown') { ActiveMarkdown.new }
     register('to_bool') { ToBool.new }
@@ -191,6 +192,12 @@ module Charkeeper
     }
     register('commands.homebrews_v2_context.import.daggerheart.feats.change') {
       HomebrewsV2Context::Import::Daggerheart::Feats::ChangeCommand.new
+    }
+    register('commands.homebrews_v2_context.import.nimble.feats.add') {
+      HomebrewsV2Context::Import::Nimble::Feats::AddCommand.new
+    }
+    register('commands.homebrews_v2_context.import.nimble.feats.change') {
+      HomebrewsV2Context::Import::Nimble::Feats::ChangeCommand.new
     }
 
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }

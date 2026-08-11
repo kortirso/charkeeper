@@ -1,0 +1,29 @@
+[
+  {
+    "title": {
+      "en": "Snakefolk",
+      "ru": "Змеелюд"
+    },
+    "description": {
+      "en": "Snakefolk face many ugly stereotypes, but perhaps some are true. Show your detractors exactly what you think of their comments.",
+      "ru": "Змеелюды сталкиваются со множеством неприятных стереотипов, но, возможно, некоторые из них правдивы. Покажите своим недоброжелателям, что вы думаете об их комментариях."
+    },
+    "public": true,
+    "sizes": ["small", "medium"],
+    "features": [
+      {
+        "title": {
+          "en": "Toxic Spit",
+          "ru": "Токсичный плевок"
+        },
+        "description": {
+          "en": "You have advantage against poison saves.\n\n**Free Reaction**: Spit an adjacent foe in the face. Deals 1d4 poison damage and inflicts *Blinded* until the start of your next turn.",
+          "ru": "Вы получаете преимущество для спасов против яда.\n\n**Бесплатная реакция**: Вы можете плюнуть находящемуся вплотную противнику в лицо. При попадании цель получает 1d4 урона ядом и становится *Ослеплённым* до начала вашего следующего хода."
+        },
+        "kind": "static",
+        "limit": "1",
+        "limit_refresh": "safe_rest"
+      }
+    ]
+  }
+]
