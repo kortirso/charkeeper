@@ -9,7 +9,7 @@ module Frontend
       ]
       include SerializeResource
 
-      CREATE_SERIALIZE_FIELDS = %i[id name level main_class ancestry provider avatar].freeze
+      CREATE_SERIALIZE_FIELDS = %i[id name level main_class ancestry provider avatar names].freeze
 
       def create
         case character_create.call(request_params.merge({ user: current_user }))

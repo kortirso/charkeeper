@@ -22,8 +22,15 @@ module HomebrewsV2Context
         @command_object ||=
           case publication.provider
           when 'dnd2024' then dnd2024_commands(publication)
+          when 'nimble' then nimble_commands(publication)
           else daggerheart_commands(publication)
           end
+      end
+
+      def nimble_commands(publication)
+        case publication.parent_type
+        when 'ancestry' then HomebrewsV2Context::Import::Nimble::Ancestries::PerformCommand.new
+        end
       end
 
       def dnd2024_commands(publication)

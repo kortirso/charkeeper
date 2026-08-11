@@ -62,5 +62,16 @@ module Nimble
     def decorator(simple: false, version: nil, skip: [])
       NimbleDecorator.new.call(character: self, simple: simple, version: version, skip: skip)
     end
+
+    def ancestry_name
+      default = ::Nimble::Character.ancestry_info(data.ancestry)
+      return translate(default['name']) if default
+
+      translate(nimble_names.fetch_item(key: :ancestries, id: data.ancestry)[:name])
+    end
+
+    private
+
+    def nimble_names = Charkeeper::Container.resolve('cache.nimble_names')
   end
 end

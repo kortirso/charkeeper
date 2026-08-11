@@ -26,7 +26,7 @@ export const NimbleInfo = (props) => {
   const [locale] = useAppLocale();
 
   const renderValue = (item) => {
-    if (item === 'ancestry') return localize(config.ancestries[character().ancestry].name, locale());
+    if (item === 'ancestry') return character().names.ancestry_name;
     if (item === 'size') return localize(config.sizes[character().size].name, locale());
   }
 
