@@ -15,12 +15,12 @@ class Feat < ApplicationRecord
   has_many :character_feats, class_name: 'Character::Feat', dependent: :destroy
   has_many :bonuses, class_name: '::Character::Bonus', as: :bonusable, dependent: :destroy
 
-  def to_homebrew_json(with_id: true)
+  def to_homebrew_json(with_id: true) # rubocop: disable Metrics/AbcSize
     attributes
       .slice('title', 'description', 'kind', 'price', 'limit_refresh', 'modifiers', 'exclude', 'continious', 'tokens')
       .merge({
         id: with_id ? id : nil,
-        limit: description_eval_variables['limit'],
+        limit: description_eval_variables['limit'] || info['limit'],
         subclass_mastery: conditions['subclass_mastery'],
         level: conditions['level'],
         type: info['type'],

@@ -23,7 +23,7 @@ describe Frontend::Nimble::CharactersController do
         let(:request) {
           post :create, params: {
             character: {
-              name: 'Грундар', ancestry: 'argh', main_class: 'zephyr', size: 'medium'
+              name: 'Грундар', ancestry: '', main_class: 'zephyr', size: 'medium'
             }, charkeeper_access_token: access_token
           }
         }

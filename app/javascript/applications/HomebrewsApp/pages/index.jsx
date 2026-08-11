@@ -2,6 +2,7 @@ export * from './ContentPage';
 
 export * from './Content/Daggerheart';
 export * from './Content/Dnd2024';
+export * from './Content/Nimble';
 
 export * from './Content/SharedContent';
 export * from './Content/SharedBookContent';
@@ -26,3 +27,6 @@ export * from './Content/Dnd2024/Backgrounds';
 export * from './Content/Dnd2024/Books';
 export * from './Content/Dnd2024/Races';
 export * from './Content/Dnd2024/Subclasses';
+
+export * from './Content/Nimble/Ancestries';
+export * from './Content/Nimble/Books';

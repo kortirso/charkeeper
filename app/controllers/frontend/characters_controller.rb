@@ -10,7 +10,7 @@ module Frontend
     FATE_SERIALIZE_FIELDS = %i[id name provider avatar].freeze
     FALLOUT_SERIALIZE_FIELDS = %i[id name origin level provider avatar].freeze
     COSMERE_SERIALIZE_FIELDS = %i[id name level provider avatar].freeze
-    NIMBLE_SERIALIZE_FIELDS = %i[id name level main_class ancestry provider avatar].freeze
+    NIMBLE_SERIALIZE_FIELDS = %i[id name level main_class ancestry provider avatar names].freeze
 
     before_action :find_character, only: %i[show destroy]
     before_action :set_current_provider, only: %i[show]

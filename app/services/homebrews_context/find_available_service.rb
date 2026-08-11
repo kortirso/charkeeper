@@ -16,6 +16,9 @@ module HomebrewsContext
           races: dnd2024_races(user_id),
           subclasses: dnd2024_subclasses(user_id),
           backgrounds: titles(user_id, ::Dnd2024::Homebrews::Background)
+        },
+        nimble: {
+          races: nimble_races(user_id)
         }
       }
     end
@@ -49,6 +52,16 @@ module HomebrewsContext
         )
         .each_with_object({}) do |item, acc|
           acc[item.id] = { name: item.title, sizes: item.info.size, legacies: [] }
+        end
+    end
+
+    def nimble_races(user_id)
+      ::Nimble::Homebrews::Ancestry.where(user_id: user_id)
+        .or(
+          ::Nimble::Homebrews::Ancestry.where(id: available_books_data(user_id))
+        )
+        .each_with_object({}) do |item, acc|
+          acc[item.id] = { name: item.title, size: item.info.sizes }
         end
     end
 

@@ -307,6 +307,13 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :nimble do
+      resources :ancestries, only: %i[show destroy]
+      resources :books, only: %i[index show create update destroy] do
+        get :for_items, on: :collection
+      end
+    end
+
     namespace :dnd2024 do
       resources :races, only: %i[show destroy]
       resources :backgrounds, only: %i[show destroy]
