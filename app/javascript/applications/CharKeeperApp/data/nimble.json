@@ -9,7 +9,25 @@
     "dwarf": { "name": { "en": "Dwarf", "ru": "Дварф" }, "size": ["medium"] },
     "elf": { "name": { "en": "Elf", "ru": "Эльф" }, "size": ["medium"] },
     "halfling": { "name": { "en": "Halfling", "ru": "Полурослик" }, "size": ["small"] },
-    "gnome": { "name": { "en": "Gnome", "ru": "Гном" }, "size": ["small"] }
+    "gnome": { "name": { "en": "Gnome", "ru": "Гном" }, "size": ["small"] },
+    "bunbun": { "name": { "en": "Bunbun", "ru": "Крольчонок" }, "size": ["small"] },
+    "dragonborn": { "name": { "en": "Dragonborn", "ru": "Драконорожденный" }, "size": ["medium"] },
+    "fiendkin": { "name": { "en": "Fiendkin", "ru": "Демонорожденный" }, "size": ["medium"] },
+    "goblin": { "name": { "en": "Goblin", "ru": "Гоблин" }, "size": ["small"] },
+    "kobold": { "name": { "en": "Kobold", "ru": "Кобольд" }, "size": ["small"] },
+    "orc": { "name": { "en": "Orc", "ru": "Орк" }, "size": ["medium"] },
+    "birdfolk": { "name": { "en": "Birdfolk", "ru": "Птицелюд" }, "size": ["small", "medium"] },
+    "celestial": { "name": { "en": "Celestial", "ru": "Небесный" }, "size": ["medium"] },
+    "crystalborn": { "name": { "en": "Crystalborn", "ru": "Кристаллорожденный" }, "size": ["medium"] },
+    "dryad_shroomling": { "name": { "en": "Dryad/Shroomling", "ru": "Дриада/Грибныш" }, "size": ["small", "medium"] },
+    "half_giant": { "name": { "en": "Half-Giant", "ru": "Полувеликан" }, "size": ["large"] },
+    "minotaur_beastfolk": { "name": { "en": "Minotaur/Beastfolk", "ru": "Минотавр/Зверолюд" }, "size": ["medium"] },
+    "oozeling_construct": { "name": { "en": "Oozeling/Construct", "ru": "Слизень/Конструкт" }, "size": ["small", "medium"] },
+    "planarbeing": { "name": { "en": "Planarbeing", "ru": "Планарный" }, "size": ["medium"] },
+    "ratfolk": { "name": { "en": "Ratfolk", "ru": "Крысолюд" }, "size": ["small"] },
+    "stoatling": { "name": { "en": "Stoatling", "ru": "Горностай" }, "size": ["small"] },
+    "turtlefolk": { "name": { "en": "Turtlefolk", "ru": "Черепахолюд" }, "size": ["small", "medium"] },
+    "wyrdling": { "name": { "en": "Wyrdling", "ru": "Вирдлинг" }, "size": ["small"] }
   },
   "classes": {
     "berserker": {
