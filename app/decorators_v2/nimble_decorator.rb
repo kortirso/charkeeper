@@ -2,7 +2,7 @@
 
 class NimbleDecorator < ApplicationDecoratorV2
   BASE_MODIFIERS = %w[str dex int wil].freeze
-  SKIP_MODIFIERS = %w[skills skills-stealth].freeze
+  SKIP_MODIFIERS = %w[skills skills-stealth skills-might].freeze
 
   def call(character:, simple: false, version: nil, skip: [])
     @character = character
@@ -251,7 +251,7 @@ class NimbleDecorator < ApplicationDecoratorV2
   end
 
   def formula_variables
-    @formula_variables ||= base_formula_variables.merge(modified_abilities)
+    @formula_variables ||= base_formula_variables.merge(modified_abilities).merge(hit_die: hit_die)
   end
 
   def final_formula_variables

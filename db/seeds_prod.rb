@@ -81,7 +81,7 @@ end
 end
 
 [
-  'feats/ancestries.json',
+  'feats/ancestries.json', 'feats/ancestries_2.json',
   'feats/berserker.json', 'feats/cheat.json', 'feats/commander.json', 'feats/hunter.json', 'feats/zephyr.json',
   'feats/mage.json', 'feats/oathsworn.json', 'feats/shadowmancer.json', 'feats/shepherd.json', 'feats/songweaver.json',
   'feats/stormshifter.json',
