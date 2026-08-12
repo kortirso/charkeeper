@@ -46,11 +46,11 @@ module Frontend
         end
 
         def find_wild_forms
-          @wild_forms = @character.children.order(created_at: :desc)
+          @wild_forms = @character.children.dc20_wild_form.order(created_at: :desc)
         end
 
         def find_wild_form
-          @wild_form = @character.children.find(params.expect(:id))
+          @wild_form = @character.children.dc20_wild_form.find(params.expect(:id))
         end
 
         def wild_form_params

@@ -37,7 +37,7 @@ module CharactersContext
           return if input[:value] == 'combat'
 
           if RESTORE_WILD_FORMS.include?(input[:value])
-            input[:character].children.each do |wild_form|
+            input[:character].children.dc20_wild_form.each do |wild_form|
               health = wild_form.data.health
               update_wild_form.call(
                 wild_form: wild_form, health: wild_form.data.health.merge(

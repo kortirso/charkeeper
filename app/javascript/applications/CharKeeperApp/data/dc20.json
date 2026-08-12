@@ -1,9 +1,11 @@
 {
   "sizes": {
+    "micro": { "name": { "en": "Micro", "ru": "Микро" } },
     "tiny": { "name": { "en": "Tiny", "ru": "Крошечный" } },
     "small": { "name": { "en": "Small", "ru": "Маленький" } },
     "medium": { "name": { "en": "Medium", "ru": "Средний" } },
-    "large": { "name": { "en": "Large", "ru": "Большой" } }
+    "large": { "name": { "en": "Large", "ru": "Большой" } },
+    "huge": { "name": { "en": "Huge", "ru": "Огромный" } }
   },
   "ancestries": {
     "human": { "name": { "en": "Human", "ru": "Человек" } },
@@ -158,5 +160,8 @@
     "physical": { "name": { "en": "Physical", "ru": "Физический" } },
     "elemental": { "name": { "en": "Elemental", "ru": "Элементальный" } },
     "mystical": { "name": { "en": "Mystical", "ru": "Мистический" } }
+  },
+  "summons": {
+    "undead": { "name": { "en": "Undead", "ru": "Нежить" } }
   }
 }

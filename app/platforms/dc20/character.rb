@@ -78,6 +78,10 @@ module Dc20
       config['abilities']
     end
 
+    def self.summons
+      config['summons']
+    end
+
     attribute :data, Dc20::CharacterData.to_type
 
     def decorator(simple: false, version: nil)

@@ -6,7 +6,7 @@ module CharactersContext
       class AddCommand < BaseCommand
         use_contract do
           params do
-            required(:character).filled(type_included_in?: [::Dc20::Character, ::Dc20::WildForm])
+            required(:character).filled(type_included_in?: [::Dc20::Character, ::Dc20::WildForm, ::Dc20::Summon])
             required(:feat).filled(type?: ::Dc20::Feat)
             optional(:with_subfeats).filled(:bool)
           end

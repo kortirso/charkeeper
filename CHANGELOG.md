@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - selecting beastborn ancestry for DC20 characters
 - selecting wild forms for DC20 characters
 - homebrew ancestries for Nimble characters
+- creating summons for DC20 characters
 
 ## [0.5.4] - 2026-08-07
 ### Added

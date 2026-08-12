@@ -104,7 +104,6 @@ export const CharactersListItem = (props) => {
       return `${t('charactersPage.level')} ${character().level} | ${character().ancestries.map((item) => localize(dc20Config.ancestries[item].name, locale())).join(' * ')}`;
     }
     if (character().provider === 'nimble') {
-      console.log(character().names)
       return `${t('charactersPage.level')} ${character().level} | ${character().names.ancestry_name}`;
     }
   });

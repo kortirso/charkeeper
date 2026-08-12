@@ -32,7 +32,8 @@ class Character < ApplicationRecord
   scope :pathfinder2, -> { where(type: 'Pathfinder2::Character') }
   scope :daggerheart, -> { where(type: 'Daggerheart::Character') }
   scope :dc20, -> { where(type: 'Dc20::Character') }
-  scope :dc20_with_wild_form, -> { where(type: ['Dc20::Character', 'Dc20::WildForm']) }
+  scope :dc20_wild_form, -> { where(type: 'Dc20::WildForm') }
+  scope :dc20_summon, -> { where(type: 'Dc20::Summon') }
   scope :fate, -> { where(type: 'Fate::Character') }
   scope :fallout, -> { where(type: 'Fallout::Character') }
   scope :cosmere, -> { where(type: 'Cosmere::Character') }

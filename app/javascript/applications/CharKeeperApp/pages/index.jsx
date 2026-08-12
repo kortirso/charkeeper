@@ -122,6 +122,7 @@ export * from './Content/Character/Dc20/Trainings';
 export * from './Content/Character/Dc20/Equipment';
 export * from './Content/Character/Dc20/WildForms';
 export * from './Content/Character/Dc20/WildForm';
+export * from './Content/Character/Dc20/Summons';
 
 export * from './Content/Character/Fate';
 export * from './Content/Character/Fate/Aspects';

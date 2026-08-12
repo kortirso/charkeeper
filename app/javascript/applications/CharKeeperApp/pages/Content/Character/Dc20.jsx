@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match, Show } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Dc20Abilities, Dc20Skills, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest,
+  Dc20Abilities, Dc20Skills, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest, Dc20Summons,
   Dc20BonusesV2, Dc20Damages, Dc20Conditions, Dc20Info, Dc20Trainings, Dc20Equipment, Dc20WildForms, Dc20WildForm
 } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, createRoll, Combat, Feats } from '../../../components';
@@ -54,7 +54,7 @@ export const Dc20 = (props) => {
     const result = ['combat', 'equipment'];
     if (character().mana_points.max > 0) result.push('spells');
     if (character().wild_form_available) result.push('wildForms');
-    return result.concat(['classLevels', 'professions', 'rest', 'bonuses', 'notes', 'avatar']);
+    return result.concat(['classLevels', 'professions', 'rest', 'summons', 'bonuses', 'notes', 'avatar']);
   });
 
   const mobileView = createMemo(() => {
@@ -160,6 +160,9 @@ export const Dc20 = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
               <Dc20Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
+            </Match>
+            <Match when={activeMobileTab() === 'summons'}>
+              <Dc20Summons character={character()} />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
               <Dc20BonusesV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -287,6 +290,9 @@ export const Dc20 = (props) => {
             </Match>
             <Match when={activeTab() === 'rest'}>
               <Dc20Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
+            </Match>
+            <Match when={activeTab() === 'summons'}>
+              <Dc20Summons character={character()} />
             </Match>
             <Match when={activeTab() === 'bonuses'}>
               <Dc20BonusesV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
