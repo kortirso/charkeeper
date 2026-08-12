@@ -111,7 +111,7 @@ export const Dc20WildForms = (props) => {
     Promise.all([fetchFeats(), fetchWildForms()]).then(
       ([featsData, wildFormsData]) => {
         batch(() => {
-          setFeats(featsData.features);
+          setFeats(featsData.features.filter((item) => item.price >= 0 && item.slug !== 'natural_weapon'));
           setWildForms(wildFormsData.wild_forms);
           setWildFormsData(
             wildFormsData.wild_forms.reduce((acc, element) => {
