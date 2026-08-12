@@ -12,7 +12,7 @@ module Frontend
       private
 
       def cache_options
-        { key: "dc20_ancestries/#{I18n.locale}/v2", expires_in: 24.hours }
+        { key: "dc20_ancestries/#{I18n.locale}/v3", expires_in: 24.hours }
       end
     end
   end

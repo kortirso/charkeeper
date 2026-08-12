@@ -17,7 +17,7 @@ module Frontend
       end
 
       def cache_options
-        { key: "dc20_wild_forms/#{I18n.locale}/v1", expires_in: 24.hours }
+        { key: "dc20_wild_forms/#{I18n.locale}/v2", expires_in: 24.hours }
       end
     end
   end
