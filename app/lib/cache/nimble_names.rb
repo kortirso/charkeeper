@@ -2,7 +2,7 @@
 
 module Cache
   class NimbleNames
-    CACHE_KEY = 'daggerheart_names/0.5.4'
+    CACHE_KEY = 'nimble_names/0.5.5'
 
     def fetch_list
       Rails.cache.fetch(CACHE_KEY, expires_in: 1.day) { load_initial_data }
