@@ -9,12 +9,10 @@ module CharactersContext
         ]
 
         use_contract do
-          Kinds = Dry::Types['strict.string'].enum(*::Dc20::Character.summons.keys)
-
           params do
             required(:parent).filled(type?: Character)
             required(:name).filled(:string, max_size?: 50)
-            required(:kind).filled(Kinds)
+            required(:kind).filled(:string)
           end
         end
 
