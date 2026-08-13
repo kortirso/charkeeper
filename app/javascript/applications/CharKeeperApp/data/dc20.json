@@ -162,6 +162,5 @@
     "mystical": { "name": { "en": "Mystical", "ru": "Мистический" } }
   },
   "summons": {
-    "undead": { "name": { "en": "Undead", "ru": "Нежить" } }
   }
 }
