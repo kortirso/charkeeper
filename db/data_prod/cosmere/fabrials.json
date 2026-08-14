@@ -78,7 +78,7 @@
     "slug": "freechair",
     "kind": "fabrial",
     "name": { "en": "Freechair", "ru": "Парящее кресло" },
-    "data": { "weight": 12},
+    "data": { "weight": 12 },
     "info": {
       "features": [
         {
@@ -157,7 +157,7 @@
       "features": [
         {
           "en": "Soulcasters mimic the Radiant surge of Transformation, more commonly called Soulcasting.",
-          "ru": "Духозаклинатели воспроизводят поток Трансформации Сияющих, чаще называемый духозаклинанием."
+          "ru": "Духозаклинатели воспроизводят поток Трансформации, чаще называемый духозаклинанием."
         }
       ]
     },
