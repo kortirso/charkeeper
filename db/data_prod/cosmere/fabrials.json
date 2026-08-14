@@ -13,5 +13,184 @@
       ]
     },
     "charges": 5
+  },
+  {
+    "slug": "attractor",
+    "kind": "fabrial",
+    "name": { "en": "Attractor", "ru": "Притягиватель" },
+    "data": { "weight": 8, "price": 750 },
+    "info": {
+      "features": [
+        {
+          "en": "When active, the fabrial draws the selected material toward itself at a rate of 1 foot per round. For every hour of operation, the drawer consumes one charge.",
+          "ru": "В активном состоянии фабриаль притягивает выбранный материал к себе со скоростью 1 фут за раунд. За каждый час работы притягиватель расходует 1 заряд."
+        }
+      ]
+    },
+    "charges": 5
+  },
+  {
+    "slug": "clock_fabrial",
+    "kind": "fabrial",
+    "name": { "en": "Clock fabrial", "ru": "Часовой фабриаль" },
+    "data": { "weight": 2, "price": 200 },
+    "info": {
+      "features": [
+        {
+          "en": "Large clock fabrials can be used to signal the hour, while smaller models allow the owner to always know the exact time. Fabrials consume one charge for every five days of operation.",
+          "ru": "Крупные часовые фабриали могут оповещатель о наступление каждого часа, а их миниатюрные модели позволяют владельцу всегда знать точное время. Фабриали расходуют 1 заряд за каждые 5 дней работы."
+        }
+      ]
+    },
+    "charges": 3
+  },
+  {
+    "slug": "drainer",
+    "kind": "fabrial",
+    "name": { "en": "Drainer", "ru": "Осушитель" },
+    "data": { "price": 1000 },
+    "info": {
+      "features": [
+        {
+          "en": "Drainer fabrials can partially drain Stormlight from infused gems to alter the strength of their glow; this is primarily done for aesthetic purposes.",
+          "ru": "Осушители способны вытягивать часть Буресвета из заряженных самосветов, изменяя яркость их свечения. Как правило, это делают в декоративных целях."
+        }
+      ]
+    },
+    "charges": 2
+  },
+  {
+    "slug": "emotion_bracelet",
+    "kind": "fabrial",
+    "name": { "en": "Emotion bracelet", "ru": "Браслет эмоций" },
+    "data": { "price": 200 },
+    "info": {
+      "features": [
+        {
+          "en": "The bracelet's wearer can spend 1 charge as to gain an advantage on an Insight test against a character within 10 feet of them.",
+          "ru": "Владелец браслета может как свободное действие, потратить 1 заряд, чтобы получить преимущество на проверку Проницательности против персонажа в пределах 10 футов от себя."
+        }
+      ]
+    },
+    "charges": 3
+  },
+  {
+    "slug": "freechair",
+    "kind": "fabrial",
+    "name": { "en": "Freechair", "ru": "Парящее кресло" },
+    "data": { "weight": 12},
+    "info": {
+      "features": [
+        {
+          "en": "The hover chair is propelled by built-in fabrication components. Characters with limited mobility receive it for free and do not track its charges. The user of the hover chair moves at the same speed as other characters. Activating the chair requires no action.",
+          "ru": "Парящее кресло движется за счёт встроенных фабриальных компонентов. Персонажи с ограниченной подвижностью получают его бесплатно и не отслеживают его заряды. Пользователь парящего кресла передвигается с той же скоростью, что и другие персонажи. Для активации кресла не требуется действие."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "heatrial",
+    "kind": "fabrial",
+    "name": { "en": "Heatrial", "ru": "Теплориаль" },
+    "data": {},
+    "info": {
+      "features": [
+        {
+          "en": "You can use the Interact action to activate the thermal rial or change its radius and intensity. If a character touches the glow of an active thermal rial, they take 1d6 energy damage. Maintaining a comfortable temperature consumes one charge for each day of operation. At temperatures sufficient for cooking, smithing, and similar activities, the thermal rial consumes one charge for each hour of operation.",
+          "ru": "Вы можете использовать действие **Взаимодействие**, чтобы активировать теплориаль либо изменить радиус и интенсивность его нагрева. Если персонаж касается самосвета активного теплориаля, он получает 1d6 энергетического урона. Поддерживая комфортное тепло, он расходует 1 заряд за каждый день работы. При температуре, достаточной для приготовления пищи, кузнечного дела и подобных занятий, теплориаль расходует 1 заряд за каждый час работы."
+        }
+      ]
+    },
+    "charges": 5
+  },
+  {
+    "slug": "painrial_amplifying",
+    "kind": "fabrial",
+    "name": { "en": "Painrial (amplifying)", "ru": "Больриаль (усиливающий)" },
+    "data": { "weight": 1, "price": 750 },
+    "info": {
+      "features": [
+        {
+          "en": "The Amplifying Painrial is considered a melee weapon, using the Light Weapon skill, and deals 1d6 hit points. When you hit, you can expend 1 charge to apply your skill modifier to the damage an additional time.",
+          "ru": "Усиливающий больриаль считается оружием ближнего боя, использующие навык Лёгкое оружие и наносит 1d6 жизненного урона. При попадании вы можете потратить 1 заряд, чтобы прибавить модификатор вашего навыка к урону ещё один дополнительный раз."
+        }
+      ]
+    },
+    "charges": 3
+  },
+  {
+    "slug": "painrial_numbing",
+    "kind": "fabrial",
+    "name": { "en": "Painrial (numbing)", "ru": "Больриаль (онемляющий)" },
+    "data": { "weight": 1, "price": 750 },
+    "info": {
+      "features": [
+        {
+          "en": "Before you take damage while wearing the painrial, you can use Reaction and spend 1 charge to reduce the damage by 1d4.",
+          "ru": "Когда вы носите больриаль и должны получить урон, вы можете использовать Реакцию и потратить 1 заряд, чтобы уменьшить получаемый урон на 1d4."
+        }
+      ]
+    },
+    "charges": 3
+  },
+  {
+    "slug": "repeller",
+    "kind": "fabrial",
+    "name": { "en": "Repeller", "ru": "Отталкиватель" },
+    "data": { "weight": 8, "price": 1500 },
+    "info": {
+      "features": [
+        {
+          "en": "If the repeller is heavier, it pushes the attuned material away from it at a rate of 1 foot per round, until the material is outside the repeller's radius. If the material is heavier, the repeller instead pushes itself away from the material. This fabrial can't affect anything being worn or carried by a character. A repeller expends 1 charge for each hour it is active.",
+          "ru": "Если отталкиватель тяжелее выбранного материала, он перемещает его от себя со скоростью 1 фут за раунд, пока он не покинет радиус действия фабриаля. Если же материал тяжелее отталкивателя, фабриаль отталкивается от него сам. Отталкиватель не воздействует на предметы, которые персонаж носит или держит при себе. За каждый час работы отталкиватель расходует 1 заряд."
+        }
+      ]
+    },
+    "charges": 5
+  },
+  {
+    "slug": "soulcaster",
+    "kind": "fabrial",
+    "name": { "en": "Soulcaster", "ru": "Духозаклинатель" },
+    "data": { "weight": 5 },
+    "info": {
+      "features": [
+        {
+          "en": "Soulcasters mimic the Radiant surge of Transformation, more commonly called Soulcasting.",
+          "ru": "Духозаклинатели воспроизводят поток Трансформации Сияющих, чаще называемый духозаклинанием."
+        }
+      ]
+    },
+    "charges": 5
+  },
+  {
+    "slug": "spanreed",
+    "kind": "fabrial",
+    "name": { "en": "Spanreed (1 pair)", "ru": "Дальперо (пара)" },
+    "data": { "weight": 1, "price": 100 },
+    "info": {
+      "features": [
+        {
+          "en": "Spanreeds come in pairs, with each reed conjoined to the other, allowing for the bearers of each to communicate over long distances.",
+          "ru": "Дальперья всегда используются парами, в котором каждое из них сопряжено со своим двойником, что позволяет их владельцам общаться на больших расстояниях."
+        }
+      ]
+    },
+    "charges": 3
+  },
+  {
+    "slug": "suppressor",
+    "kind": "fabrial",
+    "name": { "en": "Suppressor", "ru": "Подавитель" },
+    "data": { "weight": 1},
+    "info": {
+      "features": [
+        {
+          "en": "When activated, this fabrial suppresses the use of surges in a radius of 30 feet.",
+          "ru": "При активации этот фабриаль подавляет использование потоков в радиусе 30 футов."
+        }
+      ]
+    },
+    "charges": 2
   }
 ]

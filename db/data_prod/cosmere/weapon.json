@@ -368,7 +368,7 @@
     "kind": "weapon",
     "name": {
       "en": "Half-Shard",
-      "ru": "Half-Shard"
+      "ru": "Полуосколок"
     },
     "data": {
       "weight": 10,
@@ -427,7 +427,7 @@
     "kind": "weapon",
     "name": {
       "en": "Grandbow",
-      "ru": "Grandbow"
+      "ru": "Большелук"
     },
     "data": {
       "weight": 20,
