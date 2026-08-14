@@ -5,16 +5,7 @@ module HomebrewsV2Context
     module Daggerheart
       module Ancestries
         class PerformCommand < BaseCommand
-          # rubocop: disable Metrics/BlockLength
           use_contract do
-            Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden', 'static_list', 'many_from_list')
-            Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'session')
-            WeaponKinds = Dry::Types['strict.string'].enum('primary weapon', 'secondary weapon')
-            Traits = Dry::Types['strict.string'].enum('agi', 'str', 'fin', 'ins', 'pre', 'know')
-            Ranges = Dry::Types['strict.string'].enum('melee', 'very close', 'close', 'far', 'very far')
-            DamageTypes = Dry::Types['strict.string'].enum('physical', 'magic')
-            Dices = Dry::Types['strict.string'].enum('D4', 'D6', 'D8', 'D10', 'D12', 'D20')
-
             params do
               required(:user).filled(type?: ::User)
               optional(:id).filled(:string, :uuid_v4?)
@@ -29,76 +20,29 @@ module HomebrewsV2Context
                 optional(:es).maybe(:string, max_size?: 500)
               end
               optional(:public).filled(:bool)
-              optional(:features).maybe(:array).each(:hash) do
-                optional(:id).filled(:string, :uuid_v4?)
-                required(:title).hash do
-                  required(:en).filled(:string, max_size?: 50)
-                  optional(:ru).maybe(:string, max_size?: 50)
-                  optional(:es).maybe(:string, max_size?: 50)
-                end
-                required(:description).hash do
-                  required(:en).filled(:string, max_size?: 1_000)
-                  optional(:ru).maybe(:string, max_size?: 1_000)
-                  optional(:es).maybe(:string, max_size?: 1_000)
-                end
-                required(:kind).filled(Kinds)
-                optional(:limit).filled(:integer, gteq?: 0)
-                optional(:limit_refresh).filled(Limits)
-                optional(:modifiers).hash
-                optional(:continious).filled(:bool)
-                optional(:tokens).hash do
-                  optional(:limit).filled(:string)
-                  optional(:reset_at).filled(:string)
-                  optional(:reset).filled(:string)
-                  optional(:reset_at_long).filled(:string)
-                end
-                optional(:price).hash do
-                  optional(:stress).filled(:integer, gteq?: 1, lteq?: 10)
-                  optional(:hope).filled(:integer, gteq?: 1, lteq?: 10)
-                end
-                optional(:hope_dice).filled(Dices)
-                optional(:fear_dice).filled(Dices)
-                optional(:attacks).maybe(:array).each(:hash) do
-                  required(:kind).filled(WeaponKinds)
-                  required(:name).hash do
-                    required(:en).filled(:string, max_size?: 50)
-                    optional(:ru).maybe(:string, max_size?: 50)
-                    optional(:es).maybe(:string, max_size?: 50)
-                  end
-                  required(:description).hash do
-                    required(:en).filled(:string, max_size?: 500)
-                    optional(:ru).maybe(:string, max_size?: 500)
-                    optional(:es).maybe(:string, max_size?: 500)
-                  end
-                  required(:info).hash do
-                    required(:burden).filled(:integer, gteq?: 1, lteq?: 2)
-                    required(:tier).filled(:integer, gteq?: 1, lteq?: 4)
-                    required(:trait).maybe(Traits)
-                    required(:range).filled(Ranges)
-                    required(:damage_type).filled(DamageTypes)
-                    required(:damage).filled(:string)
-                    required(:damage_bonus).filled(:integer, gteq?: 0, lteq?: 20)
-                    optional(:features).maybe(:array).each(:hash) do
-                      required(:en).filled(:string, max_size?: 250)
-                      optional(:ru).maybe(:string, max_size?: 250)
-                      optional(:es).maybe(:string, max_size?: 250)
-                    end
-                  end
-                end
-              end
+              optional(:features).maybe(:array).each(:hash)
             end
           end
-          # rubocop: enable Metrics/BlockLength
 
           private
 
-          def validate_content(input)
-            return unless input.key?(:id)
+          def validate_content(input) # rubocop: disable Metrics/AbcSize
+            if input.key?(:id)
+              input[:ancestry] = ::Daggerheart::Homebrews::Ancestry.find_by(user_id: input[:user].id, id: input[:id])
+              return ['Not found'] unless input[:ancestry]
+            end
 
-            input[:ancestry] = ::Daggerheart::Homebrews::Ancestry.find_by(user_id: input[:user].id, id: input[:id])
-            return if input[:ancestry]
+            input[:features] = input[:features]&.map!(&:deep_symbolize_keys)
+            input[:features]&.each do |feature|
+              feature[:user] = input[:user]
+              feature[:origin] = 'ancestry'
+              feature[:origin_value] = 'ancestry.id'
 
-            ['Not found']
+              validate_result = add_feat_command.validate_all(feature)
+              return validate_result[:raw_errors] if validate_result[:raw_errors]
+            end
+
+            nil
           end
 
           def do_prepare(input)
@@ -115,6 +59,8 @@ module HomebrewsV2Context
               end
             command.call(input)
           end
+
+          def add_feat_command = Charkeeper::Container.resolve('commands.homebrews_v2_context.import.daggerheart.feats.add')
         end
       end
     end

@@ -43,17 +43,11 @@ module HomebrewsV2Context
                 next unless existing_feature
 
                 change_feat.call(
-                  feature.except(:id).merge({ feat: existing_feature, no_refresh: true, skip_contract_validation: true })
+                  feature.except(:id).merge({ feat: existing_feature, origin_value: input[:speciality].id, no_refresh: true })
                 )
               else
                 add_feat.call(
-                  feature.merge({
-                    user: input[:user],
-                    origin: 'class',
-                    origin_value: input[:speciality].id,
-                    no_refresh: true,
-                    skip_contract_validation: true
-                  })
+                  feature.merge({ origin_value: input[:speciality].id, no_refresh: true })
                 )
               end
             end

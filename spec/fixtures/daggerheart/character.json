@@ -17,6 +17,8 @@
         /* text - Like static + allow to add text value */
         /* update_result - Like static + can be hidden by settings */
         /* hidden - Always hidden */
+        /* static_list - list of options, one can be selected */
+        /* many_from_list - list of options, many can be selected */
         "kind": "static",
         /* optional */
         "limit": 1,

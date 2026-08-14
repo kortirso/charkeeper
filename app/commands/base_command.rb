@@ -13,16 +13,10 @@ class BaseCommand
   def call(input={})
     lockable(input) do
       unless input[:skip_contract_validation]
-        contract_result = validate_contract(input)
-        if contract_result[:errors].present?
-          return {
-            errors: contract_result[:errors], errors_list: contract_result[:errors_list], raw_errors: contract_result[:raw_errors]
-          }
-        end
+        validate_result = validate_all(input)
+        return validate_result if validate_result[:errors].present?
 
-        input = contract_result[:result]
-        errors = validate_content(input)
-        return { errors: errors, errors_list: errors } if errors.present?
+        input = validate_result[:result]
       end
 
       do_prepare(input)
@@ -30,6 +24,17 @@ class BaseCommand
     end
   rescue WithAdvisoryLock::FailedToAcquireLock => _e
     { errors: ['Double saving'], errors_list: ['Double saving'] }
+  end
+
+  def validate_all(input, custom_contract=nil)
+    contract_result = validate_contract(input, custom_contract)
+    return contract_result if contract_result[:errors].present?
+
+    input = contract_result[:result]
+    errors = validate_content(input)
+    return { errors: errors, errors_list: errors, raw_errors: errors } if errors.present?
+
+    { result: input }
   end
 
   private
@@ -48,10 +53,10 @@ class BaseCommand
   def lock_key(input); end
   def lock_time = nil
 
-  def validate_contract(input)
-    return { result: input, errors: {} } if contract.nil?
+  def validate_contract(input, custom_contract=nil)
+    return { result: input, errors: {} } if (custom_contract || contract).nil?
 
-    validate(input)
+    validate(input, custom_contract)
   end
 
   # for additional validation outside contract
@@ -65,9 +70,9 @@ class BaseCommand
   # persisting
   def do_persist(input) = raise NotImplementedError
 
-  def validate(input)
-    result = contract.call(input)
-    raw_errors = contract.call(input).errors(locale: I18n.locale).to_h
+  def validate(input, custom_contract=nil)
+    result = (custom_contract || contract).call(input)
+    raw_errors = result.errors(locale: I18n.locale).to_h
     {
       result: result.to_h,
       raw_errors: raw_errors,

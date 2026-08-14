@@ -17,13 +17,7 @@ module HomebrewsV2Context
                 ::Daggerheart::Homebrews::Transformation.create!(input.slice(:user, :title, :description, :public))
               input[:features]&.each do |feature|
                 add_feat.call(
-                  feature.except(:id).merge({
-                    user: input[:user],
-                    origin: 'transformation',
-                    origin_value: transformation.id,
-                    no_refresh: true,
-                    skip_contract_validation: true
-                  })
+                  feature.except(:id).merge({ origin_value: transformation.id, no_refresh: true })
                 )
               end
               transformation
