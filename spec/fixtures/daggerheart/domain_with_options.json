@@ -9,9 +9,6 @@
       "en": "Domain's description, **Markdown is available** for editing."
     },
     "public": true,
-    /* optional, extending for existing domain */
-    /* arcana, blade, bone, codex, grace, midnight, sage, splendor, valor, dread or ID of homebrew domain */
-    "domain_id": "arcana",
     "features": [
       {
         /* required, allowed locale keys - en, ru, es */
@@ -27,8 +24,6 @@
         /* text - Like static + allow to add text value */
         /* update_result - Like static + can be hidden by settings */
         /* hidden - Always hidden */
-        /* static_list - list of options, one can be selected */
-        /* many_from_list - list of options, many can be selected */
         "kind": "static",
         /* optional */
         "limit": 1,
@@ -67,45 +62,50 @@
           /* optional, restore tokens on long rest */
           /* zero/limit/str/agi/fin/ins/pre/know/spellcast/level/tier/proficiency or number */
           "reset_at_long": "limit"
+        }
+      },
+      {
+        /* required, allowed locale keys - en, ru, es */
+        "title": {
+          "en": "Feature with option's title"
         },
-        "attacks": [
+        /* required, allowed locale keys - en, ru, es */
+        "description": {
+          "en": "Feature's description, **Markdown is available** for editing."
+        },
+        /* required, from 1 to 10 */
+        "level": 1,
+        /* required, allowed values - static/text/update_result/hidden */
+        /* static - Simple rendering */
+        /* text - Like static + allow to add text value */
+        /* update_result - Like static + can be hidden by settings */
+        /* hidden - Always hidden */
+        /* static_list - list of options, one can be selected */
+        /* many_from_list - list of options, many can be selected */
+        "kind": "static_list",
+        /* required, allowed values - spell, ability, grimoire */
+        "type": "spell",
+        /* optional */
+        "recall": 1,
+        /* optional, only available when kind is static_list or many_from_list */
+        "options": [
           {
             /* required, allowed locale keys - en, ru, es */
-            "name": {
-              "en": "Ability weapon's name"
+            "title": {
+              "en": "Feature with option's title"
             },
-            /* required, allowed locale keys - en, ru, es */
-            "description": {
-              "en": "Ability weapon's description, **Markdown is available** for editing."
-            },
-            /* required, primary weapon or secondary weapon */
-            "kind": "primary weapon",
-            "info": {
-              /* required, 1 or 2 */
-              "burden": 1,
-              /* required, from 1 to 4 */
-              "tier": 1,
-              /* required */
-              /* agi, str, fin, ins, pre, know */
-              "trait": "agi",
-              /* required */
-              /* melee, very close, close, far, very far */
-              "range": "very close",
-              /* required */
-              /* physical or magic */
-              "damage_type": "physical",
-              /* required */
-              /* d4, d6, d8, d10, d12, d20 */
-              "damage": "d10",
-              /* required, from 0 to 20 */
-              "damage_bonus": 1,
-              /* optional, list of features */
-              "features": [
-                {
-                  /* required, allowed locale keys - en, ru, es */
-                  "en": "Feature"
-                }
-              ]
+            /* optional, if selected option provides feature - feature can be specified like any other feature */
+            "feature": {
+              "title": {
+                "en": "Feature's title"
+              },
+              "description": {
+                "en": "Feature's description, **Markdown is available** for editing."
+              },
+              "kind": "static",
+              "limit": 1,
+              "limit_refresh": "short_rest",
+              "level": 1
             }
           }
         ]

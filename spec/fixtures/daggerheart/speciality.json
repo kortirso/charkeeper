@@ -31,7 +31,31 @@
         /* text - Like static + allow to add text value */
         /* update_result - Like static + can be hidden by settings */
         /* hidden - Always hidden */
+        /* static_list - list of options, one can be selected */
+        /* many_from_list - list of options, many can be selected */
         "kind": "static",
+        /* optional, only available when kind is static_list or many_from_list */
+        "options": [
+          {
+            /* required, allowed locale keys - en, ru, es */
+            "title": {
+              "en": "Feature with option's title"
+            },
+            /* optional, if selected option provides feature - feature can be specified like any other feature */
+            "feature": {
+              "title": {
+                "en": "Feature's title"
+              },
+              "description": {
+                "en": "Feature's description, **Markdown is available** for editing."
+              },
+              "kind": "static",
+              "limit": 1,
+              "limit_refresh": "short_rest",
+              "level": 1
+            }
+          }
+        ],
         /* optional */
         "limit": 1,
         /* optional, allowed values - short_rest/long_rest/session */
@@ -67,7 +91,7 @@
         /* optional, excluded features when current feature is selected */
         /* with this option feature can boosted and overwrite simple version */
         /* you can see ids during updating features */
-        "exclude": ["ID1", "ID2"]
+        "exclude": ["b16b039c-75c8-45c0-ab6b-f39dc39fff22", "b16b039c-75c8-45c0-ab6b-f39dc39fff23"]
       },
       {
         "title": {

@@ -17,9 +17,9 @@ module Daggerheart
     STATIC = 'static' # рендерится текст
     TEXT = 'text' # можно добавить текст
     UPDATE_RESULT = 'update_result' # рендерится, но затемняется
+    HIDDEN = 'hidden' # не рендерится
     STATIC_LIST = 'static_list' # рендерится список, выбирается одно значение
     MANY_FROM_LIST = 'many_from_list' # рендерится список, выбирается несколько значений
-    HIDDEN = 'hidden' # не рендерится
 
     SHORT_REST = 'short_rest'
     LONG_REST = 'long_rest'

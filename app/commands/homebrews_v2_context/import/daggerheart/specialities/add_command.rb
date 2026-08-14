@@ -17,13 +17,7 @@ module HomebrewsV2Context
               speciality = ::Daggerheart::Homebrews::Speciality.create!(input.slice(:user, :title, :description, :public, :info))
               input[:features]&.each do |feature|
                 add_feat.call(
-                  feature.except(:id).merge({
-                    user: input[:user],
-                    origin: 'class',
-                    origin_value: speciality.id,
-                    no_refresh: true,
-                    skip_contract_validation: true
-                  })
+                  feature.except(:id).merge({ origin_value: speciality.id, no_refresh: true })
                 )
               end
               speciality

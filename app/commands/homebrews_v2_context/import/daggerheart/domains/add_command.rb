@@ -16,13 +16,7 @@ module HomebrewsV2Context
               domain = ::Daggerheart::Homebrews::Domain.create!(input.slice(:user, :title, :description, :public, :info))
               input[:features]&.each do |feature|
                 add_feat.call(
-                  feature.except(:id).merge({
-                    user: input[:user],
-                    origin: 'domain_card',
-                    origin_value: domain.id,
-                    no_refresh: true,
-                    skip_contract_validation: true
-                  })
+                  feature.except(:id).merge({ origin_value: domain.id, no_refresh: true })
                 )
               end
               domain
