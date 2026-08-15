@@ -212,6 +212,13 @@ export const createRoll = () => {
         });
       }
 
+      const setDc20HelpDice = (item) => {
+        batch(() => {
+          setD20Test({ ...d20Test, helpDice: (d20Test.helpDice === item ? null : item) });
+          setD20TestResult(undefined);
+        });
+      }
+
       const openD20Test = () => {
         batch(() => {
           setD20Test({ command: '/check attr empty', title: null, bonus: 0, maxAdv: 10, adv: 0, addBonus: 0 });
@@ -386,6 +393,7 @@ export const createRoll = () => {
         if (d20Test.adv < 0) options.push(`--dis ${Math.abs(d20Test.adv)}`);
         if (d20Test.bonus + d20Test.addBonus > 0) options.push(`--bonus ${d20Test.bonus + d20Test.addBonus}`);
         if (d20Test.bonus + d20Test.addBonus < 0) options.push(`--penalty ${Math.abs(d20Test.bonus + d20Test.addBonus)}`);
+        if (props.provider === 'dc20' && d20Test.helpDice) options.push(`--help ${d20Test.helpDice}`);
 
         return options.length > 0 ? `${d20Test.command} ${options.join(' ')}` : d20Test.command;
       }
@@ -628,6 +636,16 @@ export const createRoll = () => {
                               </Show>
                             }
                           </For>
+                        </Show>
+                        <Show when={d20Test.helpDice}>
+                          <Show
+                            when={d20TestResult() === undefined}
+                            fallback={
+                              <Dice text={d20TestResult().rolls[d20TestResult().rolls.length - 1][1]} />
+                            }
+                          >
+                            <Dice text={d20Test.helpDice} />
+                          </Show>
                         </Show>
                         <Show when={d20Test.bonus + d20Test.addBonus !== 0}>
                           <p class="text-xl ml-2 dark:text-snow">{modifier(d20Test.bonus + d20Test.addBonus)}</p>
@@ -984,6 +1002,17 @@ export const createRoll = () => {
                       onClick={() => open() ? close() : openRolls()}
                       text={open() ? <Close /> : 'Dx'}
                     />
+                  </div>
+                </Show>
+                {/* Выбор кубиков DC20 */}
+                <Show when={props.provider === 'dc20' && d20Test.command}>
+                  <div class="blockable ml-2 p-2 flex flex-col gap-2" classList={{ 'w-auto': open() }}>
+                    <For each={['D4', 'D6', 'D8', 'D10', 'D12', 'D20']}>
+                      {(item) =>
+                        <Dice type={item} onClick={() => setDc20HelpDice(item)} text={item} />
+                      }
+                    </For>
+                    <Dice onClick={() => close()} text={<Close />} />
                   </div>
                 </Show>
                 {/* Выбор кубиков Nimble */}

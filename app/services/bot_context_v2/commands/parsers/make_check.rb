@@ -4,7 +4,7 @@ module BotContextV2
   module Commands
     module Parsers
       class MakeCheck
-        def call(arguments: []) # rubocop: disable Metrics/AbcSize
+        def call(arguments: []) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
           result = {}
           parser = OptionParser.new do |act|
             act.on('--adv [TEXT]', Integer) { |text=0| result[:adv] = text.to_i }
@@ -22,6 +22,7 @@ module BotContextV2
             act.on('--crit [TEXT]') { |text| result[:crit] = text == 'true' }
             act.on('--miss [TEXT]') { |text| result[:miss] = text == 'true' }
             act.on('--critbonus [TEXT]', Integer) { |text=0| result[:critbonus] = text.to_i }
+            act.on('--help [TEXT]') { |text| result[:help_dice] = text.downcase }
           end
           parser.parse! arguments
           result
