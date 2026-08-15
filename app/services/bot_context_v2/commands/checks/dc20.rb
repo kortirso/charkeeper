@@ -40,6 +40,7 @@ module BotContextV2
           unless values[:adv].to_i.zero?
             adv_checks = (1..values[:adv].abs).map { roll_command.call(arguments: ['d20'])[:result] }
           end
+          help_check = roll_command.call(arguments: [values[:help_dice]])[:result] if values[:help_dice]
 
           totals = [main_check[:total], adv_checks&.pluck(:total)].compact.flatten
           final_roll = values[:adv].to_i.positive? ? totals.max : totals.min
@@ -47,8 +48,9 @@ module BotContextV2
           [
             main_check,
             adv_checks,
+            help_check,
             final_roll,
-            final_roll + values[:bonus].to_i
+            final_roll + values[:bonus].to_i + help_check&.dig(:total).to_i
           ].compact.flatten
         end
 
