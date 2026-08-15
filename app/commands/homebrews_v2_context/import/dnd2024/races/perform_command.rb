@@ -7,8 +7,6 @@ module HomebrewsV2Context
         class PerformCommand < BaseCommand
           # rubocop: disable Metrics/BlockLength
           use_contract do
-            Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden', 'static_list', 'many_from_list')
-            Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'one_at_short_rest')
             DamageTypes = Dry::Types['strict.string'].enum(
               'bludge', 'pierce', 'slash', 'acid', 'cold', 'fire', 'force', 'lighting', 'necrotic', 'poison', 'psychic',
               'radiant', 'thunder'
@@ -46,39 +44,30 @@ module HomebrewsV2Context
                 optional(:burrow).maybe(:integer, gteq?: 0, lteq?: 1_000)
               end
               optional(:public).filled(:bool)
-              optional(:features).maybe(:array).each(:hash) do
-                optional(:id).filled(:string, :uuid_v4?)
-                required(:title).hash do
-                  required(:en).filled(:string, max_size?: 50)
-                  optional(:ru).maybe(:string, max_size?: 50)
-                  optional(:es).maybe(:string, max_size?: 50)
-                end
-                required(:description).hash do
-                  required(:en).filled(:string, max_size?: 1_000)
-                  optional(:ru).maybe(:string, max_size?: 1_000)
-                  optional(:es).maybe(:string, max_size?: 1_000)
-                end
-                required(:kind).filled(Kinds)
-                optional(:limit).filled(:integer, gteq?: 0, lteq?: 20)
-                optional(:limit_refresh).filled(Limits)
-                optional(:modifiers).hash
-                optional(:continious).filled(:bool)
-                optional(:level).filled(:integer, gteq?: 1, lteq?: 20)
-                optional(:static_spells).hash
-              end
+              optional(:features).maybe(:array).each(:hash)
             end
           end
           # rubocop: enable Metrics/BlockLength
 
           private
 
-          def validate_content(input)
-            return unless input.key?(:id)
+          def validate_content(input) # rubocop: disable Metrics/AbcSize
+            if input.key?(:id)
+              input[:race] = ::Dnd2024::Homebrews::Race.find_by(user_id: input[:user].id, id: input[:id])
+              return ['Not found'] unless input[:race]
+            end
 
-            input[:race] = ::Dnd2024::Homebrews::Race.find_by(user_id: input[:user].id, id: input[:id])
-            return if input[:race]
+            input[:features] = input[:features]&.map!(&:deep_symbolize_keys)
+            input[:features]&.each do |feature|
+              feature[:user] = input[:user]
+              feature[:origin] = 'species'
+              feature[:origin_value] = 'species.id'
 
-            ['Not found']
+              validate_result = add_feat.validate_all(feature)
+              return validate_result[:raw_errors] if validate_result[:raw_errors]
+            end
+
+            nil
           end
 
           def do_prepare(input)
@@ -96,6 +85,8 @@ module HomebrewsV2Context
               end
             command.call(input)
           end
+
+          def add_feat = HomebrewsV2Context::Import::Dnd2024::Feats::AddCommand.new
         end
       end
     end

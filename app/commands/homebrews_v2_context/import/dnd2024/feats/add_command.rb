@@ -5,14 +5,19 @@ module HomebrewsV2Context
     module Dnd2024
       module Feats
         class AddCommand < BaseCommand
+          KINDABLE_OPTIONS = %w[one_from_list many_from_list].freeze
+
           # rubocop: disable Metrics/BlockLength
           use_contract do
             Origins = Dry::Types['strict.string'].enum('feat', 'spell', 'species', 'subclass')
-            Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden')
+            Kinds =
+              Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden', 'one_from_list', 'many_from_list')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'one_at_short_rest')
 
             params do
               required(:user).filled(type?: ::User)
+              optional(:id).filled(:string, :uuid_v4?)
+              optional(:slug).filled(:string, :uuid_v4?)
               required(:title).hash do
                 required(:en).filled(:string, max_size?: 50)
                 optional(:ru).maybe(:string, max_size?: 50)
@@ -35,6 +40,16 @@ module HomebrewsV2Context
               optional(:ability_conditions).maybe(:array).each(:string) # требуемые характеристики, Сил 13+
               optional(:leveling_ability_boosts).maybe(:array).each(:string) # характеристики, которые могут быть повышены
               optional(:public).filled(:bool)
+              optional(:exclude).maybe(:array).each(:string, :uuid_v4?)
+              optional(:conditions).hash
+              optional(:options).maybe(:array).each(:hash) do
+                required(:title).hash do
+                  required(:en).filled(:string, max_size?: 50)
+                  optional(:ru).maybe(:string, max_size?: 50)
+                  optional(:es).maybe(:string, max_size?: 50)
+                end
+                optional(:feature).maybe(:hash)
+              end
             end
 
             rule(:limit, :limit_refresh).validate(:check_all_or_nothing_present)
@@ -43,8 +58,28 @@ module HomebrewsV2Context
 
           private
 
+          def validate_content(input)
+            if input.key?(:options)
+              input[:options].each do |option|
+                slug = SecureRandom.uuid
+                feature = option[:feature]
+                next unless feature
+
+                feature[:user] = input[:user]
+                feature[:origin] = input[:origin]
+                feature[:origin_value] = ''
+                feature[:conditions] = { selected_feature: slug }
+
+                raw_errors = add_feat.validate_all(feature)[:raw_errors]
+                return raw_errors if raw_errors
+              end
+            end
+
+            nil
+          end
+
           def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
-            input[:slug] = SecureRandom.uuid unless input.key?(:id)
+            input[:slug] ||= SecureRandom.uuid
             input[:info] = {}
 
             if input.key?(:static_spells)
@@ -56,6 +91,23 @@ module HomebrewsV2Context
               end
               input[:info][:static_spells] = static_spells
             end
+
+            input[:options] =
+              if input.key?(:options) && KINDABLE_OPTIONS.include?(input[:kind])
+                input[:options].each_with_object({}) do |option, acc|
+                  slug = SecureRandom.uuid
+                  feature = option[:feature]
+                  next acc[slug] = option unless feature
+
+                  feature[:slug] = slug
+                  feature[:user] = input[:user]
+                  feature[:origin] = input[:origin]
+                  feature[:origin_value] = ''
+                  feature[:conditions] = { selected_feature: slug }
+
+                  acc[slug] = { title: option[:title], feature: feature }
+                end
+              end
 
             input[:origin_value] = sanitize(input[:origin_value])
             input[:conditions] = { level: input[:level] }
@@ -71,11 +123,20 @@ module HomebrewsV2Context
           end
 
           def do_persist(input)
-            result =
-              ::Dnd2024::Feat.create!(input.except(:limit, :level, :static_spells, :ability_conditions, :leveling_ability_boosts))
+            result = ::Dnd2024::Feat.create!(
+              input.except(:limit, :level, :static_spells, :ability_conditions, :leveling_ability_boosts, :options)
+            ).merge(options: input[:options]&.transform_values { |value| value[:title] })
+
+            input[:options]&.values&.each do |option|
+              next unless option[:feature]
+
+              add_feat.call(**option[:feature])
+            end
 
             { result: result }
           end
+
+          def add_feat = HomebrewsV2Context::Import::Dnd2024::Feats::AddCommand.new
         end
       end
     end

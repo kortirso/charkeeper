@@ -45,11 +45,7 @@ module HomebrewsV2Context
                 # )
               else
                 add_feat.call(
-                  feature.merge({
-                    user: input[:user],
-                    origin: 'species',
-                    origin_value: input[:race].id
-                  })
+                  feature.merge({ origin_value: input[:race].id })
                 )
               end
             end

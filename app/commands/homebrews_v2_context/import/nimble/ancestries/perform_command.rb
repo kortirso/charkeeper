@@ -5,11 +5,7 @@ module HomebrewsV2Context
     module Nimble
       module Ancestries
         class PerformCommand < BaseCommand
-          # rubocop: disable Metrics/BlockLength
           use_contract do
-            Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden')
-            Limits = Dry::Types['strict.string'].enum('combat_rest', 'field_rest', 'long_field_rest', 'safe_rest')
-
             params do
               required(:user).filled(type?: ::User)
               optional(:id).filled(:string, :uuid_v4?)
@@ -25,37 +21,29 @@ module HomebrewsV2Context
               end
               optional(:public).filled(:bool)
               optional(:sizes).maybe(:array).each(:string)
-              optional(:features).maybe(:array).each(:hash) do
-                optional(:id).filled(:string, :uuid_v4?)
-                required(:title).hash do
-                  required(:en).filled(:string, max_size?: 50)
-                  optional(:ru).maybe(:string, max_size?: 50)
-                  optional(:es).maybe(:string, max_size?: 50)
-                end
-                required(:description).hash do
-                  required(:en).filled(:string, max_size?: 1_000)
-                  optional(:ru).maybe(:string, max_size?: 1_000)
-                  optional(:es).maybe(:string, max_size?: 1_000)
-                end
-                required(:kind).filled(Kinds)
-                optional(:limit).filled(:string)
-                optional(:limit_refresh).filled(Limits)
-                optional(:modifiers).hash
-                optional(:continious).filled(:bool)
-              end
+              optional(:features).maybe(:array).each(:hash)
             end
           end
-          # rubocop: enable Metrics/BlockLength
 
           private
 
-          def validate_content(input)
-            return unless input.key?(:id)
+          def validate_content(input) # rubocop: disable Metrics/AbcSize
+            if input.key?(:id)
+              input[:ancestry] = ::Nimble::Homebrews::Ancestry.find_by(user_id: input[:user].id, id: input[:id])
+              return ['Not found'] unless input[:ancestry]
+            end
 
-            input[:ancestry] = ::Nimble::Homebrews::Ancestry.find_by(user_id: input[:user].id, id: input[:id])
-            return if input[:ancestry]
+            input[:features] = input[:features]&.map!(&:deep_symbolize_keys)
+            input[:features]&.each do |feature|
+              feature[:user] = input[:user]
+              feature[:origin] = 'ancestry'
+              feature[:origin_value] = 'ancestry.id'
 
-            ['Not found']
+              validate_result = add_feat_command.validate_all(feature)
+              return validate_result[:raw_errors] if validate_result[:raw_errors]
+            end
+
+            nil
           end
 
           def do_prepare(input)
@@ -73,6 +61,8 @@ module HomebrewsV2Context
               end
             command.call(input)
           end
+
+          def add_feat_command = Charkeeper::Container.resolve('commands.homebrews_v2_context.import.nimble.feats.add')
         end
       end
     end

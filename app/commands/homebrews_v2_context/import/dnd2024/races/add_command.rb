@@ -16,11 +16,7 @@ module HomebrewsV2Context
               race = ::Dnd2024::Homebrews::Race.create!(input.slice(:user, :title, :description, :public, :info))
               input[:features]&.each do |feature|
                 add_feat.call(
-                  feature.except(:id).merge({
-                    user: input[:user],
-                    origin: 'species',
-                    origin_value: race.id
-                  })
+                  feature.except(:id).merge({ origin_value: race.id })
                 )
               end
               race

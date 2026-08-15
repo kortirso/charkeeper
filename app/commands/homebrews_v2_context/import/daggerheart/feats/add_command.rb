@@ -134,7 +134,7 @@ module HomebrewsV2Context
                 feature[:origin_value] = ''
                 feature[:conditions] = { selected_feature: slug }
 
-                raw_errors = validate(feature, add_feat_command.contract)[:raw_errors]
+                raw_errors = add_feat_command.validate_all(feature)[:raw_errors]
                 return raw_errors if raw_errors
               end
             end

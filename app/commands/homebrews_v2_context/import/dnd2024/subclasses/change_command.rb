@@ -45,11 +45,7 @@ module HomebrewsV2Context
                 # )
               else
                 add_feat.call(
-                  feature.merge({
-                    user: input[:user],
-                    origin: 'subclass',
-                    origin_value: input[:subclass].id
-                  })
+                  feature.merge({ origin_value: input[:subclass].id })
                 )
               end
             end
