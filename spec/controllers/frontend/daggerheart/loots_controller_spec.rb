@@ -24,7 +24,9 @@ describe Frontend::Daggerheart::LootsController do
           expect(response).to have_http_status :ok
           expect(response_value['kind']).to eq 'item'
           expect(response_value.keys).to(
-            contain_exactly('id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name')
+            contain_exactly(
+              'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features'
+            )
           )
         end
       end
@@ -38,7 +40,9 @@ describe Frontend::Daggerheart::LootsController do
           expect(response).to have_http_status :ok
           expect(response_value['kind']).to eq 'consumables'
           expect(response_value.keys).to(
-            contain_exactly('id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name')
+            contain_exactly(
+              'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features'
+            )
           )
         end
       end
@@ -52,7 +56,9 @@ describe Frontend::Daggerheart::LootsController do
           expect(response).to have_http_status :ok
           expect(response_value['kind']).to eq 'item'
           expect(response_value.keys).to(
-            contain_exactly('id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name')
+            contain_exactly(
+              'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features'
+            )
           )
         end
       end
@@ -66,7 +72,9 @@ describe Frontend::Daggerheart::LootsController do
           expect(response).to have_http_status :ok
           expect(response_value['kind']).to eq 'item'
           expect(response_value.keys).to(
-            contain_exactly('id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name')
+            contain_exactly(
+              'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features'
+            )
           )
         end
       end
