@@ -89,23 +89,6 @@
       "traits": "Способности",
       "thresholds": "Пороги урона"
     },
-    "domainCards": {
-      "limit": "Лимит карт",
-      "spellcastTraits": "Способности",
-      "loadout": "Инвентарь",
-      "vault": "Хранилище",
-      "select": "Добавить карты",
-      "cardNote": "Заметка"
-    },
-    "bonuses": {
-      "title": "Бонусы",
-      "health": "Здоровье",
-      "stress": "Стресс",
-      "evasion": "Уклонение",
-      "armor_score": "Доспех",
-      "attack": "Атака",
-      "proficiency": "Мастерство"
-    },
     "transformation": {
       "transformation": "Трансформация",
       "naturalForm": "Естественная форма"

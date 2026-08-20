@@ -89,23 +89,6 @@
       "traits": "Traits",
       "thresholds": "Damage thresholds"
     },
-    "domainCards": {
-      "limit": "Cards limit",
-      "spellcastTraits": "Spellcast traits",
-      "loadout": "Loadout",
-      "vault": "Vault",
-      "select": "Add domain cards",
-      "cardNote": "Domain card note"
-    },
-    "bonuses": {
-      "title": "Bonuses",
-      "health": "Health",
-      "stress": "Stress",
-      "evasion": "Evasion",
-      "armor_score": "Armor",
-      "attack": "Attack",
-      "proficiency": "Proficiency"
-    },
     "transformation": {
       "transformation": "Transformation",
       "naturalForm": "Natural form"

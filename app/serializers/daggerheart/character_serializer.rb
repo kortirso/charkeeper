@@ -6,14 +6,14 @@ module Daggerheart
 
     attributes :proficiency, :features, :provider, :avatar, :id, :name, :level, :heritage, :classes, :traits, :created_at, :gold,
                :spent_armor_slots, :health_marked, :health_max, :stress_marked, :hope_marked, :modified_traits, :money, :beast,
-               :damage_thresholds, :evasion, :armor_score, :stress_max, :hope_max, :armor_slots, :resources,
+               :damage_thresholds, :evasion, :armor_score, :stress_max, :hope_max, :armor_slots, :resources, :loadout,
                :leveling, :subclasses, :subclasses_mastery, :attacks, :experience, :heritage_name, :names, :community, :hybrid,
                :domains, :selected_domains, :domain_cards_max, :spellcast_traits, :beastform, :tier, :main_class,
                :can_have_companion, :transformations, :homebrew_domains, :transformation, :mechanic_items, :spell_bonus,
                :selected_features, :guide_step, :conditions, :advantage_dice, :disadvantage_dice, :scars, :scarred_hope,
                :can_have_beastform, :rally_dice, :available_mechanic_items, :selected_mechanic_items, :spellcast_trait
 
-    delegate :features, :health_max, :stress_max, :hope_max, :modified_traits, :damage_thresholds, :evasion,
+    delegate :features, :health_max, :stress_max, :hope_max, :modified_traits, :damage_thresholds, :evasion, :loadout,
              :armor_score, :armor_slots, :scarred_hope, :attacks, :can_have_beastform, :disadvantage_dice, :tier, :resources,
              :domain_cards_max, :spellcast_traits, :proficiency, :spell_bonus, :selected_features, :mechanic_items,
              :can_have_companion, :transformations, :transformation, :advantage_dice, :homebrew_domains, to: :decorator

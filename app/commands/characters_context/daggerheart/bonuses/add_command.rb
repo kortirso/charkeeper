@@ -27,6 +27,7 @@ module CharactersContext
               optional(:proficiency).hash
               optional(:damage).hash
               optional(:spell_bonus).hash
+              optional(:loadout).hash
             end
           end
 

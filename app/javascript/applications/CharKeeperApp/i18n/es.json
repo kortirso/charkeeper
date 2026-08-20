@@ -89,23 +89,6 @@
       "traits": "Atributos",
       "thresholds": "Umbrales de daño"
     },
-    "domainCards": {
-      "limit": "Límite de cartas",
-      "spellcastTraits": "Atributos de conjuro",
-      "loadout": "Carga",
-      "vault": "Baúl",
-      "select": "Añadir cartas de Dominio",
-      "cardNote": "Nota de carta de Dominio"
-    },
-    "bonuses": {
-      "title": "Bonificaciones",
-      "health": "Salud",
-      "stress": "Estrés",
-      "evasion": "Evasión",
-      "armor_score": "Armadura",
-      "attack": "Ataque",
-      "proficiency": "Competencia"
-    },
     "transformation": {
       "transformation": "Transformación",
       "naturalForm": "Forma natural"

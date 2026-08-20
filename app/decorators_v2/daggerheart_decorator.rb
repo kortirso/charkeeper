@@ -65,6 +65,7 @@ class DaggerheartDecorator < ApplicationDecoratorV2
     @result['hands_reach'] = 'melee'
     @result['spellcast_traits'] = find_spellcast_traits
     @result['use_max_trait_for_attack'] = 0
+    @result['loadout'] = 5
   end
 
   def calculate_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength

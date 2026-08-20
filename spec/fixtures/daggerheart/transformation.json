@@ -56,7 +56,7 @@
         /* optional, hope or stress */
         "price": { "hope": 1 },
         /* optional */
-        /* available keys - str/agi/fin/ins/pre/know/health_max/stress_max/hope_max/evasion/armor_score/damage_thresholds.major/damage_thresholds.severe/attack/damage/spell_bonus/proficiency */
+        /* available keys - str/agi/fin/ins/pre/know/health_max/stress_max/hope_max/evasion/armor_score/damage_thresholds.major/damage_thresholds.severe/attack/damage/spell_bonus/proficiency/loadout */
         /* type - add */
         /* value - integer or formula */
         /* available variables for formulas - str/agi/fin/ins/pre/know/proficiency/tier/level/no_armor/no_weapon/stress_marked/health_marked/spellcast */

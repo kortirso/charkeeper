@@ -33,7 +33,8 @@ const MAPPING = {
     'attack': 'Attacks',
     'proficiency': 'Proficiency',
     'damage': 'Damage',
-    'spell_bonus': 'Spellcast'
+    'spell_bonus': 'Spellcast',
+    'loadout': 'Loadout'
   },
   ru: {
     'str': 'Сила',
@@ -52,7 +53,8 @@ const MAPPING = {
     'attack': 'Бонус атаки',
     'proficiency': 'Мастерство',
     'damage': 'Бонус урона',
-    'spell_bonus': 'Характеристика заклинателя'
+    'spell_bonus': 'Характеристика заклинателя',
+    'loadout': 'Инвентарь'
   }
 }
 const VARIABLES_LIST = ['str', 'agi', 'fin', 'ins', 'pre', 'know', 'level', 'no_armor', 'no_weapon', 'proficiency', 'tier', 'stress_marked', 'health_marked', 'spellcast'];

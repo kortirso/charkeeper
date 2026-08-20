@@ -22,11 +22,11 @@ module HomebrewsV2Context
                 end
                 required(:info).hash do
                   required(:tier).filled(:integer, gteq?: 1, lteq?: 4)
-                  required(:base_score).filled(:integer, gteq?: 1, lteq?: 12)
+                  required(:base_score).filled(:string, max_size?: 100)
                   required(:bonuses).hash do
                     required(:thresholds).hash do
-                      required(:major).filled(:integer, gteq?: 1, lteq?: 100)
-                      required(:severe).filled(:integer, gteq?: 1, lteq?: 100)
+                      required(:major).filled(:string, max_size?: 100)
+                      required(:severe).filled(:string, max_size?: 100)
                     end
                   end
                   optional(:features).maybe(:array).each(:hash) do
