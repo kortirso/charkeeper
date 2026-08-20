@@ -64,6 +64,7 @@ class DaggerheartDecorator < ApplicationDecoratorV2
     @result['spell_bonus'] = 0
     @result['hands_reach'] = 'melee'
     @result['spellcast_traits'] = find_spellcast_traits
+    @result['use_max_trait_for_attack'] = 0
   end
 
   def calculate_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
@@ -163,12 +164,14 @@ class DaggerheartDecorator < ApplicationDecoratorV2
     ]
   end
 
-  def unarmed_attack
+  def unarmed_attack # rubocop: disable Metrics/AbcSize
     {
       name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
       range: hands_reach,
-      trait: max_unarmed_trait,
-      attack_bonus: calculate_attack_bonus([modified_traits['str'], modified_traits['fin']].max + attack),
+      trait: use_max_trait_for_attack.zero? ? max_unarmed_trait : max_trait,
+      attack_bonus: calculate_attack_bonus(
+        (use_max_trait_for_attack.zero? ? [modified_traits['str'], modified_traits['fin']].max : max_trait_value) + attack
+      ),
       damage: "#{proficiency}d4",
       damage_bonus: calculate_damage_bonus(0, 'physical'),
       damage_type: 'physical',
@@ -180,12 +183,14 @@ class DaggerheartDecorator < ApplicationDecoratorV2
     }
   end
 
-  def calculate_attack(item) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+  def calculate_attack(item) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
     response = [{
       name: translate(item[:items_name]),
       range: item[:items_info]['range'] == 'melee' && hands_reach != 'melee' ? hands_reach : item[:items_info]['range'],
-      trait: item[:items_info]['trait'] || max_trait,
-      attack_bonus: calculate_attack_bonus(trait_bonus(item) + attack + item.dig(:items_info, 'bonuses', 'attack').to_i),
+      trait: use_max_trait_for_attack.zero? || item[:items_info]['trait'].nil? ? max_trait : item[:items_info]['trait'],
+      attack_bonus: calculate_attack_bonus(
+        (use_max_trait_for_attack.zero? ? trait_bonus(item) : max_trait_value) + attack
+      ),
       damage: item[:items_info]['damage']&.gsub('d', "#{proficiency}d"),
       damage_bonus: calculate_damage_bonus(item[:items_info]['damage_bonus'], item[:items_info]['damage_type']),
       damage_type: item[:items_info]['damage_type'],

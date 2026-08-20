@@ -24,7 +24,14 @@ module Daggerheart
           version: (context ? (context[:version] || nil) : nil),
           initial_version: '0.3.20'
         )
-        context && context[:gsub] ? result&.gsub(/{{[a-z]+}}/, 'x') : result
+        return unless result
+
+        result.scan(/\{\{([^}]+)\}\}/).flatten.each do |value|
+          _variable, default = value.split('|')
+
+          result.gsub!("{{#{value}}}", default || '')
+        end
+        result
       end
     end
   end

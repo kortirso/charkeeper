@@ -93,3 +93,16 @@ end
     feat ? feat.update!(item) : ::Nimble::Feat.create!(item)
   end
 end
+
+[
+  'feats/ancestries.json', 'feats/beastforms.json', 'feats/classes.json', 'feats/communities.json', 'feats/domains.json',
+  'feats/mechanics.json', 'feats/parents.json', 'feats/subclasses.json', 'feats/transformations.json'
+].each do |filename|
+  response = Net::HTTP.get(URI("https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/daggerheart/#{filename}"))
+  JSON.parse(response).each do |item|
+    feat = ::Daggerheart::Feat.find_by(slug: item['slug'])
+    feat ? feat.update!(item) : ::Daggerheart::Feat.create!(item)
+  rescue ActiveRecord::NotNullViolation => _e
+    next
+  end
+end

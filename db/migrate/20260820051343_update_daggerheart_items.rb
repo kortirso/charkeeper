@@ -3,7 +3,7 @@ class UpdateDaggerheartItems < ActiveRecord::Migration[8.1]
     Daggerheart::Item.where(kind: ['armor', 'primary weapon', 'secondary weapon']).find_each do |item|
       modifiers = {}
       item.info.dig('bonuses', 'thresholds')&.each do |key, value|
-        modifiers["thresholds.#{key}"] = { type: 'add', value: value }
+        modifiers["damage_thresholds.#{key}"] = { type: 'add', value: value }
       end
       item.info.dig('bonuses', 'traits')&.each do |key, value|
         modifiers[key] = { type: 'add', value: value }
@@ -13,9 +13,9 @@ class UpdateDaggerheartItems < ActiveRecord::Migration[8.1]
       modifiers['armor_score'] = { type: 'add', value: item.info['base_score'] } if item.info['base_score']
       modifiers['armor_score'] = { type: 'add', value: item.info['armor_score'] } if item.info['armor_score']
 
-      info = item.info.except('bonuses', 'base_score')
-
-      item.update(modifiers: modifiers, info: info)
+      item.info = item.info.except('bonuses', 'base_score')
+      item.modifiers = modifiers
+      item.save
     end
   end
 
