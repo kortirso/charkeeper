@@ -6,11 +6,6 @@ module HomebrewsV2Context
       module Items
         module Items
           class AddCommand < BaseCommand
-            include Deps[
-              refresh_bonuses: 'commands.bonuses_context.refresh'
-            ]
-
-            # rubocop: disable Metrics/BlockLength
             use_contract do
               BonusTypes = Dry::Types['strict.string'].enum('static', 'dynamic')
               Kinds = Dry::Types['strict.string'].enum(
@@ -30,17 +25,11 @@ module HomebrewsV2Context
                   optional(:ru).maybe(:string, max_size?: 500)
                   optional(:es).maybe(:string, max_size?: 500)
                 end
-                optional(:bonuses).maybe(:array).each(:hash) do
-                  required(:id).filled(type?: Integer)
-                  required(:type).filled(BonusTypes)
-                  required(:value).hash
-                end
                 optional(:public).filled(:bool)
                 optional(:item_names).maybe(:array).each(:string, max_size?: 50)
                 optional(:info).hash
               end
             end
-            # rubocop: enable Metrics/BlockLength
 
             private
 
@@ -50,7 +39,7 @@ module HomebrewsV2Context
             end
 
             def do_persist(input)
-              result = ::Daggerheart::Item.create!(input.except(:bonuses, :item, :item_names))
+              result = ::Daggerheart::Item.create!(input.except(:item, :item_names))
 
               if input[:kind] == 'recipe' && input[:item_names]&.any?
                 input[:item_names].each do |item_name|
@@ -61,8 +50,6 @@ module HomebrewsV2Context
                   ::Item::Recipe.create!(input.slice(:user, :public).merge(tool: result, item: item))
                 end
               end
-
-              refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
 
               { result: result }
             end

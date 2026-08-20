@@ -81,8 +81,6 @@ const MAPPING = {
     'spell_attack_bonus': 'Заклинательные атаки'
   }
 }
-const NO_VARIABLES = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
-const ONLY_ADD = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'attack', 'damage', 'spell_save_dc', 'spell_attack_bonus'];
 const VARIABLES_LIST = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'proficiency_bonus', 'level', 'no_body_armor', 'no_armor', 'paladin_level'];
 
 export const Dnd2024Bonuses = (props) => {
@@ -112,8 +110,6 @@ export const Dnd2024Bonuses = (props) => {
         <SharedBonusesV2
           character={character()}
           mapping={localize(MAPPING, locale())}
-          noVariables={NO_VARIABLES}
-          onlyAdd={ONLY_ADD}
           variablesList={VARIABLES_LIST}
           onSaveBonus={saveBonus}
           onReloadCharacter={props.onReloadCharacter}

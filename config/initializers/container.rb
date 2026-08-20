@@ -102,7 +102,6 @@ module Charkeeper
 
     register('commands.characters_context.dnd2024.talents.add') { CharactersContext::Dnd2024::Talents::AddCommand.new }
 
-    register('commands.characters_context.dnd2024.bonuses.add') { CharactersContext::Dnd2024::Bonuses::AddCommand.new }
     register('commands.characters_context.dnd2024.bonuses.add_v3') { CharactersContext::Dnd2024::Bonuses::AddV3Command.new }
     register('commands.characters_context.daggerheart.bonuses.add') { CharactersContext::Daggerheart::Bonuses::AddCommand.new }
     register('commands.characters_context.daggerheart.bonuses.add_companion') {

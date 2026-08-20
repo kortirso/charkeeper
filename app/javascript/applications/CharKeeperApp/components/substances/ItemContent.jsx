@@ -1,4 +1,4 @@
-import { createMemo, Show } from 'solid-js';
+import { createMemo, Show, For } from 'solid-js';
 
 import { useAppState, useAppLocale } from '../../context';
 import { Hand, TwoHands } from '../../assets';
@@ -160,7 +160,11 @@ const DaggerheartWeapon = (props) => {
         <p>{localize(daggerheartConfig.damageTypes[item().info.damage_type].name, props.currentLocale)}</p>
       </div>
       <Show when={item().info.features && item().info.features.length > 0}>
-        <p class="mt-2 text-sm">{item().info.features[0][props.locale]}</p>
+        <For each={item().info.features}>
+          {(feature) =>
+            <p class="mt-2 text-sm">{feature[props.locale]}</p>
+          }
+        </For>
       </Show>
     </>
   );

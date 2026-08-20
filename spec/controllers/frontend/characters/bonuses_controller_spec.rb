@@ -99,9 +99,9 @@ describe Frontend::Characters::BonusesController do
             post :create, params: {
               character_id: user_character.id,
               provider: 'daggerheart',
-              bonus: { value: { health: 1 }, comment: 'Comment' },
+              bonus: { value: { health_max: { type: 'add', value: 1 } }, comment: 'Comment' },
               charkeeper_access_token: access_token,
-              version: '0.3.23'
+              version: '0.5.6'
             }
           }
 

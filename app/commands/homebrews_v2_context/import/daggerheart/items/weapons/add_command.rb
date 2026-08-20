@@ -6,17 +6,12 @@ module HomebrewsV2Context
       module Items
         module Weapons
           class AddCommand < BaseCommand
-            include Deps[
-              refresh_bonuses: 'commands.bonuses_context.refresh'
-            ]
-
             # rubocop: disable Metrics/BlockLength
             use_contract do
               Kinds = Dry::Types['strict.string'].enum('primary weapon', 'secondary weapon')
               Traits = Dry::Types['strict.string'].enum('agi', 'str', 'fin', 'ins', 'pre', 'know')
               Ranges = Dry::Types['strict.string'].enum('melee', 'very close', 'close', 'far', 'very far')
               DamageTypes = Dry::Types['strict.string'].enum('physical', 'magic')
-              BonusTypes = Dry::Types['strict.string'].enum('static', 'dynamic')
 
               params do
                 required(:user).filled(type?: ::User)
@@ -32,11 +27,6 @@ module HomebrewsV2Context
                   optional(:ru).maybe(:string, max_size?: 500)
                   optional(:es).maybe(:string, max_size?: 500)
                 end
-                optional(:bonuses).maybe(:array).each(:hash) do
-                  required(:id).filled(:integer, gteq?: 1, lteq?: 100_000)
-                  required(:type).filled(BonusTypes)
-                  required(:value).hash
-                end
                 required(:info).hash do
                   required(:burden).filled(:integer, gteq?: 1, lteq?: 2)
                   required(:tier).filled(:integer, gteq?: 1, lteq?: 4)
@@ -50,7 +40,14 @@ module HomebrewsV2Context
                     optional(:ru).maybe(:string, max_size?: 250)
                     optional(:es).maybe(:string, max_size?: 250)
                   end
+                  optional(:versatile).hash do
+                    required(:trait).maybe(Traits)
+                    required(:range).filled(Ranges)
+                    required(:damage).filled(:string)
+                    required(:damage_bonus).filled(:integer, gteq?: 0, lteq?: 20)
+                  end
                 end
+                optional(:modifiers).hash
                 optional(:public).filled(:bool)
               end
             end
@@ -64,9 +61,7 @@ module HomebrewsV2Context
             end
 
             def do_persist(input)
-              result = ::Daggerheart::Item.create!(input.except(:bonuses))
-
-              refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
+              result = ::Daggerheart::Item.create!(input)
 
               { result: result }
             end

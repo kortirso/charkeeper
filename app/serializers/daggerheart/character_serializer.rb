@@ -6,23 +6,22 @@ module Daggerheart
 
     attributes :proficiency, :features, :provider, :avatar, :id, :name, :level, :heritage, :classes, :traits, :created_at, :gold,
                :spent_armor_slots, :health_marked, :health_max, :stress_marked, :hope_marked, :modified_traits, :money, :beast,
-               :damage_thresholds, :evasion, :base_armor_score, :armor_score, :stress_max, :hope_max, :armor_slots, :resources,
+               :damage_thresholds, :evasion, :armor_score, :stress_max, :hope_max, :armor_slots, :resources,
                :leveling, :subclasses, :subclasses_mastery, :attacks, :experience, :heritage_name, :names, :community, :hybrid,
-               :domains, :selected_domains, :domain_cards_max, :spellcast_traits, :beastform, :beastforms, :tier, :main_class,
+               :domains, :selected_domains, :domain_cards_max, :spellcast_traits, :beastform, :tier, :main_class,
                :can_have_companion, :transformations, :homebrew_domains, :transformation, :mechanic_items, :spell_bonus,
                :selected_features, :guide_step, :conditions, :advantage_dice, :disadvantage_dice, :scars, :scarred_hope,
                :can_have_beastform, :rally_dice, :available_mechanic_items, :selected_mechanic_items, :spellcast_trait
 
-    delegate :features, :id, :name, :level, :heritage, :main_class, :classes, :traits, :gold, :spent_armor_slots, :health_marked,
-             :health_max, :stress_marked, :hope_marked, :stress_max, :hope_max, :modified_traits, :damage_thresholds, :evasion,
-             :base_armor_score, :armor_score, :armor_slots, :leveling, :subclasses, :money, :scars, :scarred_hope,
-             :subclasses_mastery, :attacks, :experience, :domains, :selected_domains, :can_have_beastform, :disadvantage_dice,
-             :domain_cards_max, :spellcast_traits, :beastforms, :tier, :proficiency, :resources, :spell_bonus, :selected_features,
-             :can_have_companion, :transformations, :transformation, :advantage_dice, :conditions, :homebrew_domains,
-             :mechanic_items, to: :decorator
-    delegate :created_at, :data, to: :object
+    delegate :features, :health_max, :stress_max, :hope_max, :modified_traits, :damage_thresholds, :evasion,
+             :armor_score, :armor_slots, :scarred_hope, :attacks, :can_have_beastform, :disadvantage_dice, :tier, :resources,
+             :domain_cards_max, :spellcast_traits, :proficiency, :spell_bonus, :selected_features, :mechanic_items,
+             :can_have_companion, :transformations, :transformation, :advantage_dice, :homebrew_domains, to: :decorator
+    delegate :created_at, :data, :id, :name, :selected_domains, to: :object
     delegate :guide_step, :heritage_name, :community, :beastform, :beast, :hybrid, :rally_dice, :available_mechanic_items,
-             :selected_mechanic_items, :spellcast_trait, to: :data
+             :selected_mechanic_items, :spellcast_trait, :level, :heritage, :main_class, :classes, :gold, :spent_armor_slots,
+             :health_marked, :stress_marked, :hope_marked, :leveling, :subclasses, :money, :subclasses_mastery, :scars,
+             :experience, :domains, :conditions, :traits, to: :data
 
     def names
       {

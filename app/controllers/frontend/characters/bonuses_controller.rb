@@ -5,7 +5,6 @@ module Frontend
     class BonusesController < Frontend::BaseController
       include Deps[
         feature_requirement: 'feature_requirement',
-        add_dnd_bonus_v2: 'commands.characters_context.dnd2024.bonuses.add',
         add_dnd_bonus_v3: 'commands.characters_context.dnd2024.bonuses.add_v3',
         add_daggerheart_bonus_v2: 'commands.characters_context.daggerheart.bonuses.add',
         add_daggerheart_companion_bonus: 'commands.characters_context.daggerheart.bonuses.add_companion',
@@ -23,9 +22,9 @@ module Frontend
       before_action :find_bonus_command, only: %i[create]
       before_action :validate_create_command, only: %i[create]
 
+      CONDITION_V4 = %w[daggerheart].freeze
       CONDITION_V3 = %w[nimble dc20].freeze
       CONDITION_V2 = %w[dnd2024 daggerheart_companion pathfinder2 cosmere].freeze
-      CONDITION_V1 = %w[dnd5 daggerheart].freeze
 
       def index
         serialize_relation(bonuses, ::Characters::BonusSerializer, :bonuses)
@@ -67,7 +66,7 @@ module Frontend
 
       def characters_relation # rubocop: disable Metrics/AbcSize
         case params[:provider]
-        when 'dnd5', 'dnd2024' then authorized_scope(Character.all).dnd
+        when 'dnd2024' then authorized_scope(Character.all).dnd2024
         when 'pathfinder2' then authorized_scope(Character.all).pathfinder2
         when 'daggerheart' then authorized_scope(Character.all).daggerheart
         when 'daggerheart_companion'
@@ -79,9 +78,13 @@ module Frontend
         end
       end
 
-      def find_bonus_command # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      def find_bonus_command # rubocop: disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
         @bonus_command =
-          if condition_v3
+          if condition_v4
+            case params[:provider]
+            when 'daggerheart' then add_daggerheart_bonus_v2
+            end
+          elsif condition_v3
             case params[:provider]
             when 'nimble' then add_nimble_bonus
             when 'dc20' then add_dc20_bonus
@@ -93,12 +96,11 @@ module Frontend
             when 'pathfinder2' then add_pathfinder2_bonus
             when 'cosmere' then add_cosmere_bonus
             end
-          elsif condition_v1
-            case params[:provider]
-            when 'dnd5' then add_dnd_bonus_v2
-            when 'daggerheart' then add_daggerheart_bonus_v2
-            end
           end
+      end
+
+      def condition_v4
+        feature_requirement.call(current: params[:version], initial: '0.5.6') && CONDITION_V4.include?(params[:provider])
       end
 
       def condition_v3
@@ -107,10 +109,6 @@ module Frontend
 
       def condition_v2
         feature_requirement.call(current: params[:version], initial: '0.4.16') && CONDITION_V2.include?(params[:provider])
-      end
-
-      def condition_v1
-        feature_requirement.call(current: params[:version], initial: '0.3.23') && CONDITION_V1.include?(params[:provider])
       end
 
       def validate_create_command

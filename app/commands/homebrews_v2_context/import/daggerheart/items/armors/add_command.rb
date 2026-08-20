@@ -6,14 +6,8 @@ module HomebrewsV2Context
       module Items
         module Armors
           class AddCommand < BaseCommand
-            include Deps[
-              refresh_bonuses: 'commands.bonuses_context.refresh'
-            ]
-
             # rubocop: disable Metrics/BlockLength
             use_contract do
-              BonusTypes = Dry::Types['strict.string'].enum('static', 'dynamic')
-
               params do
                 required(:user).filled(type?: ::User)
                 required(:name).hash do
@@ -25,11 +19,6 @@ module HomebrewsV2Context
                   required(:en).filled(:string, max_size?: 500)
                   optional(:ru).maybe(:string, max_size?: 500)
                   optional(:es).maybe(:string, max_size?: 500)
-                end
-                optional(:bonuses).maybe(:array).each(:hash) do
-                  required(:id).filled(:integer, gteq?: 1, lteq?: 100_000)
-                  required(:type).filled(BonusTypes)
-                  required(:value).hash
                 end
                 required(:info).hash do
                   required(:tier).filled(:integer, gteq?: 1, lteq?: 4)
@@ -46,6 +35,7 @@ module HomebrewsV2Context
                     optional(:es).maybe(:string, max_size?: 250)
                   end
                 end
+                optional(:modifiers).hash
                 optional(:public).filled(:bool)
               end
             end
@@ -53,16 +43,20 @@ module HomebrewsV2Context
 
             private
 
-            def do_prepare(input)
+            def do_prepare(input) # rubocop: disable Metrics/AbcSize
+              input[:modifiers] ||= {}
+              input[:modifiers][:armor_score] = { type: 'add', value: input.dig(:info, :base_score) }
+              input[:modifiers]['thresholds.major'] = { type: 'add', value: input.dig(:info, :bonuses, :thresholds, :major) }
+              input[:modifiers]['thresholds.severe'] = { type: 'add', value: input.dig(:info, :bonuses, :thresholds, :severe) }
+
               input[:name].transform_values! { |value| sanitize(value) }
               input[:description].transform_values! { |value| sanitize(value) }
               input[:kind] = 'armor'
+              input[:info] = input[:info].except(:base_score, :bonuses)
             end
 
             def do_persist(input)
-              result = ::Daggerheart::Item.create!(input.except(:bonuses))
-
-              refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
+              result = ::Daggerheart::Item.create!(input)
 
               { result: result }
             end
