@@ -25,11 +25,11 @@ module BotContextV2
           amount, dice_size = target.split('d').map(&:to_i)
           return make_special_roll(dice_size.to_s[0], values) if SPECIAL_DICES.include?(dice_size)
 
-          primary_roll = find_primary_roll(dice_size, values[:adv])
+          primary_roll = find_primary_roll(dice_size, values[:adv], values[:primary_bonus].to_i)
           return { status: 'miss', rolls: [1] } if values[:miss] && primary_roll == 1
           return { status: 'success', total: values[:damage] } if values[:damage]
 
-          secondary_rolls = (0...(amount - 1)).map { find_primary_roll(dice_size, values[:adv]) }
+          secondary_rolls = (0...(amount - 1)).map { find_primary_roll(dice_size, values[:adv], values[:primary_bonus].to_i) }
           crit_value = dice_size - values[:critbonus].to_i
           crit_rolls = values[:crit] && primary_roll >= crit_value ? find_crit_roll(dice_size, 0, [], crit_value) : []
 
@@ -53,15 +53,17 @@ module BotContextV2
         end
 
         def find_crit_roll(dice_size, adv, acc, crit_value)
-          primary_roll = find_primary_roll(dice_size, adv)
+          primary_roll = find_primary_roll(dice_size, adv, 0)
           acc << primary_roll
           return acc if primary_roll < crit_value
 
           find_crit_roll(dice_size, adv, acc, crit_value)
         end
 
-        def find_primary_roll(dice_size, adv)
+        def find_primary_roll(dice_size, adv, primary_bonus)
           totals = (0..adv.to_i.abs).map { roll_command.call(arguments: ["d#{dice_size}"]).dig(:result, :total) }
+          totals.map! { |total| [total + primary_bonus, dice_size].min } if primary_bonus.positive?
+          totals.map! { |total| [total - primary_bonus, 1].max } if primary_bonus.negative?
           adv.to_i.positive? ? totals.max : totals.min
         end
       end
