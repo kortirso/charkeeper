@@ -385,6 +385,25 @@ en:
     commands: "You can use various bot commands both in this chat and include the bot in your groups and call commands there.\n\nA full list of commands can be found at https://charkeeper.org/bot_commands"
     help: "If you would like to help develop the app in any way, you can contact us with any questions using the contact information provided, or simply donate to cover expenses via:\n\nBoosty https://boosty.to/kortirso\ncrypto USDT (TRC20 | TRON) TT1T8m3ffwh9f8AVYqLkDB7miuJpAq1ji9"
   tags:
+    nimble:
+      weapon:
+        bludge: Things that bludgeon you, like a hammer or fist.
+        pierce: Things that pierce you, like an arrow or fangs.
+        slash: Things that slash you, like a blade or claw.
+        light: Heroes may wield 2 light weapons at the same time. While dual wielding, you may gain advantage on an attack with those weapons, 1 per round.
+        thrown: Treat a melee weapon as if it had range. Once thrown, you no longer have it.
+        vicious: Roll 1 additional die whenever you roll crit damage.
+        2handed: Must be wielded in 2 hands to attack with it.
+        load: Extra actions to load before each shot.
+        title:
+          bludge: Bludgeoning
+          slash: Slashing
+          pierce: Piercing
+          light: Light
+          thrown: Thrown
+          vicious: Vicious
+          2handed: 2-handed
+          load: Load %{value}
     cosmere:
       weapon:
         cumbersome: To wield this weapon easily, your Strength score must be equal to or greater than the number indicated in brackets. If your Strength is lower than that number, you gain a disadvantage on all attacks using this weapon and are Slowed while wielding it.

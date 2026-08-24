@@ -385,6 +385,25 @@ ru:
     commands: "Вы можете использовать различные команды бота как в этом чате, так и включать бота в свои группы и вызывать команды там.\n\nПолный список команд можно посмотреть на https://charkeeper.org/bot_commands"
     help: "Если хочешь как-то помочь в развитии приложения, то по любым вопросам можно обращаться по указанным контактам, или просто помочь донатом на оплату расходов через:\n\nБусти https://boosty.to/kortirso\nкриптой USDT (TRC20 | TRON) TT1T8m3ffwh9f8AVYqLkDB7miuJpAq1ji9"
   tags:
+    nimble:
+      weapon:
+        bludge: Вред от вещей, которые дробят, таких как молот или кулак.
+        pierce: Вред от вещей, которые колют, таких как стрелы или клыки.
+        slash: Вред от вещей, которые режут, таких как лезвия или когти.
+        light: Герои могут сражаться двумя Лёгкими оружиями одновременно. При бое двумя оружиями ты можешь получить преимущество на атаку этими оружиями 1/раунд.
+        thrown: Расценивай оружие ближнего боя как дальнобойное. После броска ты его лишаешься.
+        vicious: Вы бросаете 1 дополнительную кость при крите.
+        2handed: Для атаки нужно взять в обе руки.
+        load: Некоторое оружие требует дополнительных действий для перезарядки перед каждым выстрелом.
+        title:
+          bludge: Дробящий
+          pierce: Колющий
+          slash: Режущий
+          light: Лёгкое
+          thrown: Метательное
+          vicious: Жестокое
+          2handed: Двуручное
+          load: Перезарядка %{value}
     cosmere:
       weapon:
         cumbersome: To wield this weapon easily, your Strength score must be equal to or greater than the number indicated in brackets. If your Strength is lower than that number, you gain a disadvantage on all attacks using this weapon and are Slowed while wielding it.

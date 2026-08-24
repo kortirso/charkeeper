@@ -296,7 +296,7 @@ export const Combat = (props) => {
                               width="28"
                               height="28"
                               text={`${attack.attack || attack.damage}${attack.damage_bonus > 0 ? '+' : ''}${attack.damage_bonus === 0 ? '' : attack.damage_bonus}`}
-                              onClick={() => props.openD20Test('/nimbleAttack', attack.name, attack.attack || attack.damage, attack.damage_bonus, attack.attack ? attack.damage : null, attack.critable)}
+                              onClick={() => props.openD20Test('/nimbleAttack', attack.name, attack.attack || attack.damage, attack.damage_bonus, attack.attack ? attack.damage : null, attack.critable, Object.keys(attack.tags || {}).includes('vicious'))}
                             />
                           </div>
                           <p class="text-sm">{renderAttackDistance(attack)}</p>

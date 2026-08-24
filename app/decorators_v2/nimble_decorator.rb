@@ -128,9 +128,9 @@ class NimbleDecorator < ApplicationDecoratorV2
       attack: '1d4',
       damage: 1 + modified_abilities['str'] + @bonuses['str-melee'].to_i,
       damage_bonus: 0,
-      damage_types: ['b'],
       ready_to_use: true,
-      critable: false
+      critable: false,
+      tags: { 'bludge' => I18n.t('tags.nimble.weapon.title.bludge') }
     }
   end
 
@@ -139,23 +139,28 @@ class NimbleDecorator < ApplicationDecoratorV2
       name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
       damage: '1d4',
       damage_bonus: modified_abilities['str'] + @bonuses['str-melee'].to_i,
-      damage_types: ['b'],
       ready_to_use: true,
-      critable: true
+      critable: true,
+      tags: { 'bludge' => I18n.t('tags.nimble.weapon.title.bludge') }
     }
   end
 
   def calculate_attack(item) # rubocop: disable Metrics/AbcSize
+    tags =
+      item.dig(:items_info, 'damage_type').split('/').index_with { |type| I18n.t("tags.nimble.weapon.title.#{type}") }
+        .merge(item.dig(:items_info, 'tooltips').index_with { |type| I18n.t("tags.nimble.weapon.title.#{type}") })
+    tags['2handed'] = I18n.t('tags.nimble.weapon.title.2handed') if item.dig(:items_info, 'burden') == 2
+    tags['load'] = I18n.t('tags.nimble.weapon.title.load', value: item.dig(:items_info, 'load')) if item.dig(:items_info, 'load')
     {
       name: item[:name] || translate(item[:items_name]),
       range: item.dig(:items_info, 'range'),
       damage: item.dig(:items_info, 'damage'),
       damage_bonus: modified_abilities[item.dig(:items_info, 'weapon_skill')] +
         @bonuses["#{item.dig(:items_info, 'weapon_skill')}-#{item.dig(:items_info, 'type')}"].to_i,
-      damage_type: item.dig(:items_info, 'damage_type'),
       notes: item[:notes] || [],
       ready_to_use: item.dig(:states, 'hands').to_i.positive?,
-      critable: weapons.include?("#{item.dig(:items_info, 'type')}-#{item.dig(:items_info, 'weapon_skill')}")
+      critable: weapons.include?("#{item.dig(:items_info, 'type')}-#{item.dig(:items_info, 'weapon_skill')}"),
+      tags: tags
     }.compact
   end
 

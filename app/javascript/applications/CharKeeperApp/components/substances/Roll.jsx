@@ -187,13 +187,13 @@ export const createRoll = () => {
         setPlotResult(undefined);
       });
     },
-    openNimbleAttack(command, title, dices, bonus, damage, crit) {
+    openNimbleAttack(command, title, dices, bonus, damage, crit, vicious) {
       const splitted_dice = dices.split('d');
       const diceAmount = parseInt(splitted_dice[0]);
       const diceSize = splitted_dice[1];
 
       batch(() => {
-        setNimbleTest({ command: command, title: title, diceAmount: diceAmount, diceSize: diceSize, bonus: bonus, maxAdv: 10, adv: 0, addBonus: 0, damage: damage, crit: crit, miss: true, critBonus: 0, primaryBonus: 0 });
+        setNimbleTest({ command: command, title: title, diceAmount: diceAmount, diceSize: diceSize, bonus: bonus, maxAdv: 10, adv: 0, addBonus: 0, damage: damage, crit: crit, miss: true, critBonus: 0, primaryBonus: 0, vicious: vicious });
         setNimbleTestResult(undefined);
       });
     },
@@ -252,7 +252,7 @@ export const createRoll = () => {
 
       const openNimbleTest = () => {
         batch(() => {
-          setNimbleTest({ command: '/nimbleAttack', title: null, diceAmount: 1, diceSize: null, bonus: 0, maxAdv: 10, adv: 0, addBonus: 0, crit: true, miss: true, critBonus: 0, primaryBonus: 0 });
+          setNimbleTest({ command: '/nimbleAttack', title: null, diceAmount: 1, diceSize: null, bonus: 0, maxAdv: 10, adv: 0, addBonus: 0, crit: true, miss: true, critBonus: 0, primaryBonus: 0, vicious: false });
           setNimbleTestResult(undefined);
         });
       }
@@ -411,7 +411,7 @@ export const createRoll = () => {
       }
 
       const generateNimbleTest = () => {
-        const options = [`--crit ${nimbleTest.crit}`, `--miss ${nimbleTest.miss}`];
+        const options = [`--crit ${nimbleTest.crit}`, `--miss ${nimbleTest.miss}`, `--vicious ${nimbleTest.vicious}`];
         if (nimbleTest.adv > 0) options.push(`--adv ${nimbleTest.adv}`);
         if (nimbleTest.adv < 0) options.push(`--dis ${Math.abs(nimbleTest.adv)}`);
         if (nimbleTest.bonus + nimbleTest.addBonus > 0) options.push(`--bonus ${nimbleTest.bonus + nimbleTest.addBonus}`);
@@ -594,6 +594,27 @@ export const createRoll = () => {
         if (value === 'heavy_complication') return '+4';
         if (value === 'opportunity') return 'OP';
         return '-';
+      }
+
+      const rerollNimble = (kind, index) => {
+        if (kind === 'primary_rolls') return;
+
+        const currentValue = nimbleTestResult()[kind].reduce((acc, item) => acc + item, 0);
+        const newValue = Math.floor(Math.random() * nimbleTest.diceSize) + 1;
+        const newValues = [...nimbleTestResult()[kind].slice(0, index), newValue, ...nimbleTestResult()[kind].slice(index + 1)];
+
+        rollNimbleCrit(kind, newValue, newValues);
+        const total = newValues.reduce((acc, item) => acc + item, 0);
+        setNimbleTestResult({ ...nimbleTestResult(), total: nimbleTestResult().total - currentValue + total, [kind]: newValues });
+      }
+
+      const rollNimbleCrit = (kind, currentValue, newValues) => {
+        if (kind !== 'crit_rolls') return;
+        if (currentValue !== parseInt(nimbleTest.diceSize)) return;
+
+        const newValue = Math.floor(Math.random() * nimbleTest.diceSize) + 1;
+        newValues.push(newValue);
+        rollNimbleCrit(kind, newValue, newValues);
       }
 
       return (
@@ -828,10 +849,16 @@ export const createRoll = () => {
                         <Show
                           when={nimbleTestResult() === undefined}
                           fallback={
-                            <div class="flex gap-2">
-                              <For each={nimbleTestResult().rolls}>
-                                {(roll) =>
-                                  <span class="text-xl">[{roll}]</span>
+                            <div class="flex flex-wrap gap-2">
+                              <For each={['primary_rolls', 'crit_rolls', 'vicious_rolls', 'secondary_rolls']}>
+                                {(kind) =>
+                                  <Show when={nimbleTestResult()[kind].length > 0}>
+                                    <For each={nimbleTestResult()[kind]}>
+                                      {(roll, index) =>
+                                        <span class={`text-xl ${kind}`} classList={{ 'cursor-pointer': ['vicious_rolls', 'secondary_rolls'].includes(kind) || kind === 'crit_rolls' && index() === nimbleTestResult()[kind].length - 1 }} onClick={() => rerollNimble(kind, index())}>[{roll}]</span>
+                                      }
+                                    </For>
+                                  </Show>
                                 }
                               </For>
                             </div>
