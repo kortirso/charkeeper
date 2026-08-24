@@ -23,6 +23,7 @@ module BotContextV2
             act.on('--miss [TEXT]') { |text| result[:miss] = text == 'true' }
             act.on('--critbonus [TEXT]', Integer) { |text=0| result[:critbonus] = text.to_i }
             act.on('--primarybonus [TEXT]', Integer) { |text=0| result[:primary_bonus] = text.to_i }
+            act.on('--vicious [TEXT]') { |text| result[:vicious] = text == 'true' }
             act.on('--help [TEXT]') { |text| result[:help_dice] = text.downcase }
           end
           parser.parse! arguments

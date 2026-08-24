@@ -14,7 +14,7 @@ export const Dice = (props) => {
       <Component mode={props.mode} width={props.width || 40} height={props.height || 40} />
       <div class="dice-text-box">
         <p
-          class={[props.textClassList, 'font-normal! text-snow'].join(' ')}
+          class={[props.textClassList, 'font-normal! text-dusty dark:text-snow'].join(' ')}
           classList={{ 'opacity-50': props.minimum }}
         >
           {props.text}

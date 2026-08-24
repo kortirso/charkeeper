@@ -19,24 +19,32 @@ module BotContextV2
 
         private
 
-        def rolls(arguments) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+        def rolls(arguments) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
           target = arguments.shift
           values = BotContextV2::Commands::Parsers::MakeCheck.new.call(arguments: arguments) # { adv: 1, bonus: 1 }
           amount, dice_size = target.split('d').map(&:to_i)
           return make_special_roll(dice_size.to_s[0], values) if SPECIAL_DICES.include?(dice_size)
 
           primary_roll = find_primary_roll(dice_size, values[:adv], values[:primary_bonus].to_i)
-          return { status: 'miss', rolls: [1] } if values[:miss] && primary_roll == 1
+          if values[:miss] && primary_roll == 1
+            return { status: 'miss', rolls: [1], primary_rolls: [1], secondary_rolls: [], crit_rolls: [], vicious_rolls: [] }
+          end
+
           return { status: 'success', total: values[:damage] } if values[:damage]
 
-          secondary_rolls = (0...(amount - 1)).map { find_primary_roll(dice_size, values[:adv], values[:primary_bonus].to_i) }
+          secondary_rolls = (0...(amount - 1)).map { find_primary_roll(dice_size, values[:adv], 0) }
           crit_value = dice_size - values[:critbonus].to_i
           crit_rolls = values[:crit] && primary_roll >= crit_value ? find_crit_roll(dice_size, 0, [], crit_value) : []
+          vicious_rolls = values[:vicious] && crit_rolls.any? ? [find_primary_roll(dice_size, 0, 0)] : []
 
           {
             status: 'success',
-            total: primary_roll + secondary_rolls.sum + crit_rolls.sum + values[:bonus].to_i,
-            rolls: [primary_roll] + secondary_rolls + crit_rolls,
+            total: primary_roll + secondary_rolls.sum + crit_rolls.sum + vicious_rolls.sum + values[:bonus].to_i,
+            rolls: [primary_roll] + secondary_rolls + crit_rolls + vicious_rolls,
+            primary_rolls: [primary_roll],
+            secondary_rolls: secondary_rolls,
+            crit_rolls: crit_rolls,
+            vicious_rolls: vicious_rolls,
             bonus: values[:bonus].to_i
           }
         end
