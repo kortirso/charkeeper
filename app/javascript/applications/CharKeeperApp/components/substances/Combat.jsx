@@ -325,9 +325,14 @@ export const Combat = (props) => {
                   </For>
                 </Show>
                 <Show when={(attack.tags === undefined || character().provider === 'daggerheart') && attack.features && attack.features.length > 0}>
-                  <p class="weapon-features">
-                    {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => localize(item, locale())).join(', ')}
-                  </p>
+                  <For each={attack.features}>
+                    {(feature) =>
+                      <p
+                        class="feat-markdown text-xs! weapon-features"
+                        innerHTML={feature} // eslint-disable-line solid/no-innerhtml
+                      />
+                    }
+                  </For>
                 </Show>
                 <Show when={attack.notes}>
                   <p class="equipment-item-notes">{attack.notes}</p>

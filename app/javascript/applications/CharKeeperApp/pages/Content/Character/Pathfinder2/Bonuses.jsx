@@ -101,8 +101,6 @@ const MAPPING = {
     'health.max': 'Salud'
   }
 }
-const NO_VARIABLES = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
-const ONLY_ADD = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'attack', 'damage', 'health.max'];
 const VARIABLES_LIST = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'level', 'no_body_armor', 'no_armor'];
 
 export const Pathfinder2Bonuses = (props) => {
@@ -132,8 +130,6 @@ export const Pathfinder2Bonuses = (props) => {
         <SharedBonusesV2
           character={character()}
           mapping={localize(MAPPING, locale())}
-          noVariables={NO_VARIABLES}
-          onlyAdd={ONLY_ADD}
           variablesList={VARIABLES_LIST}
           onSaveBonus={saveBonus}
           onReloadCharacter={props.onReloadCharacter}

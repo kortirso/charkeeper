@@ -12,8 +12,8 @@ module SheetsContext
             ancestry: character.ancestry_name,
             community: character.community_name,
             level: decorator.level,
-            classes: decorator.subclass_names.map { |key, value| "#{key} (#{value})" }.join(' / '),
-            domains: domains(decorator),
+            classes: character.subclass_names.map { |key, value| "#{key} (#{value})" }.join(' / '),
+            domains: domains(character),
             domain_cards: domain_cards(character),
             traits: decorator.modified_traits,
             armor: decorator.armor_score,
@@ -33,8 +33,8 @@ module SheetsContext
 
         private
 
-        def domains(decorator)
-          decorator.selected_domains.map(&:capitalize)
+        def domains(character)
+          character.selected_domains.map(&:capitalize)
         end
 
         def domain_cards(character)

@@ -7,11 +7,9 @@ module HomebrewsV2Context
         module Consumables
           class AddCommand < BaseCommand
             include Deps[
-              refresh_bonuses: 'commands.bonuses_context.refresh',
               formula: 'formula'
             ]
 
-            # rubocop: disable Metrics/BlockLength
             use_contract do
               ConsumeAttributes = Dry::Types['strict.string'].enum('health_marked', 'stress_marked', 'hope_marked')
               BonusTypes = Dry::Types['strict.string'].enum('static', 'dynamic')
@@ -28,11 +26,6 @@ module HomebrewsV2Context
                   optional(:ru).maybe(:string, max_size?: 500)
                   optional(:es).maybe(:string, max_size?: 500)
                 end
-                optional(:bonuses).maybe(:array).each(:hash) do
-                  required(:id).filled(type?: Integer)
-                  required(:type).filled(BonusTypes)
-                  required(:value).hash
-                end
                 optional(:consume).maybe(:array).each(:hash) do
                   required(:id).filled(type?: Integer)
                   required(:attribute).filled(ConsumeAttributes)
@@ -41,7 +34,6 @@ module HomebrewsV2Context
                 optional(:public).filled(:bool)
               end
             end
-            # rubocop: enable Metrics/BlockLength
 
             private
 
@@ -69,9 +61,7 @@ module HomebrewsV2Context
             end
 
             def do_persist(input)
-              result = ::Daggerheart::Item.create!(input.except(:bonuses, :consume))
-
-              refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
+              result = ::Daggerheart::Item.create!(input.except(:consume))
 
               { result: result }
             end

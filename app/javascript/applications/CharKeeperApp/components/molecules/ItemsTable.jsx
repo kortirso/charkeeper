@@ -72,77 +72,82 @@ export const ItemsTable = (props) => {
             <For each={items()}>
               {(item) =>
                 <div class="equipment-item">
-                  <div class="flex-1">
-                    <p class="equipment-item-name">
-                      {item.name}
-                      <Show when={item.states[props.state] > 1}><span> ({item.states[props.state]})</span></Show>
-                      <Show when={item.charges}><span> ({localize(TRANSLATION, locale()).ammo} - {item.charges})</span></Show>
-                    </p>
-                    <Show when={item.notes}>
-                      <p class="equipment-item-notes">{item.notes}</p>
-                    </Show>
-                    <Show when={item.info?.features && item.info.features.length > 0}>
-                      <For each={item.info.features}>
-                        {(item) =>
-                          <p class="equipment-item-notes">{localize(item, locale())}</p>
-                        }
-                      </For>
-                    </Show>
-                  </div>
-                  <div class="flex">
-                    <Show when={size.width >= 1024}>
-                      <div class="flex items-start gap-x-1 mr-2">
-                        <ItemsTableItem
-                          forCampaign={props.forCampaign}
-                          characterCampaigns={props.characterCampaigns}
-                          size="small"
-                          state={props.state}
-                          item={item}
-                          upgrades={props.upgrades}
-                          onMoveCharacterItem={props.onMoveCharacterItem}
-                          onConsumeItem={props.onConsumeItem}
-                          onConsumeCharacterItem={props.onConsumeCharacterItem}
-                          upgradeItem={upgradeItem}
-                          onSendCampaignItem={props.onSendCampaignItem}
-                          onSendToCampaign={props.onSendToCampaign}
-                        />
-                      </div>
-                    </Show>
-                    <div class="relative h-6" use:clickOutside={() => setIsOpen(false)}>
-                      <IconButton onClick={() => toggleMenu(item)}>
-                        <Dots />
-                      </IconButton>
-                      <Show when={isOpen() === item}>
-                        <div class="dots">
-                          <Show when={size.width < 1024}>
-                            <div class="dots-item flex gap-x-1">
-                              <ItemsTableItem
-                                forCampaign={props.forCampaign}
-                                characterCampaigns={props.characterCampaigns}
-                                size="medium"
-                                state={props.state}
-                                item={item}
-                                upgrades={props.upgrades}
-                                onMoveCharacterItem={props.onMoveCharacterItem}
-                                onConsumeItem={props.onConsumeItem}
-                                onConsumeCharacterItem={props.onConsumeCharacterItem}
-                                upgradeItem={upgradeItem}
-                                onSendCampaignItem={props.onSendCampaignItem}
-                                onSendToCampaign={props.onSendToCampaign}
-                              />
-                            </div>
-                          </Show>
-                          <Show when={!item.custom}>
-                            <p class="dots-item" onClick={() => props.onChangeItem(item)}>{localize(TRANSLATION, locale()).change}</p>
-                          </Show>
-                          <Show when={ITEMS_INFO.includes(props.provider)}>
-                            <p class="dots-item" onClick={() => props.onInfoItem(item)}>{localize(TRANSLATION, locale()).info}</p>
-                          </Show>
-                          <p class="dots-item" onClick={() => props.onRemoveCharacterItem(item, props.state)}>{localize(TRANSLATION, locale()).delete}</p>
+                  <div class="flex p-0.5">
+                    <div class="flex-1">
+                      <p class="equipment-item-name">
+                        {item.name}
+                        <Show when={item.states[props.state] > 1}><span> ({item.states[props.state]})</span></Show>
+                        <Show when={item.charges}><span> ({localize(TRANSLATION, locale()).ammo} - {item.charges})</span></Show>
+                      </p>
+                    </div>
+                    <div class="flex">
+                      <Show when={size.width >= 1024}>
+                        <div class="flex items-start gap-x-1 mr-2">
+                          <ItemsTableItem
+                            forCampaign={props.forCampaign}
+                            characterCampaigns={props.characterCampaigns}
+                            size="small"
+                            state={props.state}
+                            item={item}
+                            upgrades={props.upgrades}
+                            onMoveCharacterItem={props.onMoveCharacterItem}
+                            onConsumeItem={props.onConsumeItem}
+                            onConsumeCharacterItem={props.onConsumeCharacterItem}
+                            upgradeItem={upgradeItem}
+                            onSendCampaignItem={props.onSendCampaignItem}
+                            onSendToCampaign={props.onSendToCampaign}
+                          />
                         </div>
                       </Show>
+                      <div class="relative h-6" use:clickOutside={() => setIsOpen(false)}>
+                        <IconButton onClick={() => toggleMenu(item)}>
+                          <Dots />
+                        </IconButton>
+                        <Show when={isOpen() === item}>
+                          <div class="dots">
+                            <Show when={size.width < 1024}>
+                              <div class="dots-item flex gap-x-1">
+                                <ItemsTableItem
+                                  forCampaign={props.forCampaign}
+                                  characterCampaigns={props.characterCampaigns}
+                                  size="medium"
+                                  state={props.state}
+                                  item={item}
+                                  upgrades={props.upgrades}
+                                  onMoveCharacterItem={props.onMoveCharacterItem}
+                                  onConsumeItem={props.onConsumeItem}
+                                  onConsumeCharacterItem={props.onConsumeCharacterItem}
+                                  upgradeItem={upgradeItem}
+                                  onSendCampaignItem={props.onSendCampaignItem}
+                                  onSendToCampaign={props.onSendToCampaign}
+                                />
+                              </div>
+                            </Show>
+                            <Show when={!item.custom}>
+                              <p class="dots-item" onClick={() => props.onChangeItem(item)}>{localize(TRANSLATION, locale()).change}</p>
+                            </Show>
+                            <Show when={ITEMS_INFO.includes(props.provider)}>
+                              <p class="dots-item" onClick={() => props.onInfoItem(item)}>{localize(TRANSLATION, locale()).info}</p>
+                            </Show>
+                            <p class="dots-item" onClick={() => props.onRemoveCharacterItem(item, props.state)}>{localize(TRANSLATION, locale()).delete}</p>
+                          </div>
+                        </Show>
+                      </div>
                     </div>
                   </div>
+                  <Show when={item.notes}>
+                    <p class="equipment-item-notes">{item.notes}</p>
+                  </Show>
+                  <Show when={item.features && item.features.length > 0}>
+                    <For each={item.features}>
+                      {(feature) =>
+                        <p
+                          class="feat-markdown text-xs! equipment-item-notes"
+                          innerHTML={feature} // eslint-disable-line solid/no-innerhtml
+                        />
+                      }
+                    </For>
+                  </Show>
                 </div>
               }
             </For>

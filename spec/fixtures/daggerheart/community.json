@@ -56,13 +56,13 @@
         /* optional, hope or stress */
         "price": { "hope": 1 },
         /* optional */
-        /* available keys - str/agi/fin/ins/pre/know/health/stress/hope/evasion/armor_score/major/severe/attack/damage/spell_bonus */
+        /* available keys - str/agi/fin/ins/pre/know/health_max/stress_max/hope_max/evasion/armor_score/damage_thresholds.major/damage_thresholds.severe/attack/damage/spell_bonus/proficiency/loadout */
         /* type - add */
         /* value - integer or formula */
-        /* formulas - "level", "tier", "proficiency", "tier * 2", "level + 2" */
+        /* available variables for formulas - str/agi/fin/ins/pre/know/proficiency/tier/level/no_armor/no_weapon/stress_marked/health_marked/spellcast */
         "modifiers": {
-          "spell_bonus": { "type": "add", "value": 2 },
-          "severe": { "type": "add", "value": "tier" }
+          "str": { "type": "add", "value": 1 },
+          "evasion": { "type": "add", "value": "tier" }
         },
         /* optional, if feature changes hope or fear dice - D4, D6, D8, D10, D12, D20 */
         "hope_dice": "D20",

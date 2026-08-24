@@ -23,7 +23,6 @@ describe Daggerheart::Character do
     end
 
     it 'calculates everything without errors', :aggregate_failures do
-      expect(decorator.id).to eq character.id
       expect(decorator.features.size).to eq 1
       expect(decorator.features.dig(0, :slug)).to eq feat.slug
       expect(decorator.attacks).not_to be_nil

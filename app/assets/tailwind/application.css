@@ -634,10 +634,6 @@ body.web {
   @apply text-sm mb-2;
 }
 
-.equipment-item {
-  @apply flex p-0.5;
-}
-
 .equipment-item:nth-of-type(n+2) {
   @apply border-t border-gray-200 dark:border-neutral-800;
 }

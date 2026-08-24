@@ -67,12 +67,6 @@ const MAPPING = {
     'spells': 'Spells amount'
   }
 }
-const NO_VARIABLES = [];
-const ONLY_ADD = [
-  'mig', 'agi', 'int', 'cha', 'attribute_saves.mig', 'attribute_saves.agi', 'attribute_saves.int', 'attribute_saves.cha',
-  'pd_base', 'ad_base', 'initiative', 'attack', 'damage', 'max_stamina_points', 'max_mana_points', 'maneuver_points',
-  'max_health', 'spells'
-];
 const VARIABLES_LIST = ['mig', 'agi', 'int', 'cha', 'prime', 'level', 'combat_mastery', 'no_armor'];
 
 export const Dc20BonusesV2 = (props) => {
@@ -102,8 +96,6 @@ export const Dc20BonusesV2 = (props) => {
         <SharedBonusesV2
           character={character()}
           mapping={localize(MAPPING, locale())}
-          noVariables={NO_VARIABLES}
-          onlyAdd={ONLY_ADD}
           variablesList={VARIABLES_LIST}
           onSaveBonus={saveBonus}
           onReloadCharacter={props.onReloadCharacter}

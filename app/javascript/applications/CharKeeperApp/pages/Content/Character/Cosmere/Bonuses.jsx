@@ -80,12 +80,6 @@ const MAPPING = {
     'range_damage': 'Range damage'
   }
 }
-const NO_VARIABLES = ['str', 'spd', 'int', 'wil', 'awa', 'pre'];
-const ONLY_ADD = [
-  'str', 'spd', 'int', 'wil', 'awa', 'pre', 'attack', 'damage', 'health_max', 'focus_max', 'investiture_max',
-  'defense.physical', 'defense.cognitive', 'defense.spiritual', 'deflect', 'movement',
-  'melee_attacks', 'range_attacks', 'melee_damage', 'range_damage'
-];
 const VARIABLES_LIST = ['str', 'spd', 'int', 'wil', 'awa', 'pre', 'level', 'tier'];
 
 export const CosmereBonuses = (props) => {
@@ -115,8 +109,6 @@ export const CosmereBonuses = (props) => {
         <SharedBonusesV2
           character={character()}
           mapping={localize(MAPPING, locale())}
-          noVariables={NO_VARIABLES}
-          onlyAdd={ONLY_ADD}
           variablesList={VARIABLES_LIST}
           onSaveBonus={saveBonus}
           onReloadCharacter={props.onReloadCharacter}

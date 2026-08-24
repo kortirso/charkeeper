@@ -1,5 +1,4 @@
 import { createSignal, createEffect, For, Show, createMemo, batch } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
 
 import { DomainCardsTable } from './DomainCardsTable';
 import {
@@ -25,7 +24,15 @@ const TRANSLATION = {
     ability: 'Ability',
     grimoire: 'Grimoire',
     level: 'Level',
-    selectTrait: 'Select custom spellcast trait'
+    selectTrait: 'Select custom spellcast trait',
+    limit: 'Cards limit',
+    spellcastTraits: 'Spellcast traits',
+    loadout: 'Loadout',
+    vault: 'Vault',
+    select: 'Add domain cards',
+    cardNote: 'Domain card note',
+    save: 'Save',
+    cancel: 'Cancel'
   },
   ru: {
     loadoutLimit: 'Лимит инвентаря',
@@ -35,7 +42,15 @@ const TRANSLATION = {
     ability: 'Способность',
     grimoire: 'Гримуар',
     level: 'Уровень',
-    selectTrait: 'Выбрать альтернативную характеристику заклинателя.'
+    selectTrait: 'Выбрать альтернативную характеристику заклинателя.',
+    limit: 'Лимит карт',
+    spellcastTraits: 'Способности',
+    loadout: 'Инвентарь',
+    vault: 'Хранилище',
+    select: 'Добавить карты',
+    cardNote: 'Заметка',
+    save: 'Сохранить',
+    cancel: 'Отменить'
   },
   es:{
     loadoutLimit: 'Límite de equipamiento',
@@ -45,7 +60,15 @@ const TRANSLATION = {
     ability: 'Habilidad',
     grimoire: 'Grimorio',
     level: 'Nivel',
-    selectTrait: 'Select custom spellcast trait'
+    selectTrait: 'Select custom spellcast trait',
+    limit: 'Límite de cartas',
+    spellcastTraits: 'Atributos de conjuro',
+    loadout: 'Carga',
+    vault: 'Baúl',
+    select: 'Añadir cartas de Dominio',
+    cardNote: 'Nota de carta de Dominio',
+    save: 'Guardar',
+    cancel: 'Copiar'
   }
 }
 
@@ -67,9 +90,7 @@ export const DaggerheartDomainCards = (props) => {
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
   const [{ renderNotice, renderAlerts }] = useAppAlert();
-  const [locale, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
+  const [locale] = useAppLocale();
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
@@ -95,6 +116,8 @@ export const DaggerheartDomainCards = (props) => {
       setSpellcastTrait(character().spellcast_trait);
     });
   });
+
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
 
   const currentLocale = createMemo(() => {
     const providerLocale = appState.providerLocales['daggerheart'];
@@ -131,7 +154,7 @@ export const DaggerheartDomainCards = (props) => {
     if (result.errors_list === undefined) {
       batch(() => {
         setCharacterSpells([result.spell].concat(characterSpells()));
-        renderNotice(localize(TRANSLATION, locale())['domainCardIsAdded']);
+        renderNotice(i18n().domainCardIsAdded);
       });
       props.onReloadCharacter();
     }
@@ -223,7 +246,7 @@ export const DaggerheartDomainCards = (props) => {
             <>
               <div class="flex justify-between items-center mb-2">
                 <Checkbox
-                  labelText={localize(TRANSLATION, locale()).onlyAvailableSpells}
+                  labelText={i18n().onlyAvailableSpells}
                   labelPosition="right"
                   labelClassList="ml-2"
                   checked={availableDomainsFilter()}
@@ -240,7 +263,7 @@ export const DaggerheartDomainCards = (props) => {
                             <div class="domain-card-title">
                               <p class="font-normal! text-lg">{spell.title}</p>
                               <Show when={spell.info.type}>
-                                {localize(TRANSLATION, locale())[spell.info.type]} ({spell.conditions.level} {localize(TRANSLATION, locale()).level})
+                                {i18n()[spell.info.type]} ({spell.conditions.level} {i18n().level})
                               </Show>
                             </div>
                             <p
@@ -261,7 +284,7 @@ export const DaggerheartDomainCards = (props) => {
                   </Toggle>
                 }
               </For>
-              <Button default textable onClick={() => setSpellsSelectingMode(false)}>{t('back')}</Button>
+              <Button default textable onClick={() => setSpellsSelectingMode(false)}><span>{i18n().back}</span></Button>
             </>
           }
         >
@@ -273,7 +296,7 @@ export const DaggerheartDomainCards = (props) => {
                   <div class="blockable blockable-padding mb-2">
                     <Select
                       withNull
-                      labelText={localize(TRANSLATION, locale()).selectTrait}
+                      labelText={i18n().selectTrait}
                       items={translate(config.traits, locale())}
                       selectedValue={spellcastTrait()}
                       onSelect={setSpellcastTrait}
@@ -283,19 +306,19 @@ export const DaggerheartDomainCards = (props) => {
               >
                 <StatsBlock
                   items={[
-                    { title: t('daggerheart.domainCards.limit'), value: character().domain_cards_max },
-                    { title: t('daggerheart.domainCards.spellcastTraits'), value: renderSpellcastTraits(character().spellcast_traits) }
+                    { title: i18n().limit, value: character().domain_cards_max },
+                    { title: i18n().spellcastTraits, value: renderSpellcastTraits(character().spellcast_traits) }
                   ]}
                 />
               </Show>
             </EditWrapper>
             <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
-              {t('daggerheart.domainCards.select')}
+              <span>{i18n().select}</span>
             </Button>
             <DomainCardsTable
               countCards
-              title={t('daggerheart.domainCards.loadout')}
-              subtitle={`${localize(TRANSLATION, locale()).loadoutLimit} - 5`}
+              title={i18n().loadout}
+              subtitle={`${i18n().loadoutLimit} - ${character().loadout}`}
               spells={characterSpells().filter((spell) => spell.ready_to_use)}
               domains={daggerheartDomains()}
               onChangeSpell={changeSpell}
@@ -303,7 +326,7 @@ export const DaggerheartDomainCards = (props) => {
               onRemoveCharacterSpell={removeCharacterSpell}
             />
             <DomainCardsTable
-              title={t('daggerheart.domainCards.vault')}
+              title={i18n().vault}
               spells={characterSpells().filter((spell) => !spell.ready_to_use)}
               domains={daggerheartDomains()}
               onChangeSpell={changeSpell}
@@ -317,11 +340,11 @@ export const DaggerheartDomainCards = (props) => {
         <Show when={changingSpell()}>
           <TextArea
             rows="2"
-            labelText={t('daggerheart.domainCards.cardNote')}
+            labelText={i18n().cardNote}
             value={changingSpell().notes}
             onChange={(value) => setChangingSpell({ ...changingSpell(), notes: value })}
           />
-          <Button default textable classList="mt-2" onClick={updateSpell}>{t('save')}</Button>
+          <Button default textable classList="mt-2" onClick={updateSpell}><span>{i18n().save}</span></Button>
         </Show>
       </Modal>
     </ErrorWrapper>

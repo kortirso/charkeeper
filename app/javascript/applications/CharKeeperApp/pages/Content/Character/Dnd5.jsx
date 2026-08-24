@@ -3,7 +3,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, Dnd5Skills, Dnd5Equipment,
-  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses, Dnd2024Spells, Dnd5Info, Dnd2024Bonuses
+  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd2024Spells, Dnd5Info, Dnd2024Bonuses
 } from '../../../pages';
 import {
   CharacterNavigation, Notes, Avatar, ContentWrapper, Feats, createRoll, Conditions, Combat, Gold
@@ -85,7 +85,9 @@ export const Dnd5 = (props) => {
   const characterTabs = createMemo(() => {
     const result = ['combat', 'equipment', 'spells', 'professions'];
     if (character().provider === 'dnd2024') result.push('craft');
-    return result.concat(['classLevels', 'rest', 'bonuses', 'notes', 'avatar']);
+    result.concat(['classLevels', 'rest']);
+    if (character().provider === 'dnd2024') result.push('bonuses');
+    return result.concat(['notes', 'avatar']);
   });
 
   const mobileView = createMemo(() => {
@@ -164,12 +166,7 @@ export const Dnd5 = (props) => {
               <Dnd5Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
-              <Show
-                when={character().provider === 'dnd5'}
-                fallback={<Dnd2024Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />}
-              >
-                <Dnd5Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
-              </Show>
+              <Dnd2024Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
               <Dnd5Equipment
@@ -350,12 +347,7 @@ export const Dnd5 = (props) => {
               <Notes />
             </Match>
             <Match when={activeTab() === 'bonuses'}>
-              <Show
-                when={character().provider === 'dnd5'}
-                fallback={<Dnd2024Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />}
-              >
-                <Dnd5Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
-              </Show>
+              <Dnd2024Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'classLevels'}>
               <Dnd5ClassLevels

@@ -33,10 +33,6 @@ const MAPPING = {
     'health.max': 'Здоровье'
   }
 }
-const NO_VARIABLES = [];
-const ONLY_ADD = [
-  'str', 'dex', 'int', 'wil', 'health.max', 'initiative'
-];
 const VARIABLES_LIST = ['str', 'dex', 'int', 'wil', 'level', 'no_armor'];
 
 export const NimbleBonuses = (props) => {
@@ -66,8 +62,6 @@ export const NimbleBonuses = (props) => {
         <SharedBonusesV2
           character={character()}
           mapping={localize(MAPPING, locale())}
-          noVariables={NO_VARIABLES}
-          onlyAdd={ONLY_ADD}
           variablesList={VARIABLES_LIST}
           onSaveBonus={saveBonus}
           onReloadCharacter={props.onReloadCharacter}

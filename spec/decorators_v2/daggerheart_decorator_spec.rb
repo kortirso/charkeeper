@@ -1,27 +1,27 @@
 # frozen_string_literal: true
 
-describe DaggerheartCharacter::BaseDecorator do
-  subject(:decorator) do
-    base_decorator = described_class.new(Character.find(character.id))
-    base_features_decorator = FeaturesBaseDecorator.new(base_decorator)
-    base_features_decorator.features
-    stats_decorator = DaggerheartCharacter::StatsDecorator.new(base_features_decorator)
-    features_decorator = FeaturesDecorator.new(stats_decorator)
-    features_decorator.features
-    DaggerheartCharacter::OverallDecorator.new(features_decorator)
-  end
+describe DaggerheartDecorator do
+  subject(:decorator) { described_class.new.call(character: character_record) }
 
   let!(:character) { create :character, :daggerheart }
+  let!(:character_record) { Character.find(character.id) }
 
   before do
-    create :character_bonus, bonusable: character, value: { proficiency: 1, traits: { know: 1 } }
-    create :character_bonus, bonusable: character, value: { evasion: 1, health: 2, attack: 1 }
+    create :character_bonus, bonusable: character, enabled: true, value: {
+      'proficiency' => { 'type' => 'add', 'value' => 1 },
+      'know' => { 'type' => 'add', 'value' => 1 }
+    }
+    create :character_bonus, bonusable: character, enabled: true, value: {
+      'evasion' => { 'type' => 'add', 'value' => 1 },
+      'health_max' => { 'type' => 'add', 'value' => 2 },
+      'attack' => { 'type' => 'add', 'value' => 1 }
+    }
   end
 
   it 'does not raise errors', :aggregate_failures do
     expect { decorator.id }.not_to raise_error
     expect(decorator.proficiency).to eq 3
-    expect(decorator.traits).to eq({ 'str' => 1, 'agi' => 2, 'fin' => 1, 'ins' => 0, 'pre' => 0, 'know' => -1 })
+    expect(character_record.data.traits).to eq({ 'str' => 1, 'agi' => 2, 'fin' => 1, 'ins' => 0, 'pre' => 0, 'know' => -1 })
     expect(decorator.modified_traits).to eq({ 'str' => 1, 'agi' => 2, 'fin' => 1, 'ins' => 0, 'pre' => 0, 'know' => 0 })
     expect(decorator.damage_thresholds).to eq({ 'major' => 4, 'severe' => 8 })
     expect(decorator.evasion).to eq 11
@@ -31,7 +31,12 @@ describe DaggerheartCharacter::BaseDecorator do
   end
 
   context 'with bonus to thresholds' do
-    before { create :character_bonus, bonusable: character, value: { thresholds: { major: 1, severe: 2 } } }
+    before do
+      create :character_bonus, bonusable: character, value: {
+        'damage_thresholds.major' => { 'type' => 'add', 'value' => 1 },
+        'damage_thresholds.severe' => { 'type' => 'add', 'value' => 2 }
+      }
+    end
 
     it 'does not raise errors', :aggregate_failures do
       expect { decorator.id }.not_to raise_error
@@ -41,12 +46,18 @@ describe DaggerheartCharacter::BaseDecorator do
 
   context 'with equiped armor' do
     let!(:armor) do
-      create :item, :daggerheart, kind: 'armor', info: {
-        base_score: 4, bonuses: { traits: { str: -1 }, evasion: -1, thresholds: { major: 7, severe: 14 } }
+      create :item, :daggerheart, kind: 'armor', modifiers: {
+        'armor_score' => { 'type' => 'add', 'value' => 4 },
+        'str' => { 'type' => 'add', 'value' => -1 },
+        'evasion' => { 'type' => 'add', 'value' => -1 },
+        'damage_thresholds.major' => { 'type' => 'add', 'value' => 7 },
+        'damage_thresholds.severe' => { 'type' => 'add', 'value' => 14 }
       }
     end
 
-    before { create :character_item, character: character, item: armor, state: Character::Item::EQUIPMENT }
+    before do
+      create :character_item, character: character, item: armor, states: Character::Item.default_states.merge('equipment' => 1)
+    end
 
     it 'does not raise errors', :aggregate_failures do
       expect { decorator.id }.not_to raise_error
@@ -56,7 +67,13 @@ describe DaggerheartCharacter::BaseDecorator do
     end
 
     context 'with bonus to thresholds' do
-      before { create :character_bonus, bonusable: character, value: { armor_score: 1, thresholds: { major: 1, severe: 2 } } }
+      before do
+        create :character_bonus, bonusable: character, value: {
+          'armor_score' => { 'type' => 'add', 'value' => 1 },
+          'damage_thresholds.major' => { 'type' => 'add', 'value' => 1 },
+          'damage_thresholds.severe' => { 'type' => 'add', 'value' => 2 }
+        }
+      end
 
       it 'does not raise errors', :aggregate_failures do
         expect { decorator.id }.not_to raise_error
@@ -66,10 +83,19 @@ describe DaggerheartCharacter::BaseDecorator do
 
       context 'with weapon' do
         let!(:weapon) do
-          create :item, :daggerheart, kind: 'primary weapon', info: { bonuses: { traits: { pre: 1 }, evasion: -1, attack: 1 } }
+          create :item, :daggerheart, kind: 'primary weapon', modifiers: {
+            'pre' => { 'type' => 'add', 'value' => 1 },
+            'evasion' => { 'type' => 'add', 'value' => -1 },
+            'attack' => { 'type' => 'add', 'value' => 1 }
+          }
         end
 
-        before { create :character_item, character: character, item: weapon, state: Character::Item::HANDS }
+        before do
+          create :character_item,
+                 character: character,
+                 item: weapon,
+                 states: Character::Item.default_states.merge('equipment' => 1)
+        end
 
         it 'does not raise errors', :aggregate_failures do
           expect { decorator.id }.not_to raise_error
@@ -86,9 +112,10 @@ describe DaggerheartCharacter::BaseDecorator do
 
     context 'with bare bones feat' do
       let!(:feat) do
-        create :feat, :rally, bonus_eval_variables: {
-          base_armor_score: "equiped_armor_info ? base_armor_score : (5 + modified_traits['str'])",
-          base_damage_thresholds: "equiped_armor_info ? base_damage_thresholds : ({ 'major' => 7 + tier * 2, 'severe' => (tier == 1 ? 19 : (10 + tier * 7)) })" # rubocop: disable Layout/LineLength
+        create :feat, :rally, modifiers: {
+          'armor_score' => { 'type' => 'set', 'value' => 'if (no_armor, 3 + str, 0)' },
+          'damage_thresholds.major' => { 'type' => 'set', 'value' => 'if (no_armor, 7 + tier * 2, 0)' },
+          'damage_thresholds.severe' => { 'type' => 'set', 'value' => 'if (no_armor, if (tier == 1, 19, 10 + tier * 7), 0)' }
         }
       end
 
@@ -109,12 +136,17 @@ describe DaggerheartCharacter::BaseDecorator do
         it 'returns stats based on feat', :aggregate_failures do
           expect { decorator.id }.not_to raise_error
           expect(decorator.level).to eq 4
-          expect(decorator.armor_score).to eq 6
+          expect(decorator.armor_score).to eq 4
           expect(decorator.damage_thresholds).to eq({ 'major' => 15, 'severe' => 28 })
         end
 
         context 'with bonus to thresholds' do
-          before { create :character_bonus, bonusable: character, value: { thresholds: { major: 1, severe: 2 } } }
+          before do
+            create :character_bonus, bonusable: character, value: {
+              'damage_thresholds.major' => { 'type' => 'add', 'value' => 1 },
+              'damage_thresholds.severe' => { 'type' => 'add', 'value' => 2 }
+            }
+          end
 
           it 'does not raise errors', :aggregate_failures do
             expect { decorator.id }.not_to raise_error
@@ -127,8 +159,8 @@ describe DaggerheartCharacter::BaseDecorator do
 
   context 'for beastform' do
     before do
-      character.data = character.data.merge({ beastform: 'agile_scout' })
-      character.save
+      character_record.data = character_record.data.attributes.merge({ beastform: 'agile_scout' })
+      character_record.save
     end
 
     it 'does not raise errors', :aggregate_failures do

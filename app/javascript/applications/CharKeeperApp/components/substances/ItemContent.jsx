@@ -1,4 +1,4 @@
-import { createMemo, Show } from 'solid-js';
+import { createMemo, Show, For } from 'solid-js';
 
 import { useAppState, useAppLocale } from '../../context';
 import { Hand, TwoHands } from '../../assets';
@@ -159,8 +159,15 @@ const DaggerheartWeapon = (props) => {
         <p>{item().info.damage}{item().info.damage_bonus !== 0 ? modifier(item().info.damage_bonus) : ''}</p>
         <p>{localize(daggerheartConfig.damageTypes[item().info.damage_type].name, props.currentLocale)}</p>
       </div>
-      <Show when={item().info.features && item().info.features.length > 0}>
-        <p class="mt-2 text-sm">{item().info.features[0][props.locale]}</p>
+      <Show when={item().features && item().features.length > 0}>
+        <For each={item().features}>
+          {(feature) =>
+            <p
+              class="feat-markdown mt-2 text-sm!"
+              innerHTML={feature} // eslint-disable-line solid/no-innerhtml
+            />
+          }
+        </For>
       </Show>
     </>
   );
@@ -176,8 +183,15 @@ const DaggerheartArmor = (props) => {
       </div>
       <p class="mt-2">{TRANSLATION[props.locale].thresholds} - {item().info.bonuses.thresholds.major} / {item().info.bonuses.thresholds.severe}</p>
       <p class="mt-2">{TRANSLATION[props.locale].score} - {item().info.base_score}</p>
-      <Show when={item().info.features && item().info.features.length > 0}>
-        <p class="mt-2 text-sm">{item().info.features[0][props.locale]}</p>
+      <Show when={item().features && item().features.length > 0}>
+        <For each={item().features}>
+          {(feature) =>
+            <p
+              class="feat-markdown mt-2 text-sm!"
+              innerHTML={feature} // eslint-disable-line solid/no-innerhtml
+            />
+          }
+        </For>
       </Show>
     </>
   );
@@ -188,8 +202,15 @@ const DaggerheartItem = (props) => {
 
   return (
     <>
-      <Show when={item().info.features && item().info.features.length > 0}>
-        <p class="mt-4 text-sm">{item().info.features[0][props.locale]}</p>
+      <Show when={item().features && item().features.length > 0}>
+        <For each={item().features}>
+          {(feature) =>
+            <p
+              class="feat-markdown mt-4 text-sm!"
+              innerHTML={feature} // eslint-disable-line solid/no-innerhtml
+            />
+          }
+        </For>
       </Show>
     </>
   );
