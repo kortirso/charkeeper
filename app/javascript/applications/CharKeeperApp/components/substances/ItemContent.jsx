@@ -323,7 +323,10 @@ export const ItemContent = (props) => {
     <>
       <p class="text-xl">{item().name}</p>
       <Show when={props.description}>
-        <p class="text-sm mt-4">{props.description}</p>
+        <p
+          class="feat-markdown mt-4 text-sm!"
+          innerHTML={props.description} // eslint-disable-line solid/no-innerhtml
+        />
       </Show>
       {ItemComponent()}
     </>

@@ -3,10 +3,14 @@
 module Frontend
   module Info
     class ItemsController < Frontend::BaseController
+      include Deps[markdown: 'markdown']
+
       before_action :find_item
 
       def show
-        render json: { value: @item.description[I18n.locale.to_s] }, status: :ok
+        render json: {
+          value: markdown.call(value: @item.description[I18n.locale.to_s], version: params[:version])
+        }, status: :ok
       end
 
       private
