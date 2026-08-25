@@ -4,7 +4,8 @@ module HomebrewsV2
   class HomebrewsController < HomebrewsV2::BaseController
     include SerializeRelation
 
-    before_action :find_homebrews, only: %i[index]
+    before_action :find_homebrews, only: %i[index list]
+    before_action :find_list_homebrews, only: %i[list]
     before_action :find_upvotes, only: %i[index]
     before_action :find_homebrew, only: %i[show]
     before_action :find_homebrews_for_batch_destroy, only: %i[batch_destroy]
@@ -19,12 +20,18 @@ module HomebrewsV2
     end
 
     def show
-      render json: { homebrews: @homebrew.to_homebrew_json(with_id: @homebrew.user_id == current_user.id) }, status: status
+      render json: { homebrews: @homebrew.to_homebrew_json(with_id: @homebrew.user_id == current_user.id) }, status: :ok
     end
 
     def batch_destroy
       @homebrews.update_all(discarded_at: Time.current)
       only_head_response
+    end
+
+    def list
+      render json: {
+        homebrews: @homebrews.map { |homebrew| homebrew.to_homebrew_json(with_id: homebrew.user_id == current_user.id)[0] }
+      }, status: :ok
     end
 
     private
@@ -35,6 +42,10 @@ module HomebrewsV2
           .or(
             ::Homebrew.where.not(user_id: current_user.id).where(public: true, type: params[:type])
           ).kept.order(created_at: :desc).includes(:homebrew_books)
+    end
+
+    def find_list_homebrews
+      @homebrews = @homebrews.where(id: params[:ids])
     end
 
     def find_upvotes

@@ -289,6 +289,7 @@ Rails.application.routes.draw do
   namespace :homebrews_v2 do
     resources :homebrews, only: %i[index show] do
       post :batch_destroy, on: :collection
+      post :list, on: :collection
     end
     resources :publications, only: %i[index create destroy]
 

@@ -5,7 +5,7 @@ import { FeatureModifiers } from './FeatureModifiers';
 
 import { useAppState } from '../../../context';
 import { SharedContent } from '../../../pages';
-import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
+import { fetchListRequest, fetchHomebrewRequest, fetchHomebrewsRequest, batchDestroyRequest } from '../../../requests_v2/list';
 import { fetchCommunityRequest, removeCommunityRequest } from '../../../requests_v2/daggerheart/communities';
 
 export const DaggerheartCommunitiesV2 = () => {
@@ -13,6 +13,7 @@ export const DaggerheartCommunitiesV2 = () => {
 
   const fetchList = async () => await fetchListRequest(appState.accessToken, 'Daggerheart::Homebrews::Community');
   const fetchHomebrew = async (id) => await fetchHomebrewRequest(appState.accessToken, 'Daggerheart::Homebrews::Community', id);
+  const fetchHomebrews = async (ids) => await fetchHomebrewsRequest(appState.accessToken, 'Daggerheart::Homebrews::Community', ids);
   const batchDestroy = async (ids) => await batchDestroyRequest(appState.accessToken, 'Daggerheart::Homebrews::Community', ids);
 
   const ChildrenComponent = (props) => (
@@ -51,6 +52,7 @@ export const DaggerheartCommunitiesV2 = () => {
       publicationType="community"
       onFetchRequest={fetchList}
       onFetchHomebrew={fetchHomebrew}
+      onFetchHomebrews={fetchHomebrews}
       onBatchDestroy={batchDestroy}
       onShowRequest={fetchCommunityRequest}
       onRemoveRequest={removeCommunityRequest}

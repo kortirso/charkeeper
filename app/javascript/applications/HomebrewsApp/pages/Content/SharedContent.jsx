@@ -32,7 +32,8 @@ const TRANSLATION = {
     deletingAll: 'Deleting selected homebrews',
     inBooks: 'Included in books',
     public: 'Public',
-    caption: 'Enable books that contain specific homebrews you need, and they will be available for your characters after that.'
+    caption: 'Enable books that contain specific homebrews you need, and they will be available for your characters after that.',
+    editAll: 'Edit all'
   },
   ru: {
     add: 'Добавить',
@@ -56,7 +57,8 @@ const TRANSLATION = {
     deletingAll: 'Удаление выбранных homebrews',
     inBooks: 'Добавлено в книги',
     public: 'Общедоступное',
-    caption: 'Чтобы определённые homebrew были доступны вашим персонажам, то вам необходимо включить те книги, которые содержат интересующие вас homebrew.'
+    caption: 'Чтобы определённые homebrew были доступны вашим персонажам, то вам необходимо включить те книги, которые содержат интересующие вас homebrew.',
+    editAll: 'Изменить выбранные'
   },
   es: {
     add: 'Agregar',
@@ -80,7 +82,8 @@ const TRANSLATION = {
     deletingAll: 'Deleting selected homebrews',
     inBooks: 'Included in books',
     public: 'Public',
-    caption: 'Enable books that contain specific homebrews you need, and they will be available for your characters after that.'
+    caption: 'Enable books that contain specific homebrews you need, and they will be available for your characters after that.',
+    editAll: 'Edit all'
   }
 }
 
@@ -245,6 +248,26 @@ export const SharedContent = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const editAll = async () => {
+    const result = await props.onFetchHomebrews(selectedIds());
+    if (result.errors_list === undefined) {
+      const jsonString = JSON.stringify(result.homebrews, null, 2);
+      const blob = new Blob([jsonString], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+
+      // Create a temporary anchor element and trigger download
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${props.publicationType}.json`;
+      document.body.appendChild(link);
+      link.click();
+      
+      // Clean up
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } else renderAlerts(result.errors_list);
+  }
+
   const select = (e, id) => {
     e.stopPropagation();
 
@@ -358,9 +381,14 @@ export const SharedContent = (props) => {
                 </Show>
               </Show>
             </div>
-            <Show when={props.onBatchDestroy && selectedIds().length > 0 && ownFilter()}>
-              <Button default disabled={selectedIds().length === 0} classList="px-2 py-1" onClick={removeAll}>{localize(TRANSLATION, locale()).deleteAll}</Button>
-            </Show>
+            <div>
+              <Show when={props.onBatchDestroy && selectedIds().length > 0 && ownFilter()}>
+                <Button default disabled={selectedIds().length === 0} classList="px-2 py-1 mr-4" onClick={removeAll}>{localize(TRANSLATION, locale()).deleteAll}</Button>
+              </Show>
+              <Show when={props.onFetchHomebrews && selectedIds().length > 0}>
+                <Button default disabled={selectedIds().length === 0} classList="px-2 py-1" onClick={editAll}>{localize(TRANSLATION, locale()).editAll}</Button>
+              </Show>
+            </div>
           </div>
           <div class="flex flex-col gap-2">
             <p>{localize(TRANSLATION, locale()).caption}</p>
