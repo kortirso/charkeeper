@@ -212,11 +212,21 @@ class DaggerheartDecorator < ApplicationDecoratorV2
 
     versatile = item[:items_info]['versatile']
     if versatile
+      tags =
+        if versatile['damage_type']
+          response[0][:tags].except(response[0][:damage_type]).merge(
+            versatile['damage_type'] => I18n.t("tags.daggerheart.weapon.title.#{versatile['damage_type']}")
+          )
+        else
+          response[0][:tags]
+        end
       response << response[0].merge({
         range: versatile['range'],
         attack_bonus: modified_traits[versatile['trait']],
         damage: "#{proficiency}#{versatile['damage']}",
-        damage_bonus: versatile['damage_bonus']
+        damage_bonus: versatile['damage_bonus'],
+        damage_type: versatile['damage_type'],
+        tags: tags
       })
     end
 

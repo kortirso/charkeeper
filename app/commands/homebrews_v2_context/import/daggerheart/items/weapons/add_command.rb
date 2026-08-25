@@ -22,8 +22,8 @@ module HomebrewsV2Context
                   optional(:ru).maybe(:string, max_size?: 50)
                   optional(:es).maybe(:string, max_size?: 50)
                 end
-                required(:description).hash do
-                  required(:en).filled(:string, max_size?: 500)
+                optional(:description).hash do
+                  optional(:en).filled(:string, max_size?: 500)
                   optional(:ru).maybe(:string, max_size?: 500)
                   optional(:es).maybe(:string, max_size?: 500)
                 end
@@ -45,6 +45,7 @@ module HomebrewsV2Context
                     required(:range).filled(Ranges)
                     required(:damage).filled(:string)
                     required(:damage_bonus).filled(:integer, gteq?: 0, lteq?: 20)
+                    optional(:damage_type).filled(DamageTypes)
                   end
                 end
                 optional(:modifiers).hash
