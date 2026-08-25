@@ -18,7 +18,8 @@ describe Frontend::ItemsController do
           expect(response.parsed_body['items'].size).to eq 1
           expect(response_values.keys).to(
             contain_exactly(
-              'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features'
+              'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features',
+              'modifiers'
             )
           )
         end
@@ -36,7 +37,8 @@ describe Frontend::ItemsController do
           expect(response.parsed_body['items'].size).to eq 1
           expect(response_values.keys).to(
             contain_exactly(
-              'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features'
+              'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features',
+              'modifiers'
             )
           )
         end
@@ -62,7 +64,8 @@ describe Frontend::ItemsController do
           expect(response.parsed_body['items'].size).to eq 3
           expect(response_values.keys).to(
             contain_exactly(
-              'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features'
+              'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features',
+              'modifiers'
             )
           )
         end

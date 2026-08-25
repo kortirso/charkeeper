@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ItemSerializer < ApplicationSerializer
-  ATTRIBUTES = %i[id slug kind name original_name data info homebrew has_description features].freeze
+  ATTRIBUTES = %i[id slug kind name original_name data info homebrew has_description features modifiers].freeze
 
   attributes(*ATTRIBUTES)
 
@@ -31,5 +31,9 @@ class ItemSerializer < ApplicationSerializer
 
     markdown = Charkeeper::Container.resolve('markdown')
     object.info['features']&.map { |feature| markdown.call(value: translate(feature), version: context[:version]) }
+  end
+
+  def modifiers
+    object.modifiers.transform_values { |value| value['value'] }
   end
 end

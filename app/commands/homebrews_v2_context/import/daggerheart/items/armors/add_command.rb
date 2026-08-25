@@ -46,8 +46,10 @@ module HomebrewsV2Context
             def do_prepare(input) # rubocop: disable Metrics/AbcSize
               input[:modifiers] ||= {}
               input[:modifiers][:armor_score] = { type: 'add', value: input.dig(:info, :base_score) }
-              input[:modifiers]['thresholds.major'] = { type: 'add', value: input.dig(:info, :bonuses, :thresholds, :major) }
-              input[:modifiers]['thresholds.severe'] = { type: 'add', value: input.dig(:info, :bonuses, :thresholds, :severe) }
+              input[:modifiers]['damage_thresholds.major'] =
+                { type: 'add', value: input.dig(:info, :bonuses, :thresholds, :major) }
+              input[:modifiers]['damage_thresholds.severe'] =
+                { type: 'add', value: input.dig(:info, :bonuses, :thresholds, :severe) }
 
               input[:name].transform_values! { |value| sanitize(value) }
               input[:description].transform_values! { |value| sanitize(value) }
