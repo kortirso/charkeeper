@@ -353,6 +353,7 @@ Rails.application.routes.draw do
       get 'auth/:provider/callback', to: 'users/omniauth_callbacks#create'
 
       scope module: :users do
+        resources :recovery, only: %i[new]
         resources :signin, only: %i[new create]
         resources :signup, only: %i[new create]
         resources :external, only: %i[new] unless Rails.env.production?

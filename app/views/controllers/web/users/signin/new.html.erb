@@ -53,6 +53,10 @@
       <%= t('web.users.signin.have_not') %>
       <%= link_to t('web.users.signin.signup'), new_signup_path, class: 'underline' %>
     </div>
+    <div class="mb-2">
+      <%= t('web.users.signin.forgot') %>
+      <%= link_to t('web.users.signin.recovery'), new_recovery_path, class: 'underline' %>
+    </div>
     <%= form.submit t('web.users.signin.create'), class: 'btn btn-primary', data: { 'test-id' => 'signin-button' } %>
   <% end %>
 </div>

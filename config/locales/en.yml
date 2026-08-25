@@ -357,7 +357,7 @@ en:
       ru_signup:
         have: Already have account through external services?
         title: A law was passed in the RU region, making it illegal to use foreign services to create a new account. If you've already created an account this way, you can only log in once more to set your username and password in your profile settings.
-        contacts: If you are unable to regain access to your account, please contact us using any of the contact information listed in the footer.
+        contacts: If you are unable to regain access to your account, please contact us using any of the contact information. Charkeeper does not store your personal data, so you will need to provide details of your characters to confirm.
       auth:
         notice: Authentication succeeds
         alert: Authentication failed
@@ -376,6 +376,10 @@ en:
         signup: Sign up
         create: Login
         logout: Logout
+        forgot: Forgot password?
+        recovery: Recovery
+      recovery:
+        title: Password recovery
   telegram_webhook:
     unknown: "I don't know what to say, sorry :("
     start: "Hello, %{sender}! I'm Charkeeper - an electronic character sheet! I'll help you keep track of your characters that you play tabletop role-playing games with. You can find the mini-app launcher button at the bottom left.\n\nWhat I can do now: create characters according to D&D 5 and 2024, Daggerheart and just a little bit Pathfinder 2 rules, take into account equipment and known spells, display current racial and class abilities available to the character depending on the level, take into account spent spell slots, refresh available abilities after rest, display all possible attack abilities and help with keeping the character sheet in every possible way.\n\nIn addition everything is available on: web interface - https://charkeeper.org, android application in Google Store - https://play.google.com/store/apps/details?id=org.kortirso.charkeeper, iOS application in App Store - https://testflight.apple.com/join/Fh1SjU8g.I'm still in the process of development, you can send your comments, questions and suggestions to @kortirso.\n\nTo unsubscribe from the bot's news list, enter the /unsubscribe command or delete this chat with the blocking bot."
