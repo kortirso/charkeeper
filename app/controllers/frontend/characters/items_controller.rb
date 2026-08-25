@@ -64,7 +64,7 @@ module Frontend
       end
 
       def items
-        @character.items.includes(item: :bonuses)
+        @character.items
       end
 
       def create_params

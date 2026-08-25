@@ -39,7 +39,7 @@ describe Frontend::Characters::ItemsController do
           expect(response.parsed_body['items'].size).to eq 1
           expect(response_values.keys).to(
             contain_exactly(
-              'id', 'notes', 'name', 'kind', 'bonuses', 'custom', 'charges', 'charges_max', 'features',
+              'id', 'notes', 'name', 'kind', 'custom', 'charges', 'charges_max', 'features',
               'data', 'state', 'has_description', 'item_id', 'states', 'info', 'modifiers', 'item_modifiers'
             )
           )
