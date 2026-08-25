@@ -1,0 +1,21 @@
+<div class="max-w-7xl mx-auto flex-1 flex flex-col justify-center items-center">
+  <div class="p-4 bg-cosmos">
+    <h2 class="text-2xl mb-4"><%= t('web.users.recovery.title') %></h2>
+    <p class="mb-4"><%= t('web.users.ru_signup.contacts') %></p>
+    <div class="flex">
+      <a href="https://discord.gg/CmT8RgyECQ" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+        <%= image_tag 'discord.svg', class: 'w-6 h-6 mr-2', alt: 'discord', width: 24, height: 24 %>
+      </a>
+      <a href="https://vk.com/char_keeper" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+        <%= image_tag 'vk.svg', class: 'w-6 h-6 mr-2', alt: 'vk', width: 24, height: 24 %>
+      </a>
+      <a href="https://t.me/charkeeper" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+        <%= image_tag 'telegram.svg', class: 'w-6 h-6 mr-2', alt: 'telegram', width: 24, height: 24 %>
+      </a>
+    </div>
+    <div class="mt-4">
+      <%= t('web.users.signup.have') %>
+      <%= link_to t('web.users.signup.login'), new_signin_path, class: 'underline' %>
+    </div>
+  </div>
+</div>

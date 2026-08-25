@@ -357,7 +357,7 @@ es:
       ru_signup:
         have: Already have account through external services?
         title: A law was passed in the RU region, making it illegal to use foreign services to create a new account. If you've already created an account this way, you can only log in once more to set your username and password in your profile settings.
-        contacts: If you are unable to regain access to your account, please contact us using any of the contact information listed in the footer.
+        contacts: If you are unable to regain access to your account, please contact us using any of the contact information. Charkeeper no almacena tus datos personales, por lo que tendrás que proporcionar los detalles de tus personajes para confirmarlos.
       auth:
         notice: La autenticación se ha realizado correctamente
         alert: Error en la autenticación
@@ -376,6 +376,10 @@ es:
         signup: Registrarse
         create: Iniciar sesión
         logout: Cerrar sesión
+        forgot: Forgot password?
+        recovery: Recovery
+      recovery:
+        title: Password recovery
   telegram_webhook:
     unknown: "No sé qué decir, lo siento :("
     start: "¡Hola, %{sender}! Soy Charkeeper, ¡una hoja de personaje electrónica! Te ayudaré a llevar un registro de los personajes con los que juegas a juegos de rol de mesa. Encontrarás el botón del mini lanzador de aplicaciones en la parte inferior izquierda.\n\nLo que puedo hacer ahora: crear personajes según las reglas de D&D 5 y 2024, Daggerheart y, en menor medida, Pathfinder 2; tener en cuenta el equipo y los hechizos conocidos; mostrar las habilidades raciales y de clase disponibles para el personaje en función de su nivel; tener en cuenta los espacios de hechizo gastados; actualizar las habilidades disponibles después del descanso; mostrar todas las habilidades de ataque posibles y ayudar a mantener la hoja de personaje de todas las formas posibles.\n\nLo que puedo hacer ahora: crear personajes según las reglas de D&D 5 y 2024, Daggerheart y, en menor medida, Pathfinder 2; tener en cuenta el equipo y los hechizos conocidos; mostrar las habilidades raciales y de clase disponibles para el personaje en función de su nivel; tener en cuenta los espacios de hechizo gastados; actualizar las habilidades disponibles después del descanso; mostrar todas las habilidades de ataque posibles y ayudar a mantener la hoja de personaje de todas las formas posibles.\n\nPara darte de baja de la lista de noticias del bot, introduce el comando /unsubscribe o elimina este chat con el bot de bloqueo."

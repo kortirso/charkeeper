@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - primary roll bonus for nimble rolls
 - rerolling nimble dices
+- notes for password recovery
 
 ## [0.5.5] - 2026-08-13
 ### Added
