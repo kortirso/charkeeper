@@ -7,6 +7,13 @@ export const fetchListRequest = async (accessToken, type) => {
   });
 }
 
+export const fetchHomebrewsRequest = async (accessToken, type, ids) => {
+  return await apiRequest({
+    url: `/homebrews_v2/homebrews/list.json?type=${type}`,
+    options: options('POST', accessToken, { ids: ids })
+  });
+}
+
 export const fetchHomebrewRequest = async (accessToken, type, id) => {
   return await apiRequest({
     url: `/homebrews_v2/homebrews/${id}.json?type=${type}`,
