@@ -160,7 +160,8 @@ class NimbleDecorator < ApplicationDecoratorV2
       notes: item[:notes] || [],
       ready_to_use: item.dig(:states, 'hands').to_i.positive?,
       critable: weapons.include?("#{item.dig(:items_info, 'type')}-#{item.dig(:items_info, 'weapon_skill')}"),
-      tags: tags
+      tags: tags,
+      features: item[:items_info]['features']&.map { |item| markdown.call(value: translate(item), version: 0.5) } || []
     }.compact
   end
 

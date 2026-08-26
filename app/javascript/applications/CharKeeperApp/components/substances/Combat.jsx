@@ -324,7 +324,7 @@ export const Combat = (props) => {
                     }
                   </For>
                 </Show>
-                <Show when={(attack.tags === undefined || character().provider === 'daggerheart') && attack.features && attack.features.length > 0}>
+                <Show when={attack.features && attack.features.length > 0}>
                   <For each={attack.features}>
                     {(feature) =>
                       <p

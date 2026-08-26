@@ -30,6 +30,7 @@ module HomebrewsV2Context
       def nimble_commands(publication)
         case publication.parent_type
         when 'ancestry' then HomebrewsV2Context::Import::Nimble::Ancestries::PerformCommand.new
+        when 'weapon' then HomebrewsV2Context::Import::Nimble::Items::Weapons::AddCommand.new
         end
       end
 

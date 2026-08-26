@@ -1,0 +1,91 @@
+[
+  {
+    "name": {
+      "en": "Composite Shortbow",
+      "ru": "Композитный короткий лук"
+    },
+    "description": {},
+    "public": true,
+    "data": {
+      "price": 60
+    },
+    "info": {
+      "burden": 2,
+      "type": "range",
+      "weapon_skill": "dex",
+      "damage": "2d4",
+      "damage_type": "pierce",
+      "range": 8,
+      "tooltips": ["vicious"],
+      "req": { "str": 2 }
+    }
+  },
+  {
+    "name": {
+      "en": "Katana",
+      "ru": "Катана"
+    },
+    "description": {},
+    "public": true,
+    "data": {
+      "price": 80
+    },
+    "info": {
+      "burden": 2,
+      "type": "melee",
+      "weapon_skill": "str",
+      "damage": "1d10",
+      "damage_type": "slash",
+      "tooltips": ["vicious"],
+      "tooltip_req": { "vicious": { "str": 2 } }
+    }
+  },
+  {
+    "name": {
+      "en": "Nunchaku",
+      "ru": "Нунчаки"
+    },
+    "description": {},
+    "public": true,
+    "data": {
+      "price": 120
+    },
+    "info": {
+      "burden": 2,
+      "type": "melee",
+      "weapon_skill": "str",
+      "damage": "2d8",
+      "damage_type": "bludge",
+      "tooltips": [],
+      "req": { "dex": 1 },
+      "features": [
+        {
+          "en": "**Risky**: You take the weapon dice damage on a miss.",
+          "ru": "**Рискованное**: При промахе вы получаете урон от кубов этого оружия."
+        }
+      ]
+    }
+  }
+  ,
+  {
+    "name": {
+      "en": "Tonfa"
+    },
+    "description": {},
+    "public": true,
+    "data": {
+      "price": 20
+    },
+    "info": {
+      "burden": 1,
+      "type": "melee",
+      "weapon_skill": "str",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "tooltips": []
+    },
+    "modifiers": {
+      "armor": { "type": "add", "value": 1 }
+    }
+  }
+]

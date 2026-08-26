@@ -30,3 +30,4 @@ export * from './Content/Dnd2024/Subclasses';
 
 export * from './Content/Nimble/Ancestries';
 export * from './Content/Nimble/Books';
+export * from './Content/Nimble/Weapons';

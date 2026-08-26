@@ -1,20 +1,23 @@
 import { For, Switch, Match } from 'solid-js';
 
-import { NimbleAncestries, NimbleBooks } from '../../pages';
+import { NimbleAncestries, NimbleBooks, NimbleWeapons } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
 const TRANSLATION = {
   en: {
     books: 'Books',
-    ancestries: 'Ancestries'
+    ancestries: 'Ancestries',
+    weapons: 'Weapons',
   },
   ru: {
     books: 'Книги',
-    ancestries: 'Расы'
+    ancestries: 'Расы',
+    weapons: 'Оружие',
   },
   es: {
     books: 'Libros',
-    ancestries: 'Ancestrías'
+    ancestries: 'Ancestrías',
+    weapons: 'Armas'
   }
 }
 
@@ -28,7 +31,7 @@ export const Nimble = () => {
       <div class="flex flex-wrap gap-x-4 gap-y-2 my-4">
         <For each={
           [
-            'books', 'ancestries'
+            'books', 'ancestries', 'weapons'
           ]
         }>
           {(item) =>
@@ -43,7 +46,7 @@ export const Nimble = () => {
       <Switch fallback={<></>}>
         <For each={
           Object.entries({
-            ancestries: NimbleAncestries, books: NimbleBooks
+            ancestries: NimbleAncestries, books: NimbleBooks, weapons: NimbleWeapons
           })
         }>
           {([item, Component]) =>

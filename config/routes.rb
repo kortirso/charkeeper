@@ -315,6 +315,9 @@ Rails.application.routes.draw do
       resources :books, only: %i[index show create update destroy] do
         get :for_items, on: :collection
       end
+      resources :items, only: %i[index show destroy] do
+        post :batch_destroy, on: :collection
+      end
     end
 
     namespace :dnd2024 do

@@ -5,6 +5,8 @@ module Frontend
     include Deps[feature_requirement: 'feature_requirement']
     include SerializeRelation
 
+    PROVIDERS_WITH_HOMEBREWS = %w[daggerheart nimble].freeze
+
     def index
       serialize_relation_v2(items.visible.kept, ::ItemSerializer, :items, cache_options: cache_options)
     end
@@ -45,7 +47,7 @@ module Frontend
     end
 
     def homebrew_item_ids
-      return [] unless params[:provider] == 'daggerheart'
+      return [] if PROVIDERS_WITH_HOMEBREWS.exclude?(params[:provider])
 
       ::Homebrew::Book::Item
         .where(homebrew_book_id: ::User::Book.where(user_id: current_user).select(:homebrew_book_id))
@@ -59,6 +61,7 @@ module Frontend
       when 'pathfinder2' then 'Pathfinder2::Item'
       when 'daggerheart' then 'Daggerheart::Item'
       when 'dc20' then 'Dc20::Item'
+      when 'nimble' then 'Nimble::Item'
       end
     end
   end
