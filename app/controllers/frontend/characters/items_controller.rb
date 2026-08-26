@@ -48,7 +48,7 @@ module Frontend
       def cache_options
         return {} unless @character.equipment_updated_at
 
-        { key: "character_items/#{@character.id}/#{@character.equipment_updated_at}/#{I18n.locale}/v2", expires_in: 24.hours }
+        { key: "character_items/#{@character.id}/#{@character.equipment_updated_at}/#{I18n.locale}/v3", expires_in: 24.hours }
       end
 
       def find_character
