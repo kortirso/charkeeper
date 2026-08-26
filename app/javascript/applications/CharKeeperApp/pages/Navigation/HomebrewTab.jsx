@@ -1,4 +1,4 @@
-import { createSignal, createEffect, Show, For } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For } from 'solid-js';
 
 import { PageHeader, Toggle, Checkbox } from '../../components';
 import { useAppLocale, useAppState, useAppAlert } from '../../context';
@@ -28,7 +28,8 @@ const TRANSLATION = {
 }
 const PROVIDERS = {
   daggerheart: 'Daggerheart',
-  dnd: 'D&D 5.5'
+  dnd: 'D&D 5.5',
+  nimble: 'Nimble'
 }
 
 export const HomebrewTab = () => {
@@ -59,6 +60,8 @@ export const HomebrewTab = () => {
     readHost();
   });
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const toggleBook = async (bookId) => {
     const result = await toggleBooksRequest(appState.accessToken, bookId );
     if (result.errors_list === undefined) {
@@ -73,15 +76,13 @@ export const HomebrewTab = () => {
 
   return (
     <>
-      <PageHeader>
-        {localize(TRANSLATION, locale()).title}
-      </PageHeader>
+      <PageHeader>{i18n().title}</PageHeader>
       <div class="p-4 flex-1 flex flex-col overflow-y-auto dark:text-snow">
         <Show when={books()}>
-          <p class="mb-2 text-sm">{localize(TRANSLATION, locale()).page}</p>
-          <p class="mb-4 text-sm">{localize(TRANSLATION, locale()).link} <a href={host()} class='underline' target='_blank' rel='noopener noreferrer'>{localize(TRANSLATION, locale()).here}</a></p>
+          <p class="mb-2 text-sm">{i18n().page}</p>
+          <p class="mb-4 text-sm">{i18n().link} <a href={host()} class='underline' target='_blank' rel='noopener noreferrer'>{i18n().here}</a></p>
           <div class="flex flex-col gap-2">
-            <For each={['daggerheart', 'dnd']}>
+            <For each={Object.keys(PROVIDERS)}>
               {(provider) =>
                 <Toggle containerClassList="mb-0!" title={PROVIDERS[provider]}>
                   <div class="flex flex-col gap-2">
