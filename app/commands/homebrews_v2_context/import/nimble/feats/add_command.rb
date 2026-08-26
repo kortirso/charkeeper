@@ -99,8 +99,10 @@ module HomebrewsV2Context
 
           def do_persist(input)
             result = ::Nimble::Feat.create!(
-              input.except(:limit, :skip_contract_validation, :options)
-            ).merge(options: input[:options]&.transform_values { |value| value[:title] })
+              input
+                .except(:limit, :skip_contract_validation, :options)
+                .merge(options: input[:options]&.transform_values { |value| value[:title] })
+            )
 
             input[:options]&.values&.each do |option|
               next unless option[:feature]
