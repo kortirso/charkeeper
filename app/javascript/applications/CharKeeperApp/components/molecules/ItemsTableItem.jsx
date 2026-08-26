@@ -28,7 +28,7 @@ export const ItemsTableItem = (props) => {
         </Button>
       </Show>
       <Show when={!props.forCampaign}>
-        <Show when={props.item.kind === 'consumables' && props.item.bonuses.length > 0}>
+        <Show when={props.item.kind === 'consumables' && props.item.bonuses && props.item.bonuses.length > 0}>
           <Button default size={props.size} onClick={() => props.onConsumeItem(props.item, props.state)}>
             <Drink width={iconSize()} height={iconSize()} />
           </Button>
