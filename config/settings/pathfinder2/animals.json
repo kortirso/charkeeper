@@ -20,6 +20,11 @@
     "support": {
       "en": "Your wolf tears tendons with each opening. Until the start of your next turn, your Strikes that damage creatures your wolf threatens give the target a –5-foot status penalty to its Speeds for 1 minute (–10 on a critical success).",
       "ru": "Волк вцепляется в сухожилия противника при каждой возможности. До начала вашего следующего хода все ваши Удары, которые наносят урон цели в зоне досягаемости волка, налагают на цель штраф состояния -5 футов ко всем скоростям на 1 минуту (-10 при критическом ударе)."
+    },
+    "special": {
+      "price": "1a",
+      "en": "**Requirements** The animal companion's last action was a successful jaws Strike. The wolf automatically knocks the target of its jaws Strike *prone*.",
+      "ru": "**Требования** последним действием верного зверя был успешный Удар челюстями. Цель успешного Удара челюстями автоматически *распластывается*."
     }
   },
   "bird": {
@@ -52,6 +57,11 @@
     "support": {
       "en": "The bird pecks at your foes' eyes when you create an opening. Until the start of your next turn, your Strikes that damage a creature that your bird threatens also deal 1d4 persistent bleed damage, and the target is dazzled until it removes the bleed damage. If your bird is nimble or savage, the persistent bleed damage increases to 2d4.",
       "ru": "Когда вы отвлекаете противника, птица пытается выклевать ему глаза. До начала вашего следующего хода ваши Удары, которые наносят урон цели в зоне досягаемости вашей птицы, дополнительно наносят 1d4 продолжительного урона от кровотечения. Цель получает растерянность, пока не избавится от этого продолжительного урона. Если ваша птица ловкая или лютая, продолжительный урон от кровотечения увеличивается до 2d4."
+    },
+    "special": {
+      "price": "2a",
+      "en": "The bird *Flies* and makes a talon Strike at any point along the way.",
+      "ru": "Птица использует *Полёт* и в любой момент этого перемещения совершает Удар лапами."
     }
   },
   "shark": {
@@ -75,6 +85,11 @@
     "support": {
       "en": "When your shark senses blood, it tears into your enemies. Until the start of your next turn, each time you hit a creature in the shark's reach with a Strike and deal slashing or piercing damage, the creature takes 1d8 slashing damage from the shark. If your shark is nimble or savage, the slashing damage increases to 2d8.",
       "ru": "Почуяв кровь, ваша акула вгрызается во врага. До начала вашего следующего хода, каждый раз, когда вы попадаете Ударом по существу в зоне досягаемости акулы и наносите колющий или режущий урон, оно получает 1d8 режущего урона от акулы. Если ваша акула ловкая или лютая, режущий урон увеличивается до 2d8."
+    },
+    "special": {
+      "price": "1a",
+      "en": "**Requirements** The shark hit with a jaws Strike on its most recent action this turn. The shark viciously rips into the wound. The target of the shark's Strike takes 2d8 slashing damage (3d8 for a specialized companion).",
+      "ru": "**Требования** последним действием акулы в этот ход был успешный Удар челюстями. Акула неистово вгрызается в жертву. Существо, по которому попал Удар, получает 2d8 режущего урона (3d8, если акула — специализированный верный зверь)."
     }
   },
   "badger": {
@@ -107,6 +122,11 @@
     "support": {
       "en": "Your badger digs around your foe's position, interfering with its footing. Until the start of your next turn, if you hit and deal damage to a creature your badger threatens, the target can't use a Step action (unless it can Step through difficult terrain) until it moves from its current position.",
       "ru": "Ваш барсук роет землю вокруг противника, мешая ему перемещаться. Если вы до начала своего следующего хода атакуете и нанесёте урон противнику, который в зоне досягаемости вашего барсука, цель не может использовать Шаг (если не обладает способностью, позволяющей сделать Шаг на пересечённую местность), пока не переместится с занимаемого места."
+    },
+    "special": {
+      "price": "1a",
+      "en": "**Requirements** The badger isn't fatigued or raging.The badger enters a state of pure rage that lasts for 1 minute, until there are no enemies it can perceive, or until it falls unconscious, whichever comes first. It can't voluntarily stop raging. While raging, the badger is affected in the following ways.\n\n- It deals 4 additional damage with its bite attacks and 2 additional damage with its claw attacks.\n\n- It takes a –1 penalty to AC.\n\n- It can't use actions that have the *concentrate* trait. The animal companion can *Seek* even while raging.",
+      "ru": "**Требования** барсук не утомлён и не находится в ярости. Барсук впадает в ярость и пребывает в ней либо 1 минуту, либо пока не перестанет ощущать присутствие врагов, либо пока не *потеряет сознание* — в зависимости от того, что случится раньше. Барсук не может добровольно прервать ярость. Пока длится ярость, барсук получает следующие эффекты.\n\n- Дополнительно наносит 4 урона атакой челюстями и 2 урона атакой когтями.\n\n- Получает штраф -1 к КБ.\n\n- Не может использовать действия с дескриптором *концентрация*. Верный зверь может использовать *Поиск* в ярости."
     }
   },
   "dromaeosaur": {
@@ -139,6 +159,11 @@
     "support": {
       "en": "Your raptor constantly darts into flanking position. Until the start of your next turn, it counts as being in its space or an empty space of your choice within 10 feet when determining whether you and your companion are flanking; you can choose a different space for each of your attacks.",
       "ru": "Ваш раптор постоянно старается зайти цели за спину. До начала вашего следующего хода при определении, взяли ли вы с верным зверем цель в тиски или нет, считается, что ваш раптор находится либо в своём пространстве, либо в незанятом пространстве по вашему выбору в пределах 10 футов; вы можете выбирать новое пространство для раптора для каждой своей атаки."
+    },
+    "special": {
+      "price": "1a",
+      "en": "The raptor Steps up to 10 feet and then Strikes, or Strikes and then Steps up to 10 feet.",
+      "ru": "Раптор совершает Шаг на расстояние до 10 футов, затем наносит Удар либо сперва наносит Удар, а затем совершает Шаг на расстояние до 10 футов."
     }
   },
   "riding_drake": {
@@ -171,6 +196,11 @@
     "support": {
       "en": "Your drake snorts fire in your foes' faces. Until the start of your next turn, each time you Strike while riding the drake and hit a creature in the drake's reach, the creature takes 1d4 fire damage from the drake. If your drake is nimble or savage, the fire damage increases to 2d4.",
       "ru": "Ваш дрейк плюётся огнём прямо в лица врагов. До начала вашего следующего хода, каждый раз, когда вы совершаете Удар верхом на дрейке и попадаете по существу в его зоне досягаемости, это существо получает 1d4 урона огнём от дрейка. Если ваш дрейк ловкий или лютый, урон огнём увеличивается до 2d4."
+    },
+    "special": {
+      "price": "2a",
+      "en": "**Frequency** once per hour. The riding drake breathes a 30-foot cone of fire, dealing 1d6 fire damage for every 2 levels the drake has to all creatures in the area (basic Reflex save). This uses a trained DC using the drake's Constitution modifier or an expert DC if the drake is specialized.",
+      "ru": "**Частота** 1 в час. Ездовой дрейк выдыхает огонь в 30-футовом конусе, нанося 1d6 урона огнём за каждые 2 уровня дрейка всем существам в области (обычное испытание Реакции). Эта способность использует изученную СЛ с модификатором Выносливости дрейка или экспертную СЛ, если ваш дрейк — специализированный верный зверь."
     }
   },
   "snake": {
@@ -194,6 +224,11 @@
     "support": {
       "en": "Your snake holds your enemies with its coils, interfering with reactions. Until the start of your next turn, any creature your snake threatens can't use reactions triggered by your actions unless its level is higher than yours.",
       "ru": "Ваша змея обвивает противников, мешая им совершать ответные действия. До начала вашего следующего хода существа в зоне досягаемости вашей змеи не могут совершать ответные действия, спровоцированные вашими действиями, если уровень существа не превышает ваш."
+    },
+    "special": {
+      "price": "1a",
+      "en": "**Requirements** The snake has a smaller creature *grabbed*.The snake deals 12 bludgeoning damage to the grabbed creature; the creature must attempt a basic Fortitude save against your class DC. If the snake is a specialized animal companion, increase this damage to 20.",
+      "ru": "**Требования** змея взяла в *захват* существо меньшего размера. Змея наносит существу в захвате 12 дробящего урона; оно проходит обычное испытание Стойкости против вашей классовой СЛ. Если змея — специализированный верный зверь, урон увеличивается до 20."
     }
   },
   "boar": {
@@ -217,6 +252,11 @@
     "support": {
       "en": "Your boar gores your foes. Until the start of your next turn, your Strikes that damage a creature in your boar's reach also deal 1d6 persistent bleed damage. If your boar is nimble or savage, the persistent bleed damage increases to 2d6.",
       "ru": "Ваш кабан пронзает врагов. До начала вашего следующего хода ваши Удары, которые наносят урон существу в зоне досягаемости вашего кабана, также наносят 1d6 продолжительного урона от кровотечения. Если ваш кабан ловкий или лютый, продолжительный урон от кровотечения увеличивается до 2d6."
+    },
+    "special": {
+      "price": "2a",
+      "en": "The boar Strides twice in a straight line and then makes a tusk Strike. As long as it moved at least 20 feet, it gains a +2 circumstance bonus to its attack roll.",
+      "ru": "Кабан совершает Перемещение дважды по прямой, затем наносит Удар бивнем. Если он переместился на 20 и более футов, он получает ситуативный бонус +2 к проверке атаки."
     }
   },
   "cat": {
@@ -249,6 +289,11 @@
     "support": {
       "en": "Your cat throws your enemies off-balance when you create an opening. Until the start of your next turn, your Strikes that deal damage to a creature within your cat's reach make the target off-guard until the end of your next turn.",
       "ru": "Когда вы отвлекаете противника, кошка выводит его из равновесия. До начала вашего следующего хода ваши Удары, которые наносят урон существу в зоне досягаемости кошки, делают цель застигнутой врасплох до конца вашего следующего хода."
+    },
+    "special": {
+      "price": "1a",
+      "en": "The cat Strides and then Strikes. If it was *undetected* at the start of its Cat Pounce, it remains undetected until after the attack.",
+      "ru": "Кошка совершает Перемещение, а затем Удар. Если в начале Кошачьего наскока кошка была *необнаруженной*, она остаётся необнаруженной, пока не завершит атаку."
     }
   },
   "crocodile": {
@@ -281,6 +326,11 @@
     "support": {
       "en": "Your crocodile clamps its jaws on your foe, refusing to let go. Until the start of your next turn, if your Strike damages a creature in your crocodile's reach, your crocodile can latch onto the creature. While thus attached, the crocodile can move along with the target whenever the target moves until the end of your next turn. Your crocodile can latch onto only one creature in this way, and it must release the creature to make a jaws Strike. If the target is smaller than the crocodile, it takes a –10-foot circumstance penalty to its Speeds and can't Fly while the crocodile is latched on.",
       "ru": "Ваш крокодил крепко стискивает челюсти, не отпуская врага. До начала вашего следующего хода, если ваш Удар наносит урон существу в зоне досягаемости вашего крокодила, он может вцепиться в это существо. Вцепившись, крокодил может перемещаться вместе с целью при её перемещении до конца вашего следующего хода. Ваш крокодил может вцепиться таким образом только в одно существо, и он должен отпустить его, чтобы совершить Удар челюстями. Если цель меньше крокодила, она получает ситуативный штраф -10 футов к своим скоростям и не может использовать Полёт, пока крокодил вцепился в неё."
+    },
+    "special": {
+      "price": "1a",
+      "en": "**Requirements** The crocodile has a creature grabbed.The crocodile tucks its legs and rolls rapidly, twisting its victim. It makes a jaws Strike with a +2 circumstance bonus to the attack roll against the grabbed creature. If it hits, it also knocks the creature *prone*. If it misses, it releases the creature.",
+      "ru": "**Требования** у крокодила существо в захвате Крокодил поджимает лапы и вращается вокруг своей оси, закручивая и опрокидывая жертву. Крокодил совершает по существу в его захвате Удар челюстями с ситуативным бонусом +2 к проверке атаки. При успехе он дополнительно заставляет цель *распластаться*, а при провале выпускает её из захвата."
     }
   },
   "bear": {
@@ -313,6 +363,11 @@
     "support": {
       "en": "Your bear mauls your enemies when you create an opening. Until the start of your next turn, each time you hit a creature in the bear's reach with a Strike, the creature takes 1d8 slashing damage from the bear. If your bear is nimble or savage, the slashing damage increases to 2d8.",
       "ru": "Ваш медведь бьёт врагов, когда вы создаёте для этого подходящие условия. До начала вашего следующего хода, каждый раз, когда вы попадаете Ударом по существу в зоне досягаемости медведя, оно получает 1d8 режущего урона от медведя. Если ваш медведь ловкий или лютый, режущий урон увеличивается до 2d8."
+    },
+    "special": {
+      "price": "1a",
+      "en": "**Requirements** The bear's last action was a successful claw Strike. The bear makes another claw Strike against the same target. If this Strike hits, the target is also *grabbed*, as if the bear had successfully Grappled the target.",
+      "ru": "**Требования** последним действием медведя был успешный Удар когтями. Медведь совершает ещё один Удар когтями по той же цели. Если Удар успешен, цель также взята в *захват*, как если бы медведь успешно использовал Захват."
     }
   },
   "bat": {
@@ -345,6 +400,11 @@
     "support": {
       "en": "Your bat flaps around your foes' arms and faces, getting in the way of their attacks. Until the start of your next turn, creatures in your bat's reach that you damage with Strikes take a –1 circumstance penalty to their attack rolls.",
       "ru": "Ваша летучая мышь набрасывается на врагов, мешая им атаковать. До начала вашего следующего хода существа в зоне досягаемости вашей летучей мыши, которым вы наносите урон Ударами, получают ситуативный штраф -1 к проверкам атак."
+    },
+    "special": {
+      "price": "2a",
+      "en": "The bat thrashes wildly with its wings, making wing Strikes against up to three adjacent foes. Each attack counts toward the bat's multiple attack penalty, but the penalty only increases after all the attacks have been made.",
+      "ru": "Летучая мышь яростно бьёт крыльями, совершая Удары крылом по трём или менее врагам рядом с ней. Каждая атака учитывается при определении штрафа за последовательные атаки летучей мыши, но его значение не увеличивается, пока она не совершит все атаки."
     }
   },
   "arboreal_sapling": {
@@ -368,6 +428,11 @@
     "support": {
       "en": "Your arboreal sapling plants roots around your foe, impeding its movement. Until the start of your next turn, if you hit and deal damage to a creature in your arboreal sapling's reach, the first square the creature moves into after taking that damage is difficult terrain.",
       "ru": "Лесовик-росток проращивает корни вокруг врага, мешая ему двигаться. До начала вашего следующего хода, если вы попадаете и наносите урон существу в зоне досягаемости вашего лесовика-ростка, первая клетка, в которую оно перемещается после получения урона, считается пересечённой местностью."
+    },
+    "special": {
+      "price": "1a",
+      "en": "The arboreal sapling Interacts to pick up a rock within reach or retrieve a stowed rock, then throws it with a ranged rock Strike that deals 2d6 bludgeoning (3d6 for a specialized companion) damage with a range increment of 30 feet.",
+      "ru": "Лесовик-росток совершает Взаимодействие, поднимая камень в зоне досягаемости или выхватывая убранный камень, и метает его, совершая дистанционный Удар камнем с шагом дистанции 30 футов, который базово наносит 2d6 дробящего урона (3d6, если лесовик — специализированный верный зверь)."
     }
   },
   "horse": {
@@ -391,6 +456,11 @@
     "support": {
       "en": "Until the start of your next turn, if you're mounted on your horse and moved 10 feet or more on the action before a melee Strike, add a circumstance bonus to damage for that Strike equal to twice the number of weapon damage dice. If your weapon already has the jousting weapon trait, increase the trait's damage bonus by 2 per die instead.",
       "ru": "Если до начала вашего следующего хода вы в качестве действия перед Ударом в ближнем бою переместились верхом на лошади хотя бы на 10 футов, вы получаете ситуативный бонус к урону этого Удара, равный удвоенному количеству костей урона оружия. Если у оружия дескриптор «кавалерийское», его бонус урона от этого дескриптора вместо этого увеличивается на 2 за каждую кость урона."
+    },
+    "special": {
+      "price": "2a",
+      "en": "The horse Strides twice at a +10-foot circumstance bonus to Speed.",
+      "ru": "Лошадь совершает два Перемещения с ситуативным бонусом +10 футов к скорости."
     }
   },
   "ape": {
@@ -414,6 +484,11 @@
     "support": {
       "en": "Your ape threatens your foes with menacing growls. Until the start of your next turn, if you hit and deal damage to a creature in your ape's reach, the creature becomes frightened 1.",
       "ru": "Ваш примат запугивает врагов угрожающим рыком. До начала вашего следующего хода, если вы попадаете и наносите урон существу в зоне досягаемости вашего примата, это существо получает испуг 1."
+    },
+    "special": {
+      "price": "1a",
+      "en": "Your ape makes a loud and frightening display, throwing a foe off balance. The ape attempts to *Demoralize* the target creature; this display gains the *visual* trait and doesn't require language. While frightened by this ability, the target is *off-guard* to your ape.",
+      "ru": "Ваш примат громко ревёт и бьёт себя по груди, пугая. Примат совершает попытку *Деморализации* существа-цели; она получает дескриптор *зрение* и не требует знания языка. Пока у существа испуг из-за этой способности, оно считается для примата *застигнутым врасплох*."
     }
   },
   "scorpion": {
@@ -446,6 +521,11 @@
     "support": {
       "en": "Your scorpion drips poison from its stinger when you create an opening. Until the start of your next turn, your Strikes that damage a creature in your scorpion's reach also deal 1d6 persistent poison damage. If your scorpion is nimble or savage, the persistent poison damage increases to 2d6.\n\nThe scorpion's stinger attack deals an additional 1d4 poison damage or 2d4 poison damage if the scorpion is a specialized companion.",
       "ru": "Пользуясь созданной вами возможностью, скорпион готовится атаковать ядовитым жалом. До начала вашего следующего хода ваши Удары, которые наносят урон существу в зоне досягаемости вашего скорпиона, также наносят 1d6 продолжительного урона ядом. Если ваш скорпион ловкий или лютый, продолжительный урон ядом увеличивается до 2d6.\n\nАтака жалом скорпиона дополнительно наносит 1d4 урона ядом или 2d4 урона ядом, если скорпион — специализированный верный зверь. "
+    },
+    "special": {
+      "price": "2a",
+      "en": "The scorpion holds its foe in place with its pincers in order to sting it. It makes a pincer Strike. If the Strike hits, the target creature automatically becomes *grabbed* by the scorpion, which then makes a stinger Strike against it. The grabbed condition lasts until the end of your next turn.",
+      "ru": "Скорпион удерживает врага в клешне, чтобы уколоть его жалом. Он совершает Удар клешнёй. Если Удар попадает, его цель автоматически оказывается в *захвате* скорпиона, который затем совершает по ней Удар жалом. Захват длится до конца вашего следующего хода."
     }
   }
 }

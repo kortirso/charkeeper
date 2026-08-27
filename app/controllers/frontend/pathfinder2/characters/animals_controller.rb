@@ -41,7 +41,7 @@ module Frontend
         end
 
         def upgrade
-          case upgrade_animal_companion.call(animal: @animal)
+          case upgrade_animal_companion.call(companion_upgrade_params.merge(animal: @animal))
           in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           in { result: result }
             serialize_resource(result, ::Pathfinder2::Characters::AnimalCompanionSerializer, :animal, {})
@@ -65,6 +65,10 @@ module Frontend
 
         def companion_params
           params[:animal] ? params.require(:animal).permit!.to_h : params.permit!.to_h
+        end
+
+        def companion_upgrade_params
+          params.require(:animal).permit!.to_h
         end
       end
     end

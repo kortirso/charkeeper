@@ -18,6 +18,7 @@ module Pathfinder2
       attribute :vision, :string, default: nil
       attribute :health, :integer, default: 4
       attribute :health_temp, :integer, default: 0
+      attribute :specialization, :string
     end
 
     class AnimalCompanion < Character::Companion
