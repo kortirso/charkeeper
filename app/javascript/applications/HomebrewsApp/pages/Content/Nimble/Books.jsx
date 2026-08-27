@@ -10,16 +10,22 @@ import { localize } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
+    items: 'Items',
     races: 'Ancestries',
-    official: 'Approved'
+    official: 'Approved',
+    showItems: 'Show items'
   },
   ru: {
+    items: 'Предметы',
     races: 'Расы',
-    official: 'Одобренная'
+    official: 'Одобренная',
+    showItems: 'Показать предметы'
   },
   es: {
+    items: 'Objetos',
     races: 'Ancestrías',
-    official: 'Aprobado'
+    official: 'Aprobado',
+    showItems: 'Show items'
   }
 }
 
@@ -36,7 +42,7 @@ export const NimbleBooks = () => {
       <Show when={props.info.shared}>
         <p class="font-medium!">{localize(TRANSLATION, locale()).official}</p>
       </Show>
-      <For each={['races']}>
+      <For each={['races', 'items']}>
         {(kind) =>
           <Show when={Object.keys(props.info.items[kind]).length > 0}>
             <div>

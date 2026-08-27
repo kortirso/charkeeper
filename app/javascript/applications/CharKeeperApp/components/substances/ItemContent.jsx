@@ -225,14 +225,18 @@ const renderDndPrice = (value, locale) => {
 const DndWeapon = (props) => {
   const item = () => props.item;
 
+  console.log(item())
+
   return (
-    <>
-      <p class="mt-4">{localize(TRANSLATION, props.locale).dnd.type[item().info.weapon_skill]}, {localize(TRANSLATION, props.locale).dnd[item().info.type]}</p>
+    <div class="flex flex-col gap-2">
       <p class="text-sm mt-2">{localize(TRANSLATION, props.locale).dnd.weight}: {item().data.weight}</p>
-      <p class="text-sm mt-1">{localize(TRANSLATION, props.locale).dnd.price}: {renderDndPrice(item().data.price, props.locale)}</p>
-      <p class="mt-2">{localize(TRANSLATION, props.locale).dnd.damage}: {item().info.damage} {localize(TRANSLATION, props.locale).dnd[item().info.damage_type]}</p>
-      <p class="mt-2">{localize(TRANSLATION, props.locale).dnd.caption}: {Object.keys(item().info.caption).map((element) => localize(TRANSLATION, props.locale).dnd[element]).join(', ')}</p>
-    </>
+      <p class="text-sm">{localize(TRANSLATION, props.locale).dnd.price}: {renderDndPrice(item().data.price, props.locale)}</p>
+      <p>{localize(TRANSLATION, props.locale).dnd.type[item().info.weapon_skill]}, {localize(TRANSLATION, props.locale).dnd[item().info.type]}</p>
+      <p>{localize(TRANSLATION, props.locale).dnd.damage}: {item().info.damage} {localize(TRANSLATION, props.locale).dnd[item().info.damage_type]}</p>
+      <Show when={Object.keys(item().info.caption).length > 0}>
+        <p>{localize(TRANSLATION, props.locale).dnd.caption}: {Object.keys(item().info.caption).map((element) => localize(TRANSLATION, props.locale).dnd[element]).join(', ')}</p>
+      </Show>
+    </div>
   );
 }
 

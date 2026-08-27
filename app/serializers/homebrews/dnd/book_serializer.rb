@@ -13,7 +13,7 @@ module Homebrews
         items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
-          items: transform(::Dnd5::Item.where(id: items['Item']).pluck(:id, :name)),
+          items: transform(::Dnd5::Item.kept.where(id: items['Item']).pluck(:id, :name)),
           classes: subclasses_info(items),
           spells: transform(feats(items, 6).pluck(:id, :title)),
           feats: transform(feats(items, 4).pluck(:id, :title)),

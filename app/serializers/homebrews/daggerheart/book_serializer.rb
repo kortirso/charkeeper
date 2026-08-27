@@ -19,7 +19,9 @@ module Homebrews
           domains: titles(items, ::Daggerheart::Homebrews::Domain, 'Homebrew'),
           mechanics: titles(items, ::Daggerheart::Homebrews::Mechanic, 'Homebrew'),
           classes: subclasses_info(items),
-          items: ::Daggerheart::Item.where(id: items['Item']).pluck(:id, :name).to_h.transform_values { |item| translate(item) }
+          items: ::Daggerheart::Item.kept.where(id: items['Item']).pluck(:id, :name).to_h.transform_values { |item|
+            translate(item)
+          }
         }
       end
 

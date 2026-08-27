@@ -1,0 +1,442 @@
+[
+  {
+    "name": {
+      "en": "Boat Oar",
+      "ru": "Весло"
+    },
+    "data": {
+      "weight": 8,
+      "price": 80
+    },
+    "info": {
+      "weapon_skill": "light",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "bludge",
+      "caption": ["2handed"],
+      "mastery": "push"
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Boomerang",
+      "ru": "Бумеранг"
+    },
+    "data": {
+      "weight": 1,
+      "price": 200
+    },
+    "info": {
+      "weapon_skill": "light",
+      "type": "thrown",
+      "damage": "1d6",
+      "damage_type": "slash",
+      "caption": ["finesse"],
+      "mastery": "vex",
+      "dist": "60/180",
+      "features": [
+        {
+          "en": "When you throw a boomerang, it returns to an empty square near you. You can catch it with a reaction.",
+          "ru": "Когда вы бросаете бумеранг, он возвращается в свободную клетку рядом с вами. Вы можете поймать его реакцией."
+        }
+      ]
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Butterfly Staff",
+      "ru": "Посох-бабочка"
+    },
+    "data": {
+      "weight": 1,
+      "price": 4
+    },
+    "info": {
+      "weapon_skill": "light",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "bludge",
+      "caption": ["finesse"],
+      "mastery": "topple",
+      "versatile": "1d6",
+      "features": [
+        {
+          "en": "When you make a grapple check while holding the Butterfly Staff, you can use it to target a Small creature up to 10 feet away from you. You use your weapon attack modifier instead of a Strength (Athletics) check. While the creature is grappled in this way, you can't strike with the butterfly staff.",
+          "ru": "Когда вы проводите проверку захвата, держа в руках посох-бабочку, вы можете использовать его для прицеливания в маленькое существо, находящееся на расстоянии до 10 футов от вас. При этом вы используете свой модификатор атаки оружием вместо проверки Силы (Атлетика). Пока существо схвачено таким образом, вы не можете наносить удары посохом-бабочкой."
+        }
+      ]
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Fan",
+      "ru": "Веер"
+    },
+    "data": {
+      "weight": 1,
+      "price": 2
+    },
+    "info": {
+      "weapon_skill": "light",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "slash",
+      "caption": ["finesse", "light"],
+      "mastery": "nick",
+      "features": [
+        {
+          "en": "When you are hit with a ranged weapon, you can use your reaction to reduce the damage dealt by an amount equal to your Dexterity modifier.",
+          "ru": "Когда вас поражают дальнобойным оружием, вы можете использовать свою реакцию, чтобы уменьшить наносимыи ̆ урон от атаки на величину, равную вашему модификатору Ловкости."
+        }
+      ]
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Frying Pan",
+      "ru": "Сковородка"
+    },
+    "data": {
+      "weight": 6,
+      "price": 30
+    },
+    "info": {
+      "weapon_skill": "light",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "caption": [],
+      "mastery": "slow",
+      "versatile": "1d8",
+      "features": [
+        {
+          "en": "You can use your bonus action to add +1 to your Armor Class until the end of your next turn. You cannot gain this benefit while holding a shield.",
+          "ru": "Вы можете использовать свое бонусное действие, чтобы добавить +1 к вашему Классу Доспеха до конца вашего следующего хода. Вы не можете получить это преимущество, если у вас в руках щит."
+        }
+      ]
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Iron Tea Kettle",
+      "ru": "Железный чайник"
+    },
+    "data": {
+      "weight": 2,
+      "price": 10
+    },
+    "info": {
+      "weapon_skill": "light",
+      "type": "melee",
+      "damage": "2d4",
+      "damage_type": "bludge",
+      "caption": [],
+      "mastery": "sap"
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Shovel",
+      "ru": "Лопата"
+    },
+    "data": {
+      "weight": 4,
+      "price": 30
+    },
+    "info": {
+      "weapon_skill": "light",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "caption": [],
+      "mastery": "topple",
+      "versatile": "1d8"
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Umbrella",
+      "ru": "Зонтик"
+    },
+    "data": {
+      "weight": 2,
+      "price": 50
+    },
+    "info": {
+      "weapon_skill": "light",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "bludge",
+      "caption": ["finesse"],
+      "mastery": "nick",
+      "features": [
+        {
+          "en": "When you take fall damage while holding an umbrella, you can use your reaction to reduce the damage by an amount equal to twice your proficiency bonus.",
+          "ru": "Когда вы получаете урон от падения, держа в руках зонтик, вы можете использовать свою реакцию, чтобы уменьшить урон на величину, равную вашему удвоенному бонуса мастерства."
+        }
+      ]
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Bellow Flute",
+      "ru": "Ревущая флейта"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "caption": ["finesse"],
+      "mastery": "sap"
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Candlemaker's Club",
+      "ru": "Дубинка свечедела"
+    },
+    "data": {
+      "weight": 10,
+      "price": 70
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "2d6",
+      "damage_type": "bludge",
+      "caption": ["heavy", "2handed"],
+      "mastery": "topple"
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Dandelion Spear",
+      "ru": "Одуванчиковое копьё"
+    },
+    "data": {
+      "weight": 6,
+      "price": 500
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "caption": ["heavy", "reach"],
+      "mastery": "sap",
+      "versatile": "1d10"
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Drive Shaft",
+      "ru": "Приводной вал"
+    },
+    "data": {
+      "weight": 20,
+      "price": 10000
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "3d4",
+      "damage_type": "bludge",
+      "caption": ["heavy", "2handed"],
+      "mastery": "push"
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Lom Lom Dagger",
+      "ru": "Кинжал Лом Лом"
+    },
+    "data": {
+      "weight": 1,
+      "price": 1500
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "thrown",
+      "damage": "1d6",
+      "damage_type": "slash",
+      "caption": ["finesse", "light"],
+      "mastery": "nick",
+      "dist": "20/60"
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Secret Stone Sword",
+      "ru": "Секретный каменный меч"
+    },
+    "data": {
+      "weight": 1,
+      "price": 3000
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "caption": ["light"],
+      "mastery": "nick",
+      "versatile": "1d8"
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Shepherd Crook",
+      "ru": "Пастуший крюк"
+    },
+    "data": {
+      "weight": 4,
+      "price": 70
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "caption": ["reach"],
+      "mastery": "slow",
+      "features": [
+        {
+          "en": "As a bonus action, you can make an opposed Strength check against a creature within your reach, and on a success, move the target to another unoccupied space within 5 feet of you.",
+          "ru": "В качестве бонусного действия вы можете провести встречную проверку Силы против существа, находящегося в пределах досягаемости, и в случае успеха переместить цель на другое незанятое место в радиусе 5 футов от вас."
+        }
+      ]
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Tapper Sack",
+      "ru": "Мешочек с песком"
+    },
+    "data": {
+      "weight": 5,
+      "price": 100
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "caption": ["reach"],
+      "mastery": "slow",
+      "versatile": "1d8"
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Vertebrate Sword",
+      "ru": "Меч из позвонков"
+    },
+    "data": {
+      "weight": 1,
+      "price": 60
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "caption": [],
+      "mastery": "nick",
+      "features": [
+        {
+          "en": "When you successfully hit a creature with a Vertebrate Sword, you can use a bonus action to unbend and twist the weapon, breaking off some of the sword's bone serrations and dealing an additional 1d8 piercing damage. A Vertebrate Sword can only be used in this manner five times before it becomes unusable as a weapon.",
+          "ru": "Когда вы успешно поражаете существо мечом из позвонков, вы можете использовать бонусное действие для разгибания и поворота оружия, отламывая некоторые костяные зазубрины меча и нанося дополнительные 1d8 колющего урона. Меч из позвонков можно использовать таким образом только 5 раз, прежде чем он станет непригодным в качестве оружия."
+        }
+      ]
+    },
+    "charges": 5,
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Vaulter's Axe",
+      "ru": "Топор прыгуна"
+    },
+    "data": {
+      "weight": 15,
+      "price": 500
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "slash",
+      "caption": ["heavy", "reach", "2handed"],
+      "mastery": "topple",
+      "features": [
+        {
+          "en": "While moving, you can use your leaping axe to leap over a creature or obstacle up to 15 feet. This maneuver allows you to bypass non-magical difficult terrain.",
+          "ru": "Во время передвижения вы можете воспользоваться топором прыгуна, чтобы перепрыгнуть через существо или препятствие на расстояние до 15 футов. Этот маневр позволяет вам игнорировать немагическую труднопроходимую местность."
+        }
+      ]
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Field Spear",
+      "ru": "Полевое копьё"
+    },
+    "data": {
+      "weight": 1,
+      "price": 200
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "thrown",
+      "damage": "1d6",
+      "damage_type": "slash",
+      "caption": ["finesse"],
+      "mastery": "sap",
+      "dist": "30/90",
+      "versatile": "1d8"
+    },
+    "public": true
+  },
+  {
+    "name": {
+      "en": "Nakudama Bubble Rod",
+      "ru": "Накудамский жезл пузырьков"
+    },
+    "data": {
+      "weight": 1,
+      "price": 2200
+    },
+    "info": {
+      "weapon_skill": "martial",
+      "type": "range",
+      "damage": "2d4",
+      "damage_type": "bludge",
+      "caption": [],
+      "mastery": "vex",
+      "dist": "50/200"
+    },
+    "public": true
+  }
+]

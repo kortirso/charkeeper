@@ -13,7 +13,8 @@ module Homebrews
         items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
-          races: titles(items, ::Nimble::Homebrews::Ancestry, 'Homebrew')
+          races: titles(items, ::Nimble::Homebrews::Ancestry, 'Homebrew'),
+          items: transform(::Nimble::Item.kept.where(id: items['Item']).pluck(:id, :name))
         }
       end
 
@@ -37,6 +38,10 @@ module Homebrews
 
       def titles(object_items, model, key)
         model.where(id: object_items[key]).pluck(:id, :title).to_h.transform_values { |item| translate(item) }
+      end
+
+      def transform(values)
+        values.to_h.transform_values { |item| translate(item) }
       end
     end
   end

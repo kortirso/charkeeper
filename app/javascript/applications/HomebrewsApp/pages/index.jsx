@@ -27,6 +27,7 @@ export * from './Content/Dnd2024/Backgrounds';
 export * from './Content/Dnd2024/Books';
 export * from './Content/Dnd2024/Races';
 export * from './Content/Dnd2024/Subclasses';
+export * from './Content/Dnd2024/Weapons';
 
 export * from './Content/Nimble/Ancestries';
 export * from './Content/Nimble/Books';
