@@ -4,6 +4,8 @@ module Pathfinder2
   class AnimalCompanionDecorator < ApplicationDecoratorV2
     include Pathfinder2::Concerns
 
+    SPECIAL_AGE = %w[nimble savage].freeze
+
     def call(animal:)
       @animal = animal
       @result = animal.data.attributes
@@ -29,6 +31,8 @@ module Pathfinder2
       @result['skills'] = generate_skills_payload
       @result['attacks'] = config['attacks'].map { |attack| attack_payload(attack) }
       @result['support'] = translate(config['support'])
+      @result['special'] = SPECIAL_AGE.include?(age) ? markdown.call(value: translate(config['special']), version: '0.5.7') : nil
+      @result['special_price'] = config.dig('special', 'price')
     end
 
     def attack_payload(attack) # rubocop: disable Metrics/AbcSize
@@ -39,7 +43,7 @@ module Pathfinder2
         name: translate(attack['name']),
         attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills[attack['weapon_skill']]),
         damage: attack['damage'].gsub('1d', damage_dice),
-        damage_bonus: abilities['str'],
+        damage_bonus: abilities['str'] + age_damage_bonus,
         tags: (damage_types + attack['tooltips']).index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }
       }
     end
@@ -50,6 +54,16 @@ module Pathfinder2
       when 'specialized' then '3d'
       else '2d'
       end
+    end
+
+    def age_damage_bonus
+      value =
+        case age
+        when 'nimble' then 2
+        when 'savage' then 3
+        else 0
+        end
+      specialization ? (value * 2) : value
     end
 
     def find_key_ability_bonus(type, tooltips=[])

@@ -83,9 +83,9 @@ export const Dnd5 = (props) => {
   const featFilters = createMemo(() => character().provider === 'dnd5' ? featDnd5Filters() : featDnd2024Filters());
 
   const characterTabs = createMemo(() => {
-    const result = ['combat', 'equipment', 'spells', 'professions'];
+    let result = ['combat', 'equipment', 'spells', 'professions'];
     if (character().provider === 'dnd2024') result.push('craft');
-    result.concat(['classLevels', 'rest']);
+    result = result.concat(['classLevels', 'rest']);
     if (character().provider === 'dnd2024') result.push('bonuses');
     return result.concat(['notes', 'avatar']);
   });

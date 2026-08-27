@@ -1,8 +1,8 @@
 import { apiRequest, options } from '../helpers';
 
-export const upgradeCompanionRequest = async (accessToken, provider, id, type='companions') => {
+export const upgradeCompanionRequest = async (accessToken, provider, id, type='companions', payload) => {
   return await apiRequest({
     url: `/frontend/${provider}/characters/${id}/${type}/upgrade.json`,
-    options: options('POST', accessToken)
+    options: options('POST', accessToken, payload)
   });
 }

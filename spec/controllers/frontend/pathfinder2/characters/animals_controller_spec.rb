@@ -48,7 +48,7 @@ describe Frontend::Pathfinder2::Characters::AnimalsController do
               contain_exactly(
                 'id', 'name', 'caption', 'avatar', 'armor_class', 'health', 'health_max', 'health_temp', 'level',
                 'perception', 'saving_throws_value', 'skills', 'speed', 'speeds', 'abilities', 'age', 'attacks', 'kind',
-                'size', 'support', 'vision'
+                'size', 'support', 'vision', 'special', 'special_price', 'specialization'
               )
             )
           end

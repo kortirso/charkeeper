@@ -1,9 +1,9 @@
-import { createSignal, createEffect, Show, For, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { Pathfinder2SharedHealth, Pathfinder2SharedSenses } from '../../../../pages';
 import {
-  ErrorWrapper, Input, Button, EditWrapper, GuideWrapper, AvatarInput, TextArea, Dice, Toggle, Checkbox, Select
+  ErrorWrapper, Input, Button, EditWrapper, GuideWrapper, AvatarInput, TextArea, Dice, Toggle, Checkbox, Select, createModal
 } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Avatar, Close, Upgrade } from '../../../../assets';
@@ -14,6 +14,7 @@ import { createCompanionRequest } from '../../../../requests/createCompanionRequ
 import { updateCompanionRequest } from '../../../../requests/updateCompanionRequest';
 import { removeCompanionRequest } from '../../../../requests/removeCompanionRequest';
 import { upgradeCompanionRequest } from '../../../../requests/upgradeCompanionRequest';
+import { fetchTagInfoRequest } from '../../../../requests/fetchTagInfoRequest';
 import { localize, modifier } from '../../../../helpers';
 
 const TRANSLATION = {
@@ -27,6 +28,7 @@ const TRANSLATION = {
     kind: 'Animal kind',
     attacks: 'Attacks',
     support: 'Support',
+    special: 'Special attack',
     animals: {
       ape: 'Ape',
       arboreal_sapling: 'Arboreal Sapling',
@@ -46,13 +48,25 @@ const TRANSLATION = {
       wolf: 'Wolf'
     },
     sizes: {
+      tiny: 'Tiny size',
       small: 'Small size',
       medium: 'Medium size',
       large: 'Large size'
     },
     ages: {
-      young: 'Young animal',
-      mature: 'Mature animal'
+      young: 'Young',
+      mature: 'Mature',
+      nimble: 'Nimble',
+      savage: 'Savage'
+    },
+    specialization: 'Specialization',
+    specializations: {
+      ambusher: 'Ambusher',
+      bully: 'Bully',
+      daredevil: 'Daredevil',
+      racer: 'Racer',
+      tracker: 'Tracker',
+      wrecker: 'Wrecker'
     }
   },
   ru: {
@@ -65,6 +79,7 @@ const TRANSLATION = {
     kind: 'Вид верного зверя',
     attacks: 'Атаки',
     support: 'Поддержка',
+    special: 'Особая атака',
     animals: {
       shark: 'Акула',
       badger: 'Барсук',
@@ -84,13 +99,25 @@ const TRANSLATION = {
       scorpion: 'Скорпион'
     },
     sizes: {
+      tiny: 'Крошечный размер',
       small: 'Небольшой размер',
       medium: 'Средний размер',
       large: 'Крупный размер'
     },
     ages: {
-      young: 'Молодой зверь',
-      mature: 'Взрослый зверь'
+      young: 'Молодой',
+      mature: 'Взрослый',
+      nimble: 'Ловкий',
+      savage: 'Лютый'
+    },
+    specialization: 'Специализация',
+    specializations: {
+      ambusher: 'Засадный боец',
+      bully: 'Загонщик',
+      daredevil: 'Смельчак',
+      racer: 'Бегун',
+      tracker: 'Ищейка',
+      wrecker: 'Крушитель'
     }
   },
   es: {
@@ -103,6 +130,7 @@ const TRANSLATION = {
     kind: 'Especie animal',
     attacks: 'Ataques',
     support: 'Apoyo',
+    special: 'Special attack',
     animals: {
       ape: 'Simio',
       arboreal_sapling: 'Brote arbóreo',
@@ -122,13 +150,25 @@ const TRANSLATION = {
       wolf: 'Lobo'
     },
     sizes: {
+      tiny: 'Tiny size',
       small: 'Tamaño pequeño',
       medium: 'Tamaño mediano',
       large: 'Tamaño grande'
     },
     ages: {
-      young: 'Animal joven',
-      mature: 'Animal adulto'
+      young: 'Joven',
+      mature: 'Adulto',
+      nimble: 'Nimble',
+      savage: 'Savage'
+    },
+    specialization: 'Specialization',
+    specializations: {
+      ambusher: 'Ambusher',
+      bully: 'Bully',
+      daredevil: 'Daredevil',
+      racer: 'Racer',
+      tracker: 'Tracker',
+      wrecker: 'Wrecker'
     }
   }
 }
@@ -145,7 +185,9 @@ export const Pathfinder2Companion = (props) => {
   const [form, setForm] = createStore({ name: '', caption: '', kind: null });
 
   const [editMode, setEditMode] = createSignal(false);
+  const [tagInfo, setTagInfo] = createSignal([]);
 
+  const { Modal, openModal } = createModal();
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
@@ -190,6 +232,8 @@ export const Pathfinder2Companion = (props) => {
 
     setLastActiveCharacterId(character().id);
   });
+
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
 
   const createCompanion = async () => {
     const result = await createCompanionRequest(
@@ -273,9 +317,9 @@ export const Pathfinder2Companion = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
-  const upgradeCompanion = async () => {
+  const upgradeCompanion = async (payload) => {
     const result = await upgradeCompanionRequest(
-      appState.accessToken, character().provider, character().id, (props.type === 'pet' ? 'companions' : 'animals')
+      appState.accessToken, character().provider, character().id, 'animals', { animal: payload }
     );
 
     if (result.errors_list === undefined) {
@@ -296,6 +340,14 @@ export const Pathfinder2Companion = (props) => {
     props.openD20Attack(`/check attack "${attack.name}"`, attack.name, attack.attack_bonus, dices, attack.damage_bonus)
   }
 
+  const showTagInfo = async (tag, value) => {
+    const result = await fetchTagInfoRequest(appState.accessToken, character().provider, 'weapon', tag);
+    batch(() => {
+      openModal();
+      setTagInfo([value, result.value]);
+    });
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Companion' }}>
       <GuideWrapper character={character()}>
@@ -305,20 +357,20 @@ export const Pathfinder2Companion = (props) => {
             <>
               <Input
                 containerClassList="mb-4"
-                labelText={props.type === 'pet' ? localize(TRANSLATION, locale()).name : localize(TRANSLATION, locale()).animalName}
+                labelText={props.type === 'pet' ? i18n().name : i18n().animalName}
                 value={form.name}
                 onInput={(value) => setForm({ ...form, name: value })}
               />
               <Show when={props.type === 'animal'}>
                 <Select
                   containerClassList="mb-4"
-                  labelText={localize(TRANSLATION, locale()).kind}
-                  items={localize(TRANSLATION, locale()).animals}
+                  labelText={i18n().kind}
+                  items={i18n().animals}
                   selectedValue={form.kind}
                   onSelect={(value) => setForm({ ...form, kind: value })}
                 />
               </Show>
-              <Button default onClick={createCompanion}>{localize(TRANSLATION, locale()).create}</Button>
+              <Button default onClick={createCompanion}>{i18n().create}</Button>
             </>
           }
         >
@@ -342,7 +394,7 @@ export const Pathfinder2Companion = (props) => {
                       <div class="flex-1">
                         <p class="text-xl">{companion().name}</p>
                         <Show when={props.type === 'animal'}>
-                          <p class="text-sm mt-2">{localize(TRANSLATION, locale()).ages[companion().age]}, {localize(TRANSLATION, locale()).animals[companion().kind]}, {localize(TRANSLATION, locale()).sizes[companion().size]}</p>
+                          <p class="text-sm mt-2">{i18n().ages[companion().age]}, {i18n().animals[companion().kind]}, {i18n().sizes[companion().size]}</p>
                         </Show>
                         <p class="mt-2">{companion().caption}</p>
                       </div>
@@ -352,14 +404,14 @@ export const Pathfinder2Companion = (props) => {
               >
                 <Input
                   containerClassList="mb-2"
-                  labelText={props.type === 'pet' ? localize(TRANSLATION, locale()).name : localize(TRANSLATION, locale()).animalName}
+                  labelText={props.type === 'pet' ? i18n().name : i18n().animalName}
                   value={form.name}
                   onInput={(value) => setForm({ ...form, name: value })}
                 />
                 <TextArea
                   rows="4"
                   containerClassList="mb-2"
-                  labelText={localize(TRANSLATION, locale()).caption}
+                  labelText={i18n().caption}
                   value={form.caption}
                   onChange={(value) => setForm({ ...form, caption: value })}
                 />
@@ -369,11 +421,32 @@ export const Pathfinder2Companion = (props) => {
                 <Button default classList="absolute top-0 right-0 rounded min-w-6 min-h-6 opacity-50" onClick={removeCompanion}>
                   <Close />
                 </Button>
-              </Show>
-              <Show when={props.type === 'animal' && !editMode() && companion().age === 'young'}>
-                <Button default classList="absolute bottom-0 right-10 rounded min-w-6 min-h-6 opacity-50" onClick={upgradeCompanion}>
-                  <Upgrade />
-                </Button>
+                <Show when={props.type === 'animal'}>
+                  <div class="absolute bottom-0 right-0 flex gap-2">
+                    <Show when={companion().age === 'young'}>
+                      <Button default classList="rounded min-w-6 min-h-6 opacity-50" onClick={() => upgradeCompanion({ age: 'mature' })}>
+                        <Upgrade />
+                      </Button>
+                    </Show>
+                    <Show when={companion().age === 'mature'}>
+                      <Button default classList="rounded min-w-6 min-h-6 opacity-50 px-2" onClick={() => upgradeCompanion({ age: 'nimble' })}>
+                        <Upgrade /><span class="ml-2">{i18n().ages.nimble}</span>
+                      </Button>
+                      <Button default classList="rounded min-w-6 min-h-6 opacity-50 px-2" onClick={() => upgradeCompanion({ age: 'savage' })}>
+                        <Upgrade /><span class="ml-2">{i18n().ages.savage}</span>
+                      </Button>
+                    </Show>
+                    <Show when={!companion().specialization && (companion().age === 'nimble' || companion().age === 'savage')}>
+                      <Select
+                        containerClassList="w-60"
+                        labelText={i18n().specialization}
+                        items={i18n().specializations}
+                        selectedValue={null}
+                        onSelect={(value) => upgradeCompanion({ specialization: value })}
+                      />
+                    </Show>
+                  </div>
+                </Show>
               </Show>
             </div>
           </EditWrapper>
@@ -393,7 +466,7 @@ export const Pathfinder2Companion = (props) => {
           />
           <Show when={props.type === 'animal'}>
             <div class="blockable py-4 px-2 md:px-4 mb-2">
-              <h2 class="weapon-title">{localize(TRANSLATION, locale()).attacks}</h2>
+              <h2 class="weapon-title">{i18n().attacks}</h2>
               <div class="mb-4">
                 <For each={companion().attacks}>
                   {(attack) =>
@@ -415,8 +488,8 @@ export const Pathfinder2Companion = (props) => {
                       <Show when={attack.tags && Object.keys(attack.tags).length > 0}>
                         <div class="weapon-tags">
                           <For each={Object.entries(attack.tags)}>
-                            {([, value]) =>
-                              <p class="tag">{value}</p>
+                            {([tag, value]) =>
+                              <p class="tag" onClick={() => showTagInfo(tag, value)}>{value}</p>
                             }
                           </For>
                         </div>
@@ -425,8 +498,15 @@ export const Pathfinder2Companion = (props) => {
                   }
                 </For>
               </div>
-              <h2 class="weapon-title">{localize(TRANSLATION, locale()).support}</h2>
+              <h2 class="weapon-title">{i18n().support}</h2>
               <p class="text-xs md:text-sm">{companion().support}</p>
+              <Show when={companion().special}>
+                <h2 class="weapon-title mt-2">{i18n().special} ({companion().special_price})</h2>
+                <p
+                  class="feat-markdown text-xs! md:text-sm! mt-1"
+                  innerHTML={companion().special} // eslint-disable-line solid/no-innerhtml
+                />
+              </Show>
             </div>
             <div class="blockable py-4 mb-2">
               <div class="grid grid-cols-3 gap-2">
@@ -489,7 +569,7 @@ export const Pathfinder2Companion = (props) => {
             <For each={[petFeats(), familiarFeats()]}>
               {(list, index) => 
                 <Show when={list.length > 0}>
-                  <Toggle title={index() === 0 ? localize(TRANSLATION, locale()).pets : localize(TRANSLATION, locale()).familiars} innerClassList="pet-feats">
+                  <Toggle title={index() === 0 ? i18n().pets : i18n().familiars} innerClassList="pet-feats">
                     <For each={list}>
                       {(feat) =>
                         <div class="pet-feat">
@@ -510,6 +590,10 @@ export const Pathfinder2Companion = (props) => {
             </For>
           </Show>
         </Show>
+        <Modal classList="md:max-w-md!">
+          <p class="mb-3 text-xl">{tagInfo()[0]}</p>
+          <p class="text-sm">{tagInfo()[1]}</p>
+        </Modal>
       </GuideWrapper>
     </ErrorWrapper>
   );
