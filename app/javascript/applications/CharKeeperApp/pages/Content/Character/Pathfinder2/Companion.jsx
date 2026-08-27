@@ -155,7 +155,7 @@ export const Pathfinder2Companion = (props) => {
   const fetchPetFeats = async () => await fetchPetFeatsRequest(appState.accessToken, character().provider);
 
   createEffect(() => {
-    if (!character().can_have_pet && !character().can_have_familiar) return;
+    if (!character().can_have_pet && !character().can_have_familiar && !character().can_have_animal) return;
     if (lastActiveCharacterId() === character().id) return;
 
     if (props.type === 'pet') {
