@@ -1,0 +1,17 @@
+[
+  {
+    "title": {
+      "en": "Hired Killer",
+      "ru": "Наёмный убийца"
+    },
+    "description": {
+      "en": "Your life truly began after your first kill.",
+      "ru": "Ваша жизнь по-настоящему началась после совершённого вами первого убийства."
+    },
+    "public": true,
+    "feat": "Terrain Stalker",
+    "ability_boosts": ["str", "dex"],
+    "skill_boosts": "stealth",
+    "lore_name": "Lore (Underworld)"
+  }
+]

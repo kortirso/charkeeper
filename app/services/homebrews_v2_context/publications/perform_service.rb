@@ -31,6 +31,7 @@ module HomebrewsV2Context
       def pathfinder2_commands(publication)
         case publication.parent_type
         when 'weapon' then HomebrewsV2Context::Import::Pathfinder2::Items::Weapons::AddCommand.new
+        when 'background' then HomebrewsV2Context::Import::Pathfinder2::Backgrounds::PerformCommand.new
         end
       end
 

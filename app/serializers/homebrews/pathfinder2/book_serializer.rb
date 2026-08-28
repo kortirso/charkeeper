@@ -13,7 +13,8 @@ module Homebrews
         items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
-          items: transform(::Pathfinder2::Item.kept.where(id: items['Item']).pluck(:id, :name))
+          items: transform(::Pathfinder2::Item.kept.where(id: items['Item']).pluck(:id, :name)),
+          backgrounds: titles(items, ::Pathfinder2::Homebrews::Background, 'Homebrew')
         }
       end
 
@@ -33,6 +34,10 @@ module Homebrews
         return false unless context[:upvotes]
 
         context[:upvotes].include?(object.id)
+      end
+
+      def titles(object_items, model, key)
+        model.where(id: object_items[key]).pluck(:id, :title).to_h.transform_values { |item| translate(item) }
       end
 
       def transform(values)

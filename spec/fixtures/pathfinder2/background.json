@@ -1,0 +1,21 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "title": {
+      "en": "Background's title"
+    },
+    /* optional, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Background's description, **Markdown is available** for editing."
+    },
+    "public": true,
+    /* required, id or feat name */
+    "feat": "Terrain Stalker",
+    /* required, str/dex/con/int/wis/cha, 2 items */
+    "ability_boosts": ["str", "dex"],
+    /* required, acrobatics/arcana/athletics/crafting/deception/diplomacy/intimidation/medicine/nature/occultism/performance/religion/society/stealth/survival/thievery or free */
+    "skill_boosts": "stealth",
+    /* required, name of lore skill */
+    "lore_name": "Lore (kind of lore)"
+  }
+]

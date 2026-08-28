@@ -321,6 +321,7 @@ Rails.application.routes.draw do
     end
 
     namespace :pathfinder2 do
+      resources :backgrounds, only: %i[show destroy]
       resources :books, only: %i[index show create update destroy] do
         get :for_items, on: :collection
       end

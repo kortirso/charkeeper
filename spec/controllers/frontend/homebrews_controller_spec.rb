@@ -10,7 +10,7 @@ describe Frontend::HomebrewsController do
         get :index, params: { charkeeper_access_token: access_token }
 
         expect(response).to have_http_status :ok
-        expect(response.parsed_body.keys).to contain_exactly('daggerheart', 'dnd2024', 'nimble')
+        expect(response.parsed_body.keys).to contain_exactly('daggerheart', 'dnd2024', 'nimble', 'pathfinder2')
       end
     end
   end

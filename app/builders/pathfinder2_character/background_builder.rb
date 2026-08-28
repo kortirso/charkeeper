@@ -9,7 +9,10 @@ module Pathfinder2Character
     private
 
     def background_builder(result) # rubocop: disable Metrics/AbcSize
-      config = Config.data('pathfinder2', 'backgrounds')[result[:background]]
+      config =
+        Config.data('pathfinder2', 'backgrounds')[result[:background]] ||
+          ::Pathfinder2::Homebrews::Background.find_by(id: result[:background])&.info&.attributes
+      return result unless config
 
       result[:ability_boosts].merge!({ :free => 1, config['ability_boosts'].to_sym => 1 }) { |_, oldval, newval| oldval + newval }
       result[:skill_boosts].merge!({ config['skill_boosts'].to_sym => 1 }) { |_, oldval, newval| oldval + newval }

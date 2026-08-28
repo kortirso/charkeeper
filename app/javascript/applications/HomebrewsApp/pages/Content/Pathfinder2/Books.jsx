@@ -12,17 +12,20 @@ const TRANSLATION = {
   en: {
     items: 'Items',
     official: 'Approved',
-    showItems: 'Show items'
+    showItems: 'Show items',
+    backgrounds: 'Backgrounds'
   },
   ru: {
     items: 'Предметы',
     official: 'Одобренная',
-    showItems: 'Показать предметы'
+    showItems: 'Показать предметы',
+    backgrounds: 'Предыстории'
   },
   es: {
     items: 'Objetos',
     official: 'Aprobado',
-    showItems: 'Show items'
+    showItems: 'Show items',
+    backgrounds: 'Trasfondos'
   }
 }
 
@@ -39,7 +42,7 @@ export const Pathfinder2Books = () => {
       <Show when={props.info.shared}>
         <p class="font-medium!">{localize(TRANSLATION, locale()).official}</p>
       </Show>
-      <For each={['items']}>
+      <For each={['backgrounds', 'items']}>
         {(kind) =>
           <Show when={Object.keys(props.info.items[kind]).length > 0}>
             <div>

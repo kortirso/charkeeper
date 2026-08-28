@@ -117,5 +117,19 @@ module Pathfinder2
     def decorator(simple: false, version: nil)
       Pathfinder2Decorator.new.call(character: self, simple: simple, version: version)
     end
+
+    def background_name
+      return '' unless data.background
+
+      default = ::Pathfinder2::Character.backgrounds[data.background]
+      return translate(default['name']) if default
+
+      custom_name = pathfinder2_names.fetch_item(key: :backgrounds, id: data.background)
+      custom_name ? translate(custom_name[:name]) : '-'
+    end
+
+    private
+
+    def pathfinder2_names = Charkeeper::Container.resolve('cache.pathfinder2_names')
   end
 end

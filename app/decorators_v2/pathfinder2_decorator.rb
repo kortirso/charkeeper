@@ -672,7 +672,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     {
       'race' => translate(::Pathfinder2::Character.race_info(race)['name']),
       'subrace' => translate(::Pathfinder2::Character.subrace_info(race, subrace)['name']),
-      'background' => translate(::Pathfinder2::Character.backgrounds.dig(background, 'name')),
+      'background' => @character.background_name,
       'class' => translate(::Pathfinder2::Character.class_info(main_class)['name']),
       'subclass' => find_subclass_name
     }

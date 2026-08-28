@@ -1,20 +1,23 @@
 import { For, Switch, Match } from 'solid-js';
 
-import { Pathfinder2Books, Pathfinder2Weapons } from '../../pages';
+import { Pathfinder2Books, Pathfinder2Weapons, Pathfinder2Backgrounds } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
 const TRANSLATION = {
   en: {
     books: 'Books',
     weapons: 'Weapons',
+    backgrounds: 'Backgrounds'
   },
   ru: {
     books: 'Книги',
     weapons: 'Оружие',
+    backgrounds: 'Происхождения'
   },
   es: {
     books: 'Libros',
-    weapons: 'Armas'
+    weapons: 'Armas',
+    backgrounds: 'Trasfondos'
   }
 }
 
@@ -28,7 +31,7 @@ export const Pathfinder2 = () => {
       <div class="flex flex-wrap gap-x-4 gap-y-2 my-4">
         <For each={
           [
-            'books', 'weapons'
+            'books', 'backgrounds', 'weapons'
           ]
         }>
           {(item) =>
@@ -43,7 +46,7 @@ export const Pathfinder2 = () => {
       <Switch fallback={<></>}>
         <For each={
           Object.entries({
-            books: Pathfinder2Books, weapons: Pathfinder2Weapons
+            books: Pathfinder2Books, weapons: Pathfinder2Weapons, backgrounds: Pathfinder2Backgrounds
           })
         }>
           {([item, Component]) =>

@@ -14,14 +14,13 @@ module CharactersContext
         config.messages.namespace = :pathfinder2_character
 
         Races = Dry::Types['strict.string'].enum(*::Pathfinder2::Character.races.keys)
-        Backgrounds = Dry::Types['strict.string'].enum(*::Pathfinder2::Character.backgrounds.keys)
         Classes = Dry::Types['strict.string'].enum(*::Pathfinder2::Character.classes_info.keys)
 
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string, max_size?: 50)
           required(:race).filled(Races)
-          required(:background).filled(Backgrounds)
+          required(:background).filled(:string)
           required(:main_class).filled(Classes)
           required(:subrace).filled(:string)
           optional(:subclass).filled(:string)
@@ -84,7 +83,9 @@ module CharactersContext
       end
 
       def add_background_feat(character)
-        background = Config.data('pathfinder2', 'backgrounds')[character.data.background]
+        background =
+          Config.data('pathfinder2', 'backgrounds')[character.data.background] ||
+            ::Pathfinder2::Homebrews::Background.find_by(id: character.data.background)&.info&.attributes
         return unless background
 
         feat = ::Pathfinder2::Feat.find_by(slug: background['feat'])

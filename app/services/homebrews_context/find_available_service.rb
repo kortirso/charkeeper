@@ -2,7 +2,7 @@
 
 module HomebrewsContext
   class FindAvailableService
-    def call(user_id:)
+    def call(user_id:) # rubocop: disable Metrics/MethodLength
       {
         daggerheart: {
           races: races_with_features(user_id).to_h,
@@ -19,6 +19,9 @@ module HomebrewsContext
         },
         nimble: {
           races: nimble_races(user_id)
+        },
+        pathfinder2: {
+          backgrounds: titles(user_id, ::Pathfinder2::Homebrews::Background)
         }
       }
     end
