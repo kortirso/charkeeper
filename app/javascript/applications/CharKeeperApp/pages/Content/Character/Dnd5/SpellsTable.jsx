@@ -84,7 +84,7 @@ export const SpellsTable = (props) => {
               {props.level} {localize(TRANSLATION, locale())['level']}
             </Show>
           </h2>
-          <Show when={props.spentSpellSlots}>
+          <Show when={props.spentSpellSlots && props.slotsAmount}>
             <div class="flex">
               <For each={[...Array((props.spentSpellSlots[props.level] || 0)).keys()]}>
                 {() =>
