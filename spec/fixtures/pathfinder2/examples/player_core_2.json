@@ -1,0 +1,23 @@
+[
+  {
+    "name": {
+      "en": "Claw Blade",
+      "ru": "Клинок-коготь"
+    },
+    "description": {},
+    "public": true,
+    "data": {
+      "price": 200,
+      "weight": 0
+    },
+    "info": {
+      "burden": 1,
+      "group": "knife",
+      "type": "melee",
+      "weapon_skill": "martial",
+      "damage": "1d4",
+      "damage_type": "slash-pierce",
+      "tooltips": ["uncommon", "agile", "deadly-1d8", "disarm", "finesse", "versatile"]
+    }
+  }
+]

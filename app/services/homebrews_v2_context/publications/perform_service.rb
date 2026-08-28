@@ -23,8 +23,15 @@ module HomebrewsV2Context
           case publication.provider
           when 'dnd2024' then dnd2024_commands(publication)
           when 'nimble' then nimble_commands(publication)
+          when 'pathfinder2' then pathfinder2_commands(publication)
           else daggerheart_commands(publication)
           end
+      end
+
+      def pathfinder2_commands(publication)
+        case publication.parent_type
+        when 'weapon' then HomebrewsV2Context::Import::Pathfinder2::Items::Weapons::AddCommand.new
+        end
       end
 
       def nimble_commands(publication)

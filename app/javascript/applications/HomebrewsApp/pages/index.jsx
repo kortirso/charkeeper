@@ -3,6 +3,7 @@ export * from './ContentPage';
 export * from './Content/Daggerheart';
 export * from './Content/Dnd2024';
 export * from './Content/Nimble';
+export * from './Content/Pathfinder2';
 
 export * from './Content/SharedContent';
 export * from './Content/SharedBookContent';
@@ -32,3 +33,6 @@ export * from './Content/Dnd2024/Weapons';
 export * from './Content/Nimble/Ancestries';
 export * from './Content/Nimble/Books';
 export * from './Content/Nimble/Weapons';
+
+export * from './Content/Pathfinder2/Books';
+export * from './Content/Pathfinder2/Weapons';

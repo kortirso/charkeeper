@@ -4,7 +4,7 @@ module HomebrewContext
   module Books
     class AddCommand < BaseCommand
       use_contract do
-        Providers = Dry::Types['strict.string'].enum('daggerheart', 'dnd', 'nimble')
+        Providers = Dry::Types['strict.string'].enum('daggerheart', 'dnd', 'nimble', 'pathfinder2')
 
         params do
           required(:user).filled(type?: ::User)
