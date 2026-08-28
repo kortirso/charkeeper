@@ -84,6 +84,7 @@ module SheetsContext
         row_index = 790
         character.features.select { |item| except.exclude?(item[:origin]) }.each do |feature| # rubocop: disable Metrics/BlockLength
           next if feature[:description].nil?
+          next if feature[:title].nil?
 
           font_size 10
           title_box = ::Prawn::Text::Formatted::Box.new([{ text: feature[:title] }], {
