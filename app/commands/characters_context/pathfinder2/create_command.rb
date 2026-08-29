@@ -88,7 +88,7 @@ module CharactersContext
             ::Pathfinder2::Homebrews::Background.find_by(id: character.data.background)&.info&.attributes
         return unless background
 
-        feat = ::Pathfinder2::Feat.find_by(slug: background['feat'])
+        feat = ::Pathfinder2::Feat.find_by(slug: background['feat']) || ::Pathfinder2::Feat.find_by(id: background['feat'])
         return unless feat
 
         add_feat.call(character: character, id: feat.id, type: 'additional', level: 1)
