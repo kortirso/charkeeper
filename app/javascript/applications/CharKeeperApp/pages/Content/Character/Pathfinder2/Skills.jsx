@@ -72,7 +72,11 @@ export const Pathfinder2Skills = (props) => {
     Object.keys(skillBoosts).forEach((key) => {
       if (key === 'free') return;
 
-      result.push(`${key.split('_').map((item) => localize(config.skills[item].name, locale())).join('/')} - ${skillBoosts[key]}`)
+      result.push(`${key.split('_').map((item) => {
+        const skill = character().skills.find((element) => element.slug === item)
+
+        return skill.name
+      }).join('/')} - ${skillBoosts[key]}`)
     });
     if (skillBoosts.free) result.push(`${localize(TRANSLATION, locale()).free} - ${skillBoosts.free}`);
 
@@ -163,9 +167,7 @@ export const Pathfinder2Skills = (props) => {
                         <div class="fallout-skill">
                           <Levelbox classList="mr-2" value={skill.level} />
                           <p class="uppercase mr-4">{skill.ability}</p>
-                          <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>
-                            {config.skills[skill.slug] ? localize(config.skills[skill.slug].name, locale()) : character().lores[skill.slug]}
-                          </p>
+                          <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>{skill.name}</p>
                           <Dice
                             width="28"
                             height="28"
@@ -183,7 +185,7 @@ export const Pathfinder2Skills = (props) => {
                         <p class={`flex-1 flex items-center ${skill().level > 0 ? 'font-medium!' : ''}`}>
                           <Show
                             when={loresData()[skill().slug]}
-                            fallback={localize(config.skills[skill().slug].name, locale())}
+                            fallback={skill().name}
                           >
                             <Input
                               value={loresData()[skill().slug]}

@@ -103,6 +103,8 @@ export const Pathfinder2Leveling = (props) => {
     });
   });
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const selectedFeatIds = createMemo(() => selectedFeats().map((item) => item.feat.id));
 
   const availableFeats = createMemo(() => {
@@ -208,7 +210,7 @@ export const Pathfinder2Leveling = (props) => {
       result,
       function() { // eslint-disable-line solid/reactivity
         props.onReplaceCharacter(onlyHead ? payload : result.character);
-        renderNotice(localize(TRANSLATION, locale()).updated)
+        renderNotice(i18n().updated)
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -227,7 +229,7 @@ export const Pathfinder2Leveling = (props) => {
           </Show>
           <Text
             containerClassList={`${value ? '' : 'cursor-pointer'}`}
-            text={value ? value.feat.title : localize(TRANSLATION, locale()).notSelected}
+            text={value ? value.feat.title : i18n().notSelected}
             textClassList="text-lg"
             onClick={() => value ? null : selectFeat(type, level)}
           />
@@ -262,7 +264,7 @@ export const Pathfinder2Leveling = (props) => {
         <Text
           containerClassList="cursor-pointer"
           labelText={renderFeatLabel('additional')}
-          text={localize(TRANSLATION, locale()).notSelected}
+          text={i18n().notSelected}
           textClassList="text-lg"
           onClick={() => selectFeat('additional', level)}
         />
@@ -271,11 +273,11 @@ export const Pathfinder2Leveling = (props) => {
   }
 
   const renderFeatLabel = (type) => {
-    if (type === 'ancestry') return localize(TRANSLATION, locale()).ancestryFeat;
-    if (type === 'class') return localize(TRANSLATION, locale()).classFeat;
-    if (type === 'skill') return localize(TRANSLATION, locale()).skillFeat;
-    if (type === 'general') return localize(TRANSLATION, locale()).generalFeat;
-    if (type === 'additional') return localize(TRANSLATION, locale()).additionalFeat;
+    if (type === 'ancestry') return i18n().ancestryFeat;
+    if (type === 'class') return i18n().classFeat;
+    if (type === 'skill') return i18n().skillFeat;
+    if (type === 'general') return i18n().generalFeat;
+    if (type === 'additional') return i18n().additionalFeat;
   }
 
   return (
@@ -285,13 +287,13 @@ export const Pathfinder2Leveling = (props) => {
           <Button default classList="rounded mr-4" onClick={() => updateCharacter({ level: character().level + 1 })}>
             <Upgrade width="24" height="24" />
           </Button>
-          <p>{character().level} {localize(TRANSLATION, locale()).currentLevel}</p>
+          <p>{character().level} {i18n().currentLevel}</p>
         </div>
         <div class="flex justify-between items-end gap-2">
           <Input
             numeric
             containerClassList="flex-1"
-            labelText={localize(TRANSLATION, locale()).experience}
+            labelText={i18n().experience}
             value={experience()}
             onInput={setExperience}
           />
@@ -300,7 +302,7 @@ export const Pathfinder2Leveling = (props) => {
       </div>
       <For each={Array.from([...Array(character().level).keys()], (x) => x + 1)}>
         {(index) =>
-          <Toggle title={`${index} ${localize(TRANSLATION, locale()).currentLevel}`}>
+          <Toggle title={`${index} ${i18n().currentLevel}`}>
             <div class="flex flex-col gap-y-2">
               <Show when={ANCESTRY_FEAT_LEVELS.includes(index)}>
                 {renderSelectedFeatValue('ancestry', index)}
@@ -321,12 +323,12 @@ export const Pathfinder2Leveling = (props) => {
       </For>
       <Modal classList="min-w-9/10 max-w-9/10 sm:min-w-2/3 sm:max-w-2/3! lg:min-w-1/3 lg:max-w-1/3!">
         <Show when={featFilter()}>
-          <p>{localize(TRANSLATION, locale()).newFeat}</p>
+          <p>{i18n().newFeat}</p>
           <Select
             multi
             searchable
             containerClassList="mt-4"
-            labelText={localize(TRANSLATION, locale()).selectTags}
+            labelText={i18n().selectTags}
             items={tags()}
             selectedValues={selectedTags()}
             onSelect={changeSelectedTags}
@@ -362,7 +364,7 @@ export const Pathfinder2Leveling = (props) => {
               innerHTML={selectedFeat().description} // eslint-disable-line solid/no-innerhtml
             />
             <Button default classList="rounded mt-4" onClick={confirmSelectedFeat}>
-              {localize(TRANSLATION, locale()).confirm}
+              {i18n().confirm}
             </Button>
           </Show>
         </Show>

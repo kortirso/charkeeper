@@ -1,4 +1,4 @@
-import { For, Show } from 'solid-js';
+import { createMemo, For, Show } from 'solid-js';
 
 import { SpellRange } from './Spells/Range';
 import { SpellDuration } from './Spells/Duration';
@@ -49,10 +49,12 @@ export const Pathfinder2Spell = (props) => {
 
   const [locale] = useAppLocale();
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const onInnateDiceRoll = (e) => {
     e.stopPropagation();
 
-    props.openD20Test('/check attack spell', localize(TRANSLATION, locale()).check, props.spellAttack)
+    props.openD20Test('/check attack spell', i18n().check, props.spellAttack)
   }
 
   const renderEnhancementTitle = (enhancement) => {
@@ -85,10 +87,10 @@ export const Pathfinder2Spell = (props) => {
                   {Object.entries(spell().price).map(([key, value]) => `${value}${key.toUpperCase()}`).join(' ')}
                 </span></Show>
                 <Show when={!props.noLevel && spell().info.level > 0}>
-                  <p>{spell().info.level} {localize(TRANSLATION, locale()).level}</p>
+                  <p>{spell().info.level} {i18n().level}</p>
                 </Show>
-                <Show when={props.kind === "innate"}><span>{localize(TRANSLATION, locale()).innate}</span></Show>
-                <Show when={props.kind === "additional"}><span>{localize(TRANSLATION, locale()).additional}</span></Show>
+                <Show when={props.kind === "innate"}><span>{i18n().innate}</span></Show>
+                <Show when={props.kind === "additional"}><span>{i18n().additional}</span></Show>
               </p>
               <Show when={props.kind === "innate"}>
                 <Dice
@@ -103,19 +105,19 @@ export const Pathfinder2Spell = (props) => {
             <Show when={!props.prepareMode}>
               <Show when={spell().info.level > 0 && props.level > spell().info.level}>
                 <p class="font-medium! text-sm mt-1">
-                  {localize(TRANSLATION, locale()).heightened} +{props.level - spell().info.level}
+                  {i18n().heightened} +{props.level - spell().info.level}
                 </p>
               </Show>
               <Show when={spell().info.level === 0 && props.cantripLevel > 1}>
                 <p class="font-medium! text-sm mt-1">
-                  {localize(TRANSLATION, locale()).heightened} +{props.cantripLevel - 1}
+                  {i18n().heightened} +{props.cantripLevel - 1}
                 </p>
               </Show>
               <Show when={props.kind === "innate"}>
                 <div class="flex gap-x-4 mt-1 text-sm">
-                  <p><span class="font-medium!">{localize(TRANSLATION, locale()).saveDC}:</span> {props.spellDc}</p>
+                  <p><span class="font-medium!">{i18n().saveDC}:</span> {props.spellDc}</p>
                   <Show when={props.limit}>
-                    <p><span class="font-medium!">{localize(TRANSLATION, locale()).limit}:</span> {props.limit}</p>
+                    <p><span class="font-medium!">{i18n().limit}:</span> {props.limit}</p>
                   </Show>
                 </div>
               </Show>
@@ -136,7 +138,7 @@ export const Pathfinder2Spell = (props) => {
       <SpellDuration value={spell().info.duration} />
       <SpellDefense value={spell().info.defense} />
       <Show when={spell().info.sustained}>
-        <p class="text-sm mt-1 font-medium!">{localize(TRANSLATION, locale()).sustained}</p>
+        <p class="text-sm mt-1 font-medium!">{i18n().sustained}</p>
       </Show>
       <p
         class="feat-markdown mt-1"

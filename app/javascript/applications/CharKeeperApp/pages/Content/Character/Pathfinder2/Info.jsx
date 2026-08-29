@@ -1,4 +1,4 @@
-import { For } from 'solid-js';
+import { createMemo, For } from 'solid-js';
 
 import { ErrorWrapper, GuideWrapper, Text, Checkbox, Label } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
@@ -33,6 +33,8 @@ export const Pathfinder2Info = (props) => {
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const renderClass = () => {
     if (!props.character.info.subclass) return props.character.info.class;
 
@@ -66,7 +68,7 @@ export const Pathfinder2Info = (props) => {
           <div class="flex flex-col md:flex-row justify-between items-start">
             <p class="character-info-title">{character().name}</p>
             <div class="flex items-center">
-              <Label labelText={localize(TRANSLATION, locale()).heroPoints} labelClassList="mr-2" />
+              <Label labelText={i18n().heroPoints} labelClassList="mr-2" />
               <For each={[...Array((character().hero_points || 0))]}>
                 {() =>
                   <Checkbox checked classList="mr-1" onToggle={lostPoint} />
@@ -84,7 +86,7 @@ export const Pathfinder2Info = (props) => {
               {(item) =>
                 <Text
                   containerClassList="character-info-item"
-                  labelText={localize(TRANSLATION, locale())[item]}
+                  labelText={i18n()[item]}
                   labelClassList="character-info-text"
                   text={character().info[item]}
                 />
@@ -92,7 +94,7 @@ export const Pathfinder2Info = (props) => {
             </For>
             <Text
               containerClassList="character-info-item"
-              labelText={localize(TRANSLATION, locale()).class}
+              labelText={i18n().class}
               labelClassList="character-info-text"
               text={renderClass()}
             />

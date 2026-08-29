@@ -91,7 +91,7 @@ module Pathfinder2
     end
 
     def self.backgrounds
-      config['backgrounds']
+      Config.data('pathfinder2', 'background_names')
     end
 
     def self.abilities

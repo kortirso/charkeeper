@@ -1,4 +1,4 @@
-import { createEffect, createSignal, For, Show, batch } from 'solid-js';
+import { createEffect, createSignal, createMemo, For, Show, batch } from 'solid-js';
 
 import { ErrorWrapper, Button, EditWrapper, Dice } from '../../../../components';
 import config from '../../../../data/pathfinder2.json';
@@ -52,6 +52,8 @@ export const Pathfinder2Abilities = (props) => {
     });
   });
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const bonusValue = (value) => Math.floor((value / 2) - 5);
   const boosted = (value) => value % 2 === 1;
 
@@ -79,11 +81,11 @@ export const Pathfinder2Abilities = (props) => {
 
       result.push(`${key.split('_').map((item) => localize(config.abilities[item].name, locale())).join('/')} - ${abilityBoosts[key]}`)
     });
-    if (abilityBoosts.free) result.push(`${localize(TRANSLATION, locale()).free} - ${abilityBoosts.free}`);
+    if (abilityBoosts.free) result.push(`${i18n().free} - ${abilityBoosts.free}`);
 
     return (
       <p class="text-sm">
-        <span class="font-medium!">{localize(TRANSLATION, locale())[source]} </span>
+        <span class="font-medium!">{i18n()[source]} </span>
         <span>{result.join('; ')}</span>
       </p>
     );
@@ -111,7 +113,7 @@ export const Pathfinder2Abilities = (props) => {
       >
         <Show when={character().ability_boosts_v2}>
           <div class="warning">
-            <p class="text-sm">{localize(TRANSLATION, locale()).abilityBoosts}</p>
+            <p class="text-sm">{i18n().abilityBoosts}</p>
             <For each={['background', 'race', 'base']}>
               {(item) =>
                 <Show when={character().ability_boosts_v2[item] && Object.keys(character().ability_boosts_v2[item]).length > 0}>

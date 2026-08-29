@@ -132,6 +132,8 @@ export const Pathfinder2Spells = (props) => {
     });
   });
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const classCharacterSpells = createMemo(() => {
     if (!characterSpells()) return [];
 
@@ -296,7 +298,7 @@ export const Pathfinder2Spells = (props) => {
         acc += item.value[spellLevel].selected_count;
         return acc;
       }, 0);
-      if (activeSpellSlots >= totalSlots) return renderAlert(localize(TRANSLATION, locale()).noSlots);
+      if (activeSpellSlots >= totalSlots) return renderAlert(i18n().noSlots);
     }
 
     updateCharacterSpell(characterSpell.id, { ready_to_use: true, level: spellLevel, selected_count: counter });
@@ -386,17 +388,17 @@ export const Pathfinder2Spells = (props) => {
               <StatsBlock
                 items={[
                   {
-                    title: localize(TRANSLATION, locale()).spellAttack,
+                    title: i18n().spellAttack,
                     value:
                       <Dice
                         width="36"
                         height="36"
                         text={modifier(props.spellsInfo.spell_attack)}
-                        onClick={() => props.openD20Test('/check attack spell', localize(TRANSLATION, locale()).check, props.spellsInfo.spell_attack)}
+                        onClick={() => props.openD20Test('/check attack spell', i18n().check, props.spellsInfo.spell_attack)}
                       />
                   },
-                  { title: localize(TRANSLATION, locale()).saveDC, value: props.spellsInfo.spell_dc },
-                  { title: localize(TRANSLATION, locale()).cantripLevel, value: Math.round(character().level / 2) }
+                  { title: i18n().saveDC, value: props.spellsInfo.spell_dc },
+                  { title: i18n().cantripLevel, value: Math.round(character().level / 2) }
                 ]}
               />
             </Show>
@@ -404,30 +406,30 @@ export const Pathfinder2Spells = (props) => {
               when={props.spellsInfo}
               fallback={
                 <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode('innate')}>
-                  {localize(TRANSLATION, locale()).innateSpellBook}
+                  {i18n().innateSpellBook}
                 </Button>
               }
             >
               <div class="grid grid-cols-2 gap-2 mb-2">
                 <Button default textable onClick={() => setSpellsSelectingMode('focus')}>
-                  {localize(TRANSLATION, locale()).focusSpellBook}
+                  {i18n().focusSpellBook}
                 </Button>
                 <Show when={!props.spellsInfo.only_focus}>
                   <Button default textable onClick={() => setSpellsSelectingMode('default')}>
-                    {localize(TRANSLATION, locale()).gotoSpellBook}
+                    {i18n().gotoSpellBook}
                   </Button>
                   <Button default textable onClick={() => setSpellsSelectingMode('additional')}>
-                    {localize(TRANSLATION, locale()).gotoAdditionalBook}
+                    {i18n().gotoAdditionalBook}
                   </Button>
                 </Show>
                 <Button default textable onClick={() => setSpellsSelectingMode('innate')}>
-                  {localize(TRANSLATION, locale()).innateSpellBook}
+                  {i18n().innateSpellBook}
                 </Button>
               </div>
             </Show>
             <Show when={props.spellsInfo?.prepare}>
               <Checkbox
-                labelText={localize(TRANSLATION, locale()).renderMode}
+                labelText={i18n().renderMode}
                 labelPosition="right"
                 labelClassList="ml-2"
                 classList="mb-2"
@@ -438,7 +440,7 @@ export const Pathfinder2Spells = (props) => {
             <Show when={renderMode() && props.spellsInfo}>
               <div class="flex justify-between items-center">
                 <h2 class="text-lg dark:text-snow mb-2">
-                  {localize(TRANSLATION, locale()).focusSpells}
+                  {i18n().focusSpells}
                 </h2>
                 {/* Фокальные ячейки заклинаний */}
                 <div class="flex">
@@ -463,8 +465,8 @@ export const Pathfinder2Spells = (props) => {
                 <>
                   <div class="flex justify-between items-center">
                     <h2 class="text-lg dark:text-snow mb-2">
-                      <Show when={level !== 0} fallback={localize(TRANSLATION, locale()).cantrips}>
-                        {level} {localize(TRANSLATION, locale()).level}
+                      <Show when={level !== 0} fallback={i18n().cantrips}>
+                        {level} {i18n().level}
                       </Show>
                     </h2>
                     {/* Ячейки заклинаний спонтанных заклинателей */}
@@ -480,7 +482,7 @@ export const Pathfinder2Spells = (props) => {
                     </Show>
                     <Show when={props.spellsInfo?.prepare && !renderMode()}>
                       <p class="dark:text-snow">
-                        {localize(TRANSLATION, locale()).prepareSlots} {level === 0 ? props.spellsInfo.cantrip_slots : props.spellsInfo.spells_slots[level]}
+                        {i18n().prepareSlots} {level === 0 ? props.spellsInfo.cantrip_slots : props.spellsInfo.spells_slots[level]}
                       </p>
                     </Show>
                   </div>
@@ -491,7 +493,7 @@ export const Pathfinder2Spells = (props) => {
                         <Show
                           when={groupedCharacterSpells()[level] && groupedCharacterSpells()[level].filter((item) => item.value[level].selected_count !== 0).length > 0}
                           fallback={<p class="dark:text-snow mb-4">
-                            {props.spellsInfo.prepare ? localize(TRANSLATION, locale()).noPreparedSpells : localize(TRANSLATION, locale()).noSpells}</p>
+                            {props.spellsInfo.prepare ? i18n().noPreparedSpells : i18n().noSpells}</p>
                           }
                         >
                           {/* если спонтанный заклинатель (Бард) или включен режим отображения */}
@@ -547,7 +549,7 @@ export const Pathfinder2Spells = (props) => {
                                 }
                               >
                                 <div class="flex flex-col items-end gap-2">
-                                  <p class="text-sm">{localize(TRANSLATION, locale()).kinds[characterSpell.kind]}</p>
+                                  <p class="text-sm">{i18n().kinds[characterSpell.kind]}</p>
                                   <For each={Object.entries(props.spellsInfo.spells_slots)}>
                                     {([level,]) =>
                                       <Show when={level >= characterSpell.spell.info.level}>

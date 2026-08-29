@@ -549,14 +549,12 @@ export const Pathfinder2Companion = (props) => {
                     {(skill) =>
                       <div class="fallout-skill">
                         <p class="uppercase mr-4">{skill.ability}</p>
-                        <p class="flex-1 flex items-center">
-                          {localize(config.skills[skill.slug].name, locale())}
-                        </p>
+                        <p class="flex-1 flex items-center">{skill.name}</p>
                         <Dice
                           width="28"
                           height="28"
                           text={modifier(skill.modifier)}
-                          onClick={() => props.openD20Test(`/check skill "${skill.slug}"`, localize(config.skills[skill.slug].name, locale()), skill.modifier)}
+                          onClick={() => props.openD20Test(`/check skill "${skill.slug}"`, skill.name, skill.modifier)}
                         />
                       </div>
                     }

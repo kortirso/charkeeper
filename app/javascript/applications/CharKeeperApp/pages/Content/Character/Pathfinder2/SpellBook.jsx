@@ -66,6 +66,8 @@ export const Pathfinder2SpellBook = (props) => {
   const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const changeFilter = (currentValues, callback, value) => {
     callback(
       currentValues.includes(value) ? currentValues.filter((item) => item !== value) : currentValues.concat([value])
@@ -121,7 +123,7 @@ export const Pathfinder2SpellBook = (props) => {
       result,
       function() { // eslint-disable-line solid/reactivity
         props.onAddCharacterSpell(result.spell);
-        renderNotice(localize(TRANSLATION, locale()).spellIsLearned);
+        renderNotice(i18n().spellIsLearned);
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -137,7 +139,7 @@ export const Pathfinder2SpellBook = (props) => {
       result,
       function() { // eslint-disable-line solid/reactivity
         props.onRemoveCharacterSpell(characterSpellId);
-        renderNotice(localize(TRANSLATION, locale()).spellIsForget);
+        renderNotice(i18n().spellIsForget);
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -154,7 +156,7 @@ export const Pathfinder2SpellBook = (props) => {
       result,
       function() { // eslint-disable-line solid/reactivity
         props.onAddCharacterSpell(result.spell);
-        renderNotice(localize(TRANSLATION, locale()).spellIsLearned);
+        renderNotice(i18n().spellIsLearned);
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -172,7 +174,7 @@ export const Pathfinder2SpellBook = (props) => {
       result,
       function() { // eslint-disable-line solid/reactivity
         props.onUpdateCharacterSpell(characterSpellId, result);
-        renderNotice(localize(TRANSLATION, locale()).spellIsLearned);
+        renderNotice(i18n().spellIsLearned);
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -190,7 +192,7 @@ export const Pathfinder2SpellBook = (props) => {
       result,
       function() { // eslint-disable-line solid/reactivity
         props.onUpdateCharacterSpell(characterSpellId, result);
-        renderNotice(localize(TRANSLATION, locale()).spellIsForget);
+        renderNotice(i18n().spellIsForget);
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -201,15 +203,15 @@ export const Pathfinder2SpellBook = (props) => {
       <Show when={props.kind === 'default' && props.spellsInfo.learn}>
         <StatsBlock
           items={[
-            { title: localize(TRANSLATION, locale()).cantripsAmount, value: `${learnedDefaultCantrips()}/${props.spellsInfo.cantrips_amount}` },
-            { title: localize(TRANSLATION, locale()).spellsAmount, value: `${learnedDefaultSpells()}/${props.spellsInfo.spells_amount}` }
+            { title: i18n().cantripsAmount, value: `${learnedDefaultCantrips()}/${props.spellsInfo.cantrips_amount}` },
+            { title: i18n().spellsAmount, value: `${learnedDefaultSpells()}/${props.spellsInfo.spells_amount}` }
           ]}
         />
       </Show>
-      <Button default textable classList="mb-2" onClick={props.onBack}>{localize(TRANSLATION, locale()).back}</Button>
+      <Button default textable classList="mb-2" onClick={props.onBack}>{i18n().back}</Button>
       <Show when={props.kind !== 'focus'}>
         <Checkbox
-          labelText={localize(TRANSLATION, locale()).filters}
+          labelText={i18n().filters}
           labelPosition="right"
           labelClassList="ml-2"
           classList="mb-2"
@@ -221,21 +223,21 @@ export const Pathfinder2SpellBook = (props) => {
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 mb-2">
           <Select
             multi
-            labelText={localize(TRANSLATION, locale()).tradition}
+            labelText={i18n().tradition}
             items={translate(config.spellLists, locale())}
             selectedValues={traditionFilter()}
             onSelect={(value) => changeFilter(traditionFilter(), setTraditionFilter, value)}
           />
           <Select
             multi
-            labelText={localize(TRANSLATION, locale()).levels}
-            items={{ 0: localize(TRANSLATION, locale()).cantrips, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10 }}
+            labelText={i18n().levels}
+            items={{ 0: i18n().cantrips, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10 }}
             selectedValues={levelFilter()}
             onSelect={(value) => changeFilter(levelFilter(), setLevelFilter, value)}
           />
           <Input
-            labelText={localize(TRANSLATION, locale()).search}
-            placeholder={localize(TRANSLATION, locale()).searchByTitle}
+            labelText={i18n().search}
+            placeholder={i18n().searchByTitle}
             value={titleFilter()}
             onInput={setTitleFilter}
           />

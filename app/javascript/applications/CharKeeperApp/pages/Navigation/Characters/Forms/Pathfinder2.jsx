@@ -63,9 +63,8 @@ export const Pathfinder2CharacterForm = (props) => {
 
   const pf2Backgrounds = createMemo(() => {
     if (props.homebrews() === undefined) return {};
-    if (!showHomebrew()) return pathfinder2Config.backgrounds;
 
-    return { ...pathfinder2Config.backgrounds, ...props.homebrews().pathfinder2.backgrounds };
+    return props.homebrews().pathfinder2.backgrounds;
   });
 
   return (

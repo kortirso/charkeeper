@@ -74,20 +74,16 @@ module Pathfinder2
     end
 
     def generate_skills_payload
-      [
-        %w[acrobatics dex], %w[arcana int], %w[athletics str], %w[crafting int],
-        %w[deception cha], %w[diplomacy cha], %w[intimidation cha], %w[medicine wis],
-        %w[nature wis], %w[occultism int], %w[performance cha], %w[religion wis],
-        %w[society int], %w[stealth dex], %w[survival wis], %w[thievery dex]
-      ].map { |item| skill_payload(item[0], item[1]) }
+      Config.data('pathfinder2', 'skills').map { |slug, values| skill_payload(slug, values) }
     end
 
-    def skill_payload(slug, ability)
+    def skill_payload(slug, values)
       prof_bonus = proficiency_bonus(selected_skills[slug].to_i)
       {
         slug: slug,
-        ability: ability,
-        modifier: abilities[ability] + prof_bonus
+        name: translate(values['name']),
+        ability: values['ability'],
+        modifier: abilities[values['ability']] + prof_bonus
       }
     end
 

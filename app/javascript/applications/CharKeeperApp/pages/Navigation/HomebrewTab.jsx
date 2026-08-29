@@ -29,6 +29,7 @@ const TRANSLATION = {
 const PROVIDERS = {
   daggerheart: 'Daggerheart',
   dnd: 'D&D 5.5',
+  pathfinder2: 'Pathfinder 2',
   nimble: 'Nimble'
 }
 

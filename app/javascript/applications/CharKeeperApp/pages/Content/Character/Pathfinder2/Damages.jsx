@@ -124,6 +124,8 @@ export const Pathfinder2Damages = (props) => {
     });
   });
 
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
+
   const cancelEditing = () => {
     batch(() => {
       setEditMode(false);
@@ -135,7 +137,7 @@ export const Pathfinder2Damages = (props) => {
     if (!impact()) return {};
 
     const existingImpactTypes = Object.keys(reduction()[impact()]);
-    return Object.fromEntries(Object.entries(localize(TRANSLATION, locale()).damages).filter(([key,]) => !existingImpactTypes.includes(key)));
+    return Object.fromEntries(Object.entries(i18n().damages).filter(([key,]) => !existingImpactTypes.includes(key)));
   });
 
   const changeImpact = (value) => {
@@ -177,11 +179,11 @@ export const Pathfinder2Damages = (props) => {
 
   const renderReduction = (type, values) => {
     const result = [];
-    if (values.immune) result.push(localize(TRANSLATION, locale()).impacts.immune);
-    if (values.weakness) result.push(`${localize(TRANSLATION, locale()).impacts.weakness} ${values.weakness}`);
-    if (values.resistance) result.push(`${localize(TRANSLATION, locale()).impacts.resistance} ${values.resistance}`);
+    if (values.immune) result.push(i18n().impacts.immune);
+    if (values.weakness) result.push(`${i18n().impacts.weakness} ${values.weakness}`);
+    if (values.resistance) result.push(`${i18n().impacts.resistance} ${values.resistance}`);
 
-    return `${localize(TRANSLATION, locale()).damages[type]} - ${result.join(', ')}`;
+    return `${i18n().damages[type]} - ${result.join(', ')}`;
   }
 
   return (
@@ -195,7 +197,7 @@ export const Pathfinder2Damages = (props) => {
           onSaveChanges={updateResistances}
         >
           <div class="blockable p-4">
-            <p class="text-lg">{localize(TRANSLATION, locale()).title}</p>
+            <p class="text-lg">{i18n().title}</p>
             <Show
               when={editMode()}
               fallback={
@@ -219,7 +221,7 @@ export const Pathfinder2Damages = (props) => {
                               <Close />
                             </Button>
                             <p>
-                              {localize(TRANSLATION, locale()).impacts[impact]} {localize(TRANSLATION, locale()).damages[type]}
+                              {i18n().impacts[impact]} {i18n().damages[type]}
                               <Show when={impact !== 'immune'}>
                                 {` ${value}`}
                               </Show>
@@ -233,14 +235,14 @@ export const Pathfinder2Damages = (props) => {
                 <div class="flex flex-col md:flex-row items-start md:items-center gap-2 mt-2">
                   <Select
                     containerClassList="flex-1 w-full"
-                    labelText={localize(TRANSLATION, locale()).impact}
-                    items={localize(TRANSLATION, locale()).impacts}
+                    labelText={i18n().impact}
+                    items={i18n().impacts}
                     selectedValue={impact()}
                     onSelect={changeImpact}
                   />
                   <Select
                     containerClassList="flex-1 w-full"
-                    labelText={localize(TRANSLATION, locale()).impactType}
+                    labelText={i18n().impactType}
                     items={impactTypes()}
                     selectedValue={impactType()}
                     onSelect={setImpactType}
@@ -250,7 +252,7 @@ export const Pathfinder2Damages = (props) => {
                       <Input
                         numeric
                         containerClassList="flex-1 w-full"
-                        labelText={localize(TRANSLATION, locale()).impactValue}
+                        labelText={i18n().impactValue}
                         value={impactValue()}
                         onInput={setImpactValue}
                       />

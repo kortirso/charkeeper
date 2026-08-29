@@ -10,8 +10,6 @@ import {
   CharacterNavigation, Notes, Avatar, ContentWrapper, Conditions, Gold, createRoll, Combat, Feats
 } from '../../../components';
 import config from '../../../data/pathfinder2.json';
-import { useAppLocale } from '../../../context';
-import { translate } from '../../../helpers';
 
 export const Pathfinder2 = (props) => {
   const size = createWindowSize();
@@ -21,7 +19,6 @@ export const Pathfinder2 = (props) => {
   const [activeTab, setActiveTab] = createSignal('combat');
 
   const { Roll, openD20Test, openD20Attack } = createRoll();
-  const [locale] = useAppLocale();
 
   const ancestryFilter = (item) => item.origin === 'ancestry' || item.origin === 'static_race' || item.origin === 'static_subrace';
   const classFilter = (item) => item.origin === 'class' || item.origin === 'static_class' || item.origin === 'static_subclass';
@@ -42,11 +39,7 @@ export const Pathfinder2 = (props) => {
     return result;
   });
 
-  const configSkills = createMemo(() => {
-    const defaultSkills = translate(config.skills, locale());
-
-    return { ...defaultSkills, ...character().lores };
-  });
+  const configSkills = createMemo(() => character().skills.reduce((acc, value) => { acc[value.slug] = value.name; return acc; }, {}));
 
   const characterTabs = createMemo(() => {
     const result = ['combat', 'equipment', 'spells', 'classLevels'];

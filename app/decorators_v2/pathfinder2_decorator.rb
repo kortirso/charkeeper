@@ -358,22 +358,17 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   end
 
   def generate_skills_payload
-    (
-      [
-        %w[acrobatics dex], %w[arcana int], %w[athletics str], %w[crafting int],
-        %w[deception cha], %w[diplomacy cha], %w[intimidation cha], %w[medicine wis],
-        %w[nature wis], %w[occultism int], %w[performance cha], %w[religion wis],
-        %w[society int], %w[stealth dex], %w[survival wis], %w[thievery dex]
-      ] + lores.keys.map { |item| [item, 'int'] }
-    ).map { |item| skill_payload(item[0], item[1]) }
+    Config.data('pathfinder2', 'skills').map { |slug, values| skill_payload(slug, values['name'], values['ability']) } +
+      lores.map { |slug, name| skill_payload(slug, name, 'int') }
   end
 
-  def skill_payload(slug, ability)
+  def skill_payload(slug, name, ability)
     proficiency_level = selected_skills[slug].to_i
     prof_bonus = proficiency_bonus(proficiency_level)
     prof_bonus = untrained_improvisation_bonus if prof_bonus.zero?
     {
       slug: slug,
+      name: name.is_a?(Hash) ? translate(name) : name,
       ability: ability,
       level: proficiency_level,
       modifier: modified_abilities[ability],

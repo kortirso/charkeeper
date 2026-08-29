@@ -110,15 +110,10 @@ class Pathfinder2PetDecorator < ApplicationDecoratorV2
   end
 
   def generate_skills_payload
-    [
-      %w[acrobatics dex], %w[arcana int], %w[athletics str], %w[crafting int],
-      %w[deception cha], %w[diplomacy cha], %w[intimidation cha], %w[medicine wis],
-      %w[nature wis], %w[occultism int], %w[performance cha], %w[religion wis],
-      %w[society int], %w[stealth dex], %w[survival wis], %w[thievery dex]
-    ].map { |item| skill_payload(item[0], item[1]) }
+    Config.data('pathfinder2', 'skills').map { |slug, values| skill_payload(slug, values) }
   end
 
-  def skill_payload(slug, ability)
+  def skill_payload(slug, values)
     modifier =
       if PET_SKILLS.include?(slug) || @attributes.selected_features['skilled']&.include?(slug)
         for_pet = 3 + level
@@ -128,7 +123,8 @@ class Pathfinder2PetDecorator < ApplicationDecoratorV2
       end
     {
       slug: slug,
-      ability: ability,
+      name: translate(values['name']),
+      ability: values['ability'],
       modifier: modifier
     }
   end
