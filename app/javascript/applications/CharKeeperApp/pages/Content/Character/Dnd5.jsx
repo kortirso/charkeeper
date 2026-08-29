@@ -32,7 +32,7 @@ export const Dnd5 = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { Roll, openD20Test, openD20Attack } = createRoll();
+  const { Roll, openD20Test, openSpecialD20Attack } = createRoll();
   const [appState] = useAppState();
   const [locale] = useAppLocale();
 
@@ -156,7 +156,7 @@ export const Dnd5 = (props) => {
                   <Combat
                     character={character()}
                     openD20Test={openD20Test}
-                    openD20Attack={openD20Attack}
+                    openD20Attack={openSpecialD20Attack}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 </Show>
@@ -189,7 +189,7 @@ export const Dnd5 = (props) => {
                   <Dnd2024Spells
                     character={character()}
                     openD20Test={openD20Test}
-                    openD20Attack={openD20Attack}
+                    openD20Attack={openSpecialD20Attack}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 }
@@ -297,7 +297,7 @@ export const Dnd5 = (props) => {
                   <Combat
                     character={character()}
                     openD20Test={openD20Test}
-                    openD20Attack={openD20Attack}
+                    openD20Attack={openSpecialD20Attack}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 </Show>
@@ -335,7 +335,7 @@ export const Dnd5 = (props) => {
                   <Dnd2024Spells
                     character={character()}
                     openD20Test={openD20Test}
-                    openD20Attack={openD20Attack}
+                    openD20Attack={openSpecialD20Attack}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 }

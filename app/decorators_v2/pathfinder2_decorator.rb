@@ -331,6 +331,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
           [key, I18n.t("tags.pathfinder2.weapon.title.#{key}", value: value)]
         end
       ),
+      tooltips: tooltips.slice('deadly', 'fatal'),
       ready_to_use: item.dig(:states, 'hands').to_i.positive?
     }.compact
   end
