@@ -19,6 +19,7 @@ const TRANSLATION = {
     critFailure: 'Crit fail',
     attack: 'Attack',
     damage: 'Damage',
+    critDamage: 'Crit strike',
     plotDice: 'Raising the stakes',
     cthulhuStatuses: {
       fumble: 'Fumble',
@@ -34,7 +35,8 @@ const TRANSLATION = {
     bonus: 'Bonus',
     critbonus: 'Crit bonus',
     primarybonus: 'Primary roll bonus',
-    diceAmount: 'Dice amount'
+    diceAmount: 'Dice amount',
+    critRoll: 'Separate rolls for crit'
   },
   ru: {
     advantage: 'Преимущество',
@@ -46,6 +48,7 @@ const TRANSLATION = {
     critFailure: 'Крит провал',
     attack: 'Атака',
     damage: 'Урон',
+    critDamage: 'Крит удар',
     plotDice: 'Повышение ставок',
     cthulhuStatuses: {
       fumble: 'Крит провал',
@@ -61,7 +64,8 @@ const TRANSLATION = {
     bonus: 'Бонус',
     critbonus: 'Бонус крита',
     primarybonus: 'Бонус основного куба',
-    diceAmount: 'Кол-во кубов'
+    diceAmount: 'Кол-во кубов',
+    critRoll: 'Раздельные броски при крите'
   },
   es: {
     advantage: 'Ventaja',
@@ -73,6 +77,7 @@ const TRANSLATION = {
     critFailure: 'Fallo crítico',
     attack: 'Ataque',
     damage: 'Daño',
+    critDamage: 'Crit strike',
     plotDice: 'Raising the stakes',
     cthulhuStatuses: {
       fumble: 'Fumble',
@@ -88,7 +93,8 @@ const TRANSLATION = {
     bonus: 'Bonus',
     critbonus: 'Crit bonus',
     primarybonus: 'Primary roll bonus',
-    diceAmount: 'Dice amount'
+    diceAmount: 'Dice amount',
+    critRoll: 'Separate rolls for crit'
   }
 }
 const SINGLE_ADVANTAGE_PROVIDERS = ['dnd', 'cosmere', 'pathfinder'];
@@ -153,6 +159,14 @@ export const createRoll = () => {
         setDicesResult(undefined);
       });
     },
+    openSpecialD20Attack(command, title, bonus, dices, damageBonus, maxAdv = 1, deadly, fatal) {
+      batch(() => {
+        setD20Test({ command: command, title: title, bonus: bonus, maxAdv: maxAdv, adv: 0, addBonus: 0, deadly: deadly, fatal: fatal });
+        setDices({ dices: dices, damageBonus: damageBonus, title: i18n().damage, open: true });
+        setD20TestResult(undefined);
+        setDicesResult(undefined);
+      });
+    },
     openDC20Test(command, title, bonus, adv = 0) {
       batch(() => {
         setD20Test({ command: command, title: title, bonus: bonus, maxAdv: 10, adv: adv, addBonus: 0 });
@@ -204,6 +218,9 @@ export const createRoll = () => {
       });
     },
     Roll(props) {
+      const pf2Attack = createMemo(() => props.provider === 'pathfinder' && d20Test.command && dices.dices);
+      const dndAttack = createMemo(() => props.provider === 'dnd' && d20Test.command && dices.dices);
+
       const open = createMemo(() => {
         return d20Test.command || dualityTest.command || cthulhuTest.command || nimbleTest.command || plotDices() > 0 || dices.open;
       });
@@ -347,38 +364,41 @@ export const createRoll = () => {
 
       const performRoll = async () => {
         const rolls = [];
-        if (d20Test.command) rolls.push(generateD20Test());
-        if (dualityTest.command) rolls.push(generateDualityTest());
-        if (cthulhuTest.command) rolls.push(generateCthulhuTest());
-        if (nimbleTest.command && nimbleTest.diceSize) rolls.push(generateNimbleTest());
-        if (plotDices() > 0) rolls.push(generatePlotTest())
-        if (dices.dices) rolls.push(generateDiceRoll());
+
+        if (pf2Attack() || dndAttack()) rolls.push(generateSpecialD20Attack());
+        else if (d20Test.command) rolls.push(generateD20Test());
+        else if (dualityTest.command) rolls.push(generateDualityTest());
+        else if (cthulhuTest.command) rolls.push(generateCthulhuTest());
+        else if (nimbleTest.command && nimbleTest.diceSize) rolls.push(generateNimbleTest());
+        else if (plotDices() > 0) rolls.push(generatePlotTest());
+
+        if (!pf2Attack() && !dndAttack() && dices.dices) rolls.push(generateDiceRoll());
 
         const result = await createCharacterBotRequest(appState.accessToken, props.characterId, { values: rolls });
         if (result.errors_list === undefined) {
           let resultsIndex = 0;
           batch(() => {
-            if (d20Test.command) {
+            if (pf2Attack() || dndAttack()) {
               setD20TestResult(result.result[resultsIndex].result);
               resultsIndex += 1;
-            }
-            if (dualityTest.command) {
+            } else if (d20Test.command) {
+              setD20TestResult(result.result[resultsIndex].result);
+              resultsIndex += 1;
+            } else if (dualityTest.command) {
               setDualityTestResult(result.result[resultsIndex].result);
               resultsIndex += 1;
-            }
-            if (cthulhuTest.command) {
+            } else if (cthulhuTest.command) {
               setCthulhuTestResult(result.result[resultsIndex].result);
               resultsIndex += 1;
-            }
-            if (nimbleTest.command && nimbleTest.diceSize) {
+            } else if (nimbleTest.command && nimbleTest.diceSize) {
               setNimbleTestResult(result.result[resultsIndex].result);
               resultsIndex += 1;
-            }
-            if (plotDices() > 0) {
+            } else if (plotDices() > 0) {
               setPlotResult(result.result[resultsIndex].result);
               resultsIndex += 1;
             }
-            if (dices.dices) {
+
+            if (!pf2Attack() && !dndAttack() && dices.dices) {
               if (dualityTest.command && result.result[0].result.status === 'crit_success') {
                 calculateDualityCritDamage(result.result[resultsIndex].result);
               } else {
@@ -388,6 +408,24 @@ export const createRoll = () => {
             }
           });
         } else renderAlerts(result.errors_list);
+      }
+
+      const generateSpecialD20Attack = () => {
+        const options = [];
+        if (d20Test.adv > 0) options.push(`--adv ${d20Test.adv}`);
+        if (d20Test.adv < 0) options.push(`--dis ${Math.abs(d20Test.adv)}`);
+        if (d20Test.bonus + d20Test.addBonus > 0) options.push(`--bonus ${d20Test.bonus + d20Test.addBonus}`);
+        if (d20Test.bonus + d20Test.addBonus < 0) options.push(`--penalty ${Math.abs(d20Test.bonus + d20Test.addBonus)}`);
+        options.push(`--dices ${dices.dices.join(' ').toLowerCase()}`);
+        if (dices.damageBonus !== 0) options.push(`--dicesBonus ${dices.damageBonus}`);
+        if (d20Test.crit) options.push('--crit true');
+        if (pf2Attack()) {
+          if (d20Test.deadly) options.push(`--deadly ${d20Test.deadly}`);
+          if (d20Test.fatal) options.push(`--fatal ${d20Test.fatal}`);
+        }
+
+        const command = pf2Attack() ? '/pf2Attack' : '/dndAttack';
+        return `${command} ${options.join(' ')}`;
       }
 
       const generateD20Test = () => {
@@ -687,6 +725,15 @@ export const createRoll = () => {
                           </div>
                         </Show>
                       </div>
+                      <Show when={pf2Attack() || dndAttack()}>
+                        <Checkbox
+                          labelText={i18n().critRoll}
+                          labelPosition="right"
+                          labelClassList="ml-2"
+                          checked={d20Test.crit === true}
+                          onToggle={() => setD20Test({ ...d20Test, crit: d20Test.crit === undefined ? true : !d20Test.crit })}
+                        />
+                      </Show>
                       <div class="flex gap-x-4">
                         <div class="flex-1">
                           <p
@@ -963,27 +1010,70 @@ export const createRoll = () => {
                           </Show>
                         </p>
                       </Show>
-                      <div class="dice-list">
-                        <For each={dices.dices}>
-                          {(dice, index) =>
-                            <Dice
-                              type={dice}
-                              onClick={() => refreshDice(index())}
-                              text={dicesResult() ? (dicesResult().rolls.length - 1 >= index() && dicesResult().rolls[index()][0].includes('d') ? dicesResult().rolls[index()][1] : dice) : dice}
-                            />
-                          }
-                        </For>
-                        <Show when={dices.damageBonus !== 0}><p class="text-xl ml-2">{modifier(dices.damageBonus)}</p></Show>
-                        <Show when={dicesResult() !== undefined}>
-                          <div class="roll-results">
-                            <p class="font-medium! text-xl">{dicesResult().total}</p>
+                      <Switch
+                        fallback={
+                          <>
+                            <div class="dice-list">
+                              <For each={dices.dices}>
+                                {(dice, index) =>
+                                  <Dice
+                                    type={dice}
+                                    onClick={() => refreshDice(index())}
+                                    text={dicesResult() ? (dicesResult().rolls.length - 1 >= index() && dicesResult().rolls[index()][0].includes('d') ? dicesResult().rolls[index()][1] : dice) : dice}
+                                  />
+                                }
+                              </For>
+                              <Show when={dices.damageBonus !== 0}><p class="text-xl ml-2">{modifier(dices.damageBonus)}</p></Show>
+                              <Show when={dicesResult() !== undefined}>
+                                <div class="roll-results">
+                                  <p class="font-medium! text-xl">{dicesResult().total}</p>
+                                </div>
+                              </Show>
+                            </div>
+                            <div class="flex gap-x-2">
+                              <p class="dice-button flex-1" onClick={() => setSimpleBonus(-1)}>-</p>
+                              <p class="dice-button flex-1" onClick={() => setSimpleBonus(1)}>+</p>
+                            </div>
+                          </>
+                        }
+                      >
+                        <Match when={(pf2Attack() || dndAttack()) && d20TestResult()}>
+                          <div class="flex flex-col gap-2">
+                            <Show when={d20TestResult().status === 'success'}>
+                              <div class="flex flex-wrap justify-between items-center">
+                                <div class="flex gap-2 items-center">
+                                  <p class="text-sm">{i18n().damage}</p>
+                                  <For each={d20TestResult().damage_rolls}>
+                                    {(roll) =>
+                                      <span class="text-xl secondary_rolls">[{roll}]</span>
+                                    }
+                                  </For>
+                                  <Show when={d20TestResult().damage_bonus !== 0}>
+                                    <p class="dark:text-snow">{modifier(d20TestResult().damage_bonus)}</p>
+                                  </Show>
+                                </div>
+                                <p>{d20TestResult().damage}</p>
+                              </div>
+                            </Show>
+                            <Show when={(pf2Attack() && d20TestResult().status !== 'crit_failure') || (dndAttack() && d20TestResult().status === 'crit_success')}>
+                              <div class="flex flex-wrap justify-between items-center">
+                                <div class="flex gap-2 items-center">
+                                  <p class="text-sm">{i18n().critDamage}</p>
+                                  <For each={d20TestResult().crit_rolls}>
+                                    {(roll) =>
+                                      <span class="text-xl crit_rolls">[{roll}]</span>
+                                    }
+                                  </For>
+                                  <Show when={d20TestResult().crit_damage_bonus !== 0}>
+                                    <p class="dark:text-snow">{modifier(d20TestResult().crit_damage_bonus)}</p>
+                                  </Show>
+                                </div>
+                                <p>{d20TestResult().crit_damage}</p>
+                              </div>
+                            </Show>
                           </div>
-                        </Show>
-                      </div>
-                      <div class="flex gap-x-2">
-                        <p class="dice-button flex-1" onClick={() => setSimpleBonus(-1)}>-</p>
-                        <p class="dice-button flex-1" onClick={() => setSimpleBonus(1)}>+</p>
-                      </div>
+                        </Match>
+                      </Switch>
                     </div>
                   </Show>
                   {/* Кнопка бросков */}

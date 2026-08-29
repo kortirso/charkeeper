@@ -7,7 +7,7 @@ module BotContextV2
       represent_character_command: 'services.bot_context_v2.represent_character_bot'
     ]
 
-    ALLOWED_COMMANDS = %w[/check /roll /dualityRoll /fateRoll /plotRoll /nimbleAttack].freeze
+    ALLOWED_COMMANDS = %w[/check /roll /dualityRoll /fateRoll /plotRoll /nimbleAttack /pf2Attack /dndAttack].freeze
     PROVIDER_BASED_COMMANDS = %w[/check].freeze
 
     def call(messages:, character:)

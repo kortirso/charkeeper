@@ -157,7 +157,6 @@ export const Dnd5Combat = (props) => {
             </div>
           </Show>
         </StatsBlock>
-
         <ResourceWrapper classList="mb-2" character={character()} onReplaceCharacter={props.onReplaceCharacter}>
           <StatsBlock
             classList="mb-0"

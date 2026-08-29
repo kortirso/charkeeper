@@ -18,7 +18,7 @@ export const Pathfinder2 = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { Roll, openD20Test, openD20Attack } = createRoll();
+  const { Roll, openD20Test, openD20Attack, openSpecialD20Attack } = createRoll();
 
   const ancestryFilter = (item) => item.origin === 'ancestry' || item.origin === 'static_race' || item.origin === 'static_subrace';
   const classFilter = (item) => item.origin === 'class' || item.origin === 'static_class' || item.origin === 'static_subclass';
@@ -99,7 +99,7 @@ export const Pathfinder2 = (props) => {
                 <Combat
                   character={character()}
                   openD20Test={openD20Test}
-                  openD20Attack={openD20Attack}
+                  openD20Attack={openSpecialD20Attack}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
@@ -236,7 +236,7 @@ export const Pathfinder2 = (props) => {
                 <Combat
                   character={character()}
                   openD20Test={openD20Test}
-                  openD20Attack={openD20Attack}
+                  openD20Attack={openSpecialD20Attack}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>

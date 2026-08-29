@@ -101,6 +101,7 @@ const DH_SQUARE_DISTANCES = {
   'far': 12,
   'very far': 24
 }
+const SPECIAL_D20_ATTACKS = ['dnd5', 'dnd2024', 'pathfinder2'];
 
 export const Combat = (props) => {
   const character = () => props.character;
@@ -177,7 +178,11 @@ export const Combat = (props) => {
     }, []);
 
     if (dices.length > 0) {
-      props.openD20Attack(`/check attack "${attack.name}"`, attack.name, attackBonus, dices, attack.damage_bonus);
+      if (SPECIAL_D20_ATTACKS.includes(character().provider)){
+        props.openD20Attack(
+          `/check attack "${attack.name}"`, attack.name, attackBonus, dices, attack.damage_bonus, 1, attack.tooltips?.deadly, attack.tooltips?.fatal
+        );
+      } else props.openD20Attack(`/check attack "${attack.name}"`, attack.name, attackBonus, dices, attack.damage_bonus);
     } else {
       props.openD20Test(`/check attack "${attack.name}"`, attack.name, attackBonus);
     }

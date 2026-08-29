@@ -263,6 +263,8 @@ module Charkeeper
     register('services.bot_context_v2.commands.rolls.fate') { BotContextV2::Commands::Rolls::Fate.new }
     register('services.bot_context_v2.commands.rolls.cosmere') { BotContextV2::Commands::Rolls::Cosmere.new }
     register('services.bot_context_v2.commands.rolls.nimble_attack') { BotContextV2::Commands::Checks::NimbleAttack.new }
+    register('services.bot_context_v2.commands.rolls.pf2_attack') { BotContextV2::Commands::Checks::Pf2Attack.new }
+    register('services.bot_context_v2.commands.rolls.dnd_attack') { BotContextV2::Commands::Checks::DndAttack.new }
   end
 end
 

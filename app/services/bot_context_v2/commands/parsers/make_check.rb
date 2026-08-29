@@ -8,9 +8,9 @@ module BotContextV2
           result = {}
           parser = OptionParser.new do |act|
             act.on('--adv [TEXT]', Integer) { |text=0| result[:adv] = text.to_i }
-            act.on('--advDice [TEXT]') { |text| result[:adv_dice] = text }
-            act.on('--hopeDice [TEXT]') { |text| result[:hope_dice] = text }
-            act.on('--fearDice [TEXT]') { |text| result[:fear_dice] = text }
+            act.on('--advDice [TEXT]', String) { |text| result[:adv_dice] = text }
+            act.on('--hopeDice [TEXT]', String) { |text| result[:hope_dice] = text }
+            act.on('--fearDice [TEXT]', String) { |text| result[:fear_dice] = text }
             act.on('--dis [TEXT]', Integer) { |text=0| result[:adv] = text.to_i * -1 }
             act.on('--bonus [TEXT]', Integer) { |text=0| result[:bonus] = text.to_i }
             act.on('--penalty [TEXT]', Integer) { |text=0| result[:bonus] = text.to_i * -1 }
@@ -24,7 +24,11 @@ module BotContextV2
             act.on('--critbonus [TEXT]', Integer) { |text=0| result[:critbonus] = text.to_i }
             act.on('--primarybonus [TEXT]', Integer) { |text=0| result[:primary_bonus] = text.to_i }
             act.on('--vicious [TEXT]') { |text| result[:vicious] = text == 'true' }
-            act.on('--help [TEXT]') { |text| result[:help_dice] = text.downcase }
+            act.on('--help [TEXT]', String) { |text| result[:help_dice] = text.downcase }
+            act.on('--dices [TEXT]', String) { |text| result[:dices] = text.split(',') }
+            act.on('--dicesBonus [TEXT]', Integer) { |text=0| result[:dices_bonus] = text.to_i }
+            act.on('--deadly [TEXT]', String) { |text| result[:deadly] = text }
+            act.on('--fatal [TEXT]', String) { |text| result[:fatal] = text }
           end
           parser.parse! arguments
           result
