@@ -48,6 +48,7 @@ class DaggerheartDecorator < ApplicationDecoratorV2
   end
 
   def calculate_primary_abilities # rubocop: disable Metrics/AbcSize
+    @result['name'] = @character.name
     @result['proficiency'] = tier + leveling['proficiency'].to_i
     @result['armor_score'] = 0
     @result['damage_thresholds'] = { 'major' => 0, 'severe' => (equiped_armor_info ? 0 : level) }
