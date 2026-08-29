@@ -99,7 +99,7 @@ module Pathfinder2
     end
 
     def self.skills
-      config['skills']
+      Config.data('pathfinder2', 'skills')
     end
 
     def self.saving_throws
