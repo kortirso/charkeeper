@@ -81,7 +81,7 @@ module SheetsContext
 
             if attack[:features].any?
               font_size 5
-              text_box translate(attack[:features][0]), at: [327, 601 - (index * 52)], width: 200, height: 14
+              text_box attack[:features][0], at: [327, 601 - (index * 52)], width: 200, height: 14
             end
           end
 

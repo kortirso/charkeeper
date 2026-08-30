@@ -19,6 +19,8 @@ module Frontend
 
     def add_homebrews
       if feature_requirement.call(current: params[:version], initial: '0.5.9')
+        @homebrews['pathfinder2'] ||= {}
+        @homebrews['pathfinder2']['backgrounds'] ||= {}
         @homebrews['pathfinder2']['backgrounds'].merge!(Config.data('pathfinder2', 'background_names'))
       end
     end
