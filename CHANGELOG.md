@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Modified
 - critical damage auto calculations
+- conditions management for pf2 characters
 
 ## [0.5.8] - 2026-08-28
 ### Added

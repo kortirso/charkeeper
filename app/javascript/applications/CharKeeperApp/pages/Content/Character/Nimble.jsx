@@ -2,10 +2,10 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling, NimbleRest, Dc20Conditions,
-  NimbleEquipment, NimbleSpells
+  NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling, NimbleRest, NimbleEquipment,
+  NimbleSpells
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, Feats, createRoll } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, Feats, createRoll, ConditionsV2 } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -81,7 +81,7 @@ export const Nimble = (props) => {
                 />
               </div>
               <div class="mt-4">
-                <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
+                <ConditionsV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
               <div class="mt-4">
                 <NimbleSkills
@@ -167,7 +167,7 @@ export const Nimble = (props) => {
           />
         </div>
         <div class="mt-4">
-          <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
+          <ConditionsV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
         </div>
         <div class="mt-4">
           <NimbleSkills

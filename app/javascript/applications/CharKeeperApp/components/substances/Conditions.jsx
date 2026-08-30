@@ -3,8 +3,6 @@ import { createSignal, createEffect, createMemo, Show, batch, For } from 'solid-
 import { Select, ErrorWrapper, GuideWrapper } from '../../components';
 import daggerheartConfig from '../../data/daggerheart.json';
 import dndConfig from '../../data/dnd2024.json';
-import pathfinder2Config from '../../data/pathfinder2.json';
-import dc20Config from '../../data/dc20.json';
 import { useAppState, useAppLocale } from '../../context';
 import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
 import { translate, localize } from '../../helpers';
@@ -45,8 +43,6 @@ export const Conditions = (props) => {
   const providerConfig = createMemo(() => {
     if (character().provider === 'daggerheart') return daggerheartConfig;
     if (character().provider === 'dnd5' || character().provider === 'dnd2024') return dndConfig;
-    if (character().provider === 'pathfinder2') return pathfinder2Config;
-    if (character().provider === 'dc20') return dc20Config;
   });
 
   const updateMultiFeatureValue = async (value) => {

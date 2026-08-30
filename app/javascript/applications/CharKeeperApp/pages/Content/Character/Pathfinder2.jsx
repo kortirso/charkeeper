@@ -7,7 +7,7 @@ import {
   Pathfinder2Damages, Pathfinder2Equipment
 } from '../../../pages';
 import {
-  CharacterNavigation, Notes, Avatar, ContentWrapper, Conditions, Gold, createRoll, Combat, Feats
+  CharacterNavigation, Notes, Avatar, ContentWrapper, Gold, createRoll, Combat, Feats, ConditionsV2
 } from '../../../components';
 import config from '../../../data/pathfinder2.json';
 
@@ -77,14 +77,14 @@ export const Pathfinder2 = (props) => {
                 />
               </div>
               <div class="mt-4">
+                <ConditionsV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
+              </div>
+              <div class="mt-4">
                 <Pathfinder2Skills
                   character={character()}
                   openD20Test={openD20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
-              </div>
-              <div class="mt-4">
-                <Conditions character={character()} />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
@@ -199,14 +199,14 @@ export const Pathfinder2 = (props) => {
           />
         </div>
         <div class="mt-4">
+          <ConditionsV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
+        </div>
+        <div class="mt-4">
           <Pathfinder2Skills
             character={character()}
             openD20Test={openD20Test}
             onReplaceCharacter={props.onReplaceCharacter}
           />
-        </div>
-        <div class="mt-4">
-          <Conditions character={character()} />
         </div>
       </>
     );
