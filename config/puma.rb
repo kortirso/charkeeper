@@ -17,9 +17,8 @@ worker_timeout 3600 if ENV.fetch('RAILS_ENV', 'development') == 'development'
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 port ENV.fetch('PORT', 5002)
 
-# rubocop: disable Style/ExpandPathArguments
+# rubocop: disable-next Style/ExpandPathArguments
 app_dir = File.expand_path('../..', __FILE__)
-# rubocop: enable Style/ExpandPathArguments
 shared_dir = "#{app_dir}/tmp"
 
 # Specifies the `environment` that Puma will run in.
@@ -40,9 +39,8 @@ activate_control_app
 
 on_worker_boot do
   require 'active_record'
-  # rubocop: disable Style/RescueModifier
+  # rubocop: disable-next Style/RescueModifier
   ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
-  # rubocop: enable Style/RescueModifier
   ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
 end
 

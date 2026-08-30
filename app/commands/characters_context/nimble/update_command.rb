@@ -9,7 +9,7 @@ module CharactersContext
         refresh_feats: 'services.characters_context.nimble.refresh_feats'
       ]
 
-      # rubocop: disable Metrics/BlockLength
+      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         params do
           required(:character).filled(type?: ::Nimble::Character)
@@ -41,7 +41,6 @@ module CharactersContext
           optional(:learned_spells).hash
         end
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

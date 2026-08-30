@@ -19,7 +19,7 @@ module CharactersContext
 
       private
 
-      # rubocop: disable Metrics/AbcSize
+      # rubocop: disable-next Metrics/AbcSize
       def do_prepare(input)
         health = input[:character].data.health
 
@@ -37,7 +37,6 @@ module CharactersContext
           healing(input, health, [health['max'] - health['current'], input[:value]].min)
         end
       end
-      # rubocop: enable Metrics/AbcSize
 
       def do_persist(input)
         return if input[:value].zero?

@@ -5,7 +5,7 @@ module CharactersContext
     class UpdateCommand < BaseCommand
       include Deps[cache: 'cache.avatars']
 
-      # rubocop: disable Metrics/BlockLength
+      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         config.messages.namespace = :fate_character
 
@@ -37,7 +37,6 @@ module CharactersContext
           optional(:file)
         end
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

@@ -5,7 +5,7 @@ module HomebrewsV2Context
     module Dnd2024
       module Races
         class PerformCommand < BaseCommand
-          # rubocop: disable Metrics/BlockLength
+          # rubocop: disable-next Metrics/BlockLength
           use_contract do
             DamageTypes = Dry::Types['strict.string'].enum(
               'bludge', 'pierce', 'slash', 'acid', 'cold', 'fire', 'force', 'lighting', 'necrotic', 'poison', 'psychic',
@@ -47,7 +47,6 @@ module HomebrewsV2Context
               optional(:features).maybe(:array).each(:hash)
             end
           end
-          # rubocop: enable Metrics/BlockLength
 
           private
 

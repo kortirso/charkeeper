@@ -9,7 +9,7 @@ module CharactersContext
           initiative attack damage max_stamina_points max_mana_points maneuver_points max_health
         ].freeze
 
-        # rubocop: disable Metrics/BlockLength
+        # rubocop: disable-next Metrics/BlockLength
         use_contract do
           params do
             required(:bonusable).filled(type_included_in?: [::Dc20::Character])
@@ -71,7 +71,6 @@ module CharactersContext
             end
           end
         end
-        # rubocop: enable Metrics/BlockLength
 
         private
 

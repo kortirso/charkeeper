@@ -15,7 +15,7 @@ module BotContext
     TELEGRAM_SOURCES = %i[telegram_bot telegram_group_bot].freeze
     RESPONSE_SOURCES = %i[web raw].freeze
 
-    # rubocop: disable Metrics/AbcSize
+    # rubocop: disable-next Metrics/AbcSize
     def call(source:, message:, data: {})
       command, arguments = parse_command_text(message)
       if SERVICE_COMMANDS.include?(command)
@@ -36,11 +36,10 @@ module BotContext
     rescue ArgumentError, OptionParser::MissingArgument => _e
       { errors: ['Invalid command'], errors_list: ['Invalid command'] }
     end
-    # rubocop: enable Metrics/AbcSize
 
     private
 
-    # rubocop: disable Style/RedundantRegexpArgument
+    # rubocop: disable-next Style/RedundantRegexpArgument
     def parse_command_text(str)
       result = str.scan(/(?:\"(?:\\\"|[^\"])*\"|\'(?:\\\'|[^\'])*\'|[^\s"]+)/).map do |match|
         # Remove surrounding quotes if present and unescape internal quotes
@@ -54,7 +53,6 @@ module BotContext
       end
       [result.shift, result]
     end
-    # rubocop: enable Style/RedundantRegexpArgument
 
     def response(source, result, data={})
       send_result_message_in_response(data[:raw_message], result) if source.in?(TELEGRAM_SOURCES)

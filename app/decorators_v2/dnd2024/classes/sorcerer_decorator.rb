@@ -42,7 +42,7 @@ module Dnd2024
         4
       end
 
-      # rubocop: disable Metrics/AbcSize
+      # rubocop: disable-next Metrics/AbcSize
       def prepared_spells_amount
         return class_level + 2 if class_level >= 16
         return class_level + 3 if class_level >= 14
@@ -53,7 +53,6 @@ module Dnd2024
 
         class_level * 2
       end
-      # rubocop: enable Metrics/AbcSize
 
       def max_spell_level
         ::Dnd2024::SubclassDecorator::SPELL_SLOTS[class_level].keys.max

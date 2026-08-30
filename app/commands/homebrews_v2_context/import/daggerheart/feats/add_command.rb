@@ -11,7 +11,7 @@ module HomebrewsV2Context
 
           KINDABLE_OPTIONS = %w[static_list many_from_list].freeze
 
-          # rubocop: disable Metrics/BlockLength
+          # rubocop: disable-next Metrics/BlockLength
           use_contract do
             Origins =
               Dry::Types['strict.string'].enum(
@@ -118,7 +118,6 @@ module HomebrewsV2Context
               key.failure(:filled?) if values[:origin] == 'subclass' && values[:origin_value].present? && value.blank?
             end
           end
-          # rubocop: enable Metrics/BlockLength
 
           private
 

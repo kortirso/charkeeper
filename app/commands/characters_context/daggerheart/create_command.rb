@@ -7,7 +7,7 @@ module CharactersContext
         refresh_feats: 'services.characters_context.daggerheart.refresh_feats'
       ]
 
-      # rubocop: disable Metrics/BlockLength
+      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         config.messages.namespace = :daggerheart_character
 
@@ -57,7 +57,6 @@ module CharactersContext
         #   key(:subclass).failure(:invalid)
         # end
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

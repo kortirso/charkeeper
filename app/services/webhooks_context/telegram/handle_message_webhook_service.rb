@@ -8,7 +8,7 @@ module WebhooksContext
         add_identity: 'commands.auth_context.add_identity'
       ]
 
-      # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+      # rubocop: disable-next Metrics/AbcSize, Metrics/CyclomaticComplexity
       def call(message:)
         case message[:text]
         when '/start'
@@ -28,7 +28,6 @@ module WebhooksContext
         else send_message(message[:chat], I18n.t('telegram_webhook.unknown'))
         end
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity
 
       private
 

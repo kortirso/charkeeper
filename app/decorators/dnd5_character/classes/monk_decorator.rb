@@ -58,7 +58,7 @@ module Dnd5Character
         @no_armor ||= defense_gear.values.all?(&:nil?)
       end
 
-      # rubocop: disable Metrics/AbcSize
+      # rubocop: disable-next Metrics/AbcSize
       def with_martial_arts
         result = __getobj__.attacks
         key_ability_bonus = [modifiers['str'], modifiers['dex']].max
@@ -75,7 +75,6 @@ module Dnd5Character
         end
         result
       end
-      # rubocop: enable Metrics/AbcSize
     end
   end
 end

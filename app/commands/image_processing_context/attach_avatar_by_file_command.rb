@@ -22,7 +22,7 @@ module ImageProcessingContext
 
     private
 
-    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop: disable-next Metrics/AbcSize, Metrics/MethodLength
     def do_persist(input)
       return if input.dig(:file, :file_content).size > FILE_SIZE_LIMIT
 
@@ -51,7 +51,6 @@ module ImageProcessingContext
         })
       end
     end
-    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 
     def extension(input)
       input.dig(:file, :file_name).split('.')[-1]

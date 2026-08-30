@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop: disable RSpec/LetSetup
+# rubocop: disable-next RSpec/LetSetup
 describe CharactersContext::Daggerheart::Upgrade::PerformCommand do
   subject(:command_call) {
     instance.call({
@@ -189,4 +189,3 @@ describe CharactersContext::Daggerheart::Upgrade::PerformCommand do
     end
   end
 end
-# rubocop: enable RSpec/LetSetup

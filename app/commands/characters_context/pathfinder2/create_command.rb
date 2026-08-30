@@ -9,7 +9,7 @@ module CharactersContext
         refresh_feats: 'services.characters_context.pathfinder2.refresh_feats'
       ]
 
-      # rubocop: disable Metrics/BlockLength
+      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         config.messages.namespace = :pathfinder2_character
 
@@ -46,7 +46,6 @@ module CharactersContext
           key(:subclass).failure(:invalid)
         end
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

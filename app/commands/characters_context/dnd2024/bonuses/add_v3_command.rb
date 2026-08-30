@@ -14,7 +14,7 @@ module CharactersContext
           armor_class speed 'speeds.swim' 'speeds.flight' 'speeds.climb' attacks_per_action load
         ].freeze
 
-        # rubocop: disable Metrics/BlockLength
+        # rubocop: disable-next Metrics/BlockLength
         use_contract do
           config.messages.namespace = :character_bonus
 
@@ -104,7 +104,6 @@ module CharactersContext
             end
           end
         end
-        # rubocop: enable Metrics/BlockLength
 
         private
 

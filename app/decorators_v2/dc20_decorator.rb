@@ -101,7 +101,7 @@ class Dc20Decorator < ApplicationDecoratorV2
   end
 
   def calculate_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
-    # rubocop: disable Metrics/BlockLength
+    # rubocop: disable-next Metrics/BlockLength
     (modifiers + (wild_form ? wild_modifiers : [])).each do |modifier|
       modifier.each do |key, value|
         next if BASE_MODIFIERS.include?(key)
@@ -148,7 +148,6 @@ class Dc20Decorator < ApplicationDecoratorV2
         end
       end
     end
-    # rubocop: enable Metrics/BlockLength
   end
 
   def apply_modifiers

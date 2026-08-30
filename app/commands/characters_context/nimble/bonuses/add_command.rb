@@ -8,7 +8,7 @@ module CharactersContext
           str dex int wil 'health.max' initiative
         ].freeze
 
-        # rubocop: disable Metrics/BlockLength
+        # rubocop: disable-next Metrics/BlockLength
         use_contract do
           params do
             required(:bonusable).filled(type_included_in?: [::Nimble::Character])
@@ -51,7 +51,6 @@ module CharactersContext
             end
           end
         end
-        # rubocop: enable Metrics/BlockLength
 
         private
 

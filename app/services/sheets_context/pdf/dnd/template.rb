@@ -9,7 +9,7 @@ module SheetsContext
         DIRECT_DURATION_VALUES = %w[instant].freeze
         DIRECT_EFFECT_VALUES = %w[buff debuff heal].freeze
 
-        # rubocop: disable Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+        # rubocop: disable-next Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
         def to_pdf(character:, phtml: nil)
           super
 
@@ -190,7 +190,7 @@ module SheetsContext
                 .where(feats: { origin: 6 }, ready_to_use: true)
                 .pluck(:feat_id, :value).to_h
 
-            # rubocop: disable Metrics/BlockLength
+            # rubocop: disable-next Metrics/BlockLength
             ::Dnd2024::Feat.where(id: spell_ids.keys).or(::Dnd2024::Feat.where(origin: 6, slug: character.static_spells.keys))
               .sort_by { |item| [item.info['level'], translate(item.title)] }
               .each_with_index do |spell, index|
@@ -238,10 +238,8 @@ module SheetsContext
                   text_box effects(character, spell).to_s, at: [467, 681 - (index * 22)], width: 75, height: 14
                 end
               end
-            # rubocop: enable Metrics/BlockLength
           end
         end
-        # rubocop: enable Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
         private
 

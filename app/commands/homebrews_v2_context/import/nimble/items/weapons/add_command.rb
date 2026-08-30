@@ -6,7 +6,7 @@ module HomebrewsV2Context
       module Items
         module Weapons
           class AddCommand < BaseCommand
-            # rubocop: disable Metrics/BlockLength
+            # rubocop: disable-next Metrics/BlockLength
             use_contract do
               Types = Dry::Types['strict.string'].enum('melee', 'range')
               Skills = Dry::Types['strict.string'].enum('str', 'dex')
@@ -48,7 +48,6 @@ module HomebrewsV2Context
                 optional(:public).filled(:bool)
               end
             end
-            # rubocop: enable Metrics/BlockLength
 
             private
 

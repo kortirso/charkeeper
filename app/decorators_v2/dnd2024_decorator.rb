@@ -442,7 +442,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     result
   end
 
-  # rubocop: disable Security/Eval
+  # rubocop: disable-next Security/Eval
   def eval_variable(feat, variable)
     lambda do
       eval(variable)
@@ -451,7 +451,6 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     monitoring_feat_error(e, feat)
     nil
   end
-  # rubocop: enable Security/Eval
 
   def monitoring_feat_error(exception, feat)
     Charkeeper::Container.resolve('monitoring.client').notify(

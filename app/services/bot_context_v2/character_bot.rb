@@ -31,7 +31,7 @@ module BotContextV2
 
     private
 
-    # rubocop: disable Style/RedundantRegexpArgument
+    # rubocop: disable-next Style/RedundantRegexpArgument
     def parse_command_text(str)
       result = str.scan(/(?:\"(?:\\\"|[^\"])*\"|\'(?:\\\'|[^\'])*\'|[^\s"]+)/).map do |match|
         # Remove surrounding quotes if present and unescape internal quotes
@@ -45,7 +45,6 @@ module BotContextV2
       end
       [result.shift, result]
     end
-    # rubocop: enable Style/RedundantRegexpArgument
 
     def send_message_to_channels(command, command_result, character)
       command_result[:character] = character

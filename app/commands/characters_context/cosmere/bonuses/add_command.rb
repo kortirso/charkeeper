@@ -10,7 +10,7 @@ module CharactersContext
           'health_max' 'focus_max' 'investiture_max' 'defense.physical' 'defense.cognitive' 'defense.spiritual' movement
         ].freeze
 
-        # rubocop: disable Metrics/BlockLength
+        # rubocop: disable-next Metrics/BlockLength
         use_contract do
           config.messages.namespace = :character_bonus
 
@@ -77,7 +77,6 @@ module CharactersContext
             end
           end
         end
-        # rubocop: enable Metrics/BlockLength
 
         private
 

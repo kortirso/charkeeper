@@ -4,7 +4,7 @@ module CharactersContext
   module Daggerheart
     module Bonuses
       class AddCommand < BaseCommand
-        # rubocop: disable Metrics/BlockLength
+        # rubocop: disable-next Metrics/BlockLength
         use_contract do
           params do
             required(:bonusable).filled(type_included_in?: [::Daggerheart::Character])
@@ -59,7 +59,6 @@ module CharactersContext
             end
           end
         end
-        # rubocop: enable Metrics/BlockLength
 
         private
 

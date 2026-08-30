@@ -3,7 +3,7 @@
 module Pathfinder2Character
   module Classes
     class FighterBuilder
-      # rubocop: disable Metrics/AbcSize
+      # rubocop: disable-next Metrics/AbcSize
       def call(result:)
         result[:main_ability] = 'str' unless result[:main_ability]
         result[:abilities].merge!({ result[:main_ability].to_sym => 2 }) { |_, oldval, newval| oldval + newval }
@@ -18,7 +18,6 @@ module Pathfinder2Character
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
     end
   end
 end

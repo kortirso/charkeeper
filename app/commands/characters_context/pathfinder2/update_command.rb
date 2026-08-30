@@ -11,7 +11,7 @@ module CharactersContext
         refresh_feats: 'services.characters_context.pathfinder2.refresh_feats'
       ]
 
-      # rubocop: disable Metrics/BlockLength
+      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         config.messages.namespace = :pathfinder2_character
 
@@ -76,7 +76,6 @@ module CharactersContext
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

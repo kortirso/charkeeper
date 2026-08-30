@@ -7,7 +7,7 @@ module HomebrewsV2Context
         class AddCommand < BaseCommand
           KINDABLE_OPTIONS = %w[one_from_list many_from_list].freeze
 
-          # rubocop: disable Metrics/BlockLength
+          # rubocop: disable-next Metrics/BlockLength
           use_contract do
             Origins = Dry::Types['strict.string'].enum('feat', 'spell', 'species', 'subclass')
             Kinds =
@@ -54,7 +54,6 @@ module HomebrewsV2Context
 
             rule(:limit, :limit_refresh).validate(:check_all_or_nothing_present)
           end
-          # rubocop: enable Metrics/BlockLength
 
           private
 

@@ -5,7 +5,7 @@ module HomebrewsV2Context
     module Daggerheart
       module Mechanics
         class PerformCommand < BaseCommand
-          # rubocop: disable Metrics/BlockLength
+          # rubocop: disable-next Metrics/BlockLength
           use_contract do
             Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden', 'static_list', 'many_from_list')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'session')
@@ -102,7 +102,6 @@ module HomebrewsV2Context
               end
             end
           end
-          # rubocop: enable Metrics/BlockLength
 
           private
 

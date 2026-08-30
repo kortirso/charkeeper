@@ -10,7 +10,7 @@ module CharactersContext
       CHANGE_HEALTH_BY_STR_AT_LEVEL = [1, 6].freeze
       CHANGE_ATTRIBUTE_POINTS_AT_LEVEL = [3, 6, 9, 12, 15, 18].freeze
 
-      # rubocop: disable Metrics/BlockLength
+      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         config.messages.namespace = :cosmere_character
 
@@ -58,7 +58,6 @@ module CharactersContext
           optional(:singer_form).filled(:string)
         end
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

@@ -5,7 +5,7 @@ module HomebrewsV2Context
     module Dnd2024
       module Spells
         class AddCommand < BaseCommand
-          # rubocop: disable Metrics/BlockLength
+          # rubocop: disable-next Metrics/BlockLength
           use_contract do
             Times = Dry::Types['strict.string'].enum('A', 'BA', 'R', '1,m', '10,m', '1,h', '8,h', '12,h', '24,h')
             Schools = Dry::Types['strict.string'].enum(
@@ -43,7 +43,6 @@ module HomebrewsV2Context
               end
             end
           end
-          # rubocop: enable Metrics/BlockLength
 
           private
 

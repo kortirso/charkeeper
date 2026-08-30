@@ -31,7 +31,7 @@ module Dnd5Character
         @class_save_dc ||= main_class == 'paladin' ? CLASS_SAVE_DC : __getobj__.class_save_dc
       end
 
-      # rubocop: disable Metrics/AbcSize
+      # rubocop: disable-next Metrics/AbcSize
       def spell_classes
         @spell_classes ||= begin
           result = __getobj__.spell_classes
@@ -46,7 +46,6 @@ module Dnd5Character
           result
         end
       end
-      # rubocop: enable Metrics/AbcSize
 
       def spells_slots
         @spells_slots ||= SPELL_SLOTS[class_level]

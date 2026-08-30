@@ -7,7 +7,7 @@ module HomebrewsV2Context
         class AddCommand < BaseCommand
           KINDABLE_OPTIONS = %w[static_list many_from_list].freeze
 
-          # rubocop: disable Metrics/BlockLength
+          # rubocop: disable-next Metrics/BlockLength
           use_contract do
             Origins = Dry::Types['strict.string'].enum('ancestry')
             Kinds = Dry::Types['strict.string'].enum(
@@ -47,7 +47,6 @@ module HomebrewsV2Context
               end
             end
           end
-          # rubocop: enable Metrics/BlockLength
 
           private
 

@@ -70,7 +70,7 @@ module Dnd5Character
         @resistance ||= __getobj__.resistance.push(ANCESTRIES.dig(draconic_ancestry, 'damage_type', 'en')).uniq
       end
 
-      # rubocop: disable Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength
+      # rubocop: disable-next Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength
       def features
         @features ||= begin
           result = __getobj__.features
@@ -97,7 +97,6 @@ module Dnd5Character
           end
         end
       end
-      # rubocop: enable Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength
 
       private
 

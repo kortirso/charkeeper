@@ -17,7 +17,7 @@ module ImageProcessingContext
 
     private
 
-    # rubocop: disable Metrics/MethodLength
+    # rubocop: disable-next Metrics/MethodLength
     def do_persist(input)
       Tempfile.open('avatar', encoding: 'ascii-8bit') do |file|
         file_context = imgproxy_client.process_image(
@@ -43,6 +43,5 @@ module ImageProcessingContext
     ensure
       input[:character].temp_avatar.purge if input[:character].temp_avatar.attached?
     end
-    # rubocop: enable Metrics/MethodLength
   end
 end

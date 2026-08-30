@@ -4,7 +4,7 @@ module SheetsContext
   module Pdf
     module Pathfinder2
       class Template < SheetsContext::Pdf::Template
-        # rubocop: disable Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+        # rubocop: disable-next Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
         def to_pdf(character:, phtml: nil)
           super
 
@@ -73,7 +73,6 @@ module SheetsContext
 
           render
         end
-        # rubocop: enable Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 
         private
 

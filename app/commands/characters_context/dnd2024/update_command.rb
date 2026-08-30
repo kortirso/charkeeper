@@ -18,7 +18,7 @@ module CharactersContext
       ARMOR_PROFICIENCY = %w[light medium heavy shield].freeze
       DAMAGE_TYPES = %w[bludge pierce slash acid cold fire force lighting necrotic poison psychic radiant thunder].freeze
 
-      # rubocop: disable Metrics/BlockLength
+      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         config.messages.namespace = :dnd5_character
 
@@ -96,7 +96,6 @@ module CharactersContext
           key.failure(:invalid_level) unless value.values.all? { |item| item.to_i.between?(1, 20) }
         end
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

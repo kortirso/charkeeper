@@ -47,7 +47,7 @@ module Dnd2024
         }
       end
 
-      # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Layout/LineLength
+      # rubocop: disable-next Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Layout/LineLength
       def find_static_spells
         eldritch_invocations = selected_features['eldritch_invocations']
         @result['static_spells']['contact_other_plane'] = static_spell_attributes.merge({ 'limit' => 1 }) if level >= 9
@@ -68,7 +68,6 @@ module Dnd2024
         @result['static_spells']['speak_with_dead'] = static_spell_attributes if eldritch_invocations.include?('whispers_of_the_grave')
         @result['static_spells']['arcane_eye'] = static_spell_attributes if eldritch_invocations.include?('visions_of_distant_realms')
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Layout/LineLength
 
       private
 

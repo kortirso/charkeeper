@@ -21,7 +21,7 @@ module CharactersContext
         poison psychic radiant thunder
       ].freeze
 
-      # rubocop: disable Metrics/BlockLength
+      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         config.messages.namespace = :dnd5_character
 
@@ -97,7 +97,6 @@ module CharactersContext
           key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character.classes_info.keys) }
         end
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop: disable Style/RescueStandardError
+# rubocop: disable-next Style/RescueStandardError
 Array.wrap(command_options).map do |factory_options|
   factory_method = factory_options.shift
   begin
@@ -13,4 +13,3 @@ Array.wrap(command_options).map do |factory_options|
     raise e
   end
 end
-# rubocop: enable Style/RescueStandardError

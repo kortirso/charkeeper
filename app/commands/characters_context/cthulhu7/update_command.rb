@@ -7,7 +7,7 @@ module CharactersContext
         cache: 'cache.avatars'
       ]
 
-      # rubocop: disable Metrics/BlockLength
+      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         config.messages.namespace = :cthulhu7_character
 
@@ -47,7 +47,6 @@ module CharactersContext
           optional(:strange).maybe(:string, max_size?: 200)
         end
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

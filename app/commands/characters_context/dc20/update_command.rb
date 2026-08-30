@@ -32,7 +32,7 @@ module CharactersContext
       }.freeze
       NEW_CLASS_FEATURES_LEVELS = [2, 3, 5].freeze
 
-      # rubocop: disable Metrics/BlockLength
+      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         config.messages.namespace = :dc20_character
 
@@ -100,7 +100,6 @@ module CharactersContext
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

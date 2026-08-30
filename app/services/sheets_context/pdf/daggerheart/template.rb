@@ -6,7 +6,7 @@ module SheetsContext
       class Template < SheetsContext::Pdf::Template
         include Deps[markdown: 'markdown']
 
-        # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Layout/LineLength
+        # rubocop: disable-next Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Layout/LineLength
         def to_pdf(character:, phtml: nil)
           super
 
@@ -146,7 +146,6 @@ module SheetsContext
 
           render
         end
-        # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Layout/LineLength
 
         private
 
