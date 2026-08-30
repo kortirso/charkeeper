@@ -9,14 +9,18 @@ require 'uri'
   'spells0.json', 'spells1.json', 'spells2.json', 'spells3.json', 'spells4.json', 'spells5.json', 'spells6.json',
   'spells7.json', 'spells8.json', 'spells9.json', 'spells10.json'
 ].each do |filename|
-  JSON.parse(File.read("db/data_prod/pathfinder2/#{filename}")).each do |item|
+  response =
+    Net::HTTP.get(URI("https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/pathfinder2/#{filename}"))
+  JSON.parse(response).each do |item|
     feat = ::Pathfinder2::Feat.find_by(slug: item['slug'])
     feat ? feat.update!(item) : ::Pathfinder2::Feat.create!(item)
   end
 end
 
-['weapon.json', 'armor.json', 'shields.json'].each do |filename|
-  JSON.parse(File.read("db/data_prod/pathfinder2/#{filename}")).each do |data|
+['weapon.json', 'armor.json', 'shields.json', 'items.json'].each do |filename|
+  response =
+    Net::HTTP.get(URI("https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/pathfinder2/#{filename}"))
+  JSON.parse(response).each do |data|
     item = ::Pathfinder2::Item.find_by(slug: data['slug'])
     item ? item.update!(data) : ::Pathfinder2::Item.create!(data)
   end

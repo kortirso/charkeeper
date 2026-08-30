@@ -15,7 +15,8 @@ const TRANSLATION = {
     lightArmor: 'Light armor',
     mediumArmor: 'Medium armor',
     heavyArmor: 'Heavy armor',
-    shields: 'Shields'
+    shields: 'Shields',
+    items: 'Items'
   },
   ru: {
     simpleM: 'Простое оружие ближнего боя',
@@ -27,7 +28,8 @@ const TRANSLATION = {
     lightArmor: 'Лёгкая броня',
     mediumArmor: 'Средняя броня',
     heavyArmor: 'Тяжёлая броня',
-    shields: 'Щиты'
+    shields: 'Щиты',
+    items: 'Предметы'
   },
   es: {
     simpleM: 'Arma cuerpo a cuerpo simple',
@@ -39,7 +41,8 @@ const TRANSLATION = {
     lightArmor: 'Armadura ligera',
     mediumArmor: 'Armadura media',
     heavyArmor: 'Armadura pesada',
-    shields: 'Escudos'
+    shields: 'Escudos',
+    items: 'Items'
   }
 }
 
@@ -58,6 +61,7 @@ export const Pathfinder2Equipment = (props) => {
   const mediumFilter = (item) => item.kind === 'armor' && item.info.armor_skill === 'medium';
   const heavyFilter = (item) => item.kind === 'armor' && item.info.armor_skill === 'heavy';
   const shieldFilter = (item) => item.kind === 'shield';
+  const itemFilter = (item) => item.kind === 'item';
 
   return (
     <Equipment
@@ -77,7 +81,8 @@ export const Pathfinder2Equipment = (props) => {
         { title: i18n().lightArmor, callback: lightFilter },
         { title: i18n().mediumArmor, callback: mediumFilter },
         { title: i18n().heavyArmor, callback: heavyFilter },
-        { title: i18n().shields, callback: shieldFilter }
+        { title: i18n().shields, callback: shieldFilter },
+        { title: i18n().items, callback: itemFilter }
       ]}
       onReplaceCharacter={props.onReplaceCharacter}
       onReloadCharacter={props.onReloadCharacter}
