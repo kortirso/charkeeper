@@ -154,6 +154,9 @@ Rails.application.routes.draw do
     end
 
     namespace :pathfinder2 do
+      namespace :config do
+        resources :conditions, only: %i[index]
+      end
       resources :characters, only: %i[create update] do
         scope module: :characters do
           resources :spells, only: %i[index create update destroy]

@@ -191,15 +191,6 @@
     "reflex": { "name": { "en": "Reflex", "ru": "Реакция" } },
     "will": { "name": { "en": "Will", "ru": "Воля" } }
   },
-  "conditions": {
-    "blinded": {
-      "name": { "en": "Blinded", "ru": "Слепота" },
-      "description": {
-        "en": "All normal terrain is difficult terrain to you. You automatically critically fail Perception checks that require you to be able to see, and if vision is your only precise sense, you take a -4 status penalty to Perception checks. You are immune to visual effects.",
-        "ru": "Любая обычная местность считается для вас пересечённой местностью. Вы автоматически критически проваливаете проверки Внимания, требующие зрения, и если зрение было вашим единственным точным способом восприятия, вы получаете штраф состояния -4 к проверкам Внимания. Вы невосприимчивы к эффектам с дескриптором Зрение."
-      }
-    }
-  },
   "languages": {
     "common": { "name": { "en": "Common", "ru": "Всеобщий", "es": "Común" } },
     "dwarven": { "name": { "en": "Dwarven", "ru": "Дварфийский", "es": "Enano" } },

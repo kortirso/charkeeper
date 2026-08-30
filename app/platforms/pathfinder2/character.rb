@@ -30,7 +30,8 @@ module Pathfinder2
     attribute :coins, array: true, default: { 'gold' => 0, 'silver' => 0, 'copper' => 0 }
     attribute :money, :integer, default: 0
     attribute :vision, :string, default: nil # low-light dark
-    attribute :conditions, array: true, default: []
+    attribute :conditions, array: true, default: [] # TODO: deprecated
+    attribute :conditions_v2, array: true, default: {}
     attribute :selected_feats, array: true, default: {} # { 'id' => [{ type: '', level: '' }] }
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     attribute :spent_spell_slots, array: true, default: {}

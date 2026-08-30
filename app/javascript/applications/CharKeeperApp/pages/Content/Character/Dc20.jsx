@@ -3,9 +3,9 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dc20Abilities, Dc20Skills, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest, Dc20Summons,
-  Dc20BonusesV2, Dc20Damages, Dc20Conditions, Dc20Info, Dc20Trainings, Dc20Equipment, Dc20WildForms, Dc20WildForm
+  Dc20BonusesV2, Dc20Damages, Dc20Info, Dc20Trainings, Dc20Equipment, Dc20WildForms, Dc20WildForm
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, createRoll, Combat, Feats } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, createRoll, Combat, Feats, ConditionsV2 } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -82,7 +82,7 @@ export const Dc20 = (props) => {
                 />
               </div>
               <div class="mt-4">
-                <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
+                <ConditionsV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
               <Show when={character().wild_form_available}>
                 <div class="mt-4">
@@ -202,7 +202,7 @@ export const Dc20 = (props) => {
           </div>
         </Show>
         <div class="mt-4">
-          <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
+          <ConditionsV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
         </div>
         <div class="mt-4">
           <Dc20Skills

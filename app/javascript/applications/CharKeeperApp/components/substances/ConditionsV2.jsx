@@ -1,11 +1,11 @@
 import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 
-import { Button, Input, ErrorWrapper, Toggle, GuideWrapper, Select } from '../../../../components';
-import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Plus, Minus, Close, Check } from '../../../../assets';
-import { fetchProviderConfigRequest } from '../../../../requests/fetchProviderConfigRequest';
-import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { localize, performResponse } from '../../../../helpers';
+import { Button, Input, ErrorWrapper, Toggle, GuideWrapper, Select } from '../../components';
+import { useAppState, useAppLocale, useAppAlert } from '../../context';
+import { Plus, Minus, Close, Check } from '../../assets';
+import { fetchProviderConfigRequest } from '../../requests/fetchProviderConfigRequest';
+import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
+import { localize, performResponse } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -19,7 +19,7 @@ const TRANSLATION = {
   }
 }
 
-export const Dc20Conditions = (props) => {
+export const ConditionsV2 = (props) => {
   const character = () => props.character;
 
   const [lastCharacterId, setLastCharacterId] = createSignal(undefined);
@@ -104,7 +104,7 @@ export const Dc20Conditions = (props) => {
   }
 
   return (
-    <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Conditions' }}>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'ConditionsV2' }}>
       <GuideWrapper character={character()}>
         <Toggle
           disabled

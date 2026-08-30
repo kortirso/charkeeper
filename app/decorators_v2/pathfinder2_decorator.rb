@@ -554,17 +554,28 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   # бонусы навыков - modifiers
   def all_modifiers
     @all_modifiers ||=
-      character_modifiers +
+      character_modifiers + feature_modifiers + condition_modifiers +
         active_items_with_weapon_in_hands.pluck(:items_modifiers).compact_blank +
-        active_items_with_weapon_in_hands.pluck(:modifiers).compact_blank +
-        feature_modifiers
+        active_items_with_weapon_in_hands.pluck(:modifiers).compact_blank
+  end
+
+  def condition_modifiers
+    Config.data('pathfinder2', 'conditions')
+      .slice(*conditions_v2.keys)
+      .values.filter_map { |value| value['modifiers'] }
+      .map do |value|
+        value.transform_values do |item|
+          item['value'] = formula.call(formula: item['value'], variables: conditions_v2.merge(level: level))
+          item
+        end
+        value
+      end
   end
 
   def modifiers_from_items
-    character_modifiers +
+    character_modifiers + feature_modifiers +
       active_items_without_weapon.pluck(:items_modifiers).compact_blank +
-      active_items_without_weapon.pluck(:modifiers).compact_blank +
-      feature_modifiers
+      active_items_without_weapon.pluck(:modifiers).compact_blank
   end
 
   def active_items_without_weapon

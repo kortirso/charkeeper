@@ -1,0 +1,190 @@
+{
+  "unconscious": {
+    "name": { "en": "Unconscious", "ru": "Без сознания" },
+    "value": true,
+    "description": {
+      "en": "You can't act. You take a -4 status penalty to AC, Perception, and Reflex saves, and you have the *blinded* and *off-guard* conditions.",
+      "ru": "Вы не можете действовать. Вы получаете штраф состояния -4 к КБ, Вниманию и испытаниям Реакции и считаетесь *слепым* и *застигнутым врасплох*."
+    }
+  },
+  "deafened": {
+    "name": { "en": "Deafened", "ru": "Глухота" },
+    "description": {
+      "en": "You automatically critically fail Perception checks that require you to be able to hear. You take a -2 status penalty to Perception checks for initiative and checks that involve sound but also rely on other senses. If you perform an action that has the *auditory* trait, you must succeed at a DC 5 flat check or the action is lost; attempt the check after spending the action but before any effects are applied. You are immune to auditory effects while deafened.",
+      "ru": "Вы автоматически критически проваливаете проверки Внимания, требующие слуха. Вы получаете штраф состояния -2 к проверкам Внимания при определении инициативы, а также к другим проверкам, для которых, помимо иных способов восприятия, требуется слух. Если вы совершаете действие с дескриптором *слух*, вы должны пройти чистую проверку со СЛ 5 и при провале теряете это действие. Проверка совершается после того, как вы потратили действие, но до того, как применяются его эффекты. Вы невосприимчивы к эффектам с дескриптором *слух*."
+    }
+  },
+  "fascinated": {
+    "name": { "en": "Fascinated", "ru": "Заворожённость" },
+    "description": {
+      "en": "You take a -2 status penalty to Perception and skill checks, and you can't use *concentrate* actions unless they (or their intended consequences) are related to the subject of your fascination.",
+      "ru": "Вы получаете штраф состояния -2 к проверкам Внимания и навыков и не можете использовать действия с дескриптором *концентрация*, если они или их желаемый эффект не связаны с заворожившим (по усмотрению ведущего)."
+    }
+  },
+  "slowed": {
+    "name": { "en": "Slowed", "ru": "Замедление" },
+    "value": true,
+    "description": {
+      "en": "When you regain your actions, reduce the number of actions regained by your slowed value.",
+      "ru": "Когда вы восстанавливаете действия в начале своего хода, число получаемых вами действий снижается на значение замедления."
+    }
+  },
+  "confused": {
+    "name": { "en": "Confused", "ru": "Замешательство" },
+    "description": {
+      "en": "You don't have your wits about you, and you attack wildly. You are *off-guard*, you don't treat anyone as your ally.\n\nEach time you take damage from an attack or spell, you can attempt a DC 11 flat check to recover from your confusion and end the condition.",
+      "ru": "Вы находитесь в замешательстве и атакуете всех без разбора. Вы *застигнуты врасплох* и не считаете никого своим союзником.\n\nКаждый раз, когда вы получаете урон от атаки или заклинания, вы можете совершить чистую проверку со СЛ 11, чтобы прийти в чувство и прекратить это состояние."
+    }
+  },
+  "off-guard": {
+    "name": { "en": "Off-guard", "ru": "Застигнут врасплох" },
+    "description": {
+      "en": "You take a -2 circumstance penalty to AC.",
+      "ru": "Вы получаете ситуативный штраф -2 к КБ."
+    }
+  },
+  "grabbed": {
+    "name": { "en": "Grabbed", "ru": "Захват" },
+    "description": {
+      "en": "You're held in place by another creature, giving you the *off-guard* and *immobilized* conditions. If you attempt a *manipulate* action while grabbed, you must succeed at a DC 5 flat check or it is lost; roll the check after spending the action, but before an  effects are applied.",
+      "ru": "Вы *застигнуты врасплох* и *неподвижны*. Если, находясь в захвате, вы совершаете действие *манипуляции*, вы должны пройти чистую проверку со СЛ 5 и при провале теряете это действие. Проверка совершается после траты действия, но до то о, как применяются его эффекты."
+    }
+  },
+  "frightened": {
+    "name": { "en": "Frightened", "ru": "Испуг" },
+    "value": true,
+    "description": {
+      "en": "You take a status penalty equal to this value to all your checks and DCs. Unless specified otherwise, at the end of each of your turns, the value of your frightened condition decreases by 1.",
+      "ru": "Вы получаете штраф состояния ко всем проверкам и СЛ. Величина штрафа равна значению состояния. Если не указано иное, в конце каждого вашего хода значение вашего испуга уменьшается на 1."
+    }
+  },
+  "drained": {
+    "name": { "en": "Drained", "ru": "Истощение" },
+    "value": true,
+    "description": {
+      "en": "You take a status penalty equal to your drained value on Constitution-based checks. You also lose a number of Hit Points equal to your level (minimum 1) times the drained value, and your maximum Hit Points are reduced by the same amount.\n\nEach time you get a full night's rest, your drained value decreases by 1.",
+      "ru": "Вы получаете штраф состояния ко всем броскам и СЛ, зависящим от Выносливости. Величина штрафа равна значению состояния. Кроме этого, вы теряете ПЗ в количестве, равном вашему уровню (минимум 1), умноженному на значение истощения, и ваш максимум ПЗ снижается на это же число.\n\nКаждый полноценный отдых снижает значение истощения на 1. Ваш максимум ПЗ увеличивается, но потерянные ПЗ сразу же не восстанавливаются."
+    },
+    "modifiers": { "health.max": { "type": "add", "value": "-drained * level" } }
+  },
+  "immobilized": {
+    "name": { "en": "Immobilized", "ru": "Неподвижность" },
+    "description": {
+      "en": "You can't use any actions that have the *move* trait.",
+      "ru": "Вы не можете двигаться и использовать действия с дескриптором *движение*."
+    }
+  },
+  "clumsy": {
+    "name": { "en": "Clumsy", "ru": "Неуклюжесть" },
+    "value": true,
+    "description": {
+      "en": "You take a status penalty equal to the condition value to Dexterity-based checks and DCs, including AC, Reflex saves, ranged attack rolls, and skill checks using Acrobatics, Stealth, and Thievery.",
+      "ru": "Вы получаете штраф состояния ко всем броскам и СЛ, зависящим от Ловкости, включая КБ, испытания Реакции, проверки дистанционных атак, а также проверки навыков: Акробатики, Воровства и Скрытности. Величина штрафа равна значению состояния."
+    }
+  },
+  "restrained": {
+    "name": { "en": "Restrained", "ru": "Обездвиженность" },
+    "description": {
+      "en": "You have the *off-guard* and *immobilized* conditions, and you can't use any *attack* or *manipulate* actions except to attempt to *Escape* or *Force Open* your bonds.",
+      "ru": "Вы *застигнуты врасплох*, *неподвижны* и не можете совершать никаких действий с дескрипторами *атака* или *манипуляция*, кроме попыток *Освобождения* или *Ломания оков*."
+    }
+  },
+  "doomed": {
+    "name": { "en": "Doomed", "ru": "Обречённость" },
+    "value": true,
+    "description": {
+      "en": "The *dying* value at which you die is reduced by your doomed value.\n\nYour doomed value decreases by 1 each time you get a full night's rest.",
+      "ru": "Значение состояния *при смерти*, при котором вы умираете, снижается на величину значения обречённости. Если оно снижается до 0, вы немедленно умираете.\n\nКаждый полноценный отдых снижает значение обречённости на 1."
+    },
+    "modifiers": { "max_dying": { "type": "add", "value": "-doomed" } }
+  },
+  "stupefied": {
+    "name": { "en": "Stupefied", "ru": "Ошеломление" },
+    "value": true,
+    "description": {
+      "en": "You take a status penalty equal to this value on Intelligence-, Wisdom-, and Charisma-based checks and DCs, including Will saving throws, spell attack modifiers, spell DCs, and skill checks that use these attribute modifiers. Any time you attempt to Cast a Spell while stupefied, the spell is disrupted unless you succeed at a flat check with a DC equal to 5 + your stupefied value.",
+      "ru": "Вы получаете штраф состояния ко всем броскам и СЛ, зависящим от Интеллекта, Мудрости и Харизмы, включая испытания Воли, проверки атаки заклинанием, СЛ заклинаний и проверки навыков, зависящих от этих характеристик. При попытке Сотворения заклинания, когда вы ошеломлены, ваше заклинание будет сорвано, если вы не пройдёте чистую проверку со СЛ, равной 5 + значение вашего ошеломления."
+    }
+  },
+  "fleeing": {
+    "name": { "en": "Fleeing", "ru": "Паника" },
+    "description": {
+      "en": "You're forced to run away due to fear or some other compulsion. On your turn, you must spend each of your actions trying to escape the source of the fleeing condition as expediently as possible.",
+      "ru": "Вы обращаетесь в бегство под действием ужаса или принуждения. В свой ход вы должны тратить все свои действия, чтобы как можно быстрее отдалиться от источника паники."
+    }
+  },
+  "paralyzed": {
+    "name": { "en": "Paralyzed", "ru": "Паралич" },
+    "description": {
+      "en": "You're frozen in place. You have the *off-guard* condition and can't act except to *Recall Knowledge* and use actions that require only your mind",
+      "ru": "Вы замираете на месте. Вы считаетесь *застигнутым врасплох* и не можете действовать, за исключением попыток *Вспомнить информацию* и действий, требующих только разума."
+    }
+  },
+  "wounded": {
+    "name": { "en": "Wounded", "ru": "Ранение" },
+    "value": true,
+    "description": {
+      "en": "The wounded condition ends if someone successfully restores Hit Points to you using *Treat Wounds*, or if you are restored to full Hit Points by any means and rest for 10 minutes.",
+      "ru": "Вы снимаете состояние ранения, когда кто-то успешно восстанавливает вам ПЗ при помощи *Лечения ранений* или когда вы восстановили все ПЗ и отдохнули 10 минут."
+    }
+  },
+  "prone": {
+    "name": { "en": "Prone", "ru": "Распластанность" },
+    "description": {
+      "en": "You are *off-guard* and take a -2 circumstance penalty to attack rolls.\n\nYou can *Take Cover* while prone to hunker down and gain greater cover against ranged attacks, even if you don't have an object to get behind, which grants you a +4 circumstance bonus to AC against ranged attacks (but you remain off-guard).",
+      "ru": "Вы считаетесь *застигнутым врасплох* и получаете ситуативный штраф -2 к проверкам атак.\n\nБудучи распластанным, вы можете совершить действие *Укрытие*, даже если рядом нет объекта, за которым можно было бы спрятаться: вы получаете надёжное укрытие (ситуативный бонус +4 к КБ) от дистанционных атак, но остаётесь застигнутым врасплох."
+    }
+  },
+  "dazzled": {
+    "name": { "en": "Dazzled", "ru": "Растерянность" },
+    "description": {
+      "en": "If vision is your only precise sense, all creatures and objects are *concealed* from you (A creature that you're concealed from must succeed at a DC 5 flat check when targeting you with an attack, spell, or other effect).",
+      "ru": "Если зрение — ваш единственный точный способ восприятия, все существа и объекты считаются для вас *плохо видимыми* (Если вы плохо видимы для существа, то каждый раз, когда оно выбирает вас целью атаки, заклинания или иного эффекта, оно должно проходить чистую проверку со СЛ 5)."
+    }
+  },
+  "enfeebled": {
+    "name": { "en": "Enfeebled", "ru": "Слабость" },
+    "value": true,
+    "description": {
+      "en": "When you are enfeebled, you take a status penalty equal to the condition value to Strength-based rolls and DCs, including Strength-based melee attack rolls, Strength-based damage rolls, and Athletics checks.",
+      "ru": "Вы получаете штраф состояния ко всем проверкам и СЛ, зависящим от Силы, включая проверки Атлетики, а также проверкам атаки в ближнем бою и броскам урона (если они зависят от Силы). Величина штрафа равна значению состояния."
+    }
+  },
+  "blinded": {
+    "name": { "en": "Blinded", "ru": "Слепота" },
+    "description": {
+      "en": "All normal terrain is difficult terrain to you. You can't detect anything using vision. You automatically critically fail Perception checks that require you to be able to see, and if vision is your only precise sense, you take a -4 status penalty to Perception checks. You are immune to *visual* effects.",
+      "ru": "Любая обычная местность считается для вас пересечённой местностью. Вы не можете ничего обнаружить при помощи зрения. Вы автоматически критически проваливаете проверки Внимания, требующие зрения, и если зрение было вашим единственным точным способом восприятия, вы получаете штраф состояния -4 к проверкам Внимания. Вы невосприимчивы к эффектам с дескриптором *зрение*."
+    }
+  },
+  "hidden": {
+    "name": { "en": "Hidden", "ru": "Спрятанность" },
+    "description": {
+      "en": "A creature you're hidden from is *off-guard* to you, and it must succeed at a DC 11 flat check when targeting you with an attack, spell, or other effect or it fails to affect you. Area effects aren't subject to this flat check.",
+      "ru": "Если вы спрятались от существа, оно считается для вас *застигнутым врасплох*, и каждый раз, когда оно пытается выбрать вас целью атаки, заклинания или иного эффекта, оно должно проходить чистую проверку со СЛ 11. При использовании эффектов с областью эту проверку совершать не нужно."
+    }
+  },
+  "sickened": {
+    "name": { "en": "Sickened", "ru": "Тошнота" },
+    "value": true,
+    "description": {
+      "en": "You take a status penalty equal to this value on all your checks and DCs. You can't willingly ingest anything — including elixirs and potions — while sickened.\n\nYou can spend a single action retching in an attempt to recover, which lets you immediately attempt a Fortitude save against the DC of the effect that made you sickened. On a success, you reduce your sickened value by 1 (or by 2 on a critical success).",
+      "ru": "Вы получаете штраф состояния ко всем своим проверкам и СЛ. Величина штрафа равна значению состояния. Вы не можете по своей воле ничего есть и пить (даже эликсиры и зелья), пока вас тошнит.\n\nВы можете потратить одиночное действие, чтобы вызвать у себя рвоту и восстановиться, что позволяет вам немедленно пройти испытание Стойкости против СЛ вызвавшего тошноту эффекта. При успехе вы снижаете значение тошноты на 1 (или на 2 в случае критического успеха)."
+    }
+  },
+  "fatiqued": {
+    "name": { "en": "Fatiqued", "ru": "Утомление" },
+    "description": {
+      "en": "You take a -1 status penalty to AC and saving throws. You can't use exploration activities performed while traveling. You recover from fatigue after a full night's rest.",
+      "ru": "Вы получаете штраф состояния -1 к КБ и испытаниям и не можете использовать занятия исследования в путешествии. Вы теряете утомление после полноценного отдыха."
+    }
+  },
+  "stunned": {
+    "name": { "en": "Stunned", "ru": "Шок" },
+    "value": true,
+    "description": {
+      "en": "You can't act. Each time you regain actions, reduce the number you regain by your stunned value, then reduce your stunned value by the number of actions you lost.",
+      "ru": "Вы не можете действовать. Каждый раз, когда вы восстанавливаете действия, число получаемых вами действий снижается на значение шока, а затем значение шока снижается на число потерянных вами действий. Шок заменяет *замедление*."
+    }
+  }
+}

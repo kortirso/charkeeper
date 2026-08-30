@@ -54,13 +54,14 @@ module CharactersContext
             required(:copper).filled(:integer)
           end
           optional(:money).filled(:integer, gteq?: 0)
-          optional(:conditions).maybe(:array).each(:string)
+          optional(:conditions).maybe(:array).each(:string) # DEPRECATED
           optional(:selected_features).hash
           optional(:spent_spell_slots).hash
           optional(:spent_archetype_spell_slots).hash
           optional(:experience).filled(:integer, gteq?: 0, lteq?: 10_000)
           optional(:hero_points).filled(:integer, gteq?: 0, lteq?: 3)
           optional(:damage_reduction).maybe(:hash)
+          optional(:conditions_v2).hash
           # DEPRECATED
           optional(:lore_skills).hash do
             required(:lore1).hash do

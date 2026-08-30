@@ -115,7 +115,6 @@ export * from './Content/Character/Dc20/Rest';
 export * from './Content/Character/Dc20/BonusesV2';
 export * from './Content/Character/Dc20/Ancestries';
 export * from './Content/Character/Dc20/Damages';
-export * from './Content/Character/Dc20/Conditions';
 export * from './Content/Character/Dc20/Info';
 export * from './Content/Character/Dc20/Trainings';
 export * from './Content/Character/Dc20/Equipment';
