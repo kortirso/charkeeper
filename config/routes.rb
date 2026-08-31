@@ -127,6 +127,9 @@ Rails.application.routes.draw do
     end
 
     namespace :dnd5 do
+      namespace :config do
+        resources :conditions, only: %i[index]
+      end
       resources :characters, only: %i[create update] do
         post :import, on: :collection
         resources :spells, only: %i[index create update destroy], module: 'characters'
@@ -137,6 +140,9 @@ Rails.application.routes.draw do
     end
 
     namespace :dnd2024 do
+      namespace :config do
+        resources :conditions, only: %i[index]
+      end
       resources :characters, only: %i[create update] do
         post :import, on: :collection
         scope module: :characters do
@@ -259,6 +265,7 @@ Rails.application.routes.draw do
     namespace :daggerheart do
       namespace :config do
         resources :beastforms, only: %i[index]
+        resources :conditions, only: %i[index]
       end
       resources :characters, only: %i[create update] do
         scope module: :characters do

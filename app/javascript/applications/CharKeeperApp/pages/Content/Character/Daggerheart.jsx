@@ -8,7 +8,7 @@ import {
   DaggerheartEquipment
 } from '../../../pages';
 import {
-  CharacterNavigation, Notes, Avatar, ContentWrapper, Feats, createRoll, Conditions, Combat, Gold
+  CharacterNavigation, Notes, Avatar, ContentWrapper, Feats, createRoll, ConditionsV2, Combat, Gold
 } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
@@ -106,6 +106,9 @@ export const Daggerheart = (props) => {
                   onNextGuideStepClick={() => setActiveMobileTab('equipment')}
                 />
               </div>
+              <div class="mt-4">
+                <ConditionsV2 character={character()} />
+              </div>
               <Show when={character().can_have_beastform}>
                 <div class="mt-4">
                   <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -116,9 +119,6 @@ export const Daggerheart = (props) => {
                   <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
               </Show>
-              <div class="mt-4">
-                <Conditions character={character()} />
-              </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
               <DaggerheartStatic character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -236,6 +236,9 @@ export const Daggerheart = (props) => {
             onNextGuideStepClick={() => setActiveTab('equipment')}
           />
         </div>
+        <div class="mt-4">
+          <ConditionsV2 character={character()} />
+        </div>
         <Show when={character().can_have_beastform}>
           <div class="mt-4">
             <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -246,9 +249,6 @@ export const Daggerheart = (props) => {
             <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
           </div>
         </Show>
-        <div class="mt-4">
-          <Conditions character={character()} />
-        </div>
       </>
     );
   });

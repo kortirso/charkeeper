@@ -1,0 +1,108 @@
+{
+  "blinded": {
+    "name": { "en": "Blinded", "ru": "Ослеплённый" },
+    "description": {
+      "en": "You can't see and automatically fail any ability check that requires sight.\n\nAttack rolls against you have Advantage, and your attack rolls have Disadvantage.",
+      "ru": "Вы не видите и автоматически проваливаете любые проверки характеристик, требующие зрения.\n\nБроски атаки против вас совершаются с преимуществом, а ваши броски атаки совершаются с помехой."
+    }
+  },
+  "grappled": {
+    "name": { "en": "Grappled", "ru": "Схваченный" },
+    "description": {
+      "en": "Your Speed is 0 and can't increase.\n\nYou have Disadvantage on attack rolls against any target other than the grappler.\n\nThe grappler can drag or carry you when it moves, but every foot of movement costs it 1 extra foot unless you are Tiny or two or more sizes smaller than it.",
+      "ru": "Ваша скорость равна 0 и не может быть увеличена.\n\nВы получаете помеху на броски атаки против любой цели, кроме захватившего вас.\n\nЗахватившее существо может тащить или нести вас, когда оно перемещается, но каждый фут его перемещения стоит ему 1 дополнительный фут, если только ваш размер не крошечный или вы не на 2 категории меньше схватившего вас существа."
+    }
+  },
+  "poisoned": {
+    "name": { "en": "Poisoned", "ru": "Отравленный" },
+    "description": {
+      "en": "You have Disadvantage on attack rolls and ability checks.",
+      "ru": "Вы совершаете броски атаки и проверки характеристики с помехой."
+    }
+  },
+  "charmed": {
+    "name": { "en": "Charmed", "ru": "Очарованный" },
+    "description": {
+      "en": "You can't attack the charmer or target the charmer with damaging abilities or magical effects.\n\nThe charmer has Advantage on any ability check to interact with you socially.",
+      "ru": "Вы не можете атаковать очаровавшего вас или использовать против него способности или магические эффекты, наносящие урон.\n\nОчаровавший имеет преимущество на любые проверки характеристики, связанные с социальным взаимодействием с вами."
+    }
+  },
+  "incapacitated": {
+    "name": { "en": "Incapacitated", "ru": "Недееспособный" },
+    "description": {
+      "en": "You can't take any action, Bonus Action, or Reaction.\n\nYour Concentration is broken.\n\nYou can't speak.\n\nIf you're Incapacitated when you roll Initiative, you have Disadvantage on the roll.",
+      "ru": "Вы не можете совершать действия, бонусные действия или реакции.\n\nВаша концентрация прерывается.\n\nВы не можете говорить.\n\nЕсли вы находитесь под состоянием недееспособный, когда совершаете бросок инициативы, вы совершаете этот бросок с помехой."
+    }
+  },
+  "prone": {
+    "name": { "en": "Prone", "ru": "Лежащий ничком" },
+    "description": {
+      "en": "Your only movement options are to crawl or to spend an amount of movement equal to half your Speed (round down) to right yourself and thereby end the condition. If your Speed is 0, you can't right yourself.\n\nYou have Disadvantage on attack rolls. An attack roll against you has Advantage if the attacker is within 5 feet of you. Otherwise, that attack roll has Disadvantage.",
+      "ru": "Ваши единственные варианты перемещения — это ползание или подъём. Подъём тратит количество перемещения, равное половине вашей скорости (округляется в меньшую сторону), чтобы подняться и таким образом снять это состояние. Если ваша скорость равна 0, вы не можете подняться.\n\nУ вас помеха на броски атаки. Бросок атаки против вас совершается с преимуществом, если атакующий находится в пределах 5 фт. В противном случае этот бросок атаки совершается с помехой."
+    }
+  },
+  "deafened": {
+    "name": { "en": "Deafened", "ru": "Оглохший" },
+    "description": {
+      "en": "You can't hear and automatically fail any ability check that requires hearing.",
+      "ru": "Вы не можете слышать и автоматически проваливаете любую проверку характеристики, основанную на слухе."
+    }
+  },
+  "invisible": {
+    "name": { "en": "Invisible", "ru": "Невидимый" },
+    "description": {
+      "en": "If you're Invisible when you roll Initiative, you have Advantage on the roll.\n\nYou aren't affected by any effect that requires its target to be seen unless the effect's creator can somehow see you. Any equipment you are wearing or carrying is also concealed.\n\nAttack rolls against you have Disadvantage, and your attack rolls have Advantage. If a creature can somehow see you, you don't gain this benefit against that creature.",
+      "ru": "Если вы невидимы, когда совершаете бросок инициативы, то получаете преимущество на этот бросок.\n\nВы не подвержены эффектам, которые требуют, чтобы цель была видимой, за исключением случаев, когда создатель эффекта каким-то образом видит вас. Любое снаряжение, которое вы носите или несёте, также невидимо.\n\nБроски атаки против вас совершаются с помехой, а ваши броски атаки совершаются с преимуществом. Если существо каким-то образом может видеть вас, вы не получаете этого эффекта против него."
+    }
+  },
+  "restrained": {
+    "name": { "en": "Restrained", "ru": "Опутанный" },
+    "description": {
+      "en": "Your Speed is 0 and can't increase.\n\nAttack rolls against you have Advantage, and your attack rolls have Disadvantage.\n\nYou have Disadvantage on Dexterity saving throws.",
+      "ru": "Ваша скорость равна 0 и не может быть увеличена.\n\nБроски атаки против вас совершаются с преимуществом, а ваши броски атаки совершаются с помехой.\n\nУ вас помеха на спасброски Ловкости."
+    }
+  },
+  "exhaustion": {
+    "name": { "en": "Exhaustion", "ru": "Истощённый" },
+    "value": true,
+    "description": {
+      "en": "This condition is cumulative. Each time you receive it, you gain 1 Exhaustion level. You die if your Exhaustion level is 6.\n\nWhen you make a D20 Test, the roll is reduced by 2 times your Exhaustion level.\n\nYour Speed is reduced by a number of feet equal to 5 times your Exhaustion level.\n\nFinishing a Long Rest removes 1 of your Exhaustion levels. When your Exhaustion level reaches 0, the condition ends.",
+      "ru": "Это состояние накапливается. Каждый раз, когда вы получаете состояние истощённый, вы также получаете 1 степень истощения. Вы умираете, если ваша степень истощения достигает 6.\n\nКогда вы совершаете Тест к20, результат броска уменьшается на количество степеней истощения, умноженное на 2.\n\nВаша скорость уменьшается на количество футов, равное 5, умноженное на вашу степень истощения.\n\nЗавершение продолжительного отдыха снимает 1 степень истощения. Когда ваша степень истощения достигает 0, это состояние заканчивается."
+    }
+  },
+  "paralyzed": {
+    "name": { "en": "Paralyzed", "ru": "Парализованный" },
+    "description": {
+      "en": "You have the Incapacitated condition.\n\nYour Speed is 0 and can't increase.\n\nYou automatically fail Strength and Dexterity saving throws.\n\nAttack rolls against you have Advantage.\n\nAny attack roll that hits you is a Critical Hit if the attacker is within 5 feet of you.",
+      "ru": "Вы получаете состояние недееспособный.\n\nВаша скорость равна 0 и не может быть увеличена.\n\nВы автоматически проваливаете спасброски Силы и Ловкости.\n\nБроски атак против вас совершаются с преимуществом.\n\nЛюбая атака, которая попадает по вам, становится критическим попаданием, если нападающий находится в пределах 5 фт. от вас."
+    }
+  },
+  "stunned": {
+    "name": { "en": "Stunned", "ru": "Ошеломлённый" },
+    "description": {
+      "en": "You have the Incapacitated condition.\n\nYou automatically fail Strength and Dexterity saving throws.\n\nAttack rolls against you have Advantage.",
+      "ru": "Вы получаете состояние недееспособный.\n\nВы автоматически проваливаете спасброски Силы и Ловкости.\n\nБроски атак по вам совершаются с преимуществом."
+    }
+  },
+  "frightened": {
+    "name": { "en": "Frightened", "ru": "Испуганный" },
+    "description": {
+      "en": "You have Disadvantage on ability checks and attack rolls while the source of fear is within line of sight.\n\nYou can't willingly move closer to the source of fear.",
+      "ru": "Вы получаете помеху на проверки характеристик и броски атаки, пока источник страха находится в пределах видимости.\n\nВы не можете добровольно приблизиться к источнику страха."
+    }
+  },
+  "petrified": {
+    "name": { "en": "Petrified", "ru": "Окаменевший" },
+    "description": {
+      "en": "You are transformed, along with any nonmagical objects you are wearing and carrying, into a solid inanimate substance (usually stone). Your weight increases by a factor of ten, and you cease aging.\n\nYou have the Incapacitated condition.\n\nYour Speed is 0 and can't increase.\n\nAttack rolls against you have Advantage.\n\nYou automatically fail Strength and Dexterity saving throws.\n\nYou have Resistance to all damage.\n\nYou have Immunity to the Poisoned condition.",
+      "ru": "Вы превращаетесь вместе с любыми немагическими предметами, которые вы носите и держите, в твёрдое неорганическое вещество (обычно камень). Ваш вес увеличивается в 10 раз, и вы перестаёте стареть.\n\nВы находитесь в состоянии недееспособный.\n\nВаша скорость равна 0 и не может быть увеличена.\n\nБроски атаки против вас совершаются с преимуществом.\n\nВы автоматически проваливаете спасброски Силы и спасброски Ловкости.\n\nВы имеете сопротивление ко всему урону.\n\nВы имеете иммунитет к состоянию отравленный."
+    }
+  },
+  "unconscious": {
+    "name": { "en": "Unconscious", "ru": "Бессознательный" },
+    "description": {
+      "en": "You have the Incapacitated and Prone conditions, and you drop whatever you're holding. When this condition ends, you remain Prone.\n\nYour Speed is 0 and can't increase.\n\nAttack rolls against you have Advantage.\n\nYou automatically fail Strength and Dexterity saving throws.\n\nAny attack roll that hits you is a Critical Hit if the attacker is within 5 feet of you.\n\nYou're unaware of your surroundings.",
+      "ru": "У вас есть состояния недееспособный и лежащий ничком, и вы роняете всё, что держите. Когда это состояние заканчивается, вы остаётесь лежащий ничком.\n\nВаша скорость равна 0 и не может увеличиваться.\n\nБроски атаки против вас совершаются с преимуществом.\n\nВы автоматически проваливаете спасброски Силы и спасброски Ловкости.\n\nЛюбая атака, которая попадает по вам, является критическим попаданием, если нападающий находится в пределах 5 фт. от вас.\n\nВы не осознаёте своё окружение."
+    }
+  }
+}

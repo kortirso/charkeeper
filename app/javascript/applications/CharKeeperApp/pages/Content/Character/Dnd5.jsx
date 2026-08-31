@@ -6,7 +6,7 @@ import {
   Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd2024Spells, Dnd5Info, Dnd2024Bonuses
 } from '../../../pages';
 import {
-  CharacterNavigation, Notes, Avatar, ContentWrapper, Feats, createRoll, Conditions, Combat, Gold
+  CharacterNavigation, Notes, Avatar, ContentWrapper, Feats, createRoll, ConditionsV2, Combat, Gold
 } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
@@ -118,6 +118,9 @@ export const Dnd5 = (props) => {
                 <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
+                <ConditionsV2 character={character()} />
+              </div>
+              <div class="mt-4">
                 <Dnd5Skills
                   character={character()}
                   openD20Test={openD20Test}
@@ -125,9 +128,6 @@ export const Dnd5 = (props) => {
                   onReloadCharacter={props.onReloadCharacter}
                   onNextGuideStepClick={() => setActiveMobileTab('equipment')}
                 />
-              </div>
-              <div class="mt-4">
-                <Conditions character={character()} />
               </div>
               <Show when={character().provider === 'dnd2024' && Object.keys(character().classes).includes('druid')}>
                 <div class="mt-4">
@@ -250,6 +250,9 @@ export const Dnd5 = (props) => {
           <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
         </div>
         <div class="mt-4">
+          <ConditionsV2 character={character()} />
+        </div>
+        <div class="mt-4">
           <Dnd5Skills
             character={character()}
             openD20Test={openD20Test}
@@ -257,9 +260,6 @@ export const Dnd5 = (props) => {
             onReloadCharacter={props.onReloadCharacter}
             onNextGuideStepClick={() => setActiveTab('equipment')}
           />
-        </div>
-        <div class="mt-4">
-          <Conditions character={character()} />
         </div>
         <Show when={character().provider === 'dnd2024' && Object.keys(character().classes).includes('druid')}>
           <div class="mt-4">

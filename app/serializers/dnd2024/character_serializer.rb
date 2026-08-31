@@ -13,7 +13,7 @@ module Dnd2024
                :selected_beastforms, :beastform, :weapon_mastery, :speeds, :money, :guide_step, :ability_boosts,
                :any_skill_boosts, :skill_boosts, :skill_boosts_list, :heroic_inspiration, :bardic_inspiration, :selected_talents,
                :leveling_ability_boosts, :leveling_ability_boosts_list, :available_talents, :skills, :exhaustion, :alignment,
-               :selected_additional_talents, :resources, :names
+               :selected_additional_talents, :resources, :names, :conditions_v2
 
     delegate :features, :level, :species, :legacy, :main_class, :classes, :subclasses, :abilities, :skills,
              :modifiers, :save_dc, :proficiency_bonus, :hit_dice, :armor_class, :initiative, :speed, :attacks_per_action,
@@ -25,7 +25,7 @@ module Dnd2024
     delegate :created_at, :data, :id, :name, to: :object
     delegate :guide_step, :ability_boosts, :any_skill_boosts, :skill_boosts, :skill_boosts_list, :heroic_inspiration,
              :bardic_inspiration, :selected_talents, :leveling_ability_boosts, :leveling_ability_boosts_list, :exhaustion,
-             :alignment, :background, :selected_additional_talents, to: :data
+             :alignment, :background, :selected_additional_talents, :conditions_v2, to: :data
 
     def names
       {
