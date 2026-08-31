@@ -1,4 +1,4 @@
-import { Show } from 'solid-js';
+import { For, Show } from 'solid-js';
 
 import config from '../../../../CharKeeperApp/data/daggerheart.json';
 
@@ -65,7 +65,16 @@ export const SharedWeapon = (props) => {
       <p>{localize(TRANSLATION, locale()).damageBonus} - {props.info.info.damage_bonus}</p>
       <p>{localize(TRANSLATION, locale()).range} - {localize(config.ranges[props.info.info.range].name, locale())}</p>
       <p>{localize(TRANSLATION, locale()).burden} - {props.info.info.burden}</p>
-      <Show when={props.info.info.features[0] && localize(props.info.info.features[0], locale())}>{localize(props.info.info.features[0], locale())}</Show>
+      <Show when={props.info.features && props.info.features.length > 0}>
+        <For each={props.info.features}>
+          {(feature) =>
+            <p
+              class="feat-markdown mt-1"
+              innerHTML={feature} // eslint-disable-line solid/no-innerhtml
+            />
+          }
+        </For>
+      </Show>
     </div>
   );
 }
