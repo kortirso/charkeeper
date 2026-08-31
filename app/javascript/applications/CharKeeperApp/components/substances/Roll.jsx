@@ -370,8 +370,8 @@ export const createRoll = () => {
         else if (dualityTest.command) rolls.push(generateDualityTest());
         else if (cthulhuTest.command) rolls.push(generateCthulhuTest());
         else if (nimbleTest.command && nimbleTest.diceSize) rolls.push(generateNimbleTest());
-        else if (plotDices() > 0) rolls.push(generatePlotTest());
 
+        if (plotDices() > 0) rolls.push(generatePlotTest());
         if (!pf2Attack() && !dndAttack() && dices.dices) rolls.push(generateDiceRoll());
 
         const result = await createCharacterBotRequest(appState.accessToken, props.characterId, { values: rolls });
@@ -393,11 +393,12 @@ export const createRoll = () => {
             } else if (nimbleTest.command && nimbleTest.diceSize) {
               setNimbleTestResult(result.result[resultsIndex].result);
               resultsIndex += 1;
-            } else if (plotDices() > 0) {
+            }
+            
+            if (plotDices() > 0) {
               setPlotResult(result.result[resultsIndex].result);
               resultsIndex += 1;
             }
-
             if (!pf2Attack() && !dndAttack() && dices.dices) {
               if (dualityTest.command && result.result[0].result.status === 'crit_success') {
                 calculateDualityCritDamage(result.result[resultsIndex].result);
