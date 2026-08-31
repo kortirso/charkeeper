@@ -198,7 +198,7 @@ class DaggerheartDecorator < ApplicationDecoratorV2
       kind: item[:items_kind],
       features: item[:items_info]['features']&.map { |item| markdown.call(value: translate(item), version: 0.5) } || [],
       notes: item[:notes] || [],
-      ready_to_use: item[:state] ? item[:state].in?(::Character::Item::ACTIVE_STATES) : true,
+      ready_to_use: item.dig(:states, 'hands').to_i.positive?,
       tags: {
         item[:items_kind].tr(' ', '_') => I18n.t("tags.daggerheart.weapon.title.#{item[:items_kind].tr(' ', '_')}"),
         item[:items_info]['damage_type'] => I18n.t("tags.daggerheart.weapon.title.#{item[:items_info]['damage_type']}")

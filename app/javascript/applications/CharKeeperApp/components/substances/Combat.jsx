@@ -245,7 +245,7 @@ export const Combat = (props) => {
     if (values.length === 0) return <></>;
 
     return (
-      <div class="py-4 px-2 md:px-4 mb-2">
+      <div class="">
         <h2 class="weapon-title">{title}</h2>
         <div>
           <For each={values}>
@@ -353,9 +353,9 @@ export const Combat = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Combat' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable relative">
+        <div class="blockable blockable-padding relative flex flex-col gap-4">
           <Show when={showSettings()}>
-            <div class="p-4 pb-0">
+            <div class="">
               <Select
                 containerClassList="weapon-settings-select"
                 labelText={i18n().settings}
