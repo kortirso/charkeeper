@@ -35,7 +35,7 @@ describe HomebrewsV2::Daggerheart::ItemsController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['homebrew'].keys).to(
-          contain_exactly('id', 'info', 'kind', 'recipes')
+          contain_exactly('id', 'info', 'kind', 'recipes', 'features', 'modifiers')
         )
       end
     end

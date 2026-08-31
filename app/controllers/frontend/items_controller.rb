@@ -51,18 +51,8 @@ module Frontend
 
       ::Homebrew::Book::Item
         .where(homebrew_book_id: ::User::Book.where(user_id: current_user).select(:homebrew_book_id))
-        .where(itemable_type: itemable_type)
+        .where(itemable_type: 'Item')
         .pluck(:itemable_id)
-    end
-
-    def itemable_type
-      case params[:provider]
-      when 'dnd5', 'dnd2024' then 'Dnd5::Item'
-      when 'pathfinder2' then 'Pathfinder2::Item'
-      when 'daggerheart' then 'Daggerheart::Item'
-      when 'dc20' then 'Dc20::Item'
-      when 'nimble' then 'Nimble::Item'
-      end
     end
   end
 end

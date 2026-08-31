@@ -49,7 +49,8 @@ describe Frontend::ItemsController do
           create :item, type: 'Daggerheart::Item'
           create :item, type: 'Daggerheart::Item', user: user_session.user
 
-          item = create :item, type: 'Daggerheart::Item'
+          user = create :user
+          item = create :item, type: 'Daggerheart::Item', user: user
           book = create :homebrew_book
           create :user_book, user: user_session.user, book: book
           create :homebrew_book_item, homebrew_book: book, itemable: item
@@ -68,6 +69,40 @@ describe Frontend::ItemsController do
               'modifiers'
             )
           )
+        end
+
+        context 'without homebrews' do
+          it 'returns data', :aggregate_failures do
+            get :index, params: { provider: 'daggerheart', charkeeper_access_token: access_token, version: '0.3.27' }
+
+            response_values = response.parsed_body.dig('items', 0)
+
+            expect(response).to have_http_status :ok
+            expect(response.parsed_body['items'].size).to eq 1
+            expect(response_values.keys).to(
+              contain_exactly(
+                'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features',
+                'modifiers'
+              )
+            )
+          end
+        end
+
+        context 'for homebrews' do
+          it 'returns data', :aggregate_failures do
+            get :index, params: { provider: 'daggerheart', homebrew: 1, charkeeper_access_token: access_token, version: '0.3.27' }
+
+            response_values = response.parsed_body.dig('items', 0)
+
+            expect(response).to have_http_status :ok
+            expect(response.parsed_body['items'].size).to eq 2
+            expect(response_values.keys).to(
+              contain_exactly(
+                'id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name', 'features',
+                'modifiers'
+              )
+            )
+          end
         end
       end
 
