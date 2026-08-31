@@ -147,7 +147,7 @@ export const CosmereSkills = (props) => {
                         <div class="fallout-skill">
                           <Levelbox classList="mr-2" value={skill.level} />
                           <p class="uppercase mr-4">{skill.ability}</p>
-                          <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>
+                          <p class={`flex-1 line-clamp-1 ${skill.level > 0 ? 'font-medium!' : ''}`}>
                             <Show
                               when={config.skills[skill.slug]}
                               fallback={

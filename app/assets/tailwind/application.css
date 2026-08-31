@@ -587,7 +587,7 @@ body.web {
 }
 
 .weapon-item-header {
-  @apply flex flex-col md:flex-row md:justify-between md:items-center gap-y-1;
+  @apply flex flex-wrap justify-between items-center gap-2;
 }
 
 .weapon-item-name {

@@ -9,31 +9,31 @@ const TRANSLATION = {
     combatMastery: 'Combat mastery',
     saveDc: 'Save DC',
     initiative: 'Initiative',
-    precision: 'Precision defense',
-    area: 'Area defense',
-    attack: 'Attack check',
-    spell_check: 'Spell check',
-    martial_check: 'Martial check'
+    precision: 'PD',
+    area: 'AD',
+    attack: 'Attack',
+    spell_check: 'Spell',
+    martial_check: 'Martial'
   },
   ru: {
     combatMastery: 'Мастерство',
-    saveDc: 'Сл спаса',
+    saveDc: 'Спас',
     initiative: 'Инициатива',
-    precision: 'Точечная защ',
-    area: 'Площадная защ',
-    attack: 'Тест атаки',
-    spell_check: 'Тест заклинания',
-    martial_check: 'Рукопашный тест'
+    precision: 'ТЗ',
+    area: 'ПЗ',
+    attack: 'Атаки',
+    spell_check: 'Заклинания',
+    martial_check: 'Приёмы'
   },
   es:{
     combatMastery: 'Maestría',
     saveDc: 'Save DC',
     initiative: 'Iniciativa',
-    precision: 'Defensa de precisión',
-    area: 'Defensa de área',
+    precision: 'PD',
+    area: 'AD',
     attack: 'Ataque',
-    spell_check: 'Spell check',
-    martial_check: 'Martial check'
+    spell_check: 'Spell',
+    martial_check: 'Martial'
   }
 }
 

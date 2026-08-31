@@ -31,8 +31,8 @@ const TRANSLATION = {
       flight: 'Flight',
       glide: 'Glide'
     },
-    jump: 'Jump distance',
-    breath: 'Breath duration',
+    jump: 'Jump',
+    breath: 'Breath',
     vision: 'Senses',
     visions: {
       dark: 'Darkvision',
@@ -65,8 +65,8 @@ const TRANSLATION = {
       flight: 'Полёт',
       glide: 'Планирование'
     },
-    jump: 'Дальность прыжка',
-    breath: 'Запас дыхания',
+    jump: 'Прыжок',
+    breath: 'Дыхание',
     vision: 'Чувства',
     visions: {
       dark: 'Тёмное зрение',
@@ -99,8 +99,8 @@ const TRANSLATION = {
       flight: 'Vuelo',
       glide: 'Planeo'
     },
-    jump: 'Distancia de salto',
-    breath: 'Duración de la respiración',
+    jump: 'Salto',
+    breath: 'Respiración',
     vision: 'Senses',
     visions: {
       dark: 'Darkvision',

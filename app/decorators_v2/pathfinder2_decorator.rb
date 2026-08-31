@@ -274,7 +274,8 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
         'damage' => '1d4',
         'damage_type' => 'bludge',
         'tooltips' => %w[agile nonlethal unarmed finesse]
-      }
+      },
+      states: { 'hands' => 2 }
     }
   end
 
