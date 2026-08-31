@@ -78,11 +78,12 @@ module CharactersContext
           optional(:file)
           optional(:selected_beastforms).maybe(:array).each(:string)
           optional(:beastform).maybe(Beastforms)
-          optional(:conditions).maybe(:array).each(:string)
+          optional(:conditions).maybe(:array).each(:string) # DEPRECATED
           optional(:guide_step).maybe(:integer)
           optional(:heroic_inspiration).filled(:bool)
           optional(:bardic_inspiration).maybe(:integer)
-          optional(:exhaustion).filled(:integer)
+          optional(:exhaustion).filled(:integer) # DEPRECATED
+          optional(:conditions_v2).hash
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)

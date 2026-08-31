@@ -253,15 +253,6 @@
     "panther": { "name": { "en": "Panther", "ru": "Пантера" } },
     "draft_horse": { "name": { "en": "Draft horse", "ru": "Упряжная лошадь" } }
   },
-  "conditions": {
-    "blinded": {
-      "name": { "en": "Blinded", "ru": "Ослеплённый" },
-      "description": {
-        "en": "You can't see and automatically fail any ability check that requires sight. Attack rolls against you have Advantage, and your attack rolls have Disadvantage.",
-        "ru": "Вы не видите и автоматически проваливаете любые проверки характеристик, требующие зрения. Броски атаки против вас совершаются с преимуществом, а ваши броски атаки совершаются с помехой."
-      }
-    }
-  },
   "weaponMasteries": {
     "cleave": { "name": { "en": "Cleave", "ru": "Прорубание" } },
     "graze": { "name": { "en": "Graze", "ru": "Задевание" } },

@@ -74,9 +74,10 @@ module CharactersContext
           end
           optional(:avatar_url).filled(:string)
           optional(:file)
-          optional(:conditions).maybe(:array).each(:string)
+          optional(:conditions).maybe(:array).each(:string) # DEPRECATED
           optional(:heroic_inspiration).filled(:bool)
           optional(:bardic_inspiration).maybe(:integer)
+          optional(:conditions_v2).hash
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)

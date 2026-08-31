@@ -66,7 +66,8 @@ module CharactersContext
           optional(:transformation).maybe(:string)
           optional(:selected_features).hash
           optional(:guide_step).maybe(:integer)
-          optional(:conditions).maybe(:array).each(:string)
+          optional(:conditions).maybe(:array).each(:string) # DEPRECATED
+          optional(:conditions_v2).hash
           optional(:scars).maybe(:array).each(:hash) do
             required(:id).filled(:integer)
             required(:name).filled(:string, max_size?: 500)

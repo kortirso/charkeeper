@@ -46,7 +46,8 @@ module Daggerheart
     attribute :transformation, :string
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     attribute :guide_step, :integer # этап помощи при создании персонажа
-    attribute :conditions, array: true, default: []
+    attribute :conditions, array: true, default: [] # TODO: deprecated
+    attribute :conditions_v2, array: true, default: {}
     attribute :scars, array: true, default: []
     attribute :rally_dice, :integer
     attribute :available_mechanic_items, array: true, default: {} # { 'id1' => [], 'id2' => [] }

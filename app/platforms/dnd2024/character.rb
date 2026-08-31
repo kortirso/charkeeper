@@ -39,12 +39,13 @@ module Dnd2024
     attribute :vulnerability, array: true, default: [] # уязвимости
     attribute :selected_beastforms, array: true, default: []
     attribute :beastform, :string
-    attribute :conditions, array: true, default: []
+    attribute :conditions, array: true, default: [] # TODO: deprecated
     attribute :heroic_inspiration, :boolean, default: false
     attribute :bardic_inspiration, :integer
     attribute :selected_talents, array: true, default: {}
     attribute :selected_additional_talents, array: true, default: 0
-    attribute :exhaustion, :integer, default: 0
+    attribute :exhaustion, :integer, default: 0 # TODO: deprecated
+    attribute :conditions_v2, array: true, default: {}
     # только для 1 уровня
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :ability_boosts, array: true, default: [] # дополнительные повышения характеристик от происхождения

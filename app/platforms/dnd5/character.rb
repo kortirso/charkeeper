@@ -31,10 +31,11 @@ module Dnd5
     attribute :resistance, array: true, default: [] # сопротивления
     attribute :immunity, array: true, default: [] # иммунитеты
     attribute :vulnerability, array: true, default: [] # уязвимости
-    attribute :conditions, array: true, default: []
+    attribute :conditions, array: true, default: [] # TODO: deprecated
     attribute :heroic_inspiration, :boolean, default: false
     attribute :bardic_inspiration, :integer
-    attribute :exhaustion, :integer, default: 0
+    attribute :exhaustion, :integer, default: 0 # TODO: deprecated
+    attribute :conditions_v2, array: true, default: {}
     # back compability
     attribute :selected_talents, array: true, default: {}
     attribute :selected_additional_talents, array: true, default: 0

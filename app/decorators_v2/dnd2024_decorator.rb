@@ -177,7 +177,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     if str_req && str_req > modifiers['str'] && active_features.find { |item| item.feat.slug == 'arcane_armor' }.nil?
       @result['speed'] -= 10
     end
-    @result['speed'] = [@result['speed'] - (exhaustion * 5), 0].max
+    @result['speed'] = [@result['speed'] - (conditions_v2['exhaustion'].to_i * 5), 0].max
 
     @result['speeds'] =
       DEFAULT_SPEEDS.index_with { speed / 2 }.merge(speeds).transform_values { |value| value.zero? ? speed : value }
