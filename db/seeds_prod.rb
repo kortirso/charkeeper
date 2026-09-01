@@ -35,14 +35,18 @@ end
   'feats_dustbringer.json', 'feats_edgedancer.json', 'feats_elsecaller.json', 'feats_lightweaver.json', 'feats_skybreaker.json',
   'feats_stoneward.json', 'feats_truthwatcher.json', 'feats_willshaper.json', 'feats_windrunner.json'
 ].each do |filename|
-  JSON.parse(File.read("db/data_prod/cosmere/#{filename}")).each do |item|
+  response =
+    Net::HTTP.get(URI("https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/#{filename}"))
+  JSON.parse(response).each do |item|
     feat = ::Cosmere::Feat.find_by(slug: item['slug'])
     feat ? feat.update!(item) : ::Cosmere::Feat.create!(item)
   end
 end
 
 ['weapon.json', 'armor.json', 'items.json', 'fabrials.json'].each do |filename|
-  JSON.parse(File.read("db/data_prod/cosmere/#{filename}")).each do |data|
+  response =
+    Net::HTTP.get(URI("https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/#{filename}"))
+  JSON.parse(response).each do |data|
     item = ::Cosmere::Item.find_by(slug: data['slug'])
     item ? item.update!(data) : ::Cosmere::Item.create!(data)
   end
