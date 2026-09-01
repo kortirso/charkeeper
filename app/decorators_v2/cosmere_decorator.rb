@@ -214,31 +214,22 @@ class CosmereDecorator < ApplicationDecoratorV2
     tooltips.key?('reach') ? 10 : nil
   end
 
-  def generate_skills_payload
-    (
-      [
-        %w[agility spd], %w[athletics str], %w[heavy_weaponry str], %w[light_weaponry spd],
-        %w[stealth spd], %w[thievery spd], %w[crafting int], %w[deduction int],
-        %w[discipline wil], %w[intimidation wil], %w[lore int], %w[medicine int],
-        %w[deception pre], %w[insight awa], %w[leadership pre], %w[perception awa],
-        %w[persuation pre], %w[survival awa]
-      ] +
-        additional_skills.map { |(key, values)| [key, values['ability']] } +
-        surge_skills
-    ).map { |item| skill_payload(item[0], item[1]) }
-  end
-
-  def surge_skills
+  def generate_skills_payload # rubocop: disable Metrics/AbcSize
     keys = selected_skills.keys
-    [
-      %w[abrasion spd]
-    ].select { |item| keys.include?(item[0]) }
+    Config.data('cosmere', 'skills').map { |slug, values| skill_payload(slug, values['name'], values['ability']) } +
+      additional_skills.map { |key, values| skill_payload(key, values['name'], values['ability']) } +
+      Config.data('cosmere', 'surges').filter_map do |slug, values|
+        next unless keys.include?(slug)
+
+        skill_payload(slug, values['name'], values['ability'])
+      end
   end
 
-  def skill_payload(slug, ability)
+  def skill_payload(slug, name, ability)
     skill_level = selected_skills[slug].to_i
     {
       slug: slug,
+      name: name.is_a?(Hash) ? translate(name) : name,
       ability: ability,
       level: skill_level,
       modifier: skill_level + modified_abilities[ability]

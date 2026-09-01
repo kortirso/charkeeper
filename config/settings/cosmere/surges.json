@@ -1,0 +1,12 @@
+{
+  "abrasion": { "name": { "en": "Abrasion", "ru": "Абразия" }, "ability": "spd" },
+  "adhesion": { "name": { "en": "Adhesion", "ru": "Адгезия" }, "ability": "pre" },
+  "cohesion": { "name": { "en": "Cohesion", "ru": "Когезия" }, "ability": "wil" },
+  "division": { "name": { "en": "Division", "ru": "Расщепление" }, "ability": "int" },
+  "gravitation": { "name": { "en": "Gravitation", "ru": "Гравитация" }, "ability": "awa" },
+  "illumination": { "name": { "en": "Illumination", "ru": "Иллюминация" }, "ability": "pre" },
+  "progression": { "name": { "en": "Progression", "ru": "Прогрессия" }, "ability": "awa" },
+  "tension": { "name": { "en": "Tension", "ru": "Напряжение" }, "ability": "str" },
+  "transformation": { "name": { "en": "Transformation", "ru": "Трансформация" }, "ability": "wil" },
+  "transportation": { "name": { "en": "Transportation", "ru": "Транспортация" }, "ability": "int" }
+}
