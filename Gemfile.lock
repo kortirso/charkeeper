@@ -81,7 +81,7 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     ansi (1.6.0)
     ast (2.4.3)
-    authkeeper (0.1.21)
+    authkeeper (0.1.28)
       rails (>= 7.2.2)
     awesome_print (1.9.2)
     aws-eventstream (1.4.0)
@@ -195,7 +195,7 @@ GEM
       zeitwerk (~> 2.6)
     erb (6.0.7)
     erubi (1.13.1)
-    et-orbi (1.4.1)
+    et-orbi (1.4.2)
       tzinfo
     factory_bot (6.6.0)
       activesupport (>= 6.1.0)
@@ -491,6 +491,8 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.2)
     simplecov_json_formatter (0.1.4)
+    skylight (7.1.1)
+      activesupport (>= 7.2.0)
     solid_errors (0.7.0)
       actionpack (>= 7.0)
       actionview (>= 7.0)
@@ -567,7 +569,7 @@ PLATFORMS
 
 DEPENDENCIES
   action_policy
-  authkeeper (= 0.1.21)
+  authkeeper
   awesome_print
   aws-sdk-s3
   bcrypt (~> 3.1.7)
@@ -625,6 +627,7 @@ DEPENDENCIES
   securerandom (= 0.3.2)
   shoulda-matchers (~> 8.0)
   simplecov
+  skylight
   solid_errors
   sprockets-rails
   store_model

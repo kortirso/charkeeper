@@ -51,7 +51,7 @@ gem 'props_template'
 
 # auth
 gem 'action_policy'
-gem 'authkeeper', '0.1.21'
+gem 'authkeeper'
 gem 'jwt', '~> 2.5'
 
 # Work with JSON-backed attributes
@@ -62,7 +62,7 @@ gem 'faraday', '~> 2.0'
 
 # performance metrics
 gem 'pghero'
-# gem 'skylight'
+gem 'skylight'
 
 # bugs tracking
 gem 'solid_errors'
