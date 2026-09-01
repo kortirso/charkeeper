@@ -25,6 +25,10 @@ module HomebrewsV2Context
                   optional(:ru).maybe(:string, max_size?: 500)
                   optional(:es).maybe(:string, max_size?: 500)
                 end
+                required(:data).hash do
+                  required(:price).filled(:integer, gteq?: 0, lteq?: 1_000_000)
+                  required(:weight).maybe(:integer, gteq?: 0, lteq?: 10)
+                end
                 optional(:consume).maybe(:array).each(:hash) do
                   required(:attribute).filled(ConsumeAttributes)
                   required(:formula).filled(:string)
