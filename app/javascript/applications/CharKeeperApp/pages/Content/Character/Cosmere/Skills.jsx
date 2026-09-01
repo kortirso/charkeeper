@@ -148,19 +148,7 @@ export const CosmereSkills = (props) => {
                           <Levelbox classList="mr-2" value={skill.level} />
                           <p class="uppercase mr-4">{skill.ability}</p>
                           <p class={`flex-1 line-clamp-1 ${skill.level > 0 ? 'font-medium!' : ''}`}>
-                            <Show
-                              when={config.skills[skill.slug]}
-                              fallback={
-                                <Show
-                                  when={config.surges[skill.slug]}
-                                  fallback={character().additional_skills[skill.slug].name}
-                                >
-                                  {localize(config.surges[skill.slug].name, locale())}
-                                </Show>
-                              }
-                            >
-                              {localize(config.skills[skill.slug].name, locale())}
-                            </Show>
+                            {skill.name}
                           </p>
                           <Dice
                             width="28"
@@ -179,14 +167,7 @@ export const CosmereSkills = (props) => {
                         <p class={`flex-1 flex items-center ${skill().level > 0 ? 'font-medium!' : ''}`}>
                           <Show
                             when={loresData()[skill().slug]}
-                            fallback={
-                              <Show
-                                when={config.skills[skill().slug]}
-                                fallback={localize(config.surges[skill().slug].name, locale())}
-                              >
-                                {localize(config.skills[skill().slug].name, locale())}
-                              </Show>
-                            }
+                            fallback={skill().name}
                           >
                             <Input
                               value={loresData()[skill().slug].name}

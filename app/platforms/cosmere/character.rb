@@ -31,6 +31,26 @@ module Cosmere
   class Character < Character
     attribute :data, Cosmere::CharacterData.to_type
 
+    def self.config
+      PlatformConfig.data('cosmere')
+    end
+
+    def self.abilities
+      config['abilities']
+    end
+
+    def self.ancestry_info(race_value)
+      config.dig('ancestries', race_value)
+    end
+
+    def self.paths_info(path_value)
+      config.dig('paths', path_value)
+    end
+
+    def self.cultures_info(culture_value)
+      config.dig('cultures', culture_value)
+    end
+
     def decorator(simple: false, version: nil)
       CosmereDecorator.new.call(character: self, simple: simple, version: version)
     end

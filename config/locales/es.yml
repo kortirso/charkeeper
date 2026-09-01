@@ -157,6 +157,25 @@ es:
       slots: RANURA DE HECHIZOS
       features: CARACTERÍSTICAS
       uses_left: Usos restantes
+      cosmere:
+        physical: Physical
+        cognitive: Cognitive
+        spiritual: Spiritual
+        health: Health
+        focus: Focus
+        investiture: Investiture
+        attacks: ATTACKS
+        skills: SKILLS
+        expertises: EXPERTISES
+        deflect: Deflect
+        speed: Movement
+        senses: Senses
+        lifting: Lifting
+        recovery: Recovery
+        goals: GOALS
+        connections: CONNECTIONS
+        purpose: Purpose
+        obstacle: Obstacle
       dc20:
         attacks: ATTACKS
         skills: SKILLS

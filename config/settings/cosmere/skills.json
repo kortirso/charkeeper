@@ -1,0 +1,20 @@
+{
+  "agility": { "name": { "en": "Agility", "ru": "Ловкость" }, "ability": "spd" },
+  "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" }, "ability": "str" },
+  "heavy_weaponry": { "name": { "en": "Heavy Weaponry", "ru": "Тяжёлое оружие" }, "ability": "str" },
+  "light_weaponry": { "name": { "en": "Light Weaponry", "ru": "Лёгкое оружие" }, "ability": "spd" },
+  "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" }, "ability": "spd" },
+  "thievery": { "name": { "en": "Thievery", "ru": "Воровство" }, "ability": "spd" },
+  "crafting": { "name": { "en": "Crafting", "ru": "Ремесло" }, "ability": "int" },
+  "deduction": { "name": { "en": "Deduction", "ru": "Дедукция" }, "ability": "int" },
+  "discipline": { "name": { "en": "Discipline", "ru": "Дисциплина" }, "ability": "wil" },
+  "intimidation": { "name": { "en": "Intimidation", "ru": "Запугивание" }, "ability": "wil" },
+  "lore": { "name": { "en": "Lore", "ru": "Знания" }, "ability": "int" },
+  "medicine": { "name": { "en": "Medicine", "ru": "Медицина" }, "ability": "int" },
+  "deception": { "name": { "en": "Deception", "ru": "Обман" }, "ability": "pre" },
+  "insight": { "name": { "en": "Insight", "ru": "Проницательность" }, "ability": "awa" },
+  "leadership": { "name": { "en": "Leadership", "ru": "Лидерство" }, "ability": "pre" },
+  "perception": { "name": { "en": "Perception", "ru": "Наблюдательность" }, "ability": "awa" },
+  "persuation": { "name": { "en": "Persuasion", "ru": "Убеждение" }, "ability": "pre" },
+  "survival": { "name": { "en": "Survival", "ru": "Выживание" }, "ability": "awa" }
+}
