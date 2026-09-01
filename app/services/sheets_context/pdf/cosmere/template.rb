@@ -119,8 +119,8 @@ module SheetsContext
           text_box I18n.t('services.sheets_context.cosmere.goals'), at: [70, 264], width: 150, align: :center
           text_box I18n.t('services.sheets_context.cosmere.connections'), at: [375, 264], width: 150, align: :center
 
-          text_box character.purpose, at: [30, 316], width: 250
-          text_box character.obstacle, at: [335, 316], width: 250
+          text_box character.purpose.to_s, at: [30, 316], width: 250
+          text_box character.obstacle.to_s, at: [335, 316], width: 250
 
           font_size 8
           fill_color 'FFFFFF'
