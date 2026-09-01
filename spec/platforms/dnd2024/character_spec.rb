@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Dnd2024::Character do
-  let!(:character) { create :character, :bard, :dnd2024 }
+  let!(:character) { create :dnd2024_character }
 
   describe '#decorator' do
     subject(:decorator) { described_class.find(character.id).decorator }

@@ -39,7 +39,7 @@ describe Frontend::Dnd2024::CharactersController do
 
   describe 'PATCH#update' do
     context 'for logged users' do
-      let!(:character) { create :character, :dnd2024, user: user_session.user }
+      let!(:character) { create :dnd2024_character, user: user_session.user }
 
       it 'updates character', :aggregate_failures do
         patch :update, params: {

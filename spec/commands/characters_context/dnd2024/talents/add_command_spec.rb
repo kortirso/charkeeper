@@ -4,7 +4,7 @@ describe CharactersContext::Dnd2024::Talents::AddCommand do
   subject(:command_call) { instance.call(params) }
 
   let(:instance) { described_class.new }
-  let!(:character) { create :character, :dnd2024 }
+  let!(:character) { create :dnd2024_character }
   let!(:feat) { create :feat, :dnd2024 }
 
   context 'when additional is present' do

@@ -1,0 +1,19 @@
+[
+  {
+    "name": {
+      "en": "Hide Shield",
+      "ru": "Щит из шкуры"
+    },
+    "description": {},
+    "public": true,
+    "data": {
+      "price": 200,
+      "weight": 1
+    },
+    "info": {
+      "ac": 2,
+      "speed_penalty": null,
+      "tooltips": ["deflecting"]
+    }
+  }
+]

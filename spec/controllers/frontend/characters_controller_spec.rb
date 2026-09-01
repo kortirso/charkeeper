@@ -66,7 +66,7 @@ describe Frontend::CharactersController do
       end
 
       context 'for dnd2024' do
-        let!(:character) { create :character, :dnd2024, user: user_session.user }
+        let!(:character) { create :dnd2024_character, user: user_session.user }
 
         it 'returns data' do
           get :show, params: { id: character.id, charkeeper_access_token: access_token }
@@ -75,7 +75,7 @@ describe Frontend::CharactersController do
         end
 
         context 'for not user character' do
-          let!(:another_character) { create :character, :dnd2024 }
+          let!(:another_character) { create :dnd2024_character }
 
           it 'returns error' do
             get :show, params: { id: another_character.id, charkeeper_access_token: access_token }
@@ -96,7 +96,7 @@ describe Frontend::CharactersController do
       end
 
       context 'for pathfinder 2' do
-        let!(:character) { create :character, :pathfinder2, user: user_session.user }
+        let!(:character) { create :pathfinder2_character, user: user_session.user }
 
         it 'returns data' do
           get :show, params: { id: character.id, charkeeper_access_token: access_token }

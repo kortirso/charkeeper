@@ -30,8 +30,8 @@ module HomebrewsV2Context
                   required(:weight).filled(:integer, gteq?: 1, lteq?: 1_000)
                 end
                 required(:info).hash do
-                  required(:weapon_skill).maybe(Skills)
-                  required(:type).maybe(Types)
+                  required(:weapon_skill).filled(Skills)
+                  required(:type).filled(Types)
                   required(:caption).maybe(:array).each(Tooltips)
                   optional(:damage).filled(:string)
                   optional(:damage_type).filled(:string)

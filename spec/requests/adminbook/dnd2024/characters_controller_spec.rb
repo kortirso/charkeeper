@@ -12,7 +12,7 @@ describe 'Characters' do
 
     context 'with characters' do
       let!(:character1) { create :character }
-      let!(:character2) { create :character, :dnd2024 }
+      let!(:character2) { create :dnd2024_character }
 
       it 'renders index page', :aggregate_failures do
         get '/adminbook/dnd2024/characters'

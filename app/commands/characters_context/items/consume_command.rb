@@ -3,9 +3,13 @@
 module CharactersContext
   module Items
     class ConsumeCommand < BaseCommand
-      include Deps[formula: 'formula']
+      include Deps[
+        formula: 'formula',
+        character_item_update: 'commands.characters_context.items.update'
+      ]
 
       DND_CONSUMERS = ['Dnd2024::Character', 'Dnd5::Character', 'Nimble::Character'].freeze
+      DIRECT_CONSUMERS = ['Daggerheart::Character', 'Pathfinder2::Character'].freeze
 
       use_contract do
         params do
@@ -24,12 +28,15 @@ module CharactersContext
         input[:character_item].item.info['consume'].each do |consume|
           result = formula.call(formula: consume['formula'])
 
-          if input[:character].is_a?(::Daggerheart::Character)
+          if DIRECT_CONSUMERS.include?(input[:character].class.name)
             input[:attributes][consume['attribute']] = [input[:character].data.attributes[consume['attribute']] + result, 0].max
           elsif DND_CONSUMERS.include?(input[:character].class.name)
             input[:attributes][consume['attribute']] ||= input[:character].data[consume['attribute']]
             input[:attributes][consume['attribute']]['current'] =
-              [input[:character].data.attributes[consume['attribute']]['current'] + result, 0].max
+              (input[:character].data.attributes.dig(consume['attribute'], 'current') + result).clamp(
+                0,
+                input[:character].data.attributes.dig(consume['attribute'], 'max')
+              )
           end
 
           if consume['result']
@@ -44,14 +51,16 @@ module CharactersContext
             )
           end
         end
+
+        input[:states] = input[:character_item].states
+        input[:states][input[:from_state]] -= 1
       end
 
       def do_persist(input)
-        input[:character].data = input[:character].data.attributes.merge(input[:attributes])
+        input[:character].data = input[:character].data.attributes.deep_merge(input[:attributes])
         input[:character].save!
 
-        input[:character_item].states[input[:from_state]] -= 1
-        input[:character_item].save!
+        character_item_update.call(character_item: input[:character_item], states: input[:states])
 
         { result: input[:result].join('; ') }
       end

@@ -4,8 +4,7 @@ describe Frontend::Pathfinder2::Characters::RestController do
   let!(:user_session) { create :user_session }
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
   let!(:user_character) {
-    create :character,
-           :pathfinder2,
+    create :pathfinder2_character,
            user: user_session.user,
            data: {
              main_class: 'bard',

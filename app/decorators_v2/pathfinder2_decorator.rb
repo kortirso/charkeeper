@@ -70,10 +70,11 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   end
 
   def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    health_max = RACE_HP[race] + (CLASS_HP[main_class] * level) + (modified_abilities['con'] * level)
     @result['health'] = {
-      'current' => health_current,
+      'current' => [health_current, health_max].min,
       'temp' => health_temp,
-      'max' => RACE_HP[race] + (CLASS_HP[main_class] * level) + (modified_abilities['con'] * level)
+      'max' => health_max
     }
     @result['skills'] = generate_skills_payload
     @result['saving_throws_value'] = {

@@ -3,8 +3,8 @@
 describe Frontend::Dnd2024::Characters::SpellsController do
   let!(:user_session) { create :user_session }
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
-  let!(:character) { create :character, :dnd2024 }
-  let!(:user_character) { create :character, :dnd2024, user: user_session.user, data: { main_class: 'bard' } }
+  let!(:character) { create :dnd2024_character }
+  let!(:user_character) { create :dnd2024_character, user: user_session.user, data: { main_class: 'bard' } }
   let!(:spell) { create :feat, :dnd2024_bardic_inspiration, origin: 6 }
 
   describe 'GET#index' do

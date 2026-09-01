@@ -6,8 +6,7 @@ describe Dnd2024Decorator do
   }
 
   let!(:character) {
-    create(:character,
-           :dnd2024,
+    create(:dnd2024_character,
            'data' => {
              'level' => 4,
              'main_class' => 'bard',

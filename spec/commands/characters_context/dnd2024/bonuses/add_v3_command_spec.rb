@@ -4,7 +4,7 @@ describe CharactersContext::Dnd2024::Bonuses::AddV3Command do
   subject(:command_call) { instance.call(params) }
 
   let(:instance) { described_class.new }
-  let(:character) { create :character, :dnd2024 }
+  let(:character) { create :dnd2024_character }
   let(:params) { { bonusable: Dnd2024::Character.find(character.id), comment: 'Name', value: value.deep_symbolize_keys } }
 
   context 'for abilities' do

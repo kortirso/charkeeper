@@ -14,7 +14,8 @@ FactoryBot.define do
         subclasses: { bard: nil },
         abilities: { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 },
         speed: 30,
-        selected_skills: { 'history' => 1 }
+        selected_skills: { 'history' => 1 },
+        health: { current: 1, max: 7 }
       }
     }
     user

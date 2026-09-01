@@ -2,7 +2,7 @@
 
 module HomebrewsV2Context
   module Import
-    module Daggerheart
+    module Pathfinder2
       module Items
         module Consumables
           class AddCommand < BaseCommand
@@ -11,7 +11,7 @@ module HomebrewsV2Context
             ]
 
             use_contract do
-              ConsumeAttributes = Dry::Types['strict.string'].enum('health_marked', 'stress_marked', 'hope_marked')
+              ConsumeAttributes = Dry::Types['strict.string'].enum('health_current')
 
               params do
                 required(:user).filled(type?: ::User)
@@ -20,13 +20,12 @@ module HomebrewsV2Context
                   optional(:ru).maybe(:string, max_size?: 50)
                   optional(:es).maybe(:string, max_size?: 50)
                 end
-                required(:description).hash do
-                  required(:en).filled(:string, max_size?: 500)
+                optional(:description).hash do
+                  optional(:en).filled(:string, max_size?: 500)
                   optional(:ru).maybe(:string, max_size?: 500)
                   optional(:es).maybe(:string, max_size?: 500)
                 end
                 optional(:consume).maybe(:array).each(:hash) do
-                  required(:id).filled(type?: Integer)
                   required(:attribute).filled(ConsumeAttributes)
                   required(:formula).filled(:string)
                 end
@@ -60,7 +59,7 @@ module HomebrewsV2Context
             end
 
             def do_persist(input)
-              result = ::Daggerheart::Item.create!(input.except(:consume))
+              result = ::Pathfinder2::Item.create!(input.except(:consume))
 
               { result: result }
             end

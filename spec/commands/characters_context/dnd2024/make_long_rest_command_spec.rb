@@ -5,7 +5,7 @@ describe CharactersContext::Dnd2024::MakeLongRestCommand do
 
   let(:instance) { described_class.new }
   let!(:character) {
-    create :character, :dnd2024, data: {
+    create :dnd2024_character, data: {
       spent_spell_slots: { 1 => 3, 2 => 1 },
       hit_dice: { '6' => 0, '8' => 2, '10' => 4, '12' => 4 },
       spent_hit_dice: { '6' => 0, '8' => 1, '10' => 2, '12' => 3 },

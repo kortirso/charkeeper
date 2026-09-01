@@ -3,8 +3,8 @@
 describe Frontend::Pathfinder2::Characters::SpellsController do
   let!(:user_session) { create :user_session }
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
-  let!(:character) { create :character, :pathfinder2 }
-  let!(:user_character) { create :character, :pathfinder2, user: user_session.user, data: { main_class: 'bard' } }
+  let!(:character) { create :pathfinder2_character }
+  let!(:user_character) { create :pathfinder2_character, user: user_session.user, data: { main_class: 'bard' } }
   let!(:spell) { create :feat, :pathfinder2, origin: 4, origin_value: 'arcane', origin_values: [] }
 
   describe 'GET#index' do

@@ -36,7 +36,7 @@ describe CharactersContext::ChangeFeatCommand do
   end
 
   context 'for dnd 2024 character' do
-    let!(:character) { create :character, :dnd2024 }
+    let!(:character) { create :dnd2024_character }
 
     context 'for simple feat' do
       let!(:feat) { create :feat, :dnd2024_bardic_inspiration, kind: 1 }

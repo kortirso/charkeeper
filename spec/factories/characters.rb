@@ -35,41 +35,6 @@ FactoryBot.define do
       }
     end
 
-    trait :dnd2024 do
-      type { 'Dnd2024::Character' }
-      data {
-        {
-          level: 4,
-          species: 'human',
-          alignment: Dnd5::Character::NEUTRAL,
-          main_class: 'bard',
-          classes: { bard: 4 },
-          subclasses: { bard: nil },
-          abilities: { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 },
-          speed: 30,
-          selected_skills: { 'history' => 1 }
-        }
-      }
-    end
-
-    trait :pathfinder2 do
-      type { 'Pathfinder2::Character' }
-      data {
-        {
-          level: 4,
-          race: 'halfling',
-          subrace: 'wildwood_halfling',
-          main_class: 'witch',
-          main_ability: 'int',
-          classes: { witch: 4 },
-          subclasses: { witch: nil },
-          abilities: { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 },
-          speed: 30,
-          saving_throws: { fortitude: 0, reflex: 0, will: 0 }
-        }
-      }
-    end
-
     trait :daggerheart do
       type { 'Daggerheart::Character' }
       data {
@@ -92,11 +57,6 @@ FactoryBot.define do
 
     trait :fate do
       type { 'Fate::Character' }
-      data { {} }
-    end
-
-    trait :dc20 do
-      type { 'Dc20::Character' }
       data { {} }
     end
 

@@ -4,7 +4,7 @@ describe CharactersContext::Pathfinder2::Feats::AddCommand do
   subject(:command_call) { instance.call(params) }
 
   let(:instance) { described_class.new }
-  let!(:character) { create :character, :pathfinder2 }
+  let!(:character) { create :pathfinder2_character }
   let!(:feat) { create :feat, :rally, type: 'Pathfinder2::Feat' }
   let(:valid_params) do
     {

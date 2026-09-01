@@ -4,7 +4,7 @@ describe CharactersContext::Pathfinder2::UpdateCommand do
   subject(:command_call) { instance.call(params) }
 
   let(:instance) { described_class.new }
-  let!(:character) { create :character, :pathfinder2 }
+  let!(:character) { create :pathfinder2_character }
   let!(:feat) { create :feat, :pathfinder2 }
   let(:valid_params) do
     {

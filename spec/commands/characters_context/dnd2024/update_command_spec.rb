@@ -4,7 +4,7 @@ describe CharactersContext::Dnd2024::UpdateCommand do
   subject(:command_call) { instance.call(params) }
 
   let(:instance) { described_class.new }
-  let!(:character) { create :character, :dnd2024 }
+  let!(:character) { create :dnd2024_character }
   let(:valid_params) do
     {
       character: Dnd2024::Character.find(character.id), classes: { 'bard' => 5 }

@@ -39,7 +39,7 @@ describe Frontend::Pathfinder2::CharactersController do
 
   describe 'PATCH#update' do
     context 'for logged users' do
-      let!(:character) { create :character, :pathfinder2, user: user_session.user }
+      let!(:character) { create :pathfinder2_character, user: user_session.user }
 
       it 'updates character', :aggregate_failures do
         patch :update, params: {

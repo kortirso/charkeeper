@@ -36,4 +36,8 @@ export * from './Content/Nimble/Weapons';
 
 export * from './Content/Pathfinder2/Books';
 export * from './Content/Pathfinder2/Weapons';
+export * from './Content/Pathfinder2/Armors';
+export * from './Content/Pathfinder2/Shields';
+export * from './Content/Pathfinder2/Items';
+export * from './Content/Pathfinder2/Consumables';
 export * from './Content/Pathfinder2/Backgrounds';

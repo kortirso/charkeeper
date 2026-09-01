@@ -218,7 +218,7 @@ describe Frontend::Bots::CharactersController do
         end
 
         context 'for pathfinder2 checks' do
-          let!(:character) { create :character, :pathfinder2, user: user_session.user }
+          let!(:character) { create :pathfinder2_character, user: user_session.user }
 
           %w[save attr skill attack initiative].each do |attr|
             let(:values) { ["/check #{attr} will --bonus 1"] }
@@ -254,7 +254,7 @@ describe Frontend::Bots::CharactersController do
         end
 
         context 'for dc20 checks' do
-          let!(:character) { create :character, :dc20, user: user_session.user }
+          let!(:character) { create :dc20_character, user: user_session.user }
 
           %w[attr save skill trade language initiative attack].each do |attr|
             let(:values) { ["/check #{attr} empty --bonus 2"] }

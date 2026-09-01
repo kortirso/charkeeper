@@ -1,0 +1,92 @@
+[
+  {
+    "name": {
+      "en": "Healing Potion (Minor)",
+      "ru": "Зелье исцеления (Низшее)"
+    },
+    "description": {
+      "en": "The potion restores 1d8 Hit Points.",
+      "ru": "Зелье восстанавливает 1d8 ПЗ."
+    },
+    "public": true,
+    "data": {
+      "price": 400,
+      "weight": 0
+    },
+    "consume": [
+      { "attribute": "health_current", "formula": "D(8)" }
+    ]
+  },
+  {
+    "name": {
+      "en": "Healing Potion (Lesser)",
+      "ru": "Зелье исцеления (Малое)"
+    },
+    "description": {
+      "en": "The potion restores 2d8+5 Hit Points.",
+      "ru": "Зелье восстанавливает 2d8+5 ПЗ."
+    },
+    "public": true,
+    "data": {
+      "price": 1200,
+      "weight": 0
+    },
+    "consume": [
+      { "attribute": "health_current", "formula": "2 * D(8) + 5" }
+    ]
+  },
+  {
+    "name": {
+      "en": "Healing Potion (Moderate)",
+      "ru": "Зелье исцеления (Среднее)"
+    },
+    "description": {
+      "en": "The potion restores 3d8+10 Hit Points.",
+      "ru": "Зелье восстанавливает 3d8+10 ПЗ."
+    },
+    "public": true,
+    "data": {
+      "price": 5000,
+      "weight": 0
+    },
+    "consume": [
+      { "attribute": "health_current", "formula": "3 * D(8) + 10" }
+    ]
+  },
+  {
+    "name": {
+      "en": "Healing Potion (Greater)",
+      "ru": "Зелье исцеления (Улучшенное)"
+    },
+    "description": {
+      "en": "The potion restores 6d8+20 Hit Points.",
+      "ru": "Зелье восстанавливает 6d8+20 ПЗ."
+    },
+    "public": true,
+    "data": {
+      "price": 40000,
+      "weight": 0
+    },
+    "consume": [
+      { "attribute": "health_current", "formula": "6 * D(8) + 20" }
+    ]
+  },
+  {
+    "name": {
+      "en": "Healing Potion (Major)",
+      "ru": "Зелье исцеления (Высшее)"
+    },
+    "description": {
+      "en": "The potion restores 8d8+30 Hit Points.",
+      "ru": "Зелье восстанавливает 8d8+30 ПЗ."
+    },
+    "public": true,
+    "data": {
+      "price": 500000,
+      "weight": 0
+    },
+    "consume": [
+      { "attribute": "health_current", "formula": "8 * D(8) + 30" }
+    ]
+  }
+]

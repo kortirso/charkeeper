@@ -1,0 +1,14 @@
+[
+  {
+    "name": {
+      "en": "Oilskin Pouch",
+      "ru": "Непромокаемая сумка"
+    },
+    "description": {},
+    "public": true,
+    "data": {
+      "price": 50,
+      "weight": 0
+    }
+  }
+]
