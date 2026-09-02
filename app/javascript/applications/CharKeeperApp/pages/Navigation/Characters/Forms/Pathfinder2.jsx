@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import { CharacterForm } from '../../../../pages';
-import { Select, Input, Checkbox } from '../../../../components';
+import { Select, Input, Checkbox, Label } from '../../../../components';
 import dnd2024Config from '../../../../data/dnd2024.json';
 import pathfinder2Config from '../../../../data/pathfinder2.json';
 import { useAppLocale } from '../../../../context';
@@ -17,24 +17,50 @@ const PATHFINDER2_DEFAULT_FORM = {
 const TRANSLATION = {
   en: {
     options: 'There are books available in Homebrews/Modules section for additional options for character creation.',
-    showHomebrew: 'Allow to select homebrews'
+    showHomebrew: 'Allow to select homebrews',
+    beyondFile: 'You can import your character from Pathbuilder by using JSON file or build ID.',
+    buildId: 'Build ID'
   },
   ru: {
     options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.',
-    showHomebrew: 'Выбирать из homebrew'
+    showHomebrew: 'Выбирать из homebrew',
+    beyondFile: 'Вы можете импортировать своего персонажа из Pathbuilder, используя JSON-файл или ID билда.',
+    buildId: 'Build ID'
   },
   es: {
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
-    showHomebrew: 'Allow to select homebrews'
+    showHomebrew: 'Allow to select homebrews',
+    beyondFile: 'You can import your character from Pathbuilder by using JSON file or build ID.',
+    buildId: 'Build ID'
   }
 }
 
 export const Pathfinder2CharacterForm = (props) => {
   const [showHomebrew, setShowHomebrew] = createSignal(true);
   const [form, setForm] = createStore(PATHFINDER2_DEFAULT_FORM);
+  const [buildId, setBuildId] = createSignal('');
 
   const [locale, dict] = useAppLocale();
   const t = i18n.translator(dict);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const jsonString = e.target.result.replace(/,([ \t\r\n]*[}\]])/g, '$1');
+        const jsonObject = JSON.parse(jsonString);
+
+        props.onImportCharacter('pathbuilder_json', jsonObject);
+      } catch (error) {
+        console.error('Invalid JSON file format:', error.message);
+      }
+    };
+
+    reader.readAsText(file);
+  }
 
   const mainAbilityOptions = createMemo(() => {
     if (form.main_class === undefined) return {};
@@ -51,13 +77,17 @@ export const Pathfinder2CharacterForm = (props) => {
   });
 
   const saveCharacter = async () => {
-    const result = await props.onCreateCharacter(form);
+    if (buildId().length > 0) {
+      props.onImportCharacter('pathbuilder_id', { build_id: buildId() });
+    } else {
+      const result = await props.onCreateCharacter(form);
 
-    if (result === null) {
-      setForm({
-        name: '', race: undefined, subrace: undefined, main_class: undefined, subclass: undefined,
-        background: undefined, main_ability: undefined
-      });
+      if (result === null) {
+        setForm({
+          name: '', race: undefined, subrace: undefined, main_class: undefined, subclass: undefined,
+          background: undefined, main_ability: undefined
+        });
+      }
     }
   }
 
@@ -128,6 +158,13 @@ export const Pathfinder2CharacterForm = (props) => {
             onSelect={(value) => setForm({ ...form, main_ability: value })}
           />
         </Show>
+        <Label labelText={localize(TRANSLATION, locale()).beyondFile} />
+        {/*<input class="block dark:text-gray-200" type="file" onChange={handleFileChange} />*/}
+        <Input
+          labelText={localize(TRANSLATION, locale()).buildId}
+          value={buildId()}
+          onInput={setBuildId}
+        />
       </div>
     </CharacterForm>
   );
