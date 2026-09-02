@@ -29,6 +29,10 @@ export * from './Content/Dnd2024/Books';
 export * from './Content/Dnd2024/Races';
 export * from './Content/Dnd2024/Subclasses';
 export * from './Content/Dnd2024/Weapons';
+export * from './Content/Dnd2024/Armors';
+export * from './Content/Dnd2024/Shields';
+export * from './Content/Dnd2024/Items';
+export * from './Content/Dnd2024/Consumables';
 
 export * from './Content/Nimble/Ancestries';
 export * from './Content/Nimble/Books';

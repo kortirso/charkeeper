@@ -1,7 +1,8 @@
 import { For, Switch, Match } from 'solid-js';
 
 import {
-  Dnd2024Feats, Dnd2024Backgrounds, Dnd2024Books, Dnd2024Spells, Dnd2024Races, Dnd2024Subclasses, Dnd2024Weapons
+  Dnd2024Feats, Dnd2024Backgrounds, Dnd2024Books, Dnd2024Spells, Dnd2024Races, Dnd2024Subclasses, Dnd2024Weapons,
+  Dnd2024Armors, Dnd2024Shields, Dnd2024Items, Dnd2024Consumables
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -14,7 +15,10 @@ const TRANSLATION = {
     spells: 'Spells',
     feats: 'Feats',
     backgrounds: 'Backgrounds',
-    races: 'Species'
+    races: 'Species',
+    armor: 'Armor',
+    shields: 'Shields',
+    consumables: 'Consumables'
   },
   ru: {
     books: 'Книги',
@@ -24,7 +28,10 @@ const TRANSLATION = {
     spells: 'Заклинания',
     feats: 'Черты',
     backgrounds: 'Происхождения',
-    races: 'Виды'
+    races: 'Виды',
+    armor: 'Броня',
+    shields: 'Щиты',
+    consumables: 'Расходники'
   },
   es: {
     books: 'Libros',
@@ -34,7 +41,10 @@ const TRANSLATION = {
     spells: 'Hechizos',
     feats: 'Proezas',
     backgrounds: 'Trasfondos',
-    races: 'Species'
+    races: 'Species',
+    armor: 'Armadura',
+    shields: 'Shields',
+    consumables: 'Consumables'
   }
 }
 
@@ -46,7 +56,12 @@ export const Dnd2024 = () => {
   return (
     <>
       <div class="flex gap-x-4 my-4">
-        <For each={['books', 'races', 'subclasses', 'backgrounds', 'feats', 'spells', 'weapons']}>
+        <For each={
+          [
+            'books', 'races', 'subclasses', 'backgrounds', 'feats', 'spells', 'weapons', 'armor', 'items', 'consumables',
+            'shields'
+          ]
+        }>
           {(item) =>
             <p
               class="homebrew-provider-nav"
@@ -60,7 +75,8 @@ export const Dnd2024 = () => {
         <For each={
           Object.entries({
             feats: Dnd2024Feats, backgrounds: Dnd2024Backgrounds, books: Dnd2024Books, spells: Dnd2024Spells,
-            races: Dnd2024Races, subclasses: Dnd2024Subclasses, weapons: Dnd2024Weapons
+            races: Dnd2024Races, subclasses: Dnd2024Subclasses, weapons: Dnd2024Weapons, armor: Dnd2024Armors,
+            items: Dnd2024Shields, consumables: Dnd2024Items, shields: Dnd2024Consumables
           })
         }>
           {([item, Component]) =>

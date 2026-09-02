@@ -46,7 +46,7 @@ module HomebrewsV2Context
         end
       end
 
-      def dnd2024_commands(publication)
+      def dnd2024_commands(publication) # rubocop: disable Metrics/CyclomaticComplexity
         case publication.parent_type
         when 'feat' then HomebrewsV2Context::Import::Dnd2024::Feats::AddCommand.new
         when 'background' then HomebrewsV2Context::Import::Dnd2024::Backgrounds::AddCommand.new
@@ -54,6 +54,10 @@ module HomebrewsV2Context
         when 'race' then HomebrewsV2Context::Import::Dnd2024::Races::PerformCommand.new
         when 'subclass' then HomebrewsV2Context::Import::Dnd2024::Subclasses::PerformCommand.new
         when 'weapon' then HomebrewsV2Context::Import::Dnd2024::Items::Weapons::AddCommand.new
+        when 'armor' then HomebrewsV2Context::Import::Dnd2024::Items::Armors::AddCommand.new
+        when 'shield' then HomebrewsV2Context::Import::Dnd2024::Items::Shields::AddCommand.new
+        when 'item' then HomebrewsV2Context::Import::Dnd2024::Items::Items::AddCommand.new
+        when 'consumables' then HomebrewsV2Context::Import::Dnd2024::Items::Consumables::AddCommand.new
         end
       end
 
