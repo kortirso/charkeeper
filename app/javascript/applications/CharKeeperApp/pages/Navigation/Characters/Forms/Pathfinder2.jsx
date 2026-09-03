@@ -43,24 +43,24 @@ export const Pathfinder2CharacterForm = (props) => {
   const [locale, dict] = useAppLocale();
   const t = i18n.translator(dict);
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+  //   if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      try {
-        const jsonString = e.target.result.replace(/,([ \t\r\n]*[}\]])/g, '$1');
-        const jsonObject = JSON.parse(jsonString);
+  //   const reader = new FileReader();
+  //   reader.onload = function(e) {
+  //     try {
+  //       const jsonString = e.target.result.replace(/,([ \t\r\n]*[}\]])/g, '$1');
+  //       const jsonObject = JSON.parse(jsonString);
 
-        props.onImportCharacter('pathbuilder_json', jsonObject);
-      } catch (error) {
-        console.error('Invalid JSON file format:', error.message);
-      }
-    };
+  //       props.onImportCharacter('pathbuilder_json', jsonObject);
+  //     } catch (error) {
+  //       console.error('Invalid JSON file format:', error.message);
+  //     }
+  //   };
 
-    reader.readAsText(file);
-  }
+  //   reader.readAsText(file);
+  // }
 
   const mainAbilityOptions = createMemo(() => {
     if (form.main_class === undefined) return {};
