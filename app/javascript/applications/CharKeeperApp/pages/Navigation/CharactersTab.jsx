@@ -182,7 +182,7 @@ export const CharactersTab = () => {
   const importCharacter = async (provider, json) => {
     if (platform() === undefined) return undefined;
 
-    const result = await importCharacterRequest(appState.accessToken, platform(), { provider: provider, data: json });
+    const result = await importCharacterRequest(appState.accessToken, { provider: platform(), service: provider, data: json });
     
     if (result.errors_list === undefined) {
       batch(() => {

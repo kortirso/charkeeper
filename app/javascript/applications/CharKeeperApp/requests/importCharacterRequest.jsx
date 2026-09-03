@@ -1,8 +1,8 @@
 import { apiRequest, options } from '../helpers';
 
-export const importCharacterRequest = async (accessToken, provider, payload) => {
+export const importCharacterRequest = async (accessToken, payload) => {
   return await apiRequest({
-    url: `/frontend/${provider}/characters/import.json`,
+    url: '/frontend/characters/import.json',
     options: options('POST', accessToken, payload)
   });
 }
