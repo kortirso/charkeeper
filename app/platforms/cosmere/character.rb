@@ -4,6 +4,7 @@ module Cosmere
   class CharacterData
     include StoreModel::Model
 
+    attribute :setting, :string # roshar, scadrial_1, scadrial_2
     attribute :level, :integer, default: 1
     attribute :ancestry, :string
     attribute :cultures, array: true, default: []

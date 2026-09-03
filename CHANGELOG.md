@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - PF2 PDF
+- cosmere creating form
 
 ## [0.5.9] - 2026-08-31
 ### Modified

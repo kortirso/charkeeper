@@ -1,4 +1,7 @@
 {
+  "settings": {
+    "roshar": { "name": { "en": "Roshar", "ru": "Рошар" } }
+  },
   "abilities": {
     "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
     "spd": { "name": { "en": "Speed", "ru": "Скорость" }, "shortName": { "en": "Spd", "ru": "Скр" } },
@@ -9,22 +12,22 @@
   },
   "ancestries": {
     "human": { "name": { "en": "Human", "ru": "Человек" } },
-    "singer": { "name": { "en": "Singer", "ru": "Певец" } }
+    "singer": { "name": { "en": "Singer", "ru": "Певец" }, "only": "roshar" }
   },
   "cultures": {
-    "alethi": { "name": { "en": "Alethi", "ru": "Алети" } },
-    "azish": { "name": { "en": "Azish", "ru": "Азиш" } },
-    "herdazian": { "name": { "en": "Herdazian", "ru": "Гердазиец" } },
-    "iriali": { "name": { "en": "Iriali", "ru": "Ириали" } },
-    "kharbranthian": { "name": { "en": "Kharbranthian", "ru": "Харбрантиец" } },
-    "listener": { "name": { "en": "Listener", "ru": "Слушатель" } },
-    "natan": { "name": { "en": "Natan", "ru": "Натанец" } },
-    "reshi": { "name": { "en": "Reshi", "ru": "Реши" } },
-    "shin": { "name": { "en": "Shin", "ru": "Шинец" } },
-    "thaylen": { "name": { "en": "Thaylen", "ru": "Тайленец" } },
-    "unkalaki": { "name": { "en": "Unkalaki", "ru": "Ункалаки" } },
-    "veden": { "name": { "en": "Veden", "ru": "Веденец" } },
-    "wayfarer": { "name": { "en": "Wayfarer", "ru": "Скиталец" } }
+    "alethi": { "name": { "en": "Alethi", "ru": "Алети" }, "only": "roshar" },
+    "azish": { "name": { "en": "Azish", "ru": "Азиш" }, "only": "roshar" },
+    "herdazian": { "name": { "en": "Herdazian", "ru": "Гердазиец" }, "only": "roshar" },
+    "iriali": { "name": { "en": "Iriali", "ru": "Ириали" }, "only": "roshar" },
+    "kharbranthian": { "name": { "en": "Kharbranthian", "ru": "Харбрантиец" }, "only": "roshar" },
+    "listener": { "name": { "en": "Listener", "ru": "Слушатель" }, "only": "roshar" },
+    "natan": { "name": { "en": "Natan", "ru": "Натанец" }, "only": "roshar" },
+    "reshi": { "name": { "en": "Reshi", "ru": "Реши" }, "only": "roshar" },
+    "shin": { "name": { "en": "Shin", "ru": "Шинец" }, "only": "roshar" },
+    "thaylen": { "name": { "en": "Thaylen", "ru": "Тайленец" }, "only": "roshar" },
+    "unkalaki": { "name": { "en": "Unkalaki", "ru": "Ункалаки" }, "only": "roshar" },
+    "veden": { "name": { "en": "Veden", "ru": "Веденец" }, "only": "roshar" },
+    "wayfarer": { "name": { "en": "Wayfarer", "ru": "Скиталец" }, "only": "roshar" }
   },
   "paths": {
     "agent": { "name": { "en": "Agent", "ru": "Агент" } },

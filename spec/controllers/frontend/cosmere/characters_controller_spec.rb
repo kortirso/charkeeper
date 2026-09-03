@@ -8,7 +8,9 @@ describe Frontend::Cosmere::CharactersController do
     context 'for logged users' do
       let(:request) {
         post :create, params: {
-          character: { name: 'Грундар', ancestry: 'human', cultures: %w[1 2] }, charkeeper_access_token: access_token
+          character: {
+            setting: 'roshar', name: 'Грундар', ancestry: 'human', cultures: %w[1 2]
+          }, charkeeper_access_token: access_token
         }
       }
 
