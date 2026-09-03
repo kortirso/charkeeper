@@ -27,7 +27,7 @@ module HomebrewsV2Context
                 required(:info).hash do
                   required(:ac).filled(:integer, gteq?: 0)
                   optional(:str_req).maybe(:integer, gteq?: 0)
-                  optional(:stealth).maybe(:boolean)
+                  optional(:stealth).maybe(:bool)
                   optional(:features).maybe(:array).each(:hash) do
                     required(:en).filled(:string, max_size?: 250)
                     optional(:ru).maybe(:string, max_size?: 250)
