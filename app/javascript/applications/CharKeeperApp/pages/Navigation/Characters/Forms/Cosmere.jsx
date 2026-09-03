@@ -67,6 +67,37 @@ export const CosmereCharacterForm = (props) => {
     }
   }
 
+  const settings = createMemo(() => {
+    if (props.homebrews() === undefined) return {};
+    if (!showHomebrew()) return config.settings;
+
+    return { ...config.settings, ...props.homebrews().cosmere.settings };
+  });
+
+  const ancestries = createMemo(() => {
+    if (!characterForm.setting) return {};
+    if (!limit()) return config.ancestries;
+
+    return Object.fromEntries(Object.entries(config.ancestries).filter(([, values]) => {
+      if (values.only && !values.only.includes(characterForm.setting)) return false;
+      if (values.except && values.except.includes(characterForm.setting)) return false;
+
+      return true;
+    }));
+  });
+
+  const cultures = createMemo(() => {
+    if (!characterForm.setting) return {};
+    if (!limit()) return config.cultures;
+
+    return Object.fromEntries(Object.entries(config.cultures).filter(([, values]) => {
+      if (values.only && !values.only.includes(characterForm.setting)) return false;
+      if (values.except && values.except.includes(characterForm.setting)) return false;
+
+      return true;
+    }));
+  });
+
   return (
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <div class="flex flex-col gap-2">
@@ -92,21 +123,21 @@ export const CosmereCharacterForm = (props) => {
         />
         <Select
           labelText={i18n().setting}
-          items={translate(config.settings, locale())}
+          items={translate(settings(), locale(), true)}
           selectedValue={characterForm.setting}
           onSelect={(value) => setCharacterForm({ ...characterForm, setting: value, ancestry: null, cultures: [] })}
         />
         <Show when={characterForm.setting}>
           <Select
             labelText={i18n().ancestry}
-            items={translate(config.ancestries, locale())}
+            items={translate(ancestries(), locale(), true)}
             selectedValue={characterForm.ancestry}
             onSelect={(value) => setCharacterForm({ ...characterForm, ancestry: value })}
           />
           <Select
             multi
             labelText={i18n().cultures}
-            items={translate(config.cultures, locale())}
+            items={translate(cultures(), locale(), true)}
             selectedValues={characterForm.cultures}
             onSelect={updateCulturesValue}
           />

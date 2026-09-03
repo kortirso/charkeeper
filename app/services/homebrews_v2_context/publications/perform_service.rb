@@ -24,8 +24,15 @@ module HomebrewsV2Context
           when 'dnd2024' then dnd2024_commands(publication)
           when 'nimble' then nimble_commands(publication)
           when 'pathfinder2' then pathfinder2_commands(publication)
+          when 'cosmere' then cosmere_commands(publication)
           else daggerheart_commands(publication)
           end
+      end
+
+      def cosmere_commands(publication)
+        case publication.parent_type
+        when 'setting' then HomebrewsV2Context::Import::Cosmere::Settings::PerformCommand.new
+        end
       end
 
       def pathfinder2_commands(publication)

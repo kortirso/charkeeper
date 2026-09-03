@@ -22,6 +22,9 @@ module HomebrewsContext
         },
         pathfinder2: {
           backgrounds: titles(user_id, ::Pathfinder2::Homebrews::Background)
+        },
+        cosmere: {
+          settings: titles(user_id, ::Cosmere::Homebrews::Setting)
         }
       }
     end

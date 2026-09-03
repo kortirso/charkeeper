@@ -20,6 +20,7 @@ module Charkeeper
     register('cache.dnd_names') { Cache::DndNames.new }
     register('cache.nimble_names') { Cache::NimbleNames.new }
     register('cache.pathfinder2_names') { Cache::Pathfinder2Names.new }
+    register('cache.cosmere_names') { Cache::CosmereNames.new }
     register('feature_requirement') { FeatureRequirement.new }
     register('markdown') { ActiveMarkdown.new }
     register('to_bool') { ToBool.new }

@@ -123,14 +123,14 @@ export const CharactersTab = () => {
       return <Dnd2024CharacterForm onCreateCharacter={saveCharacter} onImportCharacter={importCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} dnd2024Races={dnd2024Races} />;
     }
 
-    const HOMEBREW_COMPONENTS = { dnd5: Dnd5CharacterForm, pathfinder2: Pathfinder2CharacterForm, daggerheart: DaggerheartCharacterForm, nimble: NimbleForm }
+    const HOMEBREW_COMPONENTS = { dnd5: Dnd5CharacterForm, pathfinder2: Pathfinder2CharacterForm, daggerheart: DaggerheartCharacterForm, nimble: NimbleForm, cosmere: CosmereCharacterForm }
     if (HOMEBREW_COMPONENTS[platform()]) {
       const Component = HOMEBREW_COMPONENTS[platform()];
       return <Component onCreateCharacter={saveCharacter} onImportCharacter={importCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />;
     }
 
     const COMPONENTS = {
-      fate: FateCharacterForm, dc20: Dc20CharacterForm, fallout: FalloutCharacterForm, cosmere: CosmereCharacterForm, cthulhu7: Cthulhu7CharacterForm
+      fate: FateCharacterForm, dc20: Dc20CharacterForm, fallout: FalloutCharacterForm, cthulhu7: Cthulhu7CharacterForm
     }
     const Component = COMPONENTS[platform()];
     return <Component onCreateCharacter={saveCharacter} setCurrentTab={setCurrentTab} />

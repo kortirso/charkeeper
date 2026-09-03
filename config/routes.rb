@@ -323,6 +323,13 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :cosmere do
+      resources :settings, only: %i[show destroy]
+      resources :books, only: %i[index show create update destroy] do
+        get :for_items, on: :collection
+      end
+    end
+
     namespace :nimble do
       resources :ancestries, only: %i[show destroy]
       resources :books, only: %i[index show create update destroy] do

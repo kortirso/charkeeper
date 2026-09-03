@@ -30,7 +30,8 @@ const PROVIDERS = {
   daggerheart: 'Daggerheart',
   dnd: 'D&D 5.5',
   pathfinder2: 'Pathfinder 2',
-  nimble: 'Nimble'
+  nimble: 'Nimble',
+  cosmere: 'Cosmere'
 }
 
 export const HomebrewTab = () => {

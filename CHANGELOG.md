@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Cosmere PDF
 - importing data from Pathbuilder
+- homebrew settings for Cosmere characters
 
 ### Modified
 - PF2 PDF
