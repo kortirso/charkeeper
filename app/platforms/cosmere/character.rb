@@ -48,12 +48,26 @@ module Cosmere
       config.dig('paths', path_value)
     end
 
-    def self.cultures_info(culture_value)
-      config.dig('cultures', culture_value)
+    def self.cultures
+      Config.data('cosmere', 'cultures')
     end
 
     def decorator(simple: false, version: nil)
       CosmereDecorator.new.call(character: self, simple: simple, version: version)
     end
+
+    def culture_names
+      data.cultures.map do |culture|
+        default = ::Cosmere::Character.cultures[culture]
+        next translate(default['name']) if default
+
+        custom_name = cosmere_names.fetch_item(key: :cultures, id: culture)
+        custom_name ? translate(custom_name[:name]) : '-'
+      end
+    end
+
+    private
+
+    def cosmere_names = Charkeeper::Container.resolve('cache.cosmere_names')
   end
 end

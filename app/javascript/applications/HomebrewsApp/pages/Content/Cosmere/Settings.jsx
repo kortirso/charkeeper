@@ -1,7 +1,7 @@
 import { useAppState } from '../../../context';
 import { SharedContent } from '../../../pages';
 import { fetchListRequest, fetchHomebrewRequest, batchDestroyRequest } from '../../../requests_v2/list';
-import { removeSettingRequest } from '../../../requests_v2/cosmere/settings';
+import { fetchSettingRequest, removeSettingRequest } from '../../../requests_v2/cosmere/settings';
 
 export const CosmereSettings = () => {
   const [appState] = useAppState();
@@ -24,6 +24,7 @@ export const CosmereSettings = () => {
       onFetchRequest={fetchList}
       onFetchHomebrew={fetchHomebrew}
       onBatchDestroy={batchDestroy}
+      onShowRequest={fetchSettingRequest}
       onRemoveRequest={removeSettingRequest}
       childrenComponent={ChildrenComponent}
     />

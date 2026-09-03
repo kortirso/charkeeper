@@ -32,6 +32,7 @@ module HomebrewsV2Context
       def cosmere_commands(publication)
         case publication.parent_type
         when 'setting' then HomebrewsV2Context::Import::Cosmere::Settings::PerformCommand.new
+        when 'culture' then HomebrewsV2Context::Import::Cosmere::Cultures::PerformCommand.new
         end
       end
 

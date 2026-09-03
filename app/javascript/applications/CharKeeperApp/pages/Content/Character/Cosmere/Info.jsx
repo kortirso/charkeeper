@@ -27,7 +27,7 @@ export const CosmereInfo = (props) => {
 
   const renderValue = (item) => {
     if (item === 'ancestry') return localize(config.ancestries[character().ancestry].name, locale());
-    if (item === 'cultures') return character().cultures.map((item) => localize(config.cultures[item].name, locale())).join(' / ');
+    if (item === 'cultures') return character().names.culture_names.join('/');
   }
 
   return (

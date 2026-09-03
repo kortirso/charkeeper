@@ -17,11 +17,17 @@ module Frontend
       @homebrews = User::Homebrew.find_or_create_by(user: current_user).data
     end
 
-    def add_homebrews
+    def add_homebrews # rubocop: disable Metrics/AbcSize
       if feature_requirement.call(current: params[:version], initial: '0.5.9')
         @homebrews['pathfinder2'] ||= {}
         @homebrews['pathfinder2']['backgrounds'] ||= {}
         @homebrews['pathfinder2']['backgrounds'].merge!(Config.data('pathfinder2', 'background_names'))
+      end
+
+      if feature_requirement.call(current: params[:version], initial: '0.5.10')
+        @homebrews['cosmere'] ||= {}
+        @homebrews['cosmere']['cultures'] ||= {}
+        @homebrews['cosmere']['cultures'].merge!(Config.data('cosmere', 'cultures'))
       end
     end
   end

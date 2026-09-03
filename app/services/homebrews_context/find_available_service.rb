@@ -24,7 +24,8 @@ module HomebrewsContext
           backgrounds: titles(user_id, ::Pathfinder2::Homebrews::Background)
         },
         cosmere: {
-          settings: titles(user_id, ::Cosmere::Homebrews::Setting)
+          settings: titles(user_id, ::Cosmere::Homebrews::Setting),
+          cultures: cosmere_cultures(user_id)
         }
       }
     end
@@ -58,6 +59,16 @@ module HomebrewsContext
         )
         .each_with_object({}) do |item, acc|
           acc[item.id] = { name: item.title, sizes: item.info.size, legacies: [] }
+        end
+    end
+
+    def cosmere_cultures(user_id)
+      ::Cosmere::Homebrews::Culture.where(user_id: user_id)
+        .or(
+          ::Cosmere::Homebrews::Culture.where(id: available_books_data(user_id))
+        )
+        .each_with_object({}) do |item, acc|
+          acc[item.id] = { name: item.title, only: item.info.only }
         end
     end
 

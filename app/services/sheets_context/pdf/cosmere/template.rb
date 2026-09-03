@@ -179,7 +179,7 @@ module SheetsContext
         def heritage(character)
           [
             translate(::Cosmere::Character.ancestry_info(character.ancestry)['name']),
-            character.cultures.map { |item| translate(::Cosmere::Character.cultures_info(item)['name']) }.join('/')
+            character.parent.culture_names.join('/')
           ].flatten.join(' - ')
         end
 

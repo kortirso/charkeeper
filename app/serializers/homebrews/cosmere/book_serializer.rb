@@ -13,7 +13,8 @@ module Homebrews
         items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
-          settings: titles(items, ::Cosmere::Homebrews::Setting, 'Homebrew')
+          settings: titles(items, ::Cosmere::Homebrews::Setting, 'Homebrew'),
+          cultures: titles(items, ::Cosmere::Homebrews::Culture, 'Homebrew')
         }
       end
 

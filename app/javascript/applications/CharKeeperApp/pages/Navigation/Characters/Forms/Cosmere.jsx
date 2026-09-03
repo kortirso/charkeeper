@@ -88,9 +88,9 @@ export const CosmereCharacterForm = (props) => {
 
   const cultures = createMemo(() => {
     if (!characterForm.setting) return {};
-    if (!limit()) return config.cultures;
+    if (!limit()) return props.homebrews().cosmere.cultures;
 
-    return Object.fromEntries(Object.entries(config.cultures).filter(([, values]) => {
+    return Object.fromEntries(Object.entries(props.homebrews().cosmere.cultures).filter(([, values]) => {
       if (values.only && !values.only.includes(characterForm.setting)) return false;
       if (values.except && values.except.includes(characterForm.setting)) return false;
 

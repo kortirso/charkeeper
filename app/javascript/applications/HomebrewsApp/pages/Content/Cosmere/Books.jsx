@@ -11,16 +11,19 @@ import { localize } from '../../../helpers';
 const TRANSLATION = {
   en: {
     settings: 'Settings',
+    cultures: 'Cultures',
     official: 'Approved',
     showItems: 'Show items'
   },
   ru: {
     settings: 'Сеттинги',
+    cultures: 'Культуры',
     official: 'Одобренная',
     showItems: 'Показать предметы'
   },
   es: {
     settings: 'Settings',
+    cultures: 'Cultures',
     official: 'Aprobado',
     showItems: 'Show items'
   }
@@ -39,7 +42,7 @@ export const CosmereBooks = () => {
       <Show when={props.info.shared}>
         <p class="font-medium!">{localize(TRANSLATION, locale()).official}</p>
       </Show>
-      <For each={['settings']}>
+      <For each={['settings', 'cultures']}>
         {(kind) =>
           <Show when={Object.keys(props.info.items[kind]).length > 0}>
             <div>

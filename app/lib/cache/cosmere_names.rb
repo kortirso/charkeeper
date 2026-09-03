@@ -26,7 +26,8 @@ module Cache
 
     def load_initial_data
       {
-        settings: ids_with_names(::Cosmere::Homebrews::Setting)
+        settings: ids_with_names(::Cosmere::Homebrews::Setting),
+        cultures: ids_with_names(::Cosmere::Homebrews::Culture)
       }
     end
 

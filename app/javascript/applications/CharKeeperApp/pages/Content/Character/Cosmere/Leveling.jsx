@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 import { Key } from '@solid-primitives/keyed';
 
 import { Button, ErrorWrapper, Toggle, Checkbox, Input, TextArea, Text } from '../../../../components';
@@ -10,6 +10,7 @@ import { fetchItemsRequest } from '../../../../requests/fetchItemsRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
 import { removeTalentRequest } from '../../../../requests/removeTalentRequest';
+import { fetchHomebrewsRequest } from '../../../../requests/fetchHomebrewsRequest';
 import { localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
@@ -35,7 +36,8 @@ const TRANSLATION = {
       paths: 'Heroic paths',
       radiant_paths: 'Radiant paths',
       surges: 'Surges'
-    }
+    },
+    limits: 'Limit choises by setting'
   },
   ru: {
     currentLevel: 'уровень',
@@ -59,7 +61,8 @@ const TRANSLATION = {
       paths: 'Героические пути',
       radiant_paths: 'Сияющие пути',
       surges: 'Потоки'
-    }
+    },
+    limits: 'Ограничить выбор рамками сеттинга'
   },
   es: {
     currentLevel: 'nivel',
@@ -83,7 +86,8 @@ const TRANSLATION = {
       paths: 'Heroic paths',
       radiant_paths: 'Radiant paths',
       surges: 'Surges'
-    }
+    },
+    limits: 'Limit choises by setting'
   }
 }
 const ITEM_EXPERTISES = ['weapon', 'armor'];
@@ -97,6 +101,8 @@ export const CosmereLeveling = (props) => {
   const [showDescription, setShowDescription] = createSignal(false);
   const [showActive, setShowActive] = createSignal(true);
   const [leveling, setLeveling] = createSignal(false);
+  const [homebrews, setHomebrews] = createSignal(undefined);
+  const [limit, setLimit] = createSignal(true);
 
   const [items, setItems] = createSignal(undefined);
   const [feats, setFeats] = createSignal(undefined);
@@ -126,6 +132,30 @@ export const CosmereLeveling = (props) => {
     );
 
     setLastActiveCharacterId(character().id);
+  });
+
+  createEffect(() => {
+    if (homebrews() !== undefined) return;
+
+    const fetchHomebrews = async () => await fetchHomebrewsRequest(appState.accessToken);
+
+    Promise.all([fetchHomebrews()]).then(
+      ([homebrewsData]) => {
+        setHomebrews(homebrewsData);
+      }
+    );
+  });
+
+  const cultures = createMemo(() => {
+    if (homebrews() === undefined) return {};
+    if (!limit()) return homebrews().cosmere.cultures;
+
+    return Object.fromEntries(Object.entries(homebrews().cosmere.cultures).filter(([, values]) => {
+      if (values.only && !values.only.includes(character().setting)) return false;
+      if (values.except && values.except.includes(character().setting)) return false;
+
+      return true;
+    }));
   });
 
   const toggleExpertise = (kind, slug) => {
@@ -250,6 +280,14 @@ export const CosmereLeveling = (props) => {
           <p>{character().level} {localize(TRANSLATION, locale()).currentLevel}</p>
         </div>
       </div>
+      <Checkbox
+        classList="mb-2"
+        labelText={localize(TRANSLATION, locale()).limits}
+        labelPosition="right"
+        labelClassList="ml-2"
+        checked={limit()}
+        onToggle={() => setLimit(!limit())}
+      />
       <Show when={items()}>
         <Toggle
           innerClassList="p-2! flex flex-col gap-2"
@@ -275,11 +313,11 @@ export const CosmereLeveling = (props) => {
             }
           </For>
           <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList.culture}>
-            <For each={Object.entries(config.cultures)}>
+            <For each={Object.entries(cultures())}>
               {([slug, values]) =>
                 <div class="ancestry-item">
                   <Checkbox
-                    labelText={values.name[locale()]}
+                    labelText={localize(values.name, locale())}
                     labelPosition="right"
                     labelClassList="ml-2"
                     checked={character().expertises.culture.includes(slug)}
@@ -307,12 +345,12 @@ export const CosmereLeveling = (props) => {
               </Show>
               <Show
                 when={editMode()}
-                fallback={<Button default textable onClick={() => setEditMode(true)}>{localize(TRANSLATION, locale()).add}</Button>}
+                fallback={<Button default textable onClick={() => setEditMode(true)}><span>{localize(TRANSLATION, locale()).add}</span></Button>}
               >
                 <div>
                   <Input labelText={localize(TRANSLATION, locale()).expName} value={expName()} onInput={setExpName} />
                   <TextArea rows="3" containerClassList="mt-2" labelText={localize(TRANSLATION, locale()).expDesc} value={expDesc()} onChange={setExpDesc} />
-                  <Button default textable classList="mt-2" onClick={saveNewSkill}>{localize(TRANSLATION, locale()).add}</Button>
+                  <Button default textable classList="mt-2" onClick={saveNewSkill}><span>{localize(TRANSLATION, locale()).add}</span></Button>
                 </div>
               </Show>
             </div>
