@@ -16,7 +16,8 @@ module Frontend
         def index
           render json: {
             feats: CosmereContext::TalentsTree.new.call(
-              selected_feat_slugs: selected_feat_slugs
+              selected_feat_slugs: selected_feat_slugs,
+              character: @character
             ),
             selected_talents_count: selected_feat_slugs.size - extra_feats_size
           }, status: :ok

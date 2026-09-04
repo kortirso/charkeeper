@@ -29,12 +29,12 @@ module HomebrewsV2Context
 
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description]&.transform_values! { |value| sanitize(value) }
+            input[:info] = { required_for: input[:required_for] }.compact_blank
             input[:attributes] =
               input.except(:id, :feat, :options, :required_for).merge(
                 options: input[:options]&.transform_values { |value| value[:title] }
               )
             input[:attributes][:modifiers] = {} unless input.key?(:modifiers)
-            input[:info] = { required_for: input[:required_for] }.compact_blank
           end
 
           def do_persist(input)

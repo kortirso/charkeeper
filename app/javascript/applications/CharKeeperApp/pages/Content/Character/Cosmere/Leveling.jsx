@@ -3,7 +3,6 @@ import { Key } from '@solid-primitives/keyed';
 
 import { Button, ErrorWrapper, Toggle, Checkbox, Input, TextArea, Text } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import config from '../../../../data/cosmere.json';
 import { Upgrade, Close } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchItemsRequest } from '../../../../requests/fetchItemsRequest';
@@ -358,9 +357,6 @@ export const CosmereLeveling = (props) => {
           </Toggle>
         </Toggle>
       </Show>
-
-
-
       <Show when={feats()}>
         <Toggle
           innerClassList="p-2! flex flex-col gap-2"
@@ -385,12 +381,12 @@ export const CosmereLeveling = (props) => {
             checked={showActive()}
             onToggle={() => setShowActive(!showActive())}
           />
-          <Show when={feats().ancestry[character().ancestry]}>
-            <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(config.ancestries[character().ancestry].name, locale())}>
-              {renderFeat(feats().ancestry[character().ancestry], 0)}
+          <Show when={feats().ancestry}>
+            <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={feats().ancestry.name}>
+              {renderFeat(feats().ancestry.feats, 0)}
             </Toggle>
           </Show>
-          <For each={[['paths', 'heroic'], ['radiant_paths', 'radiant'], ['surges', 'surge']]}>
+          {/*<For each={[['paths', 'heroic'], ['radiant_paths', 'radiant'], ['surges', 'surge']]}>
             {(item) =>
               <>
                 <p>{localize(TRANSLATION, locale()).titles[item[0]]}</p>
@@ -405,7 +401,7 @@ export const CosmereLeveling = (props) => {
                 </For>
               </>
             }
-          </For>
+          </For>*/}
         </Toggle>
       </Show>
     </ErrorWrapper>

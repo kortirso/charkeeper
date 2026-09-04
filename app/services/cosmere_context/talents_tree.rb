@@ -5,50 +5,64 @@ module CosmereContext
     include Deps[markdown: 'markdown']
     include TranslateHelper
 
-    def call(selected_feat_slugs:) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    def call(selected_feat_slugs:, character:)
       @selected_feat_slugs = selected_feat_slugs
+      @character = character
       {
-        ancestry: {
-          singer: feat_info('change_form')
-        }.compact_blank,
-        heroic: {
-          agent: feat_info('opportunist'),
-          envoy: feat_info('rousing_presence'),
-          hunter: feat_info('seek_quarry'),
-          leader: feat_info('decisive_command'),
-          scholar: feat_info('erudition'),
-          warrior: feat_info('vigilant_stance')
-        }.compact_blank,
-        radiant: {
-          dustbringer: feat_info('first_ideal_dustbringer'),
-          edgedancer: feat_info('first_ideal_edgedancer'),
-          elsecaller: feat_info('first_ideal_elsecaller'),
-          lightweaver: feat_info('first_ideal_lightweaver'),
-          skybreaker: feat_info('first_ideal_skybreaker'),
-          stoneward: feat_info('first_ideal_stoneward'),
-          truthwatcher: feat_info('first_ideal_truthwatcher'),
-          willshaper: feat_info('first_ideal_willshaper'),
-          windrunner: feat_info('first_ideal_windrunner')
-        }.compact_blank,
-        surge: {
-          abrasion: feat_info('abrasion_surge'),
-          adhesion: feat_info('adhesion_surge'),
-          cohesion: feat_info('cohesion_surge'),
-          division: feat_info('division_surge'),
-          gravitation: feat_info('gravitation_surge'),
-          illumination: feat_info('illumination_surge'),
-          progression: feat_info('progression_surge'),
-          tension: feat_info('tension_surge'),
-          transformation: feat_info('transformation_surge'),
-          transportation: feat_info('transportation_surge')
-        }.compact_blank
+        ancestry: ancestry_tree
+        # heroic: {
+        #   agent: feat_info('opportunist'),
+        #   envoy: feat_info('rousing_presence'),
+        #   hunter: feat_info('seek_quarry'),
+        #   leader: feat_info('decisive_command'),
+        #   scholar: feat_info('erudition'),
+        #   warrior: feat_info('vigilant_stance')
+        # }.compact_blank,
+        # radiant: {
+        #   dustbringer: feat_info('first_ideal_dustbringer'),
+        #   edgedancer: feat_info('first_ideal_edgedancer'),
+        #   elsecaller: feat_info('first_ideal_elsecaller'),
+        #   lightweaver: feat_info('first_ideal_lightweaver'),
+        #   skybreaker: feat_info('first_ideal_skybreaker'),
+        #   stoneward: feat_info('first_ideal_stoneward'),
+        #   truthwatcher: feat_info('first_ideal_truthwatcher'),
+        #   willshaper: feat_info('first_ideal_willshaper'),
+        #   windrunner: feat_info('first_ideal_windrunner')
+        # }.compact_blank,
+        # surge: {
+        #   abrasion: feat_info('abrasion_surge'),
+        #   adhesion: feat_info('adhesion_surge'),
+        #   cohesion: feat_info('cohesion_surge'),
+        #   division: feat_info('division_surge'),
+        #   gravitation: feat_info('gravitation_surge'),
+        #   illumination: feat_info('illumination_surge'),
+        #   progression: feat_info('progression_surge'),
+        #   tension: feat_info('tension_surge'),
+        #   transformation: feat_info('transformation_surge'),
+        #   transportation: feat_info('transportation_surge')
+        # }.compact_blank
       }.compact_blank
     end
 
     private
 
-    def feat_info(slug)
-      feat = feats[slug]
+    def ancestry_tree
+      case @character.data.ancestry
+      when 'singer' then { feats: feat_info('change_form', name: 'Singer') }
+      when 'human' then nil
+      else
+        ancestry = ::Cosmere::Homebrews::Ancestry.find_by(id: @character.data.ancestry)
+        {
+          feats: feat_info(::Cosmere::Feat.find_by(id: ancestry.info.key_talent).slug),
+          name: translate(ancestry.title)
+        }
+      end
+    end
+
+    def feat_info(slug) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+      return unless slug
+
+      feat = feats[slug] || feats_by_id[slug]
       return unless feat
       # если для доступа необходимо несколько талантов
       return if feat.dig(:info, 'required')&.any? { |item| !selected?(feat, item) }
@@ -87,8 +101,14 @@ module CosmereContext
 
     def feats
       @feats ||=
-        Cosmere::Feat.hashable_pluck(:id, :slug, :title, :description, :origin_value, :info)
+        Cosmere::Feat.where(user_id: nil).hashable_pluck(:id, :slug, :title, :description, :origin_value, :info)
           .index_by { |item| item[:slug] }
+    end
+
+    def feats_by_id
+      @feats_by_id ||=
+        Cosmere::Feat.where.not(user_id: nil).hashable_pluck(:id, :slug, :title, :description, :origin_value, :info)
+          .index_by { |item| item[:id] }
     end
   end
 end
