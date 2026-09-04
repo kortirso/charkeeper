@@ -259,13 +259,14 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     key_ability_bonus = find_key_ability_bonus('melee', captions)
     damage_type = item[:items_info]['damage_type']
     mastery = item[:items_info]['mastery']
+    damage = item[:items_info]['damage']
     {
       type: 'melee',
       slug: item[:items_slug],
       name: item[:name] || translate(item[:items_name]),
       attack_bonus: (weapon_proficiency?(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus) + attack_bonus,
       distance: item[:items_info]['type'] == 'thrown' ? item[:items_info]['dist'] : (captions.include?('reach') ? 10 : nil), # rubocop: disable Style/NestedTernaryOperator
-      damage: item[:items_info]['damage'].starts_with?('d') ? "1#{item[:items_info]['damage']}" : item[:items_info]['damage'],
+      damage: damage&.starts_with?('d') ? "1#{damage}" : damage.to_s,
       damage_bonus: key_ability_bonus + damage_bonus,
       kind: item[:items_kind].split[0],
       notes: item[:notes],
