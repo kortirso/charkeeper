@@ -30,7 +30,8 @@ module Cache
         cultures: ids_with_names(::Cosmere::Homebrews::Culture),
         ancestries: ids_with_names(::Cosmere::Homebrews::Ancestry),
         specializations: ids_with_names(::Cosmere::Homebrews::Specialization),
-        invested_paths: ids_with_names(::Cosmere::Homebrews::InvestedPath)
+        invested_paths: ids_with_names(::Cosmere::Homebrews::InvestedPath),
+        invested_arts: ids_with_names(::Cosmere::Homebrews::InvestedArt)
       }
     end
 

@@ -1,7 +1,8 @@
 import { For, Switch, Match } from 'solid-js';
 
 import {
-  CosmereSettings, CosmereBooks, CosmereCultures, CosmereAncestries, CosmereSpecializations, CosmereInvestedPaths
+  CosmereSettings, CosmereBooks, CosmereCultures, CosmereAncestries, CosmereSpecializations, CosmereInvestedPaths,
+  CosmereInvestedArts
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -12,7 +13,8 @@ const TRANSLATION = {
     cultures: 'Cultures',
     ancestries: 'Ancestries',
     specializations: 'Specializations',
-    investedPaths: 'Invested paths'
+    investedPaths: 'Invested paths',
+    investedArts: 'Invested arts'
   },
   ru: {
     books: 'Книги',
@@ -20,7 +22,8 @@ const TRANSLATION = {
     cultures: 'Культуры',
     ancestries: 'Наследия',
     specializations: 'Специализации',
-    investedPaths: 'Инвестированные пути'
+    investedPaths: 'Инвестированные пути',
+    investedArts: 'Инвестированные искусства'
   },
   es: {
     books: 'Libros',
@@ -28,7 +31,8 @@ const TRANSLATION = {
     cultures: 'Cultures',
     ancestries: 'Ancestries',
     specializations: 'Specializations',
-    investedPaths: 'Invested paths'
+    investedPaths: 'Invested paths',
+    investedArts: 'Invested arts'
   }
 }
 
@@ -42,7 +46,7 @@ export const Cosmere = () => {
       <div class="flex flex-wrap gap-x-4 gap-y-2 my-4">
         <For each={
           [
-            'books', 'settings', 'cultures', 'ancestries', 'specializations', 'investedPaths'
+            'books', 'settings', 'cultures', 'ancestries', 'specializations', 'investedPaths', 'investedArts'
           ]
         }>
           {(item) =>
@@ -58,7 +62,7 @@ export const Cosmere = () => {
         <For each={
           Object.entries({
             settings: CosmereSettings, books: CosmereBooks, cultures: CosmereCultures, ancestries: CosmereAncestries,
-            specializations: CosmereSpecializations, investedPaths: CosmereInvestedPaths
+            specializations: CosmereSpecializations, investedPaths: CosmereInvestedPaths, investedArts: CosmereInvestedArts
           })
         }>
           {([item, Component]) =>

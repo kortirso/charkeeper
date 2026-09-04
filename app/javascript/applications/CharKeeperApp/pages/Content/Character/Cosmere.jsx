@@ -31,7 +31,9 @@ const TRANSLATION = {
       progression: 'Progression',
       tension: 'Tension',
       transformation: 'Transformation',
-      transportation: 'Transportation'
+      transportation: 'Transportation',
+      allomancy: 'Allomancy',
+      feruchemy: 'Feruchemy'
     },
     ancestry: 'Ancestry'
   },
@@ -55,7 +57,9 @@ const TRANSLATION = {
       progression: 'Прогрессия',
       tension: 'Напряжение',
       transformation: 'Трансформация',
-      transportation: 'Транспортация'
+      transportation: 'Транспортация',
+      allomancy: 'Алломантия',
+      feruchemy: 'Ферухимия'
     },
     ancestry: 'Наследие'
   }

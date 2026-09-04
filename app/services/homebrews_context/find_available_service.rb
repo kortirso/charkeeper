@@ -25,10 +25,11 @@ module HomebrewsContext
         },
         cosmere: {
           settings: titles(user_id, ::Cosmere::Homebrews::Setting),
-          cultures: cosmere_cultures(user_id),
-          ancestries: cosmere_ancestries(user_id),
-          specializations: cosmere_specializations(user_id),
-          invested_paths: cosmere_invested_paths(user_id)
+          cultures: cosmere_only(user_id, ::Cosmere::Homebrews::Culture),
+          ancestries: cosmere_only(user_id, ::Cosmere::Homebrews::Ancestry),
+          specializations: cosmere_all(user_id, ::Cosmere::Homebrews::Specialization),
+          invested_paths: cosmere_all(user_id, ::Cosmere::Homebrews::InvestedPath),
+          invested_arts: cosmere_all(user_id, ::Cosmere::Homebrews::InvestedArt)
         }
       }
     end
@@ -65,40 +66,20 @@ module HomebrewsContext
         end
     end
 
-    def cosmere_cultures(user_id)
-      ::Cosmere::Homebrews::Culture.where(user_id: user_id)
+    def cosmere_only(user_id, relation)
+      relation.where(user_id: user_id)
         .or(
-          ::Cosmere::Homebrews::Culture.where(id: available_books_data(user_id))
+          relation.where(id: available_books_data(user_id))
         )
         .kept.each_with_object({}) do |item, acc|
           acc[item.id] = { name: item.title, only: item.info.only }
         end
     end
 
-    def cosmere_ancestries(user_id)
-      ::Cosmere::Homebrews::Ancestry.where(user_id: user_id)
+    def cosmere_all(user_id, relation)
+      relation.where(user_id: user_id)
         .or(
-          ::Cosmere::Homebrews::Ancestry.where(id: available_books_data(user_id))
-        )
-        .kept.each_with_object({}) do |item, acc|
-          acc[item.id] = { name: item.title, only: item.info.only }
-        end
-    end
-
-    def cosmere_invested_paths(user_id)
-      ::Cosmere::Homebrews::InvestedPath.where(user_id: user_id)
-        .or(
-          ::Cosmere::Homebrews::InvestedPath.where(id: available_books_data(user_id))
-        )
-        .kept.each_with_object({}) do |item, acc|
-          acc[item.id] = item.info.attributes.merge({ name: item.title })
-        end
-    end
-
-    def cosmere_specializations(user_id)
-      ::Cosmere::Homebrews::Specialization.where(user_id: user_id)
-        .or(
-          ::Cosmere::Homebrews::Specialization.where(id: available_books_data(user_id))
+          relation.where(id: available_books_data(user_id))
         )
         .kept.each_with_object({}) do |item, acc|
           acc[item.id] = item.info.attributes.merge({ name: item.title })

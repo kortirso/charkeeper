@@ -36,6 +36,7 @@ module HomebrewsV2Context
         when 'ancestry' then HomebrewsV2Context::Import::Cosmere::Ancestries::PerformCommand.new
         when 'specialization' then HomebrewsV2Context::Import::Cosmere::Specializations::PerformCommand.new
         when 'invested_path' then HomebrewsV2Context::Import::Cosmere::InvestedPaths::PerformCommand.new
+        when 'invested_art' then HomebrewsV2Context::Import::Cosmere::InvestedArts::PerformCommand.new
         end
       end
 

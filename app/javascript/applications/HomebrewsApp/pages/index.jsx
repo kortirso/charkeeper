@@ -45,6 +45,7 @@ export * from './Content/Cosmere/Cultures';
 export * from './Content/Cosmere/Ancestries';
 export * from './Content/Cosmere/Specializations';
 export * from './Content/Cosmere/InvestedPaths';
+export * from './Content/Cosmere/InvestedArts';
 
 export * from './Content/Pathfinder2/Books';
 export * from './Content/Pathfinder2/Weapons';

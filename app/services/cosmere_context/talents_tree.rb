@@ -12,19 +12,8 @@ module CosmereContext
       {
         ancestry: ancestry_tree,
         paths: path_tree,
-        invested_paths: invested_paths_tree
-        # surge: {
-        #   abrasion: feat_info('abrasion_surge'),
-        #   adhesion: feat_info('adhesion_surge'),
-        #   cohesion: feat_info('cohesion_surge'),
-        #   division: feat_info('division_surge'),
-        #   gravitation: feat_info('gravitation_surge'),
-        #   illumination: feat_info('illumination_surge'),
-        #   progression: feat_info('progression_surge'),
-        #   tension: feat_info('tension_surge'),
-        #   transformation: feat_info('transformation_surge'),
-        #   transportation: feat_info('transportation_surge')
-        # }.compact_blank
+        invested_paths: invested_paths_tree,
+        invested_arts: invested_arts_tree
       }.compact_blank
     end
 
@@ -52,7 +41,7 @@ module CosmereContext
           values['origin_class'] == item[0] && values['initial_talents']
         }.flatten
         {
-          feats: feat_info(item[1], required_for),
+          feats: [feat_info(item[1], required_for)],
           name: translate(::Cosmere::Character.paths_info(item[0])['name'])
         }
       end
@@ -61,7 +50,7 @@ module CosmereContext
     def invested_paths_tree
       homebrews.dig('cosmere', 'invested_paths').values.map do |value|
         {
-          feats: feat_info(value.dig('initial_talents', 0)),
+          feats: value['initial_talents'].map { |item| feat_info(item) },
           name: translate(value['name']),
           only: value['only']
         }
@@ -72,8 +61,30 @@ module CosmereContext
           %w[truthwatcher first_ideal_truthwatcher], %w[willshaper first_ideal_willshaper], %w[windrunner first_ideal_windrunner]
         ].map do |item|
           {
-            feats: feat_info(item[1]),
+            feats: [feat_info(item[1])],
             name: translate(::Config.data('cosmere', 'radiant_paths').dig(item[0], 'name')),
+            only: ['roshar']
+          }
+        end
+    end
+
+    def invested_arts_tree
+      homebrews.dig('cosmere', 'invested_arts').values.map do |value|
+        {
+          feats: value['initial_talents'].map { |item| feat_info(item) },
+          name: translate(value['name']),
+          only: value['only']
+        }
+      end +
+        [
+          %w[abrasion abrasion_surge], %w[adhesion adhesion_surge], %w[cohesion cohesion_surge],
+          %w[progression progression_surge], %w[tension tension_surge], %w[transformation transformation_surge],
+          %w[division division_surge], %w[gravitation gravitation_surge], %w[illumination illumination_surge],
+          %w[transportation transportation_surge]
+        ].map do |item|
+          {
+            feats: [feat_info(item[1])],
+            name: translate(::Config.data('cosmere', 'surges').dig(item[0], 'name')),
             only: ['roshar']
           }
         end
