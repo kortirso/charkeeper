@@ -14,7 +14,8 @@ module Homebrews
 
         {
           settings: titles(items, ::Cosmere::Homebrews::Setting, 'Homebrew'),
-          cultures: titles(items, ::Cosmere::Homebrews::Culture, 'Homebrew')
+          cultures: titles(items, ::Cosmere::Homebrews::Culture, 'Homebrew'),
+          ancestries: titles(items, ::Cosmere::Homebrews::Ancestry, 'Homebrew')
         }
       end
 

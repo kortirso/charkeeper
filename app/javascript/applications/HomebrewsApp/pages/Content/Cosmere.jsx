@@ -1,23 +1,26 @@
 import { For, Switch, Match } from 'solid-js';
 
-import { CosmereSettings, CosmereBooks, CosmereCultures } from '../../pages';
+import { CosmereSettings, CosmereBooks, CosmereCultures, CosmereAncestries } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
 const TRANSLATION = {
   en: {
     books: 'Books',
     settings: 'Settings',
-    cultures: 'Cultures'
+    cultures: 'Cultures',
+    ancestries: 'Ancestries'
   },
   ru: {
     books: 'Книги',
     settings: 'Сеттинги',
-    cultures: 'Культуры'
+    cultures: 'Культуры',
+    ancestries: 'Наследия'
   },
   es: {
     books: 'Libros',
     settings: 'Settings',
-    cultures: 'Cultures'
+    cultures: 'Cultures',
+    ancestries: 'Ancestries'
   }
 }
 
@@ -31,7 +34,7 @@ export const Cosmere = () => {
       <div class="flex flex-wrap gap-x-4 gap-y-2 my-4">
         <For each={
           [
-            'books', 'settings', 'cultures'
+            'books', 'settings', 'cultures', 'ancestries'
           ]
         }>
           {(item) =>
@@ -46,7 +49,7 @@ export const Cosmere = () => {
       <Switch fallback={<></>}>
         <For each={
           Object.entries({
-            settings: CosmereSettings, books: CosmereBooks, cultures: CosmereCultures
+            settings: CosmereSettings, books: CosmereBooks, cultures: CosmereCultures, ancestries: CosmereAncestries
           })
         }>
           {([item, Component]) =>

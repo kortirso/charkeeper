@@ -42,9 +42,11 @@ module CharactersContext
       end
 
       def add_initial_talents(character, input)
-        ::Cosmere::Feat.where(slug: input[:initial_talents]).find_each do |feat|
-          add_feat.call(character: character, feat: feat)
-        end
+        ::Cosmere::Feat.where(slug: input[:initial_talents])
+          .or(::Cosmere::Feat.where(id: input[:initial_talents]))
+          .find_each do |feat|
+            add_feat.call(character: character, feat: feat)
+          end
       end
     end
   end

@@ -32,7 +32,8 @@ const TRANSLATION = {
       tension: 'Tension',
       transformation: 'Transformation',
       transportation: 'Transportation'
-    }
+    },
+    ancestry: 'Ancestry'
   },
   ru: {
     heroicFilters: {
@@ -55,7 +56,8 @@ const TRANSLATION = {
       tension: 'Напряжение',
       transformation: 'Трансформация',
       transportation: 'Транспортация'
-    }
+    },
+    ancestry: 'Наследие'
   },
   es: {
     heroicFilters: {
@@ -78,7 +80,8 @@ const TRANSLATION = {
       tension: 'Tension',
       transformation: 'Transformation',
       transportation: 'Transportation'
-    }
+    },
+    ancestry: 'Ancestry'
   }
 }
 
@@ -120,6 +123,9 @@ export const Cosmere = (props) => {
 
   const featFilters = createMemo(() => {
     const result = [];
+
+    const ancestryFilter = (item) => item.origin === 'ancestry';
+    result.push({ title: 'ancestry', translation: localize(TRANSLATION, locale()).ancestry, callback: ancestryFilter });
 
     Object.keys(config.paths).forEach((item) => {
       if (originValues().includes(item)) result.push({ title: item, translation: localize(TRANSLATION, locale()).heroicFilters[item], callback: heroicFilters()[item] });

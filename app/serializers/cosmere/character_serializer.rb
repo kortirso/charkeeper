@@ -5,12 +5,12 @@ module Cosmere
     include Deps[cache: 'cache.avatars']
 
     attributes :provider, :id, :name, :created_at, :avatar, :skills, :defense, :health_max, :focus_max, :investiture_max, :load,
-               :movement, :recovery_die, :senses_range, :level, :abilities, :guide_step, :health, :focus, :investiture,
+               :movement, :recovery_die, :senses_range, :level, :abilities, :guide_step, :health, :focus, :investiture, :max,
                :attribute_points, :skill_points, :deflect, :additional_skills, :tier, :ancestry, :cultures, :attacks,
                :talent_points, :updated_at, :expertises, :custom_expertises, :features, :modified_abilities, :purpose, :obstacle,
                :goals, :connections, :singer_forms, :singer_form, :names, :setting
 
-    delegate :skills, :defense, :focus_max, :investiture_max, :load, :movement, :recovery_die, :senses_range,
+    delegate :skills, :defense, :focus_max, :investiture_max, :load, :movement, :recovery_die, :senses_range, :max,
              :deflect, :tier, :attacks, :talent_points, :features, :health_max, :modified_abilities, :singer_forms,
              to: :decorator
     delegate :data, to: :object
@@ -24,7 +24,8 @@ module Cosmere
 
     def names
       {
-        culture_names: object.culture_names
+        culture_names: object.culture_names,
+        ancestry_name: object.ancestry_name
       }
     end
 

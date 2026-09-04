@@ -25,7 +25,8 @@ module HomebrewsContext
         },
         cosmere: {
           settings: titles(user_id, ::Cosmere::Homebrews::Setting),
-          cultures: cosmere_cultures(user_id)
+          cultures: cosmere_cultures(user_id),
+          ancestries: cosmere_ancestries(user_id)
         }
       }
     end
@@ -33,7 +34,7 @@ module HomebrewsContext
     private
 
     def titles(user_id, class_name)
-      relation = class_name
+      relation = class_name.kept
       relation.where(user_id: user_id)
         .or(
           relation.where(id: available_books_data(user_id))
@@ -57,7 +58,7 @@ module HomebrewsContext
         .or(
           ::Dnd2024::Homebrews::Race.where(id: available_books_data(user_id))
         )
-        .each_with_object({}) do |item, acc|
+        .kept.each_with_object({}) do |item, acc|
           acc[item.id] = { name: item.title, sizes: item.info.size, legacies: [] }
         end
     end
@@ -67,7 +68,17 @@ module HomebrewsContext
         .or(
           ::Cosmere::Homebrews::Culture.where(id: available_books_data(user_id))
         )
-        .each_with_object({}) do |item, acc|
+        .kept.each_with_object({}) do |item, acc|
+          acc[item.id] = { name: item.title, only: item.info.only }
+        end
+    end
+
+    def cosmere_ancestries(user_id)
+      ::Cosmere::Homebrews::Ancestry.where(user_id: user_id)
+        .or(
+          ::Cosmere::Homebrews::Ancestry.where(id: available_books_data(user_id))
+        )
+        .kept.each_with_object({}) do |item, acc|
           acc[item.id] = { name: item.title, only: item.info.only }
         end
     end
@@ -77,7 +88,7 @@ module HomebrewsContext
         .or(
           ::Nimble::Homebrews::Ancestry.where(id: available_books_data(user_id))
         )
-        .each_with_object({}) do |item, acc|
+        .kept.each_with_object({}) do |item, acc|
           acc[item.id] = { name: item.title, size: item.info.sizes }
         end
     end
@@ -87,7 +98,7 @@ module HomebrewsContext
         .or(
           ::Dnd2024::Homebrews::Subclass.where(id: available_books_data(user_id))
         )
-        .each_with_object({}) do |item, acc|
+        .kept.each_with_object({}) do |item, acc|
           acc[item.info.class_id] ||= {}
           acc[item.info.class_id][item.id] = { name: item.title }
         end
@@ -122,7 +133,7 @@ module HomebrewsContext
           .or(
             ::Daggerheart::Homebrews::Speciality.where(id: daggerheart_subclasses(user_id).keys)
           )
-          .each_with_object({}) do |item, acc|
+          .kept.each_with_object({}) do |item, acc|
             acc[item.id] = { name: item.title, domains: item.info.domains }
           end
     end
@@ -133,7 +144,7 @@ module HomebrewsContext
           .or(
             ::Daggerheart::Homebrews::Subclass.where(id: available_books_data(user_id))
           )
-          .each_with_object({}) do |item, acc|
+          .kept.each_with_object({}) do |item, acc|
             acc[item.info.class_id] ||= {}
             acc[item.info.class_id][item.id] = { name: item.title, spellcast: item.info.spellcast }
           end

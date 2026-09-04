@@ -16,7 +16,7 @@ class Feat < ApplicationRecord
   has_many :bonuses, class_name: '::Character::Bonus', as: :bonusable, dependent: :destroy
 
   def to_homebrew_json(with_id: true) # rubocop: disable Metrics/AbcSize
-    option_feats = ::Daggerheart::Feat.where(slug: options&.keys)
+    option_feats = ::Feat.where(slug: options&.keys, type: type)
     attributes
       .slice('title', 'description', 'kind', 'price', 'limit_refresh', 'modifiers', 'exclude', 'continious', 'tokens')
       .merge({
@@ -28,6 +28,7 @@ class Feat < ApplicationRecord
         recall: info['recall'],
         hope_dice: info['hope_dice'],
         fear_dice: info['fear_dice'],
+        required_for: info['required_for'],
         options: options&.map do |key, value|
           {
             title: value,

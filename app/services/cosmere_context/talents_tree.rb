@@ -10,7 +10,7 @@ module CosmereContext
       {
         ancestry: {
           singer: feat_info('change_form')
-        }.compact,
+        }.compact_blank,
         heroic: {
           agent: feat_info('opportunist'),
           envoy: feat_info('rousing_presence'),
@@ -18,7 +18,7 @@ module CosmereContext
           leader: feat_info('decisive_command'),
           scholar: feat_info('erudition'),
           warrior: feat_info('vigilant_stance')
-        }.compact,
+        }.compact_blank,
         radiant: {
           dustbringer: feat_info('first_ideal_dustbringer'),
           edgedancer: feat_info('first_ideal_edgedancer'),
@@ -29,7 +29,7 @@ module CosmereContext
           truthwatcher: feat_info('first_ideal_truthwatcher'),
           willshaper: feat_info('first_ideal_willshaper'),
           windrunner: feat_info('first_ideal_windrunner')
-        }.compact,
+        }.compact_blank,
         surge: {
           abrasion: feat_info('abrasion_surge'),
           adhesion: feat_info('adhesion_surge'),
@@ -41,8 +41,8 @@ module CosmereContext
           tension: feat_info('tension_surge'),
           transformation: feat_info('transformation_surge'),
           transportation: feat_info('transportation_surge')
-        }.compact
-      }.compact
+        }.compact_blank
+      }.compact_blank
     end
 
     private

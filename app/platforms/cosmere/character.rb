@@ -40,6 +40,10 @@ module Cosmere
       config['abilities']
     end
 
+    def self.ancestries
+      config['ancestries']
+    end
+
     def self.ancestry_info(race_value)
       config.dig('ancestries', race_value)
     end
@@ -54,6 +58,16 @@ module Cosmere
 
     def decorator(simple: false, version: nil)
       CosmereDecorator.new.call(character: self, simple: simple, version: version)
+    end
+
+    def ancestry_name
+      return '' unless data.ancestry
+
+      default = ::Cosmere::Character.ancestries[data.ancestry]
+      return translate(default['name']) if default
+
+      custom_name = cosmere_names.fetch_item(key: :ancestries, id: data.ancestry)
+      custom_name ? translate(custom_name[:name]) : '-'
     end
 
     def culture_names

@@ -76,9 +76,11 @@ export const CosmereCharacterForm = (props) => {
 
   const ancestries = createMemo(() => {
     if (!characterForm.setting) return {};
-    if (!limit()) return config.ancestries;
 
-    return Object.fromEntries(Object.entries(config.ancestries).filter(([, values]) => {
+    const result = { ...config.ancestries, ...props.homebrews().cosmere.ancestries }
+    if (!limit()) return result;
+
+    return Object.fromEntries(Object.entries(result).filter(([, values]) => {
       if (values.only && !values.only.includes(characterForm.setting)) return false;
       if (values.except && values.except.includes(characterForm.setting)) return false;
 

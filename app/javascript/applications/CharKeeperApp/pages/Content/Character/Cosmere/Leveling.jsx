@@ -99,9 +99,10 @@ export const CosmereLeveling = (props) => {
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
   const [showDescription, setShowDescription] = createSignal(false);
-  const [showActive, setShowActive] = createSignal(true);
   const [leveling, setLeveling] = createSignal(false);
   const [homebrews, setHomebrews] = createSignal(undefined);
+
+  const [showActive, setShowActive] = createSignal(true);
   const [limit, setLimit] = createSignal(true);
 
   const [items, setItems] = createSignal(undefined);
@@ -357,6 +358,9 @@ export const CosmereLeveling = (props) => {
           </Toggle>
         </Toggle>
       </Show>
+
+
+
       <Show when={feats()}>
         <Toggle
           innerClassList="p-2! flex flex-col gap-2"
