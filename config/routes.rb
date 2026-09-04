@@ -328,6 +328,7 @@ Rails.application.routes.draw do
       resources :cultures, only: %i[show destroy]
       resources :ancestries, only: %i[show destroy]
       resources :specializations, only: %i[show destroy]
+      resources :invested_paths, only: %i[show destroy]
       resources :books, only: %i[index show create update destroy] do
         get :for_items, on: :collection
       end

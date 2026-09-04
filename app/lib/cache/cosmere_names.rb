@@ -29,7 +29,8 @@ module Cache
         settings: ids_with_names(::Cosmere::Homebrews::Setting),
         cultures: ids_with_names(::Cosmere::Homebrews::Culture),
         ancestries: ids_with_names(::Cosmere::Homebrews::Ancestry),
-        specializations: ids_with_names(::Cosmere::Homebrews::Specialization)
+        specializations: ids_with_names(::Cosmere::Homebrews::Specialization),
+        invested_paths: ids_with_names(::Cosmere::Homebrews::InvestedPath)
       }
     end
 

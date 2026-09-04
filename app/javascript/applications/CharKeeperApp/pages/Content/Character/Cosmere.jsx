@@ -20,7 +20,7 @@ const TRANSLATION = {
       scholar: 'Scholar',
       warrior: 'Warrior'
     },
-    radiantFilter: 'Radiant Path',
+    radiantFilter: 'Invested Path',
     surgeFilters: {
       abrasion: 'Abrasion',
       adhesion: 'Adhesion',
@@ -44,7 +44,7 @@ const TRANSLATION = {
       scholar: 'Учёный',
       warrior: 'Воин'
     },
-    radiantFilter: 'Сияющий путь',
+    radiantFilter: 'Инвестированный путь',
     surgeFilters: {
       abrasion: 'Абразия',
       adhesion: 'Адгезия',
@@ -58,30 +58,6 @@ const TRANSLATION = {
       transportation: 'Транспортация'
     },
     ancestry: 'Наследие'
-  },
-  es: {
-    heroicFilters: {
-      agent: 'Agent',
-      envoy: 'Envoy',
-      hunter: 'Hunter',
-      leader: 'Leader',
-      scholar: 'Scholar',
-      warrior: 'Warrior'
-    },
-    radiantFilter: 'Radiant Path',
-    surgeFilters: {
-      abrasion: 'Abrasion',
-      adhesion: 'Adhesion',
-      cohesion: 'Cohesion',
-      division: 'Division',
-      gravitation: 'Gravitation',
-      illumination: 'Illumination',
-      progression: 'Progression',
-      tension: 'Tension',
-      transformation: 'Transformation',
-      transportation: 'Transportation'
-    },
-    ancestry: 'Ancestry'
   }
 }
 
@@ -103,7 +79,7 @@ export const Cosmere = (props) => {
   });
 
   const surgeFilters = createMemo(() => {
-    return Object.keys(config.surges).reduce((acc, element) => {
+    return Object.keys(TRANSLATION.en.surgeFilters).reduce((acc, element) => {
       acc[element] = (item) => item.origin_value === element;
       return acc;
     }, {});
@@ -133,7 +109,7 @@ export const Cosmere = (props) => {
 
     if (origins().includes('radiant_path')) result.push({ title: 'radiant', translation: localize(TRANSLATION, locale()).radiantFilter, callback: radiantFilter });
 
-    Object.keys(config.surges).forEach((item) => {
+    Object.keys(TRANSLATION.en.surgeFilters).forEach((item) => {
       if (originValues().includes(item)) result.push({ title: item, translation: localize(TRANSLATION, locale()).surgeFilters[item], callback: surgeFilters()[item] });
     });
 

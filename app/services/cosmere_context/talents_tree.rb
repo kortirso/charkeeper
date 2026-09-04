@@ -11,18 +11,8 @@ module CosmereContext
       @character = character
       {
         ancestry: ancestry_tree,
-        paths: path_tree
-        # radiant: {
-        #   dustbringer: feat_info('first_ideal_dustbringer'),
-        #   edgedancer: feat_info('first_ideal_edgedancer'),
-        #   elsecaller: feat_info('first_ideal_elsecaller'),
-        #   lightweaver: feat_info('first_ideal_lightweaver'),
-        #   skybreaker: feat_info('first_ideal_skybreaker'),
-        #   stoneward: feat_info('first_ideal_stoneward'),
-        #   truthwatcher: feat_info('first_ideal_truthwatcher'),
-        #   willshaper: feat_info('first_ideal_willshaper'),
-        #   windrunner: feat_info('first_ideal_windrunner')
-        # }.compact_blank,
+        paths: path_tree,
+        invested_paths: invested_paths_tree
         # surge: {
         #   abrasion: feat_info('abrasion_surge'),
         #   adhesion: feat_info('adhesion_surge'),
@@ -68,6 +58,27 @@ module CosmereContext
       end
     end
 
+    def invested_paths_tree
+      homebrews.dig('cosmere', 'invested_paths').values.map do |value|
+        {
+          feats: feat_info(value.dig('initial_talents', 0)),
+          name: translate(value['name']),
+          only: value['only']
+        }
+      end +
+        [
+          %w[dustbringer first_ideal_dustbringer], %w[edgedancer first_ideal_edgedancer], %w[elsecaller first_ideal_elsecaller],
+          %w[lightweaver first_ideal_lightweaver], %w[skybreaker first_ideal_skybreaker], %w[stoneward first_ideal_stoneward],
+          %w[truthwatcher first_ideal_truthwatcher], %w[willshaper first_ideal_willshaper], %w[windrunner first_ideal_windrunner]
+        ].map do |item|
+          {
+            feats: feat_info(item[1]),
+            name: translate(::Config.data('cosmere', 'radiant_paths').dig(item[0], 'name')),
+            only: ['roshar']
+          }
+        end
+    end
+
     def feat_info(slug_or_id, required_for=[]) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
       return unless slug_or_id
 
@@ -85,7 +96,7 @@ module CosmereContext
         selected: selected
       }
       if selected
-        required_for += feat.dig(:info, 'required_for')
+        required_for += feat.dig(:info, 'required_for') || []
         payload[:feats] = required_for.filter_map { |item| feat_info(item) } if required_for.any?
       end
       payload

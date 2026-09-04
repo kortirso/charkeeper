@@ -386,13 +386,13 @@ export const CosmereLeveling = (props) => {
               {renderFeat(feats().ancestry.feats, 0)}
             </Toggle>
           </Show>
-          <For each={['paths']}>
+          <For each={['paths', 'invested_paths']}>
             {(item) =>
               <Show when={feats()[item]}>
                 <p>{localize(TRANSLATION, locale()).titles[item]}</p>
                 <For each={feats()[item]}>
                   {(path) =>
-                    <Show when={!showActive() || path.feats?.selected}>
+                    <Show when={showActive() ? path.feats?.selected : (!limit() || !path.only || path.only.includes(character().setting))}>
                       <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={path.name}>
                         {renderFeat(path.feats, 0)}
                       </Toggle>

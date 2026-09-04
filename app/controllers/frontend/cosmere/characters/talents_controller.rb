@@ -5,7 +5,8 @@ module Frontend
     module Characters
       class TalentsController < Frontend::BaseController
         include Deps[
-          add_feat: 'commands.characters_context.cosmere.feats.add'
+          add_feat: 'commands.characters_context.cosmere.feats.add',
+          feature_requirement: 'feature_requirement'
         ]
         include SerializeRelation
 

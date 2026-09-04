@@ -16,7 +16,8 @@ module Homebrews
           settings: titles(items, ::Cosmere::Homebrews::Setting, 'Homebrew'),
           cultures: titles(items, ::Cosmere::Homebrews::Culture, 'Homebrew'),
           ancestries: titles(items, ::Cosmere::Homebrews::Ancestry, 'Homebrew'),
-          specializations: titles(items, ::Cosmere::Homebrews::Specialization, 'Homebrew')
+          specializations: titles(items, ::Cosmere::Homebrews::Specialization, 'Homebrew'),
+          invested_paths: titles(items, ::Cosmere::Homebrews::InvestedPath, 'Homebrew')
         }
       end
 

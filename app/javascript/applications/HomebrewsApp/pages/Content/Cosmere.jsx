@@ -1,6 +1,8 @@
 import { For, Switch, Match } from 'solid-js';
 
-import { CosmereSettings, CosmereBooks, CosmereCultures, CosmereAncestries, CosmereSpecializations } from '../../pages';
+import {
+  CosmereSettings, CosmereBooks, CosmereCultures, CosmereAncestries, CosmereSpecializations, CosmereInvestedPaths
+} from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
 const TRANSLATION = {
@@ -9,21 +11,24 @@ const TRANSLATION = {
     settings: 'Settings',
     cultures: 'Cultures',
     ancestries: 'Ancestries',
-    specializations: 'Specializations'
+    specializations: 'Specializations',
+    investedPaths: 'Invested paths'
   },
   ru: {
     books: 'Книги',
     settings: 'Сеттинги',
     cultures: 'Культуры',
     ancestries: 'Наследия',
-    specializations: 'Специализации'
+    specializations: 'Специализации',
+    investedPaths: 'Инвестированные пути'
   },
   es: {
     books: 'Libros',
     settings: 'Settings',
     cultures: 'Cultures',
     ancestries: 'Ancestries',
-    specializations: 'Specializations'
+    specializations: 'Specializations',
+    investedPaths: 'Invested paths'
   }
 }
 
@@ -37,7 +42,7 @@ export const Cosmere = () => {
       <div class="flex flex-wrap gap-x-4 gap-y-2 my-4">
         <For each={
           [
-            'books', 'settings', 'cultures', 'ancestries', 'specializations'
+            'books', 'settings', 'cultures', 'ancestries', 'specializations', 'investedPaths'
           ]
         }>
           {(item) =>
@@ -53,7 +58,7 @@ export const Cosmere = () => {
         <For each={
           Object.entries({
             settings: CosmereSettings, books: CosmereBooks, cultures: CosmereCultures, ancestries: CosmereAncestries,
-            specializations: CosmereSpecializations
+            specializations: CosmereSpecializations, investedPaths: CosmereInvestedPaths
           })
         }>
           {([item, Component]) =>

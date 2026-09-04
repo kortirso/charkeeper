@@ -29,9 +29,11 @@ module HomebrewsV2Context
 
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description]&.transform_values! { |value| sanitize(value) }
-            input[:info] = { required_for: input[:required_for] }.compact_blank
+            input[:info] = {
+              required_for: input[:required_for], extra_skills: input[:extra_skills], investiture: input[:investiture]
+            }.compact_blank
             input[:attributes] =
-              input.except(:id, :feat, :options, :required_for).merge(
+              input.except(:id, :feat, :options, :required_for, :extra_skills, :investiture).merge(
                 options: input[:options]&.transform_values { |value| value[:title] }
               )
             input[:attributes][:modifiers] = {} unless input.key?(:modifiers)

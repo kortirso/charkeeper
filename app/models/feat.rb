@@ -15,7 +15,7 @@ class Feat < ApplicationRecord
   has_many :character_feats, class_name: 'Character::Feat', dependent: :destroy
   has_many :bonuses, class_name: '::Character::Bonus', as: :bonusable, dependent: :destroy
 
-  def to_homebrew_json(with_id: true) # rubocop: disable Metrics/AbcSize
+  def to_homebrew_json(with_id: true) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
     option_feats = ::Feat.where(slug: options&.keys, type: type)
     attributes
       .slice('title', 'description', 'kind', 'price', 'limit_refresh', 'modifiers', 'exclude', 'continious', 'tokens')
@@ -29,6 +29,7 @@ class Feat < ApplicationRecord
         hope_dice: info['hope_dice'],
         fear_dice: info['fear_dice'],
         required_for: info['required_for'],
+        extra_skills: info['extra_skills'],
         options: options&.map do |key, value|
           {
             title: value,

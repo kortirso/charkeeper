@@ -37,7 +37,7 @@ module CharactersContext
           return if input[:feat].info['extra_skills'].blank?
 
           input[:character].data.selected_skills.merge!(
-            input[:feat].info['extra_skills'].index_with(1)
+            input[:feat].info['extra_skills'].tally
           )
           input[:character].save
         end
