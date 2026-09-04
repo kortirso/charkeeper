@@ -26,7 +26,8 @@ module HomebrewsContext
         cosmere: {
           settings: titles(user_id, ::Cosmere::Homebrews::Setting),
           cultures: cosmere_cultures(user_id),
-          ancestries: cosmere_ancestries(user_id)
+          ancestries: cosmere_ancestries(user_id),
+          specializations: cosmere_specializations(user_id)
         }
       }
     end
@@ -80,6 +81,16 @@ module HomebrewsContext
         )
         .kept.each_with_object({}) do |item, acc|
           acc[item.id] = { name: item.title, only: item.info.only }
+        end
+    end
+
+    def cosmere_specializations(user_id)
+      ::Cosmere::Homebrews::Specialization.where(user_id: user_id)
+        .or(
+          ::Cosmere::Homebrews::Specialization.where(id: available_books_data(user_id))
+        )
+        .kept.each_with_object({}) do |item, acc|
+          acc[item.id] = item.info.attributes.merge({ name: item.title })
         end
     end
 

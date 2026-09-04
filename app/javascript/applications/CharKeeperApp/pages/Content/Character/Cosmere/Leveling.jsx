@@ -33,8 +33,8 @@ const TRANSLATION = {
     showOnlyActive: 'Show only active paths',
     titles: {
       paths: 'Heroic paths',
-      radiant_paths: 'Radiant paths',
-      surges: 'Surges'
+      invested_paths: 'Invested paths',
+      invested_arts: 'Invested arts'
     },
     limits: 'Limit choises by setting'
   },
@@ -58,8 +58,8 @@ const TRANSLATION = {
     showOnlyActive: 'Показывать только активные пути',
     titles: {
       paths: 'Героические пути',
-      radiant_paths: 'Сияющие пути',
-      surges: 'Потоки'
+      invested_paths: 'Инвестированные пути',
+      invested_arts: 'Инвестированные искусства'
     },
     limits: 'Ограничить выбор рамками сеттинга'
   },
@@ -83,8 +83,8 @@ const TRANSLATION = {
     showOnlyActive: 'Show only active paths',
     titles: {
       paths: 'Heroic paths',
-      radiant_paths: 'Radiant paths',
-      surges: 'Surges'
+      invested_paths: 'Invested paths',
+      invested_arts: 'Invested arts'
     },
     limits: 'Limit choises by setting'
   }
@@ -386,22 +386,22 @@ export const CosmereLeveling = (props) => {
               {renderFeat(feats().ancestry.feats, 0)}
             </Toggle>
           </Show>
-          {/*<For each={[['paths', 'heroic'], ['radiant_paths', 'radiant'], ['surges', 'surge']]}>
+          <For each={['paths']}>
             {(item) =>
-              <>
-                <p>{localize(TRANSLATION, locale()).titles[item[0]]}</p>
-                <For each={Object.entries(config[item[0]])}>
-                  {([kind, values]) =>
-                    <Show when={(!showActive() && feats()[item[1]][kind]) || feats()[item[1]][kind]?.selected}>
-                      <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(values.name, locale())}>
-                        {renderFeat(feats()[item[1]][kind], 0)}
+              <Show when={feats()[item]}>
+                <p>{localize(TRANSLATION, locale()).titles[item]}</p>
+                <For each={feats()[item]}>
+                  {(path) =>
+                    <Show when={!showActive() || path.feats?.selected}>
+                      <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={path.name}>
+                        {renderFeat(path.feats, 0)}
                       </Toggle>
                     </Show>
                   }
                 </For>
-              </>
+              </Show>
             }
-          </For>*/}
+          </For>
         </Toggle>
       </Show>
     </ErrorWrapper>

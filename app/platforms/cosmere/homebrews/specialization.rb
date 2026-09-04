@@ -7,6 +7,7 @@ module Cosmere
 
       attribute :only, array: true, default: []
       attribute :origin_class, :string
+      attribute :initial_talents, array: true, default: []
     end
 
     class Specialization < ::Homebrew
@@ -20,6 +21,7 @@ module Cosmere
             description: description,
             only: info.only,
             origin_class: info.origin_class,
+            initial_talents: info.initial_talents,
             public: attributes['public'],
             features: Cosmere::Feat.where(origin: 'specialization', origin_value: id).order(created_at: :asc).map { |item|
               item.to_homebrew_json(with_id: with_id)

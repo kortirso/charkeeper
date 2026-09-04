@@ -22,6 +22,7 @@ module HomebrewsV2Context
               optional(:public).filled(:bool)
               optional(:features).maybe(:array).each(:hash)
               required(:origin_class).filled(:string)
+              optional(:initial_talents).maybe(:array).each(:string)
               optional(:only).maybe(:array, min_size?: 1).each(:string)
             end
           end
@@ -50,7 +51,7 @@ module HomebrewsV2Context
           def do_prepare(input)
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description].transform_values! { |value| sanitize(value) }
-            input[:info] = input.slice(:only, :origin_class)
+            input[:info] = input.slice(:only, :origin_class, :initial_talents)
           end
 
           def do_persist(input)

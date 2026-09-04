@@ -28,7 +28,8 @@ module Cache
       {
         settings: ids_with_names(::Cosmere::Homebrews::Setting),
         cultures: ids_with_names(::Cosmere::Homebrews::Culture),
-        ancestries: ids_with_names(::Cosmere::Homebrews::Ancestry)
+        ancestries: ids_with_names(::Cosmere::Homebrews::Ancestry),
+        specializations: ids_with_names(::Cosmere::Homebrews::Specialization)
       }
     end
 

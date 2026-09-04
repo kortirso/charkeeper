@@ -5,19 +5,13 @@ module CosmereContext
     include Deps[markdown: 'markdown']
     include TranslateHelper
 
-    def call(selected_feat_slugs:, character:)
+    def call(selected_feat_slugs:, selected_feat_ids:, character:)
       @selected_feat_slugs = selected_feat_slugs
+      @selected_feat_ids = selected_feat_ids
       @character = character
       {
-        ancestry: ancestry_tree
-        # heroic: {
-        #   agent: feat_info('opportunist'),
-        #   envoy: feat_info('rousing_presence'),
-        #   hunter: feat_info('seek_quarry'),
-        #   leader: feat_info('decisive_command'),
-        #   scholar: feat_info('erudition'),
-        #   warrior: feat_info('vigilant_stance')
-        # }.compact_blank,
+        ancestry: ancestry_tree,
+        paths: path_tree
         # radiant: {
         #   dustbringer: feat_info('first_ideal_dustbringer'),
         #   edgedancer: feat_info('first_ideal_edgedancer'),
@@ -53,21 +47,36 @@ module CosmereContext
       else
         ancestry = ::Cosmere::Homebrews::Ancestry.find_by(id: @character.data.ancestry)
         {
-          feats: feat_info(::Cosmere::Feat.find_by(id: ancestry.info.key_talent).slug),
+          feats: feat_info(::Cosmere::Feat.find_by(id: ancestry.info.key_talent).id),
           name: translate(ancestry.title)
         }
       end
     end
 
-    def feat_info(slug) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
-      return unless slug
+    def path_tree
+      [
+        %w[agent opportunist], %w[envoy rousing_presence], %w[hunter seek_quarry], %w[leader decisive_command],
+        %w[scholar erudition], %w[warrior vigilant_stance]
+      ].map do |item|
+        required_for = homebrews.dig('cosmere', 'specializations').filter_map { |_, values|
+          values['origin_class'] == item[0] && values['initial_talents']
+        }.flatten
+        {
+          feats: feat_info(item[1], required_for),
+          name: translate(::Cosmere::Character.paths_info(item[0])['name'])
+        }
+      end
+    end
 
-      feat = feats[slug] || feats_by_id[slug]
+    def feat_info(slug_or_id, required_for=[]) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+      return unless slug_or_id
+
+      feat = feats[slug_or_id] || feats_by_id[slug_or_id]
       return unless feat
       # если для доступа необходимо несколько талантов
       return if feat.dig(:info, 'required')&.any? { |item| !selected?(feat, item) }
 
-      selected = selected?(feat, slug)
+      selected = selected?(feat, slug_or_id) || selected_by_id?(feat, slug_or_id)
       payload = {
         id: feat[:id],
         slug: feat[:slug],
@@ -75,8 +84,9 @@ module CosmereContext
         description: find_description(feat),
         selected: selected
       }
-      if selected && feat.dig(:info, 'required_for')
-        payload[:feats] = feat.dig(:info, 'required_for').filter_map { |item| feat_info(item) }
+      if selected
+        required_for += feat.dig(:info, 'required_for')
+        payload[:feats] = required_for.filter_map { |item| feat_info(item) } if required_for.any?
       end
       payload
     end
@@ -95,6 +105,12 @@ module CosmereContext
       selected_double_slugs.include?(feat.dig(:info, 'double_slug')) # выбран дубль
     end
 
+    def selected_by_id?(feat, id)
+      return true if @selected_feat_ids[id] # просто выбран
+
+      selected_double_slugs.include?(feat.dig(:info, 'double_slug')) # выбран дубль
+    end
+
     def selected_double_slugs
       @selected_double_slugs ||= @selected_feat_slugs.values.filter_map { |item| item['double_slug'] }.flatten
     end
@@ -109,6 +125,10 @@ module CosmereContext
       @feats_by_id ||=
         Cosmere::Feat.where.not(user_id: nil).hashable_pluck(:id, :slug, :title, :description, :origin_value, :info)
           .index_by { |item| item[:id] }
+    end
+
+    def homebrews
+      @homebrews ||= User::Homebrew.find_or_create_by(user: @character.user).data
     end
   end
 end
