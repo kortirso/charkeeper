@@ -417,7 +417,7 @@ export const createRoll = () => {
         if (d20Test.adv < 0) options.push(`--dis ${Math.abs(d20Test.adv)}`);
         if (d20Test.bonus + d20Test.addBonus > 0) options.push(`--bonus ${d20Test.bonus + d20Test.addBonus}`);
         if (d20Test.bonus + d20Test.addBonus < 0) options.push(`--penalty ${Math.abs(d20Test.bonus + d20Test.addBonus)}`);
-        options.push(`--dices ${dices.dices.join(' ').toLowerCase()}`);
+        options.push(`--dices ${dices.dices.join(',').toLowerCase()}`);
         if (dices.damageBonus !== 0) options.push(`--dicesBonus=${dices.damageBonus}`);
         if (d20Test.crit) options.push('--crit true');
         if (pf2Attack()) {
