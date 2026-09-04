@@ -14,7 +14,12 @@ module HomebrewsV2
     end
 
     def destroy
-      @kept ? @element.discard : @element.destroy
+      if @kept
+        @element.discard
+      else
+        @element.destroy
+        feat_class.where(origin_value: @element.id, user_id: current_user.id).destroy_all
+      end
       only_head_response
     end
 

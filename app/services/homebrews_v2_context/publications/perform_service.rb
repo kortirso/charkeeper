@@ -34,6 +34,7 @@ module HomebrewsV2Context
         when 'setting' then HomebrewsV2Context::Import::Cosmere::Settings::PerformCommand.new
         when 'culture' then HomebrewsV2Context::Import::Cosmere::Cultures::PerformCommand.new
         when 'ancestry' then HomebrewsV2Context::Import::Cosmere::Ancestries::PerformCommand.new
+        when 'specialization' then HomebrewsV2Context::Import::Cosmere::Specializations::PerformCommand.new
         end
       end
 

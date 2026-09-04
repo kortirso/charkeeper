@@ -14,21 +14,24 @@ const TRANSLATION = {
     cultures: 'Cultures',
     official: 'Approved',
     showItems: 'Show items',
-    ancestries: 'Ancestries'
+    ancestries: 'Ancestries',
+    specializations: 'Specializations'
   },
   ru: {
     settings: 'Сеттинги',
     cultures: 'Культуры',
     official: 'Одобренная',
     showItems: 'Показать предметы',
-    ancestries: 'Наследия'
+    ancestries: 'Наследия',
+    specializations: 'Специализации'
   },
   es: {
     settings: 'Settings',
     cultures: 'Cultures',
     official: 'Aprobado',
     showItems: 'Show items',
-    ancestries: 'Ancestries'
+    ancestries: 'Ancestries',
+    specializations: 'Specializations'
   }
 }
 
@@ -45,7 +48,7 @@ export const CosmereBooks = () => {
       <Show when={props.info.shared}>
         <p class="font-medium!">{localize(TRANSLATION, locale()).official}</p>
       </Show>
-      <For each={['settings', 'cultures', 'ancestries']}>
+      <For each={['settings', 'cultures', 'ancestries', 'specializations']}>
         {(kind) =>
           <Show when={Object.keys(props.info.items[kind]).length > 0}>
             <div>

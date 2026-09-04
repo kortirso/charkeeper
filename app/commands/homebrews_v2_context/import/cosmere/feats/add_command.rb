@@ -9,7 +9,7 @@ module HomebrewsV2Context
 
           # rubocop: disable-next Metrics/BlockLength
           use_contract do
-            Origins = Dry::Types['strict.string'].enum('ancestry')
+            Origins = Dry::Types['strict.string'].enum('ancestry', 'specialization')
             Kinds = Dry::Types['strict.string'].enum(
               'static', 'text', 'update_result', 'hidden', 'one_from_list', 'many_from_list'
             )
