@@ -158,7 +158,7 @@ const TRANSLATION = {
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
 const ITEMS_INFO = ['daggerheart', 'dnd2024', 'dnd5'];
-const HOMEBREWED_PROVIDERS = ['daggerheart', 'dnd2024', 'dnd5', 'nimble', 'pathfinder2']
+const HOMEBREWED_PROVIDERS = ['daggerheart', 'dnd2024', 'dnd5', 'nimble', 'pathfinder2', 'cosmere']
 
 export const Equipment = (props) => {
   const safeChildren = children(() => props.children);
@@ -504,6 +504,9 @@ export const Equipment = (props) => {
                       <span>{localize(TRANSLATION, locale()).clear}</span>
                     </Button>
                   </div>
+                  <Show when={props.selectComponent}>
+                    {props.selectComponent}
+                  </Show>
                   <For each={props.itemFilters}>
                     {(itemFilter) =>
                       <Show when={filteredItems().filter(itemFilter.callback).length > 0}>

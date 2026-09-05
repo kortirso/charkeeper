@@ -1,0 +1,35 @@
+[
+  {
+    "title": {
+      "en": "Iron Allomancy"
+    },
+    "description": {
+      "en": "Rebels embody the people's discontent, fighting for reform and buoying hope."
+    },
+    "public": true,
+    "only": ["cda53c64-7898-4f0d-93e3-f8de3fc34e37", "016128af-29cb-446e-85c8-9b985e3e367a"],
+    "features": [
+      {
+        "required_for": [],
+        "title": {
+          "en": "Leveraging Brace"
+        },
+        "description": {
+          "en": "While you Brace using an object/structure larger than you, use its size instead of your own for the effects of Ironpulling and Steelpushing."
+        },
+        "kind": "static"
+      },
+      {
+        "required_for": [],
+        "title": {
+          "en": "Projectile Lurch"
+        },
+        "description": {
+          "en": "Before an ally is attacked with a metal projectile, spend 1 Investiture to make yourself the target."
+        },
+        "price": { "r": 1 },
+        "kind": "static"
+      }
+    ]
+  }
+]

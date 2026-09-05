@@ -1,0 +1,74 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "title": {
+      "en": "Ancestry's title"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Ancestry's description, **Markdown is available** for editing."
+    },
+    "public": true,
+    /* required, list of setting where ancestry is available, ID */
+    "only": ["ID"],
+    /* optional, starting attribute points */
+    "attribute_points": 12,
+    /* optional, IDs of talents at 1 level, can be empty */
+    "initial_talents": [],
+    /* optional, ID of key talent */
+    "key_talent": "ID",
+    "features": [
+      {
+        /* optional, IDs of children features */
+        /* this field can be set during updating ancestry */
+        "required_for": [],
+        /* required, allowed locale keys - en, ru, es */
+        "title": {
+          "en": "Feature's title"
+        },
+        /* required, allowed locale keys - en, ru, es */
+        "description": {
+          "en": "Feature's description, **Markdown is available** for editing."
+        },
+        /* required, allowed values - static/text/update_result/one_from_list/many_from_list/hidden */
+        /* static - Simple rendering */
+        /* text - Like static + allow to add text value */
+        /* update_result - Like static + can be hidden by settings */
+        /* one_from_list - list of options, one can be selected */
+        /* many_from_list - list of options, many can be selected */
+        /* hidden - totally hidden */
+        "kind": "static",
+        /* optional, only available when kind is one_from_list or many_from_list */
+        "options": [
+          {
+            /* required, allowed locale keys - en, ru, es */
+            "title": {
+              "en": "Feature with option's title"
+            },
+            /* optional, if selected option provides feature - feature can be specified like any other feature */
+            "feature": {
+              "title": {
+                "en": "Feature's title"
+              },
+              "description": {
+                "en": "Feature's description, **Markdown is available** for editing."
+              },
+              "kind": "static"
+            }
+          }
+        ],
+        /* optional, a or r */
+        "price": { "a": 1 },
+        /* optional */
+        /* available keys - str/spd/int/wil/awa/pre/attack/melee_attack/range_attack/damage/melee_damage/range_damage/health_max/focus_max/investiture_max/defense.physical/defense.cognitive/defense.spiritual/deflect/movement */
+        /* type - add */
+        /* value - integer or formula */
+        /* available variables for formulas - str/spd/int/wil/awa/pre/level/tier */
+        "modifiers": {
+          "str": { "type": "add", "value": 1 },
+          "attack": { "type": "add", "value": "tier" }
+        }
+      }
+    ]
+  }
+]

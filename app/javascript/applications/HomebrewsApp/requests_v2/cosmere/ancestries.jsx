@@ -1,0 +1,15 @@
+import { apiRequest, options } from '../../helpers';
+
+export const fetchAncestryRequest = async (accessToken, id) => {
+  return await apiRequest({
+    url: `/homebrews_v2/cosmere/ancestries/${id}.json`,
+    options: options('GET', accessToken)
+  });
+}
+
+export const removeAncestryRequest = async (accessToken, id) => {
+  return await apiRequest({
+    url: `/homebrews_v2/cosmere/ancestries/${id}.json`,
+    options: options('DELETE', accessToken)
+  });
+}

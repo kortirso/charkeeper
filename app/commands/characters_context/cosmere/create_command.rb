@@ -14,6 +14,7 @@ module CharactersContext
           required(:user).filled(type?: User)
           required(:name).filled(:string, max_size?: 50)
           required(:ancestry).filled(:string)
+          required(:setting).filled(:string)
           required(:cultures).filled(:array, max_size?: 2).each(:string)
           optional(:path).filled(:string)
           optional(:skip_guide).filled(:bool)
@@ -23,7 +24,7 @@ module CharactersContext
       private
 
       def do_prepare(input)
-        input[:data] = build_fresh_character(input.slice(:ancestry, :cultures, :path, :skip_guide).symbolize_keys)
+        input[:data] = build_fresh_character(input.slice(:ancestry, :cultures, :path, :skip_guide, :setting).symbolize_keys)
         input[:initial_talents] = input[:data].delete(:initial_talents)
       end
 
@@ -41,9 +42,11 @@ module CharactersContext
       end
 
       def add_initial_talents(character, input)
-        ::Cosmere::Feat.where(slug: input[:initial_talents]).find_each do |feat|
-          add_feat.call(character: character, feat: feat)
-        end
+        ::Cosmere::Feat.where(slug: input[:initial_talents])
+          .or(::Cosmere::Feat.where(id: input[:initial_talents]))
+          .find_each do |feat|
+            add_feat.call(character: character, feat: feat)
+          end
       end
     end
   end

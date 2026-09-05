@@ -30,6 +30,7 @@ class CosmereDecorator < ApplicationDecoratorV2
   def generate_basis
     @result['name'] = @character.name
     @result['tier'] = find_tier
+    @result['max_abilities'] = { 'str' => 3, 'spd' => 3, 'int' => 3, 'wil' => 3, 'awa' => 3, 'pre' => 3 }
   end
 
   def apply_add_bonuses_to_abilities
@@ -78,7 +79,7 @@ class CosmereDecorator < ApplicationDecoratorV2
       end
   end
 
-  def apply_add_modifiers # rubocop: disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/PerceivedComplexity
+  def apply_add_modifiers # rubocop: disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/MethodLength
     res = all_modifiers.flat_map do |items|
       items.filter_map do |key, value|
         ONLY_ADD_MODIFIERS.exclude?(key) && WEAPON_MODIFIERS.exclude?(key) && value['type'] == 'add' && { key => value['value'] }
@@ -94,6 +95,8 @@ class CosmereDecorator < ApplicationDecoratorV2
       values.each do |value|
         if key_name.include?('.')
           primary, secondary = key_name.split('.')
+          next unless @result.dig(primary, secondary)
+
           @result[primary][secondary] += value
         else
           @result[key_name] = @result[key_name] + value
@@ -103,22 +106,27 @@ class CosmereDecorator < ApplicationDecoratorV2
   end
 
   def apply_features
-    available_features.filter_map { |feature| feature_payload(feature).merge(used_count: feature.used_count) }
+    available_features.filter_map { |feature|
+      feature_payload(feature)&.merge(used_count: feature.used_count, description: update_feature_description(feature))
+    }
   end
 
   def feature_payload(feature) # rubocop: disable Metrics/AbcSize
+    return if feature.feat.kind == 'hidden'
+
     {
       id: feature.id,
       slug: feature.feat.slug || feature.id,
       kind: feature.feat.kind,
       title: translate(feature.feat.title),
-      description: update_feature_description(feature),
       origin: feature.feat.origin,
       origin_value: feature.feat.origin_value,
       price: feature.feat.price,
       info: feature.feat.info,
       continious: feature.feat.continious,
-      active: feature.active
+      active: feature.active,
+      options: feature.feat.options,
+      value: feature.value
     }.compact
   end
 

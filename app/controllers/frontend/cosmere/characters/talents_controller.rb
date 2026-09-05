@@ -5,18 +5,22 @@ module Frontend
     module Characters
       class TalentsController < Frontend::BaseController
         include Deps[
-          add_feat: 'commands.characters_context.cosmere.feats.add'
+          add_feat: 'commands.characters_context.cosmere.feats.add',
+          feature_requirement: 'feature_requirement'
         ]
         include SerializeRelation
 
         before_action :find_character
+        before_action :check_app_version
         before_action :find_feat, only: %i[create]
         before_action :find_feat_for_destroy, only: %i[destroy]
 
         def index
           render json: {
             feats: CosmereContext::TalentsTree.new.call(
-              selected_feat_slugs: selected_feat_slugs
+              selected_feat_slugs: selected_feat_slugs,
+              selected_feat_ids: selected_feat_ids,
+              character: @character
             ),
             selected_talents_count: selected_feat_slugs.size - extra_feats_size
           }, status: :ok
@@ -40,6 +44,12 @@ module Frontend
           @character = authorized_scope(Character.all).cosmere.find(params.expect(:character_id))
         end
 
+        def check_app_version
+          return if feature_requirement.call(current: params[:version], initial: '0.5.10')
+
+          render json: { feats: {}, selected_talents_count: 0 }, status: :ok
+        end
+
         def find_feat
           @feat = ::Cosmere::Feat.find(params.expect(:feat_id))
         end
@@ -50,6 +60,10 @@ module Frontend
 
         def selected_feat_slugs
           @selected_feat_slugs ||= @character.feats.joins(:feat).pluck('feats.slug', 'feats.info').to_h
+        end
+
+        def selected_feat_ids
+          @selected_feat_ids ||= @character.feats.joins(:feat).pluck('feats.id', 'feats.info').to_h
         end
 
         def extra_feats_size

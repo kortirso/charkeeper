@@ -4,7 +4,8 @@ module CharactersContext
   module Cosmere
     class UpdateCommand < BaseCommand
       include Deps[
-        cache: 'cache.avatars'
+        cache: 'cache.avatars',
+        add_feat: 'commands.characters_context.cosmere.feats.add'
       ]
 
       CHANGE_HEALTH_BY_STR_AT_LEVEL = [1, 6].freeze
@@ -56,6 +57,8 @@ module CharactersContext
             required(:text).filled(:string, max_size?: 100)
           end
           optional(:singer_form).filled(:string)
+          optional(:selected_features).hash
+          optional(:old_value)
         end
       end
 
@@ -82,11 +85,15 @@ module CharactersContext
       end
 
       def do_persist(input)
-        input[:character].data = input[:character].data.attributes.merge(input.except(:character, :file, :name).stringify_keys)
+        input[:character].data =
+          input[:character].data.attributes.merge(
+            input.except(:character, :file, :name, :selected_features, :old_value).stringify_keys
+          )
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
         upload_avatar(input)
+        add_feats(input) if input.key?(:selected_features)
 
         { result: input[:character] }
       end
@@ -118,6 +125,16 @@ module CharactersContext
         input[:character].avatar.attach(input[:file])
         cache.push_item(item: input[:character].avatar)
       rescue StandardError => _e
+      end
+
+      def add_feats(input)
+        _feat_slug, new_slugs = input[:selected_features].first
+        old_slugs = input[:old_value] || []
+
+        input[:character].feats.joins(:feat).where(feats: { slug: old_slugs - new_slugs }).destroy_all
+        ::Cosmere::Feat.where(slug: new_slugs - old_slugs).find_each do |feat|
+          add_feat.call(character: input[:character], feat: feat)
+        end
       end
     end
   end

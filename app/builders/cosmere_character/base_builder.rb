@@ -5,6 +5,7 @@ module CosmereCharacter
     def call(result:)
       result.merge({
         level: 1,
+        setting: result[:setting],
         ancestry: result[:ancestry],
         cultures: result[:cultures],
         expertises: { 'weapon' => [], 'armor' => [], 'culture' => result[:cultures] },

@@ -1,0 +1,52 @@
+[
+  {
+    "title": {
+      "en": "Skaa"
+    },
+    "description": {
+      "en": "The skaa are the largest ethnic group in the Final Empire."
+    },
+    "only": ["016128af-29cb-446e-85c8-9b985e3e367a"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Luthadel"
+    },
+    "description": {
+      "en": "Luthadel is the largest Scadrian city and the seat of the Lord Ruler."
+    },
+    "only": ["016128af-29cb-446e-85c8-9b985e3e367a"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Elendel"
+    },
+    "description": {
+      "en": "The largest city on Scadrial, Elendel sits on the site of the Final Ascension and is a hub for commerce and invention."
+    },
+    "only": ["cda53c64-7898-4f0d-93e3-f8de3fc34e37"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Koloss-Blooded"
+    },
+    "description": {
+      "en": "Koloss-blooded children grow up in the worlds of both peoples."
+    },
+    "only": ["cda53c64-7898-4f0d-93e3-f8de3fc34e37"],
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Wayfarer"
+    },
+    "description": {
+      "en": "There have always been Scadrians who live a life of travel, driven by occupation, exile, or tourism."
+    },
+    "only": ["cda53c64-7898-4f0d-93e3-f8de3fc34e37", "016128af-29cb-446e-85c8-9b985e3e367a"],
+    "public": true
+  }
+]
