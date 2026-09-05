@@ -30,6 +30,7 @@ class CosmereDecorator < ApplicationDecoratorV2
   def generate_basis
     @result['name'] = @character.name
     @result['tier'] = find_tier
+    @result['max_abilities'] = { 'str' => 3, 'spd' => 3, 'int' => 3, 'wil' => 3, 'awa' => 3, 'pre' => 3 }
   end
 
   def apply_add_bonuses_to_abilities
