@@ -2,7 +2,7 @@ import { For, Switch, Match } from 'solid-js';
 
 import {
   CosmereSettings, CosmereBooks, CosmereCultures, CosmereAncestries, CosmereSpecializations, CosmereInvestedPaths,
-  CosmereInvestedArts
+  CosmereInvestedArts, CosmereArmors, CosmereWeapons, CosmereItems
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -14,7 +14,10 @@ const TRANSLATION = {
     ancestries: 'Ancestries',
     specializations: 'Specializations',
     investedPaths: 'Invested paths',
-    investedArts: 'Invested arts'
+    investedArts: 'Invested arts',
+    weapons: 'Weapons',
+    items: 'Items',
+    armor: 'Armor'
   },
   ru: {
     books: 'Книги',
@@ -23,7 +26,10 @@ const TRANSLATION = {
     ancestries: 'Наследия',
     specializations: 'Специализации',
     investedPaths: 'Инвестированные пути',
-    investedArts: 'Инвестированные искусства'
+    investedArts: 'Инвестированные искусства',
+    weapons: 'Оружие',
+    items: 'Предметы',
+    armor: 'Броня'
   },
   es: {
     books: 'Libros',
@@ -32,7 +38,10 @@ const TRANSLATION = {
     ancestries: 'Ancestries',
     specializations: 'Specializations',
     investedPaths: 'Invested paths',
-    investedArts: 'Invested arts'
+    investedArts: 'Invested arts',
+    weapons: 'Armas',
+    items: 'Objetos',
+    armor: 'Armadura'
   }
 }
 
@@ -46,7 +55,8 @@ export const Cosmere = () => {
       <div class="flex flex-wrap gap-x-4 gap-y-2 my-4">
         <For each={
           [
-            'books', 'settings', 'cultures', 'ancestries', 'specializations', 'investedPaths', 'investedArts'
+            'books', 'settings', 'cultures', 'ancestries', 'specializations', 'investedPaths', 'investedArts', 'armor', 'weapons',
+            'items'
           ]
         }>
           {(item) =>
@@ -62,7 +72,8 @@ export const Cosmere = () => {
         <For each={
           Object.entries({
             settings: CosmereSettings, books: CosmereBooks, cultures: CosmereCultures, ancestries: CosmereAncestries,
-            specializations: CosmereSpecializations, investedPaths: CosmereInvestedPaths, investedArts: CosmereInvestedArts
+            specializations: CosmereSpecializations, investedPaths: CosmereInvestedPaths, investedArts: CosmereInvestedArts,
+            armor: CosmereArmors, weapons: CosmereWeapons, items: CosmereItems
           })
         }>
           {([item, Component]) =>

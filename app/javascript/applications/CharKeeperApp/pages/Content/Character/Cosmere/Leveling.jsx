@@ -119,12 +119,15 @@ export const CosmereLeveling = (props) => {
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
-    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, character().provider);
 
-    Promise.all([fetchItems(), fetchTalents()]).then(
-      ([itemsData, talentsData]) => {
+    const fetchItems = async (homebrew) => await fetchItemsRequest(appState.accessToken, character().provider, homebrew);
+
+    Promise.all([fetchItems(false), fetchItems(true), fetchTalents()]).then(
+      ([itemsData, homebrewItemsData, talentsData]) => {
         batch(() => {
-          setItems(itemsData.items.filter((item) => ITEM_EXPERTISES.includes(item.kind)).sort((a, b) => a.name > b.name));
+          setItems(
+            itemsData.items.concat(homebrewItemsData.items).filter((item) => ITEM_EXPERTISES.includes(item.kind)).sort((a, b) => a.name > b.name)
+          );
           setFeats(talentsData.feats);
           setFeatsCount(talentsData.selected_talents_count);
         });
@@ -296,7 +299,7 @@ export const CosmereLeveling = (props) => {
           <For each={['weapon', 'armor']}>
             {(kind) =>
               <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList[kind]}>
-                <For each={items().filter((item) => item.kind === kind)}>
+                <For each={items().filter((item) => item.kind === kind && (character().expertises[kind].includes(item.slug) || !limit() || !item.info.only || item.info.only.includes(character().setting)))}>
                   {(item) =>
                     <div class="ancestry-item">
                       <Checkbox

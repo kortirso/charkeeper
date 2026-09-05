@@ -18,7 +18,10 @@ module Homebrews
           ancestries: titles(items, ::Cosmere::Homebrews::Ancestry, 'Homebrew'),
           specializations: titles(items, ::Cosmere::Homebrews::Specialization, 'Homebrew'),
           invested_paths: titles(items, ::Cosmere::Homebrews::InvestedPath, 'Homebrew'),
-          invested_arts: titles(items, ::Cosmere::Homebrews::InvestedArt, 'Homebrew')
+          invested_arts: titles(items, ::Cosmere::Homebrews::InvestedArt, 'Homebrew'),
+          items: ::Cosmere::Item.kept.where(id: items['Item']).pluck(:id, :name).to_h.transform_values { |item|
+            translate(item)
+          }
         }
       end
 
@@ -41,7 +44,7 @@ module Homebrews
       end
 
       def titles(object_items, model, key)
-        model.where(id: object_items[key]).pluck(:id, :title).to_h.transform_values { |item| translate(item) }
+        model.kept.where(id: object_items[key]).pluck(:id, :title).to_h.transform_values { |item| translate(item) }
       end
     end
   end

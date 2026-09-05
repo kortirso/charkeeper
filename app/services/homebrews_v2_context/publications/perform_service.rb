@@ -37,6 +37,9 @@ module HomebrewsV2Context
         when 'specialization' then HomebrewsV2Context::Import::Cosmere::Specializations::PerformCommand.new
         when 'invested_path' then HomebrewsV2Context::Import::Cosmere::InvestedPaths::PerformCommand.new
         when 'invested_art' then HomebrewsV2Context::Import::Cosmere::InvestedArts::PerformCommand.new
+        when 'armor' then HomebrewsV2Context::Import::Cosmere::Items::Armors::AddCommand.new
+        when 'weapon' then HomebrewsV2Context::Import::Cosmere::Items::Weapons::AddCommand.new
+        when 'item' then HomebrewsV2Context::Import::Cosmere::Items::Items::AddCommand.new
         end
       end
 

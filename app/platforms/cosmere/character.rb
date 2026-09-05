@@ -80,6 +80,13 @@ module Cosmere
       end
     end
 
+    def setting_name
+      item = cosmere_names.fetch_item(key: :settings, id: data.setting)
+      return '' unless item
+
+      translate(item[:name])
+    end
+
     private
 
     def cosmere_names = Charkeeper::Container.resolve('cache.cosmere_names')

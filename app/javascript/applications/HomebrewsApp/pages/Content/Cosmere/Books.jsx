@@ -16,8 +16,9 @@ const TRANSLATION = {
     showItems: 'Show items',
     ancestries: 'Ancestries',
     specializations: 'Specializations',
-    investedPaths: 'Invested paths',
-    investedArts: 'Invested arts'
+    invested_paths: 'Invested paths',
+    invested_arts: 'Invested arts',
+    items: 'Items'
   },
   ru: {
     settings: 'Сеттинги',
@@ -26,8 +27,9 @@ const TRANSLATION = {
     showItems: 'Показать предметы',
     ancestries: 'Наследия',
     specializations: 'Специализации',
-    investedPaths: 'Инвестированные пути',
-    investedArts: 'Инвестированные искусства'
+    invested_paths: 'Инвестированные пути',
+    invested_arts: 'Инвестированные искусства',
+    items: 'Предметы'
   },
   es: {
     settings: 'Settings',
@@ -36,8 +38,9 @@ const TRANSLATION = {
     showItems: 'Show items',
     ancestries: 'Ancestries',
     specializations: 'Specializations',
-    investedPaths: 'Invested paths',
-    investedArts: 'Invested arts'
+    invested_paths: 'Invested paths',
+    invested_arts: 'Invested arts',
+    items: 'Objetos'
   }
 }
 
@@ -54,7 +57,7 @@ export const CosmereBooks = () => {
       <Show when={props.info.shared}>
         <p class="font-medium!">{localize(TRANSLATION, locale()).official}</p>
       </Show>
-      <For each={['settings', 'cultures', 'ancestries', 'specializations', 'investedPaths', 'investedArts']}>
+      <For each={['settings', 'cultures', 'ancestries', 'specializations', 'invested_paths', 'invested_arts', 'items']}>
         {(kind) =>
           <Show when={Object.keys(props.info.items[kind]).length > 0}>
             <div>

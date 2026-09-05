@@ -25,7 +25,8 @@ module Cosmere
     def names
       {
         culture_names: object.culture_names,
-        ancestry_name: object.ancestry_name
+        ancestry_name: object.ancestry_name,
+        setting_name: object.setting_name
       }
     end
 
