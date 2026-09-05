@@ -37,6 +37,7 @@ module HomebrewsV2Context
                 optional(:r).filled(:integer, gteq?: 1, lteq?: 1)
               end
               optional(:required_for).maybe(:array).each(:string, :uuid_v4?)
+              optional(:double_slug).filled(:string)
               optional(:extra_skills).maybe(:array).each(:string)
               optional(:investiture).filled(:bool)
               optional(:conditions).hash
@@ -73,7 +74,7 @@ module HomebrewsV2Context
             nil
           end
 
-          def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+          def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/MethodLength
             input[:slug] ||= SecureRandom.uuid
 
             input[:options] =
@@ -96,13 +97,16 @@ module HomebrewsV2Context
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description]&.transform_values! { |value| sanitize(value) }
             input[:info] = {
-              required_for: input[:required_for], extra_skills: input[:extra_skills], investiture: input[:investiture]
+              required_for: input[:required_for],
+              extra_skills: input[:extra_skills],
+              investiture: input[:investiture],
+              double_slug: input[:double_slug]
             }.compact_blank
           end
 
           def do_persist(input)
             result = ::Cosmere::Feat.create!(
-              input.except(:id, :options, :required_for, :extra_skills, :investiture).merge(
+              input.except(:id, :options, :required_for, :extra_skills, :investiture, :double_slug).merge(
                 options: input[:options]&.transform_values { |value| value[:title] }
               )
             )
