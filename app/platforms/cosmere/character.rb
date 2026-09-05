@@ -72,9 +72,6 @@ module Cosmere
 
     def culture_names
       data.cultures.map do |culture|
-        default = ::Cosmere::Character.cultures[culture]
-        next translate(default['name']) if default
-
         custom_name = cosmere_names.fetch_item(key: :cultures, id: culture)
         custom_name ? translate(custom_name[:name]) : '-'
       end

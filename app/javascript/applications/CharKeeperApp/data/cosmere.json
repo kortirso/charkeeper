@@ -1,7 +1,4 @@
 {
-  "settings": {
-    "roshar": { "name": { "en": "Roshar", "ru": "Рошар" } }
-  },
   "abilities": {
     "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
     "spd": { "name": { "en": "Speed", "ru": "Скорость" }, "shortName": { "en": "Spd", "ru": "Скр" } },
@@ -11,8 +8,7 @@
     "pre": { "name": { "en": "Presence", "ru": "Харизма" }, "shortName": { "en": "Pre", "ru": "Хар" } }
   },
   "ancestries": {
-    "human": { "name": { "en": "Human", "ru": "Человек" } },
-    "singer": { "name": { "en": "Singer", "ru": "Певец" }, "only": ["roshar"] }
+    "human": { "name": { "en": "Human", "ru": "Человек" } }
   },
   "paths": {
     "agent": { "name": { "en": "Agent", "ru": "Агент" } },

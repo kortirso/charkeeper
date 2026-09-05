@@ -16,7 +16,7 @@
     /* optional, IDs of talents at 1 level, can be empty */
     "initial_talents": [],
     /* optional, ID of key talent */
-    "key_talent": ["ID"],
+    "key_talent": "ID",
     "features": [
       {
         /* optional, IDs of children features */

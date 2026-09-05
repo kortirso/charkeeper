@@ -21,12 +21,13 @@ module CosmereContext
 
     def ancestry_tree
       case @character.data.ancestry
-      when 'singer' then { feats: feat_info('change_form', name: 'Singer') }
       when 'human' then nil
       else
         ancestry = ::Cosmere::Homebrews::Ancestry.find_by(id: @character.data.ancestry)
+        return unless ancestry
+
         {
-          feats: feat_info(::Cosmere::Feat.find_by(id: ancestry.info.key_talent).id),
+          feats: feat_info(ancestry.info.key_talent),
           name: translate(ancestry.title)
         }
       end
@@ -50,44 +51,21 @@ module CosmereContext
     def invested_paths_tree
       homebrews.dig('cosmere', 'invested_paths').values.map do |value|
         {
-          feats: value['initial_talents'].map { |item| feat_info(item) },
+          feats: value['initial_talents'].filter_map { |item| feat_info(item) },
           name: translate(value['name']),
           only: value['only']
         }
-      end +
-        [
-          %w[dustbringer first_ideal_dustbringer], %w[edgedancer first_ideal_edgedancer], %w[elsecaller first_ideal_elsecaller],
-          %w[lightweaver first_ideal_lightweaver], %w[skybreaker first_ideal_skybreaker], %w[stoneward first_ideal_stoneward],
-          %w[truthwatcher first_ideal_truthwatcher], %w[willshaper first_ideal_willshaper], %w[windrunner first_ideal_windrunner]
-        ].map do |item|
-          {
-            feats: [feat_info(item[1])],
-            name: translate(::Config.data('cosmere', 'radiant_paths').dig(item[0], 'name')),
-            only: ['roshar']
-          }
-        end
+      end
     end
 
     def invested_arts_tree
-      homebrews.dig('cosmere', 'invested_arts').values.map do |value|
+      homebrews.dig('cosmere', 'invested_arts').values.filter_map do |value|
         {
           feats: value['initial_talents'].map { |item| feat_info(item) },
           name: translate(value['name']),
           only: value['only']
         }
-      end +
-        [
-          %w[abrasion abrasion_surge], %w[adhesion adhesion_surge], %w[cohesion cohesion_surge],
-          %w[progression progression_surge], %w[tension tension_surge], %w[transformation transformation_surge],
-          %w[division division_surge], %w[gravitation gravitation_surge], %w[illumination illumination_surge],
-          %w[transportation transportation_surge]
-        ].map do |item|
-          {
-            feats: [feat_info(item[1])],
-            name: translate(::Config.data('cosmere', 'surges').dig(item[0], 'name')),
-            only: ['roshar']
-          }
-        end
+      end
     end
 
     def feat_info(slug_or_id, required_for=[]) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
@@ -145,7 +123,7 @@ module CosmereContext
 
     def feats_by_id
       @feats_by_id ||=
-        Cosmere::Feat.where.not(user_id: nil).hashable_pluck(:id, :slug, :title, :description, :origin_value, :info)
+        Cosmere::Feat.hashable_pluck(:id, :slug, :title, :description, :origin_value, :info)
           .index_by { |item| item[:id] }
     end
 

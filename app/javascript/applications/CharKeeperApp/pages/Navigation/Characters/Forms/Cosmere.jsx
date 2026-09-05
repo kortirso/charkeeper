@@ -15,7 +15,6 @@ const TRANSLATION = {
     cultures: 'Select cultures',
     path: 'Select heroic path',
     setting: 'Setting',
-    showHomebrew: 'Allow to select homebrews',
     options: 'There are books available in Homebrews/Modules section for additional options for character creation.',
     limits: 'Limit choises by setting'
   },
@@ -26,7 +25,6 @@ const TRANSLATION = {
     cultures: 'Выберите культуры',
     path: 'Выберите героический путь',
     setting: 'Сеттинг',
-    showHomebrew: 'Выбирать из homebrew',
     options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.',
     limits: 'Ограничить выбор рамками сеттинга'
   },
@@ -37,7 +35,6 @@ const TRANSLATION = {
     cultures: 'Select cultures',
     path: 'Select heroic path',
     setting: 'Setting',
-    showHomebrew: 'Allow to select homebrews',
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
     limits: 'Limit choises by setting'
   }
@@ -45,7 +42,6 @@ const TRANSLATION = {
 const DEFAULT_FORM = { setting: '', name: '', ancestry: null, cultures: [], path: null, skip_guide: false }
 
 export const CosmereCharacterForm = (props) => {
-  const [showHomebrew, setShowHomebrew] = createSignal(true);
   const [limit, setLimit] = createSignal(true);
   const [characterForm, setCharacterForm] = createStore(DEFAULT_FORM);
 
@@ -69,9 +65,8 @@ export const CosmereCharacterForm = (props) => {
 
   const settings = createMemo(() => {
     if (props.homebrews() === undefined) return {};
-    if (!showHomebrew()) return config.settings;
 
-    return { ...config.settings, ...props.homebrews().cosmere.settings };
+    return props.homebrews().cosmere.settings;
   });
 
   const ancestries = createMemo(() => {
@@ -104,13 +99,6 @@ export const CosmereCharacterForm = (props) => {
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <div class="flex flex-col gap-2">
         <p class="dark:text-snow text-sm">{localize(TRANSLATION, locale()).options}</p>
-        <Checkbox
-          labelText={localize(TRANSLATION, locale()).showHomebrew}
-          labelPosition="right"
-          labelClassList="ml-2"
-          checked={showHomebrew()}
-          onToggle={() => setShowHomebrew(!showHomebrew())}
-        />
         <Checkbox
           labelText={localize(TRANSLATION, locale()).limits}
           labelPosition="right"

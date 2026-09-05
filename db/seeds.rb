@@ -587,3 +587,143 @@ JSON.parse(file_content).each do |item|
 
   feat.update!(item.slice('description', 'kind', 'limit_refresh', 'description_eval_variables', 'eval_variables', 'continious', 'bonus_eval_variables', 'price', 'modifiers', 'tokens'))
 end
+
+
+
+
+
+
+user_id = User.first.id
+roshar_id = ""
+scan_1 = ""
+scan_2 = ""
+singer_id = ''
+
+Cosmere::Item.where(kind: ['weapon', 'armor']).find_each do |item|
+  item.info['only'] = [roshar_id]
+  item.save
+end
+
+[
+  ['agent', 'Investigator', "watchful_gaze", "make_him_talk", nil],
+  ['agent', 'Spy', "predictable_outcome", "reasonable_excuse", [roshar_id]],
+  ['agent', 'Thief', "risky_behavior", "dirty_hit", nil],
+  ['envoy', 'Diplomat', "steadfast_challenge", "envoy_collected", [roshar_id]],
+  ['envoy', 'Faithful', "customary_garb", "galvanize", nil],
+  ['envoy', 'Mentor', "sound_advice", "practical_demonstration", nil],
+  ['hunter', 'Archer', "tagging_shot", "combat_training", [roshar_id]],
+  ['hunter', 'Assassin', "startling_blow", "killing_edge", [roshar_id]],
+  ['hunter', 'Tracker', "deadly_trap", "animal_bond", nil],
+  ['leader', 'Champion', "combat_coordination", "valiant_intervention", [roshar_id]],
+  ['leader', 'Officer', "leader_composed", "through_the_fray", nil],
+  ['leader', 'Politico', "cutthroat_tactics", "tactical_ploy", nil]
+].each do |items|
+  feat1 = ::Cosmere::Feat.find_by(slug: items[2])
+  feat2 = ::Cosmere::Feat.find_by(slug: items[3])
+  specialization = ::Cosmere::Homebrews::Specialization.create(
+    title: { en: items[1], ru: items[1] },
+    description: { en: '', ru: '' },
+    public: true,
+    info: {
+      only: items[4],
+      origin_class: items[0],
+      initial_talents: [feat1.id, feat2.id]
+    },
+    user_id: user_id
+  )
+
+  perform_feat(feat1, 'specialization', specialization.id, user_id)
+  perform_feat(feat2, 'specialization', specialization.id, user_id)
+end
+
+feat1 = ::Cosmere::Feat.find_by(slug: "change_form")
+ancestry = ::Cosmere::Homebrews::Ancestry.create(
+  title: { en: "Singer", ru: 'Певец' },
+  description: { en: '', ru: '' },
+  public: true,
+  info: {
+    only: [roshar_id],
+    initial_talents: [feat1.id],
+    key_talent: feat1.id
+  },
+  user_id: user_id
+)
+perform_feat(feat1, 'ancestry', ancestry.id, user_id)
+
+[
+  ['Dustbringer', 'Пыленосец', "first_ideal_dustbringer"],
+  ['Edgedancer', 'Гранетанцор', "first_ideal_edgedancer"],
+  ['Elsecaller', 'Инозватель', "first_ideal_elsecaller"],
+  ['Lightweaver', 'Светоплет', "first_ideal_lightweaver"],
+  ['Skybreaker', 'Неболом', "first_ideal_skybreaker"],
+  ['Stoneward', 'Камнестраж', "first_ideal_stoneward"],
+  ['Truthwatcher', 'Правдогляд', "first_ideal_truthwatcher"],
+  ['Willshaper', 'Волеформатор', "first_ideal_willshaper"],
+  ['Windrunner', 'Ветробегун', "first_ideal_windrunner"]
+].each do |items|
+  feat1 = ::Cosmere::Feat.find_by(slug: items[2])
+  path = ::Cosmere::Homebrews::InvestedPath.create(
+    title: { en: items[0], ru: items[1] },
+    description: { en: '', ru: '' },
+    public: true,
+    info: {
+      only: [roshar_id],
+      initial_talents: [feat1.id]
+    },
+    user_id: user_id
+  )
+
+  perform_feat(feat1, 'radiant_path', path.id, user_id)
+end
+
+[
+  ['Abrasion', 'Абразия', "abrasion_surge"],
+  ['Adhesion', 'Адгезия', "adhesion_surge"],
+  ['Cohesion', 'Когезия', "cohesion_surge"],
+  ['Division', 'Расщепление', "division_surge"],
+  ['Gravitation', 'Гравитация', "gravitation_surge"],
+  ['Illumination', 'Иллюминация', "illumination_surge"],
+  ['Progression', 'Прогрессия', "progression_surge"],
+  ['Tension', 'Напряжение', "tension_surge"],
+  ['Transformation', 'Трансформация', "transformation_surge"],
+  ['Transportation', 'Транспортация', "transportation_surge"]
+].each do |items|
+  feat1 = ::Cosmere::Feat.find_by(slug: items[2])
+  art = ::Cosmere::Homebrews::InvestedArt.create(
+    title: { en: items[0], ru: items[1] },
+    description: { en: '', ru: '' },
+    public: true,
+    info: {
+      only: [roshar_id],
+      initial_talents: [feat1.id]
+    },
+    user_id: user_id
+  )
+
+  perform_feat(feat1, 'surge', art.id, user_id)
+end
+
+def perform_feat(feat, origin, origin_value, user_id)
+  required_for = feat.info['required_for']&.filter_map do |slug|
+    item = ::Cosmere::Feat.find_by(slug: slug)
+    next unless item
+
+    perform_feat(item, origin, origin_value, user_id)
+
+    item.id
+  end
+  feat.update(
+    origin: origin, origin_value: origin_value, info: feat.info.merge('required_for' => required_for), user_id: user_id
+  )
+end
+
+Cosmere::Character.find_each do |character|
+  character.data['setting'] = roshar_id
+  character.data['ancestry'] = singer_id if character.data['ancestry'] == 'singer'
+
+  cultures = Charkeeper::Container.resolve('cache.cosmere_names').fetch_list[:cultures]
+  character.data['cultures'] = character.data['cultures'].map do |item|
+    cultures.find { |key, values| values[:name]['en'].downcase == item }[0]
+  end
+  character.save
+end

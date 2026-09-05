@@ -36,7 +36,7 @@ module HomebrewsV2Context
                 optional(:a).filled(:integer, gteq?: 1, lteq?: 3)
                 optional(:r).filled(:integer, gteq?: 1, lteq?: 1)
               end
-              optional(:required_for).maybe(:array).each(:string, :uuid_v4?)
+              optional(:required_for).maybe(:array).each(:string)
               optional(:double_slug).filled(:string)
               optional(:extra_skills).maybe(:array).each(:string)
               optional(:investiture).filled(:bool)

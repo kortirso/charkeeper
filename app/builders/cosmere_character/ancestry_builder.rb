@@ -13,8 +13,6 @@ module CosmereCharacter
     def ancestry_builder(ancestry)
       return CosmereCharacter::Ancestries::HomebrewBuilder.new(id: ancestry) if uuid?(ancestry)
 
-      "CosmereCharacter::Ancestries::#{ancestry.camelize}Builder".constantize.new
-    rescue NameError => _e
       DummyBuilder.new
     end
 

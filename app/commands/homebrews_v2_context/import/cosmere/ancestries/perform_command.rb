@@ -14,8 +14,8 @@ module HomebrewsV2Context
                 optional(:ru).maybe(:string, max_size?: 50)
                 optional(:es).maybe(:string, max_size?: 50)
               end
-              required(:description).hash do
-                required(:en).filled(:string, max_size?: 500)
+              optional(:description).hash do
+                optional(:en).maybe(:string, max_size?: 500)
                 optional(:ru).maybe(:string, max_size?: 500)
                 optional(:es).maybe(:string, max_size?: 500)
               end
@@ -23,7 +23,7 @@ module HomebrewsV2Context
               optional(:features).maybe(:array).each(:hash)
               optional(:initial_talents).maybe(:array).each(:string)
               optional(:attribute_points).maybe(:integer, gteq?: 1, lteq?: 20)
-              optional(:key_talent).filled(:string, :uuid_v4?)
+              optional(:key_talent).maybe(:string, :uuid_v4?)
               optional(:only).maybe(:array, min_size?: 1).each(:string)
             end
           end
@@ -51,7 +51,7 @@ module HomebrewsV2Context
 
           def do_prepare(input)
             input[:title].transform_values! { |value| sanitize(value) }
-            input[:description].transform_values! { |value| sanitize(value) }
+            input[:description]&.transform_values! { |value| sanitize(value) }
             input[:info] = input.slice(:only, :initial_talents, :attribute_points, :key_talent)
           end
 
