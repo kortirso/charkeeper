@@ -399,7 +399,7 @@ export const CosmereLeveling = (props) => {
                       <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={path.name}>
                         <For each={path.feats}>
                           {(feat) =>
-                            {renderFeat(feat, 0)}
+                            renderFeat(feat, 0)
                           }
                         </For>
                       </Toggle>

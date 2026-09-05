@@ -8,60 +8,19 @@ import {
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, createRoll, Feats } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
-import config from '../../../data/cosmere.json';
 
 const TRANSLATION = {
   en: {
-    heroicFilters: {
-      agent: 'Agent',
-      envoy: 'Envoy',
-      hunter: 'Hunter',
-      leader: 'Leader',
-      scholar: 'Scholar',
-      warrior: 'Warrior'
-    },
     radiantFilter: 'Invested Path',
-    surgeFilters: {
-      abrasion: 'Abrasion',
-      adhesion: 'Adhesion',
-      cohesion: 'Cohesion',
-      division: 'Division',
-      gravitation: 'Gravitation',
-      illumination: 'Illumination',
-      progression: 'Progression',
-      tension: 'Tension',
-      transformation: 'Transformation',
-      transportation: 'Transportation',
-      allomancy: 'Allomancy',
-      feruchemy: 'Feruchemy'
-    },
-    ancestry: 'Ancestry'
+    ancestry: 'Ancestry',
+    path: 'Heroic Path',
+    surge: 'Invested Art'
   },
   ru: {
-    heroicFilters: {
-      agent: 'Агент',
-      envoy: 'Посланник',
-      hunter: 'Охотник',
-      leader: 'Лидер',
-      scholar: 'Учёный',
-      warrior: 'Воин'
-    },
     radiantFilter: 'Инвестированный путь',
-    surgeFilters: {
-      abrasion: 'Абразия',
-      adhesion: 'Адгезия',
-      cohesion: 'Когезия',
-      division: 'Расщепление',
-      gravitation: 'Гравитация',
-      illumination: 'Иллюминация',
-      progression: 'Прогрессия',
-      tension: 'Напряжение',
-      transformation: 'Трансформация',
-      transportation: 'Транспортация',
-      allomancy: 'Алломантия',
-      feruchemy: 'Ферухимия'
-    },
-    ancestry: 'Наследие'
+    ancestry: 'Наследие',
+    path: 'Путь',
+    surge: 'Инвестированное искусство'
   }
 }
 
@@ -75,49 +34,18 @@ export const Cosmere = (props) => {
   const { Roll, openCosmereTest, openD20Attack } = createRoll();
   const [locale] = useAppLocale();
 
-  const heroicFilters = createMemo(() => {
-    return Object.keys(config.paths).reduce((acc, element) => {
-      acc[element] = (item) => item.origin_value === element;
-      return acc;
-    }, {});
-  });
-
-  const surgeFilters = createMemo(() => {
-    return Object.keys(TRANSLATION.en.surgeFilters).reduce((acc, element) => {
-      acc[element] = (item) => item.origin_value === element;
-      return acc;
-    }, {});
-  });
-
+  const ancestryFilter = (item) => item.origin === 'ancestry';
+  const pathFilter = (item) => item.origin === 'path' || item.origin === 'specialization';
   const radiantFilter = (item) => item.origin === 'radiant_path';
-
-  const originValues = createMemo(() => {
-    const values = character().features.map((item) => item.origin_value);
-    return [...new Set(values)];
-  });
-
-  const origins = createMemo(() => {
-    const values = character().features.map((item) => item.origin);
-    return [...new Set(values)];
-  });
+  const surgeFilter = (item) => item.origin === 'surge';
 
   const featFilters = createMemo(() => {
-    const result = [];
-
-    const ancestryFilter = (item) => item.origin === 'ancestry';
-    result.push({ title: 'ancestry', translation: localize(TRANSLATION, locale()).ancestry, callback: ancestryFilter });
-
-    Object.keys(config.paths).forEach((item) => {
-      if (originValues().includes(item)) result.push({ title: item, translation: localize(TRANSLATION, locale()).heroicFilters[item], callback: heroicFilters()[item] });
-    });
-
-    if (origins().includes('radiant_path')) result.push({ title: 'radiant', translation: localize(TRANSLATION, locale()).radiantFilter, callback: radiantFilter });
-
-    Object.keys(TRANSLATION.en.surgeFilters).forEach((item) => {
-      if (originValues().includes(item)) result.push({ title: item, translation: localize(TRANSLATION, locale()).surgeFilters[item], callback: surgeFilters()[item] });
-    });
-
-    return result;
+    return [
+      { title: 'ancestry', translation: localize(TRANSLATION, locale()).ancestry, callback: ancestryFilter },
+      { title: 'path', translation: localize(TRANSLATION, locale()).path, callback: pathFilter },
+      { title: 'radiant_path', translation: localize(TRANSLATION, locale()).radiantFilter, callback: radiantFilter },
+      { title: 'surge', translation: localize(TRANSLATION, locale()).surge, callback: surgeFilter }
+    ];
   });
 
   const characterTabs = createMemo(() => {

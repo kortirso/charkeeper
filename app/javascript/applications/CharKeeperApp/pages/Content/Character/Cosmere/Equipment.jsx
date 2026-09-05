@@ -1,4 +1,4 @@
-import { createSignal, createMemo } from 'solid-js';
+import { createSignal, createMemo, Show } from 'solid-js';
 
 import { Equipment, Checkbox } from '../../../../components';
 import { useAppLocale } from '../../../../context';
@@ -24,7 +24,7 @@ const TRANSLATION = {
 }
 
 export const CosmereEquipment = (props) => {
-  const [limit, setLimit] = createSignal(true);
+  const [limit, setLimit] = createSignal(props.forCampaign ? false : true);
 
   const [locale] = useAppLocale();
 
@@ -34,7 +34,7 @@ export const CosmereEquipment = (props) => {
   const heavyWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'heavy_weaponry' && (!limit() || !item.info.only || item.info.only.includes(props.character.setting));
   const armorCosmereFilter = (item) => item.kind === 'armor' && (!limit() || !item.info.only || item.info.only.includes(props.character.setting));
   const itemCosmereFilter = (item) => item.kind === 'item' && (!limit() || !item.info.only || item.info.only.includes(props.character.setting));
-  const fabrialFilter = (item) => item.kind === 'fabrial' && props.character.setting === 'roshar';
+  const fabrialFilter = (item) => item.kind === 'fabrial' && (!props.character.setting || props.character.setting === 'roshar');
 
   return (
     <Equipment
@@ -51,14 +51,16 @@ export const CosmereEquipment = (props) => {
       onReplaceCharacter={props.onReplaceCharacter}
       onReloadCharacter={props.onReloadCharacter}
       selectComponent={
-        <Checkbox
-          classList="mb-2"
-          labelText={i18n().limits}
-          labelPosition="right"
-          labelClassList="ml-2"
-          checked={limit()}
-          onToggle={() => setLimit(!limit())}
-        />
+        <Show when={!props.forCampaign}>
+          <Checkbox
+            classList="mb-2"
+            labelText={i18n().limits}
+            labelPosition="right"
+            labelClassList="ml-2"
+            checked={limit()}
+            onToggle={() => setLimit(!limit())}
+          />
+        </Show>
       }
     />
   );
