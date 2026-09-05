@@ -1,0 +1,59 @@
+[
+  {
+    "name": {
+      "en": "Revolver",
+      "ru": "Револьвер"
+    },
+    "data": {
+      "weight": 1,
+      "price": 250
+    },
+    "info": {
+      "weapon_skill": "light_weaponry",
+      "type": "range",
+      "damage": "1d6",
+      "damage_type": "keen",
+      "dist": "20/80"
+    },
+    "only": ["cda53c64-7898-4f0d-93e3-f8de3fc34e37"],
+    "tooltips": {
+      "loaded": 6,
+      "pierce": true,
+      "two_handed": true
+    },
+    "expert_tooltips": {
+      "loaded": 6,
+      "pierce": true
+    },
+    "charges": 6
+  },
+  {
+    "name": {
+      "en": "Carbine",
+      "ru": "Карабин"
+    },
+    "data": {
+      "weight": 7,
+      "price": 750
+    },
+    "info": {
+      "weapon_skill": "heavy_weaponry",
+      "type": "range",
+      "damage": "1d8",
+      "damage_type": "keen",
+      "dist": "80/320"
+    },
+    "only": ["cda53c64-7898-4f0d-93e3-f8de3fc34e37"],
+    "tooltips": {
+      "loaded": 4,
+      "pierce": true,
+      "two_handed": true
+    },
+    "expert_tooltips": {
+      "loaded": 8,
+      "pierce": true,
+      "two_handed": true
+    },
+    "charges": 4
+  }
+]

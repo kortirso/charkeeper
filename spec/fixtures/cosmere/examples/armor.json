@@ -1,0 +1,18 @@
+[
+  {
+    "name": {
+      "en": "Leather",
+      "ru": "Кожаная броня"
+    },
+    "data": {
+      "weight": 10,
+      "price": 30
+    },
+    "deflect": 1,
+    "only": ["cda53c64-7898-4f0d-93e3-f8de3fc34e37", "016128af-29cb-446e-85c8-9b985e3e367a"],
+    "tooltips": {},
+    "expert_tooltips": {
+      "presentable": true
+    }
+  }
+]
