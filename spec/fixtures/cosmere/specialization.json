@@ -13,6 +13,8 @@
     "only": ["ID"],
     /* required, ID of agent/envoy/hunter/leader/scholar/warrior */
     "origin_class": ["ID"],
+    /* optional, IDs of initial talents, can be empty */
+    "initial_talents": [],
     "features": [
       {
         /* optional, IDs of children features */

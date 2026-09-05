@@ -9,7 +9,7 @@
       "en": "Ancestry's description, **Markdown is available** for editing."
     },
     "public": true,
-    /* required, list of setting where ancestry is available, roshar or ID */
+    /* required, list of setting where ancestry is available, ID */
     "only": ["ID"],
     /* optional, starting attribute points */
     "attribute_points": 12,
