@@ -833,7 +833,7 @@ Cosmere::Feat.find_each do |brew|
   required_for = brew.info['required_for']&.map do |title|
     next title if uuid?(title)
 
-    Cosmere::Feat.find_by("title ->> 'en' = ?", title)&.id || title
+    Cosmere::Feat.find_by("title ->> 'en' = ?", title)&.id || Cosmere::Feat.find_by(slug: title)&.id || title
   end
   brew.info['required_for'] = required_for
   brew.save
