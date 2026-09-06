@@ -823,6 +823,24 @@ end
 
 
 
+items = HomebrewsV2Context::Import::Cosmere::Items::Weapons::PerformCommand.new
+[
+  'https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/mistborn/weapons.json'
+].each do |url|
+  response = Net::HTTP.get(URI(url))
+  JSON.parse(response).each { |item| items.call(item.merge(user: user)) }
+end
+
+items = HomebrewsV2Context::Import::Cosmere::Items::Armors::PerformCommand.new
+[
+  'https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/mistborn/armor.json'
+].each do |url|
+  response = Net::HTTP.get(URI(url))
+  JSON.parse(response).each { |item| items.call(item.merge(user: user)) }
+end
+
+
+
 
 def uuid?(string)
   uuid_regex = /\A[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\z/
