@@ -594,10 +594,10 @@ end
 
 
 user_id = User.first.id
-roshar_id = ""
-scan_1 = ""
-scan_2 = ""
-singer_id = ''
+roshar_id = "d413a5ce-4359-4607-aad2-5203e155e9fe"
+scan_1 = "83df1414-7b26-4777-9c68-70afe7ade162"
+scan_2 = "40f1cf68-e2d7-40c8-8db2-3a8e708d5766"
+singer_id = '91d0bf8c-86e5-4291-9f5a-c7945fd185e1'
 
 Cosmere::Item.where(kind: ['weapon', 'armor']).find_each do |item|
   item.info['only'] = [roshar_id]
@@ -635,20 +635,6 @@ end
   perform_feat(feat1, 'specialization', specialization.id, user_id)
   perform_feat(feat2, 'specialization', specialization.id, user_id)
 end
-
-feat1 = ::Cosmere::Feat.find_by(slug: "change_form")
-ancestry = ::Cosmere::Homebrews::Ancestry.create(
-  title: { en: "Singer", ru: 'Певец' },
-  description: { en: '', ru: '' },
-  public: true,
-  info: {
-    only: [roshar_id],
-    initial_talents: [feat1.id],
-    key_talent: feat1.id
-  },
-  user_id: user_id
-)
-perform_feat(feat1, 'ancestry', ancestry.id, user_id)
 
 [
   ['Dustbringer', 'Пыленосец', "first_ideal_dustbringer"],
@@ -703,6 +689,9 @@ end
   perform_feat(feat1, 'surge', art.id, user_id)
 end
 
+
+
+
 def perform_feat(feat, origin, origin_value, user_id)
   required_for = feat.info['required_for']&.filter_map do |slug|
     item = ::Cosmere::Feat.find_by(slug: slug)
@@ -716,6 +705,141 @@ def perform_feat(feat, origin, origin_value, user_id)
     origin: origin, origin_value: origin_value, info: feat.info.merge('required_for' => required_for), user_id: user_id
   )
 end
+
+
+
+user = User.first
+cultures = HomebrewsV2Context::Import::Cosmere::Cultures::PerformCommand.new
+[
+  'https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/stormlight/cultures.json',
+  'https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/mistborn/cultures.json'
+].each do |url|
+  response = Net::HTTP.get(URI(url))
+  JSON.parse(response).each { |item| cultures.call(item.merge(user: user)) }
+end
+
+# cultures = HomebrewsV2Context::Import::Cosmere::Cultures::PerformCommand.new
+# [
+#   '../charkeeper_data/cosmere/stormlight/cultures.json',
+#   '../charkeeper_data/cosmere/mistborn/cultures.json'
+# ].each do |url|
+#   response = File.read(url)
+#   JSON.parse(response).each { |item| cultures.call(item.merge(user: user)) }
+# end
+
+ancestries = HomebrewsV2Context::Import::Cosmere::Ancestries::PerformCommand.new
+[
+  'https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/mistborn/ancestries.json'
+].each do |url|
+  response = Net::HTTP.get(URI(url))
+  JSON.parse(response).each { |item| ancestries.call(item.merge(user: user)) }
+end
+
+Cosmere::Homebrews::Ancestry.find_each do |brew|
+  ids = brew.info.initial_talents.map do |title|
+    Cosmere::Feat.find_by("title ->> 'en' = ?", title)&.id || title
+  end
+  brew.info.initial_talents = ids
+  brew.info.key_talent = (Cosmere::Feat.find_by("title ->> 'en' = ?", brew.info.key_talent)&.id || brew.info.key_talent)
+  brew.save
+end
+
+feat1 = ::Cosmere::Feat.find_by(slug: "change_form")
+ancestry = ::Cosmere::Homebrews::Ancestry.create(
+  title: { en: "Singer", ru: 'Певец' },
+  description: { en: '', ru: '' },
+  public: true,
+  info: {
+    only: [roshar_id],
+    initial_talents: [feat1.id],
+    key_talent: feat1.id
+  },
+  user_id: user_id
+)
+perform_feat(feat1, 'ancestry', ancestry.id, user_id)
+
+
+
+specializations = HomebrewsV2Context::Import::Cosmere::Specializations::PerformCommand.new
+[
+  'https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/stormlight/specializations.json',
+  'https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/mistborn/specializations.json'
+].each do |url|
+  response = Net::HTTP.get(URI(url))
+  JSON.parse(response).each { |item| specializations.call(item.merge(user: user)) }
+end
+
+Cosmere::Homebrews::Specialization.find_each do |brew|
+  ids = brew.info.initial_talents.map do |title|
+    Cosmere::Feat.find_by("title ->> 'en' = ?", title)&.id || title
+  end
+  brew.info.initial_talents = ids
+  brew.save
+end
+
+# specializations = HomebrewsV2Context::Import::Cosmere::Specializations::PerformCommand.new
+# [
+#   '../charkeeper_data/cosmere/stormlight/specializations.json',
+#   '../charkeeper_data/cosmere/mistborn/specializations.json'
+# ].each do |url|
+#   response = File.read(url)
+#   JSON.parse(response).each { |item| specializations.call(item.merge(user: user)) }
+# end
+
+invested_paths = HomebrewsV2Context::Import::Cosmere::InvestedPaths::PerformCommand.new
+[
+  'https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/mistborn/invested_paths.json'
+].each do |url|
+  response = Net::HTTP.get(URI(url))
+  JSON.parse(response).each { |item| invested_paths.call(item.merge(user: user)) }
+end
+
+Cosmere::Homebrews::InvestedPath.find_each do |brew|
+  ids = brew.info.initial_talents.map do |title|
+    Cosmere::Feat.find_by("title ->> 'en' = ?", title)&.id || title
+  end
+  brew.info.initial_talents = ids
+  brew.save
+end
+
+
+
+
+invested_arts = HomebrewsV2Context::Import::Cosmere::InvestedArts::PerformCommand.new
+[
+  'https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/mistborn/invested_arts.json'
+].each do |url|
+  response = Net::HTTP.get(URI(url))
+  JSON.parse(response).each { |item| invested_arts.call(item.merge(user: user)) }
+end
+
+Cosmere::Homebrews::InvestedArt.find_each do |brew|
+  ids = brew.info.initial_talents.map do |title|
+    Cosmere::Feat.find_by("title ->> 'en' = ?", title)&.id || title
+  end
+  brew.info.initial_talents = ids
+  brew.save
+end
+
+
+
+
+def uuid?(string)
+  uuid_regex = /\A[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\z/
+  string.match?(uuid_regex)
+end
+
+Cosmere::Feat.find_each do |brew|
+  required_for = brew.info['required_for']&.map do |title|
+    next title if uuid?(title)
+
+    Cosmere::Feat.find_by("title ->> 'en' = ?", title)&.id || title
+  end
+  brew.info['required_for'] = required_for
+  brew.save
+end
+
+
 
 Cosmere::Character.find_each do |character|
   character.data['setting'] = roshar_id
