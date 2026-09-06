@@ -119,7 +119,6 @@ export const CosmereLeveling = (props) => {
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
-
     const fetchItems = async (homebrew) => await fetchItemsRequest(appState.accessToken, character().provider, homebrew);
 
     Promise.all([fetchItems(false), fetchItems(true), fetchTalents()]).then(
