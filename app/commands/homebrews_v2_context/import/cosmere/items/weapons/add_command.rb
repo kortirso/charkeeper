@@ -45,6 +45,8 @@ module HomebrewsV2Context
                   optional(:cumbersome).filled(:integer, gteq?: 1)
                   optional(:loaded).filled(:integer, gteq?: 1)
                   optional(:thrown).filled(:string)
+                  optional(:damage).filled(:string)
+                  optional(:dist).filled(:string)
                 end
                 optional(:expert_tooltips).hash do
                   optional(:dangerous).filled(:bool)
@@ -63,6 +65,8 @@ module HomebrewsV2Context
                   optional(:cumbersome).filled(:integer, gteq?: 1)
                   optional(:loaded).filled(:integer, gteq?: 1)
                   optional(:thrown).filled(:string)
+                  optional(:damage).filled(:string)
+                  optional(:dist).filled(:string)
                 end
                 optional(:modifiers).hash
                 optional(:public).filled(:bool)

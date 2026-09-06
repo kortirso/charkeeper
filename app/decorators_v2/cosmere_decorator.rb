@@ -185,29 +185,31 @@ class CosmereDecorator < ApplicationDecoratorV2
     end
   end
 
-  def attack_values(item, tooltips, expert_tooltips) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+  def attack_values(item, tooltips, expert_tooltips) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     attack_bonus =
       find_weapon_modifiers(item.dig(:items_info, 'type') == 'ranged' ? %w[attack range_attacks] : %w[attack melee_attacks])
     damage_bonus =
       find_weapon_modifiers(item.dig(:items_info, 'type') == 'ranged' ? %w[damage range_damage] : %w[damage melee_damage])
 
     damage_type = item.dig(:items_info, 'damage_type')
-    skill = skills.find { |skill| skill[:slug] == item.dig(:items_info, 'weapon_skill') }
+    weapon_skills = item.dig(:items_info, 'weapon_skill').split(',')
+    skill = skills.select { |skill| weapon_skills.include?(skill[:slug]) }.pluck(:modifier).max
     current_tooltips = expertises['weapon'].include?(item[:items_slug]) ? expert_tooltips : tooltips
     {
       slug: item[:items_slug],
       name: translate(item[:items_name]),
-      attack_bonus: skill[:modifier] + attack_bonus,
-      damage: item.dig(:items_info, 'damage'),
-      damage_bonus: skill[:modifier] + damage_bonus,
+      attack_bonus: skill + attack_bonus,
+      damage: current_tooltips['damage'] || item.dig(:items_info, 'damage'),
+      damage_bonus: skill + damage_bonus,
       notes: item[:notes],
       tags: { damage_type => I18n.t("tags.cosmere.weapon.title.#{damage_type}") }.merge(
-        current_tooltips.except('reach').to_h do |key, value|
+        current_tooltips.except('reach', 'damage', 'dist').to_h do |key, value|
           [key, I18n.t("tags.cosmere.weapon.title.#{key}", value: value)]
         end
       ),
       ready_to_use: item[:states] ? item.dig(:states, 'hands').positive? : true,
-      distance: distance(item, current_tooltips)
+      distance: distance(item, current_tooltips),
+      features: item[:items_info]['features']&.map { |item| markdown.call(value: translate(item), version: 0.5) } || []
     }.compact
   end
 
@@ -216,6 +218,7 @@ class CosmereDecorator < ApplicationDecoratorV2
   end
 
   def distance(item, tooltips)
+    return tooltips['dist'] if tooltips['dist']
     return item.dig(:items_info, 'dist') if item.dig(:items_info, 'type') == 'ranged'
     return tooltips['thrown'] if tooltips.key?('thrown')
 
