@@ -39,8 +39,8 @@ module CosmereContext
         %w[scholar erudition], %w[warrior vigilant_stance]
       ].map do |item|
         required_for = homebrews.dig('cosmere', 'specializations').filter_map { |_, values|
-          values['origin_class'] == item[0] && values['initial_talents']
-        }.flatten
+          values['origin_class'] == item[0] && [values['initial_talents'], values['only']]
+        }
         {
           feats: [feat_info(item[1], required_for)],
           name: translate(::Cosmere::Character.paths_info(item[0])['name'])
@@ -68,7 +68,7 @@ module CosmereContext
       end
     end
 
-    def feat_info(slug_or_id, required_for=[]) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+    def feat_info(slug_or_id, required_for=nil, only=nil) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
       return unless slug_or_id
 
       feat = feats[slug_or_id] || feats_by_id[slug_or_id]
@@ -82,11 +82,16 @@ module CosmereContext
         slug: feat[:slug],
         title: translate(feat[:title]),
         description: find_description(feat),
-        selected: selected
+        selected: selected,
+        only: only
       }
       if selected
-        required_for += feat.dig(:info, 'required_for') || []
-        payload[:feats] = required_for.filter_map { |item| feat_info(item) } if required_for.any?
+        payload[:feats] =
+          if required_for
+            required_for.flat_map { |r| r[0].filter_map { |item| feat_info(item, nil, r[1]) } }
+          else
+            (feat.dig(:info, 'required_for') || []).filter_map { |item| feat_info(item) }
+          end
       end
       payload
     end

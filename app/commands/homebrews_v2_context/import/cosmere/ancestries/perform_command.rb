@@ -23,7 +23,7 @@ module HomebrewsV2Context
               optional(:features).maybe(:array).each(:hash)
               optional(:initial_talents).maybe(:array).each(:string)
               optional(:attribute_points).maybe(:integer, gteq?: 1, lteq?: 20)
-              optional(:key_talent).maybe(:string, :uuid_v4?)
+              optional(:key_talent).maybe(:string)
               optional(:only).maybe(:array, min_size?: 1).each(:string)
             end
           end

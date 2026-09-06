@@ -594,13 +594,13 @@ end
 
 
 user_id = User.first.id
-roshar_id = "d413a5ce-4359-4607-aad2-5203e155e9fe"
-scan_1 = "83df1414-7b26-4777-9c68-70afe7ade162"
-scan_2 = "40f1cf68-e2d7-40c8-8db2-3a8e708d5766"
-singer_id = '91d0bf8c-86e5-4291-9f5a-c7945fd185e1'
+roshar_id = ""
+scan_1 = ""
+scan_2 = ""
 
 Cosmere::Item.where(kind: ['weapon', 'armor']).find_each do |item|
   item.info['only'] = [roshar_id]
+  item.user_id = user_id
   item.save
 end
 
@@ -823,7 +823,7 @@ end
 
 
 
-items = HomebrewsV2Context::Import::Cosmere::Items::Weapons::PerformCommand.new
+items = HomebrewsV2Context::Import::Cosmere::Items::Weapons::AddCommand.new
 [
   'https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/mistborn/weapons.json'
 ].each do |url|
@@ -831,7 +831,7 @@ items = HomebrewsV2Context::Import::Cosmere::Items::Weapons::PerformCommand.new
   JSON.parse(response).each { |item| items.call(item.merge(user: user)) }
 end
 
-items = HomebrewsV2Context::Import::Cosmere::Items::Armors::PerformCommand.new
+items = HomebrewsV2Context::Import::Cosmere::Items::Armors::AddCommand.new
 [
   'https://raw.githubusercontent.com/kortirso/charkeeper_data/refs/heads/master/cosmere/mistborn/armor.json'
 ].each do |url|
@@ -851,14 +851,14 @@ Cosmere::Feat.find_each do |brew|
   required_for = brew.info['required_for']&.map do |title|
     next title if uuid?(title)
 
-    Cosmere::Feat.find_by("title ->> 'en' = ?", title)&.id || Cosmere::Feat.find_by(slug: title)&.id || title
+    Cosmere::Feat.where("title ->> 'en' = ?", title).last&.id || Cosmere::Feat.find_by(slug: title)&.id || title
   end
   brew.info['required_for'] = required_for
   brew.save
 end
 
 
-
+singer_id = ''
 Cosmere::Character.find_each do |character|
   character.data['setting'] = roshar_id
   character.data['ancestry'] = singer_id if character.data['ancestry'] == 'singer'

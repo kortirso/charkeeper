@@ -10,7 +10,6 @@ import { localize, translate } from '../../../../helpers';
 const TRANSLATION = {
   en: {
     name: 'Name',
-    skipGuide: 'Skip new character guide',
     ancestry: 'Select ancestry',
     cultures: 'Select cultures',
     path: 'Select heroic path',
@@ -20,7 +19,6 @@ const TRANSLATION = {
   },
   ru: {
     name: 'Имя',
-    skipGuide: 'Пропустить настройку нового персонажа',
     ancestry: 'Выберите наследие',
     cultures: 'Выберите культуры',
     path: 'Выберите героический путь',
@@ -30,7 +28,6 @@ const TRANSLATION = {
   },
   es: {
     name: 'Nombre',
-    skipGuide: 'Omitir guía de personaje nuevo',
     ancestry: 'Select ancestry',
     cultures: 'Select cultures',
     path: 'Select heroic path',
@@ -39,7 +36,7 @@ const TRANSLATION = {
     limits: 'Limit choises by setting'
   }
 }
-const DEFAULT_FORM = { setting: '', name: '', ancestry: null, cultures: [], path: null, skip_guide: false }
+const DEFAULT_FORM = { setting: '', name: '', ancestry: null, cultures: [], path: null, skip_guide: true }
 
 export const CosmereCharacterForm = (props) => {
   const [limit, setLimit] = createSignal(true);
@@ -137,13 +134,6 @@ export const CosmereCharacterForm = (props) => {
           items={translate(config.paths, locale())}
           selectedValue={characterForm.path}
           onSelect={(value) => setCharacterForm({ ...characterForm, path: value })}
-        />
-        <Checkbox
-          labelText={i18n().skipGuide}
-          labelPosition="right"
-          labelClassList="ml-2"
-          checked={characterForm.skip_guide}
-          onToggle={() => setCharacterForm({ ...characterForm, skip_guide: !characterForm.skip_guide })}
         />
       </div>
     </CharacterForm>
