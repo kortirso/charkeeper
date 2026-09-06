@@ -40,6 +40,7 @@ module HomebrewsV2Context
               optional(:double_slug).filled(:string)
               optional(:extra_skills).maybe(:array).each(:string)
               optional(:investiture).filled(:bool)
+              optional(:continious).filled(:bool)
               optional(:conditions).hash
               optional(:options).maybe(:array).each(:hash) do
                 required(:title).hash do
