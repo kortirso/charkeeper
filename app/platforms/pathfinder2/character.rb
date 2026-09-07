@@ -107,6 +107,10 @@ module Pathfinder2
       config['savingThrows']
     end
 
+    def self.languages
+      config['languages']
+    end
+
     # не подготавливают заклинания
     SPONTANEOUS_CASTERS = %w[bard].freeze
 

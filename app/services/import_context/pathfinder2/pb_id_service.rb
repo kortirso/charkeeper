@@ -5,7 +5,8 @@ module ImportContext
     class PbIdService
       include Deps[
         character_create: 'commands.characters_context.pathfinder2.create',
-        character_update: 'commands.characters_context.pathfinder2.update'
+        character_update: 'commands.characters_context.pathfinder2.update',
+        add_item: 'commands.characters_context.items.add'
       ]
 
       def call(user:, data:)
@@ -17,7 +18,9 @@ module ImportContext
           return { errors: { import: ['Not enough data for import'] }, errors_list: ['Not enough data for import'] }
         end
 
-        character_update.call(attributes_for_update(build).merge({ character: create_result[:result] }))
+        character = create_result[:result]
+        add_items(build, character)
+        character_update.call(attributes_for_update(build).merge({ character: character }))
       end
 
       private
@@ -45,8 +48,68 @@ module ImportContext
         }.compact
       end
 
-      def attributes_for_update(_data)
-        {}.compact
+      def attributes_for_update(data) # rubocop: disable Metrics/AbcSize
+        skills = data['proficiencies'].slice(*Config.data('pathfinder2', 'skills').keys).transform_values { |value| value / 2 }
+        lores = data['lores'].each_with_object({}) do |item, acc|
+          lore_id = SecureRandom.alphanumeric(10)
+          skills[lore_id] = item[1] / 2
+          acc[lore_id] = item[0]
+        end
+
+        {
+          level: data['level'],
+          abilities: data['abilities'],
+          selected_skills: skills,
+          lores: lores,
+          health: { current: 1, temp: 0 },
+          money: money(data),
+          languages: languages(data)
+        }.compact
+      end
+
+      def money(data)
+        data.dig('money', 'cp') +
+          (data.dig('money', 'sp') * 10) +
+          (data.dig('money', 'gp') * 100) +
+          (data.dig('money', 'pp') * 1_000)
+      end
+
+      def languages(build)
+        default_languages = ::Pathfinder2::Character.languages.to_h { |slug, values| [values.dig('name', 'en'), slug] }
+        build['languages'].map do |language|
+          default_languages[language] || language
+        end
+      end
+
+      def add_items(build, character) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
+        build['equipment'].each do |element|
+          item = ::Pathfinder2::Item.where(user_id: nil).find_by("lower(name ->> 'en') = ?", element[0].downcase)
+          next unless item
+
+          add_item.call(character: character, item: item, state: 'backpack', amount: element[1])
+        end
+
+        weapons = build['weapons'].each_with_object({}) do |item, acc|
+          acc[item['name']] ||= 0
+          acc[item['name']] += 1
+        end
+        weapons.each do |name, amount|
+          item = ::Pathfinder2::Item.where(kind: 'weapon', user_id: nil).find_by("lower(name ->> 'en') = ?", name.downcase)
+          next unless item
+
+          add_item.call(character: character, item: item, state: 'backpack', amount: amount)
+        end
+
+        armor = build['armor'].each_with_object({}) do |item, acc|
+          acc[item['name']] ||= 0
+          acc[item['name']] += 1
+        end
+        armor.each do |name, amount|
+          item = ::Pathfinder2::Item.where(kind: 'armor', user_id: nil).find_by("lower(name ->> 'en') = ?", name.downcase)
+          next unless item
+
+          add_item.call(character: character, item: item, state: 'backpack', amount: amount)
+        end
       end
     end
   end

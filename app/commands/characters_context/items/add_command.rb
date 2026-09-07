@@ -10,6 +10,7 @@ module CharactersContext
           optional(:state).filled(:string)
           optional(:name).filled(:string)
           optional(:modifiers).hash
+          optional(:amount).filled(:integer, gteq?: 1)
         end
       end
 
@@ -20,6 +21,7 @@ module CharactersContext
 
       def do_prepare(input)
         input[:state] ||= 'backpack'
+        input[:amount] ||= 1
       end
 
       def do_persist(input) # rubocop: disable Metrics/AbcSize
@@ -29,16 +31,16 @@ module CharactersContext
           character_item.update!(
             state: character_item.states.slice('hands', 'equipment').values.sum.positive? ? 'hands' : 'backpack',
             states: (character_item.states.presence || ::Character::Item.default_states).merge({
-              'backpack' => character_item.states['backpack'].to_i + 1
+              'backpack' => character_item.states['backpack'].to_i + input[:amount]
             }),
             modifiers: character_item.modifiers.to_h.merge(input[:modifiers].to_h)
           )
         else
           character_item =
             ::Character::Item.create!(
-              input.merge({
+              input.except(:amount).merge({
                 state: input[:state],
-                states: ::Character::Item.default_states.merge({ input[:state] => 1 }),
+                states: ::Character::Item.default_states.merge({ input[:state] => input[:amount] }),
                 charges: input[:item].charges
               }.compact)
             )
