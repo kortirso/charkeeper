@@ -127,7 +127,7 @@ export const CosmereAbilities = (props) => {
                         <Button
                           default
                           size="small"
-                          disabled={abilitiesData()[slug] === 3 && character().level === 1}
+                          disabled={abilitiesData()[slug] === character().max_abilities[slug] && character().level === 1}
                           onClick={() => changeValue(slug, 1)}
                         ><Plus /></Button>
                       </div>

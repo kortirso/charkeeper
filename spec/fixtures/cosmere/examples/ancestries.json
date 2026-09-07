@@ -1,0 +1,184 @@
+[
+  {
+    "title": {
+      "en": "Kandra"
+    },
+    "description": {
+      "en": "Created as immortal spies by the Lord Ruler, kandra are mistwraiths who were granted sapience via two Hemalurgic spikes called Blessings."
+    },
+    "public": true,
+    "only": ["cda53c64-7898-4f0d-93e3-f8de3fc34e37", "016128af-29cb-446e-85c8-9b985e3e367a"],
+    "attribute_points": 6,
+    "initial_talents": [],
+    "features": [
+      {
+        "required_for": [],
+        "title": {
+          "en": "Kandra Blessings"
+        },
+        "description": {
+          "en": "Choose one of the following Blessings."
+        },
+        "kind": "many_from_list",
+        "options": [
+          {
+            "title": {
+              "en": "Blessing of Awareness"
+            },
+            "feature": {
+              "title": {
+                "en": "Blessing of Awareness"
+              },
+              "kind": "hidden",
+              "modifiers": {
+                "awa": { "type": "add", "value": 2 }
+              }
+            }
+          },
+          {
+            "title": {
+              "en": "Blessing of Potency"
+            },
+            "feature": {
+              "title": {
+                "en": "Blessing of Potency"
+              },
+              "kind": "hidden",
+              "modifiers": {
+                "str": { "type": "add", "value": 1 },
+                "spd": { "type": "add", "value": 1 }
+              }
+            }
+          },
+          {
+            "title": {
+              "en": "Blessing of Presence"
+            },
+            "feature": {
+              "title": {
+                "en": "Blessing of Presence"
+              },
+              "kind": "hidden",
+              "modifiers": {
+                "int": { "type": "add", "value": 1 },
+                "pre": { "type": "add", "value": 1 }
+              }
+            }
+          },
+          {
+            "title": {
+              "en": "Blessing of Stability"
+            },
+            "feature": {
+              "title": {
+                "en": "Blessing of Stability"
+              },
+              "kind": "hidden",
+              "modifiers": {
+                "wil": { "type": "add", "value": 2 }
+              }
+            }
+          },
+          {
+            "title": {
+              "en": "Blessing of Fortitude"
+            },
+            "feature": {
+              "title": {
+                "en": "Blessing of Fortitude"
+              },
+              "description": {
+                "en": "While in your Kandra Disguise form, your deflect value reduces impact damage."
+              },
+              "kind": "static",
+              "modifiers": {
+                "deflect": { "type": "add", "value": 1 }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "required_for": [],
+        "title": {
+          "en": "Natural Form"
+        },
+        "description": {
+          "en": "While in your amorphous form, you can't speak, but you can pass through small openings. While in any form, you have some resistance to injury and keen damage."
+        },
+        "kind": "static"
+      },
+      {
+        "required_for": [],
+        "title": {
+          "en": "Kandra Disguise"
+        },
+        "description": {
+          "en": "Over a long rest, ingest and take the form of a Small or Medium human, replacing your Strength, Speed, and Awareness with theirs."
+        },
+        "kind": "static"
+      },
+      {
+        "required_for": [],
+        "title": {
+          "en": "Improvised Imitation"
+        },
+        "description": {
+          "en": "**Prerequisite** Insight 2+.\n\nObserve a character for one scene to imitate their mannerisms, and gain an advantage on related Deception tests."
+        },
+        "kind": "static"
+      },
+      {
+        "required_for": [],
+        "title": {
+          "en": "Rapid Reshaping"
+        },
+        "description": {
+          "en": "**Prerequisite** Medicine 2+.\n\nIngesting and taking the form of a character only takes a short rest instead of a long rest."
+        },
+        "kind": "static"
+      },
+      {
+        "required_for": [],
+        "title": {
+          "en": "Distasteful Forms"
+        },
+        "description": {
+          "en": "**Prerequisite** Medicine 4+.\n\nIngest and take the form of Small and Medium non-humans, gaining additional benefits from their physical form."
+        },
+        "kind": "static"
+      },
+      {
+        "required_for": [],
+        "title": {
+          "en": "Secret Away"
+        },
+        "description": {
+          "en": "You or a nearby ally can store or retrieve an object in a secret compartment inside your body."
+        },
+        "kind": "static",
+        "price": { "a": 1 }
+      },
+      {
+        "required_for": [],
+        "title": {
+          "en": "Organic Tools"
+        },
+        "description": {
+          "en": "**Prerequisite** Thievery 2+.\n\nPrecisely shape your appendages into tools, and gain an advantage on related Thievery and Crafting tests."
+        },
+        "kind": "static"
+      },
+      {
+        "title": {
+          "en": "Creative Forms"
+        },
+        "description": {
+          "en": "**Prerequisite** Insight 3+.\n\nMake minor changes to your face and other features. When imitating a specific character, test Deception."
+        },
+        "kind": "static",
+        "price": { "a": 2 }
+      }
+    ]
+  }
+]

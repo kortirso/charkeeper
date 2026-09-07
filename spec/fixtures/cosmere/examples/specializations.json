@@ -1,0 +1,55 @@
+[
+  {
+    "title": {
+      "en": "Rebel"
+    },
+    "description": {
+      "en": "Rebels embody the people's discontent, fighting for reform and buoying hope."
+    },
+    "public": true,
+    "only": ["cda53c64-7898-4f0d-93e3-f8de3fc34e37", "016128af-29cb-446e-85c8-9b985e3e367a"],
+    "origin_class": "agent",
+    "features": [
+      {
+        "required_for": [],
+        "title": {
+          "en": "True Grit"
+        },
+        "description": {
+          "en": "**Prerequisite** Leadership 1+.\n\nAfter you or an ally gain *Complication*, you recover 1 focus."
+        },
+        "kind": "static"
+      },
+      {
+        "required_for": [],
+        "title": {
+          "en": "Raise the Banner"
+        },
+        "description": {
+          "en": "**Prerequisite** Leadership 2+.\n\nWhen you Aid an ally, they recover 1 focus."
+        },
+        "kind": "static"
+      },
+      {
+        "required_for": [],
+        "title": {
+          "en": "Leverage Dissent"
+        },
+        "description": {
+          "en": "Gain Public Speaking expertise. Add your ranks in Leadership to *Complication* on the plot die."
+        },
+        "kind": "static"
+      },
+      {
+        "required_for": [],
+        "title": {
+          "en": "Through the Grapevine"
+        },
+        "description": {
+          "en": "**Prerequisite** Insight 3+.\n\nAfter a long rest, test Insight to learn two pieces of information. On success, both pieces are true. On failure, one piece is true and the other false."
+        },
+        "kind": "static"
+      }
+    ]
+  }
+]

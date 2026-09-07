@@ -11,9 +11,14 @@ module CosmereCharacter
     private
 
     def ancestry_builder(ancestry)
-      "CosmereCharacter::Ancestries::#{ancestry.camelize}Builder".constantize.new
-    rescue NameError => _e
+      return CosmereCharacter::Ancestries::HomebrewBuilder.new(id: ancestry) if uuid?(ancestry)
+
       DummyBuilder.new
+    end
+
+    def uuid?(string)
+      uuid_regex = /\A[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\z/
+      string.match?(uuid_regex)
     end
   end
 end

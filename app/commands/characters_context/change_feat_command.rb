@@ -9,11 +9,13 @@ module CharactersContext
       character_dc20_update: 'commands.characters_context.dc20.update',
       character_pathfinder2_update: 'commands.characters_context.pathfinder2.update',
       character_nimble_update: 'commands.characters_context.nimble.update',
+      character_cosmere_update: 'commands.characters_context.cosmere.update',
       refresh_daggerheart_feats: 'services.characters_context.daggerheart.refresh_feats'
     ]
 
     SELECTED_FEATURES_CLASSES = [
-      'Dnd2024::Character', 'Daggerheart::Character', 'Dc20::Character', 'Pathfinder2::Character', 'Nimble::Character'
+      'Dnd2024::Character', 'Daggerheart::Character', 'Dc20::Character', 'Pathfinder2::Character', 'Nimble::Character',
+      'Cosmere::Character'
     ].freeze
 
     use_contract do
@@ -36,22 +38,24 @@ module CharactersContext
 
       input[:key] =
         case input[:character_feat].character.type
-        when 'Dnd5::Character' then :selected_feats
         when *SELECTED_FEATURES_CLASSES then :selected_features
+        when 'Dnd5::Character' then :selected_feats
         end
       return if input[:key].nil?
 
       input[input[:key]] = { input[:character_feat].feat.slug => input[:value] }
+      input[:old_value] = input[:character_feat].value
     end
 
     def do_persist(input) # rubocop: disable Metrics/AbcSize
-      input[:character_feat].update!(input.except(:character_feat, :selected_feats, :selected_features, :key))
+      input[:character_feat].update!(input.except(:character_feat, :selected_feats, :selected_features, :key, :old_value))
 
       if input[:key]
         data = input[:character_feat].character.data
         refresh_character(input)&.call(
           :character => input[:character_feat].character.class.find(input[:character_feat].character_id),
-          input[:key] => (data[input[:key]] || {}).merge(input[input[:key]])
+          input[:key] => (data[input[:key]] || {}).merge(input[input[:key]]),
+          :old_value => input[:old_value]
         )
       end
 
@@ -70,6 +74,7 @@ module CharactersContext
       when 'Dc20::Character' then character_dc20_update
       when 'Pathfinder2::Character' then character_pathfinder2_update
       when 'Nimble::Character' then character_nimble_update
+      when 'Cosmere::Character' then character_cosmere_update
       end
     end
 

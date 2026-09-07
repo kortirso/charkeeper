@@ -429,6 +429,7 @@ en:
           load: Load %{value}
     cosmere:
       weapon:
+        blast: The number in brackets expresses the weapon’s blast radius in feet. After you hit or graze a target with this weapon, you also graze every other character within that radius. On a hit, you can spend Opportunity from the attack test to instead hit every grazed character.
         cumbersome: To wield this weapon easily, your Strength score must be equal to or greater than the number indicated in brackets. If your Strength is lower than that number, you gain a disadvantage on all attacks using this weapon and are Slowed while wielding it.
         dangerous: The GM can spend Complication from an attack with this weapon to cause you to also accidentally graze an ally within the weapon's reach or range. This deals the usual damage for a graze.
         deadly: When you hit a target with this weapon, you can spend Opportunity to cause the target to immediately suffer an injury.
@@ -447,6 +448,7 @@ en:
         keen: Keen
         spirit: Spirit
         title:
+          blast: Blast [%{value}]
           cumbersome: Cumbersome
           dangerous: Dangerous
           deadly: Deadly

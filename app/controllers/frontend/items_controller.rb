@@ -5,7 +5,7 @@ module Frontend
     include Deps[feature_requirement: 'feature_requirement']
     include SerializeRelation
 
-    PROVIDERS_WITH_HOMEBREWS = %w[daggerheart nimble dnd5 dnd2024 pathfinder2].freeze
+    PROVIDERS_WITH_HOMEBREWS = %w[daggerheart nimble dnd5 dnd2024 pathfinder2 cosmere].freeze
 
     def index
       serialize_relation_v2(items.visible.kept, ::ItemSerializer, :items, cache_options: cache_options)

@@ -2,7 +2,9 @@
 
 module Frontend
   class HomebrewsController < Frontend::BaseController
-    include Deps[feature_requirement: 'feature_requirement']
+    include Deps[
+      feature_requirement: 'feature_requirement'
+    ]
 
     before_action :find_homebrews
     before_action :add_homebrews

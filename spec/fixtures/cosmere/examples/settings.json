@@ -1,0 +1,24 @@
+[
+  {
+    "title": {
+      "en": "Scadrial (Era 1)",
+      "ru": "Скадриаль (Эра 1)"
+    },
+    "description": {
+      "en": "The Lord Ruler's Final Empire is an oppressive and hierarchical state.",
+      "ru": "Последняя империя правителя — это деспотичное и иерархическое государство."
+    },
+    "public": true
+  },
+  {
+    "title": {
+      "en": "Scadrial (Era 2)",
+      "ru": "Скадриаль (Эра 2)"
+    },
+    "description": {
+      "en": "The rise of industry and capital has opened a chasm between the rich and poor that must be challenged.",
+      "ru": "Развитие промышленности и капитала создало пропасть между богатыми и бедными, которую необходимо преодолеть."
+    },
+    "public": true
+  }
+]

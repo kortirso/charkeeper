@@ -4,6 +4,7 @@ module Cosmere
   class CharacterData
     include StoreModel::Model
 
+    attribute :setting, :string # roshar, scadrial_1, scadrial_2
     attribute :level, :integer, default: 1
     attribute :ancestry, :string
     attribute :cultures, array: true, default: []
@@ -39,6 +40,10 @@ module Cosmere
       config['abilities']
     end
 
+    def self.ancestries
+      config['ancestries']
+    end
+
     def self.ancestry_info(race_value)
       config.dig('ancestries', race_value)
     end
@@ -47,12 +52,40 @@ module Cosmere
       config.dig('paths', path_value)
     end
 
-    def self.cultures_info(culture_value)
-      config.dig('cultures', culture_value)
+    def self.cultures
+      Config.data('cosmere', 'cultures')
     end
 
     def decorator(simple: false, version: nil)
       CosmereDecorator.new.call(character: self, simple: simple, version: version)
     end
+
+    def ancestry_name
+      return '' unless data.ancestry
+
+      default = ::Cosmere::Character.ancestries[data.ancestry]
+      return translate(default['name']) if default
+
+      custom_name = cosmere_names.fetch_item(key: :ancestries, id: data.ancestry)
+      custom_name ? translate(custom_name[:name]) : '-'
+    end
+
+    def culture_names
+      data.cultures.map do |culture|
+        custom_name = cosmere_names.fetch_item(key: :cultures, id: culture)
+        custom_name ? translate(custom_name[:name]) : '-'
+      end
+    end
+
+    def setting_name
+      item = cosmere_names.fetch_item(key: :settings, id: data.setting)
+      return '' unless item
+
+      translate(item[:name])
+    end
+
+    private
+
+    def cosmere_names = Charkeeper::Container.resolve('cache.cosmere_names')
   end
 end

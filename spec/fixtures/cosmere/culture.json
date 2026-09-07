@@ -1,0 +1,15 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "title": {
+      "en": "Culture's title"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Culture's description, **Markdown is available** for editing."
+    },
+    /* required, list of setting where culture is available, roshar or ID */
+    "only": ["ID"],
+    "public": true
+  }
+]

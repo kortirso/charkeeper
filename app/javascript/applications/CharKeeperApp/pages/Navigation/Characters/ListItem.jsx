@@ -91,19 +91,13 @@ export const CharactersListItem = (props) => {
     if (character().provider === 'pathfinder2') {
       return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? localize(pathfinder2Config.races[character().race].subraces[character().subrace].name, locale()) : localize(pathfinder2Config.races[character().race].name, locale())}`;
     }
-    if (character().provider === 'daggerheart') {
-      return `${t('charactersPage.level')} ${character().level} | ${character().names.ancestry_name}`;
-    }
     if (character().provider === 'fallout') {
       return `${t('charactersPage.level')} ${character().level} | ${localize(falloutConfig.origins[character().origin].name, locale())}`;
-    }
-    if (character().provider === 'cosmere') {
-      return `${t('charactersPage.level')} ${character().level}`;
     }
     if (character().provider === 'dc20') {
       return `${t('charactersPage.level')} ${character().level} | ${character().ancestries.map((item) => localize(dc20Config.ancestries[item].name, locale())).join(' * ')}`;
     }
-    if (character().provider === 'nimble') {
+    if (character().provider === 'nimble' || character().provider === 'cosmere' || character().provider === 'daggerheart') {
       return `${t('charactersPage.level')} ${character().level} | ${character().names.ancestry_name}`;
     }
   });
@@ -126,6 +120,9 @@ export const CharactersListItem = (props) => {
     }
     if (character().provider === 'nimble') {
       return localize(nimbleConfig.classes[character().main_class].name, locale());
+    }
+    if (character().provider === 'cosmere') {
+      return character().names.setting_name;
     }
   });
 
