@@ -226,7 +226,7 @@ export const CosmereLeveling = (props) => {
         <Show when={feat.feats}>
           <For each={feat.feats}>
             {(item) =>
-              <Show when={!limit() || !item.only || item.only.includes(character().setting)}>
+              <Show when={!limit() || !item.only || item.only.length === 0 || item.only.includes(character().setting)}>
                 {renderFeat(item, index + 1)}
               </Show>
             }

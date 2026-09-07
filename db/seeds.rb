@@ -771,7 +771,7 @@ end
 
 Cosmere::Homebrews::Specialization.find_each do |brew|
   ids = brew.info.initial_talents.map do |title|
-    Cosmere::Feat.find_by("title ->> 'en' = ?", title)&.id || title
+    Cosmere::Feat.where("title ->> 'en' = ?", title).last&.id || title
   end
   brew.info.initial_talents = ids
   brew.save
@@ -796,7 +796,7 @@ end
 
 Cosmere::Homebrews::InvestedPath.find_each do |brew|
   ids = brew.info.initial_talents.map do |title|
-    Cosmere::Feat.find_by("title ->> 'en' = ?", title)&.id || title
+    Cosmere::Feat.where("title ->> 'en' = ?", title).last&.id || title
   end
   brew.info.initial_talents = ids
   brew.save
@@ -815,7 +815,7 @@ end
 
 Cosmere::Homebrews::InvestedArt.find_each do |brew|
   ids = brew.info.initial_talents.map do |title|
-    Cosmere::Feat.find_by("title ->> 'en' = ?", title)&.id || title
+    Cosmere::Feat.where("title ->> 'en' = ?", title).last&.id || title
   end
   brew.info.initial_talents = ids
   brew.save
@@ -868,4 +868,13 @@ Cosmere::Character.find_each do |character|
     cultures.find { |key, values| values[:name]['en'].downcase == item }[0]
   end
   character.save
+end
+
+Homebrew::Book.last(2).each { |i| i.update(shared: true) }
+ids = ["", ""]
+
+User.pluck(:id).each do |user|
+  ids.each do |id|
+    User::Book.create(user_id: user, homebrew_book_id: id)
+  end
 end
