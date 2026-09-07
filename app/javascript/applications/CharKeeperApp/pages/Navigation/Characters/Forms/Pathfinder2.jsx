@@ -18,19 +18,19 @@ const TRANSLATION = {
   en: {
     options: 'There are books available in Homebrews/Modules section for additional options for character creation.',
     showHomebrew: 'Allow to select homebrews',
-    beyondFile: 'You can import your character from Pathbuilder by using JSON file or build ID.',
+    beyondFile: 'You can import your character from Pathbuilder by using JSON file or build ID. Not all classes/backgrounds/ancestries present - so there could be errors.',
     buildId: 'Build ID'
   },
   ru: {
     options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.',
     showHomebrew: 'Выбирать из homebrew',
-    beyondFile: 'Вы можете импортировать своего персонажа из Pathbuilder, используя JSON-файл или ID билда.',
+    beyondFile: 'Вы можете импортировать своего персонажа из Pathbuilder, используя JSON-файл или ID билда. Не все классы/происхождения/расы представлены в Чаркипере, поэтому могут быть ошибки.',
     buildId: 'Build ID'
   },
   es: {
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
     showHomebrew: 'Allow to select homebrews',
-    beyondFile: 'You can import your character from Pathbuilder by using JSON file or build ID.',
+    beyondFile: 'You can import your character from Pathbuilder by using JSON file or build ID. Not all classes/backgrounds/ancestries present - so there could be errors.',
     buildId: 'Build ID'
   }
 }
@@ -161,6 +161,7 @@ export const Pathfinder2CharacterForm = (props) => {
         <Label labelText={localize(TRANSLATION, locale()).beyondFile} />
         {/*<input class="block dark:text-gray-200" type="file" onChange={handleFileChange} />*/}
         <Input
+          placeholder="111119"
           labelText={localize(TRANSLATION, locale()).buildId}
           value={buildId()}
           onInput={setBuildId}

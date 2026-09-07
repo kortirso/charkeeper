@@ -10,9 +10,12 @@ module ImportContext
 
       def call(user:, data:)
         build = fetch_build(data)
+        return { errors: { import: ['Not found'] }, errors_list: ['Not found'] } unless build
 
         create_result = character_create.call(attributes_for_create(build).merge({ user: user }))
-        return create_result if create_result[:errors_list]
+        if create_result[:errors_list]
+          return { errors: { import: ['Not enough data for import'] }, errors_list: ['Not enough data for import'] }
+        end
 
         character_update.call(attributes_for_update(build).merge({ character: create_result[:result] }))
       end
@@ -32,13 +35,13 @@ module ImportContext
           name: data['name'],
           main_class: data['class'].downcase,
           main_ability: data['keyability'],
-          race: race[0],
-          subrace: race[1]['subraces'].find { |_slug, values|
+          race: race&.dig(0),
+          subrace: race&.dig(1, 'subraces')&.find { |_slug, values|
             values.dig('name', 'en').downcase.include?(data['heritage'].split[..-2].join(' ').downcase)
-          }[0],
+          }&.dig(0),
           background: ::Pathfinder2::Character.backgrounds.find { |_slug, values|
             values.dig('name', 'en').downcase == data['background'].downcase
-          }[0]
+          }&.dig(0)
         }.compact
       end
 
