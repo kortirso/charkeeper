@@ -18,7 +18,7 @@ module HomebrewsV2
         @element.discard
       else
         @element.destroy
-        feat_class.where(origin_value: @element.id, user_id: current_user.id).destroy_all
+        feat_class.where(origin_value: @element.id, user_id: current_user.id).destroy_all if defined?(feat_class)
       end
       only_head_response
     end

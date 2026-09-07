@@ -30,11 +30,11 @@ export const CosmereEquipment = (props) => {
 
   const i18n = createMemo(() => localize(TRANSLATION, locale()));
 
-  const lightWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'light_weaponry' && (!limit() || !item.info.only || item.info.only.includes(props.character.setting));
-  const heavyWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'heavy_weaponry' && (!limit() || !item.info.only || item.info.only.includes(props.character.setting));
-  const armorCosmereFilter = (item) => item.kind === 'armor' && (!limit() || !item.info.only || item.info.only.includes(props.character.setting));
-  const itemCosmereFilter = (item) => item.kind === 'item' && (!limit() || !item.info.only || item.info.only.includes(props.character.setting));
-  const fabrialFilter = (item) => item.kind === 'fabrial' && (!props.character.setting || props.character.setting === 'roshar');
+  const lightWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'light_weaponry' && (!limit() || !item.info.only || item.info.only.length === 0 || item.info.only.includes(props.character.setting));
+  const heavyWeaponFilter = (item) => item.kind === 'weapon' && item.info.weapon_skill === 'heavy_weaponry' && (!limit() || !item.info.only || item.info.only.length === 0 || item.info.only.includes(props.character.setting));
+  const armorCosmereFilter = (item) => item.kind === 'armor' && (!limit() || !item.info.only || item.info.only.length === 0 || item.info.only.includes(props.character.setting));
+  const itemCosmereFilter = (item) => item.kind === 'item' && (!limit() || !item.info.only || item.info.only.length === 0 || item.info.only.includes(props.character.setting));
+  const fabrialFilter = (item) => item.kind === 'fabrial';
 
   return (
     <Equipment
