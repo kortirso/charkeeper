@@ -46,6 +46,8 @@ module Charkeeper
     register('commands.bonuses_context.change') { BonusesContext::ChangeCommand.new }
     register('commands.bonuses_context.consume') { BonusesContext::ConsumeCommand.new }
 
+    register('commands.characters_context.feats.create') { CharactersContext::Feats::CreateCommand.new }
+
     register('commands.characters_context.items.update') { CharactersContext::Items::UpdateCommand.new }
     register('commands.characters_context.items.add') { CharactersContext::Items::AddCommand.new }
     register('commands.characters_context.items.consume') { CharactersContext::Items::ConsumeCommand.new }

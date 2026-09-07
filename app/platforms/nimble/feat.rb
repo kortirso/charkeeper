@@ -7,6 +7,7 @@ module Nimble
     SUBCLASS_ORIGIN = 'subclass'
     SPELL_ORIGIN = 'spell'
     UTILITY_SPELL_ORIGIN = 'utility_spell'
+    CHARACTER_ORIGIN = 'character'
 
     STATIC = 'static' # рендерится текст
     UPDATE_RESULT = 'update_result' # рендерится, но затемняется
@@ -20,14 +21,15 @@ module Nimble
     LONG_FIELD_REST = 'long_field_rest'
     SAFE_REST = 'safe_rest'
 
-    SELECTABLE_ORIGINS = [3, 4].freeze
+    SELECTABLE_ORIGINS = [3, 4, 5].freeze
 
     enum :origin, {
       ANCESTRY_ORIGIN => 0,
       CLASS_ORIGIN => 1,
       SUBCLASS_ORIGIN => 2,
       SPELL_ORIGIN => 3,
-      UTILITY_SPELL_ORIGIN => 4
+      UTILITY_SPELL_ORIGIN => 4,
+      CHARACTER_ORIGIN => 5
     }
     enum :kind, { STATIC => 0, UPDATE_RESULT => 1, HIDDEN => 2, ONE_FROM_LIST => 3, MANY_FROM_LIST => 4, TEXT => 5 }
     enum :limit_refresh, { COMBAT_REST => 0, FIELD_REST => 1, LONG_FIELD_REST => 2, SAFE_REST => 3 }

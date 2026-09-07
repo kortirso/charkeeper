@@ -7,6 +7,7 @@ module Cosmere
     RADIANT_PATH_ORIGIN = 'radiant_path'
     SURGE_ORIGIN = 'surge'
     SPECIALIZATION_ORIGIN = 'specialization'
+    CHARACTER_ORIGIN = 'character'
 
     STATIC = 'static' # рендерится текст
     TEXT = 'text' # может вводиться текст
@@ -15,14 +16,15 @@ module Cosmere
     MANY_FROM_LIST = 'many_from_list' # рендерится список, выбирается несколько значений
     HIDDEN = 'hidden'
 
-    SELECTABLE_ORIGINS = [].freeze
+    SELECTABLE_ORIGINS = [5].freeze
 
     enum :origin, {
       PATH_ORIGIN => 0,
       ANCESTRY_ORIGIN => 1,
       RADIANT_PATH_ORIGIN => 2,
       SURGE_ORIGIN => 3,
-      SPECIALIZATION_ORIGIN => 4
+      SPECIALIZATION_ORIGIN => 4,
+      CHARACTER_ORIGIN => 5
     }
     enum :kind, { STATIC => 0, TEXT => 1, UPDATE_RESULT => 2, ONE_FROM_LIST => 3, MANY_FROM_LIST => 4, HIDDEN => 5 }
 

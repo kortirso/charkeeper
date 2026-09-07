@@ -107,7 +107,9 @@ class CosmereDecorator < ApplicationDecoratorV2
 
   def apply_features
     available_features.filter_map { |feature|
-      feature_payload(feature)&.merge(used_count: feature.used_count, description: update_feature_description(feature))
+      feature_payload(feature)&.merge(
+        used_count: feature.used_count, description: update_feature_description(feature), raw: translate(feature.feat.description)
+      )
     }
   end
 

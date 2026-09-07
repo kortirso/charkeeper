@@ -111,7 +111,9 @@ Rails.application.routes.draw do
         resources :bonuses, only: %i[index create update destroy], module: 'characters' do
           resources :consume, only: %i[create], module: 'bonuses'
         end
-        resources :feats, only: %i[update], module: 'characters'
+        resources :feats, only: %i[create update destroy], module: 'characters' do
+          resource :change, only: %i[update], module: 'feats'
+        end
       end
     end
 

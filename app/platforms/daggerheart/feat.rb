@@ -25,7 +25,7 @@ module Daggerheart
     LONG_REST = 'long_rest'
     SESSION = 'session'
 
-    SELECTABLE_ORIGINS = [7].freeze
+    SELECTABLE_ORIGINS = [5, 7].freeze
 
     enum :origin, {
       ANCESTRY_ORIGIN => 0,
