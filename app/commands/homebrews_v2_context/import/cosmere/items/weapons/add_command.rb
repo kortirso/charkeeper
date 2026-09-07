@@ -94,13 +94,13 @@ module HomebrewsV2Context
               input[:name].transform_values! { |value| sanitize(value) }
               input[:description]&.transform_values! { |value| sanitize(value) }
               input[:kind] = 'weapon'
-              input[:tooltips] = input[:tooltips].filter_map do |key, value|
+              input[:tooltips] = input[:tooltips]&.filter_map do |key, value|
                 next key if value == true
                 next "#{key}-#{value}" if value.is_a?(Integer) && value.positive?
 
                 nil
               end
-              input[:expert_tooltips] = input[:expert_tooltips].filter_map do |key, value|
+              input[:expert_tooltips] = input[:expert_tooltips]&.filter_map do |key, value|
                 next key if value == true
                 next "#{key}-#{value}" if value.is_a?(Integer) && value.positive?
 
