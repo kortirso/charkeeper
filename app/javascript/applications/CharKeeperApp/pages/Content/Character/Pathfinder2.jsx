@@ -26,9 +26,11 @@ export const Pathfinder2 = (props) => {
   const skillFilter = (item) => item.origin === 'skill';
   const companionFilter = (item) => item.origin === 'pet' || item.origin === 'familiar';
   const archetypeFilter = (item) => item.origin === 'archetype';
+  const personalFilter = (item) => item.origin === 'character';
 
   const featFilters = createMemo(() => {
     const result = [
+      { title: 'personal', callback: personalFilter },
       { title: 'ancestry', callback: ancestryFilter },
       { title: 'class', callback: classFilter },
       { title: 'general', callback: generalFilter },

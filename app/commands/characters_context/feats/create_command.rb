@@ -6,20 +6,16 @@ module CharactersContext
       use_contract do
         params do
           required(:character).filled(type?: ::Character)
-          required(:title).hash do
-            required(:en).filled(:string, max_size?: 50)
-          end
-          required(:description).hash do
-            required(:en).filled(:string, max_size?: 1_000)
-          end
+          required(:title).filled(:string, max_size?: 50)
+          required(:description).filled(:string, max_size?: 1_000)
         end
       end
 
       private
 
       def do_prepare(input)
-        input[:title].transform_values! { |value| sanitize(value) }
-        input[:description].transform_values! { |value| sanitize(value) }
+        input[:title] = { en: sanitize(input[:title]) }
+        input[:description] = { en: sanitize(input[:description]) }
         input[:user] = input[:character].user
         input[:origin] = 'character'
         input[:origin_value] = input[:character].id
@@ -29,8 +25,8 @@ module CharactersContext
 
       def do_persist(input)
         class_name = input[:character].type.split(':').first
-        result = "#{class_name}::Feat".constantize.create!(input.except(:character))
-        ::Character::Feat.create(character: input[:character], feat: result, ready_to_use: true)
+        feat = "#{class_name}::Feat".constantize.create!(input.except(:character))
+        result = ::Character::Feat.create(character: input[:character], feat: feat, ready_to_use: true)
 
         { result: result }
       end

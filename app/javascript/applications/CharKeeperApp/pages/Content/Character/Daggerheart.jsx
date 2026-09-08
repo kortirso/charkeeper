@@ -52,6 +52,7 @@ export const Daggerheart = (props) => {
 
   const featFilters = createMemo(() => {
     const result = [
+      { title: 'personal', callback: personalFilter },
       { title: 'ancestry', callback: ancestryFilter },
       { title: 'community', callback: communityFilter },
       { title: 'class', callback: classFilter },
@@ -64,7 +65,6 @@ export const Daggerheart = (props) => {
     if (character().beastform !== null) result.push({ title: 'beastform', callback: beastformFilter });
     if (character().transformation !== null) result.push({ title: 'transformation', callback: transformationFilter });
     if (character().can_have_companion) result.push({ title: 'companion', callback: companionFilter });
-    result.push({ title: 'personal', callback: personalFilter });
     return result;
   });
 

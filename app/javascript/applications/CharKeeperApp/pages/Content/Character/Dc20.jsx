@@ -39,9 +39,11 @@ export const Dc20 = (props) => {
   const classFilter = (item) => item.origin === 'class' || item.origin === 'class_additional' || item.origin === 'class_flavor' || item.origin === 'talent';
   const subclassFilter = (item) => item.origin === 'subclass' || item.origin === 'subclass_flavor';
   const maneuverFilter = (item) => item.origin === 'maneuver';
+  const personalFilter = (item) => item.origin === 'character';
 
   const featFilters = createMemo(() => {
     const result = [
+      { title: 'personal', callback: personalFilter },
       { title: 'ancestry', callback: ancestryFilter },
       { title: 'class', callback: classFilter },
       { title: 'subclass', callback: subclassFilter },

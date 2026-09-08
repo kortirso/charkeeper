@@ -511,6 +511,7 @@ class Dc20Decorator < ApplicationDecoratorV2
       slug: feature.feat.slug || feature.id,
       kind: feature.feat.kind,
       title: translate(feature.feat.title),
+      raw: translate(feature.feat.description),
       description: update_feature_description(feature),
       origin: feature.feat.origin,
       origin_value: feature.feat.origin_value,

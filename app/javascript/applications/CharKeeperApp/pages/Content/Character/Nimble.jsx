@@ -40,9 +40,11 @@ export const Nimble = (props) => {
   const ancestryFilter = (item) => item.origin === 'ancestry';
   const classFilter = (item) => item.origin === 'class';
   const subclassFilter = (item) => item.origin === 'subclass';
+  const personalFilter = (item) => item.origin === 'character';
 
   const featFilters = createMemo(() => {
     const result = [
+      { title: 'personal', callback: personalFilter },
       { title: 'ancestry', callback: ancestryFilter },
       { title: 'class', callback: classFilter },
       { title: 'subclass', callback: subclassFilter }

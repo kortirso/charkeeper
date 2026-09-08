@@ -29,7 +29,7 @@ module Frontend
       end
 
       def destroy
-        @feat.destroy
+        @character_feat.feat.destroy
         only_head_response
       end
 
@@ -48,7 +48,7 @@ module Frontend
       end
 
       def find_feat
-        @feat = ::Feat.where(origin: 'character', origin_value: @character.id).find(params.expect(:id))
+        @character_feat = ::Character::Feat.where(character: @character.id).find(params.expect(:id))
       end
 
       def create_params
