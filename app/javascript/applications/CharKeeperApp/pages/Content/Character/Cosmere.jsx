@@ -14,13 +14,15 @@ const TRANSLATION = {
     radiantFilter: 'Invested Path',
     ancestry: 'Ancestry',
     path: 'Heroic Path',
-    surge: 'Invested Art'
+    surge: 'Invested Art',
+    personal: 'Personal'
   },
   ru: {
     radiantFilter: 'Инвестированный путь',
     ancestry: 'Наследие',
     path: 'Путь',
-    surge: 'Инвестированное искусство'
+    surge: 'Инвестированное искусство',
+    personal: 'Личные'
   }
 }
 
@@ -38,9 +40,11 @@ export const Cosmere = (props) => {
   const pathFilter = (item) => item.origin === 'path' || item.origin === 'specialization';
   const radiantFilter = (item) => item.origin === 'radiant_path';
   const surgeFilter = (item) => item.origin === 'surge';
+  const personalFilter = (item) => item.origin === 'character';
 
   const featFilters = createMemo(() => {
     return [
+      { title: 'personal', translation: localize(TRANSLATION, locale()).personal, callback: personalFilter },
       { title: 'ancestry', translation: localize(TRANSLATION, locale()).ancestry, callback: ancestryFilter },
       { title: 'path', translation: localize(TRANSLATION, locale()).path, callback: pathFilter },
       { title: 'radiant_path', translation: localize(TRANSLATION, locale()).radiantFilter, callback: radiantFilter },

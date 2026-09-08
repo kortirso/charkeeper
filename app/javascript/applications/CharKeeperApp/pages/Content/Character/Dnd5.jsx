@@ -58,10 +58,11 @@ export const Dnd5 = (props) => {
   const classFilter = (item) => item.origin === 'class';
   const subclassFilter = (item) => item.origin === 'subclass';
   const featFilter = (item) => item.origin === 'feat';
+  const personalFilter = (item) => item.origin === 'character';
 
   const featDnd5Filters = createMemo(() => {
-    const result = [{ title: 'race', callback: raceFilter }];
-
+    const result = character().provider === 'dnd5' ? [] : [{ title: 'personal', callback: personalFilter }]
+    result.push({ title: 'race', callback: raceFilter });
     if (character().subrace) result.push({ title: 'subrace', callback: subraceFilter });
     result.push({ title: 'class', callback: classFilter });
     if (Object.values(character().subclasses).filter((item) => item !== null).length > 0) result.push({ title: 'subclass', callback: subclassFilter });
@@ -70,7 +71,7 @@ export const Dnd5 = (props) => {
   });
 
   const featDnd2024Filters = createMemo(() => {
-    const result = [{ title: 'species', callback: speciesFilter }];
+    const result = [{ title: 'personal', callback: personalFilter }, { title: 'species', callback: speciesFilter }];
 
     if (character().legacy) result.push({ title: 'legacy', callback: legacyFilter });
     result.push({ title: 'class', callback: classFilter });

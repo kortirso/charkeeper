@@ -1,9 +1,11 @@
 import { createMemo, Show, For } from 'solid-js';
 
-import { Button, Dice } from '../../components';
+import { Button, Dice, IconButton } from '../../components';
 import { useAppLocale, useAppAlert, useAppState } from '../../context';
 import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
-import { PlusSmall, Minus, Campfire, LongCampfire, Moon, Picnic, Combat, Ability, Spell, Grimoire } from '../../assets';
+import {
+  PlusSmall, Minus, Campfire, LongCampfire, Moon, Picnic, Combat, Ability, Spell, Grimoire, Close, Edit
+} from '../../assets';
 import { localize, performResponse } from '../../helpers';
 
 const FEATURE_ICONS = {
@@ -95,6 +97,7 @@ export const FeatureTitle = (props) => {
 
   const enoughResources = createMemo(() => {
     if (Object.keys(resources()).length === 0) return false;
+    if (!feature().price) return false;
 
     return Object.entries(feature().price).filter(([slug, value]) => resources()[slug] ? resources()[slug].free < value : false).length === 0;
   });
@@ -134,14 +137,14 @@ export const FeatureTitle = (props) => {
         </p>
         <div class="flex items-center gap-x-4">
           <Show when={character().provider === 'daggerheart'}>
-            <Show when={feature().info.hope_dice}>
+            <Show when={feature().info?.hope_dice}>
               <Dice width="24" height="24" textClassList="text-sm!" mode="hope" text={feature().info.hope_dice} />
             </Show>
-            <Show when={feature().info.fear_dice}>
+            <Show when={feature().info?.fear_dice}>
               <Dice width="24" height="24" textClassList="text-sm!" mode="fear" text={feature().info.fear_dice} />
             </Show>
           </Show>
-          <Show when={Object.keys(feature().price).length > 0}>
+          <Show when={feature().price && Object.keys(feature().price).length > 0}>
             <Show
               when={SPENDING_RESOURCES_PROVIDERS.includes(character().provider)}
               fallback={
@@ -174,6 +177,14 @@ export const FeatureTitle = (props) => {
         </div>
       </div>
       <div class="flex items-center gap-x-4">
+        <Show when={feature().origin === 'character'}>
+          <IconButton onClick={(e) => props.changeFeature(e, feature())}>
+            <Edit width={14} height={14} />
+          </IconButton>
+          <IconButton onClick={(e) => props.removeFeature(e, feature())}>
+            <Close />
+          </IconButton>
+        </Show>
         <Show when={feature().limit !== undefined}>
           <div class="flex items-center">
             <Button default size="small" onClick={(event) => (feature().limit === 0 && feature().used_count !== 0) || feature().used_count !== feature().limit ? props.onSpendEnergy(event, feature()) : event.stopPropagation()}>

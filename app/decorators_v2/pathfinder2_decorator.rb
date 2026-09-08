@@ -515,6 +515,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       slug: feature.feat.slug || feature.id,
       kind: feature.feat.kind,
       title: translate(feature.feat.title),
+      raw: translate(feature.feat.description),
       description: update_feature_description(feature),
       limit: feature.feat.description_eval_variables['limit'],
       limit_refresh: feature.feat.limit_refresh,

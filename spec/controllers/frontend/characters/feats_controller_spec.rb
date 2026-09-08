@@ -13,7 +13,7 @@ describe Frontend::Characters::FeatsController do
         it 'returns error' do
           post :create, params: {
             character_id: 'unexisting', feat: {
-              title: { en: 'title' }, description: { en: 'value' }
+              title: 'title', description: 'value'
             }, charkeeper_access_token: access_token, provider: 'pathfinder2'
           }
 
@@ -25,7 +25,7 @@ describe Frontend::Characters::FeatsController do
         it 'returns error' do
           post :create, params: {
             character_id: character.id, feat: {
-              title: { en: 'title' }, description: { en: 'value' }
+              title: 'title', description: 'value'
             }, charkeeper_access_token: access_token, provider: 'pathfinder2'
           }
 
@@ -38,7 +38,7 @@ describe Frontend::Characters::FeatsController do
           let(:request) {
             post :create, params: {
               character_id: user_character.id, feat: {
-                title: { en: 'title' }, description: { en: '' }
+                title: 'title', description: ''
               }, charkeeper_access_token: access_token, provider: 'pathfinder2'
             }
           }
@@ -53,7 +53,7 @@ describe Frontend::Characters::FeatsController do
           let(:request) {
             post :create, params: {
               character_id: user_character.id, feat: {
-                title: { en: 'title' }, description: { en: 'value' }
+                title: 'title', description: 'value'
               }, charkeeper_access_token: access_token, provider: 'pathfinder2'
             }
           }
@@ -64,7 +64,7 @@ describe Frontend::Characters::FeatsController do
                 .and(change(Feat.where(origin_value: user_character.id), :count).by(1))
             )
             expect(response).to have_http_status :created
-            expect(response.parsed_body['feat'].keys).to contain_exactly('id', 'title', 'description', 'raw', 'origin_value')
+            expect(response.parsed_body['feat'].keys).to contain_exactly('id', 'title', 'description', 'raw', 'origin')
           end
         end
       end

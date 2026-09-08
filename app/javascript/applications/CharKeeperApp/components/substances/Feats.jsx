@@ -1,23 +1,26 @@
 import { createSignal, createEffect, createMemo, Switch, Match, batch, Show, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { Key } from '@solid-primitives/keyed';
+import { createStore } from 'solid-js/store';
 
 import {
-  Toggle, Button, Select, ErrorWrapper, FeatureTitle, TextArea, CharacterNavigation, Checkbox, GuideWrapper, Dice
+  Toggle, Button, Select, ErrorWrapper, FeatureTitle, TextArea, CharacterNavigation, Checkbox, GuideWrapper, Dice, Input
 } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Edit, PlusSmall, Minus, Close } from '../../assets';
 import { updateCharacterFeatRequest } from '../../requests/updateCharacterFeatRequest';
 import { createCharacterBotRequest } from '../../requests/createCharacterBotRequest';
-import { readFromCache, writeToCache, localize, translate } from '../../helpers';
+import { createFeatRequest } from '../../requests/createFeatRequest';
+import { removeFeatRequest } from '../../requests/removeFeatRequest';
+import { changeFeatRequest } from '../../requests/changeFeatRequest';
+import { readFromCache, writeToCache, localize, translate, performResponse } from '../../helpers';
 
 const FEATURES_FILTER_NAME = 'FeaturesFiltersStatus';
-const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
 const TRANSLATION = {
   en: {
     activeFeat: 'Active',
     allFeatures: 'All features',
-    personalFeats: 'Personal feats can be created through homebrew',
+    personalFeats: 'Add personal/custom feat',
     settings: 'Filter settings',
     showPersonal: 'Show personal',
     groupFeatures: 'Group features',
@@ -32,12 +35,15 @@ const TRANSLATION = {
     },
     here: 'here',
     tokens: 'Tokens',
-    reserve: 'Reserve'
+    reserve: 'Reserve',
+    textHelp: 'You can use Markdown for editing description',
+    newFeatTitle: 'Title',
+    newFeatValue: 'Feat text'
   },
   ru: {
     activeFeat: 'Активен',
     allFeatures: 'Все способности',
-    personalFeats: 'Личные способности могут быть добавлены через homebrew',
+    personalFeats: 'Добавить способность',
     settings: 'Настройки фильтров',
     showPersonal: 'Показать личные',
     groupFeatures: 'Группировать',
@@ -52,12 +58,15 @@ const TRANSLATION = {
     },
     here: 'тут',
     tokens: 'Жетоны',
-    reserve: 'Резерв'
+    reserve: 'Резерв',
+    textHelp: 'Вы можете использовать Markdown для редактирования описания',
+    newFeatTitle: 'Заголовок',
+    newFeatValue: 'Описание способности'
   },
   es: {
     activeFeat: 'Activo',
     allFeatures: 'Todas las habilidades',
-    personalFeats: 'Las habilidades personales pueden ser agregadas a través de homebrew',
+    personalFeats: 'Add personal/custom feat',
     settings: 'Configuración del filtro',
     showPersonal: 'Mostrar personales',
     groupFeatures: 'Agrupar características',
@@ -72,7 +81,10 @@ const TRANSLATION = {
     },
     here: 'aquí',
     tokens: 'Tokens',
-    reserve: 'Reserve'
+    reserve: 'Reserve',
+    textHelp: 'You can use Markdown for editing description',
+    newFeatTitle: 'Title',
+    newFeatValue: 'Feat text'
   }
 }
 
@@ -80,7 +92,6 @@ export const Feats = (props) => {
   const character = () => props.character;
   const filters = () => props.filters;
 
-  const [host, setHost] = createSignal('https://charkeeper.org/homebrews');
   const [showFilters, setShowFilters] = createSignal(false);
   const [filtering, setFiltering] = createSignal(undefined);
   const [activeFilter, setActiveFilter] = createSignal(filters()[0]?.title);
@@ -88,6 +99,9 @@ export const Feats = (props) => {
   const [featValues, setFeatValues] = createSignal(
     character().features.reduce((acc, item) => { acc[item.slug] = item.value; return acc; }, {})
   );
+  const [activeNewFeat, setActiveNewFeat] = createSignal(false);
+  const [featForm, setFeatForm] = createStore({ title: '', description: '' });
+  const [refreshKey, setRefreshKey] = createSignal(0);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -100,12 +114,6 @@ export const Feats = (props) => {
     setFiltering(cacheValue === null || cacheValue === undefined ? ['groupFeatures'] : cacheValue.split(','));
   }
 
-  const readHost = async () => {
-    const cacheValue = await readFromCache(CHARKEEPER_HOST_CACHE_NAME);
-    const baseHost = cacheValue === null || cacheValue === undefined ? appState.rootHost : cacheValue;
-    setHost(baseHost.includes('localhost') ? `http://${baseHost}/homebrews` : `https://${baseHost}/homebrews`);
-  }
-
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
@@ -116,13 +124,15 @@ export const Feats = (props) => {
     });
 
     readFeaturesToggle();
-    readHost();
   });
+
+  const i18nMem = createMemo(() => localize(TRANSLATION, locale()));
 
   const activeFilterOptions = createMemo(() => filters().find((item) => item.title === activeFilter()));
 
   const filteredFeatures = createMemo(() => {
     if (filtering() === undefined) return character().features;
+    refreshKey(); // tracks the trigger
 
     const result = character().features.filter((item) => {
       if (!filtering().includes('showPassive') && item.kind === 'update_result') return false;
@@ -178,12 +188,12 @@ export const Feats = (props) => {
 
   const renderFeatPrice = (enhancement) => {
     const result = Object.entries(enhancement.price).map(([slug, price]) => {
-      if (price === null) return `X ${localize(TRANSLATION, locale()).prices[slug]}`;
+      if (price === null) return `X ${i18nMem().prices[slug]}`;
 
-      return `${price} ${localize(TRANSLATION, locale()).prices[slug]}`;
+      return `${price} ${i18nMem().prices[slug]}`;
     });
 
-    if (enhancement.repeatable) result.push(localize(TRANSLATION, locale()).repeatable);
+    if (enhancement.repeatable) result.push(i18nMem().repeatable);
 
     return result.join(', ');
   }
@@ -230,7 +240,7 @@ export const Feats = (props) => {
 
     return (
       <div class="flex items-center gap-4">
-        <p>{localize(TRANSLATION, locale()).tokens}</p>
+        <p>{i18nMem().tokens}</p>
         <Button default size="small" disabled={current === 0} onClick={() => current > 0 ? spendToken(feature) : null}><Minus /></Button>
         <Show when={max !== 1000} fallback={current}><p>{current} / {max}</p></Show>
         <Button default size="small" disabled={current === max} onClick={() => current < max ? restoreToken(feature) : null}><PlusSmall /></Button>
@@ -277,6 +287,74 @@ export const Feats = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const addFeat = () => {
+    batch(() => {
+      setFeatForm({ title: '', description: '' });
+      setActiveNewFeat(true);
+    });
+  }
+
+  const changeFeature = (e, feature) => {
+    e.stopPropagation();
+
+    batch(() => {
+      setFeatForm({ id: feature.id, title: feature.title, description: feature.raw });
+      setActiveNewFeat(true);
+    });
+  }
+
+  const cancelFeat = () => {
+    batch(() => {
+      setFeatForm({ title: '', description: '' });
+      setActiveNewFeat(false);
+    });
+  }
+
+  const createFeat = async () => {
+    const result = await createFeatRequest(appState.accessToken, character().provider, character().id, { feat: featForm });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        cancelFeat();
+        props.onReplaceCharacter({ features: [...character().features, result.feat] });
+        setRefreshKey(refreshKey() + 1)
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
+
+  const removeFeature = async (e, feature) => {
+    e.stopPropagation();
+
+    const result = await removeFeatRequest(appState.accessToken, character().provider, character().id, feature.id, feature.id);
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onReplaceCharacter({ features: character().features.filter((item) => item.id !== feature.id) });
+        setRefreshKey(refreshKey() + 1)
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
+
+  const updateFeat = async () => {
+    const result = await changeFeatRequest(appState.accessToken, character().provider, character().id, featForm.id, { feat: featForm });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        const features = character().features.slice().map((item) => {
+          if (item.id !== featForm.id) return item;
+
+          return result.feat;
+        });
+        props.onReplaceCharacter({ features: features });
+        setRefreshKey(refreshKey() + 1)
+        cancelFeat();
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Feats' }}>
       <GuideWrapper character={character()}>
@@ -284,7 +362,7 @@ export const Feats = (props) => {
           when={filtering() === undefined || filtering().includes('groupFeatures')}
           fallback={
             <div id="character-navigation">
-              <p class="active">{localize(TRANSLATION, locale()).allFeatures}</p>
+              <p class="active">{i18nMem().allFeatures}</p>
               <Button default classList='rounded min-w-6 min-h-6 opacity-50 m-0!' onClick={() => setShowFilters(!showFilters())}>
                 <Edit />
               </Button>
@@ -311,26 +389,68 @@ export const Feats = (props) => {
               <Select
                 multi
                 containerClassList="w-full md:w-1/2 mb-2"
-                labelText={localize(TRANSLATION, locale())['settings']}
+                labelText={i18nMem()['settings']}
                 items={{
-                  'showPersonal': localize(TRANSLATION, locale()).showPersonal,
-                  'groupFeatures': localize(TRANSLATION, locale()).groupFeatures,
-                  'showPassive': localize(TRANSLATION, locale()).showPassive,
-                  'expandAll': localize(TRANSLATION, locale()).expandAll
+                  'showPersonal': i18nMem().showPersonal,
+                  'groupFeatures': i18nMem().groupFeatures,
+                  'showPassive': i18nMem().showPassive,
+                  'expandAll': i18nMem().expandAll
                 }}
                 selectedValues={filtering() || []}
                 onSelect={(value) => updateFiltering(value)}
               />
             </Show>
             <Show when={activeFilter() === 'personal'}>
-              <p class="dark:text-snow mb-2 text-sm">{localize(TRANSLATION, locale()).personalFeats} <a href={host()} class='underline' target='_blank' rel='noopener noreferrer'>{localize(TRANSLATION, locale()).here}</a></p>
+              <Show
+                when={!activeNewFeat()}
+                fallback={
+                  <div class="p-4 flex-1 flex flex-col blockable mb-2">
+                    <div class="flex-1">
+                      <Input
+                        containerClassList="mb-2"
+                        labelText={i18nMem().newFeatTitle}
+                        value={featForm.title}
+                        onInput={(value) => setFeatForm({ ...featForm, title: value })}
+                      />
+                      <TextArea
+                        rows="5"
+                        labelText={i18nMem().newFeatValue}
+                        value={featForm.description}
+                        onChange={(value) => setFeatForm({ ...featForm, description: value })}
+                      />
+                      <p class="text-sm mt-1">{i18nMem().textHelp}</p>
+                    </div>
+                    <div class="flex justify-end mt-4">
+                      <Button outlined textable size="small" classList="mr-4" onClick={cancelFeat}><span>{t('cancel')}</span></Button>
+                      <Button default textable size="small" onClick={() => featForm.id === undefined ? createFeat() : updateFeat()}>
+                        <span>{t('save')}</span>
+                      </Button>
+                    </div>
+                  </div>
+                }
+              >
+                <div class="flex items-center mb-2">
+                  <Button default size="small" onClick={addFeat}><PlusSmall /></Button>
+                  <span class="dark:text-snow ml-2 text-sm">{i18nMem().personalFeats}</span>
+                </div>
+              </Show>
             </Show>
             <Key each={filteredFeatures()} by={item => item.id}>
               {(feature) =>
                 <Toggle
                   containerClassList={feature().kind === 'update_result' ? 'opacity-50' : ''}
                   isOpen={filtering().includes('expandAll')}
-                  title={<FeatureTitle feature={feature()} character={character()} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} onReplaceCharacter={props.onReplaceCharacter} />}
+                  title={
+                    <FeatureTitle
+                      feature={feature()}
+                      character={character()}
+                      onSpendEnergy={spendEnergy}
+                      onRestoreEnergy={restoreEnergy}
+                      onReplaceCharacter={props.onReplaceCharacter}
+                      removeFeature={removeFeature}
+                      changeFeature={changeFeature}
+                    />
+                  }
                 >
                   <div class="flex flex-col gap-2">
                     <Show when={feature().tokens !== undefined}>{renderTokens(feature())}</Show>
@@ -340,7 +460,7 @@ export const Feats = (props) => {
                     />
                     <Show when={character().provider === 'dc20'}>
                       <Show when={feature().info.range}>
-                        <p class="text-sm">{localize(TRANSLATION, locale()).dc20Range}: {localize(feature().info.range, locale())}</p>
+                        <p class="text-sm">{i18nMem().dc20Range}: {localize(feature().info.range, locale())}</p>
                       </Show>
                     </Show>
                     <Switch fallback={<></>}>
@@ -417,7 +537,7 @@ export const Feats = (props) => {
                                   onClick={() => feature().dices[index()] ? reroll(feature(), index()) : roll(feature())}
                                 />
                                 <Show when={index() === feature().dice_settings.limit}>
-                                  <p class="text-xs">{localize(TRANSLATION, locale()).reserve}</p>
+                                  <p class="text-xs">{i18nMem().reserve}</p>
                                 </Show>
                                 <Show when={feature().dices[index()]}>
                                   <Button default classList="absolute top-0 right-0 w-4! h-4! min-h-4! min-w-4!" onClick={() => removeRoll(feature(), index())}>
@@ -434,7 +554,7 @@ export const Feats = (props) => {
                       <div class="flex justify-end">
                         <Checkbox
                           filled
-                          labelText={localize(TRANSLATION, locale())['activeFeat']}
+                          labelText={i18nMem()['activeFeat']}
                           labelPosition="right"
                           labelClassList="ml-2"
                           checked={feature().active}
@@ -442,7 +562,7 @@ export const Feats = (props) => {
                         />
                       </div>
                     </Show>
-                    <Show when={feature().info.enhancements && feature().info.enhancements.length > 0}>
+                    <Show when={feature().info?.enhancements && feature().info.enhancements.length > 0}>
                       <div class="flex flex-col gap-1">
                         <For each={feature().info.enhancements}>
                           {(enhancement) =>
