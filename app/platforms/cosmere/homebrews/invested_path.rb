@@ -7,6 +7,7 @@ module Cosmere
 
       attribute :only, array: true, default: []
       attribute :initial_talents, array: true, default: []
+      attribute :additional_talents, array: true, default: []
     end
 
     class InvestedPath < ::Homebrew
@@ -20,6 +21,7 @@ module Cosmere
             description: description,
             only: info.only,
             initial_talents: info.initial_talents,
+            additional_talents: info.additional_talents,
             public: attributes['public'],
             features: Cosmere::Feat.where(origin: 'radiant_path', origin_value: id).order(created_at: :asc).map { |item|
               item.to_homebrew_json(with_id: with_id)

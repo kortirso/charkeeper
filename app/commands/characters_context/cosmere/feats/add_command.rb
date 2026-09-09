@@ -25,12 +25,14 @@ module CharactersContext
         def add_extra_feats(input)
           return if input[:feat].info['extra_feats'].blank?
 
-          ::Cosmere::Feat.where(slug: input[:feat].info['extra_feats']).find_each do |feat|
-            Charkeeper::Container.resolve('commands.characters_context.cosmere.feats.add').call(
-              character: input[:character],
-              feat: feat
-            )
-          end
+          ::Cosmere::Feat.where(slug: input[:feat].info['extra_feats'])
+            .or(::Cosmere::Feat.where(id: input[:feat].info['extra_feats']))
+            .find_each do |feat|
+              Charkeeper::Container.resolve('commands.characters_context.cosmere.feats.add').call(
+                character: input[:character],
+                feat: feat
+              )
+            end
         end
 
         def add_extra_skills(input)
