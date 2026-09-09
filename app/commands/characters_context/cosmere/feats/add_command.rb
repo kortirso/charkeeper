@@ -14,7 +14,10 @@ module CharactersContext
         private
 
         def do_persist(input)
-          ::Character::Feat.create_with(ready_to_use: true).find_or_create_by(input.slice(:character, :feat))
+          ::Character::Feat.create_with(
+            ready_to_use: true,
+            tokens: input[:feat].tokens.nil? ? nil : 0
+          ).find_or_create_by(input.slice(:character, :feat))
 
           add_extra_feats(input)
           add_extra_skills(input)

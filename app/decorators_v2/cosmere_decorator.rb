@@ -117,7 +117,7 @@ class CosmereDecorator < ApplicationDecoratorV2
     return if feature.feat.kind == 'hidden'
 
     tokens_max =
-      feature.tokens ? formula.call(formula: feature.feat.tokens['limit'], variables: final_formula_variables) : nil
+      feature.tokens ? formula.call(formula: feature.feat.tokens['limit'], variables: formula_variables) : nil
     {
       id: feature.id,
       slug: feature.feat.slug || feature.id,

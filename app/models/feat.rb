@@ -31,6 +31,7 @@ class Feat < ApplicationRecord
         required_for: info['required_for'],
         extra_skills: info['extra_skills'],
         extra_feats: info['extra_feats'],
+        investiture: info['investiture'],
         double_slug: info['double_slug'],
         options: options&.map do |key, value|
           {
