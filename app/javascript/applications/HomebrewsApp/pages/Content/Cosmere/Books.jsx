@@ -17,7 +17,7 @@ const TRANSLATION = {
     ancestries: 'Ancestries',
     specializations: 'Specializations',
     invested_paths: 'Invested paths',
-    invested_arts: 'Invested arts',
+    invested_arts: 'Invested powers',
     items: 'Items'
   },
   ru: {
@@ -28,7 +28,7 @@ const TRANSLATION = {
     ancestries: 'Наследия',
     specializations: 'Специализации',
     invested_paths: 'Инвестированные пути',
-    invested_arts: 'Инвестированные искусства',
+    invested_arts: 'Инвестированные силы',
     items: 'Предметы'
   },
   es: {
@@ -39,7 +39,7 @@ const TRANSLATION = {
     ancestries: 'Ancestries',
     specializations: 'Specializations',
     invested_paths: 'Invested paths',
-    invested_arts: 'Invested arts',
+    invested_arts: 'Invested powers',
     items: 'Objetos'
   }
 }

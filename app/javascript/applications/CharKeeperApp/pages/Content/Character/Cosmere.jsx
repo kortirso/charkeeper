@@ -14,14 +14,14 @@ const TRANSLATION = {
     radiantFilter: 'Invested Path',
     ancestry: 'Ancestry',
     path: 'Heroic Path',
-    surge: 'Invested Art',
+    surge: 'Invested Power',
     personal: 'Personal'
   },
   ru: {
     radiantFilter: 'Инвестированный путь',
     ancestry: 'Наследие',
     path: 'Путь',
-    surge: 'Инвестированное искусство',
+    surge: 'Инвестированная сила',
     personal: 'Личные'
   }
 }

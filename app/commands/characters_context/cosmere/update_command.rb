@@ -131,6 +131,9 @@ module CharactersContext
         _feat_slug, new_slugs = input[:selected_features].first
         old_slugs = input[:old_value] || []
 
+        new_slugs = [new_slugs] unless new_slugs.is_a?(Array)
+        old_slugs = [old_slugs] unless old_slugs.is_a?(Array)
+
         input[:character].feats.joins(:feat).where(feats: { slug: old_slugs - new_slugs }).destroy_all
         ::Cosmere::Feat.where(slug: new_slugs - old_slugs).find_each do |feat|
           add_feat.call(character: input[:character], feat: feat)

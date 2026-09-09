@@ -116,6 +116,8 @@ class CosmereDecorator < ApplicationDecoratorV2
   def feature_payload(feature) # rubocop: disable Metrics/AbcSize
     return if feature.feat.kind == 'hidden'
 
+    tokens_max =
+      feature.tokens ? formula.call(formula: feature.feat.tokens['limit'], variables: formula_variables) : nil
     {
       id: feature.id,
       slug: feature.feat.slug || feature.id,
@@ -128,7 +130,9 @@ class CosmereDecorator < ApplicationDecoratorV2
       continious: feature.feat.continious,
       active: feature.active,
       options: feature.feat.options,
-      value: feature.value
+      value: feature.value,
+      tokens: feature.tokens,
+      tokens_max: feature.tokens ? (tokens_max || 'none') : nil
     }.compact
   end
 

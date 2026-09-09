@@ -14,7 +14,10 @@ module CharactersContext
         private
 
         def do_persist(input)
-          ::Character::Feat.create_with(ready_to_use: true).find_or_create_by(input.slice(:character, :feat))
+          ::Character::Feat.create_with(
+            ready_to_use: true,
+            tokens: input[:feat].tokens.nil? ? nil : 0
+          ).find_or_create_by(input.slice(:character, :feat))
 
           add_extra_feats(input)
           add_extra_skills(input)
@@ -25,12 +28,14 @@ module CharactersContext
         def add_extra_feats(input)
           return if input[:feat].info['extra_feats'].blank?
 
-          ::Cosmere::Feat.where(slug: input[:feat].info['extra_feats']).find_each do |feat|
-            Charkeeper::Container.resolve('commands.characters_context.cosmere.feats.add').call(
-              character: input[:character],
-              feat: feat
-            )
-          end
+          ::Cosmere::Feat.where(slug: input[:feat].info['extra_feats'])
+            .or(::Cosmere::Feat.where(id: input[:feat].info['extra_feats']))
+            .find_each do |feat|
+              Charkeeper::Container.resolve('commands.characters_context.cosmere.feats.add').call(
+                character: input[:character],
+                feat: feat
+              )
+            end
         end
 
         def add_extra_skills(input)

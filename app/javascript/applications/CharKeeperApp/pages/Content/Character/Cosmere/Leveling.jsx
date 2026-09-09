@@ -34,7 +34,7 @@ const TRANSLATION = {
     titles: {
       paths: 'Heroic paths',
       invested_paths: 'Invested paths',
-      invested_arts: 'Invested arts'
+      invested_arts: 'Invested powers'
     },
     limits: 'Limit choises by setting'
   },
@@ -59,7 +59,7 @@ const TRANSLATION = {
     titles: {
       paths: 'Героические пути',
       invested_paths: 'Инвестированные пути',
-      invested_arts: 'Инвестированные искусства'
+      invested_arts: 'Инвестированные силы'
     },
     limits: 'Ограничить выбор рамками сеттинга'
   },
@@ -84,7 +84,7 @@ const TRANSLATION = {
     titles: {
       paths: 'Heroic paths',
       invested_paths: 'Invested paths',
-      invested_arts: 'Invested arts'
+      invested_arts: 'Invested powers'
     },
     limits: 'Limit choises by setting'
   }

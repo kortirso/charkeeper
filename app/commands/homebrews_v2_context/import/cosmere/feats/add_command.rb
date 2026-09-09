@@ -39,6 +39,7 @@ module HomebrewsV2Context
               optional(:required_for).maybe(:array).each(:string)
               optional(:double_slug).filled(:string)
               optional(:extra_skills).maybe(:array).each(:string)
+              optional(:extra_feats).maybe(:array).each(:string)
               optional(:investiture).filled(:bool)
               optional(:continious).filled(:bool)
               optional(:conditions).hash
@@ -49,6 +50,9 @@ module HomebrewsV2Context
                   optional(:es).maybe(:string, max_size?: 50)
                 end
                 optional(:feature).maybe(:hash)
+              end
+              optional(:tokens).hash do
+                optional(:limit).filled(:string)
               end
             end
           end
@@ -100,6 +104,7 @@ module HomebrewsV2Context
             input[:info] = {
               required_for: input[:required_for],
               extra_skills: input[:extra_skills],
+              extra_feats: input[:extra_feats],
               investiture: input[:investiture],
               double_slug: input[:double_slug]
             }.compact_blank
@@ -107,7 +112,7 @@ module HomebrewsV2Context
 
           def do_persist(input)
             result = ::Cosmere::Feat.create!(
-              input.except(:id, :options, :required_for, :extra_skills, :investiture, :double_slug).merge(
+              input.except(:id, :options, :required_for, :extra_skills, :extra_feats, :investiture, :double_slug).merge(
                 options: input[:options]&.transform_values { |value| value[:title] }
               )
             )

@@ -32,20 +32,23 @@ module HomebrewsV2Context
             input[:info] = {
               required_for: input[:required_for],
               extra_skills: input[:extra_skills],
+              extra_feats: input[:extra_feats],
               investiture: input[:investiture],
               double_slug: input[:double_slug]
             }.compact_blank
             input[:attributes] =
-              input.except(:id, :feat, :options, :required_for, :extra_skills, :investiture, :double_slug).merge(
+              input.except(:id, :feat, :options, :required_for, :extra_skills, :extra_feats, :investiture, :double_slug).merge(
                 options: input[:options]&.transform_values { |value| value[:title] }
               )
             input[:attributes][:modifiers] = {} unless input.key?(:modifiers)
+            input[:attributes][:tokens] = nil unless input.key?(:tokens)
           end
 
-          def do_persist(input)
+          def do_persist(input) # rubocop: disable Metrics/AbcSize
             ::Cosmere::Feat.where(slug: input[:feat].options.keys, user_id: input[:user].id).destroy_all if input[:feat].options
 
             input[:feat].update!(input[:attributes])
+            input[:feat].character_feats.update_all(tokens: input[:feat].tokens.nil? ? nil : 0)
 
             input[:options]&.values&.each do |option|
               next unless option[:feature]
