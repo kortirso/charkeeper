@@ -5,7 +5,9 @@ import {
   CosmereAbilities, CosmereSkills, CosmereDefenses, CosmereHealth, CosmereInfo, CosmereRest, CosmereLeveling, CosmereBonuses,
   CosmereGoals, CosmereSingerForm, CosmereEquipment
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, createRoll, Feats, GoldSingle } from '../../../components';
+import {
+  CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, createRoll, Feats, GoldSingle, ConditionsV2
+} from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -82,6 +84,9 @@ export const Cosmere = (props) => {
                   <CosmereSingerForm character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
               </Show>
+              <div class="mt-4">
+                <ConditionsV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
+              </div>
               <div class="mt-4">
                 <CosmereSkills
                   character={character()}
@@ -167,6 +172,9 @@ export const Cosmere = (props) => {
             <CosmereSingerForm character={character()} onReplaceCharacter={props.onReplaceCharacter} />
           </div>
         </Show>
+        <div class="mt-4">
+          <ConditionsV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
+        </div>
         <div class="mt-4">
           <CosmereSkills
             character={character()}

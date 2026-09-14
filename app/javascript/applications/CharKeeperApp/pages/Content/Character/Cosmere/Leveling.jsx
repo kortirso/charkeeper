@@ -3,7 +3,7 @@ import { Key } from '@solid-primitives/keyed';
 
 import { Button, ErrorWrapper, Toggle, Checkbox, Input, TextArea, Text, LevelUp } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Upgrade, Close } from '../../../../assets';
+import { Close } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchItemsRequest } from '../../../../requests/fetchItemsRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';

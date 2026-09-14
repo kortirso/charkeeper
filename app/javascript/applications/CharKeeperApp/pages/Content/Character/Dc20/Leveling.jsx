@@ -4,7 +4,7 @@ import { Dc20Ancestries } from '../../../../pages';
 import { Button, ErrorWrapper, GuideWrapper, Toggle, Checkbox, Select, LevelUp } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Upgrade, PlusSmall } from '../../../../assets';
+import { PlusSmall } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';

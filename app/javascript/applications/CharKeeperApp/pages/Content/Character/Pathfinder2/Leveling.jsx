@@ -2,7 +2,7 @@ import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-
 
 import { Button, ErrorWrapper, Toggle, Select, createModal, Text, Input, Label, LevelUp } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Upgrade, Check, Close } from '../../../../assets';
+import { Check, Close } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';

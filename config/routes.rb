@@ -192,6 +192,9 @@ Rails.application.routes.draw do
     end
 
     namespace :cosmere do
+      namespace :config do
+        resources :conditions, only: %i[index]
+      end
       resources :characters, only: %i[create update] do
         scope module: :characters do
           resources :rest, only: %i[create]

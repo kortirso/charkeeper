@@ -1,0 +1,108 @@
+{
+  "afflicted": {
+    "name": { "en": "Afflicted", "ru": "Поражённый" },
+    "description": {
+      "en": "You slowly take damage over time.\n\nIn combat - at the end of each of your turns.\n\nOut of combat - every 10 seconds and after each time someone attempts to remove the condition.",
+      "ru": "Вы постепенно получаете урон с течением времени.\n\nВ бою — в конце каждого вашего хода.\n\nВне боя — каждые 10 секунд и после каждой попытки снять эффект."
+    }
+  },
+  "depleted": {
+    "name": { "en": "Depleted", "ru": "Исчерпанный" },
+    "description": {
+      "en": "You have no access to the specific Investiture needed for that power, and thus you can't use it.",
+      "ru": "У вас нет доступа к Инвеституре для определённой силы, поэтому вы не можете его использовать."
+    }
+  },
+  "determined": {
+    "name": { "en": "Determined", "ru": "Решительный" },
+    "description": {
+      "en": "When you fail a test, you can add an Opportunity to the result. After you choose to do so, remove the Determined condition.",
+      "ru": "Если тест не пройден, вы можете добавить к результату Возможность. После *Решительность* заканчивается."
+    }
+  },
+  "diminished": {
+    "name": { "en": "Diminished", "ru": "Ослабленный" },
+    "description": {
+      "en": "One of your attributes temporarily decreases.",
+      "ru": "Один из атрибутов ослабевает."
+    }
+  },
+  "disoriented": {
+    "name": { "en": "Disoriented", "ru": "Дезориентирован" },
+    "description": {
+      "en": "You can't use reactions, your senses always count as obscured, and Perception tests (and similar tests to use your senses) gain a disadvantage.",
+      "ru": "Вы не можете использовать реакции, ваши чувства всегда считаются затуманенными, а проверки Восприятия (и аналогичные проверки с использованием ваших чувств) получают штраф."
+    }
+  },
+  "enhanced": {
+    "name": { "en": "Enhanced", "ru": "Усилен" },
+    "description": {
+      "en": "One of your attributes temporarily increases.",
+      "ru": "Один из атрибутов усиливается."
+    }
+  },
+  "exhausted": {
+    "name": { "en": "Exhausted", "ru": "Истощён" },
+    "value": true,
+    "description": {
+      "en": "After you calculate a test result but before you resolve its effects, apply a penalty equal to this number.",
+      "ru": "После вычисления результата теста, но до определения его последствий, примените штраф, равный этому числу."
+    }
+  },
+  "focused": {
+    "name": { "en": "Focused", "ru": "Сфокусирован" },
+    "description": {
+      "en": "When you use an ability that costs focus, its cost is reduced by 1.",
+      "ru": "При использовании способности, требующей фокуса, её стоимость уменьшается на 1."
+    }
+  },
+  "immobilized": {
+    "name": { "en": "Immobilized", "ru": "Остановлен" },
+    "description": {
+      "en": "Your movement rate becomes 0, and you can't move or be moved by other effects.",
+      "ru": "Ваша скорость равна 0, и вы не можете двигаться или быть сдвинутым другим эффектов."
+    }
+  },
+  "prone": {
+    "name": { "en": "Prone", "ru": "Лежащий ничком" },
+    "description": {
+      "en": "You are *Slowed* and melee attacks against you gain an advantage.\n\nYou can use the Brace action without cover.",
+      "ru": "Вы *Замедлены*, и рукопашные атаки против вас получают преимущество.\n\nВы можете использовать действие Brace без укрытия."
+    }
+  },
+  "restrained": {
+    "name": { "en": "Restrained", "ru": "Обездвижен" },
+    "description": {
+      "en": "Your movement rate becomes 0.\n\nYou gain a disadvantage on all tests other than those to escape your bonds.",
+      "ru": "Ваша скорость равна 0.\n\nВы получаете помеху на все проверки, кроме тех, которые позволяют освободиться от оков."
+    }
+  },
+  "slowed": {
+    "name": { "en": "Slowed", "ru": "Замедлен" },
+    "description": {
+      "en": "Your movement rate is halved.",
+      "ru": "Ваша скорость снижается в 2 раза."
+    }
+  },
+  "stunned": {
+    "name": { "en": "Stunned", "ru": "Ошеломлён" },
+    "description": {
+      "en": "You lose any reactions, and on your turn, you gain two fewer actions and don't gain a reaction.",
+      "ru": "Вы теряете все реакции, и в свой ход вы получаете на два действия меньше и не получаете ни одной реакции."
+    }
+  },
+  "surprised": {
+    "name": { "en": "Surprised", "ru": "Удивлён" },
+    "description": {
+      "en": "You lose any reactions, you don't gain a reaction at the start of combat or on your turn, you can't take a fast turn, and you gain one fewer action.",
+      "ru": "Вы теряете все реакции, не получаете реакции в начале боя или в свой ход, не можете совершить быстрый ход и получаете на одно действие меньше."
+    }
+  },
+  "unconscious": {
+    "name": { "en": "Unconscious", "ru": "Без сознания" },
+    "description": {
+      "en": "Your movement rate becomes 0, you can't move or communicate, and you're unaware of your surroundings.",
+      "ru": "Ваша скорость равна 0, вы не можете двигаться или общаться, и вы не осознаёте происходящего вокруг."
+    }
+  }
+}

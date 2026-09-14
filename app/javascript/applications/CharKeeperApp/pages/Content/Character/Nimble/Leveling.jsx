@@ -3,7 +3,6 @@ import { createSignal, createEffect, createMemo, Show } from 'solid-js';
 import { Button, ErrorWrapper, GuideWrapper, Select, Languages, LevelUp } from '../../../../components';
 import config from '../../../../data/nimble.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Upgrade } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { translate, localize, performResponse } from '../../../../helpers';
 
