@@ -60,6 +60,7 @@ module CharactersContext
           optional(:selected_features).hash
           optional(:old_value)
           optional(:money).filled(:integer, gteq?: 0)
+          optional(:conditions_v2).hash
         end
       end
 

@@ -3,7 +3,6 @@ import { createMemo, createSignal, createEffect, For, Show, batch } from 'solid-
 import { Select, Checkbox, Button, ErrorWrapper, GuideWrapper, LevelUp } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Upgrade } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchHomebrewsRequest } from '../../../../requests/fetchHomebrewsRequest';
 import { translate, localize } from '../../../../helpers';
