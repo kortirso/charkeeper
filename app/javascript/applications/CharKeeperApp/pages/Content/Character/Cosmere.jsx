@@ -5,7 +5,7 @@ import {
   CosmereAbilities, CosmereSkills, CosmereDefenses, CosmereHealth, CosmereInfo, CosmereRest, CosmereLeveling, CosmereBonuses,
   CosmereGoals, CosmereSingerForm, CosmereEquipment
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, createRoll, Feats } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, createRoll, Feats, GoldSingle } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -117,7 +117,9 @@ export const Cosmere = (props) => {
               <CosmereEquipment
                 character={character()}
                 onReloadCharacter={props.onReloadCharacter}
-              />
+              >
+                <GoldSingle character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </CosmereEquipment>
             </Match>
             <Match when={activeMobileTab() === 'goals'}>
               <CosmereGoals character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -215,7 +217,9 @@ export const Cosmere = (props) => {
               <CosmereEquipment
                 character={character()}
                 onReloadCharacter={props.onReloadCharacter}
-              />
+              >
+                <GoldSingle character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </CosmereEquipment>
             </Match>
             <Match when={activeTab() === 'goals'}>
               <CosmereGoals character={character()} onReplaceCharacter={props.onReplaceCharacter} />

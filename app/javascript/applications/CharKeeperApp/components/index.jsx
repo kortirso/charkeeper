@@ -40,6 +40,7 @@ export * from './substances/Roll';
 export * from './substances/ConditionsV2';
 export * from './substances/Combat';
 export * from './substances/Gold';
+export * from './substances/GoldSingle';
 export * from './substances/Languages';
 
 export * from './wrappers/Guide';

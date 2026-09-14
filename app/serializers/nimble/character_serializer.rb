@@ -5,7 +5,7 @@ module Nimble
     include Deps[cache: 'cache.avatars']
 
     attributes :provider, :id, :name, :created_at, :updated_at, :avatar, :level, :guide_step, :ancestry, :main_class, :skills,
-               :skill_points, :modified_abilities, :initiative, :size, :abilities, :armor, :speed, :health, :wounds_max,
+               :skill_points, :modified_abilities, :initiative, :size, :abilities, :armor, :speed, :health, :wounds_max, :money,
                :wounds_spent, :languages, :attacks, :features, :hit_die_max, :hit_die_spent, :hit_die, :saves, :subclass,
                :conditions, :separate_shield, :shield, :key_points, :secondary_points, :keys, :schools, :mana_max, :mana_spent,
                :spell_level, :spells, :utility_spells_limit, :learned_spells, :save_dc, :names
@@ -15,7 +15,8 @@ module Nimble
              to: :decorator
     delegate :data, to: :object
     delegate :level, :guide_step, :ancestry, :main_class, :skill_points, :abilities, :health, :wounds_spent, :languages, :size,
-             :subclass, :conditions, :separate_shield, :key_points, :secondary_points, :mana_spent, :learned_spells, to: :data
+             :subclass, :conditions, :separate_shield, :key_points, :secondary_points, :mana_spent, :learned_spells, :money,
+             to: :data
 
     def provider
       'nimble'
