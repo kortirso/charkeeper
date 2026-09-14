@@ -69,9 +69,13 @@ module CharactersContext
       def lock_key(input) = "character_update_#{input[:character].id}"
       def lock_time = 0
 
-      def do_prepare(input) # rubocop: disable Metrics/AbcSize
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
         %i[abilities].each do |key|
           input[key]&.transform_values!(&:to_i)
+        end
+
+        %i[custom_expertises].each do |key|
+          input[key]&.map! { |item| item.transform_values { |value| sanitize(value) } }
         end
 
         if input.key?(:level)

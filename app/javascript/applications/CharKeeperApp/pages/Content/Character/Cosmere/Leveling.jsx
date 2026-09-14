@@ -3,7 +3,7 @@ import { Key } from '@solid-primitives/keyed';
 
 import { Button, ErrorWrapper, Toggle, Checkbox, Input, TextArea, Text, LevelUp } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Close } from '../../../../assets';
+import { Close, Edit } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchItemsRequest } from '../../../../requests/fetchItemsRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
@@ -36,7 +36,8 @@ const TRANSLATION = {
       invested_paths: 'Invested paths',
       invested_arts: 'Invested powers'
     },
-    limits: 'Limit choises by setting'
+    limits: 'Limit choises by setting',
+    save: 'Save'
   },
   ru: {
     currentLevel: 'уровень',
@@ -61,7 +62,8 @@ const TRANSLATION = {
       invested_paths: 'Инвестированные пути',
       invested_arts: 'Инвестированные силы'
     },
-    limits: 'Ограничить выбор рамками сеттинга'
+    limits: 'Ограничить выбор рамками сеттинга',
+    save: 'Сохранить'
   },
   es: {
     currentLevel: 'nivel',
@@ -86,7 +88,8 @@ const TRANSLATION = {
       invested_paths: 'Invested paths',
       invested_arts: 'Invested powers'
     },
-    limits: 'Limit choises by setting'
+    limits: 'Limit choises by setting',
+    save: 'Save'
   }
 }
 const ITEM_EXPERTISES = ['weapon', 'armor'];
@@ -108,6 +111,7 @@ export const CosmereLeveling = (props) => {
   const [featsCount, setFeatsCount] = createSignal(0);
   const [expName, setExpName] = createSignal('');
   const [expDesc, setExpDesc] = createSignal('');
+  const [expIndex, setExpIndex] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [{ renderAlerts, renderNotice, renderAlert }] = useAppAlert();
@@ -134,6 +138,8 @@ export const CosmereLeveling = (props) => {
 
     setLastActiveCharacterId(character().id);
   });
+
+  const i18n = createMemo(() => localize(TRANSLATION, locale()));
 
   createEffect(() => {
     if (homebrews() !== undefined) return;
@@ -170,8 +176,21 @@ export const CosmereLeveling = (props) => {
     if (expName().length === 0 || expName().length > 50) return;
     if (expDesc().length === 0 || expDesc().length > 500) return;
 
-    const payload = character().custom_expertises.concat([{ name: expName(), desc: expDesc() }]);
+    const payload = expIndex() !== undefined ? character().custom_expertises.map((item, index) => {
+      if (index !== expIndex()) return item;
+
+      return { name: expName(), desc: expDesc() };
+    }) : character().custom_expertises.concat([{ name: expName(), desc: expDesc() }]);
     updateCharacter({ custom_expertises: payload }, true);
+  }
+
+  const changeExpertise = (value, index) => {
+    batch(() => {
+      setEditMode(true);
+      setExpName(value.name);
+      setExpDesc(value.desc);
+      setExpIndex(index);
+    });
   }
 
   const removeExpertise = (value) => {
@@ -186,10 +205,11 @@ export const CosmereLeveling = (props) => {
       result,
       function() { // eslint-disable-line solid/reactivity
         props.onReplaceCharacter(onlyHead ? payload : result.character);
-        renderNotice(localize(TRANSLATION, locale()).updated);
+        renderNotice(i18n().updated);
         setEditMode(false);
         setExpName('');
         setExpDesc('');
+        setExpIndex(undefined);
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -228,7 +248,7 @@ export const CosmereLeveling = (props) => {
   }
 
   const removeFeat = async (feat) => {
-    if (feat.feats && feat.feats.find((item) => item.selected)) return renderAlert(localize(TRANSLATION, locale()).nested);
+    if (feat.feats && feat.feats.find((item) => item.selected)) return renderAlert(i18n().nested);
 
     const result = await removeTalentRequest(appState.accessToken, character().provider, character().id, feat.id);
     performResponse(
@@ -271,12 +291,12 @@ export const CosmereLeveling = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'CosmereLeveling' }}>
       <div class="character-info-block mb-2">
         <LevelUp character={character()} levelUp={() => updateCharacter({ level: character().level + 1 })}>
-          <p>{character().level} {localize(TRANSLATION, locale()).currentLevel}</p>
+          <p>{character().level} {i18n().currentLevel}</p>
         </LevelUp>
       </div>
       <Checkbox
         classList="mb-2"
-        labelText={localize(TRANSLATION, locale()).limits}
+        labelText={i18n().limits}
         labelPosition="right"
         labelClassList="ml-2"
         checked={limit()}
@@ -285,11 +305,11 @@ export const CosmereLeveling = (props) => {
       <Show when={items()}>
         <Toggle
           innerClassList="p-2! flex flex-col gap-2"
-          title={<p>{localize(TRANSLATION, locale()).expertises}</p>}
+          title={<p>{i18n().expertises}</p>}
         >
           <For each={['weapon', 'armor']}>
             {(kind) =>
-              <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList[kind]}>
+              <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={i18n().expertisesList[kind]}>
                 <For each={items().filter((item) => item.kind === kind && (character().expertises[kind].includes(item.slug) || !limit() || !item.info.only || item.info.only.includes(character().setting)))}>
                   {(item) =>
                     <div class="ancestry-item">
@@ -306,7 +326,7 @@ export const CosmereLeveling = (props) => {
               </Toggle>
             }
           </For>
-          <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList.culture}>
+          <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={i18n().expertisesList.culture}>
             <For each={Object.entries(cultures())}>
               {([slug, values]) =>
                 <div class="ancestry-item">
@@ -321,17 +341,22 @@ export const CosmereLeveling = (props) => {
               }
             </For>
           </Toggle>
-          <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={localize(TRANSLATION, locale()).expertisesList.utility}>
+          <Toggle containerClassList="mb-0!" innerClassList="p-2!" title={i18n().expertisesList.utility}>
             <div class="flex flex-col gap-4">
               <Show when={character().custom_expertises.length > 0}>
                 <div>
                   <Key each={character().custom_expertises} by={item => item.name}>
-                    {(expertise) =>
+                    {(expertise, index) =>
                       <div class="ancestry-item flex justify-beetween items-start">
                         <Text containerClassList="flex-1" labelText={expertise().name} text={expertise().desc} />
-                        <Button default size="small" classList="ml-4 opacity-75" onClick={() => removeExpertise(expertise())}>
-                          <Close />
-                        </Button>
+                        <div class="flex gap-2">
+                          <Button default size="small" classList="opacity-75" onClick={() => changeExpertise(expertise(), index())}>
+                            <Edit width={14} height={14} />
+                          </Button>
+                          <Button default size="small" classList="opacity-75" onClick={() => removeExpertise(expertise())}>
+                            <Close />
+                          </Button>
+                        </div>
                       </div>
                     }
                   </Key>
@@ -339,12 +364,12 @@ export const CosmereLeveling = (props) => {
               </Show>
               <Show
                 when={editMode()}
-                fallback={<Button default textable onClick={() => setEditMode(true)}><span>{localize(TRANSLATION, locale()).add}</span></Button>}
+                fallback={<Button default textable onClick={() => setEditMode(true)}><span>{i18n().add}</span></Button>}
               >
                 <div>
-                  <Input labelText={localize(TRANSLATION, locale()).expName} value={expName()} onInput={setExpName} />
-                  <TextArea rows="3" containerClassList="mt-2" labelText={localize(TRANSLATION, locale()).expDesc} value={expDesc()} onChange={setExpDesc} />
-                  <Button default textable classList="mt-2" onClick={saveNewSkill}><span>{localize(TRANSLATION, locale()).add}</span></Button>
+                  <Input labelText={i18n().expName} value={expName()} onInput={setExpName} />
+                  <TextArea rows="3" containerClassList="mt-2" labelText={i18n().expDesc} value={expDesc()} onChange={setExpDesc} />
+                  <Button default textable classList="mt-2" onClick={saveNewSkill}><span>{i18n().save}</span></Button>
                 </div>
               </Show>
             </div>
@@ -356,20 +381,20 @@ export const CosmereLeveling = (props) => {
           innerClassList="p-2! flex flex-col gap-2"
           title={
             <div class="flex justify-between items-center">
-              <p>{localize(TRANSLATION, locale()).heroicTalents}</p>
-              <p>{localize(TRANSLATION, locale()).talentPoints} - {featsCount()}/{character().talent_points}</p>
+              <p>{i18n().heroicTalents}</p>
+              <p>{i18n().talentPoints} - {featsCount()}/{character().talent_points}</p>
             </div>
           }
         >
           <Checkbox
-            labelText={localize(TRANSLATION, locale()).showDescription}
+            labelText={i18n().showDescription}
             labelPosition="right"
             labelClassList="ml-2"
             checked={showDescription()}
             onToggle={() => setShowDescription(!showDescription())}
           />
           <Checkbox
-            labelText={localize(TRANSLATION, locale()).showOnlyActive}
+            labelText={i18n().showOnlyActive}
             labelPosition="right"
             labelClassList="ml-2"
             checked={showActive()}
@@ -383,7 +408,7 @@ export const CosmereLeveling = (props) => {
           <For each={['paths', 'invested_paths', 'invested_arts']}>
             {(item) =>
               <Show when={feats()[item]}>
-                <p>{localize(TRANSLATION, locale()).titles[item]}</p>
+                <p>{i18n().titles[item]}</p>
                 <For each={feats()[item]}>
                   {(path) =>
                     <Show when={showActive() ? (path.feats && path.feats.find((item) => item.selected)) : (!limit() || !path.only || path.only.includes(character().setting))}>
