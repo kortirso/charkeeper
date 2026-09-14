@@ -62,6 +62,8 @@ export const CosmereEquipment = (props) => {
           />
         </Show>
       }
-    />
+    >
+      {props.children}
+    </Equipment>
   );
 }

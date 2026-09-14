@@ -39,6 +39,7 @@ module CharactersContext
           optional(:separate_shield).filled(:bool)
           optional(:selected_features).hash
           optional(:learned_spells).hash
+          optional(:money).filled(:integer, gteq?: 0)
         end
       end
 

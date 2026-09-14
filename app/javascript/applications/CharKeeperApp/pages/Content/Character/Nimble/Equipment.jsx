@@ -76,6 +76,8 @@ export const NimbleEquipment = (props) => {
       currentGuideStep={props.character.guide_step}
       guideStep={props.guideStep}
       helpMessage={props.guideStep ? props.helpMessage : null}
-    />
+    >
+      {props.children}
+    </Equipment>
   );
 }

@@ -5,7 +5,9 @@ import {
   NimbleAbilities, NimbleSkills, NimbleBonuses, NimbleInfo, NimbleHealth, NimbleLeveling, NimbleRest, NimbleEquipment,
   NimbleSpells
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, Feats, createRoll, ConditionsV2 } from '../../../components';
+import {
+  CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, Feats, createRoll, ConditionsV2, GoldSingle
+} from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -118,7 +120,9 @@ export const Nimble = (props) => {
                 guideStep={3}
                 helpMessage={i18n().equipmentHelpMessage}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
-              />
+              >
+                <GoldSingle character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </NimbleEquipment>
             </Match>
             <Match when={activeMobileTab() === 'spells'}>
               <NimbleSpells
@@ -221,7 +225,9 @@ export const Nimble = (props) => {
                 guideStep={3}
                 helpMessage={i18n().equipmentHelpMessage}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
-              />
+              >
+                <GoldSingle character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </NimbleEquipment>
             </Match>
             <Match when={activeTab() === 'spells'}>
               <NimbleSpells

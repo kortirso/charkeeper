@@ -23,6 +23,7 @@ module Cosmere
     attribute :goals, array: true, default: [] # [{ id: 1, text: '', counter: 0 }]
     attribute :connections, array: true, default: [] # [{ id: 1, text: '' }]
     attribute :singer_form, :string, default: 'dullform'
+    attribute :money, :integer, default: 0
     # для левелинга
     attribute :attribute_points, :integer
     attribute :skill_points, :integer

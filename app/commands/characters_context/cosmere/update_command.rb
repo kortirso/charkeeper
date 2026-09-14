@@ -59,6 +59,7 @@ module CharactersContext
           optional(:singer_form).filled(:string)
           optional(:selected_features).hash
           optional(:old_value)
+          optional(:money).filled(:integer, gteq?: 0)
         end
       end
 
