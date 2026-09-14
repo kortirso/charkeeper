@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - unified custom features
 - money management for cosmere/nimble characters
 
+### Modified
+- leveling up safe mode
+
 ## [0.5.10] - 2026-09-07
 ### Added
 - Cosmere PDF

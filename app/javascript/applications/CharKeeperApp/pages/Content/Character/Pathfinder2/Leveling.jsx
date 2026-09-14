@@ -1,6 +1,6 @@
 import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
-import { Button, ErrorWrapper, Toggle, Select, createModal, Text, Input, Label } from '../../../../components';
+import { Button, ErrorWrapper, Toggle, Select, createModal, Text, Input, Label, LevelUp } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Upgrade, Check, Close } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -282,13 +282,10 @@ export const Pathfinder2Leveling = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Leveling' }}>
-      <div class="blockable py-4 px-2 md:px-4 mb-2 flex flex-col md:flex-row md:justify-between md:items-center gap-y-2">
-        <div class="flex items-center">
-          <Button default classList="rounded mr-4" onClick={() => updateCharacter({ level: character().level + 1 })}>
-            <Upgrade width="24" height="24" />
-          </Button>
+      <div class="character-info-block mb-2 flex flex-col md:flex-row md:justify-between md:items-center gap-y-2">
+        <LevelUp character={character()} levelUp={() => updateCharacter({ level: character().level + 1 })}>
           <p>{character().level} {i18n().currentLevel}</p>
-        </div>
+        </LevelUp>
         <div class="flex justify-between items-end gap-2">
           <Input
             numeric

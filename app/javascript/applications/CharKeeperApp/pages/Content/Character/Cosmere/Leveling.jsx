@@ -1,7 +1,7 @@
 import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 import { Key } from '@solid-primitives/keyed';
 
-import { Button, ErrorWrapper, Toggle, Checkbox, Input, TextArea, Text } from '../../../../components';
+import { Button, ErrorWrapper, Toggle, Checkbox, Input, TextArea, Text, LevelUp } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Upgrade, Close } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -98,7 +98,6 @@ export const CosmereLeveling = (props) => {
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
   const [showDescription, setShowDescription] = createSignal(false);
-  const [leveling, setLeveling] = createSignal(false);
   const [homebrews, setHomebrews] = createSignal(undefined);
 
   const [showActive, setShowActive] = createSignal(true);
@@ -178,14 +177,6 @@ export const CosmereLeveling = (props) => {
   const removeExpertise = (value) => {
     const payload = character().custom_expertises.filter((item) => item !== value);
     updateCharacter({ custom_expertises: payload }, true);
-  }
-
-  const levelUp = async () => {
-    setLeveling(true);
-
-    await updateCharacter({ level: character().level + 1 });
-
-    setTimeout(() => setLeveling(false), 3000);
   }
 
   const updateCharacter = async (payload, onlyHead = false) => {
@@ -278,13 +269,10 @@ export const CosmereLeveling = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'CosmereLeveling' }}>
-      <div class="blockable py-4 px-2 mb-2">
-        <div class="flex items-center">
-          <Button default disabled={leveling()} classList="rounded mr-4" onClick={levelUp()}>
-            <Upgrade width="24" height="24" />
-          </Button>
+      <div class="character-info-block mb-2">
+        <LevelUp character={character()} levelUp={() => updateCharacter({ level: character().level + 1 })}>
           <p>{character().level} {localize(TRANSLATION, locale()).currentLevel}</p>
-        </div>
+        </LevelUp>
       </div>
       <Checkbox
         classList="mb-2"

@@ -1,6 +1,6 @@
 import { createSignal, createEffect, createMemo, Show } from 'solid-js';
 
-import { Button, ErrorWrapper, GuideWrapper, Select, Languages } from '../../../../components';
+import { Button, ErrorWrapper, GuideWrapper, Select, Languages, LevelUp } from '../../../../components';
 import config from '../../../../data/nimble.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Upgrade } from '../../../../assets';
@@ -72,8 +72,7 @@ export const NimbleLeveling = (props) => {
         finishGuideStep={true}
       >
         <div class="character-info-block mb-2">
-          <div class="flex items-center">
-            <Button default classList="rounded mr-4" onClick={levelUp}><Upgrade width="24" height="24" /></Button>
+          <LevelUp character={character()} levelUp={levelUp}>
             <p>
               <Show
                 when={character().subclass}
@@ -83,7 +82,7 @@ export const NimbleLeveling = (props) => {
               </Show>
               {' '}- {character().level} {i18n().currentLevel}
             </p>
-          </div>
+          </LevelUp>
           <Show when={character().level >= 3 && !character().subclass}>
             <Select
               labelText={i18n().selectSubclass}

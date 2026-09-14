@@ -42,6 +42,7 @@ export * from './substances/Combat';
 export * from './substances/Gold';
 export * from './substances/GoldSingle';
 export * from './substances/Languages';
+export * from './substances/LevelUp';
 
 export * from './wrappers/Guide';
 export * from './wrappers/Resource';

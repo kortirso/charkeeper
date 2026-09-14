@@ -1,7 +1,7 @@
 import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
 import { Dc20Ancestries } from '../../../../pages';
-import { Button, ErrorWrapper, GuideWrapper, Toggle, Checkbox, Select } from '../../../../components';
+import { Button, ErrorWrapper, GuideWrapper, Toggle, Checkbox, Select, LevelUp } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Upgrade, PlusSmall } from '../../../../assets';
@@ -267,8 +267,7 @@ export const Dc20Leveling = (props) => {
         finishGuideStep={true}
       >
         <div class="character-info-block mb-2">
-          <div class="flex items-center">
-            <Button default classList="rounded mr-4" onClick={levelUp}><Upgrade width="24" height="24" /></Button>
+          <LevelUp character={character()} levelUp={levelUp}>
             <p>
               <Show
                 when={character().subclass}
@@ -278,7 +277,7 @@ export const Dc20Leveling = (props) => {
               </Show>
               {' '}- {character().level} {localize(TRANSLATION, locale()).currentLevel}
             </p>
-          </div>
+          </LevelUp>
           <Show when={character().level >= 3 && !character().subclass}>
             <Select
               labelText={localize(TRANSLATION, locale()).selectSubclass}
