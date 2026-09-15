@@ -3,7 +3,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   CosmereAbilities, CosmereSkills, CosmereDefenses, CosmereHealth, CosmereInfo, CosmereRest, CosmereLeveling, CosmereBonuses,
-  CosmereGoals, CosmereSingerForm, CosmereEquipment
+  CosmereGoals, CosmereSingerForm, CosmereEquipment, CosmerePowers
 } from '../../../pages';
 import {
   CharacterNavigation, Notes, Avatar, ContentWrapper, Combat, createRoll, Feats, GoldSingle, ConditionsV2
@@ -108,6 +108,11 @@ export const Cosmere = (props) => {
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
+              <Show when={character().powers.length > 0}>
+                <div class="mt-4">
+                  <CosmerePowers character={character()} />
+                </div>
+              </Show>
               <div class="mt-4">
                 <Feats
                   directTranslation
@@ -211,6 +216,11 @@ export const Cosmere = (props) => {
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
+              <Show when={character().powers.length > 0}>
+                <div class="mt-4">
+                  <CosmerePowers character={character()} />
+                </div>
+              </Show>
               <div class="mt-4">
                 <Feats
                   directTranslation

@@ -39,6 +39,7 @@ class CosmereDecorator < ApplicationDecoratorV2
 
   def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize
     @result['skills'] = generate_skills_payload
+    @result['powers'] = generate_powers_payload
     @result['defense'] = {
       'physical' => 10 + modified_abilities['str'] + modified_abilities['spd'],
       'cognitive' => 10 + modified_abilities['int'] + modified_abilities['wil'],
@@ -251,6 +252,19 @@ class CosmereDecorator < ApplicationDecoratorV2
       level: skill_level,
       modifier: skill_level + modified_abilities[ability]
     }
+  end
+
+  def generate_powers_payload
+    keys = selected_skills.keys
+    Config.data('cosmere', 'surges').filter_map do |slug, values|
+      next unless keys.include?(slug)
+
+      name = values['name']
+      {
+        name: name.is_a?(Hash) ? translate(name) : name,
+        level: selected_skills[slug].to_i
+      }
+    end
   end
 
   def find_tier
