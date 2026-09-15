@@ -35,6 +35,7 @@ export * from './Content/Character/Cosmere/Bonuses';
 export * from './Content/Character/Cosmere/Goals';
 export * from './Content/Character/Cosmere/SingerForm';
 export * from './Content/Character/Cosmere/Equipment';
+export * from './Content/Character/Cosmere/Powers';
 
 export * from './Content/Character/Dnd5';
 export * from './Content/Character/Dnd5/Abilities';

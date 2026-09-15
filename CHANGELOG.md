@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - money management for cosmere/nimble characters
 - conditions management for cosmere characters
 - expertise editing for cosmere characters
+- rendering powers scaling for cosmere characters
 
 ### Modified
 - leveling up safe mode
