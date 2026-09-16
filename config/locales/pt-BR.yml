@@ -1,0 +1,879 @@
+pt-BR:
+  changelogs:
+    '5003':
+      nimble:
+        title1: Integração principal
+        desc1: Nimble compatible characters support was added
+      dc20:
+        title1: 0.10.5 support
+        desc1: total rebuilding DC20 characters management for better support 0.10.5 rules
+      daggerheart:
+        title1: Homebrew Vault
+        desc1: creating and using any kinds of homebrews
+      cthulhu:
+        title1: Core integration
+        desc1: Call of Cthulhu compatible characters support was added
+    '4031':
+      cosmere:
+        title1: Easy character creation
+        title2: Equipment and available attacks
+        title3: Plot die
+        title4: Leveling
+        desc1: For new Cosmere character you need just select ancestry, culture and heroic path
+        desc2: You can select any equipment for your character, combat section will render all available attacks
+        desc3: In addition to simple D20 rolls you can make plot die rolls
+        desc4: You can change level of your characters, select expertises and talents
+    '4026':
+      pf:
+        title1: Archetypes
+        title2: Animal companions
+        title3: Damage reduction
+        title4: Static classes progression
+        desc1: Added selecting archetypes
+        desc2: Added editing animal companions
+        desc3: Added auto and manual counting of damage reduction
+        desc4: Added auto attach static class feats by levels
+    '4023':
+      pf:
+        title1: Pet Feats
+        title2: Experience Calculation
+        title3: Secondary Speeds
+        title4: Hero Points
+        title5: Health
+        desc1: Added the ability to manage pet/familiar feats with automatic bonuses
+        desc2: Added the ability to take character experience into account
+        desc3: Added the display of secondary speeds with the ability to add bonuses to them
+        desc4: Added the ability to take Hero Points into account
+        desc5: Added automatic calculation of maximum health
+    '4021':
+      dnd:
+        title1: Homebrews
+        desc1: Added homebrew feats and subclasses
+      pf:
+        title1: Spells management
+        title2: Static feats
+        title3: Rest options
+        title4: Bonuses
+        title5: Pets
+        title6: Ability boosts
+        desc1: Added the ability to learn/prepare simple and spontaneous spells, and manage innate and focal spells (automatically and manually)
+        desc2: Added automatic feats progression for ancestries and classes based on level
+        desc3: Added the ability to start a rest with automatic application of rest effects
+        desc4: Added the ability to add static or dynamic bonuses to character stats
+        desc5: Added the basic ability to create pets/familiars
+        desc6: Improved management of primary stats
+    '4019':
+      cosmere:
+        title1: Core integration
+        desc1: Cosmere RPG compatible characters support was added
+    '4018':
+      dh:
+        title1: Loot tables
+        title2: Companion avatars
+        title3: Rally dice
+        desc1: characters can get random items like specified in core roolbook
+        desc2: you can upload avatar for character's companion
+        desc3: you can specify current Rally Dice for your characters provided by party bard
+      dnd:
+        title1: Homebrew spells
+        desc1: you can create/copy/manage/share homebrew spells for any of your characters
+    '4016':
+      dnd:
+        title1: Homebrew subclasses
+        title2: Bonuses system
+        title3: Saving throws
+        desc1: you can create/copy/manage/share subclasses for any of your characters
+        desc2: bonuses system was totally modified for better character customization
+        desc3: rendering of saving throws was modified
+      pf:
+        title1: Leveling management
+        title2: Lore skills
+        desc1: characters can change their level and select general/skill/ancestry/class feats or any additional feats
+        desc2: you can manually manage lore skills for your characters
+    '4015':
+      dc20:
+        title1: 0.10 support
+        desc1: total rebuilding DC20 characters management for better support 0.10 rules
+    '4014':
+      fallout:
+        title1: Core integration
+        desc1: Fallout 2d20 compatible characters support was added
+  forbidden: Forbidden
+  not_found: Object is not found
+  change_locale: Change locale
+  close_cookie: Close cookie
+  validation_error: Validation error
+  too_many_requests: Too many requests in 1 minute
+  tips:
+    title: Tips
+    description: CharKeeper is absolutely free, but if you like using CharKeeper and would like to help with the development of the application, you can leave a small donation in one of the ways listed below. Now funds are only needed to pay for the domain name and hosting, but there are plans to pay for the work of enthusiasts who are filling the application with data from various role-playing systems, and to release CharKeeper on iOS (need to pay for an Apple developer account). I would be grateful for any help.
+    buymeacoffee: Buy Me a Coffee
+    boosty: Boosty
+  cookie_banner:
+    title: Cookie banner
+    p1: Charkeeper doesn't use third-party cookies, only a single in-house cookie.
+    p2: No data is sent to third party.
+  providers:
+    daggerheart: Daggerheart
+    dnd5: D&D 5
+    dnd2024: D&D 2024
+    pathfinder2: Pathfinder 2
+    dc20: DC20
+    fate: Fate
+    fallout: Fallout 2D20
+  commands:
+    campaigns_context:
+      join_campaign:
+        provider_mismatch: Provider mismatch
+      items:
+        not_enough_items: Not enough items
+        character_not_found: Character is not found
+    characters_context:
+      dnd2024:
+        craft:
+          no_money: Not enough money
+      items:
+        consume:
+          done: "%{value} is consumed, roll - %{roll}"
+      fallout:
+        talents:
+          add:
+            full_rank: Maximum rank is achieved
+    homebrew_context:
+      daggerheart:
+        items:
+          add:
+            invalid_formula: Invalid formula
+  services:
+    sheets_context:
+      level: Level
+      attack: ATTACK
+      dist: DISTANCE
+      damage: DAMAGE
+      trait: TYPE
+      count: COUNT
+      equipment: EQUIPMENT
+      spells: SPELLS
+      slots: SPELL SLOTS
+      features: FEATURES
+      uses_left: Uses left
+      cosmere:
+        physical: Physical
+        cognitive: Cognitive
+        spiritual: Spiritual
+        health: Health
+        focus: Focus
+        investiture: Investiture
+        attacks: ATTACKS
+        skills: SKILLS
+        expertises: EXPERTISES
+        deflect: Deflect
+        speed: Movement
+        senses: Senses
+        lifting: Lifting
+        recovery: Recovery
+        goals: GOALS
+        connections: CONNECTIONS
+        purpose: Purpose
+        obstacle: Obstacle
+      dc20:
+        attacks: ATTACKS
+        skills: SKILLS
+        health: HEALTH
+        trades: TRADES
+        defenses: DEFENSES
+        checks: CHECKS
+        pd: PD
+        ad: AD
+        speed: Speed
+        save: Save DC
+        initiative: Initiative
+        attack: Attack
+        spell: Spell check
+        martial: Martial check
+      equipments:
+        hands: In hands
+        equipment: On body
+        backpack: In backpack
+        storage: In storage
+      gold:
+        coins: Coins
+        handfuls: Handfuls
+        bags: Bags
+        chests: Chests
+        copper: Copper
+        silver: Silver
+        gold: Gold
+      pathfinder:
+        armor_class: Armor class
+        perception: Perception
+        speed: Speed
+      dnd:
+        initiative: Initiative
+        armor_class: Armor class
+        speed: Speed
+        health: HEALTH
+        skills: SKILLS
+        current_health: Current
+        max_health: Max
+        temp_health: Temp
+        success: Success
+        failure: Failure
+        saving_throws: SAVING THROWS
+        attacks: ATTACKS
+        spells:
+          concentration: C
+          ritual: R
+          action: Action
+          dist: Distance
+          hit: Hit / DC
+          comp: Components
+          duration: Duration
+          area: Area
+          effects: Effects
+        actions:
+          A: A
+          BA: BA
+          R: R
+          h: hr
+          m: min
+        ranges:
+          self: Self
+          touch: Touch
+          none: ''
+          ft: ft
+          mile: mil
+        components:
+          v: V
+          s: S
+          m: M
+        durations:
+          instant: Inst
+          r: rn
+          m: min
+          h: hr
+          d: d
+        areas:
+          cube: Cube
+          cone: Cone
+          line: Line
+          sphere: Sphere
+          emanation: Emanation
+          cylinder: Cylinder
+          square: Square
+        effects:
+          buff: Buff
+          debuff: Debuff
+          heal: Heal
+          damage: Dmg
+      daggerheart:
+        proficiency: Proficiency
+        evasion: Evasion
+        armor_score: Armor score
+        armor_slots: ARMOR
+        hp: HP
+        stress: STRESS
+        hope: HOPE
+        experience: EXPERIENCE
+        health: HEALTH
+        minor: Minor
+        major: Major
+        severe: Severe
+        domain_cards: DOMAIN CARDS
+        level: "%{value} level"
+    bot_context:
+      representers:
+        with_adv: with advantage
+        with_adv_number: with advantage %{value}
+        with_dis: with disadvantage
+        with_dis_number: with disadvantage %{value}
+        cosmere:
+          light_complication: Complication +2
+          heavy_complication: Complication +4
+          opportunity: Opportunity
+          blank: Blank
+        check:
+          result: "Roll result - "
+          dnd:
+            crit_success: Critical success
+            crit_failure: Critical failure
+            success: "%{result}"
+            attr: makes an %{attr} check
+            save: makes an %{attr} save
+            skill: makes an %{attr} skill check
+            attack: makes an attack check with %{target}
+            initiative: makes an initiative check
+          daggerheart:
+            crit_success: Critical success
+            with_hope: "%{result} with hope"
+            with_fear: "%{result} with fear"
+            attr: makes an %{attr} check
+            attack: makes an attack check with %{target}
+          fate:
+            skill: makes an %{attr} skill check
+            stunt: makes an %{attr} stunt check
+          fallout:
+            result: Successes - %{successes}, Complications - %{complications}
+            skill: makes an %{attr} skill check
+        roll:
+          result: Rolls
+          rolls: makes dice rolls
+          total: Result
+          nothing: No result
+          miss: Miss
+        campaign:
+          create:
+            result: "Campaign \"%{name}\" is created"
+          remove:
+            result: Campaign is deleted
+          show:
+            characters: "Campaign' characters"
+  decorators:
+    pathfinder2:
+      boosts: "You can improve abilities: %{ability_boosts_text}.\nYou can learn skills: %{skill_boosts_text}"
+      free: Free
+      int: + Int modifier
+  frontend:
+    characters:
+      bonuses:
+        need_update: Please update app version
+  web:
+    welcome:
+      index_v2:
+        title: Interactive character sheets for any tabletop games in one place
+        dashboard_link: Characters
+        homebrews_link: Homebrews
+        description3: Since January 23, 2026, Charkeeper runs on 2 separate servers as 2 independent applications. You can switch between servers, but adding/updating/deleting any data will only change on the current server. The mobile application can also be switched to use a more suitable server.
+        switch_ru: Switch to RU
+        switch_eu: Switch to EU
+        ttrpgs: Support for various tabletop rpgs
+        ttrpgs_desc: "CharKeeper currently supports various tabletop game systems: D&D 2014 and 2024, Daggerheart, Pathfinder 2, Fate, DC20, Cosmere RPG, Nimble, Call of Cthulhu and Fallout 2d20. You can save your character data without limitations."
+        ttrpgs_desc2: 'Data for Pathfinder 2 is provided by <a href="https://pf2.ru/" target="_blank" rel="noopener noreferrer" class="underline">Pathfinder 2E</a>.'
+        ttrpgs_desc3: This is unofficial fan content, created and shared for non-commercial use.
+        ttrpgs_desc4: "Cosmere RPG note: It has not been reviewed by Dragonsteel Entertainment, LLC or Brotherwise Games, LLC."
+        ttrpgs_desc5: "Nimble: Charkeeper is an independent product published under the Nimble 3rd Party Creator License. Nimble © Nimble Co. This app is free to use for anyone who already owns the content, is trying the system out, or cannot afford to buy it right now. If you enjoy Nimble and are able, please support the game by purchasing the official content at nimbleRPG.com."
+        extension: Browser Extensions
+        extension_desc: CharKeeper has the ability to import characters from D&D Beyond via dedicated browser extensions. Simply install the extension, visit the character page, and download the character file via the extension.
+        extension_for: Extension for
+        integrations: Integrations
+        integrations_desc: CharKeeper has integration capabilities with Owlbear Rodeo and Telegram to display dice roll results within the app and execute various commands.
+        cross: Cross-platform
+        cross_desc: CharKeeper is available as a web app, runs on iOS and Android mobile devices, and has a MacOS app.
+        homebrews:
+          title: Homebrews management system
+          feature_1: Create and share your homebrew races, classes, subclasses, items.
+          feature_2: Combine your homebrews to books for easy sharing with your players.
+        app_for: Application for
+        telegram_description: Available through %{href} in Telegram
+        telegram_link: bot
+        open_source: Open source
+        os_desc: CharKeeper is available as open source on GitHub. You can open issues with feedback or bug reports or contribute to CharKeeper development.
+        os_link: Source code link
+        support:
+          title: Support
+          description: CharKeeper is absolutely free, but if you like using CharKeeper and would like to help with the development of the application, you can leave a small donation in one of the ways listed below.
+    users:
+      ru_signup:
+        have: Already have account through external services?
+        title: A law was passed in the RU region, making it illegal to use foreign services to create a new account. If you've already created an account this way, you can only log in once more to set your username and password in your profile settings.
+        contacts: If you are unable to regain access to your account, please contact us using any of the contact information. Charkeeper does not store your personal data, so you will need to provide details of your characters to confirm.
+      auth:
+        notice: Authentication succeeds
+        alert: Authentication failed
+        spam: Spam alert
+      signup:
+        title: Sign up
+        username: Username
+        password: Password
+        confirmation: Password confirmation
+        have: Already have account?
+        login: Sign in
+        create: Create
+      signin:
+        title: Sign in
+        have_not: Don't have account?
+        signup: Sign up
+        create: Login
+        logout: Logout
+        forgot: Forgot password?
+        recovery: Recovery
+      recovery:
+        title: Password recovery
+  telegram_webhook:
+    unknown: "I don't know what to say, sorry :("
+    start: "Hello, %{sender}! I'm Charkeeper - an electronic character sheet! I'll help you keep track of your characters that you play tabletop role-playing games with. You can find the mini-app launcher button at the bottom left.\n\nWhat I can do now: create characters according to D&D 5 and 2024, Daggerheart and just a little bit Pathfinder 2 rules, take into account equipment and known spells, display current racial and class abilities available to the character depending on the level, take into account spent spell slots, refresh available abilities after rest, display all possible attack abilities and help with keeping the character sheet in every possible way.\n\nIn addition everything is available on: web interface - https://charkeeper.org, android application in Google Store - https://play.google.com/store/apps/details?id=org.kortirso.charkeeper, iOS application in App Store - https://testflight.apple.com/join/Fh1SjU8g.I'm still in the process of development, you can send your comments, questions and suggestions to @kortirso.\n\nTo unsubscribe from the bot's news list, enter the /unsubscribe command or delete this chat with the blocking bot."
+    contacts: "If you have any questions/comments/suggestions/bug reports or want to help the project, you can write directly in telegram - @kortirso.\n\nOr subscribe to the main groups - @charkeeper in telegram, https://vk.com/char_keeper in vk and https://discord.gg/CmT8RgyECQ in discord."
+    unsubscribe: "You have unsubscribed from receiving project news.\n\nTo subscribe again, use the /subscribe command."
+    subscribe: "You have subscribed to receive project news.\n\nTo unsubscribe, use the /unsubscribe command."
+    commands: "You can use various bot commands both in this chat and include the bot in your groups and call commands there.\n\nA full list of commands can be found at https://charkeeper.org/bot_commands"
+    help: "If you would like to help develop the app in any way, you can contact us with any questions using the contact information provided, or simply donate to cover expenses via:\n\nBoosty https://boosty.to/kortirso\ncrypto USDT (TRC20 | TRON) TT1T8m3ffwh9f8AVYqLkDB7miuJpAq1ji9"
+  tags:
+    nimble:
+      weapon:
+        bludge: Things that bludgeon you, like a hammer or fist.
+        pierce: Things that pierce you, like an arrow or fangs.
+        slash: Things that slash you, like a blade or claw.
+        light: Heroes may wield 2 light weapons at the same time. While dual wielding, you may gain advantage on an attack with those weapons, 1 per round.
+        thrown: Treat a melee weapon as if it had range. Once thrown, you no longer have it.
+        vicious: Roll 1 additional die whenever you roll crit damage.
+        2handed: Must be wielded in 2 hands to attack with it.
+        load: Extra actions to load before each shot.
+        title:
+          bludge: Bludgeoning
+          slash: Slashing
+          pierce: Piercing
+          light: Light
+          thrown: Thrown
+          vicious: Vicious
+          2handed: 2-handed
+          load: Load %{value}
+    cosmere:
+      weapon:
+        blast: The number in brackets expresses the weapon’s blast radius in feet. After you hit or graze a target with this weapon, you also graze every other character within that radius. On a hit, you can spend Opportunity from the attack test to instead hit every grazed character.
+        cumbersome: To wield this weapon easily, your Strength score must be equal to or greater than the number indicated in brackets. If your Strength is lower than that number, you gain a disadvantage on all attacks using this weapon and are Slowed while wielding it.
+        dangerous: The GM can spend Complication from an attack with this weapon to cause you to also accidentally graze an ally within the weapon's reach or range. This deals the usual damage for a graze.
+        deadly: When you hit a target with this weapon, you can spend Opportunity to cause the target to immediately suffer an injury.
+        defensive: While wielding this weapon, you can use the Brace action without cover nearby.
+        discreet: This weapon is less obtrusive than others, and thus less likely to be confiscated in secure settings. In non-combat scenes, you gain an advantage on any test you make to disguise this weapon, to hide it on your person, or to convince others not to take it from you.
+        fragile: When you attack with this weapon, the GM can spend Complication to cause it to break after the attack is resolved.
+        indirect: This ranged weapon can arc shots over cover and obscuring terrain. If a target isn't in your line of effect but you can sense them, you can still attack them with this weapon if there's a reasonably open path for your projectile to indirectly arc to them. Your target can't benefit from the Brace action against attacks made with this weapon.
+        loaded: This weapon stores ammunition equal to the number indicated in brackets. To make a ranged attack with this weapon, you must spend 1 stored ammunition. As action, you can reload this weapon to full ammunition. The GM can spend Complication from an attack with this weapon to reduce your stored ammunition; after they do, the weapon only has only one shot remaining.
+        momentum: When you attack using this weapon, if you already moved at least 10 feet in a straight line toward your target on this turn, you gain an advantage on the attack.
+        offhand: While wielding this weapon in your offhand, it only costs you 1 focus (instead of 2) to Strike with it.
+        pierce: This weapon's damage can't be reduced by the target's deflect value.
+        quickdraw: You can use the Interact action as free action to draw this weapon.
+        thrown: You can throw this weapon at a target, making a ranged attack when you do. The two numbers in brackets express the weapon's short and long range; as with ranged weapons, you gain a disadvantage when attacking a target outside short range. Once the weapon is thrown, it is lost until you recover it from your target.
+        two_handed: You must wield this weapon in two hands, not just one. When you attack with it, it uses both hands.
+        impact: Impact
+        keen: Keen
+        spirit: Spirit
+        title:
+          blast: Blast [%{value}]
+          cumbersome: Cumbersome
+          dangerous: Dangerous
+          deadly: Deadly
+          defensive: Defensive
+          discreet: Discreet
+          fragile: Fragile
+          indirect: Indirect
+          loaded: Loaded [%{value}]
+          momentum: Momentum
+          offhand: Offhand
+          pierce: Pierce
+          quickdraw: Quickdraw
+          thrown: Thrown %{value}
+          two_handed: Two-Handed
+          impact: Impact
+          keen: Keen
+          spirit: Spirit
+    pathfinder:
+      general:
+        acid: Acid
+        air: Air
+        alchemist: Alchemist
+        animist: Animist
+        arcane: Arcane
+        archetype: Archetype
+        attack: Attack
+        auditory: Auditory
+        aura: Aura
+        barbarian: Barbarian
+        bard: Bard
+        cantrip: Cantrip
+        cleric: Cleric
+        cold: Cold
+        composition: Composition
+        concentrate: Concentrate
+        consecration: Consecration
+        curse: Curse
+        darkness: Darkness
+        death: Death
+        dedication: Dedication
+        detection: Detection
+        disease: Disease
+        divine: Divine
+        downtime: Downtime
+        druid: Druid
+        dwarf: Dwarf
+        earth: Earth
+        electricity: Electricity
+        elf: Elf
+        emotion: Emotion
+        exemplar: Exemplar
+        exploration: Exploration
+        extradimensional: Extradimensional
+        fear: Fear
+        fighter: Fighter
+        fire: Fire
+        flourish: Flourish
+        focus: Focus
+        force: Force
+        fortune: Fortune
+        general: General
+        gnome: Gnome
+        goblin: Goblin
+        gunslinger: Gunslinger
+        halfling: Halfling
+        healing: Healing
+        hex: Hex
+        holy: Holy
+        human: Human
+        illusion: Illusion
+        incapacitation: Incapacitation
+        investigator: Investigator
+        leshy: Leshy
+        light: Light
+        linguistic: Linguistic
+        magus: Magus
+        manipulate: Manipulate
+        mental: Mental
+        misfortune: Misfortune
+        morph: Morph
+        move: Move
+        multiclass: Multiclass
+        nonlethal: Nonlethal
+        olfactory: Olfactory
+        oracle: Oracle
+        orc: Orc
+        plant: Plant
+        poison: Poison
+        polymorph: Polymorph
+        prediction: Prediction
+        press: Press
+        primal: Primal
+        psychic: Psychic
+        ranger: Ranger
+        revelation: Revelation
+        rogue: Rogue
+        sanctified: Sanctified
+        scrying: Scrying
+        secret: Secret
+        shadow: Shadow
+        skill: Skill
+        sleep: Sleep
+        sonic: Sonic
+        sorcerer: Sorcerer
+        spellshape: Spellshape
+        spirit: Spirit
+        stance: Stance
+        subtle: Subtle
+        summon: Summon
+        swashbuckler: Swashbuckler
+        teleportation: Teleportation
+        thaumaturge: Thaumaturge
+        uncommon: Uncommon
+        unholy: Unholy
+        visual: Visual
+        vitality: Vitality
+        void: Void
+        water: Water
+        witch: Witch
+        wizard: Wizard
+        wood: Wood
+    dnd:
+      weapon:
+        ammo: You can use a weapon that has the ammunition properly to make a ranged attack only if you have ammunition to fire from the weapon.
+        2handed: This weapon requires two hands to use.
+        heavy: Small creatures have disadvantage on attack rolls with heavy weapons. 
+        light: A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons.
+        reload: You can fire only one piece of ammunition from it per action.
+        reach: This weapon adds 5 feet to your reach when you attack with it.
+        thrown: You can throw the weapon to make a ranged attack.
+        versatile: This weapon can be used with one or two hands. Increase dice type for two-handed damage.
+        unwieldy: You have disadvantage on attacks made with the weapon against targets within 5 feet of you.
+        monk: Special monk weapon.
+        bludge: Things that bludgeon you, like a hammer or fist.
+        pierce: Things that pierce you, like an arrow or fangs.
+        slash: Things that slash you, like a blade or claw.
+        cleave: If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit, the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless that modifier is negative. You can make this extra attack only once per turn.
+        graze: If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.
+        nick: When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.
+        push: If you hit a creature with this weapon, you can push the creature up to 10 feet straight away from yourself if it is Large or smaller.
+        sap: If you hit a creature with this weapon, that creature has Disadvantage on its next attack roll before the start of your next turn.
+        slow: If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
+        topple: If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Pr one condition.
+        vex: If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
+        psychic: Psychic damage.
+        title:
+          ammo: Ammo
+          2handed: Two-Handed
+          heavy: Heavy
+          light: Light
+          reload: Loading
+          reach: Reach
+          thrown: Thrown
+          versatile: Versatile
+          unwieldy: Unwieldy
+          monk: Monk
+          bludge: Bludgeoning
+          pierce: Piercing
+          slash: Slashing
+          cleave: Cleave
+          graze: Graze
+          nick: Nick
+          push: Push
+          sap: Sap
+          slow: Slow
+          topple: Topple
+          vex: Vex
+          psychic: Psychic
+    daggerheart:
+      weapon:
+        physical: Physical damage comes from any wielded weapon that cuts, stabs, or bludgeons.
+        magic: Magic damage is caused or enhanced by magic.
+        Two-Handed: The weapon requires 2 hands when you Attack with it.
+        primary_weapon: Primary weapons are the main weapons your character will likely be fighting with during an encounter. A character can only hold one primary weapon at a time.
+        secondary_weapon: Secondary weapons are typically ancillary pieces of equipment that augment your character's fighting, such as shields, daggers, or small swords. If a character's primary weapon is one-handed, we recommend you also take a secondary weapon (but you can't hold your secondary weapon if you switch to a primary weapon that requires two hands).
+        title:
+          physical: Physical damage
+          magic: Magic damage
+          Two-Handed: Two-Handed
+          primary_weapon: Primary
+          secondary_weapon: Secondary
+    pathfinder2:
+      weapon:
+        acid: Acid damage.
+        bludge: Things that bludgeon you, like a hammer or fist.
+        pierce: Things that pierce you, like an arrow or fangs.
+        slash: Things that slash you, like a blade or claw.
+        agile: The multiple attack penalty you take with this weapon on the second attack on your turn is –4 instead of –5.
+        backstabber: When you hit an off-guard creature, this weapon deals 1 precision damage in addition to its normal damage. The precision damage increases to 2 if the weapon is a +3 weapon.
+        backswing: After missing with this weapon on your turn, you gain a +1 circumstance bonus to your next attack with this weapon before the end of your turn.
+        concealable: You gain a +2 circumstance bonus to Stealth checks and DCs to hide or conceal a weapon with this trait.
+        deadly: "On a critical hit, the weapon adds a weapon damage die of the listed size. Roll this after doubling the weapon's damage. This increases to two dice if the weapon has a greater striking rune and three dice if the weapon has a major striking rune."
+        disarm: "You can use this weapon to Disarm with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls (if any) as an item bonus to the Athletics check. If you critically fail a check to Disarm using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure. On a critical success, you still need a free hand if you want to take the item."
+        fatal: The fatal trait includes a die size. On a critical hit, the weapon's damage die increases to that die size instead of the normal die size, and the weapon adds one additional damage die of the listed size.
+        finesse: You can use your Dexterity modifier instead of your Strength modifier on attack rolls using this melee weapon.
+        forceful: When you attack with it more than once on your turn, the second attack gains a circumstance bonus to damage equal to the number of weapon damage dice, and each later attack gains a circumstance bonus to damage equal to double the number of damage dice.
+        free_hand: "This weapon doesn't take up your hand, usually because it is built into your armor. A free-hand weapon can't be Disarmed. You can use the hand covered by your free-hand weapon to wield other items, perform manipulate actions, and so on. You can't attack with a free-hand weapon if you're wielding anything in that hand or otherwise using that hand. When you're not wielding anything and not otherwise using the hand, you can use abilities that require you to have a hand free as well as those that require you to be wielding a weapon in that hand. Each of your hands can have only one free-hand weapon on it."
+        grapple: "You can use this weapon to Grapple with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls as an item bonus to the Athletics check. If you critically fail a check to Grapple using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure."
+        jousting: When mounted, if you moved at least 10 feet on the action before your attack, add a circumstance bonus to damage for that attack equal to the number of damage dice for the weapon. In addition, while mounted, you can wield the weapon in one hand, changing the damage die to the listed value.
+        monk: Many monks learn to use these weapons.
+        nonlethal: Attacks with this weapon are nonlethal, and are used to knock creatures unconscious instead of kill them. You can use a nonlethal weapon to make a lethal attack with a –2 circumstance penalty.
+        parry: While wielding this weapon, if your proficiency with it is trained or better, you can spend a single action to position your weapon defensively, gaining a +1 circumstance bonus to AC until the start of your next turn.
+        ranged_trip: "The weapon can be used to Trip with the Athletics skill within the weapon's first range increment. The skill check takes a –2 circumstance penalty. You can add the weapon's item bonus to attack rolls as a bonus to the check. A ranged trip weapon doesn't deal any damage when used to Trip. These weapons are usually thrown."
+        shove: "You can use this weapon to Shove with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls as an item bonus to the Athletics check. If you critically fail a check to Shove using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure."
+        sweep: When you attack with this weapon, you gain a +1 circumstance bonus to your attack roll if you already attempted to attack a different target this turn using this weapon.
+        thrown: You can throw this weapon as a ranged attack; it is a ranged weapon when thrown.
+        trip: "You can use this weapon to Trip with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls as an item bonus to the Athletics check. If you critically fail a check to Trip using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure."
+        twin: "When you attack with a twin weapon, you add a circumstance bonus to the damage roll equal to the weapon's number of damage dice if you have previously attacked with a different weapon of the same type this turn. The weapons must be of the same type, but they don't need to have the same runes."
+        two_hand: "This weapon can be wielded with two hands to change its weapon damage die to the indicated value. This change applies to all the weapon's damage dice."
+        unarmed: An unarmed attack uses your body rather than a manufactured weapon.
+        volley: Your attacks against targets that are at a distance within the range listed take a –2 penalty.
+        dwarf: Member of the dwarf ancestry
+        elf: Member of the elf ancestry
+        uncommon: Uncommon
+        versatile: A versatile weapon can be used to deal a different type of damage than its listed type.
+        orc: Member of the orc ancestry
+        gnome: Member of the gnome ancestry
+        goblin: Member of the goblin ancestry
+        halfling: Member of the halfling ancestry
+        propulsive: You add half your Strength modifier (if positive) to damage rolls with a propulsive ranged weapon.
+        title:
+          acid: Acid
+          bludge: Bludgeoning
+          pierce: Piercing
+          slash: Slashing
+          agile: Agile
+          backstabber: Backstabber
+          backswing: Backswing
+          concealable: Concealable
+          deadly: Deadly %{value}
+          disarm: Disarm
+          fatal: Fatal %{value}
+          finesse: Finesse
+          forceful: Forceful
+          free_hand: Free-Hand
+          grapple: Grapple
+          jousting: Jousting %{value}
+          monk: Monk
+          nonlethal: Nonlethal
+          parry: Parry
+          ranged_trip: Ranged Trip
+          shove: Shove
+          sweep: Sweep
+          thrown: Thrown %{value}
+          trip: Trip
+          twin: Twin
+          two_hand: Two-Hand %{value}
+          unarmed: Unarmed
+          volley: Volley %{value}
+          dwarf: Dwarf
+          elf: Elf
+          uncommon: Uncommon
+          versatile: Versatile
+          orc: Orc
+          gnome: Gnome
+          goblin: Goblin
+          halfling: Halfling
+          propulsive: Propulsive
+    dc20:
+      spell_tags:
+        aberration: Aberration
+        ailment: Ailment
+        air: Air
+        antimagic: Antimagic
+        beast: Beast
+        bleeding: Bleeding
+        blinded: Blinded
+        blood: Blood
+        bludgeoning: Bludgeoning
+        burning: Burning
+        celestial: Celestial
+        chaos: Chaos
+        charmed: Charmed
+        cleansing: Cleansing
+        cold: Cold
+        communication: Communication
+        construct: Construct
+        corrosion: Corrosion
+        curse: Curse
+        dazed: Dazed
+        deafened: Deafened
+        death: Death
+        disoriented: Disoriented
+        doomed: Doomed
+        earth: Earth
+        elemental: Elemental
+        embolden: Embolden
+        emotion: Emotion
+        emotions: Emotions
+        enfeeble: Enfeeble
+        exhaustion: Exhaustion
+        exposed: Exposed
+        fey: Fey
+        fiend: Fiend
+        fire: Fire
+        frightened: Frightened
+        gravity: Gravity
+        healing: Healing
+        hindered: Hindered
+        illusion: Illusion
+        immobilized: Immobilized
+        impaired: Impaired
+        incapacitated: Incapacitated
+        intimidated: Intimidated
+        invisible: Invisible
+        knowledge: Knowledge
+        light: Light
+        lightning: Lightning
+        madness: Madness
+        metamorphosis: Metamorphosis
+        motion: Motion
+        paralyzed: Paralyzed
+        piercing: Piercing
+        planes: Planes
+        plant: Plant
+        plants: Plants
+        poison: Poison
+        prone: Prone
+        psychic: Psychic
+        radiant: Radiant
+        restrained: Restrained
+        resurrection: Resurrection
+        scent: Scent
+        sense: Sense
+        shadow: Shadow
+        slashing: Slashing
+        slowed: Slowed
+        sound: Sound
+        spirit: Spirit
+        strike: Strike
+        stunned: Stunned
+        summoning: Summoning
+        surprised: Surprised
+        taunted: Taunted
+        teleportation: Teleportation
+        terrified: Terrified
+        tethered: Tethered
+        thoughts: Thoughts
+        time: Time
+        trap: Trap
+        "true": "True"
+        umbral: Umbral
+        unconscious: Unconscious
+        undead: Undead
+        ward: Ward
+        water: Water
+        weakened: Weakened
+        weapon: Weapon
+      focus:
+        Long-Ranged: Spells you cast with a Range greater than 1 have their range increase by 5 Spaces.
+        Channeling: You gain a +1 bonus to Spell Checks.
+        Close Quarters: Your Ranged Spell Attacks don’t have DisADV if you’re within the Melee Range of enemies.
+        Muffled: Your Verbal Components can only be heard within 5 Spaces of you.
+        Powerful: Your Spell Attacks deal +1 damage to all targets.
+        Protective: Your AD increases by 1.
+        Reach: Spells you cast with a Range of 1 have their range increase by 1 Space.
+        Reactive: When you are the Challenger or a Participant helping the Challenger in a Spell Duel, they gain ADV on their Check to stop the Spell.
+        Two-Handed: The Spell Focus requires 2 hands to benefit from its properties.
+        Vicious: You gain a +1 bonus to hit with Spell Attacks.
+        Warded: You have MDR.
+      weapon:
+        Axe: "The target makes a Repeated Physical Save. Failure: The target begins Bleeding."
+        Bow: "The target makes an Agility Save. Failure: The target is Slowed until the end of its next turn."
+        Crossbow: You add a d4 to your Attack Check.
+        Fist: "Fist Weapons are considered to be a free hand for the purposes of Grappling. Grapple: The target makes a Physical Save. Failure: The target becomes Grappled by you."
+        Hammer: "The target makes a Might Save. Failure: The target is pushed 1 Space away. Each time you use this Enhancement, the target is pushed 1 additional Space."
+        Pick: "The target makes an Agility Save. Failure: The target becomes Hindered until the end of their next turn."
+        Sling: "The target makes an Agility Save. Failure: The target becomes Hindered until the end of their next turn."
+        Spear: "The target makes an Agility Save. Failure: The target becomes Slowed until the end of their next turn."
+        Staff: "The target makes a Physical Save. Failure: The target falls Prone."
+        Sword: You add a d4 to your Attack Check.
+        Whip: "The target makes a Might Save. Failure: The target is moved horizontally 1 Space toward you or to your left or right. Each time you use this Enhancement, the target is moved 1 additional Space."
+        Ammo: You can load a weapon as part of an Attack made with it.
+        Concealable: Drawing the weapon doesn't provoke Opportunity Attacks. If you draw the weapon as part of an Attack, you have ADV on the Attack. You can only gain this benefit once against each creature per Combat.
+        Cumbersome: It takes 1 AP to draw, stow, or pick up this Weapon.
+        Deft: Ranged Attacks with this Weapon don't have DisADV as a result of you being Prone.
+        Guard: You gain +1 PD while wielding the weapon.
+        Heavy: The Weapon's damage increases by 1.
+        Impact: You deal +1 situational damage on Heavy Hits.
+        Multi-Faceted: You must choose which weapon Style to use. The chosen weapon Style determines the Attack's damage type.
+        Reach: This weapon adds 1 Space to your Melee Range when you Attack with it.
+        Reload: You must spend 1 AP or 1 SP and use a free hand to reload the Weapon. If the Weapon stops being held, it must be loaded again.
+        Silent: When you make a Ranged Attack with the weapon while Hidden, you remain Unheard by creatures you're Hidden from.
+        Toss: You can throw the weapon to make a Ranged Martial Attack.
+        Thrown: You can throw the weapon to make a Ranged Martial Attack.
+        Two-Handed: The weapon requires 2 hands when you Attack with it.
+        Unwieldy: You have DisADV on Attacks made with the weapon against targets within 1 Space of you.
+        Versatile: This weapon can be wielded with 1 or 2 hands. When you wield the weapon with 2 hands, you gain a +2  situational bonus to Hit using it.
+        Returning: When you Miss a Ranged Attack with the Weapon, it returns to your hand.
+        Grasp: The Shield is considered to be a free hand when Grappling, Reloading a Weapon, or Attacking with Versatile Weapon.
+        Mounted: The Shield's Bonus also applies to your Mount's Defense.
+        b: Things that bludgeon you, like a hammer or fist.
+        p: Things that pierce you, like an arrow or fangs.
+        s: Things that slash you, like a blade or claw.
+        title:
+          Axe: Axe
+          Bow: Bow
+          Crossbow: Crossbow
+          Fist: Fist
+          Hammer: Hammer
+          Pick: Pick
+          Sling: Sling
+          Spear: Spear
+          Staff: Staff
+          Sword: Sword
+          Whip: Whip
+          Ammo: Ammo
+          Concealable: Concealable
+          Cumbersome: Cumbersome
+          Deft: Deft
+          Guard: Guard
+          Heavy: Heavy
+          Impact: Impact
+          Multi-Faceted: Multi-Faceted
+          Reach: Reach
+          Reload: Reload
+          Silent: Silent
+          Toss: Toss
+          Thrown: Thrown
+          Two-Handed: Two-Handed
+          Unwieldy: Unwieldy
+          Versatile: Versatile
+          Returning: Returning
+          Grasp: Grasp
+          Mounted: Mounted
+          b: Bludgeoning
+          p: Piercing
+          s: Slashing

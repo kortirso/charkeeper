@@ -1,0 +1,255 @@
+{
+  "loading": "Loading screen",
+  "pages": {
+    "settingsPage": {
+      "logout": "Logout",
+      "version": "Version",
+      "title": "Settings",
+      "feedback": "Feedback",
+      "profile": "Profile",
+      "socials": "Community links",
+      "notifications": "Notifications"
+    },
+    "characterNavigation": {
+      "allFilter": "All",
+      "dc20": "DC20",
+      "dnd5": "D&D 5",
+      "dnd2024": "D&D 2024",
+      "pathfinder2": "Pathfinder 2",
+      "daggerheart": "Daggerheart",
+      "fate": "Fate",
+      "cosmere": "Cosmere",
+      "fallout": "Fallout 2D20",
+      "cthulhu7": "Call of Cthulhu 7",
+      "nimble": "Nimble",
+      "aspects": "Aspects",
+      "skills": "Skills",
+      "vitals": "Vitals",
+      "traits": "Traits",
+      "combat": "Combat",
+      "equipment": "Equipment",
+      "domainCards": "Domains",
+      "bonuses": "Bonuses",
+      "rest": "Rest",
+      "notes": "Notes",
+      "classLevels": "Leveling",
+      "avatar": "Personal",
+      "abilities": "Abilities",
+      "professions": "Mastery",
+      "spells": "Spells",
+      "companion": "Pet/Familiar",
+      "ancestry": "Ancestry",
+      "community": "Community",
+      "class": "Class",
+      "subclass": "Subclass",
+      "beastform": "Beastform",
+      "wildForms": "Wild Form",
+      "race": "Race",
+      "subrace": "Subrace",
+      "species": "Species",
+      "legacy": "Legacy",
+      "feat": "Feat",
+      "personal": "Personal",
+      "transformation": "Transformation",
+      "maneuver": "Maneuver",
+      "states": "States",
+      "craft": "Craft",
+      "campaignCharacters": "Characters",
+      "perks": "Perks",
+      "general": "General",
+      "skill": "Skill",
+      "archetype": "Archetype",
+      "animalCompanion": "Animal companion",
+      "rolls": "Rolls history",
+      "goals": "Goals",
+      "backstory": "Backstory",
+      "mechanic": "Mechanics",
+      "summons": "Summons"
+    },
+    "campaignsPage": {
+      "title": "Campaigns",
+      "newTitle": "New campaign",
+      "provider": "Platform",
+      "name": "Campaign's name",
+      "onDeleteCampaign": "Delete",
+      "deleteCampaignTitle": "Deleting campaign",
+      "confirmDeleting": "Are you sure need to remove this character?",
+      "idForSearch": "To help players find your campaign, they can use the following ID to search",
+      "join": "Join campaign",
+      "selectCharacterForJoining": "Select character for joining to campaign",
+      "noCampaigns": "There are no campaigns yet"
+    },
+    "botPage": {
+      "title": "Bot commands",
+      "link": "List of available commands you can check <a href='https://charkeeper.org/bot_commands' class='underline' target='_blank' rel='noopener noreferrer'>here</a>"
+    }
+  },
+  "daggerheart": {
+    "terms": {
+      "traits": "Traits",
+      "thresholds": "Damage thresholds"
+    },
+    "transformation": {
+      "transformation": "Transformation",
+      "naturalForm": "Natural form"
+    }
+  },
+  "combat": {
+    "list": {
+      "equipment": "Ready to use",
+      "backpack": "Backpack"
+    }
+  },
+  "equipment": {
+    "weight": "Weight",
+    "cost": "Cost",
+    "addItems": "Add items",
+    "itemNote": "Item note",
+    "weaponsList": "Weapon",
+    "primaryWeapon": "Primary weapon",
+    "secondaryWeapon": "Secondary weapon",
+    "armorList": "Armor list",
+    "shieldList": "Shield list",
+    "itemsList": "Items",
+    "ammoList": "Ammo",
+    "focusList": "Focus",
+    "toolsList": "Artisan's tools",
+    "musicList": "Musical instruments",
+    "consumables": "Consumables",
+    "upgrades": "Upgrades",
+    "primaryWeaponMagic": "Primary weapon magic",
+    "recipes": "Recipes"
+  },
+  "create": "Create",
+  "back": "Back",
+  "save": "Save",
+  "find": "Find",
+  "saving": "Saving",
+  "cancel": "Cancel",
+  "copy": "Copy",
+  "alerts": {
+    "error": "An error occurred while rendering data, an error report has been sent to the developer!",
+    "restIsFinished": "Rest is finished",
+    "itemIsAdded": "Item is added",
+    "characterIsUpdated": "Character is updated",
+    "invalidSubclassesList": "You need to select subclasses for all classes",
+    "feedbackIsAdded": "Feedback is added, thank you very much for using CharKeeper!",
+    "copied": "Copied, you can share copied value"
+  },
+  "charactersPage": {
+    "title": "Characters list",
+    "level": "Level",
+    "new": "Create new character",
+    "onCopyCharacter": "Share"
+  },
+  "newCharacterPage": {
+    "title": "Create character",
+    "name": "Name",
+    "platform": "Platform",
+    "dnd5": {
+      "race": "Race",
+      "subrace": "Subrace",
+      "mainClass": "Main class",
+      "alignment": "Alignment"
+    },
+    "dnd2024": {
+      "species": "Species",
+      "legacy": "Legacy",
+      "size": "Size",
+      "mainClass": "Main class",
+      "alignment": "Alignment",
+      "sizes": {
+        "small": "Small",
+        "medium": "Medium",
+        "large": "Large"
+      }
+    },
+    "pathfinder2": {
+      "race": "Race",
+      "subrace": "Subrace",
+      "mainClass": "Main class",
+      "background": "Background",
+      "mainAbility": "Main ability"
+    },
+    "daggerheart": {
+      "ancestry": "Ancestry",
+      "community": "Community",
+      "mainClass": "Main class",
+      "subclass": "Subclass",
+      "customAncestry": "Mixed ancestry",
+      "ancestryName": "Ancestry's name",
+      "mainFeature": "Main feature",
+      "secondaryFeature": "Secondary feature"
+    }
+  },
+  "itemsPage": {
+    "title": "Items"
+  },
+  "spellsPage": {
+    "title": "Spells"
+  },
+  "character": {
+    "thresholds": "Damage thresholds",
+    "changeLevels": "Change class levels",
+    "changeClasses": "Change character classes",
+    "items": "Add equipment",
+    "damage": "Damage",
+    "heal": "Heal",
+    "damageConditions": "Damage resistances",
+    "vulnerability": "Vulner",
+    "resistance": "Resist",
+    "immunity": "Immune", 
+    "ammoList": "Ammo",
+    "itemNote": "Item note",
+    "deathSavingThrows": "Death saving throws",
+    "deathSuccess": "Success",
+    "deathFailure": "Failure"
+  },
+  "professionsPage": {
+    "fightingFeats": "Fighting style",
+    "weaponCoreSkill": "Weapon core skills",
+    "weaponSkills": "Weapon skills",
+    "lightWeaponSkills": "Light weapon",
+    "martialWeaponSkills": "Martial weapon",
+    "tools": "Artisan's tools",
+    "music": "Musical instruments"
+  },
+  "terms": {
+    "armorClass": "Armor Class",
+    "initiative": "Initiative",
+    "perception": "Perception",
+    "speed": "Speed",
+    "health": {
+      "current": "Health",
+      "max": "Max health",
+      "temp": "Temp health"
+    }
+  },
+  "damage": {
+    "bludge": "Bludgeoning",
+    "pierce": "Piercing",
+    "slash": "Slashing",
+    "acid": "Acid",
+    "cold": "Cold",
+    "fire": "Fire",
+    "force": "Force",
+    "lighting": "Lightning",
+    "necrotic": "Necrotic",
+    "poison": "Poison",
+    "psychic": "Psychic",
+    "radiant": "Radiant",
+    "thunder": "Thunder"
+  },
+  "dnd": {
+    "coreWeaponSkills": {
+      "light": "Light Weapon",
+      "martial": "Martial Weapon"
+    },
+    "coreArmorSkills": {
+      "light": "Light Armor",
+      "medium": "Medium Armor",
+      "heavy": "Heavy Armor",
+      "shield": "Shield"
+    }
+  }
+}

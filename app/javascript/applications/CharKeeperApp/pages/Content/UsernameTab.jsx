@@ -165,7 +165,7 @@ export const UsernameTab = (props) => {
         <Select
           containerClassList="mb-2"
           labelText={localize(TRANSLATION, locale()).locale}
-          items={{ 'en': 'English', 'ru': 'Русский', 'es': 'Español' }}
+          items={{ 'en': 'English', 'ru': 'Русский', 'es': 'Español', 'pt-BR': 'Portuguese (BR)' }}
           selectedValue={localeValue()}
           onSelect={setLocaleValue}
         />
