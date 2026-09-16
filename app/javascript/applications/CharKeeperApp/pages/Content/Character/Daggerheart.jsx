@@ -27,6 +27,48 @@ const TRANSLATION = {
     levelingHelpMessage: "En el futuro en esta pestaña podrás subir de nivel a tu personaje."
   }
 }
+const MAPPING = {
+  en: {
+    'str': 'Strength',
+    'agi': 'Agility',
+    'fin': 'Finesse',
+    'ins': 'Instinct',
+    'pre': 'Presence',
+    'know': 'Knowledge',
+    'health_max': 'Health',
+    'stress_max': 'Stress',
+    'hope_max': 'Hope',
+    'evasion': 'Evasion',
+    'armor_score': 'Armor score',
+    'damage_thresholds.major': 'Major threshold',
+    'damage_thresholds.severe': 'Severe threshold',
+    'attack': 'Attacks',
+    'proficiency': 'Proficiency',
+    'damage': 'Damage',
+    'spell_bonus': 'Spellcast',
+    'loadout': 'Loadout'
+  },
+  ru: {
+    'str': 'Сила',
+    'agi': 'Проворность',
+    'fin': 'Искусность',
+    'ins': 'Инстинкт',
+    'pre': 'Влияние',
+    'know': 'Знание',
+    'health_max': 'Здоровье',
+    'stress_max': 'Стресс',
+    'hope_max': 'Надежда',
+    'evasion': 'Уклонение',
+    'armor_score': 'Ячейки брони',
+    'damage_thresholds.major': 'Порог ощутимого урона',
+    'damage_thresholds.severe': 'Порог тяжёлого урона',
+    'attack': 'Бонус атаки',
+    'proficiency': 'Мастерство',
+    'damage': 'Бонус урона',
+    'spell_bonus': 'Характеристика заклинателя',
+    'loadout': 'Инвентарь'
+  }
+}
 
 export const Daggerheart = (props) => {
   const size = createWindowSize();
@@ -128,6 +170,7 @@ export const Daggerheart = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
+                  mapping={MAPPING}
                   openD20Test={openDualityTest}
                   openD20Attack={openDualityAttack}
                   onReplaceCharacter={props.onReplaceCharacter}
@@ -136,6 +179,7 @@ export const Daggerheart = (props) => {
               <div class="mt-4">
                 <Feats
                   character={character()}
+                  mapping={MAPPING}
                   filters={featFilters()}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
@@ -177,7 +221,7 @@ export const Daggerheart = (props) => {
               <DaggerheartCompanion openDices={openDices} character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
-              <DaggerheartBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <DaggerheartBonuses character={character()} mapping={MAPPING} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
               <DaggerheartRest character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -272,6 +316,7 @@ export const Daggerheart = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
+                  mapping={MAPPING}
                   openD20Test={openDualityTest}
                   openD20Attack={openDualityAttack}
                   onReplaceCharacter={props.onReplaceCharacter}
@@ -281,6 +326,7 @@ export const Daggerheart = (props) => {
                 <Feats
                   character={character()}
                   filters={featFilters()}
+                  mapping={MAPPING}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -321,7 +367,7 @@ export const Daggerheart = (props) => {
               <DaggerheartCompanion openDices={openDices} character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'bonuses'}>
-              <DaggerheartBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <DaggerheartBonuses character={character()} mapping={MAPPING} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'rest'}>
               <DaggerheartRest character={character()} onReloadCharacter={props.onReloadCharacter} />

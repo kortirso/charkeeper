@@ -5,7 +5,8 @@ module CharactersContext
     module Bonuses
       class AddCommand < BaseCommand
         ONLY_ADD_TYPE_FIELDS = %i[
-          str dex int wil 'health.max' initiative
+          str dex int wil initiative wounds_max skills hit_die_max speed armor shield
+          'str-melee' 'dex-melee' 'str-range' 'dex-range'
         ].freeze
 
         # rubocop: disable-next Metrics/BlockLength
@@ -19,7 +20,16 @@ module CharactersContext
               optional(:int).hash
               optional(:wil).hash
               optional(:initiative).hash
-              optional(:'health.max').hash
+              optional(:wounds_max).hash
+              optional(:skills).hash
+              optional(:hit_die_max).hash
+              optional(:speed).hash
+              optional(:armor).hash
+              optional(:shield).hash
+              optional(:'str-melee').hash
+              optional(:'dex-melee').hash
+              optional(:'str-range').hash
+              optional(:'dex-range').hash
             end
           end
 

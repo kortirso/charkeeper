@@ -27,6 +27,74 @@ const TRANSLATION = {
     personal: 'Личные'
   }
 }
+const MAPPING = {
+  en: {
+    'str': 'Strength',
+    'spd': 'Speed',
+    'int': 'Intellect',
+    'wil': 'Willpower',
+    'awa': 'Awareness',
+    'pre': 'Presence',
+    'defense.physical': 'Physical defense',
+    'defense.cognitive': 'Cognitive defense',
+    'defense.spiritual': 'Spiritual defense',
+    'deflect': 'Deflect',
+    'health_max': 'Health',
+    'focus_max': 'Focus',
+    'investiture_max': 'Investiture',
+    'movement': 'Movement',
+    'attack': 'Attack',
+    'melee_attacks': 'Melee attacks',
+    'range_attacks': 'Range attacks',
+    'damage': 'Damage',
+    'melee_damage': 'Melee damage',
+    'range_damage': 'Range damage'
+  },
+  ru: {
+    'str': 'Сила',
+    'spd': 'Скорость',
+    'int': 'Интеллект',
+    'wil': 'Воля',
+    'awa': 'Восприятие',
+    'pre': 'Харизма',
+    'defense.physical': 'Физ защита',
+    'defense.cognitive': 'Когнитивная защ',
+    'defense.spiritual': 'Духовная защ',
+    'deflect': 'Отражение',
+    'health_max': 'Здоровье',
+    'focus_max': 'Фокус',
+    'investiture_max': 'Инвеститура',
+    'movement': 'Скорость',
+    'attack': 'Атаки',
+    'melee_attacks': 'Рукоп атака',
+    'range_attacks': 'Дист атаки',
+    'damage': 'Урон',
+    'melee_damage': 'Рукоп урон',
+    'range_damage': 'Дист урон'
+  },
+  es: {
+    'str': 'Strength',
+    'spd': 'Speed',
+    'int': 'Intellect',
+    'wil': 'Willpower',
+    'awa': 'Awareness',
+    'pre': 'Presence',
+    'defense.physical': 'Physical defense',
+    'defense.cognitive': 'Cognitive defense',
+    'defense.spiritual': 'Spiritual defense',
+    'deflect': 'Deflect',
+    'health_max': 'Health',
+    'focus_max': 'Focus',
+    'investiture_max': 'Investiture',
+    'movement': 'Movement',
+    'attack': 'Attack',
+    'melee_attacks': 'Melee attacks',
+    'range_attacks': 'Range attacks',
+    'damage': 'Damage',
+    'melee_damage': 'Melee damage',
+    'range_damage': 'Range damage'
+  }
+}
 
 export const Cosmere = (props) => {
   const size = createWindowSize();
@@ -103,6 +171,7 @@ export const Cosmere = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
+                  mapping={MAPPING}
                   openD20Test={openCosmereTest}
                   openD20Attack={openD20Attack}
                   onReplaceCharacter={props.onReplaceCharacter}
@@ -118,6 +187,7 @@ export const Cosmere = (props) => {
                   directTranslation
                   character={character()}
                   filters={featFilters()}
+                  mapping={MAPPING}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -126,6 +196,7 @@ export const Cosmere = (props) => {
             <Match when={activeMobileTab() === 'equipment'}>
               <CosmereEquipment
                 character={character()}
+                upgrades={['weapon', 'armor', 'item']}
                 onReloadCharacter={props.onReloadCharacter}
               >
                 <GoldSingle character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -145,7 +216,7 @@ export const Cosmere = (props) => {
               />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
-              <CosmereBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <CosmereBonuses character={character()} mapping={MAPPING} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -211,6 +282,7 @@ export const Cosmere = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
+                  mapping={MAPPING}
                   openD20Test={openCosmereTest}
                   openD20Attack={openD20Attack}
                   onReplaceCharacter={props.onReplaceCharacter}
@@ -226,6 +298,7 @@ export const Cosmere = (props) => {
                   directTranslation
                   character={character()}
                   filters={featFilters()}
+                  mapping={MAPPING}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -234,6 +307,7 @@ export const Cosmere = (props) => {
             <Match when={activeTab() === 'equipment'}>
               <CosmereEquipment
                 character={character()}
+                upgrades={['weapon', 'armor', 'item']}
                 onReloadCharacter={props.onReloadCharacter}
               >
                 <GoldSingle character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -253,7 +327,7 @@ export const Cosmere = (props) => {
               />
             </Match>
             <Match when={activeTab() === 'bonuses'}>
-              <CosmereBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <CosmereBonuses character={character()} mapping={MAPPING} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />

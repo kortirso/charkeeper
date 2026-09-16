@@ -127,6 +127,7 @@ export const Feats = (props) => {
   });
 
   const i18nMem = createMemo(() => localize(TRANSLATION, locale()));
+  const bonusMapping = createMemo(() => props.mapping ? localize(props.mapping, locale()) : null);
 
   const activeFilterOptions = createMemo(() => filters().find((item) => item.title === activeFilter()));
 
@@ -521,6 +522,17 @@ export const Feats = (props) => {
                         </Show>
                       </Match>
                     </Switch>
+                    <Show when={feature().modifiers && Object.keys(feature().modifiers).length > 0 && bonusMapping()}>
+                      <div class="weapon-tags mt-0!">
+                        <For each={Object.entries(feature().modifiers)}>
+                          {([slug, value]) =>
+                            <Show when={bonusMapping()[slug]}>
+                              <p class="tag text-sm!">{bonusMapping()[slug]} {value > 0 ? `+${value}` : value}</p>
+                            </Show>
+                          }
+                        </For>
+                      </div>
+                    </Show>
                     <Show when={feature().dice_settings}>
                       <div class="flex items-center gap-4">
                         <For each={[...Array(feature().dice_settings.limit + 1)]}>

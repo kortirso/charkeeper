@@ -39,6 +39,7 @@ export const CosmereEquipment = (props) => {
   return (
     <Equipment
       forCampaign={props.forCampaign}
+      upgrades={props.upgrades}
       character={props.character}
       characters={props.characters}
       itemFilters={[

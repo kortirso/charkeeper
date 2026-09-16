@@ -203,7 +203,8 @@ class DaggerheartDecorator < ApplicationDecoratorV2
         item[:items_kind].tr(' ', '_') => I18n.t("tags.daggerheart.weapon.title.#{item[:items_kind].tr(' ', '_')}"),
         item[:items_info]['damage_type'] => I18n.t("tags.daggerheart.weapon.title.#{item[:items_info]['damage_type']}")
       },
-      burden: item[:items_info]['burden']
+      burden: item[:items_info]['burden'],
+      modifiers: transform_modifiers(item[:items_modifiers]).merge(transform_modifiers(item[:modifiers]))
     }]
 
     if item[:items_info]['burden'] == 2
@@ -304,7 +305,9 @@ class DaggerheartDecorator < ApplicationDecoratorV2
       .items
       .joins(:item)
       .where(items: { kind: ['primary weapon', 'secondary weapon'] })
-      .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.info', :notes, :states, :name)
+      .hashable_pluck(
+        'items.slug', 'items.name', 'items.kind', 'items.info', 'items.modifiers', :notes, :states, :name, :modifiers
+      )
   end
 
   def feat_weapons
@@ -479,8 +482,17 @@ class DaggerheartDecorator < ApplicationDecoratorV2
       selected_count: feature.selected_count,
       tokens: feature.tokens,
       tokens_max: feature.tokens ? (tokens_max || 'none') : nil,
-      options: feature.feat.options
+      options: feature.feat.options,
+      modifiers: feature.feat.continious && !feature.active ? nil : transform_modifiers(feature.feat.modifiers)
     }.compact
+  end
+
+  def transform_modifiers(value)
+    (value || {}).filter_map do |key, values|
+      next if values['type'] != 'add'
+
+      [key, formula.call(formula: values['value'], variables: formula_variables)]
+    end.to_h
   end
 
   def update_feature_description(feat) # rubocop: disable Metrics/AbcSize

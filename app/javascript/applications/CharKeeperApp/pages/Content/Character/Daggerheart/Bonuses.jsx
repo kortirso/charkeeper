@@ -14,49 +14,6 @@ const TRANSLATION = {
     warning: "La fórmula puede contener expresiones matemáticas y variables. Por ejemplo, '2', '-1', '2 * level'. Hay funciones integradas: 'if (condition, true_result, false_result)', 'SUM(a, b, c)', MAX(a, b, c)."
   }
 }
-
-const MAPPING = {
-  en: {
-    'str': 'Strength',
-    'agi': 'Agility',
-    'fin': 'Finesse',
-    'ins': 'Instinct',
-    'pre': 'Presence',
-    'know': 'Knowledge',
-    'health_max': 'Health',
-    'stress_max': 'Stress',
-    'hope_max': 'Hope',
-    'evasion': 'Evasion',
-    'armor_score': 'Armor score',
-    'damage_thresholds.major': 'Major threshold',
-    'damage_thresholds.severe': 'Severe threshold',
-    'attack': 'Attacks',
-    'proficiency': 'Proficiency',
-    'damage': 'Damage',
-    'spell_bonus': 'Spellcast',
-    'loadout': 'Loadout'
-  },
-  ru: {
-    'str': 'Сила',
-    'agi': 'Проворность',
-    'fin': 'Искусность',
-    'ins': 'Инстинкт',
-    'pre': 'Влияние',
-    'know': 'Знание',
-    'health_max': 'Здоровье',
-    'stress_max': 'Стресс',
-    'hope_max': 'Надежда',
-    'evasion': 'Уклонение',
-    'armor_score': 'Ячейки брони',
-    'damage_thresholds.major': 'Порог ощутимого урона',
-    'damage_thresholds.severe': 'Порог тяжёлого урона',
-    'attack': 'Бонус атаки',
-    'proficiency': 'Мастерство',
-    'damage': 'Бонус урона',
-    'spell_bonus': 'Характеристика заклинателя',
-    'loadout': 'Инвентарь'
-  }
-}
 const VARIABLES_LIST = ['str', 'agi', 'fin', 'ins', 'pre', 'know', 'level', 'no_armor', 'no_weapon', 'proficiency', 'tier', 'stress_marked', 'health_marked', 'spellcast'];
 
 export const DaggerheartBonuses = (props) => {
@@ -85,7 +42,7 @@ export const DaggerheartBonuses = (props) => {
       <GuideWrapper character={character()}>
         <SharedBonusesV2
           character={character()}
-          mapping={localize(MAPPING, locale())}
+          mapping={localize(props.mapping, locale())}
           variablesList={VARIABLES_LIST}
           onSaveBonus={saveBonus}
           onReloadCharacter={props.onReloadCharacter}

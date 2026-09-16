@@ -199,6 +199,9 @@ Rails.application.routes.draw do
         scope module: :characters do
           resources :rest, only: %i[create]
           resources :talents, only: %i[index create destroy]
+          resources :items, only: %i[] do
+            resources :upgrade, only: %i[create], module: :items
+          end
         end
       end
     end

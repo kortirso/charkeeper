@@ -133,8 +133,17 @@ class CosmereDecorator < ApplicationDecoratorV2
       options: feature.feat.options,
       value: feature.value,
       tokens: feature.tokens,
-      tokens_max: feature.tokens ? (tokens_max || 'none') : nil
+      tokens_max: feature.tokens ? (tokens_max || 'none') : nil,
+      modifiers: feature.feat.continious && !feature.active ? nil : transform_modifiers(feature.feat.modifiers)
     }.compact
+  end
+
+  def transform_modifiers(value)
+    (value || {}).filter_map do |key, values|
+      next if values['type'] != 'add'
+
+      [key, formula.call(formula: values['value'], variables: formula_variables)]
+    end.to_h
   end
 
   def update_feature_description(feature) # rubocop: disable Metrics/AbcSize
@@ -216,7 +225,8 @@ class CosmereDecorator < ApplicationDecoratorV2
       ),
       ready_to_use: item[:states] ? item.dig(:states, 'hands').positive? : true,
       distance: distance(item, current_tooltips),
-      features: item[:items_info]['features']&.map { |item| markdown.call(value: translate(item), version: 0.5) } || []
+      features: item[:items_info]['features']&.map { |item| markdown.call(value: translate(item), version: 0.5) } || [],
+      modifiers: transform_modifiers(item[:items_modifiers]).merge(transform_modifiers(item[:modifiers]))
     }.compact
   end
 

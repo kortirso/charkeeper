@@ -25,6 +25,42 @@ const TRANSLATION = {
     levelingHelpMessage: 'En el futuro en esta pestaña podrás subir de nivel a tu personaje.'
   }
 }
+const MAPPING = {
+  en: {
+    'str': 'Strength',
+    'dex': 'Dexterity',
+    'int': 'Intelligence',
+    'wil': 'Will',
+    'initiative': 'Initiative',
+    'wounds_max': 'Wounds',
+    'skills': 'Skills',
+    'hit_die_max': 'Hit Dies',
+    'speed': 'Speed',
+    'armor': 'Armor',
+    'shield': 'Shield',
+    'str-melee': 'Str melee attacks',
+    'dex-melee': 'Dex melee attacks',
+    'str-range': 'Str range attacks',
+    'dex-range': 'Dex range attacks'
+  },
+  ru: {
+    'str': 'Сила',
+    'dex': 'Ловкость',
+    'int': 'Интеллект',
+    'wil': 'Воля',
+    'initiative': 'Инициатива',
+    'wounds_max': 'Раны',
+    'skills': 'Все умения',
+    'hit_die_max': 'Кости хитов',
+    'speed': 'Скорость',
+    'armor': 'Броня',
+    'shield': 'Щит',
+    'str-melee': 'Str рукоп атаки',
+    'dex-melee': 'Dex рукоп атаки',
+    'str-range': 'Str дист атаки',
+    'dex-range': 'Dex дист атаки'
+  }
+}
 
 export const Nimble = (props) => {
   const size = createWindowSize();
@@ -100,12 +136,13 @@ export const Nimble = (props) => {
             <Match when={activeMobileTab() === 'combat'}>
               <NimbleHealth character={character()} openD20Test={openDC20Test} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
-                <Combat character={character()} openD20Test={openNimbleAttack} onReplaceCharacter={props.onReplaceCharacter} />
+                <Combat character={character()} mapping={MAPPING} openD20Test={openNimbleAttack} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
                 <Feats
                   character={character()}
                   filters={featFilters()}
+                  mapping={MAPPING}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -144,7 +181,7 @@ export const Nimble = (props) => {
               <NimbleRest character={character()} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
-              <NimbleBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <NimbleBonuses character={character()} mapping={MAPPING} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -205,12 +242,13 @@ export const Nimble = (props) => {
             <Match when={activeTab() === 'combat'}>
               <NimbleHealth character={character()} openD20Test={openDC20Test} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
-                <Combat character={character()} openD20Test={openNimbleAttack} onReplaceCharacter={props.onReplaceCharacter} />
+                <Combat character={character()} mapping={MAPPING} openD20Test={openNimbleAttack} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
                 <Feats
                   character={character()}
                   filters={featFilters()}
+                  mapping={MAPPING}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -249,7 +287,7 @@ export const Nimble = (props) => {
               <NimbleRest character={character()} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
             <Match when={activeTab() === 'bonuses'}>
-              <NimbleBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <NimbleBonuses character={character()} mapping={MAPPING} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />

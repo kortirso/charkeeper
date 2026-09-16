@@ -129,6 +129,7 @@ export const Combat = (props) => {
   });
 
   const i18n = createMemo(() => localize(TRANSLATION, locale()));
+  const bonusMapping = createMemo(() => props.mapping ? localize(props.mapping, locale()) : null);
 
   const currentLocale = createMemo(() => {
     const providerLocale = appState.providerLocales[character().provider];
@@ -317,6 +318,15 @@ export const Combat = (props) => {
                         <p class="tag" onClick={() => showTagInfo(tag, value)}>{value}</p>
                       }
                     </For>
+                    <Show when={attack.modifiers && Object.keys(attack.modifiers).length > 0 && bonusMapping()}>
+                      <For each={Object.entries(attack.modifiers)}>
+                        {([slug, value]) =>
+                          <Show when={bonusMapping()[slug]}>
+                            <p class="tag">{bonusMapping()[slug]} {value > 0 ? `+${value}` : value}</p>
+                          </Show>
+                        }
+                      </For>
+                    </Show>
                   </div>
                 </Show>
                 <Show when={attack.features_text && attack.features_text.length > 0}>

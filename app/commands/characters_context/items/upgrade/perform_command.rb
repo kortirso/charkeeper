@@ -9,7 +9,9 @@ module CharactersContext
         use_contract do
           params do
             required(:character).filled(
-              type_included_in?: [::Dnd2024::Character, ::Pathfinder2::Character, ::Nimble::Character, ::Dc20::Character]
+              type_included_in?: [
+                ::Dnd2024::Character, ::Pathfinder2::Character, ::Nimble::Character, ::Dc20::Character, ::Cosmere::Character
+              ]
             )
             required(:character_item).filled(type?: ::Character::Item)
             required(:character_bonus).filled(type?: ::Character::Bonus)
