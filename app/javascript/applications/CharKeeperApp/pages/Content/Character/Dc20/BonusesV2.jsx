@@ -14,59 +14,6 @@ const TRANSLATION = {
     warning: "La fórmula puede contener expresiones matemáticas y variables. Por ejemplo, '2', '-1', '2 * level'. Hay funciones integradas: 'if (condition, true_result, false_result)', 'SUM(a, b, c)', MAX(a, b, c)."
   }
 }
-
-const MAPPING = {
-  en: {
-    'mig': 'Might',
-    'agi': 'Agility',
-    'int': 'Intelligence',
-    'cha': 'Charisma',
-    'attribute_saves.mig': 'Might save',
-    'attribute_saves.agi': 'Agility save',
-    'attribute_saves.int': 'Intelligence save',
-    'attribute_saves.cha': 'Charisma save',
-    'pd_base': 'Precision defense',
-    'ad_base': 'Area defense',
-    'initiative': 'Initiative',
-    'speeds.ground': 'Speed',
-    'speeds.swim': 'Swim speed',
-    'speeds.climb': 'Climb speed',
-    'speeds.flight': 'Flight speed',
-    'speeds.glide': 'Glide speed',
-    'attack': 'Attack',
-    'damage': 'Damage',
-    'max_stamina_points': 'Max stamina points',
-    'max_mana_points': 'Max mana points',
-    'maneuver_points': 'Maneuver points',
-    'max_health': 'Health points',
-    'spells': 'Spells amount'
-  },
-  ru: {
-    'mig': 'Мощь',
-    'agi': 'Ловкость',
-    'int': 'Интеллект',
-    'cha': 'Харизма',
-    'attribute_saves.mig': 'Мощь спас',
-    'attribute_saves.agi': 'Ловкость спас',
-    'attribute_saves.int': 'Интеллект спас',
-    'attribute_saves.cha': 'Харизма спас',
-    'pd_base': 'Точечная защита',
-    'ad_base': 'Площадная защита',
-    'initiative': 'Инициатива',
-    'speeds.ground': 'Скорость',
-    'speeds.swim': 'Swim speed',
-    'speeds.climb': 'Climb speed',
-    'speeds.flight': 'Flight speed',
-    'speeds.glide': 'Glide speed',
-    'attack': 'Attack',
-    'damage': 'Damage',
-    'max_stamina_points': 'Очки выносливости',
-    'max_mana_points': 'Очки маны',
-    'maneuver_points': 'Maneuver points',
-    'max_health': 'Очки здоровья',
-    'spells': 'Spells amount'
-  }
-}
 const VARIABLES_LIST = ['mig', 'agi', 'int', 'cha', 'prime', 'level', 'combat_mastery', 'no_armor'];
 
 export const Dc20BonusesV2 = (props) => {
@@ -95,7 +42,7 @@ export const Dc20BonusesV2 = (props) => {
       <GuideWrapper character={character()}>
         <SharedBonusesV2
           character={character()}
-          mapping={localize(MAPPING, locale())}
+          mapping={localize(props.mapping, locale())}
           variablesList={VARIABLES_LIST}
           onSaveBonus={saveBonus}
           onReloadCharacter={props.onReloadCharacter}

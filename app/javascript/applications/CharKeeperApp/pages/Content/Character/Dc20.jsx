@@ -23,6 +23,58 @@ const TRANSLATION = {
     levelingHelpMessage: 'En el futuro en esta pestaña podrás subir de nivel a tu personaje.'
   }
 }
+const MAPPING = {
+  en: {
+    'mig': 'Might',
+    'agi': 'Agility',
+    'int': 'Intelligence',
+    'cha': 'Charisma',
+    'attribute_saves.mig': 'Might save',
+    'attribute_saves.agi': 'Agility save',
+    'attribute_saves.int': 'Intelligence save',
+    'attribute_saves.cha': 'Charisma save',
+    'pd_base': 'Precision defense',
+    'ad_base': 'Area defense',
+    'initiative': 'Initiative',
+    'speeds.ground': 'Speed',
+    'speeds.swim': 'Swim speed',
+    'speeds.climb': 'Climb speed',
+    'speeds.flight': 'Flight speed',
+    'speeds.glide': 'Glide speed',
+    'attack': 'Attack',
+    'damage': 'Damage',
+    'max_stamina_points': 'Max stamina points',
+    'max_mana_points': 'Max mana points',
+    'maneuver_points': 'Maneuver points',
+    'max_health': 'Health points',
+    'spells': 'Spells amount'
+  },
+  ru: {
+    'mig': 'Мощь',
+    'agi': 'Ловкость',
+    'int': 'Интеллект',
+    'cha': 'Харизма',
+    'attribute_saves.mig': 'Мощь спас',
+    'attribute_saves.agi': 'Ловкость спас',
+    'attribute_saves.int': 'Интеллект спас',
+    'attribute_saves.cha': 'Харизма спас',
+    'pd_base': 'Точечная защита',
+    'ad_base': 'Площадная защита',
+    'initiative': 'Инициатива',
+    'speeds.ground': 'Скорость',
+    'speeds.swim': 'Swim speed',
+    'speeds.climb': 'Climb speed',
+    'speeds.flight': 'Flight speed',
+    'speeds.glide': 'Glide speed',
+    'attack': 'Attack',
+    'damage': 'Damage',
+    'max_stamina_points': 'Очки выносливости',
+    'max_mana_points': 'Очки маны',
+    'maneuver_points': 'Maneuver points',
+    'max_health': 'Очки здоровья',
+    'spells': 'Spells amount'
+  }
+}
 
 export const Dc20 = (props) => {
   const size = createWindowSize();
@@ -112,6 +164,7 @@ export const Dc20 = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
+                  mapping={MAPPING}
                   openD20Test={openDC20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
@@ -120,6 +173,7 @@ export const Dc20 = (props) => {
                 <Feats
                   character={character()}
                   filters={featFilters()}
+                  mapping={MAPPING}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -167,7 +221,7 @@ export const Dc20 = (props) => {
               <Dc20Summons character={character()} />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
-              <Dc20BonusesV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <Dc20BonusesV2 character={character()} mapping={MAPPING} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -241,6 +295,7 @@ export const Dc20 = (props) => {
               <div class="mt-4">
                 <Combat
                   character={character()}
+                  mapping={MAPPING}
                   openD20Test={openDC20Test}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
@@ -249,6 +304,7 @@ export const Dc20 = (props) => {
                 <Feats
                   character={character()}
                   filters={featFilters()}
+                  mapping={MAPPING}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -297,7 +353,7 @@ export const Dc20 = (props) => {
               <Dc20Summons character={character()} />
             </Match>
             <Match when={activeTab() === 'bonuses'}>
-              <Dc20BonusesV2 character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <Dc20BonusesV2 character={character()} mapping={MAPPING} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />

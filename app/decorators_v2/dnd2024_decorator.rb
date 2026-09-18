@@ -282,7 +282,8 @@ class Dnd2024Decorator < ApplicationDecoratorV2
       melee_distance: captions.include?('reach') ? 10 : 5,
       tooltips: [],
       hands: captions.include?('2handed') ? '2' : '1',
-      caption: captions
+      caption: captions,
+      modifiers: transform_modifiers(item[:items_modifiers]).merge(transform_modifiers(item[:modifiers]))
     }.compact
   end
 
@@ -320,7 +321,8 @@ class Dnd2024Decorator < ApplicationDecoratorV2
       range_distance: item[:items_info]['dist'],
       tooltips: [],
       hands: captions.include?('2handed') ? '2' : '1',
-      caption: captions
+      caption: captions,
+      modifiers: transform_modifiers(item[:items_modifiers]).merge(transform_modifiers(item[:modifiers]))
     }
   end
 
@@ -418,8 +420,17 @@ class Dnd2024Decorator < ApplicationDecoratorV2
       active: feature.active,
       continious: feature.feat.continious,
       price: feature.feat.price,
-      info: feature.feat.info
+      info: feature.feat.info,
+      modifiers: feature.feat.continious && !feature.active ? nil : transform_modifiers(feature.feat.modifiers)
     }.compact
+  end
+
+  def transform_modifiers(value)
+    (value || {}).filter_map do |key, values|
+      next if values['type'] != 'add'
+
+      [key, formula.call(formula: values['value'], variables: formula_variables)]
+    end.to_h
   end
 
   def item_feature_payload(item, feature)
