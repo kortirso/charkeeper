@@ -307,12 +307,14 @@ class Dc20Decorator < ApplicationDecoratorV2
       features_text: [],
       notes: item[:notes] || [],
       ready_to_use: item.dig(:states, 'hands').to_i.positive?,
-      tags: item.dig(:items_info, 'damage_types').index_with { |type| I18n.t("tags.dc20.weapon.title.#{type}") }
+      tags: item.dig(:items_info, 'damage_types').index_with { |type| I18n.t("tags.dc20.weapon.title.#{type}") },
+      modifiers: transform_modifiers(item[:items_modifiers]).merge(transform_modifiers(item[:modifiers]))
     }
 
     result[:features] += item.dig(:items_info, 'styles') if combat_expertise.include?('weapon')
     result[:tags] =
       result[:tags].merge(result[:features].index_with { |feature| I18n.t("tags.dc20.weapon.title.#{feature}") })
+    result[:features] = []
 
     result
   end
@@ -322,7 +324,9 @@ class Dc20Decorator < ApplicationDecoratorV2
       .items
       .joins(:item)
       .where(items: { kind: 'weapon' })
-      .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.info', :notes, :states, :name)
+      .hashable_pluck(
+        'items.slug', 'items.name', 'items.kind', 'items.info', :notes, :states, :name, 'items.modifiers', :modifiers
+      )
   end
 
   def equiped_armor_info
@@ -526,8 +530,17 @@ class Dc20Decorator < ApplicationDecoratorV2
       tokens: feature.tokens,
       tokens_max: feature.tokens ? feature.feat.tokens['limit'] : nil,
       options: feature.feat.options,
-      amount: (wild_form ? current_wild_form.data.ancestry_features : ancestry_features)[feature.feat.slug].to_i
+      amount: (wild_form ? current_wild_form.data.ancestry_features : ancestry_features)[feature.feat.slug].to_i,
+      modifiers: feature.feat.continious && !feature.active ? nil : transform_modifiers(feature.feat.modifiers)
     }.compact
+  end
+
+  def transform_modifiers(value)
+    (value || {}).filter_map do |key, values|
+      next if values['type'] != 'add'
+
+      [key, formula.call(formula: values['value'], variables: final_formula_variables)]
+    end.to_h
   end
 
   def update_feature_description(feature) # rubocop: disable Metrics/AbcSize
@@ -541,7 +554,7 @@ class Dc20Decorator < ApplicationDecoratorV2
       formula_value = feature.feat.description_eval_variables[variable]
       next result.gsub!("{{#{value}}}", default) unless formula_value
 
-      formula_result = formula.call(formula: formula_value, variables: formula_variables)
+      formula_result = formula.call(formula: formula_value, variables: final_formula_variables)
       next result.gsub!("{{#{value}}}", default) unless formula_result
 
       result.gsub!("{{#{value}}}", formula_result.to_s)

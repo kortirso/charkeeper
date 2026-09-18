@@ -160,7 +160,8 @@ class NimbleDecorator < ApplicationDecoratorV2
       ready_to_use: item.dig(:states, 'hands').to_i.positive?,
       critable: weapons.include?("#{item.dig(:items_info, 'type')}-#{item.dig(:items_info, 'weapon_skill')}"),
       tags: tags,
-      features: item[:items_info]['features']&.map { |item| markdown.call(value: translate(item), version: 0.5) } || []
+      features: item[:items_info]['features']&.map { |item| markdown.call(value: translate(item), version: 0.5) } || [],
+      modifiers: transform_modifiers(item[:items_modifiers]).merge(transform_modifiers(item[:modifiers]))
     }.compact
   end
 
@@ -207,7 +208,7 @@ class NimbleDecorator < ApplicationDecoratorV2
       .items
       .joins(:item)
       .where(items: { kind: 'weapon' })
-      .hashable_pluck('items.slug', 'items.name', 'items.info', :notes, :states, :name)
+      .hashable_pluck('items.slug', 'items.name', 'items.info', 'items.modifiers', :notes, :states, :name, :modifiers)
   end
 
   def modifiers
@@ -277,7 +278,7 @@ class NimbleDecorator < ApplicationDecoratorV2
     end
   end
 
-  def feature_payload(feature) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+  def feature_payload(feature) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     limit =
       feature.feat.info['limit'] ? formula.call(formula: feature.feat.info['limit'], variables: final_formula_variables) : nil
     tokens_max =
@@ -305,8 +306,17 @@ class NimbleDecorator < ApplicationDecoratorV2
       dice_settings: feature.feat.dices&.transform_values { |value|
         formula.call(formula: value, variables: final_formula_variables)
       },
-      dices: feature.dices
+      dices: feature.dices,
+      modifiers: feature.feat.continious && !feature.active ? nil : transform_modifiers(feature.feat.modifiers)
     }.compact
+  end
+
+  def transform_modifiers(value)
+    (value || {}).filter_map do |key, values|
+      next if values['type'] != 'add'
+
+      [key, formula.call(formula: values['value'], variables: final_formula_variables)]
+    end.to_h
   end
 
   def apply_spells

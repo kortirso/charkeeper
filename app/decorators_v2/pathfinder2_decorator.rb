@@ -334,7 +334,8 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
         end
       ),
       tooltips: tooltips.slice('deadly', 'fatal'),
-      ready_to_use: item.dig(:states, 'hands').to_i.positive?
+      ready_to_use: item.dig(:states, 'hands').to_i.positive?,
+      modifiers: transform_modifiers(item[:items_modifiers]).merge(transform_modifiers(item[:modifiers]))
     }.compact
   end
 
@@ -525,8 +526,17 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       active: feature.active,
       continious: feature.feat.continious,
       price: feature.feat.price,
-      info: feature.feat.info
+      info: feature.feat.info,
+      modifiers: feature.feat.continious && !feature.active ? nil : transform_modifiers(feature.feat.modifiers)
     }.compact
+  end
+
+  def transform_modifiers(value)
+    (value || {}).filter_map do |key, values|
+      next if values['type'] != 'add'
+
+      [key, formula.call(formula: values['value'], variables: formula_variables)]
+    end.to_h
   end
 
   def item_feature_payload(item, feature)

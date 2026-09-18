@@ -33,7 +33,7 @@ const TRANSLATION = {
   }
 }
 const ITEMS_INFO = ['daggerheart', 'dnd2024', 'dnd5'];
-const BONUS_UPGRADE_PROVIDERS = ['dc20', 'dnd2024', 'pathfinder2', 'nimble'];
+const BONUS_UPGRADE_PROVIDERS = ['dc20', 'dnd2024', 'pathfinder2', 'nimble', 'cosmere'];
 
 export const ItemsTable = (props) => {
   const size = createWindowSize();

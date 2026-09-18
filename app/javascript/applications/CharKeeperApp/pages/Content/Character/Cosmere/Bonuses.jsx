@@ -11,75 +11,6 @@ const TRANSLATION = {
     warning: "Формула может содержать математические выражения и переменные. Например, '2', '-1', '2 * level'. Также есть встроенные функции: 'if (condition, true_result, false_result)', 'SUM(a, b, c)', MAX(a, b, c)"
   }
 }
-
-const MAPPING = {
-  en: {
-    'str': 'Strength',
-    'spd': 'Speed',
-    'int': 'Intellect',
-    'wil': 'Willpower',
-    'awa': 'Awareness',
-    'pre': 'Presence',
-    'defense.physical': 'Physical defense',
-    'defense.cognitive': 'Cognitive defense',
-    'defense.spiritual': 'Spiritual defense',
-    'deflect': 'Deflect',
-    'health_max': 'Health',
-    'focus_max': 'Focus',
-    'investiture_max': 'Investiture',
-    'movement': 'Movement',
-    'attack': 'Attack',
-    'melee_attacks': 'Melee attacks',
-    'range_attacks': 'Range attacks',
-    'damage': 'Damage',
-    'melee_damage': 'Melee damage',
-    'range_damage': 'Range damage'
-  },
-  ru: {
-    'str': 'Strength',
-    'spd': 'Speed',
-    'int': 'Intellect',
-    'wil': 'Willpower',
-    'awa': 'Awareness',
-    'pre': 'Presence',
-    'defense.physical': 'Physical defense',
-    'defense.cognitive': 'Cognitive defense',
-    'defense.spiritual': 'Spiritual defense',
-    'deflect': 'Deflect',
-    'health_max': 'Health',
-    'focus_max': 'Focus',
-    'investiture_max': 'Investiture',
-    'movement': 'Movement',
-    'attack': 'Attack',
-    'melee_attacks': 'Melee attacks',
-    'range_attacks': 'Range attacks',
-    'damage': 'Damage',
-    'melee_damage': 'Melee damage',
-    'range_damage': 'Range damage'
-  },
-  es: {
-    'str': 'Strength',
-    'spd': 'Speed',
-    'int': 'Intellect',
-    'wil': 'Willpower',
-    'awa': 'Awareness',
-    'pre': 'Presence',
-    'defense.physical': 'Physical defense',
-    'defense.cognitive': 'Cognitive defense',
-    'defense.spiritual': 'Spiritual defense',
-    'deflect': 'Deflect',
-    'health_max': 'Health',
-    'focus_max': 'Focus',
-    'investiture_max': 'Investiture',
-    'movement': 'Movement',
-    'attack': 'Attack',
-    'melee_attacks': 'Melee attacks',
-    'range_attacks': 'Range attacks',
-    'damage': 'Damage',
-    'melee_damage': 'Melee damage',
-    'range_damage': 'Range damage'
-  }
-}
 const VARIABLES_LIST = ['str', 'spd', 'int', 'wil', 'awa', 'pre', 'level', 'tier'];
 
 export const CosmereBonuses = (props) => {
@@ -108,7 +39,7 @@ export const CosmereBonuses = (props) => {
       <GuideWrapper character={character()}>
         <SharedBonusesV2
           character={character()}
-          mapping={localize(MAPPING, locale())}
+          mapping={localize(props.mapping, locale())}
           variablesList={VARIABLES_LIST}
           onSaveBonus={saveBonus}
           onReloadCharacter={props.onReloadCharacter}

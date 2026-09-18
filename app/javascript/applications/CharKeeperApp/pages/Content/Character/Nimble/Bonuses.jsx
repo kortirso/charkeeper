@@ -15,24 +15,6 @@ const TRANSLATION = {
   }
 }
 
-const MAPPING = {
-  en: {
-    'str': 'Strength',
-    'dex': 'Dexterity',
-    'int': 'Intelligence',
-    'wil': 'Will',
-    'initiative': 'Initiative',
-    'health.max': 'Max health'
-  },
-  ru: {
-    'str': 'Сила',
-    'dex': 'Ловкость',
-    'int': 'Интеллект',
-    'wil': 'Воля',
-    'initiative': 'Инициатива',
-    'health.max': 'Здоровье'
-  }
-}
 const VARIABLES_LIST = ['str', 'dex', 'int', 'wil', 'level', 'no_armor'];
 
 export const NimbleBonuses = (props) => {
@@ -61,7 +43,7 @@ export const NimbleBonuses = (props) => {
       <GuideWrapper character={character()}>
         <SharedBonusesV2
           character={character()}
-          mapping={localize(MAPPING, locale())}
+          mapping={localize(props.mapping, locale())}
           variablesList={VARIABLES_LIST}
           onSaveBonus={saveBonus}
           onReloadCharacter={props.onReloadCharacter}
