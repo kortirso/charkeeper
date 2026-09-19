@@ -65,6 +65,7 @@ export const FateConsequences = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'FateConsequences' }}>
       <EditWrapper
+        position="right"
         editMode={editMode()}
         onSetEditMode={setEditMode}
         onCancelEditing={cancelEditing}

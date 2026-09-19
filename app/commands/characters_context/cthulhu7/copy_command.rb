@@ -4,8 +4,6 @@ module CharactersContext
   module Cthulhu7
     class CopyCommand < BaseCommand
       use_contract do
-        config.messages.namespace = :cthulhu7_character
-
         params do
           required(:character).filled(type?: ::Cthulhu7::Character)
         end

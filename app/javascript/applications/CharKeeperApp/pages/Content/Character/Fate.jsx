@@ -39,7 +39,7 @@ export const Fate = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'vitals'}>
-              <FateVitals character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <FateVitals character={character()} onReloadCharacter={props.onReloadCharacter} />
               <div class="mt-4">
                 <FateConsequences character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
@@ -85,7 +85,7 @@ export const Fate = (props) => {
               </div>
             </Match>
             <Match when={activeTab() === 'vitals'}>
-              <FateVitals character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <FateVitals character={character()} onReloadCharacter={props.onReloadCharacter} />
               <div class="mt-4">
                 <FateConsequences character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>

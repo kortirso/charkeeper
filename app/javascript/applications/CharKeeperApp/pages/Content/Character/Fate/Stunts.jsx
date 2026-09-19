@@ -3,9 +3,8 @@ import { Key } from '@solid-primitives/keyed';
 
 import { ErrorWrapper, EditWrapper, Button, Input, TextArea, Select, Dice } from '../../../../components';
 import { useAppState, useAppAlert, useAppLocale } from '../../../../context';
-import config from '../../../../data/fate.json';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { translate, modifier, localize } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -14,6 +13,7 @@ const TRANSLATION = {
     stuntTitle: 'Title',
     description: 'Description',
     skill: 'Skill',
+    approach: 'Approach',
     removeStunt: 'Remove stunt',
     check: 'Stunt'
   },
@@ -23,6 +23,7 @@ const TRANSLATION = {
     stuntTitle: 'Заголовок',
     description: 'Описание',
     skill: 'Навык',
+    approach: 'Подход',
     removeStunt: 'Удалить трюк',
     check: 'Трюк'
   },
@@ -32,6 +33,7 @@ const TRANSLATION = {
     stuntTitle: 'Título',
     description: 'Descripción',
     skill: 'Habilidad',
+    approach: 'Approach',
     removeStunt: 'Eliminar truco',
     check: 'Truco'
   }
@@ -42,7 +44,7 @@ export const FateStunts = (props) => {
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
-  const [stunts, setStunts] = createSignal({});
+  const [stunts, setStunts] = createSignal([]);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -65,7 +67,7 @@ export const FateStunts = (props) => {
   }
 
   const addStunt = () => {
-    setStunts(stunts().concat({ id: Math.floor(Math.random() * 1000), title: '', description: '', skill: null }));
+    setStunts(stunts().concat({ id: Math.floor(Math.random() * 1000), title: '', description: '', skill: null, approach: null }));
   }
 
   const changeStunt = (id, attribute, value) => {
@@ -95,6 +97,7 @@ export const FateStunts = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'FateStunts' }}>
       <EditWrapper
+        position="right"
         editMode={editMode()}
         onSetEditMode={setEditMode}
         onCancelEditing={cancelEditing}
@@ -105,7 +108,7 @@ export const FateStunts = (props) => {
           <Show
             when={editMode()}
             fallback={
-              <For each={stunts()}>
+              <For each={stunts().filter((item) => character().skills_system === 'core' ? item.skill : item.approach)}>
                 {(stunt) =>
                   <div class="mt-4">
                     <p class="mb-2 text-lg! flex items-center gap-x-4">
@@ -114,7 +117,7 @@ export const FateStunts = (props) => {
                         <Dice
                           width="30"
                           height="30"
-                          text={modifier(character().selected_skills[stunt.skill] + 2)}
+                          text={modifier((character().selected_skills[stunt.skill] || 0) + 2)}
                           onClick={() => props.openDiceRoll(`/check stunt "${stunt.title}"`, character().selected_skills[stunt.skill] + 2, `${localize(TRANSLATION, locale()).check}, ${stunt.title}`)}
                         />
                       </Show>
@@ -126,7 +129,10 @@ export const FateStunts = (props) => {
             }
           >
             <>
-              <Key each={stunts()} by={item => item.id}>
+              <Key
+                each={stunts().filter((item) => character().skills_system === 'core' ? item.skill : item.approach)}
+                by={item => item.id}
+              >
                 {(stunt) =>
                   <div class="mt-4">
                     <Input
@@ -142,22 +148,34 @@ export const FateStunts = (props) => {
                       value={stunt().description}
                       onChange={(value) => changeStunt(stunt().id, 'description', value)}
                     />
-                    <Select
-                      labelText={localize(TRANSLATION, locale()).skill}
-                      items={translate(config.skills, locale())}
-                      selectedValue={stunt().skill}
-                      onSelect={(value) => changeStunt(stunt().id, 'skill', value)}
-                    />
+                    <Show
+                      when={character().skills_system === 'core'}
+                      fallback={
+                        <Select
+                          labelText={localize(TRANSLATION, locale()).approach}
+                          items={character().approaches.reduce((acc, value) => { acc[value.slug] = value.name; return acc; }, {})}
+                          selectedValue={stunt().approach}
+                          onSelect={(value) => changeStunt(stunt().id, 'approach', value)}
+                        />
+                      }
+                    >
+                      <Select
+                        labelText={localize(TRANSLATION, locale()).skill}
+                        items={character().skills.reduce((acc, value) => { acc[value.slug] = value.name; return acc; }, {})}
+                        selectedValue={stunt().skill}
+                        onSelect={(value) => changeStunt(stunt().id, 'skill', value)}
+                      />
+                    </Show>
                     <div class="flex justify-start mt-2">
                       <Button default classList="px-2" onClick={() => removeStunt(stunt().id)}>
-                        {localize(TRANSLATION, locale()).removeStunt}
+                        <span>{localize(TRANSLATION, locale()).removeStunt}</span>
                       </Button>
                     </div>
                   </div>
                 }
               </Key>
               <div class="flex justify-start mt-4">
-                <Button default classList="px-2" onClick={addStunt}>{localize(TRANSLATION, locale()).addStunt}</Button>
+                <Button default classList="px-2" onClick={addStunt}><span>{localize(TRANSLATION, locale()).addStunt}</span></Button>
               </div>
             </>
           </Show>

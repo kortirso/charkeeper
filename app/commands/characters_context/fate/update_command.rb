@@ -7,7 +7,8 @@ module CharactersContext
 
       # rubocop: disable-next Metrics/BlockLength
       use_contract do
-        config.messages.namespace = :fate_character
+        SkillsSystems = Dry::Types['strict.string'].enum('core', 'approaches')
+        StressSystems = Dry::Types['strict.string'].enum('core', 'condensed')
 
         params do
           required(:character).filled(type?: ::Fate::Character)
@@ -24,14 +25,19 @@ module CharactersContext
             required(:b).maybe(:string, max_size?: 1000)
             required(:c).maybe(:string, max_size?: 1000)
           end
+          optional(:skills_system).filled(SkillsSystems)
+          optional(:stress_system).filled(StressSystems)
           optional(:selected_skills).hash
+          optional(:additional_skills).hash
+          optional(:selected_approaches).hash
           optional(:selected_stress).hash
           optional(:consequences).hash
           optional(:stunts).maybe(:array).each(:hash) do
             required(:id).filled(type?: Integer)
             required(:title).filled(:string, max_size?: 50)
             required(:description).maybe(:string, max_size?: 500)
-            required(:skill).maybe(:string)
+            optional(:skill).maybe(:string)
+            optional(:approach).maybe(:string)
           end
           optional(:fate_points).filled(:integer, gteq?: 0)
           optional(:file)

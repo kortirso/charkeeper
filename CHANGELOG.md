@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - rendering feats/attacks bonuses
+- optional rules for fate characters
 
 ## [0.5.11] - 2026-09-15
 ### Added

@@ -4,14 +4,14 @@ module Fate
   class CharacterSerializer < ApplicationSerializer
     include Deps[cache: 'cache.avatars']
 
-    attributes :provider, :id, :name, :created_at, :avatar, :aspects, :phase_trio, :skills_system, :custom_skills,
+    attributes :provider, :id, :name, :created_at, :avatar, :aspects, :phase_trio, :skills_system, :additional_skills,
                :selected_skills, :stress_system, :custom_stress, :selected_stress, :max_stress, :consequences, :stunts,
-               :fate_points, :refresh_points
+               :fate_points, :refresh_points, :selected_approaches, :skills, :approaches
 
-    delegate :max_stress, :refresh_points, to: :decorator
+    delegate :max_stress, :refresh_points, :skills, :approaches, to: :decorator
     delegate :data, to: :object
-    delegate :aspects, :phase_trio, :skills_system, :custom_skills, :selected_skills, :stress_system, :custom_stress,
-             :selected_stress, :consequences, :stunts, :fate_points, to: :data
+    delegate :aspects, :phase_trio, :skills_system, :additional_skills, :selected_skills, :stress_system, :custom_stress,
+             :selected_stress, :consequences, :stunts, :fate_points, :selected_approaches, to: :data
 
     def provider
       'fate'
@@ -24,7 +24,10 @@ module Fate
     def decorator
       @decorator ||= {}
       @decorator.fetch(object.id) do |key|
-        @decorator[key] = object.decorator
+        @decorator[key] = object.decorator(
+          simple: (context ? (context[:simple] || false) : false),
+          version: (context ? (context[:version] || nil) : nil)
+        )
       end
     end
   end
