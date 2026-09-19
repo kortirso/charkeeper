@@ -6,30 +6,25 @@ module Fate
 
     attribute :aspects, array: true, default: { 'concept' => '', 'trouble' => '', 'a' => '', 'b' => '', 'c' => '' }
     attribute :phase_trio, array: true, default: { 'a' => '', 'b' => '', 'c' => '' }
-    attribute :skills_system, :string, default: 'core' # core/custom_skills/approaches
-    attribute :custom_skills, array: true, default: []
-    attribute :selected_skills, array: true, default: {}
-    attribute :stress_system, :string, default: 'core' # core 1234 / condensed 111111
     attribute :custom_stress, array: true, default: []
     attribute :selected_stress, array: true, default: {} # physical 3, mental: 3
     attribute :consequences, array: true, default: {} # mild,moderate,severe, physical/mental
-    attribute :stunts, array: true, default: [] # [{ id: 1, title: '', description: '', skill: nil }]
+    attribute :stunts, array: true, default: [] # [{ id: 1, title: '', description: '', skill: nil, approach: nil }]
     attribute :fate_points, :integer, default: 0
+    # skills
+    attribute :selected_skills, array: true, default: {}
+    attribute :selected_approaches, array: true, default: {}
+    attribute :additional_skills, array: true, default: {}
+    # system settings
+    attribute :skills_system, :string, default: 'core' # core/approaches
+    attribute :stress_system, :string, default: 'core' # core 1234 / condensed 111111
   end
 
   class Character < Character
-    def self.config
-      @config ||= PlatformConfig.data('fate')
-    end
-
-    def self.skills
-      config['skills']
-    end
-
     attribute :data, Fate::CharacterData.to_type
 
-    def decorator
-      ::FateCharacter::BaseDecorator.new(self)
+    def decorator(simple: false, version: nil)
+      FateDecorator.new.call(character: self, simple: simple, version: version)
     end
   end
 end

@@ -4,8 +4,6 @@ module CharactersContext
   module Cthulhu7
     class CreateCommand < BaseCommand
       use_contract do
-        config.messages.namespace = :cthulhu7_character
-
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string, max_size?: 50)

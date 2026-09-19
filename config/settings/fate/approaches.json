@@ -1,0 +1,8 @@
+{
+  "careful": { "name": { "en": "Careful", "ru": "Аккуратно" } },
+  "clever": { "name": { "en": "Clever", "ru": "Умно" } },
+  "flashy": { "name": { "en": "Flashy", "ru": "Дерзко" } },
+  "forceful": { "name": { "en": "Forceful", "ru": "Мощно" } },
+  "quick": { "name": { "en": "Quick", "ru": "Быстро" } },
+  "sneaky": { "name": { "en": "Sneaky", "ru": "Скрытно" } }
+}

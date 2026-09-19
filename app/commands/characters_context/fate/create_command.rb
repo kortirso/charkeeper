@@ -4,8 +4,6 @@ module CharactersContext
   module Fate
     class CreateCommand < BaseCommand
       use_contract do
-        config.messages.namespace = :fate_character
-
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string, max_size?: 50)
