@@ -1,0 +1,47 @@
+[
+  {
+    "title": {
+      "en": "Misting"
+    },
+    "description": {
+      "en": "Mistings are by far the most common type of Metalborn across both eras."
+    },
+    "public": true,
+    "only": ["3f15d0c7-5ee2-4213-ac22-3d1a9c262796", "bdeda4fd-3541-45b4-b55e-d6994185f1e0"],
+    "selected_skills": ["allomancy"],
+    "initial_talents": ["Misting Snap"],
+    "features": [
+      {
+        "required_for": ["Invested", "Instinctual Burn"],
+        "extra_skills": ["allomancy"],
+        "title": {
+          "en": "Misting Snap"
+        },
+        "description": {
+          "en": "**Prerequisite** Human or koloss-blooded ancestry; no other Snap or Heritage talent.\n\nGain an Investiture score, the Drink Vial action, the Allomancy skill, and one nascent Allomantic power."
+        },
+        "kind": "static",
+        "investiture": true
+      },
+      {
+        "title": {
+          "en": "Invested"
+        },
+        "description": {
+          "en": "Your max Investiture increases by your tier."
+        },
+        "kind": "update_result",
+        "modifiers": { "investiture_max": { "type": "add", "value": "tier" } }
+      },
+      {
+        "title": {
+          "en": "Instinctual Burn"
+        },
+        "description": {
+          "en": "**Prerequisite** Allomancy 3+.\n\nAfter a long rest, choose one of your Allomantic powers. You can use its Burn action before each scene."
+        },
+        "kind": "text"
+      }
+    ]
+  }
+]

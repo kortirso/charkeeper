@@ -43,7 +43,7 @@ module CharactersContext
 
           input[:character].data.selected_skills.merge!(
             input[:feat].info['extra_skills'].tally
-          )
+          ) { |_key, oldval, newval| oldval + newval }
           input[:character].save
         end
       end

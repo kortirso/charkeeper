@@ -2,7 +2,7 @@
 
 module Cache
   class CosmereNames
-    CACHE_KEY = 'nimble_names/0.5.10'
+    CACHE_KEY = 'cosmere_names/0.5.10'
 
     def fetch_list
       Rails.cache.fetch(CACHE_KEY, expires_in: 1.day) { load_initial_data }
@@ -31,7 +31,8 @@ module Cache
         ancestries: ids_with_names(::Cosmere::Homebrews::Ancestry),
         specializations: ids_with_names(::Cosmere::Homebrews::Specialization),
         invested_paths: ids_with_names(::Cosmere::Homebrews::InvestedPath),
-        invested_arts: ids_with_names(::Cosmere::Homebrews::InvestedArt)
+        invested_arts: ids_with_names(::Cosmere::Homebrews::InvestedArt),
+        paths: ids_with_names(::Cosmere::Homebrews::Path)
       }
     end
 

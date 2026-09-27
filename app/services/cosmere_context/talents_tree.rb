@@ -33,7 +33,7 @@ module CosmereContext
       end
     end
 
-    def path_tree
+    def path_tree # rubocop: disable Metrics/AbcSize
       [
         %w[agent opportunist], %w[envoy rousing_presence], %w[hunter seek_quarry], %w[leader decisive_command],
         %w[scholar erudition], %w[warrior vigilant_stance]
@@ -45,7 +45,14 @@ module CosmereContext
           feats: [feat_info(item[1], required_for)],
           name: translate(::Cosmere::Character.paths_info(item[0])['name'])
         }
-      end
+      end +
+        homebrews.dig('cosmere', 'paths').values.map do |value|
+          {
+            feats: value['initial_talents'].filter_map { |item| feat_info(item) },
+            name: translate(value['name']),
+            only: value['only']
+          }
+        end
     end
 
     def invested_paths_tree

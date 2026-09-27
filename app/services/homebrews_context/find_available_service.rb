@@ -2,7 +2,7 @@
 
 module HomebrewsContext
   class FindAvailableService
-    def call(user_id:) # rubocop: disable Metrics/MethodLength
+    def call(user_id:) # rubocop: disable Metrics/MethodLength, Metrics/AbcSize
       {
         daggerheart: {
           races: races_with_features(user_id).to_h,
@@ -29,7 +29,8 @@ module HomebrewsContext
           ancestries: cosmere_only(user_id, ::Cosmere::Homebrews::Ancestry),
           specializations: cosmere_all(user_id, ::Cosmere::Homebrews::Specialization),
           invested_paths: cosmere_all(user_id, ::Cosmere::Homebrews::InvestedPath),
-          invested_arts: cosmere_all(user_id, ::Cosmere::Homebrews::InvestedArt)
+          invested_arts: cosmere_all(user_id, ::Cosmere::Homebrews::InvestedArt),
+          paths: cosmere_all(user_id, ::Cosmere::Homebrews::Path)
         }
       }
     end
