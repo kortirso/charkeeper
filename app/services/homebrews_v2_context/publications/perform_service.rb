@@ -29,7 +29,7 @@ module HomebrewsV2Context
           end
       end
 
-      def cosmere_commands(publication)
+      def cosmere_commands(publication) # rubocop: disable Metrics/CyclomaticComplexity
         case publication.parent_type
         when 'setting' then HomebrewsV2Context::Import::Cosmere::Settings::PerformCommand.new
         when 'culture' then HomebrewsV2Context::Import::Cosmere::Cultures::PerformCommand.new
@@ -40,6 +40,7 @@ module HomebrewsV2Context
         when 'armor' then HomebrewsV2Context::Import::Cosmere::Items::Armors::AddCommand.new
         when 'weapon' then HomebrewsV2Context::Import::Cosmere::Items::Weapons::AddCommand.new
         when 'item' then HomebrewsV2Context::Import::Cosmere::Items::Items::AddCommand.new
+        when 'path' then HomebrewsV2Context::Import::Cosmere::Paths::PerformCommand.new
         end
       end
 

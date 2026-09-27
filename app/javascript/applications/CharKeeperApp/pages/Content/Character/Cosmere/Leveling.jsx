@@ -32,7 +32,7 @@ const TRANSLATION = {
     nested: 'There are nested selected talents',
     showOnlyActive: 'Show only active paths',
     titles: {
-      paths: 'Heroic paths',
+      paths: 'Paths',
       invested_paths: 'Invested paths',
       invested_arts: 'Invested powers'
     },
@@ -58,7 +58,7 @@ const TRANSLATION = {
     nested: 'Сперва удалите вложенные таланты',
     showOnlyActive: 'Показывать только активные пути',
     titles: {
-      paths: 'Героические пути',
+      paths: 'Пути',
       invested_paths: 'Инвестированные пути',
       invested_arts: 'Инвестированные силы'
     },
@@ -84,7 +84,7 @@ const TRANSLATION = {
     nested: 'There are nested selected talents',
     showOnlyActive: 'Show only active paths',
     titles: {
-      paths: 'Heroic paths',
+      paths: 'Paths',
       invested_paths: 'Invested paths',
       invested_arts: 'Invested powers'
     },

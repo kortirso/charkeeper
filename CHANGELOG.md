@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - rendering feats/attacks bonuses
 - optional rules for fate characters
+- homebrew paths for cosmere characters
 
 ## [0.5.11] - 2026-09-15
 ### Added

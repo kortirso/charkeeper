@@ -12,7 +12,7 @@ const TRANSLATION = {
     name: 'Name',
     ancestry: 'Select ancestry',
     cultures: 'Select cultures',
-    path: 'Select heroic path',
+    path: 'Select path',
     setting: 'Setting',
     options: 'There are books available in Homebrews/Modules section for additional options for character creation.',
     limits: 'Limit choises by setting'
@@ -21,7 +21,7 @@ const TRANSLATION = {
     name: 'Имя',
     ancestry: 'Выберите наследие',
     cultures: 'Выберите культуры',
-    path: 'Выберите героический путь',
+    path: 'Выберите путь',
     setting: 'Сеттинг',
     options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.',
     limits: 'Ограничить выбор рамками сеттинга'
@@ -30,7 +30,7 @@ const TRANSLATION = {
     name: 'Nombre',
     ancestry: 'Select ancestry',
     cultures: 'Select cultures',
-    path: 'Select heroic path',
+    path: 'Select path',
     setting: 'Setting',
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
     limits: 'Limit choises by setting'
@@ -92,6 +92,20 @@ export const CosmereCharacterForm = (props) => {
     }));
   });
 
+  const paths = createMemo(() => {
+    if (!characterForm.setting) return {};
+
+    const result = { ...config.paths, ...props.homebrews().cosmere.paths }
+    if (!limit()) return result;
+
+    return Object.fromEntries(Object.entries(result).filter(([, values]) => {
+      if (values.only && !values.only.includes(characterForm.setting)) return false;
+      if (values.except && values.except.includes(characterForm.setting)) return false;
+
+      return true;
+    }));
+  });
+
   return (
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <div class="flex flex-col gap-2">
@@ -128,13 +142,13 @@ export const CosmereCharacterForm = (props) => {
             selectedValues={characterForm.cultures}
             onSelect={updateCulturesValue}
           />
+          <Select
+            labelText={i18n().path}
+            items={translate(paths(), locale())}
+            selectedValue={characterForm.path}
+            onSelect={(value) => setCharacterForm({ ...characterForm, path: value })}
+          />
         </Show>
-        <Select
-          labelText={i18n().path}
-          items={translate(config.paths, locale())}
-          selectedValue={characterForm.path}
-          onSelect={(value) => setCharacterForm({ ...characterForm, path: value })}
-        />
       </div>
     </CharacterForm>
   );

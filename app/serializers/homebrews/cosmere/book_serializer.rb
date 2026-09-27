@@ -18,6 +18,7 @@ module Homebrews
           ancestries: titles(items, ::Cosmere::Homebrews::Ancestry, 'Homebrew'),
           specializations: titles(items, ::Cosmere::Homebrews::Specialization, 'Homebrew'),
           invested_paths: titles(items, ::Cosmere::Homebrews::InvestedPath, 'Homebrew'),
+          paths: titles(items, ::Cosmere::Homebrews::Path, 'Homebrew'),
           invested_arts: titles(items, ::Cosmere::Homebrews::InvestedArt, 'Homebrew'),
           items: ::Cosmere::Item.kept.where(id: items['Item']).pluck(:id, :name).to_h.transform_values { |item|
             translate(item)
