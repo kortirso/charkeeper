@@ -55,6 +55,7 @@ gem 'authkeeper'
 gem 'jwt', '~> 2.5'
 
 # Work with JSON-backed attributes
+gem 'json', '2.21.2'
 gem 'store_model'
 
 # http client

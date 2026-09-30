@@ -33,12 +33,12 @@ module CosmereContext
       end
     end
 
-    def path_tree # rubocop: disable Metrics/AbcSize
+    def path_tree # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
       [
         %w[agent opportunist], %w[envoy rousing_presence], %w[hunter seek_quarry], %w[leader decisive_command],
         %w[scholar erudition], %w[warrior vigilant_stance]
       ].map do |item|
-        required_for = homebrews.dig('cosmere', 'specializations').filter_map { |_, values|
+        required_for = homebrews.dig('cosmere', 'specializations')&.filter_map { |_, values|
           values['origin_class'] == item[0] && [values['initial_talents'], values['only']]
         }
         {
@@ -46,7 +46,7 @@ module CosmereContext
           name: translate(::Cosmere::Character.paths_info(item[0])['name'])
         }
       end +
-        homebrews.dig('cosmere', 'paths').values.map do |value|
+        (homebrews.dig('cosmere', 'paths')&.values || []).map do |value|
           {
             feats: value['initial_talents'].filter_map { |item| feat_info(item) },
             name: translate(value['name']),
@@ -56,7 +56,7 @@ module CosmereContext
     end
 
     def invested_paths_tree
-      homebrews.dig('cosmere', 'invested_paths').values.map do |value|
+      (homebrews.dig('cosmere', 'invested_paths')&.values || []).map do |value|
         {
           feats: value['initial_talents'].filter_map { |item| feat_info(item) },
           name: translate(value['name']),
@@ -66,7 +66,7 @@ module CosmereContext
     end
 
     def invested_arts_tree
-      homebrews.dig('cosmere', 'invested_arts').values.filter_map do |value|
+      (homebrews.dig('cosmere', 'invested_arts')&.values || []).filter_map do |value|
         {
           feats: value['initial_talents'].map { |item| feat_info(item) },
           name: translate(value['name']),
@@ -140,7 +140,7 @@ module CosmereContext
     end
 
     def homebrews
-      @homebrews ||= User::Homebrew.find_or_create_by(user: @character.user).data
+      @homebrews ||= User::Homebrew.find_or_create_by(user: @character.user)&.data.to_h
     end
   end
 end
