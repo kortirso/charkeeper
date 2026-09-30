@@ -81,13 +81,12 @@ export const Nimble = (props) => {
   const personalFilter = (item) => item.origin === 'character';
 
   const featFilters = createMemo(() => {
-    const result = [
+    return [
       { title: 'personal', callback: personalFilter },
       { title: 'ancestry', callback: ancestryFilter },
       { title: 'class', callback: classFilter },
       { title: 'subclass', callback: subclassFilter }
     ];
-    return result;
   });
 
   const characterTabs = createMemo(() => {

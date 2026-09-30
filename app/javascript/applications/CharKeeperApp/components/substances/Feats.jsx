@@ -22,7 +22,6 @@ const TRANSLATION = {
     allFeatures: 'All features',
     personalFeats: 'Add personal/custom feat',
     settings: 'Filter settings',
-    showPersonal: 'Show personal',
     groupFeatures: 'Group features',
     showPassive: 'Show passive',
     expandAll: 'Expand all',
@@ -45,7 +44,6 @@ const TRANSLATION = {
     allFeatures: 'Все способности',
     personalFeats: 'Добавить способность',
     settings: 'Настройки фильтров',
-    showPersonal: 'Показать личные',
     groupFeatures: 'Группировать',
     showPassive: 'Показать пассивные',
     expandAll: 'Раскрывать все',
@@ -68,7 +66,6 @@ const TRANSLATION = {
     allFeatures: 'Todas las habilidades',
     personalFeats: 'Add personal/custom feat',
     settings: 'Configuración del filtro',
-    showPersonal: 'Mostrar personales',
     groupFeatures: 'Agrupar características',
     showPassive: 'Mostrar pasivas',
     expandAll: 'Expandir todo',
@@ -373,7 +370,7 @@ export const Feats = (props) => {
           <Show when={activeFilter()}>
             <CharacterNavigation
               directTranslation={props.directTranslation}
-              tabsList={filters().map((item) => item.title).filter((item) => item !== 'personal' || filtering() === undefined || filtering().includes('showPersonal'))}
+              tabsList={filters().map((item) => item.title)}
               filters={filters()}
               activeTab={activeFilter()}
               setActiveTab={setActiveFilter}
@@ -392,7 +389,6 @@ export const Feats = (props) => {
                 containerClassList="w-full md:w-1/2 mb-2"
                 labelText={i18nMem()['settings']}
                 items={{
-                  'showPersonal': i18nMem().showPersonal,
                   'groupFeatures': i18nMem().groupFeatures,
                   'showPassive': i18nMem().showPassive,
                   'expandAll': i18nMem().expandAll
