@@ -20,6 +20,20 @@ module HomebrewsV2Context
 
           private
 
+          def validate_content(input)
+            input[:features] = input[:features]&.map!(&:deep_symbolize_keys)
+            input[:features]&.each do |feature|
+              feature[:user] = input[:user]
+              feature[:origin] = 'character'
+              feature[:origin_value] = 'character.id'
+
+              validate_result = add_feat.validate_all(feature)
+              return validate_result[:raw_errors] if validate_result[:raw_errors]
+            end
+
+            nil
+          end
+
           def do_prepare(input)
             input[:character] = input[:user].characters.daggerheart.find(input[:id])
           end

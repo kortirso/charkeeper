@@ -57,7 +57,7 @@ module HomebrewsV2Context
 
             def do_prepare(input)
               input[:name].transform_values! { |value| sanitize(value) }
-              input[:description].transform_values! { |value| sanitize(value) }
+              input[:description]&.transform_values! { |value| sanitize(value) }
             end
 
             def do_persist(input)
