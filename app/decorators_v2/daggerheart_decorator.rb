@@ -437,7 +437,8 @@ class DaggerheartDecorator < ApplicationDecoratorV2
         no_armor: equiped_armor_info.blank?,
         no_weapon: equiped_weapon_info.blank?,
         stress_marked: stress_marked,
-        health_marked: health_marked
+        health_marked: health_marked,
+        hope_marked: hope_marked
       }.merge(subclasses_mastery.transform_keys { |key| "#{key}_mastery" })
   end
 
@@ -451,6 +452,16 @@ class DaggerheartDecorator < ApplicationDecoratorV2
         )
   end
 
+  def final_formula_variables
+    @final_formula_variables ||=
+      formula_variables
+        .merge(
+          stress_max: stress_max,
+          health_max: health_max,
+          hope_max: hope_max
+        )
+  end
+
   def apply_features
     available_features.filter_map do |feature|
       next if feature.feat.kind == 'hidden'
@@ -461,7 +472,7 @@ class DaggerheartDecorator < ApplicationDecoratorV2
 
   def feature_payload(feature) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
     eval_limit = feature.feat.description_eval_variables['limit']
-    limit = eval_limit ? formula.call(formula: eval_limit, variables: formula_variables) : nil
+    limit = eval_limit ? formula.call(formula: eval_limit, variables: final_formula_variables) : nil
     tokens_max = feature.tokens ? feature.feat.tokens['limit'] : nil
     {
       id: feature.id,
@@ -507,7 +518,7 @@ class DaggerheartDecorator < ApplicationDecoratorV2
       formula_value = feat.description_eval_variables[variable]
       next result.gsub!("{{#{value}}}", default) unless formula_value
 
-      formula_result = formula.call(formula: formula_value, variables: formula_variables)
+      formula_result = formula.call(formula: formula_value, variables: final_formula_variables)
       next result.gsub!("{{#{value}}}", default) unless formula_result
 
       result.gsub!("{{#{value}}}", formula_result.to_s)

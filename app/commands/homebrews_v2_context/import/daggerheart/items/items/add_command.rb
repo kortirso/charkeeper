@@ -28,6 +28,7 @@ module HomebrewsV2Context
                 optional(:public).filled(:bool)
                 optional(:item_names).maybe(:array).each(:string, max_size?: 50)
                 optional(:info).hash
+                optional(:modifiers).hash
               end
             end
 

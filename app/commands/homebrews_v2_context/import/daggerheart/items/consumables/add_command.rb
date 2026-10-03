@@ -10,6 +10,7 @@ module HomebrewsV2Context
               formula: 'formula'
             ]
 
+            # rubocop: disable-next Metrics/BlockLength
             use_contract do
               ConsumeAttributes = Dry::Types['strict.string'].enum('health_marked', 'stress_marked', 'hope_marked')
 
@@ -31,6 +32,13 @@ module HomebrewsV2Context
                   required(:formula).filled(:string)
                 end
                 optional(:public).filled(:bool)
+                optional(:info).hash do
+                  optional(:features).maybe(:array).each(:hash) do
+                    required(:en).filled(:string, max_size?: 250)
+                    optional(:ru).maybe(:string, max_size?: 250)
+                    optional(:es).maybe(:string, max_size?: 250)
+                  end
+                end
               end
             end
 
