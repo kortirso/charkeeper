@@ -2,7 +2,7 @@
 
 module Cache
   class DndNames
-    CACHE_KEY = 'dnd_names/0.4.39'
+    CACHE_KEY = 'dnd_names/0.5.12'
 
     def fetch_list
       Rails.cache.fetch(CACHE_KEY, expires_in: 1.day) { load_initial_data }
@@ -27,6 +27,7 @@ module Cache
     def load_initial_data
       {
         races: ids_with_names(::Dnd2024::Homebrews::Race),
+        classes: ids_with_names(::Dnd2024::Homebrews::Speciality),
         subclasses: ids_with_names(::Dnd2024::Homebrews::Subclass),
         backgrounds: ids_with_names(::Dnd2024::Homebrews::Background)
       }

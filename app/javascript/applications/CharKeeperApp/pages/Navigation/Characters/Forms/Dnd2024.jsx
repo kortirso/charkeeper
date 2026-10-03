@@ -79,6 +79,13 @@ export const Dnd2024CharacterForm = (props) => {
     return { ...config.backgrounds, ...props.homebrews().dnd2024.backgrounds };
   });
 
+  const dndClasses = createMemo(() => {
+    if (props.homebrews() === undefined) return {};
+    if (!showHomebrew()) return config.classes;
+
+    return { ...config.classes, ...props.homebrews().dnd2024.classes };
+  });
+
   return (
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <div class="flex flex-col gap-2">
@@ -127,7 +134,7 @@ export const Dnd2024CharacterForm = (props) => {
         <Select
           searchable
           labelText={t('newCharacterPage.dnd2024.mainClass')}
-          items={translate(config.classes, locale(), true)}
+          items={translate(dndClasses(), locale(), true)}
           selectedValue={characterDnd2024Form.main_class}
           onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, main_class: value })}
         />

@@ -93,7 +93,7 @@ module CharactersContext
           next if value.nil?
 
           # добавить проверку, что main_class присутствует в списке классов
-          key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd2024::Character.classes_info.keys) }
+          # key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd2024::Character.classes_info.keys) }
           key.failure(:invalid_level) unless value.values.all? { |item| item.to_i.between?(1, 20) }
         end
       end
@@ -114,7 +114,12 @@ module CharactersContext
           input[:removed_classes] = input[:character].data.classes.keys - input[:classes].keys
           input[:hit_dice] = { 6 => 0, 8 => 0, 10 => 0, 12 => 0 }
           input[:classes].each do |key, class_level|
-            input[:hit_dice][::Dnd2024::Character::HIT_DICES[key]] += class_level
+            if ::Dnd2024::Character::HIT_DICES[key]
+              input[:hit_dice][::Dnd2024::Character::HIT_DICES[key]] += class_level
+            else
+              record = ::Dnd2024::Homebrews::Speciality.find_by(id: key)
+              input[:hit_dice][record.info.hit_dice] += class_level if record
+            end
           end
         end
 

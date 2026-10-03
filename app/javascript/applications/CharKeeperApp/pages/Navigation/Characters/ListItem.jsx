@@ -4,7 +4,6 @@ import * as i18n from '@solid-primitives/i18n';
 import { IconButton } from '../../../components';
 import { Dots, Avatar } from '../../../assets';
 import pathfinder2Config from '../../../data/pathfinder2.json';
-import dnd2024Config from '../../../data/dnd2024.json';
 import dnd5Config from '../../../data/dnd5.json';
 import dc20Config from '../../../data/dc20.json';
 import falloutConfig from '../../../data/fallout.json';
@@ -86,7 +85,7 @@ export const CharactersListItem = (props) => {
       return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? localize(dnd5Config.races[character().race].subraces[character().subrace].name, locale()) : localize(dnd5Config.races[character().race].name, locale())}`;
     }
     if (character().provider === 'dnd2024') {
-      return `${t('charactersPage.level')} ${character().level} | ${character().legacy ? localize(props.dnd2024Races[character().species].legacies[character().legacy].name, locale()) : localize(props.dnd2024Races[character().species].name, locale())}`;
+      return `${t('charactersPage.level')} ${character().level} | ${character().legacy ? character().names.legacy_name : character().names.species_name}`;
     }
     if (character().provider === 'pathfinder2') {
       return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? localize(pathfinder2Config.races[character().race].subraces[character().subrace].name, locale()) : localize(pathfinder2Config.races[character().race].name, locale())}`;
@@ -107,7 +106,7 @@ export const CharactersListItem = (props) => {
       return Object.keys(character().classes).map((item) => localize(dnd5Config.classes[item].name, locale())).join(' * ');
     }
     if (character().provider === 'dnd2024') {
-      return Object.keys(character().classes).map((item) => localize(dnd2024Config.classes[item].name, locale())).join(' * ');
+      return character().names.class_names.join(' * ');
     }
     if (character().provider === 'pathfinder2') {
       return Object.keys(character().classes).map((item) => localize(pathfinder2Config.classes[item].name, locale())).join(' * ');

@@ -4,7 +4,7 @@ module Frontend
   class CharactersController < Frontend::BaseController
     include SerializeResource
 
-    DND_SERIALIZE_FIELDS = %i[id name level race subrace species legacy classes provider avatar].freeze
+    DND_SERIALIZE_FIELDS = %i[id name level race subrace species legacy classes provider avatar names].freeze
     DAGGERHEART_SERIALIZE_FIELDS = %i[id name level heritage heritage_name classes provider avatar names].freeze
     DC20_SERIALIZE_FIELDS = %i[id name level classes main_class ancestries provider avatar].freeze
     FATE_SERIALIZE_FIELDS = %i[id name provider avatar].freeze

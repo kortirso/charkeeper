@@ -254,7 +254,6 @@ export const CharactersTab = () => {
                   <CharactersListItem
                     character={character}
                     isActive={character.id == appState.activePageParams.id}
-                    dnd2024Races={dnd2024Races()}
                     onClick={() => navigate('character', { id: character.id })}
                     onViewClick={() => navigate('characterView', { id: character.id })}
                     onDeleteCharacter={(e) => deleteCharacter(e, character.id)}

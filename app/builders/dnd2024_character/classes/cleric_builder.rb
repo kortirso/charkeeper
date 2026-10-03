@@ -13,6 +13,7 @@ module Dnd2024Character
         result[:health] = { current: 9, max: 9, temp: 0 }
         result[:skill_boosts] += 2
         result[:skill_boosts_list] = %w[history insight medicine persuasion religion]
+        result[:hit_dice][8] = 1
 
         result
       end

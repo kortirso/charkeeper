@@ -12,6 +12,7 @@ module Dnd2024Character
         result[:abilities] = { str: 8, dex: 14, con: 12, int: 13, wis: 10, cha: 15 }
         result[:health] = { current: 9, max: 9, temp: 0 }
         result[:any_skill_boosts] += 3
+        result[:hit_dice][8] = 1
 
         result
       end

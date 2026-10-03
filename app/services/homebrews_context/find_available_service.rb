@@ -14,6 +14,7 @@ module HomebrewsContext
         },
         dnd2024: {
           races: dnd2024_races(user_id),
+          classes: dnd2024_classes(user_id),
           subclasses: dnd2024_subclasses(user_id),
           backgrounds: titles(user_id, ::Dnd2024::Homebrews::Background)
         },
@@ -97,15 +98,26 @@ module HomebrewsContext
         end
     end
 
-    def dnd2024_subclasses(user_id)
-      ::Dnd2024::Homebrews::Subclass.where(user_id: user_id)
+    def dnd2024_classes(user_id)
+      ::Dnd2024::Homebrews::Speciality.where(user_id: user_id)
         .or(
-          ::Dnd2024::Homebrews::Subclass.where(id: available_books_data(user_id))
+          ::Dnd2024::Homebrews::Speciality.where(id: dnd2024_subclasses(user_id).keys)
         )
         .kept.each_with_object({}) do |item, acc|
-          acc[item.info.class_id] ||= {}
-          acc[item.info.class_id][item.id] = { name: item.title }
+          acc[item.id] = { name: item.title }
         end
+    end
+
+    def dnd2024_subclasses(user_id)
+      @dnd2024_subclasses ||=
+        ::Dnd2024::Homebrews::Subclass.where(user_id: user_id)
+          .or(
+            ::Dnd2024::Homebrews::Subclass.where(id: available_books_data(user_id))
+          )
+          .kept.each_with_object({}) do |item, acc|
+            acc[item.info.class_id] ||= {}
+            acc[item.info.class_id][item.id] = { name: item.title }
+          end
     end
 
     def daggerheart_heritages(user_id)

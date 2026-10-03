@@ -11,7 +11,6 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :dnd5_character
 
-        Classes = Dry::Types['strict.string'].enum(*::Dnd2024::Character.classes_info.keys)
         Alignments = Dry::Types['strict.string'].enum(*::Dnd2024::Character::ALIGNMENTS)
 
         params do
@@ -20,7 +19,7 @@ module CharactersContext
           required(:species).filled(:string)
           optional(:legacy).filled(:string)
           required(:size).filled(:string)
-          required(:main_class).filled(Classes)
+          required(:main_class).filled(:string)
           required(:alignment).filled(Alignments)
           optional(:background).filled(:string)
           optional(:skip_guide).filled(:bool)
@@ -46,6 +45,7 @@ module CharactersContext
           talent: ::Dnd2024::Feat.find_by(slug: talent) || ::Dnd2024::Feat.find_by(id: talent)
         )
         learn_spells_list(character, input)
+        learn_custom_spells_list(character, input)
 
         { result: character }
       end
@@ -64,14 +64,39 @@ module CharactersContext
         relation = ::Dnd2024::Feat.where(origin: 6).where('origin_values && ?', "{#{input[:main_class]}}")
         spells =
           relation.where(user_id: [nil, input[:user].id]).or(relation.where(id: homebrew_item_ids(input)))
-          .map do |feat|
+          .ids
+          .map do |feat_id|
             {
               character_id: character.id,
-              feat_id: feat.id,
+              feat_id: feat_id,
               ready_to_use: false,
               value: { prepared_by: input[:main_class] }
             }
           end
+        ::Character::Feat.upsert_all(spells) if spells.any?
+      end
+
+      def learn_custom_spells_list(character, input) # rubocop: disable Metrics/AbcSize
+        return if ::Dnd2024::Character.classes_info[input[:main_class]]
+
+        record = ::Dnd2024::Homebrews::Speciality.find_by(id: input[:main_class])
+        return unless record
+        return if record.info.learn_spells
+
+        relation = ::Dnd2024::Feat.where(origin: 6)
+        spells =
+          relation.where("title ->> 'en' IN (:values) OR title ->> 'ru' IN (:values)", values: record.info.spells)
+            .or(relation.where(id: record.info.spells))
+            .or(relation.where(slug: record.info.spells))
+            .ids
+            .map do |feat_id|
+              {
+                character_id: character.id,
+                feat_id: feat_id,
+                ready_to_use: false,
+                value: { prepared_by: input[:main_class] }
+              }
+            end
         ::Character::Feat.upsert_all(spells) if spells.any?
       end
 

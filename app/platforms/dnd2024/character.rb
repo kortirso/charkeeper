@@ -164,6 +164,10 @@ module Dnd2024
       end
     end
 
+    def class_names
+      data.classes.keys.map { |item| class_name(item) }
+    end
+
     def species_name
       return '' unless data.species
 
@@ -172,6 +176,13 @@ module Dnd2024
 
       custom_name = dnd_names.fetch_item(key: :races, id: data.species)
       custom_name ? translate(custom_name[:name]) : '-'
+    end
+
+    def legacy_name
+      return unless data.legacy
+
+      default = ::Dnd2024::Character.legacies_info(data.species)[data.legacy]
+      translate(default['name']) if default
     end
 
     def background_name

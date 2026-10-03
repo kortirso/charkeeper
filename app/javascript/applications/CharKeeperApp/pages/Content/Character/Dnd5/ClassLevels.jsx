@@ -125,11 +125,12 @@ export const Dnd5ClassLevels = (props) => {
 
   const classesWithHomebrews = createMemo(() => {
     const result = currentConfig().classes;
+
     if (character().provider === 'dnd5') return result;
     if (homebrews() === undefined) return result;
     if (!homebrews().dnd2024.subclasses) return result;
 
-    return Object.fromEntries(Object.entries(result).map(([slug, values]) => {
+    return Object.fromEntries(Object.entries({ ...result, ...homebrews().dnd2024.classes }).map(([slug, values]) => {
       const homebrewSubclasses = homebrews().dnd2024.subclasses[slug] || {};
       const allSubclasses = { ...values.subclasses, ...homebrewSubclasses };
 
@@ -137,7 +138,14 @@ export const Dnd5ClassLevels = (props) => {
     }));
   });
 
-  const classes = () => translate(currentConfig().classes, locale());
+  const classes = createMemo(() => {
+    const result = currentConfig().classes;
+
+    if (character().provider === 'dnd5') return translate(result, locale());
+    if (homebrews() === undefined) return translate(result, locale());
+
+    return translate({ ...result, ...homebrews().dnd2024.classes }, locale());
+  });
 
   // actions
   /* eslint-disable solid/reactivity */
@@ -213,33 +221,35 @@ export const Dnd5ClassLevels = (props) => {
         finishGuideStep={true}
       >
         <div class="blockable p-4 flex flex-col">
-          <div class="mb-1">
-            <p>{character().subclasses[character().main_class] ? `${classes()[character().main_class]} - ${translate(classesWithHomebrews()[character().main_class].subclasses, locale())[character().subclasses[character().main_class]]}` : classes()[character().main_class]}</p>
-            <div class="my-2 flex items-center">
-              <div class="flex justify-between items-center mr-4 w-24">
-                <Button default size="small" onClick={() => changeClassLevel(character().main_class, 'down')}>
-                  <Minus />
-                </Button>
-                <p>{classesData()[character().main_class]}</p>
-                <Button default size="small" onClick={() => changeClassLevel(character().main_class, 'up')}>
-                  <PlusSmall />
-                </Button>
-              </div>
-              <div class="flex-1">
-                <Show
-                  when={Object.keys(classesWithHomebrews()[character().main_class].subclasses).length > 0 && !character().subclasses[character().main_class]}
-                  fallback={<></>}
-                >
-                  <Select
-                    containerClassList="w-full"
-                    items={translate(classesWithHomebrews()[character().main_class].subclasses, locale())}
-                    selectedValue={subclassesData()[character().main_class]}
-                    onSelect={(value) => setSubclassesData({ ...subclassesData(), [character().main_class]: value })}
-                  />
-                </Show>
+          <Show when={classesWithHomebrews()[character().main_class]}>
+            <div class="mb-1">
+              <p>{character().subclasses[character().main_class] ? `${classes()[character().main_class]} - ${translate(classesWithHomebrews()[character().main_class].subclasses, locale())[character().subclasses[character().main_class]]}` : classes()[character().main_class]}</p>
+              <div class="my-2 flex items-center">
+                <div class="flex justify-between items-center mr-4 w-24">
+                  <Button default size="small" onClick={() => changeClassLevel(character().main_class, 'down')}>
+                    <Minus />
+                  </Button>
+                  <p>{classesData()[character().main_class]}</p>
+                  <Button default size="small" onClick={() => changeClassLevel(character().main_class, 'up')}>
+                    <PlusSmall />
+                  </Button>
+                </div>
+                <div class="flex-1">
+                  <Show
+                    when={Object.keys(classesWithHomebrews()[character().main_class].subclasses).length > 0 && !character().subclasses[character().main_class]}
+                    fallback={<></>}
+                  >
+                    <Select
+                      containerClassList="w-full"
+                      items={translate(classesWithHomebrews()[character().main_class].subclasses, locale())}
+                      selectedValue={subclassesData()[character().main_class]}
+                      onSelect={(value) => setSubclassesData({ ...subclassesData(), [character().main_class]: value })}
+                    />
+                  </Show>
+                </div>
               </div>
             </div>
-          </div>
+          </Show>
           <For each={Object.entries(classes()).filter((item) => item[0] !== character().main_class).sort((a,) => !Object.keys(classesData()).includes(a[0]))}>
             {([slug, className]) =>
               <div class="mb-1">

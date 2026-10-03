@@ -9,7 +9,7 @@ module HomebrewsV2Context
 
           # rubocop: disable-next Metrics/BlockLength
           use_contract do
-            Origins = Dry::Types['strict.string'].enum('feat', 'spell', 'species', 'subclass')
+            Origins = Dry::Types['strict.string'].enum('feat', 'spell', 'species', 'subclass', 'class')
             Kinds =
               Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden', 'one_from_list', 'many_from_list')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'one_at_short_rest')
@@ -32,7 +32,7 @@ module HomebrewsV2Context
               required(:origin_value).filled(:string) # origin/general/fighting_style/epic classes subclasses
               required(:kind).filled(Kinds)
               required(:level).filled(:integer, gteq?: 1)
-              optional(:limit).filled(:integer, gteq?: 1)
+              optional(:limit)
               optional(:limit_refresh).filled(Limits)
               optional(:modifiers).hash
               optional(:continious).filled(:bool)
@@ -84,6 +84,8 @@ module HomebrewsV2Context
             if input.key?(:static_spells)
               static_spells = input[:static_spells].each_with_object({}) do |(key, value), acc|
                 spell = ::Dnd2024::Feat.where(origin: 6).find_by("title ->> 'en' = ? OR title ->> 'ru' = ?", key, key)
+                spell ||= ::Dnd2024::Feat.where(origin: 6).find_by(id: key)
+                spell ||= ::Dnd2024::Feat.where(origin: 6).find_by(slug: key)
                 next unless spell
 
                 acc[spell.slug] = value
@@ -123,8 +125,10 @@ module HomebrewsV2Context
 
           def do_persist(input)
             result = ::Dnd2024::Feat.create!(
-              input.except(:limit, :level, :static_spells, :ability_conditions, :leveling_ability_boosts, :options)
-            ).merge(options: input[:options]&.transform_values { |value| value[:title] })
+              input
+                .except(:limit, :level, :static_spells, :ability_conditions, :leveling_ability_boosts, :options)
+                .merge(options: input[:options]&.transform_values { |value| value[:title] })
+            )
 
             input[:options]&.values&.each do |option|
               next unless option[:feature]

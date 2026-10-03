@@ -1,0 +1,68 @@
+[
+  {
+    "title": {
+      "en": "Magus",
+      "ru": "Магус"
+    },
+    "description": {
+      "en": "Magi are gifted warriors that blend martial prowess with mystical puissance.",
+      "ru": "Магусы — одаренные воины, сочетающие боевое мастерство с мистической мощью."
+    },
+    "public": true,
+    "hit_dice": 8,
+    "weapon_core_skills": ["light", "martial"],
+    "armor_proficiency": ["light", "medium", "shield"],
+    "skill_boosts": 2,
+    "any_skill_boosts": 0,
+    "skill_boosts_list": ["acrobatics", "arcana", "athletics", "history", "insight", "investigation", "nature", "perception", "religion"],
+    "class_saves": ["con", "int"],
+    "multiclass_spell_level": 1,
+    "spell_ability": "int",
+    "cantrips": { "16": 4, "10": 3, "1": 2 },
+    "prepared_spells": { "20": 20, "19": 20, "18": 19, "17": 18, "16": 17, "15": 16, "14": 15, "13": 14, "12": 13, "11": 12, "10": 11, "9": 10, "8": 9, "7": 8, "6": 7, "5": 6, "4": 5, "3": 4, "2": 3, "1": 2 },
+    "spell_slots": {
+      "1": { "1": 2 },
+      "2": { "1": 2 },
+      "3": { "1": 3 },
+      "4": { "1": 3 },
+      "5": { "1": 4, "2": 2 },
+      "6": { "1": 4, "2": 2 },
+      "7": { "1": 4, "2": 3 },
+      "8": { "1": 4, "2": 3 },
+      "9": { "1": 4, "2": 3, "3": 2 },
+      "10": { "1": 4, "2": 3, "3": 2 },
+      "11": { "1": 4, "2": 3, "3": 3 },
+      "12": { "1": 4, "2": 3, "3": 3 },
+      "13": { "1": 4, "2": 3, "3": 3, "4": 1 },
+      "14": { "1": 4, "2": 3, "3": 3, "4": 1 },
+      "15": { "1": 4, "2": 3, "3": 3, "4": 2 },
+      "16": { "1": 4, "2": 3, "3": 3, "4": 2 },
+      "17": { "1": 4, "2": 3, "3": 3, "4": 3, "5": 1 },
+      "18": { "1": 4, "2": 3, "3": 3, "4": 3, "5": 1 },
+      "19": { "1": 4, "2": 3, "3": 3, "4": 3, "5": 2 },
+      "20": { "1": 4, "2": 3, "3": 3, "4": 3, "5": 2 }
+    },
+    "learn_spells": false,
+    "spells": [
+      "Acid Splash", "Chill Touch", "Fire Bolt", "Mage Hand", "Poison Spray", "Ray of Frost", "Shocking Grasp",
+      "Burning Hands", "Chromatic Orb",
+      "Dragon's Breath"
+    ],
+    "features": [
+      {
+        "title": {
+          "en": "Esoteric Eye",
+          "ru": "Эзотерический взор"
+        },
+        "description": {
+          "en": "As a Bonus Action, you can observe a creature you can see. Until the end of your next turn, you have Advantage on your Magus spell attacks against it and it has Disadvantage on saving throws against your Magus spells.",
+          "ru": "Бонусным действием вы можете начать наблюдение за существом, которое видите. До конца вашего следующего хода вы совершаете броски атак заклинаниями Магуса по этому существу с преимуществом, а оно совершает спасброски от ваших заклинаний Магуса с помехой."
+        },
+        "kind": "static",
+        "level": 1,
+        "limit": "[modifiers['int'], 1].max",
+        "limit_refresh": "short_rest"
+      }
+    ]
+  }
+]

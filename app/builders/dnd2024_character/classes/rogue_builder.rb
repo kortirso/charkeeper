@@ -16,6 +16,7 @@ module Dnd2024Character
         result[:skill_boosts] += 4
         result[:skill_boosts_list] =
           %w[acrobatics athletics deception insight intimidation investigation perception persuasion sleight stealth]
+        result[:hit_dice][8] = 1
 
         result
       end

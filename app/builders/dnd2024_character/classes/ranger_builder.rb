@@ -13,6 +13,7 @@ module Dnd2024Character
         result[:health] = { current: 11, max: 11, temp: 0 }
         result[:skill_boosts] += 3
         result[:skill_boosts_list] = %w[animal athletics insight investigation nature perception stealth survival]
+        result[:hit_dice][10] = 1
 
         result
       end

@@ -1,0 +1,33 @@
+[
+  {
+    "title": {
+      "en": "Arcane Order",
+      "ru": "Мистический орден"
+    },
+    "description": {
+      "en": "The Arcane Order seeks to catalog the magical wonders of the multiverse and defend the Tapestry from existential threats.",
+      "ru": "Мистический орден стремится каталогизировать магические чудеса мультивселенной и защищать Гобелен от экзистенциальных угроз."
+    },
+    "public": true,
+    "class_id": "b3b366fe-5d57-4a25-88d5-26ea9666ba79",
+    "features": [
+      {
+        "title": {
+          "en": "Arcane Order Magic 3",
+          "ru": "Магия Мистического ордена 3"
+        },
+        "description": {
+          "en": "Your training in the Arcane Order ensures you always have certain spells ready.",
+          "ru": "Ваше обучение в Мистическом ордене гарантирует, что у вас всегда наготове определенные заклинания."
+        },
+        "kind": "hidden",
+        "level": 3,
+        "static_spells": {
+          "Shocking Grasp": { "modifier": "int" },
+          "Find Familiar": { "modifier": "int" },
+          "Magic Missile": { "modifier": "int" }
+        }
+      }
+    ]
+  }
+]

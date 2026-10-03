@@ -2,7 +2,7 @@ import { For, Switch, Match } from 'solid-js';
 
 import {
   Dnd2024Feats, Dnd2024Backgrounds, Dnd2024Books, Dnd2024Spells, Dnd2024Races, Dnd2024Subclasses, Dnd2024Weapons,
-  Dnd2024Armors, Dnd2024Shields, Dnd2024Items, Dnd2024Consumables
+  Dnd2024Armors, Dnd2024Shields, Dnd2024Items, Dnd2024Consumables, Dnd2024Classes
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -11,6 +11,7 @@ const TRANSLATION = {
     books: 'Books',
     items: 'Items',
     weapons: 'Weapons',
+    classes: 'Classes',
     subclasses: 'Subclasses',
     spells: 'Spells',
     feats: 'Feats',
@@ -24,6 +25,7 @@ const TRANSLATION = {
     books: 'Книги',
     items: 'Предметы',
     weapons: 'Оружие',
+    classes: 'Классы',
     subclasses: 'Подклассы',
     spells: 'Заклинания',
     feats: 'Черты',
@@ -37,6 +39,7 @@ const TRANSLATION = {
     books: 'Libros',
     items: 'Objetos',
     weapons: 'Armas',
+    classes: 'Clases',
     subclasses: 'Subclases',
     spells: 'Hechizos',
     feats: 'Proezas',
@@ -58,8 +61,8 @@ export const Dnd2024 = () => {
       <div class="flex gap-x-4 my-4">
         <For each={
           [
-            'books', 'races', 'subclasses', 'backgrounds', 'feats', 'spells', 'weapons', 'armor', 'items', 'consumables',
-            'shields'
+            'books', 'races', 'classes', 'subclasses', 'backgrounds', 'feats', 'spells', 'weapons', 'armor', 'items',
+            'consumables', 'shields'
           ]
         }>
           {(item) =>
@@ -76,7 +79,7 @@ export const Dnd2024 = () => {
           Object.entries({
             feats: Dnd2024Feats, backgrounds: Dnd2024Backgrounds, books: Dnd2024Books, spells: Dnd2024Spells,
             races: Dnd2024Races, subclasses: Dnd2024Subclasses, weapons: Dnd2024Weapons, armor: Dnd2024Armors,
-            items: Dnd2024Shields, consumables: Dnd2024Items, shields: Dnd2024Consumables
+            items: Dnd2024Shields, consumables: Dnd2024Items, shields: Dnd2024Consumables, classes: Dnd2024Classes
           })
         }>
           {([item, Component]) =>

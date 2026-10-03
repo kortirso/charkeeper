@@ -29,7 +29,9 @@ module Dnd2024
 
     def names
       {
+        class_names: object.class_names,
         species_name: object.species_name,
+        legacy_name: object.legacy_name,
         background_name: object.background_name
       }
     end

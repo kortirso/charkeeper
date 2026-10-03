@@ -24,7 +24,7 @@ const DND2024_CLASSES_PREPARE_SPELLS = [
 const CLASS_ICONS = {
   'static': Avatar, 'artificer': Artificer, 'barbarian': Barbarian, 'bard': Bard, 'cleric': Cleric, 'druid': Druid,
   'fighter': Fighter, 'monk': Monk, 'paladin': Paladin, 'ranger': Ranger, 'rogue': Rogue, 'sorcerer': Sorcerer,
-  'warlock': Warlock, 'wizard': Wizard
+  'warlock': Warlock, 'wizard': Wizard, 'homebrew': Avatar
 }
 const TRANSLATION = {
   en: {
@@ -298,7 +298,7 @@ export const Dnd2024Spells = (props) => {
                 />
                 <Show when={spellClassesList().length > 1}>
                   <div class="flex gap-x-1">
-                    <For each={Object.entries(CLASS_ICONS).filter(([className,]) => spellClassesList().includes(className))}>
+                    <For each={spellClassesList().map((item) => [item, CLASS_ICONS[item] || CLASS_ICONS.homebrew])}>
                       {([className, Component]) =>
                         <span
                           class="cursor-pointer dark:text-snow w-8 h-8 rounded-full bg-dusty flex justify-center items-center"
@@ -452,7 +452,7 @@ export const Dnd2024Spells = (props) => {
               <Show when={spellClassesList().length > 1}>
                 <div class="flex items-center gap-x-1">
                   <span class="text-xs dark:text-snow">{localize(TRANSLATION, locale()).filterByClass}</span>
-                  <For each={Object.entries(CLASS_ICONS).filter(([className,]) => spellClassesList().includes(className))}>
+                  <For each={spellClassesList().map((item) => [item, CLASS_ICONS[item] || CLASS_ICONS.homebrew])}>
                     {([className, Component]) =>
                       <span
                         class="cursor-pointer dark:text-snow w-8 h-8 rounded-full bg-dusty flex justify-center items-center"

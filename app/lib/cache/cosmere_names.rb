@@ -2,7 +2,7 @@
 
 module Cache
   class CosmereNames
-    CACHE_KEY = 'cosmere_names/0.5.10'
+    CACHE_KEY = 'cosmere_names/0.5.12'
 
     def fetch_list
       Rails.cache.fetch(CACHE_KEY, expires_in: 1.day) { load_initial_data }
