@@ -1,0 +1,39 @@
+[
+  {
+    "title": {
+      "en": "Monk",
+      "ru": "Монах"
+    },
+    "description": {
+      "en": "You seek perfection, honing your body into a flawless instrument and your mind into an orderly bastion of wisdom.",
+      "ru": "Вы стремитесь к совершенству и превращаете своё тело в безупречный инструмент, а разум — в упорядоченный оплот мудрости."
+    },
+    "public": true,
+    "class_hp": 10,
+    "main_abilities": ["str", "dex"],
+    "skill_boosts": { "free": 4 },
+    "perception": { "1": 1, "5": 2 },
+    "class_dc": { "1": 1, "9": 2, "17": 3 },
+    "spell_dc": { "1": 1, "9": 2, "17": 3 },
+    "spell_attack": { "1": 1, "9": 2, "17": 3 },
+    "spell_list": null,
+    "saving_throws": {
+      "fortitude": { "1": 2 },
+      "reflex": { "1": 2 },
+      "will": { "1": 2 }
+    },
+    "weapon_skills": {
+      "unarmed": { "1": 1, "5": 2, "13": 3 },
+      "simple": { "1": 1, "5": 2, "13": 3 },
+      "martial": { "1": 0 },
+      "advanced": { "1": 0 }
+    },
+    "armor_skills": {
+      "unarmored": { "1": 2, "13": 3, "17": 4 },
+      "light": { "1": 0 },
+      "medium": { "1": 0 },
+      "heavy": { "1": 0 }
+    },
+    "feats": ["flurry_of_blows"]
+  }
+]

@@ -9,19 +9,17 @@ module CharactersContext
         refresh_feats: 'services.characters_context.pathfinder2.refresh_feats'
       ]
 
-      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         config.messages.namespace = :pathfinder2_character
 
         Races = Dry::Types['strict.string'].enum(*::Pathfinder2::Character.races.keys)
-        Classes = Dry::Types['strict.string'].enum(*::Pathfinder2::Character.classes_info.keys)
 
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string, max_size?: 50)
           required(:race).filled(Races)
           required(:background).filled(:string)
-          required(:main_class).filled(Classes)
+          required(:main_class).filled(:string)
           required(:subrace).filled(:string)
           optional(:subclass).filled(:string)
           optional(:main_ability).filled(:string)
@@ -34,16 +32,6 @@ module CharactersContext
           next if subraces&.include?(values[:subrace])
 
           key(:subrace).failure(:invalid)
-        end
-
-        rule(:main_class, :subclass) do
-          next if values[:subclass].nil?
-
-          subclasses_info = ::Pathfinder2::Character.subclasses_info(values[:main_class])
-          next if subclasses_info.nil?
-          next if subclasses_info.key?(values[:subclass])
-
-          key(:subclass).failure(:invalid)
         end
       end
 

@@ -109,7 +109,7 @@ export const CharactersListItem = (props) => {
       return character().names.class_names.join(' * ');
     }
     if (character().provider === 'pathfinder2') {
-      return Object.keys(character().classes).map((item) => localize(pathfinder2Config.classes[item].name, locale())).join(' * ');
+      return character().names.class_name;
     }
     if (character().provider === 'daggerheart') {
       return Object.keys(character().names.subclass_names).join(' * ');

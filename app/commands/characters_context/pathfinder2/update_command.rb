@@ -150,9 +150,16 @@ module CharactersContext
       end
 
       def apply_class_progression(input)
-        "Pathfinder2Context::LevelProgressions::#{input[:character].data.main_class.camelize}".constantize.new.call(
-          character: input[:character]
-        )
+        main_class = input[:character].data.main_class
+        default = ::Pathfinder2::Character.classes_info[main_class]
+
+        if default
+          return "Pathfinder2Context::LevelProgressions::#{main_class.camelize}".constantize.new.call(
+            character: input[:character]
+          )
+        end
+
+        Pathfinder2Context::LevelProgressions::Custom.new.call(character: input[:character])
       end
     end
   end

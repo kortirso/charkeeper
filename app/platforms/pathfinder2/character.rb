@@ -123,6 +123,16 @@ module Pathfinder2
       Pathfinder2Decorator.new.call(character: self, simple: simple, version: version)
     end
 
+    def class_name
+      return '' unless data.main_class
+
+      default = ::Pathfinder2::Character.classes_info[data.main_class]
+      return translate(default['name']) if default
+
+      custom_name = pathfinder2_names.fetch_item(key: :specialities, id: data.main_class)
+      custom_name ? translate(custom_name[:name]) : '-'
+    end
+
     def background_name
       return '' unless data.background
 

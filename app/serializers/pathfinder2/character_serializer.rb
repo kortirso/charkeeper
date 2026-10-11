@@ -14,7 +14,7 @@ module Pathfinder2
                :spell_attack, :spell_dc, :spent_spell_slots, :formatted_static_spells, :modified_abilities, :spell_list,
                :can_have_pet, :can_have_familiar, :raw_abilities, :experience, :max_dying, :speeds, :info, :hero_points,
                :total_damage_reduction, :damage_reduction, :can_have_signature_spells, :archetypes, :archetype_spells,
-               :spent_archetype_spell_slots, :can_have_animal, :conditions_v2
+               :spent_archetype_spell_slots, :can_have_animal, :conditions_v2, :names
 
     delegate :health, :abilities, :skills, :subclasses, :saving_throws_value, :weapon_skills, :raw_abilities, :max_dying,
              :money, :lores, :armor_skills, :coins, :load, :armor_class, :speed, :perception, :conditions, :attacks, :speeds,
@@ -28,6 +28,13 @@ module Pathfinder2
 
     def provider
       'pathfinder2'
+    end
+
+    def names
+      {
+        class_name: object.class_name,
+        background_name: object.background_name
+      }
     end
 
     def avatar

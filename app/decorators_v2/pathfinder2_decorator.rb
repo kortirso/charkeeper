@@ -70,7 +70,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   end
 
   def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
-    health_max = RACE_HP[race] + (CLASS_HP[main_class] * level) + (modified_abilities['con'] * level)
+    health_max = RACE_HP[race] + ((class_hp + modified_abilities['con']) * level)
     @result['health'] = {
       'current' => [health_current, health_max].min,
       'temp' => health_temp,
@@ -97,6 +97,16 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['can_have_animal'] = available_features_slugs.intersect?(ANIMAL_FEATS)
     @result['total_damage_reduction'] = calc_total_damage_reduction
     @result['available_features_slugs'] = available_features_slugs
+  end
+
+  def class_hp
+    default = ::Pathfinder2::Character.classes_info[main_class]
+    return CLASS_HP[main_class] if default
+
+    record = Pathfinder2::Homebrews::Speciality.find_by(id: main_class)
+    return 6 unless record
+
+    record.info.class_hp
   end
 
   def calc_total_damage_reduction # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
@@ -693,7 +703,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       'race' => translate(::Pathfinder2::Character.race_info(race)['name']),
       'subrace' => translate(::Pathfinder2::Character.subrace_info(race, subrace)['name']),
       'background' => @character.background_name,
-      'class' => translate(::Pathfinder2::Character.class_info(main_class)['name']),
+      'class' => @character.class_name,
       'subclass' => find_subclass_name
     }
   end

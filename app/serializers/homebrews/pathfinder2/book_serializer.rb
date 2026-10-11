@@ -14,7 +14,8 @@ module Homebrews
 
         {
           items: transform(::Pathfinder2::Item.kept.where(id: items['Item']).pluck(:id, :name)),
-          backgrounds: titles(items, ::Pathfinder2::Homebrews::Background, 'Homebrew')
+          backgrounds: titles(items, ::Pathfinder2::Homebrews::Background, 'Homebrew'),
+          classes: titles(items, ::Pathfinder2::Homebrews::Speciality, 'Homebrew')
         }
       end
 

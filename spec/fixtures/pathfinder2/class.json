@@ -1,0 +1,13 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "title": {
+      "en": "Class's title"
+    },
+    /* optional, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Class's description, **Markdown is available** for editing."
+    },
+    "public": true
+  }
+]

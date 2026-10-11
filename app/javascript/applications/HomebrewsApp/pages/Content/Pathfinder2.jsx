@@ -2,7 +2,7 @@ import { For, Switch, Match } from 'solid-js';
 
 import {
   Pathfinder2Books, Pathfinder2Weapons, Pathfinder2Backgrounds, Pathfinder2Armors, Pathfinder2Shields, Pathfinder2Items,
-  Pathfinder2Consumables
+  Pathfinder2Consumables, Pathfinder2Classes
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -11,6 +11,7 @@ const TRANSLATION = {
     books: 'Books',
     weapons: 'Weapons',
     backgrounds: 'Backgrounds',
+    classes: 'Classes',
     items: 'Items',
     armor: 'Armor',
     shields: 'Shields',
@@ -20,6 +21,7 @@ const TRANSLATION = {
     books: 'Книги',
     weapons: 'Оружие',
     backgrounds: 'Происхождения',
+    classes: 'Классы',
     items: 'Предметы',
     armor: 'Броня',
     shields: 'Щиты',
@@ -29,6 +31,7 @@ const TRANSLATION = {
     books: 'Libros',
     weapons: 'Armas',
     backgrounds: 'Trasfondos',
+    classes: 'Classes',
     items: 'Objetos',
     armor: 'Armadura',
     shields: 'Shields',
@@ -46,7 +49,7 @@ export const Pathfinder2 = () => {
       <div class="flex flex-wrap gap-x-4 gap-y-2 my-4">
         <For each={
           [
-            'books', 'backgrounds', 'weapons', 'armor', 'items', 'shields', 'consumables'
+            'books', 'backgrounds', 'classes', 'weapons', 'armor', 'items', 'shields', 'consumables'
           ]
         }>
           {(item) =>
@@ -62,7 +65,7 @@ export const Pathfinder2 = () => {
         <For each={
           Object.entries({
             books: Pathfinder2Books, weapons: Pathfinder2Weapons, backgrounds: Pathfinder2Backgrounds, armor: Pathfinder2Armors,
-            items: Pathfinder2Items, shields: Pathfinder2Shields, consumables: Pathfinder2Consumables
+            items: Pathfinder2Items, shields: Pathfinder2Shields, consumables: Pathfinder2Consumables, classes: Pathfinder2Classes
           })
         }>
           {([item, Component]) =>

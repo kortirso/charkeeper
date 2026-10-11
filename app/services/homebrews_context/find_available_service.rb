@@ -22,7 +22,8 @@ module HomebrewsContext
           races: nimble_races(user_id)
         },
         pathfinder2: {
-          backgrounds: titles(user_id, ::Pathfinder2::Homebrews::Background)
+          backgrounds: titles(user_id, ::Pathfinder2::Homebrews::Background),
+          classes: pf2_classes(user_id)
         },
         cosmere: {
           settings: titles(user_id, ::Cosmere::Homebrews::Setting),
@@ -56,6 +57,16 @@ module HomebrewsContext
           )
         ]
       end
+    end
+
+    def pf2_classes(user_id)
+      ::Pathfinder2::Homebrews::Speciality.where(user_id: user_id)
+        .or(
+          ::Pathfinder2::Homebrews::Speciality.where(id: available_books_data(user_id))
+        )
+        .kept.each_with_object({}) do |item, acc|
+          acc[item.id] = { name: item.title, main_ability_options: item.info.main_abilities }
+        end
     end
 
     def dnd2024_races(user_id)

@@ -52,6 +52,7 @@ module HomebrewsV2Context
         when 'item' then HomebrewsV2Context::Import::Pathfinder2::Items::Items::AddCommand.new
         when 'consumables' then HomebrewsV2Context::Import::Pathfinder2::Items::Consumables::AddCommand.new
         when 'background' then HomebrewsV2Context::Import::Pathfinder2::Backgrounds::PerformCommand.new
+        when 'class' then HomebrewsV2Context::Import::Pathfinder2::Specialities::PerformCommand.new
         end
       end
 

@@ -1,0 +1,39 @@
+[
+  {
+    "title": {
+      "en": "Barbarian",
+      "ru": "Варвар"
+    },
+    "description": {
+      "en": "You delight in wreaking havoc and using powerful weapons to carve through your enemies, relying on astonishing durability without needing complicated techniques or rigid training.",
+      "ru": "Вы упиваетесь резнёй и используете тяжёлое оружие, чтобы сокрушать врагов, полагаясь лишь на собственную выносливость и грубую силу, а не на изощрённые боевые приёмы и манёвры."
+    },
+    "public": true,
+    "class_hp": 12,
+    "main_abilities": ["str"],
+    "skill_boosts": { "athletics": 1, "free": 3 },
+    "perception": { "1": 2, "17": 3 },
+    "class_dc": { "1": 1, "11": 2, "19": 3 },
+    "spell_dc": { "1": 0 },
+    "spell_attack": { "1": 0 },
+    "spell_list": null,
+    "saving_throws": {
+      "fortitude": { "1": 2, "7": 3, "13": 4 },
+      "reflex": { "1": 1, "9": 2 },
+      "will": { "1": 2, "15": 3 }
+    },
+    "weapon_skills": {
+      "unarmed": { "1": 1, "5": 2, "13": 3 },
+      "simple": { "1": 1, "5": 2, "13": 3 },
+      "martial": { "1": 1, "5": 2, "13": 3 },
+      "advanced": { "1": 0 }
+    },
+    "armor_skills": {
+      "unarmored": { "1": 1, "13": 2, "19": 3 },
+      "light": { "1": 1, "13": 2, "19": 3 },
+      "medium": { "1": 1, "13": 2, "19": 3 },
+      "heavy": { "1": 0 }
+    },
+    "feats": ["rage", "quick_tempered"]
+  }
+]

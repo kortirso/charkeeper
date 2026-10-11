@@ -26,7 +26,8 @@ module Cache
 
     def load_initial_data
       {
-        backgrounds: ids_with_names(::Pathfinder2::Homebrews::Background)
+        backgrounds: ids_with_names(::Pathfinder2::Homebrews::Background),
+        specialities: ids_with_names(::Pathfinder2::Homebrews::Speciality)
       }
     end
 
