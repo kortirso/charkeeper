@@ -188,7 +188,7 @@ class DaggerheartDecorator < ApplicationDecoratorV2
     response = [{
       name: translate(item[:items_name]),
       range: item[:items_info]['range'] == 'melee' && hands_reach != 'melee' ? hands_reach : item[:items_info]['range'],
-      trait: use_max_trait_for_attack.zero? || item[:items_info]['trait'].nil? ? max_trait : item[:items_info]['trait'],
+      trait: use_max_trait_for_attack.positive? || item[:items_info]['trait'].nil? ? max_trait : item[:items_info]['trait'],
       attack_bonus: calculate_attack_bonus(
         (use_max_trait_for_attack.zero? ? trait_bonus(item) : max_trait_value) + attack
       ),

@@ -26,6 +26,7 @@ describe DaggerheartDecorator do
     expect(decorator.damage_thresholds).to eq({ 'major' => 4, 'severe' => 8 })
     expect(decorator.evasion).to eq 11
     expect(decorator.health_max).to eq 7
+    expect(decorator.attacks.dig(0, :trait)).to eq 'str'
     expect(decorator.attacks.dig(0, :attack_bonus)).to eq 2
     expect(decorator.attacks.dig(0, :damage)).to eq '3d4'
   end
@@ -105,6 +106,7 @@ describe DaggerheartDecorator do
           expect(decorator.damage_thresholds).to eq({ 'major' => 12, 'severe' => 20 })
           expect(decorator.evasion).to eq 9
           expect(decorator.health_max).to eq 7
+          expect(decorator.attacks.dig(1, :trait)).to eq 'agi'
           expect(decorator.attacks.dig(1, :attack_bonus)).to eq 4
         end
       end
