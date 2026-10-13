@@ -56,6 +56,7 @@ module CharactersContext
           optional(:money).filled(:integer, gteq?: 0)
           optional(:conditions).maybe(:array).each(:string) # DEPRECATED
           optional(:selected_features).hash
+          optional(:old_value)
           optional(:spent_spell_slots).hash
           optional(:spent_archetype_spell_slots).hash
           optional(:experience).filled(:integer, gteq?: 0, lteq?: 10_000)
@@ -128,12 +129,16 @@ module CharactersContext
         { result: input[:character] }
       end
 
-      def add_feats(input)
-        input[:selected_features].values.flatten.each do |slug|
-          feat = ::Pathfinder2::Feat.where.not(origin: 4).find_by(slug: slug)
-          next unless feat
+      def add_feats(input) # rubocop: disable Metrics/AbcSize
+        new_slugs = input[:selected_features].values.flatten
+        old_slugs = input[:old_value] || []
 
-          add_feat.call(character: input[:character], id: feat.id, type: 'additional', level: input[:character].data.level)
+        new_slugs = [new_slugs] unless new_slugs.is_a?(Array)
+        old_slugs = [old_slugs] unless old_slugs.is_a?(Array)
+
+        input[:character].feats.joins(:feat).where(feats: { slug: old_slugs - new_slugs }).destroy_all
+        ::Pathfinder2::Feat.where.not(origin: 4).where(slug: new_slugs - old_slugs).ids.each do |id|
+          add_feat.call(character: input[:character], id: id, type: 'additional', level: input[:character].data.level)
         end
       end
 
