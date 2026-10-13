@@ -17,6 +17,7 @@ module Pathfinder2
       attribute :weapon_skills, array: true, default: {}
       attribute :armor_skills, array: true, default: {}
       attribute :feats, array: true, default: []
+      attribute :selected_features, array: true, default: {}
     end
 
     class Speciality < ::Homebrew

@@ -164,6 +164,24 @@ feats.each do |feat|
   item.update(title: feat['title'].compact_blank, description: feat['description'].compact_blank)
 end
 
+file_content = File.read('db/data/pathfinder2/class.json')
+data_hash = JSON.parse(file_content)
+
+data_hash = data_hash.map do |item|
+  {
+    title: { en: item['name'], ru: item['rus_name'] },
+    description: { en: item['text'], ru: item['rus_text'] },
+    kind: 'static',
+    origin_values: item['traits'].split(', ').map(&:downcase),
+    level: item['level']
+  }
+end
+
+beautified_json_string = JSON.pretty_generate(data_hash)
+File.open('db/data/pathfinder2/class_2.json', 'w') do |file|
+  file.write(beautified_json_string)
+end
+
 # file_content = File.read('db/data/daggerheart/domains-output.txt')
 # file_content.lines.each do |line|
 #   names = line.split('|')

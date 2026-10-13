@@ -35,15 +35,25 @@ module HomebrewsV2Context
               required(:weapon_skills).hash
               required(:armor_skills).hash
               required(:feats).maybe(:array).each(:string)
+              optional(:features).maybe(:array).each(:hash)
             end
           end
 
           private
 
-          def validate_content(input)
+          def validate_content(input) # rubocop: disable Metrics/AbcSize
             if input.key?(:id)
               input[:speciality] = ::Pathfinder2::Homebrews::Speciality.find_by(user_id: input[:user].id, id: input[:id])
               return ['Not found'] unless input[:speciality]
+            end
+
+            input[:features] = input[:features]&.map!(&:deep_symbolize_keys)
+            input[:features]&.each do |feature|
+              feature[:user] = input[:user]
+              feature[:origin_value] = 'class.id'
+
+              validate_result = add_feat_command.validate_all(feature)
+              return validate_result[:raw_errors] if validate_result[:raw_errors]
             end
 
             nil
@@ -67,6 +77,8 @@ module HomebrewsV2Context
               end
             command.call(input)
           end
+
+          def add_feat_command = Charkeeper::Container.resolve('commands.homebrews_v2_context.import.pathfinder2.feats.add')
         end
       end
     end

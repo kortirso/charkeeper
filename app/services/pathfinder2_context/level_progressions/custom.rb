@@ -21,6 +21,10 @@ module Pathfinder2Context
         @result[:spell_dc] = [character.data.spell_dc, transform_values(info[:spell_dc])].max
         @result[:spell_attack] = [character.data.spell_attack, transform_values(info[:spell_attack])].max
 
+        if info.dig(:selected_features, level.to_s)
+          @result[:selected_features] = info.dig(:selected_features, level.to_s)
+        end
+
         @result
       end
 

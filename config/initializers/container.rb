@@ -211,6 +211,9 @@ module Charkeeper
     register('commands.homebrews_v2_context.import.cosmere.feats.change') {
       HomebrewsV2Context::Import::Cosmere::Feats::ChangeCommand.new
     }
+    register('commands.homebrews_v2_context.import.pathfinder2.feats.add') {
+      HomebrewsV2Context::Import::Pathfinder2::Feats::AddCommand.new
+    }
 
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }
