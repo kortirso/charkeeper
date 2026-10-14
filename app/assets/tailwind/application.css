@@ -1055,3 +1055,12 @@ body.web {
 .vicious_rolls {
   color: #a855f7;
 }
+
+.spell-toggle {
+  @apply dark:text-stone-400 cursor-pointer p-1;
+  @apply hover:dark:text-snow;
+}
+
+.spell-toggle.active {
+  @apply dark:text-snow border-b;
+}

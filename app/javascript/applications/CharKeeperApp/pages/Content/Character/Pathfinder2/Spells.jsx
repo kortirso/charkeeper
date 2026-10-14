@@ -92,6 +92,7 @@ export const Pathfinder2Spells = (props) => {
 
   const [spellsSelectingMode, setSpellsSelectingMode] = createSignal(null);
   const [renderMode, setRenderMode] = createSignal(true);
+  const [currentLevel, setCurrentLevel] = createSignal(0);
 
   const [appState] = useAppState();
   const [{ renderAlerts, renderAlert }] = useAppAlert();
@@ -437,7 +438,17 @@ export const Pathfinder2Spells = (props) => {
                 onToggle={() => setRenderMode(!renderMode())}
               />
             </Show>
-            <Show when={renderMode() && props.spellsInfo}>
+            <div class="flex gap-4 my-2">
+              <Show when={renderMode() && props.spellsInfo}>
+                <p classList={{ 'active': currentLevel() === 'F' }} class="spell-toggle" onClick={() => setCurrentLevel('F')}>F</p>
+              </Show>
+              <For each={Array.from([...Array(maxSpellLevel() + 1).keys()])}>
+                {(level) =>
+                  <p classList={{ 'active': currentLevel() === level }} class="spell-toggle" onClick={() => setCurrentLevel(level)}>{level}</p>
+                }
+              </For>
+            </div>
+            <Show when={renderMode() && props.spellsInfo && currentLevel() === 'F'}>
               <div class="flex justify-between items-center">
                 <h2 class="text-lg dark:text-snow mb-2">
                   {i18n().focusSpells}
@@ -462,7 +473,7 @@ export const Pathfinder2Spells = (props) => {
             </Show>
             <For each={Array.from([...Array(maxSpellLevel() + 1).keys()])}>
               {(level) =>
-                <>
+                <Show when={currentLevel() === level}>
                   <div class="flex justify-between items-center">
                     <h2 class="text-lg dark:text-snow mb-2">
                       <Show when={level !== 0} fallback={i18n().cantrips}>
@@ -600,7 +611,7 @@ export const Pathfinder2Spells = (props) => {
                       </For>
                     </div>
                   </Show>
-                </>
+                </Show>
               }
             </For>
           </Show>

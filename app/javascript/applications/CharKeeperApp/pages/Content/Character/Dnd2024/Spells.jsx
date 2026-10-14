@@ -95,6 +95,7 @@ export const Dnd2024Spells = (props) => {
   const [availableSpellFilter, setAvailableSpellFilter] = createSignal(true);
   const [preparedSpellFilter, setPreparedSpellFilter] = createSignal(true);
   const [spellAbility, setSpellAbility] = createSignal(null);
+  const [currentLevel, setCurrentLevel] = createSignal(0);
 
   const [appState] = useAppState();
   const [locale] = useAppLocale();
@@ -321,82 +322,83 @@ export const Dnd2024Spells = (props) => {
                 />
               </div>
               <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(false)}>{localize(TRANSLATION, locale())['back']}</Button>
-              <For each={[...Array(character().available_spell_level + 1).keys()]}>
-                {(level) =>
-                  <>
-                    <div class="mb-2 px-4 py-2">
-                      <h2 class="text-lg dark:text-snow">
-                        <Show when={level !== 0} fallback={localize(TRANSLATION, locale())['cantrips']}>
-                          {level} {localize(TRANSLATION, locale())['level']}
-                        </Show>
-                      </h2>
-                    </div>
-                    <For each={filteredSpellsList().filter((item) => item.level === level)}>
-                      {(spell) =>
-                        <Toggle
-                          disabled
-                          onParentClick={() => showInfo(spell)}
-                          isOpenByParent={openDescriptions()[spell.id]}
-                          containerClassList="mb-1!"
-                          title={
-                            <div class="dnd2024-spell">
-                              <div class="dnd2024-spell-header">
-                                <div>
-                                  <div class="dnd2024-spell-titlebox">
-                                    <p class="dnd2024-spell-title">
-                                      {spell.title}
-                                    </p>
-                                    <Show when={spell.ritual}><span>{localize(TRANSLATION, locale()).ritual}</span></Show>
-                                    <Show when={spell.concentration}><span class="ml-1">{localize(TRANSLATION, locale()).concentration}</span></Show>
-                                  </div>
-                                  <Show
-                                    when={!availableSpellFilter()}
-                                    fallback={
-                                      <Show when={knownSpellIds().includes(spell.id) && !staticSpellIds().includes(spell.id)}>
-                                        <p class="text-xs mt-1">
-                                          {localize(config.classes[characterSpells().find((item) => item.feat_id === spell.id).prepared_by]['name'], locale())}
-                                        </p>
-                                      </Show>
-                                    }
-                                  >
-                                    <p class="text-xs text-wrap">
-                                      {spell.origin_values.map((item) => localize(config.classes[item]['name'], locale())).join(' * ')}
-                                    </p>
-                                  </Show>
-                                </div>
-                                <div>
-                                  <Switch fallback={<></>}>
-                                    <Match when={!knownSpellIds().includes(spell.id)}>
-                                      <Checkbox checked={false} onToggle={(e) => learnSpell(e, spell.id)} />
-                                    </Match>
-                                    <Match when={!staticSpellIds().includes(spell.id)}>
-                                      <Checkbox checked onToggle={(e) => forgetSpell(e, spell.id)} />
-                                    </Match>
-                                  </Switch>
-                                </div>
-                              </div>
-                              <div class="dnd2024-spell-tooltips">
-                                <SpellCastTime value={spell.time} />
-                                <SpellRange value={spell.range} />
-                                <SpellAttack hit={spell.hit} dc={spell.dc} character={character()} activeSpellClass={activeSpellClass()} />
-                                <SpellEffects
-                                  value={spell.effects}
-                                  cantripsDamageDice={spell.damage_up ? cantripsDamageDice() : null}
-                                />
-                                <SpellComponents value={spell.components} />
-                                <SpellDuration value={spell.duration} />
-                              </div>
+              <div class="flex gap-4 my-2">
+                <For each={Array.from([...Array(character().available_spell_level + 1).keys()])}>
+                  {(level) =>
+                    <p classList={{ 'active': currentLevel() === level }} class="spell-toggle" onClick={() => setCurrentLevel(level)}>{level}</p>
+                  }
+                </For>
+              </div>
+              <div class="mb-2 px-4 py-2">
+                <h2 class="text-lg dark:text-snow">
+                  <Show when={currentLevel() !== 0} fallback={localize(TRANSLATION, locale())['cantrips']}>
+                    {currentLevel()} {localize(TRANSLATION, locale())['level']}
+                  </Show>
+                </h2>
+              </div>
+              <For each={filteredSpellsList().filter((item) => item.level === currentLevel())}>
+                {(spell) =>
+                  <Toggle
+                    disabled
+                    onParentClick={() => showInfo(spell)}
+                    isOpenByParent={openDescriptions()[spell.id]}
+                    containerClassList="mb-1!"
+                    title={
+                      <div class="dnd2024-spell">
+                        <div class="dnd2024-spell-header">
+                          <div>
+                            <div class="dnd2024-spell-titlebox">
+                              <p class="dnd2024-spell-title">
+                                {spell.title}
+                              </p>
+                              <Show when={spell.ritual}><span>{localize(TRANSLATION, locale()).ritual}</span></Show>
+                              <Show when={spell.concentration}><span class="ml-1">{localize(TRANSLATION, locale()).concentration}</span></Show>
                             </div>
-                          }
-                        >
-                          <p
-                            class="feat-markdown"
-                            innerHTML={descriptions()[spell.id]} // eslint-disable-line solid/no-innerhtml
+                            <Show
+                              when={!availableSpellFilter()}
+                              fallback={
+                                <Show when={knownSpellIds().includes(spell.id) && !staticSpellIds().includes(spell.id)}>
+                                  <p class="text-xs mt-1">
+                                    {localize(config.classes[characterSpells().find((item) => item.feat_id === spell.id).prepared_by]['name'], locale())}
+                                  </p>
+                                </Show>
+                              }
+                            >
+                              <p class="text-xs text-wrap">
+                                {spell.origin_values.map((item) => localize(config.classes[item]['name'], locale())).join(' * ')}
+                              </p>
+                            </Show>
+                          </div>
+                          <div>
+                            <Switch fallback={<></>}>
+                              <Match when={!knownSpellIds().includes(spell.id)}>
+                                <Checkbox checked={false} onToggle={(e) => learnSpell(e, spell.id)} />
+                              </Match>
+                              <Match when={!staticSpellIds().includes(spell.id)}>
+                                <Checkbox checked onToggle={(e) => forgetSpell(e, spell.id)} />
+                              </Match>
+                            </Switch>
+                          </div>
+                        </div>
+                        <div class="dnd2024-spell-tooltips">
+                          <SpellCastTime value={spell.time} />
+                          <SpellRange value={spell.range} />
+                          <SpellAttack hit={spell.hit} dc={spell.dc} character={character()} activeSpellClass={activeSpellClass()} />
+                          <SpellEffects
+                            value={spell.effects}
+                            cantripsDamageDice={spell.damage_up ? cantripsDamageDice() : null}
                           />
-                        </Toggle>
-                      }
-                    </For>
-                  </>
+                          <SpellComponents value={spell.components} />
+                          <SpellDuration value={spell.duration} />
+                        </div>
+                      </div>
+                    }
+                  >
+                    <p
+                      class="feat-markdown"
+                      innerHTML={descriptions()[spell.id]} // eslint-disable-line solid/no-innerhtml
+                    />
+                  </Toggle>
                 }
               </For>
             </>
@@ -466,30 +468,25 @@ export const Dnd2024Spells = (props) => {
                 </div>
               </Show>
             </div>
-            <SpellsToggleList
-              level={0}
-              character={character()}
-              activeSpellClass={activeSpellClass()}
-              spells={filteredCharacterSpells().filter((item) => item.spell.level === 0)}
-              canPrepareSpells={canPrepareSpells()}
-              preparedSpellFilter={preparedSpellFilter()}
-              onEnableSpell={enableSpell}
-              onDisableSpell={disableSpell}
-              onUpdateCharacterSpell={updateCharacterSpell}
-              openD20Test={props.openD20Test}
-              openD20Attack={props.openD20Attack}
-            />
-            <For each={Array.from([...Array(character().available_spell_level).keys()], (x) => x + 1)}>
-              {(level) =>
+            <div class="flex gap-4 my-2">
+              <For each={Array.from([...Array(character().available_spell_level + 1).keys()])}>
+                {(level) =>
+                  <p classList={{ 'active': currentLevel() === level }} class="spell-toggle" onClick={() => setCurrentLevel(level)}>{level}</p>
+                }
+              </For>
+            </div>
+            <Show
+              when={currentLevel() === 0}
+              fallback={
                 <SpellsToggleList
-                  level={level}
+                  level={currentLevel()}
                   character={character()}
                   activeSpellClass={activeSpellClass()}
-                  spells={filteredCharacterSpells().filter((item) => item.spell.level === level)}
+                  spells={filteredCharacterSpells().filter((item) => item.spell.level === currentLevel())}
                   spentSpellSlots={character().spent_spell_slots}
                   canPrepareSpells={canPrepareSpells()}
                   preparedSpellFilter={preparedSpellFilter()}
-                  slotsAmount={character().spells_slots[level]}
+                  slotsAmount={character().spells_slots[currentLevel()]}
                   onEnableSpell={enableSpell}
                   onDisableSpell={disableSpell}
                   onSpendSpellSlot={spendSpellSlot}
@@ -499,7 +496,21 @@ export const Dnd2024Spells = (props) => {
                   openD20Attack={props.openD20Attack}
                 />
               }
-            </For>
+            >
+              <SpellsToggleList
+                level={0}
+                character={character()}
+                activeSpellClass={activeSpellClass()}
+                spells={filteredCharacterSpells().filter((item) => item.spell.level === 0)}
+                canPrepareSpells={canPrepareSpells()}
+                preparedSpellFilter={preparedSpellFilter()}
+                onEnableSpell={enableSpell}
+                onDisableSpell={disableSpell}
+                onUpdateCharacterSpell={updateCharacterSpell}
+                openD20Test={props.openD20Test}
+                openD20Attack={props.openD20Attack}
+              />
+            </Show>
           </Show>
         </Show>
       </GuideWrapper>

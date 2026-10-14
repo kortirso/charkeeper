@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - creating homebrew classes for dnd characters
+- filter spells by level for dnd and pf2 characters
 
 ## [0.5.12] - 2026-09-27
 ### Added

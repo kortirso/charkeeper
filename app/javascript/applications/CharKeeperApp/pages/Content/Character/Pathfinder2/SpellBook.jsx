@@ -59,7 +59,7 @@ export const Pathfinder2SpellBook = (props) => {
   const [traditionFilter, setTraditionFilter] = createSignal(
     props.spellsInfo?.spell_list ? [props.spellsInfo?.spell_list] : (character().spell_list ? [character().spell_list] : [])
   );
-  const [levelFilter, setLevelFilter] = createSignal(props.spellsInfo ? Array.from([...Array(props.spellsInfo.max_spell_level + 1).keys()], (x) => x.toString()) : ['0']);
+  const [levelFilter, setLevelFilter] = createSignal(0);
   const [titleFilter, setTitleFilter] = createSignal('');
 
   const [appState] = useAppState();
@@ -80,11 +80,11 @@ export const Pathfinder2SpellBook = (props) => {
     if (!spells()) return [];
 
     const traditionFilterSet = traditionFilter().length > 0 && props.kind !== 'focus' ? (new Set(traditionFilter())) : null;
-    const levelFilterSet = levelFilter().length > 0 && props.kind !== 'focus' ? levelFilter().map((item) => parseInt(item)) : null;
+    const levelFilterSet = props.kind !== 'focus' ? levelFilter() : null;
     const searchPattern = titleFilter().length > 2 && props.kind !== 'focus' ? titleFilter().toLowerCase() : null;
     return spells().filter((item) => {
       if (traditionFilterSet && !hasSharedElement(item.origin_value, traditionFilterSet)) return false;
-      if (levelFilterSet && !levelFilterSet.includes(item.info.level)) return false;
+      if (levelFilterSet !== null && levelFilterSet !== item.info.level) return false;
       if (searchPattern && !(item.title.toLowerCase().includes(searchPattern) || item.original_title?.toLowerCase()?.includes(searchPattern))) return false;
 
       return true;
@@ -228,19 +228,21 @@ export const Pathfinder2SpellBook = (props) => {
             selectedValues={traditionFilter()}
             onSelect={(value) => changeFilter(traditionFilter(), setTraditionFilter, value)}
           />
-          <Select
-            multi
-            labelText={i18n().levels}
-            items={{ 0: i18n().cantrips, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10 }}
-            selectedValues={levelFilter()}
-            onSelect={(value) => changeFilter(levelFilter(), setLevelFilter, value)}
-          />
           <Input
             labelText={i18n().search}
             placeholder={i18n().searchByTitle}
             value={titleFilter()}
             onInput={setTitleFilter}
           />
+        </div>
+      </Show>
+      <Show when={props.kind !== 'focus'}>
+        <div class="flex gap-4 my-2">
+          <For each={Array.from([...Array(11).keys()])}>
+            {(level) =>
+              <p classList={{ 'active': levelFilter() === level }} class="spell-toggle" onClick={() => setLevelFilter(level)}>{level}</p>
+            }
+          </For>
         </div>
       </Show>
       <div class="flex flex-col gap-2">
