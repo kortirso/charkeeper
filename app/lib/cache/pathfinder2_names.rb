@@ -2,7 +2,7 @@
 
 module Cache
   class Pathfinder2Names
-    CACHE_KEY = 'pathfinder2_names/0.5.8'
+    CACHE_KEY = 'pathfinder2_names/0.5.13'
 
     def fetch_list
       Rails.cache.fetch(CACHE_KEY, expires_in: 1.day) { load_initial_data }
