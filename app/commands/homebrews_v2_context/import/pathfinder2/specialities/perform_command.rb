@@ -7,6 +7,7 @@ module HomebrewsV2Context
         class PerformCommand < BaseCommand
           use_contract do
             Abilities = Dry::Types['strict.string'].enum('str', 'dex', 'con', 'int', 'wis', 'cha')
+            SpellAmounts = Dry::Types['strict.string'].enum('none', 'wizard', 'bard')
 
             # rubocop: disable-next Metrics/BlockLength
             params do
@@ -36,6 +37,12 @@ module HomebrewsV2Context
               required(:armor_skills).hash
               required(:feats).maybe(:array).each(:string)
               optional(:features).maybe(:array).each(:hash)
+              optional(:spells_available).filled(:bool)
+              optional(:only_focus_spells).filled(:bool)
+              optional(:spells_amount).filled(SpellAmounts)
+              optional(:cantrips_amount).maybe(:integer)
+              optional(:cantrip_slots).maybe(:integer)
+              optional(:additional_slots).filled(:integer)
             end
           end
 
@@ -64,7 +71,8 @@ module HomebrewsV2Context
             input[:description]&.transform_values! { |value| sanitize(value) }
             input[:info] = input.slice(
               :class_hp, :main_abilities, :skill_boosts, :perception, :class_dc, :spell_dc, :spell_attack, :spell_list,
-              :saving_throws, :weapon_skills, :armor_skills, :feats
+              :saving_throws, :weapon_skills, :armor_skills, :feats, :spells_available, :only_focus_spells, :spells_amount,
+              :cantrips_amount, :cantrip_slots, :additional_slots
             )
           end
 

@@ -25,7 +25,8 @@ module Pathfinder2
       20 => { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 3, 7 => 3, 8 => 3, 9 => 3, 10 => 1 }
     }.freeze
 
-    def call(result:)
+    def call(result:, custom_class: nil)
+      return Pathfinder2::Classes::CustomDecorator.new.call(result: result, custom_class: custom_class) if custom_class
       return unless result['main_class']
 
       "Pathfinder2::Classes::#{result['main_class'].camelize}Decorator".constantize.new.call(result: result)

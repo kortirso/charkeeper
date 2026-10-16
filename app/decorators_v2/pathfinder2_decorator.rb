@@ -33,7 +33,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     find_general_attack_modifiers
     find_attacks
 
-    Pathfinder2::ClassDecorator.new.call(result: @result)
+    Pathfinder2::ClassDecorator.new.call(result: @result, custom_class: @custom_class)
     Pathfinder2::ArchetypesDecorator.new.call(result: @result)
 
     apply_add_modifiers
@@ -103,10 +103,10 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     default = ::Pathfinder2::Character.classes_info[main_class]
     return CLASS_HP[main_class] if default
 
-    record = Pathfinder2::Homebrews::Speciality.find_by(id: main_class)
-    return 6 unless record
+    @custom_class = Pathfinder2::Homebrews::Speciality.find_by(id: main_class)
+    return 6 unless @custom_class
 
-    record.info.class_hp
+    @custom_class.info.class_hp
   end
 
   def calc_total_damage_reduction # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
