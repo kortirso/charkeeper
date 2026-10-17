@@ -47,30 +47,60 @@ export const Pathfinder2Books = () => {
       </Show>
       <For each={['backgrounds', 'classes', 'items']}>
         {(kind) =>
-          <Show when={Object.keys(props.info.items[kind]).length > 0}>
-            <div>
-              <p class="font-medium! mb-2">{localize(TRANSLATION, locale())[kind]}</p>
-              <Show when={kind === 'items'}>
-                <Button default active={showItems()} classList="px-2 py-1 mb-2" onClick={() => setShowItems(!showItems())}>{localize(TRANSLATION, locale()).showItems} ({Object.keys(props.info.items.items).length})</Button>
-              </Show>
-              <Show when={kind !== 'items' || showItems()}>
-                <div class="flex flex-wrap gap-2">
-                  <For each={Object.entries(props.info.items[kind])}>
-                    {([id, value], index) =>
-                      <p class="flex items-center">
-                        {value}
-                        <Show when={props.editMode}>
-                          <Button default classList="ml-2 rounded min-w-4 min-h-4" onClick={() => props.onRemove(props.id, id)}>
-                            <Close width="20" height="20" />
-                          </Button>
-                        </Show>
-                        <Show when={index() < Object.keys(props.info.items[kind]).length - 1}>,</Show>
+          <Show
+            when={kind !== 'classes'}
+            fallback={
+              <Show when={Object.keys(props.info.items.classes).length > 0}>
+                <div>
+                  <p class="font-medium! mb-2">{localize(TRANSLATION, locale())[kind]}</p>
+                  <For each={Object.entries(props.info.items.classes)}>
+                    {([className, subclasses]) =>
+                      <p class="flex flex-wrap gap-2">{className}:
+                        <For each={Object.entries(subclasses)}>
+                          {([id, value], index) =>
+                            <p class="flex items-center">
+                              {value}
+                              <Show when={props.editMode}>
+                                <Button default classList="ml-2 rounded min-w-4 min-h-4" onClick={() => props.onRemove(props.id, id)}>
+                                  <Close width="20" height="20" />
+                                </Button>
+                              </Show>
+                              <Show when={index() < Object.keys(subclasses).length - 1}>,</Show>
+                            </p>
+                          }
+                        </For>
                       </p>
                     }
                   </For>
                 </div>
               </Show>
-            </div>
+            }
+          >
+            <Show when={Object.keys(props.info.items[kind]).length > 0}>
+              <div>
+                <p class="font-medium! mb-2">{localize(TRANSLATION, locale())[kind]}</p>
+                <Show when={kind === 'items'}>
+                  <Button default active={showItems()} classList="px-2 py-1 mb-2" onClick={() => setShowItems(!showItems())}>{localize(TRANSLATION, locale()).showItems} ({Object.keys(props.info.items.items).length})</Button>
+                </Show>
+                <Show when={kind !== 'items' || showItems()}>
+                  <div class="flex flex-wrap gap-2">
+                    <For each={Object.entries(props.info.items[kind])}>
+                      {([id, value], index) =>
+                        <p class="flex items-center">
+                          {value}
+                          <Show when={props.editMode}>
+                            <Button default classList="ml-2 rounded min-w-4 min-h-4" onClick={() => props.onRemove(props.id, id)}>
+                              <Close width="20" height="20" />
+                            </Button>
+                          </Show>
+                          <Show when={index() < Object.keys(props.info.items[kind]).length - 1}>,</Show>
+                        </p>
+                      }
+                    </For>
+                  </div>
+                </Show>
+              </div>
+            </Show>
           </Show>
         }
       </For>

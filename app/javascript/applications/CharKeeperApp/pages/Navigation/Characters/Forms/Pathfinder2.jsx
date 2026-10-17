@@ -100,7 +100,13 @@ export const Pathfinder2CharacterForm = (props) => {
   const pf2Classes = createMemo(() => {
     if (props.homebrews() === undefined) return pathfinder2Config.classes;
 
-    return { ...pathfinder2Config.classes, ...props.homebrews().pathfinder2.classes };
+    const hbClasses = Object.entries(props.homebrews().pathfinder2.classes).map(([key, value]) => {
+      if (!value.subclass_title) return [key, value];
+
+      return [key, { ...value, subclasses: props.homebrews().pathfinder2.subclasses[key] }]
+    });
+
+    return { ...pathfinder2Config.classes, ...Object.fromEntries(hbClasses) };
   });
 
   return (

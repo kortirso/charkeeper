@@ -2,7 +2,7 @@
 
 module Cache
   class Pathfinder2Names
-    CACHE_KEY = 'pathfinder2_names/0.5.13'
+    CACHE_KEY = 'pathfinder2_names/0.5.14'
 
     def fetch_list
       Rails.cache.fetch(CACHE_KEY, expires_in: 1.day) { load_initial_data }
@@ -27,7 +27,8 @@ module Cache
     def load_initial_data
       {
         backgrounds: ids_with_names(::Pathfinder2::Homebrews::Background),
-        specialities: ids_with_names(::Pathfinder2::Homebrews::Speciality)
+        specialities: ids_with_names(::Pathfinder2::Homebrews::Speciality),
+        subclasses: ids_with_names(::Pathfinder2::Homebrews::Subclass)
       }
     end
 

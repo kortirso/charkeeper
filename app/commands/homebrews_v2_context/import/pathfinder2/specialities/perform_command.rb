@@ -43,6 +43,7 @@ module HomebrewsV2Context
               optional(:cantrips_amount).maybe(:integer)
               optional(:cantrip_slots).maybe(:integer)
               optional(:additional_slots).filled(:integer)
+              optional(:subclass_title).hash
             end
           end
 
@@ -72,7 +73,7 @@ module HomebrewsV2Context
             input[:info] = input.slice(
               :class_hp, :main_abilities, :skill_boosts, :perception, :class_dc, :spell_dc, :spell_attack, :spell_list,
               :saving_throws, :weapon_skills, :armor_skills, :feats, :spells_available, :only_focus_spells, :spells_amount,
-              :cantrips_amount, :cantrip_slots, :additional_slots
+              :cantrips_amount, :cantrip_slots, :additional_slots, :subclass_title
             )
           end
 

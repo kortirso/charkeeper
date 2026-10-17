@@ -60,3 +60,4 @@ export * from './Content/Pathfinder2/Items';
 export * from './Content/Pathfinder2/Consumables';
 export * from './Content/Pathfinder2/Backgrounds';
 export * from './Content/Pathfinder2/Classes';
+export * from './Content/Pathfinder2/Subclasses';

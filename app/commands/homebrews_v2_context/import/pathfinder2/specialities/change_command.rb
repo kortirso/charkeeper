@@ -15,7 +15,7 @@ module HomebrewsV2Context
           def do_prepare(input)
             input[:existing_features] =
               ::Pathfinder2::Feat
-                .where(origin: 'class', origin_value: input[:speciality].id)
+                .where(origin: %w[class static_class], origin_value: input[:speciality].id)
                 .group_by(&:id)
                 .transform_values(&:first)
           end
@@ -54,7 +54,7 @@ module HomebrewsV2Context
 
           def remove_features(input)
             ::Pathfinder2::Feat
-              .where(origin: 'class', origin_value: input[:speciality].id)
+              .where(origin: %w[class static_class], origin_value: input[:speciality].id)
               .where(id: input[:existing_features].keys - input[:features].pluck(:id)).destroy_all
           end
         end

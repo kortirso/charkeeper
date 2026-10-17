@@ -18,6 +18,7 @@ module Pathfinder2
       attribute :armor_skills, array: true, default: {}
       attribute :feats, array: true, default: []
       attribute :selected_features, array: true, default: {}
+      attribute :subclass_title, array: true, default: {}
 
       attribute :spells_available, :boolean, default: false
       attribute :only_focus_spells, :boolean, default: false

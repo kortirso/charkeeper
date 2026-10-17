@@ -9,7 +9,7 @@ module HomebrewsV2Context
 
           # rubocop: disable-next Metrics/BlockLength
           use_contract do
-            Origins = Dry::Types['strict.string'].enum('class', 'static_class')
+            Origins = Dry::Types['strict.string'].enum('class', 'static_class', 'subclass', 'static_subclass')
             Kinds =
               Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden', 'one_from_list', 'many_from_list')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest')
@@ -75,7 +75,7 @@ module HomebrewsV2Context
           end
 
           def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
-            input[:slug] ||= SecureRandom.uuid
+            input[:slug] ||= input.dig(:title, :en)&.downcase&.tr(' ', '_') || SecureRandom.uuid
             input[:info] ||= {}
             input[:conditions] ||= {}
             input[:conditions][:level] = input[:level]

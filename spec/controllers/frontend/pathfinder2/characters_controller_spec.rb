@@ -9,7 +9,7 @@ describe Frontend::Pathfinder2::CharactersController do
       let(:request) {
         post :create, params: {
           character: {
-            name: 'Грундар', race: 'human', subrace: 'versatile_human', main_class: 'witch', background: 'barrister'
+            name: 'Грундар', race: 'human', subrace: 'versatile_human', main_class: 'fighter', background: 'barrister'
           }, charkeeper_access_token: access_token
         }
       }

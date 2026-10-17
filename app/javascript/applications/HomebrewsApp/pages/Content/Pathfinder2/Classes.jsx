@@ -11,6 +11,12 @@ export const Pathfinder2Classes = () => {
   const fetchHomebrews = async (ids) => await fetchHomebrewsRequest(appState.accessToken, 'Pathfinder2::Homebrews::Speciality', ids);
   const batchDestroy = async (ids) => await batchDestroyRequest(appState.accessToken, 'Pathfinder2::Homebrews::Speciality', ids);
 
+  const ChildrenComponent = (props) => (
+    <div class="flex flex-col gap-4">
+      <p>ID - {props.info.id}</p>
+    </div>
+  );
+
   return (
     <SharedContent
       provider="pathfinder2"
@@ -22,6 +28,7 @@ export const Pathfinder2Classes = () => {
       onBatchDestroy={batchDestroy}
       onShowRequest={fetchSpecialityRequest}
       onRemoveRequest={removeSpecialityRequest}
+      childrenComponent={ChildrenComponent}
     />
   );
 }

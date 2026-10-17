@@ -9,6 +9,7 @@ module CharactersContext
         refresh_feats: 'services.characters_context.pathfinder2.refresh_feats'
       ]
 
+      # rubocop: disable-next Metrics/BlockLength
       use_contract do
         config.messages.namespace = :pathfinder2_character
 
@@ -32,6 +33,20 @@ module CharactersContext
           next if subraces&.include?(values[:subrace])
 
           key(:subrace).failure(:invalid)
+        end
+
+        rule(:main_class, :subclass) do
+          default = ::Pathfinder2::Character.classes_info[values[:main_class]]
+          if default
+            if default['subclass_title'] && values[:subclass].blank?
+              key(:subclass).failure(:filled?)
+            end
+          else
+            record = ::Pathfinder2::Homebrews::Speciality.find_by(id: values[:main_class])
+            if record&.info&.subclass_title.present? && values[:subclass].blank?
+              key(:subclass).failure(:filled?)
+            end
+          end
         end
       end
 

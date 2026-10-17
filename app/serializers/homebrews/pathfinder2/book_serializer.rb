@@ -15,8 +15,23 @@ module Homebrews
         {
           items: transform(::Pathfinder2::Item.kept.where(id: items['Item']).pluck(:id, :name)),
           backgrounds: titles(items, ::Pathfinder2::Homebrews::Background, 'Homebrew'),
-          classes: titles(items, ::Pathfinder2::Homebrews::Speciality, 'Homebrew')
+          classes: subclasses_info(items)
         }
+      end
+
+      def subclasses_info(object_items) # rubocop: disable Metrics/AbcSize
+        subclasses =
+          ::Pathfinder2::Homebrews::Subclass
+            .where(id: object_items['Homebrew'])
+            .hashable_pluck(:id, :title, :info)
+            .group_by { |item| item[:info].class_id }
+        subclasses
+          .transform_keys do |key|
+            default = ::Pathfinder2::Character.class_info(key)
+            next translate(default['name']) if default
+
+            translate(pathfinder_names.fetch_item(key: :specialities, id: key)[:name])
+          end.transform_values { |value| value.each_with_object({}) { |item, acc| acc[item[:id]] = translate(item[:title]) } }
       end
 
       def enabled # rubocop: disable Naming/PredicateMethod
@@ -44,6 +59,8 @@ module Homebrews
       def transform(values)
         values.to_h.transform_values { |item| translate(item) }
       end
+
+      def pathfinder_names = Charkeeper::Container.resolve('cache.pathfinder2_names')
     end
   end
 end

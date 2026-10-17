@@ -23,7 +23,8 @@ module HomebrewsContext
         },
         pathfinder2: {
           backgrounds: titles(user_id, ::Pathfinder2::Homebrews::Background),
-          classes: pf2_classes(user_id)
+          classes: pf2_classes(user_id),
+          subclasses: pathfinder_subclasses(user_id)
         },
         cosmere: {
           settings: titles(user_id, ::Cosmere::Homebrews::Setting),
@@ -62,11 +63,25 @@ module HomebrewsContext
     def pf2_classes(user_id)
       ::Pathfinder2::Homebrews::Speciality.where(user_id: user_id)
         .or(
-          ::Pathfinder2::Homebrews::Speciality.where(id: available_books_data(user_id))
+          ::Pathfinder2::Homebrews::Speciality.where(id: pathfinder_subclasses(user_id).keys)
         )
         .kept.each_with_object({}) do |item, acc|
-          acc[item.id] = { name: item.title, main_ability_options: item.info.main_abilities }
+          acc[item.id] = {
+            name: item.title, main_ability_options: item.info.main_abilities, subclass_title: item.info.subclass_title
+          }
         end
+    end
+
+    def pathfinder_subclasses(user_id)
+      @pathfinder_subclasses ||=
+        ::Pathfinder2::Homebrews::Subclass.where(user_id: user_id)
+          .or(
+            ::Pathfinder2::Homebrews::Subclass.where(id: available_books_data(user_id))
+          )
+          .kept.each_with_object({}) do |item, acc|
+            acc[item.info.class_id] ||= {}
+            acc[item.info.class_id][item.id] = { name: item.title }
+          end
     end
 
     def dnd2024_races(user_id)
