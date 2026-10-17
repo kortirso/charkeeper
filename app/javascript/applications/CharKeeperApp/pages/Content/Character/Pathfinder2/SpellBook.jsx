@@ -181,8 +181,12 @@ export const Pathfinder2SpellBook = (props) => {
   }
 
   // забыть спонтанное заклинание
-  const forgetSpellLevel = async (e, spell, level) => {
+  const forgetSpellLevel = async (e, spell, level, item) => {
     e.stopPropagation();
+
+    const values = { ...item.value, [level]: { selected_count: 0 } };
+    const leftSelected = Object.values(values).reduce((acc, element) => acc + element.selected_count, 0);
+    if (leftSelected === 0) return forgetSpell(e, spell);
 
     const payload = { spell: { level: level, selected_count: 0 } };
     const characterSpellId = learnedSpellIds()[spell.id].characterSpellId;
@@ -264,7 +268,7 @@ export const Pathfinder2SpellBook = (props) => {
                           >
                             <Checkbox
                               checked={learnedSpellIds()[spell.id].value[level]?.selected_count !== 0}
-                              onToggle={(e) => learnedSpellIds()[spell.id].value[level]?.selected_count !== 0 ? forgetSpellLevel(e, spell, level) : upgradeSpellLevel(e, spell, level)}
+                              onToggle={(e) => learnedSpellIds()[spell.id].value[level]?.selected_count !== 0 ? forgetSpellLevel(e, spell, level, learnedSpellIds()[spell.id]) : upgradeSpellLevel(e, spell, level)}
                             />
                           </Show>
                         </div>

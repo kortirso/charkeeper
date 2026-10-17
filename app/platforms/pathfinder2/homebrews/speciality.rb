@@ -24,7 +24,7 @@ module Pathfinder2
       attribute :only_focus_spells, :boolean, default: false
 
       # none - заклинания не учатся
-      # wizard - заклинания учатся как волшебников, (level * 2) + 3
+      # wizard - заклинания учатся как волшебником, (level * 2) + 3
       # bard - заклинания учатся как бардом, spells_slots.values.sum, по кол-ву ячеек
       enum :spells_amount, %i[none wizard bard], default: :none
       attribute :cantrips_amount, :integer # значение есть, если заклинания учатся

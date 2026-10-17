@@ -25,7 +25,15 @@ module CharactersContext
         end
 
         def do_persist(input)
-          spontaneous_caster = ::Pathfinder2::Character::SPONTANEOUS_CASTERS.include?(input[:character].data.main_class)
+          main_class = input[:character].data.main_class
+          default = ::Pathfinder2::Character.classes_info[main_class]
+          spontaneous_caster =
+            if default
+              ::Pathfinder2::Character::SPONTANEOUS_CASTERS.include?(main_class)
+            else
+              record = ::Pathfinder2::Homebrews::Speciality.find_by(id: main_class)
+              record.info.spells_amount == 'bard'
+            end
 
           result = ::Pathfinder2::Character::Feat.create!(
             character: input[:character],
