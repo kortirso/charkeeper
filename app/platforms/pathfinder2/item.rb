@@ -6,6 +6,7 @@ module Pathfinder2
 
     attribute :weight, :integer
     attribute :price, :integer
+    attribute :level, :integer
   end
 end
 

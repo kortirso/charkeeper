@@ -22,10 +22,14 @@ module HomebrewsV2Context
                 required(:data).hash do
                   required(:price).filled(:integer, gteq?: 0, lteq?: 1_000_000)
                   required(:weight).maybe(:integer, gteq?: 0, lteq?: 10)
+                  optional(:level).maybe(:integer, gteq?: 0, lteq?: 20)
                 end
                 optional(:modifiers).hash
                 optional(:charges).filled(:integer, gteq?: 1)
                 optional(:public).filled(:bool)
+                optional(:info).hash do
+                  optional(:tooltips).maybe(:array).each(:string)
+                end
               end
             end
 

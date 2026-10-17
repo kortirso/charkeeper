@@ -10,6 +10,7 @@ module HomebrewsV2Context
               formula: 'formula'
             ]
 
+            # rubocop: disable-next Metrics/BlockLength
             use_contract do
               ConsumeAttributes = Dry::Types['strict.string'].enum('health_current')
 
@@ -28,10 +29,14 @@ module HomebrewsV2Context
                 required(:data).hash do
                   required(:price).filled(:integer, gteq?: 0, lteq?: 1_000_000)
                   required(:weight).maybe(:integer, gteq?: 0, lteq?: 10)
+                  optional(:level).maybe(:integer, gteq?: 0, lteq?: 20)
                 end
                 optional(:consume).maybe(:array).each(:hash) do
                   required(:attribute).filled(ConsumeAttributes)
                   required(:formula).filled(:string)
+                end
+                optional(:info).hash do
+                  optional(:tooltips).maybe(:array).each(:string)
                 end
                 optional(:public).filled(:bool)
               end
@@ -46,7 +51,8 @@ module HomebrewsV2Context
               [I18n.t('commands.homebrew_context.daggerheart.items.add.invalid_formula')]
             end
 
-            def do_prepare(input)
+            def do_prepare(input) # rubocop: disable Metrics/AbcSize
+              input[:info] ||= {}
               if input.key?(:consume)
                 consume_result = input[:consume].select do |consume|
                   result = formula.call(formula: consume[:formula])
@@ -54,7 +60,7 @@ module HomebrewsV2Context
 
                   consume
                 end
-                input[:info] = { consume: consume_result } if consume_result.any?
+                input[:info][:consume] = consume_result if consume_result.any?
               end
 
               input[:name].transform_values! { |value| sanitize(value) }

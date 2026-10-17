@@ -23,6 +23,7 @@ module HomebrewsV2Context
                 required(:data).hash do
                   required(:price).filled(:integer, gteq?: 0, lteq?: 1_000_000)
                   required(:weight).maybe(:integer, gteq?: 0, lteq?: 10)
+                  optional(:level).maybe(:integer, gteq?: 0, lteq?: 20)
                 end
                 required(:info).hash do
                   required(:ac).filled(:integer, gteq?: 0)

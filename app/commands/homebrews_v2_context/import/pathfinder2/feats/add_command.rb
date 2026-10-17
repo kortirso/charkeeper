@@ -48,6 +48,9 @@ module HomebrewsV2Context
               end
               optional(:info).hash do
                 optional(:weapons).maybe(:array).each(:hash)
+                optional(:extra_feats).maybe(:array).each(:string)
+                optional(:multiple).filled(:bool)
+                optional(:focus_spells).maybe(:array).each(:string)
               end
             end
           end
