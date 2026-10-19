@@ -2,9 +2,11 @@
 
 module Frontend
   class TagsController < Frontend::BaseController
+    include TranslateHelper
+
     def show
       render json: {
-        value: I18n.t("tags.#{params[:provider]}.#{params[:type]}.#{params[:id]}")
+        value: catch_missing_i18n(params[:id]) { I18n.t("tags.#{params[:provider]}.#{params[:type]}.#{params[:id]}") }
       }, status: :ok
     end
   end

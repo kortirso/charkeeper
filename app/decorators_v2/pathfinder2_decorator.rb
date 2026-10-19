@@ -338,9 +338,9 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       attack_bonus: key_ability_bonus + proficiency_attack_bonus + attack_bonus,
       damage: item[:items_info]['damage'],
       notes: item[:notes],
-      tags: damage_types.index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }.merge(
+      tags: damage_types.index_with { |type| catch_missing_i18n(type) { I18n.t("tags.pathfinder2.weapon.title.#{type}") } }.merge(
         tooltips.except('versatile', 'reach', 'propulsive').to_h do |key, value|
-          [key, I18n.t("tags.pathfinder2.weapon.title.#{key}", value: value)]
+          [key, catch_missing_i18n(key) { I18n.t("tags.pathfinder2.weapon.title.#{key}", value: value) }]
         end
       ),
       tooltips: tooltips.slice('deadly', 'fatal'),

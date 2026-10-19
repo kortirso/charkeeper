@@ -14,4 +14,9 @@ module TranslateHelper
 
     hash['en'] || hash[:en]
   end
+
+  def catch_missing_i18n(key, &block)
+    value = yield
+    value.include?('Translation missing:') ? key.capitalize : value
+  end
 end
