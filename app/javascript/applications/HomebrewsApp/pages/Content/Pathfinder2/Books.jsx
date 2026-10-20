@@ -14,21 +14,27 @@ const TRANSLATION = {
     official: 'Approved',
     showItems: 'Show items',
     backgrounds: 'Backgrounds',
-    classes: 'Classes'
+    classes: 'Classes',
+    spells: 'Spells',
+    feats: 'Feats'
   },
   ru: {
     items: 'Предметы',
     official: 'Одобренная',
     showItems: 'Показать предметы',
     backgrounds: 'Предыстории',
-    classes: 'Классы'
+    spells: 'Заклинания',
+    classes: 'Классы',
+    feats: 'Черты'
   },
   es: {
     items: 'Objetos',
     official: 'Aprobado',
     showItems: 'Show items',
     backgrounds: 'Trasfondos',
-    classes: 'Classes'
+    spells: 'Hechizos',
+    classes: 'Clases',
+    feats: 'Proesas'
   }
 }
 
@@ -45,7 +51,7 @@ export const Pathfinder2Books = () => {
       <Show when={props.info.shared}>
         <p class="font-medium!">{localize(TRANSLATION, locale()).official}</p>
       </Show>
-      <For each={['backgrounds', 'classes', 'items']}>
+      <For each={['backgrounds', 'classes', 'items', 'feats', 'spells']}>
         {(kind) =>
           <Show
             when={kind !== 'classes'}

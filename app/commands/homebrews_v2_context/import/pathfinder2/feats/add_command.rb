@@ -9,7 +9,7 @@ module HomebrewsV2Context
 
           # rubocop: disable-next Metrics/BlockLength
           use_contract do
-            Origins = Dry::Types['strict.string'].enum('class', 'static_class', 'subclass', 'static_subclass')
+            Origins = Dry::Types['strict.string'].enum('class', 'static_class', 'subclass', 'static_subclass', 'general', 'skill')
             Kinds =
               Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden', 'one_from_list', 'many_from_list')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest')
@@ -52,6 +52,10 @@ module HomebrewsV2Context
                 optional(:multiple).filled(:bool)
                 optional(:focus_spells).maybe(:array).each(:string)
               end
+              optional(:price).hash do
+                optional(:a).filled(:integer, gteq?: 1, lteq?: 3)
+                optional(:r).filled(:integer, gteq?: 1, lteq?: 3)
+              end
             end
           end
 
@@ -78,10 +82,9 @@ module HomebrewsV2Context
           end
 
           def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
-            input[:slug] ||= input.dig(:title, :en)&.downcase&.tr(' ', '_') || SecureRandom.uuid
+            input[:slug] = input.dig(:title, :en)&.downcase&.tr(' ', '_') || SecureRandom.uuid
             input[:info] ||= {}
             input[:conditions] ||= {}
-            input[:conditions][:level] = input[:level]
 
             input[:options] =
               if input.key?(:options) && KINDABLE_OPTIONS.include?(input[:kind])

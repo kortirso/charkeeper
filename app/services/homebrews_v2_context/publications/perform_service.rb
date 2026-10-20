@@ -44,7 +44,7 @@ module HomebrewsV2Context
         end
       end
 
-      def pathfinder2_commands(publication)
+      def pathfinder2_commands(publication) # rubocop: disable Metrics/CyclomaticComplexity
         case publication.parent_type
         when 'weapon' then HomebrewsV2Context::Import::Pathfinder2::Items::Weapons::AddCommand.new
         when 'armor' then HomebrewsV2Context::Import::Pathfinder2::Items::Armors::AddCommand.new
@@ -54,6 +54,8 @@ module HomebrewsV2Context
         when 'background' then HomebrewsV2Context::Import::Pathfinder2::Backgrounds::PerformCommand.new
         when 'class' then HomebrewsV2Context::Import::Pathfinder2::Specialities::PerformCommand.new
         when 'subclass' then HomebrewsV2Context::Import::Pathfinder2::Subclasses::PerformCommand.new
+        when 'spell' then HomebrewsV2Context::Import::Pathfinder2::Spells::AddCommand.new
+        when 'feat' then HomebrewsV2Context::Import::Pathfinder2::Feats::AddCommand.new
         end
       end
 

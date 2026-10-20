@@ -324,6 +324,7 @@ export const Pathfinder2Leveling = (props) => {
           <Select
             multi
             searchable
+            formDropdownClassList="relative!"
             containerClassList="mt-4"
             labelText={i18n().selectTags}
             items={tags()}

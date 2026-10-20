@@ -2,7 +2,7 @@ import { For, Switch, Match } from 'solid-js';
 
 import {
   Pathfinder2Books, Pathfinder2Weapons, Pathfinder2Backgrounds, Pathfinder2Armors, Pathfinder2Shields, Pathfinder2Items,
-  Pathfinder2Consumables, Pathfinder2Classes, Pathfinder2Subclasses
+  Pathfinder2Consumables, Pathfinder2Classes, Pathfinder2Subclasses, Pathfinder2Feats, Pathfinder2Spells
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -16,7 +16,9 @@ const TRANSLATION = {
     items: 'Items',
     armor: 'Armor',
     shields: 'Shields',
-    consumables: 'Consumables'
+    consumables: 'Consumables',
+    spells: 'Spells',
+    feats: 'Feats'
   },
   ru: {
     books: 'Книги',
@@ -27,7 +29,9 @@ const TRANSLATION = {
     items: 'Предметы',
     armor: 'Броня',
     shields: 'Щиты',
-    consumables: 'Расходники'
+    consumables: 'Расходники',
+    spells: 'Заклинания',
+    feats: 'Черты'
   },
   es: {
     books: 'Libros',
@@ -38,7 +42,9 @@ const TRANSLATION = {
     items: 'Objetos',
     armor: 'Armadura',
     shields: 'Shields',
-    consumables: 'Consumables'
+    consumables: 'Consumables',
+    spells: 'Hechizos',
+    feats: 'Proezas'
   }
 }
 
@@ -52,7 +58,8 @@ export const Pathfinder2 = () => {
       <div class="flex flex-wrap gap-x-4 gap-y-2 my-4">
         <For each={
           [
-            'books', 'backgrounds', 'classes', 'subclasses', 'weapons', 'armor', 'items', 'shields', 'consumables'
+            'books', 'backgrounds', 'classes', 'subclasses', 'weapons', 'armor', 'items', 'shields', 'consumables',
+            'feats', 'spells'
           ]
         }>
           {(item) =>
@@ -68,8 +75,8 @@ export const Pathfinder2 = () => {
         <For each={
           Object.entries({
             books: Pathfinder2Books, weapons: Pathfinder2Weapons, backgrounds: Pathfinder2Backgrounds, armor: Pathfinder2Armors,
-            items: Pathfinder2Items, shields: Pathfinder2Shields, consumables: Pathfinder2Consumables,
-            classes: Pathfinder2Classes, subclasses: Pathfinder2Subclasses
+            items: Pathfinder2Items, shields: Pathfinder2Shields, consumables: Pathfinder2Consumables, feats: Pathfinder2Feats,
+            classes: Pathfinder2Classes, subclasses: Pathfinder2Subclasses, spells: Pathfinder2Spells
           })
         }>
           {([item, Component]) =>
