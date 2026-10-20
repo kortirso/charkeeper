@@ -361,6 +361,8 @@ Rails.application.routes.draw do
       resources :backgrounds, only: %i[show destroy]
       resources :specialities, only: %i[show destroy]
       resources :subclasses, only: %i[show destroy]
+      resources :feats, only: %i[index show destroy]
+      resources :spells, only: %i[index show destroy]
       resources :books, only: %i[index show create update destroy] do
         get :for_items, on: :collection
       end

@@ -15,7 +15,9 @@ module Homebrews
         {
           items: transform(::Pathfinder2::Item.kept.where(id: items['Item']).pluck(:id, :name)),
           backgrounds: titles(items, ::Pathfinder2::Homebrews::Background, 'Homebrew'),
-          classes: subclasses_info(items)
+          classes: subclasses_info(items),
+          spells: transform(feats(items, 4).pluck(:id, :title)),
+          feats: transform(feats(items, [0, 2]).pluck(:id, :title))
         }
       end
 
@@ -58,6 +60,10 @@ module Homebrews
 
       def transform(values)
         values.to_h.transform_values { |item| translate(item) }
+      end
+
+      def feats(object_items, origin)
+        ::Pathfinder2::Feat.where(origin: origin).where(id: object_items['Feat'].to_a)
       end
 
       def pathfinder_names = Charkeeper::Container.resolve('cache.pathfinder2_names')

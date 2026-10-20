@@ -98,21 +98,23 @@ export const Pathfinder2Spells = (props) => {
   const [{ renderAlerts, renderAlert }] = useAppAlert();
   const [locale] = useAppLocale();
 
-  const fetchSpells = async () => await fetchSpellsRequest(
+  const fetchSpells = async (homebrew) => await fetchSpellsRequest(
     appState.accessToken,
     character().provider,
-    { max_level: props.spellsInfo?.max_spell_level || 10 }
+    Object.fromEntries(Object.entries({
+      max_level: props.spellsInfo?.max_spell_level || 10, homebrew: homebrew
+    }).filter(([, value]) => value))
   );
   const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, character().provider, character().id);
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
-    Promise.all([fetchSpells(), fetchCharacterSpells()]).then(
-      ([spellsData, characterSpellsData]) => {
+    Promise.all([fetchSpells(), fetchSpells(true), fetchCharacterSpells()]).then(
+      ([spellsData, homebrewSpellsData, characterSpellsData]) => {
         batch(() => {
           setSpells(
-            spellsData.spells.sort((a, b) => {
+            spellsData.spells.concat(homebrewSpellsData.spells).sort((a, b) => {
               const levelCompare = a.info.level - b.info.level;
               return levelCompare || a.title.localeCompare(b.title);
             })

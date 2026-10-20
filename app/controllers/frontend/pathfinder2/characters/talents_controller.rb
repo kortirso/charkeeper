@@ -9,6 +9,7 @@ module Frontend
         ]
         include SerializeRelation
         include SerializeResource
+        include TranslateHelper
 
         before_action :find_character
         before_action :find_character_feat, only: %i[destroy]
@@ -36,7 +37,7 @@ module Frontend
         private
 
         def cache_options
-          { key: "feats/#{params[:provider]}/#{I18n.locale}/v0.4.26", expires_in: 1.day }
+          { key: "feats/#{params[:provider]}/#{I18n.locale}/v0.5.14", expires_in: 1.day }
         end
 
         def find_character
@@ -69,9 +70,9 @@ module Frontend
         end
 
         def tags
-          check_cache_value({ key: "feat_tags/#{params[:provider]}/#{I18n.locale}/v0.4.26", expires_in: 1.day }) do
+          check_cache_value({ key: "feat_tags/#{params[:provider]}/#{I18n.locale}/v0.5.14", expires_in: 1.day }) do
             ::Pathfinder2::Feat.where(origin: [0, 1, 2, 3, 11]).pluck(:origin_values).flatten.uniq.index_with do |item|
-              I18n.t("tags.pathfinder.general.#{item}")
+              catch_missing_i18n(item) { I18n.t("tags.pathfinder.general.#{item}") }
             end
           end
         end
