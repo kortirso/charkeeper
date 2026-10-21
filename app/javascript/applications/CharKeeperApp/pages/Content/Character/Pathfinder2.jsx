@@ -219,6 +219,7 @@ export const Pathfinder2 = (props) => {
               <Pathfinder2Equipment
                 withWeight
                 withPrice
+                withItemLevel
                 character={character()}
                 upgrades={['weapon', 'armor', 'shield']}
                 onReplaceCharacter={props.onReplaceCharacter}
@@ -358,6 +359,7 @@ export const Pathfinder2 = (props) => {
               <Pathfinder2Equipment
                 withWeight
                 withPrice
+                withItemLevel
                 character={character()}
                 upgrades={['weapon', 'armor', 'shield']}
                 onReplaceCharacter={props.onReplaceCharacter}
