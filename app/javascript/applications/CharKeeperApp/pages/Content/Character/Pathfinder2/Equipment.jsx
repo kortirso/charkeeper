@@ -71,6 +71,7 @@ export const Pathfinder2Equipment = (props) => {
     <Equipment
       withWeight={props.withWeight}
       withPrice={props.withPrice}
+      withItemLevel={props.withItemLevel}
       forCampaign={props.forCampaign}
       upgrades={props.upgrades}
       character={props.character}

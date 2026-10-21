@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper, ItemContent, Select
+  ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper, ItemContent, Select, Checkbox
 } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { PlusSmall, Info } from '../../assets';
@@ -63,7 +63,8 @@ const TRANSLATION = {
     campaign: 'Select campaign',
     charges: 'Charges',
     chargesMax: 'Max',
-    chargesHelp: 'Charges/Ammo can be set only when item is 1. If set items amount more than 1 - charges will be reset.'
+    chargesHelp: 'Charges/Ammo can be set only when item is 1. If set items amount more than 1 - charges will be reset.',
+    itemsByLevel: 'Show items match by level'
   },
   ru: {
     searchByName: 'Поиск по названию (от 3 символов)',
@@ -108,7 +109,8 @@ const TRANSLATION = {
     campaign: 'Выберите кампанию',
     charges: 'Заряды',
     chargesMax: 'Макс',
-    chargesHelp: 'Заряды/Снаряды можно указать только для 1 предмета, если изменить кол-во предметов на более, чем 1, то заряды сбросятся.'
+    chargesHelp: 'Заряды/Снаряды можно указать только для 1 предмета, если изменить кол-во предметов на более, чем 1, то заряды сбросятся.',
+    itemsByLevel: 'Только предметы по уровню'
   },
   es: {
     searchByName: 'Buscar por nombre (desde 3 caracteres)',
@@ -153,7 +155,8 @@ const TRANSLATION = {
     campaign: 'Select campaign',
     charges: 'Charges',
     chargesMax: 'Max',
-    chargesHelp: 'Charges/Ammo can be set only when item is 1. If set items amount more than 1 - charges will be reset.'
+    chargesHelp: 'Charges/Ammo can be set only when item is 1. If set items amount more than 1 - charges will be reset.',
+    itemsByLevel: 'Show items match by level'
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
@@ -183,6 +186,7 @@ export const Equipment = (props) => {
   const [changingItem, setChangingItem] = createSignal(null);
   const [itemInfo, setItemInfo] = createSignal(null);
   const [filterByName, setFilterByName] = createSignal('');
+  const [filterByLevel, setFilterByLevel] = createSignal(true);
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
@@ -451,10 +455,13 @@ export const Equipment = (props) => {
 
   const filteredItems = createMemo(() => {
     if (items() === undefined) return [];
-    if (filterByName().length < 3) return items();
+
+    const result = props.withItemLevel && filterByLevel() ? items().filter((item) => !item.data.level || item.data.level <= character().level) : items();
+
+    if (filterByName().length < 3) return result;
 
     const searchPattern = filterByName().toLowerCase();
-    return items().filter((item) => item.name.toLowerCase().includes(searchPattern) || item.original_name?.toLowerCase()?.includes(searchPattern));
+    return result.filter((item) => item.name.toLowerCase().includes(searchPattern) || item.original_name?.toLowerCase()?.includes(searchPattern));
   });
 
   const addHomebrewItem = async () => {
@@ -506,6 +513,16 @@ export const Equipment = (props) => {
                   </div>
                   <Show when={props.selectComponent}>
                     {props.selectComponent}
+                  </Show>
+                  <Show when={props.withItemLevel}>
+                    <Checkbox
+                      labelText={localize(TRANSLATION, locale()).itemsByLevel}
+                      labelPosition="right"
+                      labelClassList="ml-2"
+                      classList="mb-2"
+                      checked={filterByLevel()}
+                      onToggle={() => setFilterByLevel(!filterByLevel())}
+                    />
                   </Show>
                   <For each={props.itemFilters}>
                     {(itemFilter) =>
