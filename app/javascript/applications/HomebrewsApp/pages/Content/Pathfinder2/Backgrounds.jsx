@@ -1,3 +1,5 @@
+import { Show } from 'solid-js';
+
 import config from '../../../../CharKeeperApp/data/pathfinder2.json';
 
 import { useAppState, useAppLocale } from '../../../context';
@@ -11,19 +13,22 @@ const TRANSLATION = {
     selectedAbilities: 'Abilities to boost',
     selectedSkills: 'Skill expertise',
     feat: 'Feat',
-    loreSkill: 'Lore skill'
+    loreSkill: 'Lore skill',
+    freeAbilities: 'Free ability boosts'
   },
   ru: {
     selectedAbilities: 'Характеристики для повышения',
     selectedSkills: 'Владение навыками',
     feat: 'Черта',
-    loreSkill: 'Навык знания'
+    loreSkill: 'Навык знания',
+    freeAbilities: 'Универсальные повышения'
   },
   es: {
     selectedAbilities: 'Habilidades para mejorar',
     selectedSkills: 'Maestría en habilidades',
     feat: 'Proesa',
-    loreSkill: 'Lore skill'
+    loreSkill: 'Lore skill',
+    freeAbilities: 'Free ability boosts'
   }
 }
 
@@ -38,11 +43,19 @@ export const Pathfinder2Backgrounds = () => {
 
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-2">
-      <p>{localize(TRANSLATION, locale()).selectedAbilities} - {props.info.ability_boosts.map((item) => config.abilities[item].name[locale()]).join(', ')}</p>
-      <p>{localize(TRANSLATION, locale()).selectedSkills} - {props.info.skill_boosts === 'free' ? 
-      'free' : config.skills[props.info.skill_boosts].name[locale()]}</p>
-      <p>{localize(TRANSLATION, locale()).loreSkill} - {props.info.lore_name}</p>
-      <p>{localize(TRANSLATION, locale()).feat} - {props.info.feat}</p>
+      <Show when={props.info.ability_boosts.length > 0}>
+        <p>{localize(TRANSLATION, locale()).selectedAbilities} - {props.info.ability_boosts.map((item) => config.abilities[item].name[locale()]).join(', ')}</p>
+      </Show>
+      <p>{localize(TRANSLATION, locale()).freeAbilities} - {props.info.ability_free_boosts}</p>
+      <Show when={props.info.skill_boosts.length > 0}>
+        <p>{localize(TRANSLATION, locale()).selectedSkills} - {props.info.skill_boosts.join(', ')}</p>
+      </Show>
+      <Show when={props.info.lore_names.length > 0}>
+        <p>{localize(TRANSLATION, locale()).loreSkill} - {props.info.lore_names.join(', ')}</p>
+      </Show>
+      <Show when={props.info.feat}>
+        <p>{localize(TRANSLATION, locale()).feat} - {props.info.feat}</p>
+      </Show>
     </div>
   );
 

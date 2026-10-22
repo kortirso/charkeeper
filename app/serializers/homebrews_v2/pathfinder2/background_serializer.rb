@@ -3,18 +3,15 @@
 module HomebrewsV2
   module Pathfinder2
     class BackgroundSerializer < ApplicationSerializer
-      attributes :id, :ability_boosts, :skill_boosts, :lore_name, :feat
+      attributes :id, :ability_boosts, :skill_boosts, :lore_names, :feat, :ability_free_boosts
 
-      def ability_boosts
-        object.info['ability_boosts'].split('_')
-      end
+      delegate :ability_boosts, :lore_names, :ability_free_boosts, to: :info
+      delegate :info, to: :object
 
       def skill_boosts
-        object.info['skill_boosts']
-      end
-
-      def lore_name
-        object.info['lore_name']
+        object.info.skill_boosts.map { |item|
+          item == 'free' ? 'Free' : translate(Config.data('pathfinder2', 'skills').dig(item, 'name'))
+        }
       end
 
       def feat
