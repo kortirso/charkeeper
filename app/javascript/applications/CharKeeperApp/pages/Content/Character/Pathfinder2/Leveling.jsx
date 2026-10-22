@@ -61,7 +61,6 @@ const ANCESTRY_FEAT_LEVELS = [1, 5, 9, 13, 17];
 const CLASS_FEAT_LEVELS = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
 const GENERAL_FEAT_LEVELS = [3, 7, 11, 15, 19];
 const SKILL_FEAT_LEVELS = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
-const ADDITIONAL_SKILL_CLASSES = ['fighter', 'rogue', 'ranger'];
 
 export const Pathfinder2Leveling = (props) => {
   const character = () => props.character;
@@ -304,7 +303,7 @@ export const Pathfinder2Leveling = (props) => {
               <Show when={ANCESTRY_FEAT_LEVELS.includes(index)}>
                 {renderSelectedFeatValue('ancestry', index)}
               </Show>
-              <Show when={CLASS_FEAT_LEVELS.includes(index) || index === 1 && ADDITIONAL_SKILL_CLASSES.includes(character().main_class)}>
+              <Show when={CLASS_FEAT_LEVELS.includes(index) || index === 1 && (!character().spells_info || character().spells_info.only_focus)}>
                 {renderSelectedFeatValue('class', index)}
               </Show>
               <Show when={GENERAL_FEAT_LEVELS.includes(index)}>

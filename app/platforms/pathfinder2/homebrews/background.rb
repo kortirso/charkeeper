@@ -6,9 +6,10 @@ module Pathfinder2
       include StoreModel::Model
 
       attribute :feat, :string
-      attribute :lore_name, :string
-      attribute :skill_boosts, array: true, default: {}
+      attribute :lore_names, array: true, default: []
+      attribute :skill_boosts, array: true, default: []
       attribute :ability_boosts, array: true, default: []
+      attribute :ability_free_boosts, :integer
     end
 
     class Background < ::Homebrew
@@ -22,9 +23,10 @@ module Pathfinder2
             description: description,
             public: attributes['public'],
             feat: info.feat,
-            lore_name: info.lore_name,
+            lore_names: info.lore_names,
             skill_boosts: info.skill_boosts,
-            ability_boosts: info.ability_boosts.split('_')
+            ability_boosts: info.ability_boosts,
+            ability_free_boosts: info.ability_free_boosts
           }.compact
         ]
       end

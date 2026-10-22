@@ -110,7 +110,7 @@ export const Pathfinder2 = (props) => {
 
   const { Roll, openD20Test, openD20Attack, openSpecialD20Attack } = createRoll();
 
-  const ancestryFilter = (item) => item.origin === 'ancestry' || item.origin === 'static_race' || item.origin === 'static_subrace';
+  const ancestryFilter = (item) => item.origin === 'ancestry' || item.origin === 'static_race' || item.origin === 'static_subrace' || item.origin === 'static_background';
   const classFilter = (item) => item.origin === 'class' || item.origin === 'static_class' || item.origin === 'static_subclass';
   const generalFilter = (item) => item.origin === 'general';
   const skillFilter = (item) => item.origin === 'skill';

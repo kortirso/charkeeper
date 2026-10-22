@@ -11,7 +11,8 @@
     "public": true,
     "feat": "Terrain Stalker",
     "ability_boosts": ["str", "dex"],
-    "skill_boosts": "stealth",
-    "lore_name": "Lore (Underworld)"
+    "skill_boosts": ["stealth"],
+    "lore_names": ["Lore (Underworld)"],
+    "ability_free_boosts": 1
   }
 ]

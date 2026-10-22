@@ -9,7 +9,9 @@ module HomebrewsV2Context
 
           # rubocop: disable-next Metrics/BlockLength
           use_contract do
-            Origins = Dry::Types['strict.string'].enum('class', 'static_class', 'subclass', 'static_subclass', 'general', 'skill')
+            Origins = Dry::Types['strict.string'].enum(
+              'class', 'static_class', 'subclass', 'static_subclass', 'general', 'skill', 'static_background'
+            )
             Kinds =
               Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden', 'one_from_list', 'many_from_list')
             Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest')

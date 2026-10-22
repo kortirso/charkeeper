@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - filter items by level for pf2 characters
 
+### Modified
+- using homebrew backgrounds for pf2 characters
+
 ## [0.5.13] - 2026-10-15
 ### Added
 - creating homebrew classes for dnd characters

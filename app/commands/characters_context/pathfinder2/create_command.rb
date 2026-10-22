@@ -89,6 +89,7 @@ module CharactersContext
           Config.data('pathfinder2', 'backgrounds')[character.data.background] ||
             ::Pathfinder2::Homebrews::Background.find_by(id: character.data.background)&.info&.attributes
         return unless background
+        return unless background['feat']
 
         feat = ::Pathfinder2::Feat.find_by(slug: background['feat']) || ::Pathfinder2::Feat.find_by(id: background['feat'])
         return unless feat
