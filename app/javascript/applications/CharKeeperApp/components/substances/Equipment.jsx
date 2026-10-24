@@ -161,7 +161,6 @@ const TRANSLATION = {
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
 const ITEMS_INFO = ['daggerheart', 'dnd2024', 'dnd5'];
-const HOMEBREWED_PROVIDERS = ['daggerheart', 'dnd2024', 'dnd5', 'nimble', 'pathfinder2', 'cosmere']
 
 export const Equipment = (props) => {
   const safeChildren = children(() => props.children);
@@ -202,23 +201,16 @@ export const Equipment = (props) => {
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
-    const fetchItems = async (homebrew) => await fetchItemsRequest(appState.accessToken, character().provider, homebrew);
-
-    const promises = [fetchCharacterItems(), fetchItems(false)];
-    if (HOMEBREWED_PROVIDERS.includes(character().provider)) promises.push(fetchItems(true));
+    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, character().provider);
 
     const sortCallback = (a, b) => a.name > b.name;
 
-    Promise.all(promises).then(
-      ([characterItemsData, itemsData, homebrewItemsData]) => {
+    Promise.all([fetchCharacterItems(), fetchItems()]).then(
+      ([characterItemsData, itemsData]) => {
         batch(() => {
           setCharacterItems(characterItemsData.items);
           setCharacterCampaigns(characterItemsData.character_campaigns);
-          if (homebrewItemsData) {
-            setItems(itemsData.items.concat(homebrewItemsData.items).sort(props.sortCallback || sortCallback));
-          } else {
-            setItems(itemsData.items.sort(props.sortCallback || sortCallback));
-          }
+          setItems(itemsData.items.sort(props.sortCallback || sortCallback));
         });
       }
     );

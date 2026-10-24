@@ -8,10 +8,29 @@ module Frontend
     PROVIDERS_WITH_HOMEBREWS = %w[daggerheart nimble dnd5 dnd2024 pathfinder2 cosmere].freeze
 
     def index
-      serialize_relation_v2(items.visible.kept, ::ItemSerializer, :items, cache_options: cache_options)
+      if feature_requirement.call(current: params[:version], initial: '0.5.15')
+        render json: { items: base_json + hb_json }, status: :ok
+      else
+        serialize_relation_v2(items.visible.kept, ::ItemSerializer, :items, cache_options: cache_options)
+      end
     end
 
     private
+
+    def base_json
+      relation_to_json(
+        relation.visible.kept.where(user_id: nil), ::ItemSerializer, cache_options: cache_options
+      )
+    end
+
+    def hb_json
+      return [] if PROVIDERS_WITH_HOMEBREWS.exclude?(params[:provider])
+
+      relation_to_json(
+        relation.where(user_id: current_user.id).or(relation.where(id: homebrew_item_ids)).visible.kept,
+        ::ItemSerializer
+      )
+    end
 
     def cache_options
       return {} unless feature_requirement.call(current: params[:version], initial: '0.3.26')

@@ -122,13 +122,13 @@ export const CosmereLeveling = (props) => {
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
-    const fetchItems = async (homebrew) => await fetchItemsRequest(appState.accessToken, character().provider, homebrew);
+    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, character().provider);
 
-    Promise.all([fetchItems(false), fetchItems(true), fetchTalents()]).then(
-      ([itemsData, homebrewItemsData, talentsData]) => {
+    Promise.all([fetchItems(), fetchTalents()]).then(
+      ([itemsData, talentsData]) => {
         batch(() => {
           setItems(
-            itemsData.items.concat(homebrewItemsData.items).filter((item) => ITEM_EXPERTISES.includes(item.kind)).sort((a, b) => a.name > b.name)
+            itemsData.items.filter((item) => ITEM_EXPERTISES.includes(item.kind)).sort((a, b) => a.name > b.name)
           );
           setFeats(talentsData.feats);
           setFeatsCount(talentsData.selected_talents_count);
