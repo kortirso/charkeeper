@@ -9,7 +9,6 @@ import {
   NimbleForm
 } from '../../pages';
 import { CharacterNavigation, createModal, PageHeader, Select, Input, Button, Loading } from '../../components';
-import { Plus } from '../../assets';
 import dnd2024Config from '../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { fetchCharactersRequest } from '../../requests/fetchCharactersRequest';
@@ -31,7 +30,8 @@ const TRANSLATION = {
     resetCharacterConfirm1: 'Are you sure need to reset this character to 1 level?',
     resetCharacterConfirm2: "Only character's equipment will not be reset.",
     resetCharacterTitle: 'Reseting character',
-    reset: 'Reset'
+    reset: 'Reset',
+    add: 'New character'
   },
   ru: {
     deleteCharacterConfirm: 'Вы точно хотите избавиться от этого персонажа?',
@@ -40,7 +40,8 @@ const TRANSLATION = {
     resetCharacterConfirm1: 'Вы точно хотите сбросить от этого персонажа до 1 уровня?',
     resetCharacterConfirm2: "Только снаряжение персонажа не будет сброшено.",
     resetCharacterTitle: 'Сброс персонажа',
-    reset: 'Сбросить'
+    reset: 'Сбросить',
+    add: 'Новый персонаж'
   },
   es: {
     deleteCharacterConfirm: '¿Estás seguro de que quieres eliminar este personaje?',
@@ -49,7 +50,8 @@ const TRANSLATION = {
     resetCharacterConfirm1: '¿Estás seguro de que quieres restablecer este personaje a nivel 1?',
     resetCharacterConfirm2: "Solo el equipo del personaje no será restablecido.",
     resetCharacterTitle: 'Restableciendo personaje',
-    reset: 'Restablecer'
+    reset: 'Restablecer',
+    add: 'New character'
   }
 }
 
@@ -266,16 +268,6 @@ export const CharactersTab = () => {
           </PageHeader>
         </Match>
         <Match when={currentTab() === 'characters'}>
-          <Show when={filteredCharacters()}>
-            <Button
-              default
-              classList="absolute right-4 bottom-4 rounded-full! w-12 h-12 z-10"
-              onClick={() => setCurrentTab('newCharacter')}
-              dataTestId="new-character-button"
-            >
-              <Plus />
-            </Button>
-          </Show>
           <CharacterNavigation
             tabsList={['allFilter'].concat(['dnd2024', 'dnd5', 'daggerheart', 'pathfinder2', 'cosmere', 'dc20', 'nimble', 'fate', 'cthulhu7', 'fallout'].filter((item) => characterProviders().includes(item)))}
             activeTab={activeFilter()}
@@ -287,6 +279,15 @@ export const CharactersTab = () => {
         <Match when={currentTab() === 'characters'}>
           <div class="flex-1 overflow-y-auto">
             <Show when={filteredCharacters()} fallback={<Loading />}>
+              <Button
+                default
+                textable
+                classList="my-1"
+                onClick={() => setCurrentTab('newCharacter')}
+                dataTestId="new-character-button"
+              >
+                <span>{localize(TRANSLATION, locale()).add}</span>
+              </Button>
               <DragDropProvider onDragEnd={reorderCharacters}>
                 <For each={filteredCharacters()}>
                   {(character, index) =>
