@@ -780,7 +780,7 @@ body.web {
 }
 
 .character-item {
-  @apply p-4 pb-0 pr-0 flex items-center cursor-pointer relative;
+  @apply pt-4 pl-2 pb-0 pr-0 flex items-center cursor-pointer relative;
 }
 
 .character-item-not-active {
@@ -808,7 +808,7 @@ body.web {
 }
 
 .character-item-drag-handle {
-  @apply flex items-center justify-center self-center shrink-0 w-6 h-6 cursor-grab text-gray-400 dark:text-gray-200 pb-4;
+  @apply flex items-center justify-center self-center shrink-0 w-6 h-6 cursor-grab text-gray-400 dark:text-gray-200 pb-4 mr-2;
   @apply hover:bg-gray-100 active:cursor-grabbing dark:hover:bg-dusty;
 
   touch-action: none;
