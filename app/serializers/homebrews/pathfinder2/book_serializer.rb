@@ -16,6 +16,7 @@ module Homebrews
           items: transform(::Pathfinder2::Item.kept.where(id: items['Item']).pluck(:id, :name)),
           backgrounds: titles(items, ::Pathfinder2::Homebrews::Background, 'Homebrew'),
           classes: subclasses_info(items),
+          races: subraces_info(items),
           spells: transform(feats(items, 4).pluck(:id, :title)),
           feats: transform(feats(items, [0, 2]).pluck(:id, :title))
         }
@@ -33,6 +34,21 @@ module Homebrews
             next translate(default['name']) if default
 
             translate(pathfinder_names.fetch_item(key: :specialities, id: key)[:name])
+          end.transform_values { |value| value.each_with_object({}) { |item, acc| acc[item[:id]] = translate(item[:title]) } }
+      end
+
+      def subraces_info(object_items) # rubocop: disable Metrics/AbcSize
+        subraces =
+          ::Pathfinder2::Homebrews::Subrace
+            .where(id: object_items['Homebrew'])
+            .hashable_pluck(:id, :title, :info)
+            .group_by { |item| item[:info].race_id }
+        subraces
+          .transform_keys do |key|
+            default = ::Pathfinder2::Character.race_info(key)
+            next translate(default['name']) if default
+
+            translate(pathfinder_names.fetch_item(key: :races, id: key)[:name])
           end.transform_values { |value| value.each_with_object({}) { |item, acc| acc[item[:id]] = translate(item[:title]) } }
       end
 

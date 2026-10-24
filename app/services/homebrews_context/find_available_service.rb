@@ -24,7 +24,9 @@ module HomebrewsContext
         pathfinder2: {
           backgrounds: titles(user_id, ::Pathfinder2::Homebrews::Background),
           classes: pf2_classes(user_id),
-          subclasses: pathfinder_subclasses(user_id)
+          subclasses: pathfinder_subclasses(user_id),
+          races: pf2_races(user_id),
+          subraces: pf2_subraces(user_id)
         },
         cosmere: {
           settings: titles(user_id, ::Cosmere::Homebrews::Setting),
@@ -81,6 +83,28 @@ module HomebrewsContext
           .kept.each_with_object({}) do |item, acc|
             acc[item.info.class_id] ||= {}
             acc[item.info.class_id][item.id] = { name: item.title }
+          end
+    end
+
+    def pf2_races(user_id)
+      ::Pathfinder2::Homebrews::Race.where(user_id: user_id)
+        .or(
+          ::Pathfinder2::Homebrews::Race.where(id: pf2_subraces(user_id).keys)
+        )
+        .kept.each_with_object({}) do |item, acc|
+          acc[item.id] = { name: item.title }
+        end
+    end
+
+    def pf2_subraces(user_id)
+      @pf2_subraces ||=
+        ::Pathfinder2::Homebrews::Subrace.where(user_id: user_id)
+          .or(
+            ::Pathfinder2::Homebrews::Subrace.where(id: available_books_data(user_id))
+          )
+          .kept.each_with_object({}) do |item, acc|
+            acc[item.info.race_id] ||= {}
+            acc[item.info.race_id][item.id] = { name: item.title }
           end
     end
 

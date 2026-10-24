@@ -9,7 +9,10 @@ module Pathfinder2Character
     private
 
     def subrace_builder(subrace)
-      "Pathfinder2Character::Subraces::#{subrace.camelize}Builder".constantize.new
+      default = ::Pathfinder2::Character.races[subrace]
+      return "Pathfinder2Character::Subraces::#{subrace.camelize}Builder".constantize.new if default
+
+      Pathfinder2Character::Subraces::CustomBuilder.new
     rescue NameError => _e
       DummyBuilder.new
     end

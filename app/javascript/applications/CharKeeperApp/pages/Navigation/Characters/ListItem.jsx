@@ -3,7 +3,6 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { IconButton } from '../../../components';
 import { Dots, Avatar } from '../../../assets';
-import pathfinder2Config from '../../../data/pathfinder2.json';
 import dnd5Config from '../../../data/dnd5.json';
 import dc20Config from '../../../data/dc20.json';
 import falloutConfig from '../../../data/fallout.json';
@@ -88,7 +87,7 @@ export const CharactersListItem = (props) => {
       return `${t('charactersPage.level')} ${character().level} | ${character().legacy ? character().names.legacy_name : character().names.species_name}`;
     }
     if (character().provider === 'pathfinder2') {
-      return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? localize(pathfinder2Config.races[character().race].subraces[character().subrace].name, locale()) : localize(pathfinder2Config.races[character().race].name, locale())}`;
+      return `${t('charactersPage.level')} ${character().level} | ${character().names.race_name}`;
     }
     if (character().provider === 'fallout') {
       return `${t('charactersPage.level')} ${character().level} | ${localize(falloutConfig.origins[character().origin].name, locale())}`;

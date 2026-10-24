@@ -58,7 +58,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['no_body_armor'] = defense_gear[:armor].nil?
     @result['no_armor'] = defense_gear.values.all?(&:nil?)
     @result['max_dying'] = 4
-    @result['info'] = find_info
+    @result['info'] = {} # DEPRECATED
     @result['archetypes'] = archetypes
     @result['archetype_spells'] = {}
     @result['base_spell_attack'] = spell_attack
@@ -70,7 +70,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   end
 
   def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
-    health_max = RACE_HP[race] + ((class_hp + modified_abilities['con']) * level)
+    health_max = race_hp + ((class_hp + modified_abilities['con']) * level)
     @result['health'] = {
       'current' => [health_current, health_max].min,
       'temp' => health_temp,
@@ -97,6 +97,16 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['can_have_animal'] = available_features_slugs.intersect?(ANIMAL_FEATS)
     @result['total_damage_reduction'] = calc_total_damage_reduction
     @result['available_features_slugs'] = available_features_slugs
+  end
+
+  def race_hp
+    default = ::Pathfinder2::Character.races[race]
+    return RACE_HP[race] if default
+
+    @custom_race = Pathfinder2::Homebrews::Race.find_by(id: race)
+    return 6 unless @custom_race
+
+    @custom_race.info.health
   end
 
   def class_hp
@@ -696,25 +706,6 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
         armor_class: armor_class
       }
       .merge(modified_abilities.symbolize_keys)
-  end
-
-  def find_info
-    {
-      'race' => translate(::Pathfinder2::Character.race_info(race)['name']),
-      'subrace' => translate(::Pathfinder2::Character.subrace_info(race, subrace)['name']),
-      'background' => @character.background_name,
-      'class' => @character.class_name,
-      'subclass' => find_subclass_name
-    }
-  end
-
-  def find_subclass_name
-    return if subclasses[main_class].blank?
-
-    subclass = ::Pathfinder2::Character.subclass_info(main_class, subclasses[main_class])
-    return unless subclass
-
-    translate(subclass['name'])
   end
 
   def damage_bonuses(weapon_skill_training, skill)

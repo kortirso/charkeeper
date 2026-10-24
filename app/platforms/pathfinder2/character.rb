@@ -123,6 +123,21 @@ module Pathfinder2
       Pathfinder2Decorator.new.call(character: self, simple: simple, version: version)
     end
 
+    def race_name # rubocop: disable Metrics/AbcSize
+      if data.subrace
+        custom_name = pathfinder2_names.fetch_item(key: :subraces, id: data.subrace)
+        return translate(custom_name[:name]) if custom_name
+
+        translate(::Pathfinder2::Character.subrace_info(data.race, data.subrace)['name'])
+      else
+        default = ::Pathfinder2::Character.races[data.race]
+        return translate(default['name']) if default
+
+        custom_name = pathfinder2_names.fetch_item(key: :races, id: data.race)
+        custom_name ? translate(custom_name[:name]) : '-'
+      end
+    end
+
     def class_name
       return '' unless data.main_class
 
@@ -131,6 +146,16 @@ module Pathfinder2
 
       custom_name = pathfinder2_names.fetch_item(key: :specialities, id: data.main_class)
       custom_name ? translate(custom_name[:name]) : '-'
+    end
+
+    def subclass_name
+      value = data.subclasses[data.main_class]
+      return if value.blank?
+
+      custom_name = pathfinder2_names.fetch_item(key: :subclasses, id: value)
+      return translate(custom_name[:name]) if custom_name
+
+      translate(::Pathfinder2::Character.subclass_info(data.main_class, value)['name'])
     end
 
     def background_name

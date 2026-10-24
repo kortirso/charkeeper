@@ -16,7 +16,8 @@ const TRANSLATION = {
     backgrounds: 'Backgrounds',
     classes: 'Classes',
     spells: 'Spells',
-    feats: 'Feats'
+    feats: 'Feats',
+    races: 'Races'
   },
   ru: {
     items: 'Предметы',
@@ -25,7 +26,8 @@ const TRANSLATION = {
     backgrounds: 'Предыстории',
     spells: 'Заклинания',
     classes: 'Классы',
-    feats: 'Черты'
+    feats: 'Черты',
+    races: 'Расы'
   },
   es: {
     items: 'Objetos',
@@ -34,7 +36,8 @@ const TRANSLATION = {
     backgrounds: 'Trasfondos',
     spells: 'Hechizos',
     classes: 'Clases',
-    feats: 'Proesas'
+    feats: 'Proesas',
+    races: 'Races'
   }
 }
 
@@ -51,15 +54,15 @@ export const Pathfinder2Books = () => {
       <Show when={props.info.shared}>
         <p class="font-medium!">{localize(TRANSLATION, locale()).official}</p>
       </Show>
-      <For each={['backgrounds', 'classes', 'items', 'feats', 'spells']}>
+      <For each={['backgrounds', 'races', 'classes', 'items', 'feats', 'spells']}>
         {(kind) =>
           <Show
-            when={kind !== 'classes'}
+            when={kind !== 'classes' && kind !== 'races'}
             fallback={
-              <Show when={Object.keys(props.info.items.classes).length > 0}>
+              <Show when={Object.keys(props.info.items[kind]).length > 0}>
                 <div>
                   <p class="font-medium! mb-2">{localize(TRANSLATION, locale())[kind]}</p>
-                  <For each={Object.entries(props.info.items.classes)}>
+                  <For each={Object.entries(props.info.items[kind])}>
                     {([className, subclasses]) =>
                       <p class="flex flex-wrap gap-2">{className}:
                         <For each={Object.entries(subclasses)}>

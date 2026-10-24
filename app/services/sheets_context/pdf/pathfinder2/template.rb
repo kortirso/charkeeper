@@ -85,7 +85,7 @@ module SheetsContext
             text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [432, 489 - (index * 36)], width: 30, height: 14, align: :center
 
             damage = attack[:damage].include?('d') ? "#{attack[:damage]}#{'+' if attack[:damage_bonus].positive?}#{attack[:damage_bonus] unless attack[:damage_bonus].zero?}" : ((attack[:damage].to_i + attack[:damage_bonus]).positive? ? (attack[:damage].to_i + attack[:damage_bonus]).to_s : '-') # rubocop: disable Style/NestedTernaryOperator
-            text_box damage.to_s, at: [487, 489 - (index * 36)], width: 35, height: 14, align: :center
+            text_box damage.to_s, at: [489, 489 - (index * 36)], width: 35, height: 14, align: :center
 
             if attack[:distance]
               text_box attack[:distance].to_s, at: [522, 489 - (index * 36)], width: 30, height: 14, align: :center
@@ -102,15 +102,14 @@ module SheetsContext
         private
 
         def heritage(character)
-          "#{character.info['subrace']} / #{character.info['background']}"
+          "#{character.parent.race_name} / #{character.parent.background_name}"
         end
 
         def classes(character)
-          class_name = character.info['class']
-          subclass_name = character.info['subclass']
-          return class_name unless subclass_name
+          value = character.parent.class_name
+          return "#{character.parent.class_name} / #{character.parent.subclass_name}" if value
 
-          "#{class_name} (#{subclass_name})"
+          character.parent.class_name
         end
       end
     end
