@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - using homebrew races for pf2 characters
 
+### Modified
+- fetching items with homebrew items by 1 request
+
 ## [0.5.14] - 2026-10-23
 ### Added
 - filter items by level for pf2 characters
