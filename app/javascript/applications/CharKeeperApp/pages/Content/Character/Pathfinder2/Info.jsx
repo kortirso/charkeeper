@@ -7,20 +7,20 @@ import { localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    subrace: 'Ancestry',
-    background: 'Background',
+    race_name: 'Ancestry',
+    background_name: 'Background',
     class: 'Class',
     heroPoints: 'Hero points'
   },
   ru: {
-    subrace: 'Раса',
-    background: 'Происхождение',
+    race_name: 'Раса',
+    background_name: 'Происхождение',
     class: 'Класс',
     heroPoints: 'Очки героизма'
   },
   es: {
-    subrace: 'Ancestría',
-    background: 'Trasfondo',
+    race_name: 'Ancestría',
+    background_name: 'Trasfondo',
     class: 'Clase',
     heroPoints: 'Puntos de héroe'
   }
@@ -36,9 +36,9 @@ export const Pathfinder2Info = (props) => {
   const i18n = createMemo(() => localize(TRANSLATION, locale()));
 
   const renderClass = () => {
-    if (!props.character.info.subclass) return props.character.info.class;
+    if (!props.character.names.subclass_name) return props.character.names.class_name;
 
-    return `${props.character.info.class} (${props.character.info.subclass})`;
+    return `${props.character.names.class_name} (${props.character.names.subclass_name})`;
   }
 
   const gainPoint = () => replaceCharacter({ hero_points: character().hero_points + 1 });
@@ -82,13 +82,13 @@ export const Pathfinder2Info = (props) => {
             </div>
           </div>
           <div class="character-info-grid">
-            <For each={['subrace', 'background']}>
+            <For each={['race_name', 'background_name']}>
               {(item) =>
                 <Text
                   containerClassList="character-info-item"
                   labelText={i18n()[item]}
                   labelClassList="character-info-text"
-                  text={character().info[item]}
+                  text={character().names[item]}
                 />
               }
             </For>

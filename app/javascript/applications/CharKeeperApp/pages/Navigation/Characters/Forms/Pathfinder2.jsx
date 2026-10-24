@@ -18,19 +18,19 @@ const TRANSLATION = {
   en: {
     options: 'There are books available in Homebrews/Modules section for additional options for character creation.',
     showHomebrew: 'Allow to select homebrews',
-    beyondFile: 'You can import your character from Pathbuilder by using JSON file or build ID. Not all classes/backgrounds/ancestries present - so there could be errors.',
+    beyondFile: 'You can import your character from Pathbuilder by using build ID. Not all classes/backgrounds/ancestries present - so there could be errors.',
     buildId: 'Build ID'
   },
   ru: {
     options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.',
     showHomebrew: 'Выбирать из homebrew',
-    beyondFile: 'Вы можете импортировать своего персонажа из Pathbuilder, используя JSON-файл или ID билда. Не все классы/происхождения/расы представлены в Чаркипере, поэтому могут быть ошибки.',
+    beyondFile: 'Вы можете импортировать своего персонажа из Pathbuilder, используя ID билда. Не все классы/происхождения/расы представлены в Чаркипере, поэтому могут быть ошибки.',
     buildId: 'Build ID'
   },
   es: {
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
     showHomebrew: 'Allow to select homebrews',
-    beyondFile: 'You can import your character from Pathbuilder by using JSON file or build ID. Not all classes/backgrounds/ancestries present - so there could be errors.',
+    beyondFile: 'You can import your character from Pathbuilder by using build ID. Not all classes/backgrounds/ancestries present - so there could be errors.',
     buildId: 'Build ID'
   }
 }
@@ -42,25 +42,6 @@ export const Pathfinder2CharacterForm = (props) => {
 
   const [locale, dict] = useAppLocale();
   const t = i18n.translator(dict);
-
-  // const handleFileChange = (event) => {
-  //   const file = event.target.files[0];
-  //   if (!file) return;
-
-  //   const reader = new FileReader();
-  //   reader.onload = function(e) {
-  //     try {
-  //       const jsonString = e.target.result.replace(/,([ \t\r\n]*[}\]])/g, '$1');
-  //       const jsonObject = JSON.parse(jsonString);
-
-  //       props.onImportCharacter('pathbuilder_json', jsonObject);
-  //     } catch (error) {
-  //       console.error('Invalid JSON file format:', error.message);
-  //     }
-  //   };
-
-  //   reader.readAsText(file);
-  // }
 
   const mainAbilityOptions = createMemo(() => {
     if (form.main_class === undefined) return {};
@@ -99,6 +80,7 @@ export const Pathfinder2CharacterForm = (props) => {
 
   const pf2Classes = createMemo(() => {
     if (props.homebrews() === undefined) return pathfinder2Config.classes;
+    if (!showHomebrew()) return pathfinder2Config.classes;
 
     const hbClasses = Object.entries(props.homebrews().pathfinder2.classes).map(([key, value]) => {
       if (!value.subclass_title) return [key, value];
@@ -107,6 +89,17 @@ export const Pathfinder2CharacterForm = (props) => {
     });
 
     return { ...pathfinder2Config.classes, ...Object.fromEntries(hbClasses) };
+  });
+
+  const pf2Races = createMemo(() => {
+    if (props.homebrews() === undefined) return pathfinder2Config.races;
+    if (!showHomebrew()) return pathfinder2Config.races;
+
+    const hbRaces = Object.entries(props.homebrews().pathfinder2.races).map(([key, value]) => {
+      return [key, { ...value, subraces: props.homebrews().pathfinder2.subraces[key] }]
+    });
+
+    return { ...pathfinder2Config.races, ...Object.fromEntries(hbRaces) };
   });
 
   return (
@@ -128,14 +121,14 @@ export const Pathfinder2CharacterForm = (props) => {
         <Select
           searchable
           labelText={t('newCharacterPage.pathfinder2.race')}
-          items={translate(pathfinder2Config.races, locale(), true)}
+          items={translate(pf2Races(), locale(), true)}
           selectedValue={form.race}
           onSelect={(value) => setForm({ ...form, race: value, subrace: undefined })}
         />
-        <Show when={pathfinder2Config.races[form.race]?.subraces}>
+        <Show when={pf2Races()[form.race]?.subraces}>
           <Select
             labelText={t('newCharacterPage.pathfinder2.subrace')}
-            items={translate(pathfinder2Config.races[form.race].subraces, locale())}
+            items={translate(pf2Races()[form.race].subraces, locale())}
             selectedValue={form.subrace}
             onSelect={(value) => setForm({ ...form, subrace: value })}
           />
@@ -171,7 +164,6 @@ export const Pathfinder2CharacterForm = (props) => {
           />
         </Show>
         <Label labelText={localize(TRANSLATION, locale()).beyondFile} />
-        {/*<input class="block dark:text-gray-200" type="file" onChange={handleFileChange} />*/}
         <Input
           placeholder="111119"
           labelText={localize(TRANSLATION, locale()).buildId}

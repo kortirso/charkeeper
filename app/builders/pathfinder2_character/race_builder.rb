@@ -9,7 +9,10 @@ module Pathfinder2Character
     private
 
     def race_builder(race)
-      "Pathfinder2Character::Races::#{race.camelize}Builder".constantize.new
+      default = ::Pathfinder2::Character.races[race]
+      return "Pathfinder2Character::Races::#{race.camelize}Builder".constantize.new if default
+
+      Pathfinder2Character::Races::CustomBuilder.new
     rescue NameError => _e
       DummyBuilder.new
     end

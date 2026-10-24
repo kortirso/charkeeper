@@ -56,6 +56,8 @@ module HomebrewsV2Context
         when 'subclass' then HomebrewsV2Context::Import::Pathfinder2::Subclasses::PerformCommand.new
         when 'spell' then HomebrewsV2Context::Import::Pathfinder2::Spells::AddCommand.new
         when 'feat' then HomebrewsV2Context::Import::Pathfinder2::Feats::AddCommand.new
+        when 'race' then HomebrewsV2Context::Import::Pathfinder2::Races::PerformCommand.new
+        when 'subrace' then HomebrewsV2Context::Import::Pathfinder2::Subraces::PerformCommand.new
         end
       end
 

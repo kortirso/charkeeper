@@ -33,6 +33,8 @@ module Pathfinder2
     def names
       {
         class_name: object.class_name,
+        subclass_name: object.subclass_name,
+        race_name: object.race_name,
         background_name: object.background_name
       }
     end

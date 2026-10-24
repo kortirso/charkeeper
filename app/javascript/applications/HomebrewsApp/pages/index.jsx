@@ -63,3 +63,5 @@ export * from './Content/Pathfinder2/Classes';
 export * from './Content/Pathfinder2/Subclasses';
 export * from './Content/Pathfinder2/Feats';
 export * from './Content/Pathfinder2/Spells';
+export * from './Content/Pathfinder2/Races';
+export * from './Content/Pathfinder2/Subraces';

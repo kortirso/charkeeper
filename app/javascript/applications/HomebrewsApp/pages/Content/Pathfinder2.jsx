@@ -2,7 +2,8 @@ import { For, Switch, Match } from 'solid-js';
 
 import {
   Pathfinder2Books, Pathfinder2Weapons, Pathfinder2Backgrounds, Pathfinder2Armors, Pathfinder2Shields, Pathfinder2Items,
-  Pathfinder2Consumables, Pathfinder2Classes, Pathfinder2Subclasses, Pathfinder2Feats, Pathfinder2Spells
+  Pathfinder2Consumables, Pathfinder2Classes, Pathfinder2Subclasses, Pathfinder2Feats, Pathfinder2Spells, Pathfinder2Races,
+  Pathfinder2Subraces
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -18,7 +19,9 @@ const TRANSLATION = {
     shields: 'Shields',
     consumables: 'Consumables',
     spells: 'Spells',
-    feats: 'Feats'
+    feats: 'Feats',
+    races: 'Races',
+    subraces: 'Subraces'
   },
   ru: {
     books: 'Книги',
@@ -31,7 +34,9 @@ const TRANSLATION = {
     shields: 'Щиты',
     consumables: 'Расходники',
     spells: 'Заклинания',
-    feats: 'Черты'
+    feats: 'Черты',
+    races: 'Расы',
+    subraces: 'Подрасы'
   },
   es: {
     books: 'Libros',
@@ -44,7 +49,9 @@ const TRANSLATION = {
     shields: 'Shields',
     consumables: 'Consumables',
     spells: 'Hechizos',
-    feats: 'Proezas'
+    feats: 'Proezas',
+    races: 'Races',
+    subraces: 'Subraces'
   }
 }
 
@@ -58,8 +65,8 @@ export const Pathfinder2 = () => {
       <div class="flex flex-wrap gap-x-4 gap-y-2 my-4">
         <For each={
           [
-            'books', 'backgrounds', 'classes', 'subclasses', 'weapons', 'armor', 'items', 'shields', 'consumables',
-            'feats', 'spells'
+            'books', 'backgrounds', 'races', 'subraces', 'classes', 'subclasses', 'weapons', 'armor', 'items', 'shields',
+            'consumables', 'feats', 'spells'
           ]
         }>
           {(item) =>
@@ -76,7 +83,8 @@ export const Pathfinder2 = () => {
           Object.entries({
             books: Pathfinder2Books, weapons: Pathfinder2Weapons, backgrounds: Pathfinder2Backgrounds, armor: Pathfinder2Armors,
             items: Pathfinder2Items, shields: Pathfinder2Shields, consumables: Pathfinder2Consumables, feats: Pathfinder2Feats,
-            classes: Pathfinder2Classes, subclasses: Pathfinder2Subclasses, spells: Pathfinder2Spells
+            classes: Pathfinder2Classes, subclasses: Pathfinder2Subclasses, spells: Pathfinder2Spells, races: Pathfinder2Races,
+            subraces: Pathfinder2Subraces
           })
         }>
           {([item, Component]) =>
