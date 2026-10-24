@@ -17,9 +17,7 @@ module Frontend
     before_action :set_locale, only: %i[show]
 
     def index
-      render json: Panko::Response.new(
-        characters: characters.flatten.sort_by { |item| item['name'] }
-      ), status: :ok
+      render json: Panko::Response.new(characters: characters), status: :ok
     end
 
     def show
@@ -34,15 +32,10 @@ module Frontend
     private
 
     def characters
-      current_user.characters.parents.group_by(&:type).map do |character_type, characters|
-        set_current_provider(character_type)
+      current_user.characters.parents.order(position: :asc, created_at: :desc).map do |character|
+        set_current_provider(character.type)
         set_locale
-        Panko::ArraySerializer.new(
-          characters,
-          each_serializer: serializer(character_type),
-          only: serialize_fields(character_type),
-          context: { simple: true }
-        ).to_a
+        serializer(character.type).new(context: { simple: true }, only: serialize_fields(character.type)).serialize(character)
       end
     end
 

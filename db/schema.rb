@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_24_173356) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -137,7 +137,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
     t.boolean "active", default: false, comment: "Включен ли эффект навыка"
     t.uuid "character_id", null: false
     t.datetime "created_at", null: false
-    t.jsonb "dices", comment: "Текущие значения дайсов"
     t.uuid "feat_id", null: false
     t.string "kind", default: "default", null: false
     t.integer "limit_refresh", limit: 2, comment: "Событие для обновления лимита"
@@ -145,16 +144,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
     t.string "prepared_by"
     t.boolean "ready_to_use"
     t.integer "selected_count"
-    t.integer "tokens", comment: "Текущее кол-во токенов"
     t.datetime "updated_at", null: false
     t.integer "used_count", comment: "Кол-во использований"
     t.jsonb "value", comment: "Выбранные опции навыка, либо введенный текст"
+    t.integer "tokens", comment: "Текущее кол-во токенов"
+    t.jsonb "dices", comment: "Текущие значения дайсов"
     t.index ["character_id", "feat_id", "kind", "prepared_by"], name: "idx_on_character_id_feat_id_kind_prepared_by_4db15cdd26", unique: true
   end
 
   create_table "character_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "character_id", null: false
-    t.integer "charges"
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false, comment: "Свойства предметов в экипировке"
     t.uuid "item_id", null: false
@@ -164,6 +163,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
     t.integer "state", limit: 2, default: 2, null: false
     t.jsonb "states", default: {}, null: false
     t.datetime "updated_at", null: false
+    t.integer "charges"
     t.index ["character_id", "item_id"], name: "index_character_items_on_character_id_and_item_id"
   end
 
@@ -178,10 +178,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
 
   create_table "character_resources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "character_id", null: false
-    t.datetime "created_at", null: false
     t.uuid "custom_resource_id", null: false
-    t.datetime "updated_at", null: false
     t.integer "value", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_character_resources_on_character_id"
     t.index ["custom_resource_id"], name: "index_character_resources_on_custom_resource_id"
   end
@@ -201,25 +201,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
     t.jsonb "data", default: {}, null: false, comment: "Свойства персонажа"
     t.datetime "equipment_updated_at"
     t.string "name", null: false
-    t.uuid "parent_id"
     t.string "type", null: false, comment: "Система, для которой создан персонаж"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
+    t.uuid "parent_id"
+    t.integer "position", comment: "Позиция персонажа в сортированном списке юзера"
     t.index ["parent_id"], name: "index_characters_on_parent_id", where: "(parent_id IS NOT NULL)"
     t.index ["type"], name: "index_characters_on_type"
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
   create_table "custom_resources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.text "description"
-    t.integer "max_value", default: 1, null: false
-    t.string "name", null: false
-    t.integer "reset_direction", default: 0, null: false, comment: "0 - сброс к нулю, 1 - сброс к максимуму"
-    t.jsonb "resets", default: {}, null: false
     t.uuid "resourceable_id", null: false
     t.string "resourceable_type", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.integer "max_value", default: 1, null: false
+    t.jsonb "resets", default: {}, null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "reset_direction", default: 0, null: false, comment: "0 - сброс к нулю, 1 - сброс к максимуму"
     t.index ["resourceable_id", "resourceable_type"], name: "idx_on_resourceable_id_resourceable_type_718cca992a"
   end
 
@@ -244,7 +245,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
     t.datetime "created_at", null: false
     t.jsonb "description", default: {}, null: false
     t.jsonb "description_eval_variables", default: {}, null: false, comment: "Вычисляемые переменные для описания"
-    t.jsonb "dices", comment: "Настройки дайсов"
     t.jsonb "eval_variables", default: {}, null: false, comment: "Вычисляемые переменные"
     t.string "exclude", comment: "Заменяемые навыки", array: true
     t.jsonb "info", default: {}, null: false
@@ -260,11 +260,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
     t.integer "reset_on_rest", limit: 2, comment: "Сбрасывать выбор на отдыхе"
     t.string "slug"
     t.jsonb "title", default: {}, null: false
-    t.jsonb "tokens", comment: "Настройки токенов для навыков"
     t.string "type", null: false
     t.datetime "updated_at", null: false
-    t.integer "upvotes_count", default: 0, null: false
     t.uuid "user_id"
+    t.jsonb "tokens", comment: "Настройки токенов для навыков"
+    t.integer "upvotes_count", default: 0, null: false
+    t.jsonb "dices", comment: "Настройки дайсов"
     t.index ["origin"], name: "index_feats_on_origin"
     t.index ["origin_value"], name: "index_feats_on_origin_value", where: "(origin_value IS NOT NULL)"
     t.index ["origin_values"], name: "index_feats_on_origin_values", where: "(origin_values IS NOT NULL)", using: :gin
@@ -378,20 +379,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
     t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.boolean "shared"
     t.datetime "updated_at", null: false
-    t.integer "upvotes_count", default: 0, null: false
     t.uuid "user_id", null: false
+    t.integer "upvotes_count", default: 0, null: false
     t.index ["shared"], name: "index_homebrew_books_on_shared", where: "(shared IS NOT NULL)"
     t.index ["user_id"], name: "index_homebrew_books_on_user_id"
   end
 
   create_table "homebrew_publications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "completed_at"
-    t.datetime "created_at", null: false
-    t.jsonb "errors_list", default: {}, null: false
-    t.string "parent_type", null: false
-    t.string "provider"
-    t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
+    t.string "parent_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.jsonb "errors_list", default: {}, null: false
+    t.datetime "completed_at"
+    t.string "provider"
     t.index ["user_id"], name: "index_homebrew_publications_on_user_id"
   end
 
@@ -411,16 +412,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
 
   create_table "homebrews", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "user_id", null: false
+    t.jsonb "title", default: {}, null: false
     t.jsonb "description", default: {}, null: false
+    t.jsonb "info", default: {}, null: false
+    t.string "type", null: false
+    t.boolean "public", default: false, null: false
     t.datetime "discarded_at"
     t.uuid "homebrew_id"
-    t.jsonb "info", default: {}, null: false
-    t.boolean "public", default: false, null: false
-    t.jsonb "title", default: {}, null: false
-    t.string "type", null: false
-    t.datetime "updated_at", null: false
     t.integer "upvotes_count", default: 0, null: false
-    t.uuid "user_id", null: false
     t.index ["discarded_at"], name: "index_homebrews_on_discarded_at"
     t.index ["homebrew_id"], name: "index_homebrews_on_homebrew_id", where: "(homebrew_id IS NOT NULL)"
     t.index ["type"], name: "index_homebrews_on_type"
@@ -440,11 +441,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
   end
 
   create_table "items", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Предметы", force: :cascade do |t|
-    t.integer "charges"
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false, comment: "Свойства предмета"
     t.jsonb "description", default: {"en" => "", "ru" => ""}, null: false
-    t.datetime "discarded_at"
     t.jsonb "info", default: {}, null: false
     t.uuid "itemable_id"
     t.string "itemable_type"
@@ -455,8 +454,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
     t.string "slug"
     t.string "type", null: false
     t.datetime "updated_at", null: false
-    t.integer "upvotes_count", default: 0, null: false
     t.uuid "user_id"
+    t.datetime "discarded_at"
+    t.integer "charges"
+    t.integer "upvotes_count", default: 0, null: false
     t.index ["discarded_at"], name: "index_items_on_discarded_at"
     t.index ["itemable_id", "itemable_type"], name: "index_items_on_itemable_id_and_itemable_type", where: "((itemable_id IS NOT NULL) AND (itemable_type IS NOT NULL))"
     t.index ["slug"], name: "index_items_on_slug"
@@ -483,11 +484,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
   end
 
   create_table "upvotes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.uuid "user_id", null: false
     t.uuid "upvoteable_id", null: false
     t.string "upvoteable_type", null: false
-    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["upvoteable_id", "upvoteable_type"], name: "index_upvotes_on_upvoteable_id_and_upvoteable_type", unique: true
     t.index ["user_id"], name: "index_upvotes_on_user_id"
   end
@@ -563,9 +564,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_05_054651) do
     t.string "locale", default: "en", null: false
     t.string "password_digest"
     t.jsonb "provider_locales", default: {}, comment: "Альтернативные переводы"
-    t.boolean "russian_login", default: false, null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.boolean "russian_login", default: false, null: false
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["username"], name: "index_users_on_username", unique: true, where: "(username IS NOT NULL)"
   end
