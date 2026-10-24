@@ -791,6 +791,10 @@ body.web {
   @apply bg-blue-400 dark:bg-fuzzy-red;
 }
 
+.character-item-dragging {
+  @apply opacity-50 z-10;
+}
+
 .avatar-block {
   @apply mr-3 pb-4 dark:text-snow;
 }
@@ -801,6 +805,13 @@ body.web {
 
 .character-item-dots {
   @apply relative h-16 dark:text-snow;
+}
+
+.character-item-drag-handle {
+  @apply flex items-center justify-center self-center shrink-0 w-6 h-6 cursor-grab text-gray-400 dark:text-gray-200 pb-4;
+  @apply hover:bg-gray-100 active:cursor-grabbing dark:hover:bg-dusty;
+
+  touch-action: none;
 }
 
 .character-item-dots-dropdown {

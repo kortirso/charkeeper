@@ -4,6 +4,7 @@ export * from './Plus';
 export * from './PlusSmall';
 export * from './Minus';
 export * from './Dots';
+export * from './DragHandle';
 export * from './Campfire';
 export * from './LongCampfire';
 export * from './Edit';
