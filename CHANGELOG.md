@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - using homebrew races for pf2 characters
 - reordering characters with drag and drop
+- spanish translations for cthulhu7 characteristics and skills
 
 ### Modified
 - fetching items with homebrew items by 1 request
