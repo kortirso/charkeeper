@@ -1,12 +1,12 @@
 {
   "abilities": {
-    "str": { "name": { "en": "Strength", "ru": "Сила" } },
-    "con": { "name": { "en": "Constitution", "ru": "Выносливость" } },
-    "siz": { "name": { "en": "Size", "ru": "Телосложение" } },
-    "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" } },
-    "app": { "name": { "en": "Appearance", "ru": "Наружность" } },
-    "pow": { "name": { "en": "Power", "ru": "Мощь" } },
-    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
-    "edu": { "name": { "en": "Education", "ru": "Образование" } }
+    "str": { "name": { "en": "Strength", "ru": "Сила", "es": "Fuerza" } },
+    "con": { "name": { "en": "Constitution", "ru": "Выносливость", "es": "Constitución" } },
+    "siz": { "name": { "en": "Size", "ru": "Телосложение", "es": "Tamaño" } },
+    "dex": { "name": { "en": "Dexterity", "ru": "Ловкость", "es": "Destreza" } },
+    "app": { "name": { "en": "Appearance", "ru": "Наружность", "es": "Apariencia" } },
+    "pow": { "name": { "en": "Power", "ru": "Мощь", "es": "Poder" } },
+    "int": { "name": { "en": "Intelligence", "ru": "Интеллект", "es": "Inteligencia" } },
+    "edu": { "name": { "en": "Education", "ru": "Образование", "es": "Educación" } }
   }
 }
