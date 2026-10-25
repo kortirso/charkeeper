@@ -65,8 +65,7 @@ module HomebrewsV2Context
           def do_prepare(input)
             input[:title].transform_values! { |value| sanitize(value) }
             input[:description].transform_values! { |value| sanitize(value) }
-            input[:ability_boosts] =
-              [(ABILITIES - input[:abilities].except(:free).keys).join('_')] + (input[:ability_boosts] || [])
+            input[:ability_boosts] = find_free_ability_boosts(input)
             input[:info] = input.slice(:speed, :health, :languages, :abilities, :ability_boosts, :vision)
           end
 
@@ -81,6 +80,11 @@ module HomebrewsV2Context
           end
 
           def add_feat = HomebrewsV2Context::Import::Pathfinder2::Feats::AddCommand.new
+
+          def find_free_ability_boosts(input)
+            [(ABILITIES - input[:abilities].except(:free).filter_map { |k, v| v.positive? ? k : nil }).join('_')] +
+              (input[:ability_boosts] || [])
+          end
         end
       end
     end
