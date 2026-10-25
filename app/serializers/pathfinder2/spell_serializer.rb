@@ -2,7 +2,9 @@
 
 module Pathfinder2
   class SpellSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id slug title description origin_value origin_values price info original_title focus_for].freeze
+    ATTRIBUTES = %i[
+      id slug title description origin_value origin_values price info original_title focus_for level
+    ].freeze
 
     attributes(*ATTRIBUTES)
 
@@ -27,11 +29,15 @@ module Pathfinder2
     end
 
     def origin_values
-      object.origin_values.map { |item| I18n.t("tags.pathfinder.general.#{item}") }
+      object.origin_values.map { |item| catch_missing_i18n(item) { I18n.t("tags.pathfinder.general.#{item}") } }
     end
 
     def focus_for
       object.origin_values.include?('uncommon') ? (object.origin_values & Pathfinder2::Character.classes_info.keys).first : nil
+    end
+
+    def level
+      object.info['level']
     end
   end
 end
