@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def authentication_error
+    redirect_to new_signin_path, alert: t('controllers.authentication.permission')
+  end
+
   def page_not_found
     render template: 'web/shared/404', status: :not_found, formats: [:html]
   end

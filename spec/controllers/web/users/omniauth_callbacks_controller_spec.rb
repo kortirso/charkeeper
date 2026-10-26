@@ -19,7 +19,7 @@ describe Web::Users::OmniauthCallbacksController do
 
       it 'redirects to root path', :aggregate_failures do
         expect { request }.not_to change(User, :count)
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to new_signin_path
       end
     end
 
@@ -31,7 +31,7 @@ describe Web::Users::OmniauthCallbacksController do
       context 'for blank id' do
         it 'redirects to login path', :aggregate_failures do
           expect { request }.not_to change(User, :count)
-          expect(response).to redirect_to root_path
+          expect(response).to redirect_to new_signin_path
         end
       end
 
@@ -49,7 +49,7 @@ describe Web::Users::OmniauthCallbacksController do
 
           it 'redirects to login path', :aggregate_failures do
             expect { request }.not_to change(User, :count)
-            expect(response).to redirect_to root_path
+            expect(response).to redirect_to new_signin_path
           end
         end
 

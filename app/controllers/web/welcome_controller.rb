@@ -22,6 +22,15 @@ module Web
       monitoring_too_many_requests
     end
 
+    def close_cookie_banner
+      cookies[:charkeeper_cookie_banner] = {
+        value: 'clicked',
+        domain: current_domain,
+        expires: 1.year.from_now
+      }.compact
+      redirect_to root_path
+    end
+
     private
 
     def monitoring_too_many_requests

@@ -436,6 +436,8 @@ Rails.application.routes.draw do
       get 'tips', to: 'welcome#tips'
       get 'changelogs', to: 'welcome#changelogs'
       get 'too_many_requests', to: 'welcome#too_many_requests'
+
+      get 'close_cookie_banner', to: 'welcome#close_cookie_banner'
     end
 
     root 'web/welcome#index'

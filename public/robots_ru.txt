@@ -3,4 +3,6 @@ Disallow: /web_telegram/
 Disallow: /adminbook/
 Disallow: /dashboard/
 Disallow: /homebrews/
+Disallow: /close_cookie_banner
+Disallow: /too_many_requests
 Sitemap: https://charkeeper.ru/sitemap_ru.xml

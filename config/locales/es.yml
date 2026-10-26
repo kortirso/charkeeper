@@ -1,5 +1,10 @@
 es:
+  privacy:
+    title: "Charkeeper | Política de privacidad"
+    description: "Descripción de la política de privacidad de Charkeeper"
   changelogs:
+    title: "Charkeeper | Registro de cambios"
+    description: "Registro de cambios de Charkeeper"
     '5003':
       nimble:
         title1: Core integration
@@ -105,6 +110,8 @@ es:
   validation_error: Error de validación
   too_many_requests: Too many requests in 1 minute
   tips:
+    layout_title: "Charkeeper | Sugerencias"
+    description: "Enlaces para obtener consejos"
     title: Sugerencias
     description: CharKeeper es totalmente gratuito, pero si te gusta utilizar CharKeeper y deseas contribuir al desarrollo de la aplicación, puedes realizar una pequeña donación mediante alguna de las formas que se indican a continuación. Ahora solo se necesitan fondos para pagar el nombre de dominio y el alojamiento, pero hay planes para pagar el trabajo de los entusiastas que están llenando la aplicación con datos de varios sistemas de juegos de rol, y para lanzar CharKeeper en iOS (es necesario pagar una cuenta de desarrollador de Apple). Agradecería cualquier ayuda.
     buymeacoffee: Buy Me a Coffee
@@ -340,6 +347,8 @@ es:
   web:
     welcome:
       index_v2:
+        layout_title: "CharKeeper | Creador de personajes y hojas interactivas gratuitas"
+        description: "CharKeeper: crea y gestiona tus personajes y creaciones propias para diversos juegos de rol de mesa como D&D, Daggerheart, DC20, Pathfinder, Fate y Fallout. También disponible aplicación móvil."
         title: Hojas de personaje interactivas para cualquier juego de mesa en un solo lugar.
         dashboard_link: Personajes
         homebrews_link: Homebrews

@@ -2,12 +2,10 @@
   <div class="max-w-7xl mx-auto py-8 lg:py-12 flex flex-col items-center">
     <h1 class="mb-4 text-center font-medium! text-[40px]">CharKeeper</h1>
     <p class="mb-8 text-center text-lg"><%= t('web.welcome.index_v2.title') %></p>
-    <% if current_user %>
-      <div class="mb-8 flex gap-x-4">
-        <%= link_to t('web.welcome.index_v2.dashboard_link'), dashboard_path, class: 'btn btn-primary inline-block' %>
-        <%= link_to t('web.welcome.index_v2.homebrews_link'), homebrews_path, class: 'btn btn-primary inline-block' %>
-      </div>
-    <% end %>
+    <div class="mb-8 flex gap-x-4">
+      <%= link_to t('web.welcome.index_v2.dashboard_link'), dashboard_path, class: 'btn btn-primary inline-block' %>
+      <%= link_to t('web.welcome.index_v2.homebrews_link'), homebrews_path, class: 'btn btn-primary inline-block' %>
+    </div>
     <div class="mb-16">
       <%= image_tag 'screenshots/general.webp', alt: 'charkeeper', width: 900, height: 544 %>
     </div>
@@ -116,3 +114,15 @@
     </div>
   </div>
 </section>
+<% unless cookies[:charkeeper_cookie_banner] %>
+  <div class="fixed bottom-4 md:bottom-16 right-4 p-4 bg-white text-black rounded w-md shadow max-w-9/10">
+    <h2 class="text-lg font-medium! mb-4"><%= t('cookie_banner.title') %></h2>
+    <p class="mb-2"><%= t('cookie_banner.p1') %></p>
+    <p><%= t('cookie_banner.p2') %></p>
+    <div class="absolute top-2 right-2">
+      <%= link_to 'close_cookie_banner', aria: { label: t('close_cookie') }, data: { 'test-id' => 'close-cookie-banner' } do %>
+        <%= image_tag 'close.svg', class: 'w-10 h-10', alt: 'close', width: 40, height: 40 %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
