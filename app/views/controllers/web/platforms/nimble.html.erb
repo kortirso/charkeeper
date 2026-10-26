@@ -1,0 +1,57 @@
+<% content_for :title, t('platforms.nimble.layout_title') %>
+<% content_for :description, t('platforms.nimble.description') %>
+<% content_for :head, javascript_include_tag('application') %>
+<section id="head" class="w-full px-8">
+  <div class="max-w-7xl mx-auto pt-8 lg:pt-12 flex flex-col items-center">
+    <h1 class="mb-4 text-center font-medium! text-[40px]">Nimble RPG Character Builder</h1>
+    <p class="mb-8 text-center text-lg"><%= t('platforms.nimble.title') %></p>
+    <div class="mb-8 flex gap-x-4">
+      <%= link_to t('web.welcome.index_v2.dashboard_link'), dashboard_path, class: 'btn btn-primary inline-block' %>
+      <%= link_to t('web.welcome.index_v2.homebrews_link'), homebrews_path, class: 'btn btn-primary inline-block' %>
+    </div>
+  </div>
+  <p class="max-w-7xl mx-auto text-center"><%= t('web.welcome.index_v2.ttrpgs_desc5').html_safe %></p>
+  <div class="max-w-7xl mx-auto py-8 lg:py-12 flex flex-col lg:flex-row gap-8 items-center">
+    <%=
+      js_component 'Slider',
+                   component_id: 'root',
+                   items: [
+                     {
+                       image: image_url('platforms/nimble/1.jpg'),
+                       text: t('platforms.nimble.description_1'),
+                       alt: 'creation'
+                     },
+                     {
+                       image: image_url('platforms/nimble/2.jpg'),
+                       text: t('platforms.nimble.description_2'),
+                       alt: 'abilities'
+                     },
+                     {
+                       image: image_url('platforms/nimble/3.jpg'),
+                       text: t('platforms.nimble.description_3'),
+                       alt: 'combat'
+                     },
+                     {
+                       image: image_url('platforms/nimble/4.jpg'),
+                       text: t('platforms.nimble.description_4'),
+                       alt: 'equipment'
+                     },
+                     {
+                       image: image_url('platforms/nimble/5.jpg'),
+                       text: t('platforms.nimble.description_5'),
+                       alt: 'spells'
+                     },
+                     {
+                       image: image_url('platforms/nimble/6.jpg'),
+                       text: t('platforms.nimble.description_6'),
+                       alt: 'rest'
+                     },
+                     {
+                       image: image_url('platforms/nimble/7.jpg'),
+                       text: t('platforms.nimble.description_7'),
+                       alt: 'boneses'
+                     }
+                   ]
+    %>
+  </div>
+</section>

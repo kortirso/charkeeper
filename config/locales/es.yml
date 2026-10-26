@@ -1,4 +1,41 @@
 es:
+  platforms:
+    cosmere:
+      layout_title: "Charkeeper | Cosmere"
+      description: Charkeeper ofrece muchas opciones para la gestión de personajes de Cosmere.
+      title: Charkeeper ofrece muchas opciones para la gestión de personajes de Cosmere.
+      description_1: "Creación de personajes sencilla: solo tienes que introducir la información y todo lo demás se calculará automáticamente. Puedes elegir cualquier época sin limitaciones."
+      description_2: Edita las habilidades y destrezas básicas de tu personaje.
+      description_3: Las estadísticas de combate y los ataques con armas disponibles se calculan automáticamente, y puedes controlar todos los recursos.
+      description_4: Gestión de equipo, incluyendo la transferencia de objetos entre personajes.
+      description_5: Sistema de niveles con selección de talentos y especializaciones en forma de árbol.
+      description_6: "Sistema de bonificaciones/penalizaciones: puedes asignar cualquier bonificación mediante fórmulas."
+      description_7: Edita los objetivos de tu personaje.
+    nimble:
+      layout_title: "Charkeeper | Nimble"
+      description: Charkeeper ofrece muchas opciones para la gestión de personajes de Nimble.
+      title: Charkeeper ofrece muchas opciones para la gestión de personajes de Nimble.
+      description_1: "Creación de personajes sencilla: solo tienes que introducir tus datos y todo lo demás se calculará automáticamente. Puedes elegir entre cualquier creación propia."
+      description_2: Edita las habilidades y destrezas básicas de tu personaje.
+      description_3: Las estadísticas de combate y los ataques con armas disponibles se calculan automáticamente, y puedes controlar todos los recursos.
+      description_4: Gestión de equipo, incluyendo la transferencia de objetos entre personajes.
+      description_5: Gestiona los hechizos disponibles.
+      description_6: Descansa con actualizaciones automáticas de habilidades.
+      description_7: "Sistema de bonificaciones/penalizaciones: puedes asignar cualquier bonificación mediante fórmulas."
+    pathfinder2:
+      layout_title: "Charkeeper | Pathfinder 2e Remaster"
+      description: Charkeeper ofrece muchas opciones para la gestión de personajes de Pathfinder 2e.
+      title: Charkeeper ofrece muchas opciones para la gestión de personajes de Pathfinder 2e.
+      description_1: "Creación de personajes sencilla; solo tienes que introducir la información y todo lo demás se calculará automáticamente. Importación de personajes desde Pathbuilder disponible. Creaciones personalizadas disponibles."
+      description_2: Edita las habilidades básicas de tu personaje.
+      description_3: "Lista de habilidades siempre disponible; puedes añadir cualquier habilidad de conocimiento y usar su valor para las tiradas de dados."
+      description_4: Las estadísticas de combate y los ataques con armas disponibles se calculan automáticamente, y se realiza un seguimiento de todos los recursos.
+      description_5: Sistema de gestión de equipo y creación de objetos. Los objetos se pueden transferir entre personajes.
+      description_6: Gestiona los hechizos disponibles y usados.
+      description_7: Sistema de niveles con una lista de rasgos aprendidos.
+      description_8: "Sistema de bonificaciones/penalizaciones; puedes asignar cualquier bonificación mediante fórmulas."
+      description_9: Gestión de mascotas y compañeros animales, con cálculo de todas las estadísticas.
+      description_10: Tiradas de dados integradas en la aplicación.
   privacy:
     title: "Charkeeper | Política de privacidad"
     description: "Descripción de la política de privacidad de Charkeeper"
@@ -349,14 +386,15 @@ es:
       index_v2:
         layout_title: "CharKeeper | Creador de personajes y hojas interactivas gratuitas"
         description: "CharKeeper: crea y gestiona tus personajes y creaciones propias para diversos juegos de rol de mesa como D&D, Daggerheart, DC20, Pathfinder, Fate y Fallout. También disponible aplicación móvil."
-        title: Hojas de personaje interactivas para cualquier juego de mesa en un solo lugar.
+        title: Crea y juega con personajes de juegos de rol de mesa sin hojas de personaje
+        title2: Pathfinder 2e, Daggerheart, D&D, Cosmere RPG y 6 sistemas más
         dashboard_link: Personajes
         homebrews_link: Homebrews
         description3: Desde el 23 de enero de 2026, Charkeeper se ejecuta en dos servidores separados como dos aplicaciones independientes. Se puede cambiar de servidor, pero añadir, actualizar o eliminar datos solo afectará al servidor actual. La aplicación móvil también se puede cambiar para utilizar un servidor más adecuado.
         switch_ru: Cambiar a RU
         switch_eu: Cambiar a EU
         ttrpgs: Soporte para varios juegos de rol de mesa
-        ttrpgs_desc: "CharKeeper es compatible actualmente con varios sistemas de juego de mesa: D&D 2014 y 2024, Daggerheart, Pathfinder 2, Fate, DC20, Cosmere RPG, Nimble, Call of Cthulhu y Fallout 2d20. Puedes guardar los datos de tu personaje sin limitaciones."
+        ttrpgs_desc: "CharKeeper es compatible actualmente con varios sistemas de juego de mesa: D&D 2014 y 2024, %{pathfinder}, Daggerheart, Fate, DC20, %{cosmere}, %{nimble}, Call of Cthulhu y Fallout 2d20. Puedes guardar los datos de tu personaje sin limitaciones."
         ttrpgs_desc2: 'Data for Pathfinder 2 is provided by <a href="https://pf2.ru/" target="_blank" rel="noopener noreferrer" class="underline">Pathfinder 2E</a>.'
         ttrpgs_desc3: This is unofficial fan content, created and shared for non-commercial use.
         ttrpgs_desc4: "Cosmere RPG note: It has not been reviewed by Dragonsteel Entertainment, LLC or Brotherwise Games, LLC."

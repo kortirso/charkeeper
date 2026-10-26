@@ -1075,3 +1075,97 @@ body.web {
 .spell-toggle.active {
   @apply dark:text-snow border-b;
 }
+
+.slider {
+  @apply relative flex items-center justify-center overflow-hidden;
+
+  height: clamp(40rem, 58vw, 50rem);
+  isolation: isolate;
+}
+
+.slider-item {
+  @apply absolute overflow-hidden rounded-xl bg-dark-gunmetal text-snow shadow-xl;
+
+  width: clamp(17rem, 28vw, 25rem);
+  aspect-ratio: 654 / 1280;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(0) scale(0.68);
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), opacity 350ms ease, filter 500ms ease;
+  will-change: transform, opacity;
+}
+
+.slider-item img {
+  @apply block h-full w-full object-cover;
+}
+
+.slider-item.current {
+  @apply z-10 opacity-100;
+
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.slider-item.prev {
+  @apply z-0 opacity-50;
+
+  transform: translateX(-62%) scale(0.78);
+  filter: brightness(0.72);
+}
+
+.slider-item.next {
+  @apply z-0 opacity-50;
+
+  transform: translateX(62%) scale(0.78);
+  filter: brightness(0.72);
+}
+
+.slider-item:not(.prev):not(.current):not(.next) {
+  visibility: hidden;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), opacity 350ms ease, visibility 0s linear 500ms;
+}
+
+.slider-text {
+  @apply absolute bottom-0 w-full bg-dark-gunmetal/80 p-3 text-sm sm:p-4 sm:text-base;
+}
+
+.slider-button {
+  @apply absolute z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-dark-gunmetal/80 text-xl text-white shadow-lg;
+  @apply transition hover:scale-110 hover:bg-dark-gunmetal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:hidden;
+}
+
+.slider-button-prev {
+  @apply left-2 sm:left-4;
+}
+
+.slider-button-next {
+  @apply right-2 sm:right-4;
+}
+
+@media (max-width: 640px) {
+  .slider {
+    position: static;
+  }
+
+  .slider-item {
+    width: 72vw;
+  }
+
+  .slider-item.prev {
+    transform: translateX(-72%) scale(0.78);
+  }
+
+  .slider-item.next {
+    transform: translateX(72%) scale(0.78);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-item, .slider-button {
+    transition: none;
+  }
+}
+
+.platform_link {
+  @apply px-1 py-0.5 bg-snow text-cosmos rounded underline;
+}

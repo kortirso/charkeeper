@@ -167,12 +167,12 @@
     }
   },
   "abilities": {
-    "str": { "name": { "en": "Strength", "ru": "Сила" } },
-    "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" } },
-    "con": { "name": { "en": "Constitution", "ru": "Выносливость" } },
-    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
-    "wis": { "name": { "en": "Wisdom", "ru": "Мудрость" } },
-    "cha": { "name": { "en": "Charisma", "ru": "Обаяние" } }
+    "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
+    "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" }, "shortName": { "en": "Dex", "ru": "Лов" } },
+    "con": { "name": { "en": "Constitution", "ru": "Выносливость" }, "shortName": { "en": "Con", "ru": "Вын" } },
+    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" }, "shortName": { "en": "Int", "ru": "Инт" } },
+    "wis": { "name": { "en": "Wisdom", "ru": "Мудрость" }, "shortName": { "en": "Wis", "ru": "Муд" } },
+    "cha": { "name": { "en": "Charisma", "ru": "Обаяние" }, "shortName": { "en": "Cha", "ru": "Обн" } }
   },
   "weaponSkills": {
     "unarmed": { "name": { "en": "Unarmed", "ru": "Без оружия" } },

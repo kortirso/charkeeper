@@ -79,7 +79,7 @@ export const Pathfinder2Abilities = (props) => {
     Object.keys(abilityBoosts).forEach((key) => {
       if (key === 'free') return;
 
-      result.push(`${key.split('_').map((item) => localize(config.abilities[item].name, locale())).join('/')} - ${abilityBoosts[key]}`)
+      result.push(`${key.split('_').map((item) => localize(config.abilities[item].shortName, locale())).join('/')} - ${abilityBoosts[key]}`)
     });
     if (abilityBoosts.free) result.push(`${i18n().free} - ${abilityBoosts.free}`);
 

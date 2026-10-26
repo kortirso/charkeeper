@@ -42,4 +42,22 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://charkeeper.ru/platforms/pathfinder2</loc>
+    <lastmod>2026-10-26T22:00:00+03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://charkeeper.ru/platforms/cosmere</loc>
+    <lastmod>2026-10-26T22:00:00+03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://charkeeper.ru/platforms/nimble</loc>
+    <lastmod>2026-10-26T22:00:00+03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>

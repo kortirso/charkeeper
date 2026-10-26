@@ -431,6 +431,12 @@ Rails.application.routes.draw do
         resource :join, only: %i[show], module: :campaigns
       end
 
+      namespace :platforms do
+        get 'pathfinder2'
+        get 'cosmere'
+        get 'nimble'
+      end
+
       get 'privacy', to: 'welcome#privacy'
       get 'bot_commands', to: 'welcome#bot_commands'
       get 'tips', to: 'welcome#tips'
