@@ -133,8 +133,9 @@ export const Pathfinder2Leveling = (props) => {
   const selectFeat = (type, level) => {
     batch(() => {
       setFeatFilter({ type: type, level: level });
-      if (type === 'class') setSelectedTags([character().main_class]);
-      else if (type === 'ancestry') setSelectedTags([character().race]);
+
+      if (type === 'class' && Object.keys(tags()).includes(character().main_class)) setSelectedTags([character().main_class]);
+      else if (type === 'ancestry' && Object.keys(tags()).includes(character().race)) setSelectedTags([character().race]);
       else if (type === 'skill') setSelectedTags(['skill']);
       else if (type === 'general') setSelectedTags(['general']);
       else setSelectedTags([]);
