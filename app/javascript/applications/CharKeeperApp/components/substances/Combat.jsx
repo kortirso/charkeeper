@@ -260,7 +260,9 @@ export const Combat = (props) => {
                         <>
                           <div class="weapon-damage">
                             <Show when={character().provider === 'daggerheart' && attack.trait}>
-                              <span class="weapon-damage-trait">{localize(daggerheartConfig.traits[attack.trait].shortName, currentLocale())}</span>
+                              <span class="weapon-damage-trait">
+                                {attack.trait === 'spellcast' ? 'SPL' : localize(daggerheartConfig.traits[attack.trait].shortName, currentLocale())}
+                              </span>
                             </Show>
                             <Dice width="28" height="28" text={modifier(attack.attack_bonus)} onClick={() => openAttackRoll(attack, attack.attack_bonus)} />
                             <Show when={attack.thrown_attack_bonus}>

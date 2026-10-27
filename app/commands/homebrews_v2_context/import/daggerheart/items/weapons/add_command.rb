@@ -9,7 +9,7 @@ module HomebrewsV2Context
             # rubocop: disable-next Metrics/BlockLength
             use_contract do
               Kinds = Dry::Types['strict.string'].enum('primary weapon', 'secondary weapon')
-              Traits = Dry::Types['strict.string'].enum('agi', 'str', 'fin', 'ins', 'pre', 'know')
+              Traits = Dry::Types['strict.string'].enum('agi', 'str', 'fin', 'ins', 'pre', 'know', 'spellcast')
               Ranges = Dry::Types['strict.string'].enum('melee', 'very close', 'close', 'far', 'very far')
               DamageTypes = Dry::Types['strict.string'].enum('physical', 'magic')
 

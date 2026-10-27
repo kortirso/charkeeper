@@ -150,7 +150,9 @@ const DaggerheartWeapon = (props) => {
       </div>
       <div class="flex items-center gap-x-2 mt-2">
         <p>{item().info.burden === 1 ? <Hand /> : <TwoHands />}</p>
-        <p>{localize(daggerheartConfig.traits[item().info.trait].name, props.currentLocale)},</p>
+        <Show when={item().info.trait}>
+          <p>{item().info.trait === 'spellcast' ? 'SPL' : localize(daggerheartConfig.traits[item().info.trait].name, props.currentLocale)},</p>
+        </Show>
         <Show when={item().info.range}>
           <p>{localize(daggerheartConfig.ranges[item().info.range].name, props.currentLocale)}</p>
         </Show>
