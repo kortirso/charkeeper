@@ -17,7 +17,8 @@ const TRANSLATION = {
     classes: 'Classes',
     spells: 'Spells',
     feats: 'Feats',
-    races: 'Races'
+    races: 'Races',
+    subraces: 'Versatile heritages'
   },
   ru: {
     items: 'Предметы',
@@ -27,7 +28,8 @@ const TRANSLATION = {
     spells: 'Заклинания',
     classes: 'Классы',
     feats: 'Черты',
-    races: 'Расы'
+    races: 'Расы',
+    subraces: 'Универсальные родословные'
   },
   es: {
     items: 'Objetos',
@@ -37,7 +39,8 @@ const TRANSLATION = {
     spells: 'Hechizos',
     classes: 'Clases',
     feats: 'Proesas',
-    races: 'Races'
+    races: 'Races',
+    subraces: 'Versatile heritages'
   }
 }
 
@@ -54,7 +57,7 @@ export const Pathfinder2Books = () => {
       <Show when={props.info.shared}>
         <p class="font-medium!">{localize(TRANSLATION, locale()).official}</p>
       </Show>
-      <For each={['backgrounds', 'races', 'classes', 'items', 'feats', 'spells']}>
+      <For each={['backgrounds', 'races', 'subraces', 'classes', 'items', 'feats', 'spells']}>
         {(kind) =>
           <Show
             when={kind !== 'classes' && kind !== 'races'}

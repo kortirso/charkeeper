@@ -9,7 +9,7 @@ module Homebrews
         object.name
       end
 
-      def items
+      def items # rubocop: disable Metrics/AbcSize
         items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
@@ -17,6 +17,7 @@ module Homebrews
           backgrounds: titles(items, ::Pathfinder2::Homebrews::Background, 'Homebrew'),
           classes: subclasses_info(items),
           races: subraces_info(items),
+          subraces: versatile_subraces_info(items),
           spells: transform(feats(items, 4).pluck(:id, :title)),
           feats: transform(feats(items, [0, 2]).pluck(:id, :title))
         }
@@ -38,11 +39,7 @@ module Homebrews
       end
 
       def subraces_info(object_items) # rubocop: disable Metrics/AbcSize
-        subraces =
-          ::Pathfinder2::Homebrews::Subrace
-            .where(id: object_items['Homebrew'])
-            .hashable_pluck(:id, :title, :info)
-            .group_by { |item| item[:info].race_id }
+        subraces = all_subraces(object_items).reject { |item| item[:info].race_id.blank? }.group_by { |item| item[:info].race_id }
         subraces
           .transform_keys do |key|
             default = ::Pathfinder2::Character.race_info(key)
@@ -50,6 +47,18 @@ module Homebrews
 
             translate(pathfinder_names.fetch_item(key: :races, id: key)[:name])
           end.transform_values { |value| value.each_with_object({}) { |item, acc| acc[item[:id]] = translate(item[:title]) } }
+      end
+
+      def versatile_subraces_info(object_items)
+        all_subraces(object_items)
+          .select { |item| item[:info].race_id.blank? }
+          .each_with_object({}) { |item, acc| acc[item[:id]] = translate(item[:title]) }
+      end
+
+      def all_subraces(object_items)
+        ::Pathfinder2::Homebrews::Subrace
+          .where(id: object_items['Homebrew'])
+          .hashable_pluck(:id, :title, :info)
       end
 
       def enabled # rubocop: disable Naming/PredicateMethod

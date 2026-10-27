@@ -21,7 +21,7 @@ module HomebrewsV2Context
                 optional(:ru).maybe(:string, max_size?: 500)
                 optional(:es).maybe(:string, max_size?: 500)
               end
-              required(:race_id).filled(:string)
+              optional(:race_id).maybe(:string)
               optional(:speed).filled(:integer)
               optional(:health).filled(:integer)
               optional(:skill_boosts).maybe(:array).each(:string)
