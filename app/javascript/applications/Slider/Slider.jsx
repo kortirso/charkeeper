@@ -41,7 +41,7 @@ export const Slider = (props) => {
               }}
               aria-hidden={index() !== currentIndex()}
             >
-              <img src={item.image} alt={item.alt} />
+              <img src={item.image} alt={item.alt} width="400" height="783" />
               <p class="slider-text">{item.text}</p>
             </div>
           }
