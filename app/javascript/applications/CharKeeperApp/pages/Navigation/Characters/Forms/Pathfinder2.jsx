@@ -95,11 +95,29 @@ export const Pathfinder2CharacterForm = (props) => {
     if (props.homebrews() === undefined) return pathfinder2Config.races;
     if (!showHomebrew()) return pathfinder2Config.races;
 
-    const hbRaces = Object.entries(props.homebrews().pathfinder2.races).map(([key, value]) => {
-      return [key, { ...value, subraces: props.homebrews().pathfinder2.subraces[key] }]
+    const versatile = props.homebrews().pathfinder2.subraces.versatile || {}
+
+    const coreRaces = Object.entries(pathfinder2Config.races).map(([key, value]) => {
+      return [
+        key,
+        {
+          ...value,
+          subraces: { ...value.subraces, ...props.homebrews().pathfinder2.subraces[key], ...versatile }
+        }
+      ]
     });
 
-    return { ...pathfinder2Config.races, ...Object.fromEntries(hbRaces) };
+    const hbRaces = Object.entries(props.homebrews().pathfinder2.races).map(([key, value]) => {
+      return [
+        key,
+        {
+          ...value,
+          subraces: { ...props.homebrews().pathfinder2.subraces[key], ...versatile }
+        }
+      ]
+    });
+
+    return { ...Object.fromEntries(coreRaces), ...Object.fromEntries(hbRaces) };
   });
 
   return (

@@ -103,8 +103,9 @@ module HomebrewsContext
             ::Pathfinder2::Homebrews::Subrace.where(id: available_books_data(user_id))
           )
           .kept.each_with_object({}) do |item, acc|
-            acc[item.info.race_id] ||= {}
-            acc[item.info.race_id][item.id] = { name: item.title }
+            race_id = item.info.race_id.presence || 'versatile'
+            acc[race_id] ||= {}
+            acc[race_id][item.id] = { name: item.title }
           end
     end
 
