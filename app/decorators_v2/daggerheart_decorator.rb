@@ -188,7 +188,7 @@ class DaggerheartDecorator < ApplicationDecoratorV2
     response = [{
       name: translate(item[:items_name]),
       range: item[:items_info]['range'] == 'melee' && hands_reach != 'melee' ? hands_reach : item[:items_info]['range'],
-      trait: use_max_trait_for_attack.positive? || item[:items_info]['trait'].nil? ? max_trait : item[:items_info]['trait'],
+      trait: use_max_trait_for_attack.positive? ? max_trait : current_trait(item),
       attack_bonus: calculate_attack_bonus(
         (use_max_trait_for_attack.zero? ? trait_bonus(item) : max_trait_value) + attack
       ),
@@ -247,9 +247,21 @@ class DaggerheartDecorator < ApplicationDecoratorV2
     damage_bonus.to_i
   end
 
+  def current_trait(item)
+    trait = item[:items_info]['trait']
+    return max_trait unless trait
+    return trait if trait != 'spellcast'
+
+    spellcast_traits[0] || trait
+  end
+
   def trait_bonus(item)
     trait = item[:items_info]['trait']
-    trait ? modified_traits[trait] : max_trait_value
+    return max_trait_value unless trait
+    return modified_traits[trait] if trait != 'spellcast'
+
+    trait = spellcast_traits[0]
+    trait ? modified_traits[trait] : 0
   end
 
   def max_trait

@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - homebrew versatile heritages for pf2 characters
 
+### Modified
+- homebrew weapon for dh characters with spellcast trait
+
 ## [0.5.15] - 2026-10-25
 ### Added
 - using homebrew races for pf2 characters
