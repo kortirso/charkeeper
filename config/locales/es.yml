@@ -1,5 +1,19 @@
 es:
   platforms:
+    dc20:
+      layout_title: "Charkeeper | DC20"
+      description: Charkeeper ofrece muchas opciones para la gestión de personajes de DC20.
+      title: Charkeeper ofrece muchas opciones para la gestión de personajes de DC20.
+      description_1: Creación de personajes sencilla, crea tu propio árbol genealógico o usa árboles genealógicos estándar.
+      description_2: "Edita las habilidades básicas de tu personaje; su estado afecta automáticamente a sus habilidades."
+      description_3: Edita habilidades, oficios e idiomas conocidos.
+      description_4: Gestión de equipo. Los objetos se pueden transferir entre personajes.
+      description_5: "Las estadísticas de combate y los ataques con armas disponibles se calculan automáticamente; todas las habilidades del personaje están disponibles para su revisión."
+      description_6: Gestiona los hechizos disponibles y usados.
+      description_7: Sistema de niveles con ajustes de rasgos de ascendencia, selección de maniobras, talentos y sendas.
+      description_8: Gestiona las formas salvajes disponibles para los druidas y personaliza completamente las estadísticas según la forma activa.
+      description_9: "Sistema de bonificaciones/penalizaciones; puedes asignar cualquier bonificación mediante fórmulas."
+      description_10: Opciones de descanso con aplicación automática de efectos y actualización de los límites de uso de habilidades.
     cosmere:
       layout_title: "Charkeeper | Cosmere"
       description: Charkeeper ofrece muchas opciones para la gestión de personajes de Cosmere.
@@ -394,7 +408,7 @@ es:
         switch_ru: Cambiar a RU
         switch_eu: Cambiar a EU
         ttrpgs: Soporte para varios juegos de rol de mesa
-        ttrpgs_desc: "CharKeeper es compatible actualmente con varios sistemas de juego de mesa: D&D 2014 y 2024, %{pathfinder}, Daggerheart, Fate, DC20, %{cosmere}, %{nimble}, Call of Cthulhu y Fallout 2d20. Puedes guardar los datos de tu personaje sin limitaciones."
+        ttrpgs_desc: "CharKeeper es compatible actualmente con varios sistemas de juego de mesa: D&D 2014 y 2024, %{pathfinder}, Daggerheart, Fate, %{dc20}, %{cosmere}, %{nimble}, Call of Cthulhu y Fallout 2d20. Puedes guardar los datos de tu personaje sin limitaciones."
         ttrpgs_desc2: 'Data for Pathfinder 2 is provided by <a href="https://pf2.ru/" target="_blank" rel="noopener noreferrer" class="underline">Pathfinder 2E</a>.'
         ttrpgs_desc3: This is unofficial fan content, created and shared for non-commercial use.
         ttrpgs_desc4: "Cosmere RPG note: It has not been reviewed by Dragonsteel Entertainment, LLC or Brotherwise Games, LLC."

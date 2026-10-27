@@ -11,5 +11,7 @@ module Web
     def cosmere; end
 
     def nimble; end
+
+    def dc20; end
   end
 end

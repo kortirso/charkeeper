@@ -435,6 +435,7 @@ Rails.application.routes.draw do
         get 'pathfinder2'
         get 'cosmere'
         get 'nimble'
+        get 'dc20'
       end
 
       get 'privacy', to: 'welcome#privacy'

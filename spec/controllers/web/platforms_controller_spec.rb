@@ -24,4 +24,12 @@ describe Web::PlatformsController do
       expect(response).to have_http_status :ok
     end
   end
+
+  describe 'GET#dc20' do
+    it 'returns data' do
+      get :dc20
+
+      expect(response).to have_http_status :ok
+    end
+  end
 end

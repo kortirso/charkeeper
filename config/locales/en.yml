@@ -1,5 +1,19 @@
 en:
   platforms:
+    dc20:
+      layout_title: "Charkeeper | DC20"
+      description: Charkeeper supports a lot of options for DC20 characters managing
+      title: Charkeeper supports a lot of options for DC20 characters managing
+      description_1: Easy character creation, construct your own ancestry tree, or use standard ancestries.
+      description_2: "Edit your character's basic abilities; their status automatically affects their abilities."
+      description_3: Edit skills, trades, and known languages.
+      description_4: Equipment management. Items can be transferred between characters.
+      description_5: "Combat stats and available weapon attacks are automatically calculated; all character abilities are available for review."
+      description_6: Manage available and used spells.
+      description_7: Leveling system with ancestry trait adjustments, selection of maneuvers, talents, and paths.
+      description_8: Manage available wild forms for druids and fully customize stats depending on the active form.
+      description_9: "Bonus/penalty system; you can assign any bonuses using formulas."
+      description_10: Rest options with automatic application of effects and updating ability usage limits.
     cosmere:
       layout_title: "Charkeeper | Cosmere RPG"
       description: Charkeeper supports a lot of options for Cosmere RPG characters managing
@@ -394,7 +408,7 @@ en:
         switch_ru: Switch to RU
         switch_eu: Switch to EU
         ttrpgs: Support for various tabletop rpgs
-        ttrpgs_desc: "CharKeeper currently supports various tabletop game systems: D&D 2014 and 2024, %{pathfinder}, Daggerheart, Fate, DC20, %{cosmere}, %{nimble}, Call of Cthulhu and Fallout 2d20. You can save your character data without limitations."
+        ttrpgs_desc: "CharKeeper currently supports various tabletop game systems: D&D 2014 and 2024, %{pathfinder}, Daggerheart, Fate, %{dc20}, %{cosmere}, %{nimble}, Call of Cthulhu and Fallout 2d20. You can save your character data without limitations."
         ttrpgs_desc2: 'Data for Pathfinder 2 is provided by <a href="https://pf2.ru/" target="_blank" rel="noopener noreferrer" class="underline">Pathfinder 2E</a>.'
         ttrpgs_desc3: This is unofficial fan content, created and shared for non-commercial use.
         ttrpgs_desc4: "Cosmere RPG note: It has not been reviewed by Dragonsteel Entertainment, LLC or Brotherwise Games, LLC."

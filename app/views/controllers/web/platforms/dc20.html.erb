@@ -1,0 +1,68 @@
+<% content_for :title, t('platforms.dc20.layout_title') %>
+<% content_for :description, t('platforms.dc20.description') %>
+<% content_for :head, javascript_include_tag('application') %>
+<section id="head" class="w-full px-8">
+  <div class="max-w-7xl mx-auto pt-8 lg:pt-12 flex flex-col items-center">
+    <h1 class="mb-4 text-center font-medium! text-[40px]">DC20 Character Builder</h1>
+    <p class="mb-8 text-center text-lg"><%= t('platforms.dc20.title') %></p>
+    <div class="mb-8 flex gap-x-4">
+      <%= link_to t('web.welcome.index_v2.dashboard_link'), dashboard_path, class: 'btn btn-primary inline-block' %>
+      <%= link_to t('web.welcome.index_v2.homebrews_link'), homebrews_path, class: 'btn btn-primary inline-block' %>
+    </div>
+  </div>
+  <%
+    items = [
+      {
+        image: image_url('platforms/dc20/1.webp'),
+        text: t('platforms.dc20.description_1'),
+        alt: 'creation'
+      },
+      {
+        image: image_url('platforms/dc20/2.webp'),
+        text: t('platforms.dc20.description_2'),
+        alt: 'abilities'
+      },
+      {
+        image: image_url('platforms/dc20/3.webp'),
+        text: t('platforms.dc20.description_3'),
+        alt: 'skills'
+      },
+      {
+        image: image_url('platforms/dc20/4.webp'),
+        text: t('platforms.dc20.description_4'),
+        alt: 'combat'
+      },
+      {
+        image: image_url('platforms/dc20/5.webp'),
+        text: t('platforms.dc20.description_5'),
+        alt: 'equipment'
+      },
+      {
+        image: image_url('platforms/dc20/6.webp'),
+        text: t('platforms.dc20.description_6'),
+        alt: 'spells'
+      },
+      {
+        image: image_url('platforms/dc20/7.webp'),
+        text: t('platforms.dc20.description_7'),
+        alt: 'leveling'
+      },
+      {
+        image: image_url('platforms/dc20/8.webp'),
+        text: t('platforms.dc20.description_8'),
+        alt: 'bonuses'
+      },
+      {
+        image: image_url('platforms/dc20/9.webp'),
+        text: t('platforms.dc20.description_9'),
+        alt: 'animals'
+      },
+      {
+        image: image_url('platforms/dc20/10.webp'),
+        text: t('platforms.dc20.description_10'),
+        alt: 'rolls'
+      }
+    ]
+  %>
+  <%= render partial: 'slider', locals: { items: items } %>
+</section>
