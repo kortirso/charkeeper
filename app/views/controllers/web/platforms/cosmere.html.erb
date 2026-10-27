@@ -11,47 +11,44 @@
     </div>
   </div>
   <p class="max-w-7xl mx-auto text-center"><%= t('web.welcome.index_v2.ttrpgs_desc4').html_safe %></p>
-  <div class="max-w-7xl mx-auto py-8 lg:py-12 flex flex-col lg:flex-row gap-8 items-center">
-    <%=
-      js_component 'Slider',
-                   component_id: 'root',
-                   items: [
-                     {
-                       image: image_url('platforms/cosmere/1.webp'),
-                       text: t('platforms.cosmere.description_1'),
-                       alt: 'creation'
-                     },
-                     {
-                       image: image_url('platforms/cosmere/2.webp'),
-                       text: t('platforms.cosmere.description_2'),
-                       alt: 'abilities'
-                     },
-                     {
-                       image: image_url('platforms/cosmere/3.webp'),
-                       text: t('platforms.cosmere.description_3'),
-                       alt: 'combat'
-                     },
-                     {
-                       image: image_url('platforms/cosmere/4.webp'),
-                       text: t('platforms.cosmere.description_4'),
-                       alt: 'equipment'
-                     },
-                     {
-                       image: image_url('platforms/cosmere/5.webp'),
-                       text: t('platforms.cosmere.description_5'),
-                       alt: 'leveling'
-                     },
-                     {
-                       image: image_url('platforms/cosmere/6.webp'),
-                       text: t('platforms.cosmere.description_6'),
-                       alt: 'bonuses'
-                     },
-                     {
-                       image: image_url('platforms/cosmere/7.webp'),
-                       text: t('platforms.cosmere.description_7'),
-                       alt: 'goals'
-                     }
-                   ]
-    %>
-  </div>
+  <%
+    items = [
+      {
+        image: image_url('platforms/cosmere/1.webp'),
+        text: t('platforms.cosmere.description_1'),
+        alt: 'creation'
+      },
+      {
+        image: image_url('platforms/cosmere/2.webp'),
+        text: t('platforms.cosmere.description_2'),
+        alt: 'abilities'
+      },
+      {
+        image: image_url('platforms/cosmere/3.webp'),
+        text: t('platforms.cosmere.description_3'),
+        alt: 'combat'
+      },
+      {
+        image: image_url('platforms/cosmere/4.webp'),
+        text: t('platforms.cosmere.description_4'),
+        alt: 'equipment'
+      },
+      {
+        image: image_url('platforms/cosmere/5.webp'),
+        text: t('platforms.cosmere.description_5'),
+        alt: 'leveling'
+      },
+      {
+        image: image_url('platforms/cosmere/6.webp'),
+        text: t('platforms.cosmere.description_6'),
+        alt: 'bonuses'
+      },
+      {
+        image: image_url('platforms/cosmere/7.webp'),
+        text: t('platforms.cosmere.description_7'),
+        alt: 'goals'
+      }
+    ]
+  %>
+  <%= render partial: 'slider', locals: { items: items } %>
 </section>

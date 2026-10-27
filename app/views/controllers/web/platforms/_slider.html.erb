@@ -1,0 +1,16 @@
+<div class="mx-auto w-full max-w-7xl">
+  <div class="slider" data-slider role="region" aria-label="Slider" aria-roledescription="carousel" tabindex="0">
+    <% items.each_with_index do |item, index| %>
+      <div class="slider-item <%= 'current' if index.zero? %>" data-slider-item aria-hidden="<%= index.positive? %>">
+        <%= image_tag item[:image], alt: item[:alt], width: 400, height: 783 %>
+        <p class="slider-text"><%= item[:text] %></p>
+      </div>
+    <% end %>
+    <button class="slider-button slider-button-prev" data-slider-prev type="button" aria-label="Prev slide" >
+      <span aria-hidden="true">&larr;</span>
+    </button>
+    <button class="slider-button slider-button-next" data-slider-next type="button" aria-label="Next slide">
+      <span aria-hidden="true">&rarr;</span>
+    </button>
+  </div>
+</div>
