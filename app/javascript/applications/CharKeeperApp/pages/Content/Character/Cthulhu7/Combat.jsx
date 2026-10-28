@@ -24,12 +24,12 @@ const TRANSLATION = {
     magic: 'Магия'
   },
   es: {
-    check: 'Check',
-    sanity: 'Sanity',
-    luck: 'Luck',
-    speed: 'Speed',
-    health: 'Health',
-    magic: 'Magic'
+    check: 'Tirada',
+    sanity: 'Cordura',
+    luck: 'Suerte',
+    speed: 'Movimiento',
+    health: 'Vida',
+    magic: 'Magia'
   }
 }
 

@@ -80,12 +80,12 @@ const TRANSLATION = {
     critDamage: 'Crit strike',
     plotDice: 'Raising the stakes',
     cthulhuStatuses: {
-      fumble: 'Fumble',
-      crit: 'Crit success',
-      extreme_success: 'Extreme success',
-      hard_success: 'Hard success',
-      regular_success: 'Success',
-      failure: 'Failure'
+      fumble: 'Pifia',
+      crit: 'Éxito crítico',
+      extreme_success: 'Éxito extremo',
+      hard_success: 'Éxito difícil',
+      regular_success: 'Éxito',
+      failure: 'Fallo'
     },
     miss: 'Miss',
     nimbleCritable: 'Can crit',

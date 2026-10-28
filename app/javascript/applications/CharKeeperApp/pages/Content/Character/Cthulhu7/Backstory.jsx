@@ -37,18 +37,18 @@ const TRANSLATION = {
     }
   },
   es: {
-    title: 'Backstory',
+    title: 'Trasfondo',
     kinds: {
-      description: 'Personal Description',
-      ideology: 'Ideology/Beliefs',
-      people: 'Significant People',
-      locations: 'Meaningful Locations',
-      treasure: 'Treasured Possessions',
-      traits: 'Traits',
-      scars: 'Injuries & Scars',
-      phobias: 'Phobias & Manias',
-      tomes: 'Arcane Tomes, Spells & Artifacts',
-      strange: 'Encounters with Strange Entities'
+      description: 'Descripción personal',
+      ideology: 'Ideología/Creencias',
+      people: 'Allegados',
+      locations: 'Lugares significativos',
+      treasure: 'Posesiones preciadas',
+      traits: 'Rasgos',
+      scars: 'Heridas y cicatrices',
+      phobias: 'Fobias y manías',
+      tomes: 'Tomos arcanos, hechizos y artefactos',
+      strange: 'Encuentros con entidades extrañas'
     }
   }
 }

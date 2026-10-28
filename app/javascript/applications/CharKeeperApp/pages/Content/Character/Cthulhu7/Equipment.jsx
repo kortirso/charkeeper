@@ -41,21 +41,21 @@ const TRANSLATION = {
     bonus: 'Бонус к урону'
   },
   es: {
-    title: 'Adding item',
-    name: 'Name',
-    kind: 'Kind',
+    title: 'Agregar objeto',
+    name: 'Nombre',
+    kind: 'Tipo',
     kinds: {
-      item: 'Item',
-      weapon: 'Weapon'
+      item: 'Objeto',
+      weapon: 'Arma'
     },
-    add: 'Add item',
-    back: 'Back',
-    isAdded: 'Item is added',
-    skill: 'Skill',
-    damage: 'Damage',
-    distance: 'Distance',
-    attacks: 'Attacks',
-    bonus: 'Damage bonus'
+    add: 'Agregar objeto',
+    back: 'Volver',
+    isAdded: 'Objeto agregado',
+    skill: 'Habilidad',
+    damage: 'Daño',
+    distance: 'Alcance',
+    attacks: 'Ataques',
+    bonus: 'Bonificación de daño'
   }
 }
 
