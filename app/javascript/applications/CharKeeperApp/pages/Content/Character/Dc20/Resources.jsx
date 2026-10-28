@@ -83,14 +83,14 @@ const TRANSLATION = {
     rest_points: 'Puntos de descanso',
     grit_points: 'Puntos de temple',
     temp: {
-      health: 'Temp HP',
+      health: 'PG temporales',
     },
     healthy: 'Saludable',
     bloodied: 'Sangrando',
     wellBloodied: 'Desangrado',
     door: 'A punto de morir',
     dead: 'Muerto',
-    environment: 'Secondary',
+    environment: 'Secundarios',
     speedTitle: 'Velocidad',
     speeds: {
       ground: 'Terrestre',
@@ -101,12 +101,12 @@ const TRANSLATION = {
     },
     jump: 'Salto',
     breath: 'Respiración',
-    vision: 'Senses',
+    vision: 'Sentidos',
     visions: {
-      dark: 'Darkvision',
-      blind: 'Blindsight',
-      true: 'Truesight',
-      tremor: 'Tremorsense'
+      dark: 'Visión en la oscuridad',
+      blind: 'Vista ciega',
+      true: 'Visión verdadera',
+      tremor: 'Sentido sísmico'
     }
   }
 }

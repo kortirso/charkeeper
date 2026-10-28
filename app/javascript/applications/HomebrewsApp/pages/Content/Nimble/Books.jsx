@@ -25,7 +25,7 @@ const TRANSLATION = {
     items: 'Objetos',
     races: 'Ancestrías',
     official: 'Aprobado',
-    showItems: 'Show items'
+    showItems: 'Mostrar contenido'
   }
 }
 

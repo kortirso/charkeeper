@@ -20,8 +20,8 @@ const TRANSLATION = {
   },
   es: {
     helpMessage: 'Comienzas con un +2/+2/0/-1 or +2/+1/+1/0 or +3/+1/-1/-1 en todos tus Atributos.',
-    attributePoints: 'Spend attribute points for key abilities',
-    secondaryPoints: 'Spend attribute points for secondary abilities'
+    attributePoints: 'Gastar puntos de atributo en características clave',
+    secondaryPoints: 'Gastar puntos de atributo en características secundarias'
   }
 }
 

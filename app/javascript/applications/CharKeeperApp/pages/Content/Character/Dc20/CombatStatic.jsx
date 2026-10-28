@@ -27,13 +27,13 @@ const TRANSLATION = {
   },
   es:{
     combatMastery: 'Maestría',
-    saveDc: 'Save DC',
+    saveDc: 'CD de salvación',
     initiative: 'Iniciativa',
     precision: 'PD',
     area: 'AD',
     attack: 'Ataque',
-    spell_check: 'Spell',
-    martial_check: 'Martial'
+    spell_check: 'Conjuro',
+    martial_check: 'Marcial'
   }
 }
 

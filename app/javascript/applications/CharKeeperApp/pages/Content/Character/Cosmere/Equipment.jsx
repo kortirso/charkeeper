@@ -20,6 +20,14 @@ const TRANSLATION = {
     items: 'Предметы',
     fabrials: 'Фабриали',
     limits: 'Ограничить выбор рамками сеттинга'
+  },
+  es: {
+    lightWeapon: 'Armas ligeras',
+    heavyWeapon: 'Armas pesadas',
+    armor: 'Armadura',
+    items: 'Objetos',
+    fabrials: 'Fabriales',
+    limits: 'Limitar opciones por ambientación'
   }
 }
 

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - spanish translations for cthulhu7 character pages
+- spanish translations for all interface texts
+
+### Modified
+- translations coverage spec checks all interface texts for spanish
 
 ## [0.5.16] - 2026-10-27
 ### Added

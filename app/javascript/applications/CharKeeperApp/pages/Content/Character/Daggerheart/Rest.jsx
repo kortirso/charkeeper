@@ -135,14 +135,14 @@ const TRANSLATION = {
     projectDc: 'Dificultad de la prueba de progreso',
     projectRoll: 'Progreso del proyecto',
     completed: ' (Completado)',
-    clearHealth: 'Clearing Hit Points, roll {{roll}}, result - {{result}}',
-    clearStress: 'Clearing Stress, roll {{roll}}, result - {{result}}',
-    clearArmor: 'Clearing Armor Slots, roll {{roll}}, result - {{result}}',
-    projectProgress: 'Project progress {{result}}',
-    projectRollRes: '{{total}} with {{duality}}',
-    crit: 'crit',
-    hope: 'hope',
-    fear: 'fear'
+    clearHealth: 'Recuperando Puntos de Vida, tirada {{roll}}, resultado: {{result}}',
+    clearStress: 'Recuperando Estrés, tirada {{roll}}, resultado: {{result}}',
+    clearArmor: 'Recuperando ranuras de Armadura, tirada {{roll}}, resultado: {{result}}',
+    projectProgress: 'Progreso del proyecto {{result}}',
+    projectRollRes: '{{total}} con {{duality}}',
+    crit: 'crítico',
+    hope: 'esperanza',
+    fear: 'miedo'
   }
 }
 const DOWNTIME_ACTIONS = ['clear_health', 'clear_stress', 'clear_armor_slots', 'gain_hope', 'gain_double_hope'];

@@ -30,7 +30,7 @@ const TRANSLATION = {
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
     skipGuide: 'Omitir guía de personaje nuevo',
     beyondFile: 'Puedes importar tu personaje usando de D&D Beyond un archivo JSON (puedes encontrar la descripción de la extensión en la página principal).',
-    showHomebrew: 'Allow to select homebrews'
+    showHomebrew: 'Permitir elegir homebrews'
   }
 }
 

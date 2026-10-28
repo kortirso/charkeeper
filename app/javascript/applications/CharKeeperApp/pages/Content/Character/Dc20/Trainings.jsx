@@ -25,12 +25,12 @@ const TRANSLATION = {
     }
   },
   es: {
-    title: 'Training',
-    trained: 'Trained',
+    title: 'Entrenamiento',
+    trained: 'Entrenado',
     notTrained: {
-      weapon: "You can't use its weapon enhancement.",
-      others: 'You have DisADV on Attack Checks and Spell Checks.',
-      focuses: 'You do not benefit from its properties.'
+      weapon: 'No puedes usar su mejora de arma.',
+      others: 'Tienes DESV en las pruebas de ataque y de conjuro.',
+      focuses: 'No te beneficias de sus propiedades.'
     }
   }
 }

@@ -60,7 +60,7 @@ const TRANSLATION = {
     ability: 'Habilidad',
     grimoire: 'Grimorio',
     level: 'Nivel',
-    selectTrait: 'Select custom spellcast trait',
+    selectTrait: 'Seleccionar atributo de conjuro propio',
     limit: 'Límite de cartas',
     spellcastTraits: 'Atributos de conjuro',
     loadout: 'Carga',
@@ -68,7 +68,7 @@ const TRANSLATION = {
     select: 'Añadir cartas de Dominio',
     cardNote: 'Nota de carta de Dominio',
     save: 'Guardar',
-    cancel: 'Copiar'
+    cancel: 'Cancelar'
   }
 }
 

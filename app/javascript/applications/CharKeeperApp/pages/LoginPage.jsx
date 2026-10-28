@@ -49,7 +49,7 @@ const TRANSLATION = {
     passwordConfirmation: 'Confirmación de contraseña',
     haveAccount: '¿Ya tienes una cuenta?',
     noAccount: '¿No tienes una cuenta?',
-    remember: 'Remember password'
+    remember: 'Recordar contraseña'
   }
 }
 

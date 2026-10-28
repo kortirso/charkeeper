@@ -42,16 +42,16 @@ const TRANSLATION = {
     books: 'Libros',
     weapons: 'Armas',
     backgrounds: 'Trasfondos',
-    classes: 'Classes',
-    subclasses: 'Subclasses',
+    classes: 'Clases',
+    subclasses: 'Subclases',
     items: 'Objetos',
     armor: 'Armadura',
-    shields: 'Shields',
-    consumables: 'Consumables',
+    shields: 'Escudos',
+    consumables: 'Consumibles',
     spells: 'Hechizos',
     feats: 'Proezas',
-    races: 'Races',
-    subraces: 'Subraces'
+    races: 'Razas',
+    subraces: 'Subrazas'
   }
 }
 

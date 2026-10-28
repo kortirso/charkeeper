@@ -77,7 +77,7 @@ const TRANSLATION = {
     metric: 'Sistema métrico',
     settings: 'Configuración de distancia',
     daggerheart: {
-      'melee': 'Melee',
+      'melee': 'Cuerpo a cuerpo',
       'very close': 'Muy cerca',
       'close': 'Cerca',
       'far': 'Lejos',
@@ -91,7 +91,7 @@ const TRANSLATION = {
     squares: 'cuad',
     feet: 'ft',
     meters: 'm',
-    attacks: 'Attks'
+    attacks: 'Atqs'
   }
 }
 const DH_SQUARE_DISTANCES = {

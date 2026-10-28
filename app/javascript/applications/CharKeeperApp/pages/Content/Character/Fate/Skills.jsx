@@ -52,10 +52,10 @@ const TRANSLATION = {
     },
     check: 'Habilidad',
     add: 'Agregar',
-    skillMode: 'Skills mode',
+    skillMode: 'Modo de habilidades',
     modes: {
-      core: 'Core',
-      approaches: 'Approaches'
+      core: 'Básico',
+      approaches: 'Enfoques'
     }
   }
 }

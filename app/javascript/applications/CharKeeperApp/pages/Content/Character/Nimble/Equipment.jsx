@@ -30,6 +30,19 @@ const TRANSLATION = {
     shieldFilter: 'Щиты',
     itemsFilter: 'Предметы',
     consumablesFilter: 'Зелья'
+  },
+  es: {
+    meleeStrFilter: 'Armas cuerpo a cuerpo de FUE',
+    meleeDexFilter: 'Armas cuerpo a cuerpo de DES',
+    rangeStrFilter: 'Armas a distancia de FUE',
+    rangeDexFilter: 'Armas a distancia de DES',
+    clothFilter: 'Armaduras de tela',
+    leatherFilter: 'Armaduras de cuero',
+    mailFilter: 'Armaduras de malla',
+    plateFilter: 'Armaduras de placas',
+    shieldFilter: 'Escudos',
+    itemsFilter: 'Objetos',
+    consumablesFilter: 'Consumibles'
   }
 }
 

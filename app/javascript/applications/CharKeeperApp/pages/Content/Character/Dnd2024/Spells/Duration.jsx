@@ -21,7 +21,7 @@ const TRANSLATION = {
     'd': 'д'
   },
   es: {
-    'instant': 'Inst',
+    'instant': 'Inst.',
     'r': 'rn',
     'm': 'min',
     'h': 'h',

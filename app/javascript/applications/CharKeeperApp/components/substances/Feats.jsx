@@ -64,7 +64,7 @@ const TRANSLATION = {
   es: {
     activeFeat: 'Activo',
     allFeatures: 'Todas las habilidades',
-    personalFeats: 'Add personal/custom feat',
+    personalFeats: 'Agregar rasgo personal/propio',
     settings: 'Configuración del filtro',
     groupFeatures: 'Agrupar características',
     showPassive: 'Mostrar pasivas',
@@ -77,11 +77,11 @@ const TRANSLATION = {
       'ap/sp': 'PA/PE'
     },
     here: 'aquí',
-    tokens: 'Tokens',
-    reserve: 'Reserve',
-    textHelp: 'You can use Markdown for editing description',
-    newFeatTitle: 'Title',
-    newFeatValue: 'Feat text'
+    tokens: 'Fichas',
+    reserve: 'Reserva',
+    textHelp: 'Puedes usar Markdown para editar la descripción',
+    newFeatTitle: 'Título',
+    newFeatValue: 'Texto del rasgo'
   }
 }
 

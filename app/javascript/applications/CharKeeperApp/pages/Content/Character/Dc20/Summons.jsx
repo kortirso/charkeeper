@@ -21,6 +21,13 @@ const TRANSLATION = {
     save: 'Сохранить',
     cancel: 'Отменить',
     kind: 'Вид'
+  },
+  es: {
+    newForm: 'Agregar invocación',
+    name: 'Nombre',
+    save: 'Guardar',
+    cancel: 'Cancelar',
+    kind: 'Tipo'
   }
 }
 

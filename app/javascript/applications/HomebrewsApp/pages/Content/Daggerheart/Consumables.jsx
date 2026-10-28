@@ -18,9 +18,9 @@ const TRANSLATION = {
     hope_marked: 'Надежда'
   },
   es: {
-    health_marked: 'Health',
-    stress_marked: 'Stress',
-    hope_marked: 'Hope'
+    health_marked: 'Vida',
+    stress_marked: 'Estrés',
+    hope_marked: 'Esperanza'
   }
 }
 

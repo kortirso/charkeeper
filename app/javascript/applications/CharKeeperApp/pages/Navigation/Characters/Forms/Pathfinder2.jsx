@@ -29,9 +29,9 @@ const TRANSLATION = {
   },
   es: {
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
-    showHomebrew: 'Allow to select homebrews',
-    beyondFile: 'You can import your character from Pathbuilder by using build ID. Not all classes/backgrounds/ancestries present - so there could be errors.',
-    buildId: 'Build ID'
+    showHomebrew: 'Permitir elegir homebrews',
+    beyondFile: 'Puedes importar tu personaje desde Pathbuilder con el ID de la build. No están todas las clases/trasfondos/ascendencias, así que puede haber errores.',
+    buildId: 'ID de la build'
   }
 }
 

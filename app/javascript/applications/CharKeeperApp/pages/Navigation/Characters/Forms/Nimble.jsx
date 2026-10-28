@@ -33,8 +33,8 @@ const TRANSLATION = {
     mainClass: 'Clase',
     skipGuide: 'Omitir guía de personaje nuevo',
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
-    showHomebrew: 'Allow to select homebrews',
-    size: 'Size'
+    showHomebrew: 'Permitir elegir homebrews',
+    size: 'Tamaño'
   }
 }
 

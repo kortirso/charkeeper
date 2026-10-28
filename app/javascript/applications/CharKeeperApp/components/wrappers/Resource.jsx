@@ -65,14 +65,14 @@ const TRANSLATION = {
     }
   },
   es: {
-    title: 'Custom Resources',
-    name: 'Name',
-    description: 'Description',
-    limit: 'Limit',
-    resetDirection: 'Reset direction',
+    title: 'Recursos personalizados',
+    name: 'Nombre',
+    description: 'Descripción',
+    limit: 'Límite',
+    resetDirection: 'Dirección de reinicio',
     directions: {
-      0: 'Reset to 0',
-      1: 'Reset to max'
+      0: 'Reiniciar a 0',
+      1: 'Reiniciar al máximo'
     },
     rests: {
       daggerheart: {

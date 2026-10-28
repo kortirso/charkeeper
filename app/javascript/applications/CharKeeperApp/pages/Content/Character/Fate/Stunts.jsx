@@ -33,7 +33,7 @@ const TRANSLATION = {
     stuntTitle: 'Título',
     description: 'Descripción',
     skill: 'Habilidad',
-    approach: 'Approach',
+    approach: 'Enfoque',
     removeStunt: 'Eliminar truco',
     check: 'Truco'
   }

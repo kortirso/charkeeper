@@ -21,8 +21,8 @@ const TRANSLATION = {
     staticSpells: 'Врождённые заклинания'
   },
   es: {
-    className: 'Class name',
-    level: 'Level',
+    className: 'Nombre de la clase',
+    level: 'Nivel',
     staticSpells: 'Hechizos estáticos'
   }
 }

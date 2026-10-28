@@ -15,8 +15,8 @@ const TRANSLATION = {
     active: 'Активные механики'
   },
   es: {
-    available: 'Select available mechanics',
-    active: 'Active mechanics'
+    available: 'Seleccionar mecánicas disponibles',
+    active: 'Mecánicas activas'
   }
 }
 

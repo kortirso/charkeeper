@@ -55,8 +55,8 @@ const TRANSLATION = {
     major: 'Umbral mayor',
     severe: 'Umbral severo',
     attack: 'Ataques',
-    damage: 'Damage',
-    spell_bonus: 'Spellcast roll'
+    damage: 'Daño',
+    spell_bonus: 'Tirada de conjuro'
   }
 }
 

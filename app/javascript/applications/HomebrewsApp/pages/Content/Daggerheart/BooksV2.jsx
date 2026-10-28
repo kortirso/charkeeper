@@ -38,9 +38,9 @@ const TRANSLATION = {
     items: 'Objetos',
     transformations: 'Transformaciones',
     domains: 'Dominios',
-    mechanics: 'Mechanics',
+    mechanics: 'Mecánicas',
     official: 'Aprobado',
-    showItems: 'Show items'
+    showItems: 'Mostrar contenido'
   }
 }
 

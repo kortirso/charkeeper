@@ -63,6 +63,36 @@ const TRANSLATION = {
     'melee_damage': 'Рукопашный урон',
     'thrown_damage': 'Метательный урон',
     'range_damage': 'Дистанционный урон'
+  },
+  es: {
+    str: 'Fuerza',
+    dex: 'Destreza',
+    con: 'Constitución',
+    int: 'Inteligencia',
+    wis: 'Sabiduría',
+    cha: 'Carisma',
+    'save_dc.str': 'Tirada de salvación de Fuerza',
+    'save_dc.dex': 'Tirada de salvación de Destreza',
+    'save_dc.con': 'Tirada de salvación de Constitución',
+    'save_dc.int': 'Tirada de salvación de Inteligencia',
+    'save_dc.wis': 'Tirada de salvación de Sabiduría',
+    'save_dc.cha': 'Tirada de salvación de Carisma',
+    armor_class: 'Clase de armadura',
+    initiative: 'Iniciativa',
+    speed: 'Velocidad',
+    'speeds.swim': 'Velocidad nadando',
+    'speeds.flight': 'Velocidad volando',
+    'speeds.climb': 'Velocidad trepando',
+    attack: 'Ataque',
+    unarmed_attacks: 'Ataques sin armas',
+    melee_attacks: 'Ataques cuerpo a cuerpo',
+    thrown_attacks: 'Ataques arrojadizos',
+    range_attacks: 'Ataques a distancia',
+    damage: 'Daño',
+    unarmed_damage: 'Daño sin armas',
+    melee_damage: 'Daño cuerpo a cuerpo',
+    thrown_damage: 'Daño arrojadizo',
+    range_damage: 'Daño a distancia'
   }
 }
 

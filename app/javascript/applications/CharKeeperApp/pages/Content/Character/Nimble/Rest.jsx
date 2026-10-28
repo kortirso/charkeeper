@@ -38,18 +38,18 @@ const TRANSLATION = {
   },
   es: {
     values: {
-      combat_rest: 'After Combat',
-      field_rest: 'Field',
-      long_field_rest: 'Long field',
-      safe_rest: 'Safe'
+      combat_rest: 'Tras el combate',
+      field_rest: 'De campo',
+      long_field_rest: 'De campo larga',
+      safe_rest: 'Seguro'
     },
     valueLabel: 'Seleccionar tipo de descanso',
     pointsLabel: 'Gastar Puntos de Descanso',
     description: 'Esto sucede durante la Exploración pero son momentos específicos cuando los jugadores se detienen a descansar y recuperar sus recursos.',
     complete: 'El descanso fue completado',
     rest: 'Tomar descanso',
-    makeRolls: 'Auto dice roll',
-    lastRecovery: 'Last recovery die roll'
+    makeRolls: 'Tirada automática de dados',
+    lastRecovery: 'Última tirada de dado de recuperación'
   }
 }
 

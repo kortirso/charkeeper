@@ -39,13 +39,13 @@ const TRANSLATION = {
     add: 'Agregar',
     showPublic: 'Público',
     showOwn: 'Personal',
-    showShared: 'Approved',
+    showShared: 'Aprobado',
     enabled: 'Habilitado',
     disabled: 'Deshabilitado',
     name: 'Nombre del libro',
     save: 'Guardar',
     public: 'Público',
-    editMode: 'Edit books content'
+    editMode: 'Editar contenido de los libros'
   }
 }
 

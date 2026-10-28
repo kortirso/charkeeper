@@ -46,6 +46,26 @@ const TRANSLATION = {
     wildTraits: 'Способности дикой формы',
     update: 'Обновить',
     updated: 'Дикая форма обновлена'
+  },
+  es: {
+    newForm: 'Agregar forma salvaje',
+    name: 'Nombre',
+    save: 'Guardar',
+    cancel: 'Cancelar',
+    groups: {
+      Senses: 'Sentidos',
+      Mobility: 'Movilidad',
+      Jumping: 'Salto',
+      Flying: 'Vuelo',
+      Body: 'Cuerpo',
+      'Natural Weapon': 'Arma natural',
+      Miscellaneous: 'Varios'
+    },
+    showDescription: 'Mostrar descripción',
+    showSelected: 'Mostrar solo rasgos seleccionados',
+    wildTraits: 'Rasgos de forma salvaje',
+    update: 'Actualizar',
+    updated: 'Actualizado'
   }
 }
 

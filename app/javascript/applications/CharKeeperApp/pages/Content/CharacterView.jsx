@@ -29,8 +29,8 @@ const TRANSLATION = {
     sharePdf: 'Compartir enlace del PDF',
     back: 'Cerca',
     copied: 'Copiado, puedes compartir el valor copiado',
-    minimize: 'Minimize',
-    maximize: 'Maximize'
+    minimize: 'Minimizar',
+    maximize: 'Maximizar'
   }
 }
 

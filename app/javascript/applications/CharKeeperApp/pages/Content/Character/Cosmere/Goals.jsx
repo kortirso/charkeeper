@@ -23,11 +23,11 @@ const TRANSLATION = {
     connections: 'Отношения'
   },
   es: {
-    title: 'Goals',
-    purpose: 'Purpose',
-    obstacle: 'Obstacle',
-    goals: 'Goals',
-    connections: 'Connections'
+    title: 'Metas',
+    purpose: 'Propósito',
+    obstacle: 'Obstáculo',
+    goals: 'Metas',
+    connections: 'Conexiones'
   }
 }
 

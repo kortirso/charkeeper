@@ -51,7 +51,7 @@ const TRANSLATION = {
     resetCharacterConfirm2: "Solo el equipo del personaje no será restablecido.",
     resetCharacterTitle: 'Restableciendo personaje',
     reset: 'Restablecer',
-    add: 'New character'
+    add: 'Nuevo personaje'
   }
 }
 

@@ -25,6 +25,13 @@ const TRANSLATION = {
     path: 'Путь',
     surge: 'Инвестированная сила',
     personal: 'Личные'
+  },
+  es: {
+    radiantFilter: 'Senda investida',
+    ancestry: 'Ascendencia',
+    path: 'Senda heroica',
+    surge: 'Poder investido',
+    personal: 'Personal'
   }
 }
 const MAPPING = {

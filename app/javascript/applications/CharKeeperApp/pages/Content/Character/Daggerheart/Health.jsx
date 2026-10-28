@@ -31,7 +31,7 @@ const TRANSLATION = {
     hope: 'Надежда'
   },
   es: {
-    armorSlots: 'Ranuras de armadur',
+    armorSlots: 'Ranuras de armadura',
     minor: 'Daño menor',
     major: 'Daño mayor',
     severe: 'Daño severo',

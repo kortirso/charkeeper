@@ -68,28 +68,28 @@ const TRANSLATION = {
   es: {
     currentLevel: 'nivel',
     updated: 'Personaje actualizado',
-    expertises: 'Expertises',
-    add: 'Add expertise',
-    expName: 'Expertise name',
-    expDesc: 'Expertise description',
+    expertises: 'Pericias',
+    add: 'Agregar pericia',
+    expName: 'Nombre de la pericia',
+    expDesc: 'Descripción de la pericia',
     expertisesList: {
-      weapon: 'Weapon',
-      armor: 'Armor',
-      culture: 'Culture',
+      weapon: 'Arma',
+      armor: 'Armadura',
+      culture: 'Cultura',
       utility: 'General'
     },
-    heroicTalents: 'Talents',
+    heroicTalents: 'Talentos',
     showDescription: 'Mostrar descripción',
-    talentPoints: 'Talent points',
-    nested: 'There are nested selected talents',
-    showOnlyActive: 'Show only active paths',
+    talentPoints: 'Puntos de talento',
+    nested: 'Hay talentos anidados seleccionados',
+    showOnlyActive: 'Mostrar solo sendas activas',
     titles: {
-      paths: 'Paths',
-      invested_paths: 'Invested paths',
-      invested_arts: 'Invested powers'
+      paths: 'Sendas',
+      invested_paths: 'Sendas investidas',
+      invested_arts: 'Poderes investidos'
     },
-    limits: 'Limit choises by setting',
-    save: 'Save'
+    limits: 'Limitar opciones por ambientación',
+    save: 'Guardar'
   }
 }
 const ITEM_EXPERTISES = ['weapon', 'armor'];

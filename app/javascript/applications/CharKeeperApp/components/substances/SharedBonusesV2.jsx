@@ -44,7 +44,7 @@ const TRANSLATION = {
     enabled: 'El modificador está activo',
     disabled: 'El modificador no está activo',
     noValues: 'Debe haber al menos un modificador',
-    allVariables: 'You can use all available variables for formula'
+    allVariables: 'Puedes usar todas las variables disponibles en la fórmula'
   }
 }
 

@@ -49,12 +49,12 @@ const TRANSLATION = {
     domains: 'Dominios',
     transformations: 'Transformaciones',
     items: 'Objetos',
-    consumables: 'Consumables',
+    consumables: 'Consumibles',
     weapons: 'Armas',
     armor: 'Armadura',
     recipes: 'Recetas',
     features: 'Características',
-    mechanics: 'Mechanics'
+    mechanics: 'Mecánicas'
   }
 }
 

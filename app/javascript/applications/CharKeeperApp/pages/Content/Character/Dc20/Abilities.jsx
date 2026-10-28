@@ -26,8 +26,8 @@ const TRANSLATION = {
     attributePoints: 'Puntos de atributo gratis',
     helpMessage: 'Comienzas con un -2 en todos tus Atributos. Luego ganas Puntos de Atributo para aumentar los Atributos que quieras, hasta el Límite de Atributo (3).',
     save: 'Guardar',
-    physical_save: 'Physical save',
-    mental_save: 'Mental save'
+    physical_save: 'Salvación física',
+    mental_save: 'Salvación mental'
   }
 }
 

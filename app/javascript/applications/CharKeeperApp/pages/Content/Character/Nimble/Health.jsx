@@ -29,6 +29,17 @@ const TRANSLATION = {
     armorValue: 'Доспех',
     shieldValue: 'Щит',
     separateShield: 'Щит блокирует урон отдельно'
+  },
+  es: {
+    armor: 'Valor de armadura',
+    initiative: 'Iniciativa',
+    speed: 'Velocidad',
+    wounds: 'Heridas',
+    changeMaxHp: 'Cambiar PG máximos',
+    hitDices: 'Dados de golpe',
+    armorValue: 'Armadura',
+    shieldValue: 'Escudo',
+    separateShield: 'Reducción de daño del escudo por separado'
   }
 }
 

@@ -29,7 +29,7 @@ const TRANSLATION = {
     change: 'Editar',
     delete: 'Eliminar',
     info: 'Información',
-    ammo: 'ammo'
+    ammo: 'munición'
   }
 }
 const ITEMS_INFO = ['daggerheart', 'dnd2024', 'dnd5'];

@@ -28,12 +28,12 @@ const TRANSLATION = {
   },
   es: {
     name: 'Nombre',
-    ancestry: 'Select ancestry',
-    cultures: 'Select cultures',
-    path: 'Select path',
-    setting: 'Setting',
+    ancestry: 'Seleccionar ascendencia',
+    cultures: 'Seleccionar culturas',
+    path: 'Seleccionar senda',
+    setting: 'Ambientación',
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
-    limits: 'Limit choises by setting'
+    limits: 'Limitar opciones por ambientación'
   }
 }
 const DEFAULT_FORM = { setting: '', name: '', ancestry: null, cultures: [], path: null, skip_guide: true }

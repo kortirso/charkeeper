@@ -36,8 +36,8 @@ const TRANSLATION = {
     feats: 'Proesas',
     backgrounds: 'Trasfondos',
     official: 'Aprobado',
-    races: 'Species',
-    showItems: 'Show items'
+    races: 'Especies',
+    showItems: 'Mostrar contenido'
   }
 }
 

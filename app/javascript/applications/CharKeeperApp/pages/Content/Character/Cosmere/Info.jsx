@@ -15,7 +15,7 @@ const TRANSLATION = {
   },
   es: {
     'ancestry': 'Ancestría',
-    'cultures': 'Cultures'
+    'cultures': 'Culturas'
   }
 }
 
