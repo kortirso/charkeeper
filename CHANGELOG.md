@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - spanish translations for cthulhu7 character pages
 
+### Fixed
+- rendering campaign join web page
+
 ## [0.5.16] - 2026-10-27
 ### Added
 - homebrew versatile heritages for pf2 characters
