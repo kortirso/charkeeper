@@ -34,13 +34,13 @@ const TRANSLATION = {
   es: {
     items: 'Objetos',
     official: 'Aprobado',
-    showItems: 'Show items',
+    showItems: 'Mostrar contenido',
     backgrounds: 'Trasfondos',
     spells: 'Hechizos',
     classes: 'Clases',
     feats: 'Proesas',
-    races: 'Races',
-    subraces: 'Versatile heritages'
+    races: 'Razas',
+    subraces: 'Linajes versátiles'
   }
 }
 

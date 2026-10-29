@@ -33,10 +33,10 @@ const TRANSLATION = {
     physical: 'ESTRÉS FÍSICO',
     mental: 'ESTRÉS MENTAL',
     clear: 'Eliminar',
-    mode: 'Vitals mode',
+    mode: 'Modo de estado',
     modes: {
-      core: 'Core',
-      condensed: 'Condensed'
+      core: 'Básico',
+      condensed: 'Condensado'
     }
   }
 }

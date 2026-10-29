@@ -25,8 +25,8 @@ const TRANSLATION = {
     title: 'Mejorando el objeto',
     name: 'Nuevo nombre del objeto',
     upgradeItem: 'Mejorar objeto',
-    selectBonus: 'Select bonus from character list',
-    warning: 'Character bonus will be deactivated'
+    selectBonus: 'Seleccionar bonificador de la lista del personaje',
+    warning: 'El bonificador del personaje se desactivará'
   }
 }
 

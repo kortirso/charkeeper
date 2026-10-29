@@ -20,6 +20,14 @@ const TRANSLATION = {
     range: 'Дальность',
     title: 'Размеры силы',
     ft: 'фт'
+  },
+  es: {
+    ranks: 'Rangos',
+    die: 'Dado',
+    size: 'Efecto',
+    range: 'Alcance',
+    title: 'Escalado de poderes',
+    ft: 'pies'
   }
 }
 const DICES = { 1: 'd4', 2: 'd6', 3: 'd8', 4: 'd10', 5: 'd12' }

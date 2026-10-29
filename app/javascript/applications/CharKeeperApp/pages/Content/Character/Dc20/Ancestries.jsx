@@ -52,15 +52,15 @@ const TRANSLATION = {
     minorTraitsAlert: 'Máximo 1 rasgo menor',
     negativeTraitsAlert: 'Máximo 2 rasgos negativos',
     showDescription: 'Mostrar descripción',
-    defaultRace: 'Use default races',
+    defaultRace: 'Usar razas predeterminadas',
     groups: {
-      'Senses': 'Senses',
-      'Mobility': 'Mobility',
-      'Jumping': 'Jumping',
-      'Flying': 'Flying',
-      'Body': 'Body',
-      'Natural Weapon': 'Natural Weapon',
-      'Miscellaneous': 'Miscellaneous'
+      'Senses': 'Sentidos',
+      'Mobility': 'Movilidad',
+      'Jumping': 'Salto',
+      'Flying': 'Vuelo',
+      'Body': 'Cuerpo',
+      'Natural Weapon': 'Arma natural',
+      'Miscellaneous': 'Varios'
     }
   }
 }

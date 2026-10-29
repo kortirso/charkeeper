@@ -44,8 +44,8 @@ const TRANSLATION = {
     mediumArmor: 'Armadura media',
     heavyArmor: 'Armadura pesada',
     shields: 'Escudos',
-    items: 'Items',
-    consumables: 'Consumables'
+    items: 'Objetos',
+    consumables: 'Consumibles'
   }
 }
 

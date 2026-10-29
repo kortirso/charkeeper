@@ -27,7 +27,7 @@ const TRANSLATION = {
     proficiency: 'Competencia',
     evasion: 'Evasión',
     armor_score: 'Puntuación de armadura',
-    rallyDice: 'Rally Dice',
+    rallyDice: 'Dados de arenga',
     settings: 'Configuración',
     showRallyDice: 'Mostrar Rally Dice'
   }

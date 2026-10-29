@@ -30,7 +30,7 @@ const TRANSLATION = {
   es: {
     delete: 'Eliminar',
     reset: 'Restablecer',
-    copy: 'Copy',
+    copy: 'Copiar',
     reorder: 'Cambiar el orden del personaje'
   }
 }

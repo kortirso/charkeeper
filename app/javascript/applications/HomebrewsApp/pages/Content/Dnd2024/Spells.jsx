@@ -87,9 +87,9 @@ const TRANSLATION = {
       m: 'Material'
     },
     dc: 'Tirada de salvación',
-    area: 'Area',
-    hit: 'Hit',
-    concentration: 'Concentration',
+    area: 'Área',
+    hit: 'Impacto',
+    concentration: 'Concentración',
     ritual: 'Ritual'
   }
 }

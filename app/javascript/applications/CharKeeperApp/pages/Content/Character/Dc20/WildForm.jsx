@@ -15,6 +15,11 @@ const TRANSLATION = {
     transformation: 'Трансформация в дикую форму',
     description: 'Выберите дикую форму или истинную форму.',
     updated: 'Персонаж обновлён'
+  },
+  es: {
+    transformation: 'Transformación en forma salvaje',
+    description: 'Selecciona una forma salvaje o la forma verdadera.',
+    updated: 'Personaje actualizado'
   }
 }
 

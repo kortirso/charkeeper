@@ -27,8 +27,8 @@ const TRANSLATION = {
     selectedAbilities: 'Habilidades para mejorar',
     selectedSkills: 'Maestría en habilidades',
     feat: 'Proesa',
-    loreSkill: 'Lore skill',
-    freeAbilities: 'Free ability boosts'
+    loreSkill: 'Habilidad de Saber',
+    freeAbilities: 'Mejoras de característica libres'
   }
 }
 

@@ -150,37 +150,37 @@ const TRANSLATION = {
       mp: 'PM'
     },
     features: {
-      'Long-Ranged': 'Long-Ranged',
-      'Channeling': 'Channeling',
-      'Close Quarters': 'Close Quarters',
-      'Muffled': 'Muffled',
-      'Powerful': 'Powerful',
-      'Protective': 'Protective',
-      'Reach': 'Reach',
-      'Reactive': 'Reactive',
-      'Two-Handed': 'Two-Handed',
-      'Vicious': 'Vicious',
-      'Warded': 'Warded'
+      'Long-Ranged': 'Largo alcance',
+      'Channeling': 'Canalización',
+      'Close Quarters': 'Combate cercano',
+      'Muffled': 'Amortiguado',
+      'Powerful': 'Poderoso',
+      'Protective': 'Protector',
+      'Reach': 'Alcance',
+      'Reactive': 'Reactivo',
+      'Two-Handed': 'A dos manos',
+      'Vicious': 'Despiadado',
+      'Warded': 'Protegido'
     },
     attack: 'Tirada de Hechizo',
     repeatable: 'Repetible',
-    selectSpellclass: 'Choose spellcaster class',
+    selectSpellclass: 'Elegir clase lanzadora',
     spellclasses: {
-      bard: 'Bard',
-      cleric: 'Cleric',
-      druid: 'Druid',
-      sorcerer: 'Sorcerer',
-      spellblade: 'Spellblade',
-      warlock: 'Warlock',
-      wizard: 'Wizard'
+      bard: 'Bardo',
+      cleric: 'Clérigo',
+      druid: 'Druida',
+      sorcerer: 'Hechicero',
+      spellblade: 'Espada arcana',
+      warlock: 'Brujo',
+      wizard: 'Mago'
     },
-    saveButton: 'Save',
-    selectBard: 'Choose 1 school for bard',
-    selectSpellblade: 'Choose 2 schools for spellblade',
-    selectWarlock: 'Choose 3 schools for warlock',
-    selectSorcerer: 'Choose spell source for sorcerer',
-    focuses: 'Focuses',
-    clear: 'Clear'
+    saveButton: 'Guardar',
+    selectBard: 'Elige 1 escuela para el bardo',
+    selectSpellblade: 'Elige 2 escuelas para la espada arcana',
+    selectWarlock: 'Elige 3 escuelas para el brujo',
+    selectSorcerer: 'Elige la fuente de conjuros del hechicero',
+    focuses: 'Focos',
+    clear: 'Limpiar'
   }
 }
 

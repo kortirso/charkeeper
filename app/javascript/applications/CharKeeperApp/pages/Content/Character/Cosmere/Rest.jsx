@@ -33,14 +33,14 @@ const TRANSLATION = {
   es: {
     values: {
       short: 'Corto',
-      complete_long: 'Largo'
+      long: 'Largo'
     },
     valueLabel: 'Seleccionar tipo de descanso',
     description: 'Esto sucede durante la Exploración pero son momentos específicos cuando los jugadores se detienen a descansar y recuperar sus recursos.',
     complete: 'El descanso fue completado',
     rest: 'Tomar descanso',
-    makeRolls: 'Roll recovery die',
-    lastRecovery: 'Last recovery die roll'
+    makeRolls: 'Tirar dado de recuperación',
+    lastRecovery: 'Última tirada de dado de recuperación'
   }
 }
 

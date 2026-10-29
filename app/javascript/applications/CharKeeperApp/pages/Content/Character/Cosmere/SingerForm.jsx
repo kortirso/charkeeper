@@ -15,7 +15,7 @@ const TRANSLATION = {
     updated: 'Персонаж обновлён'
   },
   es: {
-    singerForm: 'Singer Form',
+    singerForm: 'Forma de cantor',
     updated: 'El personaje ha sido actualizado'
   }
 }

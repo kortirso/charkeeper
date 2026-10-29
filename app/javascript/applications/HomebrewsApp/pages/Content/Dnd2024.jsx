@@ -44,10 +44,10 @@ const TRANSLATION = {
     spells: 'Hechizos',
     feats: 'Proezas',
     backgrounds: 'Trasfondos',
-    races: 'Species',
+    races: 'Especies',
     armor: 'Armadura',
-    shields: 'Shields',
-    consumables: 'Consumables'
+    shields: 'Escudos',
+    consumables: 'Consumibles'
   }
 }
 

@@ -130,7 +130,7 @@ const TRANSLATION = {
     kind: 'Especie animal',
     attacks: 'Ataques',
     support: 'Apoyo',
-    special: 'Special attack',
+    special: 'Ataque especial',
     animals: {
       ape: 'Simio',
       arboreal_sapling: 'Brote arbóreo',
@@ -150,7 +150,7 @@ const TRANSLATION = {
       wolf: 'Lobo'
     },
     sizes: {
-      tiny: 'Tiny size',
+      tiny: 'Tamaño diminuto',
       small: 'Tamaño pequeño',
       medium: 'Tamaño mediano',
       large: 'Tamaño grande'
@@ -158,17 +158,17 @@ const TRANSLATION = {
     ages: {
       young: 'Joven',
       mature: 'Adulto',
-      nimble: 'Nimble',
-      savage: 'Savage'
+      nimble: 'Ágil',
+      savage: 'Salvaje'
     },
-    specialization: 'Specialization',
+    specialization: 'Especialización',
     specializations: {
-      ambusher: 'Ambusher',
-      bully: 'Bully',
-      daredevil: 'Daredevil',
-      racer: 'Racer',
-      tracker: 'Tracker',
-      wrecker: 'Wrecker'
+      ambusher: 'Emboscador',
+      bully: 'Matón',
+      daredevil: 'Temerario',
+      racer: 'Corredor',
+      tracker: 'Rastreador',
+      wrecker: 'Destructor'
     }
   }
 }

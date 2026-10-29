@@ -59,9 +59,9 @@ const TRANSLATION = {
     mp: 'PM',
     hope: 'Esperanza',
     stress: 'Estrés',
-    health: 'Health',
-    armor: 'Armor',
-    spent: 'Resource is spent',
+    health: 'Vida',
+    armor: 'Armadura',
+    spent: 'Recurso gastado',
     a: 'A',
     r: 'R'
   }

@@ -40,6 +40,22 @@ const TRANSLATION = {
     limit: 'Макс',
     saveDc: 'УС спаса',
     mana: 'Очки маны'
+  },
+  es: {
+    level: 'Nivel',
+    time: 'Tiempo',
+    target: 'Objetivo',
+    targets: {
+      self: 'Uno mismo',
+      single: 'Único',
+      aoe: 'Área'
+    },
+    selectSpells: 'Combate',
+    selectUtilitySpells: 'Utilidad',
+    back: 'Volver',
+    limit: 'Límite',
+    saveDc: 'CD de salvación',
+    mana: 'Puntos de maná'
   }
 }
 

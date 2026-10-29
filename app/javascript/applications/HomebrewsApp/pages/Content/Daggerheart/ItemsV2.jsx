@@ -26,10 +26,10 @@ const TRANSLATION = {
   es: {
     kind: 'Tipo',
     kinds: {
-      'item': 'Item',
-      'recipe': 'Recipe'
+      'item': 'Objeto',
+      'recipe': 'Receta'
     },
-    recipes: 'Craft items'
+    recipes: 'Fabricar objetos'
   }
 }
 

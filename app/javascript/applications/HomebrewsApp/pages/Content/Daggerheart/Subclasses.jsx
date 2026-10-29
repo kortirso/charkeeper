@@ -32,14 +32,14 @@ const TRANSLATION = {
     other: 'Other'
   },
   es: {
-    className: 'Class name',
-    spellcast: 'Spellcast trait',
-    mechanics: 'Available mechanics',
-    none: 'None',
-    foundation: 'Foundation',
-    specialization: 'Specialization',
-    mastery: 'Mastery',
-    other: 'Other'
+    className: 'Nombre de la clase',
+    spellcast: 'Atributo de conjuro',
+    mechanics: 'Mecánicas disponibles',
+    none: 'Ninguno',
+    foundation: 'Fundamento',
+    specialization: 'Especialización',
+    mastery: 'Maestría',
+    other: 'Otro'
   }
 }
 const MASTERIES = ['foundation', 'specialization', 'mastery'];

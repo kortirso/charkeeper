@@ -27,7 +27,7 @@ const TRANSLATION = {
   es: {
     options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
     skipGuide: 'Omitir guía de personaje nuevo',
-    showHomebrew: 'Allow to select homebrews'
+    showHomebrew: 'Permitir elegir homebrews'
   }
 }
 

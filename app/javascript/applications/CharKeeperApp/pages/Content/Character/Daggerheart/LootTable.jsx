@@ -56,7 +56,7 @@ const TRANSLATION = {
       rare: 'Raro',
       legendary: 'Legendario'
     },
-    loot: 'Loot'
+    loot: 'Botín'
   }
 }
 

@@ -25,6 +25,13 @@ const TRANSLATION = {
     hitDie: 'Кость Хитов',
     saves: 'Спасброски',
     spellAbility: 'Заклинательная характеристика'
+  },
+  es: {
+    level: 'Nivel',
+    staticSpells: 'Conjuros fijos',
+    hitDie: 'Dado de golpe',
+    saves: 'Salvaciones',
+    spellAbility: 'Característica de lanzamiento'
   }
 }
 

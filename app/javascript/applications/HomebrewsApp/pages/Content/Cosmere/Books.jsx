@@ -34,15 +34,15 @@ const TRANSLATION = {
     items: 'Предметы'
   },
   es: {
-    settings: 'Settings',
-    cultures: 'Cultures',
+    settings: 'Ambientaciones',
+    cultures: 'Culturas',
     official: 'Aprobado',
-    showItems: 'Show items',
-    ancestries: 'Ancestries',
-    specializations: 'Specializations',
-    paths: 'Paths',
-    invested_paths: 'Invested paths',
-    invested_arts: 'Invested powers',
+    showItems: 'Mostrar contenido',
+    ancestries: 'Ascendencias',
+    specializations: 'Especializaciones',
+    paths: 'Sendas',
+    invested_paths: 'Sendas investidas',
+    invested_arts: 'Poderes investidos',
     items: 'Objetos'
   }
 }

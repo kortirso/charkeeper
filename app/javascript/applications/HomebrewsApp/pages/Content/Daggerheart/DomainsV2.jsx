@@ -25,11 +25,11 @@ const TRANSLATION = {
     recall: 'Цена призыва'
   },
   es: {
-    level: 'Level',
+    level: 'Nivel',
     spell: 'Hechizo',
     ability: 'Habilidad',
     grimoire: 'Grimorio',
-    recall: 'Recall cost'
+    recall: 'Coste de recuperación'
   }
 }
 

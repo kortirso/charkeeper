@@ -138,25 +138,25 @@ const TRANSLATION = {
         description: 'Almacén externo de tus objetos'
       },
       hidden: {
-        title: 'DM storage',
-        description: 'DM storage with hidden items'
+        title: 'Almacén del DJ',
+        description: 'Almacén del DJ con objetos ocultos'
       },
       shared: {
-        title: 'Shared storage',
-        description: 'Shared storage of characters'
+        title: 'Almacén compartido',
+        description: 'Almacén compartido entre personajes'
       }
     },
     amount: 'Cantidad a mover',
     was: 'Era',
     will: 'será',
-    character: 'Select character',
-    sendAmount: 'Items amount',
-    sendItem: 'Send item',
-    campaign: 'Select campaign',
-    charges: 'Charges',
-    chargesMax: 'Max',
-    chargesHelp: 'Charges/Ammo can be set only when item is 1. If set items amount more than 1 - charges will be reset.',
-    itemsByLevel: 'Show items match by level'
+    character: 'Seleccionar personaje',
+    sendAmount: 'Cantidad de objetos',
+    sendItem: 'Enviar objeto',
+    campaign: 'Seleccionar campaña',
+    charges: 'Cargas',
+    chargesMax: 'Máx',
+    chargesHelp: 'Las cargas/munición solo se pueden fijar cuando hay 1 objeto. Si la cantidad es mayor que 1, las cargas se reiniciarán.',
+    itemsByLevel: 'Mostrar objetos acordes al nivel'
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];

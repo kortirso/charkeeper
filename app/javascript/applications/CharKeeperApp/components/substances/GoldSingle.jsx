@@ -20,8 +20,8 @@ const TRANSLATION = {
     tooMuchMoney: 'Указано слишком много денег :)'
   },
   es: {
-    money: 'Money',
-    amount: 'Change',
+    money: 'Dinero',
+    amount: 'Cambio',
     negativeMoney: 'El dinero no puede ser negativo',
     tooMuchMoney: 'Demasiado dinero :)'
   }
