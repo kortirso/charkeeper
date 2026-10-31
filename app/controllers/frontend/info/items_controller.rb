@@ -4,12 +4,13 @@ module Frontend
   module Info
     class ItemsController < Frontend::BaseController
       include Deps[markdown: 'markdown']
+      include TranslateHelper
 
       before_action :find_item
 
       def show
         render json: {
-          value: markdown.call(value: @item.description[I18n.locale.to_s], version: params[:version])
+          value: markdown.call(value: translate(@item.description), version: params[:version])
         }, status: :ok
       end
 

@@ -1,0 +1,116 @@
+[
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "name": {
+      "en": "Gem's name"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Gem's description, **Markdown is available** for editing."
+    },
+    "kind": "upgrade",
+    "public": true,
+    /* required */
+    "info": {
+      "type": "gem",
+      /* agi, str, fin, ins, pre, know */
+      "trait": "str"
+    },
+    /* optional */
+    /* available keys - str/agi/fin/ins/pre/know/health_max/stress_max/hope_max/evasion/armor_score/damage_thresholds.major/damage_thresholds.severe/attack/damage/spell_bonus/proficiency/loadout */
+    /* type - add */
+    /* value - integer or formula */
+    /* available variables for formulas - str/agi/fin/ins/pre/know/proficiency/tier/level/no_armor/no_weapon/stress_marked/health_marked/hope_marked/spellcast/stress_max/health_max/hope_max */
+    "modifiers": {
+      "str": { "type": "add", "value": 1 },
+      "evasion": { "type": "add", "value": "tier" }
+    }
+  },
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "name": {
+      "en": "Weapon stone's name"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Weapon stone's description, **Markdown is available** for editing."
+    },
+    "kind": "upgrade",
+    "public": true,
+    /* required */
+    "info": {
+      "type": "stone",
+      /* allowed locale keys - en, ru, es */
+      "feature": {
+        "en": "Feature's description."
+      }
+    },
+    /* optional */
+    /* available keys - str/agi/fin/ins/pre/know/health_max/stress_max/hope_max/evasion/armor_score/damage_thresholds.major/damage_thresholds.severe/attack/damage/spell_bonus/proficiency/loadout */
+    /* type - add */
+    /* value - integer or formula */
+    /* available variables for formulas - str/agi/fin/ins/pre/know/proficiency/tier/level/no_armor/no_weapon/stress_marked/health_marked/hope_marked/spellcast/stress_max/health_max/hope_max */
+    "modifiers": {
+      "str": { "type": "add", "value": 1 },
+      "evasion": { "type": "add", "value": "tier" }
+    }
+  },
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "name": {
+      "en": "Armor stone's name"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Armor stone's description, **Markdown is available** for editing."
+    },
+    "kind": "upgrade",
+    "public": true,
+    /* required */
+    "info": {
+      "type": "armor_stone",
+      /* allowed locale keys - en, ru, es */
+      "feature": {
+        "en": "Feature's description."
+      }
+    },
+    /* optional */
+    /* available keys - str/agi/fin/ins/pre/know/health_max/stress_max/hope_max/evasion/armor_score/damage_thresholds.major/damage_thresholds.severe/attack/damage/spell_bonus/proficiency/loadout */
+    /* type - add */
+    /* value - integer or formula */
+    /* available variables for formulas - str/agi/fin/ins/pre/know/proficiency/tier/level/no_armor/no_weapon/stress_marked/health_marked/hope_marked/spellcast/stress_max/health_max/hope_max */
+    "modifiers": {
+      "str": { "type": "add", "value": 1 },
+      "evasion": { "type": "add", "value": "tier" }
+    }
+  },
+  {
+    /* required, allowed locale keys - en, ru, es */
+    "name": {
+      "en": "Item charm's name"
+    },
+    /* required, allowed locale keys - en, ru, es */
+    "description": {
+      "en": "Item charm's description, **Markdown is available** for editing."
+    },
+    "kind": "upgrade",
+    "public": true,
+    /* required */
+    "info": {
+      "type": "charm",
+      /* allowed locale keys - en, ru, es */
+      "feature": {
+        "en": "Feature's description."
+      }
+    },
+    /* optional */
+    /* available keys - str/agi/fin/ins/pre/know/health_max/stress_max/hope_max/evasion/armor_score/damage_thresholds.major/damage_thresholds.severe/attack/damage/spell_bonus/proficiency/loadout */
+    /* type - add */
+    /* value - integer or formula */
+    /* available variables for formulas - str/agi/fin/ins/pre/know/proficiency/tier/level/no_armor/no_weapon/stress_marked/health_marked/hope_marked/spellcast/stress_max/health_max/hope_max */
+    "modifiers": {
+      "str": { "type": "add", "value": 1 },
+      "evasion": { "type": "add", "value": "tier" }
+    }
+  }
+]

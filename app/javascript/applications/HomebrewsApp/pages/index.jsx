@@ -22,6 +22,7 @@ export * from './Content/Daggerheart/ArmorV2';
 export * from './Content/Daggerheart/BooksV2';
 export * from './Content/Daggerheart/Personal';
 export * from './Content/Daggerheart/Mechanics';
+export * from './Content/Daggerheart/Upgrades';
 
 export * from './Content/Dnd2024/Feats';
 export * from './Content/Dnd2024/Spells';

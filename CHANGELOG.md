@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - spanish translations for cthulhu7 character pages
 - spanish translations for all interface texts
+- homebrew upgrades for Daggerheart characters
 
 ### Modified
 - translations coverage spec checks all interface texts for spanish

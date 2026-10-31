@@ -3,7 +3,7 @@ import { For, Switch, Match } from 'solid-js';
 import {
   DaggerheartAncestriesV2, DaggerheartCommunitiesV2, DaggerheartSpecialities, DaggerheartSubclasses, DaggerheartDomainsV2,
   DaggerheartTransformationsV2, DaggerheartBooksV2, DaggerheartItemsV2, DaggerheartConsumables,
-  DaggerheartWeaponsV2, DaggerheartArmorV2, DaggerheartPersonal, DaggerheartMechanics
+  DaggerheartWeaponsV2, DaggerheartArmorV2, DaggerheartPersonal, DaggerheartMechanics, DaggerheartUpgrades
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -22,7 +22,8 @@ const TRANSLATION = {
     armor: 'Armor',
     recipes: 'Recipes',
     features: 'Features',
-    mechanics: 'Mechanics'
+    mechanics: 'Mechanics',
+    upgrades: 'Upgrades'
   },
   ru: {
     books: 'Книги',
@@ -38,7 +39,8 @@ const TRANSLATION = {
     armor: 'Броня',
     recipes: 'Рецепты',
     features: 'Способности',
-    mechanics: 'Механики'
+    mechanics: 'Механики',
+    upgrades: 'Улучшения'
   },
   es: {
     books: 'Libros',
@@ -54,7 +56,8 @@ const TRANSLATION = {
     armor: 'Armadura',
     recipes: 'Recetas',
     features: 'Características',
-    mechanics: 'Mecánicas'
+    mechanics: 'Mecánicas',
+    upgrades: 'Actualizaciones'
   }
 }
 
@@ -69,7 +72,7 @@ export const Daggerheart = () => {
         <For each={
           [
             'books', 'ancestries', 'communities', 'classes', 'subclasses', 'domains', 'transformations', 'mechanics',
-            'features', 'items', 'consumables', 'weapons', 'armor'
+            'features', 'items', 'consumables', 'weapons', 'armor', 'upgrades'
           ]
         }>
           {(item) =>
@@ -87,7 +90,8 @@ export const Daggerheart = () => {
             ancestries: DaggerheartAncestriesV2, communities: DaggerheartCommunitiesV2, classes: DaggerheartSpecialities,
             subclasses: DaggerheartSubclasses, domains: DaggerheartDomainsV2, transformations: DaggerheartTransformationsV2,
             books: DaggerheartBooksV2, items: DaggerheartItemsV2, weapons: DaggerheartWeaponsV2, mechanics: DaggerheartMechanics,
-            consumables: DaggerheartConsumables, armor: DaggerheartArmorV2, features: DaggerheartPersonal
+            consumables: DaggerheartConsumables, armor: DaggerheartArmorV2, features: DaggerheartPersonal,
+            upgrades: DaggerheartUpgrades
           })
         }>
           {([item, Component]) =>
