@@ -17,5 +17,10 @@ FactoryBot.define do
       type { 'Daggerheart::Item' }
       data { {} }
     end
+
+    trait :pathfinder2 do
+      type { 'Pathfinder2::Item' }
+      data { {} }
+    end
   end
 end

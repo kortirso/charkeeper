@@ -95,6 +95,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['can_have_pet'] = available_features_slugs.include?('pet')
     @result['can_have_familiar'] = available_features_slugs.intersect?(FAMILIAR_FEATS)
     @result['can_have_animal'] = available_features_slugs.intersect?(ANIMAL_FEATS)
+    @result['can_craft'] = selected_skills['crafting'].to_i.positive?
     @result['total_damage_reduction'] = calc_total_damage_reduction
     @result['available_features_slugs'] = available_features_slugs
   end

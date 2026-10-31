@@ -70,8 +70,9 @@ module Frontend
       def create_params
         {
           character: @character,
-          item: items_relation.find(params.expect(:item_id))
-        }
+          item: items_relation.find(params.expect(:item_id)),
+          amount: params[:amount]
+        }.compact
       end
 
       def update_params

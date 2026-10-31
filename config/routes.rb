@@ -171,6 +171,9 @@ Rails.application.routes.draw do
       end
       resources :characters, only: %i[create update] do
         scope module: :characters do
+          resources :formulas, only: %i[index create destroy] do
+            get :find_by_item, on: :collection
+          end
           resources :spells, only: %i[index create update destroy]
           resources :health, only: %i[create]
           resources :talents, only: %i[index create destroy]

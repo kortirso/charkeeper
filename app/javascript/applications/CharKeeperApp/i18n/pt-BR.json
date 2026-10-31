@@ -64,7 +64,8 @@
       "goals": "Goals",
       "backstory": "Backstory",
       "mechanic": "Mechanics",
-      "summons": "Summons"
+      "summons": "Summons",
+      "formulas": "Formulas"
     },
     "campaignsPage": {
       "title": "Campaigns",
