@@ -19,11 +19,13 @@ module HomebrewsV2Context
               required(:title).hash do
                 required(:en).filled(:string, max_size?: 50)
                 optional(:ru).maybe(:string, max_size?: 50)
+                optional(:'ru-AG').maybe(:string, max_size?: 50)
                 optional(:es).maybe(:string, max_size?: 50)
               end
               required(:description).hash do
                 required(:en).filled(:string, max_size?: 1_000)
                 optional(:ru).maybe(:string, max_size?: 1_000)
+                optional(:'ru-AG').maybe(:string, max_size?: 1_000)
                 optional(:es).maybe(:string, max_size?: 1_000)
               end
               required(:origin_values).filled(:array).each(:string)

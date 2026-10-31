@@ -24,7 +24,8 @@ const TRANSLATION = {
     alternatives: 'Alternative translations',
     updated: 'Profile is updated',
     providers: {
-      daggerheart: 'Daggerheart'
+      daggerheart: 'Daggerheart',
+      dnd2024: 'D&D 2024'
     }
   },
   ru: {
@@ -41,7 +42,8 @@ const TRANSLATION = {
     alternatives: 'Альтернативные переводы',
     updated: 'Профиль обновлён',
     providers: {
-      daggerheart: 'Daggerheart'
+      daggerheart: 'Daggerheart',
+      dnd2024: 'D&D 2024'
     }
   },
   es: {
@@ -58,13 +60,18 @@ const TRANSLATION = {
     alternatives: 'Traducciones alternativas',
     updated: 'Perfil actualizado',
     providers: {
-      daggerheart: 'Daggerheart'
+      daggerheart: 'Daggerheart',
+      dnd2024: 'D&D 2024'
     }
   }
 }
 
 const PROVIDER_LOCALES = {
   'ru': {
+    'dnd2024': {
+      'ru': 'Стандартный',
+      'ru-AG': 'Adventure Guys (adventureguys.club)'
+    },
     'daggerheart': {
       'ru': 'Стандартный (daggerheart.su)',
       'ru-DHM': 'Modno (dagger-heart.ru)'

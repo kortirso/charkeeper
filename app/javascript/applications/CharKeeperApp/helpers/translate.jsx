@@ -1,5 +1,6 @@
 const FALLBACKS = {
-  'ru-DHM': 'ru'
+  'ru-DHM': 'ru',
+  'ru-AG': 'ru'
 }
 
 export const translate = (obj, locale, withSorting=false) => {

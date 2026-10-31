@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module TranslateHelper
-  I18N_FALLBACKS = { 'ru-DHM' => 'ru' }.freeze
+  I18N_FALLBACKS = { 'ru-DHM' => 'ru', 'ru-AG' => 'ru' }.freeze
 
   def translate(hash)
     return unless hash.is_a?(Hash)

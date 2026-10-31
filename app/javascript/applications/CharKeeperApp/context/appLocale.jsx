@@ -4,7 +4,8 @@ import * as i18n from '@solid-primitives/i18n';
 const AppLocaleContext = createContext();
 
 const FALLBACKS = {
-  'ru-DHM': 'ru'
+  'ru-DHM': 'ru',
+  'ru-AG': 'ru'
 }
 
 const fetchDictionary = async (locale) => {
