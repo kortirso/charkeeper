@@ -42,7 +42,6 @@ ru:
           upgrades:
             empty: Необходимо указать улучшения
             invalid_key: Неизвестное улучшение
-            feature_exist: Уже существует свойство
       note:
         rules:
           title:

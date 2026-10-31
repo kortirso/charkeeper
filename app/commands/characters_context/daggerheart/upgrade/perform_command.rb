@@ -29,15 +29,15 @@ module CharactersContext
           rule(:character_item, :upgrades) do
             item = values[:character_item].item
 
+            # rubocop: disable Style/SoleNestedConditional
             if WEAPON_KINDS.include?(item.kind)
               key(:upgrades).failure(:invalid_key) if values[:upgrades].keys.any? { |key| WEAPON_KEYS.exclude?(key) }
-              key(:upgrades).failure(:feature_exist) if values[:upgrades].key?(:stone) && item.info['features'].present?
             end
 
             if ARMOR_KINDS.include?(item.kind)
               key(:upgrades).failure(:invalid_key) if values[:upgrades].keys.any? { |key| ARMOR_KEYS.exclude?(key) }
-              key(:upgrades).failure(:feature_exist) if values[:upgrades].key?(:armor_stone) && item.info['features'].present?
             end
+            # rubocop: enable Style/SoleNestedConditional
           end
         end
 
@@ -78,16 +78,22 @@ module CharactersContext
           upgrade = ::Daggerheart::Item.where(kind: 'upgrade').find_by(id: value)
           return unless upgrade
 
-          input[:attributes].deep_merge!('info' => { 'trait' => upgrade.info['trait'] })
+          input[:attributes].deep_merge!('info' => { 'trait' => upgrade.info['trait'] }) if upgrade.info['trait']
+          input[:attributes].deep_merge!('modifiers' => upgrade.modifiers) if upgrade.modifiers&.any?
         end
 
         def update_by_feature(input, value)
           upgrade = ::Daggerheart::Item.where(kind: 'upgrade').find_by(id: value)
           return unless upgrade
 
-          input[:attributes].deep_merge!(
-            'info' => { 'features' => (input.dig(:attributes, 'info', 'features') || []).push(upgrade.info['feature']) }
-          )
+          if upgrade.info['feature']
+            features = input.dig(:attributes, 'info', 'features') || []
+            features = [features] if features.is_a?(Hash)
+            input[:attributes].deep_merge!(
+              'info' => { 'features' => features.push(upgrade.info['feature']) }
+            )
+          end
+          input[:attributes].deep_merge!('modifiers' => upgrade.modifiers) if upgrade.modifiers&.any?
         end
 
         def update_old_item(input)

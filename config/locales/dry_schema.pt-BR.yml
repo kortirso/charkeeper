@@ -40,7 +40,6 @@ pt-BR:
           upgrades:
             empty: Upgrades are required
             invalid_key: Unknown upgrade
-            feature_exist: Feature already exists
       note:
         rules:
           title:

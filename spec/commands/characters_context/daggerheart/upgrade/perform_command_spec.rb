@@ -98,15 +98,33 @@ describe CharactersContext::Daggerheart::Upgrade::PerformCommand do
         expect(item.info['features']).to eq([{ 'en' => '3', 'ru' => '4' }])
       end
 
-      context 'when weapon has feature' do
+      context 'when weapon has feature as hash' do
         before do
           weapon.info['features'] = { 'en' => '0', 'ru' => '0' }
           weapon.save!
         end
 
-        it 'does not create item', :aggregate_failures do
-          expect { command_call }.not_to change(Item, :count)
-          expect(command_call[:errors_list]).not_to be_nil
+        it 'creates item and rewrites features', :aggregate_failures do
+          expect { command_call }.to(
+            change(Item, :count).by(1)
+              .and(change(Character::Item, :count).by(1))
+          )
+          expect(command_call[:errors_list]).to be_nil
+        end
+      end
+
+      context 'when weapon has feature as array' do
+        before do
+          weapon.info['features'] = [{ 'en' => '0', 'ru' => '0' }]
+          weapon.save!
+        end
+
+        it 'creates item and rewrites features', :aggregate_failures do
+          expect { command_call }.to(
+            change(Item, :count).by(1)
+              .and(change(Character::Item, :count).by(1))
+          )
+          expect(command_call[:errors_list]).to be_nil
         end
       end
     end
@@ -181,9 +199,12 @@ describe CharactersContext::Daggerheart::Upgrade::PerformCommand do
           armor.save!
         end
 
-        it 'does not create item', :aggregate_failures do
-          expect { command_call }.not_to change(Item, :count)
-          expect(command_call[:errors_list]).not_to be_nil
+        it 'creates item and rewrites features', :aggregate_failures do
+          expect { command_call }.to(
+            change(Item, :count).by(1)
+              .and(change(Character::Item, :count).by(1))
+          )
+          expect(command_call[:errors_list]).to be_nil
         end
       end
     end

@@ -7,9 +7,8 @@ module HomebrewsV2Context
         module Items
           class AddCommand < BaseCommand
             use_contract do
-              BonusTypes = Dry::Types['strict.string'].enum('static', 'dynamic')
               Kinds = Dry::Types['strict.string'].enum(
-                'item', 'recipe', 'armor', 'primary weapon', 'secondary weapon', 'consumables'
+                'item', 'recipe', 'armor', 'primary weapon', 'secondary weapon', 'consumables', 'upgrade'
               )
 
               params do
