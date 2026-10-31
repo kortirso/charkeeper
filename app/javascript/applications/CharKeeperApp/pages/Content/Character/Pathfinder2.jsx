@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills, Pathfinder2Companion,
   Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2ArchetypeSpells, Pathfinder2Rest, Pathfinder2Bonuses, Pathfinder2Info,
-  Pathfinder2Damages, Pathfinder2Equipment
+  Pathfinder2Damages, Pathfinder2Equipment, Pathfinder2Craft
 } from '../../../pages';
 import {
   CharacterNavigation, Notes, Avatar, ContentWrapper, Gold, createRoll, Combat, Feats, ConditionsV2
@@ -137,6 +137,7 @@ export const Pathfinder2 = (props) => {
     const result = ['combat', 'equipment', 'spells', 'classLevels'];
     if (character().can_have_animal) result.push('animalCompanion');
     if (character().can_have_pet || character().can_have_familiar) result.push('companion');
+    if (character().can_craft) result.push('formulas');
     return result.concat('professions', 'rest', 'bonuses', 'notes', 'avatar');
   });
 
@@ -220,6 +221,8 @@ export const Pathfinder2 = (props) => {
                 withWeight
                 withPrice
                 withItemLevel
+                withFormula={character().can_craft}
+                withCraft={character().can_craft}
                 character={character()}
                 upgrades={['weapon', 'armor', 'shield']}
                 onReplaceCharacter={props.onReplaceCharacter}
@@ -227,6 +230,9 @@ export const Pathfinder2 = (props) => {
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Pathfinder2Equipment>
+            </Match>
+            <Match when={activeMobileTab() === 'formulas'}>
+              <Pathfinder2Craft character={character()} />
             </Match>
             <Match when={activeMobileTab() === 'classLevels'}>
               <Pathfinder2Leveling
@@ -360,6 +366,8 @@ export const Pathfinder2 = (props) => {
                 withWeight
                 withPrice
                 withItemLevel
+                withFormula={character().can_craft}
+                withCraft={character().can_craft}
                 character={character()}
                 upgrades={['weapon', 'armor', 'shield']}
                 onReplaceCharacter={props.onReplaceCharacter}
@@ -367,6 +375,9 @@ export const Pathfinder2 = (props) => {
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Pathfinder2Equipment>
+            </Match>
+            <Match when={activeTab() === 'formulas'}>
+              <Pathfinder2Craft character={character()} />
             </Match>
             <Match when={activeTab() === 'classLevels'}>
               <Pathfinder2Leveling

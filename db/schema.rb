@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_24_173356) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_31_100157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -150,6 +150,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_24_173356) do
     t.integer "tokens", comment: "Текущее кол-во токенов"
     t.jsonb "dices", comment: "Текущие значения дайсов"
     t.index ["character_id", "feat_id", "kind", "prepared_by"], name: "idx_on_character_id_feat_id_kind_prepared_by_4db15cdd26", unique: true
+  end
+
+  create_table "character_formulas", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "character_id", null: false
+    t.uuid "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id", "item_id"], name: "index_character_formulas_on_character_id_and_item_id", unique: true
   end
 
   create_table "character_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

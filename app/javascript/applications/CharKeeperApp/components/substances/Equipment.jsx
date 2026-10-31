@@ -2,11 +2,12 @@ import { createSignal, createEffect, createMemo, For, Show, batch, children } fr
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
+import { Pathfinder2CraftPlace } from '../../pages';
 import {
   ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper, ItemContent, Select, Checkbox
 } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
-import { PlusSmall, Info } from '../../assets';
+import { PlusSmall, Info, Spell, Craft } from '../../assets';
 import { fetchItemsRequest } from '../../requests/fetchItemsRequest';
 import { fetchCharacterItemsRequest } from '../../requests/fetchCharacterItemsRequest';
 import { createCharacterItemRequest } from '../../requests/createCharacterItemRequest';
@@ -17,6 +18,7 @@ import { createCharacterHomebrewItemRequest } from '../../requests/createCharact
 import { consumeCharacterBonusRequest } from '../../requests/consumeCharacterBonusRequest';
 import { consumeCharacterItemRequest } from '../../requests/consumeCharacterItemRequest';
 import { sendCampaignItemRequest } from '../../requests/sendCampaignItemRequest';
+import { createLearnFormulaRequest } from '../../requests/createLearnFormulaRequest';
 import { localize, performResponse } from '../../helpers';
 
 const TRANSLATION = {
@@ -64,7 +66,8 @@ const TRANSLATION = {
     charges: 'Charges',
     chargesMax: 'Max',
     chargesHelp: 'Charges/Ammo can be set only when item is 1. If set items amount more than 1 - charges will be reset.',
-    itemsByLevel: 'Show items match by level'
+    itemsByLevel: 'Show items match by level',
+    formulaAdded: 'Formula is added'
   },
   ru: {
     searchByName: 'Поиск по названию (от 3 символов)',
@@ -110,7 +113,8 @@ const TRANSLATION = {
     charges: 'Заряды',
     chargesMax: 'Макс',
     chargesHelp: 'Заряды/Снаряды можно указать только для 1 предмета, если изменить кол-во предметов на более, чем 1, то заряды сбросятся.',
-    itemsByLevel: 'Только предметы по уровню'
+    itemsByLevel: 'Только предметы по уровню',
+    formulaAdded: 'Формула добавлена'
   },
   es: {
     searchByName: 'Buscar por nombre (desde 3 caracteres)',
@@ -156,7 +160,8 @@ const TRANSLATION = {
     charges: 'Cargas',
     chargesMax: 'Máx',
     chargesHelp: 'Las cargas/munición solo se pueden fijar cuando hay 1 objeto. Si la cantidad es mayor que 1, las cargas se reiniciarán.',
-    itemsByLevel: 'Mostrar objetos acordes al nivel'
+    itemsByLevel: 'Mostrar objetos acordes al nivel',
+    formulaAdded: 'Se añade la fórmula'
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
@@ -174,6 +179,7 @@ export const Equipment = (props) => {
   const [sendItem, setSendItem] = createSignal({});
   const [itemReceiver, setItemReceiver] = createSignal(null);
   const [amount, setAmount] = createSignal(1);
+  const [craft, setCraft] = createSignal(undefined);
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [characterItems, setCharacterItems] = createSignal(undefined);
@@ -389,6 +395,14 @@ export const Equipment = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const learnFormula = async (item) => {
+    const result = await createLearnFormulaRequest(appState.accessToken, character().provider, character().id, { item_id: item.id });
+
+    if (result.errors_list === undefined) {
+      renderNotice(localize(TRANSLATION, locale()).formulaAdded);
+    } else renderAlerts(result.errors_list);
+  }
+
   const updateCharacterItem = async (item, payload) => {
     const result = await updateCharacterItemRequest(
       appState.accessToken, character().provider, character().id, item.id, payload, props.forCampaign ? 'campaigns' : 'characters'
@@ -475,6 +489,16 @@ export const Equipment = (props) => {
     props.onReloadCharacter();
   }
 
+  const startCraft = (item) => {
+    setCraft(item);
+    openModal();
+  }
+
+  const onCompleteCraft = () => {
+    setCraft(undefined);
+    closeModal();
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Equipment' }}>
       <GuideWrapper
@@ -556,6 +580,16 @@ export const Equipment = (props) => {
                                         <Button default size="small" onClick={() => buyItem(item)}>
                                           <PlusSmall />
                                         </Button>
+                                        <Show when={props.withCraft}>
+                                          <Button default size="small" onClick={() => startCraft(item)}>
+                                            <Craft width="20" height="20" />
+                                          </Button>
+                                        </Show>
+                                        <Show when={props.withFormula}>
+                                          <Button default size="small" onClick={() => learnFormula(item)}>
+                                            <Spell width="20" height="20" />
+                                          </Button>
+                                        </Show>
                                       </div>
                                     </td>
                                   </tr>
@@ -721,6 +755,17 @@ export const Equipment = (props) => {
           <Button default textable disabled={!itemReceiver() || !amount() || !(parseInt(amount()) > 0)} onClick={finishSendingItem}>
             {localize(TRANSLATION, locale()).sendItem}
           </Button>
+        </Show>
+        <Show when={craft() && character().provider === 'pathfinder2'}>
+          <Pathfinder2CraftPlace
+            characterId={character().id}
+            craft={craft()}
+            formula={false}
+            skill={character().skills.find((item) => item.slug === 'crafting').level}
+            level={character().level}
+            reloadCharacterItems={props.reloadCharacterItems}
+            completeCraft={onCompleteCraft}
+          />
         </Show>
       </Modal>
     </ErrorWrapper>

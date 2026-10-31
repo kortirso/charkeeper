@@ -82,6 +82,8 @@ export * from './Content/Character/Pathfinder2/Damages';
 export * from './Content/Character/Pathfinder2/Shared/Health';
 export * from './Content/Character/Pathfinder2/Shared/Senses';
 export * from './Content/Character/Pathfinder2/Equipment';
+export * from './Content/Character/Pathfinder2/Craft';
+export * from './Content/Character/Pathfinder2/CraftPlace';
 
 export * from './Content/Character/Daggerheart';
 export * from './Content/Character/Daggerheart/Traits';
