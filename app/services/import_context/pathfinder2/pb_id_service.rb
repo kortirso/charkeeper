@@ -30,6 +30,8 @@ module ImportContext
         JSON.parse(
           Net::HTTP.get(URI("https://www.pathbuilder2e.com/json.php?id=#{data['build_id']}"))
         )['build']
+      rescue JSON::ParserError
+        nil
       end
 
       def attributes_for_create(data) # rubocop: disable Metrics/AbcSize
