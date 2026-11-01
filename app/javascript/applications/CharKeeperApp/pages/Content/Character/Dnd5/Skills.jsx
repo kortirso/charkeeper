@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch, Switch, Match } from 'solid-js';
 
 import { ErrorWrapper, Levelbox, EditWrapper, Dice, GuideWrapper, Button, Checkbox } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
@@ -41,6 +41,12 @@ export const Dnd5Skills = (props) => {
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
+
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['dnd2024'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id && character().guide_step !== 1) {
@@ -127,7 +133,7 @@ export const Dnd5Skills = (props) => {
                     <div class="mt-2" />
                   </Show>
                   <p class="text-sm text-black!">{localize(TRANSLATION, locale())['skillBoosts']} {character().skill_boosts}</p>
-                  <p class="text-sm text-black!">{Object.entries(config.skills).filter(([slug]) => character().skill_boosts_list.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
+                  <p class="text-sm text-black!">{Object.entries(config.skills).filter(([slug]) => character().skill_boosts_list.includes(slug)).map(([, values]) => localize(values.name, currentLocale())).join(', ')}</p>
                 </Show>
               </div>
             </Show>
@@ -150,13 +156,13 @@ export const Dnd5Skills = (props) => {
                             </Switch>
                             <p class="uppercase mr-4">{skill.ability}</p>
                             <p class="flex-1 flex items-center" classList={{ 'font-medium!': skill.selected }}>
-                              {localize(config.skills[skill.slug].name, locale())}
+                              {localize(config.skills[skill.slug].name, currentLocale())}
                             </p>
                             <Dice
                               width="28"
                               height="28"
                               text={modifier(skill.modifier)}
-                              onClick={() => props.openD20Test(`/check skill "${skill.slug}"`, `${localize(TRANSLATION, locale())['check']}, ${localize(config.skills[skill.slug].name, locale())}`, skill.modifier)}
+                              onClick={() => props.openD20Test(`/check skill "${skill.slug}"`, `${localize(TRANSLATION, locale())['check']}, ${localize(config.skills[skill.slug].name, currentLocale())}`, skill.modifier)}
                             />
                           </div>
                         }
@@ -167,7 +173,7 @@ export const Dnd5Skills = (props) => {
                       {(skill) =>
                         <div class="fallout-skill">
                           <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>
-                            {localize(config.skills[skill.slug].name, locale())}
+                            {localize(config.skills[skill.slug].name, currentLocale())}
                           </p>
                           <div class="fallout-skill-actions">
                             <Show

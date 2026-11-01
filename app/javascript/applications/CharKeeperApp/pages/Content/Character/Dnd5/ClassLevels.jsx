@@ -76,6 +76,12 @@ export const Dnd5ClassLevels = (props) => {
 
   const t = i18n.translator(dict);
 
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['dnd2024'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
+
   const fetchTalents = async () => await fetchTalentsRequest(appState.accessToken, character().provider, character().id);
 
   createEffect(() => {
@@ -144,7 +150,7 @@ export const Dnd5ClassLevels = (props) => {
     if (character().provider === 'dnd5') return translate(result, locale());
     if (homebrews() === undefined) return translate(result, locale());
 
-    return translate({ ...result, ...homebrews().dnd2024.classes }, locale());
+    return translate({ ...result, ...homebrews().dnd2024.classes }, currentLocale());
   });
 
   // actions

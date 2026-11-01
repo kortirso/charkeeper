@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 
 import { ErrorWrapper, Button, EditWrapper, Dice, GuideWrapper } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
@@ -50,6 +50,12 @@ export const Dnd5Abilities = (props) => {
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
+
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['dnd2024'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
@@ -119,7 +125,7 @@ export const Dnd5Abilities = (props) => {
               <For each={Object.entries(config.abilities)}>
                 {([slug, values]) =>
                   <div>
-                    <p class="text-sm uppercase text-center mb-2">{localize(values.name, locale())}</p>
+                    <p class="text-sm uppercase text-center mb-2">{localize(values.name, currentLocale())}</p>
                     <div class="dc20-ability">
                       <p class="text-2xl font-normal!">
                         <Show when={!editMode()} fallback={abilitiesData()[slug]}>
@@ -129,12 +135,12 @@ export const Dnd5Abilities = (props) => {
                               height="64"
                               text={modifier(character().modifiers[slug])}
                               textClassList="text-4xl"
-                              onClick={() => props.openD20Test(`/check attr ${slug}`, `${localize(TRANSLATION, locale()).check}, ${localize(values.name, locale())}`, character().modifiers[slug])}
+                              onClick={() => props.openD20Test(`/check attr ${slug}`, `${localize(TRANSLATION, locale()).check}, ${localize(values.name, currentLocale())}`, character().modifiers[slug])}
                             />
                             <div class="dc20-ability-savebox">
                               <Dice
                                 text={modifier(character().save_dc[slug])}
-                                onClick={() => props.openD20Test(`/check save ${slug}`, `${localize(TRANSLATION, locale()).saveCheck}, ${localize(values.name, locale())}`, character().save_dc[slug])}
+                                onClick={() => props.openD20Test(`/check save ${slug}`, `${localize(TRANSLATION, locale()).saveCheck}, ${localize(values.name, currentLocale())}`, character().save_dc[slug])}
                               />
                               <p class="text-xs text-center">{localize(TRANSLATION, locale()).save}</p>
                             </div>

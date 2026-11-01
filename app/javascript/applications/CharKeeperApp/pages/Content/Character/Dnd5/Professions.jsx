@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { ErrorWrapper, Toggle, Checkbox, GuideWrapper, Languages } from '../../../../components';
@@ -33,6 +33,12 @@ export const Dnd5Professions = (props) => {
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['dnd2024'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
@@ -116,7 +122,7 @@ export const Dnd5Professions = (props) => {
               {([slug, names]) =>
                 <div class="mb-1">
                   <Checkbox
-                    labelText={localize(names.name, locale())}
+                    labelText={localize(names.name, currentLocale())}
                     labelPosition="right"
                     labelClassList="text-sm ml-4"
                     checked={character().weapon_mastery.includes(slug)}

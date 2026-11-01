@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 
 import { ErrorWrapper, GuideWrapper, Button, Select } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
@@ -22,6 +22,10 @@ const TRANSLATION = {
     bardic: 'Бардовское вдохновение',
     settings: 'Настройки',
     showBardic: 'Показывать вдохновение барда'
+  },
+  'ru-AG': {
+    proficiencyBonus: 'Бонус умения',
+    hitDices: 'Кости здоровья'
   },
   es: {
     proficiencyBonus: 'Bonificación de competencia',
@@ -47,6 +51,12 @@ export const Dnd5Proficiency = (props) => {
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
+
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['dnd2024'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
 
   const readSettings = async () => {
     const cacheValue = await readFromCache(SETTINGS_CACHE_NAME);
@@ -142,11 +152,11 @@ export const Dnd5Proficiency = (props) => {
               </div>
             </Show>
             <div class="dnd-static-box-item">
-              <p class="dnd-static-box-item-title">{localize(TRANSLATION, locale()).proficiencyBonus}</p>
+              <p class="dnd-static-box-item-title">{localize(TRANSLATION, currentLocale()).proficiencyBonus}</p>
               <p class="dnd-static-value">{modifier(character().proficiency_bonus)}</p>
             </div>
             <div class="dnd-static-box-item">
-              <p class="dnd-static-box-item-title">{localize(TRANSLATION, locale()).hitDices}</p>
+              <p class="dnd-static-box-item-title">{localize(TRANSLATION, currentLocale()).hitDices}</p>
               <For each={Object.entries(character().hit_dice).filter(([, value]) => value > 0)}>
                 {([dice, maxValue]) =>
                   <div class="flex justify-center items-center">

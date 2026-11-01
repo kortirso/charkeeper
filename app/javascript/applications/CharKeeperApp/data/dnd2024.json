@@ -45,9 +45,9 @@
     "tiefling": {
       "name": { "en": "Tiefling", "ru": "Тифлинг" },
       "legacies": {
-        "abyssal": { "name": { "en": "Abyssal", "ru": "Наследие бездны" } },
+        "abyssal": { "name": { "en": "Abyssal", "ru": "Наследие бездны", "ru-AG": "Демоническое наследие" } },
         "chthonic": { "name": { "en": "Chthonic", "ru": "Хтоническое наследие" } },
-        "infernal": { "name": { "en": "Infernal", "ru": "Инфернальное наследие" } }
+        "infernal": { "name": { "en": "Infernal", "ru": "Инфернальное наследие", "ru-AG": "Дьявольское наследие" } }
       },
       "sizes": ["medium", "small"]
     },
@@ -61,7 +61,7 @@
       "legacies": {
         "cloud_giant": { "name": { "en": "Cloud giant", "ru": "Облачный великан" } },
         "fire_giant": { "name": { "en": "Fire giant", "ru": "Огненный великан" } },
-        "frost_giant": { "name": { "en": "Frost giant", "ru": "ледяной великан" } },
+        "frost_giant": { "name": { "en": "Frost giant", "ru": "Ледяной великан", "ru-AG": "Морозный великан" } },
         "hill_giant": { "name": { "en": "Hill giant", "ru": "Холмовой великан" } },
         "stone_giant": { "name": { "en": "Stone giant", "ru": "Каменный великан" } },
         "storm_giant": { "name": { "en": "Storm giant", "ru": "Штормовой великан" } }
@@ -78,11 +78,11 @@
     "scribe": { "name": { "en": "Scribe", "ru": "Писарь" } },
     "acolyte": { "name": { "en": "Acolyte", "ru": "Послушник" } },
     "criminal": { "name": { "en": "Criminal", "ru": "Преступник" } },
-    "guide": { "name": { "en": "Guide", "ru": "Путешественник" } },
+    "guide": { "name": { "en": "Guide", "ru": "Путешественник", "ru-AG": "Проводник" } },
     "artisan": { "name": { "en": "Artisan", "ru": "Ремесленник" } },
     "soldier": { "name": { "en": "Soldier", "ru": "Солдат" } },
     "guard": { "name": { "en": "Guard", "ru": "Стражник" } },
-    "wayfarer": { "name": { "en": "Wayfarer", "ru": "Странник" } },
+    "wayfarer": { "name": { "en": "Wayfarer", "ru": "Странник", "ru-AG": "Бродяга" } },
     "merchant": { "name": { "en": "Merchant", "ru": "Торговец" } },
     "farmer": { "name": { "en": "Farmer", "ru": "Фермер" } },
     "charlatan": { "name": { "en": "Charlatan", "ru": "Шарлатан" } }
@@ -91,7 +91,7 @@
     "barbarian": {
       "name": { "en": "Barbarian", "ru": "Варвар" },
       "subclasses": {
-        "path_of_the_berserker": { "name": { "en": "Path of the Berserker", "ru": "Путь берсерка" } },
+        "path_of_the_berserker": { "name": { "en": "Path of the Berserker", "ru": "Путь берсерка", "ru-AG": "Путь берсеркера" } },
         "path_of_the_wild_heart": { "name": { "en": "Path of the Wild Heart", "ru": "Путь дикого сердца" } },
         "path_of_the_world_tree": { "name": { "en": "Path of the World Tree", "ru": "Путь Мирового древа" } },
         "path_of_the_zealot": { "name": { "en": "Path of the Zealot", "ru": "Путь фанатика" } }
@@ -102,8 +102,8 @@
       "subclasses": {
         "college_of_dance": { "name": { "en": "College of dance", "ru": "Коллегия танца" } },
         "college_of_glamour": { "name": { "en": "College of glamour", "ru": "Коллегия очарования" } },
-        "college_of_lore": { "name": { "en": "College of lore", "ru": "Коллегия знания" } },
-        "college_of_valor": { "name": { "en": "College of valor", "ru": "Коллегия доблести" } }
+        "college_of_lore": { "name": { "en": "College of lore", "ru": "Коллегия знания", "ru-AG": "Коллегия знаний" } },
+        "college_of_valor": { "name": { "en": "College of valor", "ru": "Коллегия доблести", "ru-AG": "Коллегия отваги" } }
       }
     },
     "cleric": {
@@ -127,19 +127,19 @@
     "fighter": {
       "name": { "en": "Fighter", "ru": "Воин" },
       "subclasses": {
-        "battle_master": { "name": { "en": "Battle master", "ru": "Мастер боевых искусств" } },
+        "battle_master": { "name": { "en": "Battle master", "ru": "Мастер боевых искусств", "ru-AG": "Мастер битвы" } },
         "champion": { "name": { "en": "Champion", "ru": "Чемпион" } },
-        "eldritch_knight": { "name": { "en": "Eldritch Knight", "ru": "Мистический рыцарь" } },
+        "eldritch_knight": { "name": { "en": "Eldritch Knight", "ru": "Мистический рыцарь", "ru-AG": "Потусторонний рыцарь" } },
         "psi_warrior": { "name": { "en": "Psi Warrior", "ru": "Пси-воин" } }
       }
     },
     "monk": {
       "name": { "en": "Monk", "ru": "Монах" },
       "subclasses": {
-        "warrior_of_mercy": { "name": { "en": "Warrior of mercy", "ru": "Мастер милосердия" } },
-        "warrior_of_shadow": { "name": { "en": "Warrior of shadow", "ru": "Мастер тени" } },
-        "warrior_of_the_elements": { "name": { "en": "Warrior of the elements", "ru": "Мастер стихий" } },
-        "warrior_of_the_open_hand": { "name": { "en": "Warrior of the open hand", "ru": "Мастер открытой ладони" } }
+        "warrior_of_mercy": { "name": { "en": "Warrior of mercy", "ru": "Мастер милосердия", "ru-AG": "Воин милосердия" } },
+        "warrior_of_shadow": { "name": { "en": "Warrior of shadow", "ru": "Мастер тени", "ru-AG": "Воин тени" } },
+        "warrior_of_the_elements": { "name": { "en": "Warrior of the elements", "ru": "Мастер стихий", "ru-AG": "Воин стихий" } },
+        "warrior_of_the_open_hand": { "name": { "en": "Warrior of the open hand", "ru": "Мастер открытой ладони", "ru-AG": "Воин открытой ладони" } }
       }
     },
     "paladin": {
@@ -148,14 +148,14 @@
         "oath_of_devotion": { "name": { "en": "Oath of Devotion", "ru": "Клятва преданности" } },
         "oath_of_glory": { "name": { "en": "Oath of Glory", "ru": "Клятва славы" } },
         "oath_of_the_ancients": { "name": { "en": "Oath of the Ancients", "ru": "Клятва Древних" } },
-        "oath_of_vengeance": { "name": { "en": "Oath of Vengeance", "ru": "Клятва мести" } }
+        "oath_of_vengeance": { "name": { "en": "Oath of Vengeance", "ru": "Клятва мести", "ru-AG": "Клятва возмездия" } }
       }
     },
     "ranger": {
       "name": { "en": "Ranger", "ru": "Следопыт" },
       "subclasses": {
         "beast_master": { "name": { "en": "Beast Master", "ru": "Повелитель зверей" } },
-        "fey_wanderer": { "name": { "en": "Fey Wanderer", "ru": "Фейский странник" } },
+        "fey_wanderer": { "name": { "en": "Fey Wanderer", "ru": "Фейский странник", "ru-AG": "Странник фей" } },
         "gloom_stalker": { "name": { "en": "Gloom Stalker", "ru": "Сумрачный охотник" } },
         "hunter": { "name": { "en": "Hunter", "ru": "Охотник" } }
       }
@@ -163,41 +163,41 @@
     "rogue": {
       "name": { "en": "Rogue", "ru": "Плут" },
       "subclasses": {
-        "arcane_trickster": { "name": { "en": "Arcane Trickster", "ru": "Мистический ловкач" } },
-        "assassin": { "name": { "en": "Assassin", "ru": "Убийца" } },
-        "soulknife": { "name": { "en": "Soulknife", "ru": "Клинок души" } },
+        "arcane_trickster": { "name": { "en": "Arcane Trickster", "ru": "Мистический ловкач", "ru-AG": "Мистический трикстер" } },
+        "assassin": { "name": { "en": "Assassin", "ru": "Убийца", "ru-AG": "Ассасин" } },
+        "soulknife": { "name": { "en": "Soulknife", "ru": "Клинок души", "ru-AG": "Клинок душ" } },
         "thief": { "name": { "en": "Thief", "ru": "Вор" } }
       }
     },
     "sorcerer": {
       "name": { "en": "Sorcerer", "ru": "Чародей" },
       "subclasses": {
-        "aberrant_sorcery": { "name": { "en": "Aberrant Sorcery", "ru": "Аберрантный разум" } },
-        "clockwork_sorcery": { "name": { "en": "Clockwork Sorcery", "ru": "Заводная душа" } },
-        "draconic_sorcery": { "name": { "en": "Draconic Sorcery", "ru": "Драконья кровь" } },
-        "wild_magic_sorcery": { "name": { "en": "Wild Magic Sorcery", "ru": "Дикая магия" } }
+        "aberrant_sorcery": { "name": { "en": "Aberrant Sorcery", "ru": "Аберрантный разум", "ru-AG": "Аберрантное чародейство" } },
+        "clockwork_sorcery": { "name": { "en": "Clockwork Sorcery", "ru": "Заводная душа", "ru-AG": "Заводное чародейство" } },
+        "draconic_sorcery": { "name": { "en": "Draconic Sorcery", "ru": "Драконья кровь", "ru-AG": "Драконье чародейство" } },
+        "wild_magic_sorcery": { "name": { "en": "Wild Magic Sorcery", "ru": "Дикая магия", "ru-AG": "Чародейство дикой магии" } }
       }
     },
     "warlock": {
       "name": { "en": "Warlock", "ru": "Колдун" },
       "subclasses": {
-        "archfey_patron": { "name": { "en": "Archfey Patron", "ru": "Покровитель Архифея" } },
-        "celestial_patron": { "name": { "en": "Celestial Patron", "ru": "Покровитель Небожитель" } },
-        "fiend_patron": { "name": { "en": "Fiend Patron", "ru": "Покровитель Исчадие" } },
-        "great_old_one_patron": { "name": { "en": "Great Old One Patron", "ru": "Покровитель Великий древний" } }
+        "archfey_patron": { "name": { "en": "Archfey Patron", "ru": "Покровитель Архифея", "ru-AG": "Покровительство Архифеи" } },
+        "celestial_patron": { "name": { "en": "Celestial Patron", "ru": "Покровитель Небожитель", "ru-AG": "Покровительство Небожителя" } },
+        "fiend_patron": { "name": { "en": "Fiend Patron", "ru": "Покровитель Исчадие", "ru-AG": "Покровительство бестии" } },
+        "great_old_one_patron": { "name": { "en": "Great Old One Patron", "ru": "Покровитель Великий древний", "ru-AG": "Покровительство Великого Древнего" } }
       }
     },
     "wizard": {
       "name": { "en": "Wizard", "ru": "Волшебник" },
       "subclasses": {
-        "abjurer": { "name": { "en": "Anjurer", "ru": "Оградитель" } },
+        "abjurer": { "name": { "en": "Abjurer", "ru": "Оградитель", "ru-AG": "Мастер преграждения" } },
         "diviner": { "name": { "en": "Diviner", "ru": "Прорицатель" } },
-        "evoker": { "name": { "en": "Evoker", "ru": "Воплотитель" } },
+        "evoker": { "name": { "en": "Evoker", "ru": "Воплотитель", "ru-AG": "Мастер эвокации" } },
         "illusionist": { "name": { "en": "Illusionist", "ru": "Иллюзионист" } }
       }
     },
     "artificer": {
-      "name": { "en": "Artificer", "ru": "Изобретатель" },
+      "name": { "en": "Artificer", "ru": "Изобретатель", "ru-AG": "Артефактор" },
       "subclasses": {
         "alchemist": { "name": { "en": "Alchemist", "ru": "Алхимик" } },
         "armorer": { "name": { "en": "Armorer", "ru": "Бронник" } }
@@ -221,21 +221,21 @@
   "abilities": {
     "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
     "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" }, "shortName": { "en": "Dex", "ru": "Лов" } },
-    "con": { "name": { "en": "Constitution", "ru": "Телосложение" }, "shortName": { "en": "Con", "ru": "Тел" } },
+    "con": { "name": { "en": "Constitution", "ru": "Телосложение", "ru-AG": "Выносливость" }, "shortName": { "en": "Con", "ru": "Тел", "ru-AG": "Вын" } },
     "int": { "name": { "en": "Intelligence", "ru": "Интеллект" }, "shortName": { "en": "Int", "ru": "Инт" } },
     "wis": { "name": { "en": "Wisdom", "ru": "Мудрость" }, "shortName": { "en": "Wis", "ru": "Муд" } },
     "cha": { "name": { "en": "Charisma", "ru": "Харизма" }, "shortName": { "en": "Cha", "ru": "Хар" } }
   },
   "skills": {
     "acrobatics": { "name": { "en": "Acrobatics", "ru": "Акробатика" } },
-    "animal": { "name": { "en": "Animal Handling", "ru": "Уход за животными" } },
+    "animal": { "name": { "en": "Animal Handling", "ru": "Уход за животными", "ru-AG": "Дрессировка" } },
     "arcana": { "name": { "en": "Arcana", "ru": "Магия" } },
     "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" } },
     "deception": { "name": { "en": "Deception", "ru": "Обман" } },
     "history": { "name": { "en": "History", "ru": "История" } },
     "insight": { "name": { "en": "Insight", "ru": "Проницательность" } },
     "intimidation": { "name": { "en": "Intimidation", "ru": "Запугивание" } },
-    "investigation": { "name": { "en": "Investigation", "ru": "Анализ" } },
+    "investigation": { "name": { "en": "Investigation", "ru": "Анализ", "ru-AG": "Расследование" } },
     "medicine": { "name": { "en": "Medicine", "ru": "Медицина" } },
     "nature": { "name": { "en": "Nature", "ru": "Природа" } },
     "perception": { "name": { "en": "Perception", "ru": "Внимательность" } },
@@ -254,14 +254,14 @@
     "draft_horse": { "name": { "en": "Draft horse", "ru": "Упряжная лошадь" } }
   },
   "weaponMasteries": {
-    "cleave": { "name": { "en": "Cleave", "ru": "Прорубание" } },
-    "graze": { "name": { "en": "Graze", "ru": "Задевание" } },
-    "nick": { "name": { "en": "Nick", "ru": "Выпад" } },
-    "push": { "name": { "en": "Push", "ru": "Толкание" } },
-    "sap": { "name": { "en": "Sap", "ru": "Изнурение" } },
-    "slow": { "name": { "en": "Slow", "ru": "Замедление" } },
-    "topple": { "name": { "en": "Topple", "ru": "Опрокидывание" } },
-    "vex": { "name": { "en": "Vex", "ru": "Подавление" } }
+    "cleave": { "name": { "en": "Cleave", "ru": "Прорубание", "ru-AG": "Рассекающее" } },
+    "graze": { "name": { "en": "Graze", "ru": "Задевание", "ru-AG": "Задевающее" } },
+    "nick": { "name": { "en": "Nick", "ru": "Выпад", "ru-AG": "Быстрое" } },
+    "push": { "name": { "en": "Push", "ru": "Толкание", "ru-AG": "Отталкивающее" } },
+    "sap": { "name": { "en": "Sap", "ru": "Изнурение", "ru-AG": "Ослабляющее" } },
+    "slow": { "name": { "en": "Slow", "ru": "Замедление", "ru-AG": "Замедляющее" } },
+    "topple": { "name": { "en": "Topple", "ru": "Опрокидывание", "ru-AG": "Опрокидывающее" } },
+    "vex": { "name": { "en": "Vex", "ru": "Подавление", "ru-AG": "Отвлекающее" } }
   },
   "languages": {
     "common": { "name": { "en": "Common", "ru": "Общий", "es": "Común" } },

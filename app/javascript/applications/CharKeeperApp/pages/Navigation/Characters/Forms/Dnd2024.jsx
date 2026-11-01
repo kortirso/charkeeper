@@ -5,7 +5,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox, Label } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
-import { useAppLocale } from '../../../../context';
+import { useAppLocale, useAppState } from '../../../../context';
 import { translate, localize } from '../../../../helpers';
 
 const DND2024_DEFAULT_FORM = {
@@ -39,8 +39,15 @@ export const Dnd2024CharacterForm = (props) => {
 
   const [characterDnd2024Form, setCharacterDnd2024Form] = createStore(DND2024_DEFAULT_FORM);
 
+  const [appState] = useAppState();
   const [locale, dict] = useAppLocale();
   const t = i18n.translator(dict);
+
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['dnd2024'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -104,7 +111,7 @@ export const Dnd2024CharacterForm = (props) => {
         />
         <Select
           labelText={t('newCharacterPage.dnd2024.species')}
-          items={translate(props.dnd2024Races(), locale(), true)}
+          items={translate(props.dnd2024Races(), currentLocale(), true)}
           selectedValue={characterDnd2024Form.species}
           onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: props.dnd2024Races()[value].sizes[0], legacy: undefined })}
         />
@@ -112,7 +119,7 @@ export const Dnd2024CharacterForm = (props) => {
           <Show when={Object.keys(props.dnd2024Races()[characterDnd2024Form.species].legacies).length > 0}>
             <Select
               labelText={t('newCharacterPage.dnd2024.legacy')}
-              items={translate(props.dnd2024Races()[characterDnd2024Form.species].legacies, locale())}
+              items={translate(props.dnd2024Races()[characterDnd2024Form.species].legacies, currentLocale())}
               selectedValue={characterDnd2024Form.legacy}
               onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, legacy: value })}
             />
@@ -127,14 +134,14 @@ export const Dnd2024CharacterForm = (props) => {
         <Select
           searchable
           labelText={t('newCharacterPage.pathfinder2.background')}
-          items={translate(dndBackgrounds(), locale(), true)}
+          items={translate(dndBackgrounds(), currentLocale(), true)}
           selectedValue={characterDnd2024Form.background}
           onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, background: value })}
         />
         <Select
           searchable
           labelText={t('newCharacterPage.dnd2024.mainClass')}
-          items={translate(dndClasses(), locale(), true)}
+          items={translate(dndClasses(), currentLocale(), true)}
           selectedValue={characterDnd2024Form.main_class}
           onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, main_class: value })}
         />
