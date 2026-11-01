@@ -67,7 +67,14 @@ export const FateStunts = (props) => {
   }
 
   const addStunt = () => {
-    setStunts(stunts().concat({ id: Math.floor(Math.random() * 1000), title: '', description: '', skill: null, approach: null }));
+    const skill = character().skills_system === 'core' ? '' : null;
+    const approach = character().skills_system === 'core' ? null : '';
+
+    setStunts(
+      stunts().concat(
+        { id: Math.floor(Math.random() * 1000), title: '', description: '', skill: skill, approach: approach }
+      )
+    );
   }
 
   const changeStunt = (id, attribute, value) => {
@@ -108,7 +115,7 @@ export const FateStunts = (props) => {
           <Show
             when={editMode()}
             fallback={
-              <For each={stunts().filter((item) => character().skills_system === 'core' ? item.skill : item.approach)}>
+              <For each={stunts().filter((item) => character().skills_system === 'core' ? (item.skill !== null) : (item.approach !== null))}>
                 {(stunt) =>
                   <div class="mt-4">
                     <p class="mb-2 text-lg! flex items-center gap-x-4">
@@ -130,7 +137,7 @@ export const FateStunts = (props) => {
           >
             <>
               <Key
-                each={stunts().filter((item) => character().skills_system === 'core' ? item.skill : item.approach)}
+                each={stunts().filter((item) => character().skills_system === 'core' ? (item.skill !== null) : (item.approach !== null))}
                 by={item => item.id}
               >
                 {(stunt) =>
