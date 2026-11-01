@@ -11,7 +11,7 @@ module CampaignsContext
       'Fate::Character' => 'fate',
       'Fallout::Character' => 'fallout',
       'Cosmere::Character' => 'cosmere',
-      'Cthulhu::Character' => 'cthulhu7',
+      'Cthulhu7::Character' => 'cthulhu7',
       'Nimble::Character' => 'nimble'
     }.freeze
 
