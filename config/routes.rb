@@ -385,7 +385,9 @@ Rails.application.routes.draw do
       resources :feats, only: %i[index show destroy] do
         post :batch_destroy, on: :collection
       end
-      resources :spells, only: %i[index show destroy]
+      resources :spells, only: %i[index show destroy] do
+        post :batch_destroy, on: :collection
+      end
       resources :books, only: %i[index show create update destroy] do
         get :for_items, on: :collection
       end

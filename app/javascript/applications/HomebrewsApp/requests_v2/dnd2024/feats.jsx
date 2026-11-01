@@ -13,3 +13,10 @@ export const fetchFeatRequest = async (accessToken, id) => {
     options: options('GET', accessToken)
   });
 }
+
+export const removeFeatsRequest = async (accessToken, ids) => {
+  return await apiRequest({
+    url: `/homebrews_v2/dnd2024/feats/batch_destroy.json`,
+    options: options('POST', accessToken, { ids: ids })
+  });
+}

@@ -23,12 +23,12 @@ module HomebrewsV2Context
                 optional(:es).maybe(:string, max_size?: 50)
               end
               required(:description).hash do
-                required(:en).filled(:string, max_size?: 1_000)
-                optional(:ru).maybe(:string, max_size?: 1_000)
-                optional(:'ru-AG').maybe(:string, max_size?: 1_000)
-                optional(:es).maybe(:string, max_size?: 1_000)
+                required(:en).filled(:string, max_size?: 2_000)
+                optional(:ru).maybe(:string, max_size?: 2_000)
+                optional(:'ru-AG').maybe(:string, max_size?: 2_000)
+                optional(:es).maybe(:string, max_size?: 2_000)
               end
-              required(:origin_values).filled(:array).each(:string)
+              required(:origin_values).maybe(:array).each(:string)
               optional(:public).filled(:bool)
               required(:info).hash do
                 required(:level).filled(:integer, gteq?: 0)
@@ -58,7 +58,7 @@ module HomebrewsV2Context
           end
 
           def do_prepare(input)
-            input[:slug] = SecureRandom.uuid unless input.key?(:id)
+            input[:slug] = input.dig(:title, :en)&.downcase&.tr(' ', '_') || SecureRandom.uuid
             input[:origin] = 'spell'
             input[:kind] = 'static'
             input[:title].transform_values! { |value| sanitize(value) }

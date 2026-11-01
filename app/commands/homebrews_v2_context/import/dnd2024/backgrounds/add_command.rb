@@ -21,10 +21,10 @@ module HomebrewsV2Context
                 optional(:es).maybe(:string, max_size?: 50)
               end
               required(:description).hash do
-                required(:en).filled(:string, max_size?: 500)
-                optional(:ru).maybe(:string, max_size?: 500)
-                optional(:'ru-AG').maybe(:string, max_size?: 50)
-                optional(:es).maybe(:string, max_size?: 500)
+                required(:en).filled(:string, max_size?: 1_000)
+                optional(:ru).maybe(:string, max_size?: 1_000)
+                optional(:'ru-AG').maybe(:string, max_size?: 1_000)
+                optional(:es).maybe(:string, max_size?: 1_000)
               end
               required(:selected_feat).filled(:string)
               required(:selected_skills).filled(:array).each(Skills)
@@ -69,9 +69,12 @@ module HomebrewsV2Context
           end
 
           def feats(input)
-            ::Dnd2024::Feat.find_by(
+            result = ::Dnd2024::Feat.find_by(slug: input[:selected_feat])
+            result ||= ::Dnd2024::Feat.find_by(id: input[:selected_feat])
+            result ||= ::Dnd2024::Feat.find_by(
               "title ->> 'en' = ? OR title ->> 'ru' = ?", input[:selected_feat], input[:selected_feat]
-            ) || ::Dnd2024::Feat.find_by(id: input[:selected_feat])
+            )
+            result
           end
         end
       end

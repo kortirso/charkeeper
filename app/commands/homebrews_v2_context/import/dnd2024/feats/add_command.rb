@@ -25,10 +25,10 @@ module HomebrewsV2Context
                 optional(:es).maybe(:string, max_size?: 50)
               end
               required(:description).hash do
-                required(:en).filled(:string, max_size?: 1_000)
-                optional(:ru).maybe(:string, max_size?: 1_000)
-                optional(:'ru-AG').maybe(:string, max_size?: 1_000)
-                optional(:es).maybe(:string, max_size?: 1_000)
+                required(:en).filled(:string, max_size?: 2_000)
+                optional(:ru).maybe(:string, max_size?: 2_000)
+                optional(:'ru-AG').maybe(:string, max_size?: 2_000)
+                optional(:es).maybe(:string, max_size?: 2_000)
               end
               required(:origin).filled(Origins)
               required(:origin_value).filled(:string) # origin/general/fighting_style/epic classes subclasses
@@ -80,14 +80,14 @@ module HomebrewsV2Context
           end
 
           def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
-            input[:slug] ||= SecureRandom.uuid
+            input[:slug] ||= input.dig(:title, :en)&.downcase&.tr(' ', '_') || SecureRandom.uuid
             input[:info] = {}
 
             if input.key?(:static_spells)
               static_spells = input[:static_spells].each_with_object({}) do |(key, value), acc|
-                spell = ::Dnd2024::Feat.where(origin: 6).find_by("title ->> 'en' = ? OR title ->> 'ru' = ?", key, key)
-                spell ||= ::Dnd2024::Feat.where(origin: 6).find_by(id: key)
+                spell = ::Dnd2024::Feat.where(origin: 6).find_by(id: key)
                 spell ||= ::Dnd2024::Feat.where(origin: 6).find_by(slug: key)
+                spell ||= ::Dnd2024::Feat.where(origin: 6).find_by("title ->> 'en' = ? OR title ->> 'ru' = ?", key, key)
                 next unless spell
 
                 acc[spell.slug] = value

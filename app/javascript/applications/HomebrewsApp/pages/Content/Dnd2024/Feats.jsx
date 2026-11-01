@@ -1,11 +1,12 @@
 import { useAppState } from '../../../context';
 import { SharedContent } from '../../../pages';
-import { fetchFeatsRequest, fetchFeatRequest } from '../../../requests_v2/dnd2024/feats';
+import { fetchFeatsRequest, removeFeatsRequest, fetchFeatRequest } from '../../../requests_v2/dnd2024/feats';
 
 export const Dnd2024Feats = () => {
   const [appState] = useAppState();
 
   const fetchList = async () => await fetchFeatsRequest(appState.accessToken);
+  const batchDestroy = async (ids) => await removeFeatsRequest(appState.accessToken, ids);
 
   const ChildrenComponent = (props) => (
     <div class="flex flex-col gap-2">
@@ -23,6 +24,7 @@ export const Dnd2024Feats = () => {
       parentType="Feat"
       publicationType="feat"
       onFetchRequest={fetchList}
+      onBatchDestroy={batchDestroy}
       onShowRequest={fetchFeatRequest}
       childrenComponent={ChildrenComponent}
     />

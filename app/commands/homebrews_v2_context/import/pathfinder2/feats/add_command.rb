@@ -85,7 +85,7 @@ module HomebrewsV2Context
           end
 
           def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
-            input[:slug] = input.dig(:title, :en)&.downcase&.tr(' ', '_') || SecureRandom.uuid
+            input[:slug] ||= input.dig(:title, :en)&.downcase&.tr(' ', '_') || SecureRandom.uuid
             input[:info] ||= {}
             input[:conditions] ||= {}
 

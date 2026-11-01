@@ -13,3 +13,10 @@ export const fetchSpellRequest = async (accessToken, id) => {
     options: options('GET', accessToken)
   });
 }
+
+export const removeSpellsRequest = async (accessToken, ids) => {
+  return await apiRequest({
+    url: `/homebrews_v2/dnd2024/spells/batch_destroy.json`,
+    options: options('POST', accessToken, { ids: ids })
+  });
+}
