@@ -2,6 +2,29 @@ require 'net/http'
 require 'json'
 require 'uri'
 
+relation =
+  ::Dnd2024::Feat
+    .where.not(origin: 6)
+    .where(user_id: nil)
+    .where("char_length(origin_value) != 36")
+JSON.parse(File.read(Rails.root.join('db/data_prod/dnd2024/feats.json'))).each do |feat|
+  item = relation.find_by(slug: feat['slug'])
+  next unless item
+
+  item.update(feat.slice('title', 'slug'))
+end
+
+relation =
+  ::Dnd2024::Feat
+    .where(origin: 6)
+    .where(user_id: nil)
+JSON.parse(File.read(Rails.root.join('db/data_prod/dnd2024/spells.json'))).each do |feat|
+  item = relation.find_by(slug: feat['slug'])
+  next unless item
+
+  item.update(feat.slice('title', 'slug'))
+end
+
 [
   'feats01.json', 'feats02.json', 'feats03.json', 'feats04.json', 'feats05.json', 'feats06.json', 'feats07.json',
   'feats08.json', 'feats09.json', 'feats10.json', 'feats10+.json',
