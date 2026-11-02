@@ -33,7 +33,8 @@ const TRANSLATION = {
     inBooks: 'Included in books',
     public: 'Public',
     caption: 'Enable books that contain specific homebrews you need, and they will be available for your characters after that.',
-    editAll: 'Edit all'
+    editAll: 'Edit all',
+    selectAll: 'Select unselected'
   },
   ru: {
     add: 'Добавить',
@@ -58,7 +59,8 @@ const TRANSLATION = {
     inBooks: 'Добавлено в книги',
     public: 'Общедоступное',
     caption: 'Чтобы определённые homebrew были доступны вашим персонажам, то вам необходимо включить те книги, которые содержат интересующие вас homebrew.',
-    editAll: 'Изменить выбранные'
+    editAll: 'Изменить выбранные',
+    selectAll: 'Выбрать невыбранное'
   },
   es: {
     add: 'Agregar',
@@ -83,7 +85,8 @@ const TRANSLATION = {
     inBooks: 'Incluido en libros',
     public: 'Público',
     caption: 'Activa los libros que contienen los homebrews que necesitas y estará disponible para tus personajes.',
-    editAll: 'Editar todo'
+    editAll: 'Editar todo',
+    selectAll: 'Seleccionar no seleccionado'
   }
 }
 
@@ -268,6 +271,11 @@ export const SharedContent = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const selectAll = () => {
+    if (selectedIds().length > 0) setSelectedIds([]);
+    else setSelectedIds(filtered().filter((item) => item.books.length === 0).map((item) => item.id))
+  }
+
   const select = (e, id) => {
     e.stopPropagation();
 
@@ -387,6 +395,9 @@ export const SharedContent = (props) => {
               </Show>
               <Show when={props.onFetchHomebrews && selectedIds().length > 0}>
                 <Button default disabled={selectedIds().length === 0} classList="px-2 py-1" onClick={editAll}>{localize(TRANSLATION, locale()).editAll}</Button>
+              </Show>
+              <Show when={props.onBatchDestroy || props.parentType}>
+                <Button default classList="px-2 py-1" onClick={selectAll}>{localize(TRANSLATION, locale()).selectAll}</Button>
               </Show>
             </div>
           </div>
