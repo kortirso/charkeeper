@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_02_064351) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_02_181400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -497,8 +497,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_02_064351) do
     t.string "upvoteable_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["upvoteable_id", "upvoteable_type"], name: "index_upvotes_on_upvoteable_id_and_upvoteable_type", unique: true
-    t.index ["user_id"], name: "index_upvotes_on_user_id"
+    t.index ["user_id", "upvoteable_id", "upvoteable_type"], name: "index_upvotes_on_user_id_and_upvoteable_id_and_upvoteable_type", unique: true
   end
 
   create_table "user_books", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
