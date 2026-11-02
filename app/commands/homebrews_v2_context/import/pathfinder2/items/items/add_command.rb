@@ -36,6 +36,7 @@ module HomebrewsV2Context
             private
 
             def do_prepare(input)
+              input[:slug] = SecureRandom.uuid
               input[:name].transform_values! { |value| sanitize(value) }
               input[:description].transform_values! { |value| sanitize(value) }
               input[:kind] = 'item'

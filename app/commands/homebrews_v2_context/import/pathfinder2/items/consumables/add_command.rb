@@ -63,6 +63,7 @@ module HomebrewsV2Context
                 input[:info][:consume] = consume_result if consume_result.any?
               end
 
+              input[:slug] = SecureRandom.uuid
               input[:name].transform_values! { |value| sanitize(value) }
               input[:description].transform_values! { |value| sanitize(value) }
               input[:kind] = 'consumables'
