@@ -43,6 +43,7 @@ module Homebrews
       def subclasses_info(object_items) # rubocop: disable Metrics/AbcSize
         subclasses =
           ::Dnd2024::Homebrews::Subclass
+            .kept
             .where(id: object_items['Homebrew'])
             .hashable_pluck(:id, :title, :info)
             .group_by { |item| item[:info].class_id }
@@ -60,7 +61,7 @@ module Homebrews
       end
 
       def titles(object_items, model, key)
-        transform(model.where(id: object_items[key]).pluck(:id, :title))
+        transform(model.kept.where(id: object_items[key]).pluck(:id, :title))
       end
 
       def transform(values)

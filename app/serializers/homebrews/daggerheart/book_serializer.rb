@@ -44,12 +44,13 @@ module Homebrews
       end
 
       def titles(object_items, model, key)
-        model.where(id: object_items[key]).pluck(:id, :title).to_h.transform_values { |item| translate(item) }
+        model.kept.where(id: object_items[key]).pluck(:id, :title).to_h.transform_values { |item| translate(item) }
       end
 
       def subclasses_info(items) # rubocop: disable Metrics/AbcSize
         subclasses =
           ::Daggerheart::Homebrews::Subclass
+            .kept
             .where(id: items['Homebrew'])
             .hashable_pluck(:id, :title, :info)
             .group_by { |item| item[:info].class_id }

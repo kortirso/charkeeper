@@ -26,6 +26,7 @@ module Homebrews
       def subclasses_info(object_items) # rubocop: disable Metrics/AbcSize
         subclasses =
           ::Pathfinder2::Homebrews::Subclass
+            .kept
             .where(id: object_items['Homebrew'])
             .hashable_pluck(:id, :title, :info)
             .group_by { |item| item[:info].class_id }
@@ -57,6 +58,7 @@ module Homebrews
 
       def all_subraces(object_items)
         ::Pathfinder2::Homebrews::Subrace
+          .kept
           .where(id: object_items['Homebrew'])
           .hashable_pluck(:id, :title, :info)
       end
@@ -80,7 +82,7 @@ module Homebrews
       end
 
       def titles(object_items, model, key)
-        model.where(id: object_items[key]).pluck(:id, :title).to_h.transform_values { |item| translate(item) }
+        model.kept.where(id: object_items[key]).pluck(:id, :title).to_h.transform_values { |item| translate(item) }
       end
 
       def transform(values)

@@ -37,7 +37,7 @@ module Homebrews
       end
 
       def titles(object_items, model, key)
-        model.where(id: object_items[key]).pluck(:id, :title).to_h.transform_values { |item| translate(item) }
+        model.kept.where(id: object_items[key]).pluck(:id, :title).to_h.transform_values { |item| translate(item) }
       end
 
       def transform(values)
