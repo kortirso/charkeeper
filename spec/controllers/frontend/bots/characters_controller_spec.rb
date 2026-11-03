@@ -38,14 +38,10 @@ describe Frontend::Bots::CharactersController do
           context 'for valid params' do
             let(:values) { ['/roll d20'] }
 
-            before { allow(BotContext::Channels::SendToTelegramJob).to receive(:perform_later) }
-
             it 'returns result', :aggregate_failures do
-              request
-
+              expect { request }.not_to have_enqueued_job(BotContext::Channels::SendToTelegramJob)
               expect(response.parsed_body[:errors]).to be_nil
               expect(response).to have_http_status :ok
-              expect(BotContext::Channels::SendToTelegramJob).not_to have_received(:perform_later)
             end
 
             context 'when channel is present' do
@@ -57,11 +53,9 @@ describe Frontend::Bots::CharactersController do
               end
 
               it 'returns result', :aggregate_failures do
-                request
-
+                expect { request }.to have_enqueued_job(BotContext::Channels::SendToTelegramJob)
                 expect(response.parsed_body[:errors]).to be_nil
                 expect(response).to have_http_status :ok
-                expect(BotContext::Channels::SendToTelegramJob).to have_received(:perform_later)
               end
             end
           end

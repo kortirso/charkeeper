@@ -11,6 +11,8 @@ Rails.application.configure do
   # While tests run files are not watched, reloading is not necessary.
   config.enable_reloading = false
 
+  config.active_job.queue_adapter = :test
+
   config.active_storage.service = :test
 
   # Eager loading loads your entire application. When running a single test locally,

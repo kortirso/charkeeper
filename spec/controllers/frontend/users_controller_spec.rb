@@ -34,14 +34,12 @@ describe Frontend::UsersController do
   end
 
   describe 'DELETE#destroy' do
-    before { allow(UsersContext::RemoveProfileJob).to receive(:perform_later) }
-
     context 'for logged users' do
       it 'calls job for removing user', :aggregate_failures do
-        delete :destroy, params: { charkeeper_access_token: access_token }
-
+        expect {
+          delete :destroy, params: { charkeeper_access_token: access_token }
+        }.to have_enqueued_job(UsersContext::RemoveProfileJob).with(user_id: user_session.user_id)
         expect(response).to have_http_status :ok
-        expect(UsersContext::RemoveProfileJob).to have_received(:perform_later).with(user_id: user_session.user_id)
       end
     end
   end
