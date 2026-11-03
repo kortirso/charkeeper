@@ -53,7 +53,7 @@ module Frontend
       private
 
       def find_campaign
-        @campaign = Campaign.find(params.expect(:campaign_id))
+        @campaign = current_user.all_campaigns.find(params.expect(:campaign_id))
       end
 
       def find_campaign_item
@@ -69,7 +69,7 @@ module Frontend
       def find_character_item
         return if to_bool.call(params[:character_item][:for_campaign])
 
-        @character_item = Character::Item.find(params.expect(:id))
+        @character_item = Character::Item.find_by!(id: params.expect(:id), character_id: current_user.characters.select(:id))
       end
 
       def items

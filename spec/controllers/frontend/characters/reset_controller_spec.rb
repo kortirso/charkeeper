@@ -1,0 +1,40 @@
+# frozen_string_literal: true
+
+describe Frontend::Characters::ResetController do
+  let!(:user_session) { create :user_session }
+  let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
+
+  let!(:character) { create :character, :daggerheart }
+  let!(:user_character) { create :character, :daggerheart, user: user_session.user }
+
+  describe 'POST#create' do
+    context 'for logged users' do
+      context 'for unexisting character' do
+        it 'returns error' do
+          post :create, params: { character_id: 'unexisting', charkeeper_access_token: access_token }
+
+          expect(response).to have_http_status :not_found
+        end
+      end
+
+      context 'for not user character' do
+        it 'returns error' do
+          post :create, params: { character_id: character.id, charkeeper_access_token: access_token }
+
+          expect(response).to have_http_status :not_found
+        end
+      end
+
+      context 'for user character' do
+        let(:request) { post :create, params: { character_id: user_character.id, charkeeper_access_token: access_token } }
+
+        it 'creates character note', :aggregate_failures do
+          request
+
+          expect(user_character.reload.data.level).to eq 1
+          expect(response).to have_http_status :ok
+        end
+      end
+    end
+  end
+end

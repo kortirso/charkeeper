@@ -4,7 +4,9 @@ describe Frontend::Campaigns::ItemsController do
   let!(:user_session) { create :user_session }
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
   let!(:campaign) { create :campaign, user: user_session.user, provider: 'dnd5' }
-  let!(:character) { create :character }
+  let!(:character) { create :character, user: user_session.user }
+
+  before { create :campaign_character, character: character, campaign: campaign }
 
   describe 'GET#index' do
     context 'for logged users' do
@@ -275,6 +277,17 @@ describe Frontend::Campaigns::ItemsController do
             expect(Campaign::Item.last.states['shared']).to eq 1
             expect(response).to have_http_status :ok
             expect(response.parsed_body).to eq({ 'result' => 'ok' })
+          end
+
+          context 'for not user character' do
+            let(:another_user) { create :user }
+
+            before { character.update(user: another_user) }
+
+            it 'does not create campaign item', :aggregate_failures do
+              expect { request }.not_to change(campaign.items, :count)
+              expect(response).to have_http_status :not_found
+            end
           end
 
           context 'for existing campaign item' do

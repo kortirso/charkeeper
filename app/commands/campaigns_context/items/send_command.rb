@@ -26,7 +26,7 @@ module CampaignsContext
 
       private
 
-      def validate_content(input)
+      def validate_content(input) # rubocop: disable Metrics/AbcSize
         input[:states] =
           (input[:for_campaign] ? input[:campaign_item] : input[:character_item]).states.merge({
             input[:state] => input[:amount]
@@ -35,7 +35,7 @@ module CampaignsContext
           return [I18n.t('commands.campaigns_context.items.not_enough_items')]
         end
 
-        input[:character] = Character.find_by(id: input[:character_id])
+        input[:character] = input[:campaign].characters.find_by(id: input[:character_id])
         return if input[:character]
 
         [I18n.t('commands.campaigns_context.items.character_not_found')]

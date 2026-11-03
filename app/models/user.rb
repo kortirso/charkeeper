@@ -28,4 +28,10 @@ class User < ApplicationRecord
   has_one :user_homebrew, class_name: '::User::Homebrew', dependent: :destroy
 
   enum :color_schema, { LIGHT => 0, DARK => 1 }
+
+  def all_campaigns
+    Campaign.where(user_id: id).or(
+      Campaign.where(id: Campaign::Character.where(character_id: characters.select(:id)).select(:campaign_id))
+    )
+  end
 end

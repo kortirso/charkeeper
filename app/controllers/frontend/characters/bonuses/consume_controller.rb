@@ -31,7 +31,7 @@ module Frontend
         end
 
         def find_character_item
-          @character_item = Character::Item.find(params.expect(:character_item_id))
+          @character_item = @character.items.find(params.expect(:character_item_id))
         end
 
         def characters_relation

@@ -20,7 +20,7 @@ module Frontend
       private
 
       def find_character
-        @character = Character.find(params.expect(:character_id))
+        @character = authorized_scope(Character.all).find(params.expect(:character_id))
       end
 
       def find_command

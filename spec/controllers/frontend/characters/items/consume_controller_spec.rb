@@ -29,6 +29,22 @@ describe Frontend::Characters::Items::ConsumeController do
         end
       end
 
+      context 'for not user character item' do
+        let(:character_item2) { create :character_item }
+
+        it 'returns error' do
+          post :create, params: {
+            character_id: user_character.id,
+            item_id: character_item2.id,
+            provider: 'pathfinder2',
+            from_state: 'equipment',
+            charkeeper_access_token: access_token
+          }
+
+          expect(response).to have_http_status :not_found
+        end
+      end
+
       context 'for not user character' do
         it 'returns error' do
           post :create, params: {
