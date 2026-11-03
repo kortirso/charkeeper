@@ -60,7 +60,6 @@ gem 'store_model'
 
 # http client
 gem 'faraday', '~> 2.0'
-gem 'net-ssh', '~> 7.3'
 
 # performance metrics
 gem 'pghero'

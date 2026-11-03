@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# :skippit:
+# simplecov:disable
 if defined?(RailsPerformance)
   RailsPerformance.setup do |config|
     # Redis configuration
@@ -64,4 +64,4 @@ if defined?(RailsPerformance)
     # config.system_monitor_duration = 24.hours
   end
 end
-# :skippit:
+# simplecov:enable
