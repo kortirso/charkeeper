@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /signin/new
+Disallow: /signup/new
 Disallow: /web_telegram/
 Disallow: /adminbook/
 Disallow: /dashboard/
