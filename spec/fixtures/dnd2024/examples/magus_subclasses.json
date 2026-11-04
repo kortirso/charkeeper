@@ -23,9 +23,9 @@
         "kind": "hidden",
         "level": 3,
         "static_spells": {
-          "Shocking Grasp": { "modifier": "int" },
-          "Find Familiar": { "modifier": "int" },
-          "Magic Missile": { "modifier": "int" }
+          "shocking_grasp": { "modifier": "int" },
+          "find_familiar": { "modifier": "int" },
+          "magic_missile": { "modifier": "int" }
         }
       }
     ]

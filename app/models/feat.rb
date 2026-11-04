@@ -33,6 +33,7 @@ class Feat < ApplicationRecord
         extra_feats: info['extra_feats'],
         investiture: info['investiture'],
         double_slug: info['double_slug'],
+        static_spells: info['static_spells'],
         options: options&.map do |key, value|
           {
             title: value,

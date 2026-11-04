@@ -17,7 +17,7 @@ module HomebrewsV2Context
             params do
               required(:user).filled(type?: ::User)
               optional(:id).filled(:string, :uuid_v4?)
-              optional(:slug).filled(:string, :uuid_v4?)
+              optional(:slug).filled(:string)
               required(:title).hash do
                 required(:en).filled(:string, max_size?: 50)
                 optional(:ru).maybe(:string, max_size?: 50)
@@ -31,7 +31,7 @@ module HomebrewsV2Context
                 optional(:es).maybe(:string, max_size?: 2_000)
               end
               required(:origin).filled(Origins)
-              required(:origin_value).filled(:string) # origin/general/fighting_style/epic classes subclasses
+              required(:origin_value).maybe(:string) # origin/general/fighting_style/epic classes subclasses
               required(:kind).filled(Kinds)
               required(:level).filled(:integer, gteq?: 1)
               optional(:limit)
@@ -42,9 +42,10 @@ module HomebrewsV2Context
               optional(:ability_conditions).maybe(:array).each(:string) # требуемые характеристики, Сил 13+
               optional(:leveling_ability_boosts).maybe(:array).each(:string) # характеристики, которые могут быть повышены
               optional(:public).filled(:bool)
-              optional(:exclude).maybe(:array).each(:string, :uuid_v4?)
+              optional(:exclude).maybe(:array).each(:string)
               optional(:conditions).hash
               optional(:options).maybe(:array).each(:hash) do
+                optional(:slug).filled(:string)
                 required(:title).hash do
                   required(:en).filled(:string, max_size?: 50)
                   optional(:ru).maybe(:string, max_size?: 50)
@@ -59,17 +60,18 @@ module HomebrewsV2Context
 
           private
 
-          def validate_content(input)
+          def validate_content(input) # rubocop: disable Metrics/AbcSize
             if input.key?(:options)
               input[:options].each do |option|
-                slug = SecureRandom.uuid
+                slug = option[:slug] || SecureRandom.uuid
                 feature = option[:feature]
                 next unless feature
 
                 feature[:user] = input[:user]
                 feature[:origin] = input[:origin]
                 feature[:origin_value] = ''
-                feature[:conditions] = { selected_feature: slug }
+                feature[:conditions] ||= {}
+                feature[:conditions][:selected_feature] = slug
 
                 raw_errors = add_feat.validate_all(feature)[:raw_errors]
                 return raw_errors if raw_errors
@@ -98,7 +100,7 @@ module HomebrewsV2Context
             input[:options] =
               if input.key?(:options) && KINDABLE_OPTIONS.include?(input[:kind])
                 input[:options].each_with_object({}) do |option, acc|
-                  slug = SecureRandom.uuid
+                  slug = option[:slug] || SecureRandom.uuid
                   feature = option[:feature]
                   next acc[slug] = option unless feature
 
@@ -113,7 +115,8 @@ module HomebrewsV2Context
               end
 
             input[:origin_value] = sanitize(input[:origin_value])
-            input[:conditions] = { level: input[:level] }
+            input[:conditions] ||= {}
+            input[:conditions][:level] = input[:level]
             if input.key?(:ability_conditions) && input[:origin] == 'feat'
               input[:conditions][:ability] = input[:ability_conditions]
             end

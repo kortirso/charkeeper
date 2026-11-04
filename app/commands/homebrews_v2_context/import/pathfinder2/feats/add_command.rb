@@ -74,7 +74,8 @@ module HomebrewsV2Context
                 feature[:user] = input[:user]
                 feature[:origin] = input[:origin]
                 feature[:origin_value] = ''
-                feature[:conditions] = { selected_feature: slug }
+                feature[:conditions] ||= {}
+                feature[:conditions][:selected_feature] = slug
 
                 raw_errors = add_feat_command.validate_all(feature)[:raw_errors]
                 return raw_errors if raw_errors
@@ -100,7 +101,8 @@ module HomebrewsV2Context
                   feature[:user] = input[:user]
                   feature[:origin] = input[:origin]
                   feature[:origin_value] = ''
-                  feature[:conditions] = { selected_feature: slug }
+                  feature[:conditions] ||= {}
+                  feature[:conditions][:selected_feature] = slug
 
                   acc[slug] = { title: option[:title], feature: feature }
                 end
