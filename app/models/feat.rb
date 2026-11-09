@@ -42,4 +42,28 @@ class Feat < ApplicationRecord
         end
       }).compact_blank
   end
+
+  def self.ransackable_attributes(*)
+    %w[slug title title_en title_ru origin kind]
+  end
+
+  def self.ransackable_associations(*)
+    %w[]
+  end
+
+  ransacker :title_en, type: :string do |parent|
+    Arel::Nodes::InfixOperation.new(
+      '->>',
+      parent.table[:title],
+      Arel::Nodes.build_quoted('en')
+    )
+  end
+
+  ransacker :title_ru, type: :string do |parent|
+    Arel::Nodes::InfixOperation.new(
+      '->>',
+      parent.table[:title],
+      Arel::Nodes.build_quoted('ru')
+    )
+  end
 end

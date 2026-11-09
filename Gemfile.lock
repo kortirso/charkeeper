@@ -1,6 +1,7 @@
 GEM
   remote: https://gem.coop/
   specs:
+    ace-rails-ap (4.5)
     action_policy (0.7.7)
       ruby-next-core (>= 1.0)
     action_text-trix (2.1.19)
@@ -59,6 +60,9 @@ GEM
       kaminari (>= 1.2.1)
       railties (>= 6.1)
       ransack (>= 4.0)
+    activeadmin_json_editor (0.0.10)
+      ace-rails-ap
+      railties (>= 3.0)
     activejob (8.1.4)
       activesupport (= 8.1.4)
       globalid (>= 0.3.6)
@@ -627,6 +631,7 @@ PLATFORMS
 DEPENDENCIES
   action_policy
   activeadmin
+  activeadmin_json_editor (~> 0.0.7)
   authkeeper
   awesome_print
   aws-sdk-s3
