@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
   # https://github.com/dry-rb/dry-auto_inject/issues/91
   def initialize = super # rubocop: disable Style/RedundantInitialize
 
+  def admin_access_denied(...)
+    page_not_found
+  end
+
   private
 
   def authentication_error

@@ -101,6 +101,10 @@ gem 'discard', '~> 2.0'
 # advisory locking for processes
 gem 'with_advisory_lock'
 
+# admin panel
+gem 'activeadmin'
+gem 'sassc-rails'
+
 group :development, :production, :ru_production do
   gem 'get_process_mem'
   gem 'rails_performance'
