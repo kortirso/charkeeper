@@ -17,8 +17,8 @@ module CharactersContext
             optional(:name).filled(:string, max_size?: 50)
             optional(:caption).maybe(:string, max_size?: 1_000)
             optional(:data).hash do
-              optional(:health).filled(:integer)
-              optional(:health_temp).filled(:integer)
+              optional(:health).filled(:integer, gteq?: 0)
+              optional(:health_temp).filled(:integer, gteq?: 0)
               optional(:selected_feats).maybe(:array)
             end
             optional(:file)

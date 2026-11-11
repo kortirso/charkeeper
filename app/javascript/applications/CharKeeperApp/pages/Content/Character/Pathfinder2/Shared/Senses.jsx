@@ -17,7 +17,7 @@ const TRANSLATION = {
   },
   ru: {
     armorClass: 'Класс брони',
-    perception: 'Восприятие',
+    perception: 'Внимание',
     speed: 'Скорость',
     swim: 'Скорость плавания',
     fly: 'Скорость полёта',

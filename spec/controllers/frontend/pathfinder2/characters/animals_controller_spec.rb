@@ -147,6 +147,21 @@ describe Frontend::Pathfinder2::Characters::AnimalsController do
             expect(companion.reload.name).to eq 'Compy'
             expect(response).to have_http_status :ok
           end
+
+          context 'for updating health' do
+            let(:request) {
+              patch :update, params: {
+                character_id: user_character.id, animal: { data: { health: 3 } }, charkeeper_access_token: access_token
+              }
+            }
+
+            it 'updates character companion', :aggregate_failures do
+              request
+
+              expect(companion.reload.data.health).to eq 3
+              expect(response).to have_http_status :ok
+            end
+          end
         end
       end
     end

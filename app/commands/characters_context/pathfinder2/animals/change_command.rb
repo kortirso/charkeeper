@@ -14,10 +14,18 @@ module CharactersContext
             optional(:name).filled(:string, max_size?: 50)
             optional(:caption).maybe(:string, max_size?: 1_000)
             optional(:file)
+            optional(:data).hash do
+              optional(:health).filled(:integer, gteq?: 0)
+              optional(:health_temp).filled(:integer, gteq?: 0)
+            end
           end
         end
 
         private
+
+        def do_prepare(input)
+          input[:data] = input[:animal].data.attributes.symbolize_keys.merge(input[:data]) if input.key?(:data)
+        end
 
         def do_persist(input)
           input[:animal].update!(input.except(:animal, :file))
