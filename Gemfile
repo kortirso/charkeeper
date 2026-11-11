@@ -103,6 +103,7 @@ gem 'with_advisory_lock'
 
 # admin panel
 gem 'activeadmin'
+gem 'activeadmin_json_editor', '~> 0.0.7'
 gem 'sassc-rails'
 
 group :development, :production, :ru_production do

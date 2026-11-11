@@ -23,7 +23,9 @@ FactoryBot.define do
       type { 'Pathfinder2::Character::AnimalCompanion' }
       data {
         {
-          kind: 'wolf'
+          kind: 'wolf',
+          health: 4,
+          health_temp: 0
         }
       }
     end

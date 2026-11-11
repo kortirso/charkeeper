@@ -1,4 +1,14 @@
 ru:
+  time:
+    formats:
+      default: "%d.%m.%Y, %H:%M"
+      short: "%d b, %H:%M"
+      long: "%d %B %Y г., %H:%M"
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%d b"
+      long: "%d %B %Y г."
   platforms:
     dc20:
       layout_title: "Charkeeper | DC20"
