@@ -18,7 +18,7 @@ module Pathfinder2
 
       def to_homebrew_json(with_id: true)
         [
-          info.attributes.symbolize_keys({
+          info.attributes.symbolize_keys.merge({
             id: with_id ? id : nil,
             title: title,
             description: description,

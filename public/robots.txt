@@ -3,6 +3,7 @@ Disallow: /signin/new
 Disallow: /signup/new
 Disallow: /web_telegram/
 Disallow: /adminbook/
+Disallow: /admin/
 Disallow: /dashboard/
 Disallow: /homebrews/
 Disallow: /close_cookie_banner
