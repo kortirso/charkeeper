@@ -18,7 +18,10 @@ class Feat < ApplicationRecord
   def to_homebrew_json(with_id: true) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
     option_feats = ::Feat.where(slug: options&.keys, type: type)
     attributes
-      .slice('title', 'description', 'kind', 'price', 'limit_refresh', 'modifiers', 'exclude', 'continious', 'tokens')
+      .slice(
+        'title', 'description', 'kind', 'price', 'limit_refresh', 'modifiers', 'exclude', 'continious', 'tokens', 'origin',
+        'origin_values'
+      )
       .merge({
         id: with_id ? id : nil,
         limit: description_eval_variables['limit'] || info['limit'],

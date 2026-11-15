@@ -41,9 +41,7 @@ module HomebrewsV2Context
                 existing_feature = input[:existing_features][feature[:id]]
                 next unless existing_feature
 
-                # change_feat.call(
-                #   feature.except(:id).merge({ feat: existing_feature, origin_value: input[:speciality].id, no_refresh: true })
-                # )
+                change_feat.call(feature.except(:id).merge({ feat: existing_feature, origin_value: input[:speciality].id }))
               else
                 add_feat.call(
                   feature.merge({ origin_value: input[:speciality].id })
@@ -57,6 +55,8 @@ module HomebrewsV2Context
               .where(origin: %w[class static_class], origin_value: input[:speciality].id)
               .where(id: input[:existing_features].keys - input[:features].pluck(:id)).destroy_all
           end
+
+          def change_feat = HomebrewsV2Context::Import::Pathfinder2::Feats::ChangeCommand.new
         end
       end
     end
