@@ -22,7 +22,10 @@ module Pathfinder2
             id: with_id ? id : nil,
             title: title,
             description: description,
-            public: attributes['public']
+            public: attributes['public'],
+            features: Pathfinder2::Feat.where(origin: %w[subclass static_subclass], origin_value: id).map { |item|
+              item.to_homebrew_json(with_id: with_id)
+            }
           }).compact
         ]
       end
