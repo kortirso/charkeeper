@@ -43,6 +43,7 @@ module Pathfinder2
             title: title,
             description: description,
             public: attributes['public'],
+            spells_amount: info.spells_amount,
             features: Pathfinder2::Feat.where(origin: %w[class static_class], origin_value: id).map { |item|
               item.to_homebrew_json(with_id: with_id)
             }
