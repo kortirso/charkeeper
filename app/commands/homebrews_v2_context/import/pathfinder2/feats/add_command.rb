@@ -89,6 +89,7 @@ module HomebrewsV2Context
             input[:slug] ||= input.dig(:title, :en)&.downcase&.tr(' ', '_') || SecureRandom.uuid
             input[:info] ||= {}
             input[:conditions] ||= {}
+            input[:conditions][:level] = input[:level] if input.key?(:level)
 
             input[:options] =
               if input.key?(:options) && KINDABLE_OPTIONS.include?(input[:kind])

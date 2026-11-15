@@ -44,7 +44,7 @@ class Feat < ApplicationRecord
   end
 
   def self.ransackable_attributes(*)
-    %w[slug title title_en title_ru origin kind]
+    %w[slug title title_en title_ru origin kind origin_value]
   end
 
   def self.ransackable_associations(*)

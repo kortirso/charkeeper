@@ -7,8 +7,9 @@ ActiveAdmin.register Dnd2024::Feat do
   filter :title_en_or_title_ru_i_cont, as: :string, label: 'Title'
   filter :origin, as: :select, label: 'Origin', collection: Dnd2024::Feat.origins
   filter :kind, as: :select, label: 'Kind', collection: Dnd2024::Feat.kinds
+  filter :origin_value, as: :string, label: 'Origin value'
 
-  permit_params :slug, :title, :origin, :kind
+  permit_params :slug, :title, :origin, :kind, :origin_value
 
   json_editor
 
@@ -17,6 +18,7 @@ ActiveAdmin.register Dnd2024::Feat do
     column :title, as: :jsonb
     column :origin
     column :kind
+    column :origin_value
     i.actions
   end
 end
