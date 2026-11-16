@@ -3,7 +3,7 @@ import { createEffect, createSignal, createMemo, For, Show, batch } from 'solid-
 import { ErrorWrapper, Button, EditWrapper, Dice } from '../../../../components';
 import config from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Minus, Plus, Upgrade } from '../../../../assets';
+import { Minus, Plus, Upgrade, Star } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { modifier, localize } from '../../../../helpers';
 
@@ -128,34 +128,37 @@ export const Pathfinder2Abilities = (props) => {
             <For each={Object.entries(config.abilities).map(([key, values]) => [key, localize(values.name, locale())])}>
               {([slug, ability]) =>
                 <div>
-                  <p class="text-sm uppercase text-center mb-2">{ability}</p>
-                  <div class="mx-auto flex items-center justify-center">
-                    <p class="text-2xl font-normal!">
-                      <Show
-                        when={editMode()}
-                        fallback={
-                          <div class="relative">
-                            <Dice
-                              width="64"
-                              height="64"
-                              text={modifier(character().modified_abilities[slug])}
-                              textClassList="text-4xl"
-                              onClick={() => props.openD20Test(`/check attr ${slug}`, ability, character().modified_abilities[slug])}
-                            />
-                            <Show when={boosted(abilitiesData()[slug])}>
-                              <div class="absolute -top-1 -right-3">
-                                <Upgrade width="24" height="24" />
-                              </div>
-                            </Show>
-                          </div>
-                        }
-                      >
-                        {bonusValue(abilitiesData()[slug])}{boosted(abilitiesData()[slug]) ? '+' : ''}
-                      </Show>
-                    </p>
+                  <div class="pf-ability-title">
+                    <Show when={character().main_ability === slug}>
+                      <Star width="16" height="16" />
+                    </Show>
+                    <p class="pf-ability-name">{ability}</p>
                   </div>
+                  <p class="pf-ability-value text-2xl font-normal!">
+                    <Show
+                      when={editMode()}
+                      fallback={
+                        <div class="relative">
+                          <Dice
+                            width="64"
+                            height="64"
+                            text={modifier(character().modified_abilities[slug])}
+                            textClassList="text-4xl"
+                            onClick={() => props.openD20Test(`/check attr ${slug}`, ability, character().modified_abilities[slug])}
+                          />
+                          <Show when={boosted(abilitiesData()[slug])}>
+                            <div class="pf-ability-boost">
+                              <Upgrade width="20" height="20" />
+                            </div>
+                          </Show>
+                        </div>
+                      }
+                    >
+                      {bonusValue(abilitiesData()[slug])}{boosted(abilitiesData()[slug]) ? '+' : ''}
+                    </Show>
+                  </p>
                   <Show when={editMode()}>
-                    <div class="mt-2 flex justify-center gap-2">
+                    <div class="pf-ability-actions">
                       <Button default size="small" onClick={() => decreaseAbilityValue(slug)}><Minus /></Button>
                       <Button default size="small" onClick={() => increaseAbilityValue(slug)}><Plus /></Button>
                     </div>

@@ -24,4 +24,28 @@ class Item < ApplicationRecord
   scope :nimble, -> { where(type: 'Nimble::Item') }
 
   scope :visible, -> { where(itemable: nil) }
+
+  def self.ransackable_attributes(*)
+    %w[slug name name_en name_ru kind]
+  end
+
+  def self.ransackable_associations(*)
+    %w[]
+  end
+
+  ransacker :name_en, type: :string do |parent|
+    Arel::Nodes::InfixOperation.new(
+      '->>',
+      parent.table[:name],
+      Arel::Nodes.build_quoted('en')
+    )
+  end
+
+  ransacker :name_ru, type: :string do |parent|
+    Arel::Nodes::InfixOperation.new(
+      '->>',
+      parent.table[:name],
+      Arel::Nodes.build_quoted('ru')
+    )
+  end
 end
