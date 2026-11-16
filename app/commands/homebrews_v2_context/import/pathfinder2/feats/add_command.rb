@@ -54,6 +54,8 @@ module HomebrewsV2Context
                 optional(:extra_feats).maybe(:array).each(:string)
                 optional(:multiple).filled(:bool)
                 optional(:focus_spells).maybe(:array).each(:string)
+                optional(:lower_weapon_skill_tags).filled(:string)
+                optional(:lower_weapon_skill_slugs).maybe(:array).each(:string)
               end
               optional(:price).hash do
                 optional(:a).filled(:integer, gteq?: 1, lteq?: 3)
