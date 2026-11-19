@@ -417,7 +417,7 @@ Rails.application.routes.draw do
     resources :campaigns, only: %i[show]
   end
 
-  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/, defaults: { locale: nil } do
+  scope '(:locale)', locale: /en|ru|es/, defaults: { locale: nil } do
     scope module: :web do
       get 'auth/:provider/callback', to: 'users/omniauth_callbacks#create'
 
@@ -431,6 +431,7 @@ Rails.application.routes.draw do
       end
 
       resource :dashboard, only: %i[show]
+      resource :dashboard_v2, only: %i[show]
       resource :homebrews, only: %i[show]
       resources :characters, only: %i[show]
 

@@ -1,0 +1,827 @@
+@reference 'tailwindcss';
+@reference './theme.css';
+@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+
+@source '../../javascript/applications/CharKeeperApp/v1';
+@source '../../javascript/applications/HomebrewsApp';
+
+@utility blockable {
+  @apply bg-white border-2 border-gray-200 rounded-t-lg;
+  @apply dark:bg-dusty border dark:border-gray-500 dark:text-snow;
+}
+
+.modal {
+  @apply relative p-4 blockable overflow-y-auto;
+
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.levelbox {
+  @apply w-6 h-6;
+}
+
+.toggle {
+  @apply w-6 h-6 border border-blue-400 bg-white rounded flex justify-center items-center cursor-pointer;
+  @apply dark:border-fuzzy-red dark:text-dusty;
+}
+
+.toggle.checked {
+  @apply bg-blue-400 text-snow;
+  @apply dark:bg-fuzzy-red dark:text-snow;
+}
+
+.toggle.outlined {
+  @apply border-dashed;
+}
+
+.toggle.small {
+  @apply w-4 h-4;
+}
+
+.toggle.big {
+  @apply w-8 h-8;
+}
+
+.toggle-title {
+  @apply py-2 px-2 md:px-4; dark:text-snow;
+}
+
+.toggle.disabled {
+  @apply bg-neutral-300;
+}
+
+.toggle-inner {
+  @apply py-4 px-2 md:px-4 border-t border-gray-200 dark:border-gray-500;
+}
+
+.toggle-inner-default {
+  @apply flex-1 dark:text-snow relative dark:bg-neutral-700;
+}
+
+#character-navigation {
+  @apply flex justify-between overflow-x-auto bg-white border-b border-gray-200 px-2;
+  @apply dark:bg-neutral-800 dark:border-black;
+}
+
+#character-navigation::-webkit-scrollbar { 
+  display: none; /* Safari and Chrome */
+}
+
+#character-navigation p {
+  @apply text-xs/6 font-normal! mx-2 py-2 text-gray-400 cursor-pointer text-nowrap dark:text-gray-300;
+}
+
+#character-navigation p.active {
+  @apply text-black border-b-2 border-blue-400 dark:text-snow dark:border-fuzzy-red;
+}
+
+.damage-caption {
+  @apply flex-1 flex flex-col items-center px-4;
+}
+
+.damage-caption p:nth-of-type(1) {
+  @apply text-center uppercase mb-2;
+}
+
+.damage-caption p:nth-of-type(2), .damage-caption p:nth-of-type(3) {
+  @apply text-sm;
+}
+
+.dc20-skill-box {
+  @apply blockable p-4 pb-8 mb-2;
+}
+
+.dc20-skill-box-title {
+  @apply text-lg mb-2;
+}
+
+.dc20-skill-converter {
+  @apply flex items-center justify-between text-sm mb-2;
+}
+
+.experience-title-box {
+  @apply flex justify-between items-center;
+}
+
+.experience-title {
+  @apply flex-1 text-lg dark:text-snow;
+}
+
+.experience-new-box {
+  @apply flex items-center gap-2;
+}
+
+.experience {
+  @apply flex dark:text-snow items-center py-1;
+}
+
+.character-resource {
+  @apply py-1;
+}
+
+.experience:nth-of-type(2n), .character-resource:nth-of-type(2n) {
+  @apply bg-gray-50 dark:bg-dusty;
+}
+
+.experience:nth-of-type(n+2), .character-resource:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
+}
+
+.dc20-conditions .dc20-condition {
+  @apply flex flex-col dark:text-snow p-2;
+}
+
+.dc20-conditions .dc20-condition:nth-of-type(2n) {
+  @apply bg-gray-50 dark:bg-dusty;
+}
+
+.dc20-condition-data {
+  @apply flex items-center;
+}
+
+.truncate-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* Specifies the number of lines to display */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds an ellipsis (...) at the end of the truncated text */
+}
+
+.dice-button {
+  @apply py-1 px-2 text-center cursor-pointer border border-dusty rounded dark:border-snow dark:text-snow;
+}
+
+.tag {
+  @apply px-1 border rounded bg-white border-gray-500 cursor-pointer text-sm md:text-base;
+  @apply dark:bg-neutral-800 dark:border-neutral-800 dark:text-snow;
+}
+
+.resource {
+  @apply flex gap-x-2 inline-block rounded mt-1 p-1 opacity-75;
+  @apply bg-blue-400 text-snow dark:bg-fuzzy-red;
+  @apply line-through;
+}
+
+.resource.enough {
+  @apply cursor-pointer opacity-100 no-underline;
+}
+
+.archetype-key {
+  @apply px-1 border rounded border-neutral-800 cursor-pointer text-sm md:text-base text-black;
+  @apply bg-white dark:border-gray-500;
+}
+
+.archetype-key.active {
+  @apply bg-neutral-800 text-snow;
+  @apply dark:bg-fuzzy-red;
+}
+
+.dots {
+  @apply absolute z-9 right-0 border border-gray-200 rounded overflow-hidden;
+}
+
+.dots-item {
+  @apply px-2 py-1 text-sm bg-white hover:bg-gray-200 cursor-pointer;
+  @apply dark:bg-dusty dark:hover:bg-neutral-800;
+}
+
+.homebrew-provider-nav {
+  @apply bg-gray-200 hover:bg-gray-300 rounded px-2 py-1 cursor-pointer;
+}
+
+.homebrew-provider-nav.active {
+  @apply bg-neutral-800 text-snow;
+}
+
+.feat-markdown {
+  @apply text-sm text-stone-800;
+  @apply dark:text-stone-200;
+}
+
+.feat-markdown-small {
+  @apply text-xs text-stone-800;
+  @apply dark:text-stone-200;
+}
+
+.feat-markdown p:nth-of-type(n+2) {
+  @apply mt-1;
+}
+
+.feat-markdown strong {
+  @apply text-[15px] text-black;
+  @apply dark:text-snow;
+
+  font-weight: 500;
+}
+
+.feat-markdown-small strong {
+  @apply text-[13px] text-black;
+  @apply dark:text-snow;
+
+  font-weight: 500;
+}
+
+.feat-markdown ul {
+  @apply list-disc pl-4;
+}
+
+.roll-result {
+  @apply px-1 py-0.5 rounded text-xs uppercase ml-1 font-medium!;
+}
+
+.roll-result.crit_success {
+  background: #16A34A;
+}
+
+.roll-result.crit_failure {
+  background: #DC2626;
+}
+
+.roll-result.with_hope {
+  background: #C28D23;
+}
+
+.roll-result.with_fear {
+  background: #2362C2;
+}
+
+.bonus {
+  @apply bg-gray-200 p-1 rounded text-sm;
+  @apply dark:bg-neutral-800 dark:text-snow;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3; /* Light grey background */
+  border-top: 4px solid #57534e; /* Blue top border (the spinning part) */
+  border-radius: 50%; /* Makes the div a circle */
+  width: 28px;
+  height: 28px;
+  animation: spin 2s linear infinite; /* Applies the animation */
+}
+
+#pdf canvas {
+  @apply w-full;
+}
+
+#pdf .pdf_splitter {
+  @apply w-full h-2;
+}
+
+.dnd2024-spell {
+  @apply cursor-pointer;
+}
+
+.dnd2024-spell-header {
+  @apply flex items-center justify-between;
+}
+
+.dnd2024-spell-titlebox {
+  @apply flex items-center;
+}
+
+.dnd2024-spell-title {
+  @apply uppercase cursor-pointer mr-4;
+}
+
+.dnd2024-spell-tooltips {
+  @apply grid grid-cols-3 sm:grid-cols-6 gap-y-2 text-sm mt-2;
+}
+
+.spell-attribute {
+  @apply flex-1 flex justify-center items-center dark:border-r dark:border-neutral-800;
+}
+
+.spell-attribute:nth-of-type(3), .spell-attribute:nth-of-type(6) {
+  @apply border-r-0 sm:border-r-1;
+}
+
+.spell-attribute:last-of-type {
+  @apply sm:border-r-0;
+}
+
+.character-info-block {
+  @apply blockable py-4 px-2 md:px-4;
+}
+
+.character-info-title {
+  @apply text-lg;
+}
+
+.character-info-grid {
+  @apply grid grid-cols-1 gap-x-2 md:grid-cols-3 md:gap-x-4 gap-y-2;
+}
+
+.character-info-text {
+  @apply text-[11px]! uppercase;
+}
+
+.stat-title {
+  @apply uppercase text-sm mb-2 text-center;
+}
+
+.dc20-stat-value-box {
+  @apply mx-auto flex items-center justify-center;
+}
+
+.dc20-stat-value {
+  @apply text-2xl font-normal! leading-10;
+}
+
+.weapon-title {
+  @apply text-lg font-normal! mb-2;
+}
+
+.weapon-item {
+  @apply p-0.5;
+}
+
+.weapon-item:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
+}
+
+.weapon-item:nth-of-type(2n) {
+  @apply bg-gray-50 dark:bg-neutral-700;
+}
+
+.weapon-item-header {
+  @apply flex flex-wrap justify-between items-center gap-2;
+}
+
+.weapon-item-name {
+  @apply line-clamp-1;
+}
+
+.weapon-item-stats {
+  @apply flex items-center gap-x-4;
+}
+
+.weapon-damage {
+  @apply flex items-center justify-center;
+}
+
+.weapon-damage-trait {
+  @apply mr-2 text-sm uppercase;
+}
+
+.weapon-tags {
+  @apply flex flex-wrap gap-x-2 gap-y-1 mt-2;
+}
+
+.weapon-features {
+  @apply text-xs mt-2;
+}
+
+.weapon-settings {
+  @apply absolute top-0 right-0 rounded opacity-50 m-0!;
+}
+
+.weapon-settings-select {
+  @apply w-full md:w-1/2 mb-2;
+}
+
+.equipment {
+  @apply blockable px-2 py-4 md:px-4 mb-2;
+}
+
+.equipment-title {
+  @apply text-lg mb-2 flex items-center gap-x-2;
+}
+
+.equipment-subtitle {
+  @apply text-sm mb-2;
+}
+
+.equipment-item:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
+}
+
+.equipment-item:nth-of-type(2n) {
+  @apply bg-gray-50 dark:bg-neutral-700;
+}
+
+.equipment-item-name {
+  @apply leading-6 line-clamp-1;
+}
+
+.equipment-item-notes {
+  @apply text-xs mt-1 text-stone-800 dark:text-stone-300;
+}
+
+.hybrid-edit-block {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-2;
+}
+
+.domain-cards {
+  @apply blockable px-2 md:px-4 py-4 mb-2;
+}
+
+.domain-card {
+  @apply even:bg-stone-100 dark:even:bg-dark-dusty p-1;
+}
+
+.domain-card:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
+}
+
+.domain-card.reverse {
+  @apply even:bg-stone-100 dark:even:bg-dusty p-1;
+}
+
+.domain-card-title {
+  @apply flex items-center justify-between mb-2;
+}
+
+.domain-card-actions {
+  @apply flex flex-row items-center justify-end gap-y-4 gap-x-2;
+}
+
+.domain-card-recall-cost {
+  @apply px-1 text-center font-normal! text-lg;
+}
+
+.domain-card-desc {
+  @apply text-xs mb-1;
+}
+
+.dnd-static-box {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-4;
+}
+
+.dnd-static-box.four-columns {
+  @apply md:grid-cols-2 lg:grid-cols-4 gap-x-2 gap-y-4;
+}
+
+.dnd-static-box-item {
+  @apply flex justify-between items-center md:flex-col md:gap-4;
+}
+
+.dnd-static-box-item-title {
+  @apply text-sm uppercase md:text-center;
+}
+
+.dnd-static-box.four-columns .dnd-static-box-item-title {
+  @apply lg:h-10;
+}
+
+.dnd-static-value {
+  @apply text-center uppercase text-lg;
+}
+
+.dh-static-box {
+  @apply grid grid-cols-3 gap-2;
+}
+
+.dh-static-box.four-columns {
+  @apply grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-4;
+}
+
+.dh-static-title {
+  @apply text-sm uppercase text-center mb-4;
+}
+
+.dh-static-value {
+  @apply mx-auto flex items-center justify-center text-2xl font-normal!;
+}
+
+.dh-attribute-title {
+  @apply text-sm/4 uppercase mb-1;
+}
+
+.select-input {
+  @apply outline-none w-full;
+}
+
+.select-input::placeholder {
+  @apply text-gray-400 opacity-100 text-sm;
+}
+
+.default-input {
+  @apply w-full h-12 px-2 border border-gray-200 bg-white rounded;
+  @apply dark:bg-neutral-700 dark:border-gray-500 dark:text-snow;
+}
+
+.default-label {
+  @apply text-sm/4 text-gray-400 dark:text-gray-200 flex-1;
+}
+
+.default-select {
+  @apply flex justify-between items-center h-12;
+}
+
+.default-icon-button {
+  @apply flex justify-center items-center cursor-pointer rounded-full hover:bg-gray-100 dark:hover:bg-gray-400;
+}
+
+.default-button {
+  @apply rounded cursor-pointer flex justify-center items-center font-normal!;
+}
+
+.default-button-size {
+  @apply min-h-10 min-w-10;
+}
+
+.medium-button-size {
+  @apply min-h-8 min-w-8;
+}
+
+.small-button-size {
+  @apply min-h-6 min-w-6 text-sm;
+}
+
+.default-button-color {
+  @apply bg-blue-400 text-snow dark:bg-fuzzy-red;
+}
+
+.outlined-button-color {
+  @apply bg-white text-blue-400 border border-blue-400 dark:text-black dark:border-fuzzy-red;
+}
+
+.character-item {
+  @apply pt-4 pl-2 pb-0 pr-0 flex items-center cursor-pointer relative;
+}
+
+.character-item-not-active {
+  @apply bg-white hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-dusty;
+}
+
+.character-item-active {
+  @apply bg-blue-400 dark:bg-fuzzy-red;
+}
+
+.character-item-dragging {
+  @apply opacity-50 z-10;
+}
+
+.avatar-block {
+  @apply mr-3 pb-4 dark:text-snow;
+}
+
+.avatar {
+  @apply w-16 h-16 rounded;
+}
+
+.character-item-dots {
+  @apply relative h-16 dark:text-snow;
+}
+
+.character-item-drag-handle {
+  @apply flex items-center justify-center self-center shrink-0 w-6 h-6 cursor-grab text-gray-400 dark:text-gray-200 pb-4 mr-2;
+  @apply hover:bg-gray-100 active:cursor-grabbing dark:hover:bg-dusty;
+
+  touch-action: none;
+}
+
+.character-item-dots-dropdown {
+  @apply absolute z-9 right-0 border border-gray-200 rounded overflow-hidden;
+}
+
+.character-item-name {
+  @apply font-normal! text-lg dark:text-snow;
+}
+
+.character-item-first-text {
+  @apply text-xs/4 text-gray-400 dark:text-gray-300;
+}
+
+.character-item-second-text {
+  @apply text-xs/4 text-gray-400 dark:text-gray-300;
+}
+
+.character-item-box {
+  @apply flex-1 flex pb-4 pr-4;
+}
+
+.character-item-box-active {
+  @apply border-b border-blue-400 dark:border-fuzzy-red;
+}
+
+.character-item-box-not-active {
+  @apply border-b border-gray-200 dark:border-dusty;
+}
+
+.dc20-skill {
+  @apply flex items-center p-1;
+  @apply even:bg-stone-100 even:dark:bg-dark-dusty;
+}
+
+.dc20-skill:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
+}
+
+.fallout-skills {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-x-8 mt-2;
+}
+
+.fallout-skill {
+  @apply flex items-center py-1 p-1;
+}
+
+.fallout-skill-actions {
+  @apply flex items-center gap-x-2;
+}
+
+@media (width < 48rem) {
+  .fallout-skill:nth-child(2n+1) {
+    @apply bg-stone-100 dark:bg-dark-dusty md:bg-none;
+  }
+
+  .fallout-skill:nth-of-type(n+2) {
+    @apply border-t border-gray-200 dark:border-neutral-800;
+  }
+}
+
+@media (width >= 48rem) {
+  .fallout-skill:nth-child(4n+3), .fallout-skill:nth-child(4n+4) {
+    @apply md:bg-stone-100 md:dark:bg-dark-dusty;
+  }
+
+  .fallout-skill:nth-of-type(n+3) {
+    @apply border-t border-gray-200 dark:border-neutral-800;
+  }
+}
+
+.dice-text-box {
+  @apply absolute top-0 left-0 w-full h-full flex justify-center items-center;
+}
+
+.dc20-ability-title {
+  @apply text-sm uppercase text-center mb-2 dark:text-white;
+}
+
+.dc20-ability {
+  @apply mx-auto flex items-center justify-center;
+}
+
+.dc20-ability-savebox {
+  @apply absolute -bottom-2 -right-6;
+}
+
+.ancestry-item {
+  @apply even:bg-stone-100 dark:even:bg-dusty p-1;
+}
+
+.ancestry-item:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
+}
+
+.pdf-buttons {
+  @apply fixed top-4 left-4 right-8 flex flex-col sm:flex-row items-start sm:justify-between gap-4;
+}
+
+.pdf-button {
+  @apply rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1 cursor-pointer;
+}
+
+.abilities-box {
+  @apply grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-x-2 gap-y-4;
+}
+
+.cthulhu-abilities-box {
+  @apply grid grid-cols-3 md:grid-cols-4 gap-x-2 gap-y-4;
+}
+
+.ability-title {
+  @apply text-sm uppercase text-center mb-2;
+}
+
+.ability-value-box {
+  @apply mx-auto flex items-center justify-center;
+}
+
+.ability-value {
+  @apply text-2xl font-normal!;
+}
+
+.ability-changebox {
+  @apply mt-2 flex justify-center gap-2;
+}
+
+.pet-feats {
+  @apply flex flex-col gap-2;
+}
+
+.pet-feat {
+  @apply py-2;
+}
+
+.pet-feat-title {
+  @apply flex items-center justify-between;
+}
+
+.pet-feat:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
+}
+
+.companion-ability-title {
+  @apply text-sm uppercase text-center mb-2;
+}
+
+.companion-ability-dice {
+  @apply text-2xl font-normal!;
+}
+
+.dice-portal {
+  @apply fixed bottom-0 right-0 pb-8 px-6 sm:pb-4 sm:pr-6 z-8 flex items-center justify-end sm:justify-center; 
+}
+
+.dice-tests-box {
+  @apply flex-1 flex justify-end items-end; 
+}
+
+.dice-test {
+  @apply w-full sm:w-xs relative p-4 flex flex-col gap-4;
+}
+
+.dice-list {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+.total-advantage {
+  @apply mb-1 py-1 px-2 text-center border border-dusty rounded dark:border-snow dark:text-snow;
+}
+
+.dice-opens {
+  @apply flex flex-row justify-end gap-2;
+}
+
+.dice-opens-list {
+  @apply p-2 flex justify-between flex-col gap-2;
+}
+
+.roll-results {
+  @apply flex flex-1 items-center justify-end dark:text-snow;
+}
+
+.cosmere-feat {
+  @apply pb-2 border-b border-gray-200 dark:border-neutral-800;
+}
+
+.blockable-padding {
+  @apply py-4 px-2 md:px-4;
+}
+
+.companion-stat-title {
+  @apply text-sm uppercase text-center mb-4;
+}
+
+.dc20-spell {
+  @apply even:bg-stone-100 dark:even:bg-dusty p-1;
+}
+
+.dc20-spell-title {
+  @apply flex items-center justify-between mb-1;
+}
+
+.dc20-spell-tags {
+  @apply flex gap-2 flex-wrap mb-2;
+}
+
+.dc20-spell-action {
+  @apply flex flex-row justify-end;
+}
+
+.dc20-focus-features {
+  @apply flex flex-wrap gap-x-2 gap-y-1 mt-1;
+}
+
+.primary_rolls {
+  color: #22c55e;
+}
+
+.crit_rolls {
+  color: #ef4444;
+}
+
+.vicious_rolls {
+  color: #a855f7;
+}
+
+.spell-toggle {
+  @apply dark:text-stone-400 cursor-pointer p-1;
+  @apply hover:dark:text-snow;
+}
+
+.spell-toggle.active {
+  @apply dark:text-snow border-b;
+}
+
+.pf-ability-title {
+  @apply flex items-center justify-center gap-1 mb-2;
+}
+
+.pf-ability-name {
+  @apply text-sm uppercase;
+}
+
+.pf-ability-value {
+  @apply mx-auto flex items-center justify-center;
+}
+
+.pf-ability-boost {
+  @apply absolute -top-1 -right-3;
+}
+
+.pf-ability-actions {
+  @apply mt-2 flex justify-center gap-2;
+}

@@ -1,0 +1,89 @@
+@reference 'tailwindcss';
+@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+
+@source '../../javascript/applications/CharKeeperApp/v2';
+
+@theme inline {
+  --color-canvas: var(--ck-v2-canvas);
+  --color-surface: var(--ck-v2-surface);
+  --color-surface-raised: var(--ck-v2-surface-raised);
+  --color-foreground: var(--ck-v2-foreground);
+  --color-muted: var(--ck-v2-muted);
+  --color-border: var(--ck-v2-border);
+  --color-accent: var(--ck-v2-accent);
+  --color-accent-hover: var(--ck-v2-accent-hover);
+  --color-accent-soft: var(--ck-v2-accent-soft);
+  --color-danger: var(--ck-v2-danger);
+  --color-success: var(--ck-v2-success);
+  --color-warning: var(--ck-v2-warning);
+  --color-focus: var(--ck-v2-focus);
+}
+
+/*
+ * A color scheme selects the accent palette. The light/dark mode remains an
+ * independent choice, so new schemes do not need to duplicate the neutral UI.
+ */
+[data-color-scheme='crimson'] {
+  --ck-v2-accent-light: #A63D4A;
+  --ck-v2-accent-light-hover: #8F303C;
+  --ck-v2-accent-light-soft: #F7E4E7;
+  --ck-v2-accent-dark: #E16B78;
+  --ck-v2-accent-dark-hover: #EE8791;
+  --ck-v2-accent-dark-soft: #47272C;
+}
+
+[data-color-scheme='ocean'] {
+  --ck-v2-accent-light: #226A8C;
+  --ck-v2-accent-light-hover: #185773;
+  --ck-v2-accent-light-soft: #DCEEF5;
+  --ck-v2-accent-dark: #65B5D8;
+  --ck-v2-accent-dark-hover: #85C8E3;
+  --ck-v2-accent-dark-soft: #1D3946;
+}
+
+[data-color-scheme='forest'] {
+  --ck-v2-accent-light: #3F7455;
+  --ck-v2-accent-light-hover: #315F44;
+  --ck-v2-accent-light-soft: #E1F0E6;
+  --ck-v2-accent-dark: #76B78C;
+  --ck-v2-accent-dark-hover: #92CAA3;
+  --ck-v2-accent-dark-soft: #243D2D;
+}
+
+[data-color-mode='light'] {
+  color-scheme: light;
+  --ck-v2-canvas: #F5F6F8;
+  --ck-v2-surface: #FFFFFF;
+  --ck-v2-surface-raised: #FFFFFF;
+  --ck-v2-foreground: #20242C;
+  --ck-v2-muted: #687080;
+  --ck-v2-border: #DDE1E8;
+  --ck-v2-danger: #B83C49;
+  --ck-v2-success: #397654;
+  --ck-v2-warning: #9A651D;
+  --ck-v2-focus: #3279B7;
+  --ck-v2-accent: var(--ck-v2-accent-light);
+  --ck-v2-accent-hover: var(--ck-v2-accent-light-hover);
+  --ck-v2-accent-soft: var(--ck-v2-accent-light-soft);
+}
+
+[data-color-mode='dark'] {
+  color-scheme: dark;
+  --ck-v2-canvas: #121417;
+  --ck-v2-surface: #1A1D22;
+  --ck-v2-surface-raised: #22262D;
+  --ck-v2-foreground: #F1F3F6;
+  --ck-v2-muted: #A3AAB6;
+  --ck-v2-border: #353A44;
+  --ck-v2-danger: #ED7781;
+  --ck-v2-success: #78BB91;
+  --ck-v2-warning: #DDB26C;
+  --ck-v2-focus: #78B7EB;
+  --ck-v2-accent: var(--ck-v2-accent-dark);
+  --ck-v2-accent-hover: var(--ck-v2-accent-dark-hover);
+  --ck-v2-accent-soft: var(--ck-v2-accent-dark-soft);
+}
+
+.ck-v2 {
+  @apply min-h-screen bg-canvas text-foreground;
+}

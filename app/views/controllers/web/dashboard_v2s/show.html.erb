@@ -1,0 +1,17 @@
+<% content_for :tailwind_bundle, 'tailwind_v2' %>
+
+<%=
+  js_component 'CharKeeperApp',
+               version: 'v2',
+               access_token: @access_token,
+               identities: @identities,
+               oauth_links: @oauth_links.compact,
+               oauth_credentials: @oauth_credentials.compact,
+               locale: current_user.locale,
+               username: current_user.username,
+               admin: current_user.admin?,
+               color_schema: current_user.color_schema,
+               provider_locales: current_user.provider_locales,
+               component_id: 'root',
+               host: root_host
+%>

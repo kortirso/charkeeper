@@ -36,7 +36,7 @@ describe 'Translations coverage' do # rubocop: disable RSpec/DescribeClass
   end
 
   def i18n_file(locale)
-    JSON.parse(Rails.root.join("app/javascript/applications/CharKeeperApp/i18n/#{locale}.json").read)
+    JSON.parse(Rails.root.join("app/javascript/applications/CharKeeperApp/v1/i18n/#{locale}.json").read)
   end
 
   def untranslated(value, locale, path=[])

@@ -1,6 +1,6 @@
 import { For, Show } from 'solid-js';
 
-import config from '../../../../CharKeeperApp/data/daggerheart.json';
+import config from '../../../../CharKeeperApp/v1/data/daggerheart.json';
 
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';

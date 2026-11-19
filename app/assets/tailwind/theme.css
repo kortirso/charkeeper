@@ -1,0 +1,19 @@
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --breakpoint-emd: 72rem;
+  --breakpoint-elg: 88rem;
+  --breakpoint-exl: 104rem;
+
+  --color-dusty: #474747;
+  --color-dark-dusty: #404040;
+  --color-snow: #FBFBFB;
+  --color-fuzzy-red: #C6515C;
+
+  --color-dark-gunmetal: #1E2231;
+  --color-cosmos: #222639;
+}
+
+@utility bordered {
+  @apply border border-gray-200 rounded;
+}

@@ -1,6 +1,6 @@
 import { Show } from 'solid-js';
 
-import config from '../../../../CharKeeperApp/data/dnd2024.json';
+import config from '../../../../CharKeeperApp/v1/data/dnd2024.json';
 
 import { useAppState, useAppLocale } from '../../../context';
 import { SharedContent } from '../../../pages';

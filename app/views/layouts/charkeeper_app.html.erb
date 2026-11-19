@@ -10,12 +10,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
-    <%= stylesheet_link_tag 'tailwind' %>
+    <%= stylesheet_link_tag 'tailwind_rails' %>
+    <%= stylesheet_link_tag(content_for(:tailwind_bundle) || 'tailwind') %>
     <%= stylesheet_link_tag :application %>
     <%= javascript_include_tag 'application' %>
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.54/pdf.min.mjs"></script>
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.54/pdf.worker.min.mjs"></script>
-    <% unless current_page?(dashboard_path) %>
+    <% unless current_page?(dashboard_path) || current_page?(dashboard_v2_path) %>
       <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <% end %>
   </head>

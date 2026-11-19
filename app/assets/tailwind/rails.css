@@ -1,0 +1,355 @@
+@import 'tailwindcss' source(none);
+@import './theme.css';
+
+@source '../../helpers';
+@source '../../views';
+@source '../../../public/*.html';
+
+@font-face {
+  font-display: block;
+  font-family: 'CascadiaMono';
+  font-weight: 500;
+  src: url('CascadiaMono-Regular.otf');
+}
+
+@font-face {
+  font-display: block;
+  font-family: 'CascadiaMono';
+  font-weight: 400;
+  src: url('CascadiaMono-SemiLight.otf');
+}
+
+@font-face {
+  font-display: block;
+  font-family: 'CascadiaMono';
+  font-weight: 300;
+  src: url('CascadiaMono-Light.otf');
+}
+
+* {
+  font-family: CascadiaMono;
+  font-weight: 300;
+}
+
+#root {
+  @apply flex-1 flex flex-col overflow-hidden;
+}
+
+#charkeeper_app_html {
+  overflow: hidden;
+}
+
+#charkeeper_app_body {
+  @apply flex flex-col bg-transparent h-screen;
+
+  overflow-x: hidden;
+}
+
+#charkeeper_app_html,
+#charkeeper_app_body {
+  overscroll-behavior-y: contain;
+}
+
+#charkeeper_app_body::-webkit-scrollbar {
+  display: none;
+}
+
+.btn-primary {
+  @apply rounded border bg-blue-50 text-blue-600 border-blue-600;
+}
+
+.btn-warning {
+  @apply rounded border bg-red-50 text-red-400 border-red-400;
+}
+
+.btn {
+  @apply py-2 px-4 font-normal! cursor-pointer;
+}
+
+.btn-small {
+  @apply py-1 px-1 cursor-pointer;
+}
+
+.btn-big {
+  @apply py-4 px-6 cursor-pointer text-xl;
+}
+
+.table thead tr td {
+  @apply uppercase pb-1 text-xs dark:text-snow;
+}
+
+.table:not(.no-darks) tbody tr {
+  @apply border-b border-gray-200 dark:border-neutral-800;
+}
+
+.table.table-top tbody tr {
+  @apply align-top;
+}
+
+.table:not(.no-darks) tbody tr:nth-of-type(2n) {
+  @apply bg-gray-50 dark:bg-neutral-700;
+}
+
+.table tbody tr:last-of-type {
+  @apply border-0;
+}
+
+.table.first-column-full-width tbody tr td:nth-of-type(n+2) {
+  @apply px-2;
+
+  width: 1%;
+  white-space: nowrap;
+}
+
+.table tbody tr td.minimum-width {
+  @apply px-2;
+
+  width: 1%;
+  white-space: nowrap;
+}
+
+.form-field .form-value {
+  @apply bordered px-3 leading-8 bg-white text-black;
+  @apply dark:bg-neutral-700 dark:border-gray-500 dark:text-snow;
+}
+
+.form-field .form-label {
+  @apply text-sm text-gray-400;
+}
+
+.form-field .form-text {
+  @apply bordered py-2 px-4;
+}
+
+.form-field select {
+  @apply py-2 px-4 rounded;
+}
+
+.form-field .form-value::placeholder {
+  @apply text-gray-200 opacity-100;
+}
+
+.form-field .form-value.is-open {
+  @apply rounded-b-none;
+}
+
+.form-field .form-dropdown {
+  @apply absolute z-10 w-full bg-white border-r border-l border-b border-gray-200 overflow-y-auto shadow;
+  @apply dark:bg-neutral-800 dark:border-gray-500;
+
+  max-height: 12rem;
+}
+
+.form-field .form-dropdown.full {
+  max-height: none;
+}
+
+.form-field .form-dropdown.relative {
+  @apply relative;
+}
+
+.form-field .form-dropdown li {
+  @apply border-b border-gray-200 m-0 py-2 px-4;
+  @apply dark:text-snow dark:border-gray-500;
+}
+
+.form-field .form-dropdown li:last-of-type {
+  @apply border-none;
+}
+
+.form-field .form-dropdown li:hover {
+  @apply bg-blue-400 text-white;
+  @apply dark:bg-dusty dark:text-snow;
+}
+
+.form-field .form-dropdown li.selected {
+  @apply border-blue-400 dark:border-red-400;
+  @apply bg-blue-400 dark:bg-fuzzy-red text-snow;
+}
+
+.alert-box {
+  @apply fixed top-4 right-4 z-50;
+}
+
+.alert-text {
+  @apply relative py-2 px-4 mb-2 rounded text-sm;
+}
+
+.alert-text.alert {
+  @apply bg-red-400 text-white;
+}
+
+.alert-text.notice {
+  @apply bg-green-400 text-white;
+}
+
+.uneditable-field {
+  display: none;
+}
+
+code {
+  color: crimson;
+  background-color: #f1f1f1;
+  padding: 2px;
+  font-size: 105%;
+}
+
+nav.pagy.nav {
+  @apply mt-8;
+}
+
+nav.pagy.nav a {
+  @apply inline-block text-white py-1 px-2 mr-1;
+  @apply bg-fuzzy-red rounded-lg;
+}
+
+nav.pagy.nav a[aria-disabled='true'], nav.pagy.nav a.current {
+  @apply py-1 px-2;
+}
+
+nav.pagy.nav a[aria-disabled='true'],
+nav.pagy.nav a[aria-disabled='true']:hover,
+nav.pagy.nav a.gap:hover,
+nav.pagy.nav a.current,
+nav.pagy.nav a.current:hover,
+nav.pagy.nav a:hover {
+  @apply text-black;
+}
+
+nav.pagy.nav a.gap {
+  @apply py-1 px-2;
+}
+
+.warning {
+  @apply bg-blue-200 rounded p-4 mb-2;
+}
+
+#head {
+  background: linear-gradient(#C6515C 0%, #1E2231 50%);
+}
+
+body.web {
+  @apply bg-dark-gunmetal text-snow;
+}
+
+.changelog {
+  @apply py-8 px-4;
+}
+
+.changelog:nth-of-type(2n+1) {
+  @apply bg-cosmos;
+}
+
+.changelog-content {
+  @apply max-w-7xl mx-auto w-full;
+}
+
+.changelog h2 {
+  @apply font-medium! text-xl;
+}
+
+.changelog h3 {
+  @apply mt-4 font-medium! text-lg;
+}
+
+.changelog ul {
+  @apply mt-2;
+}
+
+.changelog ul li span {
+  @apply font-medium!;
+}
+
+.slider {
+  @apply relative flex items-center justify-center overflow-hidden;
+
+  height: clamp(40rem, 58vw, 50rem);
+  isolation: isolate;
+}
+
+.slider-item {
+  @apply absolute overflow-hidden rounded-xl bg-dark-gunmetal text-snow shadow-xl;
+
+  width: clamp(17rem, 28vw, 25rem);
+  aspect-ratio: 654 / 1280;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(0) scale(0.68);
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), opacity 350ms ease, filter 500ms ease;
+  will-change: transform, opacity;
+}
+
+.slider-item img {
+  @apply block h-full w-full object-cover;
+}
+
+.slider-item.current {
+  @apply z-10 opacity-100;
+
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.slider-item.prev {
+  @apply z-0 opacity-50;
+
+  transform: translateX(-62%) scale(0.78);
+  filter: brightness(0.72);
+}
+
+.slider-item.next {
+  @apply z-0 opacity-50;
+
+  transform: translateX(62%) scale(0.78);
+  filter: brightness(0.72);
+}
+
+.slider-item:not(.prev):not(.current):not(.next) {
+  visibility: hidden;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), opacity 350ms ease, visibility 0s linear 500ms;
+}
+
+.slider-text {
+  @apply absolute bottom-0 w-full bg-dark-gunmetal/80 p-3 text-sm sm:p-4 sm:text-base;
+}
+
+.slider-button {
+  @apply absolute z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-dark-gunmetal/80 text-xl text-white shadow-lg;
+  @apply transition hover:scale-110 hover:bg-dark-gunmetal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:hidden;
+}
+
+.slider-button-prev {
+  @apply left-2 sm:left-4;
+}
+
+.slider-button-next {
+  @apply right-2 sm:right-4;
+}
+
+@media (max-width: 640px) {
+  .slider {
+    position: static;
+  }
+
+  .slider-item {
+    width: 72vw;
+  }
+
+  .slider-item.prev {
+    transform: translateX(-72%) scale(0.78);
+  }
+
+  .slider-item.next {
+    transform: translateX(72%) scale(0.78);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-item, .slider-button {
+    transition: none;
+  }
+}
+
+.platform_link {
+  @apply px-1 py-0.5 bg-snow text-cosmos rounded underline;
+}

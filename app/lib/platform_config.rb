@@ -10,6 +10,6 @@ module PlatformConfig
   private
 
   def load_data(provider)
-    JSON.parse(Rails.root.join("app/javascript/applications/CharKeeperApp/data/#{provider}.json").read)
+    JSON.parse(Rails.root.join("app/javascript/applications/CharKeeperApp/v1/data/#{provider}.json").read)
   end
 end
