@@ -16,7 +16,7 @@ describe 'Translations coverage' do # rubocop: disable RSpec/DescribeClass
     {
       'es' => [
         'Base', 'Call of Cthulhu 7', 'Cosmere', 'Daggerheart', 'Fallout 2D20', 'Fate', 'General', 'Homebrew', 'Material',
-        'Mental', 'min', 'Nimble', 'Pathfinder 2', 'Personal', 'Ritual', 'Verbal'
+        'Mental', 'min', 'Nimble', 'Pathfinder 2', 'Personal', 'Ritual', 'Verbal', 'Homebrews'
       ]
     }
   end

@@ -5,14 +5,19 @@ export const ContentNavButton = (props) => {
   const size = createWindowSize();
   const safeChildren = children(() => props.children);
 
+  const className = () => [
+    'content-nav-button',
+    props.active ? 'active' : null,
+  ].filter(Boolean).join(' ');
+
   return (
     <div
-      class='content-nav-button'
+      class={className()}
       onClick={props.onClick} // eslint-disable-line solid/reactivity
     >
       {safeChildren()}
       <Show when={size.width < 768}>
-        <p class='content-nav-button-text'>{props.text}</p>
+        <p class="content-nav-button-text">{props.text}</p>
       </Show>
     </div>
   );

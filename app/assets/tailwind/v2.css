@@ -113,11 +113,11 @@
 }
 
 #content-body-left {
-  @apply hidden xl:block xl:flex-1 border-r border-border;
+  @apply flex-col hidden xl:flex flex-1 border-r border-border;
 }
 
 #content-body-right {
-  @apply flex-1 bg-canvas;
+  @apply flex flex-col flex-1 bg-canvas;
 }
 
 #content-nav {
@@ -135,4 +135,258 @@
 
 .content-nav-button-text {
   @apply text-[10px];
+}
+
+.button {
+  @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border text-sm;
+  @apply transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus;
+}
+
+.button-small {
+  @apply min-h-8 px-3 py-1.5 text-xs;
+}
+
+.button-medium {
+  @apply min-h-10 px-4 py-2.5;
+}
+
+.button-large {
+  @apply min-h-12 px-5 py-3 text-base;
+}
+
+.button-primary {
+  @apply border-accent bg-accent text-accent-foreground hover:border-accent-hover hover:bg-accent-hover;
+}
+
+.button-secondary {
+  @apply border-border bg-surface text-foreground hover:bg-accent-soft;
+}
+
+.button-ghost {
+  @apply border-transparent bg-transparent text-foreground hover:bg-accent-soft;
+}
+
+.button-danger {
+  @apply border-danger bg-danger text-white hover:opacity-90;
+}
+
+.button:disabled {
+  @apply cursor-not-allowed border-border bg-canvas text-muted opacity-60 shadow-none;
+}
+
+.field {
+  @apply flex w-full flex-col gap-1.5;
+}
+
+.field-label {
+  @apply text-xs text-foreground;
+}
+
+.field-hint, .field-error {
+  @apply text-xs;
+}
+
+.field-hint {
+  @apply text-muted;
+}
+
+.field-error {
+  @apply text-danger;
+}
+
+.input, .select-trigger {
+  @apply min-h-10 w-full rounded-lg border border-border bg-surface px-3 text-left text-base text-foreground outline-none;
+  @apply placeholder:text-muted focus:border-focus focus:ring-2 focus:ring-focus/20;
+  @apply disabled:cursor-not-allowed disabled:bg-canvas disabled:text-muted disabled:opacity-60;
+  @apply md:text-sm;
+}
+
+.input[aria-invalid='true'], .select-trigger[aria-invalid='true'] {
+  @apply border-danger focus:border-danger focus:ring-danger/20;
+}
+
+.checkbox {
+  @apply relative flex cursor-pointer items-center gap-2.5 text-sm text-foreground;
+}
+
+.checkbox-input {
+  @apply absolute size-px opacity-0;
+}
+
+.checkbox-control {
+  @apply mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-sm border border-border bg-surface;
+}
+
+.checkbox-control::after {
+  content: '';
+  width: 0.35rem;
+  height: 0.65rem;
+  border-right: 2px solid var(--ck-v2-accent-foreground);
+  border-bottom: 2px solid var(--ck-v2-accent-foreground);
+  opacity: 0;
+  transform: translateY(-0.08rem) rotate(45deg);
+}
+
+.checkbox-input:checked + .checkbox-control {
+  @apply border-accent bg-accent;
+}
+
+.checkbox-input:checked + .checkbox-control::after {
+  opacity: 1;
+}
+
+.checkbox-input:focus-visible + .checkbox-control {
+  @apply outline-2 outline-offset-2 outline-focus;
+}
+
+.checkbox-disabled {
+  @apply cursor-not-allowed text-muted opacity-60;
+}
+
+.checkbox-content, .checkbox-label, .checkbox-description {
+  @apply block;
+}
+
+.checkbox-description {
+  @apply mt-0.5 text-xs text-muted;
+}
+
+.select-control {
+  @apply relative;
+}
+
+.select-trigger {
+  @apply flex cursor-pointer items-center justify-between gap-3;
+}
+
+.select-trigger-open {
+  @apply border-focus ring-2 ring-focus/20;
+}
+
+.select-placeholder {
+  @apply text-muted;
+}
+
+.select-chevron {
+  @apply size-2 shrink-0 border-b-2 border-r-2 border-current text-muted transition-transform;
+  transform: translateY(-0.15rem) rotate(45deg);
+}
+
+.select-trigger-open .select-chevron {
+  transform: translateY(0.15rem) rotate(225deg);
+}
+
+.select-dropdown {
+  @apply absolute left-0 right-0 top-[calc(100%+0.375rem)] z-30 flex max-h-64 flex-col overflow-y-auto overscroll-contain;
+  @apply rounded-lg border border-border bg-surface-raised p-1 shadow-xl;
+}
+
+.select-option {
+  @apply flex min-h-11 shrink-0 cursor-pointer items-center justify-between gap-3 rounded-md px-3 py-2 text-left text-sm text-foreground;
+  @apply hover:bg-accent-soft focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus;
+}
+
+.select-option-active {
+  @apply bg-accent-soft;
+}
+
+.select-option-selected {
+  @apply text-accent;
+}
+
+.select-option:disabled {
+  @apply cursor-not-allowed opacity-40;
+}
+
+.select-option-check {
+  @apply text-accent;
+}
+
+.select-empty {
+  @apply px-3 py-4 text-center text-sm text-muted;
+}
+
+.empty-character-state {
+  @apply flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center;
+}
+
+.empty-character-state-text {
+  @apply max-w-sm text-sm text-muted;
+}
+
+.sheet-backdrop {
+  @apply fixed inset-0 z-50 flex items-end justify-center bg-black/60;
+  @apply md:items-stretch md:justify-end;
+  animation: sheet-backdrop-in 150ms ease-out;
+}
+
+.sheet {
+  @apply relative flex max-h-[calc(100dvh-3rem)] min-h-64 w-full flex-col overflow-hidden;
+  @apply rounded-t-2xl border-t border-border bg-surface text-foreground shadow-2xl outline-none;
+  @apply md:h-full md:max-h-none md:min-h-0 md:w-[min(30rem,100vw)] md:rounded-none md:border-l md:border-t-0;
+  animation: sheet-mobile-in 200ms ease-out;
+}
+
+.sheet-header {
+  @apply flex min-h-16 shrink-0 items-center justify-between gap-4 border-b border-border px-4 py-3;
+}
+
+.sheet-title {
+  @apply text-base;
+}
+
+.sheet-close-button {
+  @apply ml-auto flex size-10 cursor-pointer items-center justify-center rounded-lg bg-transparent text-muted;
+  @apply hover:bg-accent-soft hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus;
+}
+
+.sheet-close-button span {
+  @apply text-3xl leading-none;
+}
+
+.sheet-content {
+  @apply min-h-0 flex-1 flex flex-col overflow-y-auto;
+}
+
+.new-character-form {
+  @apply flex flex-col flex-1;
+}
+
+.new-character-form-content {
+  @apply p-4 pb-8 flex flex-col flex-1 gap-4;
+}
+
+.new-character-form-footer {
+  @apply p-4 border-t border-border flex gap-4;
+}
+
+.new-character-form-footer-action {
+  @apply flex-1;
+}
+
+@keyframes sheet-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sheet-mobile-in {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@media (min-width: 768px) {
+  .sheet {
+    animation-name: sheet-desktop-in;
+  }
+}
+
+@keyframes sheet-desktop-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-backdrop, .sheet {
+    animation: none;
+  }
 }

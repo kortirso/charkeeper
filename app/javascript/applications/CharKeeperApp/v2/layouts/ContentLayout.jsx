@@ -1,5 +1,6 @@
-import { createMemo } from 'solid-js';
+import { createMemo, createSignal, For, Switch, Match } from 'solid-js';
 
+import { CharactersLayout, HomebrewsLayout, CampaignsLayout, SettingsLayout } from '../layouts';
 import { ContentNavButton } from '../components';
 import { useAppLocale } from '../context';
 import { List, Homebrew, Campaigns, Edit, Logo } from '../assets';
@@ -8,25 +9,27 @@ import { localize } from '../helpers';
 const TRANSLATION = {
   en: {
     characters: 'Characters',
-    homebrews: 'Homebrew',
+    homebrews: 'Homebrews',
     campaigns: 'Campaigns',
     settings: 'Settings'
   },
   ru: {
     characters: 'Персонажи',
-    homebrews: 'Homebrew',
+    homebrews: 'Homebrews',
     campaigns: 'Кампании',
     settings: 'Настройки'
   },
   es: {
     characters: 'Personajes',
-    homebrews: 'Homebrew',
+    homebrews: 'Homebrews',
     campaigns: 'Campañas',
     settings: 'Configuración'
   }
 }
 
 export const ContentLayout = () => {
+  const [currentTab, setCurrentTab] = createSignal('characters');
+
   const [locale] = useAppLocale();
 
   const i18n = createMemo(() => localize(TRANSLATION, locale()));
@@ -39,15 +42,20 @@ export const ContentLayout = () => {
         </div>
       </div>
       <div id="content">
-        <div id="content-body">
-          <div id="content-body-left" />
-          <div id="content-body-right" />
-        </div>
+        <Switch>
+          <Match when={currentTab() === 'characters'}><CharactersLayout /></Match>
+          <Match when={currentTab() === 'homebrews'}><HomebrewsLayout /></Match>
+          <Match when={currentTab() === 'campaigns'}><CampaignsLayout /></Match>
+          <Match when={currentTab() === 'settings'}><SettingsLayout /></Match>
+        </Switch>
         <div id="content-nav">
-          <ContentNavButton text={i18n().characters}><List /></ContentNavButton>
-          <ContentNavButton text={i18n().homebrews}><Homebrew /></ContentNavButton>
-          <ContentNavButton text={i18n().campaigns}><Campaigns /></ContentNavButton>
-          <ContentNavButton text={i18n().settings}><Edit /></ContentNavButton>
+          <For each={[['characters', <List />], ['homebrews', <Homebrew />], ['campaigns', <Campaigns />], ['settings', <Edit />]]}>
+            {(item) =>
+              <ContentNavButton active={currentTab() === item[0]} text={i18n()[item[0]]} onClick={() => setCurrentTab(item[0])}>
+                {item[1]}
+              </ContentNavButton>
+            }
+          </For>
         </div>
       </div>
     </div>
