@@ -13,6 +13,7 @@ module UsersContext
         optional(:locale).filled(Locales)
         optional(:username).filled(:string, max_size?: 50)
         optional(:color_schema).filled(ColorSchemas)
+        optional(:color_theme).filled(:string)
         optional(:password).filled(:string, min_size?: 10)
         optional(:password_confirmation).filled(:string, min_size?: 10)
         optional(:provider_locales).hash

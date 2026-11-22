@@ -1,12 +1,11 @@
 import { ContentLayout } from './layouts';
+import { useAppState } from './context';
 
-export const Content = (props) => {
+export const Content = () => {
+  const [appState] = useAppState();
+
   return (
-    <div
-      class="ck-v2"
-      data-color-mode={props.colorMode === 'dark' ? 'dark' : 'light'}
-      data-color-scheme="crimson"
-    >
+    <div class="ck-v2" data-color-mode={appState.colorSchema} data-color-scheme={appState.colorTheme}>
       <ContentLayout />
     </div>
   );

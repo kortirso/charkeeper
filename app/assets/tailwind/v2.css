@@ -113,11 +113,11 @@
 }
 
 #content-body-left {
-  @apply flex-col hidden xl:flex flex-1 border-r border-border;
+  @apply p-4 flex flex-col flex-1 border-r border-border;
 }
 
 #content-body-right {
-  @apply flex flex-col flex-1 bg-canvas;
+  @apply p-4 flex flex-col flex-1 bg-canvas;
 }
 
 #content-nav {
@@ -362,6 +362,56 @@
 
 .new-character-form-footer-action {
   @apply flex-1;
+}
+
+.collection-item {
+  @apply min-h-16 w-full flex items-center gap-3 rounded-lg border border-transparent bg-transparent p-2 text-left transition-colors cursor-pointer;
+  @apply hover:bg-canvas;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus;
+}
+
+.collection-item.active {
+  @apply border-accent/30 bg-accent-soft;
+}
+
+.collection-item-drag {
+  @apply text-muted;
+}
+
+.collection-item-icon {
+  @apply flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent-soft text-xs text-accent;
+}
+
+.collection-item.active .collection-item-icon {
+  @apply bg-surface;
+}
+
+.character-item-box {
+  @apply flex-1;
+}
+
+.collection-item-title {
+  @apply text-sm text-foreground;
+}
+
+.collection-item-description {
+  @apply mt-1 text-xs text-muted;
+}
+
+.collection-item-title, .collection-item-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; /* Specifies the number of lines to display */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds an ellipsis (...) at the end of the truncated text */
+}
+
+.main-setting-layout {
+  @apply flex flex-col gap-4;
+}
+
+.back-to-list {
+  @apply flex items-center gap-2 cursor-pointer mb-4;
 }
 
 @keyframes sheet-backdrop-in {

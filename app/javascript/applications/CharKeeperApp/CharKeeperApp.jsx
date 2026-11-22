@@ -4,7 +4,7 @@ import { CharKeeperAppContent } from './v1/CharKeeperAppContent';
 import { Content } from './v2/Content';
 
 import { AppStateProvider, AppLocaleProvider, AppAlertProvider } from './v1/context';
-import { LocaleProvider } from './v2/context';
+import { StateProvider, LocaleProvider } from './v2/context';
 
 export const CharKeeperApp = (props) => (
   <Switch
@@ -29,9 +29,22 @@ export const CharKeeperApp = (props) => (
     }
   >
     <Match when={props.version === 'v2'}>
-      <LocaleProvider locale={props.locale}>
-        <Content colorMode={props.colorSchema} />
-      </LocaleProvider>
+      <StateProvider
+        accessToken={props.accessToken}
+        username={props.username}
+        isAdmin={props.admin}
+        colorSchema={props.colorSchema}
+        colorTheme={props.colorTheme}
+        providerLocales={props.providerLocales}
+        identities={props.identities}
+        oauthLinks={props.oauthLinks}
+        oauthCredentials={props.oauthCredentials}
+        host={props.host}
+      >
+        <LocaleProvider locale={props.locale}>
+          <Content />
+        </LocaleProvider>
+      </StateProvider>
     </Match>
   </Switch>
 );
