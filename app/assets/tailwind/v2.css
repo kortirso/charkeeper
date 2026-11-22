@@ -414,6 +414,10 @@
   @apply flex items-center gap-2 cursor-pointer mb-4;
 }
 
+.gapped-column {
+  @apply flex flex-col gap-2;
+}
+
 @keyframes sheet-backdrop-in {
   from { opacity: 0; }
   to { opacity: 1; }

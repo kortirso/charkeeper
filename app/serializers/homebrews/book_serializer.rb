@@ -2,7 +2,7 @@
 
 module Homebrews
   class BookSerializer < ApplicationSerializer
-    attributes :id, :name, :provider, :shared, :enabled, :own
+    attributes :id, :name, :provider, :shared, :enabled, :own, :upvotes_count
 
     def enabled # rubocop: disable Naming/PredicateMethod
       context && context[:enabled_books] ? context[:enabled_books].include?(object.id) : false
