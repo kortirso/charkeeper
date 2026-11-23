@@ -17,7 +17,8 @@ export const Select = (props) => {
   const [activeIndex, setActiveIndex] = createSignal(-1);
   const [search, setSearch] = createSignal('');
 
-  const selectId = () => local.id || createUniqueId();
+  const generatedId = createUniqueId();
+  const selectId = () => local.id || generatedId;
   const listboxId = () => `${selectId()}-listbox`;
   const selectedValue = () => local.value ?? local.selectedValue;
   const options = createMemo(() => normalizeOptions(local.options));

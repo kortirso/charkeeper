@@ -109,7 +109,7 @@ export const HomebrewsLayout = () => {
                   <Checkbox
                     checked={book.enabled}
                     label={book.name}
-                    onChange={() => toggleBook(book.id)}
+                    onToggle={() => toggleBook(book.id)}
                   />
                 }
               </For>

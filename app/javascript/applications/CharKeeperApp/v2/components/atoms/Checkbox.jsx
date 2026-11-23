@@ -5,7 +5,8 @@ export const Checkbox = (props) => {
     'checked', 'class', 'classList', 'controlClass', 'disabled', 'id', 'label', 'onChange', 'onToggle'
   ]);
 
-  const inputId = () => local.id || createUniqueId();
+  const generatedId = createUniqueId();
+  const inputId = () => local.id || generatedId;
 
   const onChange = (event) => {
     local.onChange?.(event.currentTarget.checked, event);

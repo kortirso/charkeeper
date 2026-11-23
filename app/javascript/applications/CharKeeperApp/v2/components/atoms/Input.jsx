@@ -7,7 +7,8 @@ export const Input = (props) => {
     'class', 'classList', 'containerClass', 'containerClassList', 'id', 'label', 'labelClass', 'onInput', 'placeholder'
   ]);
 
-  const inputId = () => local.id || createUniqueId();
+  const generatedId = createUniqueId();
+  const inputId = () => local.id || generatedId;
 
   const onInput = (event) => local.onInput?.(event.currentTarget.value, event);
 
