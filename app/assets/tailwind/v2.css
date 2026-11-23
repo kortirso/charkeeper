@@ -395,8 +395,16 @@
   @apply bg-surface;
 }
 
+.collection-item-avatar {
+  @apply size-16 h-16 rounded;
+}
+
+.character-item.dragging {
+  @apply opacity-50 z-10;
+}
+
 .character-item-box {
-  @apply flex-1;
+  @apply flex flex-col gap-1 flex-1;
 }
 
 .collection-item-title {
@@ -404,7 +412,7 @@
 }
 
 .collection-item-description {
-  @apply mt-1 text-xs text-muted;
+  @apply text-xs text-muted;
 }
 
 .collection-item-title, .collection-item-description {

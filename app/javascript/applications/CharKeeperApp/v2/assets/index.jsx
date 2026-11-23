@@ -1,5 +1,6 @@
 export * from './Arrow';
 export * from './AuthenticationSettings';
+export * from './Avatar';
 export * from './Campaigns';
 export * from './ChevronRight';
 export * from './CosmereSystem';
