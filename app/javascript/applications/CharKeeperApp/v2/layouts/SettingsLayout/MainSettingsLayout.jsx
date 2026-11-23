@@ -9,34 +9,21 @@ import { updateUserRequest } from './api';
 const TRANSLATION = {
   en: {
     colorSchema: 'Color schema',
-    schemas: [
-      { label: 'Light', value: 'light' },
-      { label: 'Dark', value: 'dark' }
-    ],
+    schemas: { light: 'Light', dark: 'Dark' },
     colorTheme: 'Color theme'
   },
   ru: {
     colorSchema: 'Цветовая схема',
-    schemas: [
-      { label: 'Светлая', value: 'light' },
-      { label: 'Тёмная', value: 'dark' }
-    ],
+    schemas: { light: 'Светлая', dark: 'Тёмная' },
     colorTheme: 'Цветовая тема'
   },
   es: {
     colorSchema: 'Esquema de colores',
-    schemas: [
-      { label: 'Luz', value: 'light' },
-      { label: 'Oscuridad', value: 'dark' }
-    ],
+    schemas: { light: 'Luz', dark: 'Oscuridad' },
     colorTheme: 'Tema de color'
   }
 }
-const THEMES = [
-  { label: 'Crimson', value: 'crimson' },
-  { label: 'Ocean', value: 'ocean' },
-  { label: 'Forest', value: 'forest' }
-];
+const THEMES = { crimson: 'Crimson', ocean: 'Ocean', forest: 'Forest' }
 
 export const MainSettingsLayout = () => {
   const [locale] = useAppLocale();

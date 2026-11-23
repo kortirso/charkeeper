@@ -1,0 +1,166 @@
+{
+  "sizes": {
+    "micro": { "name": { "en": "Micro", "ru": "Микро" } },
+    "tiny": { "name": { "en": "Tiny", "ru": "Крошечный" } },
+    "small": { "name": { "en": "Small", "ru": "Маленький" } },
+    "medium": { "name": { "en": "Medium", "ru": "Средний" } },
+    "large": { "name": { "en": "Large", "ru": "Большой" } },
+    "huge": { "name": { "en": "Huge", "ru": "Огромный" } }
+  },
+  "ancestries": {
+    "human": { "name": { "en": "Human", "ru": "Человек" } },
+    "elf": { "name": { "en": "Elf", "ru": "Эльф" } },
+    "dwarf": { "name": { "en": "Dwarf", "ru": "Дварф" } },
+    "halfling": { "name": { "en": "Halfling", "ru": "Полурослик" } },
+    "gnome": { "name": { "en": "Gnome", "ru": "Гном" } },
+    "orc": { "name": { "en": "Orc", "ru": "Орк" } },
+    "dragonborn": { "name": { "en": "Dragonborn", "ru": "Драконорожденный" } },
+    "giantborn": { "name": { "en": "Giantborn", "ru": "Великанорожденный" } },
+    "angelborn": { "name": { "en": "Angelborn", "ru": "Ангелорожденный" } },
+    "fiendborn": { "name": { "en": "Fiendborn", "ru": "Демонорожденный" } },
+    "beastborn": { "name": { "en": "Beastborn", "ru": "Зверорожденный" }, "default": false }
+  },
+  "classes": {
+    "barbarian": {
+      "name": { "en": "Barbarian", "ru": "Варвар" },
+      "subclasses": {
+        "spirit_guardian": { "name": { "en": "Spirit Guardian", "ru": "Духовный защитник" } },
+        "elemental_fury": { "name": { "en": "Elemental Fury", "ru": "Чистая ярость" } }
+      }
+    },
+    "bard": {
+      "name": { "en": "Bard", "ru": "Бард" },
+      "subclasses": {
+        "eloquence": { "name": { "en": "Eloquence", "ru": "Оратор" } },
+        "jester": { "name": { "en": "Jester", "ru": "Шут" } }
+      }
+    },
+    "champion": {
+      "name": { "en": "Champion", "ru": "Чемпион" },
+      "subclasses": {
+        "hero": { "name": { "en": "Hero", "ru": "Герой" } },
+        "sentinel": { "name": { "en": "Sentinel", "ru": "Страж" } }
+      }
+    },
+    "cleric": {
+      "name": { "en": "Cleric", "ru": "Жрец" },
+      "subclasses": {
+        "inquisitor": { "name": { "en": "Inquisitor", "ru": "Инквизитор" } },
+        "priest": { "name": { "en": "Priest", "ru": "Священник" } }
+      }
+    },
+    "commander": {
+      "name": { "en": "Commander", "ru": "Командир" },
+      "subclasses": {
+        "crusader": { "name": { "en": "Crusader", "ru": "Крестоносец" } },
+        "warlord": { "name": { "en": "Warlord", "ru": "Военачальник" } }
+      }
+    },
+    "druid": {
+      "name": { "en": "Druid", "ru": "Друид" },
+      "subclasses": {
+        "phoenix": { "name": { "en": "Phoenix", "ru": "Феникс" } },
+        "rampant_growth": { "name": { "en": "Rampant Growth", "ru": "Буйный рост" } }
+      }
+    },
+    "hunter": {
+      "name": { "en": "Hunter", "ru": "Охотник" },
+      "subclasses": {
+        "monster_slayer": { "name": { "en": "Monster Slayer", "ru": "Охотник на монстров" } },
+        "trapper": { "name": { "en": "Trapper", "ru": "Траппер" } }
+      }
+    },
+    "monk": {
+      "name": { "en": "Monk", "ru": "Монах" },
+      "subclasses": {
+        "astral_self": { "name": { "en": "Astral Self", "ru": "Астральная сущность" } },
+        "shifting_tide": { "name": { "en": "Shifting Tide", "ru": "Изменчивый поток" } }
+      }
+    },
+    "rogue": {
+      "name": { "en": "Rogue", "ru": "Плут" },
+      "subclasses": {
+        "long_death": { "name": { "en": "Long Death", "ru": "Долгая смерть" } },
+        "swashbuckler": { "name": { "en": "Swashbuckler", "ru": "Дуэлянт" } }
+      }
+    },
+    "sorcerer": {
+      "name": { "en": "Sorcerer", "ru": "Чародей" },
+      "subclasses": {
+        "angelic": { "name": { "en": "Angelic", "ru": "Ангельский" } },
+        "draconic": { "name": { "en": "Draconic", "ru": "Драконий" } }
+      }
+    },
+    "spellblade": {
+      "name": { "en": "Spellblade", "ru": "Маг клинка" },
+      "subclasses": {
+        "paladin": { "name": { "en": "Paladin", "ru": "Паладин" } },
+        "rune_knight": { "name": { "en": "Rune Knight", "ru": "Рунический рыцарь" } }
+      }
+    },
+    "warlock": {
+      "name": { "en": "Warlock", "ru": "Колдун" },
+      "subclasses": {
+        "eldritch": { "name": { "en": "Eldritch", "ru": "Искажённый" } },
+        "fey": { "name": { "en": "Fey", "ru": "Фея" } }
+      }
+    },
+    "wizard": {
+      "name": { "en": "Wizard", "ru": "Волшебник" },
+      "subclasses": {
+        "portal_mage": { "name": { "en": "Portal Mage", "ru": "Порталист" } },
+        "witch": { "name": { "en": "Witch", "ru": "Ведьма" } }
+      }
+    }
+  },
+  "spell_lists": {
+    "arcane": { "name": { "en": "Arcane", "ru": "Арканный" } },
+    "divine": { "name": { "en": "Divine", "ru": "Божественный" } },
+    "primal": { "name": { "en": "Primal", "ru": "Природный" } }
+  },
+  "schools": {
+    "astromancy": { "name": { "en": "Astromancy", "ru": "Астромантия" } },
+    "conjuration": { "name": { "en": "Conjuration", "ru": "Вызов" } },
+    "divination": { "name": { "en": "Divination", "ru": "Прорицание" } },
+    "elemental": { "name": { "en": "Elemental", "ru": "Элементализм" } },
+    "enchantment": { "name": { "en": "Enchantment", "ru": "Очарование" } },
+    "invocation": { "name": { "en": "Invocation", "ru": "Призыв" } },
+    "nullification": { "name": { "en": "Nullification", "ru": "Аннулирование" } },
+    "transmutation": { "name": { "en": "Transmutation", "ru": "Преобразование" } }
+  },
+  "abilities": {
+    "mig": { "name": { "en": "Might", "ru": "Мощь" } },
+    "agi": { "name": { "en": "Agility", "ru": "Ловкость" } },
+    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
+    "cha": { "name": { "en": "Charisma", "ru": "Харизма" } }
+  },
+  "combatExpertise": {
+    "weapon": { "name": { "en": "Weapon", "ru": "Оружие" } },
+    "light_armor": { "name": { "en": "Light Armor", "ru": "Лёгкая броня" } },
+    "heavy_armor": { "name": { "en": "Heavy Armor", "ru": "Тяжёлая броня" } },
+    "light_shield": { "name": { "en": "Light Shield", "ru": "Лёгкие щиты" } },
+    "heavy_shield": { "name": { "en": "Heavy Shield", "ru": "Тяжёлые щиты" } },
+    "focuses": { "name": { "en": "Spell Focuses", "ru": "Фокусировка" } }
+  },
+  "damages": {
+    "bludge": { "name": { "en": "Bludgeoning", "ru": "Дробящий" } },
+    "pierce": { "name": { "en": "Piercing", "ru": "Колющий" } },
+    "slash": { "name": { "en": "Slashing", "ru": "Рубящий" } },
+    "fire": { "name": { "en": "Fire", "ru": "Огненный" } },
+    "cold": { "name": { "en": "Cold", "ru": "Морозный" } },
+    "lightning": { "name": { "en": "Lightning", "ru": "Электрический" } },
+    "poison": { "name": { "en": "Poison", "ru": "Ядовитый" } },
+    "corrosion": { "name": { "en": "Corrosion", "ru": "Кислотный" } },
+    "psychic": { "name": { "en": "Psychic", "ru": "Психический" } },
+    "radiant": { "name": { "en": "Radiant", "ru": "Сияющий" } },
+    "umbral": { "name": { "en": "Umbral", "ru": "Сумрачный" } },
+    "true": { "name": { "en": "True", "ru": "Истинный" } }
+  },
+  "damageGroups": {
+    "physical": { "name": { "en": "Physical", "ru": "Физический" } },
+    "elemental": { "name": { "en": "Elemental", "ru": "Элементальный" } },
+    "mystical": { "name": { "en": "Mystical", "ru": "Мистический" } }
+  },
+  "summons": {
+  }
+}

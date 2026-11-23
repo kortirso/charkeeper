@@ -1,4 +1,5 @@
 import { Show } from 'solid-js';
+import { Dynamic } from 'solid-js/web';
 import { DragDropProvider } from '@dnd-kit/solid';
 import { useSortable } from '@dnd-kit/solid/sortable';
 
@@ -33,8 +34,15 @@ export const LayoutNavButton = (props) => {
           </button>
         </Show>
         <div class="collection-item-icon">
-          <Show when={props.avatar} fallback={<span />}>
-            <img src={props.avatar} />
+          <Show
+            when={props.icon}
+            fallback={
+              <Show when={props.avatar} fallback={<span />}>
+                <img src={props.avatar} />
+              </Show>
+            }
+          >
+            <Dynamic component={props.icon} />
           </Show>
         </div>
         <div class="character-item-box">

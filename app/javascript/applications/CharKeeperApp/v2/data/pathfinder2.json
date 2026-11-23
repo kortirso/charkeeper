@@ -1,0 +1,228 @@
+{
+  "races": {
+    "gnome": {
+      "name": { "en": "Gnome", "ru": "Гном" },
+      "subraces": {
+        "wellspring": { "name": { "en": "Wellspring gnome", "ru": "Гном истока" } },
+        "sensate": { "name": { "en": "Sensate gnome", "ru": "Гном-сенсат" } },
+        "chameleon": { "name": { "en": "Chameleon gnome", "ru": "Гном-хамелеон" } },
+        "umbral": { "name": { "en": "Umbral gnome", "ru": "Теневой гном" } },
+        "fey_touched": { "name": { "en": "Fey-touched gnome", "ru": "Фееподобный гном" } }
+      }
+    },
+    "goblin": {
+      "name": { "en": "Goblin", "ru": "Гоблин" },
+      "subraces": {
+        "irongut": { "name": { "en": "Irongut goblin", "ru": "Железнобрюхий гоблин" } },
+        "unbreakable": { "name": { "en": "Unbreakable goblin", "ru": "Небьющийся гоблин" } },
+        "razortooth": { "name": { "en": "Razortooth goblin", "ru": "Острозубый гоблин" } },
+        "charhide": { "name": { "en": "Charhide goblin", "ru": "Палёный гоблин" } },
+        "snow": { "name": { "en": "Snow goblin", "ru": "Снежный гоблин" } }
+      }
+    },
+    "dwarf": {
+      "name": { "en": "Dwarf", "ru": "Дварф" },
+      "subraces": {
+        "ancient_blooded_dwarf": { "name": { "en": "Ancient-Blooded Dwarf", "ru": "Дварф древних кровей" } },
+        "death_warden_dwarf": { "name": { "en": "Death Warden Dwarf", "ru": "Дварф - страж мёртвых" } },
+        "forge_dwarf": { "name": { "en": "Forge Dwarf", "ru": "Дварф кузни" } },
+        "rock_dwarf": { "name": { "en": "Rock Dwarf", "ru": "Скальный дварф" } },
+        "strong_blooded_dwarf": { "name": { "en": "Strong-Blooded Dwarf", "ru": "Полнокровный дварф" } }
+      }
+    },
+    "leshy": {
+      "name": { "en": "Leshy", "ru": "Леший" },
+      "subraces": {
+        "seeweed_leshy": { "name": { "en": "Seeweed leshy", "ru": "Водорослевый леший" } },
+        "fungus_leshy": { "name": { "en": "Fungus leshy", "ru": "Грибной леший" } },
+        "cactus_leshy": { "name": { "en": "Cactus leshy", "ru": "Кактусовый леший" } },
+        "root_leshy": { "name": { "en": "Root leshy", "ru": "Корневой леший" } },
+        "vine_leshy": { "name": { "en": "Vine leshy", "ru": "Лианный леший" } },
+        "leaf_leshy": { "name": { "en": "Leaf leshy", "ru": "Лиственный леший" } },
+        "lotus_leshy": { "name": { "en": "Lotus leshy", "ru": "Лотосовый леший" } },
+        "gourd_leshy": { "name": { "en": "Gourd leshy", "ru": "Тыквенный леший" } },
+        "fruit_leshy": { "name": { "en": "Fruit leshy", "ru": "Фруктовый леший" } }
+      }
+    },
+    "orc": {
+      "name": { "en": "Orc", "ru": "Орк" },
+      "subraces": {
+        "battle_ready_orc": { "name": { "en": "Battle-ready orc", "ru": "Воинственный орк" } },
+        "deep_orc": { "name": { "en": "Deep orc", "ru": "Глубинный орк" } },
+        "winter_orc": { "name": { "en": "Winter orc", "ru": "Зимний орк" } },
+        "rainfall_orc": { "name": { "en": "Rainfall orc", "ru": "Ливневый орк" } },
+        "grave_orc": { "name": { "en": "Grave orc", "ru": "Могильный орк" } },
+        "badlands_orc": { "name": { "en": "Badlands orc", "ru": "Орк пустошей" } },
+        "hold_scarred_orc": { "name": { "en": "Hold-scarred orc", "ru": "Шрамированный орк" } }
+      }
+    },
+    "halfling": {
+      "name": { "en": "Halfling", "ru": "Полурослик" },
+      "subraces": {
+        "gutsy_halfling": { "name": { "en": "Gutsy Halfling", "ru": "Отважный полурослик" } },
+        "hillock_halfling": { "name": { "en": "Hillock Halfling", "ru": "Холмовой полурослик" } },
+        "jinxed_halfling": { "name": { "en": "Jinxed Halfling", "ru": "Треклятый полурослик" } },
+        "nomadic_halfling": { "name": { "en": "Nomadic Halfling", "ru": "Странствующий полурослик" } },
+        "twilight_halfling": { "name": { "en": "Twilight Halfling", "ru": "Сумеречный полурослик" } },
+        "wildwood_halfling": { "name": { "en": "Wildwood Halfling", "ru": "Чащобный полурослик" } }
+      }
+    },
+    "human": {
+      "name": { "en": "Human", "ru": "Человек" },
+      "subraces": {
+        "versatile_human": { "name": { "en": "Versatile human", "ru": "Разносторонний человек" } },
+        "skilled_human": { "name": { "en": "Skilled human", "ru": "Умелый человек" } }
+      }
+    },
+    "elf": {
+      "name": { "en": "Elf", "ru": "Эльф" },
+      "subraces": {
+        "ancient_elf": { "name": { "en": "Ancient elf", "ru": "Древний эльф" } },
+        "woodland_elf": { "name": { "en": "Woodland elf", "ru": "Лесной эльф" } },
+        "cavern_elf": { "name": { "en": "Cavern elf", "ru": "Пещерный эльф" } },
+        "arctic_elf": { "name": { "en": "Arctic elf", "ru": "Полярный эльф" } },
+        "whisper_elf": { "name": { "en": "Whisper elf", "ru": "Шепчущий эльф" } },
+        "seer_elf": { "name": { "en": "Seer elf", "ru": "Эльф-провидец" } }
+      }
+    }
+  },
+  "classes": {
+    "bard": {
+      "name": { "en": "Bard", "ru": "Бард" },
+      "main_ability_options": ["cha"],
+      "subclass_title": { "en": "Muse", "ru": "Муза" },
+      "subclasses": {
+        "warrior": { "name": { "en": "Warrior", "ru": "Воитель" } },
+        "maestro": { "name": { "en": "Maestro", "ru": "Маэстро" } },
+        "enigma": { "name": { "en": "Enigma", "ru": "Энигма" } },
+        "polymath": { "name": { "en": "Polymath", "ru": "Эрудит" } }
+      }
+    },
+    "cleric": {
+      "name": { "en": "Cleric", "ru": "Жрец" },
+      "main_ability_options": ["wis"],
+      "subclass_title": { "en": "Doctrine", "ru": "Доктрина" },
+      "subclasses": {
+        "cloistered_cleric": { "name": { "en": "Cloistered cleric", "ru": "Жрец-затворник" } },
+        "warpriest": { "name": { "en": "Warpriest", "ru": "Капеллан" } }
+      }
+    },
+    "druid": {
+      "name": { "en": "Druid", "ru": "Друид" },
+      "main_ability_options": ["wis"],
+      "subclass_title": { "en": "Order", "ru": "Орден" },
+      "subclasses": {
+        "untamed": { "name": { "en": "Untamed", "ru": "Дикий орден" } },
+        "storm": { "name": { "en": "Storm", "ru": "Орден бури" } },
+        "animal": { "name": { "en": "Animal", "ru": "Орден зверя" } },
+        "leaf": { "name": { "en": "Leaf", "ru": "Орден листа" } }
+      }
+    },
+    "fighter": {
+      "name": { "en": "Fighter", "ru": "Воин" },
+      "main_ability_options": ["str", "dex"]
+    },
+    "ranger": {
+      "name": { "en": "Ranger", "ru": "Следопыт" },
+      "main_ability_options": ["str", "dex"]
+    },
+    "rogue": {
+      "name": { "en": "Rogue", "ru": "Плут" },
+      "main_ability_options": ["dex"],
+      "subclass_title": { "en": "Racket", "ru": "Стиль" },
+      "subclasses": {
+        "thief": { "name": { "en": "Thief", "ru": "Вор" } },
+        "ruffian": { "name": { "en": "Ruffian", "ru": "Головорез" }, "main_ability_options": ["str"] },
+        "mastermind": { "name": { "en": "Mastermind", "ru": "Организатор" }, "main_ability_options": ["int"] },
+        "scoundrel": { "name": { "en": "Scoundrel", "ru": "Пройдоха" }, "main_ability_options": ["cha"] }
+      }
+    },
+    "witch": {
+      "name": { "en": "Witch", "ru": "Ведьма" },
+      "main_ability_options": ["int"],
+      "subclass_title": { "en": "Patron", "ru": "Покровитель" },
+      "subclasses": {
+        "starless_shadow": { "name": { "en": "Starless shadow", "ru": "Беззвёздная тень" } },
+        "the_resentment": { "name": { "en": "The resentment", "ru": "Горечь" } },
+        "silence_in_snow": { "name": { "en": "Silence in snow", "ru": "Молчание снегов" } },
+        "the_inscribed_one": { "name": { "en": "The inscribed one", "ru": "Носитель писания" } },
+        "wilding_steward": { "name": { "en": "Wilding steward", "ru": "Служитель природы" } },
+        "spinner_of_threads": { "name": { "en": "Spinner of threads", "ru": "Ткач судеб" } },
+        "faith_flamekeeper": { "name": { "en": "Faith's flamekeeper", "ru": "Хранитель пламени веры" } }
+      }
+    },
+    "wizard": {
+      "name": { "en": "Wizard", "ru": "Волшебник" },
+      "main_ability_options": ["int"],
+      "subclass_title": { "en": "Arcane school", "ru": "Школа магии" },
+      "subclasses": {
+        "ars_grammatica": { "name": { "en": "School of arc grammatica", "ru": "Школа Арс грамматика" } },
+        "battle_magic": { "name": { "en": "School of battle magic", "ru": "Школа боевой магии" } },
+        "unified_magical_theory": { "name": { "en": "School of unified magical theory", "ru": "Школа единой магической теории" } },
+        "protean_form": { "name": { "en": "School of protean form", "ru": "Школа изменчивого облика" } },
+        "the_boundary": { "name": { "en": "School of the boundary", "ru": "Школа межевой магии" } },
+        "mentalism": { "name": { "en": "School of mentalism", "ru": "Школа ментализма" } },
+        "civic_wizardary": { "name": { "en": "School of civic wizardary", "ru": "Школа прикладного волшебства" } }
+      }
+    }
+  },
+  "abilities": {
+    "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
+    "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" }, "shortName": { "en": "Dex", "ru": "Лов" } },
+    "con": { "name": { "en": "Constitution", "ru": "Выносливость" }, "shortName": { "en": "Con", "ru": "Вын" } },
+    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" }, "shortName": { "en": "Int", "ru": "Инт" } },
+    "wis": { "name": { "en": "Wisdom", "ru": "Мудрость" }, "shortName": { "en": "Wis", "ru": "Муд" } },
+    "cha": { "name": { "en": "Charisma", "ru": "Обаяние" }, "shortName": { "en": "Cha", "ru": "Обн" } }
+  },
+  "weaponSkills": {
+    "unarmed": { "name": { "en": "Unarmed", "ru": "Без оружия" } },
+    "simple": { "name": { "en": "Simple", "ru": "Простое" } },
+    "martial": { "name": { "en": "Martial", "ru": "Особое" } },
+    "advanced": { "name": { "en": "Advanced", "ru": "Экзотическое" } }
+  },
+  "armorSkills": {
+    "unarmored": { "name": { "en": "Unarmored", "ru": "Без доспехов" } },
+    "light": { "name": { "en": "Light", "ru": "Лёгкие" } },
+    "medium": { "name": { "en": "Medium", "ru": "Средние" } },
+    "heavy": { "name": { "en": "Heavy", "ru": "Тяжёлые" } }
+  },
+  "savingThrows": {
+    "fortitude": { "name": { "en": "Fortitude", "ru": "Стойкость" } },
+    "reflex": { "name": { "en": "Reflex", "ru": "Реакция" } },
+    "will": { "name": { "en": "Will", "ru": "Воля" } }
+  },
+  "languages": {
+    "common": { "name": { "en": "Common", "ru": "Всеобщий", "es": "Común" } },
+    "dwarven": { "name": { "en": "Dwarven", "ru": "Дварфийский", "es": "Enano" } },
+    "elven": { "name": { "en": "Elven", "ru": "Эльфийский", "es": "Élfico" } },
+    "gnomish": { "name": { "en": "Gnomish", "ru": "Гномий", "es": "Gnomo" } },
+    "goblin": { "name": { "en": "Goblin", "ru": "Гоблинский", "es": "Goblin" } },
+    "orcish": { "name": { "en": "Orcish", "ru": "Орочий", "es": "Orco" } },
+    "fey": { "name": { "en": "Fey", "ru": "Язык фей", "es": "" } },
+    "halfling": { "name": { "en": "Halfling", "ru": "Полуросличий", "es": "Mediano" } },
+    "draconic": { "name": { "en": "Draconic", "ru": "Драконий", "es": "Draconico" } },
+    "undercommon": { "name": { "en": "Undercommon", "ru": "Подземный", "es": "Infracomún" } }
+  },
+  "spellLists": {
+    "arcane": { "name": { "en": "Arcane", "ru": "Мистическая" } },
+    "divine": { "name": { "en": "Divine", "ru": "Сакральная" } },
+    "primal": { "name": { "en": "Primal", "ru": "Первобытная" } },
+    "occult": { "name": { "en": "Occult", "ru": "Оккультная" } }
+  },
+  "weaponGroups": {
+    "axe": { "name": { "en": "Axe", "ru": "Топоры" } },
+    "bow": { "name": { "en": "Bow", "ru": "Луки" } },
+    "brawling": { "name": { "en": "Brawling", "ru": "Кулачное" } },
+    "club": { "name": { "en": "Club", "ru": "Дубины" } },
+    "crossbow": { "name": { "en": "Crossbow", "ru": "Арбалеты" } },
+    "dart": { "name": { "en": "Dart", "ru": "Дротики" } },
+    "flail": { "name": { "en": "Flail", "ru": "Цепы" } },
+    "hammer": { "name": { "en": "Hammer", "ru": "Молоты" } },
+    "knife": { "name": { "en": "Knife", "ru": "Ножи" } },
+    "pick": { "name": { "en": "Pick", "ru": "Клевцы" } },
+    "polearm": { "name": { "en": "Polearm", "ru": "Древковое" } },
+    "sling": { "name": { "en": "Sling", "ru": "Пращи" } },
+    "spear": { "name": { "en": "Spear", "ru": "Копья" } },
+    "sword": { "name": { "en": "Sword", "ru": "Мечи" } }
+  }
+}

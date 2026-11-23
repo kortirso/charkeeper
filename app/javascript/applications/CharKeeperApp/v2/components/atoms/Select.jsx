@@ -3,40 +3,42 @@ import { createMemo, createSignal, createUniqueId, onCleanup, onMount, splitProp
 import { Label } from '../../components';
 
 const normalizeOptions = (options) => {
-  if (Array.isArray(options)) {
-    return options.map((option) => {
-      if (typeof option === 'object') return option;
-
-      return { label: option, value: option };
-    });
-  }
-
   return Object.entries(options || {}).map(([value, label]) => ({ label, value }));
 };
 
 export const Select = (props) => {
   const [local, rest] = splitProps(props, [
-    'class', 'classList', 'containerClass', 'containerClassList', 'disabled', 'dropdownClass',
-    'emptyText', 'id', 'items', 'label', 'labelClass', 'name', 'onChange',
-    'onSelect', 'optionClass', 'options', 'placeholder', 'selectedValue', 'value'
+    'class', 'classList', 'containerClass', 'containerClassList', 'disabled', 'dropdownClass', 'emptyText', 'id',
+    'label', 'labelClass', 'name', 'onChange', 'onSelect', 'optionClass', 'options', 'placeholder', 'searchable',
+    'searchPlaceholder', 'selectedValue', 'value'
   ]);
 
   const [isOpen, setIsOpen] = createSignal(false);
   const [activeIndex, setActiveIndex] = createSignal(-1);
+  const [search, setSearch] = createSignal('');
 
-  const generatedId = createUniqueId();
-  const selectId = () => local.id || generatedId;
+  const selectId = () => local.id || createUniqueId();
   const listboxId = () => `${selectId()}-listbox`;
   const selectedValue = () => local.value ?? local.selectedValue;
-  const options = createMemo(() => normalizeOptions(local.options || local.items));
+  const options = createMemo(() => normalizeOptions(local.options));
+
+  const filteredOptions = createMemo(() => {
+    const query = search().trim().toLocaleLowerCase();
+    if (!query) return options();
+
+    return options().filter((option) => String(option.label).toLocaleLowerCase().includes(query));
+  });
+
   const selectedOption = createMemo(() => options().find((option) => option.value === selectedValue()));
 
   let root;
+  let searchInput;
+  let trigger;
 
-  const firstEnabledIndex = () => options().findIndex((option) => !option.disabled);
+  const firstEnabledIndex = () => filteredOptions().findIndex((option) => !option.disabled);
   const lastEnabledIndex = () => {
-    for (let index = options().length - 1; index >= 0; index -= 1) {
-      if (!options()[index].disabled) return index;
+    for (let index = filteredOptions().length - 1; index >= 0; index -= 1) {
+      if (!filteredOptions()[index].disabled) return index;
     }
 
     return -1;
@@ -45,13 +47,21 @@ export const Select = (props) => {
   const open = () => {
     if (local.disabled) return;
 
-    const selectedIndex = options().findIndex((option) => option.value === selectedValue() && !option.disabled);
+    setSearch('');
+
+    const selectedIndex = filteredOptions().findIndex((option) => option.value === selectedValue() && !option.disabled);
 
     setActiveIndex(selectedIndex >= 0 ? selectedIndex : firstEnabledIndex());
     setIsOpen(true);
+
+    if (local.searchable) queueMicrotask(() => searchInput?.focus());
   };
 
-  const close = () => setIsOpen(false);
+  const close = (restoreFocus = false) => {
+    setIsOpen(false);
+    setSearch('');
+    if (restoreFocus) queueMicrotask(() => trigger?.focus());
+  };
 
   const toggle = () => isOpen() ? close() : open();
 
@@ -60,17 +70,17 @@ export const Select = (props) => {
 
     local.onChange?.(option.value, option);
     local.onSelect?.(option.value, option);
-    close();
+    close(true);
   };
 
   const moveActiveIndex = (direction) => {
-    if (options().length === 0) return;
+    if (filteredOptions().length === 0) return;
 
     let index = activeIndex();
 
-    for (let step = 0; step < options().length; step += 1) {
-      index = (index + direction + options().length) % options().length;
-      if (!options()[index].disabled) {
+    for (let step = 0; step < filteredOptions().length; step += 1) {
+      index = (index + direction + filteredOptions().length) % filteredOptions().length;
+      if (!filteredOptions()[index].disabled) {
         setActiveIndex(index);
         return;
       }
@@ -99,19 +109,24 @@ export const Select = (props) => {
       return;
     }
 
-    if (event.key === 'Enter' || event.key === ' ') {
+    if (event.key === 'Enter' || (event.key === ' ' && !(local.searchable && isOpen()))) {
       event.preventDefault();
       if (!isOpen()) open();
-      else if (activeIndex() >= 0) selectOption(options()[activeIndex()]);
+      else if (activeIndex() >= 0) selectOption(filteredOptions()[activeIndex()]);
       return;
     }
 
     if (event.key === 'Escape' && isOpen()) {
       event.preventDefault();
-      close();
+      close(true);
     }
 
     if (event.key === 'Tab') close();
+  };
+
+  const onSearchInput = (event) => {
+    setSearch(event.currentTarget.value);
+    setActiveIndex(firstEnabledIndex());
   };
 
   onMount(() => {
@@ -133,26 +148,57 @@ export const Select = (props) => {
         <Label containerClass={local.labelClass} for={selectId()}>{local.label}</Label>
       </Show>
       <div class="select-control">
-        <button
-          {...rest}
-          id={selectId()}
-          class={['select-trigger', isOpen() ? 'select-trigger-open' : '', local.class].filter(Boolean).join(' ')}
-          classList={local.classList}
-          type="button"
-          role="combobox"
-          aria-controls={listboxId()}
-          aria-expanded={isOpen()}
-          aria-haspopup="listbox"
-          aria-activedescendant={isOpen() && activeIndex() >= 0 ? `${selectId()}-option-${activeIndex()}` : undefined}
-          disabled={local.disabled}
-          onClick={toggle}
-          onKeyDown={onKeyDown}
+        <Show
+          when={local.searchable && isOpen()}
+          fallback={
+            <button
+              {...rest}
+              ref={trigger}
+              id={selectId()}
+              class={['select-trigger', isOpen() ? 'select-trigger-open' : '', local.class].filter(Boolean).join(' ')}
+              classList={local.classList}
+              type="button"
+              role="combobox"
+              aria-controls={listboxId()}
+              aria-expanded={isOpen()}
+              aria-haspopup="listbox"
+              aria-activedescendant={isOpen() && activeIndex() >= 0 ? `${selectId()}-option-${activeIndex()}` : undefined}
+              disabled={local.disabled}
+              onClick={toggle}
+              onKeyDown={onKeyDown}
+            >
+              <span classList={{ 'select-placeholder': !selectedOption() }}>
+                {selectedOption()?.label || local.placeholder || '—'}
+              </span>
+              <span class="select-chevron" aria-hidden="true" />
+            </button>
+          }
         >
-          <span classList={{ 'select-placeholder': !selectedOption() }}>
-            {selectedOption()?.label || local.placeholder || '—'}
-          </span>
-          <span class="select-chevron" aria-hidden="true" />
-        </button>
+          <div
+            class={['select-trigger', 'select-trigger-open', 'select-search-trigger', local.class].filter(Boolean).join(' ')}
+            classList={local.classList}
+          >
+            <input
+              {...rest}
+              ref={searchInput}
+              id={selectId()}
+              class="select-search-input"
+              type="text"
+              role="combobox"
+              autocomplete="off"
+              aria-autocomplete="list"
+              aria-controls={listboxId()}
+              aria-expanded="true"
+              aria-haspopup="listbox"
+              aria-activedescendant={activeIndex() >= 0 ? `${selectId()}-option-${activeIndex()}` : undefined}
+              placeholder={local.searchPlaceholder || selectedOption()?.label || local.placeholder || 'Search…'}
+              value={search()}
+              onInput={onSearchInput}
+              onKeyDown={onKeyDown}
+            />
+            <span class="select-chevron" aria-hidden="true" />
+          </div>
+        </Show>
         <Show when={local.name}>
           <input type="hidden" name={local.name} value={selectedValue() ?? ''} />
         </Show>
@@ -163,8 +209,8 @@ export const Select = (props) => {
             role="listbox"
             aria-label={local.label}
           >
-            <Show when={options().length > 0} fallback={<p class="select-empty">{local.emptyText || '—'}</p>}>
-              <For each={options()}>
+            <Show when={filteredOptions().length > 0} fallback={<p class="select-empty">{local.emptyText || '—'}</p>}>
+              <For each={filteredOptions()}>
                 {(option, index) =>
                   <button
                     id={`${selectId()}-option-${index()}`}

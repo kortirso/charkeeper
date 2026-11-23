@@ -1,0 +1,162 @@
+{
+  "races": {
+    "human": {
+      "name": { "en": "Human", "ru": "Человек" },
+      "subraces": {}
+    },
+    "dwarf": {
+      "name": { "en": "Dwarf", "ru": "Дварф" },
+      "subraces": {
+        "mountain_dwarf": { "name": { "en": "Mountain dwarf", "ru": "Горный дварф" } },
+        "hill_dwarf": { "name": { "en": "Hill dwarf", "ru": "Холмовой дварф" } }
+      }
+    },
+    "elf": {
+      "name": { "en": "Elf", "ru": "Эльф" },
+      "subraces": {
+        "high_elf": { "name": { "en": "High elf", "ru": "Высший эльф" } },
+        "wood_elf": { "name": { "en": "Wood elf", "ru": "Лесной эльф" } },
+        "drow": { "name": { "en": "Drow", "ru": "Дроу" } }
+      }
+    },
+    "halfling": {
+      "name": { "en": "Halfling", "ru": "Полурослик" },
+      "subraces": {
+        "lightfoot": { "name": { "en": "Lightfoot halfling", "ru": "Легконогий полурослик" } },
+        "stout": { "name": { "en": "Stout halfling", "ru": "Коренастый полурослик" } }
+      }
+    },
+    "dragonborn": {
+      "name": { "en": "Dragonborn", "ru": "Драконорожденный" },
+      "subraces": {}
+    },
+    "gnome": {
+      "name": { "en": "Gnome", "ru": "Гном" },
+      "subraces": {
+        "forest_gnome": { "name": { "en": "Forest gnome", "ru": "Лесной гном" } },
+        "rock_gnome": { "name": { "en": "Rock gnome", "ru": "Скальный гном" } }
+      }
+    },
+    "half_elf": {
+      "name": { "en": "Half-Elf", "ru": "Полуэльф" },
+      "subraces": {}
+    },
+    "half_orc": {
+      "name": { "en": "Half-Orc", "ru": "Полуорк" },
+      "subraces": {}
+    },
+    "tiefling": {
+      "name": { "en": "Tiefling", "ru": "Тифлинг" },
+      "subraces": {}
+    }
+  },
+  "classes": {
+    "barbarian": {
+      "name": { "en": "Barbarian", "ru": "Варвар" },
+      "subclasses": {
+        "path_of_the_berserker": { "name": { "en": "Path of the Berserker", "ru": "Путь берсерка" } },
+        "path_of_the_totem_warrior": { "name": { "en": "Path of the Totem Warrior", "ru": "Путь тотемного воина" } }
+      }
+    },
+    "bard": {
+      "name": { "en": "Bard", "ru": "Бард" },
+      "subclasses": {
+        "college_of_lore": { "name": { "en": "College of lore", "ru": "Коллегия знания" } },
+        "college_of_valor": { "name": { "en": "College of valor", "ru": "Коллегия доблести" } },
+        "college_of_whispers": { "name": { "en": "College of whispers", "ru": "Коллегия шёпотов" } }
+      }
+    },
+    "cleric": {
+      "name": { "en": "Cleric", "ru": "Жрец" },
+      "subclasses": {
+        "knowledge_domain": { "name": { "en": "Knowledge domain", "ru": "Домен знаний" } },
+        "life_domain": { "name": { "en": "Life domain", "ru": "Домен жизни" } },
+        "light_domain": { "name": { "en": "Light domain", "ru": "Домен света" } },
+        "nature_domain": { "name": { "en": "Nature domain", "ru": "Домен природы" } },
+        "tempest_domain": { "name": { "en": "Tempest domain", "ru": "Домен бури" } },
+        "trickery_domain": { "name": { "en": "Trickery domain", "ru": "Домен обмана" } },
+        "war_domain": { "name": { "en": "War domain", "ru": "Домен войны" } }
+      }
+    },
+    "druid": {
+      "name": { "en": "Druid", "ru": "Друид" },
+      "subclasses": {
+        "circle_of_the_land": { "name": { "en": "Circle of tha land", "ru": "Круг земли" } },
+        "circle_of_the_moon": { "name": { "en": "Circle of the moon", "ru": "Круг луны" } }
+      }
+    },
+    "fighter": {
+      "name": { "en": "Fighter", "ru": "Воин" },
+      "subclasses": {
+        "battle_master": { "name": { "en": "Battle master", "ru": "Мастер боевых искусств" } },
+        "champion": { "name": { "en": "Champion", "ru": "Чемпион" } },
+        "eldritch_knight": { "name": { "en": "Eldritch knight", "ru": "Мистический рыцарь" } }
+      }
+    },
+    "monk": {
+      "name": { "en": "Monk", "ru": "Монах" },
+      "subclasses": {
+        "way_of_the_open_hand": { "name": { "en": "Way of the open hand", "ru": "Путь открытой ладони" } },
+        "way_of_shadow": { "name": { "en": "Way of shadow", "ru": "Путь тени" } },
+        "way_of_the_four_elements": { "name": { "en": "Way of the four elements", "ru": "Путь четырёх стихий" } }
+      }
+    },
+    "paladin": {
+      "name": { "en": "Paladin", "ru": "Паладин" },
+      "subclasses": {
+        "oath_of_devotion": { "name": { "en": "Oath of Devotion", "ru": "Клятва преданности" } },
+        "oath_of_the_ancients": { "name": { "en": "Oath of the Ancients", "ru": "Клятка древних" } },
+        "oath_of_vengeance": { "name": { "en": "Oath of Vengeance", "ru": "Клятва мести" } }
+      }
+    },
+    "ranger": {
+      "name": { "en": "Ranger", "ru": "Следопыт" },
+      "subclasses": {
+        "hunter": { "name": { "en": "Hunter", "ru": "Охотник" } },
+        "beast_master": { "name": { "en": "Beast Master", "ru": "Повелитель зверей" } }
+      }
+    },
+    "rogue": {
+      "name": { "en": "Rogue", "ru": "Плут" },
+      "subclasses": {
+        "thief": { "name": { "en": "Thief", "ru": "Вор" } },
+        "assassin": { "name": { "en": "Assassin", "ru": "Убийца" } },
+        "arcane_trickster": { "name": { "en": "Arcane Trickster", "ru": "Мистический ловкач" } }
+      }
+    },
+    "sorcerer": {
+      "name": { "en": "Sorcerer", "ru": "Чародей" },
+      "subclasses": {
+        "draconic_bloodline": { "name": { "en": "Draconic Bloodline", "ru": "Наследие драконьей крови" } },
+        "wild_magic": { "name": { "en": "Wild Magic", "ru": "Дикая магия" } }
+      }
+    },
+    "warlock": {
+      "name": { "en": "Warlock", "ru": "Колдун" },
+      "subclasses": {
+        "the_archfey": { "name": { "en": "The Archfey", "ru": "Архифея" } },
+        "the_fiend": { "name": { "en": "The Fiend", "ru": "Исчадие" } },
+        "the_great_old_one": { "name": { "en": "The Great Old One", "ru": "Великий древний" } }
+      }
+    },
+    "wizard": {
+      "name": { "en": "Wizard", "ru": "Волшебник" },
+      "subclasses": {
+        "school_of_abjuration": { "name": { "en": "School of Abjuration", "ru": "Школа ограждения" } },
+        "school_of_conjuration": { "name": { "en": "School of Conjuration", "ru": "Школа вызова" } },
+        "school_of_divination": { "name": { "en": "School of Divination", "ru": "Школа прорицания" } },
+        "school_of_enchantment": { "name": { "en": "School of Enchantment", "ru": "Школа очарования" } },
+        "school_of_evocation": { "name": { "en": "School of Evocation", "ru": "Школа воплощения" } },
+        "school_of_illusion": { "name": { "en": "School of Illusion", "ru": "Школа иллюзии" } },
+        "school_of_necromancy": { "name": { "en": "School of Necromancy", "ru": "Школа некромантии" } },
+        "school_of_transmutation": { "name": { "en": "School of Transmutation", "ru": "Школа преобразования" } }
+      }
+    },
+    "artificer": {
+      "name": { "en": "Artificer", "ru": "Изобретатель" },
+      "subclasses": {
+        "alchemist": { "name": { "en": "Alchemist", "ru": "Алхимик" } }
+      }
+    }
+  }
+}

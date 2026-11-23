@@ -2,6 +2,7 @@ import { createMemo, createSignal, createEffect, For, Show } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { LayoutNavButton, BackToListButton, Checkbox } from '../components';
+import { CosmereSystem, DaggerheartSystem, DndSystem, NimbleSystem, PathfinderSystem } from '../assets';
 import { useAppLocale, useAppState } from '../context';
 import { localize, apiRequest, options, performResponse } from '../helpers';
 
@@ -23,11 +24,11 @@ const TRANSLATION = {
   }
 }
 const PROVIDERS = {
-  daggerheart: 'Daggerheart',
-  dnd: 'D&D 5.5',
-  pathfinder2: 'Pathfinder 2',
-  nimble: 'Nimble',
-  cosmere: 'Cosmere'
+  daggerheart: { title: 'Daggerheart', icon: DaggerheartSystem },
+  dnd: { title: 'D&D 5.5', icon: DndSystem },
+  pathfinder2: { title: 'Pathfinder 2', icon: PathfinderSystem },
+  nimble: { title: 'Nimble', icon: NimbleSystem },
+  cosmere: { title: 'Cosmere', icon: CosmereSystem }
 }
 
 const fetchBooksRequest = async (accessToken) => {
@@ -86,11 +87,10 @@ export const HomebrewsLayout = () => {
       <Show when={size.width >= 1280 || !activeTab()}>
         <div id="content-body-left">
           <p class="mb-2">{i18n().page}</p>
-          <p class="mb-2">{i18n().link} <a href={`https://${location.host}/homebrews`} class="underline" target="_blank" rel="noopener noreferrer">{i18n().here}</a></p>
           <Show when={books()}>
             <For each={Object.entries(PROVIDERS)}>
-              {([key, title]) =>
-                <LayoutNavButton title={title} active={activeTab() === key} onClick={() => setActiveTab(key)} />
+              {([key, provider]) =>
+                <LayoutNavButton icon={provider.icon} title={provider.title} active={activeTab() === key} onClick={() => setActiveTab(key)} />
               }
             </For>
           </Show>
@@ -103,11 +103,12 @@ export const HomebrewsLayout = () => {
           </Show>
           <Show when={books()}>
             <div class="gapped-column">
+              <p>{i18n().link} <a href={`https://${location.host}/homebrews`} class="underline" target="_blank" rel="noopener noreferrer">{i18n().here}</a></p>
               <For each={books().filter((book) => book.provider === activeTab()).sort((a, b) => a.name.localeCompare(b.name))}>
                 {(book) =>
                   <Checkbox
                     checked={book.enabled}
-                    description={book.name}
+                    label={book.name}
                     onChange={() => toggleBook(book.id)}
                   />
                 }

@@ -243,12 +243,8 @@
   @apply cursor-not-allowed text-muted opacity-60;
 }
 
-.checkbox-content, .checkbox-label, .checkbox-description {
+.checkbox-content, .checkbox-label {
   @apply block;
-}
-
-.checkbox-description {
-  @apply mt-0.5 text-xs text-muted;
 }
 
 .select-control {
@@ -261,6 +257,19 @@
 
 .select-trigger-open {
   @apply border-focus ring-2 ring-focus/20;
+}
+
+.select-search-trigger {
+  @apply cursor-text p-0;
+}
+
+.select-search-input {
+  @apply min-w-0 flex-1 self-stretch bg-transparent px-3 text-base text-foreground outline-none placeholder:text-muted;
+  @apply md:text-sm;
+}
+
+.select-search-trigger .select-chevron {
+  @apply mr-3;
 }
 
 .select-placeholder {

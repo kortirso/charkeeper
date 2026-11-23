@@ -17,11 +17,7 @@ const TRANSLATION = {
     localeValue: 'Idioma del sistema'
   }
 }
-const LANGUAGES = [
-  { label: 'English', value: 'en' },
-  { label: 'Русский', value: 'ru' },
-  { label: 'Español', value: 'es' }
-];
+const LANGUAGES = { en: 'English', ru: 'Русский', es: 'Español' };
 
 export const LanguagesLayout = () => {
   const [locale, { setLocale }] = useAppLocale();

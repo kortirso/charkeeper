@@ -1,0 +1,140 @@
+{
+  "sizes": {
+    "small": { "name": { "en": "Small", "ru": "Маленький" } },
+    "medium": { "name": { "en": "Medium", "ru": "Средний" } },
+    "large": { "name": { "en": "Large", "ru": "Большой" } }
+  },
+  "ancestries": {
+    "human": { "name": { "en": "Human", "ru": "Человек" }, "size": ["medium"] },
+    "dwarf": { "name": { "en": "Dwarf", "ru": "Дварф" }, "size": ["medium"] },
+    "elf": { "name": { "en": "Elf", "ru": "Эльф" }, "size": ["medium"] },
+    "halfling": { "name": { "en": "Halfling", "ru": "Полурослик" }, "size": ["small"] },
+    "gnome": { "name": { "en": "Gnome", "ru": "Гном" }, "size": ["small"] },
+    "bunbun": { "name": { "en": "Bunbun", "ru": "Крольчонок" }, "size": ["small"] },
+    "dragonborn": { "name": { "en": "Dragonborn", "ru": "Драконорожденный" }, "size": ["medium"] },
+    "fiendkin": { "name": { "en": "Fiendkin", "ru": "Демонорожденный" }, "size": ["medium"] },
+    "goblin": { "name": { "en": "Goblin", "ru": "Гоблин" }, "size": ["small"] },
+    "kobold": { "name": { "en": "Kobold", "ru": "Кобольд" }, "size": ["small"] },
+    "orc": { "name": { "en": "Orc", "ru": "Орк" }, "size": ["medium"] },
+    "birdfolk": { "name": { "en": "Birdfolk", "ru": "Птицелюд" }, "size": ["small", "medium"] },
+    "celestial": { "name": { "en": "Celestial", "ru": "Небесный" }, "size": ["medium"] },
+    "crystalborn": { "name": { "en": "Crystalborn", "ru": "Кристаллорожденный" }, "size": ["medium"] },
+    "dryad": { "name": { "en": "Dryad", "ru": "Дриада" }, "size": ["small", "medium"] },
+    "shroomling": { "name": { "en": "Shroomling", "ru": "Грибныш" }, "size": ["small", "medium"] },
+    "half_giant": { "name": { "en": "Half-Giant", "ru": "Полувеликан" }, "size": ["large"] },
+    "minotaur": { "name": { "en": "Minotaur", "ru": "Минотавр" }, "size": ["medium"] },
+    "beastfolk": { "name": { "en": "Beastfolk", "ru": "Зверолюд" }, "size": ["medium"] },
+    "oozeling": { "name": { "en": "Oozeling", "ru": "Слизень" }, "size": ["small", "medium"] },
+    "construct": { "name": { "en": "Construct", "ru": "Конструкт" }, "size": ["small", "medium"] },
+    "planarbeing": { "name": { "en": "Planarbeing", "ru": "Планарный" }, "size": ["medium"] },
+    "ratfolk": { "name": { "en": "Ratfolk", "ru": "Крысолюд" }, "size": ["small"] },
+    "stoatling": { "name": { "en": "Stoatling", "ru": "Горностай" }, "size": ["small"] },
+    "turtlefolk": { "name": { "en": "Turtlefolk", "ru": "Черепахолюд" }, "size": ["small", "medium"] },
+    "wyrdling": { "name": { "en": "Wyrdling", "ru": "Вирдлинг" }, "size": ["small"] }
+  },
+  "classes": {
+    "berserker": {
+      "name": { "en": "Berserker", "ru": "Берсерк" },
+      "subclasses": {
+        "mountainheart": { "name": { "en": "Path of The Mountainheart", "ru": "Путь горного сердца" } },
+        "red_mist": { "name": { "en": "Path of The Red Mist", "ru": "Путь пылающей ярости" } }
+      }
+    },
+    "cheat": {
+      "name": { "en": "Cheat", "ru": "Подлец" },
+      "subclasses": {
+        "silent_blade": { "name": { "en": "Tools of the Silent Blade", "ru": "Инструменты бесшумного клинка" } },
+        "scoundrel": { "name": { "en": "Tools of the Scoundrel", "ru": "Инструменты подлеца" } }
+      }
+    },
+    "commander": {
+      "name": { "en": "Commander", "ru": "Командир" },
+      "subclasses": {
+        "bulwark": { "name": { "en": "Champion of the Bulwark", "ru": "Чемпион защиты" } },
+        "vanguard": { "name": { "en": "Champion of the Vanguard", "ru": "Чемпион авангарда" } }
+      }
+    },
+    "hunter": {
+      "name": { "en": "Hunter", "ru": "Охотник" },
+      "subclasses": {
+        "shadowpath": { "name": { "en": "Keeper of the Shadowpath", "ru": "Хранитель теневого пути" } },
+        "wild_heart": { "name": { "en": "Keeper of the Wild Heart", "ru": "Хранитель дикого сердца" } }
+      }
+    },
+    "zephyr": {
+      "name": { "en": "Zephyr", "ru": "Зефир" },
+      "subclasses": {
+        "pain": { "name": { "en": "Way of Pain", "ru": "Путь боли" } },
+        "flame": { "name": { "en": "Way of Flame", "ru": "Путь пламени" } }
+      }
+    },
+    "mage": {
+      "name": { "en": "Mage", "ru": "Маг" },
+      "subclasses": {
+        "control": { "name": { "en": "Invoker of Control", "ru": "Приносящий порядок" } },
+        "chaos": { "name": { "en": "Invoker of Chaos", "ru": "Приносящий хаос" } }
+      }
+    },
+    "oathsworn": {
+      "name": { "en": "Oathsworn", "ru": "Поборник" },
+      "subclasses": {
+        "vengeance": { "name": { "en": "Oath of Vengeance", "ru": "Клятва мести" } },
+        "refuge": { "name": { "en": "Oath of Refuge", "ru": "Клятва убежища" } }
+      }
+    },
+    "shadowmancer": {
+      "name": { "en": "Shadowmancer", "ru": "Тенемант" },
+      "subclasses": {
+        "red_dragon": { "name": { "en": "Pact of the Red Dragon", "ru": "Договор красного дракона" } },
+        "abyssal_depths": { "name": { "en": "Pact of the Abyssal Depths", "ru": "Договор бездны" } }
+      }
+    },
+    "shepherd": {
+      "name": { "en": "Shepherd", "ru": "Пастырь" },
+      "subclasses": {
+        "mercy": { "name": { "en": "Luminary of Mercy", "ru": "Светило милосердия" } },
+        "malice": { "name": { "en": "Luminary of Malice", "ru": "Светило злобы" } }
+      }
+    },
+    "songweaver": {
+      "name": { "en": "Songweaver", "ru": "Менестрель" },
+      "subclasses": {
+        "snark": { "name": { "en": "Herald of Snark", "ru": "Вестник насмешки" } },
+        "courage": { "name": { "en": "Herald of Courage", "ru": "Вестник храбрости" } }
+      }
+    },
+    "stormshifter": {
+      "name": { "en": "Stormshifter", "ru": "Буревестник" },
+      "subclasses": {
+        "sky_storm": { "name": { "en": "Circle of Sky & Storm", "ru": "Круг неба и бури" } },
+        "fang_claw": { "name": { "en": "Circle of Fang & Claw", "ru": "Круг клыка и когтя" } }
+      }
+    }
+  },
+  "abilities": {
+    "str": { "name": { "en": "Strength", "ru": "Сила" } },
+    "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" } },
+    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
+    "wil": { "name": { "en": "Will", "ru": "Воля" } }
+  },
+  "languages": {
+    "common": { "name": { "en": "Common", "ru": "Общий", "es": "Común" } },
+    "dwarvish": { "name": { "en": "Dwarvish", "ru": "Дварфский", "es": "Enano" } },
+    "elvish": { "name": { "en": "Elvish", "ru": "Эльфийский", "es": "Élfico" } },
+    "goblin": { "name": { "en": "Goblin", "ru": "Гоблинский", "es": "Goblin" } },
+    "infernal": { "name": { "en": "Infernal", "ru": "Инфернальный", "es": "Infernal" } },
+    "draconic": { "name": { "en": "Draconic", "ru": "Драконий", "es": "Draconico" } },
+    "thieves_cunt": { "name": { "en": "Thieves' Cunt", "ru": "Воровской жаргон" } },
+    "celestial": { "name": { "en": "Celestial", "ru": "Небесный" } },
+    "primordial": { "name": { "en": "Primordial", "ru": "Изначальный" } },
+    "deep_speak": { "name": { "en": "Deep Speak", "ru": "Глубинный" } }
+  },
+  "schools": {
+    "fire": { "name": { "en": "Fire", "ru": "Огонь" } },
+    "ice": { "name": { "en": "Ice", "ru": "Лёд" } },
+    "lightning": { "name": { "en": "Lightning", "ru": "Электричество" } },
+    "radiant": { "name": { "en": "Radiant", "ru": "Свет" } },
+    "necrotic": { "name": { "en": "Necrotic", "ru": "Некромантия" } },
+    "wind": { "name": { "en": "Wind", "ru": "Ветер" } }
+  }
+}

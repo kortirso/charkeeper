@@ -3,8 +3,15 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { MainSettingsLayout, PasswordSettingsLayout, LanguagesLayout } from '../layouts';
 import { LayoutNavButton, BackToListButton } from '../components';
+import { AuthenticationSettings, LanguageSettings, MainSettings } from '../assets';
 import { useAppLocale } from '../context';
 import { localize } from '../helpers';
+
+const SETTINGS = [
+  { key: 'main', icon: MainSettings },
+  { key: 'language', icon: LanguageSettings },
+  { key: 'password', icon: AuthenticationSettings }
+];
 
 const TRANSLATION = {
   en: {
@@ -57,9 +64,9 @@ export const SettingsLayout = () => {
     <div id="content-body">
       <Show when={size.width >= 1280 || !activeTab()}>
         <div id="content-body-left">
-          <For each={['main', 'language', 'password']}>
+          <For each={SETTINGS}>
             {(item) =>
-              <LayoutNavButton title={i18n().titles[item]} description={i18n().descriptions[item]} active={activeTab() === item} onClick={() => setActiveTab(item)} />
+              <LayoutNavButton icon={item.icon} title={i18n().titles[item.key]} description={i18n().descriptions[item.key]} active={activeTab() === item.key} onClick={() => setActiveTab(item.key)} />
             }
           </For>
         </div>

@@ -1,10 +1,11 @@
-import { createSignal, createMemo, Switch, Match } from 'solid-js';
-import { createStore } from 'solid-js/store';
+import { createEffect, createSignal, createMemo, Switch, Match } from 'solid-js';
 
 import { Pathfinder2Form, DaggerheartForm } from '../../layouts';
 import { Button, Select } from '../../components';
-import { useAppLocale } from '../../context';
-import { localize } from '../../helpers';
+import { useAppLocale, useAppState } from '../../context';
+import { isSuccessResponse, localize } from '../../helpers';
+
+import { fetchHomebrewsRequest } from './api';
 
 const TRANSLATION = {
   en: {
@@ -26,17 +27,34 @@ const TRANSLATION = {
 
 export const NewCharacterForm = (props) => {
   const [platform, setPlatform] = createSignal(undefined);
-  const [platformData, setPlatformData] = createStore({});
-  const [importData, setImportData] = createStore({});
+  const [platformData, setPlatformData] = createSignal({});
+  const [importData, setImportData] = createSignal({});
+  const [homebrews, setHomebrews] = createSignal(undefined);
 
   const [locale] = useAppLocale();
+  const [appState] = useAppState();
 
   const i18n = createMemo(() => localize(TRANSLATION, locale()));
 
+  createEffect(() => {
+    if (homebrews() !== undefined) return;
+    if (appState.accessToken === undefined) return;
+
+    fetchHomebrewsRequest(appState.accessToken).then((result) => {
+      setHomebrews(isSuccessResponse(result) ? result : {});
+    });
+  });
+
+  const changePlatform = (value) => {
+    setPlatformData({});
+    setImportData({});
+    setPlatform(value);
+  }
+
   const saveCharacter = () => {
     console.log(platform());
-    console.log(platformData.name);
-    console.log(Object.entries(importData));
+    console.log(platformData().name);
+    console.log(Object.entries(importData()));
   }
 
   return (
@@ -44,13 +62,17 @@ export const NewCharacterForm = (props) => {
       <div class="new-character-form-content">
         <Select
           label={i18n().system}
-          options={[{ label: 'Pathfinder 2', value: 'pathfinder2' }, { label: 'Daggerheart', value: 'daggerheart' }]}
-          onSelect={setPlatform}
+          options={{ pathfinder2: 'Pathfinder 2', daggerheart: 'Daggerheart' }}
+          onSelect={changePlatform}
           value={platform()}
         />
         <Switch>
-          <Match when={platform() === 'pathfinder2'}><Pathfinder2Form onChangeData={setPlatformData} onChangeImport={setImportData} /></Match>
-          <Match when={platform() === 'daggerheart'}><DaggerheartForm onChangeData={setPlatformData} onChangeImport={setImportData} /></Match>
+          <Match when={platform() === 'pathfinder2'}>
+            <Pathfinder2Form homebrews={homebrews()} onChangeData={setPlatformData} onChangeImport={setImportData} />
+          </Match>
+          <Match when={platform() === 'daggerheart'}>
+            <DaggerheartForm homebrews={homebrews()} onChangeData={setPlatformData} />
+          </Match>
         </Switch>
       </div>
       <div class="new-character-form-footer">

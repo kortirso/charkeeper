@@ -1,0 +1,257 @@
+{
+  "heritages": {
+    "clank": {
+      "name": { "en": "Clank", "ru": "Кланк" },
+      "features": [
+        { "slug": "purposeful_design", "name": { "en": "Purposeful Design", "ru": "Целенаправленный дизайн", "ru-DHM": "Замысел создателя" } },
+        { "slug": "efficient", "name": { "en": "Efficient", "ru": "Эффективность", "ru-DHM": "Эффективный" } }
+      ],
+      "comment": "Механические существа"
+    },
+    "drakona": {
+      "name": { "en": "Drakona", "ru": "Дракона", "ru-DHM": "Драконид" },
+      "features": [
+        { "slug": "scales", "name": { "en": "Scales", "ru": "Чешуя" } },
+        { "slug": "elemental_breath", "name": { "en": "Elemental Breath", "ru": "Элементальное дыхание", "ru-DHM": "Стихийное дыхание" } }
+      ],
+      "comment": "Антропоморфные драконы"
+    },
+    "dwarf": {
+      "name": { "en": "Dwarf", "ru": "Дварф" },
+      "features": [
+        { "slug": "thick_skin", "name": { "en": "Thick Skin", "ru": "Толстая кожа", "ru-DHM": "Толстокожий" } },
+        { "slug": "increased_fortitude", "name": { "en": "Increased Fortitude", "ru": "Повышенная стойкость" } }
+      ]
+    },
+    "elf": {
+      "name": { "en": "Elf", "ru": "Эльф" },
+      "features": [
+        { "slug": "quick_reactions", "name": { "en": "Quick Reactions", "ru": "Быстрые рефлексы", "ru-DHM": "Быстрая реакция" } },
+        { "slug": "celestial_trance", "name": { "en": "Celestial Trance", "ru": "Небесный транс", "ru-DHM": "Божественный транс" } }
+      ]
+    },
+    "faerie": {
+      "name": { "en": "Faerie", "ru": "Фейри" },
+      "features": [
+        { "slug": "luckbender", "name": { "en": "Luckbender", "ru": "Везунчик", "ru-DHM": "Контроль удачи" } },
+        { "slug": "wings", "name": { "en": "Wings", "ru": "Крылья" } }
+      ]
+    },
+    "faun": {
+      "name": { "en": "Faun", "ru": "Фавн" },
+      "features": [
+        { "slug": "caprine_leap", "name": { "en": "Caprine Leap", "ru": "Козлиный прыжок" } },
+        { "slug": "kick", "name": { "en": "Kick", "ru": "Удар копытом", "ru-DHM": "Пинок" } }
+      ]
+    },
+    "firbolg": {
+      "name": { "en": "Firbolg", "ru": "Фирболг" },
+      "features": [
+        { "slug": "charge", "name": { "en": "Charge", "ru": "Таран", "ru-DHM": "Натиск" } },
+        { "slug": "unshakable", "name": { "en": "Unshakable", "ru": "Невозмутимость" } }
+      ]
+    },
+    "fungril": {
+      "name": { "en": "Fungril", "ru": "Фангрил", "ru-DHM": "Фунгрил" },
+      "features": [
+        { "slug": "fungril_network", "name": { "en": "Fungril Network", "ru": "Сеть фангрилов", "ru-DHM": "Мицелиальная сеть" } },
+        { "slug": "death_connection", "name": { "en": "Death Connection", "ru": "Связь со смертью", "ru-DHM": "Связь с умершими" } }
+      ],
+      "comment": "Антропоморфные грибы"
+    },
+    "galapa": {
+      "name": { "en": "Galapa", "ru": "Галапа" },
+      "features": [
+        { "slug": "shell", "name": { "en": "Shell", "ru": "Панцирь" } },
+        { "slug": "retract", "name": { "en": "Retract", "ru": "Втягивание", "ru-DHM": "Спрятаться в панцирь" } }
+      ],
+      "comment": "Антропоморфные черепахи"
+    },
+    "giant": {
+      "name": { "en": "Giant", "ru": "Великан" },
+      "features": [
+        { "slug": "endurance", "name": { "en": "Endurance", "ru": "Выносливость" } },
+        { "slug": "reach", "name": { "en": "Reach", "ru": "Досягаемость", "ru-DHM": "Большой рост" } }
+      ]
+    },
+    "goblin": {
+      "name": { "en": "Goblin", "ru": "Гоблин" },
+      "features": [
+        { "slug": "surefooted", "name": { "en": "Surefooted", "ru": "Твёрдая поступь", "ru-DHM": "Устойчивый" } },
+        { "slug": "danger_sense", "name": { "en": "Danger Sensen", "ru": "Чувство опасности" } }
+      ]
+    },
+    "halfling": {
+      "name": { "en": "Halfling", "ru": "Полурослик" },
+      "features": [
+        { "slug": "luckbringer", "name": { "en": "Luckbringer", "ru": "Приносящий удачу" } },
+        { "slug": "internal_compass", "name": { "en": "Internal compass", "ru": "Внутренний компас" } }
+      ]
+    },
+    "human": {
+      "name": { "en": "Human", "ru": "Человек" },
+      "features": [
+        { "slug": "high_stamina", "name": { "en": "High Stamina", "ru": "Высокая выносливость", "ru-DHM": "Упорный" } },
+        { "slug": "adaptability", "name": { "en": "Adaptability", "ru": "Адаптивность", "ru-DHM": "Адаптивный" } }
+      ]
+    },
+    "infernis": {
+      "name": { "en": "Infernis", "ru": "Инфернис" },
+      "features": [
+        { "slug": "fearless", "name": { "en": "Fearless", "ru": "Бесстрашие", "ru-DHM": "Бесстрашный" } },
+        { "slug": "dread_visage", "name": { "en": "Dread Visage", "ru": "Грозный облик", "ru-DHM": "Жуткий вид" } }
+      ]
+    },
+    "katari": {
+      "name": { "en": "Katari", "ru": "Катари" },
+      "features": [
+        { "slug": "feline_instincts", "name": { "en": "Feline Instincts", "ru": "Кошачьи инстинкты" } },
+        { "slug": "retracting_claws", "name": { "en": "Retracting Claws", "ru": "Втяжные когти" } }
+      ],
+      "comment": "Антропоморфные кошки"
+    },
+    "orc": {
+      "name": { "en": "Orc", "ru": "Орк" },
+      "features": [
+        { "slug": "sturdy", "name": { "en": "Sturdy", "ru": "Выносливость", "ru-DHM": "Крепкий" } },
+        { "slug": "tusks", "name": { "en": "Tusks", "ru": "Бивни" } }
+      ]
+    },
+    "ribbet": {
+      "name": { "en": "Ribbet", "ru": "Риббет", "ru-DHM": "Кваква" },
+      "features": [
+        { "slug": "amphibious", "name": { "en": "Amphibious", "ru": "Амфибия" } },
+        { "slug": "long_tongue", "name": { "en": "Long Tongue", "ru": "Длинный язык" } }
+      ],
+      "comment": "Антропоморфные жабы"
+    },
+    "simiah": {
+      "name": { "en": "Simiah", "ru": "Симиан" },
+      "features": [
+        { "slug": "natural_climber", "name": { "en": "Natural Climber", "ru": "Прирождённый скалолаз" } },
+        { "slug": "nimble", "name": { "en": "Nimble", "ru": "Ловкий", "ru-DHM": "Проворный" } }
+      ],
+      "comment": "Антропоморфные обезьяны"
+    }
+  },
+  "communities": {
+    "highborne": { "name": { "en": "Highborne", "ru": "Великородное", "ru-DHM": "Высшее" } },
+    "loreborne": { "name": { "en": "Loreborne", "ru": "Научное" } },
+    "orderborne": { "name": { "en": "Orderborne", "ru": "Догматичное" } },
+    "ridgeborne": { "name": { "en": "Ridgeborne", "ru": "Горное" } },
+    "seaborne": { "name": { "en": "Seaborne", "ru": "Морское" } },
+    "slyborne": { "name": { "en": "Slyborne", "ru": "Криминальное" } },
+    "underborne": { "name": { "en": "Underborne", "ru": "Подземное" } },
+    "wanderborne": { "name": { "en": "Wanderborne", "ru": "Кочевое" } },
+    "wildborne": { "name": { "en": "Wildborne", "ru": "Лесное" } }
+  },
+  "classes": {
+    "bard": {
+      "name": { "en": "Bard", "ru": "Бард" },
+      "subclasses": {
+        "troubadour": { "name": { "en": "Troubadour", "ru": "Трубадур" }, "spellcast": "pre", "mechanics": [] },
+        "wordsmith": { "name": { "en": "Wordsmith", "ru": "Оратор", "ru-DHM": "Мастер слова" }, "spellcast": "pre", "mechanics": [] }
+      },
+      "domains": ["codex", "grace"]
+    },
+    "druid": {
+      "name": { "en": "Druid", "ru": "Друид" },
+      "subclasses": {
+        "warden_of_the_elements": { "name": { "en": "Warden of the Elements", "ru": "Хранитель стихий" }, "spellcast": "ins", "mechanics": ["beastform"] },
+        "warden_of_renewal": { "name": { "en": "Warden of Renewal", "ru": "Хранитель жизни" }, "spellcast": "ins", "mechanics": ["beastform"] }
+      },
+      "domains": ["arcana", "sage"]
+    },
+    "guardian": {
+      "name": { "en": "Guardian", "ru": "Страж" },
+      "subclasses": {
+        "stalwart": { "name": { "en": "Stalwart", "ru": "Заступник", "ru-DHM": "Непоколебимый" }, "spellcast": null, "mechanics": [] },
+        "vengeance": { "name": { "en": "Vengeance", "ru": "Мститель" }, "spellcast": null, "mechanics": [] }
+      },
+      "domains": ["blade", "valor"]
+    },
+    "ranger": {
+      "name": { "en": "Ranger", "ru": "Следопыт" },
+      "subclasses": {
+        "beastbound": { "name": { "en": "Beastbound", "ru": "Звериные узы" }, "spellcast": "agi", "mechanics": ["companion"] },
+        "wayfinder": { "name": { "en": "Wayfinder", "ru": "Путевод", "ru-DHM": "Охотник" }, "spellcast": "agi", "mechanics": [] }
+      },
+      "domains": ["bone", "sage"]
+    },
+    "rogue": {
+      "name": { "en": "Rogue", "ru": "Плут" },
+      "subclasses": {
+        "nightwalker": { "name": { "en": "Nightwalker", "ru": "Тень", "ru-DHM": "Путь ночи" }, "spellcast": "fin", "mechanics": [] },
+        "syndicate": { "name": { "en": "Syndicate", "ru": "Синдикат" }, "spellcast": "fin", "mechanics": [] }
+      },
+      "domains": ["grace", "midnight"]
+    },
+    "seraph": {
+      "name": { "en": "Seraph", "ru": "Серафим" },
+      "subclasses": {
+        "divine_wielder": { "name": { "en": "Divine Wielder", "ru": "Божественный воитель" }, "spellcast": "str", "mechanics": [] },
+        "winged_sentinel": { "name": { "en": "Winged Sentinel", "ru": "Крылатый страж" }, "spellcast": "str", "mechanics": [] }
+      },
+      "domains": ["splendor", "valor"]
+    },
+    "sorcerer": {
+      "name": { "en": "Sorcerer", "ru": "Чародей" },
+      "subclasses": {
+        "elemental_origin": { "name": { "en": "Elemental Origin", "ru": "Стихийное начало", "ru-DHM": "Стихийный исток" }, "spellcast": "ins", "mechanics": [] },
+        "Primal_origin": { "name": { "en": "Primal Origin", "ru": "Первозданное начало", "ru-DHM": "Первородный исток" }, "spellcast": "ins", "mechanics": [] }
+      },
+      "domains": ["arcana", "midnight"]
+    },
+    "warrior": {
+      "name": { "en": "Warrior", "ru": "Воин" },
+      "subclasses": {
+        "call_of_the_brave": { "name": { "en": "Call of the Brave", "ru": "Зов храбреца", "ru-DHM": "Зов отваги" }, "spellcast": null, "mechanics": [] },
+        "call_of_the_slayer": { "name": { "en": "Call of the Slayer", "ru": "Зов истребителя", "ru-DHM": "Зов резни" }, "spellcast": null, "mechanics": [] }
+      },
+      "domains": ["blade", "bone"]
+    },
+    "wizard": {
+      "name": { "en": "Wizard", "ru": "Волшебник" },
+      "subclasses": {
+        "school_of_knowledge": { "name": { "en": "School of Knowledge", "ru": "Школа знаний" }, "spellcast": "know", "mechanics": [] },
+        "school_of_war": { "name": { "en": "School of War", "ru": "Школа войны" }, "spellcast": "know", "mechanics": [] }
+      },
+      "domains": ["codex", "splendor"]
+    }
+  },
+  "domains": {
+    "arcana": { "name": { "en": "Arcana", "ru": "Аркана" } },
+    "blade": { "name": { "en": "Blade", "ru": "Клинок" } },
+    "bone": { "name": { "en": "Bone", "ru": "Кость" } },
+    "codex": { "name": { "en": "Codex", "ru": "Кодекс" } },
+    "grace": { "name": { "en": "Grace", "ru": "Грация", "ru-DHM": "Изящество" } },
+    "midnight": { "name": { "en": "Midnight", "ru": "Полночь" } },
+    "sage": { "name": { "en": "Sage", "ru": "Мудрость" } },
+    "splendor": { "name": { "en": "Splendor", "ru": "Величие" } },
+    "valor": { "name": { "en": "Valor", "ru": "Доблесть" } },
+    "dread": { "name": { "en": "Dread", "ru": "Ужас" } }
+  },
+  "traits": {
+    "agi": { "name": { "en": "Agility", "ru": "Проворность" }, "shortName": { "en": "Agi", "ru": "Пров" } },
+    "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
+    "fin": { "name": { "en": "Finesse", "ru": "Искусность" }, "shortName": { "en": "Fin", "ru": "Иск" } },
+    "ins": { "name": { "en": "Instinct", "ru": "Инстинкт", "ru-DHM": "Чутьё" }, "shortName": { "en": "Ins", "ru": "Инс", "ru-DHM": "Чут" } },
+    "pre": { "name": { "en": "Presence", "ru": "Влияние" }, "shortName": { "en": "Pre", "ru": "Влн" } },
+    "know": { "name": { "en": "Knowledge", "ru": "Знание" }, "shortName": { "en": "Know", "ru": "Знан" } }
+  },
+  "ranges": {
+    "melee": { "name": { "en": "Melee", "ru": "Вплотную" }, "shortName": { "en": "Melee", "ru": "" } },
+    "very close": { "name": { "en": "Very close", "ru": "Близко" }, "shortName": { "en": "V close", "ru": "" } },
+    "close": { "name": { "en": "Close", "ru": "Средне" }, "shortName": { "en": "Close", "ru": "" } },
+    "far": { "name": { "en": "Far", "ru": "Далеко" }, "shortName": { "en": "Far", "ru": "" } },
+    "very far": { "name": { "en": "Very far", "ru": "Очень далеко" }, "shortName": { "en": "V far", "ru": "" } }
+  },
+  "damageTypes": {
+    "physical": { "name": { "en": "Physical", "ru": "Физический" } },
+    "magic": { "name": { "en": "Magic", "ru": "Магический" } }
+  },
+  "mechanics": {
+    "beastform": { "name": { "en": "Beastform", "ru": "Превращение в зверя" } },
+    "companion": { "name": { "en": "Companion", "ru": "Питомец" } }
+  }
+}
