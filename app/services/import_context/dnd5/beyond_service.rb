@@ -9,6 +9,7 @@ module ImportContext
       ]
 
       def call(user:, data:)
+        data = data.first if data.is_a?(Array)
         create_result = character_create.call(attributes_for_create(data).merge({ user: user }))
         return create_result if create_result[:errors_list]
 
