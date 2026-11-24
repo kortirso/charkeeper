@@ -5,6 +5,7 @@ Disallow: /web_telegram/
 Disallow: /adminbook/
 Disallow: /admin/
 Disallow: /dashboard/
+Disallow: /dashboard_v2/
 Disallow: /homebrews/
 Disallow: /close_cookie_banner
 Disallow: /too_many_requests
