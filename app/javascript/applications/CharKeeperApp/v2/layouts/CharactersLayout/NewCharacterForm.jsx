@@ -1,9 +1,9 @@
-import { createEffect, createSignal, createMemo, Switch, Match } from 'solid-js';
+import { createEffect, createSignal, createMemo, Switch, Match, batch } from 'solid-js';
 
 import { Pathfinder2Form, DaggerheartForm } from '../../layouts';
 import { Button, Select } from '../../components';
 import { useAppLocale, useAppState } from '../../context';
-import { isSuccessResponse, localize } from '../../helpers';
+import { isSuccessResponse, localize, apiRequest, options, performResponse } from '../../helpers';
 
 import { fetchHomebrewsRequest } from './api';
 
@@ -23,6 +23,20 @@ const TRANSLATION = {
     cancel: 'Cancelar',
     save: 'Crear personaje'
   }
+}
+
+export const createCharacterRequest = async (accessToken, provider, payload) => {
+  return await apiRequest({
+    url: `/frontend/${provider}/characters.json`,
+    options: options('POST', accessToken, payload)
+  });
+}
+
+export const importCharacterRequest = async (accessToken, payload) => {
+  return await apiRequest({
+    url: '/frontend/characters/import.json',
+    options: options('POST', accessToken, payload)
+  });
 }
 
 export const NewCharacterForm = (props) => {
@@ -46,15 +60,44 @@ export const NewCharacterForm = (props) => {
   });
 
   const changePlatform = (value) => {
-    setPlatformData({});
-    setImportData({});
-    setPlatform(value);
+    batch(() => {
+      setPlatformData({});
+      setImportData({});
+      setPlatform(value);
+    });
   }
 
-  const saveCharacter = () => {
-    console.log(platform());
-    console.log(platformData().name);
-    console.log(Object.entries(importData()));
+  const addCharacter = (character) => {
+    props.onAddCharacter(character);
+    changePlatform(undefined);
+  }
+
+  const saveCharacter = () => importData()?.use ? importCharacter() : createCharacter();
+
+  const importCharacter = async () => {
+    if (platform() === undefined) return;
+
+    const { use, service, ...newImportData } = importData(); // eslint-disable-line no-unused-vars
+    const result = await importCharacterRequest(appState.accessToken, { provider: platform(), service: importData().service, data: newImportData });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        addCharacter(result.character)
+      }
+    );
+  }
+
+  const createCharacter = async () => {
+    if (platform() === undefined) return;
+
+    const formData = Object.fromEntries(Object.entries(platformData()).filter(([, value]) => value !== undefined));
+    const result = await createCharacterRequest(appState.accessToken, platform(), { character: formData });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        addCharacter(result.character)
+      }
+    );
   }
 
   return (

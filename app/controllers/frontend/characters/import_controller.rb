@@ -5,7 +5,7 @@ module Frontend
     class ImportController < Frontend::BaseController
       include SerializeResource
 
-      DND_SERIALIZE_FIELDS = %i[id name level race subrace species legacy classes provider avatar].freeze
+      DND_SERIALIZE_FIELDS = %i[id name level race subrace species legacy classes provider avatar names].freeze
 
       # rubocop: disable-next Rails/StrongParametersExpect
       def create

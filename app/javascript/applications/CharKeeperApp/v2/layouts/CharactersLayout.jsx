@@ -11,16 +11,19 @@ const TRANSLATION = {
   en: {
     createCharacter: 'Create character',
     noCharacters: 'You do not have any characters yet. Create one to start playing.',
+    moreCharacters: 'You can create more characters without any limitations.',
     level: 'Level'
   },
   ru: {
     createCharacter: 'Создать персонажа',
     noCharacters: 'У вас пока нет персонажей. Создайте первого, чтобы начать игру.',
+    moreCharacters: 'Вы можете добавить еще персонажей без каких-либо ограничений.',
     level: 'Уровень'
   },
   es: {
     createCharacter: 'Crear personaje',
     noCharacters: 'Todavía no tienes personajes. Crea uno para empezar a jugar.',
+    moreCharacters: 'Puedes crear más personajes sin ninguna limitación.',
     level: 'Nivel'
   }
 }
@@ -94,6 +97,11 @@ export const CharactersLayout = () => {
     if (character.provider === 'daggerheart') return Object.keys(character.names.subclass_names).join(' * ');
   };
 
+  const addCharacter = (character) => {
+    setCharacters([character, ...characters()]);
+    closeSheet();
+  }
+
   return (
     <div id="content-body">
       <Switch>
@@ -135,12 +143,17 @@ export const CharactersLayout = () => {
             </DragDropProvider>
           </div>
           <Show when={size.width >= 1280}>
-            <div id="content-body-right" />
+            <div id="content-body-right">
+              <div class="empty-character-state">
+                <p class="empty-character-state-text">{i18n().moreCharacters}</p>
+                <Button onClick={openSheet}>{i18n().createCharacter}</Button>
+              </div>
+            </div>
           </Show>
         </Match>
       </Switch>
       <Sheet title={i18n().createCharacter}>
-        <NewCharacterForm onCancel={closeSheet} />
+        <NewCharacterForm onCancel={closeSheet} onAddCharacter={addCharacter} />
       </Sheet>
     </div>
   );
