@@ -82,24 +82,34 @@ module SheetsContext
           text_box I18n.t('services.sheets_context.dist').upcase, at: [520, 545], width: 30, height: 10, align: :center
 
           fill_color '000000'
-          character.attacks.sort_by { |item| item[:ready_to_use] ? 0 : 1 }.first(12).each_with_index do |attack, index|
-            font_size 8
-            formatted_text_box [{ text: attack[:name], styles: attack[:ready_to_use] ? [:bold] : [], color: attack[:ready_to_use] ? '000000' : '444444' }], at: [327, 534 - (index * 36)], width: 100, height: 14
+          if character.beastform.nil?
+            character.attacks.sort_by { |item| item[:ready_to_use] ? 0 : 1 }.first(12).each_with_index do |attack, index|
+              font_size 8
+              formatted_text_box [{ text: attack[:name], styles: attack[:ready_to_use] ? [:bold] : [], color: attack[:ready_to_use] ? '000000' : '444444' }], at: [327, 534 - (index * 36)], width: 100, height: 14
 
-            font_size 6
-            text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [430, 534 - (index * 36)], width: 25, height: 14, align: :center
-            if attack[:melee_distance]
-              text_box attack[:melee_distance].to_s, at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
-            else
-              text_box attack[:range_distance].to_s, at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
+              font_size 6
+              text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [430, 534 - (index * 36)], width: 25, height: 14, align: :center
+              if attack[:melee_distance]
+                text_box attack[:melee_distance].to_s, at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
+              else
+                text_box attack[:range_distance].to_s, at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
+              end
+
+              damage = attack[:damage].include?('d') ? "#{attack[:damage]}#{'+' if attack[:damage_bonus].positive?}#{attack[:damage_bonus] unless attack[:damage_bonus].zero?}" : ((attack[:damage].to_i + attack[:damage_bonus]).positive? ? (attack[:damage].to_i + attack[:damage_bonus]).to_s : '-')
+              text_box damage, at: [485, 534 - (index * 36)], width: 35, height: 14, align: :center
+              # text_box attack[:damage_type], at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
+
+              tags = attack[:tags].values
+              text_box tags.join(' / '), at: [327, 517 - (index * 36)], width: 200, height: 14
             end
+          else
+            character.attacks.each_with_index do |attack, index|
+              font_size 8
+              formatted_text_box [{ text: translate(attack['name']), styles: [:bold], color: '000000' }], at: [327, 534 - (index * 36)], width: 100, height: 14
 
-            damage = attack[:damage].include?('d') ? "#{attack[:damage]}#{'+' if attack[:damage_bonus].positive?}#{attack[:damage_bonus] unless attack[:damage_bonus].zero?}" : ((attack[:damage].to_i + attack[:damage_bonus]).positive? ? (attack[:damage].to_i + attack[:damage_bonus]).to_s : '-')
-            text_box damage, at: [485, 534 - (index * 36)], width: 35, height: 14, align: :center
-            # text_box attack[:damage_type], at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
-
-            tags = attack[:tags].values
-            text_box tags.join(' / '), at: [327, 517 - (index * 36)], width: 200, height: 14
+              font_size 4
+              text_box translate(attack['description']), at: [327, 520 - (index * 36)], width: 225, height: 14
+            end
           end
 
           font_size 10
