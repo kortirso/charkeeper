@@ -37,7 +37,7 @@ module CharactersContext
 
         def refresh_spell_slots(character)
           character.feats.joins(:feat).where(feats: { origin: 4 }).find_each do |spell|
-            spell.value.transform_values { |item| item['used_count'] = 0 }
+            spell.value.except('signature').transform_values { |item| item['used_count'] = 0 }
             spell.save
           end
         end
