@@ -67,6 +67,9 @@ module HomebrewsContext
         .or(
           ::Pathfinder2::Homebrews::Speciality.where(id: pathfinder_subclasses(user_id).keys)
         )
+        .or(
+          ::Pathfinder2::Homebrews::Speciality.where(id: available_books_data(user_id))
+        )
         .kept.each_with_object({}) do |item, acc|
           acc[item.id] = {
             name: item.title, main_ability_options: item.info.main_abilities, subclass_title: item.info.subclass_title
