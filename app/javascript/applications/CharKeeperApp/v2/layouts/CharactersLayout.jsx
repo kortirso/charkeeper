@@ -2,7 +2,7 @@ import { createMemo, createSignal, createEffect, Switch, Match, Show, For } from
 import { createWindowSize } from '@solid-primitives/resize-observer';
 import { DragDropProvider } from '@dnd-kit/solid';
 
-import { NewCharacterForm } from '../layouts';
+import { ContentLayout, NewCharacterForm, Character } from '../layouts';
 import { Button, createSheet, LayoutNavButtonSortable } from '../components';
 import { useAppLocale, useAppState } from '../context';
 import { localize, apiRequest, options } from '../helpers';
@@ -42,7 +42,7 @@ export const createReorderRequest = async (accessToken, payload) => {
   });
 }
 
-export const CharactersLayout = () => {
+export const CharactersLayout = (props) => {
   const [characters, setCharacters] = createSignal(undefined);
   const [currentCharacter, setCurrentCharacter] = createSignal(null);
 
@@ -103,58 +103,69 @@ export const CharactersLayout = () => {
   }
 
   return (
-    <div id="content-body">
-      <Switch>
-        <Match when={characters() && characters().length === 0}>
-          <Show when={size.width >= 1280}>
-            <div id="content-body-left">
-              <div class="empty-character-state">
-                <p class="empty-character-state-text">{i18n().noCharacters}</p>
-                <Button onClick={openSheet}>{i18n().createCharacter}</Button>
-              </div>
-            </div>
-          </Show>
-          <div id="content-body-right">
-            <Show when={size.width < 1280}>
-              <div class="empty-character-state">
-                <p class="empty-character-state-text">{i18n().noCharacters}</p>
-                <Button onClick={openSheet}>{i18n().createCharacter}</Button>
+    <ContentLayout
+      currentTab="characters"
+      onChangeTab={props.onChangeTab}
+      onChangeCharacter={setCurrentCharacter}
+      characters={characters()}
+      characterId={currentCharacter()?.id}
+    >
+      <div id="content-body">
+        <Switch>
+          <Match when={characters() && characters().length === 0}>
+            <Show when={size.width >= 1280}>
+              <div id="content-body-left">
+                <div class="empty-character-state">
+                  <p class="empty-character-state-text">{i18n().noCharacters}</p>
+                  <Button onClick={openSheet}>{i18n().createCharacter}</Button>
+                </div>
               </div>
             </Show>
-          </div>
-        </Match>
-        <Match when={characters() && !currentCharacter() && characters().length > 0}>
-          <div id="content-body-left">
-            <DragDropProvider onDragEnd={reorderCharacters}>
-              <For each={characters()}>
-                {(character, index) =>
-                  <LayoutNavButtonSortable
-                    draggable
-                    id={character.id}
-                    index={index()}
-                    avatar={character.avatar}
-                    title={character.name}
-                    description={description(character)}
-                    additional={additional(character)}
-                    onClick={() => setCurrentCharacter(character)}
-                  />
-                }
-              </For>
-            </DragDropProvider>
-          </div>
-          <Show when={size.width >= 1280}>
             <div id="content-body-right">
-              <div class="empty-character-state">
-                <p class="empty-character-state-text">{i18n().moreCharacters}</p>
-                <Button onClick={openSheet}>{i18n().createCharacter}</Button>
-              </div>
+              <Show when={size.width < 1280}>
+                <div class="empty-character-state">
+                  <p class="empty-character-state-text">{i18n().noCharacters}</p>
+                  <Button onClick={openSheet}>{i18n().createCharacter}</Button>
+                </div>
+              </Show>
             </div>
-          </Show>
-        </Match>
-      </Switch>
-      <Sheet title={i18n().createCharacter}>
-        <NewCharacterForm onCancel={closeSheet} onAddCharacter={addCharacter} />
-      </Sheet>
-    </div>
+          </Match>
+          <Match when={characters() && !currentCharacter() && characters().length > 0}>
+            <div id="content-body-left">
+              <DragDropProvider onDragEnd={reorderCharacters}>
+                <For each={characters()}>
+                  {(character, index) =>
+                    <LayoutNavButtonSortable
+                      draggable
+                      id={character.id}
+                      index={index()}
+                      avatar={character.avatar}
+                      title={character.name}
+                      description={description(character)}
+                      additional={additional(character)}
+                      onClick={() => setCurrentCharacter(character)}
+                    />
+                  }
+                </For>
+              </DragDropProvider>
+            </div>
+            <Show when={size.width >= 1280}>
+              <div id="content-body-right">
+                <div class="empty-character-state">
+                  <p class="empty-character-state-text">{i18n().moreCharacters}</p>
+                  <Button onClick={openSheet}>{i18n().createCharacter}</Button>
+                </div>
+              </div>
+            </Show>
+          </Match>
+          <Match when={currentCharacter()}>
+            <Character character={currentCharacter()} />
+          </Match>
+        </Switch>
+        <Sheet title={i18n().createCharacter}>
+          <NewCharacterForm onCancel={closeSheet} onAddCharacter={addCharacter} />
+        </Sheet>
+      </div>
+    </ContentLayout>
   );
 }

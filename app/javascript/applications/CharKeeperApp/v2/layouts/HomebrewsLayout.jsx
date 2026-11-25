@@ -1,6 +1,7 @@
 import { createMemo, createSignal, createEffect, For, Show } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
+import { ContentLayout } from '../layouts';
 import { LayoutNavButton, BackToListButton, Checkbox } from '../components';
 import { CosmereSystem, DaggerheartSystem, DndSystem, NimbleSystem, PathfinderSystem } from '../assets';
 import { useAppLocale, useAppState } from '../context';
@@ -45,7 +46,7 @@ const toggleBooksRequest = async (accessToken, id) => {
   });
 }
 
-export const HomebrewsLayout = () => {
+export const HomebrewsLayout = (props) => {
   const [activeTab, setActiveTab] = createSignal(undefined);
   const [books, setBooks] = createSignal(undefined);
 
@@ -83,40 +84,42 @@ export const HomebrewsLayout = () => {
   }
 
   return (
-    <div id="content-body">
-      <Show when={size.width >= 1280 || !activeTab()}>
-        <div id="content-body-left">
-          <p class="mb-2">{i18n().page}</p>
-          <Show when={books()}>
-            <For each={Object.entries(PROVIDERS)}>
-              {([key, provider]) =>
-                <LayoutNavButton icon={provider.icon} title={provider.title} active={activeTab() === key} onClick={() => setActiveTab(key)} />
-              }
-            </For>
-          </Show>
-        </div>
-      </Show>
-      <Show when={size.width >= 1280 || activeTab()}>
-        <div id="content-body-right">
-          <Show when={size.width < 1280}>
-            <BackToListButton onClick={() => setActiveTab(undefined)} />
-          </Show>
-          <Show when={books()}>
-            <div class="gapped-column">
-              <p>{i18n().link} <a href={`https://${location.host}/homebrews`} class="underline" target="_blank" rel="noopener noreferrer">{i18n().here}</a></p>
-              <For each={books().filter((book) => book.provider === activeTab()).sort((a, b) => a.name.localeCompare(b.name))}>
-                {(book) =>
-                  <Checkbox
-                    checked={book.enabled}
-                    label={book.name}
-                    onToggle={() => toggleBook(book.id)}
-                  />
+    <ContentLayout currentTab="homebrews" onChangeTab={props.onChangeTab}>
+      <div id="content-body">
+        <Show when={size.width >= 1280 || !activeTab()}>
+          <div id="content-body-left">
+            <p class="mb-2">{i18n().page}</p>
+            <Show when={books()}>
+              <For each={Object.entries(PROVIDERS)}>
+                {([key, provider]) =>
+                  <LayoutNavButton icon={provider.icon} title={provider.title} active={activeTab() === key} onClick={() => setActiveTab(key)} />
                 }
               </For>
-            </div>
-          </Show>
-        </div>
-      </Show>
-    </div>
+            </Show>
+          </div>
+        </Show>
+        <Show when={size.width >= 1280 || activeTab()}>
+          <div id="content-body-right">
+            <Show when={size.width < 1280}>
+              <BackToListButton onClick={() => setActiveTab(undefined)} />
+            </Show>
+            <Show when={books()}>
+              <div class="gapped-column">
+                <p>{i18n().link} <a href={`https://${location.host}/homebrews`} class="underline" target="_blank" rel="noopener noreferrer">{i18n().here}</a></p>
+                <For each={books().filter((book) => book.provider === activeTab()).sort((a, b) => a.name.localeCompare(b.name))}>
+                  {(book) =>
+                    <Checkbox
+                      checked={book.enabled}
+                      label={book.name}
+                      onToggle={() => toggleBook(book.id)}
+                    />
+                  }
+                </For>
+              </div>
+            </Show>
+          </div>
+        </Show>
+      </div>
+    </ContentLayout>
   );
 }

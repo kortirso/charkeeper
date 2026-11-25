@@ -1,7 +1,7 @@
 import { createMemo, createSignal, For, Show, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { MainSettingsLayout, PasswordSettingsLayout, LanguagesLayout } from '../layouts';
+import { ContentLayout, MainSettingsLayout, PasswordSettingsLayout, LanguagesLayout } from '../layouts';
 import { LayoutNavButton, BackToListButton } from '../components';
 import { AuthenticationSettings, LanguageSettings, MainSettings } from '../assets';
 import { useAppLocale } from '../context';
@@ -52,7 +52,7 @@ const TRANSLATION = {
   }
 }
 
-export const SettingsLayout = () => {
+export const SettingsLayout = (props) => {
   const [activeTab, setActiveTab] = createSignal(undefined);
 
   const size = createWindowSize();
@@ -61,34 +61,36 @@ export const SettingsLayout = () => {
   const i18n = createMemo(() => localize(TRANSLATION, locale()));
 
   return (
-    <div id="content-body">
-      <Show when={size.width >= 1280 || !activeTab()}>
-        <div id="content-body-left">
-          <For each={SETTINGS}>
-            {(item) =>
-              <LayoutNavButton icon={item.icon} title={i18n().titles[item.key]} description={i18n().descriptions[item.key]} active={activeTab() === item.key} onClick={() => setActiveTab(item.key)} />
-            }
-          </For>
-        </div>
-      </Show>
-      <Show when={size.width >= 1280 || activeTab()}>
-        <div id="content-body-right">
-          <Show when={size.width < 1280}>
-            <BackToListButton onClick={() => setActiveTab(undefined)} />
-          </Show>
-          <Switch>
-            <Match when={activeTab() === 'main'}>
-              <MainSettingsLayout />
-            </Match>
-            <Match when={activeTab() === 'password'}>
-              <PasswordSettingsLayout />
-            </Match>
-            <Match when={activeTab() === 'language'}>
-              <LanguagesLayout />
-            </Match>
-          </Switch>
-        </div>
-      </Show>
-    </div>
+    <ContentLayout currentTab="settings" onChangeTab={props.onChangeTab}>
+      <div id="content-body">
+        <Show when={size.width >= 1280 || !activeTab()}>
+          <div id="content-body-left">
+            <For each={SETTINGS}>
+              {(item) =>
+                <LayoutNavButton icon={item.icon} title={i18n().titles[item.key]} description={i18n().descriptions[item.key]} active={activeTab() === item.key} onClick={() => setActiveTab(item.key)} />
+              }
+            </For>
+          </div>
+        </Show>
+        <Show when={size.width >= 1280 || activeTab()}>
+          <div id="content-body-right">
+            <Show when={size.width < 1280}>
+              <BackToListButton onClick={() => setActiveTab(undefined)} />
+            </Show>
+            <Switch>
+              <Match when={activeTab() === 'main'}>
+                <MainSettingsLayout />
+              </Match>
+              <Match when={activeTab() === 'password'}>
+                <PasswordSettingsLayout />
+              </Match>
+              <Match when={activeTab() === 'language'}>
+                <LanguagesLayout />
+              </Match>
+            </Switch>
+          </div>
+        </Show>
+      </div>
+    </ContentLayout>
   );
 }
