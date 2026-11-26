@@ -15,3 +15,4 @@ export * from './Logo';
 export * from './MainSettings';
 export * from './NimbleSystem';
 export * from './PathfinderSystem';
+export * from './Star';

@@ -2,7 +2,7 @@ import { createMemo, createSignal, createEffect, Switch, Match, Show, For } from
 import { createWindowSize } from '@solid-primitives/resize-observer';
 import { DragDropProvider } from '@dnd-kit/solid';
 
-import { ContentLayout, NewCharacterForm, Character } from '../layouts';
+import { ContentLayout, NewCharacterForm, Pathfinder2, Daggerheart } from '../layouts';
 import { Button, createSheet, LayoutNavButtonSortable } from '../components';
 import { useAppLocale, useAppState } from '../context';
 import { localize, apiRequest, options } from '../helpers';
@@ -88,13 +88,17 @@ export const CharactersLayout = (props) => {
   }
 
   const description = (character) => {
-    if (character.provider === 'pathfinder2') return `${i18n().level} ${character.level} | ${character.names.race_name}`;
-    if (character.provider === 'daggerheart') return `${i18n().level} ${character.level} | ${character.names.ancestry_name}`;
+    if (character.provider === 'pathfinder2') return character.names.race_name;
+    if (character.provider === 'daggerheart') return character.names.ancestry_name;
   };
 
   const additional = (character) => {
-    if (character.provider === 'pathfinder2') return character.names.class_name;
-    if (character.provider === 'daggerheart') return Object.keys(character.names.subclass_names).join(' * ');
+    if (character.provider === 'pathfinder2') {
+      return [character.names.class_name, `${i18n().level} ${character.level}`].filter(Boolean).join(' · ');
+    }
+    if (character.provider === 'daggerheart') {
+      return [...Object.keys(character.names.subclass_names), `${i18n().level} ${character.level}`].filter(Boolean).join(' · ');
+    }
   };
 
   const addCharacter = (character) => {
@@ -137,6 +141,7 @@ export const CharactersLayout = (props) => {
                   {(character, index) =>
                     <LayoutNavButtonSortable
                       draggable
+                      bigTitle
                       id={character.id}
                       index={index()}
                       avatar={character.avatar}
@@ -159,7 +164,14 @@ export const CharactersLayout = (props) => {
             </Show>
           </Match>
           <Match when={currentCharacter()}>
-            <Character character={currentCharacter()} />
+            <Switch>
+              <Match when={currentCharacter().provider === 'pathfinder2'}>
+                <Pathfinder2 character={currentCharacter()} />
+              </Match>
+              <Match when={currentCharacter().provider === 'daggerheart'}>
+                <Daggerheart character={currentCharacter()} />
+              </Match>
+            </Switch>
           </Match>
         </Switch>
         <Sheet title={i18n().createCharacter}>

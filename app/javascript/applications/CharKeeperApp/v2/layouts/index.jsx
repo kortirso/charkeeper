@@ -11,6 +11,14 @@ export * from './CharactersLayout/NewCharacterForms/DaggerheartForm';
 
 export * from './CharacterLayout/Character';
 
+export * from './CharacterLayout/Pathfinder2';
+export * from './CharacterLayout/Pathfinder2/General';
+export * from './CharacterLayout/Pathfinder2/Combat';
+
+export * from './CharacterLayout/Daggerheart';
+export * from './CharacterLayout/Daggerheart/General';
+export * from './CharacterLayout/Daggerheart/Combat';
+
 export * from './SettingsLayout/MainSettingsLayout';
 export * from './SettingsLayout/PasswordSettingsLayout';
 export * from './SettingsLayout/LanguagesLayout';

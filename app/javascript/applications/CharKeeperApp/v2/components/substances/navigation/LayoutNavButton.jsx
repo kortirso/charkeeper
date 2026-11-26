@@ -37,7 +37,7 @@ export const LayoutNavButton = (props) => {
         </div>
       </Show>
       <div class="character-item-box">
-        <p class="collection-item-title">{props.title}</p>
+        <p class="collection-item-title" classList={{ 'big': props.bigTitle }}>{props.title}</p>
         <Show when={props.description}><p class="collection-item-description">{props.description}</p></Show>
         <Show when={props.additional}><p class="collection-item-description">{props.additional}</p></Show>
       </div>
